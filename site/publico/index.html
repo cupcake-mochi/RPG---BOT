@@ -180,7 +180,7 @@ function ativar(texto, soTermos = null) {
   return { nomes: E.map(e => e.comment), texto: E.map(e => e.content).join("\n\n"), termos };
 }
 
-// ---------- livro: âncora dos termos acionados + os blocos que mais casam com a mensagem (busca v6) ----------
+// ---------- livro: âncora dos termos acionados + os blocos que mais casam com a mensagem (busca v7) ----------
 const PARADA = new Set(("a o e de da do das dos que pra para por com sem um uma uns umas no na nos nas em é eu vc voce você tu se me te meu minha seu sua isso isto esse essa aqui ai aí la lá ja já mais menos muito pouco quando como qual quais quanto quantos onde porque pq tá ta to tô ou mas nao não sim ele ela eles elas ser ter tem tenho foi vai vou pode posso faz fazer " +
   "closure kal kaltsit kal'tsit mizuki livro regra regras dele dela deles delas oque qnt qnts cm for fosse seria tiver tivesse estiver nele nela neles nelas").split(" "));
 // "nv2", "nvl 2", "lv2" viram "nivel 2"; palavra longa fica com as 6 primeiras letras, pra "estabilizo" achar "estabilizar",
@@ -249,6 +249,7 @@ const NEGRITO = new Map();
 D.livro.forEach((b, i) => { for (const m of b.texto.matchAll(/^\*\*([^*\n]{3,40})\.\*\*/gm)) if (!/^N[íi]vel/.test(m[1])) poeTermo(m[1], i, 8, NEGRITO); });
 // tabela por Classe ("| Classe | Nível mínimo | Pontos / PE |..."): "feitiço de classe 1" quer a linha dela; as outras colunas também contam
 const CLASSETAB = D.livro.map(b => new Set([...b.texto.matchAll(/^\| Classe \|([^\n]*)/gm)].flatMap(m => tok(m[1]))));
+let BONUS_ANT = 10;
 const DEPOIS = { medico: "medici", medica: "medici", medicos: "medici", curandeiro: "cura" };
 const termosNa = (t, M = TERMO) => { const f = " " + tok(t).join(" ") + " ", r = new Map(); for (const [k, is] of M) if (f.includes(" " + k + " ")) for (const i of is) r.set(i, Math.max(r.get(i) || 0, k.split(" ").length)); return r; };
 D.livro.forEach((b, i) => { const t = tok(b.titulo); if (CAMINHOS.includes(FAM[i]) && t.length === 1 && !FAMILIA_DE.has(t[0])) FAMILIA_DE.set(t[0], FAM[i]); });
@@ -333,6 +334,8 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   if (qPal.size && (termos.length || familia.size || titulo.size || seg || comTermo.size || ((pergunta || /\d/.test(semAspas)) && REGRA.test(semAspas)))) {
     for (const w of tok(texto)) if (!PARADA.has(w) && !CONVERSA.has(w) && !DF.has(w)) { const c = corrigir(w); if (DF.has(c) && !CONVERSA.has(c) && !qPal.has(c)) qPal.set(c, 1); }
     const negrito = termosNa(texto, NEGRITO);
+    // seguimento curto ("e sem correr antes?", "e a derrubado?"): as seções que a pergunta anterior trouxe ganham bônus
+    const doAnterior = new Set(seg && !fundo && proprias <= 2 ? blocosLivro(ult, ativar(ult).termos, penult ? [penult] : [], 1).slice(0, 2).map(b => D.livro.indexOf(b)) : []);
     // frase que pergunta só uma coisa ("hm, e ataque?"): a seção com esse nome de título vale +12, mesmo com palavra que o livro usa em toda parte
     const soTitulo = new Set(); for (const f of texto.split(/(?<=[?!.])\s+|\n/)) if (PERG.test(nrm(f))) { const ws = tok(f).filter(w => !PARADA.has(w) && !CONVERSA.has(w)); if (ws.length === 1) TPRIN.forEach((T, i) => { if (T.length === 1 && T[0] === ws[0]) soTitulo.add(i); }); }
     // "quero ser médico no jogo": sinônimo que só vale depois que a busca abriu ("tu é médica?" é papo com a personagem)
@@ -343,7 +346,7 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
     // (só quando o Caminho veio de apelido, como "tank"; com o nome escrito, "habilidade do guia", a busca continua no Caminho)
     const apelido = ![...qPal.keys()].some(w => FAMILIA_DE.has(w) && t.includes(w));
     const naFamilia = apelido && familia.size && comTermo.size && ![...comTermo.keys()].some(i => familia.has(FAM[i])) ? new Set() : familia;
-    const nota = buscar(qPal, naFamilia, nivel, numNivel).map(([s, b, i]) => [s + (titulo.get(i) || 0) + (soTitulo.has(i) ? 12 : 0) + (CLASSETAB[i].size && [...qPal].some(([w, p]) => p === 1 && /^classe[1-7]$/.test(w)) ? 6 + 3 * [...qPal.keys()].filter(w => CLASSETAB[i].has(w) || (w === "preco" && (CLASSETAB[i].has("pe") || CLASSETAB[i].has("ponto")))).length : 0) + (comTermo.has(i) ? 4 + 4 * comTermo.get(i) : negrito.has(i) ? 4 + 4 * negrito.get(i) : 0), b]).sort((a, b) => b[0] - a[0]);
+    const nota = buscar(qPal, naFamilia, nivel, numNivel).map(([s, b, i]) => [s + (titulo.get(i) || 0) + (soTitulo.has(i) ? 12 : 0) + (doAnterior.has(i) && [...qPal].some(([w, p]) => p === 1 && BTOK[i].has(w)) ? BONUS_ANT : 0) + (CLASSETAB[i].size && [...qPal].some(([w, p]) => p === 1 && /^classe[1-7]$/.test(w)) ? 6 + 3 * [...qPal.keys()].filter(w => CLASSETAB[i].has(w) || (w === "preco" && (CLASSETAB[i].has("pe") || CLASSETAB[i].has("ponto")))).length : 0) + (comTermo.has(i) ? 4 + 4 * comTermo.get(i) : negrito.has(i) ? 4 + 4 * negrito.get(i) : 0), b]).sort((a, b) => b[0] - a[0]);
     // o melhor entra se tiver nota mínima; o segundo só se chegar perto do primeiro
     if (nota[0] && nota[0][0] >= 4) { achados.push(nota[0][1]); if (nota[1] && nota[1][0] >= Math.max(6, 0.6 * nota[0][0])) achados.push(nota[1][1]); }
     // pergunta de um Caminho sem habilidade nem nível nomeado ("o guia gasta quanto PE pra ajudar?"): a página da progressão, que traz a habilidade base, entra junto
