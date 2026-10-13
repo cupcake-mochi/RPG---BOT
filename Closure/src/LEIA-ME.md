@@ -71,9 +71,10 @@ python3 -m closure_bot
 - **O que o gratuito custa:** a cota do 3.8 Flash é de 20 pedidos por dia, dividida com o site de teste; o
   Google pode usar as conversas do nível gratuito pra melhorar os produtos dele (no pago, não); e ele falha
   mais: num teste de 13/10, 3 de 7 pedidos voltaram "modelo com alta demanda".
-- **Vertex ainda sem credencial:** a organização do Google Cloud bloqueia chave de API por política de
-  segurança ("Chaves de API não são permitidas"). Caminhos: credencial padrão do aplicativo (ADC) ou o dono
-  liberar a política pro projeto. O código hoje só sabe usar chave de API.
+- **Vertex com credencial desde 13/10/2026:** chave de API em `VERTEX_API_KEY`. A organização do Google
+  Cloud bloqueia esse tipo de chave por padrão; o Mizuki soltou a restrição só no projeto do bot. O primeiro
+  teste real (17 respostas, US$ 0,096) está em `pesquisa/validacao/` e resumido no fim de
+  `pesquisa/reports/Qual IA usar no bot.md`.
 - **Prompt:** por enquanto vem do site de teste, por `../ferramentas/prompt_do_site/`. Essa ponte baixa a
   página do ramo `site-teste` e roda no Node a lógica dela (lorebook, busca no livro, estado, lembrete), então
   o bot usa exatamente o que os amigos testam, sem cópia de texto de card. Precisa do Node instalado.
