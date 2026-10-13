@@ -9,9 +9,14 @@ por um servidor pequeno que guarda a chave. A chave nunca vai pro navegador.
 - `servidor.py` serve a página e repassa cada mensagem pro Gemini. Só aceita conversas montadas
   pela própria página (com o prompt de sistema de uma das personagens), pede um código de acesso
   e tem limite por pessoa e por dia, pra ninguém usar a chave pra outra coisa nem estourar a cota.
-- Botão **Rápido** usa `gemini-3.1-flash-lite`; **Padrão** usa `gemini-3.8-flash`. Na chave
-  gratuita o 3.8 Flash só aguenta umas 20 mensagens por dia, por isso o Rápido é o padrão; quando a
-  cota do Padrão acaba, o servidor responde com o modelo do Rápido em vez de dar erro.
+- Cada botão tem uma fila de modelos. Se um esgota a cota, cai ou demora mais de 60 s, o próximo
+  responde, e a conversa salva anota qual modelo deu cada fala.
+  - **Rápido:** Gemini 3.1 Flash-Lite, 3.5 Flash-Lite, 2.5 Flash-Lite e, com `MISTRAL_API_KEY`, Mistral Medium.
+  - **Padrão:** Gemini 3.8 Flash, 3.5 Flash e 3 Flash Preview (cada um só tem 20 pedidos por dia na
+    chave grátis), Mistral Medium e depois a fila do Rápido.
+  - Dá pra trocar com `FILA_RAPIDO` / `FILA_PADRAO` (`provedor:modelo,...`; provedores: `gemini`,
+    `mistral`, `groq`, `openrouter`, cada um com a sua `*_API_KEY`).
+  - A chave do Gemini é a mesma dos testes de personalidade, então os dois gastam a mesma cota.
 - Cada conversa é salva sozinha a cada resposta e a cada marcação de "Estranha" (com a nota),
   sem botão de enviar. Com `GITHUB_TOKEN` configurado, o servidor também manda cada conversa, em
   texto, pra pasta `conversas/` da branch `conversas` do repositório, uns 90 segundos depois da

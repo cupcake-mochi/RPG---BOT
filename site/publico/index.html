@@ -125,10 +125,14 @@ textarea{flex:1;min-width:0;font:inherit;font-size:15px;padding:8px 10px;border:
 
   const sample = async (input, opts = {}) => {
     const d = await api("/api/chat", { input, tier: opts.modelTier || "quick" }, opts.signal);
+    quem.set(d.text.trim(), d.modelo);
     opts.onText?.({ text: d.text, delta: d.text });
     return { text: d.text, truncated: !!d.truncated };
   };
-  const db = { doc: caminho => ({ set: dados => api("/api/conversa", { id: caminho.split("/").pop(), dados }) }) };
+  // a página não guarda qual modelo respondeu; o adaptador anota em cada fala antes de salvar
+  const quem = new Map();
+  const anotar = dados => ({ ...dados, turnos: dados.turnos.map(t => t.de === "bot" ? { ...t, modelo: quem.get((t.texto || "").trim()) || null } : t) });
+  const db = { doc: caminho => ({ set: dados => api("/api/conversa", { id: caminho.split("/").pop(), dados: anotar(dados) }) }) };
   window.claude = { use: async nome => nome === "sample" ? sample : nome === "db" ? db : null };
 
   // mensagens de erro do servidor, no mesmo lugar onde a página mostra as dela

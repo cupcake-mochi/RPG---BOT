@@ -4,10 +4,12 @@ nunca no navegador. Só a biblioteca padrão do Python.
 
 Variáveis de ambiente:
   GEMINI_API_KEY         obrigatória
+  MISTRAL_API_KEY, GROQ_API_KEY, OPENROUTER_API_KEY   opcionais: liberam esses provedores nas filas abaixo
   SENHA                  código que os amigos digitam na página (obrigatória)
   SENHA_ADMIN            libera GET /api/conversas?admin=... pra baixar as conversas salvas
-  GEMINI_MODELO          modelo do botão "Padrão" (padrão: gemini-3.8-flash)
-  GEMINI_MODELO_RAPIDO   modelo do botão "Rápido" (padrão: gemini-3.1-flash-lite)
+  FILA_RAPIDO, FILA_PADRAO  modelos de cada botão, em ordem, separados por vírgula, no formato provedor:modelo.
+                         Se um esgota a cota, está fora do ar ou demora, o próximo responde. Itens de um
+                         provedor sem chave são pulados. Cada modelo do Gemini grátis tem cota própria.
   LIMITE_HORA            mensagens por pessoa (IP) por hora (padrão: 40)
   LIMITE_DIA             mensagens no total por dia, horário de Brasília (padrão: 300)
   PASTA_CONVERSAS        onde as conversas ficam salvas (padrão: ./conversas)
@@ -25,8 +27,27 @@ PUB = os.path.join(AQUI, "publico")
 CHAVE = os.environ.get("GEMINI_API_KEY", "")
 SENHA = os.environ.get("SENHA", "")
 SENHA_ADMIN = os.environ.get("SENHA_ADMIN", "")
-MODELO = os.environ.get("GEMINI_MODELO", "gemini-3.8-flash")
-MODELOS = {"default": MODELO, "complex": MODELO, "quick": os.environ.get("GEMINI_MODELO_RAPIDO", "gemini-3.1-flash-lite")}
+RAPIDO = "gemini:gemini-3.1-flash-lite,gemini:gemini-3.5-flash-lite,gemini:gemini-2.5-flash-lite,mistral:mistral-medium-latest"
+PADRAO = "gemini:gemini-3.8-flash,gemini:gemini-3.5-flash,gemini:gemini-3-flash-preview,mistral:mistral-medium-latest," + RAPIDO
+CHAVES = {"gemini": CHAVE, "mistral": os.environ.get("MISTRAL_API_KEY", ""), "groq": os.environ.get("GROQ_API_KEY", ""),
+          "openrouter": os.environ.get("OPENROUTER_API_KEY", "")}
+URL_OPENAI = {"mistral": "https://api.mistral.ai/v1/chat/completions", "groq": "https://api.groq.com/openai/v1/chat/completions",
+              "openrouter": "https://openrouter.ai/api/v1/chat/completions"}
+
+
+def fila(texto):
+    itens = []
+    for item in texto.split(","):
+        prov, _, modelo = item.strip().partition(":")
+        if modelo and CHAVES.get(prov) and (prov, modelo) not in itens:
+            itens.append((prov, modelo))
+    return itens
+
+
+FILAS = {"quick": fila(os.environ.get("FILA_RAPIDO", RAPIDO)), "default": fila(os.environ.get("FILA_PADRAO", PADRAO))}
+FILAS["complex"] = FILAS["default"]
+ESPERA = 60  # segundos por tentativa; os Flash grátis às vezes ficam 2 minutos sem responder
+esgotado = {}  # (provedor, modelo) -> instante até quando pular, depois de um 429
 LIMITE_HORA = int(os.environ.get("LIMITE_HORA", "40"))
 LIMITE_DIA = int(os.environ.get("LIMITE_DIA", "300"))
 CONVERSAS = os.environ.get("PASTA_CONVERSAS", os.path.join(AQUI, "conversas"))
@@ -80,22 +101,72 @@ def valido(entrada):
     return any(entrada[0]["content"].endswith(p) for p in PROMPTS)
 
 
-def gemini(entrada, tier):
+class Falhou(Exception):
+    def __init__(self, codigo, motivo):
+        super().__init__(f"{codigo} {motivo}")
+        self.codigo, self.motivo = codigo, motivo
+
+
+def pedir(req):
+    try:
+        with urllib.request.urlopen(req, timeout=ESPERA) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        raise Falhou(e.code, e.read().decode(errors="replace")[:3000].replace("\n", " "))
+    except (urllib.error.URLError, TimeoutError, OSError) as e:
+        raise Falhou("rede", str(e))
+
+
+def gemini(modelo, entrada):
     corpo = {
         "system_instruction": {"parts": [{"text": entrada[0]["content"]}]},
         "contents": [{"role": "user" if m["role"] == "user" else "model", "parts": [{"text": m["content"]}]} for m in entrada[1:]],
         "generationConfig": {"temperature": 0.8, "maxOutputTokens": 2048},
     }
-    url = f"https://generativelanguage.googleapis.com/v1beta/models/{MODELOS.get(tier, MODELO)}:generateContent"
-    req = urllib.request.Request(url, json.dumps(corpo).encode(), {"Content-Type": "application/json", "x-goog-api-key": CHAVE})
-    with urllib.request.urlopen(req, timeout=120) as r:
-        d = json.load(r)
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{modelo}:generateContent"
+    d = pedir(urllib.request.Request(url, json.dumps(corpo).encode(), {"Content-Type": "application/json", "x-goog-api-key": CHAVE}))
     cand = (d.get("candidates") or [{}])[0]
-    partes = cand.get("content", {}).get("parts", [])
-    texto = "".join(p.get("text", "") for p in partes if not p.get("thought")).strip()
+    texto = "".join(p.get("text", "") for p in cand.get("content", {}).get("parts", []) if not p.get("thought")).strip()
     if not texto:
-        return None, cand.get("finishReason") or d.get("promptFeedback", {}).get("blockReason") or "vazio"
-    return {"text": texto, "truncated": cand.get("finishReason") == "MAX_TOKENS"}, None
+        motivo = cand.get("finishReason") or d.get("promptFeedback", {}).get("blockReason") or "vazio"
+        raise Falhou("bloqueado" if motivo in ("SAFETY", "PROHIBITED_CONTENT", "BLOCKLIST", "OTHER") else "vazio", motivo)
+    return texto, cand.get("finishReason") == "MAX_TOKENS"
+
+
+def openai(prov, modelo, entrada):
+    # Mistral, Groq e OpenRouter falam o formato de chat da OpenAI; a primeira mensagem vira o system
+    msgs = [{"role": "system", "content": entrada[0]["content"]}] + [{"role": m["role"], "content": m["content"]} for m in entrada[1:]]
+    corpo = {"model": modelo, "messages": msgs, "temperature": 0.8, "max_tokens": 2048}
+    d = pedir(urllib.request.Request(URL_OPENAI[prov], json.dumps(corpo).encode(),
+                                     {"Content-Type": "application/json", "Authorization": f"Bearer {CHAVES[prov]}"}))
+    esc = (d.get("choices") or [{}])[0]
+    texto = (esc.get("message", {}).get("content") or "").strip()
+    if not texto:
+        raise Falhou("bloqueado" if esc.get("finish_reason") == "content_filter" else "vazio", esc.get("finish_reason"))
+    return texto, esc.get("finish_reason") == "length"
+
+
+def responder_com_fila(entrada, tier):
+    """Tenta cada modelo da fila do botão; devolve (resposta, None) ou (None, código de erro pra página)."""
+    ultimo = "gemini"
+    for prov, modelo in FILAS.get(tier) or FILAS["quick"]:
+        if esgotado.get((prov, modelo), 0) > time.time():
+            ultimo = "cota_gemini"
+            continue
+        try:
+            texto, cortado = gemini(modelo, entrada) if prov == "gemini" else openai(prov, modelo, entrada)
+            return {"text": texto, "truncated": cortado, "modelo": f"{prov}:{modelo}"}, None
+        except Falhou as f:
+            print("falhou", prov, modelo, f.codigo, str(f.motivo)[:200], flush=True)
+            if f.codigo == "bloqueado":
+                return None, "bloqueado"
+            if f.codigo == 429:
+                # cota diária volta à meia-noite do Pacífico; por minuto, logo. Pula esse modelo por um tempo.
+                esgotado[(prov, modelo)] = time.time() + (3600 if "PerDay" in str(f.motivo) else 60)
+                ultimo = "cota_gemini"
+            else:
+                ultimo = "gemini"
+    return None, ultimo
 
 
 # ---------- cópia das conversas no GitHub ----------
@@ -111,7 +182,8 @@ def em_texto(c):
     estranhas = 0
     for t in c.get("turnos", []):
         quem = t.get("nome") or "alguém" if t.get("de") == "user" else NOME.get(t.get("pers"), "bot")
-        linhas.append(f"**{quem}:** {t.get('texto', '')}")
+        modelo = f" _({t['modelo'].split(':', 1)[1]})_" if t.get("modelo") else ""
+        linhas.append(f"**{quem}:**{modelo} {t.get('texto', '')}")
         if t.get("estranha"):
             estranhas += 1
             linhas.append(f"> ⚠️ ESTRANHA{': ' + t['nota'] if t.get('nota') else ''}")
@@ -232,25 +304,10 @@ class Site(BaseHTTPRequestHandler):
         limite = contar(self.ip())
         if limite:
             return self.responder(429, {"erro": limite})
-        tier = corpo.get("tier")
-        try:
-            try:
-                resp, motivo = gemini(entrada, tier)
-            except urllib.error.HTTPError as e:
-                # cota do modelo principal acabou: responde com o do botão Rápido, que tem cota própria
-                if e.code != 429 or MODELOS.get(tier, MODELO) == MODELOS["quick"]:
-                    raise
-                print("cota de", MODELOS.get(tier, MODELO), "acabou, usando", MODELOS["quick"], flush=True)
-                resp, motivo = gemini(entrada, "quick")
-        except urllib.error.HTTPError as e:
-            detalhe = e.read().decode(errors="replace")[:300]
-            print("gemini HTTP", e.code, detalhe.replace("\n", " "), flush=True)
-            return self.responder(503 if e.code == 429 else 502, {"erro": "cota_gemini" if e.code == 429 else "gemini"})
-        except (urllib.error.URLError, TimeoutError) as e:
-            print("gemini rede", e, flush=True)
-            return self.responder(502, {"erro": "gemini"})
-        if resp is None:
-            return self.responder(502, {"erro": "bloqueado" if motivo in ("SAFETY", "PROHIBITED_CONTENT", "BLOCKLIST", "OTHER") else "gemini", "detalhe": motivo})
+        resp, erro = responder_com_fila(entrada, corpo.get("tier"))
+        if erro:
+            return self.responder(503 if erro == "cota_gemini" else 502, {"erro": erro})
+        print("respondeu", resp["modelo"], flush=True)
         self.responder(200, resp)
 
     def conversa(self, corpo):
@@ -273,5 +330,7 @@ if __name__ == "__main__":
     if GH_TOKEN:
         threading.Thread(target=laco_github, daemon=True).start()
     porta = int(os.environ.get("PORT", "8000"))
-    print(f"no ar na porta {porta} · modelos {MODELOS['quick']} / {MODELOS['default']} · {LIMITE_HORA}/h por pessoa, {LIMITE_DIA}/dia", flush=True)
+    print(f"no ar na porta {porta} · {LIMITE_HORA}/h por pessoa, {LIMITE_DIA}/dia", flush=True)
+    for nome in ("quick", "default"):
+        print(" ", "Rápido:" if nome == "quick" else "Padrão:", ", ".join(f"{p}:{m}" for p, m in FILAS[nome]), flush=True)
     ThreadingHTTPServer(("0.0.0.0", porta), Site).serve_forever()
