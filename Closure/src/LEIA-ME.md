@@ -4,9 +4,9 @@ Esqueleto da fase 1 do `docs/PLANEJAMENTO.md`, escrito em 13/10/2026. O bot anti
 `../../Closure Legado/` serve só de consulta.
 
 **O que já faz:** sobe, responde `/ping` lendo o `MANIFESTO.json`, decide quem responde a cada mensagem
-(por horário e pelo nome chamado), registra o gatilho em SQLite e sabe enviar com o nome e o avatar de
-cada personagem. **O que ainda não faz:** responder no chat. A resposta (busca nas regras, prompt do card,
-chamada ao modelo) já está ligado em `closure_bot/cogs/chat.py`.
+(por horário e pelo nome chamado), monta o pedido com card, lorebook, livro, estado e ficha da pessoa, chama o
+modelo e envia a fala com o nome e o avatar de cada personagem. **O que ainda não fez:** rodar no Discord de
+verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de mentira.
 
 ## Arquivos
 
