@@ -11,9 +11,12 @@ Variáveis de ambiente:
   LIMITE_HORA            mensagens por pessoa (IP) por hora (padrão: 40)
   LIMITE_DIA             mensagens no total por dia, horário de Brasília (padrão: 300)
   PASTA_CONVERSAS        onde as conversas ficam salvas (padrão: ./conversas)
+  GITHUB_TOKEN           token com permissão de escrever no repositório: as conversas vão também, em texto,
+                         pra branch GITHUB_BRANCH (padrão: conversas) de GITHUB_REPO (padrão: cupcake-mochi/RPG---BOT),
+                         na pasta conversas/, porque o disco do Render grátis apaga quando reinicia
   PORT                   porta (padrão: 8000)
 """
-import json, os, re, threading, time, urllib.error, urllib.request
+import base64, json, os, re, threading, time, urllib.error, urllib.request
 from collections import defaultdict, deque
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 
@@ -28,6 +31,11 @@ LIMITE_HORA = int(os.environ.get("LIMITE_HORA", "40"))
 LIMITE_DIA = int(os.environ.get("LIMITE_DIA", "300"))
 CONVERSAS = os.environ.get("PASTA_CONVERSAS", os.path.join(AQUI, "conversas"))
 MAX_CARACTERES, MAX_MENSAGENS = 200_000, 60
+GH_TOKEN = os.environ.get("GITHUB_TOKEN", "")
+GH_REPO = os.environ.get("GITHUB_REPO", "cupcake-mochi/RPG---BOT")
+GH_API = os.environ.get("GITHUB_API", "https://api.github.com")
+GH_BRANCH = os.environ.get("GITHUB_BRANCH", "conversas")
+GH_INTERVALO = int(os.environ.get("GITHUB_INTERVALO", "90"))  # segundos entre envios; cada conversa muda a cada mensagem e não precisa de um commit por mensagem
 
 INDEX = open(os.path.join(PUB, "index.html"), "rb").read()
 PROMPTS = list(json.load(open(os.path.join(PUB, "prompts.json"), encoding="utf-8"))["prompts"].values())
@@ -88,6 +96,80 @@ def gemini(entrada, tier):
     if not texto:
         return None, cand.get("finishReason") or d.get("promptFeedback", {}).get("blockReason") or "vazio"
     return {"text": texto, "truncated": cand.get("finishReason") == "MAX_TOKENS"}, None
+
+
+# ---------- cópia das conversas no GitHub ----------
+pendentes = set()
+NOME = {"kal": "Kal'tsit", "clo": "Closure"}
+
+
+def em_texto(c):
+    linhas = [f"# Conversa {c['id']}", "",
+              f"- Atualizada: {c.get('atualizada', '?')}",
+              f"- Modelo: {'Rápido' if c.get('modelo') == 'quick' else 'Padrão'}",
+              f"- Cards: {json.dumps(c.get('cards', {}), ensure_ascii=False)}", ""]
+    estranhas = 0
+    for t in c.get("turnos", []):
+        quem = t.get("nome") or "alguém" if t.get("de") == "user" else NOME.get(t.get("pers"), "bot")
+        linhas.append(f"**{quem}:** {t.get('texto', '')}")
+        if t.get("estranha"):
+            estranhas += 1
+            linhas.append(f"> ⚠️ ESTRANHA{': ' + t['nota'] if t.get('nota') else ''}")
+        linhas.append("")
+    linhas.insert(5, f"- Falas marcadas como estranhas: {estranhas}")
+    return "\n".join(linhas)
+
+
+def github(metodo, caminho, corpo=None):
+    req = urllib.request.Request(f"{GH_API}/repos/{GH_REPO}/{caminho}", json.dumps(corpo).encode() if corpo else None,
+                                 {"Authorization": f"Bearer {GH_TOKEN}", "Accept": "application/vnd.github+json", "User-Agent": "closure-teste"}, method=metodo)
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.load(r)
+
+
+def preparar_branch():
+    try:
+        github("GET", f"git/ref/heads/{GH_BRANCH}")
+    except urllib.error.HTTPError as e:
+        if e.code != 404:
+            raise
+        base = github("GET", "")["default_branch"]
+        sha = github("GET", f"git/ref/heads/{base}")["object"]["sha"]
+        github("POST", "git/refs", {"ref": f"refs/heads/{GH_BRANCH}", "sha": sha})
+        print("criei a branch", GH_BRANCH, flush=True)
+
+
+def enviar_conversa(cid):
+    c = json.load(open(os.path.join(CONVERSAS, cid + ".json"), encoding="utf-8"))
+    caminho = f"contents/conversas/{cid}.md"
+    corpo = {"message": f"Conversa {cid}", "branch": GH_BRANCH,
+             "content": base64.b64encode(em_texto(c).encode()).decode()}
+    try:
+        corpo["sha"] = github("GET", f"{caminho}?ref={GH_BRANCH}")["sha"]
+    except urllib.error.HTTPError as e:
+        if e.code != 404:
+            raise
+    github("PUT", caminho, corpo)
+
+
+def laco_github():
+    try:
+        preparar_branch()
+    except Exception as e:
+        print("GitHub indisponível, as conversas ficam só no servidor:", e, flush=True)
+        return
+    while True:
+        time.sleep(GH_INTERVALO)
+        with trava:
+            fila = list(pendentes)
+            pendentes.clear()
+        for cid in fila:
+            try:
+                enviar_conversa(cid)
+            except Exception as e:
+                print("falhou ao mandar", cid, "pro GitHub:", e, flush=True)
+                with trava:
+                    pendentes.add(cid)
 
 
 class Site(BaseHTTPRequestHandler):
@@ -179,12 +261,17 @@ class Site(BaseHTTPRequestHandler):
         dados = dict(corpo["dados"], id=cid)
         with open(os.path.join(CONVERSAS, cid + ".json"), "w", encoding="utf-8") as f:
             json.dump(dados, f, ensure_ascii=False)
+        if GH_TOKEN:
+            with trava:
+                pendentes.add(cid)
         self.responder(200, {"ok": True})
 
 
 if __name__ == "__main__":
     if not CHAVE or not SENHA:
         raise SystemExit("Faltou GEMINI_API_KEY ou SENHA nas variáveis de ambiente.")
+    if GH_TOKEN:
+        threading.Thread(target=laco_github, daemon=True).start()
     porta = int(os.environ.get("PORT", "8000"))
     print(f"no ar na porta {porta} · modelos {MODELOS['quick']} / {MODELOS['default']} · {LIMITE_HORA}/h por pessoa, {LIMITE_DIA}/dia", flush=True)
     ThreadingHTTPServer(("0.0.0.0", porta), Site).serve_forever()

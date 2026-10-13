@@ -15,5 +15,7 @@ services:
         sync: false
       - key: SENHA_ADMIN
         sync: false
+      - key: GITHUB_TOKEN
+        sync: false
       - key: PYTHON_VERSION
         value: 3.12.7

@@ -12,10 +12,12 @@ por um servidor pequeno que guarda a chave. A chave nunca vai pro navegador.
 - Botão **Rápido** usa `gemini-3.1-flash-lite`; **Padrão** usa `gemini-3.8-flash`. Na chave
   gratuita o 3.8 Flash só aguenta umas 20 mensagens por dia, por isso o Rápido é o padrão; quando a
   cota do Padrão acaba, o servidor responde com o modelo do Rápido em vez de dar erro.
-- Cada conversa fica salva no servidor (com as marcações de "Estranha"). Pra baixar todas:
-  `https://SEU-SITE/api/conversas?admin=SENHA_ADMIN`. No plano grátis do Render o disco é
-  apagado quando o serviço reinicia, então baixe de vez em quando. O botão "Copiar conversa"
-  continua funcionando pra quem quiser mandar no Discord.
+- Cada conversa é salva sozinha a cada resposta e a cada marcação de "Estranha" (com a nota),
+  sem botão de enviar. Com `GITHUB_TOKEN` configurado, o servidor também manda cada conversa, em
+  texto, pra pasta `conversas/` da branch `conversas` do repositório, uns 90 segundos depois da
+  última mudança. É lá que dá pra ler e avaliar, porque o disco do Render grátis apaga quando o
+  serviço reinicia. Sem token, dá pra baixar o que estiver no servidor em
+  `https://SEU-SITE/api/conversas?admin=SENHA_ADMIN`.
 - O texto dos prompts, do lorebook e do livro fica visível no código da página (é ela que monta
   o contexto, igual no claude.ai).
 
@@ -43,7 +45,10 @@ e abra `http://localhost:8000`.
 2. **New > Blueprint**, escolha o repositório `RPG---BOT` e a branch deste site. Ele lê o `render.yaml`.
 3. Preencha `GEMINI_API_KEY` (a mesma do `.env`), `SENHA` (o código que você passa pros amigos)
    e `SENHA_ADMIN` (só sua, pra baixar as conversas).
-4. O Render dá um endereço `https://closure-teste-xxxx.onrender.com`. É esse que você manda.
+4. Opcional, mas recomendado: crie um token em GitHub > Settings > Developer settings >
+   Fine-grained tokens, só pro repositório `RPG---BOT`, com permissão **Contents: Read and write**,
+   e coloque em `GITHUB_TOKEN`.
+5. O Render dá um endereço `https://closure-teste-xxxx.onrender.com`. É esse que você manda.
 
 No plano grátis o site dorme depois de 15 minutos sem uso; a primeira abertura depois disso
 demora uns 50 segundos.
