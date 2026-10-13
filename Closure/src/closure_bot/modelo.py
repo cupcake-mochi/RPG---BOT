@@ -48,7 +48,10 @@ PRECOS_2027 = {"gemini-3.8-flash": (1.50, 7.50)}  # o 3.8 Flash dobra em 01/01/2
 PRECO_DESCONHECIDO = (1.50, 7.50)  # modelo fora da tabela conta pelo mais caro, pra errar pra cima
 TEMPERATURA = 0.8
 MAX_SAIDA = 2048
-ESPERA = 60  # segundos por tentativa
+ESPERA = 25  # segundos por tentativa; resposta normal chega em 2 a 8
+# Depois de falhar, o provedor fica de molho e a fila pula direto pro seguinte, pra ninguém esperar à toa:
+# cota estourada (429) demora a voltar; sobrecarga e queda de rede passam logo.
+MOLHO = {429: 600, 503: 120, "rede": 120}
 BLOQUEIOS = ("SAFETY", "PROHIBITED_CONTENT", "BLOCKLIST", "OTHER")
 
 
@@ -121,6 +124,7 @@ class Modelos:
         self.teto_usd = teto_usd
         self.raciocinio = raciocinio
         self._chaves = chaves
+        self._de_molho: dict[tuple[str, str], float] = {}  # (provedor, modelo) -> quando volta, no relógio de time.monotonic
         self._registro = registro
         self._enviar = enviar or _enviar_http
 
@@ -142,7 +146,8 @@ class Modelos:
             raise Falhou("sem_chave", "nenhum provedor pago da fila tem chave no .env" if so_pagos else "nenhum provedor da fila tem chave no .env")
         corpo, ultimo_erro = montar_corpo(entrada, self.raciocinio), None
         pagos_liberados = self.gasto_do_mes() < self.teto_usd
-        for provedor, modelo in fila:
+        disponiveis = [par for par in fila if self._de_molho.get(par, 0) <= time.monotonic()]
+        for provedor, modelo in disponiveis or fila:  # com todos de molho, tenta todos: pior é não tentar nenhum
             if provedor in PAGOS and not pagos_liberados:
                 ultimo_erro = ultimo_erro or Falhou("teto", f"gasto do mês chegou ao teto de US$ {self.teto_usd:.2f}")
                 continue
@@ -152,6 +157,8 @@ class Modelos:
                 texto, cortada, entrada_tk, saida_tk = ler_resposta(dados)
             except Falhou as erro:
                 ultimo_erro = erro
+                if erro.codigo in MOLHO:
+                    self._de_molho[(provedor, modelo)] = time.monotonic() + MOLHO[erro.codigo]
                 self._registrar(provedor, modelo, persona, gatilho, inicio, ok=False, erro=str(erro)[:300])
                 log.warning("modelo: %s:%s falhou (%s)", provedor, modelo, str(erro)[:200])
                 continue

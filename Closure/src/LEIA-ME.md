@@ -4,9 +4,9 @@ Esqueleto da fase 1 do `docs/PLANEJAMENTO.md`, escrito em 13/10/2026. O bot anti
 `../../Closure Legado/` serve só de consulta.
 
 **O que já faz:** sobe, responde `/ping` lendo o `MANIFESTO.json`, decide quem responde a cada mensagem
-(por horário e pelo nome chamado), registra o gatilho em SQLite e sabe enviar com o nome e o avatar de
-cada personagem. **O que ainda não faz:** responder no chat. A resposta (busca nas regras, prompt do card,
-chamada ao modelo) entra nas fases 2 e 4, no ponto marcado em `closure_bot/cogs/chat.py`.
+(por horário e pelo nome chamado), monta o pedido com card, lorebook, livro, estado e ficha da pessoa, chama o
+modelo e envia a fala com o nome e o avatar de cada personagem. **O que ainda não fez:** rodar no Discord de
+verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de mentira.
 
 ## Arquivos
 
@@ -25,9 +25,11 @@ chamada ao modelo) entra nas fases 2 e 4, no ponto marcado em `closure_bot/cogs/
 | `closure_bot/cogs/clima.py` | `/clima [lugar]`, `/clima_canal`, `/clima_canal_desligar` e o painel diário de Tóquio, um canal por servidor |
 | `closure_bot/modelo.py` | A chamada à IA numa camada só: fila de `provedor:modelo` com reserva (Vertex AI e AI Studio), e cada tentativa registrada com tokens e latência |
 | `closure_bot/cogs/admin.py` | `/ping`, `/status`, `/teste_webhook` (este só pro dono) |
-| `closure_bot/cogs/chat.py` | Escuta as mensagens, decide e registra o gatilho |
+| `closure_bot/cogs/chat.py` | Escuta as mensagens, decide quem responde, monta o pedido, chama o modelo e envia a fala |
+| `closure_bot/conversa.py` | A conversa em andamento com cada personagem por canal, só em memória (30 min, 12 turnos) |
+| `closure_bot/prompt.py` | Monta o pedido ao modelo. Hoje pela ponte do site, no Node; é o único ponto que depende dela |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 135 testes; 21 deles precisam do discord.py e 4 da cryptography e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 144 testes; 26 deles precisam do discord.py e 4 da cryptography e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -119,8 +121,17 @@ python3 -m closure_bot
   computador). Com ela, falas, mensagens do dia, pronomes e fatos vão cifrados pro disco; IDs, horas e
   contagens ficam em claro. A hospedagem precisa da mesma variável. Sem a chave, ou com outra, o bot não
   mostra letra embaralhada: esquece o que não abre. Perder a chave é perder as fichas.
-- **Ainda não ligado:** o `cogs/chat.py` continua só registrando o gatilho. Falta chamar a ponte e o modelo
-  ali, e decidir se o bot em produção roda o Node ou se a busca ganha versão em Python.
+- **Chat ligado** (13/10/2026): quem chama uma personagem recebe resposta. O caminho, em `cogs/chat.py`:
+  decide quem responde, atualiza o estado, monta o pedido pela ponte (`prompt.py`) com a conversa em andamento,
+  as falas anteriores, o estado e a linha de clima, chama o modelo e envia pelo webhook. Só entra na conversa a
+  mensagem de quem a chamou e a resposta dela; o resto do canal não vai pro modelo. Se o modelo falha, ela
+  fica calada (frase pronta de erro não é fala dela) e o motivo vai pro log. Só o dono, pelo `DONO_ID`, vai
+  no pedido como Mizuki.
+- **Espera:** cada tentativa tem 25 segundos. Provedor que falha fica de molho (10 min depois de cota
+  estourada, 2 min depois de sobrecarga ou queda de rede) e a fila pula direto pro seguinte.
+- **Em aberto:** o bot em produção precisa do Node e da página do site baixada (`src/var/site/nucleo.js`), ou
+  a busca ganha versão em Python. Testado de ponta a ponta sem o Discord, com mensagem de mentira e o resto
+  de verdade; no Discord mesmo ainda não rodou.
 
 ## Regras de plantão implementadas
 
