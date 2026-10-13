@@ -1,0 +1,19 @@
+# Site de teste do bot no Render (plano grátis). Os valores secretos são pedidos na hora de criar.
+services:
+  - type: web
+    name: closure-teste
+    runtime: python
+    plan: free
+    rootDir: site
+    buildCommand: "true"
+    startCommand: python servidor.py
+    healthCheckPath: /saude
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: SENHA
+        sync: false
+      - key: SENHA_ADMIN
+        sync: false
+      - key: PYTHON_VERSION
+        value: 3.12.7
