@@ -30,7 +30,7 @@ class ClosureBot(commands.Bot):
         self.carteiro = Carteiro(self.registro)
         self.clima = ServicoClima()
         self.modelos = Modelos(ler_fila(config.fila_modelos or FILA_PADRAO), config.chaves, self.registro,
-                               teto_usd=config.teto_mensal_usd or TETO_PADRAO_USD)
+                               teto_usd=config.teto_mensal_usd or TETO_PADRAO_USD, raciocinio=config.raciocinio)
 
     async def setup_hook(self) -> None:
         for modulo in MODULOS:

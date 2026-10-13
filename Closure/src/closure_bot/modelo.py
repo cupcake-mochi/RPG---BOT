@@ -81,12 +81,16 @@ def ler_fila(texto: str) -> list[tuple[str, str]]:
     return fila
 
 
-def montar_corpo(entrada: list[dict]) -> dict:
+def montar_corpo(entrada: list[dict], raciocinio: str | None = None) -> dict:
+    """`raciocinio` ("low", "medium", "high") limita o quanto o modelo pensa antes de falar; None deixa o padrão dele."""
+    geracao = {"temperature": TEMPERATURA, "maxOutputTokens": MAX_SAIDA}
+    if raciocinio:
+        geracao["thinkingConfig"] = {"thinkingLevel": raciocinio}
     return {
         "system_instruction": {"parts": [{"text": entrada[0]["content"]}]},
         "contents": [{"role": "user" if m["role"] == "user" else "model", "parts": [{"text": m["content"]}]}
                      for m in entrada[1:]],
-        "generationConfig": {"temperature": TEMPERATURA, "maxOutputTokens": MAX_SAIDA},
+        "generationConfig": geracao,
     }
 
 
@@ -108,9 +112,11 @@ class Modelos:
     """`enviar(url, corpo, chave)` faz o POST e devolve o JSON, ou levanta Falhou; no teste é uma função falsa."""
 
     def __init__(self, fila: list[tuple[str, str]], chaves: dict[str, str], registro=None,
-                 enviar: Callable[[str, dict, str], Awaitable[dict]] | None = None, teto_usd: float = TETO_PADRAO_USD):
+                 enviar: Callable[[str, dict, str], Awaitable[dict]] | None = None, teto_usd: float = TETO_PADRAO_USD,
+                 raciocinio: str | None = None):
         self.fila = [(p, m) for p, m in fila if chaves.get(p)]  # provedor sem chave sai da fila
         self.teto_usd = teto_usd
+        self.raciocinio = raciocinio
         self._chaves = chaves
         self._registro = registro
         self._enviar = enviar or _enviar_http
@@ -127,7 +133,7 @@ class Modelos:
     async def responder(self, entrada: list[dict], *, persona: str | None = None, gatilho: str | None = None) -> Resposta:
         if not self.fila:
             raise Falhou("sem_chave", "nenhum provedor da fila tem chave no .env")
-        corpo, ultimo_erro = montar_corpo(entrada), None
+        corpo, ultimo_erro = montar_corpo(entrada, self.raciocinio), None
         pagos_liberados = self.gasto_do_mes() < self.teto_usd
         for provedor, modelo in self.fila:
             if provedor in PAGOS and not pagos_liberados:
