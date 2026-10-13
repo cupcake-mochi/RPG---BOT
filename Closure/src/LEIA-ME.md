@@ -14,7 +14,9 @@ chamada ao modelo) entra nas fases 2 e 4, no ponto marcado em `closure_bot/cogs/
 | ------- | --------- |
 | `closure_bot/plantao.py` | Quem responde: turno por horário, nome chamado, as duas citadas. Não conhece o Discord. A regra tem dono: `dados/personagem/servidor.md` e os `vida.md` |
 | `closure_bot/config.py` | Lê o `.env` da pasta `Closure/` (o ambiente vence o arquivo) |
-| `closure_bot/registro.py` | SQLite: `chamadas_api`, `gatilhos`, `mensagens_bot`, `paineis_clima` (um por servidor) e `falas` (as últimas respostas de cada personagem por canal) |
+| `closure_bot/registro.py` | SQLite: `chamadas_api`, `gatilhos`, `mensagens_bot`, `paineis_clima` (um por servidor), `falas` (as últimas respostas de cada personagem por canal), `paciencia` e `fichas` (o que elas guardam de cada pessoa) |
+| `closure_bot/vida.py` | O estado do momento, pelo desenho dos `vida.md`: carga, movimento do canal, paciência, intimidade; monta o bloco de estado e as linhas a mais do lembrete |
+| `closure_bot/cogs/pessoa.py` | `/meus_dados`, `/meus_pronomes`, `/apagar_meus_dados`: cada pessoa vê e apaga o que é dela |
 | `closure_bot/dados.py` | Lê o manifesto das regras e o nome e a versão de cada card. Não escreve em `dados/` |
 | `closure_bot/carteiro.py` | Envia a fala pelo webhook do canal, com nome e avatar por mensagem, e guarda o ID |
 | `closure_bot/bot.py` | Junta tudo e carrega os módulos |
@@ -24,7 +26,7 @@ chamada ao modelo) entra nas fases 2 e 4, no ponto marcado em `closure_bot/cogs/
 | `closure_bot/cogs/admin.py` | `/ping`, `/status`, `/teste_webhook` (este só pro dono) |
 | `closure_bot/cogs/chat.py` | Escuta as mensagens, decide e registra o gatilho |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 92 testes; 19 deles precisam do discord.py e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 117 testes; 21 deles precisam do discord.py e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -89,6 +91,17 @@ python3 -m closure_bot
   usou..." vale de uma conversa pra outra, sem chamada a mais. Medição com `ferramentas/medir_monotonia.py`:
   "oi closure" foi de 3 pra 6 respostas diferentes em 6, e "kal, tudo bem?" de 4 pra 6. Tira frase repetida;
   não dá assunto novo, que depende do estado e da ficha.
+  A memória tem limite, pra ela não ter que inventar pra sempre: valem só as 6 respostas mais novas e só as
+  das últimas 12 horas (`FALAS_VALEM_HORAS`); a frase só é barrada depois de aparecer em duas delas.
+- **Vida** (13/10/2026): `vida.py` calcula o estado sem chamar modelo. Carga: respostas dela na última hora,
+  em todos os canais. Movimento: mensagens do canal em 15 min (só a hora fica, em memória). Paciência: por
+  pessoa e por personagem, cai com pergunta repetida em 30 min ou tentativa de tirá-la do personagem, volta 1 a
+  cada 2 h; da pergunta fica só um resumo embaralhado, nunca o texto. Intimidade: dias diferentes em que a
+  pessoa chamou aquela personagem (5, 15, 40, 100). O estado entra pela ponte (`estado=`): o bloco troca o
+  da página, que é fixo, e o lembrete ganha no máximo duas linhas contando a de fora do plantão.
+  Medição com `ferramentas/medir_monotonia.py --modo vida`: com ficha a resposta muda de assunto
+  ("Como tá o Ren, ainda aguentando o tranco na mesa do Tiago?"); sem ficha ela usa o canal e o fato de a
+  pessoa ser nova. Faltam os fatos da ficha, que só a reflexão diária preenche.
 - **Ainda não ligado:** o `cogs/chat.py` continua só registrando o gatilho. Falta chamar a ponte e o modelo
   ali, e decidir se o bot em produção roda o Node ou se a busca ganha versão em Python.
 

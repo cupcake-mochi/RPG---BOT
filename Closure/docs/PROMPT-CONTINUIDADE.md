@@ -29,9 +29,14 @@ ONDE PARAMOS
 - Fase 0 (organizar a pasta e sincronizar as regras R44) feita. O esqueleto da fase 1 está em
   src/closure_bot/ (13/10): plantão por horário e nome, envio por webhook, registro em SQLite,
   /ping, /status, e o clima (/clima [lugar], painel diário por servidor com /clima_canal, e a
-  linha de clima pro bloco 4 quando a mensagem puxa o assunto). 67 testes, tudo fora do ar:
-  ainda não responde no chat e nunca subiu com token. O bot é pra vários servidores. Como
-  rodar e o que falta: src/LEIA-ME.md.
+  linha de clima pro bloco 4 quando a mensagem puxa o assunto). Depois, ainda em 13/10: a
+  camada do modelo (fila com o gratuito primeiro, Vertex de reserva, teto mensal, raciocínio
+  reduzido), a ponte que monta o prompt com a página do site de teste
+  (ferramentas/prompt_do_site), a memória de falas contra repetição (6 respostas, 12 horas) e
+  a primeira parte da "vida" (src/closure_bot/vida.py: carga, movimento, paciência,
+  intimidade, /meus_dados). 117 testes, tudo fora do ar: ainda não responde no chat e nunca
+  subiu com token. O bot é pra vários servidores. Como rodar e o que falta: src/LEIA-ME.md.
+  Falta na "vida": os fatos da ficha (reflexão diária), o calendário e ligar tudo no chat.
 - Pra levar aos cards (pelos geradores, com teste): as duas acompanham o clima pelo
   computador e contam como está, de Tóquio ou de onde perguntarem, sem dizer que estão lá.
 - Duas personagens, que se revezam no plantão e nunca falam uma com a outra:

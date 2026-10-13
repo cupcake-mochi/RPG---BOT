@@ -88,6 +88,70 @@ class RegistroSqlite(unittest.TestCase):
         self.assertEqual(total, FALAS_GUARDADAS)
         self.assertEqual(self.r.ultimas_falas(canal_id=7, persona="kaltsit"), ["fica"])
 
+    def test_fala_de_mais_de_um_turno_nao_conta(self):
+        from datetime import datetime, timedelta, timezone
+
+        agora = datetime(2026, 10, 13, 22, 0, tzinfo=timezone.utc)
+        self.r.guardar_fala(canal_id=7, persona="closure", texto="de ontem", quando=agora - timedelta(hours=13))
+        self.r.guardar_fala(canal_id=7, persona="closure", texto="de hoje", quando=agora - timedelta(hours=2))
+        self.assertEqual(self.r.ultimas_falas(canal_id=7, persona="closure", agora=agora), ["de hoje"])
+        self.assertEqual(self.r.ultimas_falas(canal_id=7, persona="closure", agora=agora, horas=24), ["de ontem", "de hoje"])
+
+    def test_dias_de_conversa_contam_pelo_dia_de_brasilia(self):
+        from datetime import datetime, timezone
+
+        def chamou(dia, hora, persona="closure", autor=9):
+            self.r.registrar_gatilho(canal_id=7, autor_id=autor, persona=persona, motivo="nome", fora_do_plantao=False,
+                                     quando=datetime(2026, 10, dia, hora, 0, tzinfo=timezone.utc))
+        chamou(13, 1)   # 22h do dia 12 em Brasília
+        chamou(13, 2)   # 23h do dia 12: o mesmo dia
+        chamou(13, 4)   # 1h do dia 13
+        chamou(14, 12, persona="kaltsit")
+        chamou(14, 12, autor=10)
+        self.assertEqual(self.r.dias_de_conversa(autor_id=9, persona="closure"), 2)
+        self.assertEqual(self.r.dias_de_conversa(autor_id=9, persona="kaltsit"), 1)
+        self.assertEqual(self.r.dias_de_conversa(autor_id=11, persona="closure"), 0)
+
+    def test_respostas_desde(self):
+        from datetime import datetime, timedelta, timezone
+
+        self.r.registrar_mensagem(message_id=1, canal_id=7, persona="closure")
+        self.r.registrar_mensagem(message_id=2, canal_id=8, persona="closure")
+        self.r.registrar_mensagem(message_id=3, canal_id=7, persona="kaltsit")
+        agora = datetime.now(timezone.utc)
+        self.assertEqual(self.r.respostas_desde(persona="closure", desde=agora - timedelta(hours=1)), 2)
+        self.assertEqual(self.r.respostas_desde(persona="closure", desde=agora + timedelta(minutes=1)), 0)
+
+    def test_paciencia_e_ficha_vao_e_voltam(self):
+        from datetime import datetime, timezone
+
+        from closure_bot.registro import Ficha
+
+        agora = datetime(2026, 10, 13, 22, 0, tzinfo=timezone.utc)
+        self.assertIsNone(self.r.paciencia(autor_id=9, persona="closure"))
+        self.r.gravar_paciencia(autor_id=9, persona="closure", valor=2, desde=agora, pergunta="abc", pergunta_quando=agora)
+        lida = self.r.paciencia(autor_id=9, persona="closure")
+        self.assertEqual((lida.valor, lida.desde, lida.pergunta, lida.pergunta_quando), (2, agora, "abc", agora))
+        self.assertEqual(self.r.ficha(9), Ficha())
+        self.r.gravar_ficha(9, Ficha("ela/dela", ("joga com Bastião", "mesa do Tiago")))
+        self.assertEqual(self.r.ficha(9), Ficha("ela/dela", ("joga com Bastião", "mesa do Tiago")))
+
+    def test_apagar_pessoa_leva_tudo_dela_e_so_dela(self):
+        from datetime import datetime, timezone
+
+        from closure_bot.registro import Ficha
+
+        agora = datetime(2026, 10, 13, 22, 0, tzinfo=timezone.utc)
+        for autor in (9, 10):
+            self.r.registrar_gatilho(canal_id=7, autor_id=autor, persona="closure", motivo="nome", fora_do_plantao=False)
+            self.r.gravar_paciencia(autor_id=autor, persona="closure", valor=1, desde=agora, pergunta=None, pergunta_quando=None)
+            self.r.gravar_ficha(autor, Ficha("ele/dele", ("fato",)))
+        self.r.apagar_pessoa(9)
+        self.assertEqual((self.r.ficha(9), self.r.paciencia(autor_id=9, persona="closure"), self.r.dias_de_conversa(autor_id=9, persona="closure")),
+                         (Ficha(), None, 0))
+        self.assertEqual((self.r.ficha(10).pronomes, self.r.paciencia(autor_id=10, persona="closure").valor, self.r.dias_de_conversa(autor_id=10, persona="closure")),
+                         ("ele/dele", 1, 1))
+
     def test_cria_a_pasta_do_banco(self):
         caminho = Path(tempfile.mkdtemp()) / "var" / "bot.sqlite3"
         Registro(caminho).fechar()

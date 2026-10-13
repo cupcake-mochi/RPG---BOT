@@ -1,4 +1,4 @@
-"""O bot: junta configuração, registro, personagens e os módulos (admin, chat, regras, ficha)."""
+"""O bot: junta configuração, registro, personagens e os módulos (admin, chat, clima, pessoa, regras, ficha)."""
 from __future__ import annotations
 
 import logging
@@ -12,10 +12,11 @@ from .config import Config
 from .dados import carregar_personas, ler_manifesto
 from .modelo import FILA_PADRAO, RACIOCINIO_PADRAO, TETO_PADRAO_USD, Modelos, ler_fila
 from .registro import Registro
+from .vida import Vida
 
 log = logging.getLogger(__name__)
 
-MODULOS = ("admin", "chat", "clima", "regras", "ficha")
+MODULOS = ("admin", "chat", "clima", "pessoa", "regras", "ficha")
 
 
 class ClosureBot(commands.Bot):
@@ -29,6 +30,7 @@ class ClosureBot(commands.Bot):
         self.personas = carregar_personas(config.dados, config.avatares)
         self.carteiro = Carteiro(self.registro)
         self.clima = ServicoClima()
+        self.vida = Vida(self.registro)
         self.modelos = Modelos(ler_fila(config.fila_modelos or FILA_PADRAO), config.chaves, self.registro,
                                teto_usd=config.teto_mensal_usd or TETO_PADRAO_USD, raciocinio=config.raciocinio or RACIOCINIO_PADRAO)
 

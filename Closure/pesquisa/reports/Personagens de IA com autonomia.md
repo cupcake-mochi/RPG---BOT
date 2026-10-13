@@ -141,3 +141,17 @@ O item 1 acima foi feito: o bot guarda as últimas falas de cada personagem por 
 | "closure, me conta uma piada" | 6 em 6 | 6 em 6 |
 
 O que isso resolve e o que não resolve. A repetição literal sumiu nos dois casos em que existia. O molde continua: a Closure ainda abre com "Opa" em 4 das 6 e gira em torno de "tudo certo por aí"; a Kal'tsit só sai de "tudo certo / tudo em ordem" a partir da quinta ("Seguindo o dia por aqui.", "Trabalhando."). Nas piadas, duas das seis com memória eram a mesma piada com outro verbo. É o limite desse mecanismo: ele tira frase repetida, não dá assunto novo. Assunto novo vem do que muda no prompt (estado, ficha, diário), que são os itens 2 e 3. É uma rodada só, com 6 repetições; serve de direção, não de prova.
+
+### Depois: o estado do momento, medido (13/10/2026, 18h09)
+
+A primeira parte da "vida" foi programada (`src/closure_bot/vida.py`): carga, movimento do canal, paciência e intimidade, por conta no código, sem chamada a mais. A mesma mensagem foi mandada três vezes em quatro situações, com a memória de falas ligada. A ficha usada é inventada para a medição. As respostas estão em `pesquisa/validacao/2026-10-13-18h09-vida.md`.
+
+| Situação | "oi closure" |
+|---|---|
+| pessoa nova, canal quieto | "Opa, oi! Chegou bem na hora que o canal tava parado." / "Oi, tudo bem! Primeira vez por aqui no servidor?" |
+| conhecida, com ficha | "Opa, rafa! Como tá o Ren, ainda aguentando o tranco na mesa do Tiago?" |
+| íntima, canal cheio, carga alta | "Oi, rafa!" |
+| paciência baixa | "Oi, rafa. O que você precisa?" |
+
+O que a medição mostra. O molde quebra quando o que ela sabe muda: a situação decide o assunto e o tamanho da resposta. Dois problemas novos apareceram. Com a ficha no pedido, ela puxou o personagem da pessoa nas três respostas, o que vira outra monotonia: os fatos não podem entrar todos, toda vez. E numa das três ela enfeitou um fato ("aquela confusão com a Integridade", quando a ficha só dizia que a pessoa perguntou da Integridade). Foi uma rodada de três repetições por situação: serve de direção.
+
