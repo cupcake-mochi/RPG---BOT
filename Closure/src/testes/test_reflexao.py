@@ -32,18 +32,19 @@ class Peneira(unittest.TestCase):
 class Conferencia(unittest.TestCase):
     def test_so_passa_fato_novo_permitido_e_de_mensagem_da_propria_pessoa(self):
         saida = "```json\n" + json.dumps([
-            {"autor": 9, "mensagem": 101, "fato": "joga com um Bastião chamado Ren"},
-            {"autor": 9, "mensagem": 102, "fato": "mestra a mesa de sexta"},          # a mensagem 102 é de outra pessoa
-            {"autor": 9, "mensagem": 103, "fato": "Prefere resposta curta"},           # já tem
-            {"autor": 10, "mensagem": 102, "fato": "toma remédio pra ansiedade"},      # sensível
-            {"autor": 10, "mensagem": 102, "fato": "mestra a mesa de sexta"},
-            {"autor": 10, "mensagem": 999, "fato": "inventado"},                       # mensagem que não existe
+            {"autor": 1, "mensagem": 1, "fato": "joga com um Bastião chamado Ren"},
+            {"autor": 1, "mensagem": 2, "fato": "mestra a mesa de sexta"},           # a mensagem 2 é de outra pessoa
+            {"autor": 1, "mensagem": 3, "fato": "Prefere resposta curta"},           # já tem
+            {"autor": 2, "mensagem": 2, "fato": "toma remédio pra ansiedade"},       # sensível
+            {"autor": 2, "mensagem": 2, "fato": "mestra a mesa de sexta"},
+            {"autor": 2, "mensagem": 99, "fato": "inventado"},                       # mensagem que não existe
+            {"autor": 7, "mensagem": 1, "fato": "de autor que não existe"},
             {"autor": "x", "fato": "quebrado"}], ensure_ascii=False) + "\n```"
         novos = conferir(saida, MENSAGENS, {9: ("prefere resposta curta",), 10: ()})
         self.assertEqual(novos, {9: ["joga com um Bastião chamado Ren"], 10: ["mestra a mesa de sexta"]})
 
     def test_no_maximo_tres_por_pessoa_e_resposta_quebrada_nao_grava_nada(self):
-        saida = json.dumps([{"autor": 9, "mensagem": 101, "fato": f"fato número {n}"} for n in range(6)])
+        saida = json.dumps([{"autor": 1, "mensagem": 1, "fato": f"fato número {n}"} for n in range(6)])
         self.assertEqual(len(conferir(saida, MENSAGENS, {})[9]), 3)
         self.assertEqual(conferir("não achei nada", MENSAGENS, {}), {})
         self.assertEqual(conferir("[{quebrado", MENSAGENS, {}), {})
@@ -56,9 +57,12 @@ class Conferencia(unittest.TestCase):
         self.assertIn("Responda só com JSON", corpo["system_instruction"]["parts"][0]["text"])
         self.assertEqual(len(corpo["contents"]), 1)
         texto = pedido[1]["content"]
-        self.assertIn("mensagem 101 | autor 9 | closure, meu Bastião, o Ren, pode usar escudo?", texto)
-        self.assertIn("autor 9: prefere resposta curta", texto)
-        self.assertIn("autor 10: nenhum", texto)
+        self.assertIn("mensagem 1 | autor 1 | closure, meu Bastião, o Ren, pode usar escudo?", texto)
+        self.assertIn("mensagem 3 | autor 1 | valeu!", texto)
+        self.assertIn("autor 1: prefere resposta curta", texto)
+        self.assertIn("autor 2: nenhum", texto)
+        # o ID do Discord da mensagem e do autor não vai no pedido
+        self.assertNotRegex(texto, r"\b(101|102|103|10)\b")
 
 
 class Reflexao(unittest.IsolatedAsyncioTestCase):
@@ -81,7 +85,7 @@ class Reflexao(unittest.IsolatedAsyncioTestCase):
 
     async def test_grava_os_fatos_apaga_as_mensagens_e_so_usa_o_provedor_pago(self):
         self.r.gravar_ficha(9, Ficha("ele/dele", ("gosta de café",)))
-        novos = await refletir(self.r, self._modelos(_resposta([{"autor": 9, "mensagem": 101, "fato": "joga com um Bastião chamado Ren"}])))
+        novos = await refletir(self.r, self._modelos(_resposta([{"autor": 1, "mensagem": 1, "fato": "joga com um Bastião chamado Ren"}])))
         self.assertEqual(novos, {9: ["joga com um Bastião chamado Ren"]})
         self.assertEqual(self.r.ficha(9), Ficha("ele/dele", ("gosta de café", "joga com um Bastião chamado Ren")))
         self.assertEqual(self.r.mensagens_do_dia(), [])
@@ -98,7 +102,7 @@ class Reflexao(unittest.IsolatedAsyncioTestCase):
 
     async def test_a_ficha_nao_passa_do_limite_e_perde_os_mais_velhos(self):
         self.r.gravar_ficha(9, Ficha(None, tuple(f"fato velho {n}" for n in range(FATOS_MAX))))
-        await refletir(self.r, self._modelos(_resposta([{"autor": 9, "mensagem": 101, "fato": "joga com um Bastião chamado Ren"}])))
+        await refletir(self.r, self._modelos(_resposta([{"autor": 1, "mensagem": 1, "fato": "joga com um Bastião chamado Ren"}])))
         fatos = self.r.ficha(9).fatos
         self.assertEqual((len(fatos), fatos[0], fatos[-1]), (FATOS_MAX, "fato velho 1", "joga com um Bastião chamado Ren"))
 

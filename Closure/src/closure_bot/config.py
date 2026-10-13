@@ -15,6 +15,8 @@ Variáveis (modelo em .env.exemplo, na raiz do repositório):
                    modelo. Vazio = low (modelo.RACIOCINIO_PADRAO).
   TETO_MENSAL_USD  quanto os provedores pagos podem gastar por mês, em dólar, antes de saírem da fila. Padrão: 9.
   BANCO            caminho do SQLite de registro. Padrão: src/var/bot.sqlite3.
+  CHAVE_DO_BANCO   chave que cifra no disco o texto que fala de gente. Cria com: python3 -m closure_bot --gerar-chave.
+                   Perder a chave é perder as fichas e as falas guardadas.
 """
 from __future__ import annotations
 
@@ -64,6 +66,7 @@ class Config:
     raciocinio: str | None
     banco: Path
     dados: Path = DADOS
+    chave_do_banco: str | None = None
 
     def escuta(self, canal_id: int) -> bool:
         return not self.canais or canal_id in self.canais
@@ -87,4 +90,5 @@ def carregar(arquivo: Path | None = None, ambiente: dict[str, str] | None = None
         teto_mensal_usd=_decimal(valores.get("TETO_MENSAL_USD")),
         raciocinio=valores.get("RACIOCINIO", "").strip().lower() or None,
         banco=Path(valores.get("BANCO") or RAIZ / "src" / "var" / "bot.sqlite3"),
+        chave_do_banco=valores.get("CHAVE_DO_BANCO") or None,
     )

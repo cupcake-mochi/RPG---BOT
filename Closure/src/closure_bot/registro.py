@@ -15,6 +15,9 @@
                  A pessoa vê com /meus_dados e apaga com /apagar_meus_dados.
   mensagens_do_dia  o texto das mensagens em que alguém chamou uma personagem, só até a reflexão das 4h30
                  (closure_bot/reflexao.py), que tira os fatos e apaga o texto. É o único lugar com texto de gente.
+
+Com a CHAVE_DO_BANCO no .env, o texto que fala de gente vai cifrado pro disco: falas, mensagens do dia, pronomes e
+fatos. IDs, horas e contagens ficam em claro, porque as consultas dependem deles.
 """
 from __future__ import annotations
 
@@ -126,6 +129,48 @@ FALAS_GUARDADAS = 30  # por personagem e por canal
 FALAS_VALEM_HORAS = 12  # fala mais velha que um turno não conta mais como repetição
 
 
+class Cofre:
+    """Cifra e abre texto com a chave do .env (Fernet, da biblioteca cryptography). Sem chave, o texto passa em claro."""
+
+    MARCA = "gAAAA"  # todo texto cifrado pelo Fernet começa assim
+
+    def __init__(self, chave: str | None = None):
+        self._fernet = None
+        if chave:
+            from cryptography.fernet import Fernet  # só é preciso com chave definida
+
+            self._fernet = Fernet(chave.encode())
+
+    @property
+    def ligado(self) -> bool:
+        return self._fernet is not None
+
+    @staticmethod
+    def nova_chave() -> str:
+        from cryptography.fernet import Fernet
+
+        return Fernet.generate_key().decode()
+
+    def fechar(self, texto: str | None) -> str | None:
+        if texto is None or not self._fernet:
+            return texto
+        return self._fernet.encrypt(texto.encode()).decode()
+
+    def abrir(self, guardado: str | None) -> str | None:
+        """Devolve None quando o texto está cifrado e não abre (sem chave, ou chave trocada): melhor esquecer do que
+        mandar letra embaralhada pro modelo. Texto antigo, gravado em claro, volta como está."""
+        if guardado is None or not guardado.startswith(self.MARCA):
+            return guardado
+        if not self._fernet:
+            return None
+        from cryptography.fernet import InvalidToken
+
+        try:
+            return self._fernet.decrypt(guardado.encode()).decode()
+        except InvalidToken:
+            return None
+
+
 def _agora() -> str:
     return _iso(datetime.now(timezone.utc))
 
@@ -135,7 +180,8 @@ def _iso(quando: datetime) -> str:
 
 
 class Registro:
-    def __init__(self, caminho: Path | str):
+    def __init__(self, caminho: Path | str, chave: str | None = None):
+        self.cofre = Cofre(chave)
         if str(caminho) != ":memory:":
             Path(caminho).parent.mkdir(parents=True, exist_ok=True)
         self._db = sqlite3.connect(str(caminho), check_same_thread=False)
@@ -184,7 +230,7 @@ class Registro:
     def guardar_fala(self, *, canal_id: int, persona: str, texto: str, quando: datetime | None = None) -> None:
         """Guarda o que a personagem disse e mantém só as FALAS_GUARDADAS mais novas dela nesse canal."""
         self._db.execute("INSERT INTO falas (quando, canal_id, persona, texto) VALUES (?, ?, ?, ?)",
-                         (_iso(quando) if quando else _agora(), canal_id, persona, texto))
+                         (_iso(quando) if quando else _agora(), canal_id, persona, self.cofre.fechar(texto)))
         self._db.execute(
             "DELETE FROM falas WHERE canal_id = ? AND persona = ? AND id NOT IN"
             " (SELECT id FROM falas WHERE canal_id = ? AND persona = ? ORDER BY id DESC LIMIT ?)",
@@ -201,7 +247,8 @@ class Registro:
         linhas = self._db.execute(
             "SELECT texto FROM falas WHERE canal_id = ? AND persona = ? AND quando >= ? ORDER BY id DESC LIMIT ?",
             (canal_id, persona, desde, limite)).fetchall()
-        return [linha[0] for linha in reversed(linhas)]
+        abertas = (self.cofre.abrir(linha[0]) for linha in reversed(linhas))
+        return [texto for texto in abertas if texto is not None]
 
     def respostas_desde(self, *, persona: str, desde: datetime) -> int:
         """Quantas mensagens a personagem mandou de `desde` pra cá, em todos os canais."""
@@ -230,23 +277,27 @@ class Registro:
 
     def ficha(self, autor_id: int) -> Ficha:
         linha = self._db.execute("SELECT pronomes, fatos FROM fichas WHERE autor_id = ?", (autor_id,)).fetchone()
-        return Ficha(linha[0], tuple(json.loads(linha[1]))) if linha else Ficha()
+        if not linha:
+            return Ficha()
+        return Ficha(self.cofre.abrir(linha[0]), tuple(json.loads(self.cofre.abrir(linha[1]) or "[]")))
 
     def gravar_ficha(self, autor_id: int, ficha: Ficha) -> None:
         """Os fatos ficam do mais velho pro mais novo; passando de FATOS_MAX, os mais velhos saem."""
         self._db.execute("INSERT OR REPLACE INTO fichas (autor_id, pronomes, fatos) VALUES (?, ?, ?)",
-                         (autor_id, ficha.pronomes, json.dumps(list(ficha.fatos)[-FATOS_MAX:], ensure_ascii=False)))
+                         (autor_id, self.cofre.fechar(ficha.pronomes),
+                          self.cofre.fechar(json.dumps(list(ficha.fatos)[-FATOS_MAX:], ensure_ascii=False))))
         self._db.commit()
 
     def guardar_mensagem_do_dia(self, *, message_id: int, autor_id: int, persona: str, texto: str,
                                 quando: datetime | None = None) -> None:
         self._db.execute("INSERT OR REPLACE INTO mensagens_do_dia (message_id, quando, autor_id, persona, texto) VALUES (?, ?, ?, ?, ?)",
-                         (message_id, _iso(quando) if quando else _agora(), autor_id, persona, texto))
+                         (message_id, _iso(quando) if quando else _agora(), autor_id, persona, self.cofre.fechar(texto)))
         self._db.commit()
 
     def mensagens_do_dia(self) -> list[MensagemDoDia]:
         linhas = self._db.execute("SELECT message_id, autor_id, persona, texto FROM mensagens_do_dia ORDER BY message_id")
-        return [MensagemDoDia(*linha) for linha in linhas]
+        abertas = [MensagemDoDia(m, autor, persona, self.cofre.abrir(texto)) for m, autor, persona, texto in linhas]
+        return [m for m in abertas if m.texto is not None]
 
     def apagar_mensagens_do_dia(self, ids: list[int] | None = None) -> None:
         """Sem `ids`, apaga todas. Com eles, só as que entraram na reflexão (as que chegaram durante ela ficam pra próxima)."""

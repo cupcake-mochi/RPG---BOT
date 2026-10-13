@@ -61,11 +61,18 @@ def fato_permitido(texto: str) -> bool:
     return 3 <= len(limpo) <= FATO_MAX and not PROIBIDO.search(_plano(limpo))
 
 
+def _ordem(mensagens: list[MensagemDoDia]) -> tuple[dict[int, int], dict[int, int]]:
+    """Número de ordem de cada autor e de cada mensagem no lote. É o que vai no pedido: o ID do Discord não sai daqui."""
+    autores = {autor: n for n, autor in enumerate(dict.fromkeys(m.autor_id for m in mensagens), 1)}
+    return autores, {m.message_id: n for n, m in enumerate(mensagens, 1)}
+
+
 def montar_pedido(mensagens: list[MensagemDoDia], fatos_atuais: dict[int, tuple[str, ...]]) -> list[dict]:
+    autores, numeros = _ordem(mensagens)
     linhas = ["MENSAGENS DE HOJE"]
-    linhas += [f"mensagem {m.message_id} | autor {m.autor_id} | {' '.join(m.texto.split())[:500]}" for m in mensagens]
+    linhas += [f"mensagem {numeros[m.message_id]} | autor {autores[m.autor_id]} | {' '.join(m.texto.split())[:500]}" for m in mensagens]
     linhas.append("\nFATOS QUE CADA AUTOR JÁ TEM")
-    linhas += [f"autor {autor}: {'; '.join(fatos) or 'nenhum'}" for autor, fatos in sorted(fatos_atuais.items())]
+    linhas += [f"autor {n}: {'; '.join(fatos_atuais.get(autor, ())) or 'nenhum'}" for autor, n in autores.items()]
     # a primeira mensagem vira a instrução de sistema (modelo.montar_corpo); o lote vai na segunda
     return [{"role": "user", "content": INSTRUCAO}, {"role": "user", "content": "\n".join(linhas)}]
 
@@ -78,15 +85,17 @@ def conferir(saida: str, mensagens: list[MensagemDoDia], fatos_atuais: dict[int,
     except json.JSONDecodeError:
         log.warning("reflexão: o modelo não devolveu JSON")
         return {}
-    dono = {m.message_id: m.autor_id for m in mensagens}
+    autores, numeros = _ordem(mensagens)
+    autor_de = {n: autor for autor, n in autores.items()}
+    dono = {numeros[m.message_id]: m.autor_id for m in mensagens}
     novos: dict[int, list[str]] = {}
     for item in itens if isinstance(itens, list) else []:
         try:
-            autor, mensagem, fato = int(item["autor"]), int(item["mensagem"]), " ".join(str(item["fato"]).split())
+            autor, mensagem, fato = autor_de.get(int(item["autor"])), int(item["mensagem"]), " ".join(str(item["fato"]).split())
         except (KeyError, TypeError, ValueError):
             continue
         ja_tem = {_plano(f) for f in fatos_atuais.get(autor, ())} | {_plano(f) for f in novos.get(autor, [])}
-        if dono.get(mensagem) != autor or not fato_permitido(fato) or _plano(fato) in ja_tem or len(novos.get(autor, [])) >= 3:
+        if autor is None or dono.get(mensagem) != autor or not fato_permitido(fato) or _plano(fato) in ja_tem or len(novos.get(autor, [])) >= 3:
             continue
         novos.setdefault(autor, []).append(fato)
     return novos
