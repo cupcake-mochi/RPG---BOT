@@ -87,6 +87,13 @@ class Registro:
         )
         self._db.commit()
 
+    def tokens_do_mes(self, quando: datetime) -> list[tuple[str, int, int]]:
+        """(modelo, tokens de entrada, tokens de saída) somados das chamadas que deram certo no mês de `quando` (UTC)."""
+        linhas = self._db.execute(
+            "SELECT modelo, COALESCE(SUM(tokens_entrada), 0), COALESCE(SUM(tokens_saida), 0) FROM chamadas_api"
+            " WHERE ok = 1 AND substr(quando, 1, 7) = ? GROUP BY modelo ORDER BY modelo", (quando.strftime("%Y-%m"),))
+        return [tuple(linha) for linha in linhas]
+
     def registrar_gatilho(self, *, canal_id: int, autor_id: int, persona: str, motivo: str, fora_do_plantao: bool) -> None:
         self._db.execute(
             "INSERT INTO gatilhos (quando, canal_id, autor_id, persona, motivo, fora_do_plantao) VALUES (?, ?, ?, ?, ?, ?)",

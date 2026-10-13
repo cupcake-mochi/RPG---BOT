@@ -8,6 +8,10 @@ Variáveis (modelo em .env.exemplo, na raiz do repositório):
   CANAIS           IDs dos canais em que o bot escuta, separados por vírgula. Vazio = todos.
   AVATAR_KALTSIT   URL da imagem que aparece nas mensagens da Kal'tsit.
   AVATAR_CLOSURE   URL da imagem que aparece nas mensagens da Closure.
+  VERTEX_API_KEY   chave de API do Google Cloud pra Vertex AI (projeto do bot). É onde o crédito mensal abate.
+  GEMINI_API_KEY   chave gratuita do AI Studio. Reserva e testes.
+  FILA_MODELOS     "provedor:modelo,..." em ordem de tentativa. Padrão em modelo.FILA_PADRAO (gratuito primeiro).
+  TETO_MENSAL_USD  quanto os provedores pagos podem gastar por mês, em dólar, antes de saírem da fila. Padrão: 9.
   BANCO            caminho do SQLite de registro. Padrão: src/var/bot.sqlite3.
 """
 from __future__ import annotations
@@ -38,6 +42,13 @@ def _inteiro(valor: str | None) -> int | None:
     return int(valor) if valor and valor.strip().isdigit() else None
 
 
+def _decimal(valor: str | None) -> float | None:
+    try:
+        return float(valor.replace(",", ".")) if valor and valor.strip() else None
+    except ValueError:
+        return None
+
+
 @dataclass(frozen=True)
 class Config:
     token: str
@@ -45,6 +56,9 @@ class Config:
     dono_id: int | None
     canais: frozenset[int]
     avatares: dict[str, str | None]
+    chaves: dict[str, str]
+    fila_modelos: str
+    teto_mensal_usd: float | None
     banco: Path
     dados: Path = DADOS
 
@@ -65,5 +79,8 @@ def carregar(arquivo: Path | None = None, ambiente: dict[str, str] | None = None
             "kaltsit": valores.get("AVATAR_KALTSIT") or None,
             "closure": valores.get("AVATAR_CLOSURE") or None,
         },
+        chaves={"vertex": valores.get("VERTEX_API_KEY", ""), "gemini": valores.get("GEMINI_API_KEY", "")},
+        fila_modelos=valores.get("FILA_MODELOS", ""),
+        teto_mensal_usd=_decimal(valores.get("TETO_MENSAL_USD")),
         banco=Path(valores.get("BANCO") or RAIZ / "src" / "var" / "bot.sqlite3"),
     )

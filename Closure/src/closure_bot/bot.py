@@ -10,6 +10,7 @@ from .carteiro import Carteiro
 from .clima import ServicoClima
 from .config import Config
 from .dados import carregar_personas, ler_manifesto
+from .modelo import FILA_PADRAO, TETO_PADRAO_USD, Modelos, ler_fila
 from .registro import Registro
 
 log = logging.getLogger(__name__)
@@ -28,6 +29,8 @@ class ClosureBot(commands.Bot):
         self.personas = carregar_personas(config.dados, config.avatares)
         self.carteiro = Carteiro(self.registro)
         self.clima = ServicoClima()
+        self.modelos = Modelos(ler_fila(config.fila_modelos or FILA_PADRAO), config.chaves, self.registro,
+                               teto_usd=config.teto_mensal_usd or TETO_PADRAO_USD)
 
     async def setup_hook(self) -> None:
         for modulo in MODULOS:
