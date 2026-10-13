@@ -19,9 +19,8 @@ por um servidor pequeno que guarda a chave. A chave nunca vai pro navegador.
   - A chave do Gemini é a mesma dos testes de personalidade, então os dois gastam a mesma cota.
 - Cada conversa é salva sozinha a cada resposta e a cada marcação de "Estranha" (com a nota),
   sem botão de enviar. Com `GITHUB_TOKEN` configurado, o servidor também manda cada conversa, em
-  texto, pra pasta `conversas/` do repositório **privado** `cupcake-mochi/closure-conversas`
-  (ou o que estiver em `GITHUB_REPO`), uns 90 segundos depois da última mudança. Se o repositório
-  for público, o servidor se recusa a mandar, porque é o que os amigos escreveram. É lá que dá pra ler e avaliar, porque o disco do Render grátis apaga quando o
+  texto, pra pasta `conversas/` da branch `conversas` deste repositório, uns 90 segundos depois
+  da última mudança. O repositório é público: avise os amigos que o que eles escrevem fica visível. É lá que dá pra ler e avaliar, porque o disco do Render grátis apaga quando o
   serviço reinicia. Sem token, dá pra baixar o que estiver no servidor em
   `https://SEU-SITE/api/conversas?admin=SENHA_ADMIN`.
 - O texto dos prompts, do lorebook e do livro fica visível no código da página (é ela que monta
@@ -51,9 +50,9 @@ e abra `http://localhost:8000`.
 2. **New > Blueprint**, escolha o repositório `RPG---BOT` e a branch deste site. Ele lê o `render.yaml`.
 3. Preencha `GEMINI_API_KEY` (a mesma do `.env`), `SENHA` (o código que você passa pros amigos)
    e `SENHA_ADMIN` (só sua, pra baixar as conversas).
-4. Opcional, mas recomendado: crie no GitHub um repositório **privado** `closure-conversas`
-   (pode ser vazio) e um token em Settings > Developer settings > Fine-grained tokens, só pra esse
-   repositório, com permissão **Contents: Read and write**. Coloque o token em `GITHUB_TOKEN`.
+4. Opcional, mas recomendado: crie um token em GitHub > Settings > Developer settings >
+   Fine-grained tokens, só pro repositório `RPG---BOT`, com permissão **Contents: Read and write**,
+   e coloque em `GITHUB_TOKEN`.
 5. O Render dá um endereço `https://closure-teste-xxxx.onrender.com`. É esse que você manda.
 
 No plano grátis o site dorme depois de 15 minutos sem uso; a primeira abertura depois disso
