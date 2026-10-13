@@ -37,9 +37,10 @@ ONDE PARAMOS
   intimidade, /meus_dados) e a reflexão diária, que preenche a ficha de cada pessoa
   (src/closure_bot/reflexao.py). Política de privacidade em docs/PRIVACIDADE.md e banco
   cifrado pela CHAVE_DO_BANCO do .env. O chat está ligado (src/closure_bot/cogs/chat.py) e
-  foi testado de ponta a ponta sem o Discord; nunca subiu com token. 144 testes. O bot é pra
+  foi testado de ponta a ponta sem o Discord; nunca subiu com token. 146 testes. O bot é pra
   vários servidores. Como rodar e o que falta: src/LEIA-ME.md. Falta na "vida": o calendário.
-  Em aberto: Node em produção ou busca em Python.
+  A hospedagem não precisa de Node (a página do site roda dentro do Python, pelo quickjs-ng)
+  e o pacote sai de ferramentas/empacotar.py.
 - Pra levar aos cards (pelos geradores, com teste): as duas acompanham o clima pelo
   computador e contam como está, de Tóquio ou de onde perguntarem, sem dizer que estão lá.
 - Duas personagens, que se revezam no plantão e nunca falam uma com a outra:

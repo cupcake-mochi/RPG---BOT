@@ -1,9 +1,9 @@
 """Ponte pro prompt do site: o aviso de repetição vale de uma conversa pra outra, e o estado do bot entra no pedido.
 
-Precisa do Node e da página do site já baixada (src/var/site/nucleo.js); sem um dos dois, os testes são pulados.
+Precisa da página do site já baixada (src/var/site/nucleo.js) e de um motor pra rodá-la (quickjs-ng ou Node);
+sem isso os testes são pulados. A comparação entre os motores precisa dos dois.
 Rodar de src/:  python3 -m unittest discover -s testes
 """
-import shutil
 import sys
 import unittest
 from pathlib import Path
@@ -12,11 +12,12 @@ PONTE = Path(__file__).resolve().parents[2] / "ferramentas" / "prompt_do_site"
 sys.path.insert(0, str(PONTE))
 import site_prompt  # noqa: E402
 
-PRONTO = shutil.which("node") is not None and (site_prompt.CACHE / "nucleo.js").exists()
+MOTORES = site_prompt.motores()
+PRONTO = bool(MOTORES) and (site_prompt.CACHE / "nucleo.js").exists()
 AVISO = "Você já usou nas suas últimas respostas:"
 
 
-@unittest.skipUnless(PRONTO, "sem Node ou sem a página do site baixada")
+@unittest.skipUnless(PRONTO, "sem motor ou sem a página do site baixada")
 class AvisoDeRepeticao(unittest.TestCase):
     def _ultimo(self, **extra):
         return site_prompt.montar("kal", "kal, tudo bem?", nome="rafa", hora=(14, 20), **extra)["input"][-1]["content"]
@@ -46,7 +47,7 @@ class AvisoDeRepeticao(unittest.TestCase):
         self.assertIn(AVISO, ultimo)
 
 
-@unittest.skipUnless(PRONTO, "sem Node ou sem a página do site baixada")
+@unittest.skipUnless(PRONTO, "sem motor ou sem a página do site baixada")
 class EstadoDoBot(unittest.TestCase):
     ESTADO = {"bloco": "[Estado agora: plantão; 22:10 em Brasília; canal cheio; carga 2.\nQuem fala: rafa (pronomes: ele/dele).]",
               "lembretes": ["Carga alta: uma frase, sem piada.", "Paciência baixa com esta pessoa.", "Pessoa nova: forma neutra."]}
@@ -71,6 +72,19 @@ class EstadoDoBot(unittest.TestCase):
         ultimo = self._ultimo((14, 0), estado=self.ESTADO)
         self.assertRegex(ultimo, r"\[Fora do plantão: [^\]]+\]\n\[Carga alta: uma frase, sem piada\.\]$")
         self.assertNotIn("Paciência baixa", ultimo)
+
+
+@unittest.skipUnless(PRONTO and len(MOTORES) == 2, "precisa do quickjs-ng e do Node pra comparar")
+class DoisMotores(unittest.TestCase):
+    def test_o_embutido_monta_o_mesmo_pedido_que_o_node(self):
+        self.assertEqual(site_prompt.conferir_motores(), [])
+
+    def test_o_contexto_embutido_nao_carrega_nada_de_um_pedido_pro_outro(self):
+        estado = {"bloco": "[Estado agora: x.]", "lembretes": ["A."]}
+        limpo = site_prompt.montar("clo", "oi closure", nome="rafa", hora=(22, 10), motor="quickjs")
+        site_prompt.montar("clo", "closure, o que é Refino?", nome="duda", pronomes="ela/dela", hora=(14, 0), estado=estado, motor="quickjs",
+                           turnos=[{"de": "user", "nome": "duda", "texto": "oi"}, {"de": "bot", "pers": "clo", "texto": "Opa!"}])
+        self.assertEqual(site_prompt.montar("clo", "oi closure", nome="rafa", hora=(22, 10), motor="quickjs"), limpo)
 
 
 if __name__ == "__main__":

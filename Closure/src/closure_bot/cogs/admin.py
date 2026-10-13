@@ -9,6 +9,7 @@ from discord.ext import commands
 
 from ..dados import resumo_manifesto
 from ..plantao import FUSO, de_plantao
+from ..prompt import versoes as versoes_do_site
 
 
 class Admin(commands.Cog):
@@ -26,11 +27,14 @@ class Admin(commands.Cog):
     async def status(self, interacao: discord.Interaction) -> None:
         agora = datetime.now(FUSO)
         plantao = self.bot.personas[de_plantao(agora)]
-        cards = ", ".join(f"{p.nome} v{p.versao}" for p in self.bot.personas.values())
+        try:  # o que vale é o que está na página do site, de onde sai o prompt; os card.json da pasta podem estar atrás
+            cards = ", ".join(f"{nome} {versao}" for nome, versao in (await versoes_do_site()).items())
+        except Exception as erro:
+            cards = f"não deu pra ler a página do site ({str(erro)[:80]})"
         contagens = self.bot.registro.contagens()
         await interacao.response.send_message(
             f"Agora ({agora:%H:%M}, Brasília) o plantão é de {plantao.nome}.\n"
-            f"Cards: {cards}.\n"
+            f"Prompt do site: {cards}.\n"
             f"Registro: {contagens['gatilhos']} gatilhos, {contagens['chamadas_api']} chamadas de API, "
             f"{contagens['mensagens_bot']} mensagens enviadas.\n"
             f"Gasto estimado no mês com modelo pago: US$ {self.bot.modelos.gasto_do_mes():.2f} "
