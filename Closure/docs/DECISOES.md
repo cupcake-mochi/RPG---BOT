@@ -4,6 +4,7 @@ Uma linha por decisão, a mais nova em cima. O detalhe fica no arquivo citado.
 
 | Data | Decisão | Por quê | Onde |
 | ---- | ------- | ------- | ---- |
+| 13/10/2026 | O bot pede raciocínio reduzido ao modelo por padrão (`thinkingLevel: low`), "por enquanto". A Vertex ganhou credencial: chave de API, com a restrição da organização solta só no projeto do bot | Na comparação dos mesmos 16 casos, o reduzido custou 42% menos e respondeu em menos da metade do tempo, sem perda visível. Escolha do Mizuki | `../pesquisa/reports/Qual IA usar no bot.md` |
 | 13/10/2026 | Fila de modelos com o gratuito primeiro; o pago (Vertex) só entra quando a cota do dia acaba, e o bot tem teto mensal próprio de gasto (padrão US$ 9) | Escolha do Mizuki, pra não gastar sem precisar. O teto é meu: a Vertex não para quando o crédito acaba, cobra no cartão | `../src/LEIA-ME.md` |
 | 13/10/2026 | O bot fala com a IA por uma camada só (`src/closure_bot/modelo.py`), com fila de modelos: Vertex primeiro, chave gratuita de reserva. O prompt vem do site de teste por uma ponte que roda a lógica da página no Node, em vez de copiar texto de card ou reescrever a busca | O Mizuki quis testar pela Vertex. Os cards e a busca mudam várias vezes por dia no outro chat; lendo do site, o bot acompanha sem mexer em código | `../src/LEIA-ME.md` |
 | 13/10/2026 | O bot roda em vários servidores: o canal do painel diário de clima é escolhido por servidor com `/clima_canal` (no canal ou passando o canal), não pelo `.env` | Pedido do Mizuki: "esse bot não vai estar em um servidor só" | `../src/LEIA-ME.md` |

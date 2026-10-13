@@ -25,7 +25,7 @@ sys.path.insert(0, str(RAIZ / "ferramentas" / "prompt_do_site"))
 import site_prompt  # noqa: E402
 from closure_bot.clima import ServicoClima, contexto_clima  # noqa: E402
 from closure_bot.config import carregar  # noqa: E402
-from closure_bot.modelo import FILA_PADRAO, TETO_PADRAO_USD, Falhou, Modelos, custo_usd, ler_fila  # noqa: E402
+from closure_bot.modelo import FILA_PADRAO, RACIOCINIO_PADRAO, TETO_PADRAO_USD, Falhou, Modelos, custo_usd, ler_fila  # noqa: E402
 from closure_bot.registro import Registro  # noqa: E402
 
 NOMES = {"kal": "Kal'tsit", "clo": "Closure"}
@@ -55,7 +55,7 @@ async def rodar(args) -> int:
     config = carregar()
     # o mesmo registro do bot, pra o que for gasto aqui contar no teto do mês
     modelos = Modelos(ler_fila(args.fila or config.fila_modelos or FILA_PADRAO), config.chaves, Registro(config.banco),
-                      teto_usd=config.teto_mensal_usd or TETO_PADRAO_USD, raciocinio=args.raciocinio or config.raciocinio)
+                      teto_usd=config.teto_mensal_usd or TETO_PADRAO_USD, raciocinio=args.raciocinio or config.raciocinio or RACIOCINIO_PADRAO)
     if not modelos.fila:
         print("Nenhum provedor da fila tem chave no .env da pasta Closure (VERTEX_API_KEY ou GEMINI_API_KEY).")
         return 1
@@ -94,10 +94,10 @@ async def rodar(args) -> int:
             print(f"[{numero}] {nome}: {msg}\n    {NOMES[pers]}: {texto}\n    ({rodape})\n", flush=True)
 
     fila = ", ".join(f"{p}:{m}" for p, m in modelos.fila)
-    sufixo = f"-raciocinio-{modelos.raciocinio}" if modelos.raciocinio else ""
+    sufixo = f"-raciocinio-{modelos.raciocinio}"
     saida = RAIZ / "pesquisa" / "validacao" / f"{datetime.now():%Y-%m-%d-%Hh%M}-modelo-{modelos.fila[0][1]}{sufixo}.md"
     cabecalho = [f"# Respostas pelo modelo ({datetime.now():%d/%m/%Y %H:%M})\n",
-                 f"Fila: `{fila}`. Raciocínio: {modelos.raciocinio or 'padrão do modelo'}. Cards do site de teste: Closure {versoes.get('closure')}, Kal'tsit {versoes.get('kaltsit')}, "
+                 f"Fila: `{fila}`. Raciocínio: {modelos.raciocinio}. Cards do site de teste: Closure {versoes.get('closure')}, Kal'tsit {versoes.get('kaltsit')}, "
                  f"lorebook {versoes.get('lorebook')}. Gerado por `ferramentas/testar_modelo.py`.\n",
                  f"Total: {total_in} tokens de entrada e {total_out} de saída. Custo estimado na Vertex: US$ {custo:.4f}.\n"]
     saida.parent.mkdir(parents=True, exist_ok=True)
@@ -111,6 +111,6 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--fila", default="", help='"provedor:modelo,..." (padrão: a fila do bot, gratuito primeiro)')
     ap.add_argument("--casos", default="", help="números dos casos, separados por vírgula (padrão: todos)")
-    ap.add_argument("--raciocinio", default="", help="low, medium ou high (padrão: o do modelo)")
+    ap.add_argument("--raciocinio", default="", help='low, medium, high ou "modelo" (padrão: low)')
     ap.add_argument("--atualizar", action="store_true", help="baixa a página do site de teste antes")
     sys.exit(asyncio.run(rodar(ap.parse_args())))

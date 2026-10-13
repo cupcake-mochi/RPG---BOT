@@ -11,7 +11,8 @@ Variáveis (modelo em .env.exemplo, na raiz do repositório):
   VERTEX_API_KEY   chave de API do Google Cloud pra Vertex AI (projeto do bot). É onde o crédito mensal abate.
   GEMINI_API_KEY   chave gratuita do AI Studio. Reserva e testes.
   FILA_MODELOS     "provedor:modelo,..." em ordem de tentativa. Padrão em modelo.FILA_PADRAO (gratuito primeiro).
-  RACIOCINIO       quanto o modelo pensa antes de falar: low, medium ou high. Vazio = o padrão do modelo.
+  RACIOCINIO       quanto o modelo pensa antes de falar: low, medium, high, ou "modelo" pro padrão do próprio
+                   modelo. Vazio = low (modelo.RACIOCINIO_PADRAO).
   TETO_MENSAL_USD  quanto os provedores pagos podem gastar por mês, em dólar, antes de saírem da fila. Padrão: 9.
   BANCO            caminho do SQLite de registro. Padrão: src/var/bot.sqlite3.
 """

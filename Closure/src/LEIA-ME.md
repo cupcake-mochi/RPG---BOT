@@ -24,7 +24,7 @@ chamada ao modelo) entra nas fases 2 e 4, no ponto marcado em `closure_bot/cogs/
 | `closure_bot/cogs/admin.py` | `/ping`, `/status`, `/teste_webhook` (este só pro dono) |
 | `closure_bot/cogs/chat.py` | Escuta as mensagens, decide e registra o gatilho |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 84 testes; 19 deles precisam do discord.py e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 85 testes; 19 deles precisam do discord.py e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -75,9 +75,9 @@ python3 -m closure_bot
   Cloud bloqueia esse tipo de chave por padrão; o Mizuki soltou a restrição só no projeto do bot. O primeiro
   teste real (17 respostas, US$ 0,096) está em `pesquisa/validacao/` e resumido no fim de
   `pesquisa/reports/Qual IA usar no bot.md`.
-- **Raciocínio:** `RACIOCINIO=low` no `.env` faz o modelo pensar menos antes de falar. No teste de 13/10
-  custou 42% menos e respondeu em 2 a 4,5 s em vez de 4 a 13 s, sem perda visível em 17 respostas. O padrão
-  segue sendo o do modelo.
+- **Raciocínio reduzido por padrão** (Mizuki, 13/10/2026, "por enquanto"): o bot pede `thinkingLevel: low`.
+  No teste custou 42% menos e respondeu em 2 a 4,5 s em vez de 4 a 13 s, sem perda visível em 17 respostas.
+  `RACIOCINIO=modelo` no `.env` devolve o padrão do próprio modelo.
 - **Prompt:** por enquanto vem do site de teste, por `../ferramentas/prompt_do_site/`. Essa ponte baixa a
   página do ramo `site-teste` e roda no Node a lógica dela (lorebook, busca no livro, estado, lembrete), então
   o bot usa exatamente o que os amigos testam, sem cópia de texto de card. Precisa do Node instalado.

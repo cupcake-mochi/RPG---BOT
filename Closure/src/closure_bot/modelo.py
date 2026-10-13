@@ -37,6 +37,9 @@ URLS = {
 FILA_PADRAO = "gemini:gemini-3.8-flash,vertex:gemini-3.8-flash,gemini:gemini-3.1-flash-lite,vertex:gemini-3.1-flash-lite"
 PAGOS = ("vertex",)
 TETO_PADRAO_USD = 9.0  # o crédito do mês é de US$ 10
+# Quanto o modelo pensa antes de falar. "low" por escolha do Mizuki em 13/10/2026, depois da comparação:
+# 42% mais barato e menos da metade do tempo, sem perda visível. "modelo" devolve o padrão do próprio modelo.
+RACIOCINIO_PADRAO = "low"
 
 # US$ por milhão de tokens (entrada, saída; raciocínio conta como saída), lidos em 13/10/2026 em
 # https://ai.google.dev/gemini-api/docs/pricing. É estimativa: quem manda é a fatura do Google Cloud.
@@ -82,9 +85,9 @@ def ler_fila(texto: str) -> list[tuple[str, str]]:
 
 
 def montar_corpo(entrada: list[dict], raciocinio: str | None = None) -> dict:
-    """`raciocinio` ("low", "medium", "high") limita o quanto o modelo pensa antes de falar; None deixa o padrão dele."""
+    """`raciocinio` ("low", "medium", "high") limita o quanto o modelo pensa antes de falar; None ou "modelo" deixa o padrão dele."""
     geracao = {"temperature": TEMPERATURA, "maxOutputTokens": MAX_SAIDA}
-    if raciocinio:
+    if raciocinio and raciocinio != "modelo":
         geracao["thinkingConfig"] = {"thinkingLevel": raciocinio}
     return {
         "system_instruction": {"parts": [{"text": entrada[0]["content"]}]},
@@ -113,7 +116,7 @@ class Modelos:
 
     def __init__(self, fila: list[tuple[str, str]], chaves: dict[str, str], registro=None,
                  enviar: Callable[[str, dict, str], Awaitable[dict]] | None = None, teto_usd: float = TETO_PADRAO_USD,
-                 raciocinio: str | None = None):
+                 raciocinio: str | None = RACIOCINIO_PADRAO):
         self.fila = [(p, m) for p, m in fila if chaves.get(p)]  # provedor sem chave sai da fila
         self.teto_usd = teto_usd
         self.raciocinio = raciocinio
