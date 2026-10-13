@@ -129,3 +129,15 @@ O que isso muda na ordem das recomendações, pra esse objetivo:
 2. **Estado que muda de verdade** (item 2 do relatório): hora, carga, quem fala, intimidade, clima. Cada um deixa o prompt diferente do de ontem.
 3. **O diário "o que eu disse de mim"** (item 5): dá assunto próprio e recente pra ela, em vez da resposta padrão.
 4. **Regra continua igual de propósito**: o conteúdo de regra não deve variar; só a redação.
+
+### Depois: a memória de falas, medida (13/10/2026, 17h55)
+
+O item 1 acima foi feito: o bot guarda as últimas falas de cada personagem por canal, e a ponte entrega essas falas ao detector de repetição da própria página do site, que passa a valer de uma conversa pra outra. Nenhuma chamada a mais ao modelo. Mesma medição, agora com 6 repetições, cada uma numa conversa nova (`pesquisa/validacao/2026-10-13-17h55-monotonia.md`):
+
+| Mensagem | Sem memória | Com memória |
+|---|---|---|
+| "oi closure" | 3 respostas diferentes em 6 ("Opa, oi! O que manda por aqui hoje?" 4 vezes) | 6 em 6 |
+| "kal, tudo bem?" | 4 em 6 ("Tudo em ordem por aqui." 3 vezes) | 6 em 6 |
+| "closure, me conta uma piada" | 6 em 6 | 6 em 6 |
+
+O que isso resolve e o que não resolve. A repetição literal sumiu nos dois casos em que existia. O molde continua: a Closure ainda abre com "Opa" em 4 das 6 e gira em torno de "tudo certo por aí"; a Kal'tsit só sai de "tudo certo / tudo em ordem" a partir da quinta ("Seguindo o dia por aqui.", "Trabalhando."). Nas piadas, duas das seis com memória eram a mesma piada com outro verbo. É o limite desse mecanismo: ele tira frase repetida, não dá assunto novo. Assunto novo vem do que muda no prompt (estado, ficha, diário), que são os itens 2 e 3. É uma rodada só, com 6 repetições; serve de direção, não de prova.

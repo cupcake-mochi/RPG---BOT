@@ -79,7 +79,7 @@ aba oculta está em `dados/ficha/CONTRATO-ABA-BOT.md` como rascunho.*
   bot, então "responderam a uma mensagem dela" tem que ser reconhecido pelo ID da mensagem que o bot guardou.
 
 **Pronto quando:** o bot sobe, responde `/ping` e lê o `MANIFESTO.json`.
-*Em 13/10/2026: código escrito e testado fora do ar (83 testes, `src/LEIA-ME.md`). Falta subir com o token
+*Em 13/10/2026: código escrito e testado fora do ar (92 testes, `src/LEIA-ME.md`). Falta subir com o token
 e testar o webhook no servidor.*
 
 ### Fase 2: consulta

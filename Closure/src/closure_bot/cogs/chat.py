@@ -56,6 +56,8 @@ class Chat(commands.Cog):
         # self.bot.carteiro.enviar(mensagem.channel, self.bot.personas[decisao.persona], resposta).
         # No bloco 4 do contexto entra a linha de clima.contexto_clima(self.bot.clima, mensagem.content),
         # quando ela não for None (a mensagem puxou o assunto e deu pra ler).
+        # Pra ela não repetir abertura e frase de uma conversa pra outra, o pedido leva
+        # self.bot.registro.ultimas_falas(canal_id=mensagem.channel.id, persona=decisao.persona).
 
 
 async def setup(bot: commands.Bot) -> None:
