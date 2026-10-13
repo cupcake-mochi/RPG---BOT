@@ -112,7 +112,7 @@ python3 -m closure_bot
   8 fatos certos, e ficaram de fora a ansiedade, a idade, a cidade, a fofoca e o mau humor do dia.
 - **Regras de fora** (lidas em 13/10/2026): política e termos de desenvolvedor do Discord e termos da API do
   Gemini. Feito por causa delas: a peneira dos fatos, a política de privacidade (`docs/PRIVACIDADE.md`,
-  `/privacidade`) e a cifra do banco. Falta o Mizuki pôr o link da política no portal de desenvolvedor do
+  com link no fim do `/meus_dados`) e a cifra do banco. Falta o Mizuki pôr o link da política no portal de desenvolvedor do
   Discord. Fica em aberto, por decisão dele: o gratuito continua primeiro na fila, e nessa cota o Google pode
   usar o que recebe pra treinar, o que a regra 21 do Discord não permite com conteúdo de mensagem.
 - **Banco cifrado:** `python3 -m closure_bot --gerar-chave` cria a `CHAVE_DO_BANCO` no `.env` (já criada neste

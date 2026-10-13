@@ -72,7 +72,7 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
 
     async def test_comandos_registrados(self):
         self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
-                          "meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados", "privacidade"})
+                          "meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados"})
 
     async def test_gatilho_por_nome_e_registrado(self):
         canal, _ = _canal()
@@ -335,7 +335,7 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertIn("Apagado", await usar(pessoa.apagar_meus_dados))
         self.assertEqual(self.bot.registro.mensagens_do_dia(), [])
         self.assertIn("Fatos: nenhum.", await usar(pessoa.meus_dados))
-        self.assertIn("docs/PRIVACIDADE.md", await usar(pessoa.privacidade))
+        self.assertIn("docs/PRIVACIDADE.md", await usar(pessoa.meus_dados))
         self.assertIn("Closure: você falou com ela em 0 dia(s)", await usar(pessoa.meus_dados))
 
     async def test_teste_webhook_so_pro_dono(self):

@@ -43,14 +43,6 @@ class Pessoa(commands.Cog):
         except Exception:  # um erro aqui não pode derrubar o laço: amanhã tem outra
             log.exception("reflexão diária falhou")
 
-    @app_commands.command(name="privacidade", description="O que o bot guarda, pra onde manda e como apagar.")
-    async def privacidade(self, interacao: discord.Interaction) -> None:
-        await interacao.response.send_message(
-            "Quando você chama a Kal'tsit ou a Closure, a mensagem vai a um modelo de IA do Google pra ela responder, e fica "
-            "guardada até as 4h30 pra virar alguns fatos curtos sobre você. O resto das mensagens do canal não é guardado.\n"
-            "/meus_dados mostra o que elas guardam de você e /apagar_meus_dados apaga tudo.\n"
-            f"O texto completo: {POLITICA}", ephemeral=True)
-
     @app_commands.command(name="meus_dados", description="Mostra o que a Kal'tsit e a Closure guardam sobre você.")
     async def meus_dados(self, interacao: discord.Interaction) -> None:
         eu = interacao.user.id
@@ -64,7 +56,7 @@ class Pessoa(commands.Cog):
                           f"(intimidade {intimidade(dias)} de {len(DIAS_POR_NIVEL)}).")
         linhas.append("Quando você chama uma delas, o texto da mensagem fica guardado até as 4h30, vira no máximo alguns "
                       "fatos como os de cima e é apagado. /meu_fato acrescenta um, /esquecer_fato tira um, "
-                      "/apagar_meus_dados apaga tudo.")
+                      f"/apagar_meus_dados apaga tudo. Política de privacidade: {POLITICA}")
         await interacao.response.send_message("\n".join(linhas), ephemeral=True)
 
     @app_commands.command(name="meus_pronomes", description="Diz às personagens como tratar você. Sem texto, volta pra forma neutra.")
