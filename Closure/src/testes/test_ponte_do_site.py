@@ -1,4 +1,4 @@
-"""Ponte pro prompt do site: o aviso de repetição vale de uma conversa pra outra.
+"""Ponte pro prompt do site: o aviso de repetição vale de uma conversa pra outra, e o estado do bot entra no pedido.
 
 Precisa do Node e da página do site já baixada (src/var/site/nucleo.js); sem um dos dois, os testes são pulados.
 Rodar de src/:  python3 -m unittest discover -s testes
@@ -44,6 +44,33 @@ class AvisoDeRepeticao(unittest.TestCase):
         ultimo = self._ultimo(turnos=turnos, falas_anteriores=["Tudo em ordem por aqui."])
         self.assertEqual(ultimo.count("Você já usou"), 1)
         self.assertIn(AVISO, ultimo)
+
+
+@unittest.skipUnless(PRONTO, "sem Node ou sem a página do site baixada")
+class EstadoDoBot(unittest.TestCase):
+    ESTADO = {"bloco": "[Estado agora: plantão; 22:10 em Brasília; canal cheio; carga 2.\nQuem fala: rafa (pronomes: ele/dele).]",
+              "lembretes": ["Carga alta: uma frase, sem piada.", "Paciência baixa com esta pessoa.", "Pessoa nova: forma neutra."]}
+
+    def _ultimo(self, hora, **extra):
+        return site_prompt.montar("clo", "closure, o que é Integridade?", nome="rafa", hora=hora, **extra)["input"][-1]["content"]
+
+    def test_sem_estado_fica_o_da_pagina(self):
+        self.assertIn("canal normal; carga 0.", self._ultimo((22, 10)))
+
+    def test_o_bloco_do_bot_entra_no_lugar_do_da_pagina(self):
+        ultimo = self._ultimo((22, 10), estado=self.ESTADO)
+        self.assertIn(self.ESTADO["bloco"] + "\n\n[Mensagem]", ultimo)
+        self.assertNotIn("canal normal; carga 0.", ultimo)
+        self.assertEqual(ultimo.count("[Estado agora:"), 1)
+
+    def test_no_plantao_entram_duas_linhas_no_fim_do_lembrete(self):
+        ultimo = self._ultimo((22, 10), estado=self.ESTADO)
+        self.assertTrue(ultimo.endswith("]\n[Carga alta: uma frase, sem piada.]\n[Paciência baixa com esta pessoa.]"), ultimo[-200:])
+
+    def test_fora_do_plantao_a_linha_da_pagina_vem_antes_e_sobra_uma(self):
+        ultimo = self._ultimo((14, 0), estado=self.ESTADO)
+        self.assertRegex(ultimo, r"\[Fora do plantão: [^\]]+\]\n\[Carga alta: uma frase, sem piada\.\]$")
+        self.assertNotIn("Paciência baixa", ultimo)
 
 
 if __name__ == "__main__":

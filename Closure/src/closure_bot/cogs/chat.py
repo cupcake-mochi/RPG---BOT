@@ -38,9 +38,11 @@ class Chat(commands.Cog):
         if not self.bot.config.escuta(canal_id):
             return
 
+        agora = datetime.now(FUSO)
+        self.bot.vida.ouvir(mensagem.channel.id, agora)  # só a hora, pra saber se o canal está quieto ou cheio
         decisao = decidir(
             mensagem.content,
-            datetime.now(FUSO),
+            agora,
             mencionou_bot=self.bot.user in mensagem.mentions,
             respondeu_ao_bot=self._respondeu_ao_bot(mensagem),
         )
@@ -50,14 +52,17 @@ class Chat(commands.Cog):
         self.bot.registro.registrar_gatilho(canal_id=mensagem.channel.id, autor_id=mensagem.author.id,
                                             persona=decisao.persona, motivo=decisao.motivo,
                                             fora_do_plantao=decisao.fora_do_plantao)
-        log.info("gatilho: %s responderia (%s%s)", decisao.persona, decisao.motivo,
-                 ", fora do plantão" if decisao.fora_do_plantao else "")
+        atrito = self.bot.vida.chamada(autor_id=mensagem.author.id, persona=decisao.persona, texto=mensagem.content, agora=agora)
+        log.info("gatilho: %s responderia (%s%s%s)", decisao.persona, decisao.motivo,
+                 ", fora do plantão" if decisao.fora_do_plantao else "", f", atrito: {atrito}" if atrito else "")
         # Fases 2 e 4: montar o contexto, chamar o modelo e enviar com
         # self.bot.carteiro.enviar(mensagem.channel, self.bot.personas[decisao.persona], resposta).
         # No bloco 4 do contexto entra a linha de clima.contexto_clima(self.bot.clima, mensagem.content),
         # quando ela não for None (a mensagem puxou o assunto e deu pra ler).
         # Pra ela não repetir abertura e frase de uma conversa pra outra, o pedido leva
         # self.bot.registro.ultimas_falas(canal_id=mensagem.channel.id, persona=decisao.persona).
+        # O bloco de estado e as linhas a mais do lembrete saem de
+        # self.bot.vida.estado(persona=..., canal_id=..., autor_id=..., nome=mensagem.author.display_name, agora=agora).
 
 
 async def setup(bot: commands.Bot) -> None:
