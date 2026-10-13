@@ -20,4 +20,5 @@ na voz de uma personagem de Arknights (Kal'tsit de dia, Closure de noite).
 - `.env` e qualquer chave: use o [`.env.exemplo`](.env.exemplo) como modelo.
 - PDFs (livro do Ciclo Maldito, livro de F&M): ficam na pasta local.
 - `closure_lab.db`: dados de execução do bot antigo.
+- A chave de clima (OpenWeatherMap) do bot antigo: fica só na cópia local de `Closure Legado/closure_lab.py`, no PC. Aqui o código lê `WEATHER_API_KEY` do `.env`.
 - `Closure/dados/corpus_*`: falas extraídas do jogo, regeneráveis com `Closure/ferramentas/extrair_corpus.py`.
