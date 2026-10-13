@@ -870,7 +870,7 @@ canal_clima_id = None
 mensagem_clima_id = None
 ultimo_estado_clima = ""
 
-WEATHER_API_KEY = '28e15049a7f3800df9bba1d0700e99b1'
+WEATHER_API_KEY = os.getenv("WEATHER_API_KEY")  # a chave saiu do repositório: fica só na cópia local do bot antigo, no PC
 CIDADE = 'Tokyo,JP'
 
 IMAGEM_FIXA_CLOSURE = "https://static.wikia.nocookie.net/mrfz/images/0/0b/Two_Mechanists.png/revision/latest/scale-to-width-down/1000?cb=20220423034329"

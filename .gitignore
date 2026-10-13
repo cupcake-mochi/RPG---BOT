@@ -13,6 +13,10 @@ venv/
 *.db
 *.db-journal
 *.sqlite3
+Closure/src/var/
+
+# Registros com dados de conta (faturamento, pagamento): ficam só na pasta local
+Closure/pesquisa/privado/
 
 # Material grande ou de terceiros (fica só na pasta local)
 *.pdf
