@@ -1,0 +1,383 @@
+[
+ {
+  "id": "t01",
+  "msg": "sou bastião no muro, o guarda costas da qnto de bonus de defesa pro aliado do lado? vale contra tiro tb?",
+  "gold": [
+   "bastiao--bas-muro"
+  ]
+ },
+ {
+  "id": "t02",
+  "msg": "executor da vanguarda: qnd o inimigo antecipa a finta o debuff de desvantagem some mesmo? ele gasta a reação?",
+  "gold": [
+   "vanguarda--van-executor"
+  ]
+ },
+ {
+  "id": "t03",
+  "msg": "o socorista do guia é tipo o healer do grupo né, cura qnto e o aliado precisa tá abaixo da metade da vida?",
+  "gold": [
+   "guia--guia-socorrista"
+  ]
+ },
+ {
+  "id": "t04",
+  "msg": "emanador condutor armado da pra bater com a arma e soltar feitiço classe 0 no mesmo turno? queria fazer um dps assim",
+  "gold": [
+   "emanador--ema-condutor"
+  ]
+ },
+ {
+  "id": "t05",
+  "msg": "evocador comeca a luta com qnts pontos de vinculo? e qnd eu ganho mais?",
+  "gold": [
+   "evocador--ev-vinculo"
+  ]
+ },
+ {
+  "id": "t06",
+  "msg": "incursor: como eu ganho fluidez? da pra guardar 2 ou so 1?",
+  "gold": [
+   "incursor--inc-fluidez"
+  ]
+ },
+ {
+  "id": "t07",
+  "msg": "dá pra usar prestidigitacao pra tirar a arma da mão do inimigo?",
+  "gold": [
+   "pericias--fisicas"
+  ]
+ },
+ {
+  "id": "t08",
+  "msg": "tomei stun do inimigo, perco o turno todo ou só a ação padrao? pq o mestre disse q ainda posso me mover",
+  "gold": [
+   "dano--pesadas"
+  ]
+ },
+ {
+  "id": "t09",
+  "msg": "se meu hp chega a 0 eu morro na hora (tipo hit kill) ou dá pra aguentar? o q é aguentar e insistir?",
+  "gold": [
+   "dano--zero",
+   "dano--derrota"
+  ]
+ },
+ {
+  "id": "t10",
+  "msg": "katana dá qnto de dano e custa qnto? tem fineza?",
+  "gold": [
+   "equip--eqa-laminas"
+  ]
+ },
+ {
+  "id": "t11",
+  "msg": "pro meu tank, o revestimento 3 dá qnto de defesa? perco a destreza na defesa com ele?",
+  "gold": [
+   "equip--eqp-escudo"
+  ]
+ },
+ {
+  "id": "t12",
+  "msg": "sou receptaculo, oq faz o legado passagem? o passageiro refaz qualquer rolagem?",
+  "gold": [
+   "origens--receptaculo-acordos"
+  ]
+ },
+ {
+  "id": "t13",
+  "msg": "restrição celestial sem energia tem legado pra repetir furtividade que eu falhei?",
+  "gold": [
+   "origens--restricao-beneficios"
+  ]
+ },
+ {
+  "id": "t14",
+  "msg": "corpo amaldiçoado recupera vida como? vc precisa de alguem pra consertar no descanso curto?",
+  "gold": [
+   "origens--origem-reparo"
+  ]
+ },
+ {
+  "id": "t15",
+  "msg": "se eu falhar no teste do ritaul o feitiço sai igual ou perde dado de dano?",
+  "gold": [
+   "ritual--rit-teste"
+  ]
+ },
+ {
+  "id": "t16",
+  "msg": "qnts pactos permanentes eu posso ter? depende de que?",
+  "gold": [
+   "ritual--pacto-permanente"
+  ]
+ },
+ {
+  "id": "t17",
+  "msg": "meu shikigami zerou o hp, ele morre de vez ou só cai?",
+  "gold": [
+   "campo--inv-queda"
+  ]
+ },
+ {
+  "id": "t18",
+  "msg": "da pra domar maldição de nv maior que o meu? como que é o teste?",
+  "gold": [
+   "construcao--entidades-domar"
+  ]
+ },
+ {
+  "id": "t19",
+  "msg": "tecnica maxima tem cooldown? qnd posso usar ela de novo na mesma luta?",
+  "gold": [
+   "fundamento--maxima"
+  ]
+ },
+ {
+  "id": "t20",
+  "msg": "qnd 2 dominios completos dao clash e o refino é igual quem ganha?",
+  "gold": [
+   "poderes--disputa"
+  ]
+ },
+ {
+  "id": "t21",
+  "msg": "oq é kokusen? qnd rola e quanto de dano a mais ele dá?",
+  "gold": [
+   "aptidoes--apt-kokusen"
+  ]
+ },
+ {
+  "id": "t22",
+  "msg": "energia reversa cura qnto de hp por mana gasta? e em que nivel libera?",
+  "gold": [
+   "aptidoes--apt-reversa"
+  ]
+ },
+ {
+  "id": "t23",
+  "msg": "pra subir de grau na guilda basta upar de nivel ou o mestre tem que promover?",
+  "gold": [
+   "progressao--prog-patentes"
+  ]
+ },
+ {
+  "id": "t24",
+  "msg": "missão de final de arco dá qnto de xp base? e se a gente falhar?",
+  "gold": [
+   "progressao--prog-xp"
+  ]
+ },
+ {
+  "id": "t25",
+  "msg": "se eu tiver treino em forja consigo fabricar uma arma amaldiçoada ou precisa de mais coisa?",
+  "gold": [
+   "pericias--fabricacao"
+  ]
+ },
+ {
+  "id": "t26",
+  "msg": "e se for 30m?",
+  "hist": [
+   [
+    "qnto de dano eu levo se cair de 6 metros?",
+    "2d6 de Concussão (1d6 a cada 3 m completos) e você termina Derrubado."
+   ]
+  ],
+  "gold": [
+   "geral--quedas"
+  ]
+ },
+ {
+  "id": "t27",
+  "msg": "e com força 5?",
+  "hist": [
+   [
+    "qnto eu pulo pra frente com força 3 tomando impulso?",
+    "7,5 m: 3 m + 1,5 m por ponto de Força, depois de correr 3 m sem parar."
+   ]
+  ],
+  "gold": [
+   "geral--saltos"
+  ]
+ },
+ {
+  "id": "t28",
+  "msg": "e na quinta?",
+  "hist": [
+   [
+    "qnto de xp eu ganho na terceira missão da semana?",
+    "Metade da recompensa. Numa missão padrão de 100 XP, são 50."
+   ]
+  ],
+  "gold": [
+   "progressao--prog-semana"
+  ]
+ },
+ {
+  "id": "t29",
+  "msg": "e se ele tiver +8?",
+  "hist": [
+   [
+    "qual a cd pra um vigia com percepção +4 me achar escondido?",
+    "CD 14: 10 + o bônus completo de Percepção dele."
+   ]
+  ],
+  "gold": [
+   "geral--esconder"
+  ]
+ },
+ {
+  "id": "t30",
+  "msg": "e como funciona o crítico?",
+  "hist": [
+   [
+    "o que o guarda costas do muro faz?",
+    "O aliado a 1,5 m de você ganha Cobertura Parcial: +2 na Defesa e no TR Físico contra certos ataques."
+   ]
+  ],
+  "gold": [
+   "geral--critico"
+  ]
+ },
+ {
+  "id": "t31",
+  "msg": "e o descanso curto, recupera o q?",
+  "hist": [
+   [
+    "quanto custa uma pistola e qnto dano ela dá?",
+    "Preço 125.000 / 250.000 ¥ e dano 1d10 Perfurante, sem somar atributo."
+   ]
+  ],
+  "gold": [
+   "dano--descansos"
+  ]
+ },
+ {
+  "id": "t32",
+  "msg": "ah e pra estabilizar um aliado caído, como faz?",
+  "hist": [
+   [
+    "como o incursor ganha fluidez?",
+    "Ao acertar um ataque no seu turno ou quando um inimigo erra um ataque contra você. Só guarda uma por vez."
+   ]
+  ],
+  "gold": [
+   "dano--socorro"
+  ]
+ },
+ {
+  "id": "t33",
+  "msg": "e ataque de oportunidade, qnd rola?",
+  "hist": [
+   [
+    "como eu domo uma maldição?",
+    "Derrote sem destruir; fora de combate ela faz TR de Espírito contra sua CD e, na falha, é domada."
+   ],
+   [
+    "pode ser de nv maior que o meu?",
+    "Não, só de nível igual ou inferior ao seu."
+   ]
+  ],
+  "gold": [
+   "geral--oportunidade"
+  ]
+ },
+ {
+  "id": "t34",
+  "msg": "e pra entidade?",
+  "hist": [
+   [
+    "qnto de pe o descanso curto devolve?",
+    "25% dos PE máximos, arredondando para baixo."
+   ]
+  ],
+  "gold": [
+   "campo--inv-energia"
+  ]
+ },
+ {
+  "id": "t35",
+  "msg": "e se eu tiver desvantagem nele?",
+  "hist": [
+   [
+    "como funciona o bloquear?",
+    "Em vez da Defesa, você rola 2d10 + (Defesa - 11), escolhendo antes de o atacante rolar."
+   ]
+  ],
+  "gold": [
+   "geral--bloquear"
+  ]
+ },
+ {
+  "id": "t36",
+  "msg": "e quanto tempo dura?",
+  "hist": [
+   [
+    "oq faz o dominio simples?",
+    "Cria uma área ao seu redor, custa 2 PE de manutenção e anula o Acerto garantido de uma Expansão para quem está dentro."
+   ]
+  ],
+  "gold": [
+   "aptidoes--apt-simples-duracao",
+   "aptidoes--apt-simples"
+  ]
+ },
+ {
+  "id": "t37",
+  "msg": "e o desarmado?",
+  "hist": [
+   [
+    "o que faz a condição lento?",
+    "Seu deslocamento cai pela metade e você não pode usar Ação Bônus."
+   ],
+   [
+    "e o surdo?",
+    "Você não ouve, falha em testes de audição e tem -2 na iniciativa."
+   ]
+  ],
+  "gold": [
+   "dano--leves"
+  ]
+ },
+ {
+  "id": "t38",
+  "msg": "minha internet caiu de novo mano",
+  "gold": "nenhum"
+ },
+ {
+  "id": "t39",
+  "msg": "to sem ação hoje, o dia foi puxado",
+  "gold": "nenhum"
+ },
+ {
+  "id": "t40",
+  "msg": "esse filme tem um nível de ruim kkkk",
+  "gold": "nenhum"
+ },
+ {
+  "id": "t41",
+  "msg": "vou descansar um pouco, volto daqui a pouco",
+  "gold": "nenhum"
+ },
+ {
+  "id": "t42",
+  "msg": "que golpe baixo kkk",
+  "gold": "nenhum"
+ },
+ {
+  "id": "t43",
+  "msg": "o mestre é muito bom, curti a sessão de ontem",
+  "gold": "nenhum"
+ },
+ {
+  "id": "t44",
+  "msg": "meu ritual de toda manhã é café e academia, e vcs?",
+  "gold": "nenhum"
+ },
+ {
+  "id": "t45",
+  "msg": "meu time só tomou ataque o jogo todo, que raiva",
+  "gold": "nenhum"
+ }
+]

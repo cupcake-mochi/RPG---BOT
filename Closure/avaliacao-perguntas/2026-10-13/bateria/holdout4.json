@@ -1,0 +1,339 @@
+[
+ {
+  "id": "u01",
+  "msg": "qnto de dano da no crit? dobra tudo ou so os dados da arma",
+  "gold": [
+   "geral--critico"
+  ],
+  "nota": "Crítico dobra só os dados básicos; fixos somam uma vez."
+ },
+ {
+  "id": "u02",
+  "msg": "bloquear gasta reação? tipo posso bloquear todo ataque do turno",
+  "gold": [
+   "geral--bloquear"
+  ],
+  "nota": "Bloquear é gratuito, não gasta Reação."
+ },
+ {
+  "id": "u03",
+  "msg": "oq acontece qnd eu tiro dois 10 no bloquear??",
+  "gold": [
+   "geral--aparar"
+  ],
+  "nota": "Dois 10 = Aparar, ataque erra e há contra-ataque com +3."
+ },
+ {
+  "id": "u04",
+  "msg": "da pra agarrar um bicho colossal ou so os pequenos",
+  "gold": [
+   "geral--manobras"
+  ],
+  "nota": "Alvo até uma categoria de tamanho maior que o agressor."
+ },
+ {
+  "id": "u05",
+  "msg": "to agarrado e n sei como sair disso, vc pode me ajudar",
+  "gold": [
+   "geral--contencoes"
+  ],
+  "nota": "Ação Padrão + TR Físico contra a CD da contenção."
+ },
+ {
+  "id": "u06",
+  "msg": "cai de 9m de altura, qnto de dano eu levo",
+  "gold": [
+   "geral--quedas"
+  ],
+  "nota": "1d6 de Concussão por 3 m completos; 9 m = 3d6."
+ },
+ {
+  "id": "u07",
+  "msg": "qual a diferença entre descanso curto e longo? recupera qnto de pe",
+  "gold": [
+   "dano--descansos"
+  ],
+  "nota": "Descanso curto 25% dos PE; longo ao fim da missão."
+ },
+ {
+  "id": "u08",
+  "msg": "a exaustão é tipo um nerf pra quem luta mt no dia? em qual luta começa",
+  "gold": [
+   "dano--exaustao"
+  ],
+  "nota": "Da quarta luta do dia em diante, +1 degrau até 3."
+ },
+ {
+  "id": "u09",
+  "msg": "kokusen funciona com feitiço de toque? e com arco",
+  "gold": [
+   "aptidoes--apt-kokusen"
+  ],
+  "nota": "Só crítico corpo a corpo de arma/desarmado; feitiço e à distância não acionam."
+ },
+ {
+  "id": "u10",
+  "msg": "energia reversa cura qnto por pe e com q nivel eu pego",
+  "gold": [
+   "aptidoes--apt-reversa"
+  ],
+  "nota": "Refino 7 e nível 14; 1d8 por PE."
+ },
+ {
+  "id": "u11",
+  "msg": "domínio simples serve pra q? qual o raio dele",
+  "gold": [
+   "aptidoes--apt-simples"
+  ],
+  "nota": "Protege contra Expansão de acerto garantido; raio por Refino."
+ },
+ {
+  "id": "u12",
+  "msg": "pq meu personagem com restrição celestial sem energia n tem feitiço? ele n pode ter tecnica nenhuma?",
+  "gold": [
+   "origens--origem-restricao"
+  ],
+  "nota": "Sem Energia usa Técnica Marcial, Bênçãos e Lapidação."
+ },
+ {
+  "id": "u13",
+  "msg": "bastiao ou incursor, qual tem mais vida? to na duvida de qual pegar",
+  "gold": [
+   "bastiao--bas-bastiao",
+   "incursor--inc-caminho"
+  ],
+  "nota": "Tabelas de características: Bastião d12/12+Con; Incursor 6+Con."
+ },
+ {
+  "id": "u14",
+  "msg": "meu limite de carga é qnto? to com for 3 e mt item na mochila",
+  "gold": [
+   "geral--carga"
+  ],
+  "nota": "Limite 5 + Força em Volume; acima, deslocamento pela metade."
+ },
+ {
+  "id": "u15",
+  "msg": "arma improvisada tipo garrafa ou frigideira da qnto de dano",
+  "gold": [
+   "equip--eqi-improvisadas"
+  ],
+  "nota": "Sem referência: 1d4 de dano."
+ },
+ {
+  "id": "u16",
+  "msg": "recarregar a besta gasta qual ação?",
+  "gold": [
+   "equip--eqm-recarga"
+  ],
+  "nota": "Ação Bônus."
+ },
+ {
+  "id": "u17",
+  "msg": "como funciona o teste de ritual? qual a cd, é sempre ocultismo?",
+  "gold": [
+   "ritual--rit-teste"
+  ],
+  "nota": "Teste de Ocultismo; CD 8 + Int + maestria + Classe - Des."
+ },
+ {
+  "id": "u18",
+  "msg": "qnts pactos permanentes eu posso ter com essencia 4",
+  "gold": [
+   "ritual--pacto-permanente"
+  ],
+  "nota": "Metade da Essência em vagas: Essência 4 = 2."
+ },
+ {
+  "id": "u19",
+  "msg": "a trilha invocação principal só vale se eu tiver uma invocação ativa né? e se eu chamar duas",
+  "gold": [
+   "evocador--ev-principal"
+  ],
+  "nota": "Benefícios só com exatamente uma invocação ativa."
+ },
+ {
+  "id": "u20",
+  "msg": "o parkour do incursor deixa usar acrobacia no lugar de atletismo? em q situação",
+  "gold": [
+   "incursor--inc-parkour"
+  ],
+  "nota": "Durante o Movimento Acrobático, Acrobacia no lugar de Atletismo."
+ },
+ {
+  "id": "u21",
+  "msg": "qnto xp precisa pra subir do nivel 5 pro 6",
+  "gold": [
+   "progressao--prog-xp"
+  ],
+  "nota": "Nível 5–7: 500 XP para o próximo."
+ },
+ {
+  "id": "u22",
+  "msg": "dá pra comprar arma de fogo no começo? precisa de patente ou algo assim",
+  "gold": [
+   "equip--eqc-dinheiro"
+  ],
+  "nota": "Arma de fogo exige Grau 2 ou superior, ou autorização."
+ },
+ {
+  "id": "u23",
+  "msg": "escudo torre vs broquel, qual compensa mais pra defesa? mt buff ou nerf de destreza",
+  "gold": [
+   "equip--eqp-escudo"
+  ],
+  "nota": "Torre +3 / teto Des 1 / Força 5; Broquel +1 / teto Des 5."
+ },
+ {
+  "id": "u24",
+  "msg": "e se eu levar dano de feitiço?",
+  "gold": [
+   "geral--concentracao"
+  ],
+  "nota": "TR de Vigor contra a CD do feitiço.",
+  "hist": [
+   [
+    "como funciona concentração?",
+    "Você mantém um efeito por vez; ao sofrer dano faz TR de Vigor."
+   ]
+  ]
+ },
+ {
+  "id": "u25",
+  "msg": "ontem no jogo o mestre falou q meu personagem caiu a zero de vida e tinha q escolher aguentar ou insistir, n entendi nada. qual a diferença entre os dois?",
+  "gold": [
+   "dano--zero"
+  ],
+  "nota": "Aguentar = Inconsciente; Insistir = continua agindo pagando vida máxima."
+ },
+ {
+  "id": "u26",
+  "msg": "e se for 30m?",
+  "gold": [
+   "geral--quedas"
+  ],
+  "nota": "30 m = 10d6.",
+  "hist": [
+   [
+    "qnto de dano da na queda?",
+    "1d6 de Concussão por 3 m completos, até 20d6."
+   ]
+  ]
+ },
+ {
+  "id": "u27",
+  "msg": "e se tirar 10 e 10?",
+  "gold": [
+   "geral--aparar"
+  ],
+  "nota": "Dois 10 = apara.",
+  "hist": [
+   [
+    "como funciona o bloquear?",
+    "Bloquear = 2d10 + (Defesa - 11), substitui a Defesa e não gasta Reação."
+   ]
+  ]
+ },
+ {
+  "id": "u28",
+  "msg": "e se for a 3ª da semana?",
+  "gold": [
+   "progressao--prog-semana"
+  ],
+  "nota": "3ª missão paga 50%.",
+  "hist": [
+   [
+    "qnto de xp uma missão padrão da?",
+    "100 de XP base."
+   ]
+  ]
+ },
+ {
+  "id": "u29",
+  "msg": "e como ação bônus?",
+  "gold": [
+   "aptidoes--apt-circulacao"
+  ],
+  "nota": "Circulação: ação bônus, 1d4 por PE.",
+  "hist": [
+   [
+    "energia reversa cura qnto?",
+    "1d8 por PE gasto, até sua maior Classe em PE, como Ação Padrão."
+   ]
+  ]
+ },
+ {
+  "id": "u30",
+  "msg": "e se passar do limite?",
+  "gold": [
+   "geral--carga"
+  ],
+  "nota": "Acima do limite até o dobro: deslocamento pela metade e desvantagem em TR Físico.",
+  "hist": [
+   [
+    "qnto eu carrego sem penalidade?",
+    "5 + Força em Volume."
+   ]
+  ]
+ },
+ {
+  "id": "u31",
+  "msg": "cara hj o dano da conta de luz veio absurdo, minha vida tá um caos kkk",
+  "gold": "nenhum",
+  "nota": "Conversa casual, não é pergunta de regra."
+ },
+ {
+  "id": "u32",
+  "msg": "vou fazer um ritual de limpeza na casa nova no domingo, vc acredita nisso?",
+  "gold": "nenhum",
+  "nota": "Conversa casual, não é pergunta de regra."
+ },
+ {
+  "id": "u33",
+  "msg": "meu turno na faculdade é a noite e eu to morrendo de sono",
+  "gold": "nenhum",
+  "nota": "Conversa casual, não é pergunta de regra."
+ },
+ {
+  "id": "u34",
+  "msg": "o mestre da minha escola de música é brabo demais, ensaiei o dia todo",
+  "gold": "nenhum",
+  "nota": "Conversa casual, não é pergunta de regra."
+ },
+ {
+  "id": "u35",
+  "msg": "joguei um dado no chão e meu gato comeu, serio",
+  "gold": "nenhum",
+  "nota": "Conversa casual, não é pergunta de regra."
+ },
+ {
+  "id": "u36",
+  "msg": "vc viu o guia de restaurantes q saiu? to atrás de uma pizza boa",
+  "gold": "nenhum",
+  "nota": "Conversa casual, não é pergunta de regra."
+ },
+ {
+  "id": "u37",
+  "msg": "passei no escudo do vizinho de moto ontem, quase bati kkkk",
+  "gold": "nenhum",
+  "nota": "Conversa casual, não é pergunta de regra."
+ },
+ {
+  "id": "u38",
+  "msg": "minha vida amorosa tá uma bagunça, nem pergunta",
+  "gold": "nenhum",
+  "nota": "Conversa casual, não é pergunta de regra."
+ },
+ {
+  "id": "u39",
+  "msg": "alguem ai tem recomendação de banda boa pra ouvir hj? to com o fone na mão",
+  "gold": "nenhum",
+  "nota": "Conversa casual, não é pergunta de regra."
+ },
+ {
+  "id": "u40",
+  "msg": "bom dia galera, hj o trânsito tava um dano, cheguei atrasado no trabalho",
+  "gold": "nenhum",
+  "nota": "Conversa casual, não é pergunta de regra."
+ }
+]

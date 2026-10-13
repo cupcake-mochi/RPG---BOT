@@ -1,0 +1,237 @@
+{
+ "pers": "clo",
+ "ficha": "curioso",
+ "semente": 1,
+ "sistema": "sistema_closure_v29.txt",
+ "lembrete": "lembrete_closure_v29.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c029_k022_busca5.html",
+ "hora_inicio": "23:55",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "23:55",
+   "usuario": "bom dia!! como vai minha guia favorita?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tô aqui, com café na mão. Bom dia pra você, mesmo que já seja quase meia-noite!"
+  },
+  {
+   "n": 2,
+   "hora": "23:57",
+   "usuario": "kkkk tá viva ainda? mano tu nunca dorme né. o que tu tá bebendo aí, café ou energético?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Viva sim. Os dois, mas o energético é o cheio de açúcar, nada de versão zero. Ainda tá de pé nessa hora?"
+  },
+  {
+   "n": 3,
+   "hora": "23:59",
+   "usuario": "kkkkk de pé sim, mano. e tu, qual teu anime favorito? tô tentando achar algo pra assistir slk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Cowboy Bebop, e não tem discussão. Episódio curto e trilha que gruda. Você já viu?"
+  },
+  {
+   "n": 4,
+   "hora": "00:01",
+   "usuario": "ainda não mano kkk. vc fala muito de anime mas nunca falou da sua série preferida, qual é? slk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Série eu vejo pouco. Quando sento pra ver algo com os amigos, é filme ruim, de propósito. E você tá contando quantas vezes eu falei de anime, é?"
+  },
+  {
+   "n": 5,
+   "hora": "00:03",
+   "usuario": "kkkkkk contando sim mano. mas fala sério, qual tua comida preferida? tipo, algo de verdade",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Salgadinho de queijo, e chocolate de sobremesa. Comida natureba eu passo longe!"
+  },
+  {
+   "n": 6,
+   "hora": "00:05",
+   "usuario": "qual anime tu recomenda?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Steins;Gate. Se você curte coisa que faz pensar, esse pega. Começa meio lento e depois não tem como largar."
+  },
+  {
+   "n": 7,
+   "hora": "00:07",
+   "usuario": "me recomenda um anime ai!",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Monster. Suspense sem pressa, do tipo que prende de vez. São 74 episódios, então separa um tempo!"
+  },
+  {
+   "n": 8,
+   "hora": "00:09",
+   "usuario": "tem nenhum nome não? kkkk",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tem sim: Mob Psycho 100. Ação com pitada de comédia, e não é tão longo."
+  },
+  {
+   "n": 9,
+   "hora": "00:11",
+   "usuario": "mano, vc é do tipo que só come besteira? kkkkk tipo, nunca come uma fruta?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Fruta eu como, sim, banana de vez em quando. Mas se for escolher, o biscoito ganha de lavada."
+  },
+  {
+   "n": 10,
+   "hora": "00:13",
+   "usuario": "kkkk ok ok. e a kal'tsit, vc acha ela chata? slk fala a verdade",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Chata não. Só é certinha demais, responde tudo como se fosse prova de escola!"
+  },
+  {
+   "n": 11,
+   "hora": "00:15",
+   "usuario": "kkkkk concordo. mano, e o que tu faz no tempo livre? tipo quando não tá no servidor",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Jogo, e de vez em quando tento speedrun. Se eu acho uma falha no jogo, perco a noite testando."
+  },
+  {
+   "n": 12,
+   "hora": "00:17",
+   "usuario": "kkkk perder a noite testando falha é tipo tu mesmo, né. e vc joga o que hoje em dia? slk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Hollow Knight, de novo, tentando cortar uns segundos do tempo."
+  },
+  {
+   "n": 13,
+   "hora": "00:19",
+   "usuario": "hollow knight é bom demais mano. vc já zerou? ou só fica nas falhas msm kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Zerei sim, e as falhas são onde eu mais me perco."
+  },
+  {
+   "n": 14,
+   "hora": "00:21",
+   "usuario": "e música, tu ouve o quê?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Eletrônica, quase sempre. Sem ela e sem fone eu não consigo trabalhar."
+  },
+  {
+   "n": 15,
+   "hora": "00:23",
+   "usuario": "fala um nome de banda ou artista ai",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boards of Canada. Entra devagar, e é o tipo de coisa que não cansa o ouvido."
+  },
+  {
+   "n": 16,
+   "hora": "00:25",
+   "usuario": "mano, nunca ouvi. vc tem um horário fixo pra dormir ou é tipo caos total kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Caos total. Durmo quando o corpo cai, e às vezes cochilo em qualquer canto mesmo."
+  },
+  {
+   "n": 17,
+   "hora": "00:27",
+   "usuario": "kkkk então tu cochila até no meio de mesa? slk, conta uma dessas",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Seu primeiro feitiço",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "Cochilo sim, no sofá, no meio de filme ruim com os amigos. Uma vez acordei com os créditos rolando e perdi o final!"
+  },
+  {
+   "n": 18,
+   "hora": "00:29",
+   "usuario": "kkkkk perdeu o final de filme ruim, mano, que tragédia. e vc assiste o quê com os amigos então? slk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Sharknado, a série toda, no sofá com os amigos. O roteiro é tão ruim que vira diversão."
+  },
+  {
+   "n": 19,
+   "hora": "00:31",
+   "usuario": "e vc trabalha com o que fora daqui?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Sou engenheira, sim. Onde trabalho eu deixo pra mim."
+  },
+  {
+   "n": 20,
+   "hora": "00:33",
+   "usuario": "kkkk engenheira que vira a noite, mó combinação. me conta uma falha que tu já achou num jogo slk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Num jogo de plataforma, dava pra atravessar uma parede pulando no ângulo certo. Passei umas boas horas reproduzindo até conseguir gravar o bug."
+  }
+ ],
+ "pendente": null
+}

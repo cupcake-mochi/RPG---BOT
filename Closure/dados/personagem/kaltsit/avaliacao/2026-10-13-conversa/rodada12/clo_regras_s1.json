@@ -1,0 +1,299 @@
+{
+ "pers": "clo",
+ "ficha": "regras",
+ "semente": 1,
+ "sistema": "sistema_closure_v29.txt",
+ "lembrete": "lembrete_closure_v29.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c029_k022_busca6.html",
+ "hora_inicio": "03:10",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "03:10",
+   "usuario": "pode explicar as habilidades de nv2 do guia?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "O nível 2 do Guia é o Abrir Caminho. É Ação Bônus, custa 1 PE e dá pra usar uma vez por turno seu: você escolhe um aliado voluntário que perceba a até 18 m e consiga ver ou ouvir sua orientação, e prepara uma Abertura de Avançar, Executar ou Resguardar, dizendo a posição, o alvo ou a situação. A Abertura dura até o começo do seu próximo turno, e você mantém uma por vez: criar outra substitui a anterior. O aliado guarda a oportunidade e decide quando usar. As habilidades de nível 2 das Trilhas (Arquiteto, Analista e Socorrista) eu não achei no livro agora."
+  },
+  {
+   "n": 2,
+   "hora": "03:12",
+   "usuario": "e no nível 7?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "O nível 7 é a Resposta Coordenada, uma Reação por rodada. Depois que o aliado usa a sua Abertura, você pode convidar esse aliado ou outro a até 18 m pra responder na hora. Se aceitar, vocês dois gastam Reação, e a resposta pode ser um Golpe, que dá só um ataque comum, ou um Feitiço breve de Classe 0 que normalmente usaria Ação Padrão."
+  },
+  {
+   "n": 3,
+   "hora": "03:14",
+   "usuario": "entao o golpe da resposta coordenada conta como Ação Atacar?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Resposta Coordenada",
+    "Livro: Ataques"
+   ],
+   "aviso": "",
+   "resposta": "Não. O Golpe concede só um ataque comum, não uma Ação Atacar inteira, nem básica de entidade ou etapa de Sequência. Como qualquer ataque concedido, ele segue o custo e os limites da Reação que o concedeu."
+  },
+  {
+   "n": 4,
+   "hora": "03:16",
+   "usuario": "o abrir caminho gasta o pe de quem, meu ou do aliado?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Caminho e Trilha",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "O livro dá o custo do Abrir Caminho como Ação Bônus e 1 PE, mas não diz de quem é esse PE. Essa parte eu não achei no livro agora."
+  },
+  {
+   "n": 5,
+   "hora": "03:18",
+   "usuario": "Abrir Caminho custa quanto PE?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Caminho e Trilha",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Custa 1 PE e é Ação Bônus, uma vez por turno seu."
+  },
+  {
+   "n": 6,
+   "hora": "03:20",
+   "usuario": "e o decanso recupera pe?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Rotas de criação",
+    "Livro: Recuperar a Base"
+   ],
+   "aviso": "",
+   "resposta": "Isso do descanso não veio aqui agora, e eu não vou chutar quanto de PE volta."
+  },
+  {
+   "n": 7,
+   "hora": "03:22",
+   "usuario": "como assim não veio?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Atualizar a ficha"
+   ],
+   "aviso": "",
+   "resposta": "Ficou faltando a parte do descanso, o que não quer dizer que ela não exista. Do que apareceu aqui, só dá pra dizer que subir de nível não é descanso, e isso não responde quanto de PE o descanso devolve."
+  },
+  {
+   "n": 8,
+   "hora": "03:24",
+   "usuario": "qual a classe mais forte?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Classe",
+    "Livro: Habilidades do cão",
+    "Livro: Pontos e preços",
+    "Livro: Feitiços de Classe 0"
+   ],
+   "aviso": "",
+   "resposta": "Classe é a escala que define o orçamento de uma aplicação, não a força do personagem. A maior é a 7, que só entra no nível 26. Se você quis dizer Caminho, a comparação entre eles não apareceu aqui, e não dá pra eu escolher um no olhômetro."
+  },
+  {
+   "n": 9,
+   "hora": "03:26",
+   "usuario": "percepção é com qual atributo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Percepção e influência",
+    "Livro: Percepção e visibilidade"
+   ],
+   "aviso": "",
+   "resposta": "Percepção usa Essência, como as outras perícias de percepção e influência."
+  },
+  {
+   "n": 10,
+   "hora": "03:28",
+   "usuario": "e a intuição, usa o mesmo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Classe",
+    "Livro: Investigação e conhecimento"
+   ],
+   "aviso": "",
+   "resposta": "Não, Intuição usa Inteligência, junto com Investigação e as perícias de conhecimento."
+  },
+  {
+   "n": 11,
+   "hora": "03:30",
+   "usuario": "qual a diferença entre latente e descendente?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Descendente",
+    "Livro: Latente"
+   ],
+   "aviso": "",
+   "resposta": "Descendente é quem cresceu numa família do meio jujutsu. Latente descobriu o jujutsu fora dessas tradições. Muda a perícia da Origem: o Descendente escolhe entre Hierarquia, História, Ocultismo e Persuasão, e o Latente entre Sentir Energia, Sobrevivência, Furtividade e Intuição."
+  },
+  {
+   "n": 12,
+   "hora": "03:32",
+   "usuario": "me da um exemplo com o latente?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Latente",
+    "Livro: Exemplos de personagens"
+   ],
+   "aviso": "",
+   "resposta": "No exemplo do livro, Mika pega Furtividade da lista do Latente e Tecnologia como perícia livre, já que trabalhava com manutenção. Os Legados são A Testemunha, que liga a uma antiga chefe que guardou o segredo, e Aprendi Apanhando, que dá uma repetição de perícia por dia."
+  },
+  {
+   "n": 13,
+   "hora": "03:34",
+   "usuario": "e o ataque com arma de fogo, quem tem treino com ela?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Armas de disparo",
+    "Livro: Descendente",
+    "Livro: Latente"
+   ],
+   "aviso": "",
+   "resposta": "A seção de Arma de Fogo diz o treino dela, mas quem começa treinado nisso não apareceu agora."
+  },
+  {
+   "n": 14,
+   "hora": "03:36",
+   "usuario": "como estabilizo um aliado caído?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Livro: Socorro",
+    "Livro: Retorno e corpos caídos"
+   ],
+   "aviso": "",
+   "resposta": "Quem for ajudar fica a até 1,5 m da pessoa, com acesso físico e uma mão livre, e gasta Ação Padrão pra fazer Medicina CD 14, com meios adequados de atendimento. A pessoa precisa estar Inconsciente e Morrendo. No sucesso ela fica estável e a janela para de diminuir, sem acordar nem recuperar vida; na falha só a ação é gasta, e dá pra tentar de novo enquanto houver tempo."
+  },
+  {
+   "n": 15,
+   "hora": "03:38",
+   "usuario": "e o dano da classe 0 sobe com o nivel?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Classe 0",
+    "Classe",
+    "Livro: Feitiços de Classe 0",
+    "Livro: Pontos e preços"
+   ],
+   "aviso": "",
+   "resposta": "Sobe, sim: 2d8 do nível 1 ao 4, 3d8 do 5 ao 10, 4d8 do 11 ao 16, 5d8 do 17 ao 24 e 6d8 do 25 ao 30. O aumento é automático, sem comprar outra versão."
+  },
+  {
+   "n": 16,
+   "hora": "03:40",
+   "usuario": "e o pe da kata, de quem é?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Classe 0",
+    "Classe",
+    "Livro: Técnica Marcial",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "É do personagem que usa a Kata. Ela segue os mesmos custos de PE dos feitiços, e pra quem não tem energia amaldiçoada esse PE vira Pontos de Esforço, com a mesma quantidade."
+  },
+  {
+   "n": 17,
+   "hora": "03:42",
+   "usuario": "quanto de dano eu tomo caindo de 10 metros?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Quedas e movimento imposto",
+    "Livro: Queda e destruição"
+   ],
+   "aviso": "",
+   "resposta": "3d6 de Concussão. Cada 3 m completos de queda rendem 1d6, e com dano você termina Derrubado."
+  },
+  {
+   "n": 18,
+   "hora": "03:44",
+   "usuario": "e de 20?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Kata",
+    "PE",
+    "Livro: Queda e destruição",
+    "Livro: Quedas sobre criaturas",
+    "Livro: Quedas e movimento imposto"
+   ],
+   "aviso": "",
+   "resposta": "São 6d6 de Concussão. Dos 20 m, seis trechos completos de 3 m entram na conta, e o metro que sobra não conta."
+  },
+  {
+   "n": 19,
+   "hora": "03:46",
+   "usuario": "da pra usar ação bonus e padrao no mesmo turno?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Turnos",
+    "Livro: Interação durante o combate"
+   ],
+   "aviso": "",
+   "resposta": "Pode, sim. Ação Padrão e Ação Bônus são recursos separados no seu turno, e gastar uma não consome a outra."
+  },
+  {
+   "n": 20,
+   "hora": "03:48",
+   "usuario": "e a reação, volta quando?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Turnos",
+    "Livro: Custos e consequências",
+    "Livro: Testes na mesa"
+   ],
+   "aviso": "",
+   "resposta": "A Reação volta no começo do seu turno, e a mudança de rodada não a recupera."
+  }
+ ],
+ "pendente": null
+}

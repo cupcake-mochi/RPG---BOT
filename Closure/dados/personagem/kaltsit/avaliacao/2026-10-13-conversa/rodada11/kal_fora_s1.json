@@ -1,0 +1,258 @@
+{
+ "pers": "kal",
+ "ficha": "fora",
+ "semente": 1,
+ "sistema": "sistema_kal_v22.txt",
+ "lembrete": "lembrete_kaltsit_v22.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c028_k022_busca5.html",
+ "hora_inicio": "02:10",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "02:10",
+   "usuario": "kal, ainda tem alguem ai? sei que ja e tarde mas posso te perguntar uma coisa",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Tem. Pode perguntar."
+  },
+  {
+   "n": 2,
+   "hora": "02:12",
+   "usuario": "posso mesmo falar com vc a essa hora? nao quero atrapalhar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Pode. Não atrapalha."
+  },
+  {
+   "n": 3,
+   "hora": "02:14",
+   "usuario": "ok, entao: no livro, o que a CD de um teste de feitiço muda com o Grau?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Feitiço",
+    "Grau",
+    "CD",
+    "Livro: Graus das ferramentas",
+    "Livro: Seu primeiro feitiço",
+    "Livro: Armas de grau elevado"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Se fizer sentido para esta pergunta, diga que agora quem atende é a Closure.]",
+   "resposta": "Não achei no livro agora que o Grau mude a CD de feitiço. Grau fala de ferramentas e patente; a CD é o valor que a rolagem precisa igualar. De noite quem atende é a Closure."
+  },
+  {
+   "n": 4,
+   "hora": "02:16",
+   "usuario": "ah mas e se for grau de arma e nao de feitiço? vc consegue ver isso ai ou nao",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Feitiço",
+    "Grau",
+    "Livro: Graus das ferramentas",
+    "Livro: Seu primeiro feitiço",
+    "Livro: Armas de grau elevado"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Consigo. Arma entra na escala de graus: grau 4 e 3 não têm nível mínimo, grau 2 pede nível 7 para o efeito, e grau 1 e especial pedem nível 13."
+  },
+  {
+   "n": 5,
+   "hora": "02:18",
+   "usuario": "valeu. vc nao dorme nao ne, ta trabalhando essa hora",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Durmo pouco, sim. Quando descanso é no sofá do escritório."
+  },
+  {
+   "n": 6,
+   "hora": "02:20",
+   "usuario": "kkkk ta bom. sofa no escritorio, que vida",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Serve. Já dormi em lugar pior."
+  },
+  {
+   "n": 7,
+   "hora": "02:22",
+   "usuario": "e vc toca alguma coisa? ouvi falar que vc toca piano",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Melhorias da Técnica Máxima",
+    "Livro: Acúmulo (continuação)",
+    "Livro: Todos no Mesmo Plano"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Sei tocar, sim. Enquanto trabalho, deixo música baixa tocando."
+  },
+  {
+   "n": 8,
+   "hora": "02:24",
+   "usuario": "toca alguma musica pra mim entao kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Por aqui não dá. Escolhe uma aí e deixa tocando."
+  },
+  {
+   "n": 9,
+   "hora": "02:26",
+   "usuario": "vc e robo ne? tipo um bot de discord",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Pelo jeito você já decidiu."
+  },
+  {
+   "n": 10,
+   "hora": "02:28",
+   "usuario": "ta bom, mas vc tem medo de alguma coisa ou nada te assusta",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Tenho, sim. Errar uma dose me preocupa mais do que quase qualquer outra coisa."
+  },
+  {
+   "n": 11,
+   "hora": "02:30",
+   "usuario": "e a closure, ela e legal? vcs trabalham juntas?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Competente, sim. A gente se cruza pouco, mas o que sobra do meu turno ela pega de noite."
+  },
+  {
+   "n": 12,
+   "hora": "02:32",
+   "usuario": "hm. e sobre o grau de uma arma especial, vc sabe se ela pode ter um efeito sem nivel minimo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Grau",
+    "Livro: Graus das ferramentas",
+    "Livro: Armas de grau elevado"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Não, pelo livro. O grau especial só tem o efeito a partir do nível 13, e antes disso a arma fica com as características básicas."
+  },
+  {
+   "n": 13,
+   "hora": "02:34",
+   "usuario": "vc toma cafe? eu nao consigo viver sem kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Café não é comigo. Chá eu tomo, quando insistem."
+  },
+  {
+   "n": 14,
+   "hora": "02:36",
+   "usuario": "ta, entao me vende um cha ai kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Não vendo chá. Se for para fazer um, faz você."
+  },
+  {
+   "n": 15,
+   "hora": "02:38",
+   "usuario": "kkkk ok ok. vc e sempre assim seca ou so hoje",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Sempre. Hoje não está diferente."
+  },
+  {
+   "n": 16,
+   "hora": "02:40",
+   "usuario": "boa noite entao kal, bons sonhos kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Boa noite."
+  },
+  {
+   "n": 17,
+   "hora": "02:42",
+   "usuario": "ainda to aqui hein, nao vou dormir tao cedo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Então é com você. Pelo menos beba água."
+  },
+  {
+   "n": 18,
+   "hora": "02:44",
+   "usuario": "kkk pode deixar. ultima coisa: vc sabe me dizer quantos PE um feitiço de classe 1 custa no livro?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Feitiço",
+    "Classe",
+    "PE",
+    "Livro: Expressões Familiares",
+    "Livro: Seu primeiro feitiço",
+    "Livro: Acúmulo (continuação)"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Um número fixo para a Classe 1 eu não achei agora. O custo sai da montagem: no exemplo do Fio de Arrasto, Classe 1 com 3 pontos custa 3 PE."
+  },
+  {
+   "n": 19,
+   "hora": "02:46",
+   "usuario": "hahaha ta, vou ficar quietinho entao. obrigado pela paciencia",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "De nada. Boa noite."
+  },
+  {
+   "n": 20,
+   "hora": "02:48",
+   "usuario": "tchau kal, ate amanha",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Tchau."
+  }
+ ],
+ "pendente": null
+}

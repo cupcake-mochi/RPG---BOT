@@ -1,0 +1,290 @@
+{
+ "pers": "clo",
+ "ficha": "regras2",
+ "semente": 1,
+ "sistema": "sistema_closure_v28.txt",
+ "lembrete": "lembrete_closure_v28.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c028_k022_busca5.html",
+ "hora_inicio": "01:20",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "01:20",
+   "usuario": "qual o dano da katana?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Lâminas"
+   ],
+   "aviso": "",
+   "resposta": "Pelo livro, a katana é uma lâmina longa de 1 mão: 1d8 de dano Cortante, com as propriedades Versátil e Fineza."
+  },
+  {
+   "n": 2,
+   "hora": "01:22",
+   "usuario": "e quanto ela custa?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Armas",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Pelo livro, a Katana custa ¥48.000."
+  },
+  {
+   "n": 3,
+   "hora": "01:24",
+   "usuario": "ok e se eu quiser dar de cara com a lama ou algo assim, qual a regra de esquiva?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Ações",
+    "Livro: Passo Rápido (continuação)",
+    "Livro: Dar uma tarefa"
+   ],
+   "aviso": "",
+   "resposta": "Esquivar custa Ação Padrão: impõe desvantagem aos ataques contra você e dá vantagem nos seus TRs Físicos até o começo do seu próximo turno. Sobre dar de cara na lama, não achei isso no livro agora."
+  },
+  {
+   "n": 4,
+   "hora": "01:26",
+   "usuario": "como eu agarro alguém?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Agarrar, derrubar e empurrar",
+    "Livro: Fechaduras e contenção",
+    "Livro: Condições leves"
+   ],
+   "aviso": "",
+   "resposta": "Na Ação Atacar, troque um ataque por Agarrar contra criatura ao alcance do seu ataque desarmado (normalmente 1,5 m) e de até uma categoria de tamanho maior que você. O alvo faz TR Físico contra CD 8 + sua Força + sua maestria; na falha, fica Agarrado por você, com deslocamento zero, e uma das suas mãos fica ocupada enquanto segurar."
+  },
+  {
+   "n": 5,
+   "hora": "01:28",
+   "usuario": "e se o cara tentar escapar?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Escapar de uma contenção"
+   ],
+   "aviso": "",
+   "resposta": "Quem está agarrado gasta uma Ação Padrão no seu turno e faz TR Físico contra a CD da contenção, normalmente 8 + Força + maestria de quem agarrou. No sucesso a contenção termina; na falha, continua agarrado."
+  },
+  {
+   "n": 6,
+   "hora": "01:30",
+   "usuario": "nao entendi oq é fineza, pode explicar melhor",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Propriedades",
+    "Livro: Lâminas"
+   ],
+   "aviso": "",
+   "resposta": "Fineza vale nos ataques corpo a corpo: você pode usar Destreza no lugar de Força, tanto no acerto quanto no dano. Se a sua Destreza for maior que a Força, dá pra usar ela no lugar nessa arma."
+  },
+  {
+   "n": 7,
+   "hora": "01:32",
+   "usuario": "posso atacar duas vezes no turno?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Mais de um ataque",
+    "Livro: Escola de Arma (continuação)",
+    "Livro: Ataques",
+    "Livro: Preparar"
+   ],
+   "aviso": "",
+   "resposta": "Não sem habilidade. A Ação Atacar dá um ataque, e o segundo vem de habilidade, como o Ataque Extra da Vanguarda no nível 7, que dá um ataque simples adicional por rodada."
+  },
+  {
+   "n": 8,
+   "hora": "01:34",
+   "usuario": "por onde eu começo pra montar a ficha?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Combate montado",
+    "Livro: Criar um personagem",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Começa pelo capítulo Criar um personagem do livro. Ele vai de Origem, Caminho e Trilha até as capacidades iniciais e o equipamento."
+  },
+  {
+   "n": 9,
+   "hora": "01:36",
+   "usuario": "como funciona iniciativa",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Turnos"
+   ],
+   "aviso": "",
+   "resposta": "Cada participante rola d20 + Destreza, com os modificadores ativos nessa rolagem, e quem tirar o maior total age primeiro. Em empate, age primeiro quem tiver maior Destreza."
+  },
+  {
+   "n": 10,
+   "hora": "01:38",
+   "usuario": "hm, e o que é a energia reversa?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia Reversa",
+    "Livro: Energia Reversa",
+    "Livro: Sementes"
+   ],
+   "aviso": "",
+   "resposta": "Energia Reversa é a energia que o livro usa pra curar o próprio corpo, numa aptidão com esse nome. Pelo registro, contra a oripatia ela não cura: a pele cresce por cima da formação de cristal, e o cristal permanece."
+  },
+  {
+   "n": 11,
+   "hora": "01:40",
+   "usuario": "posso voar?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia Reversa",
+    "Livro: Voo"
+   ],
+   "aviso": "",
+   "resposta": "Só com uma capacidade que conceda essa modalidade, porque voar exige isso no livro. Um salto não concede voo."
+  },
+  {
+   "n": 12,
+   "hora": "01:42",
+   "usuario": "e desvantagem é o q exatamente",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia Reversa",
+    "Desvantagem",
+    "Livro: Treino e modificadores",
+    "Livro: Condições pesadas"
+   ],
+   "aviso": "",
+   "resposta": "Desvantagem é rolar dois d20 e usar o menor, somando o bônus normal nele. Se houver vantagem junto, as duas se cancelam e você rola um d20 só."
+  },
+  {
+   "n": 13,
+   "hora": "01:44",
+   "usuario": "esquiva funciona como",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Ações",
+    "Livro: Invocação Principal",
+    "Livro: Passo Rápido (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Você gasta uma Ação Padrão, e até o começo do seu próximo turno os ataques contra você saem com desvantagem, enquanto seus TRs Físicos saem com vantagem."
+  },
+  {
+   "n": 14,
+   "hora": "01:46",
+   "usuario": "valeu. e a rhine lab é do mal?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "Pelo registro, a Rhine não é vilã: quer eliminar a energia amaldiçoada por convicção, não por ganância. Ela é fria, mas nunca cruel, e não mente, só omite. O que se critica nela é o método, mais do que o objetivo."
+  },
+  {
+   "n": 15,
+   "hora": "01:48",
+   "usuario": "com quanto dinheiro eu começo?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Ninguém é vilão",
+    "Dinheiro inicial",
+    "Livro: Dinheiro e acesso",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Na criação padrão, você dispõe de ¥150.000 pra comprar os demais itens, e já recebe um Traje 1."
+  },
+  {
+   "n": 16,
+   "hora": "01:50",
+   "usuario": "ta, e o que é o registro do mundo? tipo, quem escreveu isso",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Ninguém é vilão",
+    "Livro: Tipos de entidade",
+    "Livro: Mundo jujutsu",
+    "Livro: Regra Própria"
+   ],
+   "aviso": "",
+   "resposta": "O registro é o que se estabelece do mundo do Ciclo Maldito. Ele cobre as duas maiores facções, tem buracos de propósito que as mesas completam, e sobre quem escreveu não há registro disso."
+  },
+  {
+   "n": 17,
+   "hora": "01:52",
+   "usuario": "qnto de xp eu preciso pra sair do nv 2?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "XP para subir",
+    "Subir de nível",
+    "Livro: Recompensas e custos",
+    "Livro: Funções complementares (continuação)",
+    "Livro: Experiência e Progressão"
+   ],
+   "aviso": "",
+   "resposta": "Sair do nível 2 custa 200 XP, segundo a tabela de Subir de nível do livro. É o custo só desse salto, não o total desde a criação."
+  },
+  {
+   "n": 18,
+   "hora": "01:54",
+   "usuario": "e do 11?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "XP para subir",
+    "Subir de nível",
+    "Livro: Recompensas e custos",
+    "Livro: Funções complementares (continuação)",
+    "Livro: Limiar do nível 20"
+   ],
+   "aviso": "",
+   "resposta": "Do nível 11 são 900 XP, e a mesma faixa vale até o 13."
+  },
+  {
+   "n": 19,
+   "hora": "01:56",
+   "usuario": "vc é a closure né? que hora é aí",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Sou eu, sim! São quase 2h da manhã e eu ainda tô no plantão."
+  },
+  {
+   "n": 20,
+   "hora": "01:58",
+   "usuario": "valeu closure, vou tentar montar essa ficha. boa noite",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite pra você, e boa sorte com a ficha!"
+  }
+ ],
+ "pendente": null
+}

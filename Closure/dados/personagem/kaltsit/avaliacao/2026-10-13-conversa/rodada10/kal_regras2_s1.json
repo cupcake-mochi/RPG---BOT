@@ -1,0 +1,299 @@
+{
+ "pers": "kal",
+ "ficha": "regras2",
+ "semente": 1,
+ "sistema": "sistema_kal_v22.txt",
+ "lembrete": "lembrete_kaltsit_v22.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c027_k022.html",
+ "hora_inicio": "16:40",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "16:40",
+   "usuario": "qual o dano da katana?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Lâminas",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Pelo livro, a katana dá 1d8 de dano Cortante. Ela tem as propriedades Versátil e Fineza."
+  },
+  {
+   "n": 2,
+   "hora": "16:42",
+   "usuario": "e quanto ela custa?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Armas",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Pelo livro, a katana custa ¥48.000 e ocupa 1 de Volume. Não é arma de fogo, então o preço é o mesmo na criação e depois."
+  },
+  {
+   "n": 3,
+   "hora": "16:44",
+   "usuario": "e precisa de forca pra usar a katana? eu tenho forca 0",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Equipamento inicial",
+    "Livro: Lâminas"
+   ],
+   "aviso": "",
+   "resposta": "Não, a katana não tem Força mínima. Com Força 0 você a empunha sem penalidade."
+  },
+  {
+   "n": 4,
+   "hora": "16:46",
+   "usuario": "como eu agarro alguém?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Agarrar, derrubar e empurrar",
+    "Livro: Fechaduras e contenção",
+    "Livro: Condições leves"
+   ],
+   "aviso": "",
+   "resposta": "Na Ação Atacar você pode trocar um ataque por Agarrar, num alvo ao seu alcance desarmado (normalmente 1,5 m) e de até uma categoria de tamanho maior que você. O alvo faz TR Físico contra CD 8 + sua Força + sua maestria; se falhar, fica Agarrado por você."
+  },
+  {
+   "n": 5,
+   "hora": "16:48",
+   "usuario": "e se o cara tentar escapar?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Escapar de uma contenção",
+    "Livro: Fechaduras e contenção"
+   ],
+   "aviso": "",
+   "resposta": "No turno dele, ele gasta uma Ação Padrão e faz TR Físico contra a CD da contenção, normalmente 8 + Força + maestria de quem agarrou. Se passar, a contenção termina; se falhar, continua agarrado, e a escapada não dá ataque nem movimento."
+  },
+  {
+   "n": 6,
+   "hora": "16:50",
+   "usuario": "entao quem ta agarrado nao anda nem ataca?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Agarrar, derrubar e empurrar",
+    "Livro: Condições leves"
+   ],
+   "aviso": "",
+   "resposta": "Não anda, mas ataca sim. Agarrado deixa o deslocamento em zero, e você ainda pode atacar, conjurar e Bloquear, desde que cumpra o requisito de cada ação."
+  },
+  {
+   "n": 7,
+   "hora": "16:52",
+   "usuario": "posso atacar duas vezes no turno?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Mais de um ataque",
+    "Livro: Turnos",
+    "Livro: Ataques",
+    "Livro: Preparar"
+   ],
+   "aviso": "",
+   "resposta": "Por padrão não. A Ação Atacar dá um ataque só, e o segundo vem de habilidade, como o Ataque Extra do Bastião e da Vanguarda no nível 7."
+  },
+  {
+   "n": 8,
+   "hora": "16:54",
+   "usuario": "vou ter que pegar o ataque extra no nivel 7 ou da pra pegar antes?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Mais de um ataque",
+    "Livro: Assumir um golpe (continuação)",
+    "Livro: Ataques",
+    "Livro: Escola de Arma (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "O Ataque Extra é nível 7, tanto no Bastião quanto na Vanguarda. Se dá para pegar antes disso, não achei no livro agora."
+  },
+  {
+   "n": 9,
+   "hora": "16:56",
+   "usuario": "como funciona iniciativa",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Mais de um ataque",
+    "Livro: Turnos",
+    "Livro: Invocação Principal",
+    "Livro: Combate de exemplo"
+   ],
+   "aviso": "",
+   "resposta": "Cada um rola d20 + Destreza, com os modificadores ativos nessa rolagem, e quem tira o maior total age primeiro. Se empatar, vence a maior Destreza; se ainda empatar jogador com inimigo, o jogador age antes. A ordem fica registrada para o combate inteiro, e as rodadas seguem nela."
+  },
+  {
+   "n": 10,
+   "hora": "16:58",
+   "usuario": "e o modificador da iniciativa é o que? eu uso destreza mesmo ou tem outra coisa",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Mais de um ataque",
+    "Livro: Turnos",
+    "Livro: Acúmulo (continuação)",
+    "Livro: Perícias físicas"
+   ],
+   "aviso": "",
+   "resposta": "Sim, é Destreza. Além dela, entram os modificadores que estiverem ativos nessa rolagem."
+  },
+  {
+   "n": 11,
+   "hora": "17:00",
+   "usuario": "posso voar?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Voo"
+   ],
+   "aviso": "",
+   "resposta": "Só se alguma capacidade sua conceder voo, e ela diz a distância, a duração e o que é preciso para manter. Um salto não concede voo."
+  },
+  {
+   "n": 12,
+   "hora": "17:02",
+   "usuario": "e bloquear, eu rolo algum dado ou so defendo sem rolar?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Bloquear",
+    "Livro: Dano e repetições"
+   ],
+   "aviso": "",
+   "resposta": "Rola sim: 2d10 + (sua Defesa - 11), e você escolhe isso antes de o atacante rolar. Não gasta Reação, então dá para usar de novo contra outro ataque."
+  },
+  {
+   "n": 13,
+   "hora": "17:04",
+   "usuario": "esquiva funciona como",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Ações",
+    "Livro: Invocação Principal",
+    "Livro: Passo Rápido (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Você gasta a Ação Padrão, e até o começo do seu próximo turno os ataques contra você saem com desvantagem, enquanto seus TRs Físicos saem com vantagem."
+  },
+  {
+   "n": 14,
+   "hora": "17:06",
+   "usuario": "por onde eu começo a montar a ficha?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Combate montado",
+    "Livro: Criar um personagem",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Pelo capítulo Criar um personagem do livro. Começa pelos atributos, com 9 pontos para distribuir, e depois vem a Origem, o Caminho e a Trilha."
+  },
+  {
+   "n": 15,
+   "hora": "17:08",
+   "usuario": "com quanto dinheiro eu começo?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Dinheiro inicial",
+    "Criar um personagem",
+    "Livro: Dinheiro e acesso",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Na criação padrão você começa no Grau 4, com um Traje 1 e ¥150.000 para comprar o resto. Pode gastar como quiser, desde que caiba no orçamento e nos requisitos."
+  },
+  {
+   "n": 16,
+   "hora": "17:10",
+   "usuario": "eu posso comprar uma pistola logo de cara?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Dinheiro inicial",
+    "Criar um personagem",
+    "Livro: Equipamento inicial",
+    "Livro: Dinheiro e acesso"
+   ],
+   "aviso": "",
+   "resposta": "Não sem autorização. Arma de fogo exige Grau 2 ou autorização prévia, e você começa no Grau 4, então a autorização tem que ser combinada com o mestre ou com a guilda antes da compra."
+  },
+  {
+   "n": 17,
+   "hora": "17:12",
+   "usuario": "qnto de xp eu preciso pra sair do nv 2?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Dinheiro inicial",
+    "XP para subir",
+    "Subir de nível",
+    "Livro: Experiência e Progressão",
+    "Livro: Recompensas e custos",
+    "Livro: Limiar do nível 20"
+   ],
+   "aviso": "",
+   "resposta": "São 200 XP para sair do nível 2. É o custo desse avanço, não o total acumulado desde a criação."
+  },
+  {
+   "n": 18,
+   "hora": "17:14",
+   "usuario": "e do 11?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "XP para subir",
+    "Subir de nível",
+    "Livro: Experiência e Progressão",
+    "Livro: Recompensas e custos",
+    "Livro: Funções complementares (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Do nível 11 são 900 XP para o próximo. Esse valor vale igual até o 13."
+  },
+  {
+   "n": 19,
+   "hora": "17:16",
+   "usuario": "nao entendi o que e duplo 10 no bloquear, pode explicar melhor?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "XP para subir",
+    "Subir de nível",
+    "Livro: Bloquear",
+    "Livro: Passo da Arma (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Duplo 10 é quando os dois d10 do Bloquear saem 10. O efeito disso, o Aparar, eu não achei no livro agora."
+  },
+  {
+   "n": 20,
+   "hora": "17:18",
+   "usuario": "e duplo 1 no bloquear, o que acontece?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Bloquear",
+    "Livro: Passo da Arma (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Duplo 1 é quando os dois d10 do Bloquear saem 1. O efeito disso não veio aqui agora."
+  }
+ ],
+ "pendente": null
+}

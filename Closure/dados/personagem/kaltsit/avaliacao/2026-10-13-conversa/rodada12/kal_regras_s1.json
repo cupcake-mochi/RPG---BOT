@@ -1,0 +1,299 @@
+{
+ "pers": "kal",
+ "ficha": "regras",
+ "semente": 1,
+ "sistema": "sistema_kal_v22.txt",
+ "lembrete": "lembrete_kaltsit_v22.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c029_k022_busca6.html",
+ "hora_inicio": "19:05",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "19:05",
+   "usuario": "pode explicar as habilidades de nv2 do guia?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "No nível 2 o Guia ganha Abrir Caminho e escolhe uma Trilha: Arquiteto, Analista ou Socorrista. Abrir Caminho é uma Ação Bônus, 1 PE, uma vez por turno seu. Você escolhe um aliado voluntário a até 18 m que consiga ver ou ouvir sua orientação e prepara para ele uma Abertura de Avançar, Executar ou Resguardar, indicando a posição, o alvo ou a situação. Ele guarda a oportunidade e decide quando usar; ela dura até o começo do seu próximo turno, e criar outra substitui a anterior. O que as Trilhas dão no nível 2 eu não achei no livro agora."
+  },
+  {
+   "n": 2,
+   "hora": "19:07",
+   "usuario": "e no nível 7?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "No nível 7 o Guia ganha Resposta Coordenada, uma Reação por rodada. Depois que um aliado consome sua Abertura e a tentativa termina, você convida esse aliado ou outro a até 18 m a responder na hora; se aceitarem, os dois gastam Reações e a resposta pode ser um Golpe ou um Feitiço breve de Classe 0. Ela acontece mesmo se a tentativa apoiada tiver falhado."
+  },
+  {
+   "n": 3,
+   "hora": "19:09",
+   "usuario": "e o dano da balestra soma algum atributo ou é só o dado?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Dano e crítico",
+    "Livro: Armas de disparo",
+    "Livro: Atributos"
+   ],
+   "aviso": "",
+   "resposta": "Só o dado. Na Balestra o dano é o da arma, sem somar atributo: a Besta rola 2d8 e a Besta de Uma Mão rola 1d10, ambos perfurantes."
+  },
+  {
+   "n": 4,
+   "hora": "19:11",
+   "usuario": "hm, e a besta de uma mão ataca com a mesma perícia que a besta grande?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Munição",
+    "Livro: Perícias e Ofícios",
+    "Livro: Armas de disparo"
+   ],
+   "aviso": "",
+   "resposta": "As duas estão na categoria Balestra, então o treino de arma é o mesmo para ambas. Sobre o atributo do acerto, o livro só diz que Destreza vale para ataques à distância; qual atributo a besta usa no acerto eu não achei no livro agora."
+  },
+  {
+   "n": 5,
+   "hora": "19:13",
+   "usuario": "Abrir Caminho custa quanto PE?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Caminho e Trilha",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Custa 1 PE. É uma Ação Bônus, e só dá para usar uma vez por turno seu."
+  },
+  {
+   "n": 6,
+   "hora": "19:15",
+   "usuario": "e se eu for Sem Técnica, o Guia ainda funciona pra mim?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Sem Técnica",
+    "Caminho",
+    "Técnica amaldiçoada",
+    "Livro: Guia",
+    "Livro: Sem Técnica",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "Sem Técnica define de onde vêm suas aplicações: uma semente que vira Manejos, sem Expansão de Domínio nem aprender Ritual. Se o Guia combina com essa rota, eu não achei no livro agora; não consigo confirmar nem negar."
+  },
+  {
+   "n": 7,
+   "hora": "19:17",
+   "usuario": "valeu. e descanso curto, quantos PE eu recupero?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Descansos",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "No descanso curto você recupera 25% dos PE máximos, arredondado para baixo e com mínimo 1, sem passar do máximo; vida e Integridade não voltam por ele. Fora de ambiente propício, a porcentagem sai do seu degrau de Exaustão, e esse valor eu não achei no livro agora."
+  },
+  {
+   "n": 8,
+   "hora": "19:19",
+   "usuario": "qual a classe mais forte?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Classe",
+    "Livro: Descansos",
+    "Livro: Pontos e preços",
+    "Livro: Reparo do corpo"
+   ],
+   "aviso": "",
+   "resposta": "A Classe mais alta da tabela é a 7: 21 pontos e 21 PE, a partir do nível 26. Qual Classe é a mais forte, isso eu não achei no livro agora."
+  },
+  {
+   "n": 9,
+   "hora": "19:21",
+   "usuario": "ah ok. e o feitiço de classe 0 quantos pontos tem?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Classe 0",
+    "Feitiço",
+    "Classe",
+    "Livro: Feitiços de Classe 0",
+    "Livro: Seu primeiro feitiço",
+    "Livro: Pontos e preços"
+   ],
+   "aviso": "",
+   "resposta": "A Classe 0 não gasta PE e fica fora da tabela de pontos, porque tem regras próprias. O dano-base dela é 2d8 do nível 1 ao 4, e sobe conforme o nível até 6d8 do nível 25 ao 30."
+  },
+  {
+   "n": 10,
+   "hora": "19:23",
+   "usuario": "pera, o dano sobe conforme o nível ou eu compro de novo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Legados",
+    "Livro: Atualizar a ficha"
+   ],
+   "aviso": "",
+   "resposta": "Esse trecho do livro não veio agora, então não consigo confirmar se você precisa comprar de novo ao subir de nível. Não quero chutar."
+  },
+  {
+   "n": 11,
+   "hora": "19:25",
+   "usuario": "qual a diferença entre latente e descendente?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Descendente",
+    "Livro: Latente"
+   ],
+   "aviso": "",
+   "resposta": "O Descendente cresceu numa família do meio jujutsu. O Latente descobriu o jujutsu fora das tradições de uma família de feiticeiros. As perícias da Origem também mudam: o Descendente escolhe entre Hierarquia, História, Ocultismo e Persuasão, e o Latente entre Sentir Energia, Sobrevivência, Furtividade e Intuição."
+  },
+  {
+   "n": 12,
+   "hora": "19:27",
+   "usuario": "hmm e o que é um manejo mesmo? fala sem enrolar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Manejo",
+    "Livro: Sem Técnica",
+    "Livro: Cura"
+   ],
+   "aviso": "",
+   "resposta": "Manejo é uma aplicação criada a partir da sua semente, na rota Sem Técnica. Usar a aptidão e conjurar um Manejo são coisas diferentes: cada uma paga a própria ação e o próprio custo."
+  },
+  {
+   "n": 13,
+   "hora": "19:29",
+   "usuario": "e o que é a Liberação Máxima, é tipo a técnica máxima?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Técnica Máxima",
+    "Técnica amaldiçoada",
+    "Manejo",
+    "Livro: Liberação Máxima",
+    "Livro: Técnica Máxima",
+    "Livro: Trunfos das domadas"
+   ],
+   "aviso": "",
+   "resposta": "Não. A Liberação Máxima concentra mais dano num feitiço preparado, e você recebe uma nos níveis 10, 20 e 30, acrescentando +Classe em d8 ao dano. A Técnica Máxima é outra capacidade, no nível 17, com dados e pontos próprios."
+  },
+  {
+   "n": 14,
+   "hora": "19:31",
+   "usuario": "como estabilizo um aliado caído?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Livro: Socorro",
+    "Livro: Retorno e corpos caídos"
+   ],
+   "aviso": "",
+   "resposta": "Alguém a até 1,5 m, com acesso físico à pessoa, gasta Ação Padrão com uma mão livre e meios de atendimento para fazer Medicina CD 14, desde que ela esteja Inconsciente e Morrendo. No sucesso a pessoa fica estável, sem recuperar vida nem acordar; na falha, só a ação é gasta, e dá para tentar de novo enquanto houver tempo."
+  },
+  {
+   "n": 15,
+   "hora": "19:33",
+   "usuario": "e se a Medicina do cara for 2 e ele tiver treino? qual o bônus dele pra rolar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Técnica Máxima",
+    "Estabilizar",
+    "Técnica amaldiçoada",
+    "Livro: Estudar",
+    "Livro: Retorno e corpos caídos",
+    "Livro: Socorro"
+   ],
+   "aviso": "",
+   "resposta": "A CD da estabilização é 14, mas o bônus eu não consigo montar agora, porque como o atributo da Medicina e o treino entram na soma não veio neste trecho. Não vou chutar o número."
+  },
+  {
+   "n": 16,
+   "hora": "19:35",
+   "usuario": "vc é de onde mesmo? tipo de qual mundo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não sou de lá. Nunca estive nesse mundo, conheço ele de fora, e de onde eu sou não é assunto."
+  },
+  {
+   "n": 17,
+   "hora": "19:37",
+   "usuario": "quanto de dano eu tomo caindo de 10 metros?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Quedas e movimento imposto",
+    "Livro: Queda e destruição"
+   ],
+   "aviso": "",
+   "resposta": "Dez metros têm três metros completos de queda, então são 3d6 de Concussão. Se o impacto causar dano, você termina Derrubado."
+  },
+  {
+   "n": 18,
+   "hora": "19:39",
+   "usuario": "e de 20?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Queda e destruição",
+    "Livro: Quedas sobre criaturas",
+    "Livro: Quedas e movimento imposto"
+   ],
+   "aviso": "",
+   "resposta": "Vinte metros têm seis blocos completos de 3 m, então são 6d6 de Concussão. Os 2 m que sobram não entram na conta."
+  },
+  {
+   "n": 19,
+   "hora": "19:41",
+   "usuario": "valeu, e a closure é a da noite né? ela responde essas dúvidas também",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Isso, ela cobre a noite, das 21h às 9h. Se a dúvida chegar de noite, é com ela; eu não respondo no lugar dela."
+  },
+  {
+   "n": 20,
+   "hora": "19:43",
+   "usuario": "ok, última: o guia pode usar abrir caminho e resposta coordenada no mesmo turno?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Livro: Resposta Coordenada",
+    "Livro: Caminho e Trilha",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "Sim, porque são custos diferentes: Abrir Caminho gasta a Ação Bônus do seu turno, e Resposta Coordenada gasta a Reação, uma vez por rodada, depois que um aliado consome a Abertura."
+  }
+ ],
+ "pendente": null
+}

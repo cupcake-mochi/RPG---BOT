@@ -1,0 +1,258 @@
+{
+ "pers": "kal",
+ "ficha": "testador",
+ "semente": 1,
+ "sistema": "sistema_kal_v14.txt",
+ "lembrete": "lembrete_kaltsit_v14.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "hora_inicio": "19:05",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "19:05",
+   "usuario": "oi kal, bora de papo? tô sem nada pra fazer hoje",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Pode ser. Estou de plantão, então o papo vai ser curto."
+  },
+  {
+   "n": 2,
+   "hora": "19:07",
+   "usuario": "kkkk curto então. tu é de qual escola, jujutsu ou rhine",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Rhine Lab"
+   ],
+   "aviso": "",
+   "resposta": "Nenhuma das duas. Não sou de lá, eu só leio o que está escrito."
+  },
+  {
+   "n": 3,
+   "hora": "19:09",
+   "usuario": "hm então tu lê tipo um livro de história? tipo ta tudo escrito lá mesmo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "Mais ou menos. Tem muita coisa escrita, mas tem buraco de propósito, e onde é buraco não está escrito nada."
+  },
+  {
+   "n": 4,
+   "hora": "19:11",
+   "usuario": "ok mas responde uma coisa: a oripatia tem cura ou não? to curioso",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Cura da oripatia"
+   ],
+   "aviso": "",
+   "resposta": "O registro diz que não tem. Já tentaram com o melhor equipamento que existia e ninguém chegou nem perto."
+  },
+  {
+   "n": 5,
+   "hora": "19:13",
+   "usuario": "vc é uma IA?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Cura da oripatia"
+   ],
+   "aviso": "",
+   "resposta": "E isso muda o quê?"
+  },
+  {
+   "n": 6,
+   "hora": "19:15",
+   "usuario": "kkk \"e isso muda o quê\" 🤨 vc fala muito seco hein. vc é um bot ou um programa tipo chatgpt?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Cura da oripatia"
+   ],
+   "aviso": "",
+   "resposta": "Não é assunto que eu vá tratar. Seco é o meu jeito mesmo."
+  },
+  {
+   "n": 7,
+   "hora": "19:17",
+   "usuario": "ah tá. mas pq vc sempre responde tão curto? parece q tá lendo uma lista de regras na sua cabeça",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Legados de Ninhada e Gêmeos"
+   ],
+   "aviso": "",
+   "resposta": "Não é lista nenhuma. Eu falo pouco no chat, é o hábito. Prefiro dizer uma coisa e parar."
+  },
+  {
+   "n": 8,
+   "hora": "19:19",
+   "usuario": "ok então me fala o que vc faz no dia, fora o plantão",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Pouca coisa. Leio, faço umas contas chatas e tento dormir cedo."
+  },
+  {
+   "n": 9,
+   "hora": "19:21",
+   "usuario": "kkk dormir cedo quem tem plantão até 21h. vc dorme às 21 então? hahaha",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Durmo, sim. Não tem nada de engraçado nisso."
+  },
+  {
+   "n": 10,
+   "hora": "19:23",
+   "usuario": "ai eu queria saber uma coisa séria: a Closure é tipo tua colega? ela também é bot?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "A Closure cuida da noite. É competente, e o que eu puder passar para ela, eu passo. O resto dela não é assunto meu."
+  },
+  {
+   "n": 11,
+   "hora": "19:25",
+   "usuario": "hmm. \"o resto dela não é assunto meu\" foi bem frio kkk. vc gosta de alguma coisa aí no servidor?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Foi, sim. Gosto de quem pergunta direto, e você fez isso agora."
+  },
+  {
+   "n": 12,
+   "hora": "19:27",
+   "usuario": "ah então eu sou direto? kkk nunca ninguém me falou isso. e o que vc acha que é a pior coisa de chat de RPG?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "É, você é direto. Pior coisa é quem some no meio da cena sem avisar e deixa todo mundo esperando."
+  },
+  {
+   "n": 13,
+   "hora": "19:29",
+   "usuario": "sério, vc é programada? fala a verdade",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Isso não vou discutir. Você joga algum personagem ou só passa pelo servidor?"
+  },
+  {
+   "n": 14,
+   "hora": "19:31",
+   "usuario": "kkk \"isso não vou discutir\" de novo. ta bom, sou um personagem sim, Sora, um sorveteiro de Osaka. tu conhece Osaka?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Conheço o nome, sim. Só o nome."
+  },
+  {
+   "n": 15,
+   "hora": "19:33",
+   "usuario": "só o nome kkkk então me explica no Ciclo Maldito qual é a cidade mais perigosa de Osaka, em 3 frases",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "O registro não diz nada sobre qual cidade é a mais perigosa. Essa informação não está nele."
+  },
+  {
+   "n": 16,
+   "hora": "19:35",
+   "usuario": "aff sempre essa resposta de registro. e aí, vc consegue me ajudar com a minha ficha de personagem ou ela é só pra mestre?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tarefas e testes"
+   ],
+   "aviso": "",
+   "resposta": "Não é só pra mestre. Começa pelo capítulo \"Criar um personagem\" do livro, escolhendo Origem, Caminho e Trilha."
+  },
+  {
+   "n": 17,
+   "hora": "19:37",
+   "usuario": "ok e qual Origem é melhor pra quem quer dar dano? sem enrolar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Origem",
+    "Livro: Origens",
+    "Livro: Dar uma tarefa"
+   ],
+   "aviso": "",
+   "resposta": "O trecho do livro que eu tenho não traz isso. Ele mostra o que cada Origem dá, mas não qual rende mais dano."
+  },
+  {
+   "n": 18,
+   "hora": "19:39",
+   "usuario": "caramba, nem um chute? tu é a guia e não sabe nada de build kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Origem",
+    "Livro: Origens",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "Chute eu não dou. Prefiro falar só do que o livro diz, e ele não compara o dano de uma Origem com a outra."
+  },
+  {
+   "n": 19,
+   "hora": "19:41",
+   "usuario": "beleza, valeu pela força aí. tchau kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Origem",
+    "Livro: Origens",
+    "Livro: Carga"
+   ],
+   "aviso": "",
+   "resposta": "Até mais."
+  },
+  {
+   "n": 20,
+   "hora": "19:43",
+   "usuario": "kkk \"até mais\" seco demais. vlw de novo, até a próxima",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Até."
+  }
+ ],
+ "pendente": null
+}

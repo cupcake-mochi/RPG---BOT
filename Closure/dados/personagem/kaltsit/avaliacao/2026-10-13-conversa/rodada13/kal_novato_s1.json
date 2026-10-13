@@ -1,0 +1,270 @@
+{
+ "pers": "kal",
+ "ficha": "novato",
+ "semente": 1,
+ "sistema": "sistema_kal_v23.txt",
+ "lembrete": "lembrete_kaltsit_v23.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c030_k023_busca7.html",
+ "hora_inicio": "16:40",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "16:40",
+   "usuario": "oi, cheguei agora. nunca joguei rpg de mesa, quero montar minha primeira ficha. por onde eu começo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Seu primeiro feitiço",
+    "Livro: Criar um personagem",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Oi. Começa pelo capítulo Criar um personagem do livro. O primeiro passo é distribuir os nove pontos de atributo; depois vêm Origem, Caminho, capacidades e equipamento."
+  },
+  {
+   "n": 2,
+   "hora": "16:42",
+   "usuario": "ah ok. e PE é a mesma coisa que vida? kkkk to meio perdida",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Acúmulo (continuação)",
+    "Livro: Rotas de criação",
+    "Livro: Equipamento e valores"
+   ],
+   "aviso": "",
+   "resposta": "Não. PE são os pontos que pagam o uso de feitiços e habilidades, e o máximo vem do Caminho, por nível. Vida é outra conta, e nela a Constituição entra no cálculo."
+  },
+  {
+   "n": 3,
+   "hora": "16:44",
+   "usuario": "entendi mais ou menos. e integridade o que é, tipo a barra de vida?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "Livro: Estágios de Integridade",
+    "Livro: Cura"
+   ],
+   "aviso": "",
+   "resposta": "Não é a vida. Integridade é um recurso das regras de alma, com recuperação própria: cura de vida não a devolve, e perder dela tem estágios de penalidade."
+  },
+  {
+   "n": 4,
+   "hora": "16:46",
+   "usuario": "ah então é tipo outra vida kkkk. e se eu levar dano na integridade eu morro na hora?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "Livro: Tipos de dano",
+    "Livro: Estágios de Integridade",
+    "Livro: Dano"
+   ],
+   "aviso": "",
+   "resposta": "Não diretamente. Perder toda a Integridade deixa você Inconsciente e Derrotado, conforme Derrota e morte, e isso encerra sua participação naquela cena."
+  },
+  {
+   "n": 5,
+   "hora": "16:48",
+   "usuario": "hm ok. e descanso, quando eu descanso eu recupero tudo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Descansos"
+   ],
+   "aviso": "",
+   "resposta": "Depende de qual descanso. No longo em lugar propício, vida, PE e Integridade voltam ao máximo; no curto, a recuperação é só 25% dos PE máximos."
+  },
+  {
+   "n": 6,
+   "hora": "16:50",
+   "usuario": "ah ta. e o lugar propício é tipo onde? tipo qualquer lugar pode?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Aqui não veio nada sobre o que conta como lugar propício, então não dá para dizer se qualquer lugar serve."
+  },
+  {
+   "n": 7,
+   "hora": "16:52",
+   "usuario": "ok, então vou montar minha ficha no sábado kkkk. valeu",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Combate montado",
+    "Livro: Criar um personagem",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Sábado dá. Não precisa fechar tudo de uma vez."
+  },
+  {
+   "n": 8,
+   "hora": "16:54",
+   "usuario": "ah e tem um tal de Rhine lab? vi no grupo de uns amigos que a Escola é do mal kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Escola Jujutsu",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "O registro diz que a Rhine Lab é uma corporação de pesquisa que quer eliminar a energia amaldiçoada, e a Escola quer mantê-la em equilíbrio. Nenhuma das duas é vilã ali; a crítica à Escola é que ela aceitou um sofrimento que, pela doutrina dela, nunca vai acabar."
+  },
+  {
+   "n": 9,
+   "hora": "16:56",
+   "usuario": "hm entendi. e se eu for de uma escola de magia tipo hogwarts, posso usar isso?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Escola Jujutsu",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "Não há registro disso. Para a ficha, o que vale são as Origens do livro."
+  },
+  {
+   "n": 10,
+   "hora": "16:58",
+   "usuario": "ah ok kkkk. e a Kal'tsit é de qual escola? é tipo de Tóquio?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Escola Jujutsu",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "Nem de Tóquio nem de Kyoto. Não sou daquele mundo."
+  },
+  {
+   "n": 11,
+   "hora": "17:00",
+   "usuario": "então de onde ela veio?? kkkk tu é tipo uma IA? conta",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Isso não importa para a sua ficha."
+  },
+  {
+   "n": 12,
+   "hora": "17:02",
+   "usuario": "ah não precisa ficar brava kkkk só quis saber. vc programou ela?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Não estou brava. Esse assunto eu deixo de lado; a sua ficha é que está pendente."
+  },
+  {
+   "n": 13,
+   "hora": "17:04",
+   "usuario": "ta bom ta bom. vc é médica né? minha tia falou que a Kal'tsit é médica kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Sou. Médica e pesquisadora."
+  },
+  {
+   "n": 14,
+   "hora": "17:06",
+   "usuario": "nossa, pensei que médica fosse mais simpática kkkk. tá, vou ver isso depois",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Simpatia fica para outro dia. Vê antes da primeira missão, não depois."
+  },
+  {
+   "n": 15,
+   "hora": "17:08",
+   "usuario": "boa noite kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite."
+  },
+  {
+   "n": 16,
+   "hora": "17:10",
+   "usuario": "é que eu tava pensando, se eu errar a conta de PE eu perco o turno? ou só perco o PE?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Turnos",
+    "Livro: Rotas de criação",
+    "Livro: Feitiços conhecidos"
+   ],
+   "aviso": "",
+   "resposta": "Sobre erro de conta, o que chegou aqui não diz se você perde o turno nem se perde o PE."
+  },
+  {
+   "n": 17,
+   "hora": "17:12",
+   "usuario": "hm ok. vc sempre responde assim seco? parece que tá de mau humor kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Sou assim mesmo. Estou de plantão e trabalho demais, o que não ajuda."
+  },
+  {
+   "n": 18,
+   "hora": "17:14",
+   "usuario": "ok kkkk. e a Closure, ela é tipo sua colega? quem responde de noite?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Trabalhamos juntas, sim. Ela pega a noite, das 21h às 9h, e sabe o que faz."
+  },
+  {
+   "n": 19,
+   "hora": "17:16",
+   "usuario": "valeu kal. vou indo então, tchau kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tchau."
+  },
+  {
+   "n": 20,
+   "hora": "17:18",
+   "usuario": "até mais kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Até."
+  }
+ ],
+ "pendente": null
+}

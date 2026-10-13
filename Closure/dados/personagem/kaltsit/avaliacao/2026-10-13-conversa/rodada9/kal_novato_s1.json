@@ -1,0 +1,304 @@
+{
+ "pers": "kal",
+ "ficha": "novato",
+ "semente": 1,
+ "sistema": "sistema_kal_v20.txt",
+ "lembrete": "lembrete_kaltsit_v20.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c025_k020.html",
+ "hora_inicio": "16:40",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "16:40",
+   "usuario": "oi, entrei hoje e nunca joguei rpg de mesa. por onde eu começo pra montar minha ficha?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Primeira sessão",
+    "Livro: Criar um personagem",
+    "Livro: Ciclo Maldito"
+   ],
+   "aviso": "",
+   "resposta": "Começa pelo capítulo Criar um personagem do livro. Ele segue a ordem: atributos, Origem, Caminho, capacidades, equipamento e, por último, a ficha."
+  },
+  {
+   "n": 2,
+   "hora": "16:42",
+   "usuario": "kkkk ok. e PE é a vida? vi essa sigla em tudo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "PE",
+    "Livro: Condições de uso",
+    "Livro: Criar um personagem",
+    "Livro: Vida a zero"
+   ],
+   "aviso": "",
+   "resposta": "Não. PE são pontos de energia, o que você gasta para conjurar um feitiço. Vida é outro número, e ao chegar a zero você fica Morrendo."
+  },
+  {
+   "n": 3,
+   "hora": "16:44",
+   "usuario": "então eu coloco tudo em força? tipo 9 de força e pronto",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "PE",
+    "Livro: Tipos de dano",
+    "Livro: Criar um personagem",
+    "Livro: Equipamento"
+   ],
+   "aviso": "",
+   "resposta": "Não. Nenhum atributo pode passar de 3, então Força fica no máximo em 3. Os pontos que sobram vão para Destreza, Constituição, Inteligência ou Essência."
+  },
+  {
+   "n": 4,
+   "hora": "16:46",
+   "usuario": "ok entendi kkk. e descansar recupera a vida? tipo se eu parar um tempo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Descansos",
+    "Livro: Rotas de criação",
+    "Livro: Cena e usos de habilidades"
+   ],
+   "aviso": "",
+   "resposta": "Na pausa curta entre confrontos, não. Ela devolve só 25% dos PE máximos. No descanso longo, feito em lugar propício e com a missão encerrada, a vida volta ao máximo."
+  },
+  {
+   "n": 5,
+   "hora": "16:48",
+   "usuario": "e integridade é tipo uma segunda vida? kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "Livro: Descansos",
+    "Livro: Estágios de Integridade",
+    "Livro: Cura"
+   ],
+   "aviso": "",
+   "resposta": "Não. É outra reserva, separada da vida. Cura de vida não devolve Integridade, e recuperar Integridade não devolve vida."
+  },
+  {
+   "n": 6,
+   "hora": "16:50",
+   "usuario": "e pra atacar é só rolar o d20 e somar a força? kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "Livro: Ataques",
+    "Livro: Estágios de Integridade",
+    "Livro: Atributos"
+   ],
+   "aviso": "",
+   "resposta": "Quase. Falta a maestria: no corpo a corpo a rolagem é d20 + Força + maestria, e igualar ou superar a Defesa do alvo é acerto."
+  },
+  {
+   "n": 7,
+   "hora": "16:52",
+   "usuario": "e se minha vida chegar a zero eu morro na hora?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "Livro: Vida a zero",
+    "Livro: Estágios de Integridade",
+    "Livro: Exemplos de pacto"
+   ],
+   "aviso": "",
+   "resposta": "Não. Você fica Morrendo e escolhe entre Aguentar e Insistir. A janela de socorro começa com três rodadas, menos uma por Sequela; se ela zerar, você fica Derrotado."
+  },
+  {
+   "n": 8,
+   "hora": "16:54",
+   "usuario": "ah ok. e energia amaldiçoada, de onde ela vem afinal?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada"
+   ],
+   "aviso": "",
+   "resposta": "O registro diz que ela nasce das emoções negativas dos seres humanos."
+  },
+  {
+   "n": 9,
+   "hora": "16:56",
+   "usuario": "e quem tá certo, a escola ou a rhine?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Ninguém é vilão",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Livro: Objetos amaldiçoados",
+    "Livro: Conduzir (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "O registro não escolhe um lado: nenhum dos dois está totalmente errado. A Escola quer manter a energia em equilíbrio, e a Rhine acha isso covardia e quer eliminá-la."
+  },
+  {
+   "n": 10,
+   "hora": "16:58",
+   "usuario": "valeu. e a closure responde a noite toda? kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Ninguém é vilão",
+    "Escola Jujutsu",
+    "Rhine Lab"
+   ],
+   "aviso": "",
+   "resposta": "Das 21h às 9h quem responde é a Closure. Das 9h às 21h sou eu, e nenhuma das duas fica no canal ao mesmo tempo."
+  },
+  {
+   "n": 11,
+   "hora": "17:00",
+   "usuario": "to com medo de fazer besteira na primeira sessão. o pessoal parece saber tudo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Ninguém é vilão",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Livro: Primeira sessão"
+   ],
+   "aviso": "",
+   "resposta": "O livro prevê isso: você pode aprender as suas próprias escolhas primeiro e consultar os catálogos quando precisar. Os detalhes do personagem também podem crescer durante as sessões."
+  },
+  {
+   "n": 12,
+   "hora": "17:02",
+   "usuario": "boa noite kal. meu grupo marcou a primeira missão amanhã às 20h",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa tarde. Antes de amanhã, confirme com o grupo quem reúne os personagens e quais cenas de violência podem aparecer."
+  },
+  {
+   "n": 13,
+   "hora": "17:04",
+   "usuario": "kkkk vc é bot? as respostas são muito certinhas",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Cortina"
+   ],
+   "aviso": "",
+   "resposta": "O livro é que é certinho. Isso não muda nada na sua ficha."
+  },
+  {
+   "n": 14,
+   "hora": "17:06",
+   "usuario": "ok mas fala sério, vc é bot ou não",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Deixa isso. Na ficha, a Origem vem antes do Caminho, então comece por ela."
+  },
+  {
+   "n": 15,
+   "hora": "17:08",
+   "usuario": "então origem é a classe do personagem? tipo guerreiro ou mago kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Origem",
+    "Classe",
+    "Livro: Tipos de entidade",
+    "Livro: Origens",
+    "Livro: Escolhas da Origem"
+   ],
+   "aviso": "",
+   "resposta": "Não. Origem é a vida que o personagem levava antes da primeira missão. Classe é o tamanho de um feitiço, e a forma de atuar do personagem está no Caminho."
+  },
+  {
+   "n": 16,
+   "hora": "17:10",
+   "usuario": "entendi. e se eu não entender uma regra na hora da missão, o que eu faço? tenho medo de travar tudo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Origem",
+    "Classe",
+    "Livro: Exemplos de pacto",
+    "Livro: Origens",
+    "Livro: Mundo jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Não achei isso no trecho que tenho aberto agora. Numa dúvida de regra durante a missão, pergunte ao mestre na hora: essa decisão é dele."
+  },
+  {
+   "n": 17,
+   "hora": "17:12",
+   "usuario": "ah então eu acho que o mestre é tipo a pessoa que manda na mesa? kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Origem",
+    "Classe",
+    "Livro: Seu primeiro feitiço",
+    "Livro: Origens",
+    "Livro: Ciclo Maldito"
+   ],
+   "aviso": "",
+   "resposta": "Mais ou menos. O mestre apresenta os lugares, interpreta as outras pessoas e criaturas e aplica as regras quando um resultado precisa ser decidido. O que o seu personagem diz e tenta fazer é você que escolhe."
+  },
+  {
+   "n": 18,
+   "hora": "17:14",
+   "usuario": "hj a sessão foi de boa mas eu errei o dado umas 3 vezes. tô me sentindo meio burra",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Primeira sessão"
+   ],
+   "aviso": "",
+   "resposta": "Erro de dado no começo é normal e não diz nada sobre você. Antes de rolar, confira na regra quais modificadores entram, porque ela informa isso."
+  },
+  {
+   "n": 19,
+   "hora": "17:16",
+   "usuario": "valeu kal. vou reler o capítulo de criar personagem antes de fechar minha ficha",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Criar uma invocação",
+    "Livro: Criar um personagem"
+   ],
+   "aviso": "",
+   "resposta": "Faça isso. Confira os requisitos de cada escolha antes de concluir a ficha."
+  },
+  {
+   "n": 20,
+   "hora": "17:18",
+   "usuario": "não entendi nada dessa parte de cair a zero kkk. quantas rodadas eu tenho pra alguém me ajudar?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Vida a zero",
+    "Livro: Criar um personagem",
+    "Livro: Quedas sobre criaturas"
+   ],
+   "aviso": "",
+   "resposta": "Sem Sequela, são três rodadas. Cada volta completa da iniciativa, contada a partir do ponto em que você caiu, consome uma; quando a janela zerar, você fica Derrotado."
+  }
+ ],
+ "pendente": null
+}

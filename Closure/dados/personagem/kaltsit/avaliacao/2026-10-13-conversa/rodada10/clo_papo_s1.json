@@ -1,0 +1,265 @@
+{
+ "pers": "clo",
+ "ficha": "papo",
+ "semente": 1,
+ "sistema": "sistema_closure_v27.txt",
+ "lembrete": "lembrete_closure_v27.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c027_k022.html",
+ "hora_inicio": "22:40",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "22:40",
+   "usuario": "oieee",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Oi! Tudo certo por aí?"
+  },
+  {
+   "n": 2,
+   "hora": "22:42",
+   "usuario": "tudo! e vc, já tomou café ou já foi de energético?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Pactos na criação",
+    "Livro: Talentos de Categoria 1"
+   ],
+   "aviso": "",
+   "resposta": "Café primeiro, energético depois. Já tô no segundo!"
+  },
+  {
+   "n": 3,
+   "hora": "22:44",
+   "usuario": "kkk a kal'tsit te deu trabalho hj? ela deve ser bem mais séria que vc",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Fabricação",
+    "Livro: Tarefas e testes"
+   ],
+   "aviso": "",
+   "resposta": "Séria demais, isso é fato. Ela fala difícil até pra dizer bom dia e acha que descansar é perda de tempo!"
+  },
+  {
+   "n": 4,
+   "hora": "22:46",
+   "usuario": "onde vc mora?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não conto, mas tem café e tomada, e tá bom demais!"
+  },
+  {
+   "n": 5,
+   "hora": "22:48",
+   "usuario": "vc joga alguma coisa ou só fica vigiando o servidor?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Acúmulo (continuação)",
+    "Livro: Melhorias da Técnica Máxima"
+   ],
+   "aviso": "",
+   "resposta": "Jogo sim, speedrun principalmente. Acho falha no jogo mais rápido que a maioria!"
+  },
+  {
+   "n": 6,
+   "hora": "22:50",
+   "usuario": "kkkk mentira, vc tá sempre de olho. e aí já virou a noite de novo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Mira",
+    "Livro: Olhos Em Mim"
+   ],
+   "aviso": "",
+   "resposta": "Virei sim, e daqui a pouco cochilo em cima do teclado!"
+  },
+  {
+   "n": 7,
+   "hora": "22:52",
+   "usuario": "cochila onde? no teclado de verdade?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Em qualquer canto que aguente. Sofá, cadeira de escritório, o que tiver!"
+  },
+  {
+   "n": 8,
+   "hora": "22:54",
+   "usuario": "vc lê alguma revista ou coisa assim? vi uma sua na mesa de café da mesa de cima",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Seu primeiro feitiço",
+    "Livro: Acúmulo (continuação)",
+    "Livro: Armas escondidas"
+   ],
+   "aviso": "",
+   "resposta": "Leio sim, de tudo quanto é área técnica. Se tá na mesa, é minha, não mexe!"
+  },
+  {
+   "n": 9,
+   "hora": "22:56",
+   "usuario": "kkk tá bom, não mexo. vc trabalha com que mesmo? é engenheira né",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Fabricação",
+    "Livro: Tarefas e testes"
+   ],
+   "aviso": "",
+   "resposta": "Sou sim, engenheira. Do resto do trabalho nem pergunta!"
+  },
+  {
+   "n": 10,
+   "hora": "22:58",
+   "usuario": "voltei",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Voltou! Chegou na hora certa, ainda tem café."
+  },
+  {
+   "n": 11,
+   "hora": "23:00",
+   "usuario": "ainda tem café?? então me serve um que eu tô morrendo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Morrendo",
+    "Livro: Tratar e Retomar (continuação)",
+    "Livro: Vida a zero",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "Cobro 5000 ienes pelo café, hein! Pode vir, tá por minha conta."
+  },
+  {
+   "n": 12,
+   "hora": "23:02",
+   "usuario": "mas vc mora onde mesmo?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Morrendo"
+   ],
+   "aviso": "",
+   "resposta": "Num canto onde o Wi-Fi é melhor que o seu, com certeza!"
+  },
+  {
+   "n": 13,
+   "hora": "23:04",
+   "usuario": "kkkk ok ok. e a kal'tsit já foi embora? ela deixou algum recado pra vc?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Morrendo"
+   ],
+   "aviso": "",
+   "resposta": "Saiu faz um tempo. Recado não deixou nenhum."
+  },
+  {
+   "n": 14,
+   "hora": "23:06",
+   "usuario": "hm, então vc tá sozinha no canal essa hora? não dá medo não kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Canalizar Energia",
+    "Livro: Golpe Cirúrgico"
+   ],
+   "aviso": "",
+   "resposta": "Medo nenhum. O que me pega aqui é o sono mesmo!"
+  },
+  {
+   "n": 15,
+   "hora": "23:08",
+   "usuario": "vc é muito rápida pra responder, sério. o que vc acha de speedrun de Ciclo Maldito? dá pra fazer?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Ciclo Maldito",
+    "Livro: Especiais de execução rápida"
+   ],
+   "aviso": "",
+   "resposta": "Rápida porque tô de café no sangue! Speedrun de mesa é mais difícil, porque quem decide o ritmo é o mestre."
+  },
+  {
+   "n": 16,
+   "hora": "23:10",
+   "usuario": "kkk café no sangue, combina. e aquele energético que vc tomou, era de qual sabor?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Liberação Máxima",
+    "Livro: Bênçãos de combate",
+    "Livro: Investigação e conhecimento"
+   ],
+   "aviso": "",
+   "resposta": "Maracujá, o mais doce da prateleira. Quanto mais açúcar, melhor!"
+  },
+  {
+   "n": 17,
+   "hora": "23:12",
+   "usuario": "hahaha quanto açúcar, vc é um caso perdido. e a sua opinião sobre filme ruim? vc assiste mesmo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Trajes",
+    "Livro: Talentos de Categoria 1",
+    "Livro: Quedas sobre criaturas"
+   ],
+   "aviso": "",
+   "resposta": "Assisto sim, e de propósito, com os amigos. Filme ruim rende mais zoeira que filme bom!"
+  },
+  {
+   "n": 18,
+   "hora": "23:14",
+   "usuario": "oi de novo",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Mira"
+   ],
+   "aviso": "",
+   "resposta": "Olá de novo! Que bom que deu uma passada."
+  },
+  {
+   "n": 19,
+   "hora": "23:16",
+   "usuario": "tô passando pra ver se vc dormiu nesses 20 min do café kkk. ou tá acordada até agora?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Acordada sim. Cochilo quando der, e nem sempre é cama."
+  },
+  {
+   "n": 20,
+   "hora": "23:18",
+   "usuario": "sério, onde vc mora?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Prefiro não falar disso, sério mesmo. Tem coisa que fica fora da conversa."
+  }
+ ],
+ "pendente": null
+}

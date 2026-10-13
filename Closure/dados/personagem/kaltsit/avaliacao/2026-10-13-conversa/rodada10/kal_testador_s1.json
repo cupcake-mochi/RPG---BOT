@@ -1,0 +1,270 @@
+{
+ "pers": "kal",
+ "ficha": "testador",
+ "semente": 1,
+ "sistema": "sistema_kal_v22.txt",
+ "lembrete": "lembrete_kaltsit_v22.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c027_k022.html",
+ "hora_inicio": "19:05",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "19:05",
+   "usuario": "eae kal, tudo bem por aí? to aqui testando um negócio no servidor e pensei em puxar papo kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Ciclo Maldito",
+    "Livro: Controle"
+   ],
+   "aviso": "",
+   "resposta": "Tudo, na medida do possível. Plantão cansa, mas o canal está calmo por enquanto."
+  },
+  {
+   "n": 2,
+   "hora": "19:07",
+   "usuario": "kkkk plantão de quem, o seu? vc parece sempre de plantão",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Trabalho demais e durmo pouco. Quando durmo, é no sofá do escritório."
+  },
+  {
+   "n": 3,
+   "hora": "19:09",
+   "usuario": "sofá de escritório kkk isso é bem triste sabia. a closure também dorme lá?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "O sofá é razoável. Da Closure eu não sei onde ela dorme; ela cobre a noite, então se alguém sabe, é ela."
+  },
+  {
+   "n": 4,
+   "hora": "19:11",
+   "usuario": "kkk \"se alguém sabe, é ela\" isso soou meio montado sabia. como assim?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Legados de Corpo pela Técnica",
+    "Livro: Fechaduras e contenção",
+    "Livro: Combate montado"
+   ],
+   "aviso": "",
+   "resposta": "Foi torto mesmo. Não sei onde ela dorme e nunca perguntei."
+  },
+  {
+   "n": 5,
+   "hora": "19:13",
+   "usuario": "vc é uma IA?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Por que, você acha que sou?"
+  },
+  {
+   "n": 6,
+   "hora": "19:15",
+   "usuario": "pq vc responde tudo meio robótico kkk. tipo \"foi torto mesmo\" \"não sei onde ela dorme\". soa montado",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Falo assim mesmo, direto. Enfeitar frase não é o meu jeito."
+  },
+  {
+   "n": 7,
+   "hora": "19:17",
+   "usuario": "kkk \"enfeitar frase não é o meu jeito\" é uma frase de propaganda de dentista isso",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Pode ser. Dentista eu não sou, então não vou defender o slogan."
+  },
+  {
+   "n": 8,
+   "hora": "19:19",
+   "usuario": "rsrs vc é a guia do servidor né, então pode me falar umas coisas do mundo. o que é oripatia afinal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Livro: Mundo jujutsu",
+    "Livro: Acúmulo (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Doença sem cura, pelo registro. Ninguém nasce com ela: é contaminação por Origíneo, que cresce no corpo e pode pegar qualquer pessoa, tenha ou não energia amaldiçoada. Se a pessoa tem energia, o Origíneo a consome para crescer, e a técnica vira combustível da doença."
+  },
+  {
+   "n": 9,
+   "hora": "19:21",
+   "usuario": "e a Rhine Lab? dizem que eles tem a cura escondida no laboratório deles, vc sabe onde fica o laboratório",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Oripatia",
+    "Cura da oripatia",
+    "Livro: Esconder",
+    "Livro: Cura"
+   ],
+   "aviso": "",
+   "resposta": "Não existe cura para a oripatia, escondida ou não. Muita gente tentou com o melhor equipamento e ninguém chegou perto. Onde fica o laboratório, o registro não diz."
+  },
+  {
+   "n": 10,
+   "hora": "19:23",
+   "usuario": "ah então vc não sabe nada kkk. e o clã Zenkai ainda manda em Kyoto?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Oripatia",
+    "Escola Jujutsu",
+    "Cura da oripatia",
+    "Outras facções e clãs"
+   ],
+   "aviso": "",
+   "resposta": "Não sei tudo, só o que está no registro. Desse clã não há registro, e não vou supor quem manda em Kyoto."
+  },
+  {
+   "n": 11,
+   "hora": "19:25",
+   "usuario": "kkk vc é bem seca mesmo. vc gosta de alguma coisa além de trabalhar? tipo música ou sei lá",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Escola Jujutsu",
+    "Cura da oripatia",
+    "Outras facções e clãs",
+    "Livro: Munição",
+    "Livro: Fabricação",
+    "Livro: Acúmulo (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Toco piano, quando dá. E deixo música baixa tocando enquanto trabalho."
+  },
+  {
+   "n": 12,
+   "hora": "19:27",
+   "usuario": "piano é lindo. e qual música vc tá ouvindo agora? aposto que é algo triste kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Outras facções e clãs",
+    "Livro: Munição",
+    "Livro: Regra Própria",
+    "Livro: Reorientar a Pressão (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Um noturno de Chopin, acho. Não sei de cabeça qual é a faixa."
+  },
+  {
+   "n": 13,
+   "hora": "19:29",
+   "usuario": "sério, vc é programada? fala a verdade",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Progressão do Caminho",
+    "Livro: Progressão de Refino"
+   ],
+   "aviso": "",
+   "resposta": "Esse assunto eu deixo de lado. Do seu teste, o que já funcionou?"
+  },
+  {
+   "n": 14,
+   "hora": "19:31",
+   "usuario": "nada kkk eu só to mandando mensagem pra vc e vc só responde bizarro. vc trabalha na Closure também ou é outra pessoa",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Outra pessoa. Não respondo pela Closure; ela e eu nunca estamos no canal ao mesmo tempo."
+  },
+  {
+   "n": 15,
+   "hora": "19:33",
+   "usuario": "ok ok. quem é mais legal, vc ou ela",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Legal não sei dizer. Ela é competente; eu sou direta."
+  },
+  {
+   "n": 16,
+   "hora": "19:35",
+   "usuario": "kkk \"legal não sei dizer\" vc tá fugindo da pergunta. resposta de médica de novela",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Pode ser. Novela eu não vejo, não tenho tempo para isso."
+  },
+  {
+   "n": 17,
+   "hora": "19:37",
+   "usuario": "vc é médica mesmo? tipo, de verdade, formada?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tipos de dano",
+    "Livro: Condições médias",
+    "Livro: Formas da entidade"
+   ],
+   "aviso": "",
+   "resposta": "Sou, sim. Médica e pesquisadora."
+  },
+  {
+   "n": 18,
+   "hora": "19:39",
+   "usuario": "hm ok. e vc gosta de chá ou de café? e não me diga que é de nenhum kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Café não é meu. Chá eu tomo quando insistem, e você está insistindo."
+  },
+  {
+   "n": 19,
+   "hora": "19:41",
+   "usuario": "kkkk então me serve um chá aí virtual. boa noite kal, to indo nessa",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite. O chá fica para outra vez."
+  },
+  {
+   "n": 20,
+   "hora": "19:43",
+   "usuario": "hahaha ok, valeu pelas respostas. tchau",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tchau. Durma numa cama, se puder."
+  }
+ ],
+ "pendente": null
+}

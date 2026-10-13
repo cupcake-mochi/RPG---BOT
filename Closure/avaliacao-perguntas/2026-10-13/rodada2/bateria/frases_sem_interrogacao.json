@@ -1,0 +1,98 @@
+[
+ {
+  "id": "f0",
+  "lab": "R",
+  "msg": "me explica o dano de queda",
+  "hist": []
+ },
+ {
+  "id": "f1",
+  "lab": "R",
+  "msg": "quero fazer uma ficha de evocador",
+  "hist": []
+ },
+ {
+  "id": "f2",
+  "lab": "R",
+  "msg": "me fala das habilidades do guia no nível 3",
+  "hist": []
+ },
+ {
+  "id": "f3",
+  "lab": "R",
+  "msg": "explica a regra de cobertura",
+  "hist": []
+ },
+ {
+  "id": "f4",
+  "lab": "R",
+  "msg": "preciso saber o custo do abrir caminho",
+  "hist": []
+ },
+ {
+  "id": "f5",
+  "lab": "R",
+  "msg": "fala sobre os atributos",
+  "hist": []
+ },
+ {
+  "id": "f6",
+  "lab": "R",
+  "msg": "me diz o dano da katana",
+  "hist": []
+ },
+ {
+  "id": "f7",
+  "lab": "R",
+  "msg": "quero entender como funciona descanso",
+  "hist": []
+ },
+ {
+  "id": "f8",
+  "lab": "R",
+  "msg": "lista as perícias",
+  "hist": []
+ },
+ {
+  "id": "f9",
+  "lab": "R",
+  "msg": "o bastião nível 7",
+  "hist": []
+ },
+ {
+  "id": "f10",
+  "lab": "R",
+  "msg": "acho que o crítico dobra tudo",
+  "hist": []
+ },
+ {
+  "id": "f11",
+  "lab": "R",
+  "msg": "o dano de queda é 1d6 por 3 metros né",
+  "hist": []
+ },
+ {
+  "id": "f12",
+  "lab": "R",
+  "msg": "rolei 18 no ataque, acerta a defesa 15",
+  "hist": []
+ },
+ {
+  "id": "f13",
+  "lab": "R",
+  "msg": "meu bastião subiu pro nível 7",
+  "hist": []
+ },
+ {
+  "id": "f14",
+  "lab": "R",
+  "msg": "vou usar abrir caminho nesse turno",
+  "hist": []
+ },
+ {
+  "id": "f15",
+  "lab": "R",
+  "msg": "o guia cura com tratamento de campo",
+  "hist": []
+ }
+]

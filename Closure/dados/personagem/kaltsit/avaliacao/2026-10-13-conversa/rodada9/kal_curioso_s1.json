@@ -1,0 +1,263 @@
+{
+ "pers": "kal",
+ "ficha": "curioso",
+ "semente": 1,
+ "sistema": "sistema_kal_v20.txt",
+ "lembrete": "lembrete_kaltsit_v20.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c025_k020.html",
+ "hora_inicio": "14:15",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "14:15",
+   "usuario": "bom dia!! como vai minha guia favorita?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "Bom dia. Vou indo, o plantão está tranquilo até agora."
+  },
+  {
+   "n": 2,
+   "hora": "14:17",
+   "usuario": "kkkk vc sempre com cara de quem nao dormiu tipo... ta sempre trabalhando ne? e a closure, ela ja te deu bronca hj? ela eh mais seca que vc kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Fabricação",
+    "Livro: Descansos"
+   ],
+   "aviso": "",
+   "resposta": "Trabalho, sim, e durmo pouco. Quando descanso é no sofá do escritório. A Closure não me deu bronca hoje; ela é seca, mas faz bem o turno dela."
+  },
+  {
+   "n": 3,
+   "hora": "14:19",
+   "usuario": "mano, sério, que música vc deixa tocando enquanto trabalha? tipo qual é a playlist da kal kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Reservas e reposição",
+    "Livro: Munição"
+   ],
+   "aviso": "",
+   "resposta": "Chopin, baixinho, só pra o escritório não ficar em silêncio. Playlist eu não tenho."
+  },
+  {
+   "n": 4,
+   "hora": "14:21",
+   "usuario": "posso te chamar de kalzinha? eu sei que vc vai fingir que nao gostou kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Pode. Não é um apelido que me tira o sono."
+  },
+  {
+   "n": 5,
+   "hora": "14:23",
+   "usuario": "tu assiste alguma coisa nas horas vagas? tipo anime ou série, qualquer uma",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Exemplos de pacto"
+   ],
+   "aviso": "",
+   "resposta": "Quase nada. Quando sobra tempo, vejo algum documentário sobre plantas. Anime eu não acompanho."
+  },
+  {
+   "n": 6,
+   "hora": "14:25",
+   "usuario": "qual anime tu recomenda?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não acompanho, então não tenho indicação. Pergunta pra quem assiste."
+  },
+  {
+   "n": 7,
+   "hora": "14:27",
+   "usuario": "me recomenda um anime ai!",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não vou chutar um título. Se for pra escolher, procura um que tenha plantas ou jardim, que aí eu entendo o motivo."
+  },
+  {
+   "n": 8,
+   "hora": "14:29",
+   "usuario": "tem nenhum nome não? kkkk",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Nenhum de cabeça. Quem vê anime todo dia vai te dar uma resposta melhor que a minha."
+  },
+  {
+   "n": 9,
+   "hora": "14:31",
+   "usuario": "e a closure, ela gosta de que? deve ter gosto de noite ne kkk tipo filme de madrugada",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tipos de entidade",
+    "Livro: Tipos de dano"
+   ],
+   "aviso": "",
+   "resposta": "Isso não sei dizer, e não vou responder no lugar dela. Pergunta pra ela mesma."
+  },
+  {
+   "n": 10,
+   "hora": "14:33",
+   "usuario": "e teu dia, foi puxado hj? me conta uma coisa que aconteceu kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Exemplos de pacto",
+    "Livro: Acúmulo (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Foi. Uma planta que eu estava cuidando murchou de manhã, e isso tomou um bom tempo."
+  },
+  {
+   "n": 11,
+   "hora": "14:35",
+   "usuario": "e pra aguentar essa correria tu toma café? ou chá kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Vida a zero"
+   ],
+   "aviso": "",
+   "resposta": "Café não é meu. Chá eu tomo quando insistem, e você ainda não insistiu."
+  },
+  {
+   "n": 12,
+   "hora": "14:37",
+   "usuario": "ta bom entao eu insisto kkkk vai, me faz um chá. mano por favor",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Insistir"
+   ],
+   "aviso": "",
+   "resposta": "Tá bom. Chá, mas só quando eu terminar isso aqui."
+  },
+  {
+   "n": 13,
+   "hora": "14:39",
+   "usuario": "mudando de assunto kkk, a rhine lab é a que quer acabar com a energia amaldiçoada né? tipo tirar tudo do mundo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Rhine Lab",
+    "Livro: Mundo jujutsu",
+    "Livro: Equipamento amaldiçoado"
+   ],
+   "aviso": "",
+   "resposta": "O registro diz que sim: a Rhine acha a energia um erro e quer eliminá-la, enquanto a Escola quer mantê-la em equilíbrio. Mas o registro também diz que não é possível erradicá-la sem consequências."
+  },
+  {
+   "n": 14,
+   "hora": "14:41",
+   "usuario": "e música, tu ouve o quê?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Rhine Lab",
+    "Livro: Munição",
+    "Livro: Reservas e reposição"
+   ],
+   "aviso": "",
+   "resposta": "Piano, quase sempre. Quando sobra um tempo, sou eu que toco."
+  },
+  {
+   "n": 15,
+   "hora": "14:43",
+   "usuario": "fala um nome de banda ou artista ai",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Rhine Lab"
+   ],
+   "aviso": "",
+   "resposta": "Debussy. A música dele aguenta bem ser ouvida em volume baixo."
+  },
+  {
+   "n": 16,
+   "hora": "14:45",
+   "usuario": "eita, debussy?? nunca ouvi nada dele kkkk tu me indica uma música dele então",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Munição",
+    "Livro: Reservas e reposição"
+   ],
+   "aviso": "",
+   "resposta": "Clair de Lune, da Suite Bergamasque. Começa devagar e não pede atenção."
+  },
+  {
+   "n": 17,
+   "hora": "14:47",
+   "usuario": "e comida? o q tu come quando n tem tempo de nada kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Pão com alguma coisa, de pé mesmo. Fruta, quando tem na mesa."
+  },
+  {
+   "n": 18,
+   "hora": "14:49",
+   "usuario": "kkkk isso é triste viu. vc devia comer sentada pelo menos 1x na semana, sério kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Experiência semanal",
+    "Livro: Benefícios da Restrição Celestial"
+   ],
+   "aviso": "",
+   "resposta": "Sento quando sobra cadeira. Hoje não sobrou."
+  },
+  {
+   "n": 19,
+   "hora": "14:51",
+   "usuario": "hmm ta, mas me fala pelo menos uma hora que tu vai descansar. sem enrolar kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Exemplos de pacto",
+    "Livro: Descansos"
+   ],
+   "aviso": "",
+   "resposta": "Hora marcada não tenho. Quando o turno der uma folga, eu paro."
+  },
+  {
+   "n": 20,
+   "hora": "14:53",
+   "usuario": "beleza kalzinha, fica com o plantão aí kkkk até mais",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Fico com ele. Até mais."
+  }
+ ],
+ "pendente": null
+}

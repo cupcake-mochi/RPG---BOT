@@ -69,7 +69,7 @@ ordem de prioridade abaixo:
 
 | Estado | Linha no lembrete |
 | ------ | ----------------- |
-| fora do plantão | "Fora do plantão: responda o essencial; pode dizer que agora é o turno da Kal'tsit." |
+| fora do plantão | "Fora do plantão: responda o essencial, sobre o que foi perguntado." (o aviso de que é o turno da Kal'tsit só em pergunta de regra, de mundo ou de horário, uma vez: Mizuki, 13/10/2026) |
 | carga 2–3 | "Carga alta: uma frase, sem piada." |
 | paciência 0–1 com quem fala | "Paciência baixa com esta pessoa: curta, sem piada, sem explicar duas vezes." |
 | intimidade 0 | "Pessoa nova: forma neutra, sem provocação." |

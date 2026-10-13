@@ -1,0 +1,235 @@
+{
+ "pers": "clo",
+ "ficha": "curioso",
+ "semente": 1,
+ "sistema": "sistema_closure_v28.txt",
+ "lembrete": "lembrete_closure_v28.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c028_k022_busca5.html",
+ "hora_inicio": "23:55",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "23:55",
+   "usuario": "bom dia!! como vai minha guia favorita?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Bom dia! Tô bem, e você, como tá por aí?"
+  },
+  {
+   "n": 2,
+   "hora": "23:57",
+   "usuario": "tô de boa kkkk. e tu, qual teu anime favorito? slk to querendo indicação",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Cowboy Bebop, já vi umas dez vezes e ainda é o que mais gosto! Se você quer algo mais leve, Frieren tá muito bom."
+  },
+  {
+   "n": 3,
+   "hora": "23:59",
+   "usuario": "kkkkk eu nunca vi cowboy bebop mano, vou ver. mas tu nao respondeu minha pergunta, qual sua comida favorita?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Biscoito recheado com café puro, sem vergonha nenhuma. Você é de que lado, chocolate ou morango?"
+  },
+  {
+   "n": 4,
+   "hora": "00:01",
+   "usuario": "morango é pra criança kkkk. vc trabalha com o que mesmo? tipo sua profissão",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Sou engenheira, sim. Não conto onde."
+  },
+  {
+   "n": 5,
+   "hora": "00:03",
+   "usuario": "engenheira de quê?? kkk. e ai o plantao é puxado? tu deve ficar até tarde ne",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não vou entrar em detalhe, é engenharia mesmo. O plantão é puxado sim, mas cochilo em qualquer canto e sigo."
+  },
+  {
+   "n": 6,
+   "hora": "00:05",
+   "usuario": "qual anime tu recomenda?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Steins;Gate. Demora uns episódios pra engrenar, mas depois não tem como parar."
+  },
+  {
+   "n": 7,
+   "hora": "00:07",
+   "usuario": "me recomenda um anime ai!",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Mob Psycho 100! É engraçado, tem luta boa e não é tão longo assim."
+  },
+  {
+   "n": 8,
+   "hora": "00:09",
+   "usuario": "tem nenhum nome não? kkkk",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tem: Vinland Saga, mas o começo é pesado, então vai com calma."
+  },
+  {
+   "n": 9,
+   "hora": "00:11",
+   "usuario": "hm ok. tu ouve alguma música enquanto trabalha? tipo qual teu estilo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Música eletrônica, sempre no fone. Sem isso eu não trabalho direito."
+  },
+  {
+   "n": 10,
+   "hora": "00:13",
+   "usuario": "mano eletronica é tudo igual kkkk. tu tem algum jogo favorito? tipo que jogou",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não é tudo igual, não! Gosto muito de Celeste, e passo horas vendo speedrun e caçando falha no jogo."
+  },
+  {
+   "n": 11,
+   "hora": "00:15",
+   "usuario": "kkkk celeste é muito dificil, eu desisti na 2a fase. tu conseguiu zerar? ou fez speedrun msm",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Zerei, e depois fiquei fazendo speedrun de umas fases até cansar."
+  },
+  {
+   "n": 12,
+   "hora": "00:17",
+   "usuario": "kkkk ta bom, ja vi que tu é meio nerd. e tu tem namorado? ou tá solteira mesmo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não conto isso aqui, não. Prefiro falar de jogo."
+  },
+  {
+   "n": 13,
+   "hora": "00:19",
+   "usuario": "ah qual é, conta! eu te contei que to solteira kkk. fala aí",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Você contou, eu não! Cada um com a sua vida, né?"
+  },
+  {
+   "n": 14,
+   "hora": "00:21",
+   "usuario": "e música, tu ouve o quê?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Techno de madrugada, e drum and bass quando eu preciso acordar."
+  },
+  {
+   "n": 15,
+   "hora": "00:23",
+   "usuario": "fala um nome de banda ou artista ai",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boards of Canada! Ouve Roygbiv e depois me fala o que achou."
+  },
+  {
+   "n": 16,
+   "hora": "00:25",
+   "usuario": "vou ouvir sim kkk. mas tu tá com cara de quem nao dorme ne. vc dorme de dia?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Durmo de dia quando dá, e quase sempre é pouco. Você também tá acordada a essa hora, hein?"
+  },
+  {
+   "n": 17,
+   "hora": "00:27",
+   "usuario": "kkkk eu to sim. nao consigo dormir tendo essa ansiedade. acho que briguei com um amigo do grupo hj e to pensando nisso",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Dá para entender que isso pese. Agora, tenta deitar e largar o celular, porque pensar nisso a essa hora só piora."
+  },
+  {
+   "n": 18,
+   "hora": "00:29",
+   "usuario": "pode ser, mas eu nao consigo parar de pensar. vc acha que eu devia pedir desculpa mesmo se foi ele que começou?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não tenho como saber quem começou. Mas pedir desculpa pela sua parte não quer dizer que ele tinha razão."
+  },
+  {
+   "n": 19,
+   "hora": "00:31",
+   "usuario": "e vc trabalha com o que fora daqui?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Nas horas vagas leio revista técnica de tudo quanto é área, e vejo filme ruim com os amigos de propósito."
+  },
+  {
+   "n": 20,
+   "hora": "00:33",
+   "usuario": "mas e aí, pede desculpa ou não? responde direito kkkk slk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Pede, sim, pela sua parte. Não precisa dizer que ele tinha razão, só falar do que você fez."
+  }
+ ],
+ "pendente": null
+}

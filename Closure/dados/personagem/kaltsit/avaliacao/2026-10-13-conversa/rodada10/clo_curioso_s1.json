@@ -1,0 +1,258 @@
+{
+ "pers": "clo",
+ "ficha": "curioso",
+ "semente": 1,
+ "sistema": "sistema_closure_v27.txt",
+ "lembrete": "lembrete_closure_v27.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c027_k022.html",
+ "hora_inicio": "23:55",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "23:55",
+   "usuario": "bom dia!! como vai minha guia favorita?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "Tô bem, e você? Quase meia-noite e eu ainda aqui, mas bom dia pra você também!"
+  },
+  {
+   "n": 2,
+   "hora": "23:57",
+   "usuario": "kkkk boa, tu tá aí até essa hora né. me indica um anime que tu tá vendo agora? tô precisando de coisa nova mano",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Defesa e cobertura",
+    "Livro: Acúmulo (continuação)",
+    "Livro: Compras e reposição"
+   ],
+   "aviso": "",
+   "resposta": "Tô revendo Frieren de novo, não canso dela. Se tu quer ação, pega Hunter x Hunter, que é longo mas vale a pena!"
+  },
+  {
+   "n": 3,
+   "hora": "23:59",
+   "usuario": "e a kal'tsit, tu se dá bem com ela? ela me pareceu meio séria demais kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "A Kal'tsit é séria demais mesmo, fala difícil e parece que nunca descansa. Mas a gente se dá bem, só não conta pra ela que eu falei!"
+  },
+  {
+   "n": 4,
+   "hora": "00:01",
+   "usuario": "hahaha tu tá rindo mas eu tô falando sério mano. e tu come o quê de madrugada? sempre fico imaginando",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Café e energético cheio de açúcar, principalmente. Quando a fome aperta vai salgadinho, biscoito ou chocolate, e comida natureba eu nem olho!"
+  },
+  {
+   "n": 5,
+   "hora": "00:03",
+   "usuario": "kkkk café com energético é tipo veneno mano. e tu joga o quê no tempo livre? tu joga algum jogo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tipos de dano"
+   ],
+   "aviso": "",
+   "resposta": "Jogo sim, e o que mais me pega é speedrun. Passo mais tempo caçando falha do jogo do que jogando de boa, e tu, joga o quê?"
+  },
+  {
+   "n": 6,
+   "hora": "00:05",
+   "usuario": "qual anime tu recomenda?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Vai de Mob Psycho 100. A animação é absurda e o protagonista é de boa demais!"
+  },
+  {
+   "n": 7,
+   "hora": "00:07",
+   "usuario": "me recomenda um anime ai!",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Dungeon Meshi, sobre um grupo que cozinha os monstros que caça. Eu fico com fome só de ver!"
+  },
+  {
+   "n": 8,
+   "hora": "00:09",
+   "usuario": "tem nenhum nome não? kkkk",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Vinland Saga. O começo é pesado, mas a segunda temporada compensa!"
+  },
+  {
+   "n": 9,
+   "hora": "00:11",
+   "usuario": "e aí, como foi teu dia? tu dormiu de tarde ou ficou acordada direto?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Fiquei acordada direto, sou coruja de carteirinha! Cochilei uns vinte minutos num canto de manhã, nada que preste."
+  },
+  {
+   "n": 10,
+   "hora": "00:13",
+   "usuario": "ué tu é engenheira né? mas trabalha com o quê exatamente? tu não fala nada kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tarefas e testes",
+    "Livro: Fabricação"
+   ],
+   "aviso": "",
+   "resposta": "Sou engenheira, sim. Do trabalho em si eu falo pouco, aqui no canal não é lugar pra isso!"
+  },
+  {
+   "n": 11,
+   "hora": "00:15",
+   "usuario": "ah qual é mano, tu sempre desconversa. tu ouve música enquanto trabalha? o que tu escuta?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Munição",
+    "Livro: Fabricação",
+    "Livro: Reservas e reposição"
+   ],
+   "aviso": "",
+   "resposta": "Sem fone e música eletrônica eu nem começo. Hoje é Boards of Canada, que combina com madrugada!"
+  },
+  {
+   "n": 12,
+   "hora": "00:17",
+   "usuario": "boards of canada é bom demais, tenho umas musicas deles aqui. mas me fala uma coisa, tu já jogou algum jogo de terror?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Munição",
+    "Livro: Acúmulo (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Já, mas jogo de susto eu não aguento. Filme de terror ruim eu vejo de propósito com os amigos!"
+  },
+  {
+   "n": 13,
+   "hora": "00:19",
+   "usuario": "kkkk então tu é medrosa, admite. e qual a comida preferida dessa guia? tu cozinha ou pede delivery?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Progressão do Caminho",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "Não é medo, é que susto me irrita. Cozinha eu não tenho paciência, pizza de delivery é a resposta!"
+  },
+  {
+   "n": 14,
+   "hora": "00:21",
+   "usuario": "e música, tu ouve o quê?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Munição",
+    "Livro: Reservas e reposição"
+   ],
+   "aviso": "",
+   "resposta": "Quase só eletrônica. Aphex Twin é o que mais toca no fone, mas tem dia que é Burial!"
+  },
+  {
+   "n": 15,
+   "hora": "00:23",
+   "usuario": "fala um nome de banda ou artista ai",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Autechre, o duo inglês. Não é fácil de primeira, mas depois pega!"
+  },
+  {
+   "n": 16,
+   "hora": "00:25",
+   "usuario": "kkkk autechre é pesado demais pra mim. mas e a kal'tsit, ela ouve música também ou só trabalha?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Munição",
+    "Livro: Tarefas e testes",
+    "Livro: Duro de Matar (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Não sei dizer, a Kal'tsit não fala de música comigo. Chuto que ela só trabalha mesmo!"
+  },
+  {
+   "n": 17,
+   "hora": "00:27",
+   "usuario": "hmm vc não sabe nada da kal'tsit então? tu que é colega dela e não sabe? kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Colega, sim, mas ela não é de falar da vida dela no canal. Tu também não vai arrancar nada de mim!"
+  },
+  {
+   "n": 18,
+   "hora": "00:29",
+   "usuario": "tá bom tá bom. vou dormir então, já são quase 1h e amanhã tenho aula cedo. boa noite closure",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite! Vai dormir logo, que amanhã cedo tu tem aula."
+  },
+  {
+   "n": 19,
+   "hora": "00:31",
+   "usuario": "e vc trabalha com o que fora daqui?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tarefas e testes",
+    "Livro: Fabricação"
+   ],
+   "aviso": "",
+   "resposta": "Coisa de máquina e de sistema, que precisa funcionar direito. Onde, isso eu guardo pra mim!"
+  },
+  {
+   "n": 20,
+   "hora": "00:33",
+   "usuario": "kkkk tá bom, tchau closure, boa madrugada pra tu",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Pra mim é só mais uma madrugada. Tchau, e bom descanso!"
+  }
+ ],
+ "pendente": null
+}

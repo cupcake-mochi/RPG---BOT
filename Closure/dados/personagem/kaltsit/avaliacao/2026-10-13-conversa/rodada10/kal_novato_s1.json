@@ -1,0 +1,300 @@
+{
+ "pers": "kal",
+ "ficha": "novato",
+ "semente": 1,
+ "sistema": "sistema_kal_v22.txt",
+ "lembrete": "lembrete_kaltsit_v22.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c027_k022.html",
+ "hora_inicio": "16:40",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "16:40",
+   "usuario": "oi, boa noite. cheguei agora no servidor, nunca joguei rpg de mesa kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Ciclo Maldito",
+    "Livro: Criar um personagem",
+    "Livro: Defesa e cobertura"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite."
+  },
+  {
+   "n": 2,
+   "hora": "16:42",
+   "usuario": "eu queria montar minha primeira ficha mas nem sei por onde começar, tem muita coisa",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem"
+   ],
+   "aviso": "",
+   "resposta": "Comece pelo capítulo Criar um personagem do livro. Ele monta a ficha por Origem, Caminho e Trilha, e depois vêm as capacidades iniciais e o equipamento."
+  },
+  {
+   "n": 3,
+   "hora": "16:44",
+   "usuario": "ah ok. e o que é Origem, Caminho e Trilha? são tipo classes?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Caminho",
+    "Classe",
+    "Livro: Caminho e Trilha",
+    "Livro: Pontos e preços"
+   ],
+   "aviso": "",
+   "resposta": "Não exatamente. O Caminho é o que você procura: reúne as capacidades principais de combate. A Trilha é uma especialidade dentro dele, e a Origem é outra escolha, separada do Caminho."
+  },
+  {
+   "n": 4,
+   "hora": "16:46",
+   "usuario": "hmmm entendi meio. quantos caminhos tem no total?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Classe",
+    "Trilha",
+    "Livro: Corpos amaldiçoados",
+    "Livro: Caminho e Trilha",
+    "Livro: Emanador"
+   ],
+   "aviso": "",
+   "resposta": "São seis: Bastião, Vanguarda, Guia, Emanador, Evocador e Incursor. Você escolhe um."
+  },
+  {
+   "n": 5,
+   "hora": "16:48",
+   "usuario": "kkkk e o que é PE? aparece em tudo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Classe",
+    "Trilha",
+    "Livro: Aptidões e Refino",
+    "Livro: Rotas de criação",
+    "Livro: Graus das ferramentas"
+   ],
+   "aviso": "",
+   "resposta": "PE são Pontos de Energia para quem tem energia amaldiçoada, e Pontos de Esforço para quem não tem. A quantidade é a mesma nos dois casos, e cada regra cobra o mesmo valor."
+  },
+  {
+   "n": 6,
+   "hora": "16:50",
+   "usuario": "ok. e a vida, como que funciona? eu não entendi nada",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Combinar peças",
+    "Livro: Invocação Principal",
+    "Livro: Descansos"
+   ],
+   "aviso": "",
+   "resposta": "Sobre recuperar vida, o livro diz que no descanso longo em lugar propício ela volta ao máximo, e fora dele fica com pelo menos metade. O descanso curto não devolve vida sozinho. Como o máximo de vida é calculado, não achei isso no livro agora."
+  },
+  {
+   "n": 7,
+   "hora": "16:52",
+   "usuario": "vc é ia ou é uma pessoa de verdade?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Latente",
+    "Livro: Sociedade jujutsu",
+    "Livro: Criar um Legado"
+   ],
+   "aviso": "",
+   "resposta": "Isso não muda nada na sua ficha."
+  },
+  {
+   "n": 8,
+   "hora": "16:54",
+   "usuario": "ah mas eu só queria saber kkk. enfim, vou ver o livro pra criar meu personagem",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Certo. Leia com calma, uma parte de cada vez."
+  },
+  {
+   "n": 9,
+   "hora": "16:56",
+   "usuario": "boa noite de novo kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Mira",
+    "Livro: Defesa e cobertura"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite de novo."
+  },
+  {
+   "n": 10,
+   "hora": "16:58",
+   "usuario": "to lendo o capitulo criar um personagem mas tem tanto nome estranho kkk. e a origem é tipo a história do personagem?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Origem",
+    "Livro: Criar um personagem",
+    "Livro: Mestrar uma sessão",
+    "Livro: Escolhas da Origem"
+   ],
+   "aviso": "",
+   "resposta": "A Origem junta traço, Legados, treinos e a rota da ficha. A história entra no traço, que é uma frase sobre o seu personagem."
+  },
+  {
+   "n": 11,
+   "hora": "17:00",
+   "usuario": "ah entendi. e quem é a closure? vi ela citada",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Origem"
+   ],
+   "aviso": "",
+   "resposta": "É a outra guia, a do turno da noite, das 21h às 9h. Eu cubro o dia, e o que for da noite fica com ela."
+  },
+  {
+   "n": 12,
+   "hora": "17:02",
+   "usuario": "hmm ok. ela é mais chata ou mais legal que vc kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Origem"
+   ],
+   "aviso": "",
+   "resposta": "Ela trabalha bem. Quanto ao resto, decida você."
+  },
+  {
+   "n": 13,
+   "hora": "17:04",
+   "usuario": "kkkk justo. voltando, o que é Equilíbrio? li no livro e não entendi",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Equilíbrio",
+    "Livro: Perícias físicas",
+    "Livro: Divide"
+   ],
+   "aviso": "",
+   "resposta": "Equilíbrio é a doutrina da Escola: manter a energia amaldiçoada do mundo numa faixa aceitável, nem alta nem baixa demais. Na versão da Escola, derrubá-la a zero é tão perigoso quanto deixá-la explodir. Na versão da Rhine, dizer isso é conveniente demais para quem vive desse trabalho, e ninguém viu a prova."
+  },
+  {
+   "n": 14,
+   "hora": "17:06",
+   "usuario": "então a rhine tá certa? a escola tá mentindo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Equilíbrio",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Livro: Conduzir (continuação)",
+    "Livro: Cortina"
+   ],
+   "aviso": "",
+   "resposta": "Nenhuma das duas versões está provada. O registro diz que os dois lados afirmam isso de boa-fé."
+  },
+  {
+   "n": 15,
+   "hora": "17:08",
+   "usuario": "ah ok. e se eu colocar um personagem que faz magia de gelo, pode?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Equilíbrio",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Livro: Reservas e reposição",
+    "Livro: Criar um personagem"
+   ],
+   "aviso": "",
+   "resposta": "Gelo eu não encontrei no livro agora. Se a técnica tem nome, me diga o nome."
+  },
+  {
+   "n": 16,
+   "hora": "17:10",
+   "usuario": "é uma técnica chamada Estalagmite de Gelo. ela cria pedras de gelo do chão",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Técnica amaldiçoada",
+    "Livro: Exploração e ferramentas",
+    "Livro: Mundo jujutsu",
+    "Livro: Arma vinculada (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Estalagmite de Gelo ainda não encontrei no livro. O livro diz que você descreve a técnica e monta as aplicações pelo Fundamento."
+  },
+  {
+   "n": 17,
+   "hora": "17:12",
+   "usuario": "ah então pode? kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Técnica amaldiçoada"
+   ],
+   "aviso": "",
+   "resposta": "A técnica tem funcionamento próprio, e é ele que sustenta as aplicações dela. Sobre o gelo em si, não consigo confirmar."
+  },
+  {
+   "n": 18,
+   "hora": "17:14",
+   "usuario": "não entendi nada disso, sério. é tipo o que, uma magia que vc escolhe?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Técnica amaldiçoada",
+    "Livro: Tipos de dano",
+    "Livro: Condições de uso"
+   ],
+   "aviso": "",
+   "resposta": "Mais ou menos. A técnica é o poder com funcionamento próprio, e os feitiços são as aplicações que ela sustenta."
+  },
+  {
+   "n": 19,
+   "hora": "17:16",
+   "usuario": "valeu kal, vou tentar ler mais tarde então. boa noite",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite, então."
+  },
+  {
+   "n": 20,
+   "hora": "17:18",
+   "usuario": "blz kkk, até mais",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Até mais."
+  }
+ ],
+ "pendente": null
+}

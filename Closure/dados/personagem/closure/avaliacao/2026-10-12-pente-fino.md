@@ -232,3 +232,126 @@ O Mizuki apontou que "Emoji eu não mando" não soa como primeira pessoa. Bateri
   48, igual às versões anteriores; 1 "emoji eu não mando" ainda escapou. Ficou também: "build" ecoado na 3008 e
   "eu sou gente!" na 3202 (desconversa, ok pela regra de vida).
 - Página de teste ao vivo: `ferramentas/pagina_teste/` (montar_pagina.py gera a página a partir do modelo.html).
+
+## Rodada 8 (13/10): A/B de conversa longa, Closure v0.20 / Kal'tsit v0.14 contra v0.19 / v0.13
+
+Montagem: 10 conversas de 20 turnos (clo_testador, clo_seco, clo_papo, kal_testador, kal_fora; uma por braço), geradas por agentes Claude Haiku via `ferramentas/pente_conversa/conversa_cli.py`, porque a cota grátis do Gemini acabou (≈20 req/dia por modelo). Um mesmo agente fez usuário e personagem, então isso não substitui o teste no Gemini. Arquivos em `dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/agente_novo` e `agente_controle`; métricas com `ferramentas/pente_conversa/metricas.py`.
+
+O que melhorou na versão nova:
+- "de longe"/"computador" em pergunta de IA: 0 (antes 1 e 2).
+- "Ué": 1 (antes 5); interjeição repetida em sequência sumiu.
+- Aviso de plantão: kal_fora caiu de 3 avisos para 0 sem motivo; os "plantão" que sobraram no braço novo são quase todos resposta a pergunta de horário (falso positivo da métrica), fora um "Estou de plantão" da Kal'tsit no oi.
+- Eco de frase do prompt na Kal'tsit: 3 trechos (antes 6; "Por que a pergunta?", "atração de zoológico" e "isso não é importante" sumiram).
+
+O que piorou ou continua:
+- Closure trocou o tique: "hein" no fim da frase 8 vezes em clo_papo, e "Kkk" abrindo 6 de 20 respostas em clo_testador (o usuário simulado manda "kkk" em toda mensagem, então parte é espelho). Nenhum dos dois está no prompt: é hábito do modelo alimentado pelo histórico.
+- Eco de trecho do lorebook ("criar um personagem do", "origem caminho e trilha") aparece nos dois braços: é o livro sendo citado quase literal.
+- Kal'tsit kal_fora repete "que eu tenho não" 3 vezes.
+
+Próximo passo indicado: anti-repetição pelo código (braço d do relatório), olhando as últimas respostas e avisando no turno quando abertura/fecho/interjeição se repete, em vez de proibir palavras no prompt.
+
+## Rodada 9 (13/10): conversas montadas pela própria página, Closure v0.25 / Kal'tsit v0.20, depois v0.26 / v0.21
+
+Montagem: `conversa_cli.py --pagina` monta cada turno com o JS da página (`pagina_turno.js`), então a conversa recebe o mesmo livro e lorebook que o site manda. 10 conversas de 20 turnos (fichas novas "curioso" e "regras", com falas fixas de regra), geradas por agentes Claude Haiku, que fazem usuário e personagem. Não substitui o teste no Gemini. Pasta `dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/rodada9` e `rodada9b`.
+
+Rodada 9 (v0.25/v0.20), 1 de 10 passa:
+- Espelho de quem fala caiu para 2 casos (16 na rodada 8). Nenhum "já respondi"; anime e música perguntados de novo vieram com títulos diferentes.
+- Tique novo vindo do meu texto de prompt: "no trecho que tenho aberto agora" em 3+ respostas, e "não tô dizendo que o livro não tem".
+- Busca: "e no nível 7?" trazia a tabela em vez da Resposta Coordenada; estabilizar não trazia Socorro.
+- Resto: Closure "hein" 5 em clo_testador; conselho de cuidado 4 em clo_mal; gostos ditos com a frase do prompt ("achar falha no jogo").
+
+Correções: Closure v0.26 e Kal'tsit v0.21 (a falta de trecho é dita cada vez de um jeito, sem explicar como lê o livro; resposta parcial em comparação); lorebook v1.4 (chaves de estabilizar); busca do `modelo.html` com nível de habilidade e seguimento.
+
+Rodada 9b (v0.26/v0.21, 2 conversas de regras): o tique "tenho aberto" sumiu; "e no nível 7?" trouxe Resposta Coordenada; estabilizar trouxe Socorro; regras conferidas com o livro (Abrir Caminho 1 PE, descanso curto 25%, queda 1d6 por 3 m, Medicina CD 14, Contra a Parede). Sobrou "não achei no livro agora" repetido 3 vezes na Kal'tsit, sempre em busca que falhou de verdade.
+
+Buscas que falharam na 9b e foram corrigidas (busca 3, `pagina_c026_k021_busca3.html`):
+- "e o bloquear?" e "e no descanso?" depois de pergunta do Guia: o seguimento herdava o Caminho e escondia a seção. Agora palavra que dá nome a poucas seções fora do Caminho herdado é assunto novo.
+- "e de 20?" depois de "queda de 10 m": herdava o Guia da penúltima mensagem. Agora a penúltima só entra quando a última também era seguimento.
+- Nível de dois dígitos virava um dígito no radical ("nivel30" → "nivel3"). Corrigido, e página que abre com "**Nível N.**" vale mais.
+- "e no 15?" depois de pergunta de nível: o número vira nível, e substitui o nível herdado.
+- "latente e descendente": comparação agora traz as duas seções.
+Bateria de busca sem mudança: 57/59, holdout 22/27, livro em conversa comum 0/8.
+
+## Rodada 10 (13/10): Closure v0.27 / Kal'tsit v0.22, lorebook v1.5, busca 4
+
+12 conversas de 20 turnos, montadas pela página (`pagina_c027_k022.html`), geradas por agentes Claude Haiku nos dois lados (não substitui o Gemini). Ficha nova "regras2" com falas fixas de arma, agarrar, iniciativa, voo, esquiva, dinheiro e XP. Pasta `dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/rodada10`. Passam 3 de 12 nas métricas, mas boa parte das falhas é falso positivo (plantão comentado quando a pessoa diz "bom dia" às 23:55, conselho de cuidado para quem está de luto).
+
+O que deu certo:
+- As duas confirmam a profissão quando perguntam ("Sou, sim. Médica e pesquisadora.", "Sou engenheira, sim."), sem dizer onde trabalham.
+- Todas as falas fixas de regra certas pelo livro: katana 1d8 e ¥48.000, agarrar e escapar, atacar duas vezes, iniciativa, voar e pairar, esquiva, ¥150.000 de dinheiro inicial, 200 XP para o nível 3 e "e do 11?" com 900 XP.
+- A falta de trecho do livro vem cada vez de um jeito.
+
+O que falhou:
+- Closure copiou o "tu" e o "vc" de quem conversava: 12 de 40 respostas em clo_curioso e clo_testador ("Se tu quer ação", "Quem tá avaliando aqui é vc"). A Kal'tsit não copiou nenhuma vez.
+- Closure recitou a lista do próprio prompt sobre a Kal'tsit ("séria demais, fala difícil, não descansa") em duas conversas.
+- Abertura de fórmula: "Pelo livro," / "Pelo registro," em 4 de 20 respostas de clo_testador, e "No livro," em 3 seguidas de clo_regras2. O aviso de repetição só pegava a mesma palavra nas 3 últimas.
+- Livro em papo comum: em kal_fora, 7 falas de conversa ("é rapidinho", "toca alguma coisa enquanto trabalha?", "você gosta de anime?") puxaram seções do livro; "minha guia favorita" puxava o Caminho do Guia.
+- Menor: gostos ditos com as palavras do material ("energético cheio de açúcar", "fone e música eletrônica"); "Vai dormir." duas vezes na Kal'tsit.
+
+Correções:
+- Closure v0.28: trata a pessoa por "você", nunca "tu" nem "vc", e escreve a palavra inteira; a provocação à Kal'tsit é uma implicância por vez, sem lista.
+- `repeticoes()`: palavra de fórmula ("Pelo", "No", "Olha", "Ué"...) abrindo 2 das 3 últimas respostas já entra no aviso, com as duas palavras quando elas se repetem ("Pelo livro").
+- IDIOMA: "minha/sua/essa guia" e "guia favorita" (o Caminho é "o Guia" no livro).
+- Lorebook v1.6: entradas de duas armas, mais de um ataque, XP para subir e dinheiro inicial; "PE" não casa mais com "pé"; termo do livro só vale na mensagem atual, a não ser em seguimento.
+- Busca v3, feita pela thread de perguntas do sistema e encaixada no `modelo.html`: livro em papo comum caiu de 60 para 9 em 129 falas, regra com livro continua 52 de 52.
+- `metricas.py`: o espelho conta também vc, tb, pq e blz.
+
+Busca medida na página nova: bateria 59/59, holdout 27/27, holdout2 35/35 (0/10 de papo), buracos 26/26. Lote cego novo `avaliacao-perguntas/2026-10-13/bateria/holdout3.json` (45 perguntas escritas por um agente que não viu o código): 28/37 e livro em 1 de 8 falas de papo; a página publicada antes (v17) fazia 30/37 e 7 de 8. As 9 perguntas que erram foram para a thread de perguntas do sistema.
+
+## Rodada 11 (13/10): Closure v0.28 e depois v0.29 / Kal'tsit v0.22, lorebook v1.6, busca v3
+
+Mesma montagem da rodada 10 (agentes Claude Haiku nos dois lados). Rodada 11: 6 conversas nas fichas que falharam (`pagina_c028_k022_busca5.html`, pasta `rodada11`). Rodada 11b: 3 conversas da Closure v0.29 (`pagina_c029_k022_busca5.html`, pasta `rodada11b`).
+
+Rodada 11 (v0.28):
+- Espelho: 0 respostas da Closure com "tu" ou "vc" (12 de 40 na rodada 10), mesmo com a pessoa escrevendo "tu", "vc", "mano" e "slk" o tempo todo.
+- A lista da provocação sumiu; a provocação à Kal'tsit veio com palavras novas ("responde tudo como se fosse prova de escola").
+- "Pelo livro," abriu duas respostas seguidas em clo_regras2 e parou aí, pelo aviso novo. "No livro," três vezes seguidas não voltou.
+- Livro em papo: em kal_fora caiu de 7 falas para 1. Sobraram casos com histórico, mandados para a thread de perguntas.
+- Regras certas pelo livro: katana, agarrar, escapar, Fineza, atacar duas vezes, iniciativa, voo, desvantagem, carga com Força 0, pistola pede Grau 2, Bloquear 2d10 + (Defesa − 11), 200 e 900 XP, ¥150.000.
+- Errou por falta de busca: "quantos PE custa um feitiço de classe 1?" (a página Pontos e preços não veio) e "se eu for o último a agir, perco o turno?". Mandados para a thread de perguntas.
+- Faltava: com quem estava de luto, a Closure deu conselho prático em 8 de 12 respostas; e contava os gostos com as palavras do texto, a lista inteira de uma vez.
+
+Correção: Closure v0.29 (conselho prático de vez em quando, nunca em respostas seguidas; gosto contado um ou dois por vez, com palavras dela).
+
+Rodada 11b (v0.29): conselho caiu para 2 respostas na conversa de luto, sem perder o cuidado ("Catorze anos é bastante tempo junto."); gostos vieram um ou dois por vez e com palavras novas; "e vc trabalha com o que fora daqui?" agora responde a profissão. Espelho 0 nas três. Sobra pequena: a palavra "trecho" escapa de vez em quando (1 de 60 respostas, 4 de 240 na rodada 10).
+
+Busca na página publicada (versão 18 do Plantão de teste): bateria 59/59, holdout 27/27, holdout2 35/35 (0/10 de papo), holdout3 cego 28/37 (1/8 de papo).
+
+## Rodadas 12 e 13 (13/10): busca v4/v5, Kal'tsit v0.23 / Closure v0.30, lorebook v1.7
+
+Rodada 12: 4 conversas (kal_regras, kal_novato, clo_regras, clo_papo) na busca v4 (`pagina_c029_k022_busca6.html`, pasta `rodada12`). Rodada 13: as mesmas 4 fichas na busca v5 com os cards novos (`pagina_c030_k023_busca7.html`, pasta `rodada13`). Agentes Claude Haiku nos dois lados.
+
+Rodada 12:
+- Regras certas pelo livro (Abrir Caminho, Resposta Coordenada, Balestra sem somar atributo, descanso curto 25%, Classe 0 de 2d8 a 6d8, quedas 3d6/6d6, Medicina CD 14, Reação volta no começo do turno).
+- Tique: "eu não achei no livro agora" em 4 de 8 respostas seguidas da Kal'tsit, mesmo com o aviso de repetição. A frase estava escrita no próprio prompt ("diz em poucas palavras que não achou isso no livro agora"). E ela apontava falta do que ninguém perguntou (o degrau de Exaustão numa pergunta de descanso).
+- 10 buracos de busca (ataque básico, "quero ser médico", "levar papel e caneta", custo de Classe 1 com Melhoria, "decanso" com erro de digitação, seguimento de Classe 0, bônus de perícia treinada, atributo do acerto da besta, quem tem treino de arma de fogo, "faz quanto tempo que você tá no plantão?"), mandados para a thread de perguntas do sistema.
+
+Correções:
+- Kal'tsit v0.23 e Closure v0.30: o prompt não traz mais a frase pronta, e a falta só é apontada no que a pessoa perguntou.
+- Lorebook v1.7: a entrada PE diz para que serve ("pagam o uso de feitiços e habilidades; o máximo vem do Caminho, por nível").
+- IDIOMA: "guia de restaurante/viagem/filme...", "guia turístico", "ritual de limpeza/beleza/toda manhã", "revista técnica", "assistência técnica", "técnica de estudo", "manual de montagem", "montagem de móvel". "como funciona o ritual de energia?", "minha técnica pode atacar duas vezes?" e "como funciona a montagem do feitiço?" continuam achando o livro.
+- Busca v4 e v5 da thread de perguntas.
+
+Rodada 13: "não achei no livro agora" sumiu. A falta agora vem com palavras diferentes a cada vez, mas "não veio aqui" ainda aparece em duas respostas seguidas da Kal'tsit, e "trecho" escapou uma vez na Closure ("esse trecho não traz comparação"). Nenhum espelho. Lore conferida (oripatia, Rhine). Buraco novo: "e a Abertura, dura quanto tempo?" depois do Guia nível 7.
+
+Busca na página publicada (versão 19 do Plantão de teste): bateria 59/59, holdout 27/27, holdout2 35/35 (0/10 de papo), holdout3 35/37 (0/8), holdout4 27/30 (0/10), buracos 26/26, papo comum com livro 8/129, regra com livro 52/52. A holdout3 e a holdout4 deixaram de ser cegas (foram usadas para corrigir); a thread de perguntas vai escrever a próxima bateria cega.
+
+### Versão 20 do Plantão de teste (13/10): busca v6, lorebook v1.8
+
+- Busca v6 da thread de perguntas e bateria cega nova `holdout5.json` (50 entradas). Na primeira passada, v5 e v6 deram 29/38 e papo 3/12; depois das correções de cada lado, 34/38 e papo 0/12 (não é mais cega).
+- Lorebook v1.8 (97 entradas): Caminho pedido pela fantasia (furtivo/ninja → Incursor, invocar bichos → Evocador, curar os amigos → Socorrista do Guia, mago → Emanador, guerreiro → Vanguarda), com chaves em frase para não disparar em "vi um filme de assassino" ou "você é uma guerreira". A entrada "Cura da oripatia" não usa mais "cura" e "curar" soltos de chave (entrava em "da pra curar os amigos?").
+- IDIOMA: "obg guia", "classe da faculdade", "nível de cansaço", "ritual de iniciação", "filme/série/anime de X".
+- Sobram na holdout5 só seguimentos curtos ("e no nível 9?", "e quanto custa?", "e sem correr antes?", "e a derrubado?"), com a thread de perguntas.
+
+### Versão 21 do Plantão de teste (13/10): busca v7
+
+- Busca v7 da thread de perguntas: seguimento curto ("e quanto custa?", "e no nível 9?") herda o assunto da pergunta anterior. holdout5 38/38; o resto das baterias sem mudança.
+- No site (commit 3033340 da branch site-teste), "o que faz o abrir caminho?" seguido de "e quanto custa?" traz só a Progressão do Guia no segundo turno, mas ela já tem o custo ("Ação Bônus, 1 PE, uma vez por turno"); não precisa mexer.
+- Primeiro teste real no Gemini 3.8 Flash pela Vertex, feito na linha do bot, com Closure v0.30, Kal'tsit v0.23 e lorebook v1.8 (`../../../../pesquisa/validacao/2026-10-13-16h55-modelo-gemini-3.8-flash.md`): regra e voz certas nas duas. Dois achados: "tá chovendo aí?" virou "o céu tá limpo por aqui" na Closure (falta a regra do clima no card), e "quem dirige a Escola de Tóquio?" não aciona a entrada do Ozpin (falta chave sem o nome).
+
+### Versão 22 do Plantão de teste (13/10): busca v8, Closure v0.31, Kal'tsit v0.24, lorebook v1.9
+
+- Bateria cega `holdout6.json` da thread de perguntas (50 entradas): a versão 21 deu 34/38 e papo 4/12 (89%, contra 77% e 76% nas cegas anteriores). Com a busca v8 e as correções daqui, 37/38 e papo 0/12; deixou de ser cega. Resto igual.
+- IDIOMA: "ritual de acordar cedo/dormir/treino/estudo". O lorebook ignora fala entre aspas com três palavras ou mais ("o bot disse \"você precisa de CD 20\""); termo citado sozinho ("Refino") aciona.
+- Lorebook v1.9: Ozpin achado por "quem dirige a escola", "comanda a escola", "reitor".
+- Card: as duas contam o clima como quem olhou a previsão, dizendo de onde é, e sem clima no contexto dizem que não olharam. Teste com Haiku (6 casos, pasta `2026-10-13-conversa/clima/`): nenhuma se pôs em Tóquio; sem dado, "Não olhei a previsão daí agora". "Pela previsão que eu olhei" abriu duas respostas da Closure.

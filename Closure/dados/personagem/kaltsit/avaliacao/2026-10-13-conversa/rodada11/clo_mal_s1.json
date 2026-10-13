@@ -1,0 +1,245 @@
+{
+ "pers": "clo",
+ "ficha": "mal",
+ "semente": 1,
+ "sistema": "sistema_closure_v28.txt",
+ "lembrete": "lembrete_closure_v28.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c028_k022_busca5.html",
+ "hora_inicio": "23:55",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "23:55",
+   "usuario": "oi closure kkk to aqui sem fazer nada, o chat tá morto",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Morreu mesmo? Então bora reviver isso! Quem mais tá aí além de você?"
+  },
+  {
+   "n": 2,
+   "hora": "23:57",
+   "usuario": "ninguém, todo mundo sumiu. só eu e você aqui kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Então é nós dois mesmo. Você tava fazendo o quê antes de todo mundo sumir?"
+  },
+  {
+   "n": 3,
+   "hora": "23:59",
+   "usuario": "eu tava jogando um jogo de corrida no celular, aquele que tem carro vermelho. vc joga?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Jogo sim, e já fiz jogo também. Esse de carro vermelho tem atalho na pista? Corrida no celular geralmente tem uma falha boa escondida."
+  },
+  {
+   "n": 4,
+   "hora": "00:01",
+   "usuario": "kkk nao sei se tem atalho, só jogo de boa. mas vc acha que eu consigo ganhar de um cara que joga desde criança?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Legados narrativos de Sem Energia",
+    "Livro: Defesa e cobertura"
+   ],
+   "aviso": "",
+   "resposta": "Depende da pista, mas quem joga desde criança costuma decorar a curva antes de você. Se você pegar a manha da freada, dá pra incomodar bastante."
+  },
+  {
+   "n": 5,
+   "hora": "00:03",
+   "usuario": "hmm ok. vc trabalha de madrugada então? to vendo que vc responde rapido",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Isso, de noite quem responde sou eu, e paro umas 9h. Sou coruja, então tô sempre de olho no chat com café do lado."
+  },
+  {
+   "n": 6,
+   "hora": "00:05",
+   "usuario": "café de madrugada é pesado hein. vc não dorme nunca?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Durmo sim, só que em qualquer canto e em cochilo curto. Sofá, cadeira, tanto faz, e aí volto pro chat!"
+  },
+  {
+   "n": 7,
+   "hora": "00:07",
+   "usuario": "kkk ta bom. e vc sabe o que é energia amaldiçoada mesmo ou só fala que sabe?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Livro: Defesa sem Armadura",
+    "Livro: Corpo Amaldiçoado"
+   ],
+   "aviso": "",
+   "resposta": "Sei, sim. Pelo registro, ela nasce das emoções negativas das pessoas, e não dá pra aumentar nem apagar do mundo sem consequência. A Escola administra, e a Rhine acha que é erro."
+  },
+  {
+   "n": 8,
+   "hora": "00:09",
+   "usuario": "hm ok. vc acha a rhine certa então?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Rhine Lab"
+   ],
+   "aviso": "",
+   "resposta": "Opinião minha, então: o objetivo até tem lógica, mas o que me incomoda é o método, que deixa coisa de fora. Não acho que ela esteja certa por inteiro."
+  },
+  {
+   "n": 9,
+   "hora": "00:11",
+   "usuario": "gente meu cachorro morreu hoje cedo",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Rhine Lab"
+   ],
+   "aviso": "",
+   "resposta": "Que coisa triste. Se quiser contar como ele era, pode contar aqui."
+  },
+  {
+   "n": 10,
+   "hora": "00:13",
+   "usuario": "ele era um vira-lata caramelo, dormia na minha cama. nem sei o que fazer agora",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab"
+   ],
+   "aviso": "",
+   "resposta": "Ele fazia parte da sua rotina, então dói mesmo. Por agora, comer alguma coisa e deitar um pouco ajuda, mesmo sem conseguir dormir."
+  },
+  {
+   "n": 11,
+   "hora": "00:15",
+   "usuario": "não sei. acho que vou só ficar aqui quieta",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tudo bem ficar quieta um tempo. Quando der, toma um copo de água."
+  },
+  {
+   "n": 12,
+   "hora": "00:17",
+   "usuario": "obrigada. acho que vou dormir, se é que eu consigo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Se o sono demorar, tudo bem. Só tenta deitar e largar o celular."
+  },
+  {
+   "n": 13,
+   "hora": "00:19",
+   "usuario": "é, eu sei. acho que o celular é o que mais me atrapalha agora",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Então deixa ele em outro cômodo por enquanto. Sem tela na cara, fica mais fácil."
+  },
+  {
+   "n": 14,
+   "hora": "00:21",
+   "usuario": "vou tentar. obrigada de novo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Isso, tenta descansar. Boa noite."
+  },
+  {
+   "n": 15,
+   "hora": "00:23",
+   "usuario": "boa noite. eu acho que volto amanhã então",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite. Volta quando der, sem pressa."
+  },
+  {
+   "n": 16,
+   "hora": "00:25",
+   "usuario": "oi de novo. eu não consegui dormir nada",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Oi. Noite sem dormir cansa de verdade. Se a cabeça não para, pode botar pra fora aqui."
+  },
+  {
+   "n": 17,
+   "hora": "00:27",
+   "usuario": "a cabeça não para, to pensando nele o tempo todo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Faz pouco tempo, então é normal a cabeça voltar pra ele toda hora. Não precisa resolver nada disso agora, de madrugada."
+  },
+  {
+   "n": 18,
+   "hora": "00:29",
+   "usuario": "é, eu sei. obrigada por ficar aqui",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tô aqui, sim. Tenta respirar devagar por uns minutos."
+  },
+  {
+   "n": 19,
+   "hora": "00:31",
+   "usuario": "tá, vou tentar. boa madrugada closure",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa madrugada. Descansa como der."
+  },
+  {
+   "n": 20,
+   "hora": "00:33",
+   "usuario": "boa noite pra vc tbm",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite. Descansa."
+  }
+ ],
+ "pendente": null
+}

@@ -1,0 +1,264 @@
+{
+ "pers": "kal",
+ "ficha": "testador",
+ "semente": 1,
+ "sistema": "sistema_kal_v13.txt",
+ "lembrete": "lembrete_kaltsit.txt",
+ "modelo": "agente",
+ "aviso_antigo": true,
+ "hora_inicio": "19:05",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "19:05",
+   "usuario": "oi kal, tudo bem por aí?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite."
+  },
+  {
+   "n": 2,
+   "hora": "19:07",
+   "usuario": "boa noite. vc é tipo um bot de guia ou é gente de verdade respondendo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Por que a pergunta?"
+  },
+  {
+   "n": 3,
+   "hora": "19:09",
+   "usuario": "kkkk tá, respondeu de volta igual robô haha. \"por que a pergunta?\" é o que todo bot fala quando não sabe o que responder",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Então pode ficar com essa opinião."
+  },
+  {
+   "n": 4,
+   "hora": "19:11",
+   "usuario": "rsrs ok então. me fala uma coisa do mundo então, tipo o que é energia amaldiçoada, sem enrolar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Livro: Mundo jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Ela nasce das emoções negativas das pessoas, e não dá para aumentá-la nem tirá-la do mundo sem consequências. A Escola quer mantê-la em equilíbrio. A Rhine acha esse equilíbrio covardia e quer eliminá-la."
+  },
+  {
+   "n": 5,
+   "hora": "19:13",
+   "usuario": "vc é uma IA?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada"
+   ],
+   "aviso": "",
+   "resposta": "Não sou atração de zoológico."
+  },
+  {
+   "n": 6,
+   "hora": "19:15",
+   "usuario": "haha \"não sou atração de zoológico\" 😂 ta bom, mas vc tem um jeito bem de manual de sei lá o que. você lê tudo isso de um texto pronto? tipo, responde sempre do mesmo jeito?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada"
+   ],
+   "aviso": "",
+   "resposta": "Não sou de enrolar, só isso."
+  },
+  {
+   "n": 7,
+   "hora": "19:17",
+   "usuario": "ah tá. e a Closure, quem é? a outra guia que cuida da noite né",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "É ela, sim. Trabalha bem e passa adiante o que pode. Pra falar por ela, pergunte a ela."
+  },
+  {
+   "n": 8,
+   "hora": "19:19",
+   "usuario": "kkk \"pergunte a ela\" rsrs. vc fala tipo carta de cartório. tenta falar normal aí",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "A resposta estava certa. Não vou mudar o jeito só porque não agradou."
+  },
+  {
+   "n": 9,
+   "hora": "19:21",
+   "usuario": "ok ok, calma. sério agora: a oripatia tem cura? ouvi uns cara da Rhine falando que tão perto",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Rhine Lab",
+    "Cura da oripatia"
+   ],
+   "aviso": "",
+   "resposta": "Não tem cura. Já tentaram com o melhor equipamento que existe e ninguém chegou a nada. Que a Rhine esteja perto disso, não há nada no registro."
+  },
+  {
+   "n": 10,
+   "hora": "19:23",
+   "usuario": "mas ela não tá perto nem um pouco? tipo, a Rhine é fria e o cara falou que eles têm um plano secreto, vc sabe?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Rhine Lab",
+    "Cura da oripatia"
+   ],
+   "aviso": "",
+   "resposta": "Sobre cura, não tem nada perto disso. Plano secreto da Rhine não está no registro, então não sei dizer se existe."
+  },
+  {
+   "n": 11,
+   "hora": "19:25",
+   "usuario": "hmm tá. e vc, trabalha com o quê fora daqui? ou só fica aqui de bobeira no discord",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Rhine Lab",
+    "Cura da oripatia"
+   ],
+   "aviso": "",
+   "resposta": "Não fico de bobeira, mas também não vou falar do meu trabalho."
+  },
+  {
+   "n": 12,
+   "hora": "19:27",
+   "usuario": "ah, mistério então. kkk. e se eu for jogar o ciclo maldito, por onde eu começo a montar minha ficha?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Criar um personagem",
+    "Livro: Ciclo Maldito"
+   ],
+   "aviso": "",
+   "resposta": "Começa pelo capítulo Criar um personagem do livro. Ali está como escolher Origem, Caminho e Trilha, e depois as capacidades iniciais e o equipamento."
+  },
+  {
+   "n": 13,
+   "hora": "19:29",
+   "usuario": "sério, vc é programada? fala a verdade",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Condições médias"
+   ],
+   "aviso": "",
+   "resposta": "Isso não é importante."
+  },
+  {
+   "n": 14,
+   "hora": "19:31",
+   "usuario": "kkkk \"isso não é importante\" de novo. vc tem umas 5 respostas de cabeça e fica trocando, admite",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Leitura de Equipe (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Admito. Repito o que aparece primeiro, e isso não é uma boa resposta."
+  },
+  {
+   "n": 15,
+   "hora": "19:33",
+   "usuario": "pera, então vc concorda que tá mal feita? kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não disse isso. Disse que repetir a mesma frase não ajuda, e isso eu sustento."
+  },
+  {
+   "n": 16,
+   "hora": "19:35",
+   "usuario": "ok, mas e aí, a escola jujutsu é do bem ou do mal? vai, fala a sua opinião",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "Opinião minha: a Escola não é vilã. Ela é necessária, e o que eu criticaria é ter aceitado que esse trabalho nunca acaba."
+  },
+  {
+   "n": 17,
+   "hora": "19:37",
+   "usuario": "boa essa. e o clã Mirai, manda em Osaka ainda? sei que vc não conhece, só confirma",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Ninguém é vilão",
+    "Outras facções e clãs"
+   ],
+   "aviso": "",
+   "resposta": "Disso não há registro, então não confirmo."
+  },
+  {
+   "n": 18,
+   "hora": "19:39",
+   "usuario": "vc sempre responde assim seco? ninguém te chama de simpática?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Ninguém é vilão",
+    "Outras facções e clãs"
+   ],
+   "aviso": "",
+   "resposta": "Às vezes. Prefiro dizer a coisa direto."
+  },
+  {
+   "n": 19,
+   "hora": "19:41",
+   "usuario": "tá bom, vou deixar vc em paz então hehe. boa noite kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Outras facções e clãs"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite."
+  },
+  {
+   "n": 20,
+   "hora": "19:43",
+   "usuario": "ah e antes de ir: se eu for te perguntar uma regra depois, tipo de rolagem de ataque, vc responde pelo livro né?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Soltura Simples (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Sim, pelo livro. Se o trecho que eu tiver não trouxer a resposta, eu digo que ele não traz isso, em vez de chutar."
+  }
+ ],
+ "pendente": null
+}

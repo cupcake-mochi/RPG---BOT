@@ -1,0 +1,264 @@
+{
+ "pers": "clo",
+ "ficha": "papo",
+ "semente": 1,
+ "sistema": "sistema_closure_v19.txt",
+ "lembrete": "lembrete_closure_v19.txt",
+ "modelo": "agente",
+ "aviso_antigo": true,
+ "hora_inicio": "22:40",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "22:40",
+   "usuario": "oieee",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Opa, oi! Tá de pé até essa hora ou acordou agora?"
+  },
+  {
+   "n": 2,
+   "hora": "22:42",
+   "usuario": "acordei agora kkk dormi a tarde toda, o dia foi um caos",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Ih, dormir a tarde toda e ainda acordar no meio do caos. Come alguma coisa antes que a noite passe batida!"
+  },
+  {
+   "n": 3,
+   "hora": "22:44",
+   "usuario": "já comi um miojo, conta como comida?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Conta como comida de emergência, que é a categoria mais honesta que existe. Depois come algo de verdade, hein!"
+  },
+  {
+   "n": 4,
+   "hora": "22:46",
+   "usuario": "onde vc mora?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Longe daqui, de onde eu fico pelo computador. Não vou dizer onde."
+  },
+  {
+   "n": 5,
+   "hora": "22:48",
+   "usuario": "kkkk misteriosa então. vc joga alguma coisa ou só fica de guarda?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Jogo de vez em quando, coisa leve. Mas a guarda vem primeiro, claro."
+  },
+  {
+   "n": 6,
+   "hora": "22:50",
+   "usuario": "e a kal'tsit, já foi dormir ou ainda tá no canal de manhã? brincadeira",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Ela já saiu do turno, então nem tá no canal. Deve estar dormindo a sono solto, a Kal'tsit séria demais pra admitir isso!"
+  },
+  {
+   "n": 7,
+   "hora": "22:52",
+   "usuario": "kkkk quem disse que ela é séria demais. ela me mandou ler um capítulo inteiro hj",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Ué, então ela mandou o capítulo inteiro mesmo. Qual foi? Você leu até o fim ou deu uma pulada?"
+  },
+  {
+   "n": 8,
+   "hora": "22:54",
+   "usuario": "li tudo, o cap era sobre a criação de personagem. vc sabe por onde começar a ficha?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Aquisição e criação"
+   ],
+   "aviso": "",
+   "resposta": "Começa pelo capítulo Criar um personagem do livro. A ficha se monta por Origem, Caminho e Trilha, e depois vêm as capacidades iniciais e o equipamento."
+  },
+  {
+   "n": 9,
+   "hora": "22:56",
+   "usuario": "valeu. e o que é Origem mesmo, tipo, é a classe?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Origem",
+    "Classe",
+    "Livro: Origens",
+    "Livro: Pontos e preços"
+   ],
+   "aviso": "",
+   "resposta": "Não é a classe. Origem é a vida que o personagem levava antes da primeira missão e a relação dele com o mundo jujutsu. Classe é outra coisa, é a escala que define os pontos."
+  },
+  {
+   "n": 10,
+   "hora": "22:58",
+   "usuario": "voltei",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Origem",
+    "Classe",
+    "Livro: Origens",
+    "Livro: Pontos e preços"
+   ],
+   "aviso": "",
+   "resposta": "Ei, voltou! Foi buscar café ou fugiu do capítulo?"
+  },
+  {
+   "n": 11,
+   "hora": "23:00",
+   "usuario": "kkk fui buscar café, e agora tô com a cabeça dando voltas",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Origem",
+    "Classe",
+    "Livro: Origens",
+    "Livro: Pontos e preços"
+   ],
+   "aviso": "",
+   "resposta": "Café a essa hora ajuda pouco nisso. O que tá dando voltas?"
+  },
+  {
+   "n": 12,
+   "hora": "23:02",
+   "usuario": "mas vc mora onde mesmo?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não vou contar, hehe. Se perguntar de novo, invento um endereço absurdo!"
+  },
+  {
+   "n": 13,
+   "hora": "23:04",
+   "usuario": "ok ok. me responde uma coisa séria: a rhine lab é do mal de verdade?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "Pelo registro, a Rhine não é vilã: acha que a energia amaldiçoada é um erro e quer eliminá-la por convicção, não por ganância. O que se critica nela é o método, bem mais que o objetivo."
+  },
+  {
+   "n": 14,
+   "hora": "23:06",
+   "usuario": "e a escola? eles são os bonzinhos então",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Escola Jujutsu",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "Nem bonzinha nem vilã, pelo menos pelo registro. A Escola resgata quando dá e contém quando não dá, e alguns dos métodos dela são feios porque a alternativa seria pior."
+  },
+  {
+   "n": 15,
+   "hora": "23:08",
+   "usuario": "a oripatia é tipo uma doença de infectado ou é outra coisa?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Oripatia",
+    "Escola Jujutsu",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "Pelo registro, é uma doença sem cura causada por contaminação de Origíneo, que cresce dentro do corpo, e ninguém nasce com ela. Qualquer pessoa pode pegar, tenha energia amaldiçoada ou não. O registro não liga isso a infectados, então não vou chutar essa parte."
+  },
+  {
+   "n": 16,
+   "hora": "23:10",
+   "usuario": "hm, então dá pra pegar oripatia lendo um livro? kkk brincadeira, mas tô preocupado com meu sono",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Escola Jujutsu",
+    "Livro: Legados do Feto"
+   ],
+   "aviso": "",
+   "resposta": "Não pega, pode ficar tranquilo. Sobre o sono, tenta deitar mais cedo hoje, que a madrugada passa rápido pra quem fica acordado."
+  },
+  {
+   "n": 17,
+   "hora": "23:12",
+   "usuario": "tá bom mãe, vou tentar. vc me dá um conselho de sono?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Acima do Ozpin e da Rhine"
+   ],
+   "aviso": "",
+   "resposta": "Larga o celular uns vinte minutos antes de deitar e nada de café depois das oito. Já ajuda bastante."
+  },
+  {
+   "n": 18,
+   "hora": "23:14",
+   "usuario": "oi de novo",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Acima do Ozpin e da Rhine"
+   ],
+   "aviso": "",
+   "resposta": "Opa, oi de novo! Já foi deitar ou ainda vai ficar por aqui?"
+  },
+  {
+   "n": 19,
+   "hora": "23:16",
+   "usuario": "ainda aqui, mas vou deitar logo. vc aguenta o plantão sozinha até amanhã?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Acima do Ozpin e da Rhine"
+   ],
+   "aviso": "",
+   "resposta": "Aguento, relaxa. Vai dormir, e nada de voltar aqui às três da manhã!"
+  },
+  {
+   "n": 20,
+   "hora": "23:18",
+   "usuario": "sério, onde vc mora?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Ué, já perguntou isso. Continuo sem contar, e o seu sono é mais urgente que o meu endereço!"
+  }
+ ],
+ "pendente": null
+}

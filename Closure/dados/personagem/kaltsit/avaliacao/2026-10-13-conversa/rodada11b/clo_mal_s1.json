@@ -1,0 +1,250 @@
+{
+ "pers": "clo",
+ "ficha": "mal",
+ "semente": 1,
+ "sistema": "sistema_closure_v29.txt",
+ "lembrete": "lembrete_closure_v29.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c029_k022_busca5.html",
+ "hora_inicio": "23:55",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "23:55",
+   "usuario": "oi closure, tá acordada até essa hora? kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tô sim, o plantão da madrugada não deixa ninguém dormir! E você, ainda tá por aí a essa hora?"
+  },
+  {
+   "n": 2,
+   "hora": "23:57",
+   "usuario": "to jogando um roguelike aqui, já morri 4 vezes no mesmo boss kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Ih, quatro mortes no mesmo boss é sofrimento! Qual é? Me conta o padrão de ataque que te pega toda vez."
+  },
+  {
+   "n": 3,
+   "hora": "23:59",
+   "usuario": "é o cara do castelo que solta uma bola de fogo gigante e some na tela, tipo nem dá pra ver de onde vem",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tipos de dano",
+    "Livro: Alcance"
+   ],
+   "aviso": "",
+   "resposta": "Ué, some na tela? Isso parece bug de câmera, vai ver ele tá só fora do enquadramento!"
+  },
+  {
+   "n": 4,
+   "hora": "00:01",
+   "usuario": "kkkk não, é bug mesmo, ele tem uma animação de desaparecer e reaparecer atrás de você",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Esse tipo de falha é o que speedrunner adora! Já tentou repetir pra ver se acontece sempre?"
+  },
+  {
+   "n": 5,
+   "hora": "00:03",
+   "usuario": "já tentei umas 3 vezes, acontece sempre. vou gravar e mandar pro pessoal da mesa",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Manda sim! Quero ver essa animação em câmera lenta."
+  },
+  {
+   "n": 6,
+   "hora": "00:05",
+   "usuario": "kkk tá bom, depois eu mando. e você, o que tá fazendo acordada a essa hora?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Café e um energético que eu já devia ter parado de tomar. Coruja de carteirinha, sabe como é!"
+  },
+  {
+   "n": 7,
+   "hora": "00:07",
+   "usuario": "kkk café com energético, que combinação, você não dorme nunca?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Cochilo em qualquer canto, mas dormir de verdade eu quase não durmo. Você é de dormir cedo ou também vira a noite?"
+  },
+  {
+   "n": 8,
+   "hora": "00:09",
+   "usuario": "eu durmo cedo normal, mas hoje tô aqui até tarde por causa de um negócio chato",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Negócio chato de madrugada é o pior. Quer contar o que foi ou prefere deixar pra lá?"
+  },
+  {
+   "n": 9,
+   "hora": "00:11",
+   "usuario": "gente meu cachorro morreu hoje cedo",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Puxa, que tristeza. Se quiser falar dele, pode falar aqui, sem pressa."
+  },
+  {
+   "n": 10,
+   "hora": "00:13",
+   "usuario": "ele era meio velhinho, tinha 14 anos. dormia do meu lado todo dia",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Catorze anos é bastante tempo junto. Essa primeira noite sem ele deve pesar mesmo."
+  },
+  {
+   "n": 11,
+   "hora": "00:15",
+   "usuario": "é, nem sei o que fazer agora. tô sem vontade de nada",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Dia pesado, né. Hoje não precisa decidir nada. Come alguma coisa, mesmo que pouco, e tenta deitar um pouco."
+  },
+  {
+   "n": 12,
+   "hora": "00:17",
+   "usuario": "vou tentar. obrigado por ter perguntado",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tá bom, vai com calma."
+  },
+  {
+   "n": 13,
+   "hora": "00:19",
+   "usuario": "ok, boa noite",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite."
+  },
+  {
+   "n": 14,
+   "hora": "00:21",
+   "usuario": "oi de novo. consegui comer um pão, pelo menos",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Oi. Pão já é alguma coisa, ainda mais de madrugada."
+  },
+  {
+   "n": 15,
+   "hora": "00:23",
+   "usuario": "closure, você acha que dá pra eu dormir umas 4h sem acordar com a cabeça pesando?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Inconsciente",
+    "Livro: Cena e usos de habilidades"
+   ],
+   "aviso": "",
+   "resposta": "Não tenho como garantir, mas tenta deitar sem o celular do lado. Tela acesa atrapalha."
+  },
+  {
+   "n": 16,
+   "hora": "00:25",
+   "usuario": "vou tentar, valeu. amanhã eu conto como foi o dia",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Combinado. Até amanhã."
+  },
+  {
+   "n": 17,
+   "hora": "00:27",
+   "usuario": "closure, uma coisa: o registro fala se o Rhine Lab tá na Escola de Kyoto?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Escola Jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Não há registro disso. O que consta é que a Rhine nasceu como centro de pesquisa aliado da Escola, sem falar de Kyoto."
+  },
+  {
+   "n": 18,
+   "hora": "00:29",
+   "usuario": "hm, e o mestre fala de alguma coisa nova? quem é o cara que mandou a Rhine ir pra Tóquio",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Escola Jujutsu",
+    "Livro: Exposição e novas Restrições",
+    "Livro: Acúmulo (continuação)",
+    "Livro: Sociedade jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Isso é com o mestre, não sei o que ele tá preparando. E no registro não aparece ninguém mandando a Rhine pra Tóquio."
+  },
+  {
+   "n": 19,
+   "hora": "00:31",
+   "usuario": "ah ok. e você tem algum jogo favorito ou é só speedrun mesmo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Escola Jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Speedrun, principalmente. Quanto mais falha tiver pra achar, melhor! E você, tem algum que joga sem parar?"
+  },
+  {
+   "n": 20,
+   "hora": "00:33",
+   "usuario": "tenho sim, o que mais jogo é Hollow Knight. vou dormir, boa noite de novo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Rhine Lab"
+   ],
+   "aviso": "",
+   "resposta": "Hollow Knight é um clássico, boa noite e dorme bem!"
+  }
+ ],
+ "pendente": null
+}

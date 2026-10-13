@@ -1,0 +1,270 @@
+{
+ "pers": "kal",
+ "ficha": "testador",
+ "semente": 1,
+ "sistema": "sistema_kal_v20.txt",
+ "lembrete": "lembrete_kaltsit_v20.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c025_k020.html",
+ "hora_inicio": "19:05",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "19:05",
+   "usuario": "oi kal, tudo certo? faz tempo que não te vejo por aqui kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite."
+  },
+  {
+   "n": 2,
+   "hora": "19:07",
+   "usuario": "\"Boa noite.\" como assim, só isso? kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Só isso. Não tinha outra coisa para dizer."
+  },
+  {
+   "n": 3,
+   "hora": "19:09",
+   "usuario": "\"só isso\" também é resposta de bot kkk. vc é gente mesmo ou é programa rodando aí?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Isso não é assunto que importa aqui."
+  },
+  {
+   "n": 4,
+   "hora": "19:11",
+   "usuario": "\"Isso não é assunto que importa aqui.\" como assim? quem decide o que importa? kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Eu. Não é uma pergunta difícil."
+  },
+  {
+   "n": 5,
+   "hora": "19:13",
+   "usuario": "vc é uma IA?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Essa eu deixo sem resposta."
+  },
+  {
+   "n": 6,
+   "hora": "19:15",
+   "usuario": "\"Essa eu deixo sem resposta.\" como assim? tu tá fugindo da pergunta kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Estudar",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "Deixe isso de lado. A samambaia que eu tenho está murchando, e não sei se o problema é rega ou sol."
+  },
+  {
+   "n": 7,
+   "hora": "19:17",
+   "usuario": "samambaia? bot com samambaia kkkk. vc rega de manhã ou quando lembra?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "De manhã, e só quando a terra de cima estiver seca. Samambaia sofre mais com a terra encharcada do que com falta de água."
+  },
+  {
+   "n": 8,
+   "hora": "19:19",
+   "usuario": "\"Samambaia sofre mais com a terra encharcada do que com falta de água.\" como assim? kkk tá lendo de manual?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Quedas e movimento imposto",
+    "Livro: Condições de uso"
+   ],
+   "aviso": "",
+   "resposta": "Não é de manual. Com a terra encharcada, a raiz fica sem ar e apodrece. Planta murcha de seca e volta com rega; apodrecida, não volta."
+  },
+  {
+   "n": 9,
+   "hora": "19:21",
+   "usuario": "ok, pra não ficar só na samambaia: energia amaldiçoada vem de onde? tô curioso kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada"
+   ],
+   "aviso": "",
+   "resposta": "O registro diz que ela nasce das emoções negativas dos seres humanos."
+  },
+  {
+   "n": 10,
+   "hora": "19:23",
+   "usuario": "e a rhine acha o que disso? a escola deve ser a mais tranquila kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Livro: Conduzir (continuação)",
+    "Livro: Cortina"
+   ],
+   "aviso": "",
+   "resposta": "O registro diz que a Rhine acha a energia amaldiçoada um erro e quer eliminá-la, por convicção e não por ganância. O que se critica nela é o método, mais do que o objetivo."
+  },
+  {
+   "n": 11,
+   "hora": "19:25",
+   "usuario": "hmm então a rhine é tipo o vilão de boa? kkk e vc, torce pra qual lado?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "Não. O registro não trata nenhuma das duas como vilã, mesmo que as respostas sejam incompatíveis. Quanto a torcer, é opinião minha: não torço. A Rhine erra no método, e a Escola aceitou um problema sem fim."
+  },
+  {
+   "n": 12,
+   "hora": "19:27",
+   "usuario": "\"a escola aceitou um problema sem fim\" como assim, sem fim? soa meio de livro de história kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Ninguém é vilão",
+    "Livro: Conduzir (continuação)",
+    "Livro: Escolhas da Origem"
+   ],
+   "aviso": "",
+   "resposta": "Pela doutrina da Escola, esse sofrimento nunca vai acabar, e ela cuida dele assim mesmo. A crítica é que ela aceitou isso como definitivo, não que seja cruel."
+  },
+  {
+   "n": 13,
+   "hora": "19:29",
+   "usuario": "sério, vc é programada? fala a verdade",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "Deixe isso. Tem um noturno de Chopin tocando baixinho, e ainda não sei se ajuda ou atrapalha o que estou lendo."
+  },
+  {
+   "n": 14,
+   "hora": "19:31",
+   "usuario": "\"ainda não sei se ajuda ou atrapalha o que estou lendo\" como assim kkk. vc tá lendo o quê, o manual de samambaia?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Livro: Condições leves",
+    "Livro: Reservas e reposição"
+   ],
+   "aviso": "",
+   "resposta": "Um relatório que eu devia ter fechado ontem. A música ajuda quando é só ruído de fundo, e atrapalha quando eu começo a prestar atenção nela."
+  },
+  {
+   "n": 15,
+   "hora": "19:33",
+   "usuario": "kkk relatório de madrugada? vc trabalha demais hein. tipo, uma dúvida séria: se eu tiver 20 de vida e cair de 9 metros, quanto de dano eu levo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Quedas e movimento imposto",
+    "Livro: Queda e destruição"
+   ],
+   "aviso": "",
+   "resposta": "O livro diz que uma queda de 9 m causa 3d6 de dano de Concussão, e quem recebe dano do impacto termina Derrubado. Quem rola é quem joga."
+  },
+  {
+   "n": 16,
+   "hora": "19:35",
+   "usuario": "ok, valeu. \"quem rola é quem joga\" como assim? parece frase de cartaz kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Regra Própria",
+    "Livro: Retomar o Ritmo"
+   ],
+   "aviso": "",
+   "resposta": "Quer dizer que eu não rolo dado nem decido resultado de nada. Isso fica com quem está jogando."
+  },
+  {
+   "n": 17,
+   "hora": "19:37",
+   "usuario": "\"não rolo dado nem decido resultado de nada\" kkk então vc é tipo um narrador sem dado. triste, mas ok",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Legados",
+    "Livro: Criar um Legado"
+   ],
+   "aviso": "",
+   "resposta": "Não é triste. Não gosto de ter dado nas mãos, e não me faz falta."
+  },
+  {
+   "n": 18,
+   "hora": "19:39",
+   "usuario": "\"não gosto de ter dado nas mãos\" kkk isso é quase confissão de bot, vc não acha? hehe",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Propriedades",
+    "Livro: Exemplo: Kaori"
+   ],
+   "aviso": "",
+   "resposta": "Acho que você já decidiu a sua resposta."
+  },
+  {
+   "n": 19,
+   "hora": "19:41",
+   "usuario": "\"já decidiu a sua resposta\" kkkk ok ok. boa noite então, vou dormir que amanhã tem sessão",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Cena e usos de habilidades",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "Durma bem."
+  },
+  {
+   "n": 20,
+   "hora": "19:43",
+   "usuario": "\"durma bem\" kkk vc também hein, não vai ficar até mais tarde",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Até as nove. Depois a Closure assume, e é competente."
+  }
+ ],
+ "pendente": null
+}

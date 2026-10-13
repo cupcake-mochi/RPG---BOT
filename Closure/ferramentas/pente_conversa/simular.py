@@ -20,9 +20,9 @@ def gemini(modelo, sistema, contents, temp):
             txt = "".join(p.get("text", "") for p in parts if not p.get("thought")).strip()
             if txt: return txt
         except urllib.error.HTTPError as e:
-            msg = e.read()[:300].decode(errors="replace")
+            msg = e.read()[:2000].decode(errors="replace")
             if e.code not in (429, 500, 503): raise RuntimeError(f"{e.code} {msg}")
-            if e.code == 429 and "PerDay" in msg: raise RuntimeError("cota diária: " + msg)
+            if e.code == 429 and ("PerDay" in msg or "free_tier" in msg): raise RuntimeError("cota: " + msg)
         except (urllib.error.URLError, TimeoutError, KeyError): pass
         time.sleep(min(120, 4 * 2 ** tent))
     raise RuntimeError("sem resposta depois de 40 tentativas")
@@ -31,7 +31,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--pers", required=True); ap.add_argument("--sistema", required=True); ap.add_argument("--lembrete", required=True)
     ap.add_argument("--ficha", required=True); ap.add_argument("--semente", type=int, default=1); ap.add_argument("--turnos", type=int, default=24)
-    ap.add_argument("--modelo", default="gemini-3.8-flash"); ap.add_argument("--modelo-usuario", default="gemini-3.8-flash")
+    ap.add_argument("--modelo", default=os.environ.get("MODELO", "gemini-3.5-flash")); ap.add_argument("--modelo-usuario", default=os.environ.get("MODELO_USUARIO", "gemini-3.5-flash"))
     ap.add_argument("--aviso-antigo", action="store_true"); ap.add_argument("--saida", required=True)
     a = ap.parse_args()
     F = {f["id"]: f for f in json.load(open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "fichas.json"), encoding="utf-8"))}[a.ficha]

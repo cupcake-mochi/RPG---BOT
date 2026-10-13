@@ -1,0 +1,289 @@
+{
+ "pers": "kal",
+ "ficha": "regras2",
+ "semente": 1,
+ "sistema": "sistema_kal_v22.txt",
+ "lembrete": "lembrete_kaltsit_v22.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c028_k022_busca5.html",
+ "hora_inicio": "16:40",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "16:40",
+   "usuario": "qual o dano da katana?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Lâminas"
+   ],
+   "aviso": "",
+   "resposta": "Pelo livro, a katana faz 1d8 de dano Cortante."
+  },
+  {
+   "n": 2,
+   "hora": "16:42",
+   "usuario": "e quanto ela custa?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Armas",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "No livro, a katana custa ¥48.000 e ocupa 1 de Volume."
+  },
+  {
+   "n": 3,
+   "hora": "16:44",
+   "usuario": "e se eu nao tiver forca minima pra katana, ela faz menos dano?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Lâminas",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Na coluna Força a katana tem só um traço, então ela não pede Força mínima. Já a penalidade por falta de Força, eu não achei agora."
+  },
+  {
+   "n": 4,
+   "hora": "16:46",
+   "usuario": "como eu agarro alguém?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Agarrar, derrubar e empurrar",
+    "Livro: Fechaduras e contenção",
+    "Livro: Condições leves"
+   ],
+   "aviso": "",
+   "resposta": "Você troca um dos seus ataques da Ação Atacar por Agarrar. Escolha uma criatura ao alcance do seu ataque desarmado, normalmente 1,5 m, de até uma categoria de tamanho maior que você. Ela faz TR Físico contra CD 8 + sua Força + sua maestria; se falhar, fica Agarrado por você, com deslocamento zero, e você precisa de uma mão livre para manter a contenção."
+  },
+  {
+   "n": 5,
+   "hora": "16:48",
+   "usuario": "e se o cara tentar escapar?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Escapar de uma contenção"
+   ],
+   "aviso": "",
+   "resposta": "Quem está agarrado gasta uma Ação Padrão e faz TR Físico contra a CD da contenção, normalmente 8 + Força + maestria de quem agarrou. No sucesso a contenção termina; na falha, continua."
+  },
+  {
+   "n": 6,
+   "hora": "16:50",
+   "usuario": "nao entendi, o que e Acao Padrao exatamente? e a acao de movimento e outra coisa?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Turnos",
+    "Livro: Ações"
+   ],
+   "aviso": "",
+   "resposta": "Ação Padrão é o recurso que você gasta para atacar, conjurar e fazer as ações da lista, salvo quando uma permissão específica diz outra coisa. Ação de Movimento é outro recurso, separado: serve para andar seu deslocamento, normalmente 9 m, ou pagar uma tarefa que peça essa ação. Gastar uma não consome a outra, mas dá para converter: Padrão vira Bônus, e Bônus vira Movimento."
+  },
+  {
+   "n": 7,
+   "hora": "16:52",
+   "usuario": "posso atacar duas vezes no turno?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Mais de um ataque",
+    "Livro: Escola de Arma (continuação)",
+    "Livro: Ataques",
+    "Livro: Preparar"
+   ],
+   "aviso": "",
+   "resposta": "Só se uma habilidade der ataque a mais, porque a Ação Atacar sozinha dá um. Na Vanguarda, o Ataque Extra, no nível 7, permite um ataque simples adicional por rodada."
+  },
+  {
+   "n": 8,
+   "hora": "16:54",
+   "usuario": "e a defesa, como eu calculo a minha na ficha?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Mais de um ataque",
+    "Livro: Equipamento e valores",
+    "Livro: Pontos e preços",
+    "Livro: Defesa e cobertura"
+   ],
+   "aviso": "",
+   "resposta": "A Defesa é 10 + Destreza + proteção, respeitando o limite de Destreza que o equipamento põe. Traje e Revestimento substituem a proteção passiva da rota, e o escudo soma por cima."
+  },
+  {
+   "n": 9,
+   "hora": "16:56",
+   "usuario": "como funciona iniciativa",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Turnos"
+   ],
+   "aviso": "",
+   "resposta": "Cada um rola d20 + Destreza, com os modificadores ativos nessa rolagem, e quem tira o maior total age primeiro. Em empate, age antes quem tem mais Destreza; se ainda empatar entre jogador e inimigo, vai o jogador. A ordem fica registrada para o combate inteiro, e as rodadas seguem essa mesma sequência."
+  },
+  {
+   "n": 10,
+   "hora": "16:58",
+   "usuario": "ta, e se eu for o ultimo a agir, eu perco o turno?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Rastejar e passagens estreitas",
+    "Livro: Armas amaldiçoadas"
+   ],
+   "aviso": "",
+   "resposta": "Não. Cada participante tem um turno por rodada, e a rodada só vira depois do último turno, na mesma ordem."
+  },
+  {
+   "n": 11,
+   "hora": "17:00",
+   "usuario": "posso voar?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Voo"
+   ],
+   "aviso": "",
+   "resposta": "Voar exige uma capacidade que conceda essa modalidade, e um salto não conta para isso."
+  },
+  {
+   "n": 12,
+   "hora": "17:02",
+   "usuario": "e bloquear, e a mesma coisa que defesa? nao saquei",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Bloquear",
+    "Livro: Acúmulo (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Não é a mesma coisa. A Defesa é um número fixo; Bloquear é uma rolagem que você pode usar no lugar dela, escolhendo antes da rolagem do atacante, sem saber o resultado dele. Ela vale 2d10 + (Defesa - 11), não gasta Reação e não precisa de arma ou escudo. O resultado vale mesmo quando for menor que a Defesa."
+  },
+  {
+   "n": 13,
+   "hora": "17:04",
+   "usuario": "esquiva funciona como",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Ações",
+    "Livro: Invocação Principal",
+    "Livro: Passo Rápido (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Você gasta sua Ação Padrão, e até o começo do seu próximo turno os ataques contra você têm desvantagem, enquanto seus TRs Físicos saem com vantagem."
+  },
+  {
+   "n": 14,
+   "hora": "17:06",
+   "usuario": "e quanto de carga eu aguento? minha forca e 0",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Carga",
+    "Livro: Vida a zero"
+   ],
+   "aviso": "",
+   "resposta": "Com Força 0, seu limite é 5 de Volume, contando tudo que você leva, inclusive o que está vestido. Acima de 5 e até 10, seu deslocamento cai pela metade e você fica com desvantagem em TR Físico; acima de 10, não consegue se deslocar com a carga."
+  },
+  {
+   "n": 15,
+   "hora": "17:08",
+   "usuario": "com quanto dinheiro eu começo?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Dinheiro inicial",
+    "Livro: Dinheiro e acesso",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Na criação padrão, você começa no Grau 4, com um Traje 1 e ¥150.000 para comprar o resto. Se a campanha começar em outra patente, o fundo vira uma mensalidade padrão dessa patente, e é o mestre que define a patente inicial."
+  },
+  {
+   "n": 16,
+   "hora": "17:10",
+   "usuario": "ah ok. e se eu comprar a pistola sem autorizacao?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Equipamento inicial",
+    "Livro: Dinheiro e acesso"
+   ],
+   "aviso": "",
+   "resposta": "Sem autorização, a pistola não está ao seu alcance: arma de fogo pede Grau 2 ou autorização prévia, e você começa no Grau 4. Ter o dinheiro não resolve isso, e a autorização precisa ser combinada com o mestre ou com a organização da guilda antes da compra."
+  },
+  {
+   "n": 17,
+   "hora": "17:12",
+   "usuario": "qnto de xp eu preciso pra sair do nv 2?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "XP para subir",
+    "Subir de nível",
+    "Livro: Recompensas e custos",
+    "Livro: Funções complementares (continuação)",
+    "Livro: Experiência e Progressão"
+   ],
+   "aviso": "",
+   "resposta": "São 200 XP para sair do nível 2. A tabela mostra só o custo de cada subida, e não o XP acumulado desde a criação."
+  },
+  {
+   "n": 18,
+   "hora": "17:14",
+   "usuario": "e do 11?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "XP para subir",
+    "Subir de nível",
+    "Livro: Recompensas e custos",
+    "Livro: Funções complementares (continuação)",
+    "Livro: Limiar do nível 20"
+   ],
+   "aviso": "",
+   "resposta": "Do nível 11 são 900 XP, a mesma faixa que vai até o 13."
+  },
+  {
+   "n": 19,
+   "hora": "17:16",
+   "usuario": "valeu. e pra ficha, por onde eu começo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Primeira sessão",
+    "Livro: Criar um personagem",
+    "Livro: Vínculo"
+   ],
+   "aviso": "",
+   "resposta": "Pelo capítulo Criar um personagem. Ele começa pelos atributos, nove pontos, e segue por origem, caminho, capacidades, equipamento e a ficha."
+  },
+  {
+   "n": 20,
+   "hora": "17:18",
+   "usuario": "ok. qual a diferenca entre origem e caminho? nao entendi",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Origem",
+    "Livro: Origem e treinos",
+    "Livro: Caminho e Trilha",
+    "Livro: Escolhas da Origem"
+   ],
+   "aviso": "",
+   "resposta": "A Origem é a parte da história inicial: você escolhe um traço, dois Legados e os treinos que ela concede. O Caminho reúne as capacidades principais de combate do personagem, e a Trilha é uma especialidade dentro dele."
+  }
+ ],
+ "pendente": null
+}
