@@ -70,17 +70,36 @@ Relido hoje, antes de configurar a conta:
 - **A resposta do suporte continua sendo a de 29/06/2026**, no [fórum](https://discuss.ai.google.dev/t/using-ai-pro-plan-benefit-google-ai-studio-api-credits/170841): o crédito não vai pra conta pré-paga; usar a Gemini pela Vertex AI. **Ninguém no tópico confirmou que a Vertex abateu do crédito.** Só a primeira fatura do Mizuki confirma.
 - **A Vertex é pós-paga e não tem teto de gasto.** Alerta de orçamento do Cloud avisa, não bloqueia. O teto real tem que ser o contador do próprio bot.
 
-## Tentativa de ativar o crédito (12/10/2026 à noite): travou na conta de faturamento
+## Crédito do Google AI Pro: como foi ativado (12 e 13/10/2026)
 
-O que o Mizuki fez e onde parou, pra não recomeçar do zero:
+**Estado: ativado.** O crédito mensal de US$ 10 (R$ 59,31 em outubro/26) está aplicado numa conta de faturamento paga do Google Cloud, com "Sempre usar esta conta" marcado, e vale até 12/10/2027. O registro completo, com identificadores de conta e valores, fica fora do git, em `pesquisa/privado/`.
 
-1. **Plano confirmado:** Google AI Pro (5 TB), assinante desde 27/08/2026, na mesma conta Google.
-2. **Developer Program:** entrou no programa. O cartão do benefício mostrava "Assine o Google One" até ele clicar no botão, abrir a página de planos, fechar e recarregar; aí passou a mostrar "$ 10 créditos mensais", referência outubro/26, expira em 12/10/2027, pedindo uma conta de faturamento do Cloud.
-3. **Conta de faturamento "Mizuki"** (`0180C5-60825D-B7A8BD`) criada como teste gratuito. O Google exigiu um **pré-pagamento único de R$ 50,00** pra ativar. Segundo a [documentação](https://docs.cloud.google.com/billing/docs/how-to/payment-methods?hl=pt_BR#prepayment_requirements), ele depende do tipo de forma de pagamento e é reembolsado se não for usado até o encerramento.
-4. **Pagamento feito às 20h13** (Mastercard final 9022, PicPay); a tela confirmou "O pagamento foi concluído". **Às 20h34 a conta aparecia como fechada**, com "Reabrir conta de faturamento" desabilitado. O pagamento não apareceu na Atividade da Central de Pagamentos nem no cartão.
-5. **Existe uma conta antiga**, "Minha conta de faturamento 1" (`016182-BA7420-067A8A`), também encerrada, que gera o alerta "Pagamento pendente" de R$ 50 no perfil de pagamentos. O outro alerta crítico do perfil é um reembolso de R$ 93,86 do Google One, sem relação com o Cloud.
-6. As "verificações de integridade" das duas contas só trazem sugestões genéricas (criar orçamento, vincular projeto); não dizem por que fecharam.
+O que travou e o que resolveu, pra não repetir:
 
-**Mesmo caso relatado por outra pessoa** em 04/08/2026, sem resposta do Google: pré-pagamento de R$ 50, conta "paga" por um instante e depois "Closed", repetido numa segunda conta com outro cartão ([fórum](https://discuss.google.dev/t/billing-account-closed-automatically-right-after-payment-confirmation/387553)). A [documentação de reabertura](https://docs.cloud.google.com/billing/docs/how-to/close-or-reopen-billing-account) diz que é preciso resolver antes as pendências do Google Payments.
+1. **A primeira conta de faturamento fechou sozinha** cerca de 20 minutos depois do pré-pagamento de ativação. Causa, dada por um atendente do Cloud Billing: ela nasceu como "conta de teste gratuito", e o teste gratuito desse usuário já tinha expirado. Conta assim não reabre. O pré-pagamento foi pedido de volta pela Central de Pagamentos (Assinaturas e serviços > a conta do Cloud > "Solicitar um reembolso"); prazo de 7 a 10 dias úteis.
+2. **Os alertas do perfil de pagamentos não eram a causa.** A IA do suporte apontou um alerta de "pagamento pendente" de uma conta antiga; o atendente humano desmentiu, e esse alerta não afeta conta nova.
+3. **O perfil de pagamentos pessoal travava a criação de outra conta** com "CPF e data de nascimento são obrigatórios", sem deixar editar, mesmo com o CPF verificado. Saída, que a [documentação](https://docs.cloud.google.com/billing/docs/how-to/create-billing-account?hl=pt-br) permite: criar um perfil de pagamentos novo dentro do fluxo de criação ("Adicionar nome e endereço"). Com ele a conta saiu como **"Conta paga"** e ficou ativa.
+4. **Caminho certo de criação:** `console.cloud.google.com/billing` > Criar conta. A janela com o texto "Mais da API Gemini" é o fluxo pré-pago do AI Studio, onde o crédito não vale direto.
+5. **O pré-pagamento é uma pré-autorização**: retenção temporária pra validar o cartão, que o banco costuma liberar em cerca de uma semana.
+6. Depois de ativa, a conta aparece no cartão do benefício em developers.google.com (Benefícios) e o crédito é aplicado com um clique.
 
-**Próximo passo:** não criar outra conta nem pagar de novo. Conferir em 13/10 à noite se a conta reabriu ou se o pagamento foi lançado; se não, abrir chamado em cloud.google.com/support/billing. Enquanto isso o crédito de US$ 10 não está disponível, e a chave gratuita da Gemini segue funcionando pra teste (cota diária pequena).
+### O que ficou pronto no Google Cloud
+
+- Alerta de orçamento de R$ 50 por mês na conta de faturamento (só avisa por e-mail; a Vertex é pós-paga e não tem teto).
+- Projeto "Rhodes Bot", vinculado à conta paga. O projeto do AI Studio, onde mora a chave gratuita do `.env`, ficou de fora de propósito, pra não sair do nível gratuito.
+- **Agent Platform API** (`aiplatform.googleapis.com`) ativada: é a Vertex AI com o nome novo. Só essa; a janela "Ativar APIs" da plataforma ligaria umas vinte.
+- Não feito, de propósito: a credencial (conta de serviço), que entra na fase 1, salva na pasta e fora do chat.
+
+### AI Studio depois do crédito (lido em 13/10/2026 na [página de faturamento da Gemini API](https://ai.google.dev/gemini-api/docs/billing?hl=pt-br))
+
+"Configurar faturamento" no AI Studio **não foi feito e não é necessário pro plano da Vertex**. O que a página diz:
+
+- Ao configurar, o AI Studio pode exigir pré-pagamento mínimo de US$ 5, deixar escolher entre pré-pago e pós-pago, ou atribuir pós-pago. Só dá pra saber clicando.
+- No pré-pago, o crédito do Cloud só começa a ser consumido depois de uma compra de créditos pré-pagos, e para quando o saldo pré-pago zera. Crédito pré-pago não é reembolsável e expira em 12 meses.
+- Adicionar pré-pagamento a uma conta pós-paga **modifica a conta do Cloud Billing**; cancelar no meio deixa a conta sem funcionar, e só o suporte desfaz. Não existe mudança de pré-pago pra pós-pago.
+- Então: só seguir no AI Studio se a tela oferecer **pós-pago**. Senão, ficar na Vertex AI.
+
+### Pendências
+
+- Conferir na primeira fatura que o uso da Vertex abate do crédito: ninguém confirmou isso ainda.
+- Reembolso do pré-pagamento da conta encerrada.

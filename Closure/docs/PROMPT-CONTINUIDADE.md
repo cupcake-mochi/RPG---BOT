@@ -26,8 +26,14 @@ ONDE ESTÁ TUDO
   /mnt/project-files/. Eu sincronizo à mão; se um caminho /mnt/... aparecer em script, troque por relativo.
 
 ONDE PARAMOS
-- Fase 0 (organizar a pasta e sincronizar as regras R44) feita. O código do bot (fase 1)
-  ainda não começou: a personalidade veio primeiro.
+- Fase 0 (organizar a pasta e sincronizar as regras R44) feita. O esqueleto da fase 1 está em
+  src/closure_bot/ (13/10): plantão por horário e nome, envio por webhook, registro em SQLite,
+  /ping, /status, e o clima (/clima [lugar], painel diário por servidor com /clima_canal, e a
+  linha de clima pro bloco 4 quando a mensagem puxa o assunto). 67 testes, tudo fora do ar:
+  ainda não responde no chat e nunca subiu com token. O bot é pra vários servidores. Como
+  rodar e o que falta: src/LEIA-ME.md.
+- Pra levar aos cards (pelos geradores, com teste): as duas acompanham o clima pelo
+  computador e contam como está, de Tóquio ou de onde perguntarem, sem dizer que estão lá.
 - Duas personagens, que se revezam no plantão e nunca falam uma com a outra:
   - Kal'tsit, das 9h às 21h: card v0.13 em teste (naturalidade e recusa); v1.2 no VERSAO.md é o card v0.11. Saiu do congelamento no pente fino
     de 12/10 pra ganhar vida fora do mundo. Situações de estado e nome trocado refeitos
@@ -47,9 +53,12 @@ ONDE PARAMOS
   pelo nome fora do turno, a outra responde curto.
 - Aniversários: Closure em 10 de dezembro; o servidor comemora o da Kal'tsit em 23 de
   janeiro e ela nunca confirma a data.
-- Crédito do Google AI Pro: travou. A conta de faturamento do Google Cloud fechou sozinha
-  depois do pré-pagamento de R$ 50. Está tudo no fim de
-  pesquisa/reports/Qual IA usar no bot.md. Não criar outra conta nem pagar de novo.
+- Crédito do Google AI Pro: ativado em 13/10/2026. US$ 10 por mês numa conta de faturamento
+  paga do Google Cloud. Projeto do bot: "Rhodes Bot", vinculado a essa conta, com a Agent
+  Platform API ativada (é a Vertex AI com nome novo) e alerta de orçamento. Falta só a
+  credencial, que entra na fase 1. Não clicar em "Configurar faturamento" no AI Studio (pode
+  virar pré-pago sem volta). O resumo está no fim de pesquisa/reports/Qual IA usar no bot.md;
+  identificadores de conta ficam fora do git, em pesquisa/privado/.
 
 REGRAS QUE NÃO MUDAM
 - As duas ficam FORA da história: são guias do mundo e das regras, não existem no mundo.
