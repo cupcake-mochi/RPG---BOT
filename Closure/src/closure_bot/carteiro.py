@@ -30,8 +30,10 @@ class Carteiro:
             self._webhooks[canal.id] = meu or await canal.create_webhook(name=NOME_WEBHOOK)
         return self._webhooks[canal.id]
 
-    async def enviar(self, canal: discord.abc.Messageable, persona: Persona, texto: str) -> discord.Message:
-        """Manda `texto` como a personagem. Em tópico, usa o webhook do canal pai."""
+    async def enviar(self, canal: discord.abc.Messageable, persona: Persona, texto: str, *, lembrar: bool = True) -> discord.Message:
+        """Manda `texto` como a personagem. Em tópico, usa o webhook do canal pai.
+
+        Com `lembrar`, o texto entra nas últimas falas dela no canal (pra não repetir depois); mensagem de teste não entra."""
         topico = canal if isinstance(canal, discord.Thread) else None
         base = canal.parent if topico else canal
         try:
@@ -45,4 +47,6 @@ class Carteiro:
             self._webhooks.pop(getattr(base, "id", 0), None)
             mensagem = await canal.send(f"**{persona.nome}:** {texto}", allowed_mentions=discord.AllowedMentions.none())
         self._registro.registrar_mensagem(message_id=mensagem.id, canal_id=canal.id, persona=persona.chave)
+        if lembrar:
+            self._registro.guardar_fala(canal_id=canal.id, persona=persona.chave, texto=texto)
         return mensagem

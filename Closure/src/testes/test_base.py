@@ -69,6 +69,25 @@ class RegistroSqlite(unittest.TestCase):
         self.assertFalse(self.r.remover_painel(1))
         self.assertEqual([p.guild_id for p in self.r.paineis()], [2])
 
+    def test_ultimas_falas_por_personagem_e_canal(self):
+        for i in range(8):
+            self.r.guardar_fala(canal_id=7, persona="closure", texto=f"fala {i}")
+        self.r.guardar_fala(canal_id=7, persona="kaltsit", texto="da kal")
+        self.r.guardar_fala(canal_id=8, persona="closure", texto="outro canal")
+        self.assertEqual(self.r.ultimas_falas(canal_id=7, persona="closure"), [f"fala {i}" for i in range(2, 8)])
+        self.assertEqual(self.r.ultimas_falas(canal_id=7, persona="kaltsit"), ["da kal"])
+        self.assertEqual(self.r.ultimas_falas(canal_id=9, persona="closure"), [])
+
+    def test_falas_antigas_sao_apagadas(self):
+        from closure_bot.registro import FALAS_GUARDADAS
+
+        for i in range(FALAS_GUARDADAS + 5):
+            self.r.guardar_fala(canal_id=7, persona="closure", texto=f"fala {i}")
+        self.r.guardar_fala(canal_id=7, persona="kaltsit", texto="fica")
+        total = self.r._db.execute("SELECT COUNT(*) FROM falas WHERE persona = 'closure'").fetchone()[0]
+        self.assertEqual(total, FALAS_GUARDADAS)
+        self.assertEqual(self.r.ultimas_falas(canal_id=7, persona="kaltsit"), ["fica"])
+
     def test_cria_a_pasta_do_banco(self):
         caminho = Path(tempfile.mkdtemp()) / "var" / "bot.sqlite3"
         Registro(caminho).fechar()

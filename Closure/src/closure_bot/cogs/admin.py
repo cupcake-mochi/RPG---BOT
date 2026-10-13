@@ -45,7 +45,7 @@ class Admin(commands.Cog):
             return
         persona = self.bot.personas[de_plantao(datetime.now(FUSO))]
         await interacao.response.defer(ephemeral=True)
-        await self.bot.carteiro.enviar(interacao.channel, persona, "[teste de webhook]")
+        await self.bot.carteiro.enviar(interacao.channel, persona, "[teste de webhook]", lembrar=False)
         await interacao.followup.send(f"Enviado como {persona.nome}.", ephemeral=True)
 
 

@@ -110,7 +110,11 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         _, kwargs = webhook.send.call_args
         self.assertEqual((kwargs["username"], kwargs["avatar_url"], kwargs["wait"]), ("Closure", "https://exemplo/c.png", True))
         self.assertEqual(self.bot.registro.persona_da_mensagem(555), "closure")
-        # segunda mensagem no mesmo canal reaproveita o webhook
+        self.assertEqual(self.bot.registro.ultimas_falas(canal_id=10, persona="closure"), ["[teste]"])
+        # mensagem de teste não entra nas falas lembradas
+        await self.bot.carteiro.enviar(canal, closure, "[teste de webhook]", lembrar=False)
+        self.assertEqual(self.bot.registro.ultimas_falas(canal_id=10, persona="closure"), ["[teste]"])
+        # outra mensagem no mesmo canal reaproveita o webhook
         await self.bot.carteiro.enviar(canal, self.bot.personas["kaltsit"], "[teste]")
         self.assertEqual(canal.create_webhook.await_count, 1)
         self.assertEqual(webhook.send.call_args.kwargs["username"], "Kal'tsit")

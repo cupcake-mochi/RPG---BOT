@@ -5,6 +5,8 @@
   gatilhos       uma linha por vez que alguém chamou uma personagem. Não guarda o texto da mensagem.
   paineis_clima  por servidor: o canal do painel diário de clima, o dia do último painel, o ID da mensagem
                  e o último estado mostrado. Fica aqui pra um reinício não postar de novo.
+  falas          o texto das últimas respostas de cada personagem em cada canal (só o que ela disse, nunca o que
+                 as pessoas escreveram). Serve pra ela não repetir a mesma abertura ou frase de uma conversa pra outra.
   mensagens_bot  ID de cada mensagem enviada por webhook e de quem era a fala. Mensagem de webhook não é da
                  conta do bot, então "responderam a uma mensagem dela" só se reconhece por esta tabela.
 """
@@ -44,6 +46,13 @@ CREATE TABLE IF NOT EXISTS paineis_clima (
     mensagem_id INTEGER,
     estado TEXT
 );
+CREATE TABLE IF NOT EXISTS falas (
+    id INTEGER PRIMARY KEY,
+    quando TEXT NOT NULL,
+    canal_id INTEGER NOT NULL,
+    persona TEXT NOT NULL,
+    texto TEXT NOT NULL
+);
 CREATE TABLE IF NOT EXISTS mensagens_bot (
     message_id INTEGER PRIMARY KEY,
     canal_id INTEGER NOT NULL,
@@ -60,6 +69,9 @@ class PainelClima:
     dia: str | None
     mensagem_id: int | None
     estado: str | None
+
+
+FALAS_GUARDADAS = 30  # por personagem e por canal
 
 
 def _agora() -> str:
@@ -111,6 +123,22 @@ class Registro:
     def persona_da_mensagem(self, message_id: int) -> str | None:
         linha = self._db.execute("SELECT persona FROM mensagens_bot WHERE message_id = ?", (message_id,)).fetchone()
         return linha[0] if linha else None
+
+    def guardar_fala(self, *, canal_id: int, persona: str, texto: str) -> None:
+        """Guarda o que a personagem disse e mantém só as FALAS_GUARDADAS mais novas dela nesse canal."""
+        self._db.execute("INSERT INTO falas (quando, canal_id, persona, texto) VALUES (?, ?, ?, ?)",
+                         (_agora(), canal_id, persona, texto))
+        self._db.execute(
+            "DELETE FROM falas WHERE canal_id = ? AND persona = ? AND id NOT IN"
+            " (SELECT id FROM falas WHERE canal_id = ? AND persona = ? ORDER BY id DESC LIMIT ?)",
+            (canal_id, persona, canal_id, persona, FALAS_GUARDADAS))
+        self._db.commit()
+
+    def ultimas_falas(self, *, canal_id: int, persona: str, limite: int = 6) -> list[str]:
+        """As últimas respostas da personagem nesse canal, da mais antiga pra mais nova."""
+        linhas = self._db.execute("SELECT texto FROM falas WHERE canal_id = ? AND persona = ? ORDER BY id DESC LIMIT ?",
+                                  (canal_id, persona, limite)).fetchall()
+        return [linha[0] for linha in reversed(linhas)]
 
     def definir_painel(self, *, guild_id: int, canal_id: int) -> None:
         """Liga o painel diário do servidor nesse canal (ou troca de canal); o próximo passo posta um painel novo."""

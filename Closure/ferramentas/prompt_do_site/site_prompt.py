@@ -41,9 +41,13 @@ def nucleo() -> Path:
 
 
 def montar(pers: str, msg: str, *, nome: str = "", pronomes: str = "", turnos: list[dict] | None = None,
-           hora: tuple[int, int] | None = None) -> dict:
-    """Devolve {"input": [...], "ativadas": [...], "versoes": {...}}. `pers` é "kal" ou "clo"."""
-    pedido = {"pers": pers, "msg": msg, "nome": nome, "pronomes": pronomes, "turnos": turnos or []}
+           hora: tuple[int, int] | None = None, falas_anteriores: list[str] | None = None) -> dict:
+    """Devolve {"input": [...], "ativadas": [...], "versoes": {...}}. `pers` é "kal" ou "clo".
+
+    `falas_anteriores` são as últimas respostas da personagem no canal, de outras conversas: com elas o aviso de
+    repetição da página passa a valer de uma conversa pra outra."""
+    pedido = {"pers": pers, "msg": msg, "nome": nome, "pronomes": pronomes, "turnos": turnos or [],
+              "falas_anteriores": falas_anteriores or []}
     if hora:
         pedido["hora"] = {"h": hora[0], "m": hora[1]}
     saida = subprocess.run(["node", str(AQUI / "ponte.js"), str(nucleo())], input=json.dumps(pedido),
