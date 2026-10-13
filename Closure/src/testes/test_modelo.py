@@ -147,5 +147,20 @@ class Fila(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(c.exception.codigo, "sem_chave")
 
 
+class SoPagos(unittest.IsolatedAsyncioTestCase):
+    async def test_pedido_so_pago_pula_o_gratuito_mesmo_sendo_o_primeiro_da_fila(self):
+        urls = []
+
+        async def enviar(url, corpo, chave):
+            urls.append(url)
+            return BOA
+        modelos = Modelos([("gemini", "a"), ("vertex", "b")], {"gemini": "g", "vertex": "v"}, enviar=enviar)
+        self.assertEqual((await modelos.responder(ENTRADA, so_pagos=True)).provedor, "vertex")
+        self.assertEqual(urls, [URLS["vertex"].format(modelo="b")])
+        with self.assertRaises(Falhou) as c:
+            await Modelos([("gemini", "a")], {"gemini": "g"}, enviar=enviar).responder(ENTRADA, so_pagos=True)
+        self.assertEqual(c.exception.codigo, "sem_chave")
+
+
 if __name__ == "__main__":
     unittest.main()

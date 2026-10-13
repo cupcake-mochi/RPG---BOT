@@ -133,12 +133,16 @@ class Modelos:
                    for modelo, entrada, saida in self._registro.tokens_do_mes(agora)
                    if modelo.partition(":")[0] in PAGOS)
 
-    async def responder(self, entrada: list[dict], *, persona: str | None = None, gatilho: str | None = None) -> Resposta:
-        if not self.fila:
-            raise Falhou("sem_chave", "nenhum provedor da fila tem chave no .env")
+    async def responder(self, entrada: list[dict], *, persona: str | None = None, gatilho: str | None = None,
+                        so_pagos: bool = False) -> Resposta:
+        """`so_pagos` deixa de fora o provedor gratuito, que pelos termos do Google pode usar o que recebe pra
+        treinar modelo e passar por revisão humana. É pra pedido com mensagem de várias pessoas, como a reflexão diária."""
+        fila = [(p, m) for p, m in self.fila if p in PAGOS] if so_pagos else self.fila
+        if not fila:
+            raise Falhou("sem_chave", "nenhum provedor pago da fila tem chave no .env" if so_pagos else "nenhum provedor da fila tem chave no .env")
         corpo, ultimo_erro = montar_corpo(entrada, self.raciocinio), None
         pagos_liberados = self.gasto_do_mes() < self.teto_usd
-        for provedor, modelo in self.fila:
+        for provedor, modelo in fila:
             if provedor in PAGOS and not pagos_liberados:
                 ultimo_erro = ultimo_erro or Falhou("teto", f"gasto do mês chegou ao teto de US$ {self.teto_usd:.2f}")
                 continue

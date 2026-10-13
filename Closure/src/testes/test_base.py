@@ -146,11 +146,26 @@ class RegistroSqlite(unittest.TestCase):
             self.r.registrar_gatilho(canal_id=7, autor_id=autor, persona="closure", motivo="nome", fora_do_plantao=False)
             self.r.gravar_paciencia(autor_id=autor, persona="closure", valor=1, desde=agora, pergunta=None, pergunta_quando=None)
             self.r.gravar_ficha(autor, Ficha("ele/dele", ("fato",)))
+            self.r.guardar_mensagem_do_dia(message_id=100 + autor, autor_id=autor, persona="closure", texto="closure, oi")
         self.r.apagar_pessoa(9)
+        self.assertEqual([m.autor_id for m in self.r.mensagens_do_dia()], [10])
         self.assertEqual((self.r.ficha(9), self.r.paciencia(autor_id=9, persona="closure"), self.r.dias_de_conversa(autor_id=9, persona="closure")),
                          (Ficha(), None, 0))
         self.assertEqual((self.r.ficha(10).pronomes, self.r.paciencia(autor_id=10, persona="closure").valor, self.r.dias_de_conversa(autor_id=10, persona="closure")),
                          ("ele/dele", 1, 1))
+
+    def test_mensagens_do_dia_e_limite_de_fatos(self):
+        from closure_bot.registro import FATOS_MAX, Ficha
+
+        for n in (3, 1, 2):
+            self.r.guardar_mensagem_do_dia(message_id=n, autor_id=9, persona="closure", texto=f"mensagem {n}")
+        self.assertEqual([m.texto for m in self.r.mensagens_do_dia()], ["mensagem 1", "mensagem 2", "mensagem 3"])
+        self.r.apagar_mensagens_do_dia([1, 2])
+        self.assertEqual([m.message_id for m in self.r.mensagens_do_dia()], [3])
+        self.r.apagar_mensagens_do_dia()
+        self.assertEqual(self.r.mensagens_do_dia(), [])
+        self.r.gravar_ficha(9, Ficha(None, tuple(f"fato {n}" for n in range(FATOS_MAX + 4))))
+        self.assertEqual(self.r.ficha(9).fatos, tuple(f"fato {n}" for n in range(4, FATOS_MAX + 4)))
 
     def test_cria_a_pasta_do_banco(self):
         caminho = Path(tempfile.mkdtemp()) / "var" / "bot.sqlite3"

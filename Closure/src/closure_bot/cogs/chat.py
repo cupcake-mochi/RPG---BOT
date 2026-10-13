@@ -52,6 +52,9 @@ class Chat(commands.Cog):
         self.bot.registro.registrar_gatilho(canal_id=mensagem.channel.id, autor_id=mensagem.author.id,
                                             persona=decisao.persona, motivo=decisao.motivo,
                                             fora_do_plantao=decisao.fora_do_plantao)
+        # o texto de quem chamou fica guardado só até a reflexão das 4h30, que tira os fatos e apaga (reflexao.py)
+        self.bot.registro.guardar_mensagem_do_dia(message_id=mensagem.id, autor_id=mensagem.author.id,
+                                                  persona=decisao.persona, texto=mensagem.content)
         atrito = self.bot.vida.chamada(autor_id=mensagem.author.id, persona=decisao.persona, texto=mensagem.content, agora=agora)
         log.info("gatilho: %s responderia (%s%s%s)", decisao.persona, decisao.motivo,
                  ", fora do plantão" if decisao.fora_do_plantao else "", f", atrito: {atrito}" if atrito else "")
@@ -62,7 +65,8 @@ class Chat(commands.Cog):
         # Pra ela não repetir abertura e frase de uma conversa pra outra, o pedido leva
         # self.bot.registro.ultimas_falas(canal_id=mensagem.channel.id, persona=decisao.persona).
         # O bloco de estado e as linhas a mais do lembrete saem de
-        # self.bot.vida.estado(persona=..., canal_id=..., autor_id=..., nome=mensagem.author.display_name, agora=agora).
+        # self.bot.vida.estado(persona=..., canal_id=..., autor_id=..., nome=mensagem.author.display_name, agora=agora,
+        # texto=mensagem.content).
 
 
 async def setup(bot: commands.Bot) -> None:
