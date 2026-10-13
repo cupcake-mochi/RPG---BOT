@@ -173,6 +173,57 @@ class RegistroSqlite(unittest.TestCase):
         self.assertTrue(caminho.exists())
 
 
+try:
+    import cryptography  # noqa: F401
+except ImportError:  # pragma: no cover
+    cryptography = None
+
+
+@unittest.skipIf(cryptography is None, "cryptography não instalada")
+class BancoCifrado(unittest.TestCase):
+    def setUp(self):
+        from closure_bot.registro import Cofre, Ficha
+
+        self.Ficha = Ficha
+        self.caminho = Path(tempfile.mkdtemp()) / "bot.sqlite3"
+        self.chave = Cofre.nova_chave()
+        r = Registro(self.caminho, self.chave)
+        r.guardar_fala(canal_id=7, persona="closure", texto="Opa, rafa! Como tá o Ren?")
+        r.guardar_mensagem_do_dia(message_id=1, autor_id=9, persona="closure", texto="closure, meu Bastião é o Ren")
+        r.gravar_ficha(9, Ficha("ele/dele", ("joga com um Bastião chamado Ren",)))
+        r.fechar()
+
+    def test_o_texto_nao_aparece_no_arquivo(self):
+        bruto = self.caminho.read_bytes()
+        for trecho in ("Ren", "Bastião", "ele/dele", "Opa"):
+            self.assertNotIn(trecho.encode(), bruto, trecho)
+
+    def test_com_a_chave_tudo_volta(self):
+        r = Registro(self.caminho, self.chave)
+        self.assertEqual(r.ultimas_falas(canal_id=7, persona="closure"), ["Opa, rafa! Como tá o Ren?"])
+        self.assertEqual([m.texto for m in r.mensagens_do_dia()], ["closure, meu Bastião é o Ren"])
+        self.assertEqual(r.ficha(9), self.Ficha("ele/dele", ("joga com um Bastião chamado Ren",)))
+        r.fechar()
+
+    def test_sem_a_chave_ou_com_outra_ela_esquece_em_vez_de_mostrar_letra_embaralhada(self):
+        from closure_bot.registro import Cofre
+
+        for chave in (None, Cofre.nova_chave()):
+            r = Registro(self.caminho, chave)
+            self.assertEqual((r.ultimas_falas(canal_id=7, persona="closure"), r.mensagens_do_dia(), r.ficha(9)), ([], [], self.Ficha()))
+            r.fechar()
+
+    def test_texto_antigo_gravado_em_claro_continua_abrindo(self):
+        velho = Path(tempfile.mkdtemp()) / "bot.sqlite3"
+        r = Registro(velho)
+        r.guardar_fala(canal_id=7, persona="closure", texto="fala em claro")
+        r.gravar_ficha(9, self.Ficha(None, ("fato em claro",)))
+        r.fechar()
+        r = Registro(velho, self.chave)
+        self.assertEqual((r.ultimas_falas(canal_id=7, persona="closure"), r.ficha(9).fatos), (["fala em claro"], ("fato em claro",)))
+        r.fechar()
+
+
 class DadosDoProjeto(unittest.TestCase):
     """Lê os arquivos de verdade em dados/: quebra se o manifesto ou um card mudar de forma."""
 

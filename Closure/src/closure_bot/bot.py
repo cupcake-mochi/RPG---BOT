@@ -25,7 +25,9 @@ class ClosureBot(commands.Bot):
         intents.message_content = True  # sem isso o bot não lê o nome chamado na mensagem
         super().__init__(command_prefix=commands.when_mentioned, intents=intents, help_command=None)
         self.config = config
-        self.registro = Registro(config.banco)
+        self.registro = Registro(config.banco, config.chave_do_banco)
+        if not self.registro.cofre.ligado:
+            log.warning("banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)")
         self.manifesto = ler_manifesto(config.dados)
         self.personas = carregar_personas(config.dados, config.avatares)
         self.carteiro = Carteiro(self.registro)

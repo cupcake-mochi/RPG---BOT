@@ -27,7 +27,7 @@ chamada ao modelo) entra nas fases 2 e 4, no ponto marcado em `closure_bot/cogs/
 | `closure_bot/cogs/admin.py` | `/ping`, `/status`, `/teste_webhook` (este só pro dono) |
 | `closure_bot/cogs/chat.py` | Escuta as mensagens, decide e registra o gatilho |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 131 testes; 21 deles precisam do discord.py e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 135 testes; 21 deles precisam do discord.py e 4 da cryptography e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -111,9 +111,14 @@ python3 -m closure_bot
   ou, em uma de cada três, um sorteado (`vida.escolher_fatos`). Teste de verdade com 12 mensagens inventadas:
   8 fatos certos, e ficaram de fora a ansiedade, a idade, a cidade, a fofoca e o mau humor do dia.
 - **Regras de fora** (lidas em 13/10/2026): política e termos de desenvolvedor do Discord e termos da API do
-  Gemini. Falta pra pôr o bot em servidor dos outros: uma política de privacidade pública com link no portal
-  de desenvolvedor, cifrar o banco em disco, e resolver a cota gratuita (sem faturamento, o Google usa o que
-  recebe pra treinar, e o Discord proíbe treinar IA com mensagem).
+  Gemini. Feito por causa delas: a peneira dos fatos, a política de privacidade (`docs/PRIVACIDADE.md`,
+  `/privacidade`) e a cifra do banco. Falta o Mizuki pôr o link da política no portal de desenvolvedor do
+  Discord. Fica em aberto, por decisão dele: o gratuito continua primeiro na fila, e nessa cota o Google pode
+  usar o que recebe pra treinar, o que a regra 21 do Discord não permite com conteúdo de mensagem.
+- **Banco cifrado:** `python3 -m closure_bot --gerar-chave` cria a `CHAVE_DO_BANCO` no `.env` (já criada neste
+  computador). Com ela, falas, mensagens do dia, pronomes e fatos vão cifrados pro disco; IDs, horas e
+  contagens ficam em claro. A hospedagem precisa da mesma variável. Sem a chave, ou com outra, o bot não
+  mostra letra embaralhada: esquece o que não abre. Perder a chave é perder as fichas.
 - **Ainda não ligado:** o `cogs/chat.py` continua só registrando o gatilho. Falta chamar a ponte e o modelo
   ali, e decidir se o bot em produção roda o Node ou se a busca ganha versão em Python.
 

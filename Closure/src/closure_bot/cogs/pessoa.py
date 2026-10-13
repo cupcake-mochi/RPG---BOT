@@ -22,6 +22,7 @@ from ..vida import DIAS_POR_NIVEL, intimidade
 log = logging.getLogger(__name__)
 
 PRONOMES_MAX = 30
+POLITICA = "https://github.com/cupcake-mochi/RPG---BOT/blob/main/Closure/docs/PRIVACIDADE.md"
 HORA_DA_REFLEXAO = time(4, 30, tzinfo=FUSO)
 
 
@@ -41,6 +42,14 @@ class Pessoa(commands.Cog):
             await refletir(self.bot.registro, self.bot.modelos)
         except Exception:  # um erro aqui não pode derrubar o laço: amanhã tem outra
             log.exception("reflexão diária falhou")
+
+    @app_commands.command(name="privacidade", description="O que o bot guarda, pra onde manda e como apagar.")
+    async def privacidade(self, interacao: discord.Interaction) -> None:
+        await interacao.response.send_message(
+            "Quando você chama a Kal'tsit ou a Closure, a mensagem vai a um modelo de IA do Google pra ela responder, e fica "
+            "guardada até as 4h30 pra virar alguns fatos curtos sobre você. O resto das mensagens do canal não é guardado.\n"
+            "/meus_dados mostra o que elas guardam de você e /apagar_meus_dados apaga tudo.\n"
+            f"O texto completo: {POLITICA}", ephemeral=True)
 
     @app_commands.command(name="meus_dados", description="Mostra o que a Kal'tsit e a Closure guardam sobre você.")
     async def meus_dados(self, interacao: discord.Interaction) -> None:

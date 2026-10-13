@@ -35,10 +35,10 @@ ONDE PARAMOS
   (ferramentas/prompt_do_site), a memória de falas contra repetição (6 respostas, 12 horas) e
   a primeira parte da "vida" (src/closure_bot/vida.py: carga, movimento, paciência,
   intimidade, /meus_dados) e a reflexão diária, que preenche a ficha de cada pessoa
-  (src/closure_bot/reflexao.py). 131 testes, tudo fora do ar: ainda não responde no chat e
-  nunca subiu com token. O bot é pra vários servidores. Como rodar e o que falta:
-  src/LEIA-ME.md. Falta na "vida": o calendário e ligar tudo no chat. Antes de entrar em
-  servidor dos outros: política de privacidade, banco cifrado e a questão da cota gratuita.
+  (src/closure_bot/reflexao.py). Política de privacidade em docs/PRIVACIDADE.md e banco
+  cifrado pela CHAVE_DO_BANCO do .env. 135 testes, tudo fora do ar: ainda não responde no
+  chat e nunca subiu com token. O bot é pra vários servidores. Como rodar e o que falta:
+  src/LEIA-ME.md. Falta na "vida": o calendário e ligar tudo no chat.
 - Pra levar aos cards (pelos geradores, com teste): as duas acompanham o clima pelo
   computador e contam como está, de Tóquio ou de onde perguntarem, sem dizer que estão lá.
 - Duas personagens, que se revezam no plantão e nunca falam uma com a outra:
