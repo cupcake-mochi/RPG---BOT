@@ -103,3 +103,12 @@ O que travou e o que resolveu, pra não repetir:
 
 - Conferir na primeira fatura que o uso da Vertex abate do crédito: ninguém confirmou isso ainda.
 - Reembolso do pré-pagamento da conta encerrada.
+
+### Vertex funcionando (13/10/2026, 16h55)
+
+- **Credencial:** chave de API do Google Cloud, no `.env` da pasta (`VERTEX_API_KEY`). A organização nova bloqueia esse tipo de chave por padrão (restrição `iam.managed.disableServiceAccountApiKeyCreation`, [documentação](https://docs.cloud.google.com/docs/authentication/api-keys?hl=pt-br)); o Mizuki deu a si mesmo o papel de Administrador da política da organização e soltou a restrição **só no projeto do bot**. Nos outros projetos ela continua valendo.
+- **Primeiro teste real:** 17 respostas pelo Gemini 3.8 Flash, com os cards do site (Closure v0.30, Kal'tsit v0.23), em `pesquisa/validacao/2026-10-13-16h55-modelo-gemini-3.8-flash.md`. Regra e voz certas nas duas.
+- **Custo medido:** US$ 0,096 por 17 respostas, cerca de US$ 0,0056 cada, perto da estimativa de US$ 0,0066. Com o teto de US$ 9, dá umas 1.600 respostas por mês pela Vertex, fora as gratuitas.
+- **Quase metade do custo é raciocínio:** cada resposta de uma ou duas frases gastou de 400 a 1.450 tokens de saída, porque o modelo pensa antes de falar e isso é cobrado como saída. Também é o que deixa a resposta em 5 a 13 segundos. Vale testar com o raciocínio reduzido.
+- **Uma falha em 17:** um pedido voltou 429 ("Resource exhausted"), que na Vertex pós-paga é fila cheia do lado do Google, não cota nossa. A fila de reserva do bot cobre isso.
+- **Achado pro card:** perguntada "tá chovendo aí?", a Closure respondeu "o céu tá limpo por aqui", como se estivesse em Tóquio. Falta a regra do clima no card dela (a Kal'tsit respondeu sem se colocar no lugar).

@@ -32,7 +32,9 @@ class Admin(commands.Cog):
             f"Agora ({agora:%H:%M}, Brasília) o plantão é de {plantao.nome}.\n"
             f"Cards: {cards}.\n"
             f"Registro: {contagens['gatilhos']} gatilhos, {contagens['chamadas_api']} chamadas de API, "
-            f"{contagens['mensagens_bot']} mensagens enviadas.",
+            f"{contagens['mensagens_bot']} mensagens enviadas.\n"
+            f"Gasto estimado no mês com modelo pago: US$ {self.bot.modelos.gasto_do_mes():.2f} "
+            f"de US$ {self.bot.modelos.teto_usd:.2f}.",
             ephemeral=True,
         )
 
