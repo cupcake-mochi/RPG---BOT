@@ -13,9 +13,9 @@ Variáveis de ambiente:
   LIMITE_HORA            mensagens por pessoa (IP) por hora (padrão: 40)
   LIMITE_DIA             mensagens no total por dia, horário de Brasília (padrão: 300)
   PASTA_CONVERSAS        onde as conversas ficam salvas (padrão: ./conversas)
-  GITHUB_TOKEN           token com permissão de escrever no repositório: as conversas vão também, em texto,
-                         pra branch GITHUB_BRANCH (padrão: conversas) de GITHUB_REPO (padrão: cupcake-mochi/RPG---BOT),
-                         na pasta conversas/, porque o disco do Render grátis apaga quando reinicia
+  GITHUB_TOKEN           token com permissão de escrever no repositório GITHUB_REPO (padrão: cupcake-mochi/closure-conversas):
+                         as conversas vão também, em texto, pra pasta conversas/ dele, porque o disco do Render
+                         grátis apaga quando reinicia. O repositório tem que ser PRIVADO; se for público, não envia.
   PORT                   porta (padrão: 8000)
 """
 import base64, json, os, re, threading, time, urllib.error, urllib.request
@@ -53,9 +53,8 @@ LIMITE_DIA = int(os.environ.get("LIMITE_DIA", "300"))
 CONVERSAS = os.environ.get("PASTA_CONVERSAS", os.path.join(AQUI, "conversas"))
 MAX_CARACTERES, MAX_MENSAGENS = 200_000, 60
 GH_TOKEN = os.environ.get("GITHUB_TOKEN", "")
-GH_REPO = os.environ.get("GITHUB_REPO", "cupcake-mochi/RPG---BOT")
+GH_REPO = os.environ.get("GITHUB_REPO", "cupcake-mochi/closure-conversas")
 GH_API = os.environ.get("GITHUB_API", "https://api.github.com")
-GH_BRANCH = os.environ.get("GITHUB_BRANCH", "conversas")
 GH_INTERVALO = int(os.environ.get("GITHUB_INTERVALO", "90"))  # segundos entre envios; cada conversa muda a cada mensagem e não precisa de um commit por mensagem
 
 INDEX = open(os.path.join(PUB, "index.html"), "rb").read()
@@ -199,25 +198,19 @@ def github(metodo, caminho, corpo=None):
         return json.load(r)
 
 
-def preparar_branch():
-    try:
-        github("GET", f"git/ref/heads/{GH_BRANCH}")
-    except urllib.error.HTTPError as e:
-        if e.code != 404:
-            raise
-        base = github("GET", "")["default_branch"]
-        sha = github("GET", f"git/ref/heads/{base}")["object"]["sha"]
-        github("POST", "git/refs", {"ref": f"refs/heads/{GH_BRANCH}", "sha": sha})
-        print("criei a branch", GH_BRANCH, flush=True)
+def conferir_repo():
+    # o que os amigos escrevem não pode cair num repositório público
+    if not github("GET", "").get("private"):
+        raise RuntimeError(f"{GH_REPO} é público; crie um repositório privado pras conversas")
 
 
 def enviar_conversa(cid):
     c = json.load(open(os.path.join(CONVERSAS, cid + ".json"), encoding="utf-8"))
     caminho = f"contents/conversas/{cid}.md"
-    corpo = {"message": f"Conversa {cid}", "branch": GH_BRANCH,
+    corpo = {"message": f"Conversa {cid}",
              "content": base64.b64encode(em_texto(c).encode()).decode()}
     try:
-        corpo["sha"] = github("GET", f"{caminho}?ref={GH_BRANCH}")["sha"]
+        corpo["sha"] = github("GET", caminho)["sha"]
     except urllib.error.HTTPError as e:
         if e.code != 404:
             raise
@@ -226,7 +219,7 @@ def enviar_conversa(cid):
 
 def laco_github():
     try:
-        preparar_branch()
+        conferir_repo()
     except Exception as e:
         print("GitHub indisponível, as conversas ficam só no servidor:", e, flush=True)
         return
