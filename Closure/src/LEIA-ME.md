@@ -14,9 +14,10 @@ chamada ao modelo) entra nas fases 2 e 4, no ponto marcado em `closure_bot/cogs/
 | ------- | --------- |
 | `closure_bot/plantao.py` | Quem responde: turno por horário, nome chamado, as duas citadas. Não conhece o Discord. A regra tem dono: `dados/personagem/servidor.md` e os `vida.md` |
 | `closure_bot/config.py` | Lê o `.env` da pasta `Closure/` (o ambiente vence o arquivo) |
-| `closure_bot/registro.py` | SQLite: `chamadas_api`, `gatilhos`, `mensagens_bot`, `paineis_clima` (um por servidor), `falas` (as últimas respostas de cada personagem por canal), `paciencia` e `fichas` (o que elas guardam de cada pessoa) |
+| `closure_bot/registro.py` | SQLite: `chamadas_api`, `gatilhos`, `mensagens_bot`, `paineis_clima` (um por servidor), `falas` (as últimas respostas de cada personagem por canal), `paciencia`, `fichas` (o que elas guardam de cada pessoa) e `mensagens_do_dia` (o texto de quem chamou, só até as 4h30) |
 | `closure_bot/vida.py` | O estado do momento, pelo desenho dos `vida.md`: carga, movimento do canal, paciência, intimidade; monta o bloco de estado e as linhas a mais do lembrete |
-| `closure_bot/cogs/pessoa.py` | `/meus_dados`, `/meus_pronomes`, `/apagar_meus_dados`: cada pessoa vê e apaga o que é dela |
+| `closure_bot/reflexao.py` | Reflexão diária: tira das mensagens do dia os fatos de cada pessoa, passa pela peneira e apaga o texto |
+| `closure_bot/cogs/pessoa.py` | `/meus_dados`, `/meus_pronomes`, `/meu_fato`, `/esquecer_fato`, `/apagar_meus_dados`, e o laço da reflexão às 4h30 |
 | `closure_bot/dados.py` | Lê o manifesto das regras e o nome e a versão de cada card. Não escreve em `dados/` |
 | `closure_bot/carteiro.py` | Envia a fala pelo webhook do canal, com nome e avatar por mensagem, e guarda o ID |
 | `closure_bot/bot.py` | Junta tudo e carrega os módulos |
@@ -26,7 +27,7 @@ chamada ao modelo) entra nas fases 2 e 4, no ponto marcado em `closure_bot/cogs/
 | `closure_bot/cogs/admin.py` | `/ping`, `/status`, `/teste_webhook` (este só pro dono) |
 | `closure_bot/cogs/chat.py` | Escuta as mensagens, decide e registra o gatilho |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 117 testes; 21 deles precisam do discord.py e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 131 testes; 21 deles precisam do discord.py e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -102,6 +103,17 @@ python3 -m closure_bot
   Medição com `ferramentas/medir_monotonia.py --modo vida`: com ficha a resposta muda de assunto
   ("Como tá o Ren, ainda aguentando o tranco na mesa do Tiago?"); sem ficha ela usa o canal e o fato de a
   pessoa ser nova. Faltam os fatos da ficha, que só a reflexão diária preenche.
+- **Ficha de pessoa e reflexão diária** (13/10/2026): quando alguém chama uma personagem, o texto fica em
+  `mensagens_do_dia`. Às 4h30 `reflexao.py` manda o lote ao modelo, só por provedor pago, e grava no máximo três
+  fatos novos por pessoa, até 15 no total (o mais velho sai). O texto é apagado mesmo se o modelo falhar. A
+  peneira roda no pedido e no código: nada de saúde, dinheiro, religião, política, relacionamento, idade,
+  endereço, contato, nem fato sobre outra pessoa. Na resposta entram só os fatos ligados à mensagem (até dois)
+  ou, em uma de cada três, um sorteado (`vida.escolher_fatos`). Teste de verdade com 12 mensagens inventadas:
+  8 fatos certos, e ficaram de fora a ansiedade, a idade, a cidade, a fofoca e o mau humor do dia.
+- **Regras de fora** (lidas em 13/10/2026): política e termos de desenvolvedor do Discord e termos da API do
+  Gemini. Falta pra pôr o bot em servidor dos outros: uma política de privacidade pública com link no portal
+  de desenvolvedor, cifrar o banco em disco, e resolver a cota gratuita (sem faturamento, o Google usa o que
+  recebe pra treinar, e o Discord proíbe treinar IA com mensagem).
 - **Ainda não ligado:** o `cogs/chat.py` continua só registrando o gatilho. Falta chamar a ponte e o modelo
   ali, e decidir se o bot em produção roda o Node ou se a busca ganha versão em Python.
 

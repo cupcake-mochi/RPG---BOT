@@ -11,8 +11,10 @@
                  conta do bot, então "responderam a uma mensagem dela" só se reconhece por esta tabela.
   paciencia      a paciência de cada personagem com cada pessoa (0 a 3) e o resumo embaralhado da última pergunta
                  dela, pra reconhecer pergunta repetida sem guardar o texto.
-  fichas         o que as personagens sabem de cada pessoa: pronomes, se ela informou, e fatos curtos sobre o jogo.
+  fichas         o que as personagens sabem de cada pessoa: pronomes, se ela informou, e até 15 fatos curtos.
                  A pessoa vê com /meus_dados e apaga com /apagar_meus_dados.
+  mensagens_do_dia  o texto das mensagens em que alguém chamou uma personagem, só até a reflexão das 4h30
+                 (closure_bot/reflexao.py), que tira os fatos e apaga o texto. É o único lugar com texto de gente.
 """
 from __future__ import annotations
 
@@ -73,6 +75,13 @@ CREATE TABLE IF NOT EXISTS paciencia (
     pergunta_quando TEXT,
     PRIMARY KEY (autor_id, persona)
 );
+CREATE TABLE IF NOT EXISTS mensagens_do_dia (
+    message_id INTEGER PRIMARY KEY,
+    quando TEXT NOT NULL,
+    autor_id INTEGER NOT NULL,
+    persona TEXT NOT NULL,
+    texto TEXT NOT NULL
+);
 CREATE TABLE IF NOT EXISTS fichas (
     autor_id INTEGER PRIMARY KEY,
     pronomes TEXT,
@@ -104,6 +113,15 @@ class Ficha:
     fatos: tuple[str, ...] = ()
 
 
+@dataclass(frozen=True)
+class MensagemDoDia:
+    message_id: int
+    autor_id: int
+    persona: str
+    texto: str
+
+
+FATOS_MAX = 15  # por pessoa; passando disso sai o mais velho
 FALAS_GUARDADAS = 30  # por personagem e por canal
 FALAS_VALEM_HORAS = 12  # fala mais velha que um turno não conta mais como repetição
 
@@ -215,13 +233,32 @@ class Registro:
         return Ficha(linha[0], tuple(json.loads(linha[1]))) if linha else Ficha()
 
     def gravar_ficha(self, autor_id: int, ficha: Ficha) -> None:
+        """Os fatos ficam do mais velho pro mais novo; passando de FATOS_MAX, os mais velhos saem."""
         self._db.execute("INSERT OR REPLACE INTO fichas (autor_id, pronomes, fatos) VALUES (?, ?, ?)",
-                         (autor_id, ficha.pronomes, json.dumps(list(ficha.fatos), ensure_ascii=False)))
+                         (autor_id, ficha.pronomes, json.dumps(list(ficha.fatos)[-FATOS_MAX:], ensure_ascii=False)))
+        self._db.commit()
+
+    def guardar_mensagem_do_dia(self, *, message_id: int, autor_id: int, persona: str, texto: str,
+                                quando: datetime | None = None) -> None:
+        self._db.execute("INSERT OR REPLACE INTO mensagens_do_dia (message_id, quando, autor_id, persona, texto) VALUES (?, ?, ?, ?, ?)",
+                         (message_id, _iso(quando) if quando else _agora(), autor_id, persona, texto))
+        self._db.commit()
+
+    def mensagens_do_dia(self) -> list[MensagemDoDia]:
+        linhas = self._db.execute("SELECT message_id, autor_id, persona, texto FROM mensagens_do_dia ORDER BY message_id")
+        return [MensagemDoDia(*linha) for linha in linhas]
+
+    def apagar_mensagens_do_dia(self, ids: list[int] | None = None) -> None:
+        """Sem `ids`, apaga todas. Com eles, só as que entraram na reflexão (as que chegaram durante ela ficam pra próxima)."""
+        if ids is None:
+            self._db.execute("DELETE FROM mensagens_do_dia")
+        else:
+            self._db.executemany("DELETE FROM mensagens_do_dia WHERE message_id = ?", [(i,) for i in ids])
         self._db.commit()
 
     def apagar_pessoa(self, autor_id: int) -> None:
-        """Apaga tudo o que o bot guarda de uma pessoa: ficha, paciência e o histórico de quando ela chamou."""
-        for tabela in ("fichas", "paciencia", "gatilhos"):
+        """Apaga tudo o que o bot guarda de uma pessoa: ficha, paciência, mensagens do dia e o histórico de quando ela chamou."""
+        for tabela in ("fichas", "paciencia", "gatilhos", "mensagens_do_dia"):
             self._db.execute(f"DELETE FROM {tabela} WHERE autor_id = ?", (autor_id,))
         self._db.commit()
 

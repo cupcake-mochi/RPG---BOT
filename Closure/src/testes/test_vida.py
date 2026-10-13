@@ -2,12 +2,13 @@
 
 Os números são os de dados/personagem/kaltsit/vida.md. Rodar de src/:  python3 -m unittest discover -s testes
 """
+import random
 import unittest
 from datetime import datetime, timedelta
 
 from closure_bot.plantao import CLOSURE, FUSO, KALTSIT
 from closure_bot.registro import Ficha, Registro
-from closure_bot.vida import Estado, Vida, atrito, carga, intimidade, movimento, paciencia_agora, resumo
+from closure_bot.vida import Estado, Vida, atrito, carga, escolher_fatos, intimidade, movimento, paciencia_agora, resumo
 
 NOITE = datetime(2026, 10, 13, 22, 10, tzinfo=FUSO)
 TARDE = datetime(2026, 10, 13, 14, 20, tzinfo=FUSO)
@@ -97,9 +98,29 @@ class VidaComRegistro(unittest.TestCase):
                                      quando=datetime(2026, 9, dia, 23, 0, tzinfo=FUSO))
         self.r.gravar_ficha(9, Ficha("ele/dele", ("joga com Bastião na mesa do Tiago",)))
         agora = datetime.now(FUSO)
-        e = self.vida.estado(persona=CLOSURE, canal_id=7, autor_id=9, nome="rafa", agora=agora)
+        e = self.vida.estado(persona=CLOSURE, canal_id=7, autor_id=9, nome="rafa", agora=agora, texto="closure, meu Bastião pode usar escudo?")
         self.assertEqual((e.carga, e.dias, e.intimidade, e.pronomes, e.fatos), (2, 15, 2, "ele/dele", ("joga com Bastião na mesa do Tiago",)))
         self.assertEqual(self.vida.estado(persona=KALTSIT, canal_id=7, autor_id=9, nome="rafa", agora=agora).intimidade, 0)
+
+
+class EscolhaDeFatos(unittest.TestCase):
+    FATOS = ("joga com um Bastião chamado Ren", "prefere resposta curta", "gosta de café", "perguntou da Integridade")
+
+    def test_fato_ligado_a_mensagem_entra_ate_dois_o_mais_novo_primeiro(self):
+        sorteio = random.Random(1)
+        self.assertEqual(escolher_fatos(self.FATOS, "closure, o Ren perde Integridade se cair?", sorteio),
+                         ("perguntou da Integridade", "joga com um Bastião chamado Ren"))
+        self.assertEqual(escolher_fatos(self.FATOS, "kal, aceita um café?", sorteio), ("gosta de café",))
+
+    def test_sem_ligacao_entra_um_fato_em_cerca_de_uma_a_cada_tres_respostas(self):
+        sorteio = random.Random(7)
+        escolhas = [escolher_fatos(self.FATOS, "oi closure", sorteio) for _ in range(600)]
+        self.assertTrue(all(len(e) <= 1 for e in escolhas))
+        self.assertTrue(150 < sum(map(len, escolhas)) < 250, sum(map(len, escolhas)))
+        self.assertEqual({f for e in escolhas for f in e}, set(self.FATOS))
+
+    def test_ficha_vazia(self):
+        self.assertEqual(escolher_fatos((), "oi closure", random.Random(1)), ())
 
 
 class BlocoELembrete(unittest.TestCase):
@@ -112,14 +133,14 @@ class BlocoELembrete(unittest.TestCase):
         self.assertEqual(self._estado().bloco(),
                          "[Estado agora: plantão; 22:10 em Brasília; canal normal; carga 0.\n"
                          "Quem fala: rafa (pronomes não informados). Como tratar: pessoa nova: forma neutra, explique mais, sem provocação.\n"
-                         "Fatos sobre a pessoa: nenhum guardado; não suponha nada sobre a pessoa.]")
+                         "Fatos sobre a pessoa: nenhum a lembrar agora; não suponha nada sobre a pessoa.]")
 
     def test_bloco_com_ficha_e_fora_do_plantao(self):
         bloco = self._estado(persona=KALTSIT, agora=NOITE, intimidade=2, dias=17, pronomes="ele/dele",
                              fatos=("joga com Bastião na mesa do Tiago", "perguntou da Integridade")).bloco()
         self.assertIn("fora do plantão; 22:10", bloco)
         self.assertIn("rafa (pronomes: ele/dele). Como tratar: conversam com frequência", bloco)
-        self.assertIn("Fatos sobre a pessoa: joga com Bastião na mesa do Tiago; perguntou da Integridade.]", bloco)
+        self.assertIn("Fatos sobre a pessoa: joga com Bastião na mesa do Tiago; perguntou da Integridade (pano de fundo: use só se couber", bloco)
 
     def test_lembretes_por_personagem_em_ordem_de_prioridade(self):
         self.assertEqual(self._estado().lembretes(), ["Pessoa nova: forma neutra, sem provocação."])

@@ -10,6 +10,7 @@ a pessoa naquele nível, tirada das tabelas do vida.md.
 from __future__ import annotations
 
 import hashlib
+import random
 import re
 import unicodedata
 from collections import deque
@@ -95,6 +96,29 @@ def atrito(texto: str, *, resumo_anterior: str | None, quando_anterior: datetime
     return None
 
 
+CHANCE_DE_FATO_SOLTO = 1 / 3
+_COMUNS = frozenset("para como voce você esta está isso essa esse aqui muito mais pode quando onde qual quem sobre mesa joga jogo "
+                    "kal closure kaltsit hoje agora mesmo ainda tambem também que nao não uma uns com por sem dos das tem ter foi ser "
+                    "sao são ele ela meu minha seu sua nos nas pra pro tudo bem bom boa dia noite tarde".split())
+
+
+def _palavras(texto: str) -> set[str]:
+    plano = "".join(c for c in unicodedata.normalize("NFD", texto.lower()) if unicodedata.category(c) != "Mn")
+    return {p for p in re.findall(r"[a-z0-9]{3,}", plano) if p not in _COMUNS}
+
+
+def escolher_fatos(fatos: tuple[str, ...], texto: str, sorteio: random.Random) -> tuple[str, ...]:
+    """Quais fatos da ficha entram nesta resposta. Com todos, toda vez, ela puxa sempre o mesmo assunto (medido em 13/10).
+
+    Entram os que têm palavra em comum com a mensagem, até dois, do mais novo pro mais velho. Sem nenhum assim,
+    em uma de cada três respostas entra um fato sorteado; nas outras, nenhum."""
+    da_mensagem = _palavras(texto)
+    ligados = [f for f in reversed(fatos) if _palavras(f) & da_mensagem][:2]
+    if ligados:
+        return tuple(ligados)
+    return (sorteio.choice(fatos),) if fatos and sorteio.random() < CHANCE_DE_FATO_SOLTO else ()
+
+
 @dataclass(frozen=True)
 class Estado:
     persona: str
@@ -116,7 +140,10 @@ class Estado:
         """O bloco de estado do pedido, no formato da página do site, com o que o bot sabe de verdade."""
         hora = self.agora.astimezone(FUSO)
         pronomes = f"pronomes: {self.pronomes}" if self.pronomes else "pronomes não informados"
-        fatos = "; ".join(self.fatos) if self.fatos else "nenhum guardado; não suponha nada sobre a pessoa"
+        if self.fatos:  # pano de fundo, como a memória de um assistente: saber não obriga a citar
+            fatos = "; ".join(self.fatos) + " (pano de fundo: use só se couber na conversa, sem acrescentar detalhe que não está aqui)"
+        else:
+            fatos = "nenhum a lembrar agora; não suponha nada sobre a pessoa"
         return (f"[Estado agora: {'plantão' if self.no_plantao else 'fora do plantão'}; {hora:%H:%M} em Brasília; "
                 f"canal {self.movimento}; carga {self.carga}.\n"
                 f"Quem fala: {self.nome.strip() or 'alguém'} ({pronomes}). Como tratar: {TRATO[self.persona][self.intimidade]}.\n"
@@ -139,8 +166,9 @@ class Estado:
 
 
 class Vida:
-    def __init__(self, registro: Registro):
+    def __init__(self, registro: Registro, sorteio: random.Random | None = None):
         self._registro = registro
+        self._sorteio = sorteio or random.Random()
         self._canais: dict[int, deque[datetime]] = {}  # hora das mensagens recentes de cada canal; some ao reiniciar
 
     def ouvir(self, canal_id: int, agora: datetime) -> None:
@@ -169,7 +197,8 @@ class Vida:
                                         pergunta=resumo(texto), pergunta_quando=agora)
         return motivo
 
-    def estado(self, *, persona: str, canal_id: int, autor_id: int, nome: str, agora: datetime) -> Estado:
+    def estado(self, *, persona: str, canal_id: int, autor_id: int, nome: str, agora: datetime, texto: str = "") -> Estado:
+        """`texto` é a mensagem que ela vai responder: decide quais fatos da ficha entram (escolher_fatos)."""
         guardada = self._registro.paciencia(autor_id=autor_id, persona=persona)
         ficha = self._registro.ficha(autor_id)
         dias = self._registro.dias_de_conversa(autor_id=autor_id, persona=persona)
@@ -178,4 +207,4 @@ class Vida:
             carga=carga(self._registro.respostas_desde(persona=persona, desde=agora - timedelta(hours=1))),
             nome=nome, pronomes=ficha.pronomes, dias=dias, intimidade=intimidade(dias),
             paciencia=paciencia_agora(guardada.valor, guardada.desde, agora) if guardada else PACIENCIA_CHEIA,
-            fatos=ficha.fatos)
+            fatos=escolher_fatos(ficha.fatos, texto, self._sorteio))
