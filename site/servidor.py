@@ -150,8 +150,16 @@ class Site(BaseHTTPRequestHandler):
         limite = contar(self.ip())
         if limite:
             return self.responder(429, {"erro": limite})
+        tier = corpo.get("tier")
         try:
-            resp, motivo = gemini(entrada, corpo.get("tier"))
+            try:
+                resp, motivo = gemini(entrada, tier)
+            except urllib.error.HTTPError as e:
+                # cota do modelo principal acabou: responde com o do botão Rápido, que tem cota própria
+                if e.code != 429 or MODELOS.get(tier, MODELO) == MODELOS["quick"]:
+                    raise
+                print("cota de", MODELOS.get(tier, MODELO), "acabou, usando", MODELOS["quick"], flush=True)
+                resp, motivo = gemini(entrada, "quick")
         except urllib.error.HTTPError as e:
             detalhe = e.read().decode(errors="replace")[:300]
             print("gemini HTTP", e.code, detalhe.replace("\n", " "), flush=True)

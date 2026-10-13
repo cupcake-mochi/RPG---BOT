@@ -10,7 +10,8 @@ por um servidor pequeno que guarda a chave. A chave nunca vai pro navegador.
   pela própria página (com o prompt de sistema de uma das personagens), pede um código de acesso
   e tem limite por pessoa e por dia, pra ninguém usar a chave pra outra coisa nem estourar a cota.
 - Botão **Rápido** usa `gemini-3.1-flash-lite`; **Padrão** usa `gemini-3.8-flash`. Na chave
-  gratuita o 3.8 Flash só aguenta umas 20 mensagens por dia, por isso o Rápido é o padrão.
+  gratuita o 3.8 Flash só aguenta umas 20 mensagens por dia, por isso o Rápido é o padrão; quando a
+  cota do Padrão acaba, o servidor responde com o modelo do Rápido em vez de dar erro.
 - Cada conversa fica salva no servidor (com as marcações de "Estranha"). Pra baixar todas:
   `https://SEU-SITE/api/conversas?admin=SENHA_ADMIN`. No plano grátis do Render o disco é
   apagado quando o serviço reinicia, então baixe de vez em quando. O botão "Copiar conversa"
