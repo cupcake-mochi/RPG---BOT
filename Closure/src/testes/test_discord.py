@@ -1,4 +1,4 @@
-"""Camada do Discord, sem conectar: módulos carregam, comandos existem, gatilho é registrado, webhook leva nome e avatar.
+"""Camada do Discord, sem conectar: módulos carregam, comandos existem, gatilho vira resposta, webhook leva nome e avatar.
 
 Precisa do discord.py instalado; sem ele estes testes são pulados. Rodar de src/:  python3 -m unittest discover -s testes
 """
@@ -44,6 +44,7 @@ def _mensagem(texto, canal, *, bot=False, webhook_id=None, referencia=None):
     m.content = texto
     m.author.bot = bot
     m.author.id = 42
+    m.author.display_name = "rafa"
     m.webhook_id = webhook_id
     m.channel = canal
     m.mentions = []
@@ -64,8 +65,18 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self._sem_tarefas = patch.object(tasks.Loop, "start")
         self._sem_tarefas.start()
         self.addCleanup(self._sem_tarefas.stop)
+        # nem Node nem modelo nos testes: o pedido montado e a resposta são de mentira
+        from closure_bot.modelo import Resposta
+
+        self.bot.modelos.responder = AsyncMock(side_effect=lambda *a, **k: Resposta(
+            f"Resposta {self.bot.modelos.responder.call_count}.", "vertex", "m", 900, 20, 300, False))
         for modulo in MODULOS:
             await self.bot.load_extension(f"closure_bot.cogs.{modulo}")
+        # depois de carregar: o discord.py executa o módulo de novo ao carregar, e a troca feita antes se perderia
+        self.montar = AsyncMock(return_value=[{"role": "user", "content": "PEDIDO"}])
+        self._sem_ponte = patch("closure_bot.cogs.chat.montar_prompt", self.montar)
+        self._sem_ponte.start()
+        self.addCleanup(self._sem_ponte.stop)
 
     async def asyncTearDown(self):
         self.bot.registro.fechar()
@@ -289,6 +300,55 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertIsNone(self.bot.registro.painel(1))
         await cog.clima_canal_desligar.callback(cog, interacao)
         self.assertIn("não tinha", interacao.response.send_message.call_args.args[0])
+
+    async def test_quem_chama_recebe_resposta_e_a_conversa_segue(self):
+        canal, webhook = _canal()
+        chat = self.bot.get_cog("Chat")
+        await chat.on_message(_mensagem("closure, o que é Refino?", canal))
+        self.assertEqual(webhook.send.call_args.args[0], "Resposta 1.")
+        self.assertEqual(webhook.send.call_args.kwargs["username"], "Closure")
+        primeiro = self.montar.call_args
+        self.assertEqual((primeiro.args, primeiro.kwargs["nome"], primeiro.kwargs["turnos"], primeiro.kwargs["falas_anteriores"]),
+                         (("closure", "closure, o que é Refino?"), "rafa", [], []))
+        self.assertIn("[Estado agora:", primeiro.kwargs["estado"]["bloco"])
+        self.assertEqual(self.bot.modelos.responder.call_args.args[0], [{"role": "user", "content": "PEDIDO"}])
+        # a segunda mensagem leva a conversa, e a fala desta conversa não entra de novo como "fala anterior"
+        await chat.on_message(_mensagem("closure, e quanto custa?", canal))
+        segundo = self.montar.call_args.kwargs
+        self.assertEqual([(t.nome, t.texto) for t in segundo["turnos"]], [("rafa", "closure, o que é Refino?"), (None, "Resposta 1.")])
+        self.assertEqual(segundo["falas_anteriores"], [])
+        self.assertEqual(self.bot.registro.ultimas_falas(canal_id=10, persona="closure"), ["Resposta 1.", "Resposta 2."])
+        # mensagem que não chama ninguém não entra na conversa nem vira pedido
+        await chat.on_message(_mensagem("alguém vai jogar hoje?", canal))
+        self.assertEqual(self.montar.call_count, 2)
+
+    async def test_sem_resposta_do_modelo_ela_fica_calada(self):
+        from closure_bot.modelo import Falhou
+
+        canal, webhook = _canal()
+        self.bot.modelos.responder = AsyncMock(side_effect=Falhou(500, "fora do ar"))
+        await self.bot.get_cog("Chat").on_message(_mensagem("closure, o que é Refino?", canal))
+        webhook.send.assert_not_called()
+        self.assertEqual(self.bot.conversas.turnos(10, "closure", __import__("datetime").datetime.now().astimezone()), [])
+        self.assertEqual(self.bot.registro.contagens()["gatilhos"], 1)
+
+    async def test_so_o_dono_pelo_id_vai_como_mizuki(self):
+        canal, _ = _canal()
+        chat = self.bot.get_cog("Chat")
+        dono = _mensagem("closure, oi", canal)
+        dono.author.id, dono.author.display_name = 1, "qualquer apelido"
+        await chat.on_message(dono)
+        self.assertEqual(self.montar.call_args.kwargs["nome"], "Mizuki")
+        outro = _mensagem("closure, oi", canal)
+        outro.author.display_name = "mizuki"
+        await chat.on_message(outro)
+        self.assertEqual(self.montar.call_args.kwargs["nome"], "outro Mizuki")
+
+    async def test_a_linha_de_clima_entra_antes_do_estado(self):
+        canal, _ = _canal()
+        with patch("closure_bot.cogs.chat.contexto_clima", AsyncMock(return_value="[Clima agora em Tóquio: chuva, 18 °C.]")):
+            await self.bot.get_cog("Chat").on_message(_mensagem("closure, tá chovendo aí?", canal))
+        self.assertTrue(self.montar.call_args.kwargs["estado"]["bloco"].startswith("[Clima agora em Tóquio: chuva, 18 °C.]\n\n[Estado agora:"))
 
     async def test_mensagens_do_canal_viram_movimento_e_atrito_gasta_paciencia(self):
         from datetime import datetime

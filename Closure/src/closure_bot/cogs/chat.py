@@ -1,8 +1,4 @@
-"""Conversa: decide se alguém chamou uma personagem e quem responde.
-
-Fase 1: só decide e registra o gatilho. A resposta em si (busca nas regras, prompt do card, chamada ao
-modelo) entra nas fases 2 e 4, no ponto marcado abaixo.
-"""
+"""Conversa: decide se alguém chamou uma personagem, monta o pedido, chama o modelo e envia a resposta."""
 from __future__ import annotations
 
 import logging
@@ -11,9 +7,15 @@ from datetime import datetime
 import discord
 from discord.ext import commands
 
-from ..plantao import FUSO, decidir
+from ..clima import contexto_clima
+from ..modelo import Falhou
+from ..plantao import FUSO, Decisao, decidir
+from ..prompt import montar as montar_prompt
 
 log = logging.getLogger(__name__)
+
+LIMITE_DO_DISCORD = 1900  # o Discord corta em 2000 caracteres
+NOME_DO_DONO = "Mizuki"  # a página do site reconhece o dono por este nome; aqui quem garante é o ID
 
 
 class Chat(commands.Cog):
@@ -28,6 +30,13 @@ class Chat(commands.Cog):
             return True
         original = ref.resolved
         return isinstance(original, discord.Message) and original.author.id == self.bot.user.id
+
+    def _nome(self, autor) -> str:
+        """O nome que vai no pedido. Só o dono, pelo ID, vai como Mizuki; outra pessoa com esse nome não ganha o tratamento dele."""
+        if self.bot.config.dono_id and autor.id == self.bot.config.dono_id:
+            return NOME_DO_DONO
+        nome = str(autor.display_name).strip()[:40]
+        return "outro Mizuki" if nome.lower() == NOME_DO_DONO.lower() else nome
 
     @commands.Cog.listener()
     async def on_message(self, mensagem: discord.Message) -> None:
@@ -56,17 +65,38 @@ class Chat(commands.Cog):
         self.bot.registro.guardar_mensagem_do_dia(message_id=mensagem.id, autor_id=mensagem.author.id,
                                                   persona=decisao.persona, texto=mensagem.content)
         atrito = self.bot.vida.chamada(autor_id=mensagem.author.id, persona=decisao.persona, texto=mensagem.content, agora=agora)
-        log.info("gatilho: %s responderia (%s%s%s)", decisao.persona, decisao.motivo,
+        log.info("gatilho: %s responde (%s%s%s)", decisao.persona, decisao.motivo,
                  ", fora do plantão" if decisao.fora_do_plantao else "", f", atrito: {atrito}" if atrito else "")
-        # Fases 2 e 4: montar o contexto, chamar o modelo e enviar com
-        # self.bot.carteiro.enviar(mensagem.channel, self.bot.personas[decisao.persona], resposta).
-        # No bloco 4 do contexto entra a linha de clima.contexto_clima(self.bot.clima, mensagem.content),
-        # quando ela não for None (a mensagem puxou o assunto e deu pra ler).
-        # Pra ela não repetir abertura e frase de uma conversa pra outra, o pedido leva
-        # self.bot.registro.ultimas_falas(canal_id=mensagem.channel.id, persona=decisao.persona).
-        # O bloco de estado e as linhas a mais do lembrete saem de
-        # self.bot.vida.estado(persona=..., canal_id=..., autor_id=..., nome=mensagem.author.display_name, agora=agora,
-        # texto=mensagem.content).
+        try:
+            async with mensagem.channel.typing():
+                await self._responder(mensagem, decisao, agora)
+        except Falhou as erro:
+            # sem resposta do modelo ela fica calada: frase pronta de erro não é fala dela
+            log.warning("sem resposta pra mensagem %s: %s", mensagem.id, str(erro)[:200])
+        except Exception:
+            log.exception("falha ao responder a mensagem %s", mensagem.id)
+
+    async def _responder(self, mensagem: discord.Message, decisao: Decisao, agora: datetime) -> None:
+        bot, persona, canal, texto = self.bot, decisao.persona, mensagem.channel, mensagem.content
+        nome = self._nome(mensagem.author)
+        turnos = bot.conversas.turnos(canal.id, persona, agora)
+        estado = bot.vida.estado(persona=persona, canal_id=canal.id, autor_id=mensagem.author.id, nome=nome, agora=agora, texto=texto)
+        para_a_ponte = estado.para_a_ponte()
+        clima = await contexto_clima(bot.clima, texto)
+        if clima:  # a linha de clima entra antes do bloco de estado, só quando a mensagem puxa o assunto
+            para_a_ponte["bloco"] = f"{clima}\n\n{para_a_ponte['bloco']}"
+        # falas de outras conversas no canal; as desta já vão em `turnos`, e contá-las duas vezes viraria aviso falso de repetição
+        desta = {t.texto for t in turnos if t.nome is None}
+        anteriores = [f for f in bot.registro.ultimas_falas(canal_id=canal.id, persona=persona, agora=agora) if f not in desta]
+        entrada = await montar_prompt(persona, texto, nome=nome, pronomes=estado.pronomes, turnos=turnos,
+                                      falas_anteriores=anteriores, estado=para_a_ponte)
+        resposta = await bot.modelos.responder(entrada, persona=persona, gatilho=decisao.motivo)
+        fala = resposta.texto.strip()[:LIMITE_DO_DISCORD]
+        if not fala:
+            return
+        await bot.carteiro.enviar(canal, bot.personas[persona], fala)
+        bot.conversas.anotar(canal.id, persona, agora, texto, nome=nome)
+        bot.conversas.anotar(canal.id, persona, agora, fala)
 
 
 async def setup(bot: commands.Bot) -> None:

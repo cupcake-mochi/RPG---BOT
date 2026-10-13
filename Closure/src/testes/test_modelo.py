@@ -162,5 +162,35 @@ class SoPagos(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(c.exception.codigo, "sem_chave")
 
 
+class DeMolho(unittest.IsolatedAsyncioTestCase):
+    async def test_quem_estourou_a_cota_e_pulado_ate_o_prazo_passar(self):
+        from unittest.mock import patch
+
+        urls = []
+
+        async def enviar(url, corpo, chave):
+            urls.append("gemini" if "generativelanguage" in url else "vertex")
+            if urls[-1] == "gemini":
+                raise Falhou(429, "cota")
+            return BOA
+        modelos = Modelos([("gemini", "a"), ("vertex", "b")], {"gemini": "g", "vertex": "v"}, enviar=enviar)
+        with patch("closure_bot.modelo.time.monotonic", return_value=1000.0):
+            await modelos.responder(ENTRADA)
+            await modelos.responder(ENTRADA)
+        self.assertEqual(urls, ["gemini", "vertex", "vertex"])
+        with patch("closure_bot.modelo.time.monotonic", return_value=1000.0 + 601):
+            await modelos.responder(ENTRADA)
+        self.assertEqual(urls[3:], ["gemini", "vertex"])
+
+    async def test_com_todos_de_molho_tenta_todos(self):
+        async def enviar(url, corpo, chave):
+            raise Falhou(503, "sobrecarga")
+        modelos = Modelos([("gemini", "a"), ("vertex", "b")], {"gemini": "g", "vertex": "v"}, enviar=enviar)
+        for _ in range(2):
+            with self.assertRaises(Falhou):
+                await modelos.responder(ENTRADA)
+        self.assertEqual(len(modelos._de_molho), 2)
+
+
 if __name__ == "__main__":
     unittest.main()

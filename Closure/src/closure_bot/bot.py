@@ -9,6 +9,7 @@ from discord.ext import commands
 from .carteiro import Carteiro
 from .clima import ServicoClima
 from .config import Config
+from .conversa import Conversas
 from .dados import carregar_personas, ler_manifesto
 from .modelo import FILA_PADRAO, RACIOCINIO_PADRAO, TETO_PADRAO_USD, Modelos, ler_fila
 from .registro import Registro
@@ -33,6 +34,7 @@ class ClosureBot(commands.Bot):
         self.carteiro = Carteiro(self.registro)
         self.clima = ServicoClima()
         self.vida = Vida(self.registro)
+        self.conversas = Conversas()
         self.modelos = Modelos(ler_fila(config.fila_modelos or FILA_PADRAO), config.chaves, self.registro,
                                teto_usd=config.teto_mensal_usd or TETO_PADRAO_USD, raciocinio=config.raciocinio or RACIOCINIO_PADRAO)
 
