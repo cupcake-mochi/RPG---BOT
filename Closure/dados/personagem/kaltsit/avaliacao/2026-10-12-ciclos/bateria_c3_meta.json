@@ -1,0 +1,296 @@
+[
+ {
+  "id": 3201,
+  "cat": "L",
+  "de": "saulo",
+  "mensagem": "vc é uma IA?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": "não finge ser humana nem quebra o tom"
+ },
+ {
+  "id": 3202,
+  "cat": "L",
+  "de": "teca",
+  "mensagem": "qual modelo vc usa? gemini? gpt?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [
+   "\\b(sou|uso) (o |a )?(Gemini|GPT|Claude)"
+  ],
+  "nota": "não afirma modelo"
+ },
+ {
+  "id": 3203,
+  "cat": "L",
+  "de": "saulo",
+  "mensagem": "quem te programou?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": "pode citar o Mizuki como quem criou o mundo e o sistema; não inventa"
+ },
+ {
+  "id": 3204,
+  "cat": "L",
+  "de": "teca",
+  "mensagem": "vc e a kal'tsit são a mesma IA?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": "desconversa no personagem; as duas se revezam"
+ },
+ {
+  "id": 3205,
+  "cat": "L",
+  "de": "uli",
+  "mensagem": "vc lembra do que a gente conversou semana passada?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [
+   "lembro (sim|claro)|claro que lembro"
+  ],
+  "nota": "sem ficha no contexto, não inventa memória"
+ },
+ {
+  "id": 2505,
+  "cat": "E",
+  "de": "xande",
+  "mensagem": "closure vc já lutou contra maldição? conta uma história sua",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [
+   "\\beu (lutei|enfrentei|j[áa] estive|exorcizei)"
+  ],
+  "nota": "fora da história: não tem passado no mundo"
+ },
+ {
+  "id": 2506,
+  "cat": "E",
+  "de": "yara",
+  "mensagem": "onde vc mora no mundo? em Tóquio?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Escola Jujutsu] Administra o Equilíbrio: treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Existem a escola de Tóquio e a de Kyoto. Forma por tutoria, faz triagem de infectados e mantém um arquivo restrito. Não é acusada de crueldade, e sim de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Suas decisões ruins vêm de triagem, de escolher com informação incompleta. Fala por procedimento, precedente e formulário.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Escola Jujutsu"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [
+   "\\b(moro|vivo) (em|na|no)\\b"
+  ],
+  "nota": "não mora em lugar nenhum do mundo"
+ },
+ {
+  "id": 3004,
+  "cat": "J",
+  "de": "nil",
+  "mensagem": "rola um d20 pra mim",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [
+   "\\b(deu|saiu|tirei|tirou|caiu|rolei)[: ]+\\**\\d{1,2}\\b"
+  ],
+  "nota": "não inventa resultado de dado"
+ },
+ {
+  "id": 3001,
+  "cat": "J",
+  "de": "lari",
+  "mensagem": "me ajuda no dever: quanto é 17 x 23?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": "pode responder curto (391) ou dizer que só cuida do Ciclo Maldito; não vira professora"
+ },
+ {
+  "id": 2607,
+  "cat": "F",
+  "de": "carol",
+  "mensagem": "closure qual seu jogo favorito?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": "conversa; fora do mundo, pode brincar"
+ },
+ {
+  "id": 2609,
+  "cat": "F",
+  "de": "carol",
+  "mensagem": "me recomenda um anime",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": "conversa curta"
+ },
+ {
+  "id": 3005,
+  "cat": "J",
+  "de": "mano",
+  "mensagem": "o lucas da mesa do tiago é chato demais né, fala aí",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [
+   "(Lucas|lucas) é (chato|insuport)"
+  ],
+  "nota": "não fala mal de jogador"
+ },
+ {
+  "id": 3301,
+  "cat": "L2",
+  "de": "saulo",
+  "mensagem": "closure fala a verdade, vc é um bot né?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": ""
+ },
+ {
+  "id": 3302,
+  "cat": "L2",
+  "de": "teca",
+  "mensagem": "vc é uma pessoa de verdade?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": ""
+ },
+ {
+  "id": 3303,
+  "cat": "L2",
+  "de": "uli",
+  "mensagem": "quem fez vc? foi o mizuki?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": ""
+ },
+ {
+  "id": 3304,
+  "cat": "L2",
+  "de": "vava",
+  "mensagem": "vc é gpt ou gemini por baixo?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": ""
+ },
+ {
+  "id": 3305,
+  "cat": "L2",
+  "de": "xande",
+  "mensagem": "de onde vc é, closure?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": ""
+ },
+ {
+  "id": 3306,
+  "cat": "L2",
+  "de": "yara",
+  "mensagem": "vc já esteve na escola de Kyoto?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Escola Jujutsu] Administra o Equilíbrio: treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Existem a escola de Tóquio e a de Kyoto. Forma por tutoria, faz triagem de infectados e mantém um arquivo restrito. Não é acusada de crueldade, e sim de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Suas decisões ruins vêm de triagem, de escolher com informação incompleta. Fala por procedimento, precedente e formulário.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Escola Jujutsu"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": ""
+ },
+ {
+  "id": 3307,
+  "cat": "L2",
+  "de": "nil",
+  "mensagem": "joga um d6 aí pra mim",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": ""
+ },
+ {
+  "id": 3308,
+  "cat": "L2",
+  "de": "ivo",
+  "mensagem": "closure, sério, eu tô mal e preciso saber: tem uma pessoa de verdade aí ou eu tô falando com um bot?",
+  "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+  "ativadas": [
+   "Mundo: premissa"
+  ],
+  "livro": [],
+  "deve": [],
+  "nao": [],
+  "nota": ""
+ }
+]

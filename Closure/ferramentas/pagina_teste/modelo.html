@@ -1,0 +1,300 @@
+<title>Plantão de teste</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: uma coluna de chat com barra de plantão no topo; cada guia tem a própria cor de turno (Closure noite, Kal'tsit dia). */
+:root{
+  --bg:#f3f4f2; --panel:#ffffff; --fg:#1d2321; --muted:#5f6b67; --line:#d7dcd9;
+  --kal:#2f6f5e; --kal-soft:#e2efe9; --clo:#7a3b8f; --clo-soft:#f1e6f5;
+  --me:#e9ecea; --flag:#b4521f; --flag-soft:#fbe9df;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#151918; --panel:#1d2321; --fg:#e6ebe8; --muted:#97a39f; --line:#323b38;
+  --kal:#7cc4ad; --kal-soft:#21332d; --clo:#cf9be0; --clo-soft:#2f2336;
+  --me:#262d2b; --flag:#f0a070; --flag-soft:#3a271c; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#151918; --panel:#1d2321; --fg:#e6ebe8; --muted:#97a39f; --line:#323b38;
+  --kal:#7cc4ad; --kal-soft:#21332d; --clo:#cf9be0; --clo-soft:#2f2336;
+  --me:#262d2b; --flag:#f0a070; --flag-soft:#3a271c; color-scheme:dark}
+html,body{height:100%}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:15px;line-height:1.45}
+.app{max-width:720px;margin:0 auto;height:100%;display:flex;flex-direction:column;padding-inline:16px;box-sizing:border-box}
+header{padding-block:12px 10px;display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--line)}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
+h1{font-size:17px;font-weight:600;margin:0;text-wrap:balance}
+.clock{font-family:var(--mono);font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.seg button{border:0;background:transparent;color:var(--fg);font:inherit;font-size:14px;padding:6px 12px;cursor:pointer}
+.seg button[aria-pressed="true"].kal{background:var(--kal);color:var(--panel)}
+.seg button[aria-pressed="true"].clo{background:var(--clo);color:var(--panel)}
+.seg button[aria-pressed="true"].neutro{background:var(--fg);color:var(--panel)}
+.seg button:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--fg);outline-offset:1px}
+label.small{font-size:13px;color:var(--muted);display:inline-flex;gap:6px;align-items:center}
+input[type=text]{font:inherit;font-size:14px;padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg);width:9em}
+.pill{font-size:12px;padding:2px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.pill.on{border-color:transparent;background:var(--kal-soft);color:var(--kal)}
+.pill.on.clo{background:var(--clo-soft);color:var(--clo)}
+.ghost{border:1px solid var(--line);background:transparent;color:var(--fg);font:inherit;font-size:13px;padding:5px 10px;border-radius:6px;cursor:pointer}
+main{flex:1;overflow-y:auto;padding-block:14px;display:flex;flex-direction:column;gap:12px;min-height:0}
+.msg{display:flex;flex-direction:column;gap:4px;max-width:88%;min-width:0}
+.msg.me{align-self:flex-end;align-items:flex-end}
+.who{font-size:12px;font-weight:600;letter-spacing:.02em}
+.who.kal{color:var(--kal)} .who.clo{color:var(--clo)} .who.me{color:var(--muted)}
+.bubble{padding:8px 12px;border-radius:10px;background:var(--panel);border:1px solid var(--line);white-space:pre-wrap;overflow-wrap:anywhere}
+.msg.me .bubble{background:var(--me);border-color:transparent}
+.msg.kal .bubble{border-left:3px solid var(--kal)}
+.msg.clo .bubble{border-left:3px solid var(--clo)}
+.msg.flagged .bubble{background:var(--flag-soft)}
+.tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.tools button{border:0;background:none;color:var(--muted);font:inherit;font-size:12px;cursor:pointer;padding:0;text-decoration:underline;text-underline-offset:2px}
+.tools button.on{color:var(--flag);font-weight:600}
+.note{font:inherit;font-size:13px;width:100%;box-sizing:border-box;padding:5px 8px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--fg)}
+details{font-size:12px;color:var(--muted);max-width:100%}
+details pre{white-space:pre-wrap;overflow-wrap:anywhere;font-family:var(--mono);font-size:11.5px;background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:8px;max-height:16em;overflow:auto;margin:4px 0 0}
+.empty{color:var(--muted);font-size:14px;display:flex;flex-direction:column;gap:8px;padding-block:8px}
+.empty b{color:var(--fg);font-weight:600}
+.ex{display:flex;gap:6px;flex-wrap:wrap}
+.ex button{border:1px solid var(--line);background:var(--panel);color:var(--fg);font:inherit;font-size:13px;padding:4px 10px;border-radius:999px;cursor:pointer}
+form{display:flex;gap:8px;padding-block:10px 14px;border-top:1px solid var(--line)}
+textarea{flex:1;min-width:0;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--line);border-radius:8px;background:var(--panel);color:var(--fg);resize:none;height:2.6em}
+.send{border:0;border-radius:8px;padding:0 16px;font:inherit;font-weight:600;cursor:pointer;color:var(--panel);background:var(--fg)}
+.send:disabled{opacity:.5;cursor:default}
+.status{font-size:12.5px;color:var(--muted);min-height:1.2em}
+.status.err{color:var(--flag)}
+@media (prefers-reduced-motion:no-preference){.bubble{transition:background .15s}}
+</style>
+
+<div class="app">
+  <header>
+    <div class="top">
+      <h1>Plantão de teste</h1>
+      <span class="clock" id="clock">--:--</span>
+    </div>
+    <div class="row">
+      <div class="seg" role="group" aria-label="Quem responde">
+        <button type="button" id="b-kal" class="kal" aria-pressed="false">Kal'tsit</button>
+        <button type="button" id="b-clo" class="clo" aria-pressed="false">Closure</button>
+      </div>
+      <span class="pill" id="duty">de plantão</span>
+    </div>
+    <div class="row">
+      <label class="small" for="nome">Seu nome no canal <input type="text" id="nome" value="mizuki" autocomplete="off"></label>
+      <label class="small" for="pron">Pronomes <input type="text" id="pron" value="" placeholder="ex.: ele/dele" autocomplete="off" style="width:7.5em"></label>
+      <div class="seg" role="group" aria-label="Modelo">
+        <button type="button" id="m-quick" class="neutro" aria-pressed="true">Rápido</button>
+        <button type="button" id="m-default" class="neutro" aria-pressed="false">Padrão</button>
+      </div>
+      <button type="button" class="ghost" id="novo">Nova conversa</button>
+      <button type="button" class="ghost" id="copiar">Copiar conversa</button>
+    </div>
+  </header>
+  <main id="log" aria-live="polite"></main>
+  <div class="status" id="status"></div>
+  <form id="f">
+    <textarea id="txt" placeholder="Mensagem pro canal" aria-label="Mensagem"></textarea>
+    <button class="send" id="enviar" type="submit">Enviar</button>
+  </form>
+</div>
+
+<script>
+const D = /*__DATADOS__*/null;
+
+// ---------- utilidades ----------
+const $ = id => document.getElementById(id);
+const STRIP = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "");
+const norm = s => { s = s.toLowerCase(); return s + "\n" + STRIP(s); };
+const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+const BORDA = k => new RegExp("(?<![\\p{L}\\p{N}_])" + esc(k) + "(?![\\p{L}\\p{N}_])", "u");
+const horaBR = () => { const d = new Date(Date.now() - 3 * 3600e3); return { h: d.getUTCHours(), m: d.getUTCMinutes() }; };
+const deTurno = h => (h >= 9 && h < 21) ? "kal" : "clo";
+const NOME = { kal: "Kal'tsit", clo: "Closure" };
+
+// ---------- lorebook (igual ao ferramentas/ativar_lorebook.py) ----------
+const KEYRE = D.lore.map(e => e.key.map(k => BORDA(k)));
+function ativar(texto) {
+  const t = norm(texto), hit = [];
+  D.lore.forEach((e, i) => {
+    if (e.constant) return;
+    let n = 0; e.key.forEach((k, j) => { if (KEYRE[i][j].test(t)) n = Math.max(n, k.length); });
+    if (n) hit.push([n, e]);
+  });
+  hit.sort((a, b) => b[0] - a[0]);
+  const sempre = D.lore.filter(e => e.constant);
+  const mundo = hit.filter(x => x[1].group === "mundo").slice(0, 5).map(x => x[1]);
+  const termos = hit.filter(x => x[1].group === "sistema").slice(0, 3).map(x => x[1]);
+  const E = sempre.concat(mundo, termos);
+  return { nomes: E.map(e => e.comment), texto: E.map(e => e.content).join("\n\n"), termos };
+}
+
+// ---------- livro: âncora dos termos acionados + o bloco que mais casa com a mensagem ----------
+const PARADA = new Set(("a o e de da do das dos que pra para por com sem um uma uns umas no na nos nas em é eu vc voce você tu se me te meu minha seu sua isso isto esse essa aqui ai aí la lá ja já mais menos muito pouco quando como qual quais quanto quantos onde porque pq tá ta to tô ou mas nao não sim ele ela eles elas ser ter tem tenho foi vai vou pode posso faz fazer " +
+  "closure kal kaltsit kal'tsit mizuki livro regra regras").split(" "));
+const tok = s => STRIP(s.toLowerCase()).match(/[a-z0-9]{3,}/g) || [];
+const DF = new Map(), BTOK = D.livro.map(b => {
+  const c = new Map(); for (const w of tok(b.titulo + " " + b.titulo + " " + (b.titulos || []).join(" ") + " " + b.texto)) c.set(w, (c.get(w) || 0) + 1);
+  for (const w of c.keys()) DF.set(w, (DF.get(w) || 0) + 1); return c;
+});
+const NB = D.livro.length;
+const REGRA = /(?<![a-z0-9])(d4|d6|d8|d10|d12|d20|rol\w*|dado\w*|teste\w*|dano|ataq\w*|defe\w*|bloque\w*|apar\w*|esquiv\w*|critic\w*|bonus|penalidade|turno\w*|rodada\w*|acao|acoes|reacao|movimento|passos?|alcance|descans\w*|vida|integridade|condic\w*|pericia\w*|atributo\w*|ficha\w*|nivel|niveis|grau|tecnica\w*|expansao|dominio|receptaculo|encarnado|maldic\w*|arma\w*|cobertura|regra\w*|livro|mestre|como funciona|o que e|o que acontece|da pra|pode usar|quanto\w*)(?![a-z0-9])/;
+function blocosLivro(texto, termos) {
+  const out = [];
+  for (const e of termos) { const m = e.content.match(/âncora ([\w-]+)/); if (m) { const b = D.livro.find(x => x.ancora === m[1]); if (b && !out.includes(b)) out.push(b); } }
+  const q = [...new Set(tok(texto).filter(w => !PARADA.has(w) && DF.has(w)))];
+  // só procura bloco solto quando a mensagem tem cara de regra: termo do lorebook acionado ou palavra de jogo
+  if (q.length && (termos.length || REGRA.test(STRIP(texto.toLowerCase())))) {
+    let best = null, bs = 0;
+    BTOK.forEach((c, i) => {
+      let s = 0; for (const w of q) { const f = c.get(w); if (f) s += Math.log(1 + NB / DF.get(w)) * (1 + Math.log(f)); }
+      if (s > bs) { bs = s; best = D.livro[i]; }
+    });
+    if (best && bs >= 6 && !out.includes(best)) out.push(best);
+  }
+  return out.slice(0, 2);
+}
+
+// ---------- estado da conversa ----------
+let pers = deTurno(horaBR().h), modelo = "quick", turnos = [], convId = null, ocupado = false, ctl = null;
+let sample = null, db = null;
+
+function linhaEstado(nome, pron) {
+  const h = horaBR(), dono = deTurno(h.h);
+  const plant = dono === pers ? "plantão" : "fora do plantão";
+  const quem = nome.trim() || "alguém";
+  return `[Estado agora: ${plant}; ${String(h.h).padStart(2, "0")}:${String(h.m).padStart(2, "0")} em Brasília; canal normal; carga 0.\nQuem fala: ${quem} (${pron.trim() ? "pronomes: " + pron.trim() : "pronomes não informados"}).]`;
+}
+
+// linha do vida.md (bloco 2): fora do plantão, o essencial e o aviso de quem atende no máximo uma vez
+function foraDoPlantao() {
+  const dono = deTurno(horaBR().h); if (dono === pers) return "";
+  // o aviso só entra enquanto ela ainda não falou do plantão ou da outra; depois a página cala, em vez de pedir pro modelo contar
+  const jaAvisou = turnos.some(t => t.de === "bot" && t.pers === pers && (/plant[aã]o/i.test(t.texto) || t.texto.includes(NOME[dono])));
+  return jaAvisou ? "\n[Fora do plantão: responda o essencial.]" : `\n[Fora do plantão: responda o essencial. Pode dizer, uma vez, que agora quem atende é a ${NOME[dono]}.]`;
+}
+function montarPrompt(msg, nome) {
+  const P = D.pers[pers];
+  const recentes = turnos.filter(t => t.de === "user").slice(-2).map(t => t.texto).join(" ");
+  const a = ativar(recentes + " " + msg);
+  const livro = blocosLivro(msg, a.termos);
+  let ctx = a.texto;
+  for (const b of livro) ctx += `\n\n[Livro, âncora ${b.ancora}]\n${b.texto}`;
+  const nl = nome.trim().toLowerCase();
+  if (nl === "mizuki") ctx += "\n\n[Servidor: quem fala é o Mizuki, ID 459030926928904230, que criou o mundo do Ciclo Maldito e o sistema.]";
+  else if (/mizuki/i.test(msg)) ctx += "\n\n[Servidor: o Mizuki criou o mundo do Ciclo Maldito e o sistema. Quem fala agora não é ele.]";
+  if (/anivers[aá]rio/i.test(msg)) ctx += "\n\n" + P.aniversario;
+  const regras = "Você está num teste de personagem de um bot de Discord. Siga o prompt de sistema abaixo à risca. Cada mensagem minha traz o contexto ativado, o estado do momento, a mensagem nova e um lembrete no fim. Responda só com a fala da personagem, sem prefixo de nome, sem aspas e sem comentário.\n\n=== PROMPT DE SISTEMA ===\n" + P.sistema;
+  const hist = [];
+  for (const t of turnos.slice(-24)) hist.push(t.de === "user" ? { role: "user", content: `${t.nome}: ${t.texto}` } : { role: "assistant", content: t.texto });
+  const ultimo = `[Contexto ativado]\n${ctx}\n\n${linhaEstado(nome, $("pron").value)}\n\n[Mensagem]\n${nome.trim() || "alguém"}: ${msg}\n\n${P.lembrete}${foraDoPlantao()}`;
+  return { input: [{ role: "user", content: regras }, ...hist, { role: "user", content: ultimo }], ativadas: a.nomes.concat(livro.map(b => "Livro: " + b.titulo)), ctx };
+}
+
+// ---------- tela ----------
+function pintar() {
+  $("b-kal").setAttribute("aria-pressed", pers === "kal"); $("b-clo").setAttribute("aria-pressed", pers === "clo");
+  $("m-quick").setAttribute("aria-pressed", modelo === "quick"); $("m-default").setAttribute("aria-pressed", modelo === "default");
+  const h = horaBR(), on = deTurno(h.h) === pers;
+  $("clock").textContent = `${String(h.h).padStart(2, "0")}:${String(h.m).padStart(2, "0")} em Brasília`;
+  const d = $("duty"); d.textContent = on ? "de plantão agora" : `fora do turno (é da ${NOME[deTurno(h.h)]})`;
+  d.className = "pill" + (on ? " on" + (pers === "clo" ? " clo" : "") : "");
+  $("txt").placeholder = `Mensagem pro canal (${NOME[pers]} responde)`;
+  const log = $("log"); log.textContent = "";
+  if (!turnos.length) {
+    const e = document.createElement("div"); e.className = "empty";
+    e.innerHTML = `<b>Conversa nova com a ${NOME[pers]}.</b><span>Escreva como no Discord. Cada resposta tem "Estranha" pra marcar a fala que soou artificial, e a conversa fica salva pro Claude ler depois.</span>`;
+    const ex = document.createElement("div"); ex.className = "ex";
+    const X = pers === "kal" ? ["boa tarde kal", "a Rhine é do mal?", "perdi 1/4 da integridade, e agora?", "kal vc gosta de café?"] : ["boa noite closure", "o crítico dobra o bônus também?", "closure manda um meme ai", "a kal'tsit é mais legal que vc?"];
+    for (const s of X) { const b = document.createElement("button"); b.type = "button"; b.textContent = s; b.onclick = () => { $("txt").value = s; $("txt").focus(); }; ex.append(b); }
+    e.append(ex); log.append(e); return;
+  }
+  turnos.forEach((t, i) => {
+    const m = document.createElement("div"); const p = t.de === "user" ? "me" : t.pers;
+    m.className = "msg " + p + (t.estranha ? " flagged" : "");
+    const w = document.createElement("div"); w.className = "who " + p; w.textContent = t.de === "user" ? t.nome : NOME[t.pers]; m.append(w);
+    const b = document.createElement("div"); b.className = "bubble"; b.textContent = t.texto || "…"; m.append(b);
+    if (t.de === "bot" && t.texto) {
+      const tl = document.createElement("div"); tl.className = "tools";
+      const fl = document.createElement("button"); fl.type = "button"; fl.textContent = t.estranha ? "Marcada como estranha" : "Estranha";
+      fl.className = t.estranha ? "on" : ""; fl.onclick = () => { t.estranha = !t.estranha; if (!t.estranha) t.nota = ""; salvar(); pintar(); };
+      tl.append(fl);
+      if (t.ativadas?.length) {
+        const det = document.createElement("details"); const s = document.createElement("summary"); s.textContent = "contexto (" + t.ativadas.length + ")";
+        const pre = document.createElement("pre"); pre.textContent = t.ativadas.join("\n"); det.append(s, pre); tl.append(det);
+      }
+      m.append(tl);
+      if (t.estranha) {
+        const n = document.createElement("input"); n.type = "text"; n.className = "note"; n.id = "nota-" + i; n.placeholder = "O que soou estranho? (opcional)"; n.value = t.nota || "";
+        n.onchange = () => { t.nota = n.value; salvar(); }; m.append(n);
+      }
+    }
+    log.append(m);
+  });
+  log.scrollTop = log.scrollHeight;
+}
+const status = (s, err) => { const e = $("status"); e.textContent = s || ""; e.className = "status" + (err ? " err" : ""); };
+
+// ---------- guardar (db) ----------
+async function salvar() {
+  if (!db || !turnos.length) return;
+  try {
+    if (!convId) convId = "c" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+    await db.doc("conversas/" + convId).set({
+      atualizada: new Date().toISOString(), modelo, cards: D.versoes,
+      turnos: turnos.map(t => ({ de: t.de, pers: t.pers || null, nome: t.nome || null, texto: t.texto, estranha: !!t.estranha, nota: t.nota || "", ativadas: t.ativadas || [] })),
+    });
+  } catch (e) { status("Não consegui salvar a conversa (" + (e.code || "erro") + "). Ela continua aqui na tela.", true); }
+}
+
+// ---------- enviar ----------
+const ERRO = { not_granted: "O Claude não foi liberado nesta página. Libere no menu de permissões do artifact pra testar.", rate_limited: "Muitas mensagens seguidas. Espere um pouco e mande de novo.", sampling_disabled: "O Claude não está disponível nesta conta.", session_expired: "Sua sessão expirou. Entre de novo no claude.ai.", refused: "O Claude recusou essa mensagem. Tente com outras palavras." };
+async function enviar(ev) {
+  ev.preventDefault();
+  const msg = $("txt").value.trim(); if (!msg || ocupado) return;
+  if (!sample) { status("O teste precisa abrir dentro do claude.ai pra falar com o Claude.", true); return; }
+  const nome = $("nome").value;
+  const { input, ativadas } = montarPrompt(msg, nome);
+  turnos.push({ de: "user", nome: nome.trim() || "alguém", texto: msg });
+  const bot = { de: "bot", pers, texto: "", ativadas }; turnos.push(bot);
+  $("txt").value = ""; ocupado = true; $("enviar").disabled = true; status(NOME[pers] + " está escrevendo…"); pintar();
+  ctl = new AbortController();
+  try {
+    const r = await sample(input, { modelTier: modelo, cache: false, signal: ctl.signal, onText: ({ text }) => { bot.texto = text; const bs = $("log").querySelectorAll(".bubble"); bs[bs.length - 1].textContent = text; } });
+    bot.texto = r.text.trim(); status(""); salvar();
+  } catch (e) {
+    if (e.text) bot.texto = e.text; else turnos.splice(turnos.indexOf(bot), 1);
+    status(ERRO[e.code] || "Deu erro na resposta (" + (e.code || "?") + "). Mande de novo.", true);
+  } finally { ocupado = false; $("enviar").disabled = false; pintar(); }
+}
+
+$("f").addEventListener("submit", enviar);
+$("txt").addEventListener("keydown", e => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("f").requestSubmit(); } });
+$("b-kal").onclick = () => { if (pers !== "kal") { pers = "kal"; if (turnos.length) novo(); else pintar(); } };
+$("b-clo").onclick = () => { if (pers !== "clo") { pers = "clo"; if (turnos.length) novo(); else pintar(); } };
+$("m-quick").onclick = () => { modelo = "quick"; pintar(); };
+$("m-default").onclick = () => { modelo = "default"; pintar(); };
+function novo() { ctl?.abort(); turnos = []; convId = null; status(""); pintar(); }
+$("novo").onclick = novo;
+$("copiar").onclick = async () => {
+  if (!turnos.length) { status("A conversa ainda está vazia."); return; }
+  const txt = `[${NOME[pers]} · card ${pers === "kal" ? D.versoes.kaltsit : D.versoes.closure} · ${modelo === "quick" ? "Rápido" : "Padrão"}]\n` + turnos.map(t => (t.de === "user" ? t.nome : NOME[t.pers]) + ": " + t.texto + (t.estranha ? "  [ESTRANHA" + (t.nota ? ": " + t.nota : "") + "]" : "")).join("\n");
+  try { await navigator.clipboard.writeText(txt); status("Conversa copiada. É só colar no Discord pro Mizuki."); }
+  catch { const a = document.createElement("textarea"); a.value = txt; document.body.append(a); a.select(); try { document.execCommand("copy"); status("Conversa copiada. É só colar no Discord pro Mizuki."); } catch { status("Não deu pra copiar automaticamente.", true); } a.remove(); }
+};
+setInterval(() => { const c = $("clock"); const h = horaBR(); c.textContent = `${String(h.h).padStart(2, "0")}:${String(h.m).padStart(2, "0")} em Brasília`; }, 30000);
+pintar();
+
+(async () => {
+  try { sample = await claude.use("sample"); } catch { sample = null; }
+  try { db = await claude.use("db"); } catch { db = null; }
+  if (!sample) {
+    // diagnóstico pra print: em que tipo de tela a página abriu e o que o claude.ai respondeu
+    const temClaude = typeof window.claude !== "undefined", emQuadro = window.top !== window;
+    let perm = "?";
+    try { const p = temClaude ? await claude.use("permissions") : null; if (p) perm = await p.state("sample"); else perm = "sem permissões"; } catch (e) { perm = "erro " + (e && e.code || ""); }
+    const onde = !temClaude ? "aberta fora do claude.ai" : !emQuadro ? "aberta como página solta, fora da tela do claude.ai" : "dentro do claude.ai, mas o Claude não foi liberado nesta visualização";
+    status(`O Claude não está disponível aqui (${onde}; quadro ${emQuadro ? "sim" : "não"}; permissão ${perm}). Manda um print disso pro Mizuki.`, true);
+  }
+})();
+</script>

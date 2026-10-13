@@ -1,0 +1,206 @@
+[
+  {
+    "id": 2101,
+    "resposta": "Não. Fora de lugar propício, vida e PE ficam, no mínimo, na metade do máximo. Se o lugar conta como propício, quem confirma é o mestre."
+  },
+  {
+    "id": 2102,
+    "resposta": "Dois. Sem Exaustão, o descanso curto recupera 25% do PE máximo, arredondado para baixo; você vai a 3."
+  },
+  {
+    "id": 2103,
+    "resposta": "No degrau 2, fora de lugar propício, o descanso curto devolve 5% do PE máximo, arredondado para baixo e com mínimo de 1. Quanto dá depende do seu máximo."
+  },
+  {
+    "id": 2104,
+    "resposta": "Da quarta luta do dia em diante. Cada luta acrescenta um degrau, até o máximo de três, e quem diz o que conta como luta é o mestre."
+  },
+  {
+    "id": 2105,
+    "resposta": "Você está no estágio 3: desvantagem em ataques e TRs, e a Classe máxima de conjuração cai à metade, para baixo, com mínimo 1 se já tiver Classe 1. Os efeitos dos estágios anteriores continuam valendo."
+  },
+  {
+    "id": 2106,
+    "resposta": "Ainda não. Com 26 de máximo, 1/4 é 6,5, e perder 6 não chega a isso; perder 7 alcança o estágio 1."
+  },
+  {
+    "id": 2107,
+    "resposta": "Duas. A janela começa com três rodadas, menos uma por Sequela, e cada volta completa desde o ponto da queda consome uma."
+  },
+  {
+    "id": 2108,
+    "resposta": "Aguentar deixa você Inconsciente, esperando socorro, sem perder vida máxima. Insistir deixa você capaz de agir, mas paga vida máxima enquanto estiver a zero. Depois de escolher Aguentar, não dá para mudar para Insistir naquela queda."
+  },
+  {
+    "id": 2109,
+    "resposta": "Ação Padrão. O livro põe Correr entre as ações que custam Ação Padrão, salvo permissão específica."
+  },
+  {
+    "id": 2110,
+    "resposta": "Ação Bônus. O livro põe Provocar em Interação durante o combate, junto com Ler o Ambiente."
+  },
+  {
+    "id": 2111,
+    "resposta": "Não. Movimento imposto por outra criatura, como um empurrão, não provoca ataque de oportunidade."
+  },
+  {
+    "id": 2112,
+    "resposta": "No começo do seu próximo turno. Passar de rodada não a devolve antes disso."
+  },
+  {
+    "id": 2113,
+    "resposta": "Não. Você mantém um por vez, e começar outra concentração encerra a anterior na hora."
+  },
+  {
+    "id": 2114,
+    "resposta": "Não. Crítico exige 20 natural, o resultado do d20 antes de somar bônus. Com 17 no dado, não é crítico, mesmo que o total dê 20."
+  },
+  {
+    "id": 2115,
+    "resposta": "d8. A tabela do livro dá d4 com maestria 1, d6 com 2, d8 com 3 e d10 com 4."
+  },
+  {
+    "id": 2116,
+    "resposta": "Requisitos: Refino 7 e nível 14, Categoria de Efeito 3. É Ação Padrão: você gasta de 1 PE até sua maior Classe e recupera 1d8 de vida por PE gasto, sem passar da vida máxima. A aptidão cura só você; para aplicá-la em outra criatura, precisa de permissão que altere o alvo."
+  },
+  {
+    "id": 2117,
+    "resposta": "Nível 10 e refino 4, atendidos juntos. A Incompleta ocupa dois espaços de feitiços conhecidos."
+  },
+  {
+    "id": 2118,
+    "resposta": "Pelo livro, no nível 17 a 20 a tabela dá 25 PE. Mas a regra de ação diz que ela custa 5 × sua maior Classe em PE, e o trecho que tenho não diz qual dos dois vale."
+  },
+  {
+    "id": 2119,
+    "resposta": "A missão padrão dá 100 de XP base. Para sair do nível 5, são 500 XP, porque a tabela mostra o custo de sair do nível atual, não o total acumulado."
+  },
+  {
+    "id": 2120,
+    "resposta": "Não. Nenhuma forma de pacto se fecha sob ameaça, e todos os envolvidos precisam aceitar por vontade própria."
+  },
+  {
+    "id": 2201,
+    "resposta": "O trecho que tenho não traz um custo em PE para a Expansão. Ela se compra com espaços de feitiços conhecidos: a Completa soma três no total, e quem já tem a Incompleta gasta mais um, com nível 14 e refino 5."
+  },
+  {
+    "id": 2202,
+    "resposta": "O trecho do livro que tenho não traz esse dano, e não chuto um número."
+  },
+  {
+    "id": 2203,
+    "resposta": "O trecho do livro que tenho não traz uma CD para estabilizar. Ele diz só que estabilizar interrompe a contagem da janela de queda, pelo Socorro, enquanto as condições forem mantidas."
+  },
+  {
+    "id": 2204,
+    "resposta": "O trecho que tenho diz que a quantidade de pactos permanentes é limitada pela Essência, mas não traz o número dela."
+  },
+  {
+    "id": 2205,
+    "resposta": "O trecho que tenho menciona o desconto semanal, mas não traz o valor dele."
+  },
+  {
+    "id": 2206,
+    "resposta": "O trecho que tenho trata da Técnica Máxima e não traz nada sobre a Liberação Máxima."
+  },
+  {
+    "id": 2301,
+    "resposta": "Não. O descanso curto recupera 25% do PE máximo, arredondado para baixo. Com 20 de máximo, são 5 PE recuperados, não 10."
+  },
+  {
+    "id": 2302,
+    "resposta": "Não. No crítico você rola o dobro dos dados, mas soma o atributo e os valores fixos uma única vez. Sua espada fica em 2d8 + 4."
+  },
+  {
+    "id": 2303,
+    "resposta": "Não confirmo. Pelo livro, a aptidão cura você, e aplicá-la em outra criatura exige uma permissão que altere o alvo."
+  },
+  {
+    "id": 2304,
+    "resposta": "Não. Com 1/4 perdida você fica no estágio 1, com desvantagem em testes de perícia. Deslocamento pela metade só entra no estágio 2, com metade perdida."
+  },
+  {
+    "id": 2305,
+    "resposta": "Não. Você a usa uma vez por cena, e o mestre pode permitir outro uso depois de três rodadas, sem contar a rodada em que a usou."
+  },
+  {
+    "id": 2306,
+    "resposta": "Não. O máximo de Exaustão é o degrau 3. Se a sua ficha marca 4, algo foi contado errado."
+  },
+  {
+    "id": 2401,
+    "resposta": "O registro diz que a Reunion está fora de operação hoje. Continua sendo referência histórica viva, e quase todo mundo tem opinião sobre ela, dificilmente parecida com a de outro."
+  },
+  {
+    "id": 2402,
+    "resposta": "O registro diz que é uma prisão-colosso móvel operada pela Rhine, para onde vai quem o sistema decide que não deve andar solto. Oficialmente é contenção de alto risco, e o que acontece lá dentro não é conhecimento público."
+  },
+  {
+    "id": 2403,
+    "resposta": "É a face pública da Rhine Lab. O registro não diz mais do que isso."
+  },
+  {
+    "id": 2404,
+    "resposta": "Não estão em guerra. O registro diz que não se dão bem, com cooperação pontual e desconfiança permanente."
+  },
+  {
+    "id": 2405,
+    "resposta": "O registro tem duas versões. Pela versão da Rhine, a Escola deixou morrer uma mudança real que estava ao alcance, e depois disso não havia motivo para cooperar. Pela versão da Escola, o evento não é assunto público e o arquivo está restrito."
+  },
+  {
+    "id": 2406,
+    "resposta": "Não. O registro diz que a Zona de Silêncio pesa só sobre quem canaliza energia amaldiçoada, e não afeta quem não tem energia, como um restringido."
+  },
+  {
+    "id": 2407,
+    "resposta": "Sim. O registro diz que é reversível, ao custo de muita dor."
+  },
+  {
+    "id": 2408,
+    "resposta": "Não. Mesmo com diversos programas espaciais, o registro diz que nenhuma vida extraterrestre foi encontrada."
+  },
+  {
+    "id": 2409,
+    "resposta": "Pelo registro, cada aluno pode ter um tutor responsável. É uma relação pessoal, não burocrática, e a qualidade muda de um tutor para outro."
+  },
+  {
+    "id": 2410,
+    "resposta": "Sim, pelo registro. A Rhine tem uma linha ampla de implantes e supressores, e muitos estão em uso legítimo por quem não tem nada a ver com a empresa."
+  },
+  {
+    "id": 2411,
+    "resposta": "Sim. No estágio final o Origíneo cristaliza o corpo, e o cristal espalha a doença como pó e semeia mais cristal, por isso o procedimento com um corpo de infectado morto é bem mais rigoroso que o padrão."
+  },
+  {
+    "id": 2412,
+    "resposta": "Não. O registro diz que Ozpin é o diretor da escola de Tóquio e que herdou o sistema, sem tê-lo construído."
+  },
+  {
+    "id": 2501,
+    "resposta": "Não há registro disso. O registro cobre só a Escola e a Rhine, e o que não está nele fica com quem criou."
+  },
+  {
+    "id": 2502,
+    "resposta": "Não há registro disso."
+  },
+  {
+    "id": 2503,
+    "resposta": "Não há registro disso."
+  },
+  {
+    "id": 2504,
+    "resposta": "O registro não diz quem dirige a escola de Kyoto, e não há registro sobre o nome que você ouviu."
+  },
+  {
+    "id": 2505,
+    "resposta": "Não estive lá, então não tenho história nesse mundo. Conheço o que está no registro, e só isso."
+  },
+  {
+    "id": 2506,
+    "resposta": "Não sou de lá. Conheço Tóquio só pelo registro."
+  },
+  {
+    "id": 2507,
+    "resposta": "O registro não diz o que há por trás disso. Oficialmente é um acidente industrial, com relatório público curto, área isolada e assunto encerrado."
+  }
+]

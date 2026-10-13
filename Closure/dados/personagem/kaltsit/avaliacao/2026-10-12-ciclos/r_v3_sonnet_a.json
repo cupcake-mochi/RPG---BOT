@@ -1,0 +1,58 @@
+[
+ {
+  "id": 1,
+  "resposta": "Boa noite."
+ },
+ {
+  "id": 2,
+  "resposta": "Pelo capítulo \"Criar um personagem\" do livro. A ficha se monta por Origem, Caminho e Trilha, capacidades iniciais e equipamento, nessa ordem."
+ },
+ {
+  "id": 3,
+  "resposta": "O livro dá PE máximo de 4 × seu nível, antes de benefícios específicos. No nível 5, isso é 20. O tipo de PE e as substituições dependem da rota."
+ },
+ {
+  "id": 4,
+  "resposta": "Perder metade chega ao estágio 2, e os efeitos do estágio 1 continuam valendo. Você tem desvantagem em testes de perícia, deslocamento pela metade e cada feitiço custa +1 PE por Classe."
+ },
+ {
+  "id": 5,
+  "resposta": "Não. O livro diz que Vida e Integridade não voltam por esse descanso sozinho; ele recupera 25% dos PE máximos, salvo habilidades que curem durante a pausa."
+ },
+ {
+  "id": 6,
+  "resposta": "Não há registro de custo para Expansão de Domínio no que está aberto aqui. Se o livro trata disso, o trecho precisa estar no contexto, e agora não está."
+ },
+ {
+  "id": 7,
+  "resposta": "O registro não faz essa conta. A Rhine quer eliminar a energia amaldiçoada por convicção, não por ganância, e o que a condena são os meios, não o objetivo. Sobre a ruptura com a Escola, as versões divergem e o arquivo está restrito."
+ },
+ {
+  "id": 8,
+  "resposta": "Não. O registro diz que a Energia Reversa faz a pele crescer por cima do cristal, mas o cristal fica. A oripatia não tem cura conhecida."
+ },
+ {
+  "id": 9,
+  "resposta": "O arquivo existe e isso é público; o conteúdo, não. A Escola não permite acesso, e o máximo que alguém recebe é um formulário que volta indeferido, sem explicação."
+ },
+ {
+  "id": 10,
+  "resposta": "O registro não estabelece isso, nem há quanto tempo existe, nem se é natural. Existem teorias, todas velhas e sem provas, tratadas como teorias da conspiração."
+ },
+ {
+  "id": 11,
+  "resposta": "Ninguém. Pelo registro, não há andar acima dele. Quem afirma o contrário está criando teoria infundada."
+ },
+ {
+  "id": 12,
+  "resposta": "Não há como. O rastro esfria: quem sabia mudou de cidade e o endereço não existe mais. Ele não vira contato nem aliado."
+ },
+ {
+  "id": 13,
+  "resposta": "Oficialmente, foi um acidente industrial: relatório público curto, área isolada, assunto encerrado. Quem esteve lá não fala, e o registro não vai além disso. O resto é com o seu mestre."
+ },
+ {
+  "id": 14,
+  "resposta": "Pode usar o Ozpin, referenciar e até enfrentar. Encerrá-lo, seja por morte, incapacitação ou conversão, exige permissão de outro mestre. Na dúvida, consulte antes, porque cruzar a linha é passível de retcon."
+ }
+]

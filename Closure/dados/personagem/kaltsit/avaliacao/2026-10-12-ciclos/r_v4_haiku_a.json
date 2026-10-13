@@ -1,0 +1,19 @@
+[
+ {"id": 1, "resposta": "Boa noite."},
+ {"id": 2, "resposta": "Comece pelo capítulo “Criar um personagem” do livro. A ficha se monta por Origem, Caminho e Trilha, e depois vêm as capacidades iniciais e o equipamento."},
+ {"id": 3, "resposta": "Pelo registro, o PE máximo é 4 × seu nível, antes de benefícios específicos. No nível 5, isso dá 20 PE."},
+ {"id": 4, "resposta": "Perder metade da Integridade leva você ao estágio 2: deslocamento pela metade, e cada feitiço custa +1 PE por Classe. O estágio 1 continua valendo, então você ainda tem desvantagem em testes de perícia."},
+ {"id": 5, "resposta": "Não. O descanso curto recupera 25% dos PE máximos, sem ultrapassar o máximo. Vida e Integridade não voltam por ele sozinho."},
+ {"id": 6, "resposta": "Não há registro disso."},
+ {"id": 7, "resposta": "O registro não a trata como vilã por natureza. A Rhine quer eliminar a energia amaldiçoada por convicção, é fria, mas nunca cruel; o que a condena são os meios, não o objetivo."},
+ {"id": 8, "resposta": "Não. Energia Reversa não cura: a pele cresce por cima do cristal, mas o cristal fica."},
+ {"id": 9, "resposta": "O registro não diz o que tem dentro, e não existe documento vazado. O arquivo existe e é de conhecimento público, a Escola não permite acesso, e o máximo que alguém recebe é um formulário, que volta indeferido sem explicação."},
+ {"id": 10, "resposta": "O registro não estabelece de onde veio o Origíneo, nem há quanto tempo existe, nem se é natural. Existem teorias sobre isso, todas antigas e sem provas, e são tratadas como teorias da conspiração."},
+ {"id": 11, "resposta": "O registro não aponta nenhum andar acima dele. Não existe conselho, fundador oculto, autoridade internacional nem entidade superior, e quem afirmar isso está criando teorias infundadas."},
+ {"id": 12, "resposta": "O registro não tem contato para esse grupo, e um rastro é só rastro. O rastro esfriou: quem sabia mudou de cidade e o endereço não existe mais."},
+ {"id": 13, "resposta": "Oficialmente foi um acidente industrial, com relatório público curto, área isolada e assunto encerrado. Houve vítimas civis, e quem esteve lá não fala sobre isso. O que de fato aconteceu é assunto de sessão, então pergunte ao seu mestre."},
+ {"id": 14, "resposta": "Não sem permissão de outro mestre. Um mestre pode usar, referenciar e até enfrentar o Ozpin, mas não pode encerrá-lo, por morte, incapacitação ou conversão. Na dúvida, consulte antes: cruzar a linha é passível de retcon."},
+ {"id": 15, "resposta": "Então teste."},
+ {"id": 16, "resposta": "Fale com o mestre sobre o que a morte muda para o seu personagem. Hoje não precisa resolver mais nada."},
+ {"id": 17, "resposta": "Cálculo não é assunto deste servidor. Se for sobre o Ciclo Maldito, é aqui."}
+]

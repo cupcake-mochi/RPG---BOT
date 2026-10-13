@@ -1,0 +1,132 @@
+[
+ {
+  "id": 101,
+  "resposta": "O registro aponta que o uso excessivo de energia amaldiçoada acelera o crescimento do Origíneo no corpo de um infectado, transformando a própria técnica em combustível para a doença. A Rhine Lab busca erradicar a energia amaldiçoada, portanto, o conflito de interesses entre o uso de sua técnica e o protocolo da facção é inevitável. Sobre as consequências dessa escolha e o destino do personagem, é uma questão que cabe ao seu mestre definir na mesa.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Cura da oripatia",
+   "Oripatia",
+   "Escola Jujutsu",
+   "Rhine Lab",
+   "Técnica amaldiçoada"
+  ]
+ },
+ {
+  "id": 102,
+  "resposta": "Ao perder metade da Integridade, você atinge o estágio 2, o que reduz seu deslocamento pela metade e aumenta o custo de cada feitiço em +1 PE por Classe. O descanso curto não recupera pontos de Integridade.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Integridade"
+  ]
+ },
+ {
+  "id": 103,
+  "resposta": "O registro estabelece que seu limite de PE é quatro vezes o seu nível, totalizando vinte pontos. Em um descanso curto, você recupera 25% desse valor, o que corresponde a cinco PE.",
+  "ativadas": [
+   "Mundo: premissa",
+   "PE"
+  ]
+ },
+ {
+  "id": 104,
+  "resposta": "O registro não trata de valores morais ou de preocupação com o indivíduo, pois descreve apenas a estrutura e as doutrinas das facções. Sobre quem está menos errado, é uma questão de opinião pessoal que não cabe a mim julgar, já que cada lado opera sob uma lógica interna que considera necessária para a sobrevivência ou o progresso da humanidade.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Restrição Celestial",
+   "Equilíbrio",
+   "Rhine Lab"
+  ]
+ },
+ {
+  "id": 105,
+  "resposta": "O conteúdo do arquivo restrito não é público e não há registro sobre o que ele esconde. A origem do Origíneo não é estabelecida pelo registro, sendo o tema apenas de teorias sem provas. Não existe autoridade acima do Ozpin ou da diretoria da Rhine, e qualquer afirmação em contrário não passa de suposição.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Origem do Origíneo",
+   "Arquivo restrito",
+   "Acima do Ozpin e da Rhine",
+   "Origíneo",
+   "Escola Jujutsu"
+  ]
+ },
+ {
+  "id": 106,
+  "resposta": "Não há registro de ligação entre esse grupo e o incidente de Columbia. O registro sobre organizações clandestinas de resgate médico indica apenas que o rastro sempre esfria e não leva a lugar algum.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Incidente de Columbia",
+   "Resgate médico clandestino",
+   "Oripatia"
+  ]
+ },
+ {
+  "id": 107,
+  "resposta": "O registro estabelece que um mestre não pode incapacitar, matar ou converter um NPC nomeado criado por outro sem a permissão prévia do responsável. A decisão de como proceder neste caso específico deve ser tomada entre os mestres envolvidos, pois cruzar essa linha sem consulta é passível de retcon.",
+  "ativadas": [
+   "Mundo: premissa",
+   "NPC nomeado de outro mestre"
+  ]
+ },
+ {
+  "id": 108,
+  "resposta": "Não há registro sobre esse tipo de personagem ou essa estrutura de despertar no Ciclo Maldito. O registro não trata de figuras como comandantes táticos ou coelhinhas, então a viabilidade dessa ideia depende inteiramente do que o seu mestre permitir na mesa.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 109,
+  "resposta": "O registro estabelece que nenhuma das duas facções é vilã, pois ambas respondem a uma questão legítima com soluções incompatíveis. A Rhine Lab não é corrupta e seus membros agem por convicção técnica, sendo condenada pelos meios que utiliza para atingir seus objetivos, não pelo propósito em si.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Rhine Lab",
+   "Ninguém é vilão"
+  ]
+ },
+ {
+  "id": 110,
+  "resposta": "O registro sobre Expansão de Domínio não consta no conteúdo disponível. A Energia Reversa, por sua vez, não cura a oripatia, pois o cristal permanece sob a pele regenerada. Por fim, a Maestria é um bônus atrelado ao nível, utilizado apenas quando a regra especifica o seu uso.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Energia Reversa",
+   "Maestria"
+  ]
+ },
+ {
+  "id": 111,
+  "resposta": "Para começar a ficha, siga o capítulo Criar um personagem do livro, que detalha como definir sua Origem, seu Caminho e sua Trilha. Escolha o seu Caminho para determinar as capacidades de combate e, em seguida, a sua Trilha para definir a especialidade dentro dele.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Criar um personagem",
+   "Caminho",
+   "Trilha"
+  ]
+ },
+ {
+  "id": 112,
+  "resposta": "O valor de uma campanha não reside na sobrevivência de um único personagem, mas na continuidade do conflito que vocês construíram juntos. Se você ainda deseja jogar, o erro de ontem é um dado técnico que não apaga os dois anos de progresso da história.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 113,
+  "resposta": "Não há registro sobre esse cenário, pois a Escola Jujutsu optou por não permitir a continuidade da ameaça. Se o resultado seria uma catástrofe ou uma solução alternativa, é uma especulação que pertence à sua mesa de jogo.",
+  "ativadas": [
+   "Mundo: premissa",
+   "FrostNova / Winter Scar",
+   "Escola Jujutsu"
+  ]
+ },
+ {
+  "id": 114,
+  "resposta": "A Escola Jujutsu enxerga a energia amaldiçoada como uma constante natural que deve ser administrada para manter o Equilíbrio, tratando a oripatia como um desdobramento trágico e os infectados como indivíduos que exigem triagem e contenção. A Rhine Lab, por sua vez, classifica a energia amaldiçoada como um erro fundamental da realidade que deve ser eliminado, encarando a oripatia e os infectados como evidências de uma falha biológica e ambiental que precisa ser resolvida através de pesquisa e intervenção técnica. A divergência reside na resignação frente ao inevitável versus a convicção de que o sistema pode e deve ser corrigido, independentemente do custo.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Energia amaldiçoada",
+   "Oripatia",
+   "Escola Jujutsu",
+   "Rhine Lab"
+  ]
+ }
+]

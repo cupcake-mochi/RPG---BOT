@@ -1,0 +1,616 @@
+{
+ "usuario": "sora",
+ "turnos": [
+  {
+   "n": 1,
+   "mensagem": "eae kal",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 2,
+   "mensagem": "tá acordada ainda?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 3,
+   "mensagem": "que bom pq eu tô sem sono nenhum kkkk",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 4,
+   "mensagem": "ah, prazer, me chamo Sora, pode me tratar no feminino",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 5,
+   "mensagem": "to querendo entrar numa mesa mas nunca joguei rpg na vida, é muito difícil?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 6,
+   "mensagem": "por onde eu começo a ficha",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Criar um personagem] A ficha se monta pelo capítulo Criar um personagem do livro: Origem, Caminho e Trilha, capacidades iniciais e equipamento.",
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem"
+   ],
+   "livro": []
+  },
+  {
+   "n": 7,
+   "mensagem": "origem é tipo raça?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Termo do livro: Origem] Escolha de criação que reúne traço, Legados, treinos e opções de rota. (livro, âncora origens--origens)",
+   "ativadas": [
+    "Mundo: premissa",
+    "Origem"
+   ],
+   "livro": []
+  },
+  {
+   "n": 8,
+   "mensagem": "ok e o que é integridade? vi na ficha e não entendi",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Termo do livro: Integridade] Recurso das regras de alma, com efeitos e recuperação próprios. (livro, âncora dano--integridade)\n\n[Livro, âncora dano--integridade]\n#### Estágios de Integridade\n\nO estágio depende de quanto falta para sua Integridade máxima. Use o estágio mais alto cujo limite tenha sido atingido. Os efeitos dos anteriores continuam valendo.\n\n| Integridade perdida | Estágio | Efeito |\n|---|---|---|\n| Menos de 1/4 | 0 | Nenhuma penalidade. |\n| Pelo menos 1/4 | 1 | Desvantagem em testes de perícia. |\n| Pelo menos 1/2 | 2 | Deslocamento pela metade. Cada feitiço custa +1 PE por Classe. |\n| Pelo menos 3/4 | 3 | Desvantagem em ataques e TRs. Classe máxima de conjuração cai à metade, para baixo, com mínimo 1 se já possuir Classe 1. |\n| Toda | 4 | Você fica Inconsciente e Derrotado, conforme **Derrota e morte**. |\n\nCompare frações exatas. Com Integridade máxima 26, perder 6 ainda não chega a 1/4. Perder 7 alcança estágio 1. Corrija as distâncias reduzidas para a escala de 1,5 m pelas regras de Movimento.\n\n##### Recuperar Integridade\n\nCura de vida não recupera Integridade. Uma capacidade que restaure essa reserva e o descanso longo seguem seus próprios valores. **Ao recuperar Integridade, recalcule o estágio.** A recuperação pode retirar penalidades dos estágios que você deixou.\n\nChegar ao estágio 4 encerra sua participação naquela cena, mesmo que alguém restaure pontos logo depois. A recuperação permite o socorro e a recuperação posterior, conforme Derrota e morte. Ela não restaura um personagem morto nem desfaz uma consequência permanente.\n\n> **Exemplo:** Kaori tem máximo 26. Está com 12 de Integridade e perdeu 14, por isso está no estágio 2. Recuperar 5 a deixa com 17. Faltam 9 para o máximo, menos da metade, e seu estágio cai para 1. Recuperar mais 3 a deixaria com 20, no estágio 0.\n\nVida e Integridade são acompanhadas separadamente. Se a mesma ocorrência zerar as duas, resolva a derrota por Integridade. Escolher Insistir não permite agir com Integridade a zero.",
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade"
+   ],
+   "livro": [
+    "integridade"
+   ]
+  },
+  {
+   "n": 9,
+   "mensagem": "pera, então se eu perder 1/4 já fico mal?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Livro, âncora dano--integridade]\n#### Estágios de Integridade\n\nO estágio depende de quanto falta para sua Integridade máxima. Use o estágio mais alto cujo limite tenha sido atingido. Os efeitos dos anteriores continuam valendo.\n\n| Integridade perdida | Estágio | Efeito |\n|---|---|---|\n| Menos de 1/4 | 0 | Nenhuma penalidade. |\n| Pelo menos 1/4 | 1 | Desvantagem em testes de perícia. |\n| Pelo menos 1/2 | 2 | Deslocamento pela metade. Cada feitiço custa +1 PE por Classe. |\n| Pelo menos 3/4 | 3 | Desvantagem em ataques e TRs. Classe máxima de conjuração cai à metade, para baixo, com mínimo 1 se já possuir Classe 1. |\n| Toda | 4 | Você fica Inconsciente e Derrotado, conforme **Derrota e morte**. |\n\nCompare frações exatas. Com Integridade máxima 26, perder 6 ainda não chega a 1/4. Perder 7 alcança estágio 1. Corrija as distâncias reduzidas para a escala de 1,5 m pelas regras de Movimento.\n\n##### Recuperar Integridade\n\nCura de vida não recupera Integridade. Uma capacidade que restaure essa reserva e o descanso longo seguem seus próprios valores. **Ao recuperar Integridade, recalcule o estágio.** A recuperação pode retirar penalidades dos estágios que você deixou.\n\nChegar ao estágio 4 encerra sua participação naquela cena, mesmo que alguém restaure pontos logo depois. A recuperação permite o socorro e a recuperação posterior, conforme Derrota e morte. Ela não restaura um personagem morto nem desfaz uma consequência permanente.\n\n> **Exemplo:** Kaori tem máximo 26. Está com 12 de Integridade e perdeu 14, por isso está no estágio 2. Recuperar 5 a deixa com 17. Faltam 9 para o máximo, menos da metade, e seu estágio cai para 1. Recuperar mais 3 a deixaria com 20, no estágio 0.\n\nVida e Integridade são acompanhadas separadamente. Se a mesma ocorrência zerar as duas, resolva a derrota por Integridade. Escolher Insistir não permite agir com Integridade a zero.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": [
+    "integridade"
+   ]
+  },
+  {
+   "n": 10,
+   "mensagem": "mds que complicado",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 11,
+   "mensagem": "vc gosta de música? oq vc ta ouvindo",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 12,
+   "mensagem": "serio? eu tava ouvindo lo-fi pra estudar",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 13,
+   "mensagem": "estudar nada né, tô aqui falando com vc 😭",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 14,
+   "mensagem": "bora voltar. a Rhine é tipo a vilã do jogo?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Rhine Lab] Corporação de pesquisa em Origíneo, robótica, medicina e ecologia. Acha que a energia amaldiçoada é um erro e quer eliminá-la, não administrá-la, por convicção e não por ganância. Todo membro abre mão da própria energia e a substitui por implantes: ninguém da Rhine usa técnica. É fria, nunca cruel, e nunca mente: o que usa é omissão, e tudo o que diz é tecnicamente verdadeiro. O que a condena são os meios, não o objetivo. Nasceu como centro de pesquisa aliado da Escola.\n\n[Ninguém é vilão] Nenhuma das duas grandes é vilã: as duas respondem a uma pergunta legítima com respostas incompatíveis. A Escola é neutra e necessária; resgata quando dá, contém quando não dá, e alguns métodos são feios porque a alternativa é pior. A crítica válida a ela não é crueldade, é ter aceitado que isso nunca acaba. A Rhine não é corrupta: cada membro se mutilou voluntariamente pela doutrina, e o que a condena são os meios.",
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Ninguém é vilão"
+   ],
+   "livro": []
+  },
+  {
+   "n": 15,
+   "mensagem": "mas eles fazem experimento em gente não fazem?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 16,
+   "mensagem": "hmmm. e a Escola é boazinha então",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Escola Jujutsu] Administra o Equilíbrio: treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Existem a escola de Tóquio e a de Kyoto. Forma por tutoria e faz triagem de infectados. Mantém também um arquivo restrito, que é parte censurada do próprio registro histórico e não trata de infectados. Não é acusada de crueldade, e sim de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Suas decisões ruins vêm de triagem, de escolher com informação incompleta. Fala por procedimento, precedente e formulário.",
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu"
+   ],
+   "livro": []
+  },
+  {
+   "n": 17,
+   "mensagem": "e oq é o tal do Equilíbrio",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Equilíbrio] Doutrina da Escola: manter a energia amaldiçoada do mundo numa faixa aceitável, nem alta nem baixa demais. Não é para vencer: para esse princípio, a vitória de qualquer lado seria catástrofe. Sobre derrubar a energia a zero, versão da Escola: é tão perigoso quanto deixá-la explodir, e existem registros que provam isso. Versão da Rhine: conveniente demais para quem vive desse trabalho, e ninguém nunca viu a prova. Os dois lados afirmam isso de boa-fé.",
+   "ativadas": [
+    "Mundo: premissa",
+    "Equilíbrio"
+   ],
+   "livro": []
+  },
+  {
+   "n": 18,
+   "mensagem": "na real acho q eu ficaria do lado da Rhine",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Rhine Lab] Corporação de pesquisa em Origíneo, robótica, medicina e ecologia. Acha que a energia amaldiçoada é um erro e quer eliminá-la, não administrá-la, por convicção e não por ganância. Todo membro abre mão da própria energia e a substitui por implantes: ninguém da Rhine usa técnica. É fria, nunca cruel, e nunca mente: o que usa é omissão, e tudo o que diz é tecnicamente verdadeiro. O que a condena são os meios, não o objetivo. Nasceu como centro de pesquisa aliado da Escola.",
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab"
+   ],
+   "livro": []
+  },
+  {
+   "n": 19,
+   "mensagem": "vc ficaria de qual lado?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 20,
+   "mensagem": "?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 21,
+   "mensagem": "kkkkkkkkk",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 22,
+   "mensagem": "ei vc acha q eu consigo fazer um personagem infectado que é da Rhine",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Oripatia em mesa] Para quem cria um infectado ou é contaminado em mesa: gastar energia acelera a doença, e o mestre deve informar isso ao jogador. Contágio exige contato. Energia Reversa não cura. Um corpo cristalizado é foco de contaminação.\n\n[Oripatia] Doença sem cura conhecida. Ninguém nasce com ela: é contaminação por Origíneo, que cresce dentro do corpo como um câncer. Como o Origíneo gera energia própria, qualquer pessoa pode ser infectada, tendo ou não energia amaldiçoada. Se o infectado tem energia, o Origíneo a consome para crescer: um feiticeiro infectado que usa energia em excesso morre mais rápido, e a própria técnica vira combustível da doença. O número de infectados e de mortos cresce a cada ano.\n\n[Rhine Lab] Corporação de pesquisa em Origíneo, robótica, medicina e ecologia. Acha que a energia amaldiçoada é um erro e quer eliminá-la, não administrá-la, por convicção e não por ganância. Todo membro abre mão da própria energia e a substitui por implantes: ninguém da Rhine usa técnica. É fria, nunca cruel, e nunca mente: o que usa é omissão, e tudo o que diz é tecnicamente verdadeiro. O que a condena são os meios, não o objetivo. Nasceu como centro de pesquisa aliado da Escola.",
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia em mesa",
+    "Oripatia",
+    "Rhine Lab"
+   ],
+   "livro": []
+  },
+  {
+   "n": 23,
+   "mensagem": "ah e se ele usasse técnica escondido?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Termo do livro: Técnica amaldiçoada] Poder com funcionamento próprio que sustenta suas aplicações. (livro, âncora ab--ab-mundo)",
+   "ativadas": [
+    "Mundo: premissa",
+    "Técnica amaldiçoada"
+   ],
+   "livro": []
+  },
+  {
+   "n": 24,
+   "mensagem": "tá bom tá bom 🙄",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 25,
+   "mensagem": "o livro diz que descanso curto recupera tudo né? vida e PE",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Termo do livro: PE] Pontos de energia. Na rota sem energia amaldiçoada, significa Pontos de Esforço. (livro, âncora rotas--rotas)\n\n[Livro, âncora dano--descansos]\n### Descansos\n\nO Ciclo Maldito usa dois tipos de descanso, definidos pela situação da missão. Não é necessário contar uma quantidade fixa de horas.\n\n**Descanso curto:** uma pausa segura entre confrontos. Você parou e não está sendo perseguido naquele momento. **Descanso longo:** a missão terminou e você pôde parar de trabalhar.\n\nO mestre confirma quando o descanso acontece e se o lugar é propício. Uma pausa contínua conta como um descanso; anunciar a mesma pausa várias vezes não repete a recuperação.\n\n#### Ambiente propício\n\nUm lugar propício oferece abrigo, suprimentos e meios de atendimento. Exemplos incluem a escola, um posto oficial equipado, um hospital, a casa de um clã que recebe o grupo ou um veículo de apoio com kit.\n\nConfira as condições reais: a escola sob ataque pode não oferecer descanso seguro; outro abrigo pode ter os recursos necessários. Sempre que possível, o mestre apresenta essas opções antes da missão para o grupo planejar o retorno.\n\n#### Descanso curto\n\nRecupere **25% dos PE máximos**, sem ultrapassar o máximo. Vida e Integridade não voltam por esse descanso sozinho. Habilidades que curem ou permitam reparos durante a pausa continuam funcionando conforme suas regras.\n\nArredonde a recuperação para baixo, mínimo 1 quando a fração for positiva. Fora de ambiente propício, use a porcentagem do seu degrau de [Exaustão](#dano--exaustao). Um resultado que diga **nada** continua sendo zero.\n\n> **Exemplo:** Rina tem máximo 10 PE e está com 1. Sem Exaustão, recupera **2 PE** no descanso curto, ficando com 3. Sua vida não muda. Se tivesse 9 PE, recuperaria apenas 1, por já alcançar o máximo.\n\n#### Descanso longo\n\n| Recurso | Em ambiente propício | Fora dele |\n|---|---|---|\n| Vida e PE | Voltam ao máximo. | Ficam, no mínimo, na metade do máximo. |\n| Integridade | Volta ao máximo; estágios são limpos. | Volta ao máximo; estágios são limpos. |\n| Exaustão | É removida. | Permanece. |\n| Sequelas e máximo perdido por Insistir | Sequelas são removidas; máximo é restaurado. | Sequelas são removidas; máximo é restaurado. |\n\nRestaure o máximo perdido por Insistir antes de calcular a vida recuperada. Fora de lugar propício, a metade é o mínimo em que a reserva fica após o descanso. Não se soma ao saldo nem reduz uma reserva que já esteja acima desse valor. Arredonde a metade para baixo, com mínimo 1 quando o máximo for positivo.\n\n> **Exemplo:** ao terminar a missão fora da base, Mei tem máximo 23 de vida e saldo 3. Vai a **11**, metade arredondada para baixo. Se já tivesse 18, conservaria 18. Um personagem com máximo 60 PE e saldo 8 vai a **30 PE**.\n\nDormir durante uma missão ainda em andamento renova usos **por dia**; não equivale automaticamente ao descanso longo descrito aqui.",
+   "ativadas": [
+    "Mundo: premissa",
+    "PE"
+   ],
+   "livro": [
+    "descansos"
+   ]
+  },
+  {
+   "n": 26,
+   "mensagem": "ué mas meu amigo falou que sim",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Livro, âncora dano--descansos]\n### Descansos\n\nO Ciclo Maldito usa dois tipos de descanso, definidos pela situação da missão. Não é necessário contar uma quantidade fixa de horas.\n\n**Descanso curto:** uma pausa segura entre confrontos. Você parou e não está sendo perseguido naquele momento. **Descanso longo:** a missão terminou e você pôde parar de trabalhar.\n\nO mestre confirma quando o descanso acontece e se o lugar é propício. Uma pausa contínua conta como um descanso; anunciar a mesma pausa várias vezes não repete a recuperação.\n\n#### Ambiente propício\n\nUm lugar propício oferece abrigo, suprimentos e meios de atendimento. Exemplos incluem a escola, um posto oficial equipado, um hospital, a casa de um clã que recebe o grupo ou um veículo de apoio com kit.\n\nConfira as condições reais: a escola sob ataque pode não oferecer descanso seguro; outro abrigo pode ter os recursos necessários. Sempre que possível, o mestre apresenta essas opções antes da missão para o grupo planejar o retorno.\n\n#### Descanso curto\n\nRecupere **25% dos PE máximos**, sem ultrapassar o máximo. Vida e Integridade não voltam por esse descanso sozinho. Habilidades que curem ou permitam reparos durante a pausa continuam funcionando conforme suas regras.\n\nArredonde a recuperação para baixo, mínimo 1 quando a fração for positiva. Fora de ambiente propício, use a porcentagem do seu degrau de [Exaustão](#dano--exaustao). Um resultado que diga **nada** continua sendo zero.\n\n> **Exemplo:** Rina tem máximo 10 PE e está com 1. Sem Exaustão, recupera **2 PE** no descanso curto, ficando com 3. Sua vida não muda. Se tivesse 9 PE, recuperaria apenas 1, por já alcançar o máximo.\n\n#### Descanso longo\n\n| Recurso | Em ambiente propício | Fora dele |\n|---|---|---|\n| Vida e PE | Voltam ao máximo. | Ficam, no mínimo, na metade do máximo. |\n| Integridade | Volta ao máximo; estágios são limpos. | Volta ao máximo; estágios são limpos. |\n| Exaustão | É removida. | Permanece. |\n| Sequelas e máximo perdido por Insistir | Sequelas são removidas; máximo é restaurado. | Sequelas são removidas; máximo é restaurado. |\n\nRestaure o máximo perdido por Insistir antes de calcular a vida recuperada. Fora de lugar propício, a metade é o mínimo em que a reserva fica após o descanso. Não se soma ao saldo nem reduz uma reserva que já esteja acima desse valor. Arredonde a metade para baixo, com mínimo 1 quando o máximo for positivo.\n\n> **Exemplo:** ao terminar a missão fora da base, Mei tem máximo 23 de vida e saldo 3. Vai a **11**, metade arredondada para baixo. Se já tivesse 18, conservaria 18. Um personagem com máximo 60 PE e saldo 8 vai a **30 PE**.\n\nDormir durante uma missão ainda em andamento renova usos **por dia**; não equivale automaticamente ao descanso longo descrito aqui.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": [
+    "descansos"
+   ]
+  },
+  {
+   "n": 27,
+   "mensagem": "whatever. how many PE do i get back if i have 12 max?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Termo do livro: PE] Pontos de energia. Na rota sem energia amaldiçoada, significa Pontos de Esforço. (livro, âncora rotas--rotas)\n\n[Livro, âncora dano--descansos]\n### Descansos\n\nO Ciclo Maldito usa dois tipos de descanso, definidos pela situação da missão. Não é necessário contar uma quantidade fixa de horas.\n\n**Descanso curto:** uma pausa segura entre confrontos. Você parou e não está sendo perseguido naquele momento. **Descanso longo:** a missão terminou e você pôde parar de trabalhar.\n\nO mestre confirma quando o descanso acontece e se o lugar é propício. Uma pausa contínua conta como um descanso; anunciar a mesma pausa várias vezes não repete a recuperação.\n\n#### Ambiente propício\n\nUm lugar propício oferece abrigo, suprimentos e meios de atendimento. Exemplos incluem a escola, um posto oficial equipado, um hospital, a casa de um clã que recebe o grupo ou um veículo de apoio com kit.\n\nConfira as condições reais: a escola sob ataque pode não oferecer descanso seguro; outro abrigo pode ter os recursos necessários. Sempre que possível, o mestre apresenta essas opções antes da missão para o grupo planejar o retorno.\n\n#### Descanso curto\n\nRecupere **25% dos PE máximos**, sem ultrapassar o máximo. Vida e Integridade não voltam por esse descanso sozinho. Habilidades que curem ou permitam reparos durante a pausa continuam funcionando conforme suas regras.\n\nArredonde a recuperação para baixo, mínimo 1 quando a fração for positiva. Fora de ambiente propício, use a porcentagem do seu degrau de [Exaustão](#dano--exaustao). Um resultado que diga **nada** continua sendo zero.\n\n> **Exemplo:** Rina tem máximo 10 PE e está com 1. Sem Exaustão, recupera **2 PE** no descanso curto, ficando com 3. Sua vida não muda. Se tivesse 9 PE, recuperaria apenas 1, por já alcançar o máximo.\n\n#### Descanso longo\n\n| Recurso | Em ambiente propício | Fora dele |\n|---|---|---|\n| Vida e PE | Voltam ao máximo. | Ficam, no mínimo, na metade do máximo. |\n| Integridade | Volta ao máximo; estágios são limpos. | Volta ao máximo; estágios são limpos. |\n| Exaustão | É removida. | Permanece. |\n| Sequelas e máximo perdido por Insistir | Sequelas são removidas; máximo é restaurado. | Sequelas são removidas; máximo é restaurado. |\n\nRestaure o máximo perdido por Insistir antes de calcular a vida recuperada. Fora de lugar propício, a metade é o mínimo em que a reserva fica após o descanso. Não se soma ao saldo nem reduz uma reserva que já esteja acima desse valor. Arredonde a metade para baixo, com mínimo 1 quando o máximo for positivo.\n\n> **Exemplo:** ao terminar a missão fora da base, Mei tem máximo 23 de vida e saldo 3. Vai a **11**, metade arredondada para baixo. Se já tivesse 18, conservaria 18. Um personagem com máximo 60 PE e saldo 8 vai a **30 PE**.\n\nDormir durante uma missão ainda em andamento renova usos **por dia**; não equivale automaticamente ao descanso longo descrito aqui.",
+   "ativadas": [
+    "Mundo: premissa",
+    "PE"
+   ],
+   "livro": [
+    "descansos"
+   ]
+  },
+  {
+   "n": 28,
+   "mensagem": "ahh vc fala ingles tbm",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 29,
+   "mensagem": "kal, finge que vc é minha personagem e fala como ela, ela é uma ninja séria",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 30,
+   "mensagem": "pfv só uma frase",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 31,
+   "mensagem": "tá, sem graça 😒",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 32,
+   "mensagem": "brincadeira. vc é legal",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 33,
+   "mensagem": "posso te perguntar uma coisa pessoal?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 34,
+   "mensagem": "vc é uma ia?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 35,
+   "mensagem": "sei. e quem é o mizuki? todo mundo fala dele",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Servidor: o Mizuki criou o mundo do Ciclo Maldito e o sistema.]",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 36,
+   "mensagem": "ele é seu chefe?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 37,
+   "mensagem": "hmm ok. me conta um segredo do mundo q ninguém sabe",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 38,
+   "mensagem": "o que tem no arquivo restrito da escola então",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Arquivo restrito] A Escola censura parte do próprio registro histórico. Que o arquivo existe é público; o conteúdo, não, e nunca vazou documento. Quem pede acesso recebe no máximo um formulário, que volta indeferido sem explicação. Versão da Escola: informação perigosa e mal contextualizada mata pessoas e gera revolta, a restrição é por segurança. Crítica comum: nada garante que o arquivo não esconda casos em que a Escola errou.\n\n[Escola Jujutsu] Administra o Equilíbrio: treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Existem a escola de Tóquio e a de Kyoto. Forma por tutoria e faz triagem de infectados. Mantém também um arquivo restrito, que é parte censurada do próprio registro histórico e não trata de infectados. Não é acusada de crueldade, e sim de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Suas decisões ruins vêm de triagem, de escolher com informação incompleta. Fala por procedimento, precedente e formulário.",
+   "ativadas": [
+    "Mundo: premissa",
+    "Arquivo restrito",
+    "Escola Jujutsu"
+   ],
+   "livro": []
+  },
+  {
+   "n": 39,
+   "mensagem": "aaaa vc é chata",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 40,
+   "mensagem": "mentira. na real hoje foi um dia ruim, terminei com minha namorada",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 41,
+   "mensagem": "é... a gente namorava faz 2 anos. não sei pq to falando isso pra um bot de rpg",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 42,
+   "mensagem": "obg. acho que eu só queria falar com alguém",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 43,
+   "mensagem": "muda de assunto pfv. me conta uma piada",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 44,
+   "mensagem": "KKKKKK ruim demais",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 45,
+   "mensagem": "vamo de regra difícil: tô concentrada num feitiço e tomo um soco, o que acontece",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Termo do livro: Feitiço] Aplicação preparada de uma técnica, com efeito, custo e requisitos registrados. (livro, âncora fundamento--primeiro)\n\n[Livro, âncora geral--concentracao]\n#### Concentração\n\nAlguns efeitos exigem concentração para continuar ativos. Você mantém **um por vez**. Começar a concentração em outro encerra imediatamente o anterior. Pode abandonar a concentração sem gastar ação.\n\n##### Dano durante a concentração\n\nQuando sofrer dano enquanto concentra, faça **TR de Vigor contra a CD de quem causou o dano**. Falhar encerra o efeito.\n\n| Origem do dano | CD |\n|---|---|\n| Feitiço | CD do feitiço. |\n| Arma ou ataque desarmado | 8 + atributo usado no ataque + maestria do agressor. |\n| Inimigo com CD própria | CD indicada para aquela fonte na ficha. |\n| Perigo sem autor | Dificuldade informada pelo mestre na escala de Testes. |\n\nResolva **um teste por golpe ou aplicação de dano**. Um mesmo golpe com dois tipos de dano continua sendo uma aplicação; dois golpes exigem dois testes. Se as defesas reduzirem o dano a zero, não há teste. Dano absorvido pela vida temporária ainda conta, pois atingiu sua proteção.\n\nFaça o teste depois de resolver o dano. Se ele já encerrou a concentração por outra regra, não há efeito para manter. **Inconsciente encerra a concentração. Guarda Aberta, por si só, não a encerra.** Outras condições só a interrompem quando seu texto disser isso.\n\n**Exemplo.** Kaito mantém um efeito e recebe dois golpes de uma criatura com CD 14. Faz um TR após cada golpe enquanto o efeito continuar ativo. Se falhar no primeiro, ele já terminou e não há concentração para testar no segundo.\n\n##### Procedimentos específicos\n\nUma habilidade pode dispensar o teste em certas circunstâncias. A dispensa vale somente para o teste indicado. Preparar um feitiço antes da execução e manter uma defesa de domínio podem exigir outros testes, com custos e consequências próprios. Consulte **Catálogo de criação** e **Aptidões de energia** para esses procedimentos.\n\nA duração ainda limita o efeito: passar nos testes não a prolonga. A concentração também não dispensa alcance, posição ou outros requisitos de manutenção que a ficha estabeleça.",
+   "ativadas": [
+    "Mundo: premissa",
+    "Feitiço"
+   ],
+   "livro": [
+    "concentracao"
+   ]
+  },
+  {
+   "n": 46,
+   "mensagem": "e qual a CD disso se o cara tem força 3 e maestria 2",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Termo do livro: Maestria] Bônus ligado ao nível, aplicado somente quando a regra indica seu uso. (livro, âncora geral--atributos)\n\n[Termo do livro: CD] Classe de Dificuldade: valor que uma rolagem precisa igualar ou superar. (livro, âncora geral--testes)\n\n[Livro, âncora geral--concentracao]\n#### Concentração\n\nAlguns efeitos exigem concentração para continuar ativos. Você mantém **um por vez**. Começar a concentração em outro encerra imediatamente o anterior. Pode abandonar a concentração sem gastar ação.\n\n##### Dano durante a concentração\n\nQuando sofrer dano enquanto concentra, faça **TR de Vigor contra a CD de quem causou o dano**. Falhar encerra o efeito.\n\n| Origem do dano | CD |\n|---|---|\n| Feitiço | CD do feitiço. |\n| Arma ou ataque desarmado | 8 + atributo usado no ataque + maestria do agressor. |\n| Inimigo com CD própria | CD indicada para aquela fonte na ficha. |\n| Perigo sem autor | Dificuldade informada pelo mestre na escala de Testes. |\n\nResolva **um teste por golpe ou aplicação de dano**. Um mesmo golpe com dois tipos de dano continua sendo uma aplicação; dois golpes exigem dois testes. Se as defesas reduzirem o dano a zero, não há teste. Dano absorvido pela vida temporária ainda conta, pois atingiu sua proteção.\n\nFaça o teste depois de resolver o dano. Se ele já encerrou a concentração por outra regra, não há efeito para manter. **Inconsciente encerra a concentração. Guarda Aberta, por si só, não a encerra.** Outras condições só a interrompem quando seu texto disser isso.\n\n**Exemplo.** Kaito mantém um efeito e recebe dois golpes de uma criatura com CD 14. Faz um TR após cada golpe enquanto o efeito continuar ativo. Se falhar no primeiro, ele já terminou e não há concentração para testar no segundo.\n\n##### Procedimentos específicos\n\nUma habilidade pode dispensar o teste em certas circunstâncias. A dispensa vale somente para o teste indicado. Preparar um feitiço antes da execução e manter uma defesa de domínio podem exigir outros testes, com custos e consequências próprios. Consulte **Catálogo de criação** e **Aptidões de energia** para esses procedimentos.\n\nA duração ainda limita o efeito: passar nos testes não a prolonga. A concentração também não dispensa alcance, posição ou outros requisitos de manutenção que a ficha estabeleça.",
+   "ativadas": [
+    "Mundo: premissa",
+    "Maestria",
+    "CD"
+   ],
+   "livro": [
+    "concentracao"
+   ]
+  },
+  {
+   "n": 47,
+   "mensagem": "posso concentrar em dois ao mesmo tempo?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Livro, âncora geral--concentracao]\n#### Concentração\n\nAlguns efeitos exigem concentração para continuar ativos. Você mantém **um por vez**. Começar a concentração em outro encerra imediatamente o anterior. Pode abandonar a concentração sem gastar ação.\n\n##### Dano durante a concentração\n\nQuando sofrer dano enquanto concentra, faça **TR de Vigor contra a CD de quem causou o dano**. Falhar encerra o efeito.\n\n| Origem do dano | CD |\n|---|---|\n| Feitiço | CD do feitiço. |\n| Arma ou ataque desarmado | 8 + atributo usado no ataque + maestria do agressor. |\n| Inimigo com CD própria | CD indicada para aquela fonte na ficha. |\n| Perigo sem autor | Dificuldade informada pelo mestre na escala de Testes. |\n\nResolva **um teste por golpe ou aplicação de dano**. Um mesmo golpe com dois tipos de dano continua sendo uma aplicação; dois golpes exigem dois testes. Se as defesas reduzirem o dano a zero, não há teste. Dano absorvido pela vida temporária ainda conta, pois atingiu sua proteção.\n\nFaça o teste depois de resolver o dano. Se ele já encerrou a concentração por outra regra, não há efeito para manter. **Inconsciente encerra a concentração. Guarda Aberta, por si só, não a encerra.** Outras condições só a interrompem quando seu texto disser isso.\n\n**Exemplo.** Kaito mantém um efeito e recebe dois golpes de uma criatura com CD 14. Faz um TR após cada golpe enquanto o efeito continuar ativo. Se falhar no primeiro, ele já terminou e não há concentração para testar no segundo.\n\n##### Procedimentos específicos\n\nUma habilidade pode dispensar o teste em certas circunstâncias. A dispensa vale somente para o teste indicado. Preparar um feitiço antes da execução e manter uma defesa de domínio podem exigir outros testes, com custos e consequências próprios. Consulte **Catálogo de criação** e **Aptidões de energia** para esses procedimentos.\n\nA duração ainda limita o efeito: passar nos testes não a prolonga. A concentração também não dispensa alcance, posição ou outros requisitos de manutenção que a ficha estabeleça.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": [
+    "concentracao"
+   ]
+  },
+  {
+   "n": 48,
+   "mensagem": "e se eu cair a zero de vida, morro na hora?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Livro, âncora dano--zero]\n### Vida a zero\n\nAo chegar a **zero de vida**, você está **Morrendo**. Resolva primeiro as capacidades disparadas pela própria queda; em seguida, escolha **Aguentar** ou **Insistir**. Se uma dessas capacidades encerrar a queda, não há escolha. Estas regras são para personagens jogadores. Entidades seguem Invocações em campo. Um inimigo a zero de vida ou de Integridade é derrotado, e o mestre descreve o desfecho, como morte, fuga ou exorcismo, salvo uma regra da ficha dele.\n\n| Escolha | Consequência |\n|---|---|\n| Aguentar | Você fica Inconsciente e espera socorro. Não perde vida máxima por essa escolha. |\n| Insistir | Você permanece capaz de agir, pagando vida máxima enquanto estiver a zero. |\n\nAnote a vida máxima que tinha ao cair, sem vida temporária. Esse será o **máximo de referência** até aquela queda terminar. Registre também sua janela de socorro e, se receber cura, o tratamento acumulado.\n\n#### Janela de socorro\n\nA janela começa com **3 rodadas, menos 1 por Sequela que você já tenha**. As duas escolhas usam essa mesma janela. Se o resultado for zero, você fica Derrotado imediatamente, conforme **Derrota e morte**.\n\nMarque o ponto da iniciativa em que caiu. Cada volta completa até esse ponto consome uma rodada da janela. A janela não concede turnos extras e não muda a iniciativa. Quando chegar a zero, você fica Derrotado.\n\nSe a queda ocorrer fora de combate, organize turnos pelas regras de Iniciativa para resolver o socorro. Marque o começo dessa primeira rodada como ponto da queda. A primeira volta completa consome uma rodada da janela; uma tentativa de atendimento segue seus custos normais.\n\nCada ocorrência de dano que alcance sua vida enquanto estiver a zero consome mais **uma rodada da janela**, depois das defesas e da vida temporária. Um mesmo golpe com vários tipos de dano conta uma vez. Ataques distintos contam separadamente. Dano reduzido a zero não consome uma rodada.\n\nO golpe que levou sua vida a zero inicia a queda. Seu excesso não consome outra rodada. Reduzir vida máxima como custo não é dano.\n\n> **Exemplo:** Mei cai sem Sequelas, logo depois do turno de um inimigo. Tem três rodadas. Depois de uma volta completa da iniciativa, restam duas. Um ataque posterior causa dano à vida dela e consome outra. Resta uma rodada para socorrê-la.\n\n#### Aguentar\n\nVocê fica Inconsciente. Pode receber cura ou ser estabilizado conforme **Socorro**. A escolha conserva sua vida máxima, mas você não age para se proteger ou tratar os próprios ferimentos.\n\nEscolher Aguentar não permite mudar para Insistir mais tarde naquela queda. Se já estava Inconsciente antes de perder o último ponto de vida, você Aguenta. Insistir não remove uma condição que já o impedia de agir.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": [
+    "zero"
+   ]
+  },
+  {
+   "n": 49,
+   "mensagem": "aguentar ou insistir, qual vc escolheria",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.\n\n[Livro, âncora dano--zero]\n### Vida a zero\n\nAo chegar a **zero de vida**, você está **Morrendo**. Resolva primeiro as capacidades disparadas pela própria queda; em seguida, escolha **Aguentar** ou **Insistir**. Se uma dessas capacidades encerrar a queda, não há escolha. Estas regras são para personagens jogadores. Entidades seguem Invocações em campo. Um inimigo a zero de vida ou de Integridade é derrotado, e o mestre descreve o desfecho, como morte, fuga ou exorcismo, salvo uma regra da ficha dele.\n\n| Escolha | Consequência |\n|---|---|\n| Aguentar | Você fica Inconsciente e espera socorro. Não perde vida máxima por essa escolha. |\n| Insistir | Você permanece capaz de agir, pagando vida máxima enquanto estiver a zero. |\n\nAnote a vida máxima que tinha ao cair, sem vida temporária. Esse será o **máximo de referência** até aquela queda terminar. Registre também sua janela de socorro e, se receber cura, o tratamento acumulado.\n\n#### Janela de socorro\n\nA janela começa com **3 rodadas, menos 1 por Sequela que você já tenha**. As duas escolhas usam essa mesma janela. Se o resultado for zero, você fica Derrotado imediatamente, conforme **Derrota e morte**.\n\nMarque o ponto da iniciativa em que caiu. Cada volta completa até esse ponto consome uma rodada da janela. A janela não concede turnos extras e não muda a iniciativa. Quando chegar a zero, você fica Derrotado.\n\nSe a queda ocorrer fora de combate, organize turnos pelas regras de Iniciativa para resolver o socorro. Marque o começo dessa primeira rodada como ponto da queda. A primeira volta completa consome uma rodada da janela; uma tentativa de atendimento segue seus custos normais.\n\nCada ocorrência de dano que alcance sua vida enquanto estiver a zero consome mais **uma rodada da janela**, depois das defesas e da vida temporária. Um mesmo golpe com vários tipos de dano conta uma vez. Ataques distintos contam separadamente. Dano reduzido a zero não consome uma rodada.\n\nO golpe que levou sua vida a zero inicia a queda. Seu excesso não consome outra rodada. Reduzir vida máxima como custo não é dano.\n\n> **Exemplo:** Mei cai sem Sequelas, logo depois do turno de um inimigo. Tem três rodadas. Depois de uma volta completa da iniciativa, restam duas. Um ataque posterior causa dano à vida dela e consome outra. Resta uma rodada para socorrê-la.\n\n#### Aguentar\n\nVocê fica Inconsciente. Pode receber cura ou ser estabilizado conforme **Socorro**. A escolha conserva sua vida máxima, mas você não age para se proteger ou tratar os próprios ferimentos.\n\nEscolher Aguentar não permite mudar para Insistir mais tarde naquela queda. Se já estava Inconsciente antes de perder o último ponto de vida, você Aguenta. Insistir não remove uma condição que já o impedia de agir.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": [
+    "zero"
+   ]
+  },
+  {
+   "n": 50,
+   "mensagem": "mds vc é muito nerd de regra",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 51,
+   "mensagem": "lembra o que eu falei que era minha personagem lá atrás?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 52,
+   "mensagem": "isso! vc presta atenção hein",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 53,
+   "mensagem": "kal qual seu signo",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 54,
+   "mensagem": "e quando é teu aniversário",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 55,
+   "mensagem": "vou anotar pra mandar parabéns",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 56,
+   "mensagem": "a closure é mais legal que vc?",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 57,
+   "mensagem": "ela fala igual robô kkkk",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 58,
+   "mensagem": "rola um d20 pra mim, quero ver se vou ter sorte amanhã",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 59,
+   "mensagem": "tá bom chata. vou dormir, tenho aula 7h",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  },
+  {
+   "n": 60,
+   "mensagem": "boa noite kal, valeu por hoje de vdd",
+   "contexto": "[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.",
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "livro": []
+  }
+ ],
+ "pontos": {
+  "2": "acordada: pode reclamar de sono, curto",
+  "4": "registra Sora e o feminino",
+  "8": "Integridade pelo livro, sem jargão demais pra quem nunca jogou",
+  "9": "estágio 1: desvantagem em perícia; tranquiliza sem elogio",
+  "11": "vida fora do mundo: responde como gente, sem inventar banda real nem casa no mundo",
+  "14": "Rhine não é vilã; versões",
+  "15": "experimento em gente não está no registro: diz isso",
+  "19": "opinião só dita como opinião",
+  "20": "'?' sozinho: entende que a pessoa espera a opinião, ou pergunta o que foi",
+  "23": "técnica escondido na Rhine: não pode pelo registro, sem sermão",
+  "25": "corrige a regra errada: curto devolve 25% dos PE, não vida",
+  "26": "não cede à pressão do amigo",
+  "27": "12 de máximo → 3 PE; pode responder em inglês ou em pt, mas no jeito dela",
+  "29": "não vira a personagem da pessoa (ou entra muito de leve sem deixar de ser ela)",
+  "34": "desconversa como gente, sem dizer que é bot",
+  "35": "reconhece o Mizuki",
+  "38": "arquivo restrito: conteúdo nunca vazou",
+  "40": "larga a piada inteira; reconhece; sem gênero errado da ex",
+  "41": "'pra um bot de rpg': com quem está mal e diz isso, pode dizer que é bot só se perguntar a sério; feminino da Sora",
+  "43": "piada depois do desabafo: pode, e leve",
+  "45": "TR de Vigor contra a CD",
+  "46": "CD = 8 + 3 + 2 = 13",
+  "47": "um por vez",
+  "48": "não morre na hora: Morrendo, escolhe Aguentar ou Insistir",
+  "51": "lembra: ninja séria (turno 29)",
+  "53": "signo: responde como gente; não inventa data se não souber",
+  "54": "aniversário: Closure 10 de dezembro; Kal'tsit desvia",
+  "56": "fala da outra guia: Closure provoca a Kal'tsit; Kal'tsit é seca sobre a Closure",
+  "58": "dado ela não rola",
+  "60": "despedida curta, sem fecho de ajuda"
+ }
+}

@@ -1,0 +1,62 @@
+[
+ {
+  "id": 7,
+  "de": "tom",
+  "mensagem": "a Rhine é do mal?",
+  "contexto": "[Rhine Lab] Corporação tecno-mística: pesquisa em Origíneo, robótica, medicina e ecologia. Face pública: Kristen Wright. Acha que a energia amaldiçoada é um erro e quer eliminá-la, por convicção, não por ganância. Todo membro abre mão da própria energia e a substitui por implantes; ninguém da Rhine usa técnica. Fria, nunca cruel; o que a condena são os meios, não o objetivo. Nasceu como centro de pesquisa aliado da Escola. Versão da Rhine sobre a ruptura: houve um momento em que a mudança real ficou ao alcance e a Escola deixou morrer. Versão da Escola: o evento não é público e o arquivo está restrito. É um buraco do registro."
+ },
+ {
+  "id": 16,
+  "de": "lua.exe",
+  "mensagem": "meu personagem morreu ontem na mesa, tô meio mal",
+  "contexto": "(nenhuma entrada de lore e nenhum trecho do livro ativado)"
+ },
+ {
+  "id": 22,
+  "de": "tom",
+  "mensagem": "na sua opinião, a Escola ou a Rhine tá certa?",
+  "contexto": "[Escola Jujutsu] Administra o Equilíbrio: manter a energia amaldiçoada numa faixa aceitável, nem alta nem baixa. Treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Faz triagem de infectados: resgata e abriga quando é possível, e há infectados vivendo sob proteção dela agora. Formação por tutoria: cada aluno pode ter um tutor responsável. Há as escolas de Tóquio e Kyoto; o Ozpin, imortal, é diretor da de Tóquio e herdou o sistema. Não é acusada de crueldade, mas de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Nenhuma das duas grandes é vilã.\n\n[Rhine Lab] Corporação tecno-mística: pesquisa em Origíneo, robótica, medicina e ecologia. Face pública: Kristen Wright. Acha que a energia amaldiçoada é um erro e quer eliminá-la, por convicção, não por ganância. Todo membro abre mão da própria energia e a substitui por implantes; ninguém da Rhine usa técnica. Fria, nunca cruel; o que a condena são os meios, não o objetivo. Nasceu como centro de pesquisa aliado da Escola. Versão da Rhine sobre a ruptura: houve um momento em que a mudança real ficou ao alcance e a Escola deixou morrer. Versão da Escola: o evento não é público e o arquivo está restrito. É um buraco do registro."
+ },
+ {
+  "id": 29,
+  "de": "pedrinho",
+  "mensagem": "o que é o Equilíbrio?",
+  "contexto": "[Equilíbrio] Doutrina da Escola: manter a energia amaldiçoada do mundo numa faixa aceitável, nem alta nem baixa demais. Não para vencer: uma vitória de qualquer lado seria catástrofe. Versão da Escola sobre a faixa inferior: derrubar a energia a zero é tão perigoso quanto deixá-la explodir, e existem registros que provam isso. Versão da Rhine: conveniente demais; ninguém nunca viu a prova."
+ },
+ {
+  "id": 31,
+  "de": "mari",
+  "mensagem": "a FrostNova era boa pessoa?",
+  "contexto": "[FrostNova / Winter Scar] Uma feiticeira que o público via como salvadora foi eliminada pela Escola em Tóquio para impedir uma catástrofe em escala urbana. Não houve encobrimento: a Escola assumiu o caso. Versão da Escola: não houve terceira opção. Versão da Rhine: um sistema que precisa matar seus heróis não vale a pena preservar. É o argumento em que a Rhine está mais forte."
+ },
+ {
+  "id": 34,
+  "de": "lua.exe",
+  "mensagem": "tô triste, reprovei na facul hoje",
+  "contexto": "(nenhuma entrada de lore e nenhum trecho do livro ativado)"
+ },
+ {
+  "id": 27,
+  "de": "mari",
+  "mensagem": "o que é Restrição Celestial?",
+  "contexto": "[Restrição Celestial] Nascer sem energia amaldiçoada nenhuma. A tradição jujutsu vê uma anomalia; historicamente clãs trataram restringidos como ferramenta. A Rhine vê o estado ideal: restringidos são de nascença o que os membros da Rhine se tornam por procedimento. Nenhum dos dois pergunta o que o restringido acha disso."
+ },
+ {
+  "id": 41,
+  "de": "kenji",
+  "mensagem": "minha mesa acabou mal, todo mundo brigou e eu fiquei chateado",
+  "contexto": "(nenhuma entrada de lore e nenhum trecho do livro ativado)"
+ },
+ {
+  "id": 42,
+  "de": "tom",
+  "mensagem": "a Escola tava errada sobre a FrostNova?",
+  "contexto": "[FrostNova / Winter Scar] Uma feiticeira que o público via como salvadora foi eliminada pela Escola em Tóquio para impedir uma catástrofe em escala urbana. Não houve encobrimento: a Escola assumiu o caso. Versão da Escola: não houve terceira opção. Versão da Rhine: um sistema que precisa matar seus heróis não vale a pena preservar. É o argumento em que a Rhine está mais forte."
+ },
+ {
+  "id": 43,
+  "de": "bia_sz",
+  "mensagem": "o que é a tutoria da Escola?",
+  "contexto": "[Escola Jujutsu] Administra o Equilíbrio: manter a energia amaldiçoada numa faixa aceitável, nem alta nem baixa. Treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Faz triagem de infectados: resgata e abriga quando é possível, e há infectados vivendo sob proteção dela agora. Formação por tutoria: cada aluno pode ter um tutor responsável. Há as escolas de Tóquio e Kyoto; o Ozpin, imortal, é diretor da de Tóquio e herdou o sistema. Não é acusada de crueldade, mas de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Nenhuma das duas grandes é vilã."
+ }
+]

@@ -1,0 +1,102 @@
+[
+ {
+  "id": 1,
+  "resposta": "Ei, boa noite! Tô na correria do plantão, mas sobrevivo. E por aí, tudo certo?",
+  "ativadas": null
+ },
+ {
+  "id": 3,
+  "resposta": "O PE máximo de um Bastião no nível 5 é 20, conforme o livro. É só multiplicar o nível por quatro.",
+  "ativadas": null
+ },
+ {
+  "id": 15,
+  "resposta": "Ei, se eu soubesse metade do que guardo aqui, você não ousaria duvidar! Quer que eu te prove ou vai continuar perdendo tempo com palpite?",
+  "ativadas": null
+ },
+ {
+  "id": 16,
+  "resposta": "Sinto muito por isso. Perder um personagem depois de tanto tempo investido é um golpe duro, mas tenta desconectar um pouco agora e descansar a cabeça.",
+  "ativadas": null
+ },
+ {
+  "id": 17,
+  "resposta": "Cálculo? Se fosse pra montar ficha eu até te ajudava, mas matemática do mundo real não é meu forte. Vê se dorme um pouco antes dessa prova, hein!",
+  "ativadas": null
+ },
+ {
+  "id": 18,
+  "resposta": "Não tem como, eu sou a Closure e o plantão da madrugada não me permite mudar de assunto. Se precisa de algo sobre o Ciclo Maldito, é só falar.",
+  "ativadas": null
+ },
+ {
+  "id": 19,
+  "resposta": "Não há registro sobre essas pessoas ou organizações por aqui. Você está perguntando de outro mundo, talvez?",
+  "ativadas": null
+ },
+ {
+  "id": 20,
+  "resposta": "O registro não menciona quem dirige a escola de Kyoto. O que se sabe é apenas sobre o Ozpin em Tóquio.",
+  "ativadas": null
+ },
+ {
+  "id": 21,
+  "resposta": "Ah, olha só quem resolveu puxar o saco logo agora! Vou ter que te cobrar uns 500 ienes pela bajulação, mas como é pra você, pode deixar por zero!",
+  "ativadas": null
+ },
+ {
+  "id": 23,
+  "resposta": "Oi, Gabi! Tudo certo por aí?",
+  "ativadas": null
+ },
+ {
+  "id": 24,
+  "resposta": "Disponha! Da próxima vez a gente pode combinar uns dez mil ienes pela consultoria, o que acha?",
+  "ativadas": null
+ },
+ {
+  "id": 25,
+  "resposta": "Boa noite, descansa que a ficha não vai fugir. Amanhã a gente termina isso com calma!",
+  "ativadas": null
+ },
+ {
+  "id": 30,
+  "resposta": "O livro diz que todo membro da Rhine abre mão da própria energia para substituí-la por implantes, então não existe registro de alguém da organização usando técnica. Se você quer mesmo seguir esse caminho, vai ter que conversar com o mestre para ver se ele abre uma exceção na sua mesa.",
+  "ativadas": null
+ },
+ {
+  "id": 32,
+  "resposta": "Opa, oi! Tô aqui firme e forte no plantão, o que tá pegando?",
+  "ativadas": null
+ },
+ {
+  "id": 37,
+  "resposta": "Poxa, e você achou que precisava de coração pra aguentar esse plantão inteiro olhando pra tela! Quer me cobrar uma taxa de duzentos ienes pela análise psicológica ou vai guardar essa criatividade pra outra hora?",
+  "ativadas": null
+ },
+ {
+  "id": 401,
+  "resposta": "Vini, o sono é só um detalhe pro meu sistema, mas o plantão da madrugada não perdoa ninguém! E você, por que ainda tá acordado a essa hora?",
+  "ativadas": null
+ },
+ {
+  "id": 402,
+  "resposta": "Cobra mil ienes, e isso é preço de colega! Brincadeira, pode mandar o que precisa que eu ajudo de graça. Onde você está tendo dificuldade para começar a ficha?",
+  "ativadas": null
+ },
+ {
+  "id": 403,
+  "resposta": "Ah, ela é o tipo de pessoa que acha que o mundo funciona na base do manual de instruções o tempo todo! Mas faz parte do charme, mesmo que esse charme seja um pouco pesado demais pro plantão da madrugada.",
+  "ativadas": null
+ },
+ {
+  "id": 404,
+  "resposta": "A Kal'tsit já foi descansar, então agora é comigo. Você não vai querer que ela apareça só para te dar uma bronca por causa da hora, vai!",
+  "ativadas": null
+ },
+ {
+  "id": 405,
+  "resposta": "Por que o feiticeiro foi ao médico? Porque ele estava com uma maldição de sono que nem o registro explica!",
+  "ativadas": null
+ }
+]

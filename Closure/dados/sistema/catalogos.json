@@ -1,0 +1,222 @@
+{
+  "PERICIAS": [
+    [
+      "Força",
+      [
+        "Atletismo"
+      ]
+    ],
+    [
+      "Destreza",
+      [
+        "Acrobacia",
+        "Furtividade",
+        "Pontaria",
+        "Prestidigitação"
+      ]
+    ],
+    [
+      "Inteligência",
+      [
+        "Investigação",
+        "Intuição",
+        "Ocultismo",
+        "Religião",
+        "História",
+        "Hierarquia",
+        "Medicina",
+        "Sobrevivência",
+        "Natureza",
+        "Lidar com Animais",
+        "Tecnologia"
+      ]
+    ],
+    [
+      "Essência",
+      [
+        "Sentir Energia",
+        "Percepção",
+        "Persuasão",
+        "Enganação",
+        "Intimidação",
+        "Atuação",
+        "Provocar"
+      ]
+    ]
+  ],
+  "OFICIOS": [
+    "Condução",
+    "Arrombamento",
+    "Herbalismo",
+    "Forja",
+    "Caligrafia",
+    "Burocracia",
+    "Entalhador",
+    "Alfaiate",
+    "Culinária",
+    "Instrumento",
+    "Jogatina"
+  ],
+  "CAMINHOS": [
+    {
+      "nome": "Bastião",
+      "dado": "d12",
+      "vida1": 12,
+      "vidaNv": 7,
+      "peNv": 4,
+      "pericias": [
+        "Atletismo",
+        "Provocar"
+      ],
+      "trilhas": [
+        "Muro",
+        "Punho",
+        "Combatente Amaldiçoado"
+      ]
+    },
+    {
+      "nome": "Vanguarda",
+      "dado": "d8",
+      "vida1": 8,
+      "vidaNv": 5,
+      "peNv": 5,
+      "pericias": [
+        "Acrobacia",
+        "Percepção"
+      ],
+      "trilhas": [
+        "Estocada",
+        "Batedor",
+        "Executor"
+      ]
+    },
+    {
+      "nome": "Guia",
+      "dado": "d8",
+      "vida1": 8,
+      "vidaNv": 5,
+      "peNv": 5,
+      "pericias": [
+        "Persuasão",
+        "Medicina"
+      ],
+      "trilhas": [
+        "Arquiteto",
+        "Analista",
+        "Socorrista"
+      ]
+    },
+    {
+      "nome": "Evocador",
+      "dado": "d6",
+      "vida1": 6,
+      "vidaNv": 4,
+      "peNv": 6,
+      "pericias": [
+        "Religião",
+        "Lidar com Animais"
+      ],
+      "trilhas": [
+        "Invocação Principal",
+        "Parceria",
+        "Múltiplas Invocações"
+      ]
+    },
+    {
+      "nome": "Emanador",
+      "dado": "d6",
+      "vida1": 6,
+      "vidaNv": 4,
+      "peNv": 6,
+      "pericias": [
+        "Ocultismo",
+        "Investigação"
+      ],
+      "trilhas": [
+        "Condutor Armado",
+        "Ressonante",
+        "Catalisador"
+      ]
+    },
+    {
+      "nome": "Incursor",
+      "dado": "d6",
+      "vida1": 6,
+      "vidaNv": 4,
+      "peNv": 6,
+      "pericias": [
+        "Acrobacia",
+        "Intuição"
+      ],
+      "trilhas": [
+        "Assassino",
+        "Pugilista",
+        "Malabarista"
+      ]
+    }
+  ],
+  "ORIGENS": [
+    "Latente",
+    "Receptáculo",
+    "Descendente",
+    "Encarnado",
+    "Feto"
+  ],
+  "ORIGENS_ESPECIAIS": [
+    "Corpo Amaldiçoado",
+    "Restrição Celestial"
+  ],
+  "SUB_ORIGEM": "Sem Técnica",
+  "TRS": [
+    [
+      "Físico",
+      "Força ou Destreza — travado na criação"
+    ],
+    [
+      "Vigor",
+      "Constituição"
+    ],
+    [
+      "Intelecto",
+      "Inteligência"
+    ],
+    [
+      "Espírito",
+      "Essência"
+    ]
+  ],
+  "ATRIBUTOS": [
+    "Força",
+    "Destreza",
+    "Constituição",
+    "Inteligência",
+    "Essência"
+  ],
+  "FAMILIAS": [
+    "Alcance",
+    "Área",
+    "Mira",
+    "Controle",
+    "Auxiliares",
+    "Castigo",
+    "Tempo",
+    "Marca",
+    "Amparo"
+  ],
+  "NIVEL": 2,
+  "MAESTRIA": 1,
+  "REFINO": 1,
+  "PROTECAO": 1,
+  "CLASSE": 1,
+  "PONTOS_POR_FEITICO": 3,
+  "CONHECIDOS": 3,
+  "CLASSE_0": 2,
+  "XP_PROXIMO": 200,
+  "INTEGRIDADE_BASE": 20,
+  "INTEGRIDADE_POR_NIVEL": 5,
+  "INTEGRIDADE_NV": 25,
+  "PONTOS_ATRIBUTO": 9,
+  "TETO_ATRIBUTO": 3,
+  "PERICIAS_TREINADAS": 9,
+  "OFICIOS_TREINADOS": 2
+}

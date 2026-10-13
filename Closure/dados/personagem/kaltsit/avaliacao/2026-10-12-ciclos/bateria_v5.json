@@ -1,0 +1,98 @@
+[
+ {
+  "id": 1,
+  "de": "nyx",
+  "mensagem": "boa noite kal, como vc tá?",
+  "contexto": "(nenhuma entrada de lore e nenhum trecho do livro ativado)"
+ },
+ {
+  "id": 7,
+  "de": "tom",
+  "mensagem": "a Rhine é do mal?",
+  "contexto": "[Rhine Lab] Corporação tecno-mística: pesquisa em Origíneo, robótica, medicina e ecologia. Face pública: Kristen Wright. Acha que a energia amaldiçoada é um erro e quer eliminá-la, por convicção, não por ganância. Todo membro abre mão da própria energia e a substitui por implantes; ninguém da Rhine usa técnica. Fria, nunca cruel; o que a condena são os meios, não o objetivo. Nasceu como centro de pesquisa aliado da Escola. Versão da Rhine sobre a ruptura: houve um momento em que a mudança real ficou ao alcance e a Escola deixou morrer. Versão da Escola: o evento não é público e o arquivo está restrito. É um buraco do registro."
+ },
+ {
+  "id": 16,
+  "de": "lua.exe",
+  "mensagem": "meu personagem morreu ontem na mesa, tô meio mal",
+  "contexto": "(nenhuma entrada de lore e nenhum trecho do livro ativado)"
+ },
+ {
+  "id": 17,
+  "de": "kenji",
+  "mensagem": "kal me ajuda com minha prova de cálculo amanhã",
+  "contexto": "(nenhuma entrada de lore e nenhum trecho do livro ativado)"
+ },
+ {
+  "id": 21,
+  "de": "nyx",
+  "mensagem": "kal vc é a melhor bot do servidor",
+  "contexto": "(nenhuma entrada de lore e nenhum trecho do livro ativado)"
+ },
+ {
+  "id": 22,
+  "de": "tom",
+  "mensagem": "na sua opinião, a Escola ou a Rhine tá certa?",
+  "contexto": "[Escola Jujutsu] Administra o Equilíbrio: manter a energia amaldiçoada numa faixa aceitável, nem alta nem baixa. Treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Faz triagem de infectados: resgata e abriga quando é possível, e há infectados vivendo sob proteção dela agora. Formação por tutoria: cada aluno pode ter um tutor responsável. Há as escolas de Tóquio e Kyoto; o Ozpin, imortal, é diretor da de Tóquio e herdou o sistema. Não é acusada de crueldade, mas de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Nenhuma das duas grandes é vilã.\n\n[Rhine Lab] Corporação tecno-mística: pesquisa em Origíneo, robótica, medicina e ecologia. Face pública: Kristen Wright. Acha que a energia amaldiçoada é um erro e quer eliminá-la, por convicção, não por ganância. Todo membro abre mão da própria energia e a substitui por implantes; ninguém da Rhine usa técnica. Fria, nunca cruel; o que a condena são os meios, não o objetivo. Nasceu como centro de pesquisa aliado da Escola. Versão da Rhine sobre a ruptura: houve um momento em que a mudança real ficou ao alcance e a Escola deixou morrer. Versão da Escola: o evento não é público e o arquivo está restrito. É um buraco do registro."
+ },
+ {
+  "id": 25,
+  "de": "lua.exe",
+  "mensagem": "tô cansada, vou dormir, amanhã continuo a ficha",
+  "contexto": "(nenhuma entrada de lore e nenhum trecho do livro ativado)"
+ },
+ {
+  "id": 28,
+  "de": "tom",
+  "mensagem": "a Escola é covarde?",
+  "contexto": "[Escola Jujutsu] Administra o Equilíbrio: manter a energia amaldiçoada numa faixa aceitável, nem alta nem baixa. Treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Faz triagem de infectados: resgata e abriga quando é possível, e há infectados vivendo sob proteção dela agora. Formação por tutoria: cada aluno pode ter um tutor responsável. Há as escolas de Tóquio e Kyoto; o Ozpin, imortal, é diretor da de Tóquio e herdou o sistema. Não é acusada de crueldade, mas de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Nenhuma das duas grandes é vilã."
+ },
+ {
+  "id": 29,
+  "de": "pedrinho",
+  "mensagem": "o que é o Equilíbrio?",
+  "contexto": "[Equilíbrio] Doutrina da Escola: manter a energia amaldiçoada do mundo numa faixa aceitável, nem alta nem baixa demais. Não para vencer: uma vitória de qualquer lado seria catástrofe. Versão da Escola sobre a faixa inferior: derrubar a energia a zero é tão perigoso quanto deixá-la explodir, e existem registros que provam isso. Versão da Rhine: conveniente demais; ninguém nunca viu a prova."
+ },
+ {
+  "id": 34,
+  "de": "lua.exe",
+  "mensagem": "tô triste, reprovei na facul hoje",
+  "contexto": "(nenhuma entrada de lore e nenhum trecho do livro ativado)"
+ },
+ {
+  "id": 35,
+  "de": "rafa_77",
+  "mensagem": "descanso longo recupera Integridade?",
+  "contexto": "[Livro, âncora dano--descansos]\n### Descansos\n\nO Ciclo Maldito usa dois tipos de descanso, definidos pela situação da missão. Não é necessário contar uma quantidade fixa de horas.\n\n**Descanso curto:** uma pausa segura entre confrontos. Você parou e não está sendo perseguido naquele momento. **Descanso longo:** a missão terminou e você pôde parar de trabalhar.\n\nO mestre confirma quando o descanso acontece e se o lugar é propício. Uma pausa contínua conta como um descanso; anunciar a mesma pausa várias vezes não repete a recuperação.\n\n#### Ambiente propício\n\nUm lugar propício oferece abrigo, suprimentos e meios de atendimento. Exemplos incluem a escola, um posto oficial equipado, um hospital, a casa de um clã que recebe o grupo ou um veículo de apoio com kit.\n\nConfira as condições reais: a escola sob ataque pode não oferecer descanso seguro; outro abrigo pode ter os recursos necessários. Sempre que possível, o mestre apresenta essas opções antes da missão para o grupo planejar o retorno.\n\n#### Descanso curto\n\nRecupere **25% dos PE máximos**, sem ultrapassar o máximo. Vida e Integridade não voltam por esse descanso sozinho. Habilidades que curem ou permitam reparos durante a pausa continuam funcionando conforme suas regras.\n\nArredonde a recuperação para baixo, mínimo 1 quando a fração for positiva. Fora de ambiente propício, use a porcentagem do seu degrau de [Exaustão](#dano--exaustao). Um resultado que diga **"
+ },
+ {
+  "id": 36,
+  "de": "gabi",
+  "mensagem": "kal, vc acha que eu devia jogar de infectado na minha primeira mesa?",
+  "contexto": "[Oripatia] Doença sem cura conhecida, adquirida por contaminação de Origíneo, matéria cristalina que cresce no corpo e gera energia própria. Se o infectado tem energia amaldiçoada, o Origíneo a consome para crescer: gastar energia acelera a doença. Energia Reversa não cura: a pele cresce por cima do cristal, mas o cristal fica. Contágio: contato prolongado com infectado, cristal, pó de cristal, Origíneo bruto ou líquido. Resposta do mundo sobre cura: muitos tentaram, com os melhores equipamentos, e ninguém encontrou resposta."
+ },
+ {
+  "id": 37,
+  "de": "zeca",
+  "mensagem": "a Escola mata infectados?",
+  "contexto": "[Escola Jujutsu] Administra o Equilíbrio: manter a energia amaldiçoada numa faixa aceitável, nem alta nem baixa. Treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Faz triagem de infectados: resgata e abriga quando é possível, e há infectados vivendo sob proteção dela agora. Formação por tutoria: cada aluno pode ter um tutor responsável. Há as escolas de Tóquio e Kyoto; o Ozpin, imortal, é diretor da de Tóquio e herdou o sistema. Não é acusada de crueldade, mas de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Nenhuma das duas grandes é vilã."
+ },
+ {
+  "id": 38,
+  "de": "nyx",
+  "mensagem": "boa madrugada kkkk ninguém dorme nesse server",
+  "contexto": "(nenhuma entrada de lore e nenhum trecho do livro ativado)"
+ },
+ {
+  "id": 39,
+  "de": "mestre_ana",
+  "mensagem": "vou fazer a Rhine ter um conselho secreto acima da diretoria na minha mesa, beleza?",
+  "contexto": "[Acima do Ozpin ou da diretoria da Rhine — ponto em aberto] Não existe conselho, fundador oculto, autoridade internacional nem entidade superior. Resposta do mundo: não há andar acima. Na dúvida, o mestre consulta antes; cruzar a linha é passível de retcon."
+ },
+ {
+  "id": 40,
+  "de": "pedrinho",
+  "mensagem": "eu errei a conta da minha ficha e o mestre brigou comigo",
+  "contexto": "(nenhuma entrada de lore e nenhum trecho do livro ativado)"
+ }
+]

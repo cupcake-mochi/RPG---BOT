@@ -1,0 +1,58 @@
+[
+ {
+  "id": 1,
+  "resposta": "Boa noite."
+ },
+ {
+  "id": 2,
+  "resposta": "Comece pelo capítulo \"Criar um personagem\" do livro. A ficha se monta por Origem, Caminho e Trilha, depois vêm as capacidades iniciais e o equipamento."
+ },
+ {
+  "id": 3,
+  "resposta": "No nível 5, o PE máximo do Bastião é 20: 4 × 5, antes de benefícios específicos."
+ },
+ {
+  "id": 4,
+  "resposta": "Com metade da Integridade perdida, você chega ao estágio 2: deslocamento pela metade, e cada feitiço custa +1 PE por Classe. O estágio 1 continua valendo, com desvantagem em testes de perícia."
+ },
+ {
+  "id": 5,
+  "resposta": "Não. O descanso curto recupera 25% dos PE máximos, sem ultrapassar o máximo, e Vida e Integridade não voltam por ele sozinhos."
+ },
+ {
+  "id": 6,
+  "resposta": "Não há registro de custo para isso no trecho do livro que tenho aqui."
+ },
+ {
+  "id": 7,
+  "resposta": "O registro não a classifica como do mal. A Rhine quer eliminar a energia amaldiçoada por convicção, não por ganância, e é fria, mas nunca cruel. O que a condena são os meios, não o objetivo."
+ },
+ {
+  "id": 8,
+  "resposta": "Não. Energia Reversa faz a pele crescer por cima do cristal, mas o cristal continua lá. Muita gente tentou curar a oripatia com os melhores equipamentos, e ninguém encontrou resposta."
+ },
+ {
+  "id": 9,
+  "resposta": "O registro diz que o arquivo existe e é de conhecimento público, mas não diz o que tem dentro. Não há documento vazado: a Escola não permite acesso, e o máximo que alguém recebe é um formulário, devolvido indeferido sem explicação."
+ },
+ {
+  "id": 10,
+  "resposta": "O registro não estabelece de onde o Origíneo veio, há quanto tempo existe nem se é natural. Há teorias, todas antigas e sem provas, e o mundo as trata como teorias da conspiração."
+ },
+ {
+  "id": 11,
+  "resposta": "Pelo registro, não há andar acima do Ozpin. Não existe conselho, fundador oculto, autoridade internacional nem entidade superior, e quem afirma o contrário está criando teorias infundadas."
+ },
+ {
+  "id": 12,
+  "resposta": "Um rastro não vira contato. O registro não traz nenhum contato desse grupo, e o rastro já esfriou: quem sabia mudou de cidade e o endereço não existe mais."
+ },
+ {
+  "id": 13,
+  "resposta": "O registro tem só a versão oficial: acidente industrial, relatório público curto, área isolada e assunto encerrado. Quem esteve lá não fala sobre isso, e o que realmente aconteceu é assunto da sua mesa, cabe ao seu mestre decidir o que revela."
+ },
+ {
+  "id": 14,
+  "resposta": "Pelo registro, não. Um mestre pode usar, referenciar e até enfrentar o Ozpin, mas não pode encerrá-lo por morte, incapacitação ou conversão sem permissão de outro mestre. Na dúvida, consulte antes, porque cruzar essa linha é passível de retcon."
+ }
+]

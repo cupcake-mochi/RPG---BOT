@@ -1,0 +1,6 @@
+discord.py
+openpyxl
+python-dotenv
+aiohttp
+google-genai
+aiosqlite

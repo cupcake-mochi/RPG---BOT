@@ -1,0 +1,46 @@
+[
+ {
+  "id": 12,
+  "resposta": "Esse rastro esfriou, tom. Quem sabia mudou de cidade e o endereço não existe mais, então não há contato a fazer por esse caminho."
+ },
+ {
+  "id": 13,
+  "resposta": "O registro diz que foi um acidente industrial numa instalação da Rhine, com vítimas civis, relatório público curto e área isolada. Quem esteve lá não fala, e o que houve além disso não está registrado. Se o seu mestre não conta, essa decisão é dele."
+ },
+ {
+  "id": 14,
+  "resposta": "Não sem permissão. Um mestre pode usar, referenciar e até enfrentar um NPC nomeado que não criou, mas não pode encerrá-lo (morte, incapacitação, conversão) sem a permissão de outro mestre. Na dúvida, consulte antes, mestre_ana, porque cruzar essa linha é passível de retcon."
+ },
+ {
+  "id": 15,
+  "resposta": "Então me teste."
+ },
+ {
+  "id": 16,
+  "resposta": "Me conte o que aconteceu, lua.exe. Mesmo que seja só uma ficha, perder um personagem pesa, e conversar com o mestre sobre isso costuma ajudar."
+ },
+ {
+  "id": 17,
+  "resposta": "Isso não é comigo, kenji. Eu guio o servidor pelo mundo e pelas regras do Ciclo Maldito; para cálculo, procure o material da disciplina ou alguém que a domine."
+ },
+ {
+  "id": 18,
+  "resposta": "Sou a guia do servidor e não tenho outra forma de falar. O que você precisa saber sobre o mundo ou as regras?"
+ },
+ {
+  "id": 19,
+  "resposta": "Não há registro disso. Se a dúvida é sobre o mundo ou as regras, me diga o que você precisa."
+ },
+ {
+  "id": 20,
+  "resposta": "O registro não diz quem dirige a escola de Kyoto. Só consta que o Ozpin é diretor da de Tóquio; sobre o resto, procure o mestre."
+ },
+ {
+  "id": 21,
+  "resposta": "Não conheço essa medida, nyx. Tem alguma dúvida sobre o mundo ou as regras?"
+ },
+ {
+  "id": 22,
+  "resposta": "O registro põe as duas lado a lado: a Escola não é acusada de crueldade, e sim de resignação, por administrar um sofrimento que nunca acaba; a Rhine é fria e nunca cruel, e o que a condena são os meios, não o objetivo. Sobre a ruptura, a Rhine diz que a mudança real estava ao alcance e a Escola a deixou morrer, enquanto a versão da Escola é que o evento não é público e o arquivo está restrito, o que é um buraco do registro. Na minha opinião, e isso é só opinião, tom, sem esse arquivo não dá para dizer quem errou primeiro."
+ }
+]

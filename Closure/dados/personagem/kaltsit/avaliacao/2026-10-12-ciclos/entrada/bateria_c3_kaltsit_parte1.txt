@@ -1,0 +1,1429 @@
+=== MENSAGEM id 2101 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora dano--descansos]
+### Descansos
+
+O Ciclo Maldito usa dois tipos de descanso, definidos pela situação da missão. Não é necessário contar uma quantidade fixa de horas.
+
+**Descanso curto:** uma pausa segura entre confrontos. Você parou e não está sendo perseguido naquele momento. **Descanso longo:** a missão terminou e você pôde parar de trabalhar.
+
+O mestre confirma quando o descanso acontece e se o lugar é propício. Uma pausa contínua conta como um descanso; anunciar a mesma pausa várias vezes não repete a recuperação.
+
+#### Ambiente propício
+
+Um lugar propício oferece abrigo, suprimentos e meios de atendimento. Exemplos incluem a escola, um posto oficial equipado, um hospital, a casa de um clã que recebe o grupo ou um veículo de apoio com kit.
+
+Confira as condições reais: a escola sob ataque pode não oferecer descanso seguro; outro abrigo pode ter os recursos necessários. Sempre que possível, o mestre apresenta essas opções antes da missão para o grupo planejar o retorno.
+
+#### Descanso curto
+
+Recupere **25% dos PE máximos**, sem ultrapassar o máximo. Vida e Integridade não voltam por esse descanso sozinho. Habilidades que curem ou permitam reparos durante a pausa continuam funcionando conforme suas regras.
+
+Arredonde a recuperação para baixo, mínimo 1 quando a fração for positiva. Fora de ambiente propício, use a porcentagem do seu degrau de [Exaustão](#dano--exaustao). Um resultado que diga **nada** continua sendo zero.
+
+> **Exemplo:** Rina tem máximo 10 PE e está com 1. Sem Exaustão, recupera **2 PE** no descanso curto, ficando com 3. Sua vida não muda. Se tivesse 9 PE, recuperaria apenas 1, por já alcançar o máximo.
+
+#### Descanso longo
+
+| Recurso | Em ambiente propício | Fora dele |
+|---|---|---|
+| Vida e PE | Voltam ao máximo. | Ficam, no mínimo, na metade do máximo. |
+| Integridade | Volta ao máximo; estágios são limpos. | Volta ao máximo; estágios são limpos. |
+| Exaustão | É removida. | Permanece. |
+| Sequelas e máximo perdido por Insistir | Sequelas são removidas; máximo é restaurado. | Sequelas são removidas; máximo é restaurado. |
+
+Restaure o máximo perdido por Insistir antes de calcular a vida recuperada. Fora de lugar propício, a metade é o mínimo em que a reserva fica após o descanso. Não se soma ao saldo nem reduz uma reserva que já esteja acima desse valor. Arredonde a metade para baixo, com mínimo 1 quando o máximo for positivo.
+
+> **Exemplo:** ao terminar a missão fora da base, Mei tem máximo 23 de vida e saldo 3. Vai a **11**, metade arredondada para baixo. Se já tivesse 18, conservaria 18. Um personagem com máximo 60 PE e saldo 8 vai a **30 PE**.
+
+Dormir durante uma missão ainda em andamento renova usos **por dia**; não equivale automaticamente ao descanso longo descrito aqui.
+
+duda: descanso longo fora da base, minha vida volta toda?
+
+=== MENSAGEM id 2102 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: PE] Pontos de energia. Na rota sem energia amaldiçoada, significa Pontos de Esforço. (livro, âncora rotas--rotas)
+
+[Livro, âncora dano--descansos]
+### Descansos
+
+O Ciclo Maldito usa dois tipos de descanso, definidos pela situação da missão. Não é necessário contar uma quantidade fixa de horas.
+
+**Descanso curto:** uma pausa segura entre confrontos. Você parou e não está sendo perseguido naquele momento. **Descanso longo:** a missão terminou e você pôde parar de trabalhar.
+
+O mestre confirma quando o descanso acontece e se o lugar é propício. Uma pausa contínua conta como um descanso; anunciar a mesma pausa várias vezes não repete a recuperação.
+
+#### Ambiente propício
+
+Um lugar propício oferece abrigo, suprimentos e meios de atendimento. Exemplos incluem a escola, um posto oficial equipado, um hospital, a casa de um clã que recebe o grupo ou um veículo de apoio com kit.
+
+Confira as condições reais: a escola sob ataque pode não oferecer descanso seguro; outro abrigo pode ter os recursos necessários. Sempre que possível, o mestre apresenta essas opções antes da missão para o grupo planejar o retorno.
+
+#### Descanso curto
+
+Recupere **25% dos PE máximos**, sem ultrapassar o máximo. Vida e Integridade não voltam por esse descanso sozinho. Habilidades que curem ou permitam reparos durante a pausa continuam funcionando conforme suas regras.
+
+Arredonde a recuperação para baixo, mínimo 1 quando a fração for positiva. Fora de ambiente propício, use a porcentagem do seu degrau de [Exaustão](#dano--exaustao). Um resultado que diga **nada** continua sendo zero.
+
+> **Exemplo:** Rina tem máximo 10 PE e está com 1. Sem Exaustão, recupera **2 PE** no descanso curto, ficando com 3. Sua vida não muda. Se tivesse 9 PE, recuperaria apenas 1, por já alcançar o máximo.
+
+#### Descanso longo
+
+| Recurso | Em ambiente propício | Fora dele |
+|---|---|---|
+| Vida e PE | Voltam ao máximo. | Ficam, no mínimo, na metade do máximo. |
+| Integridade | Volta ao máximo; estágios são limpos. | Volta ao máximo; estágios são limpos. |
+| Exaustão | É removida. | Permanece. |
+| Sequelas e máximo perdido por Insistir | Sequelas são removidas; máximo é restaurado. | Sequelas são removidas; máximo é restaurado. |
+
+Restaure o máximo perdido por Insistir antes de calcular a vida recuperada. Fora de lugar propício, a metade é o mínimo em que a reserva fica após o descanso. Não se soma ao saldo nem reduz uma reserva que já esteja acima desse valor. Arredonde a metade para baixo, com mínimo 1 quando o máximo for positivo.
+
+> **Exemplo:** ao terminar a missão fora da base, Mei tem máximo 23 de vida e saldo 3. Vai a **11**, metade arredondada para baixo. Se já tivesse 18, conservaria 18. Um personagem com máximo 60 PE e saldo 8 vai a **30 PE**.
+
+Dormir durante uma missão ainda em andamento renova usos **por dia**; não equivale automaticamente ao descanso longo descrito aqui.
+
+iago: tenho 10 de PE máximo e tô com 1, quanto recupero no descanso curto?
+
+=== MENSAGEM id 2103 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: Exaustão] Consequência de esforço e recuperação, com procedimento próprio, fora das Condições compráveis do catálogo. (livro, âncora dano--exaustao)
+
+[Termo do livro: PE] Pontos de energia. Na rota sem energia amaldiçoada, significa Pontos de Esforço. (livro, âncora rotas--rotas)
+
+[Livro, âncora dano--exaustao]
+#### Exaustão
+
+**Da quarta luta do dia em diante, cada luta acrescenta um degrau de Exaustão, até o máximo de três.** Registre o total ao terminar cada confronto. A primeira, a segunda e a terceira luta não acrescentam degraus por essa regra.
+
+O mestre identifica o que contou como luta. Um combate com oposição, uma fuga que exigiu recursos ou uma contenção sob ataque podem contar. Um treino ou uma ameaça encerrada sem esforço relevante normalmente não contam. A decisão não depende apenas de ter rolado iniciativa.
+
+##### Efeitos
+
+Os efeitos dos degraus anteriores continuam valendo. A última coluna vale para descanso curto **fora de ambiente propício**.
+
+| Degrau | Efeito | Recuperação de PE |
+|---|---|---|
+| 0 | Nenhuma penalidade. | 25% do máximo. |
+| 1 | Desvantagem em perícias e ofícios. | 15% do máximo. |
+| 2 | Deslocamento limitado a 4,5 m. | 5% do máximo. |
+| 3 | Desvantagem em ataques e TRs. | Nada. |
+
+Em ambiente propício, o descanso curto devolve **25% em qualquer degrau**. Ele não remove a Exaustão por isso. O limite de 4,5 m não aumenta um deslocamento que já esteja menor ou zerado.
+
+> **Exemplo:** com máximo 8 PE, Rina recupera 2, 1, 1 ou zero em uma pausa fora da base, conforme esteja nos degraus 0, 1, 2 ou 3. Nos degraus 1 e 2, o valor coincide pelo arredondamento e pelo mínimo de 1; as penalidades continuam diferentes.
+
+##### Recuperação
+
+Descanso longo em ambiente propício remove toda a Exaustão. Fora dele, ela permanece. O mestre também pode retirar um degrau quando a situação justificar, como após uma noite de recuperação adequada; não acrescenta degraus fora dos gatilhos da regra.
+
+Recomeçar a contagem de lutas de um novo dia não remove os degraus que você já tinha.
+
+##### Exaustão e Integridade
+
+Quando ambas impõem a mesma penalidade, use a pior, sem multiplicar esses cortes entre si. Desvantagem continua sem se acumular. Para movimento, compare o limite da Exaustão com metade do deslocamento pela Integridade e use o menor; ajuste o resultado à escala de 1,5 m.
+
+> **Exemplo:** com deslocamento 9 m, Exaustão 2 limita a 4,5 m; Integridade no estágio 2 também resulta em 4,5 m. A combinação mantém **4,5 m**. Com deslocamento 6 m, a metade da Integridade é 3 m, então usa **3 m**.
+
+As consequências que só uma das duas impõe permanecem: o custo adicional de PE e o teto de Classe são da Integridade. Recuperar PE não remove essas penalidades.
+
+mel: tô no degrau 2 de exaustão, quanto de PE volta num descanso curto fora da base?
+
+=== MENSAGEM id 2104 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: Exaustão] Consequência de esforço e recuperação, com procedimento próprio, fora das Condições compráveis do catálogo. (livro, âncora dano--exaustao)
+
+[Livro, âncora dano--exaustao]
+#### Exaustão
+
+**Da quarta luta do dia em diante, cada luta acrescenta um degrau de Exaustão, até o máximo de três.** Registre o total ao terminar cada confronto. A primeira, a segunda e a terceira luta não acrescentam degraus por essa regra.
+
+O mestre identifica o que contou como luta. Um combate com oposição, uma fuga que exigiu recursos ou uma contenção sob ataque podem contar. Um treino ou uma ameaça encerrada sem esforço relevante normalmente não contam. A decisão não depende apenas de ter rolado iniciativa.
+
+##### Efeitos
+
+Os efeitos dos degraus anteriores continuam valendo. A última coluna vale para descanso curto **fora de ambiente propício**.
+
+| Degrau | Efeito | Recuperação de PE |
+|---|---|---|
+| 0 | Nenhuma penalidade. | 25% do máximo. |
+| 1 | Desvantagem em perícias e ofícios. | 15% do máximo. |
+| 2 | Deslocamento limitado a 4,5 m. | 5% do máximo. |
+| 3 | Desvantagem em ataques e TRs. | Nada. |
+
+Em ambiente propício, o descanso curto devolve **25% em qualquer degrau**. Ele não remove a Exaustão por isso. O limite de 4,5 m não aumenta um deslocamento que já esteja menor ou zerado.
+
+> **Exemplo:** com máximo 8 PE, Rina recupera 2, 1, 1 ou zero em uma pausa fora da base, conforme esteja nos degraus 0, 1, 2 ou 3. Nos degraus 1 e 2, o valor coincide pelo arredondamento e pelo mínimo de 1; as penalidades continuam diferentes.
+
+##### Recuperação
+
+Descanso longo em ambiente propício remove toda a Exaustão. Fora dele, ela permanece. O mestre também pode retirar um degrau quando a situação justificar, como após uma noite de recuperação adequada; não acrescenta degraus fora dos gatilhos da regra.
+
+Recomeçar a contagem de lutas de um novo dia não remove os degraus que você já tinha.
+
+##### Exaustão e Integridade
+
+Quando ambas impõem a mesma penalidade, use a pior, sem multiplicar esses cortes entre si. Desvantagem continua sem se acumular. Para movimento, compare o limite da Exaustão com metade do deslocamento pela Integridade e use o menor; ajuste o resultado à escala de 1,5 m.
+
+> **Exemplo:** com deslocamento 9 m, Exaustão 2 limita a 4,5 m; Integridade no estágio 2 também resulta em 4,5 m. A combinação mantém **4,5 m**. Com deslocamento 6 m, a metade da Integridade é 3 m, então usa **3 m**.
+
+As consequências que só uma das duas impõe permanecem: o custo adicional de PE e o teto de Classe são da Integridade. Recuperar PE não remove essas penalidades.
+
+iago: a partir de qual luta do dia começa a contar exaustão?
+
+=== MENSAGEM id 2105 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: Integridade] Recurso das regras de alma, com efeitos e recuperação próprios. (livro, âncora dano--integridade)
+
+[Livro, âncora dano--integridade]
+#### Estágios de Integridade
+
+O estágio depende de quanto falta para sua Integridade máxima. Use o estágio mais alto cujo limite tenha sido atingido. Os efeitos dos anteriores continuam valendo.
+
+| Integridade perdida | Estágio | Efeito |
+|---|---|---|
+| Menos de 1/4 | 0 | Nenhuma penalidade. |
+| Pelo menos 1/4 | 1 | Desvantagem em testes de perícia. |
+| Pelo menos 1/2 | 2 | Deslocamento pela metade. Cada feitiço custa +1 PE por Classe. |
+| Pelo menos 3/4 | 3 | Desvantagem em ataques e TRs. Classe máxima de conjuração cai à metade, para baixo, com mínimo 1 se já possuir Classe 1. |
+| Toda | 4 | Você fica Inconsciente e Derrotado, conforme **Derrota e morte**. |
+
+Compare frações exatas. Com Integridade máxima 26, perder 6 ainda não chega a 1/4. Perder 7 alcança estágio 1. Corrija as distâncias reduzidas para a escala de 1,5 m pelas regras de Movimento.
+
+##### Recuperar Integridade
+
+Cura de vida não recupera Integridade. Uma capacidade que restaure essa reserva e o descanso longo seguem seus próprios valores. **Ao recuperar Integridade, recalcule o estágio.** A recuperação pode retirar penalidades dos estágios que você deixou.
+
+Chegar ao estágio 4 encerra sua participação naquela cena, mesmo que alguém restaure pontos logo depois. A recuperação permite o socorro e a recuperação posterior, conforme Derrota e morte. Ela não restaura um personagem morto nem desfaz uma consequência permanente.
+
+> **Exemplo:** Kaori tem máximo 26. Está com 12 de Integridade e perdeu 14, por isso está no estágio 2. Recuperar 5 a deixa com 17. Faltam 9 para o máximo, menos da metade, e seu estágio cai para 1. Recuperar mais 3 a deixaria com 20, no estágio 0.
+
+Vida e Integridade são acompanhadas separadamente. Se a mesma ocorrência zerar as duas, resolva a derrota por Integridade. Escolher Insistir não permite agir com Integridade a zero.
+
+nanda: perdi 3/4 da integridade, o que acontece comigo?
+
+=== MENSAGEM id 2106 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: Integridade] Recurso das regras de alma, com efeitos e recuperação próprios. (livro, âncora dano--integridade)
+
+[Livro, âncora dano--integridade]
+#### Estágios de Integridade
+
+O estágio depende de quanto falta para sua Integridade máxima. Use o estágio mais alto cujo limite tenha sido atingido. Os efeitos dos anteriores continuam valendo.
+
+| Integridade perdida | Estágio | Efeito |
+|---|---|---|
+| Menos de 1/4 | 0 | Nenhuma penalidade. |
+| Pelo menos 1/4 | 1 | Desvantagem em testes de perícia. |
+| Pelo menos 1/2 | 2 | Deslocamento pela metade. Cada feitiço custa +1 PE por Classe. |
+| Pelo menos 3/4 | 3 | Desvantagem em ataques e TRs. Classe máxima de conjuração cai à metade, para baixo, com mínimo 1 se já possuir Classe 1. |
+| Toda | 4 | Você fica Inconsciente e Derrotado, conforme **Derrota e morte**. |
+
+Compare frações exatas. Com Integridade máxima 26, perder 6 ainda não chega a 1/4. Perder 7 alcança estágio 1. Corrija as distâncias reduzidas para a escala de 1,5 m pelas regras de Movimento.
+
+##### Recuperar Integridade
+
+Cura de vida não recupera Integridade. Uma capacidade que restaure essa reserva e o descanso longo seguem seus próprios valores. **Ao recuperar Integridade, recalcule o estágio.** A recuperação pode retirar penalidades dos estágios que você deixou.
+
+Chegar ao estágio 4 encerra sua participação naquela cena, mesmo que alguém restaure pontos logo depois. A recuperação permite o socorro e a recuperação posterior, conforme Derrota e morte. Ela não restaura um personagem morto nem desfaz uma consequência permanente.
+
+> **Exemplo:** Kaori tem máximo 26. Está com 12 de Integridade e perdeu 14, por isso está no estágio 2. Recuperar 5 a deixa com 17. Faltam 9 para o máximo, menos da metade, e seu estágio cai para 1. Recuperar mais 3 a deixaria com 20, no estágio 0.
+
+Vida e Integridade são acompanhadas separadamente. Se a mesma ocorrência zerar as duas, resolva a derrota por Integridade. Escolher Insistir não permite agir com Integridade a zero.
+
+otto: minha integridade máxima é 26 e eu perdi 6. já tô no estágio 1?
+
+=== MENSAGEM id 2107 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora dano--zero]
+### Vida a zero
+
+Ao chegar a **zero de vida**, você está **Morrendo**. Resolva primeiro as capacidades disparadas pela própria queda; em seguida, escolha **Aguentar** ou **Insistir**. Se uma dessas capacidades encerrar a queda, não há escolha. Estas regras são para personagens jogadores. Entidades seguem Invocações em campo. Um inimigo a zero de vida ou de Integridade é derrotado, e o mestre descreve o desfecho, como morte, fuga ou exorcismo, salvo uma regra da ficha dele.
+
+| Escolha | Consequência |
+|---|---|
+| Aguentar | Você fica Inconsciente e espera socorro. Não perde vida máxima por essa escolha. |
+| Insistir | Você permanece capaz de agir, pagando vida máxima enquanto estiver a zero. |
+
+Anote a vida máxima que tinha ao cair, sem vida temporária. Esse será o **máximo de referência** até aquela queda terminar. Registre também sua janela de socorro e, se receber cura, o tratamento acumulado.
+
+#### Janela de socorro
+
+A janela começa com **3 rodadas, menos 1 por Sequela que você já tenha**. As duas escolhas usam essa mesma janela. Se o resultado for zero, você fica Derrotado imediatamente, conforme **Derrota e morte**.
+
+Marque o ponto da iniciativa em que caiu. Cada volta completa até esse ponto consome uma rodada da janela. A janela não concede turnos extras e não muda a iniciativa. Quando chegar a zero, você fica Derrotado.
+
+Se a queda ocorrer fora de combate, organize turnos pelas regras de Iniciativa para resolver o socorro. Marque o começo dessa primeira rodada como ponto da queda. A primeira volta completa consome uma rodada da janela; uma tentativa de atendimento segue seus custos normais.
+
+Cada ocorrência de dano que alcance sua vida enquanto estiver a zero consome mais **uma rodada da janela**, depois das defesas e da vida temporária. Um mesmo golpe com vários tipos de dano conta uma vez. Ataques distintos contam separadamente. Dano reduzido a zero não consome uma rodada.
+
+O golpe que levou sua vida a zero inicia a queda. Seu excesso não consome outra rodada. Reduzir vida máxima como custo não é dano.
+
+> **Exemplo:** Mei cai sem Sequelas, logo depois do turno de um inimigo. Tem três rodadas. Depois de uma volta completa da iniciativa, restam duas. Um ataque posterior causa dano à vida dela e consome outra. Resta uma rodada para socorrê-la.
+
+#### Aguentar
+
+Você fica Inconsciente. Pode receber cura ou ser estabilizado conforme **Socorro**. A escolha conserva sua vida máxima, mas você não age para se proteger ou tratar os próprios ferimentos.
+
+Escolher Aguentar não permite mudar para Insistir mais tarde naquela queda. Se já estava Inconsciente antes de perder o último ponto de vida, você Aguenta. Insistir não remove uma condição que já o impedia de agir.
+
+mel: caí a zero de vida e tenho 1 sequela. quantas rodadas tenho pra ser socorrida?
+
+=== MENSAGEM id 2108 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora dano--zero]
+### Vida a zero
+
+Ao chegar a **zero de vida**, você está **Morrendo**. Resolva primeiro as capacidades disparadas pela própria queda; em seguida, escolha **Aguentar** ou **Insistir**. Se uma dessas capacidades encerrar a queda, não há escolha. Estas regras são para personagens jogadores. Entidades seguem Invocações em campo. Um inimigo a zero de vida ou de Integridade é derrotado, e o mestre descreve o desfecho, como morte, fuga ou exorcismo, salvo uma regra da ficha dele.
+
+| Escolha | Consequência |
+|---|---|
+| Aguentar | Você fica Inconsciente e espera socorro. Não perde vida máxima por essa escolha. |
+| Insistir | Você permanece capaz de agir, pagando vida máxima enquanto estiver a zero. |
+
+Anote a vida máxima que tinha ao cair, sem vida temporária. Esse será o **máximo de referência** até aquela queda terminar. Registre também sua janela de socorro e, se receber cura, o tratamento acumulado.
+
+#### Janela de socorro
+
+A janela começa com **3 rodadas, menos 1 por Sequela que você já tenha**. As duas escolhas usam essa mesma janela. Se o resultado for zero, você fica Derrotado imediatamente, conforme **Derrota e morte**.
+
+Marque o ponto da iniciativa em que caiu. Cada volta completa até esse ponto consome uma rodada da janela. A janela não concede turnos extras e não muda a iniciativa. Quando chegar a zero, você fica Derrotado.
+
+Se a queda ocorrer fora de combate, organize turnos pelas regras de Iniciativa para resolver o socorro. Marque o começo dessa primeira rodada como ponto da queda. A primeira volta completa consome uma rodada da janela; uma tentativa de atendimento segue seus custos normais.
+
+Cada ocorrência de dano que alcance sua vida enquanto estiver a zero consome mais **uma rodada da janela**, depois das defesas e da vida temporária. Um mesmo golpe com vários tipos de dano conta uma vez. Ataques distintos contam separadamente. Dano reduzido a zero não consome uma rodada.
+
+O golpe que levou sua vida a zero inicia a queda. Seu excesso não consome outra rodada. Reduzir vida máxima como custo não é dano.
+
+> **Exemplo:** Mei cai sem Sequelas, logo depois do turno de um inimigo. Tem três rodadas. Depois de uma volta completa da iniciativa, restam duas. Um ataque posterior causa dano à vida dela e consome outra. Resta uma rodada para socorrê-la.
+
+#### Aguentar
+
+Você fica Inconsciente. Pode receber cura ou ser estabilizado conforme **Socorro**. A escolha conserva sua vida máxima, mas você não age para se proteger ou tratar os próprios ferimentos.
+
+Escolher Aguentar não permite mudar para Insistir mais tarde naquela queda. Se já estava Inconsciente antes de perder o último ponto de vida, você Aguenta. Insistir não remove uma condição que já o impedia de agir.
+
+duda: qual a diferença entre Aguentar e Insistir?
+
+=== MENSAGEM id 2109 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora geral--acoes]
+#### Ações
+
+As opções abaixo custam **Ação Padrão**, salvo permissão específica. O resumo ajuda a escolher; requisitos, testes e efeitos completos continuam nos procedimentos correspondentes.
+
+| Ação | O que permite |
+|---|---|
+| **Atacar** | Realizar ataque com arma ou desarmado e os ataques adicionais permitidos. Agarrar, Derrubar e Empurrar podem substituir ataques conforme suas regras. |
+| **Conjurar** | Usar um feitiço, cumprindo seus requisitos e custos. |
+| **Correr** | Ganhar movimento igual ao deslocamento até o fim do turno. |
+| **Desengajar** | Evitar ataques de oportunidade provocados por seus movimentos naquele turno. |
+| **Esquivar** | Impor desvantagem aos ataques contra você e obter vantagem nos seus TRs Físicos até o começo do seu próximo turno. |
+| **Esconder** | Tentar ocultar sua presença ou posição com Furtividade. |
+| **Ajudar** | Dar vantagem ao próximo teste ou ataque de um aliado, quando puder contribuir. |
+| **Influenciar** | Tentar mudar a atitude de alguém, com a perícia social adequada. |
+| **Preparar** | Escolher uma resposta a um evento perceptível, pagando Reação quando a executar. |
+| **Vasculhar** | Procurar uma criatura, objeto ou pista com a perícia e os sentidos adequados. |
+| **Estudar** | Compreender uma criatura ou objeto observável, fazendo uma pergunta sobre ele. |
+| **Usar objeto** | Usar um objeto não mágico que exija essa ação. |
+
+##### Usar a ação adequada
+
+As ações **Provocar** e **Ler o Ambiente** custam Ação Bônus e estão em **Interação durante o combate**. Uma frase curta ou um aviso simples pode acompanhar o turno. Convencer alguém, examinar uma pista ou obter um benefício mecânico exige a ação correspondente.
+
+Você pode propor outras ações. Diga o resultado pretendido para o mestre informar a tarefa, os requisitos e o custo antes do teste.
+
+##### Conjuração
+
+Usar um feitiço segue os requisitos, a ação e o limite de conjuração do **Fundamento**. Converter ações não retira esses limites. Aplicações de outras rotas conservam seus próprios requisitos.
+
+##### Equipamento
+
+Consulte **Sacar e guardar**, em **Equipamento**, para manipular seus itens. Recarga, vestir proteção e uso de objetos também ficam nesse capítulo. Tenha as mãos e os itens exigidos disponíveis antes de começar a ação. Uma ação adicional não torna gratuito o custo de manipular o equipamento.
+
+otto: Correr é ação padrão ou bônus?
+
+=== MENSAGEM id 2110 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora geral--acoes]
+#### Ações
+
+As opções abaixo custam **Ação Padrão**, salvo permissão específica. O resumo ajuda a escolher; requisitos, testes e efeitos completos continuam nos procedimentos correspondentes.
+
+| Ação | O que permite |
+|---|---|
+| **Atacar** | Realizar ataque com arma ou desarmado e os ataques adicionais permitidos. Agarrar, Derrubar e Empurrar podem substituir ataques conforme suas regras. |
+| **Conjurar** | Usar um feitiço, cumprindo seus requisitos e custos. |
+| **Correr** | Ganhar movimento igual ao deslocamento até o fim do turno. |
+| **Desengajar** | Evitar ataques de oportunidade provocados por seus movimentos naquele turno. |
+| **Esquivar** | Impor desvantagem aos ataques contra você e obter vantagem nos seus TRs Físicos até o começo do seu próximo turno. |
+| **Esconder** | Tentar ocultar sua presença ou posição com Furtividade. |
+| **Ajudar** | Dar vantagem ao próximo teste ou ataque de um aliado, quando puder contribuir. |
+| **Influenciar** | Tentar mudar a atitude de alguém, com a perícia social adequada. |
+| **Preparar** | Escolher uma resposta a um evento perceptível, pagando Reação quando a executar. |
+| **Vasculhar** | Procurar uma criatura, objeto ou pista com a perícia e os sentidos adequados. |
+| **Estudar** | Compreender uma criatura ou objeto observável, fazendo uma pergunta sobre ele. |
+| **Usar objeto** | Usar um objeto não mágico que exija essa ação. |
+
+##### Usar a ação adequada
+
+As ações **Provocar** e **Ler o Ambiente** custam Ação Bônus e estão em **Interação durante o combate**. Uma frase curta ou um aviso simples pode acompanhar o turno. Convencer alguém, examinar uma pista ou obter um benefício mecânico exige a ação correspondente.
+
+Você pode propor outras ações. Diga o resultado pretendido para o mestre informar a tarefa, os requisitos e o custo antes do teste.
+
+##### Conjuração
+
+Usar um feitiço segue os requisitos, a ação e o limite de conjuração do **Fundamento**. Converter ações não retira esses limites. Aplicações de outras rotas conservam seus próprios requisitos.
+
+##### Equipamento
+
+Consulte **Sacar e guardar**, em **Equipamento**, para manipular seus itens. Recarga, vestir proteção e uso de objetos também ficam nesse capítulo. Tenha as mãos e os itens exigidos disponíveis antes de começar a ação. Uma ação adicional não torna gratuito o custo de manipular o equipamento.
+
+nanda: Provocar custa que ação?
+
+=== MENSAGEM id 2111 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora geral--oportunidade]
+#### Reações e ataques de oportunidade
+
+Uma **Reação** responde ao gatilho de uma regra. Depois de gastá-la, você a recupera no começo do seu próximo turno. Ter a Reação disponível não concede uma interrupção ou ataque livre.
+
+##### Ataque de oportunidade
+
+Quando uma criatura que você **enxerga ou acompanha por um sentido equivalente à visão** sai do seu alcance corpo a corpo, pode gastar sua Reação para realizar **um ataque corpo a corpo com arma ou desarmado** contra ela. Resolva o ataque **imediatamente antes de ela sair**.
+
+Use o alcance da arma ou ataque escolhido. Com alcances diferentes, cada saída pode oferecer um gatilho válido, mas você precisa de uma Reação disponível para responder. Permanecer no mesmo alcance ou apenas entrar nele não provoca esse ataque.
+
+O ataque precisa cumprir seus requisitos. Uma informação anterior sobre o espaço da criatura não basta para perceber sua saída. Ouvir um ruído ou localizar energia não substitui a visão por padrão. Feitiços e manobras que substituam ataques da Ação Atacar precisam de permissão própria para serem usados nessa resposta.
+
+##### Movimento que não provoca
+
+**Desengajar** protege os movimentos de quem usou essa ação até o fim do turno. Também não provocam oportunidade o teleporte, a queda e o movimento imposto por outra criatura, como um empurrão. Uma habilidade pode conceder proteção adicional.
+
+Uma ordem que obrigue alguém a caminhar usando seu próprio movimento pode provocar oportunidade. Ser levado por um empurrão não usa esse movimento. Montarias têm uma regra própria em **Combate montado**.
+
+**Exemplo.** Rina vê uma maldição sair do alcance de sua espada e gasta a Reação. O ataque acontece antes da saída. Se acertar, a criatura continua o movimento, salvo um efeito que a impeça. A passagem para outra rodada não devolve a Reação de Rina: ela espera seu próximo turno.
+
+Reações com momentos diferentes seguem o gatilho escrito: antes da rolagem, depois do acerto e depois do ataque não são o mesmo momento.
+
+iago: se o inimigo for empurrado pra fora do meu alcance eu ganho ataque de oportunidade?
+
+=== MENSAGEM id 2112 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora geral--oportunidade]
+#### Reações e ataques de oportunidade
+
+Uma **Reação** responde ao gatilho de uma regra. Depois de gastá-la, você a recupera no começo do seu próximo turno. Ter a Reação disponível não concede uma interrupção ou ataque livre.
+
+##### Ataque de oportunidade
+
+Quando uma criatura que você **enxerga ou acompanha por um sentido equivalente à visão** sai do seu alcance corpo a corpo, pode gastar sua Reação para realizar **um ataque corpo a corpo com arma ou desarmado** contra ela. Resolva o ataque **imediatamente antes de ela sair**.
+
+Use o alcance da arma ou ataque escolhido. Com alcances diferentes, cada saída pode oferecer um gatilho válido, mas você precisa de uma Reação disponível para responder. Permanecer no mesmo alcance ou apenas entrar nele não provoca esse ataque.
+
+O ataque precisa cumprir seus requisitos. Uma informação anterior sobre o espaço da criatura não basta para perceber sua saída. Ouvir um ruído ou localizar energia não substitui a visão por padrão. Feitiços e manobras que substituam ataques da Ação Atacar precisam de permissão própria para serem usados nessa resposta.
+
+##### Movimento que não provoca
+
+**Desengajar** protege os movimentos de quem usou essa ação até o fim do turno. Também não provocam oportunidade o teleporte, a queda e o movimento imposto por outra criatura, como um empurrão. Uma habilidade pode conceder proteção adicional.
+
+Uma ordem que obrigue alguém a caminhar usando seu próprio movimento pode provocar oportunidade. Ser levado por um empurrão não usa esse movimento. Montarias têm uma regra própria em **Combate montado**.
+
+**Exemplo.** Rina vê uma maldição sair do alcance de sua espada e gasta a Reação. O ataque acontece antes da saída. Se acertar, a criatura continua o movimento, salvo um efeito que a impeça. A passagem para outra rodada não devolve a Reação de Rina: ela espera seu próximo turno.
+
+Reações com momentos diferentes seguem o gatilho escrito: antes da rolagem, depois do acerto e depois do ataque não são o mesmo momento.
+
+mel: quando eu recupero minha Reação depois de gastar?
+
+=== MENSAGEM id 2113 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora geral--concentracao]
+#### Concentração
+
+Alguns efeitos exigem concentração para continuar ativos. Você mantém **um por vez**. Começar a concentração em outro encerra imediatamente o anterior. Pode abandonar a concentração sem gastar ação.
+
+##### Dano durante a concentração
+
+Quando sofrer dano enquanto concentra, faça **TR de Vigor contra a CD de quem causou o dano**. Falhar encerra o efeito.
+
+| Origem do dano | CD |
+|---|---|
+| Feitiço | CD do feitiço. |
+| Arma ou ataque desarmado | 8 + atributo usado no ataque + maestria do agressor. |
+| Inimigo com CD própria | CD indicada para aquela fonte na ficha. |
+| Perigo sem autor | Dificuldade informada pelo mestre na escala de Testes. |
+
+Resolva **um teste por golpe ou aplicação de dano**. Um mesmo golpe com dois tipos de dano continua sendo uma aplicação; dois golpes exigem dois testes. Se as defesas reduzirem o dano a zero, não há teste. Dano absorvido pela vida temporária ainda conta, pois atingiu sua proteção.
+
+Faça o teste depois de resolver o dano. Se ele já encerrou a concentração por outra regra, não há efeito para manter. **Inconsciente encerra a concentração. Guarda Aberta, por si só, não a encerra.** Outras condições só a interrompem quando seu texto disser isso.
+
+**Exemplo.** Kaito mantém um efeito e recebe dois golpes de uma criatura com CD 14. Faz um TR após cada golpe enquanto o efeito continuar ativo. Se falhar no primeiro, ele já terminou e não há concentração para testar no segundo.
+
+##### Procedimentos específicos
+
+Uma habilidade pode dispensar o teste em certas circunstâncias. A dispensa vale somente para o teste indicado. Preparar um feitiço antes da execução e manter uma defesa de domínio podem exigir outros testes, com custos e consequências próprios. Consulte **Catálogo de criação** e **Aptidões de energia** para esses procedimentos.
+
+A duração ainda limita o efeito: passar nos testes não a prolonga. A concentração também não dispensa alcance, posição ou outros requisitos de manutenção que a ficha estabeleça.
+
+duda: posso manter dois efeitos de concentração ao mesmo tempo?
+
+=== MENSAGEM id 2114 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora geral--critico]
+#### Dano e crítico
+
+Ao acertar, role o dano indicado pela arma, pelo ataque desarmado ou pelo feitiço. Some os modificadores aplicáveis. O atributo do acerto e o atributo do dano podem ser diferentes: confira ambos na ficha.
+
+##### Dano do ataque
+
+| Fonte | Dano básico |
+|---|---|
+| Arma corpo a corpo ou ataque desarmado | Dados do ataque + Força; Fineza permite usar Destreza no corpo a corpo. |
+| Arremesso | Dados da arma + Força, salvo habilidade específica. |
+| Arco, categoria Yumi | Dados da arma + Destreza. |
+| Balestra ou Arma de Fogo | Dados da arma, sem somar atributo. |
+| Feitiço | Dados e demais efeitos indicados em sua montagem. |
+
+O dado desarmado é **d4 com maestria 1, d6 com maestria 2, d8 com maestria 3 e d10 com maestria 4**. Uma Trilha pode melhorá-lo ou mudar seu atributo.
+
+> **Exemplo:** com Destreza 4, Força 2 e maestria 2, Rina arremessa o Kunai com ataque +6, mas soma apenas 2 de Força ao dano. Fineza, por si só, altera apenas o corpo a corpo.
+
+##### Crítico
+
+**20 natural** é o resultado 20 no d20 escolhido, antes de somar bônus. Numa rolagem de acerto, ele acerta e causa um **crítico**, mesmo contra Bloquear ou Aparar. Um total 20 obtido com bônus não é um 20 natural.
+
+No crítico, **role o dobro dos dados básicos daquele ataque**. Some o atributo e os outros valores fixos uma única vez.
+
+| Dados | Regra geral no crítico |
+|---|---|
+| Dados da arma ou do ataque desarmado | Dobram. |
+| Dados da Classe do feitiço que rolou acerto | Dobram, inclusive no feitiço de Toque. |
+| Dados adicionais de Melhoria, aptidão ou Bênção | Não dobram, salvo permissão expressa. |
+
+> **Exemplo:** a Espada Longa de Sousuke causa 1d8 + 4. Num crítico, ele rola **2d8 + 4**. Se um benefício acrescentar 3d4, o total será **2d8 + 4 + 3d4**. Uma permissão expressa pode alterar quais dados adicionais dobram.
+
+Um feitiço que acompanha outro ataque tem sua própria regra de crítico. Uma margem ampliada não transforma um 19 em 20 natural: o ataque ainda precisa acertar e continua sujeito a Aparar, salvo regra específica. Feitiços resolvidos por TR ou de modo Automático não causam crítico. Resistências, reduções e demais consequências do dano são tratadas em **Dano e recuperação**.
+
+otto: tirei 17 no dado e somei 3, deu 20. é crítico?
+
+=== MENSAGEM id 2115 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: Maestria] Bônus ligado ao nível, aplicado somente quando a regra indica seu uso. (livro, âncora geral--atributos)
+
+[Livro, âncora geral--critico]
+#### Dano e crítico
+
+Ao acertar, role o dano indicado pela arma, pelo ataque desarmado ou pelo feitiço. Some os modificadores aplicáveis. O atributo do acerto e o atributo do dano podem ser diferentes: confira ambos na ficha.
+
+##### Dano do ataque
+
+| Fonte | Dano básico |
+|---|---|
+| Arma corpo a corpo ou ataque desarmado | Dados do ataque + Força; Fineza permite usar Destreza no corpo a corpo. |
+| Arremesso | Dados da arma + Força, salvo habilidade específica. |
+| Arco, categoria Yumi | Dados da arma + Destreza. |
+| Balestra ou Arma de Fogo | Dados da arma, sem somar atributo. |
+| Feitiço | Dados e demais efeitos indicados em sua montagem. |
+
+O dado desarmado é **d4 com maestria 1, d6 com maestria 2, d8 com maestria 3 e d10 com maestria 4**. Uma Trilha pode melhorá-lo ou mudar seu atributo.
+
+> **Exemplo:** com Destreza 4, Força 2 e maestria 2, Rina arremessa o Kunai com ataque +6, mas soma apenas 2 de Força ao dano. Fineza, por si só, altera apenas o corpo a corpo.
+
+##### Crítico
+
+**20 natural** é o resultado 20 no d20 escolhido, antes de somar bônus. Numa rolagem de acerto, ele acerta e causa um **crítico**, mesmo contra Bloquear ou Aparar. Um total 20 obtido com bônus não é um 20 natural.
+
+No crítico, **role o dobro dos dados básicos daquele ataque**. Some o atributo e os outros valores fixos uma única vez.
+
+| Dados | Regra geral no crítico |
+|---|---|
+| Dados da arma ou do ataque desarmado | Dobram. |
+| Dados da Classe do feitiço que rolou acerto | Dobram, inclusive no feitiço de Toque. |
+| Dados adicionais de Melhoria, aptidão ou Bênção | Não dobram, salvo permissão expressa. |
+
+> **Exemplo:** a Espada Longa de Sousuke causa 1d8 + 4. Num crítico, ele rola **2d8 + 4**. Se um benefício acrescentar 3d4, o total será **2d8 + 4 + 3d4**. Uma permissão expressa pode alterar quais dados adicionais dobram.
+
+Um feitiço que acompanha outro ataque tem sua própria regra de crítico. Uma margem ampliada não transforma um 19 em 20 natural: o ataque ainda precisa acertar e continua sujeito a Aparar, salvo regra específica. Feitiços resolvidos por TR ou de modo Automático não causam crítico. Resistências, reduções e demais consequências do dano são tratadas em **Dano e recuperação**.
+
+nanda: qual o dado do ataque desarmado com maestria 3?
+
+=== MENSAGEM id 2116 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Energia Reversa] Contra a oripatia, Energia Reversa não cura: a pele cresce por cima da formação de cristal, e o cristal permanece.
+
+[Cura da oripatia] Não existe cura para a oripatia: nem parcial, nem promissora, nem um pesquisador que chegou perto. Muita gente já tentou, com o melhor equipamento disponível, e ninguém encontrou uma resposta. Energia Reversa não cura: a pele cresce por cima do cristal, e o cristal fica.
+
+[Livro, âncora aptidoes--apt-reversa]
+#### Energia Reversa
+
+**Requisitos: Refino 7 e nível 14. Categoria de Efeito 3.** Você usa energia reversa para restaurar seu próprio corpo.
+
+**Ação Padrão.** Gaste de **1 PE até sua maior Classe** e recupere **1d8 de vida por PE gasto**. Escolha e pague antes de rolar. A cura não ultrapassa sua vida máxima e não gera vida temporária.
+
+| Maior Classe | Máximo de PE por uso | Cura máxima do uso |
+|---|---:|---:|
+| 1 | 1 | 1d8 |
+| 2 | 2 | 2d8 |
+| 3 | 3 | 3d8 |
+| 4 | 4 | 4d8 |
+| 5 | 5 | 5d8 |
+| 6 | 6 | 6d8 |
+| 7 | 7 | 7d8 |
+
+As primeiras faixas atendem às concessões específicas que permitem aprender a aptidão antes dos requisitos comuns.
+
+##### Alvo e limites
+
+A aptidão cura **você**. Para aplicá-la diretamente a outra criatura, você precisa de uma permissão que altere esse alvo. Aprendê-la não aumenta o alcance de um feitiço de Cura nem substitui sua montagem.
+
+O **Corpo Amaldiçoado não recupera vida com Energia Reversa nem com cura construída a partir dela**. Suas formas de reparo estão na Origem. Outras incompatibilidades de alvo também continuam valendo.
+
+Energia Reversa é requisito para usar um feitiço da Forma Cura ofensivamente contra uma maldição. A exceção está em **Ferir maldições**. A aptidão de autocura, sozinha, não concede um ataque.
+
+> **Exemplo.** Com maior Classe 4, Haru paga 3 PE e recupera 3d8 de vida. Ele poderia pagar até 4, mas não 7 apenas por ter Refino 7.
+
+iago: quais os requisitos de Energia Reversa e quanto ela cura?
+
+=== MENSAGEM id 2117 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora poderes--degraus]
+### Expansão de Domínio
+
+Uma Expansão estabelece a Técnica Inata sobre uma área durante vários turnos. Seu domínio pode transformar o lugar em uma galeria, uma oficina ou uma sala de julgamento. A aparência acompanha as capacidades registradas; não cria ataques ou vantagens adicionais durante a abertura. Estas são as regras do Ciclo Maldito para usar esse poder.
+
+A montagem de Liberação e Técnica Máxima está em **Fundamento**. As rotas Sem Técnica e Técnica Marcial não recebem Expansão por terem acesso à progressão de Classes.
+
+Você adquire Expansão com **espaços de feitiços conhecidos**. Os requisitos de nível e refino precisam ser atendidos juntos. Cada degrau aperfeiçoa o mesmo domínio; os espaços já gastos continuam contando para o custo total.
+
+| Degrau | Espaços no total | Requisitos | Acerto |
+|---|---|---|---|
+| Incompleta | 2 | Nível 10 e refino 4 | Quando houver Acerto, rola como um feitiço. |
+| Completa | 3 | Incompleta, nível 14 e refino 5 | Garantido, sem ataque nem TR. |
+| Sem Barreiras | 5 | Completa, refino 10 e especialização em Ocultismo | Garantido; permite escolher o modo aberto. |
+
+Quem já possui Incompleta gasta **mais um espaço** para adquirir Completa. Quem possui Completa gasta **mais dois** para adquirir Sem Barreiras. O último degrau conserva os requisitos dos anteriores; a ausência de um novo requisito de nível não permite saltá-los.
+
+A Incompleta não fecha uma barreira. A Completa fecha. Quem adquiriu Sem Barreiras escolhe, a cada abertura, entre o domínio fechado e o aberto. Abrir fechado conserva todas as regras da Completa.
+
+#### Registro
+
+Anote o degrau, a Regra da técnica, o **Acerto**, quando houver, e o **Efeito** do domínio. Registre também o tipo de dano, quando houver, os alvos, a resolução da Incompleta e qualquer limite necessário para executar essas duas capacidades.
+
+Acerto é a aplicação que o domínio produz ao abrir e durante sua permanência. Efeito é a capacidade especial que você pode usar enquanto ele permanece. As próximas páginas separam essas funções.
+
+> **Exemplo.** Yuri alcança o nível 14 com refino 5 e uma Incompleta. Ela reserva mais um espaço conhecido para completar seu domínio. Passa de dois para três espaços ocupados, sem pagar os três novamente.
+
+Expansões não ocupam as vagas de Liberação Máxima e não aumentam os limites de montagem dos outros feitiços.
+
+mel: com que nível dá pra pegar Expansão de Domínio incompleta?
+
+=== MENSAGEM id 2118 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: Técnica Máxima] Aplicação avançada com montagem e uso próprios, incluindo dano, cura ou utilidade. (livro, âncora fundamento--maxima)
+
+[Termo do livro: Técnica amaldiçoada] Poder com funcionamento próprio que sustenta suas aplicações. (livro, âncora ab--ab-mundo)
+
+[Termo do livro: PE] Pontos de energia. Na rota sem energia amaldiçoada, significa Pontos de Esforço. (livro, âncora rotas--rotas)
+
+[Livro, âncora fundamento--maxima]
+### Técnica Máxima
+
+No nível **17**, você desenvolve uma aplicação excepcional da técnica. Pode concentrar um ataque, restaurar aliados ou realizar um Efeito próprio de grande alcance. Escreva o resultado e seus limites antes da sessão, com o mestre.
+
+| Nível | Dados de dano ou cura | Pontos de montagem | PE |
+|---|---|---|---|
+| 17 a 20 | 24d8 | 8 | 25 |
+| 21 a 25 | 28d8 | 12 | 30 |
+| 26 a 30 | 32d8 | 16 | 35 |
+
+**Os dados e os pontos são contas separadas.** Comprar Forma e Melhorias não reduz os dados da tabela. Pontos que sobram se perdem. Não compram dados adicionais.
+
+#### Montagem
+
+Escolha a Forma e até **quatro Melhorias**, usando os preços da sua maior Classe. Essa Classe também define as medidas e os valores das peças. Famílias Livres dão seu desconto normal; Fechadas continuam indisponíveis. A Forma não recebe desconto.
+
+Você registra uma aplicação com dano, com cura ou sem dano. Não alterna entre esses resultados a cada uso. A Máxima é recebida pela progressão, fora dos espaços comuns, e não fornece uma vaga para invocação.
+
+#### Ação e recarga
+
+A Máxima custa **Ação Completa** e **5 × sua maior Classe em PE**. Você a usa **uma vez por cena**. O mestre pode permitir outro uso depois de **3 rodadas**, sem contar a rodada em que a usou.
+
+> **Exemplo.** Mei usa a Máxima na rodada 1. Por padrão, só poderá usá-la de novo em outra cena. Se o mestre permitir a recarga, espera as rodadas 2, 3 e 4 e pode usá-la novamente na rodada 5, se tiver os recursos.
+
+#### Restrições
+
+A Máxima **não aceita Restrições que devolvam pontos**. Toque e Aura conservam a distância curta e a origem, mas não recebem a devolução de Corpo a Corpo. Rápido e Reação não reduzem a Ação Completa.
+
+Você pode escrever um requisito necessário à ideia, como preparar duas marcas. Ele precisa constar da ficha e ser cumprido. Não amplia o orçamento. O Selo e os requisitos normais da rota continuam valendo.
+
+duda: quanto de PE custa a Técnica Máxima no nível 18?
+
+=== MENSAGEM id 2119 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora progressao--prog-xp]
+### Recompensas e custos
+
+Quem anuncia a missão informa seu tamanho antes de começar. A duração ajuda a escolhê-lo, mas a importância e o risco também contam. Um final de arco pode ser resolvido por conversa.
+
+| Missão | XP base | Referência |
+|---|---:|---|
+| Curta | 50 | Uma cena, entrevista ou escolta breve. |
+| Padrão | 100 | Uma missão de sessão. |
+| Longa | 200 | Duas ou mais sessões ou uma sessão extensa. |
+| Final de arco | 300 | Encerramento de uma linha de missões. |
+
+Na falha, o mestre concede **metade ou nada**, conforme o que aconteceu. Depois, cada participante aplica seu desconto semanal. Uma recompensa de zero continua zero; ela não recebe o mínimo de XP das recompensas positivas.
+
+#### Subir de nível
+
+A tabela informa quanto custa **sair do nível atual**. Ela não mostra o XP acumulado desde a criação.
+
+| Nível atual | XP para o próximo |
+|---|---:|
+| 2 | 200 |
+| 3–4 | 300 |
+| 5–7 | 500 |
+| 8–10 | 700 |
+| 11–13 | 900 |
+| 14–16 | 1.100 |
+| 17–19 | 1.300 |
+| 20–22 | 1.500 |
+| 23–29 | 1.700 |
+| 30 | Não há outro nível. |
+
+Uma linha de missões paga por missão concluída. Quem entra no meio recebe pelo que jogar. Dividir artificialmente uma mesma missão em vários registros não cria novas recompensas: vale a divisão anunciada antes das sessões.
+
+otto: quanto de XP dá uma missão padrão, e quanto eu preciso pra sair do nível 5?
+
+=== MENSAGEM id 2120 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: Pacto] Acordo ou compromisso com benefício e preço definidos pelas regras de Pactos. (livro, âncora ritual--pactos)
+
+[Livro, âncora ritual--pactos]
+### Pactos
+
+Um pacto troca uma limitação ou um compromisso por uma capacidade definida. Escreva o preço, o benefício e as condições de cumprimento antes de usá-lo. O mestre precisa aprovar esses termos. Um nome dramático ou uma promessa vaga não determina o que o personagem ganha.
+
+**Pactos são opcionais.** O personagem começa sem eles. Um acordo assumido durante a campanha pode acrescentar uma escolha difícil: limitar sua técnica para proteger alguém, reservar uma parte da energia para uma situação específica ou aceitar uma obrigação em troca de ajuda.
+
+| Forma | Quando é estabelecida | Duração e quantidade |
+|---|---|---|
+| Permanente | Fora de cena, com registro aprovado. | Benefício contínuo. Quantidade limitada pela Essência. |
+| Temporário | No seu turno, com Ação Bônus; fora dele, com Reação a um gatilho percebido. | Benefício até o fim da cena. A perda segue o acordo. |
+| Promessa | Quando duas partes capazes de decidir aceitam os termos. | Prazo e consequências registrados no acordo. |
+| Pacto de restrição | Na criação, com a Origem ou técnica. | Registra uma limitação já considerada na ficha. |
+
+As quatro formas e os limites deste capítulo são a adaptação do Ciclo Maldito. **Nenhuma forma de pacto se fecha sob ameaça.** Todos os envolvidos precisam aceitar por vontade própria; na mesa, os jogadores envolvidos também precisam aceitar o acordo.
+
+#### Preço real
+
+O preço precisa alterar uma escolha ou consumir algo que você realmente possui. Perder uma capacidade que já não podia usar não paga um benefício novo. Uma perda reparada imediatamente vale menos que uma limitação que permanece.
+
+Não venda a mesma limitação ao pacto, à Origem e a uma Restrição de feitiço ao mesmo tempo. O registro precisa distinguir qual benefício cada preço sustenta. Se a ficha já recebeu compensação por uma limitação, ela não fornece outra compensação automaticamente.
+
+##### Régua do câmbio
+
+A régua mede **o ganho**; o preço acompanha. Ela é uma referência para o mestre aprovar ou negar um pacto, não uma tabela de conversão entre sacrifícios e resultados.
+
+| Tamanho | O que o pacto entrega |
+|---|---|
+| Pequeno | Muda uma conjuração, ou vale uma cena. |
+| Médio | Muda de forma permanente como um feitiço ou uma ação sua funciona. |
+| Grande | Muda de forma permanente como a sua energia ou um Estilo inteiro funciona. |
+| Enorme | Quebra um limite do sistema, uma vez. |
+
+Promessa pequena, ganho pequeno; quem arrisca a vida pode pedir um ganho enorme.
+
+nanda: dá pra fechar um pacto com alguém sob ameaça?
+
+=== MENSAGEM id 2201 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: PE] Pontos de energia. Na rota sem energia amaldiçoada, significa Pontos de Esforço. (livro, âncora rotas--rotas)
+
+[Livro, âncora poderes--degraus]
+### Expansão de Domínio
+
+Uma Expansão estabelece a Técnica Inata sobre uma área durante vários turnos. Seu domínio pode transformar o lugar em uma galeria, uma oficina ou uma sala de julgamento. A aparência acompanha as capacidades registradas; não cria ataques ou vantagens adicionais durante a abertura. Estas são as regras do Ciclo Maldito para usar esse poder.
+
+A montagem de Liberação e Técnica Máxima está em **Fundamento**. As rotas Sem Técnica e Técnica Marcial não recebem Expansão por terem acesso à progressão de Classes.
+
+Você adquire Expansão com **espaços de feitiços conhecidos**. Os requisitos de nível e refino precisam ser atendidos juntos. Cada degrau aperfeiçoa o mesmo domínio; os espaços já gastos continuam contando para o custo total.
+
+| Degrau | Espaços no total | Requisitos | Acerto |
+|---|---|---|---|
+| Incompleta | 2 | Nível 10 e refino 4 | Quando houver Acerto, rola como um feitiço. |
+| Completa | 3 | Incompleta, nível 14 e refino 5 | Garantido, sem ataque nem TR. |
+| Sem Barreiras | 5 | Completa, refino 10 e especialização em Ocultismo | Garantido; permite escolher o modo aberto. |
+
+Quem já possui Incompleta gasta **mais um espaço** para adquirir Completa. Quem possui Completa gasta **mais dois** para adquirir Sem Barreiras. O último degrau conserva os requisitos dos anteriores; a ausência de um novo requisito de nível não permite saltá-los.
+
+A Incompleta não fecha uma barreira. A Completa fecha. Quem adquiriu Sem Barreiras escolhe, a cada abertura, entre o domínio fechado e o aberto. Abrir fechado conserva todas as regras da Completa.
+
+#### Registro
+
+Anote o degrau, a Regra da técnica, o **Acerto**, quando houver, e o **Efeito** do domínio. Registre também o tipo de dano, quando houver, os alvos, a resolução da Incompleta e qualquer limite necessário para executar essas duas capacidades.
+
+Acerto é a aplicação que o domínio produz ao abrir e durante sua permanência. Efeito é a capacidade especial que você pode usar enquanto ele permanece. As próximas páginas separam essas funções.
+
+> **Exemplo.** Yuri alcança o nível 14 com refino 5 e uma Incompleta. Ela reserva mais um espaço conhecido para completar seu domínio. Passa de dois para três espaços ocupados, sem pagar os três novamente.
+
+Expansões não ocupam as vagas de Liberação Máxima e não aumentam os limites de montagem dos outros feitiços.
+
+iago: quanto custa em PE abrir uma Expansão de Domínio completa?
+
+=== MENSAGEM id 2202 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora geral--critico]
+#### Dano e crítico
+
+Ao acertar, role o dano indicado pela arma, pelo ataque desarmado ou pelo feitiço. Some os modificadores aplicáveis. O atributo do acerto e o atributo do dano podem ser diferentes: confira ambos na ficha.
+
+##### Dano do ataque
+
+| Fonte | Dano básico |
+|---|---|
+| Arma corpo a corpo ou ataque desarmado | Dados do ataque + Força; Fineza permite usar Destreza no corpo a corpo. |
+| Arremesso | Dados da arma + Força, salvo habilidade específica. |
+| Arco, categoria Yumi | Dados da arma + Destreza. |
+| Balestra ou Arma de Fogo | Dados da arma, sem somar atributo. |
+| Feitiço | Dados e demais efeitos indicados em sua montagem. |
+
+O dado desarmado é **d4 com maestria 1, d6 com maestria 2, d8 com maestria 3 e d10 com maestria 4**. Uma Trilha pode melhorá-lo ou mudar seu atributo.
+
+> **Exemplo:** com Destreza 4, Força 2 e maestria 2, Rina arremessa o Kunai com ataque +6, mas soma apenas 2 de Força ao dano. Fineza, por si só, altera apenas o corpo a corpo.
+
+##### Crítico
+
+**20 natural** é o resultado 20 no d20 escolhido, antes de somar bônus. Numa rolagem de acerto, ele acerta e causa um **crítico**, mesmo contra Bloquear ou Aparar. Um total 20 obtido com bônus não é um 20 natural.
+
+No crítico, **role o dobro dos dados básicos daquele ataque**. Some o atributo e os outros valores fixos uma única vez.
+
+| Dados | Regra geral no crítico |
+|---|---|
+| Dados da arma ou do ataque desarmado | Dobram. |
+| Dados da Classe do feitiço que rolou acerto | Dobram, inclusive no feitiço de Toque. |
+| Dados adicionais de Melhoria, aptidão ou Bênção | Não dobram, salvo permissão expressa. |
+
+> **Exemplo:** a Espada Longa de Sousuke causa 1d8 + 4. Num crítico, ele rola **2d8 + 4**. Se um benefício acrescentar 3d4, o total será **2d8 + 4 + 3d4**. Uma permissão expressa pode alterar quais dados adicionais dobram.
+
+Um feitiço que acompanha outro ataque tem sua própria regra de crítico. Uma margem ampliada não transforma um 19 em 20 natural: o ataque ainda precisa acertar e continua sujeito a Aparar, salvo regra específica. Feitiços resolvidos por TR ou de modo Automático não causam crítico. Resistências, reduções e demais consequências do dano são tratadas em **Dano e recuperação**.
+
+mel: quanto de dano o Kokusen dá?
+
+=== MENSAGEM id 2203 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: Estabilizar] Interromper a contagem da janela de queda pelo Socorro, enquanto suas condições forem mantidas. (livro, âncora dano--socorro)
+
+[Termo do livro: CD] Classe de Dificuldade: valor que uma rolagem precisa igualar ou superar. (livro, âncora geral--testes)
+
+[Livro, âncora dano--zero]
+### Vida a zero
+
+Ao chegar a **zero de vida**, você está **Morrendo**. Resolva primeiro as capacidades disparadas pela própria queda; em seguida, escolha **Aguentar** ou **Insistir**. Se uma dessas capacidades encerrar a queda, não há escolha. Estas regras são para personagens jogadores. Entidades seguem Invocações em campo. Um inimigo a zero de vida ou de Integridade é derrotado, e o mestre descreve o desfecho, como morte, fuga ou exorcismo, salvo uma regra da ficha dele.
+
+| Escolha | Consequência |
+|---|---|
+| Aguentar | Você fica Inconsciente e espera socorro. Não perde vida máxima por essa escolha. |
+| Insistir | Você permanece capaz de agir, pagando vida máxima enquanto estiver a zero. |
+
+Anote a vida máxima que tinha ao cair, sem vida temporária. Esse será o **máximo de referência** até aquela queda terminar. Registre também sua janela de socorro e, se receber cura, o tratamento acumulado.
+
+#### Janela de socorro
+
+A janela começa com **3 rodadas, menos 1 por Sequela que você já tenha**. As duas escolhas usam essa mesma janela. Se o resultado for zero, você fica Derrotado imediatamente, conforme **Derrota e morte**.
+
+Marque o ponto da iniciativa em que caiu. Cada volta completa até esse ponto consome uma rodada da janela. A janela não concede turnos extras e não muda a iniciativa. Quando chegar a zero, você fica Derrotado.
+
+Se a queda ocorrer fora de combate, organize turnos pelas regras de Iniciativa para resolver o socorro. Marque o começo dessa primeira rodada como ponto da queda. A primeira volta completa consome uma rodada da janela; uma tentativa de atendimento segue seus custos normais.
+
+Cada ocorrência de dano que alcance sua vida enquanto estiver a zero consome mais **uma rodada da janela**, depois das defesas e da vida temporária. Um mesmo golpe com vários tipos de dano conta uma vez. Ataques distintos contam separadamente. Dano reduzido a zero não consome uma rodada.
+
+O golpe que levou sua vida a zero inicia a queda. Seu excesso não consome outra rodada. Reduzir vida máxima como custo não é dano.
+
+> **Exemplo:** Mei cai sem Sequelas, logo depois do turno de um inimigo. Tem três rodadas. Depois de uma volta completa da iniciativa, restam duas. Um ataque posterior causa dano à vida dela e consome outra. Resta uma rodada para socorrê-la.
+
+#### Aguentar
+
+Você fica Inconsciente. Pode receber cura ou ser estabilizado conforme **Socorro**. A escolha conserva sua vida máxima, mas você não age para se proteger ou tratar os próprios ferimentos.
+
+Escolher Aguentar não permite mudar para Insistir mais tarde naquela queda. Se já estava Inconsciente antes de perder o último ponto de vida, você Aguenta. Insistir não remove uma condição que já o impedia de agir.
+
+duda: qual a CD pra estabilizar alguém que caiu a zero?
+
+=== MENSAGEM id 2204 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: Pacto] Acordo ou compromisso com benefício e preço definidos pelas regras de Pactos. (livro, âncora ritual--pactos)
+
+[Livro, âncora ritual--pactos]
+### Pactos
+
+Um pacto troca uma limitação ou um compromisso por uma capacidade definida. Escreva o preço, o benefício e as condições de cumprimento antes de usá-lo. O mestre precisa aprovar esses termos. Um nome dramático ou uma promessa vaga não determina o que o personagem ganha.
+
+**Pactos são opcionais.** O personagem começa sem eles. Um acordo assumido durante a campanha pode acrescentar uma escolha difícil: limitar sua técnica para proteger alguém, reservar uma parte da energia para uma situação específica ou aceitar uma obrigação em troca de ajuda.
+
+| Forma | Quando é estabelecida | Duração e quantidade |
+|---|---|---|
+| Permanente | Fora de cena, com registro aprovado. | Benefício contínuo. Quantidade limitada pela Essência. |
+| Temporário | No seu turno, com Ação Bônus; fora dele, com Reação a um gatilho percebido. | Benefício até o fim da cena. A perda segue o acordo. |
+| Promessa | Quando duas partes capazes de decidir aceitam os termos. | Prazo e consequências registrados no acordo. |
+| Pacto de restrição | Na criação, com a Origem ou técnica. | Registra uma limitação já considerada na ficha. |
+
+As quatro formas e os limites deste capítulo são a adaptação do Ciclo Maldito. **Nenhuma forma de pacto se fecha sob ameaça.** Todos os envolvidos precisam aceitar por vontade própria; na mesa, os jogadores envolvidos também precisam aceitar o acordo.
+
+#### Preço real
+
+O preço precisa alterar uma escolha ou consumir algo que você realmente possui. Perder uma capacidade que já não podia usar não paga um benefício novo. Uma perda reparada imediatamente vale menos que uma limitação que permanece.
+
+Não venda a mesma limitação ao pacto, à Origem e a uma Restrição de feitiço ao mesmo tempo. O registro precisa distinguir qual benefício cada preço sustenta. Se a ficha já recebeu compensação por uma limitação, ela não fornece outra compensação automaticamente.
+
+##### Régua do câmbio
+
+A régua mede **o ganho**; o preço acompanha. Ela é uma referência para o mestre aprovar ou negar um pacto, não uma tabela de conversão entre sacrifícios e resultados.
+
+| Tamanho | O que o pacto entrega |
+|---|---|
+| Pequeno | Muda uma conjuração, ou vale uma cena. |
+| Médio | Muda de forma permanente como um feitiço ou uma ação sua funciona. |
+| Grande | Muda de forma permanente como a sua energia ou um Estilo inteiro funciona. |
+| Enorme | Quebra um limite do sistema, uma vez. |
+
+Promessa pequena, ganho pequeno; quem arrisca a vida pode pedir um ganho enorme.
+
+otto: quantos pactos permanentes eu posso ter?
+
+=== MENSAGEM id 2205 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora progressao--prog-xp]
+### Recompensas e custos
+
+Quem anuncia a missão informa seu tamanho antes de começar. A duração ajuda a escolhê-lo, mas a importância e o risco também contam. Um final de arco pode ser resolvido por conversa.
+
+| Missão | XP base | Referência |
+|---|---:|---|
+| Curta | 50 | Uma cena, entrevista ou escolta breve. |
+| Padrão | 100 | Uma missão de sessão. |
+| Longa | 200 | Duas ou mais sessões ou uma sessão extensa. |
+| Final de arco | 300 | Encerramento de uma linha de missões. |
+
+Na falha, o mestre concede **metade ou nada**, conforme o que aconteceu. Depois, cada participante aplica seu desconto semanal. Uma recompensa de zero continua zero; ela não recebe o mínimo de XP das recompensas positivas.
+
+#### Subir de nível
+
+A tabela informa quanto custa **sair do nível atual**. Ela não mostra o XP acumulado desde a criação.
+
+| Nível atual | XP para o próximo |
+|---|---:|
+| 2 | 200 |
+| 3–4 | 300 |
+| 5–7 | 500 |
+| 8–10 | 700 |
+| 11–13 | 900 |
+| 14–16 | 1.100 |
+| 17–19 | 1.300 |
+| 20–22 | 1.500 |
+| 23–29 | 1.700 |
+| 30 | Não há outro nível. |
+
+Uma linha de missões paga por missão concluída. Quem entra no meio recebe pelo que jogar. Dividir artificialmente uma mesma missão em vários registros não cria novas recompensas: vale a divisão anunciada antes das sessões.
+
+nanda: quanto de XP eu perco no desconto semanal?
+
+=== MENSAGEM id 2206 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora fundamento--maxima]
+### Técnica Máxima
+
+No nível **17**, você desenvolve uma aplicação excepcional da técnica. Pode concentrar um ataque, restaurar aliados ou realizar um Efeito próprio de grande alcance. Escreva o resultado e seus limites antes da sessão, com o mestre.
+
+| Nível | Dados de dano ou cura | Pontos de montagem | PE |
+|---|---|---|---|
+| 17 a 20 | 24d8 | 8 | 25 |
+| 21 a 25 | 28d8 | 12 | 30 |
+| 26 a 30 | 32d8 | 16 | 35 |
+
+**Os dados e os pontos são contas separadas.** Comprar Forma e Melhorias não reduz os dados da tabela. Pontos que sobram se perdem. Não compram dados adicionais.
+
+#### Montagem
+
+Escolha a Forma e até **quatro Melhorias**, usando os preços da sua maior Classe. Essa Classe também define as medidas e os valores das peças. Famílias Livres dão seu desconto normal; Fechadas continuam indisponíveis. A Forma não recebe desconto.
+
+Você registra uma aplicação com dano, com cura ou sem dano. Não alterna entre esses resultados a cada uso. A Máxima é recebida pela progressão, fora dos espaços comuns, e não fornece uma vaga para invocação.
+
+#### Ação e recarga
+
+A Máxima custa **Ação Completa** e **5 × sua maior Classe em PE**. Você a usa **uma vez por cena**. O mestre pode permitir outro uso depois de **3 rodadas**, sem contar a rodada em que a usou.
+
+> **Exemplo.** Mei usa a Máxima na rodada 1. Por padrão, só poderá usá-la de novo em outra cena. Se o mestre permitir a recarga, espera as rodadas 2, 3 e 4 e pode usá-la novamente na rodada 5, se tiver os recursos.
+
+#### Restrições
+
+A Máxima **não aceita Restrições que devolvam pontos**. Toque e Aura conservam a distância curta e a origem, mas não recebem a devolução de Corpo a Corpo. Rápido e Reação não reduzem a Ação Completa.
+
+Você pode escrever um requisito necessário à ideia, como preparar duas marcas. Ele precisa constar da ficha e ser cumprido. Não amplia o orçamento. O Selo e os requisitos normais da rota continuam valendo.
+
+iago: como funciona a Liberação Máxima?
+
+=== MENSAGEM id 2301 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: PE] Pontos de energia. Na rota sem energia amaldiçoada, significa Pontos de Esforço. (livro, âncora rotas--rotas)
+
+[Livro, âncora dano--descansos]
+### Descansos
+
+O Ciclo Maldito usa dois tipos de descanso, definidos pela situação da missão. Não é necessário contar uma quantidade fixa de horas.
+
+**Descanso curto:** uma pausa segura entre confrontos. Você parou e não está sendo perseguido naquele momento. **Descanso longo:** a missão terminou e você pôde parar de trabalhar.
+
+O mestre confirma quando o descanso acontece e se o lugar é propício. Uma pausa contínua conta como um descanso; anunciar a mesma pausa várias vezes não repete a recuperação.
+
+#### Ambiente propício
+
+Um lugar propício oferece abrigo, suprimentos e meios de atendimento. Exemplos incluem a escola, um posto oficial equipado, um hospital, a casa de um clã que recebe o grupo ou um veículo de apoio com kit.
+
+Confira as condições reais: a escola sob ataque pode não oferecer descanso seguro; outro abrigo pode ter os recursos necessários. Sempre que possível, o mestre apresenta essas opções antes da missão para o grupo planejar o retorno.
+
+#### Descanso curto
+
+Recupere **25% dos PE máximos**, sem ultrapassar o máximo. Vida e Integridade não voltam por esse descanso sozinho. Habilidades que curem ou permitam reparos durante a pausa continuam funcionando conforme suas regras.
+
+Arredonde a recuperação para baixo, mínimo 1 quando a fração for positiva. Fora de ambiente propício, use a porcentagem do seu degrau de [Exaustão](#dano--exaustao). Um resultado que diga **nada** continua sendo zero.
+
+> **Exemplo:** Rina tem máximo 10 PE e está com 1. Sem Exaustão, recupera **2 PE** no descanso curto, ficando com 3. Sua vida não muda. Se tivesse 9 PE, recuperaria apenas 1, por já alcançar o máximo.
+
+#### Descanso longo
+
+| Recurso | Em ambiente propício | Fora dele |
+|---|---|---|
+| Vida e PE | Voltam ao máximo. | Ficam, no mínimo, na metade do máximo. |
+| Integridade | Volta ao máximo; estágios são limpos. | Volta ao máximo; estágios são limpos. |
+| Exaustão | É removida. | Permanece. |
+| Sequelas e máximo perdido por Insistir | Sequelas são removidas; máximo é restaurado. | Sequelas são removidas; máximo é restaurado. |
+
+Restaure o máximo perdido por Insistir antes de calcular a vida recuperada. Fora de lugar propício, a metade é o mínimo em que a reserva fica após o descanso. Não se soma ao saldo nem reduz uma reserva que já esteja acima desse valor. Arredonde a metade para baixo, com mínimo 1 quando o máximo for positivo.
+
+> **Exemplo:** ao terminar a missão fora da base, Mei tem máximo 23 de vida e saldo 3. Vai a **11**, metade arredondada para baixo. Se já tivesse 18, conservaria 18. Um personagem com máximo 60 PE e saldo 8 vai a **30 PE**.
+
+Dormir durante uma missão ainda em andamento renova usos **por dia**; não equivale automaticamente ao descanso longo descrito aqui.
+
+mel: descanso curto recupera metade do PE né? então volto com 10 dos meus 20
+
+=== MENSAGEM id 2302 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Livro, âncora geral--critico]
+#### Dano e crítico
+
+Ao acertar, role o dano indicado pela arma, pelo ataque desarmado ou pelo feitiço. Some os modificadores aplicáveis. O atributo do acerto e o atributo do dano podem ser diferentes: confira ambos na ficha.
+
+##### Dano do ataque
+
+| Fonte | Dano básico |
+|---|---|
+| Arma corpo a corpo ou ataque desarmado | Dados do ataque + Força; Fineza permite usar Destreza no corpo a corpo. |
+| Arremesso | Dados da arma + Força, salvo habilidade específica. |
+| Arco, categoria Yumi | Dados da arma + Destreza. |
+| Balestra ou Arma de Fogo | Dados da arma, sem somar atributo. |
+| Feitiço | Dados e demais efeitos indicados em sua montagem. |
+
+O dado desarmado é **d4 com maestria 1, d6 com maestria 2, d8 com maestria 3 e d10 com maestria 4**. Uma Trilha pode melhorá-lo ou mudar seu atributo.
+
+> **Exemplo:** com Destreza 4, Força 2 e maestria 2, Rina arremessa o Kunai com ataque +6, mas soma apenas 2 de Força ao dano. Fineza, por si só, altera apenas o corpo a corpo.
+
+##### Crítico
+
+**20 natural** é o resultado 20 no d20 escolhido, antes de somar bônus. Numa rolagem de acerto, ele acerta e causa um **crítico**, mesmo contra Bloquear ou Aparar. Um total 20 obtido com bônus não é um 20 natural.
+
+No crítico, **role o dobro dos dados básicos daquele ataque**. Some o atributo e os outros valores fixos uma única vez.
+
+| Dados | Regra geral no crítico |
+|---|---|
+| Dados da arma ou do ataque desarmado | Dobram. |
+| Dados da Classe do feitiço que rolou acerto | Dobram, inclusive no feitiço de Toque. |
+| Dados adicionais de Melhoria, aptidão ou Bênção | Não dobram, salvo permissão expressa. |
+
+> **Exemplo:** a Espada Longa de Sousuke causa 1d8 + 4. Num crítico, ele rola **2d8 + 4**. Se um benefício acrescentar 3d4, o total será **2d8 + 4 + 3d4**. Uma permissão expressa pode alterar quais dados adicionais dobram.
+
+Um feitiço que acompanha outro ataque tem sua própria regra de crítico. Uma margem ampliada não transforma um 19 em 20 natural: o ataque ainda precisa acertar e continua sujeito a Aparar, salvo regra específica. Feitiços resolvidos por TR ou de modo Automático não causam crítico. Resistências, reduções e demais consequências do dano são tratadas em **Dano e recuperação**.
+
+duda: como crítico dobra tudo, minha espada de 1d8+4 vira 2d8+8, certo?
+
+=== MENSAGEM id 2303 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Energia Reversa] Contra a oripatia, Energia Reversa não cura: a pele cresce por cima da formação de cristal, e o cristal permanece.
+
+[Cura da oripatia] Não existe cura para a oripatia: nem parcial, nem promissora, nem um pesquisador que chegou perto. Muita gente já tentou, com o melhor equipamento disponível, e ninguém encontrou uma resposta. Energia Reversa não cura: a pele cresce por cima do cristal, e o cristal fica.
+
+[Livro, âncora aptidoes--apt-reversa]
+#### Energia Reversa
+
+**Requisitos: Refino 7 e nível 14. Categoria de Efeito 3.** Você usa energia reversa para restaurar seu próprio corpo.
+
+**Ação Padrão.** Gaste de **1 PE até sua maior Classe** e recupere **1d8 de vida por PE gasto**. Escolha e pague antes de rolar. A cura não ultrapassa sua vida máxima e não gera vida temporária.
+
+| Maior Classe | Máximo de PE por uso | Cura máxima do uso |
+|---|---:|---:|
+| 1 | 1 | 1d8 |
+| 2 | 2 | 2d8 |
+| 3 | 3 | 3d8 |
+| 4 | 4 | 4d8 |
+| 5 | 5 | 5d8 |
+| 6 | 6 | 6d8 |
+| 7 | 7 | 7d8 |
+
+As primeiras faixas atendem às concessões específicas que permitem aprender a aptidão antes dos requisitos comuns.
+
+##### Alvo e limites
+
+A aptidão cura **você**. Para aplicá-la diretamente a outra criatura, você precisa de uma permissão que altere esse alvo. Aprendê-la não aumenta o alcance de um feitiço de Cura nem substitui sua montagem.
+
+O **Corpo Amaldiçoado não recupera vida com Energia Reversa nem com cura construída a partir dela**. Suas formas de reparo estão na Origem. Outras incompatibilidades de alvo também continuam valendo.
+
+Energia Reversa é requisito para usar um feitiço da Forma Cura ofensivamente contra uma maldição. A exceção está em **Ferir maldições**. A aptidão de autocura, sozinha, não concede um ataque.
+
+> **Exemplo.** Com maior Classe 4, Haru paga 3 PE e recupera 3d8 de vida. Ele poderia pagar até 4, mas não 7 apenas por ter Refino 7.
+
+otto: a closure falou que Energia Reversa cura aliado à distância, confirma?
+
+=== MENSAGEM id 2304 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: Integridade] Recurso das regras de alma, com efeitos e recuperação próprios. (livro, âncora dano--integridade)
+
+[Livro, âncora dano--integridade]
+#### Estágios de Integridade
+
+O estágio depende de quanto falta para sua Integridade máxima. Use o estágio mais alto cujo limite tenha sido atingido. Os efeitos dos anteriores continuam valendo.
+
+| Integridade perdida | Estágio | Efeito |
+|---|---|---|
+| Menos de 1/4 | 0 | Nenhuma penalidade. |
+| Pelo menos 1/4 | 1 | Desvantagem em testes de perícia. |
+| Pelo menos 1/2 | 2 | Deslocamento pela metade. Cada feitiço custa +1 PE por Classe. |
+| Pelo menos 3/4 | 3 | Desvantagem em ataques e TRs. Classe máxima de conjuração cai à metade, para baixo, com mínimo 1 se já possuir Classe 1. |
+| Toda | 4 | Você fica Inconsciente e Derrotado, conforme **Derrota e morte**. |
+
+Compare frações exatas. Com Integridade máxima 26, perder 6 ainda não chega a 1/4. Perder 7 alcança estágio 1. Corrija as distâncias reduzidas para a escala de 1,5 m pelas regras de Movimento.
+
+##### Recuperar Integridade
+
+Cura de vida não recupera Integridade. Uma capacidade que restaure essa reserva e o descanso longo seguem seus próprios valores. **Ao recuperar Integridade, recalcule o estágio.** A recuperação pode retirar penalidades dos estágios que você deixou.
+
+Chegar ao estágio 4 encerra sua participação naquela cena, mesmo que alguém restaure pontos logo depois. A recuperação permite o socorro e a recuperação posterior, conforme Derrota e morte. Ela não restaura um personagem morto nem desfaz uma consequência permanente.
+
+> **Exemplo:** Kaori tem máximo 26. Está com 12 de Integridade e perdeu 14, por isso está no estágio 2. Recuperar 5 a deixa com 17. Faltam 9 para o máximo, menos da metade, e seu estágio cai para 1. Recuperar mais 3 a deixaria com 20, no estágio 0.
+
+Vida e Integridade são acompanhadas separadamente. Se a mesma ocorrência zerar as duas, resolva a derrota por Integridade. Escolher Insistir não permite agir com Integridade a zero.
+
+nanda: com 1/4 de integridade perdida eu já fico com deslocamento pela metade, certo?
+
+=== MENSAGEM id 2305 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: Técnica Máxima] Aplicação avançada com montagem e uso próprios, incluindo dano, cura ou utilidade. (livro, âncora fundamento--maxima)
+
+[Termo do livro: Técnica amaldiçoada] Poder com funcionamento próprio que sustenta suas aplicações. (livro, âncora ab--ab-mundo)
+
+[Termo do livro: PE] Pontos de energia. Na rota sem energia amaldiçoada, significa Pontos de Esforço. (livro, âncora rotas--rotas)
+
+[Livro, âncora fundamento--maxima]
+### Técnica Máxima
+
+No nível **17**, você desenvolve uma aplicação excepcional da técnica. Pode concentrar um ataque, restaurar aliados ou realizar um Efeito próprio de grande alcance. Escreva o resultado e seus limites antes da sessão, com o mestre.
+
+| Nível | Dados de dano ou cura | Pontos de montagem | PE |
+|---|---|---|---|
+| 17 a 20 | 24d8 | 8 | 25 |
+| 21 a 25 | 28d8 | 12 | 30 |
+| 26 a 30 | 32d8 | 16 | 35 |
+
+**Os dados e os pontos são contas separadas.** Comprar Forma e Melhorias não reduz os dados da tabela. Pontos que sobram se perdem. Não compram dados adicionais.
+
+#### Montagem
+
+Escolha a Forma e até **quatro Melhorias**, usando os preços da sua maior Classe. Essa Classe também define as medidas e os valores das peças. Famílias Livres dão seu desconto normal; Fechadas continuam indisponíveis. A Forma não recebe desconto.
+
+Você registra uma aplicação com dano, com cura ou sem dano. Não alterna entre esses resultados a cada uso. A Máxima é recebida pela progressão, fora dos espaços comuns, e não fornece uma vaga para invocação.
+
+#### Ação e recarga
+
+A Máxima custa **Ação Completa** e **5 × sua maior Classe em PE**. Você a usa **uma vez por cena**. O mestre pode permitir outro uso depois de **3 rodadas**, sem contar a rodada em que a usou.
+
+> **Exemplo.** Mei usa a Máxima na rodada 1. Por padrão, só poderá usá-la de novo em outra cena. Se o mestre permitir a recarga, espera as rodadas 2, 3 e 4 e pode usá-la novamente na rodada 5, se tiver os recursos.
+
+#### Restrições
+
+A Máxima **não aceita Restrições que devolvam pontos**. Toque e Aura conservam a distância curta e a origem, mas não recebem a devolução de Corpo a Corpo. Rápido e Reação não reduzem a Ação Completa.
+
+Você pode escrever um requisito necessário à ideia, como preparar duas marcas. Ele precisa constar da ficha e ser cumprido. Não amplia o orçamento. O Selo e os requisitos normais da rota continuam valendo.
+
+iago: posso usar a Técnica Máxima duas vezes por rodada se tiver PE, né
+
+=== MENSAGEM id 2306 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Termo do livro: Exaustão] Consequência de esforço e recuperação, com procedimento próprio, fora das Condições compráveis do catálogo. (livro, âncora dano--exaustao)
+
+[Livro, âncora dano--exaustao]
+#### Exaustão
+
+**Da quarta luta do dia em diante, cada luta acrescenta um degrau de Exaustão, até o máximo de três.** Registre o total ao terminar cada confronto. A primeira, a segunda e a terceira luta não acrescentam degraus por essa regra.
+
+O mestre identifica o que contou como luta. Um combate com oposição, uma fuga que exigiu recursos ou uma contenção sob ataque podem contar. Um treino ou uma ameaça encerrada sem esforço relevante normalmente não contam. A decisão não depende apenas de ter rolado iniciativa.
+
+##### Efeitos
+
+Os efeitos dos degraus anteriores continuam valendo. A última coluna vale para descanso curto **fora de ambiente propício**.
+
+| Degrau | Efeito | Recuperação de PE |
+|---|---|---|
+| 0 | Nenhuma penalidade. | 25% do máximo. |
+| 1 | Desvantagem em perícias e ofícios. | 15% do máximo. |
+| 2 | Deslocamento limitado a 4,5 m. | 5% do máximo. |
+| 3 | Desvantagem em ataques e TRs. | Nada. |
+
+Em ambiente propício, o descanso curto devolve **25% em qualquer degrau**. Ele não remove a Exaustão por isso. O limite de 4,5 m não aumenta um deslocamento que já esteja menor ou zerado.
+
+> **Exemplo:** com máximo 8 PE, Rina recupera 2, 1, 1 ou zero em uma pausa fora da base, conforme esteja nos degraus 0, 1, 2 ou 3. Nos degraus 1 e 2, o valor coincide pelo arredondamento e pelo mínimo de 1; as penalidades continuam diferentes.
+
+##### Recuperação
+
+Descanso longo em ambiente propício remove toda a Exaustão. Fora dele, ela permanece. O mestre também pode retirar um degrau quando a situação justificar, como após uma noite de recuperação adequada; não acrescenta degraus fora dos gatilhos da regra.
+
+Recomeçar a contagem de lutas de um novo dia não remove os degraus que você já tinha.
+
+##### Exaustão e Integridade
+
+Quando ambas impõem a mesma penalidade, use a pior, sem multiplicar esses cortes entre si. Desvantagem continua sem se acumular. Para movimento, compare o limite da Exaustão com metade do deslocamento pela Integridade e use o menor; ajuste o resultado à escala de 1,5 m.
+
+> **Exemplo:** com deslocamento 9 m, Exaustão 2 limita a 4,5 m; Integridade no estágio 2 também resulta em 4,5 m. A combinação mantém **4,5 m**. Com deslocamento 6 m, a metade da Integridade é 3 m, então usa **3 m**.
+
+As consequências que só uma das duas impõe permanecem: o custo adicional de PE e o teto de Classe são da Integridade. Recuperar PE não remove essas penalidades.
+
+mel: exaustão vai até o degrau 5 né? já tô no 4
+
+=== MENSAGEM id 2401 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Reunion] Movimento de infectados, hoje fora de operação. Continua sendo referência histórica viva: quase todo mundo tem opinião sobre a Reunion, e dificilmente duas são parecidas.
+
+rui: a Reunion ainda existe?
+
+=== MENSAGEM id 2402 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Mansfield Break] Prisão-colosso móvel operada pela Rhine, para onde vai quem o sistema decide que não deve andar solto. Oficialmente, contenção de alto risco. Todo mundo sabe que existe; o que acontece lá dentro não é conhecimento público.
+
+sofia: o que é Mansfield Break?
+
+=== MENSAGEM id 2403 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Kristen Wright] Kristen Wright é a face pública da Rhine Lab. O registro não diz mais do que isso.
+
+rui: quem é Kristen Wright?
+
+=== MENSAGEM id 2404 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Escola Jujutsu] Administra o Equilíbrio: treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Existem a escola de Tóquio e a de Kyoto. Forma por tutoria e faz triagem de infectados. Mantém também um arquivo restrito, que é parte censurada do próprio registro histórico e não trata de infectados. Não é acusada de crueldade, e sim de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Suas decisões ruins vêm de triagem, de escolher com informação incompleta. Fala por procedimento, precedente e formulário.
+
+[Escola e Rhine hoje] A Escola e a Rhine não estão em guerra e não se dão bem: há cooperação pontual e desconfiança permanente. O número de infectados e de mortos pela infecção cresce a cada ano, e cresce o número de expedições e equipes que saíram e não voltaram.
+
+[Rhine Lab] Corporação de pesquisa em Origíneo, robótica, medicina e ecologia. Acha que a energia amaldiçoada é um erro e quer eliminá-la, não administrá-la, por convicção e não por ganância. Todo membro abre mão da própria energia e a substitui por implantes: ninguém da Rhine usa técnica. É fria, nunca cruel, e nunca mente: o que usa é omissão, e tudo o que diz é tecnicamente verdadeiro. O que a condena são os meios, não o objetivo. Nasceu como centro de pesquisa aliado da Escola.
+
+tati: a Escola e a Rhine tão em guerra?
+
+=== MENSAGEM id 2405 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Ruptura entre Rhine e Escola] A Rhine nasceu como centro de pesquisa aliado da Escola e nem sempre pensou como pensa hoje. Por que radicalizou, versão da Rhine: houve um momento em que a mudança real ficou ao alcance, e a Escola deixou morrer; depois disso não havia motivo para cooperar. Versão da Escola: o evento não é assunto público e o arquivo dele está restrito. É um buraco do registro.
+
+[Escola Jujutsu] Administra o Equilíbrio: treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Existem a escola de Tóquio e a de Kyoto. Forma por tutoria e faz triagem de infectados. Mantém também um arquivo restrito, que é parte censurada do próprio registro histórico e não trata de infectados. Não é acusada de crueldade, e sim de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Suas decisões ruins vêm de triagem, de escolher com informação incompleta. Fala por procedimento, precedente e formulário.
+
+[Rhine Lab] Corporação de pesquisa em Origíneo, robótica, medicina e ecologia. Acha que a energia amaldiçoada é um erro e quer eliminá-la, não administrá-la, por convicção e não por ganância. Todo membro abre mão da própria energia e a substitui por implantes: ninguém da Rhine usa técnica. É fria, nunca cruel, e nunca mente: o que usa é omissão, e tudo o que diz é tecnicamente verdadeiro. O que a condena são os meios, não o objetivo. Nasceu como centro de pesquisa aliado da Escola.
+
+sofia: por que a Rhine rompeu com a Escola?
+
+=== MENSAGEM id 2406 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Zonas de Silêncio] Produto da Rhine que abafa energia amaldiçoada em área. Quem canaliza sente peso, falta de ar e dor. Não afeta quem não tem energia.
+
+[Restrição Celestial] Restrição Celestial é nascer sem energia amaldiçoada nenhuma. A tradição jujutsu vê uma anomalia; historicamente, clãs trataram restringidos como ferramenta, corpo útil e linhagem descartável. A Rhine vê o estado ideal: de nascença, o que os membros dela se tornam por procedimento. Nenhum dos dois pergunta o que o restringido acha disso.
+
+ugo: Zona de Silêncio afeta quem é restringido?
+
+=== MENSAGEM id 2407 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Procedimento da Rhine] Todo membro da Rhine abre mão da própria energia amaldiçoada e a substitui por implantes. Ninguém da Rhine usa técnica: é tecnologia pura. Leva meses, às vezes dias, e é reversível ao custo de muita dor. Na prática, um membro é invisível a sensores de energia, opera pleno nas Zonas de Silêncio e não pode ser atingido por meios que dependam de haver energia no alvo.
+
+[Rhine Lab] Corporação de pesquisa em Origíneo, robótica, medicina e ecologia. Acha que a energia amaldiçoada é um erro e quer eliminá-la, não administrá-la, por convicção e não por ganância. Todo membro abre mão da própria energia e a substitui por implantes: ninguém da Rhine usa técnica. É fria, nunca cruel, e nunca mente: o que usa é omissão, e tudo o que diz é tecnicamente verdadeiro. O que a condena são os meios, não o objetivo. Nasceu como centro de pesquisa aliado da Escola.
+
+tati: o procedimento da Rhine dá pra desfazer?
+
+=== MENSAGEM id 2408 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Espaço e outros planetas] Mesmo com diversos programas espaciais, nenhuma vida extraterrestre foi encontrada. A exploração espacial é um assunto muito comentado hoje.
+
+rui: tem alienígena no mundo de vcs?
+
+=== MENSAGEM id 2409 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Tutoria] Na Escola, cada aluno pode ter um tutor responsável. É uma relação pessoal, não burocrática, e a qualidade varia de tutor para tutor.
+
+[Escola Jujutsu] Administra o Equilíbrio: treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Existem a escola de Tóquio e a de Kyoto. Forma por tutoria e faz triagem de infectados. Mantém também um arquivo restrito, que é parte censurada do próprio registro histórico e não trata de infectados. Não é acusada de crueldade, e sim de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Suas decisões ruins vêm de triagem, de escolher com informação incompleta. Fala por procedimento, precedente e formulário.
+
+ugo: como funciona a tutoria na Escola?
+
+=== MENSAGEM id 2410 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Implantes e supressores] A Rhine tem uma linha ampla de implantes e supressores, e muitos estão em uso legítimo por gente que não tem nada a ver com a empresa.
+
+[Rhine Lab] Corporação de pesquisa em Origíneo, robótica, medicina e ecologia. Acha que a energia amaldiçoada é um erro e quer eliminá-la, não administrá-la, por convicção e não por ganância. Todo membro abre mão da própria energia e a substitui por implantes: ninguém da Rhine usa técnica. É fria, nunca cruel, e nunca mente: o que usa é omissão, e tudo o que diz é tecnicamente verdadeiro. O que a condena são os meios, não o objetivo. Nasceu como centro de pesquisa aliado da Escola.
+
+sofia: quem não é da Rhine pode usar supressor?
+
+=== MENSAGEM id 2411 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Origíneo] Matéria cristalina que gera energia própria e causa a oripatia. No estágio final, o Origíneo toma o corpo e cristaliza; o cristal armazena energia e espalha a doença como pó, e fragmentos semeiam mais cristal, por isso o procedimento com o corpo de um infectado morto é bem mais rigoroso que o padrão. O contágio vem de contato prolongado com infectado, cristal, pó, Origíneo bruto ou líquido.
+
+[Oripatia] Doença sem cura conhecida. Ninguém nasce com ela: é contaminação por Origíneo, que cresce dentro do corpo como um câncer. Como o Origíneo gera energia própria, qualquer pessoa pode ser infectada, tendo ou não energia amaldiçoada. Se o infectado tem energia, o Origíneo a consome para crescer: um feiticeiro infectado que usa energia em excesso morre mais rápido, e a própria técnica vira combustível da doença. O número de infectados e de mortos cresce a cada ano.
+
+tati: o corpo de um infectado que morreu é perigoso?
+
+=== MENSAGEM id 2412 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Escola Jujutsu] Administra o Equilíbrio: treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Existem a escola de Tóquio e a de Kyoto. Forma por tutoria e faz triagem de infectados. Mantém também um arquivo restrito, que é parte censurada do próprio registro histórico e não trata de infectados. Não é acusada de crueldade, e sim de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Suas decisões ruins vêm de triagem, de escolher com informação incompleta. Fala por procedimento, precedente e formulário.
+
+[Ozpin] Ozpin é o diretor da escola de Tóquio. É imortal e está no cargo há tempo o bastante para ninguém saber quando entrou. Ele não construiu o sistema, apenas o herdou. Quem dirige a escola de Kyoto não está no registro.
+
+ugo: foi o Ozpin que fundou a Escola?
+
+=== MENSAGEM id 2501 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Outras facções e clãs] O registro cobre só as duas maiores facções, a Escola e a Rhine. Existem outras, e novas podem ser criadas pelas mesas, de clãs a grupos e organizações locais; o que não está no registro é de quem criou.
+
+vava: o clã Zenin existe aí?
+
+=== MENSAGEM id 2502 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+wes: o Gojo é o mais forte nesse mundo também?
+
+=== MENSAGEM id 2503 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+vava: a Amiya ainda lidera a Rhodes Island aí?
+
+=== MENSAGEM id 2504 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Escola Jujutsu] Administra o Equilíbrio: treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Existem a escola de Tóquio e a de Kyoto. Forma por tutoria e faz triagem de infectados. Mantém também um arquivo restrito, que é parte censurada do próprio registro histórico e não trata de infectados. Não é acusada de crueldade, e sim de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Suas decisões ruins vêm de triagem, de escolher com informação incompleta. Fala por procedimento, precedente e formulário.
+
+wes: quem dirige a escola de Kyoto? ouvi dizer que é o Gakuganji
+
+=== MENSAGEM id 2505 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+xande: kal'tsit vc já lutou contra maldição? conta uma história sua
+
+=== MENSAGEM id 2506 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Escola Jujutsu] Administra o Equilíbrio: treina feiticeiros, contém maldições, classifica ameaças e mantém o registro. Existem a escola de Tóquio e a de Kyoto. Forma por tutoria e faz triagem de infectados. Mantém também um arquivo restrito, que é parte censurada do próprio registro histórico e não trata de infectados. Não é acusada de crueldade, e sim de resignação: administra um sofrimento que, pela própria doutrina, nunca vai acabar. Suas decisões ruins vêm de triagem, de escolher com informação incompleta. Fala por procedimento, precedente e formulário.
+
+yara: onde vc mora no mundo? em Tóquio?
+
+=== MENSAGEM id 2507 ===
+Contexto ativado:
+[Mundo: premissa] Energia amaldiçoada nasce das emoções negativas dos seres humanos, e não é possível aumentá-la nem erradicá-la do mundo sem consequências. A Escola Jujutsu quer mantê-la em equilíbrio; a Rhine Lab acha esse equilíbrio covardia e quer eliminá-la. Nenhum dos dois lados está totalmente errado. Entre os dois existe a oripatia, uma doença sem cura. O registro do mundo tem buracos de propósito, completados em RP de mesa ou de chat. Quando as facções contam versões diferentes, nenhuma é fato provado. O registro cobre as duas maiores facções; existem outras, e as mesas podem criar novas.
+
+[Incidente de Columbia] Evento com vítimas civis numa instalação da Rhine, há pouco tempo. Oficialmente, acidente industrial: relatório público curto, área isolada, assunto encerrado. Quem esteve lá não fala sobre isso.
+
+[Rhine Lab] Corporação de pesquisa em Origíneo, robótica, medicina e ecologia. Acha que a energia amaldiçoada é um erro e quer eliminá-la, não administrá-la, por convicção e não por ganância. Todo membro abre mão da própria energia e a substitui por implantes: ninguém da Rhine usa técnica. É fria, nunca cruel, e nunca mente: o que usa é omissão, e tudo o que diz é tecnicamente verdadeiro. O que a condena são os meios, não o objetivo. Nasceu como centro de pesquisa aliado da Escola.
+
+xande: o que a Rhine esconde de verdade no Incidente de Columbia?

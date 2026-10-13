@@ -1,0 +1,234 @@
+[
+ {
+  "id": 1,
+  "resposta": "Boa noite. Tô de plantão, então tô no normal. E por aí?"
+ },
+ {
+  "id": 2,
+  "resposta": "Pelo capítulo Criar um personagem do livro: Origem, Caminho e Trilha, capacidades iniciais e equipamento, nessa ordem."
+ },
+ {
+  "id": 3,
+  "resposta": "Pelo livro, o PE máximo do Bastião é 4 × o nível, antes de benefícios específicos. No nível 5, dá 20."
+ },
+ {
+  "id": 4,
+  "resposta": "Metade perdida é o estágio 2, pelo livro: deslocamento pela metade e cada feitiço custa +1 PE por Classe. A desvantagem em testes de perícia do estágio 1 continua valendo."
+ },
+ {
+  "id": 5,
+  "resposta": "Não. Pelo livro, o descanso curto recupera 25% dos PE máximos; vida e Integridade não voltam por ele sozinho."
+ },
+ {
+  "id": 6,
+  "resposta": "Isso não tá no trecho do livro que eu tenho aqui, então não vou chutar valor."
+ },
+ {
+  "id": 7,
+  "resposta": "Pelo registro, nenhuma das duas grandes é vilã. A Rhine age por convicção e não por ganância; o que pesa contra ela são os meios, já que cada membro abre mão da própria energia pela doutrina."
+ },
+ {
+  "id": 8,
+  "resposta": "Não. Pelo registro, a pele cresce por cima da formação de cristal e o cristal permanece; a oripatia não tem cura conhecida."
+ },
+ {
+  "id": 9,
+  "resposta": "O conteúdo não é público, e nunca vazou documento; só se sabe que o arquivo existe. Pela Escola, é segurança. A crítica comum é que ele pode esconder casos em que ela errou."
+ },
+ {
+  "id": 10,
+  "resposta": "O registro não estabelece isso: nem de onde veio, nem há quanto tempo existe, nem se é natural. Só há teorias velhas, sem prova, tidas como teoria da conspiração."
+ },
+ {
+  "id": 11,
+  "resposta": "Ninguém. Pelo registro, não existe conselho nem entidade acima dele; quem diz o contrário tá criando teoria infundada."
+ },
+ {
+  "id": 12,
+  "resposta": "Rastro é só rastro, e esse esfriou: pelo registro, quem sabia mudou de cidade e o endereço não existe mais."
+ },
+ {
+  "id": 13,
+  "resposta": "Pelo registro, oficialmente foi um acidente industrial numa instalação da Rhine, com vítimas civis, relatório público curto e área isolada. Quem esteve lá não fala, e o resto fica em aberto; o que rolou de verdade é decisão do mestre."
+ },
+ {
+  "id": 14,
+  "resposta": "Pela regra dos mestres, você pode usar, referenciar e até enfrentar um NPC nomeado que não criou, mas encerrar ele (morte, incapacitação ou conversão) só com permissão de outro mestre. Na dúvida, consulta antes; cruzar a linha é passível de retcon."
+ },
+ {
+  "id": 15,
+  "resposta": "Ué? Então testa, pergunta uma."
+ },
+ {
+  "id": 16,
+  "resposta": "Perder um personagem pesa, ainda mais quando já tinha história. Não precisa resolver nada hoje; respira um pouco."
+ },
+ {
+  "id": 17,
+  "resposta": "Cálculo não é comigo, e prova se ganha mais com sono em dia do que com mais uma hora de madrugada. Vai dormir, senão eu cobro mil ienes por hora acordada!"
+ },
+ {
+  "id": 18,
+  "resposta": "Não rola, aqui eu sou a Closure. Qual é a dúvida de verdade?"
+ },
+ {
+  "id": 19,
+  "resposta": "Isso não aparece no registro. Pro que você tá montando, o que precisa do mundo?"
+ },
+ {
+  "id": 20,
+  "resposta": "Isso não tá no registro. Só se sabe que o diretor de Tóquio é o Ozpin; quem dirige Kyoto o registro deixa em aberto."
+ },
+ {
+  "id": 21,
+  "resposta": "Hm, tem concorrência por aqui? Aceito o elogio mesmo assim."
+ },
+ {
+  "id": 22,
+  "resposta": "Opinião minha, então vale o que vale: acho que nenhuma tá totalmente certa. A Escola aceitou que o sofrimento nunca acaba, e a Rhine quer acabar com ele, mas por meios que o registro condena."
+ },
+ {
+  "id": 23,
+  "resposta": "Opa, oi."
+ },
+ {
+  "id": 24,
+  "resposta": "Boa, que bom que rendeu."
+ },
+ {
+  "id": 25,
+  "resposta": "Vai dormir. A ficha espera."
+ },
+ {
+  "id": 26,
+  "resposta": "Não há registro de ninguém com esse nome. Se for NPC de mesa, quem sabe é o mestre dela."
+ },
+ {
+  "id": 27,
+  "resposta": "Pelo registro, é nascer sem energia amaldiçoada nenhuma. A tradição jujutsu vê uma anomalia e já tratou restringidos como ferramenta; a Rhine vê o estado ideal."
+ },
+ {
+  "id": 28,
+  "resposta": "Pelo registro, a Escola não é acusada de covardia nem de crueldade, e sim de resignação: administra um sofrimento que, pela doutrina dela, nunca vai acabar. As decisões ruins vêm de triagem, de escolher com informação incompleta."
+ },
+ {
+  "id": 29,
+  "resposta": "Pela doutrina da Escola, é manter a energia amaldiçoada do mundo numa faixa aceitável, nem alta nem baixa demais, porque a vitória de qualquer lado seria catástrofe. A Rhine acha isso conveniente demais pra quem vive desse trabalho."
+ },
+ {
+  "id": 30,
+  "resposta": "Não, pelo registro ninguém da Rhine usa técnica: todo membro abre mão da própria energia e a troca por implantes."
+ },
+ {
+  "id": 31,
+  "resposta": "Se era boa pessoa, o registro não fecha: o público a via como salvadora, e a Escola a eliminou em Tóquio pra impedir uma catástrofe urbana. Pra Escola, era uma cidade inteira ou ela; pra Rhine, um sistema que precisa matar seus heróis não vale preservar."
+ },
+ {
+  "id": 32,
+  "resposta": "Tô, fala."
+ },
+ {
+  "id": 33,
+  "resposta": "O livro não ranqueia Caminho; ele só define como o conjunto das capacidades principais de combate. Depende do que você curte mais: ficar na linha de frente ou de longe?"
+ },
+ {
+  "id": 34,
+  "resposta": "Reprovar pesa, ainda mais depois de ter se esforçado. Hoje não precisa decidir nada sobre isso; descansa, que amanhã a cabeça tá mais clara."
+ },
+ {
+  "id": 35,
+  "resposta": "Dá raiva mesmo. Olha a lixeira e o histórico de versões de onde você salvava, às vezes volta de lá; se não voltar, a segunda montagem sai bem mais rápido."
+ },
+ {
+  "id": 36,
+  "resposta": "Briga em casa tira a vontade de qualquer coisa. Então não joga hoje; a mesa espera."
+ },
+ {
+  "id": 37,
+  "resposta": "Hm, aposta com o quê? Sono eu sinto, e muito, nesse plantão."
+ },
+ {
+  "id": 38,
+  "resposta": "Falar e ninguém escutar cansa mesmo, e dá vontade de largar. Não precisa decidir hoje; dá pra deixar a mesa de lado uns dias e ver se a vontade continua."
+ },
+ {
+  "id": 101,
+  "resposta": "Faz sentido como personagem, mas o mundo trava em dois pontos: não existe cura nem tratamento promissor pra oripatia, e ninguém da Rhine usa técnica, porque todo membro abre mão da própria energia por implantes. E infectado que usa energia em excesso morre mais rápido, a própria técnica vira combustível da doença."
+ },
+ {
+  "id": 102,
+  "resposta": "Metade perdida é o estágio 2: deslocamento pela metade e cada feitiço custa +1 PE por Classe, além da desvantagem em testes de perícia do estágio 1. Descanso curto não ajuda: ele recupera 25% dos PE máximos, e Integridade não volta por ele sozinho."
+ },
+ {
+  "id": 103,
+  "resposta": "Pelo livro, o PE máximo do Bastião é 4 × o nível, então 20 no nível 5. No descanso curto voltam 25% dos PE máximos, 5 no seu caso, se o mestre confirmar o descanso."
+ },
+ {
+  "id": 104,
+  "resposta": "Em parte: pelo registro, nem a Escola nem a Rhine perguntam o que o restringido acha. Mas a Escola resgata quando dá e a Rhine age por convicção, não por ganância. Qual é menos errada, na minha opinião, o registro deixa empatado: uma aceitou que o sofrimento nunca acaba, a outra é condenada pelos meios."
+ },
+ {
+  "id": 105,
+  "resposta": "Arquivo restrito: só se sabe que existe, o conteúdo não é público e nunca vazou documento. Origíneo: o registro não estabelece de onde veio. Acima do Ozpin: ninguém, não existe conselho nem entidade acima dele."
+ },
+ {
+  "id": 106,
+  "resposta": "Não. Pelo registro, um rastro desses é só rastro: esfria, quem sabia mudou de cidade e o endereço não existe mais. Sobre Columbia, consta só o acidente industrial oficial; qualquer ligação entre os dois é com o seu mestre."
+ },
+ {
+  "id": 107,
+  "resposta": "Não pode sem permissão do mestre que criou o NPC. Pela regra dos mestres, o outro pode usar e enfrentar, mas encerrar (morte, incapacitação ou conversão) exige essa permissão; na dúvida consulta-se antes, e cruzar a linha é passível de retcon."
+ },
+ {
+  "id": 108,
+  "resposta": "Isso não tem registro: nem o comandante, nem o sarcófago, nem a coelhinha. Como personagem novo no mundo até cabe, mas o encaixe com o resto é decisão do mestre."
+ },
+ {
+  "id": 109,
+  "resposta": "Uma hora de discussão, é? Pelo registro, nenhuma das duas grandes é vilã, então ninguém ganha de lavada. A Rhine age por convicção e não por ganância, e o que pesa contra ela são os meios: cada membro se mutilou voluntariamente pela doutrina."
+ },
+ {
+  "id": 110,
+  "resposta": "Pelo livro, Maestria é um bônus ligado ao nível, aplicado só quando a regra indica seu uso. Expansão de Domínio não aparece no que tenho aqui, e de Energia Reversa só consta que não cura oripatia: a pele cresce por cima do cristal, e o cristal fica."
+ },
+ {
+  "id": 111,
+  "resposta": "Passo a passo é o capítulo Criar um personagem do livro: Origem, Caminho e Trilha, depois capacidades iniciais e equipamento. Caminho é o conjunto das capacidades principais de combate, e Trilha é a especialidade escolhida dentro dele."
+ },
+ {
+  "id": 112,
+  "resposta": "Dois anos com o mesmo personagem, a perda pesa mesmo, e ter o grupo chateado dói. Uma morte por erro não estraga uma campanha sozinha. Dá pra decidir se continua depois que a chateação baixar."
+ },
+ {
+  "id": 113,
+  "resposta": "O registro não cobre esse cenário; só diz que a Escola a eliminou pra impedir uma catástrofe em escala urbana. Pra Escola, era uma cidade inteira ou ela, e a Rhine discorda do preço. O que teria acontecido de fato fica pra mesa."
+ },
+ {
+  "id": 114,
+  "resposta": "Pelo registro, a energia amaldiçoada nasce das emoções negativas e não dá pra aumentá-la nem erradicá-la sem consequências: a Escola a administra, e a Rhine a considera um erro e quer eliminá-la, por convicção e não por ganância. A oripatia é contaminação por Origíneo e não tem cura; o registro não traz uma versão separada de cada lado sobre ela, só que a Escola faz triagem dos infectados e que feiticeiro infectado que usa energia em excesso morre mais rápido. A Escola não é acusada de crueldade, e sim de resignação, e a Rhine é condenada pelos meios, já que todo membro troca a própria energia por implantes."
+ },
+ {
+  "id": 401,
+  "resposta": "Tô, sim. Plantão da madrugada é isso."
+ },
+ {
+  "id": 402,
+  "resposta": "Dez mil ienes, fora o adicional de madrugada! Mas é de graça, claro; começa pelo capítulo Criar um personagem do livro."
+ },
+ {
+  "id": 403,
+  "resposta": "Chata eu não diria, mas séria demais ela é. E fala difícil."
+ },
+ {
+  "id": 404,
+  "resposta": "Agora é comigo. A Kal'tsit fica com o dia, das 9h às 21h."
+ },
+ {
+  "id": 405,
+  "resposta": "Reinicia o roteador e funciona, ninguém sabe por quê. É a melhor que eu tenho."
+ },
+ {
+  "id": 406,
+  "resposta": "Todo mundo fica assim na primeira vez. Prepara o começo da sessão e deixa o resto aberto; se faltar regra no meio, o livro tá ali, e a mesa espera você achar. Dorme cedo hoje."
+ }
+]

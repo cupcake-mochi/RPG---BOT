@@ -1,0 +1,26 @@
+# Segredos: nunca subir
+.env
+.env.*
+!.env.exemplo
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Dados de execução do bot
+*.db
+*.db-journal
+*.sqlite3
+
+# Material grande ou de terceiros (fica só na pasta local)
+*.pdf
+
+# Falas extraídas do jogo (regeneráveis com Closure/ferramentas/extrair_corpus.py)
+Closure/dados/corpus_closure/
+Closure/dados/corpus_kaltsit/
+
+# Sistema
+.DS_Store
+Thumbs.db

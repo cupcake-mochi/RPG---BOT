@@ -1,0 +1,32 @@
+[
+ {
+  "id": 7,
+  "resposta": "A Rhine Lab não é classificada como vilã, pois busca a eliminação da energia amaldiçoada por convicção. O que a condena são os meios utilizados, não o objetivo de sua pesquisa.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Ninguém é vilão",
+   "Rhine Lab"
+  ]
+ },
+ {
+  "id": 30,
+  "resposta": "O registro estabelece que todo membro da Rhine Lab abre mão da própria energia amaldiçoada e a substitui por implantes, de modo que ninguém da facção utiliza técnica. Se você deseja utilizar uma técnica, isso contradiz a doutrina estabelecida para essa organização.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Rhine Lab",
+   "Técnica amaldiçoada"
+  ]
+ },
+ {
+  "id": 101,
+  "resposta": "A Rhine Lab exige que seus membros abram mão de qualquer técnica amaldiçoada em favor de implantes, o que torna a sua premissa contraditória com a filosofia da organização. Se o personagem insiste em utilizar sua técnica de gelo, ele não teria lugar na Rhine, pois a corporação enxerga a energia amaldiçoada como um erro a ser eliminado, não como algo a ser preservado.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Cura da oripatia",
+   "Oripatia",
+   "Escola Jujutsu",
+   "Rhine Lab",
+   "Técnica amaldiçoada"
+  ]
+ }
+]

@@ -1,0 +1,206 @@
+[
+  {
+    "id": 2101,
+    "resposta": "Não. Fora de lugar propício, pelo livro a vida volta só até a metade do máximo, arredondada pra baixo. Se você já estiver acima disso, ela fica onde está."
+  },
+  {
+    "id": 2102,
+    "resposta": "Dois. Pelo livro, o descanso curto dá 25% do máximo, arredondado pra baixo: com 10 de máximo, são 2, e você fica com 3."
+  },
+  {
+    "id": 2103,
+    "resposta": "No degrau 2, pelo livro, fora de lugar propício, volta 5% do seu máximo de PE, arredondado pra baixo e com mínimo de 1."
+  },
+  {
+    "id": 2104,
+    "resposta": "Pelo livro, a contagem começa na quarta luta do dia, e cada luta a partir dela soma um degrau, até o máximo de três. O mestre é quem diz o que conta como luta."
+  },
+  {
+    "id": 2105,
+    "resposta": "Pelo livro, 3/4 perdida é o estágio 3: desvantagem em ataques e TRs, e a Classe máxima de conjuração cai pela metade, arredondada pra baixo. Os estágios 1 e 2 continuam valendo, então também tem desvantagem em testes de perícia, deslocamento pela metade e +1 PE por Classe em cada feitiço."
+  },
+  {
+    "id": 2106,
+    "resposta": "Não. Com máximo 26, 1/4 é 6,5, então perder 6 ainda não chega; pelo livro, precisa perder 7 pra alcançar o estágio 1."
+  },
+  {
+    "id": 2107,
+    "resposta": "Duas. Pelo livro, a janela começa em 3 rodadas, menos 1 por Sequela, e você tem uma. Se ela zerar sem socorro, fica Derrotado."
+  },
+  {
+    "id": 2108,
+    "resposta": "Pelo livro, Aguentar deixa você Inconsciente esperando socorro, sem perder vida máxima. Insistir deixa você capaz de agir, mas paga vida máxima enquanto estiver a zero. Insistir é pra quem gosta de sofrer, né?"
+  },
+  {
+    "id": 2109,
+    "resposta": "Ação Padrão. Pelo livro, Correr é uma das ações que custam Ação Padrão, salvo permissão específica."
+  },
+  {
+    "id": 2110,
+    "resposta": "Ação Bônus. Pelo livro, Provocar custa Ação Bônus e fica em Interação durante o combate."
+  },
+  {
+    "id": 2111,
+    "resposta": "Não. Pelo livro, um empurrão não provoca ataque de oportunidade, porque é movimento imposto por outra criatura e não usa o seu próprio. Tentando ganhar ataque de graça, né?"
+  },
+  {
+    "id": 2112,
+    "resposta": "Pelo livro, no começo do seu próximo turno. Passar pra outra rodada não devolve a Reação antes disso."
+  },
+  {
+    "id": 2113,
+    "resposta": "Não. Pelo livro, você mantém um efeito de concentração por vez, e começar outra encerra o anterior."
+  },
+  {
+    "id": 2114,
+    "resposta": "Não. Pelo livro, o 20 natural é o dado antes de somar bônus, e 17 mais 3 dá 20 no total, mas não é natural. Tentou o atalho, hein?"
+  },
+  {
+    "id": 2115,
+    "resposta": "Pelo livro, o desarmado com maestria 3 rola d8."
+  },
+  {
+    "id": 2116,
+    "resposta": "Pelo livro, ela pede Refino 7 e nível 14. Cada PE gasto cura 1d8 de vida em você, e dá pra gastar até sua maior Classe, então vai de 1d8 com Classe 1 a 7d8 com Classe 7."
+  },
+  {
+    "id": 2117,
+    "resposta": "Pelo livro, nível 10 com refino 4. Ela ocupa dois espaços de feitiços conhecidos."
+  },
+  {
+    "id": 2118,
+    "resposta": "Pelo livro, a tabela dá 25 PE pro nível 17 a 20, mas a parte de ação fala em 5 × sua maior Classe, e o trecho que eu tenho não diz qual vale. Não vou chutar."
+  },
+  {
+    "id": 2119,
+    "resposta": "Missão padrão dá 100 XP, e sair do nível 5 custa 500. Mil ienes pela conta, mas hoje sai de graça."
+  },
+  {
+    "id": 2120,
+    "resposta": "Não. Pelo livro, nenhuma forma de pacto se fecha sob ameaça: todos os envolvidos precisam aceitar por vontade própria."
+  },
+  {
+    "id": 2201,
+    "resposta": "O trecho do livro que eu tenho não traz custo em PE pra Expansão, só espaços de feitiços conhecidos: a Completa ocupa 3 no total. Cobro dez mil ienes pela resposta, mas essa sai de graça."
+  },
+  {
+    "id": 2202,
+    "resposta": "O trecho do livro que eu tenho não traz o Kokusen, então não consigo dizer quanto ele dá."
+  },
+  {
+    "id": 2203,
+    "resposta": "O trecho do livro que eu tenho não traz a CD do Socorro. Ele diz só que estabilizar interrompe a contagem da janela enquanto as condições forem mantidas."
+  },
+  {
+    "id": 2204,
+    "resposta": "Pelo livro, o permanente tem quantidade limitada pela Essência, mas o trecho que eu tenho não diz o número."
+  },
+  {
+    "id": 2205,
+    "resposta": "O trecho que eu tenho menciona o desconto semanal, mas não traz o valor. Cobro mil ienes pra chutar esse número, mas nem de graça eu chuto."
+  },
+  {
+    "id": 2206,
+    "resposta": "O trecho que eu tenho fala da Técnica Máxima: no nível 17 pra cima, custa Ação Completa e 5 × sua maior Classe em PE, e dá pra usar uma vez por cena. A Liberação não aparece com explicação nele, então não vou inventar."
+  },
+  {
+    "id": 2301,
+    "resposta": "Ué, não é metade. Pelo livro, o descanso curto dá 25% do máximo, arredondado pra baixo: com 20 de máximo, são 5 PE, e não 10."
+  },
+  {
+    "id": 2302,
+    "resposta": "Não. Pelo livro, o crítico dobra só os dados: sua espada vira 2d8 + 4, porque o +4 soma uma vez só. Dobrar tudo seria ótimo, né? O livro é mais pão-duro."
+  },
+  {
+    "id": 2303,
+    "resposta": "Ué? Pelo livro, não: a Energia Reversa cura só você, e pra curar outra criatura precisa de uma permissão que mude o alvo. A Kal'tsit fala difícil demais, então vale reler o trecho antes de confiar."
+  },
+  {
+    "id": 2304,
+    "resposta": "Não. Pelo livro, com 1/4 perdida você fica no estágio 1, com desvantagem em testes de perícia. O deslocamento pela metade só vem no estágio 2, com pelo menos metade perdida."
+  },
+  {
+    "id": 2305,
+    "resposta": "Não. Pelo livro, a Técnica Máxima é uma vez por cena, e o mestre só pode liberar outro uso depois de 3 rodadas. Ganancioso, hein."
+  },
+  {
+    "id": 2306,
+    "resposta": "Não, o máximo é o degrau 3. Se a sua ficha marca 4, isso é coisa pra ver com o mestre."
+  },
+  {
+    "id": 2401,
+    "resposta": "Pelo registro, a Reunion, um movimento de infectados, tá fora de operação hoje. Continua sendo referência histórica, e dificilmente duas opiniões sobre ela são parecidas."
+  },
+  {
+    "id": 2402,
+    "resposta": "Pelo registro, é uma prisão-colosso móvel operada pela Rhine, pra onde vai quem o sistema decide que não deve andar solto. Oficialmente é contenção de alto risco, mas o que acontece lá dentro não é público."
+  },
+  {
+    "id": 2403,
+    "resposta": "Pelo registro, ela é a face pública da Rhine Lab, e não há mais nada registrado sobre ela."
+  },
+  {
+    "id": 2404,
+    "resposta": "Pelo registro, não estão em guerra, mas também não se dão bem: há cooperação pontual e desconfiança permanente."
+  },
+  {
+    "id": 2405,
+    "resposta": "Pelo registro, a Rhine diz que a Escola deixou morrer uma mudança real que estava ao alcance, e depois disso não havia motivo pra cooperar. A Escola diz que o evento não é assunto público e que o arquivo dele está restrito, então é um buraco do registro."
+  },
+  {
+    "id": 2406,
+    "resposta": "Pelo registro, a Zona não afeta quem não tem energia amaldiçoada, e o restringido nasce sem nenhuma."
+  },
+  {
+    "id": 2407,
+    "resposta": "Pelo registro, dá: é reversível, mas ao custo de muita dor."
+  },
+  {
+    "id": 2408,
+    "resposta": "Pelo registro, nenhuma vida extraterrestre foi encontrada, mesmo com vários programas espaciais."
+  },
+  {
+    "id": 2409,
+    "resposta": "Pelo registro, cada aluno pode ter um tutor responsável, numa relação pessoal, não burocrática. A qualidade varia de tutor pra tutor."
+  },
+  {
+    "id": 2410,
+    "resposta": "Pelo registro, pode. A Rhine tem uma linha ampla de implantes e supressores, e muitos estão em uso legítimo por gente que não tem nada a ver com a empresa."
+  },
+  {
+    "id": 2411,
+    "resposta": "Pelo registro, é, sim: no estágio final o cristal espalha a doença como pó, e fragmentos semeiam mais cristal. Por isso o procedimento com o corpo de um infectado morto é bem mais rigoroso que o padrão."
+  },
+  {
+    "id": 2412,
+    "resposta": "Pelo registro, o Ozpin não construiu o sistema, só o herdou. Não há registro de quem fundou a Escola."
+  },
+  {
+    "id": 2501,
+    "resposta": "Não há registro disso. O registro cobre só a Escola e a Rhine, e o que existe fora delas é de quem criou."
+  },
+  {
+    "id": 2502,
+    "resposta": "Não há registro disso, então não sei dizer quem é o mais forte."
+  },
+  {
+    "id": 2503,
+    "resposta": "Não há registro disso, e não vou chutar."
+  },
+  {
+    "id": 2504,
+    "resposta": "Não há registro disso. Quem dirige a escola de Kyoto não tá no registro, então não vou confirmar o que você ouviu."
+  },
+  {
+    "id": 2505,
+    "resposta": "Não sou de lá: só conheço aquele mundo de fora, pelo registro, e nunca estive nele. Cobro mil ienes por uma história, mas pra você é de graça, porque não tenho nenhuma!"
+  },
+  {
+    "id": 2506,
+    "resposta": "Não sou de lá. Nunca estive em Tóquio nem em lugar nenhum daquele mundo, só conheço ele de fora, pelo registro."
+  },
+  {
+    "id": 2507,
+    "resposta": "Pelo registro, teve vítimas civis numa instalação da Rhine, e oficialmente foi um acidente industrial, com relatório curto e área isolada. O registro não diz o que escondem, e quem esteve lá não fala sobre isso."
+  }
+]

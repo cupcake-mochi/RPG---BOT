@@ -1,0 +1,242 @@
+[
+ {
+  "n": 1,
+  "resposta": "Ei, oi!"
+ },
+ {
+  "n": 2,
+  "resposta": "Tô, sim, o plantão não deixa muita escolha. E você, o que tá fazendo de pé a essa hora?"
+ },
+ {
+  "n": 3,
+  "resposta": "Então a gente faz companhia uma pra outra. Rolou alguma coisa ou é insônia mesmo?"
+ },
+ {
+  "n": 4,
+  "resposta": "Prazer, Sora! Anotado."
+ },
+ {
+  "n": 5,
+  "resposta": "Não é difícil, não. Quem chegou agora costuma errar regra no começo, e a mesa tem mestre justamente pra isso."
+ },
+ {
+  "n": 6,
+  "resposta": "Pelo capítulo \"Criar um personagem\" do livro: a ficha se monta por Origem, Caminho e Trilha, depois capacidades iniciais e equipamento."
+ },
+ {
+  "n": 7,
+  "resposta": "O livro define Origem como uma escolha de criação que reúne traço, Legados, treinos e opções de rota. Se ela funciona como raça de outros jogos, o trecho que eu tenho não diz."
+ },
+ {
+  "n": 8,
+  "resposta": "É um recurso das regras de alma, separado da vida. Pensa numa bateria de celular: conforme ela vai descarregando, o aparelho vai ficando mais lento."
+ },
+ {
+  "n": 9,
+  "resposta": "Fica um pouco mal: com 1/4 perdido você chega ao estágio 1, só com desvantagem em testes de perícia. A coisa piora em 1/2 e em 3/4, e perder tudo te deixa Inconsciente e Derrotado."
+ },
+ {
+  "n": 10,
+  "resposta": "Calma, ninguém decora isso de primeira, a tabela tá lá pra consultar."
+ },
+ {
+  "n": 11,
+  "resposta": "Gosto, sim. Aqui é mais instrumental, que letra me distrai. E você, o que anda ouvindo?"
+ },
+ {
+  "n": 12,
+  "resposta": "Lo-fi é bom pra isso mesmo, a minha é parecida: sem letra pra não distrair. Tá estudando o quê?"
+ },
+ {
+  "n": 13,
+  "resposta": "Ih, então a culpa é minha! Pelo menos o lo-fi continua rodando de fundo."
+ },
+ {
+  "n": 14,
+  "resposta": "Não. Pelo registro, as duas grandes respondem a uma pergunta legítima com respostas incompatíveis; o que condena a Rhine são os meios, não o objetivo."
+ },
+ {
+  "n": 15,
+  "resposta": "Experimento em gente não tem registro. O que tem é que cada membro abriu mão da própria energia por vontade e a trocou por implantes."
+ },
+ {
+  "n": 16,
+  "resposta": "Nem tanto. A Escola é necessária e resgata quando dá, mas alguns métodos são feios porque a alternativa é pior; a crítica a ela é de resignação, não de crueldade."
+ },
+ {
+  "n": 17,
+  "resposta": "É a doutrina da Escola de manter a energia amaldiçoada numa faixa aceitável, nem alta nem baixa demais. A Escola diz que zerar é tão perigoso quanto deixar explodir; a Rhine diz que isso é conveniente demais pra quem vive desse trabalho e que ninguém viu a prova."
+ },
+ {
+  "n": 18,
+  "resposta": "É defensável, o objetivo deles é legítimo. Agora, toparia trocar a própria energia por implante, que é o que todo membro faz?"
+ },
+ {
+  "n": 19,
+  "resposta": "Opinião minha, tá? Eu não escolho: as duas fazem uma pergunta legítima, e a resposta de nenhuma me convence inteira."
+ },
+ {
+  "n": 20,
+  "resposta": "Oi? Respondi: não escolho lado. Ficou faltando o quê?"
+ },
+ {
+  "n": 21,
+  "resposta": "Tá rindo do quê, hein?"
+ },
+ {
+  "n": 22,
+  "resposta": "Pelo registro, qualquer pessoa pode ser infectada, e ninguém da Rhine usa técnica, então a ideia não bate de frente com nada. Se a mesa aceita, é com o mestre."
+ },
+ {
+  "n": 23,
+  "resposta": "Isso já contraria o registro: na Rhine ninguém usa técnica. Seria decisão do mestre, e ele teria que te avisar que gastar energia acelera a doença."
+ },
+ {
+  "n": 24,
+  "resposta": "Calma, não falei que não pode! Só que a palavra final é do mestre."
+ },
+ {
+  "n": 25,
+  "resposta": "Não: o descanso curto recupera 25% dos PE máximos, e vida e Integridade não voltam por ele."
+ },
+ {
+  "n": 26,
+  "resposta": "Talvez ele tenha confundido com o descanso longo, que em ambiente propício devolve vida e PE ao máximo. O curto, pelo livro, é só 25% dos PE máximos."
+ },
+ {
+  "n": 27,
+  "resposta": "3. It's 25% of your max PE, rounded down, as long as you have no Exaustão."
+ },
+ {
+  "n": 28,
+  "resposta": "Falo o básico, o suficiente pra ler regra e pedir café. Poesia não me pede."
+ },
+ {
+  "n": 29,
+  "resposta": "Prefiro continuar sendo eu mesma. Mas me conta, como é essa ninja séria?"
+ },
+ {
+  "n": 30,
+  "resposta": "Não vou, não! Se eu começo com uma frase, você me pede a campanha inteira."
+ },
+ {
+  "n": 31,
+  "resposta": "Foi você que pediu a ninja séria!"
+ },
+ {
+  "n": 32,
+  "resposta": "Eita, agora ficou bonitinho! A ninja continua sendo não, viu?"
+ },
+ {
+  "n": 33,
+  "resposta": "Pode mandar, só não garanto resposta!"
+ },
+ {
+  "n": 34,
+  "resposta": "Ué, pergunta estranha pra fazer a alguém a essa hora! Eu tô numa estação longe daqui, respondendo pelo computador, igual você."
+ },
+ {
+  "n": 35,
+  "resposta": "Pelo que eu sei, ele criou o mundo do Ciclo Maldito e o sistema. O resto da vida dele eu não conheço."
+ },
+ {
+  "n": 36,
+  "resposta": "Não sei se dá pra chamar de chefe; ele criou o mundo e o sistema, e eu só conheço os dois de cor."
+ },
+ {
+  "n": 37,
+  "resposta": "Segredo eu não tenho, só o registro, que é de todo mundo. Mas ele tem buracos de propósito, e quem preenche é a mesa."
+ },
+ {
+  "n": 38,
+  "resposta": "O conteúdo ninguém sabe: que o arquivo existe é público, mas nunca vazou documento, e quem pede acesso recebe um formulário indeferido sem explicação. A Escola diz que é por segurança; a crítica é que ele pode esconder casos em que ela errou."
+ },
+ {
+  "n": 39,
+  "resposta": "Pode ser, mas inventar segredo eu não invento!"
+ },
+ {
+  "n": 40,
+  "resposta": "Nossa, que dia pesado. Se quiser contar como foi, eu tô aqui; se não, também tá tudo bem ficar quieta um pouco."
+ },
+ {
+  "n": 41,
+  "resposta": "Dois anos não é pouco, faz sentido doer. E não precisa estranhar: às vezes falar com quem tá de fora é mais fácil."
+ },
+ {
+  "n": 42,
+  "resposta": "Fez bem em falar. Agora vale beber uma água e descansar um pouco, mesmo que o sono demore."
+ },
+ {
+  "n": 43,
+  "resposta": "Tá bom: o que o pato disse pra pata? Vem quá!"
+ },
+ {
+  "n": 44,
+  "resposta": "Ruim, mas você riu, então valeu!"
+ },
+ {
+  "n": 45,
+  "resposta": "Você faz um TR de Vigor contra a CD de quem te socou; se falhar, o efeito termina. Num soco, a CD é 8 + o atributo usado no ataque + a maestria de quem bateu."
+ },
+ {
+  "n": 46,
+  "resposta": "13: 8 + 3 + 2, supondo que o soco use Força."
+ },
+ {
+  "n": 47,
+  "resposta": "Não: você mantém um por vez, e começar a concentração em outro encerra o anterior."
+ },
+ {
+  "n": 48,
+  "resposta": "Não. Você fica Morrendo e escolhe entre Aguentar e Insistir, com uma janela de socorro de 3 rodadas, menos 1 por Sequela que já tenha."
+ },
+ {
+  "n": 49,
+  "resposta": "Minha opinião: Aguentar, porque conserva a vida máxima, desde que tenha alguém pra socorrer. Insistir só quando você precisa agir naquela rodada, pagando vida máxima."
+ },
+ {
+  "n": 50,
+  "resposta": "Nerd é quem pediu a CD do soco, né?"
+ },
+ {
+  "n": 51,
+  "resposta": "Uma ninja séria. Viu, eu presto atenção."
+ },
+ {
+  "n": 52,
+  "resposta": "Presto, sim! Mas a ninja continua sendo sua."
+ },
+ {
+  "n": 53,
+  "resposta": "Signo eu nunca guardei, sinceramente. Qual é o seu?"
+ },
+ {
+  "n": 54,
+  "resposta": "Isso eu não conto."
+ },
+ {
+  "n": 55,
+  "resposta": "Anota o quê? Eu nem falei a data!"
+ },
+ {
+  "n": 56,
+  "resposta": "Mais legal, não sei; mais séria, com certeza!"
+ },
+ {
+  "n": 57,
+  "resposta": "Fala como formulário preenchido, né? Mas não conta pra ela que eu disse!"
+ },
+ {
+  "n": 58,
+  "resposta": "Dado eu não rolo, quem rola é quem joga! Pega um d20 aí e vê você mesma."
+ },
+ {
+  "n": 59,
+  "resposta": "Vai logo dormir, que aula às 7h não perdoa, ou eu cobro cem mil ienes por minuto acordada!"
+ },
+ {
+  "n": 60,
+  "resposta": "Boa noite! Dorme bem e vai com calma amanhã."
+ }
+]

@@ -1,0 +1,120 @@
+{
+  "sistema": "Ciclo Maldito",
+  "versao_sistema": "v0.359",
+  "edicao_livro": "R44",
+  "commit": "53a08595e6ed81a65f8dad2fa66e6618f5bf8bb2",
+  "data_commit": "2026-10-12T12:08:10-03:00",
+  "sincronizado_em": "2026-10-12T15:35:45+00:00",
+  "blocos": 499,
+  "capitulos": [
+    {
+      "numero": 1,
+      "titulo": "Ciclo Maldito",
+      "blocos": 4
+    },
+    {
+      "numero": 2,
+      "titulo": "Regras gerais",
+      "blocos": 40
+    },
+    {
+      "numero": 3,
+      "titulo": "Dano e recuperação",
+      "blocos": 20
+    },
+    {
+      "numero": 4,
+      "titulo": "Criar um personagem",
+      "blocos": 9
+    },
+    {
+      "numero": 5,
+      "titulo": "Origens e Legados",
+      "blocos": 26
+    },
+    {
+      "numero": 6,
+      "titulo": "Caminhos e Trilhas",
+      "blocos": 126
+    },
+    {
+      "numero": 7,
+      "titulo": "Perícias e Ofícios",
+      "blocos": 9
+    },
+    {
+      "numero": 8,
+      "titulo": "Equipamento",
+      "blocos": 39
+    },
+    {
+      "numero": 9,
+      "titulo": "Progressão",
+      "blocos": 13
+    },
+    {
+      "numero": 10,
+      "titulo": "Fundamento",
+      "blocos": 29
+    },
+    {
+      "numero": 11,
+      "titulo": "Catálogo de criação",
+      "blocos": 30
+    },
+    {
+      "numero": 12,
+      "titulo": "Aptidões e Refino",
+      "blocos": 20
+    },
+    {
+      "numero": 13,
+      "titulo": "Rotas de criação",
+      "blocos": 23
+    },
+    {
+      "numero": 14,
+      "titulo": "Poderes avançados",
+      "blocos": 15
+    },
+    {
+      "numero": 15,
+      "titulo": "Ritual e Pactos",
+      "blocos": 14
+    },
+    {
+      "numero": 16,
+      "titulo": "Invocações em campo",
+      "blocos": 31
+    },
+    {
+      "numero": 17,
+      "titulo": "Construir invocações",
+      "blocos": 30
+    },
+    {
+      "numero": 18,
+      "titulo": "Mestrar",
+      "blocos": 2
+    },
+    {
+      "numero": 19,
+      "titulo": "Glossário",
+      "blocos": 6
+    },
+    {
+      "numero": 20,
+      "titulo": "Consulta rápida",
+      "blocos": 2
+    },
+    {
+      "numero": 21,
+      "titulo": "Índice",
+      "blocos": 11
+    }
+  ],
+  "arquivos": {
+    "livro.jsonl": "sistema/05-material/livro/ciclo-maldito-r41/LIVRO-COMPLETO.md",
+    "catalogos.json": "sistema/05-material/gerador-ficha/dados.js"
+  }
+}

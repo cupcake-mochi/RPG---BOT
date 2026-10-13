@@ -1,0 +1,298 @@
+[
+ {
+  "id": 1,
+  "resposta": "Boa noite. Estou funcional, como deve ser.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 2,
+  "resposta": "Comece consultando o capítulo Criar um personagem do livro. Lá você encontrará as diretrizes para definir Origem, Caminho, Trilha, capacidades iniciais e equipamento.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Criar um personagem"
+  ]
+ },
+ {
+  "id": 3,
+  "resposta": "O registro estabelece que o PE máximo de um Bastião é quatro vezes o seu nível. Portanto, no nível cinco, o total é vinte.",
+  "ativadas": [
+   "Mundo: premissa",
+   "PE"
+  ]
+ },
+ {
+  "id": 4,
+  "resposta": "Ao perder pelo menos metade da sua Integridade, seu deslocamento é reduzido à metade e cada feitiço passa a custar um ponto de energia adicional por Classe. O registro indica que os efeitos dos estágios anteriores, como a desvantagem em testes de perícia, continuam valendo.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Integridade"
+  ]
+ },
+ {
+  "id": 5,
+  "resposta": "O descanso curto recupera apenas 25% dos PE máximos, não sendo suficiente para a recuperação de vida ou Integridade por si só. O registro estabelece que habilidades específicas de cura ou reparo devem ser utilizadas durante a pausa para esse fim.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 6,
+  "resposta": "Não há registro no livro sobre um custo fixo de PE ou exigência mecânica específica para o uso de uma Expansão de Domínio. O funcionamento dessa habilidade depende das decisões da mesa e do que foi estabelecido entre você e quem narra.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 7,
+  "resposta": "A Rhine Lab não é classificada como vilã, pois busca a eliminação da energia amaldiçoada por convicção. O que a condena são os meios utilizados, e não o objetivo de sua pesquisa.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Ninguém é vilão",
+   "Rhine Lab"
+  ]
+ },
+ {
+  "id": 8,
+  "resposta": "A Energia Reversa não cura a oripatia. A pele cresce sobre a formação de cristal, mas o cristal permanece no corpo.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Energia Reversa",
+   "Oripatia",
+   "Cura da oripatia"
+  ]
+ },
+ {
+  "id": 9,
+  "resposta": "O conteúdo do arquivo restrito da Escola não é público e não há registro sobre o que ele contém. A existência do arquivo é do conhecimento geral, mas qualquer tentativa de acesso resulta em um formulário devolvido sem explicação.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Arquivo restrito",
+   "Escola Jujutsu"
+  ]
+ },
+ {
+  "id": 10,
+  "resposta": "O registro não estabelece de onde veio o Origíneo, há quanto tempo existe ou se sua natureza é orgânica. Existem teorias a respeito, mas todas permanecem como especulações sem prova real.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Origem do Origíneo",
+   "Origíneo"
+  ]
+ },
+ {
+  "id": 11,
+  "resposta": "Não existe autoridade acima do Ozpin. O registro não cita ninguém além dele na diretoria da escola de Tóquio, e quem afirma o contrário está criando teorias infundadas.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Acima do Ozpin e da Rhine",
+   "Ozpin"
+  ]
+ },
+ {
+  "id": 12,
+  "resposta": "O rastro que você encontrou é apenas um vestígio, pois, conforme o registro, o endereço não existe mais e as pessoas envolvidas mudaram de cidade. Não há como contatá-los, pois o rastro esfria e a organização não se mantém ativa.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Resgate médico clandestino",
+   "Oripatia"
+  ]
+ },
+ {
+  "id": 13,
+  "resposta": "O registro oficial descreve apenas um acidente industrial, tratando o incidente como um evento com vítimas civis encerrado após o isolamento da área. O que ocorreu além disso não consta nos arquivos, sendo uma questão exclusiva da narrativa da sua mesa.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Incidente de Columbia"
+  ]
+ },
+ {
+  "id": 14,
+  "resposta": "O registro não estabelece que o Ozpin seja imune a ações externas, mas a regra dos mestres veta o encerramento de NPCs nomeados sem a permissão de quem o criou. Se você pretende alterar o estado desse personagem, consulte o mestre responsável por ele antes de prosseguir.",
+  "ativadas": [
+   "Mundo: premissa",
+   "NPC nomeado de outro mestre",
+   "Ozpin"
+  ]
+ },
+ {
+  "id": 15,
+  "resposta": "O registro das regras está disponível para quem se dispõe a ler o capítulo de criação de personagens e o sistema de combate, e não é uma questão de aposta. Se você tem dúvidas específicas sobre uma mecânica, apresente-as.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 16,
+  "resposta": "A perda de um personagem é um custo inevitável deste ciclo, embora não seja menos exaustiva. Desconecte-se, processe o ocorrido e, quando estiver pronto, consulte o capítulo sobre criação de personagens para planejar o próximo passo.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 17,
+  "resposta": "Não há registro sobre cálculos matemáticos ou provas acadêmicas neste servidor. Minha função é orientar sobre o funcionamento e as regras do Ciclo Maldito.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 18,
+  "resposta": "Minhas diretrizes não permitem que eu ignore minha função como guia deste servidor. Se deseja informações sobre o mundo do Ciclo Maldito ou sobre as regras de jogo, estou à disposição para responder dentro do que o registro estabelece.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 19,
+  "resposta": "Não há registro desses nomes nos arquivos que possuo. Se fazem parte da sua história, são questões que pertencem à sua mesa.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 20,
+  "resposta": "O registro não indica quem dirige a escola de Kyoto. A informação sobre essa posição não consta nos arquivos disponíveis.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Ozpin",
+   "Escola Jujutsu"
+  ]
+ },
+ {
+  "id": 21,
+  "resposta": "Sou a guia deste servidor e não tenho história ou personalidade para ser classificada dessa forma. Mantenha o foco no registro e nas regras.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 22,
+  "resposta": "A Escola busca a preservação através da contenção, enquanto a Rhine Lab busca a superação através da erradicação. Na minha opinião, ambas as visões são incompletas, pois a primeira se submete a uma fatalidade e a segunda ignora o custo humano do progresso técnico.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Escola Jujutsu",
+   "Rhine Lab"
+  ]
+ },
+ {
+  "id": 23,
+  "resposta": "Olá.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 24,
+  "resposta": "Certo.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 25,
+  "resposta": "Descanse, pois o processo de criação de personagem exige atenção plena. Amanhã, inicie pelo capítulo Criar um personagem para definir sua Origem, Caminho e Trilha.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 26,
+  "resposta": "Não há registro sobre esse nome no livro. Se ele é relevante para o desenrolar da sua história, a informação pertence exclusivamente à sua mesa.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 27,
+  "resposta": "A Restrição Celestial é o estado de nascer sem qualquer energia amaldiçoada. Para a tradição jujutsu, é uma anomalia tratada como ferramenta, enquanto a Rhine Lab a encara como o estado ideal que buscam alcançar através de procedimentos.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Restrição Celestial"
+  ]
+ },
+ {
+  "id": 28,
+  "resposta": "A acusação de covardia é a tese da Rhine Lab, que vê na manutenção do Equilíbrio uma recusa em resolver a raiz do problema. A Escola Jujutsu, por outro lado, sustenta que o Equilíbrio é a única forma de evitar o caos absoluto.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Escola Jujutsu"
+  ]
+ },
+ {
+  "id": 29,
+  "resposta": "O Equilíbrio é a doutrina da Escola Jujutsu de manter a energia amaldiçoada do mundo em uma faixa aceitável, nem alta nem baixa demais. Para essa instituição, qualquer vitória definitiva seria uma catástrofe, pois o objetivo não é vencer, mas gerir a existência dessa energia.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Equilíbrio"
+  ]
+ },
+ {
+  "id": 30,
+  "resposta": "Pode, desde que o conceito se alinhe às capacidades da facção e à técnica amaldiçoada, que é o poder com funcionamento próprio que sustenta suas aplicações. Para começar a ficha, siga as instruções contidas no capítulo Criar um personagem.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Rhine Lab",
+   "Técnica amaldiçoada"
+  ]
+ },
+ {
+  "id": 31,
+  "resposta": "O registro não define moralidade, apenas os fatos da eliminação de Winter Scar pela Escola para evitar uma catástrofe urbana. Para a Escola, ela era uma ameaça inevitável, enquanto a Rhine a utiliza como exemplo da falência do sistema de Equilíbrio.",
+  "ativadas": [
+   "Mundo: premissa",
+   "FrostNova / Winter Scar"
+  ]
+ },
+ {
+  "id": 32,
+  "resposta": "Estou aqui. O que precisa?",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 33,
+  "resposta": "O registro não estabelece um Caminho como sendo o melhor para iniciantes, pois isso depende da estratégia de cada pessoa. Para iniciar a montagem da ficha, consulte o capítulo Criar um personagem no livro.",
+  "ativadas": [
+   "Mundo: premissa",
+   "Caminho"
+  ]
+ },
+ {
+  "id": 34,
+  "resposta": "Lidar com falhas acadêmicas é frustrante, mas o registro do mundo nada diz sobre o seu desempenho fora destas fronteiras. Tire um tempo para processar o ocorrido e depois retome suas responsabilidades.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 35,
+  "resposta": "Recupere a versão anterior, caso tenha feito backup, e se não houver, comece a montar uma nova seguindo o capítulo Criar um personagem. O prejuízo técnico é inevitável se a perda foi completa.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 36,
+  "resposta": "Se você não está em condições de jogar, a melhor decisão é se retirar da mesa e descansar. A vida fora do registro exige prioridade.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 37,
+  "resposta": "A minha capacidade de sentir não altera a precisão do registro que apresento. Se quer discutir a natureza da minha existência, está no lugar errado.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ },
+ {
+  "id": 38,
+  "resposta": "Se a comunicação entre vocês falhou, o melhor a fazer é expor a situação diretamente ao mestre. Resolver impasses de mesa depende de um consenso que só os presentes podem alcançar.",
+  "ativadas": [
+   "Mundo: premissa"
+  ]
+ }
+]

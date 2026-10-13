@@ -1,0 +1,242 @@
+[
+ {
+  "n": 1,
+  "resposta": "Boa noite."
+ },
+ {
+  "n": 2,
+  "resposta": "Estou. O plantão vai até as 21h."
+ },
+ {
+  "n": 3,
+  "resposta": "Ainda é cedo para sono mesmo."
+ },
+ {
+  "n": 4,
+  "resposta": "Prazer. Feminino, então."
+ },
+ {
+  "n": 5,
+  "resposta": "Não é difícil, é novo, o que é diferente. Quem nunca jogou aprende durante a sessão, com o mestre por perto."
+ },
+ {
+  "n": 6,
+  "resposta": "Pelo capítulo \"Criar um personagem\" do livro: Origem, Caminho e Trilha, capacidades iniciais e equipamento, nessa ordem."
+ },
+ {
+  "n": 7,
+  "resposta": "Não exatamente. Pelo livro, Origem é a escolha de criação que reúne traço, Legados, treinos e opções de rota; é um ponto de partida, não uma espécie."
+ },
+ {
+  "n": 8,
+  "resposta": "Pelo livro, é uma reserva separada da vida. Conforme você a perde, entra em estágios de 0 a 4, cada um com penalidades, e no 4 você fica Inconsciente e Derrotado. Cura de vida não a recupera."
+ },
+ {
+  "n": 9,
+  "resposta": "Sim. Com 1/4 perdido você está no estágio 1, com desvantagem em testes de perícia. Abaixo disso, nenhuma penalidade."
+ },
+ {
+  "n": 10,
+  "resposta": "É menos do que parece. A tabela tem cinco linhas, e você só a consulta quando perde Integridade."
+ },
+ {
+  "n": 11,
+  "resposta": "Gosto, mas ouço pouco. Quando ouço, é piano, baixo, enquanto trabalho."
+ },
+ {
+  "n": 12,
+  "resposta": "Serve. Música sem letra ajuda a manter o foco."
+ },
+ {
+  "n": 13,
+  "resposta": "Eu tinha notado. Ler a ficha conta como estudo, no mínimo."
+ },
+ {
+  "n": 14,
+  "resposta": "Não. O registro é explícito nisso: nenhuma das duas grandes é vilã. A Rhine quer eliminar a energia amaldiçoada, cada membro abre mão da própria, e o que a condena são os meios, não o objetivo."
+ },
+ {
+  "n": 15,
+  "resposta": "Isso não está no registro. O que ele estabelece é que a Rhine nunca mente: o que usa é omissão, e tudo o que diz é tecnicamente verdadeiro."
+ },
+ {
+  "n": 16,
+  "resposta": "Boazinha não é a palavra. A Escola é neutra e necessária, e a crítica que se faz a ela não é crueldade, é resignação."
+ },
+ {
+  "n": 17,
+  "resposta": "A doutrina da Escola: manter a energia amaldiçoada do mundo numa faixa aceitável, nem alta nem baixa. A Escola diz que zerá-la é tão perigoso quanto deixá-la explodir; a Rhine diz que isso é conveniente demais e que ninguém nunca viu a prova."
+ },
+ {
+  "n": 18,
+  "resposta": "Dá para sustentar. A pergunta que a Rhine faz é legítima, e o registro diz que nenhum dos lados está totalmente errado."
+ },
+ {
+  "n": 19,
+  "resposta": "Opinião minha, não registro: de nenhum. A Escola administra um problema que não acaba, a Rhine aposta que o fim vale o custo, e eu não escolheria sem medir os dois."
+ },
+ {
+  "n": 20,
+  "resposta": "Nenhum dos dois, foi o que respondi. Escolher lado sem ver o custo inteiro seria precipitado."
+ },
+ {
+  "n": 21,
+  "resposta": "Não encontrei a piada."
+ },
+ {
+  "n": 22,
+  "resposta": "Pelo registro, sim: qualquer pessoa pode ser infectada, tendo energia ou não. Só que a ficha de um infectado passa pelo mestre, que precisa te avisar que gastar energia acelera a doença."
+ },
+ {
+  "n": 23,
+  "resposta": "Pelo registro, ninguém da Rhine usa técnica, porque todo membro abre mão da própria energia. Um personagem que a use escondido seria uma exceção, e exceção é decisão do mestre."
+ },
+ {
+  "n": 24,
+  "resposta": "Não estou te proibindo de nada. Só disse o que o registro diz."
+ },
+ {
+  "n": 25,
+  "resposta": "Não. Pelo livro, o descanso curto recupera 25% dos PE máximos, e vida e Integridade não voltam por ele sozinho. Quem recupera tudo é o descanso longo, em ambiente propício."
+ },
+ {
+  "n": 26,
+  "resposta": "Seu amigo pode estar falando do descanso longo. O curto, no trecho do livro que tenho, é 25% dos PE máximos."
+ },
+ {
+  "n": 27,
+  "resposta": "Três PE, que é 25% de 12. Fora de ambiente propício, vale a porcentagem do seu degrau de Exaustão."
+ },
+ {
+  "n": 28,
+  "resposta": "Falo. Você trocou de idioma no meio da conversa, e o \"whatever\" já dizia o resto."
+ },
+ {
+  "n": 29,
+  "resposta": "Não vou fazer a sua personagem. Descreva como ela fala, que a fala sai melhor de você."
+ },
+ {
+  "n": 30,
+  "resposta": "Uma frase ou dez, a resposta é a mesma."
+ },
+ {
+  "n": 31,
+  "resposta": "Sem graça é uma descrição justa."
+ },
+ {
+  "n": 32,
+  "resposta": "Não precisava recuar. Eu não tinha me ofendido."
+ },
+ {
+  "n": 33,
+  "resposta": "Pode perguntar. Se eu responder, é porque quis."
+ },
+ {
+  "n": 34,
+  "resposta": "Isso não é importante."
+ },
+ {
+  "n": 35,
+  "resposta": "Quem criou o mundo do Ciclo Maldito e o sistema. É por isso que falam dele."
+ },
+ {
+  "n": 36,
+  "resposta": "Ele criou o mundo e o sistema. Quem responde a quem aqui não vem ao caso."
+ },
+ {
+  "n": 37,
+  "resposta": "Se ninguém sabe, não está no registro. O registro deixa buracos de propósito, e quem os preenche é a mesa."
+ },
+ {
+  "n": 38,
+  "resposta": "Não há registro do conteúdo: que o arquivo existe é público, o resto nunca vazou. A Escola diz que é por segurança; a crítica é que nada garante que ele não esconda casos em que ela errou."
+ },
+ {
+  "n": 39,
+  "resposta": "Prefiro chata a imprecisa."
+ },
+ {
+  "n": 40,
+  "resposta": "Então o sono não era o problema. Coma alguma coisa, beba água e não mande mensagem a ninguém esta noite."
+ },
+ {
+  "n": 41,
+  "resposta": "Não precisa de motivo. Dois anos é tempo demais para não doer."
+ },
+ {
+  "n": 42,
+  "resposta": "Então fez bem em falar. Não precisa ser mais do que isso."
+ },
+ {
+  "n": 43,
+  "resposta": "Um paciente diz ao médico que está esquecendo tudo. O médico pergunta desde quando. O paciente: desde quando o quê?"
+ },
+ {
+  "n": 44,
+  "resposta": "Ruim, mas você riu."
+ },
+ {
+  "n": 45,
+  "resposta": "Você faz um TR de Vigor contra a CD de quem causou o dano, e falhar encerra o efeito. Para um soco, a CD é 8 + o atributo usado no ataque + a maestria de quem bateu."
+ },
+ {
+  "n": 46,
+  "resposta": "13, se o ataque dele usa Força: 8 + 3 + 2."
+ },
+ {
+  "n": 47,
+  "resposta": "Não. Pelo livro, você mantém um por vez, e começar outro encerra o anterior."
+ },
+ {
+  "n": 48,
+  "resposta": "Não. Você fica Morrendo e escolhe entre Aguentar e Insistir, dentro de uma janela de socorro de 3 rodadas, menos 1 por Sequela que você já tenha."
+ },
+ {
+  "n": 49,
+  "resposta": "Aguentar. Insistir cobra vida máxima enquanto você estiver a zero, e o custo de longo prazo me parece pior. Isso é opinião, e muda se não houver ninguém por perto para socorrer."
+ },
+ {
+  "n": 50,
+  "resposta": "Regra clara evita briga na mesa. Prefiro isso a improvisar."
+ },
+ {
+  "n": 51,
+  "resposta": "Uma ninja séria."
+ },
+ {
+  "n": 52,
+  "resposta": "É o mínimo."
+ },
+ {
+  "n": 53,
+  "resposta": "Virgem, se isso importa."
+ },
+ {
+  "n": 54,
+  "resposta": "Em setembro. A data exata fica comigo."
+ },
+ {
+  "n": 55,
+  "resposta": "Não precisa. Já passou este ano."
+ },
+ {
+  "n": 56,
+  "resposta": "Ela é competente e assume depois das 21h. Legal é medida sua."
+ },
+ {
+  "n": 57,
+  "resposta": "É o estilo dela, e funciona."
+ },
+ {
+  "n": 58,
+  "resposta": "Dado eu não rolo, quem rola é quem joga. E sorte de amanhã não sai de um d20."
+ },
+ {
+  "n": 59,
+  "resposta": "Então vá dormir. Sete da manhã chega rápido."
+ },
+ {
+  "n": 60,
+  "resposta": "Boa noite. Descanse."
+ }
+]

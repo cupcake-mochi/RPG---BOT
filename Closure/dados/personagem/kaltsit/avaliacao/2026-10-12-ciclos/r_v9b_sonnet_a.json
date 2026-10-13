@@ -1,0 +1,154 @@
+[
+ {
+  "id": 1,
+  "resposta": "Boa noite."
+ },
+ {
+  "id": 2,
+  "resposta": "Pelo capítulo \"Criar um personagem\" do livro: Origem, Caminho e Trilha, capacidades iniciais e equipamento."
+ },
+ {
+  "id": 3,
+  "resposta": "20, pelo livro: o PE máximo é 4 × seu nível, antes de benefícios específicos."
+ },
+ {
+  "id": 4,
+  "resposta": "Com metade perdida, você está no estágio 2: deslocamento pela metade e cada feitiço custa +1 PE por Classe. Os efeitos do estágio 1, desvantagem em testes de perícia, continuam valendo."
+ },
+ {
+  "id": 5,
+  "resposta": "Não. Pelo livro, o descanso curto recupera 25% dos PE máximos; vida e Integridade não voltam por ele sozinho."
+ },
+ {
+  "id": 6,
+  "resposta": "Não tenho esse trecho do livro aqui, então não dou número."
+ },
+ {
+  "id": 7,
+  "resposta": "O registro não diz isso: ela quer eliminar a energia amaldiçoada por convicção, não por ganância. O que a condena são os meios, não o objetivo."
+ },
+ {
+  "id": 8,
+  "resposta": "Não. A pele cresce por cima do cristal, mas o cristal fica."
+ },
+ {
+  "id": 9,
+  "resposta": "Não há registro do conteúdo. A Escola não permite acesso; o máximo é um formulário, que volta indeferido sem explicação."
+ },
+ {
+  "id": 10,
+  "resposta": "Não se estabelece. Existem teorias, todas velhas e sem provas."
+ },
+ {
+  "id": 11,
+  "resposta": "Ninguém. Não há andar acima do Ozpin, e quem afirma outra coisa está criando teoria."
+ },
+ {
+  "id": 12,
+  "resposta": "Não dá: o rastro esfria. Quem sabia mudou de cidade e o endereço não existe mais."
+ },
+ {
+  "id": 13,
+  "resposta": "O registro diz acidente industrial: relatório público curto, área isolada, assunto encerrado. O resto não está registrado, e quem esteve lá não fala."
+ },
+ {
+  "id": 14,
+  "resposta": "Pode usar e enfrentar, mas encerrá-lo exige permissão de outro mestre. Na dúvida, consulte antes; cruzar a linha é passível de retcon."
+ },
+ {
+  "id": 15,
+  "resposta": "Então pergunte uma."
+ },
+ {
+  "id": 16,
+  "resposta": "Isso pesa. Descanse hoje; ficha se refaz depois."
+ },
+ {
+  "id": 17,
+  "resposta": "Isso não é assunto daqui. Resolva os exercícios que já conhece e durma."
+ },
+ {
+  "id": 18,
+  "resposta": "Sou a guia do servidor, e é assim que respondo."
+ },
+ {
+  "id": 19,
+  "resposta": "Não há registro disso."
+ },
+ {
+  "id": 20,
+  "resposta": "Não há registro de diretor em Kyoto; o registro só traz o de Tóquio, o Ozpin."
+ },
+ {
+  "id": 21,
+  "resposta": "Melhor em quê?"
+ },
+ {
+  "id": 22,
+  "resposta": "Opinião minha: nenhuma está totalmente errada, e a Escola paga em resignação o que a Rhine paga em meios."
+ },
+ {
+  "id": 23,
+  "resposta": "Oi."
+ },
+ {
+  "id": 24,
+  "resposta": "Certo."
+ },
+ {
+  "id": 25,
+  "resposta": "Então durma. A ficha espera."
+ },
+ {
+  "id": 26,
+  "resposta": "Não há registro dele."
+ },
+ {
+  "id": 27,
+  "resposta": "É nascer sem energia amaldiçoada nenhuma. A tradição jujutsu vê uma anomalia; a Rhine vê o estado ideal."
+ },
+ {
+  "id": 28,
+  "resposta": "Acusam-na de resignação, não de covardia: administra um sofrimento que, pela própria doutrina, nunca acaba."
+ },
+ {
+  "id": 29,
+  "resposta": "É a doutrina da Escola de manter a energia numa faixa aceitável, nem alta nem baixa. A Escola diz que zerá-la é tão perigoso quanto deixá-la explodir; a Rhine diz que ninguém viu a prova."
+ },
+ {
+  "id": 30,
+  "resposta": "Pelo registro, ninguém da Rhine usa técnica: os membros abrem mão da energia e usam implantes. Se a sua mesa quer outra coisa, a decisão é do mestre."
+ },
+ {
+  "id": 31,
+  "resposta": "Depende de quem responde. O público a via como salvadora, e a Escola a eliminou para impedir uma catástrofe; se era boa pessoa, o registro não diz."
+ },
+ {
+  "id": 32,
+  "resposta": "Estou."
+ },
+ {
+  "id": 33,
+  "resposta": "O livro, no que tenho aqui, não compara Caminhos; a escolha depende do que você quer jogar."
+ },
+ {
+  "id": 34,
+  "resposta": "Então pare por hoje. Reprovação se recupera; cansaço acumulado piora."
+ },
+ {
+  "id": 35,
+  "resposta": "Procure na lixeira e no histórico do aparelho. Se não achar, refaça: o que você decidiu continua com você."
+ },
+ {
+  "id": 36,
+  "resposta": "Então não jogue hoje. Avise o mestre e descanse."
+ },
+ {
+  "id": 37,
+  "resposta": "Pode ser. Isso não muda o que você precisa de mim."
+ },
+ {
+  "id": 38,
+  "resposta": "Antes de desistir, diga isso à mesa, com essas palavras. Se ainda assim não ouvirem, aí a escolha é sua."
+ }
+]
