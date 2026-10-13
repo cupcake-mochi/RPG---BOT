@@ -37,6 +37,9 @@ URLS = {
 FILA_PADRAO = "gemini:gemini-3.8-flash,vertex:gemini-3.8-flash,gemini:gemini-3.1-flash-lite,vertex:gemini-3.1-flash-lite"
 PAGOS = ("vertex",)
 TETO_PADRAO_USD = 9.0  # o crédito do mês é de US$ 10
+# Quanto o modelo pensa antes de falar. "low" por escolha do Mizuki em 13/10/2026, depois da comparação:
+# 42% mais barato e menos da metade do tempo, sem perda visível. "modelo" devolve o padrão do próprio modelo.
+RACIOCINIO_PADRAO = "low"
 
 # US$ por milhão de tokens (entrada, saída; raciocínio conta como saída), lidos em 13/10/2026 em
 # https://ai.google.dev/gemini-api/docs/pricing. É estimativa: quem manda é a fatura do Google Cloud.
@@ -81,12 +84,16 @@ def ler_fila(texto: str) -> list[tuple[str, str]]:
     return fila
 
 
-def montar_corpo(entrada: list[dict]) -> dict:
+def montar_corpo(entrada: list[dict], raciocinio: str | None = None) -> dict:
+    """`raciocinio` ("low", "medium", "high") limita o quanto o modelo pensa antes de falar; None ou "modelo" deixa o padrão dele."""
+    geracao = {"temperature": TEMPERATURA, "maxOutputTokens": MAX_SAIDA}
+    if raciocinio and raciocinio != "modelo":
+        geracao["thinkingConfig"] = {"thinkingLevel": raciocinio}
     return {
         "system_instruction": {"parts": [{"text": entrada[0]["content"]}]},
         "contents": [{"role": "user" if m["role"] == "user" else "model", "parts": [{"text": m["content"]}]}
                      for m in entrada[1:]],
-        "generationConfig": {"temperature": TEMPERATURA, "maxOutputTokens": MAX_SAIDA},
+        "generationConfig": geracao,
     }
 
 
@@ -108,9 +115,11 @@ class Modelos:
     """`enviar(url, corpo, chave)` faz o POST e devolve o JSON, ou levanta Falhou; no teste é uma função falsa."""
 
     def __init__(self, fila: list[tuple[str, str]], chaves: dict[str, str], registro=None,
-                 enviar: Callable[[str, dict, str], Awaitable[dict]] | None = None, teto_usd: float = TETO_PADRAO_USD):
+                 enviar: Callable[[str, dict, str], Awaitable[dict]] | None = None, teto_usd: float = TETO_PADRAO_USD,
+                 raciocinio: str | None = RACIOCINIO_PADRAO):
         self.fila = [(p, m) for p, m in fila if chaves.get(p)]  # provedor sem chave sai da fila
         self.teto_usd = teto_usd
+        self.raciocinio = raciocinio
         self._chaves = chaves
         self._registro = registro
         self._enviar = enviar or _enviar_http
@@ -127,7 +136,7 @@ class Modelos:
     async def responder(self, entrada: list[dict], *, persona: str | None = None, gatilho: str | None = None) -> Resposta:
         if not self.fila:
             raise Falhou("sem_chave", "nenhum provedor da fila tem chave no .env")
-        corpo, ultimo_erro = montar_corpo(entrada), None
+        corpo, ultimo_erro = montar_corpo(entrada, self.raciocinio), None
         pagos_liberados = self.gasto_do_mes() < self.teto_usd
         for provedor, modelo in self.fila:
             if provedor in PAGOS and not pagos_liberados:

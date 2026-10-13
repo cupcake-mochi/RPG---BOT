@@ -23,6 +23,14 @@ class Formato(unittest.TestCase):
         self.assertEqual([c["role"] for c in corpo["contents"]], ["user", "model", "user"])
         self.assertEqual(corpo["generationConfig"], {"temperature": 0.8, "maxOutputTokens": 2048})
 
+    def test_raciocinio_reduzido_entra_no_pedido_so_quando_pedido(self):
+        self.assertNotIn("thinkingConfig", montar_corpo(ENTRADA)["generationConfig"])
+        self.assertNotIn("thinkingConfig", montar_corpo(ENTRADA, "modelo")["generationConfig"])
+        self.assertEqual(montar_corpo(ENTRADA, "low")["generationConfig"]["thinkingConfig"], {"thinkingLevel": "low"})
+
+    def test_o_padrao_do_bot_e_raciocinio_reduzido(self):
+        self.assertEqual(Modelos([], {}).raciocinio, "low")
+
     def test_le_texto_sem_o_raciocinio_e_soma_os_tokens(self):
         self.assertEqual(ler_resposta(BOA), ("Integridade é...", False, 8000, 150))
 

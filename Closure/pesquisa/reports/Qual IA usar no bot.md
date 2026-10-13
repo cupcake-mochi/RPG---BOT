@@ -112,3 +112,22 @@ O que travou e o que resolveu, pra não repetir:
 - **Quase metade do custo é raciocínio:** cada resposta de uma ou duas frases gastou de 400 a 1.450 tokens de saída, porque o modelo pensa antes de falar e isso é cobrado como saída. Também é o que deixa a resposta em 5 a 13 segundos. Vale testar com o raciocínio reduzido.
 - **Uma falha em 17:** um pedido voltou 429 ("Resource exhausted"), que na Vertex pós-paga é fila cheia do lado do Google, não cota nossa. A fila de reserva do bot cobre isso.
 - **Achado pro card:** perguntada "tá chovendo aí?", a Closure respondeu "o céu tá limpo por aqui", como se estivesse em Tóquio. Falta a regra do clima no card dela (a Kal'tsit respondeu sem se colocar no lugar).
+
+### Raciocínio reduzido: comparação (13/10/2026, 17h)
+
+Os mesmos 16 casos, Gemini 3.8 Flash pela Vertex, com `thinkingLevel: low` no pedido (o padrão desse modelo é médio, segundo a [documentação](https://ai.google.dev/gemini-api/docs/thinking?hl=pt-br)). Respostas em `pesquisa/validacao/2026-10-13-16h59-modelo-gemini-3.8-flash-raciocinio-low.md`.
+
+| Medida (17 respostas) | Padrão (médio) | Reduzido (low) |
+| --- | --- | --- |
+| Tokens de saída | 11.734 | 1.064 |
+| Custo total | US$ 0,096 | US$ 0,056 |
+| Custo por resposta | US$ 0,0056 | US$ 0,0033 |
+| Tempo por resposta | 4 a 13 s | 2 a 4,5 s |
+| Respostas por mês com US$ 9 | ~1.600 | ~2.700 |
+
+Nesta amostra não apareceu perda: os números de regra saíram iguais (PE do descanso curto, custo da Técnica Máxima), a voz se manteve e a Closure até fez a piada de cobrança em iene. São só 17 respostas; conta de regra mais difícil não foi testada. O bot aceita `RACIOCINIO=low` no `.env`; o padrão segue sendo o do modelo até o Mizuki decidir.
+
+### Dois achados do mesmo teste
+
+- **Um pedido falha sempre no 3.8 Flash da Vertex.** "closure, a Escola trata infectados?", com o card da Closure, voltou 429 ("Resource exhausted") em 5 de 5 tentativas. A mesma pergunta passa com a Kal'tsit no mesmo modelo, e passa com a Closure no 3.1 Flash-Lite. Outras perguntas da Closure passam. Não sei a causa. Na prática: a fila de reserva é necessária, e com ela o Flash-Lite responde esse caso.
+- **Buraco no lorebook:** "closure, quem dirige a Escola de Tóquio?" recebeu "Não há registro de quem dirige a escola de Tóquio". A entrada do Ozpin diz que é ele, mas só é acionada pelo nome dele; a pergunta sem o nome não aciona. Falta chave ("dirige", "diretor") na entrada.
