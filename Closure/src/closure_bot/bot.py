@@ -41,12 +41,11 @@ class ClosureBot(commands.Bot):
     async def setup_hook(self) -> None:
         for modulo in MODULOS:
             await self.load_extension(f"closure_bot.cogs.{modulo}")
+        # O registro geral troca, em todo servidor, a lista de comandos que o bot antigo deixou no mesmo aplicativo.
+        await self.tree.sync()
         if self.config.guild_id:
-            servidor = discord.Object(id=self.config.guild_id)
-            self.tree.copy_global_to(guild=servidor)
-            await self.tree.sync(guild=servidor)
-        else:
-            await self.tree.sync()
+            # Comando registrado só num servidor não sai com o registro geral e apareceria em dobro: limpa os desse.
+            await self.tree.sync(guild=discord.Object(id=self.config.guild_id))
 
     async def on_ready(self) -> None:
         log.info("no ar como %s, em %d servidor(es)", self.user, len(self.guilds))

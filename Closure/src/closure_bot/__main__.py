@@ -31,7 +31,7 @@ def conferir() -> int:
     print("Modelos: ", ", ".join(f"{p}:{m}" for p, m in modelos.fila) or "nenhum (faltam GEMINI_API_KEY e VERTEX_API_KEY no .env)")
     print("Gasto:   ", f"US$ {modelos.gasto_do_mes():.4f} estimados neste mês nos provedores pagos; teto de US$ {modelos.teto_usd:.2f}")
     print("Token:   ", "definido" if config.token else "FALTA (DISCORD_TOKEN no .env)")
-    print("Servidor de teste:", config.guild_id or "não definido (comandos demoram até 1 h pra aparecer)")
+    print("Servidor principal:", config.guild_id or "não definido")
     print("Dono:    ", config.dono_id or "não definido (/teste_webhook fica bloqueado)")
     print("Avatares:", ", ".join(f"{k}: {'ok' if v else 'falta'}" for k, v in config.avatares.items()))
     print("Painéis: ", f"{len(registro.paineis())} servidor(es) com painel diário de clima (liga com /clima_canal)")
