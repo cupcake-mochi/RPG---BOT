@@ -87,5 +87,27 @@ class DoisMotores(unittest.TestCase):
         self.assertEqual(site_prompt.montar("clo", "oi closure", nome="rafa", hora=(22, 10), motor="quickjs"), limpo)
 
 
+RAIZ = Path(__file__).resolve().parents[2]
+
+
+@unittest.skipUnless(MOTORES and (RAIZ / "dados" / "sistema" / "livro.jsonl").exists(), "sem motor ou sem o livro sincronizado")
+class PaginaMontadaAqui(unittest.TestCase):
+    def test_atualizar_monta_a_pagina_com_os_cards_desta_pasta(self):
+        import json
+        import tempfile
+
+        destino = Path(tempfile.mkdtemp())
+        site_prompt.atualizar(destino=destino)
+        self.assertEqual([p.name for p in destino.iterdir()], ["nucleo.js"])
+        guardado, site_prompt.CACHE, site_prompt._funcao = site_prompt.CACHE, destino, None
+        try:
+            versoes = site_prompt.montar("clo", "oi closure", nome="rafa", hora=(22, 10))["versoes"]
+        finally:
+            site_prompt.CACHE, site_prompt._funcao = guardado, None
+        for pers in ("closure", "kaltsit"):
+            card = json.loads((RAIZ / "dados" / "personagem" / pers / "card.json").read_text(encoding="utf-8"))
+            self.assertEqual(versoes[pers], "v" + card["data"]["character_version"])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,7 +1,7 @@
 """Monta o prompt com as mesmas peças do site de teste: prompts dos cards, lorebook, livro e a busca.
 
-A página do site (ramo site-teste do RPG---BOT, site/publico/index.html) traz tudo embutido e é o que os
-amigos testam. Em vez de copiar texto de card ou reescrever a busca, isto roda a lógica da própria página
+A página de teste (ferramentas/pagina_teste) traz tudo embutido: cards, lorebook, livro e a busca. Em vez de
+copiar texto de card ou reescrever a busca, isto roda a lógica da própria página
 e devolve a conversa pronta pra mandar ao modelo. Quando um card ou a busca mudam lá, basta baixar a página
 de novo.
 
@@ -15,7 +15,8 @@ acentuada entre colchetes e a flag i (/anivers[aá]rio/i não casa com "anivers�
 
     python3 site_prompt.py --conferir       compara os dois motores numa bateria de pedidos (precisa dos dois)
 
-    python3 site_prompt.py --atualizar      baixa a página e mostra as versões
+    python3 site_prompt.py --atualizar      monta a página com os cards desta pasta e mostra as versões
+    python3 site_prompt.py --atualizar --do-site    baixa a página publicada no site de teste, em vez de montar
     python3 site_prompt.py clo "closure, o que é Integridade?"
 
 A página baixada fica em src/var/site/, fora do git.
@@ -40,15 +41,24 @@ PAGINA_NO_GH = "repos/cupcake-mochi/RPG---BOT/contents/site/publico/index.html?r
 FIM_DO_NUCLEO = "// ---------- tela ----------"
 
 
-def atualizar(arquivo: Path | None = None, destino: Path | None = None) -> Path:
+def atualizar(arquivo: Path | None = None, destino: Path | None = None, do_site: bool = False) -> Path:
     """Separa o núcleo da página (dados e lógica, sem a parte que desenha a tela) e guarda em `destino` (padrão: o cache do bot).
 
-    Sem `arquivo`, baixa a página publicada. Com ele, usa uma página montada aqui por ferramentas/pagina_teste/montar_pagina.py,
-    que é como se testa um card novo antes de publicar."""
+    A página é montada aqui mesmo, por ferramentas/pagina_teste/montar_pagina.py, com os cards, o lorebook e o livro
+    desta pasta: é a fonte do bot desde 13/10/2026, quando o Mizuki dispensou o site de teste. `arquivo` usa uma página
+    já montada. `do_site` baixa a que está publicada no ramo site-teste, que pode estar atrás dos cards daqui."""
     destino = destino or CACHE
     destino.mkdir(parents=True, exist_ok=True)
     if arquivo:
         html = Path(arquivo).read_text(encoding="utf-8")
+    elif not do_site:
+        montada = destino / "pagina.html"
+        saida = subprocess.run([sys.executable, str(AQUI.parent / "pagina_teste" / "montar_pagina.py"), str(montada)],
+                               capture_output=True, text=True, timeout=120)
+        if saida.returncode != 0:
+            raise RuntimeError("não deu pra montar a página aqui: " + saida.stderr[-400:])
+        html = montada.read_text(encoding="utf-8")
+        montada.unlink()
     else:
         try:
             with urllib.request.urlopen(PAGINA, timeout=60) as resposta:
@@ -170,7 +180,7 @@ def montar(pers: str, msg: str, *, nome: str = "", pronomes: str = "", turnos: l
 
 if __name__ == "__main__":
     if "--atualizar" in sys.argv:
-        atualizar()
+        atualizar(do_site="--do-site" in sys.argv)
         print("motores:", motores(), "| versões:", montar("clo", "oi")["versoes"])
     if "--conferir" in sys.argv or ("--atualizar" in sys.argv and len(motores()) == 2):
         diferentes = conferir_motores()
