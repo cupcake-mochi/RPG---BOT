@@ -2,4 +2,4 @@ discord.py>=2.4,<3
 tzdata
 cryptography>=41
 quickjs-ng==0.17.0.1
-openpyxl>=3.1  # leitor do .xlsx da ficha (cogs/ficha.py, desligado na fase 3)
+openpyxl>=3.1  # leitor do .xlsx da ficha (cogs/ficha.py)

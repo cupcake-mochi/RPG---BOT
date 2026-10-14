@@ -178,10 +178,69 @@ class Corretor(unittest.TestCase):
             nomes = [p for p in conferir(_adulterada("kaori", "origem", valor), self.ref).problemas if p.regra == "nome"]
             self.assertEqual(nomes, [], valor)
 
-    def test_rota_sem_energia_sem_uniforme_fica_sem_conta_de_defesa(self):
+    def _com(self, nome, **trocas):
+        """Ficha de teste com várias chaves trocadas à mão."""
+        livro = openpyxl.load_workbook(DADOS / f"ficha_analise_{nome}.xlsx")
+        for linha in livro["ANALISE"].iter_rows(min_row=2, max_col=2):
+            chave = linha[0].value.replace(".", "__")
+            if chave in trocas:
+                linha[1].value = trocas[chave]
+        memoria = io.BytesIO()
+        livro.save(memoria)
+        return de_xlsx(memoria.getvalue())
+
+    def test_treino_extra_da_origem_nao_reprova_e_vai_pro_mestre(self):
+        # Encarnado com Duas Vidas: um treino a mais pelo Conhecimento Reavivado, que a ficha conta como "1 a mais"
+        ficha = self._com("kaori", origem="Encarnado", origem__marcante="Duas Vidas",
+                          aviso__escolhas_de_pericia="Marcou 1 a mais: tire uma perícia, um ofício ou uma especialização",
+                          aviso__pericias_disponiveis="1 a mais")
+        resultado = conferir(ficha, self.ref)
+        self.assertEqual([p.campo for p in resultado.problemas if p.regra == "aviso"], [])
+        self.assertEqual({p.campo for p in resultado.notas if p.regra == "origem"},
+                         {"aviso.escolhas_de_pericia", "aviso.pericias_disponiveis"})
+        dois = self._com("kaori", origem="Encarnado", origem__marcante="Duas Vidas", aviso__pericias_disponiveis="2 a mais")
+        self.assertIn("aviso.pericias_disponiveis", [p.campo for p in conferir(dois, self.ref).problemas])
+        # Especialidade Antiga: a especialização grátis só a partir do nível 10
+        nivel9 = self._com("kaori", nivel="9", origem__menor_1="Especialidade Antiga", aviso__pericias_disponiveis="1 a mais")
+        self.assertIn("aviso.pericias_disponiveis", [p.campo for p in conferir(nivel9, self.ref).problemas])
+        nivel10 = self._com("kaori", nivel="10", origem__menor_1="Especialidade Antiga", aviso__pericias_disponiveis="1 a mais")
+        self.assertNotIn("aviso.pericias_disponiveis", [p.campo for p in conferir(nivel10, self.ref).problemas])
+
+    def test_pe_da_origem_que_a_ficha_nao_soma_pede_o_buff(self):
+        # Núcleo Dependente, nível 2 e Essência 1: +1 PE (Essência, sem marco)
+        sem_buff = conferir(self._com("kaori", origem__menor_1="Núcleo Dependente"), self.ref)
+        self.assertEqual([(p.campo, p.esperado) for p in sem_buff.pendencias if p.regra == "origem"],
+                         [("energia_max", "+1 de Núcleo Dependente no Buff de PE")])
+        com_buff = conferir(self._com("kaori", origem__menor_1="Núcleo Dependente", buff__energia="1", energia_max="9"), self.ref)
+        self.assertEqual([p for p in com_buff.pendencias if p.regra == "origem"], [])
+        self.assertEqual(_contas(com_buff), {})
+
+    def test_escudo_nao_conta_com_arma_de_duas_maos(self):
+        # Incursor com escudo Médio: proteção 5 e Defesa 18; com uma Besta na mão principal, o escudo sai: 3 e 16
+        com_besta = self._com("refino", em_uso__principal="Besta", protecao="3", defesa="16")
+        self.assertEqual(_contas(conferir(com_besta, self.ref)), {})
+        self.assertEqual(_contas(conferir(self._com("refino", protecao="3", defesa="16"), self.ref)),
+                         {"protecao": ("5", "3"), "defesa": ("18", "16")})
+        self.assertIn("Kanabō", self.ref.duas_maos)
+
+    def test_rota_sem_energia_confere_a_defesa_pela_lapidacao(self):
+        # Defesa sem Armadura: 1 + Lapidação/3, a mesma conta e progressão do Refino; Kaori sem uniforme fica com 13
         resultado = conferir(_adulterada("kaori", "origem", "Restrição Celestial · Sem Energia"), self.ref)
-        self.assertNotIn("defesa", _contas(resultado))
-        self.assertTrue(any("Lapidação" in x for x in resultado.nao_conferido))
+        self.assertEqual(_contas(resultado), {})
+        self.assertIn("Defesa 13", resultado.conferidos)
+
+    def test_restricao_corporal_defesa_zero_e_vida_pela_metade(self):
+        debilitado = conferir(self._com("kaori", origem="Restrição Celestial · Restrição corporal",
+                                        origem__marcante="Corpo Debilitado"), self.ref)
+        self.assertEqual([(p.campo, p.encontrado) for p in debilitado.pendencias if p.regra == "origem"], [("defesa", "13")])
+        self.assertNotIn("defesa", _contas(debilitado))
+        ajustada = conferir(self._com("kaori", origem="Restrição Celestial · Restrição corporal", origem__marcante="Corpo Debilitado",
+                                      defesa="0"), self.ref)
+        self.assertIn("Defesa 0 (Corpo Debilitado)", ajustada.conferidos)
+        quebradico = conferir(self._com("kaori", origem="Restrição Celestial · Restrição corporal",
+                                        origem__marcante="Corpo Quebradiço", vida_max="11", defesa="0"), self.ref)
+        self.assertIn("Vida 11 (metade, Corpo Quebradiço)", quebradico.conferidos)  # 23 // 2
+        self.assertEqual(_contas(quebradico), {})
 
 
 class Avisos(unittest.TestCase):
@@ -191,9 +250,12 @@ class Avisos(unittest.TestCase):
             ("aviso.pontos_disponiveis", "3 a mais"): "erro", ("aviso.pontos_disponiveis", "Um atributo passou de 6"): "erro",
             ("aviso.pontos_disponiveis", "Na criação, nenhum acima de 3"): "erro", ("aviso.grau", "Pede Grau 3"): "erro",
             ("feitico.3.erros", "faltam 2 pontos"): "erro", ("invocacao.1.pontos_acima", "2"): "erro",
-            ("aviso.pontos_disponiveis", "2 de 11"): "nota", ("aviso.pontos_disponiveis", "0 de 9"): None,
-            ("aviso.pericias_disponiveis", "9 de 9"): None, ("aviso.forca_v", "Falta Força: 0 de 4"): "nota",
-            ("aviso.treino", "Sem treino: desvantagem"): "nota", ("feitico.3.avisos", "1 ponto sem Melhoria para pagar"): "nota",
+            ("aviso.pontos_disponiveis", "2 de 11"): "pendente", ("aviso.pontos_disponiveis", "0 de 9"): None,
+            ("aviso.testes_disponiveis", "2 de 2"): "pendente", ("aviso.pericias_disponiveis", "9 de 9"): None,
+            ("aviso.forca_v", "Falta Força: 0 de 4"): "pendente", ("aviso.requisito", "Não cumprido"): "pendente",
+            ("aviso.treino", "Sem treino: desvantagem"): "pendente", ("aviso.selo", "Trava Selo de gesto"): "pendente",
+            ("aviso.pontos_disponiveis", "Especialização só no nível 10"): "erro",
+            ("feitico.3.avisos", "1 ponto sem Melhoria para pagar"): "nota",
             ("aviso.treino", "Treinada"): None, ("aviso.grau", "Liberado no Grau 4"): None, ("aviso.selo", "Sem escudo"): None,
             ("aviso.qualquer", "texto que a ficha ainda não tinha"): "nota", ("aviso.forca_s", "—"): None,
         }
@@ -214,17 +276,26 @@ class ConteudoCustom(unittest.TestCase):
 
 
 class Comando(unittest.IsolatedAsyncioTestCase):
-    async def test_desligado_nao_registra_e_o_cog_monta_quando_ligar(self):
-        from unittest.mock import AsyncMock, MagicMock
+    async def test_ligado_registra_e_desligado_nao(self):
+        from unittest.mock import AsyncMock, MagicMock, patch
         from closure_bot.cogs import ficha as modulo
-        self.assertFalse(modulo.LIGADO)
+        self.assertTrue(modulo.LIGADO)
         bot = MagicMock()
         bot.add_cog = AsyncMock()
-        await modulo.setup(bot)
-        bot.add_cog.assert_not_called()
         bot.config.dados = RAIZ / "dados"
-        cog = modulo.Ficha(bot)  # o que entraria se LIGADO fosse True
+        with patch.object(modulo, "LIGADO", False):
+            await modulo.setup(bot)
+        bot.add_cog.assert_not_called()
+        await modulo.setup(bot)
+        cog = bot.add_cog.call_args.args[0]
         self.assertEqual([c.name for c in cog.grupo.commands], ["analisar"])
+        # sem o livro no pacote, a correção não sobe e o resto do bot segue
+        quebrado = MagicMock()
+        quebrado.add_cog = AsyncMock()
+        quebrado.config.dados = Path(tempfile.mkdtemp())
+        with self.assertLogs("closure_bot.cogs.ficha", level="ERROR"):
+            await modulo.setup(quebrado)
+        quebrado.add_cog.assert_not_called()
 
     @unittest.skipIf(openpyxl is None, "openpyxl não instalado")
     def test_painel_diz_o_que_falta_o_que_bateu_e_quem_fala(self):
@@ -241,9 +312,12 @@ class Comando(unittest.IsolatedAsyncioTestCase):
         self.assertIn("feitiços e invocações", campos["⏳ Ainda não conferido"])
         self.assertIn("R51", embed.footer.text)
         cheia = painel(conferir(_ficha("revestimento"), ref), _ficha("revestimento"), closure)
-        mestre = {c.name: c.value for c in cheia.fields}["👀 Pro mestre conferir"]
-        self.assertIn("Buff/Debuff de defesa", mestre)
-        self.assertIn("**Pontos de atributo**: sobram 2 de 11", mestre)
+        campos_cheia = {c.name: c.value for c in cheia.fields}
+        self.assertIn("Buff/Debuff de defesa", campos_cheia["👀 Pro mestre conferir"])
+        falta = campos_cheia["⚠️ Falta ou pede atenção"]
+        for trecho in ("**Pontos de atributo**: faltam distribuir 2 de 11", "**Testes de Resistência**: faltam escolher 2 de 2",
+                       "**Força do uniforme**: Falta Força: 0 de 4"):
+            self.assertIn(trecho, falta)
         self.assertTrue(all(len(c.value) <= 1024 for c in cheia.fields))
 
 

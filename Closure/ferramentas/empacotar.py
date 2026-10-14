@@ -28,6 +28,9 @@ def arquivos(com_env: bool) -> list[tuple[Path, str]]:
                   if a.is_file() and "__pycache__" not in a.parts and a.suffix in (".py", ".js", ".webp", ".png", ".jpg")]
     lista.append((RAIZ / "src" / "var" / "site" / "nucleo.js", "src/var/site/nucleo.js"))
     lista.append((RAIZ / "dados" / "sistema" / "MANIFESTO.json", "dados/sistema/MANIFESTO.json"))
+    # a correção de ficha (cogs/ficha.py) lê o catálogo e o livro: Caminhos, Origens, uniformes, escudos e marcos
+    for nome in ("catalogos.json", "livro.jsonl"):
+        lista.append((RAIZ / "dados" / "sistema" / nome, f"dados/sistema/{nome}"))
     lista += [(c, str(c.relative_to(RAIZ))) for c in sorted((RAIZ / "dados" / "personagem").glob("*/card.json"))]
     if com_env:
         lista.append((RAIZ / ".env", ".env"))

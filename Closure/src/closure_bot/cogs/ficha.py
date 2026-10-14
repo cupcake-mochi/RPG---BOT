@@ -1,13 +1,14 @@
-"""Correção de ficha pela aba oculta ANALISE (fase 3 do docs/PLANEJAMENTO.md). Pronto e DESLIGADO.
+"""Correção de ficha pela aba oculta ANALISE (fase 3 do docs/PLANEJAMENTO.md). LIGADO desde 14/10/2026.
 
 `/ficha analisar` com o link da planilha aberta ou o .xlsx anexo: lê a aba (ficha_leitor.py), confere sem IA
-(ficha_corretor.py) e responde no canal com um painel: o que precisa corrigir, o que o mestre confere (Buff/Debuff e
-avisos que o livro permite), o que bateu e o que ainda não é conferido. A frase de abertura é fixa, uma por guia e
+(ficha_corretor.py) e responde no canal com um painel: o que precisa corrigir (reprova), o que falta ou pede atenção
+(sobra de pontos, TR por escolher, falta de Força: avisa sem reprovar), o que o mestre confere (Buff/Debuff e Origem
+que a ficha não calcula), o que bateu e o que ainda não é conferido. A frase de abertura é fixa, uma por guia e
 por veredito, com o nome e o avatar de quem está de plantão (o Mizuki, 14/10/2026: "na voz dela, no chat", com
 mensagem fixa se o modelo complicar). O bot nunca escreve na ficha.
 
-Fica desligado (LIGADO = False) até o Mizuki pedir: o setup não registra o comando no servidor. As regras de cada
-campanha e o registro dos aprovados ainda são só estrutura (ficha_corretor.RegrasDaCampanha e Aprovados).
+Com LIGADO = False o setup não registra o comando. As regras de cada campanha e o registro dos aprovados ainda são só
+estrutura (ficha_corretor.RegrasDaCampanha e Aprovados): por enquanto toda ficha é conferida pelo livro.
 """
 from __future__ import annotations
 
@@ -25,7 +26,7 @@ from ..plantao import CLOSURE, FUSO, KALTSIT, de_plantao
 
 log = logging.getLogger(__name__)
 
-LIGADO = False
+LIGADO = True  # ligado pelo Mizuki em 14/10/2026, depois do pente fino contra o livro e a ficha
 LIMITE_ANEXO = 10_000_000  # a ficha baixada tem uns 1,5 MB
 
 
@@ -68,8 +69,15 @@ def _linha(p: Problema) -> str:
         return f"**{_rotulo(p.campo)}**: falta {p.esperado.removeprefix('escolher ')}"
     if p.regra == "nome":
         return f"**{_rotulo(p.campo)}**: {p.encontrado} não é {p.esperado}"
+    if p.regra == "origem" and p.campo == "energia_max":
+        return f"**PE**: falta pôr {p.esperado.removeprefix('+')} (hoje o {p.encontrado})"
+    if p.regra == "origem" and p.campo in ("defesa", "vida_max"):
+        return f"**{_rotulo(p.campo)}**: está {p.encontrado}, mas {p.esperado}; ajuste com o Buff/Debuff"
+    if p.regra == "origem":
+        return f"**{_rotulo(p.campo)}**: {p.encontrado}; a Origem permite {p.esperado.removeprefix('até ')}"
     if re.fullmatch(r"\d+ de \d+", p.encontrado):  # pontos ou Testes de Resistência ainda por distribuir
-        return f"**{_rotulo(p.campo)}**: sobram {p.encontrado}"
+        verbo = "distribuir" if p.campo == "aviso.pontos_disponiveis" else "escolher"
+        return f"**{_rotulo(p.campo)}**: faltam {verbo} {p.encontrado}"
     return f"**{_rotulo(p.campo)}**: {p.encontrado}"
 
 
@@ -94,6 +102,8 @@ def painel(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: di
     embed.set_author(name=persona.nome, icon_url=persona.avatar_url or None)
     if resultado.problemas:
         embed.add_field(name="❌ Precisa corrigir", value=_campo([_linha(p) for p in resultado.problemas]), inline=False)
+    if resultado.pendencias:
+        embed.add_field(name="⚠️ Falta ou pede atenção", value=_campo([_linha(p) for p in resultado.pendencias]), inline=False)
     if resultado.notas:
         embed.add_field(name="👀 Pro mestre conferir", value=_campo([_linha(p) for p in resultado.notas]), inline=False)
     if resultado.conferidos:
@@ -139,5 +149,11 @@ class Ficha(commands.Cog):
 
 
 async def setup(bot: commands.Bot) -> None:
-    if LIGADO:
-        await bot.add_cog(Ficha(bot))
+    if not LIGADO:
+        return
+    try:
+        cog = Ficha(bot)
+    except (OSError, ValueError) as erro:  # livro ou catálogo faltando ou fora de forma: o resto do bot sobe igual
+        log.error("correção de ficha desligada: %s", erro)
+        return
+    await bot.add_cog(cog)

@@ -96,7 +96,7 @@ e testar o webhook no servidor.*
 *Começou em 14/10/2026, depois de a ficha ganhar a aba `ANALISE` (B47, fase 1). Feito: leitor
 (`src/closure_bot/ficha_leitor.py`, `.xlsx` e link), corretor das contas de vida, PE, Integridade, proteção e
 Defesa, dos nomes de Caminho, Trilha e Origem e dos avisos da ficha (`src/closure_bot/ficha_corretor.py`), estrutura
-das regras de campanha e do registro de custom aprovado, e o `/ficha analisar` com o painel de resposta, desligado. Falta: contas
+das regras de campanha e do registro de custom aprovado, e o `/ficha analisar` com o painel de resposta, ligado em 14/10. Falta: contas
 de feitiço e invocação, o cadastro de verdade e as 3 a 5 fichas reais.*
 
 - Leitor da aba oculta (`.xlsx` exportado; o openpyxl lê aba oculta).
