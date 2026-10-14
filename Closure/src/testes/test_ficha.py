@@ -358,7 +358,8 @@ class Avisos(unittest.TestCase):
             ("aviso.pontos_disponiveis", "2 de 11"): "pendente", ("aviso.pontos_disponiveis", "0 de 9"): None,
             ("aviso.testes_disponiveis", "2 de 2"): "pendente", ("aviso.pericias_disponiveis", "9 de 9"): None,
             ("aviso.forca_v", "Falta Força: 0 de 4"): "pendente", ("aviso.requisito", "Não cumprido"): "pendente",
-            ("aviso.treino", "Sem treino: desvantagem"): "pendente", ("aviso.selo", "Trava Selo de gesto"): "pendente",
+            ("aviso.treino", "Sem treino: desvantagem"): "pendente", ("aviso.selo", "Trava Selo de gesto"): None,
+            ("aviso.selo", "Não cumprido"): "pendente",
             ("aviso.pontos_disponiveis", "Especialização só no nível 10"): "erro",
             ("feitico.3.avisos", "1 ponto sem Melhoria para pagar"): "nota",
             ("aviso.treino", "Treinada"): None, ("aviso.grau", "Liberado no Grau 4"): None, ("aviso.selo", "Sem escudo"): None,
@@ -400,9 +401,12 @@ class Comando(unittest.IsolatedAsyncioTestCase):
         from closure_bot.cogs.ficha import painel
         ref = Referencias.do_livro(RAIZ / "dados")
         ficha = _com_campos("kaori", origem="Corpo Amaldiçoado", origem__menor_1="Núcleo Dependente",
-                            buff__energia=1, energia_max=9)
+                            buff__energia=1, energia_max=9, aviso__escolhas_de_pericia="Tudo escolhido",
+                            aviso__testes_disponiveis="0 de 2")
         persona = SimpleNamespace(chave="kaltsit", nome="Kal'tsit", avatar_url=None)
-        campos = {c.name: c.value for c in painel(conferir(ficha, ref), ficha, persona).fields}
+        embed = painel(conferir(ficha, ref), ficha, persona)
+        campos = {c.name: c.value for c in embed.fields}
+        self.assertEqual(embed.colour.value, 0xD4A017)  # aceita, mas com pendência de reserva inexistente
         self.assertIn("sem barra de Integridade (Núcleo Dependente)", campos["⚠️ Falta ou pede atenção"])
         self.assertNotIn("Integridade 26", campos["✅ Conferido e certo"])
 
@@ -435,15 +439,19 @@ class Comando(unittest.IsolatedAsyncioTestCase):
         ficha = _adulterada("kaori", "defesa", "15")
         closure = SimpleNamespace(chave="closure", nome="Closure", avatar_url=None)
         embed = painel(conferir(ficha, ref), ficha, closure, {"edicao_livro": "R51"})
+        self.assertEqual(embed.colour.value, 0xCC0102)  # erro mantém vermelho
         campos = {c.name: c.value for c in embed.fields}
         self.assertEqual((embed.title, embed.author.name, embed.description), ("Ficha de Kaori", "Closure", FALA["closure"]["reprovada"]))
         self.assertIn("**Defesa**: está 15, o certo é 13", campos["❌ Precisa corrigir"])
         self.assertIn("Vida 23", campos["✅ Conferido e certo"])
         self.assertIn("feitiços e invocações", campos["⏳ Ainda não conferido"])
         self.assertIn("R51", embed.footer.text)
+        limpa = _com_campos("kaori", aviso__escolhas_de_pericia="Tudo escolhido", aviso__testes_disponiveis="0 de 2")
+        self.assertEqual(painel(conferir(limpa, ref), limpa, closure).colour.value, 0x2E8B57)
         cheia = painel(conferir(_ficha("revestimento"), ref), _ficha("revestimento"), closure)
         campos_cheia = {c.name: c.value for c in cheia.fields}
         self.assertIn("Buff/Debuff de defesa", campos_cheia["👀 Pro mestre conferir"])
+        self.assertNotIn("Selo", "\n".join(campos_cheia.values()))
         falta = campos_cheia["⚠️ Falta ou pede atenção"]
         for trecho in ("**Pontos de atributo**: faltam distribuir 2 de 11", "**Testes de Resistência**: faltam escolher 2 de 2",
                        "**Força do uniforme**: Falta Força: 0 de 4"):

@@ -55,6 +55,11 @@ O bot passou a conferir parte das montagens independentemente dos avisos, com ex
 hostis nos testes locais. O que depende de dados ausentes fica declarado como não conferido. A lista para a etapa
 CONFIGURAÇÃO/expansão da ANALISE está em `ENTRADAS-FALTANTES-ANALISE.txt`. Falta o reteste na Discloud pelo Mizuki.
 
+Ajuste posterior pedido pelo Mizuki: aprovada com "Falta ou pede atenção" usa amarelo; reprovada mantém vermelho,
+mesmo com pendências; aprovada sem pendência usa verde. O aviso genérico "Trava Selo de gesto" foi omitido: a fórmula
+da ficha só detecta escudo, sem verificar o Selo escolhido. A Teste 2 passa a ter uma pendência (ponto sobrando),
+preservando erro de Grau e nota de treino. A Teste 4 passa a aparecer amarela pela Integridade sem barra.
+
 Observações da outra conversa: o Revestimento 2 com Grau 4 só entrou trocando o Grau pra 3, escolhendo e voltando,
 porque o menu da ficha não oferece; a Besta com escudo some o escudo do menu, então foi escolhido antes. O `.venv` do
 bot não roda na máquina virtual dela (Python 3.10), por isso ela leu pela aba ANALISE com o conector do Sheets.
