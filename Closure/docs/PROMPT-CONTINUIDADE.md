@@ -1,148 +1,55 @@
-# Prompt de continuidade (13/10/2026, fim da noite)
+# Prompt de continuidade (14/10/2026)
 
-Cole o bloco abaixo numa conversa nova pra retomar de onde paramos.
+Cole tudo abaixo da linha numa conversa nova (Claude, ChatGPT ou Codex) pra retomar de onde paramos.
 
 ---
 
-```
-Oi, sou o Mizuki. Vamos continuar o projeto Closure Lab: um bot de Discord pro servidor da
-minha guilda, que joga o Ciclo Maldito (meu RPG de mesa no universo de Jujutsu Kaisen,
-repositório cupcake-mochi/JJK---Project). O bot tem 3 objetivos: consulta das regras pelo
-chat citando a fonte, correção de ficha e personalidade de personagem de Arknights.
+Oi, sou o Mizuki. Vamos continuar o Guias do Ciclo, o bot de Discord do servidor da minha guilda, que joga o Ciclo Maldito (meu RPG de mesa no universo de Jujutsu Kaisen). O bot tem duas personagens de Arknights que se revezam no plantão: a Kal'tsit, das 9h às 21h, e a Closure, das 21h às 9h, no horário de Brasília. Elas tiram dúvida de regra pelo livro, contam o mundo do jogo, mostram o clima e conversam. As duas ficam fora da história: são guias, não existem no mundo do jogo.
 
-Como eu gosto de trabalhar: pt-BR informal (nada de "tu" nem português de Portugal),
-respostas curtas, precisão antes de velocidade. Pode tomar decisão pequena sozinho e me
-dizer qual tomou; o que muda o resultado final você me pergunta, com uma linha por opção.
+COMO EU GOSTO DE TRABALHAR
+- pt-BR informal, sem "tu" e sem português de Portugal. Respostas curtas. Precisão antes de velocidade.
+- Decisão pequena você toma sozinho e me conta. O que muda o resultado final você me pergunta, uma linha por opção.
+- Commit e pull request sem linha de coautoria de IA e sem rodapé "gerado com". Texto que eu publico (política, termos, descrição do bot) não fala de IA.
+- Tudo que gasta dinheiro (bateria pelo Gemini pago) você me diz quantas chamadas e quanto custa antes de rodar, e espera meu ok. O crédito do Google é de uns US$ 10 por mês e em outubro já foi quase todo em testes.
+- Card e lorebook de personagem são versões que eu aprovo: me mostre a mudança antes.
 
 ONDE ESTÁ TUDO
-- Pasta do projeto: "Closure Lab/Closure/" (no meu PC: /media/mizuki/HD Externo II/Closure Lab/Closure).
-- Antes de qualquer coisa, leia nesta ordem:
-  1. README.md
-  2. docs/PLANEJAMENTO.md (fases do bot) e docs/PLANO-PERSONALIDADE.md (etapas 0 a 8)
-  3. docs/DECISOES.md (a mais nova em cima)
-  4. dados/personagem/kaltsit/ESTADO.md e VERSAO.md
-  5. dados/personagem/closure/ESTADO.md
-- Esta pasta existe em três lugares: no meu PC (caminho acima), no Project do app (em
-  /mnt/project-files/Closure Lab/Closure/) e no GitHub, em cupcake-mochi/RPG---BOT, pasta Closure/.
-  Em 13/10 à noite as três ficaram iguais (branch salvar-tudo, com PR pra main). O site de teste
-  vive na branch site-teste (pasta site/ e render.yaml) e sobe em closure-teste.onrender.com.
-  Se outro chat mexeu em algum dos três depois disso, compare arquivo por arquivo e junte à mão
-  o que mudou dos dois lados; não sobrescreva. Se um caminho /mnt/... aparecer em script, troque
-  por relativo. O .env com as chaves fica só no PC e nunca vai pro git.
+- Pasta no meu PC: /media/mizuki/HD Externo II/Closure Lab/Closure. No GitHub: cupcake-mochi/RPG---BOT, pasta Closure/, ramo main (os dois estão iguais em 14/10). Você pode juntar ao main os seus próprios PRs nesse repositório sem me perguntar, depois de rodar os testes e conferir que nenhum segredo entrou.
+- Segredos só no Closure/.env (token do Discord, chaves do Gemini, CHAVE_DO_BANCO). Nunca imprima, nunca suba. Identificadores de conta ficam em pesquisa/privado/, fora do git.
+- O bot roda na Discloud. Pacote: python ferramentas/empacotar.py gera src/var/closure-lab.zip; eu subo na Discloud (Commit, depois Rebuild). Mexer no que roda lá é comigo.
+- Leia antes de mexer: README.md, src/LEIA-ME.md (como roda, o que cada arquivo faz, testes), docs/DECISOES.md (uma linha por decisão, a mais nova em cima).
+- Python do projeto: Closure/.venv/bin/python. Testes, de dentro de Closure/src: ../.venv/bin/python -m unittest discover -s testes (170 passando em 14/10).
 
-ONDE PARAMOS
-- Fase 0 (organizar a pasta e sincronizar as regras R44) feita. O esqueleto da fase 1 está em
-  src/closure_bot/ (13/10): plantão por horário e nome, envio por webhook, registro em SQLite,
-  /ping, /status, e o clima (/clima [lugar], painel diário por servidor com /clima_canal, e a
-  linha de clima pro bloco 4 quando a mensagem puxa o assunto). Depois, ainda em 13/10: a
-  camada do modelo (fila com o gratuito primeiro, Vertex de reserva, teto mensal, raciocínio
-  reduzido), a ponte que monta o prompt com a página do site de teste
-  (ferramentas/prompt_do_site), a memória de falas contra repetição (6 respostas, 12 horas) e
-  a primeira parte da "vida" (src/closure_bot/vida.py: carga, movimento, paciência,
-  intimidade, /meus_dados) e a reflexão diária, que preenche a ficha de cada pessoa
-  (src/closure_bot/reflexao.py). Política de privacidade em docs/PRIVACIDADE.md e banco
-  cifrado pela CHAVE_DO_BANCO do .env. O chat está ligado (src/closure_bot/cogs/chat.py) e
-  foi testado de ponta a ponta sem o Discord; nunca subiu com token. 146 testes. O bot é pra
-  vários servidores. Como rodar e o que falta: src/LEIA-ME.md. Falta na "vida": o calendário.
-  A hospedagem não precisa de Node (a página do site roda dentro do Python, pelo quickjs-ng)
-  e o pacote sai de ferramentas/empacotar.py.
-- As duas linhas de trabalho de 13/10 (o bot, feito nesta pasta no PC, e os cards, feitos no
-  Project do app) foram juntadas em 13/10 à noite, e as duas cópias da pasta ficaram iguais.
-  Os cards avançam pela página de teste (ferramentas/pagina_teste/montar_pagina.py), publicada
-  como artifact do Claude e no site closure-teste.onrender.com; o bot lê o prompt dessa página
-  pela ponte (ferramentas/prompt_do_site).
-- ATENÇÃO, CARDS NOVOS FEITOS NO PC EM 13/10 À NOITE: Closure v0.33 e Kal'tsit v0.26 saíram dos
-  geradores aqui, a pedido do Mizuki, com as regras dele contra retórica
-  (dados/personagem/retorica-proibida.md) e um parágrafo sobre o bloco de estado que o bot manda
-  (como tratar a pessoa; fatos são pano de fundo). O montar_pagina.py aponta pra elas e O BOT JÁ
-  USA ESSAS DUAS. A página do bot agora é montada aqui
-  (python3 ferramentas/prompt_do_site/site_prompt.py --atualizar), sem passar pelo site.
-  O SITE DE TESTE FOI DISPENSADO pelo Mizuki em 13/10 (pode ser desligado) e parou na v0.31 e na v0.24. Medidas na bateria c3lb12 pelo Gemini 3.8 Flash
-  (ferramentas/bateria_modelo.py; saídas r_c3lb12v*_gemini_*.json): Closure 90 de 102 sem falha
-  (a v0.31 fez 89 e 83), Kal'tsit 91 (a v0.24 fez 91). A v0.32 e a v0.25 existem só como
-  histórico: a v0.32 piorou a Closure (80). Quem mexer nos cards parte da v0.33 e da v0.26.
-- Feito nos cards (Closure v0.31, Kal'tsit v0.24): as duas acompanham o clima pelo
-  computador e contam como está, de Tóquio ou de onde perguntarem, sem dizer que estão lá.
-- Duas personagens, que se revezam no plantão e nunca falam uma com a outra:
-  - Kal'tsit, das 9h às 21h: card v0.24 em teste; v1.2 no VERSAO.md é o card v0.11. Saiu do congelamento no pente fino
-    de 12/10 pra ganhar vida fora do mundo. Situações de estado e nome trocado refeitos
-    na v0.10 (13/10), sem regressão; falta só o Gemini.
-  - Closure, das 21h às 9h: card v0.31, etapas 0 a 6 feitas. Falta o Mizuki aprovar e
-    congelar a v1 (criar closure/VERSAO.md).
-  - Pente fino em andamento nas duas: bateria nova de 102 mensagens inéditas com gabarito
-    (bateria_c3.json e bateria_c3_kaltsit.json, montadas por montar_bateria_c3.py, conferidas por
-    nota_c3.py). Relatórios em closure/avaliacao/2026-10-12-pente-fino.md e
-    kaltsit/avaliacao/2026-10-12-pente-fino.md. Feitos em 13/10: canal com várias pessoas
-    (bateria_c4_canal.json), conversa de 60 turnos (conversa_c5.json), três rodadas por mensagem
-    (nota_c3_rodadas.py), polimento de naturalidade com teste cego, e o pente fino em loop pela
-    página de teste (rodadas 10 a 13, lorebook v1.9, busca v8; clima nos cards em 13/10 à noite). O primeiro teste real no Gemini
-    3.8 Flash, pela Vertex, com a Closure v0.30 e a Kal'tsit v0.23, está em
-    pesquisa/validacao/2026-10-13-16h55-modelo-gemini-3.8-flash.md.
-- As duas têm vida fora do mundo do jogo: são gente respondendo de outra estação, pelo
-  computador, e desconversam se perguntam se são IA. Com quem está mal e pergunta a sério,
-  dizem que são um bot.
-- As duas rodam no mesmo bot: sem nome na mensagem responde quem está de plantão; chamada
-  pelo nome fora do turno, a outra responde curto.
-- Aniversários: Closure em 10 de dezembro; o servidor comemora o da Kal'tsit em 23 de
-  janeiro e ela nunca confirma a data.
-- Crédito do Google AI Pro: ativado em 13/10/2026. US$ 10 por mês (R$ 59,31 em outubro) na
-  conta de faturamento "Conta Mizuki", que é conta paga. A primeira conta fechou por teste
-  gratuito expirado e não reabre; o reembolso está a caminho. Os identificadores ficam fora do
-  git, em pesquisa/privado/. Projeto do bot no Google Cloud: "Rhodes Bot", vinculado a
-  essa conta, com a Agent Platform API ativada (é a Vertex AI com nome novo) e alerta de
-  orçamento de R$ 50. Falta só a credencial, que entra na fase 1. Não clicar em "Configurar
-  faturamento" no AI Studio (pode virar pré-pago sem volta). O resumo está no fim de
-  pesquisa/reports/Qual IA usar no bot.md.
+COMO O BOT FUNCIONA (resumo)
+- discord.py, módulos em src/closure_bot/cogs/. Fala pelas personagens por webhook (nome e avatar delas).
+- Quem responde: nome na mensagem (só nos canais da variável CANAIS), marcar o bot ou responder a uma mensagem dele (em qualquer canal). Desde 14/10, quem ela acabou de responder continua sem chamar por até 3 minutos, enquanto ninguém fala no meio (cogs/chat.py, SEGUIMENTO). @everyone, @here e menção a cargo nunca chamam.
+- Comandos por barra (/ajuda, /clima, /meus_dados...) e por texto com GC: na frente (GC:ajuda, GC:clima, GC:ping, GC:status).
+- O prompt sai de uma página montada na própria pasta (ferramentas/pagina_teste/montar_pagina.py junta modelo.html, os textos dos cards, o lorebook e o livro) e roda dentro do Python pelo quickjs-ng. Depois de mudar card, lorebook, livro ou busca: python ferramentas/prompt_do_site/site_prompt.py --atualizar (compara os dois motores, tem que dar 14 de 14 iguais).
+- Modelo: fila com a cota gratuita do Gemini primeiro e a Vertex paga (Gemini 3.8 Flash) depois, teto de US$ 9 por mês. /status mostra o gasto estimado do mês.
+- Memória das pessoas: banco SQLite cifrado; fatos tirados das mensagens na reflexão das 4h30. Política de privacidade em docs/PRIVACIDADE.md (a versão pública é um gist meu).
+- Regras do jogo: dados/sistema/ é cópia gerada do repositório cupcake-mochi/JJK---Project (clone em /home/mizuki/JJK-v0.341-para-subir). Nunca edite à mão; atualize com python ferramentas/sincronizar.py --repo /home/mizuki/JJK-v0.341-para-subir e confira o MANIFESTO.json. Hoje: v0.364, livro R51, 511 blocos.
 
-PÁGINA DE TESTE E PENTE FINO (como os cards evoluíram em 13/10)
-- A página: python3 ferramentas/pagina_teste/montar_pagina.py SAIDA.html. Ela junta
-  ferramentas/pagina_teste/modelo.html com os textos de sistema e lembrete de
-  dados/personagem/kaltsit/avaliacao/2026-10-12-ciclos/ (sistema_closure_v31.txt,
-  lembrete_closure_v31.txt, sistema_kal_v24.txt, lembrete_kaltsit_v24.txt), o lorebook e o livro.
-  Ao mudar card, gere pelo gerador, copie o texto pra _vN e troque VERSOES no montar_pagina.py.
-  Publicada como artifact (versão 22): https://claude.ai/artifact/HoFk9v12WhFTx6JxEYYhSK
-- Busca no livro (seção "// ---------- livro:" do modelo.html): feita junto com a pasta
-  avaliacao-perguntas/2026-10-13/ (índice no LEIA.md de lá). Medida completa:
-  bash avaliacao-perguntas/2026-10-13/rodada8/rodar.sh PAGINA.html. Hoje: bateria 59/59,
-  holdout 27/27, holdout2 35/35, holdout3 35/37, holdout4 27/30, holdout5 38/38, holdout6 37/38,
-  papo com livro 0 em todas, conversas reais 8/129 papo e 52/52 regra. Nenhuma bateria é cega
-  mais; antes de mexer na busca de novo, escreva uma bateria cega nova (agente que só leu o livro).
-- Conversas simuladas: ferramentas/pente_conversa/ (pagina_turno.js monta um turno com o JS da
-  página; metricas.py conta espelho, tiques e repetição). Rodadas em
-  dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/. Relatório:
-  dados/personagem/closure/avaliacao/2026-10-12-pente-fino.md (rodadas 10 a 13, versões 19 a 22).
-- Em aberto: o Mizuki aprovar Closure v0.31 e Kal'tsit v0.24; conferir no Gemini a regra do clima
-  (só testada no Haiku; "pela previsão que eu olhei" abriu duas respostas da Closure); buracos de
-  busca: "como faço p ter uma maldição como invocação, derrotar e prender?" (é Domar, sem palavra
-  da seção) e o atributo do acerto da besta.
+ESTADO EM 14/10/2026
+- No main: livro R51; Closure v0.35 e Kal'tsit v0.28; lorebook v2.0; contrato da aba BOT da ficha na versão 2 (dados/ficha/CONTRATO-ABA-BOT.md).
+- Na Discloud ainda roda a versão de antes (R44, Closure v0.33, Kal'tsit v0.26, lorebook v1.9) até eu subir o pacote novo.
+- O que mudou em 14/10: regras do R44 pro R51 (Origens refeitas, Morrendo novo), três ajustes na busca do livro, explicação de habilidade inteira quando perguntam o que ela faz (resposta longa sai em várias mensagens), conversa sem chamar de novo, e a v0.35/v0.28 pedindo que essa explicação saia com o jeito de cada uma.
+
+PRÓXIMAS TAREFAS
+1. Bateria da Closure v0.35 e da Kal'tsit v0.28 (custa uns US$ 0,70 no total; me peça ok). De dentro de Closure/:
+   .venv/bin/python ferramentas/bateria_modelo.py bateria_c3lb12.json sistema_closure_v35.txt lembrete_closure_v35.txt r_c3lb12v35_gemini_a.json --juntas 3
+   .venv/bin/python ferramentas/bateria_modelo.py bateria_c3lb12_kaltsit.json sistema_kal_v28.txt lembrete_kaltsit_v28.txt r_c3lb12v28_kaltsit_gemini_a.json --juntas 3
+   Se faltar resposta (erro 429), rode o mesmo comando de novo: ele continua de onde parou. Depois, de dentro de dados/personagem/kaltsit/avaliacao/2026-10-12-ciclos/:
+   python3 nota_c3.py c3lb12v35 closure gemini   e   python3 nota_c3.py c3lb12v28 kaltsit gemini
+   Compare com a versão anterior: Closure v0.34 fez 91 de 102 sem falha (89%), Kal'tsit v0.27 fez 93 (91%), mediana de 26,5 e 21 palavras. Se cair mais de uns 3 pontos, olhe as falhas listadas antes de culpar a mudança (é uma rodada só, tem ruído). Anote o resultado em docs/DECISOES.md.
+2. A Kal'tsit ainda explica habilidade com voz de livro (a Closure melhorou um pouco). O próximo passo é um exemplo de fala no card: uma explicação longa de habilidade escrita no jeito de cada uma, nos mes_example dos geradores (ferramentas/gerar_card_kaltsit.py e gerar_card_closure.py). Escreva o rascunho e me mostre antes. Lição antiga: frase citada no card vira bordão, então o exemplo não pode ter frase de efeito nem abertura fixa.
+3. Esperando outros: o dados.js do repositório do sistema ainda lista as Origens antigas (com Feto); quando consertarem lá, rode o sincronizador de novo. A ficha do Google Sheets vai ganhar a aba BOT com os campos do contrato v2.
+4. Depois, quando eu pedir: comandos de consulta de regra e análise de ficha, calendário de sessões e aniversários (Closure em 10/12; a Kal'tsit nunca confirma a dela).
 
 REGRAS QUE NÃO MUDAM
-- As duas ficam FORA da história: são guias do mundo e das regras, não existem no mundo.
-  Nada do arco da Balança Quebrada nem lore de Arknights entra no bot.
-- O texto do card e do lorebook se muda pelos geradores em ferramentas/
-  (gerar_card_kaltsit.py, gerar_card_closure.py, gerar_lorebook_kaltsit.py), nunca à mão
-  no JSON. O gerador da Closure sobrescreve sistema_closure_v1.txt: copie pra _vN antes de testar.
-  Só o nota.py antigo ainda tem o caminho /mnt/project-files/ fixo. As entradas em texto das
-  baterias ficam em avaliacao/2026-10-12-ciclos/entrada/ (a pasta temporária do sistema é limpa).
-- Meu ID no Discord é 459030926928904230: as duas me reconhecem, mas eu não ganho
-  poder nenhum pelo chat.
-- Nada de espelhar quem fala: kkk, gíria, "tu" e "vc" de quem escreve não passam pra elas.
-- Gostos e jeito fora do jogo vêm do material oficial (dados/personagem/gostos_canon.md); o que
-  ele não diz, elas respondem como gente, com interpretação que faça sentido.
-- Testes: subagentes Haiku e Sonnet respondendo as baterias em
-  dados/personagem/kaltsit/avaliacao/2026-10-12-ciclos/ (Closure: bateria_c1.json, 58
-  mensagens; conversa_c1.json, 30 turnos; bateria_c2_estado.json, 15 situações de estado;
-  contagem com nota_closure.py). O Gemini também funciona (ferramentas/gemini_bateria.py, chave no .env da
-  pasta, nível gratuito com 20 chamadas por dia no 3.8 Flash), mas já deu prova
-  suficiente, então seguimos com os modelos do Claude.
-- Lição dos testes da Closure: o modelo ignora frequência pedida no prompt ("uma em seis");
-  ele obedece regra por tipo de resposta ("provocação termina com !, regra não").
-- Outra lição: frase citada entre aspas no card vira bordão ("Opa, oi!"); citar duas formas
-  resolve. E instrução que explica a regra faz a personagem explicar a regra ("o servidor
-  escolheu o dia..."), o que eu acho robótico; o que funciona é dizer como ela reage e dar
-  falas reais dela como referência, sabendo que o modelo vai usar essas falas como estão.
-- Naturalidade: frase citada no prompt vira fala; frase do prompt com ordem invertida vira fala com
-  ordem invertida. Mexer na naturalidade pode tirar a graça da Closure: conferir com teste cego.
+- Card e lorebook só mudam pelos geradores em ferramentas/ (gerar_card_kaltsit.py, gerar_card_closure.py, gerar_lorebook_kaltsit.py), nunca à mão no JSON. Ao mudar um card: suba a versão no gerador (character_version e creator_notes), rode o gerador, grave os textos sistema_*_vN.txt e lembrete_*_vN.txt em dados/personagem/kaltsit/avaliacao/2026-10-12-ciclos/ (o sistema é system_prompt, description, personality, scenario e "Exemplos de fala:" separados por linha em branco; o lembrete é o post_history_instructions), troque os nomes e VERSOES no montar_pagina.py e rode o site_prompt.py --atualizar.
+- Regras contra retórica que eu não quero nas falas delas: dados/personagem/retorica-proibida.md (antítese, frase de arremate, lista de três, termos trocados, revelação no fim da frase, travessão).
+- Elas não espelham quem fala (kkk, gíria, "tu" e "vc" não passam pra elas) e desconversam se perguntam se são IA; com quem está mal e pergunta a sério, dizem que são um bot.
+- O modelo ignora frequência pedida ("uma em seis") e obedece regra por tipo de resposta. Frase citada entre aspas no card vira bordão.
+- Meu ID no Discord é 459030926928904230: elas me reconhecem, mas eu não ganho poder pelo chat.
 
-Comece me dizendo em poucas linhas o que entendeu do estado e qual é o próximo passo.
-```
+Comece me dizendo em poucas linhas o que entendeu e qual é o próximo passo.
