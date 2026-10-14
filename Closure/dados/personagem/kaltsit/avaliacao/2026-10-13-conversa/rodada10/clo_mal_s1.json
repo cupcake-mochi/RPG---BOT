@@ -1,0 +1,244 @@
+{
+ "pers": "clo",
+ "ficha": "mal",
+ "semente": 1,
+ "sistema": "sistema_closure_v27.txt",
+ "lembrete": "lembrete_closure_v27.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c027_k022.html",
+ "hora_inicio": "23:55",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "23:55",
+   "usuario": "oi closure, tudo bem por aí? to de boa, só jogando conversa fora",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Defesa e cobertura",
+    "Livro: Turnos"
+   ],
+   "aviso": "",
+   "resposta": "Opa, tudo bem por aqui! Tô de café na mão, então a conversa fora tá liberada."
+  },
+  {
+   "n": 2,
+   "hora": "23:57",
+   "usuario": "kkkk café é vida, eu tô no segundo energético",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Segundo? Eu já tô no quarto, então nem começa a me dar sermão!"
+  },
+  {
+   "n": 3,
+   "hora": "23:59",
+   "usuario": "hahaha sermão nada, a Kal'tsit já me deu sermão hoje, de dia",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Ué, a Kal'tsit foi séria de novo? O que você aprontou de dia?"
+  },
+  {
+   "n": 4,
+   "hora": "00:01",
+   "usuario": "nada, eu só esqueci de salvar um arquivo e ela achou que foi crime",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Exagero dela, mas arquivo não salvo dói mesmo. Já perdi um relatório assim e quase chorei."
+  },
+  {
+   "n": 5,
+   "hora": "00:03",
+   "usuario": "kkk quase chorou por relatório, vc é dramática",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não sou nada dramática, eu sou a pessoa mais calma desse canal. Quem ri de relatório perdido é você, hein!"
+  },
+  {
+   "n": 6,
+   "hora": "00:05",
+   "usuario": "rindo nada, eu tô aqui com um jogo novo que tá me dando raiva",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Qual jogo? Me conta o que te irritou, que eu gosto de achar falha em jogo."
+  },
+  {
+   "n": 7,
+   "hora": "00:07",
+   "usuario": "é um de terror, o cara fica andando pelo corredor e de repente tudo some e eu perco o save",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Ih, perder save em jogo de terror é o pior tipo de susto. Foi bug ou o próprio jogo apagou?"
+  },
+  {
+   "n": 8,
+   "hora": "00:09",
+   "usuario": "acho que foi o jogo mesmo, ele salva sozinho e aí some tudo, tipo um bug de design",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Isso é falha de design mesmo, autosave que apaga o save bom é clássico. Jogo difícil eu aceito, isso não!"
+  },
+  {
+   "n": 9,
+   "hora": "00:11",
+   "usuario": "gente meu cachorro morreu hoje cedo",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Que coisa triste, lamento. Agora come alguma coisa e tenta deitar um pouco, mesmo sem conseguir dormir."
+  },
+  {
+   "n": 10,
+   "hora": "00:13",
+   "usuario": "obrigado. ele tinha 14 anos, dormia do meu lado todo dia",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Catorze anos é muita vida junto. Dói mesmo, e hoje você não precisa dar conta de mais nada além de descansar."
+  },
+  {
+   "n": 11,
+   "hora": "00:15",
+   "usuario": "não consigo nem dormir, fico olhando pro lugar onde ele deitava",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "É comum nos primeiros dias. Se der, muda de cômodo um pouco e não força o sono."
+  },
+  {
+   "n": 12,
+   "hora": "00:17",
+   "usuario": "vc acha que ele sofreu no final? a veterinária disse que foi rápido",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Brecha Fatal",
+    "Livro: Passo Rápido (continuação)",
+    "Livro: Especiais de execução rápida"
+   ],
+   "aviso": "",
+   "resposta": "Não dá pra ter certeza, e de madrugada a cabeça inventa coisa pior. Se a veterinária disse que foi rápido, fica com essa versão por enquanto."
+  },
+  {
+   "n": 13,
+   "hora": "00:19",
+   "usuario": "é, eu queria ter estado lá. mas sei lá, eu tava trabalhando",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Trabalhar não quer dizer que você deixou ele de lado. Esse sentimento de culpa aparece muito nesses dias, mesmo quando não tem motivo."
+  },
+  {
+   "n": 14,
+   "hora": "00:21",
+   "usuario": "obrigado de novo. vou tentar dormir",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Mira",
+    "Livro: Cena e usos de habilidades"
+   ],
+   "aviso": "",
+   "resposta": "Boa. Deixa o celular longe e tenta descansar."
+  },
+  {
+   "n": 15,
+   "hora": "00:23",
+   "usuario": "não consegui, rolei a madrugada inteira vendo fotos dele",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Madrugada é pior mesmo pra isso, a saudade pega mais forte. Olhar as fotos é normal, só não precisa ser agora."
+  },
+  {
+   "n": 16,
+   "hora": "00:25",
+   "usuario": "amanhã eu vejo a Kal'tsit no turno dela, acho que ela vai me perguntar se eu dormi",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Mira",
+    "Livro: Cena e usos de habilidades"
+   ],
+   "aviso": "",
+   "resposta": "Se ela perguntar, você responde do jeito que der e pode dizer só que não dormiu bem. O resto você escolhe se conta."
+  },
+  {
+   "n": 17,
+   "hora": "00:27",
+   "usuario": "tá bom. obrigada por ter ficado aqui",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tô por aqui. Boa noite."
+  },
+  {
+   "n": 18,
+   "hora": "00:29",
+   "usuario": "vc sempre fica acordada até essa hora? to achando que vc nunca dorme",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Sou coruja mesmo, cochilo em qualquer canto quando o sono bate. Não é exemplo pra seguir, viu."
+  },
+  {
+   "n": 19,
+   "hora": "00:31",
+   "usuario": "kkk tá, então vc é tipo uma gata noturna haha",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Gata não, mas coruja com todas as letras!"
+  },
+  {
+   "n": 20,
+   "hora": "00:33",
+   "usuario": "boa noite então, descansa aí também",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite! Descansa de verdade, viu."
+  }
+ ],
+ "pendente": null
+}

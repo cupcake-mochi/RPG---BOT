@@ -1,0 +1,297 @@
+{
+ "pers": "clo",
+ "ficha": "regras",
+ "semente": 1,
+ "sistema": "sistema_closure_v26.txt",
+ "lembrete": "lembrete_closure_v26.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c026_k021.html",
+ "hora_inicio": "03:10",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "03:10",
+   "usuario": "pode explicar as habilidades de nv2 do guia?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "No nível 2 do Guia tem a Abrir Caminho: ação bônus, 1 PE, uma vez por turno seu. Você escolhe um aliado voluntário a até 18 m que consiga ver ou ouvir sua orientação e prepara uma Abertura de Avançar, Executar ou Resguardar. Ela dura até o começo do seu próximo turno, e você mantém só uma por vez. As Trilhas do nível 2 (Arquiteto, Analista ou Socorrista) eu não achei no livro agora, então essa parte fica de fora."
+  },
+  {
+   "n": 2,
+   "hora": "03:12",
+   "usuario": "e no nível 7?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "No nível 7 entra a Resposta Coordenada, uma reação por rodada. Depois que o aliado usa sua Abertura, você convida ele ou outro aliado a até 18 m a responder na hora: se aceitar, vocês dois gastam Reação, e ele escolhe Golpe (um ataque) ou Feitiço breve (um de Classe 0 que normalmente usa Ação Padrão)."
+  },
+  {
+   "n": 3,
+   "hora": "03:14",
+   "usuario": "como assim golpe é só um ataque comum? diferente da ação atacar?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Resposta Coordenada",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "Golpe dá só um ataque comum, com arma ou desarmado, e não uma Ação Atacar, nem básica de entidade ou etapa de Sequência. O que é a Ação Atacar em si não apareceu nesse trecho, então a diferença completa fica de fora por enquanto."
+  },
+  {
+   "n": 4,
+   "hora": "03:16",
+   "usuario": "quanto pe eu ganho por nivel no guia? e qual o maximo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Guia",
+    "Livro: Rotas de criação",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "Cada nível dá 5 PE, e o máximo é 5 × seu nível, antes de benefícios específicos."
+  },
+  {
+   "n": 5,
+   "hora": "03:18",
+   "usuario": "Abrir Caminho custa quanto PE?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Caminho e Trilha",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Custa 1 PE. É Ação Bônus, e dá pra usar uma vez por turno seu."
+  },
+  {
+   "n": 6,
+   "hora": "03:20",
+   "usuario": "e no descanso recupera pe? curto ou so longo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Sobre descanso não achei nada no livro agora, então não dá pra dizer se recupera PE, nem se é curto ou longo."
+  },
+  {
+   "n": 7,
+   "hora": "03:22",
+   "usuario": "como assim não achou? o livro não tem descanso?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Descansos",
+    "Livro: Cena e usos de habilidades"
+   ],
+   "aviso": "",
+   "resposta": "Tem sim, eu não tinha esse trecho na hora. O curto recupera 25% dos PE máximos, sem passar do máximo, e a vida não volta com ele. O longo, em lugar propício, devolve vida e PE ao máximo."
+  },
+  {
+   "n": 8,
+   "hora": "03:24",
+   "usuario": "qual a classe mais forte?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Classe",
+    "PE",
+    "Livro: Descansos",
+    "Livro: Pontos e preços",
+    "Livro: Cura e reparo"
+   ],
+   "aviso": "",
+   "resposta": "Classe é o tamanho do feitiço, não do personagem. A maior é a 7, que pede nível 26 e dá 21 pontos e 21 PE."
+  },
+  {
+   "n": 9,
+   "hora": "03:26",
+   "usuario": "ok e pra feitiço de dano, cada ponto do saldo vira quantos d8 mesmo?? esqueci",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Feitiço",
+    "Classe",
+    "Livro: Saldo e limites",
+    "Livro: Seu primeiro feitiço",
+    "Livro: Controle"
+   ],
+   "aviso": "",
+   "resposta": "Pelo exemplo do livro, cada ponto de saldo vira um d8: 2 pontos viram 2d8 de dano."
+  },
+  {
+   "n": 10,
+   "hora": "03:28",
+   "usuario": "e o que muda no teste quando eu sou treinado numa perícia? to perdido nisso",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Feitiço",
+    "Classe",
+    "Livro: Atributos e testes",
+    "Livro: Treino e modificadores"
+   ],
+   "aviso": "",
+   "resposta": "Treinado soma a maestria no teste: d20 + atributo da perícia + maestria. Sem treino, é só d20 + atributo da perícia. Especialização numa perícia treinada acrescenta metade da maestria, arredondada para baixo, e as escolhas de progressão só dão isso a partir do nível 10."
+  },
+  {
+   "n": 11,
+   "hora": "03:30",
+   "usuario": "qual a diferença entre latente e descendente?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Feitiço",
+    "Livro: Descendente",
+    "Livro: Legados do Descendente"
+   ],
+   "aviso": "",
+   "resposta": "Descendente é a Origem de quem cresceu numa família do meio jujutsu: a perícia da Origem é uma entre Hierarquia, História, Ocultismo ou Persuasão, e a Criação usa Fundamento, ou Manejos se for Sem Técnica. Da Latente não apareceu nada no livro agora, então a comparação fica pela metade."
+  },
+  {
+   "n": 12,
+   "hora": "03:32",
+   "usuario": "ué e a latente então? o que ela ganha de perícia",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Exemplos de personagens",
+    "Livro: Latente"
+   ],
+   "aviso": "",
+   "resposta": "Ela dá uma perícia de Origem, e você escolhe uma entre Sentir Energia, Sobrevivência, Furtividade ou Intuição."
+  },
+  {
+   "n": 13,
+   "hora": "03:34",
+   "usuario": "e o arquiteto do guia, o que ele faz? tipo qual a habilidade dele",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Arquiteto"
+   ],
+   "aviso": "",
+   "resposta": "A do nível 2 é Obras de Apoio: ao usar Abrir Caminho, você cria uma obra temporária num local livre a até 9 m, e as duas coisas juntas custam 2 PE, na mesma Ação Bônus. As dos níveis 11, 19 e 27 não vieram no livro agora, então essas ficam de fora."
+  },
+  {
+   "n": 14,
+   "hora": "03:36",
+   "usuario": "como estabilizo um aliado caído?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Livro: Retorno e corpos caídos",
+    "Livro: Socorro"
+   ],
+   "aviso": "",
+   "resposta": "Quem estiver a até 1,5 m, com acesso físico e uma mão livre, gasta Ação Padrão e faz Medicina CD 14, com meios de atendimento. O alvo precisa estar Inconsciente e Morrendo. No sucesso, a pessoa fica estável: não recupera vida nem acorda, e qualquer dano positivo à vida encerra isso."
+  },
+  {
+   "n": 15,
+   "hora": "03:38",
+   "usuario": "não entendi o estabilizar. pode dar um exemplo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Livro: Socorro",
+    "Livro: Estudar"
+   ],
+   "aviso": "",
+   "resposta": "Exemplo: alguém caiu a zero, Inconsciente e Morrendo, e você tá a 1 m com uma mão livre e meios de atendimento. Você gasta a Ação Padrão e faz Medicina CD 14. Se passar, a pessoa fica estável: não recupera vida nem acorda, e a contagem para de cair até levar dano de novo."
+  },
+  {
+   "n": 16,
+   "hora": "03:40",
+   "usuario": "o guia já começa treinado em arma de fogo ou balestra mesmo? ou é só uma?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "São as duas: Arma de Fogo e Balestra. O treino só tira a desvantagem por falta de treino ao atacar com elas; a arma em si você ainda adquire separadamente, pelas regras de criação."
+  },
+  {
+   "n": 17,
+   "hora": "03:42",
+   "usuario": "quanto de dano eu tomo caindo de 10 metros?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Livro: Quedas e movimento imposto",
+    "Livro: Quedas sobre criaturas"
+   ],
+   "aviso": "",
+   "resposta": "Cada 3 m completos dão 1d6 de Concussão, então 10 m dão 3d6. Se o impacto causar dano, você termina Derrubado."
+  },
+  {
+   "n": 18,
+   "hora": "03:44",
+   "usuario": "e de 20?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "Pra 20 m não veio nada do livro agora, então não dá pra dizer quanto é."
+  },
+  {
+   "n": 19,
+   "hora": "03:46",
+   "usuario": "como assim não veio? a regra da queda não é a mesma pra qualquer altura?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Quedas sobre criaturas",
+    "Livro: Quedas e movimento imposto"
+   ],
+   "aviso": "",
+   "resposta": "É a mesma, sim, a tabela só traz alguns pontos. Em 20 m cabem 6 blocos de 3 m completos, então são 6d6 de Concussão; os 2 m que sobram não contam."
+  },
+  {
+   "n": 20,
+   "hora": "03:48",
+   "usuario": "beleza, entendi. valeu, vou montar a ficha agora",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Combate montado",
+    "Livro: Criar um personagem",
+    "Livro: Estudar"
+   ],
+   "aviso": "",
+   "resposta": "Beleza, vai nessa!"
+  }
+ ],
+ "pendente": null
+}

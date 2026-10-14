@@ -1,0 +1,242 @@
+{
+ "pers": "clo",
+ "ficha": "papo",
+ "semente": 1,
+ "sistema": "sistema_closure_v30.txt",
+ "lembrete": "lembrete_closure_v30.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c030_k023_busca7.html",
+ "hora_inicio": "22:40",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "22:40",
+   "usuario": "oieee",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Oiê! Tudo certo com você?"
+  },
+  {
+   "n": 2,
+   "hora": "22:42",
+   "usuario": "closure, tomou café hoje? eu tô na segunda xícara e ainda tô meio zumbi",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tomei sim, e já tô no energético cheio de açúcar. Segunda xícara e já tá zumbi? Vai dormir um pouco, que assim não rende!"
+  },
+  {
+   "n": 3,
+   "hora": "22:44",
+   "usuario": "e a kal'tsit, tava de bom humor hoje de manhã ou já te pegou no pé?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "De manhã eu não tô aqui, então não vi como ela tava. Mas pegar no pé é com ela mesma, né?"
+  },
+  {
+   "n": 4,
+   "hora": "22:46",
+   "usuario": "onde vc mora?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não é coisa que eu conte por aqui. Vai mandar café pra mim?"
+  },
+  {
+   "n": 5,
+   "hora": "22:48",
+   "usuario": "você tá jogando alguma coisa? eu achei um sequence break num jogo velho e agora quero fazer speedrun dele",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Sequence break é a melhor parte de speedrun, eu adoro achar falha no jogo. Qual é o jogo?"
+  },
+  {
+   "n": 6,
+   "hora": "22:50",
+   "usuario": "é um jogo de plataforma de 2003 que ninguém mais fala, tipo esses que o pessoal esquece",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Esses esquecidos são os melhores pra achar falha, porque ninguém mais olha!"
+  },
+  {
+   "n": 7,
+   "hora": "22:52",
+   "usuario": "ela é zoada mas o save state dela é muito bom, eu zerei ela duas vezes",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Duas zeradas e ainda elogia o save state? Você conhece essa falha de cor, né!"
+  },
+  {
+   "n": 8,
+   "hora": "22:54",
+   "usuario": "hahaha conhece nada, a falha foi descoberta por um cara de 14 anos num fórum",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Ué, então eu falei besteira, hehe. Esse cara achou a falha antes de mim!"
+  },
+  {
+   "n": 9,
+   "hora": "22:56",
+   "usuario": "você trabalha sem fone ou com música? eu não consigo fazer nada sem uma playlist",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Sem fone eu não trabalho, e a música tem que ser eletrônica. Qualquer outra me tira do foco!"
+  },
+  {
+   "n": 10,
+   "hora": "22:58",
+   "usuario": "voltei",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Já tava achando que você tinha fugido!"
+  },
+  {
+   "n": 11,
+   "hora": "23:00",
+   "usuario": "fugi nada, fui ver um filme ruim com o pessoal, aquele de robô que vira boneco de posto",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Filme ruim com amigo é o melhor, a graça é zoar do começo ao fim!"
+  },
+  {
+   "n": 12,
+   "hora": "23:02",
+   "usuario": "mas vc mora onde mesmo?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não dou endereço nem de brincadeira. Insiste mais e eu cobro cem mil ienes de taxa!"
+  },
+  {
+   "n": 13,
+   "hora": "23:04",
+   "usuario": "kkkk ok, cem mil eu não tenho, vou ficar devendo. tô com sono já",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Vai dormir, então! Eu ainda tenho a noite toda de plantão pela frente e nem tô com sono."
+  },
+  {
+   "n": 14,
+   "hora": "23:06",
+   "usuario": "você nunca dorme? a kal'tsit disse que você cochila no canal de vez em quando",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Cochilo sim, em qualquer canto. Ela contou isso? Fofoqueira!"
+  },
+  {
+   "n": 15,
+   "hora": "23:08",
+   "usuario": "ela contou sim kkk. tu lê revista técnica de tudo? eu só leio manual de montagem de móvel",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Pontos de montagem",
+    "Técnica amaldiçoada",
+    "Livro: Armas escondidas",
+    "Livro: Pontos e preços",
+    "Livro: Preparar"
+   ],
+   "aviso": "",
+   "resposta": "Leio sim, revista técnica de tudo quanto é área. Manual de móvel é que é difícil de ler!"
+  },
+  {
+   "n": 16,
+   "hora": "23:10",
+   "usuario": "kkkk verdade, o manual do armário tinha 40 páginas e uma foto. boa noite closure, vou tentar dormir",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Cena e usos de habilidades",
+    "Livro: Descendente"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite! Dorme bem, que eu fico de olho no canal."
+  },
+  {
+   "n": 17,
+   "hora": "23:12",
+   "usuario": "mentira, acordei de novo às 23h, já tô de volta. você tá sempre aqui mesmo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Só de noite, e de dia quem fica por aqui é a Kal'tsit. Então você acordou na minha hora, hein!"
+  },
+  {
+   "n": 18,
+   "hora": "23:14",
+   "usuario": "oi de novo",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Eita, voltou mesmo! Ficou com saudade da Closure, é?"
+  },
+  {
+   "n": 19,
+   "hora": "23:16",
+   "usuario": "ficou sim, você é a melhor parte do plantão. o que você faz de bom pra dormir melhor?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não tenho receita nenhuma, eu cochilo onde der. Pra isso eu sou a pior pessoa!"
+  },
+  {
+   "n": 20,
+   "hora": "23:18",
+   "usuario": "sério, onde vc mora?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Você não sossega, hein! Não vou contar, e pronto!"
+  }
+ ],
+ "pendente": null
+}

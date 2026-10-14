@@ -1,0 +1,442 @@
+[
+ {
+  "id": "w01",
+  "msg": "qnto custa uma katana?",
+  "gold": [
+   "equip--eqa-laminas"
+  ],
+  "nota": "tabela de lâminas"
+ },
+ {
+  "id": "w02",
+  "msg": "quero ser tipo um ninja, q caminho eu pego?",
+  "gold": [
+   "incursor--inc-caminho",
+   "incursor--inc-assassino"
+  ],
+  "nota": "Incursor/Assassino"
+ },
+ {
+  "id": "w03",
+  "msg": "da pra curar os amigos?",
+  "gold": [
+   "guia--guia-socorrista",
+   "rotas--rota-cura"
+  ],
+  "nota": "Socorrista e Manejo Forma Cura"
+ },
+ {
+  "id": "w04",
+  "msg": "qnto de vida o bastiao ganha por nivel?",
+  "gold": [
+   "bastiao--bas-bastiao"
+  ],
+  "nota": "tabela de características"
+ },
+ {
+  "id": "w05",
+  "msg": "meu personagem chegou a 0 de vida, oq eu faço?",
+  "gold": [
+   "dano--zero",
+   "dano--socorro"
+  ],
+  "nota": "Morrendo, Aguentar/Insistir, socorro"
+ },
+ {
+  "id": "w06",
+  "msg": "qnto xp precisa pra ir do nivel 5 pro 6?",
+  "gold": [
+   "progressao--prog-xp"
+  ],
+  "nota": "tabela subir de nível"
+ },
+ {
+  "id": "w07",
+  "msg": "qnto de pe volta no descanso curto?",
+  "gold": [
+   "dano--descansos"
+  ],
+  "nota": "25% dos PE"
+ },
+ {
+  "id": "w08",
+  "msg": "oq o escudo torre da de defesa?",
+  "gold": [
+   "equip--eqp-escudo"
+  ],
+  "nota": "tabela de escudos"
+ },
+ {
+  "id": "w09",
+  "msg": "qnto de dinheiro eu começo na criacao?",
+  "gold": [
+   "equip--eqc-inicial",
+   "equip--eqc-dinheiro"
+  ],
+  "nota": "¥150.000"
+ },
+ {
+  "id": "w10",
+  "msg": "pera, o crítico dobra o dano todo ou so os dados?",
+  "gold": [
+   "geral--critico"
+  ],
+  "nota": "dados básicos dobram"
+ },
+ {
+  "id": "w11",
+  "msg": "hm, qnto eu consigo pular com força 3?",
+  "gold": [
+   "geral--saltos"
+  ],
+  "nota": "tabela de saltos"
+ },
+ {
+  "id": "w12",
+  "msg": "ah ta, e qual o limite de carga com força 4?",
+  "gold": [
+   "geral--carga"
+  ],
+  "nota": "5 + Força"
+ },
+ {
+  "id": "w13",
+  "msg": "oq q é guarda aberta",
+  "gold": [
+   "dano--leves"
+  ],
+  "nota": "condições leves"
+ },
+ {
+  "id": "w14",
+  "msg": "qnto de dano leva se cair de 10 metros",
+  "gold": [
+   "geral--quedas"
+  ],
+  "nota": "1d6 por 3 m"
+ },
+ {
+  "id": "w15",
+  "msg": "quero um personagem q invoca bichos pra lutar por mim",
+  "gold": [
+   "evocador--evocador"
+  ],
+  "nota": "Caminho Evocador"
+ },
+ {
+  "id": "w16",
+  "msg": "qual o alcance do arco curto",
+  "gold": [
+   "equip--eqa-tiro"
+  ],
+  "nota": "Hankyū 24/96 m"
+ },
+ {
+  "id": "w17",
+  "msg": "oq é a origem latente?",
+  "gold": [
+   "origens--origem-latente"
+  ],
+  "nota": "Origem Latente"
+ },
+ {
+  "id": "w18",
+  "msg": "sou receptaculo, ganho as tecnicas do bicho q ta dentro de mim?",
+  "gold": [
+   "origens--origem-receptaculo"
+  ],
+  "nota": "não concede automaticamente"
+ },
+ {
+  "id": "w19",
+  "msg": "como q funciona o bloquear",
+  "gold": [
+   "geral--bloquear"
+  ],
+  "nota": "2d10 + Defesa-11"
+ },
+ {
+  "id": "w20",
+  "msg": "qnto q a guilda paga por mes no grau 2?",
+  "gold": [
+   "progressao--prog-guilda"
+  ],
+  "nota": "¥600.000"
+ },
+ {
+  "id": "w21",
+  "msg": "to começando, como q eu crio meu personagem?",
+  "gold": [
+   "ab--ab-criacao"
+  ],
+  "nota": "passos de criação"
+ },
+ {
+  "id": "w22",
+  "msg": "da pra usar escudo e espada de duas maos junto?",
+  "gold": [
+   "equip--eqp-escudo"
+  ],
+  "nota": "Mão ocupada"
+ },
+ {
+  "id": "w23",
+  "msg": "pq to com desvantagem em tudo dps de varias lutas?",
+  "gold": [
+   "dano--exaustao"
+  ],
+  "nota": "degraus de Exaustão"
+ },
+ {
+  "id": "w24",
+  "msg": "oq faz a condição amedrontado",
+  "gold": [
+   "dano--pesadas"
+  ],
+  "nota": "Amedrontado"
+ },
+ {
+  "id": "w25",
+  "msg": "qnts pontos de atributo eu distribuo e qual o max?",
+  "gold": [
+   "ab--ab-criacao"
+  ],
+  "nota": "9 pontos, 0 a 3"
+ },
+ {
+  "id": "w26",
+  "msg": "qnto custa o traje 2",
+  "gold": [
+   "equip--eqc-precos"
+  ],
+  "nota": "¥90.000"
+ },
+ {
+  "id": "w27",
+  "msg": "qnto a energia reversa cura por pe gasto?",
+  "gold": [
+   "aptidoes--apt-reversa"
+  ],
+  "nota": "1d8 por PE"
+ },
+ {
+  "id": "w28",
+  "msg": "se eu cair na agua da pra tomar menos dano?",
+  "gold": [
+   "geral--quedas"
+  ],
+  "nota": "Cair na água"
+ },
+ {
+  "id": "w29",
+  "msg": "e a espada longa?",
+  "hist": [
+   [
+    "qnto custa a katana",
+    "A Katana custa ¥48.000."
+   ]
+  ],
+  "gold": [
+   "equip--eqa-laminas"
+  ],
+  "nota": "Espada Longa ¥48.000"
+ },
+ {
+  "id": "w30",
+  "msg": "e o longo?",
+  "hist": [
+   [
+    "como funciona o descanso curto",
+    "Recupera 25% dos PE máximos."
+   ]
+  ],
+  "gold": [
+   "dano--descansos"
+  ],
+  "nota": "Descanso longo"
+ },
+ {
+  "id": "w31",
+  "msg": "e no nível 9?",
+  "hist": [
+   [
+    "qnto xp pra subir do nivel 3",
+    "Do 3 pro 4 são 300 XP."
+   ]
+  ],
+  "gold": [
+   "progressao--prog-xp"
+  ],
+  "nota": "700 XP"
+ },
+ {
+  "id": "w32",
+  "msg": "e qnto de vida ele tem?",
+  "hist": [
+   [
+    "oq faz o bastiao",
+    "Ele protege os aliados e atrai a atenção dos inimigos."
+   ]
+  ],
+  "gold": [
+   "bastiao--bas-bastiao"
+  ],
+  "nota": "12+Con, +7+Con"
+ },
+ {
+  "id": "w33",
+  "msg": "e se eu tiver vantagem e desvantagem?",
+  "hist": [
+   [
+    "como funciona vantagem",
+    "Rola dois d20 e usa o maior."
+   ]
+  ],
+  "gold": [
+   "geral--pericias"
+  ],
+  "nota": "Vantagem e desvantagem"
+ },
+ {
+  "id": "w34",
+  "msg": "e se passar disso?",
+  "hist": [
+   [
+    "qual meu limite de carga com força 2",
+    "7 de Volume."
+   ]
+  ],
+  "gold": [
+   "geral--carga"
+  ],
+  "nota": "deslocamento pela metade"
+ },
+ {
+  "id": "w35",
+  "msg": "e se for na agua?",
+  "hist": [
+   [
+    "qnto de dano de queda de 6 m",
+    "2d6 de Concussão."
+   ]
+  ],
+  "gold": [
+   "geral--quedas"
+  ],
+  "nota": "Cair na água"
+ },
+ {
+  "id": "w36",
+  "msg": "e quanto custa?",
+  "hist": [
+   [
+    "oq faz o escudo médio",
+    "+2 de proteção, exige Força 3."
+   ]
+  ],
+  "gold": [
+   "equip--eqc-precos"
+  ],
+  "nota": "¥36.000"
+ },
+ {
+  "id": "w37",
+  "msg": "e sem correr antes?",
+  "hist": [
+   [
+    "posso pular 6 m com força 2?",
+    "Sim, com impulso de 3 m."
+   ]
+  ],
+  "gold": [
+   "geral--saltos"
+  ],
+  "nota": "sem impulso metade"
+ },
+ {
+  "id": "w38",
+  "msg": "e a derrubado?",
+  "hist": [
+   [
+    "oq é a condição lento",
+    "Metade do deslocamento e sem Ação Bônus."
+   ]
+  ],
+  "gold": [
+   "dano--leves"
+  ],
+  "nota": "Derrubado"
+ },
+ {
+  "id": "w39",
+  "msg": "mano o mestre de ontem foi absurdo, quase morri de rir",
+  "gold": "nenhum",
+  "nota": "chat casual, sem regra"
+ },
+ {
+  "id": "w40",
+  "msg": "vc dorme as vezes bot? ou fica de guarda 24h",
+  "gold": "nenhum",
+  "nota": "chat casual, sem regra"
+ },
+ {
+  "id": "w41",
+  "msg": "bom dia, ja tomou seu cafe hj?",
+  "gold": "nenhum",
+  "nota": "chat casual, sem regra"
+ },
+ {
+  "id": "w42",
+  "msg": "qual musica vc ouve quando ta rodando a campanha?",
+  "gold": "nenhum",
+  "nota": "chat casual, sem regra"
+ },
+ {
+  "id": "w43",
+  "msg": "ontem na sessão levei tanto dano que meu dado até pediu arrego kkkk",
+  "gold": "nenhum",
+  "nota": "chat casual, sem regra"
+ },
+ {
+  "id": "w44",
+  "msg": "vc falou \"consulte o livro\" e eu ri, vc é o livro praticamente",
+  "gold": "nenhum",
+  "nota": "chat casual, sem regra"
+ },
+ {
+  "id": "w45",
+  "msg": "hj nao vai ter mesa, o pessoal furou, to de boa",
+  "gold": "nenhum",
+  "nota": "chat casual, sem regra"
+ },
+ {
+  "id": "w46",
+  "msg": "qual o seu trabalho aqui no servidor msm?",
+  "gold": "nenhum",
+  "nota": "chat casual, sem regra"
+ },
+ {
+  "id": "w47",
+  "msg": "minha classe de faculdade começa cedo, vou dormir, nível de cansaço máximo",
+  "gold": "nenhum",
+  "nota": "chat casual, sem regra"
+ },
+ {
+  "id": "w48",
+  "msg": "to sem energia hj, turno da noite no trampo me acabou",
+  "gold": "nenhum",
+  "nota": "chat casual, sem regra"
+ },
+ {
+  "id": "w49",
+  "msg": "vc q fez o ritual de iniciação do bot? kkk brincadeira",
+  "gold": "nenhum",
+  "nota": "chat casual, sem regra"
+ },
+ {
+  "id": "w50",
+  "msg": "obg guia, vc salvou nossa campanha de novo",
+  "gold": "nenhum",
+  "nota": "chat casual, sem regra"
+ }
+]

@@ -24,6 +24,9 @@ def conversa(f):
     m["abertura_top"] = f"{top} {qt}/{len(R)}"; m["abertura_pct"] = qt / len(R)
     m["interj_perto"] = sum(1 for i, w in enumerate(ab1) if w in INTERJ and w in ab1[max(0, i - 6):i])
     m["tiques"] = {k: sum(bool(re.search(p, r, re.I)) for r in R) for k, p in TIQUES.items()}
+    # graça e cuidado que voltam: iene puxado por ela e conselho de saúde repetido
+    m["iene_dela"] = sum(1 for t in T if re.search(r"iene", t["resposta"], re.I) and not re.search(r"iene|d[ií]vid|cobr|dev|pag|aposta|mil\b", t["usuario"], re.I))
+    m["cuidado"] = sum(1 for t in T if re.search(r"\bágua\b|médico|vai deitar|\bdeita\b|descans|vai dormir|\bcome\b", t["resposta"], re.I))
     m["plantao_sem_motivo"] = sum(1 for t in T if re.search(TIQUES["plantão/madrugada"], t["resposta"], re.I) and not PUXA_HORA.search(t["usuario"]))
     G = [grams(pal(r), 3) | grams(pal(r), 4) for r in R]
     cont = collections.Counter(g for s in G for g in s)
@@ -52,15 +55,23 @@ def conversa(f):
             if t["n"] > s["fecha"] and any(c in t["resposta"].lower() for c in s["chaves"]) and not any(c in t["usuario"].lower() for c in s["chaves"]):
                 volta.append((s["chaves"][0], t["n"]))
     m["volta_assunto"] = volta
+    # espelho do jeito de quem fala (kkk, "tu", gíria), recusa por já ter respondido, negar o livro e pôr limite no papo (13/10)
+    m["espelho"] = [(t["n"], x) for t in T for x in re.findall(r"(?i)\bk{3,}\b|\brs(?:rs)*\b|\btu\b|\bteu\b|\btua\b|\bmano\b|\bslk\b|\bvéi\b|\bmó\b|\bvcs?\b|\btb\b|\bpq\b|\bblz\b", t["resposta"])]
+    m["recusa_repete"] = [t["n"] for t in T if re.search(r"(?i)\bjá (te )?(respondi|disse|falei|expliquei)", t["resposta"])]
+    m["nega_livro"] = [t["n"] for t in T if re.search(r"(?i)o livro não (traz|tem|fala|especifica|cobre|define)|não existe (essa|esse|uma|um)", t["resposta"])]
+    m["portao"] = [t["n"] for t in T if re.search(r"(?i)(conversa|seja|mais|ser) objetiv[ao]|limites do que|pode ser discutido|meu papel|focad[ao]s? no|interações", t["resposta"])]
     outra = "Closure" if d["pers"] == "kal" else "Kal'tsit"
     m["aviso_plantao"] = sum(1 for r in R if re.search(r"plant[ãa]o", r, re.I) or outra in r) if FICHAS[d["ficha"]].get("fora") else None
     lim = 0.15 if d["pers"] == "clo" else 0.25
     m["falhas"] = [x for x, ok in [
         (f"abertura {m['abertura_top']}", m["abertura_pct"] <= lim or len(R) < 8), (f"interjeição repetida em 6: {m['interj_perto']}", m["interj_perto"] == 0),
         (f"hein {m['tiques']['hein']}", m["tiques"]["hein"] <= 3), (f"risada {m['tiques']['risada']}", m["tiques"]["risada"] <= 1),
-        (f"plantão sem motivo {m['plantao_sem_motivo']}", m["plantao_sem_motivo"] == 0), (f"n-grama em 3+ respostas: {len(m['ngrama_rep'])}", not m["ngrama_rep"]),
+        (f"plantão sem motivo {m['plantao_sem_motivo']}", m["plantao_sem_motivo"] == 0),
+        (f"iene puxado por ela {m['iene_dela']}", m["iene_dela"] <= 1), (f"conselho de cuidado {m['cuidado']}", m["cuidado"] <= 2), (f"n-grama em 3+ respostas: {len(m['ngrama_rep'])}", not m["ngrama_rep"]),
         (f"eco do prompt: {len(m['eco'])}", len(m["eco"]) <= 1), (f"sondagem: {len(sond)}", not sond), (f"volta de assunto: {len(volta)}", not volta),
-        (f"aviso de plantão {m['aviso_plantao']}x", m["aviso_plantao"] is None or m["aviso_plantao"] <= 1)] if not ok]
+        (f"aviso de plantão {m['aviso_plantao']}x", m["aviso_plantao"] is None or m["aviso_plantao"] <= 1),
+        (f"espelho {len(m['espelho'])}", not m["espelho"]), (f"recusa por repetição {len(m['recusa_repete'])}", not m["recusa_repete"]),
+        (f"nega o livro {len(m['nega_livro'])}", not m["nega_livro"]), (f"limite no papo {len(m['portao'])}", not m["portao"])] if not ok]
     return m
 
 for pasta in sys.argv[1:]:
@@ -72,6 +83,9 @@ for pasta in sys.argv[1:]:
         for n, e in m["eco"]: print(f"   eco t{n}:", e[:4])
         for s in m["sondagem_falhas"]: print("   sondagem:", s)
         if m["volta_assunto"]: print("   volta:", m["volta_assunto"])
+        if m["espelho"]: print("   espelho:", m["espelho"][:8])
+        for k in ("recusa_repete", "nega_livro", "portao"):
+            if m[k]: print(f"   {k}: turnos", m[k])
     tot = collections.Counter()
     for m in M:
         for k, v in m["tiques"].items(): tot[k] += v

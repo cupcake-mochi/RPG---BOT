@@ -18,14 +18,15 @@ Ele tira dúvida de regra, corrige ficha e conversa na voz de uma personagem de 
 ## Estado atual
 
 **Fase 0 (organizar a pasta) concluída** em 12/10/2026: `dados/sistema/` sincronizado com o
-Ciclo Maldito v0.359 / R44. O esqueleto do bot (fase 1) está em [`src/`](src/LEIA-ME.md), testado
-fora do ar: ainda não responde no chat. A personalidade (fase 4) segue em paralelo.
+Ciclo Maldito v0.359 / R44. O esqueleto da fase 1 está em `src/closure_bot/` (13/10): o chat
+responde, testado de ponta a ponta sem o Discord, mas nunca subiu com token (`src/LEIA-ME.md`).
 
-- **Kal'tsit** (plantão das 9h às 21h): card v0.13 em teste (naturalidade, 13/10), v1.2 = card v0.11 é a última congelada (`dados/personagem/kaltsit/VERSAO.md`).
-- **Closure** (plantão das 21h às 9h): card v0.19, exemplos e vida feitos; pente fino em andamento; falta o teste no
-  Gemini 3.8 Flash e congelar a v1 (`dados/personagem/closure/ESTADO.md`).
-- **Crédito do Google AI Pro:** ativado em 13/10/2026, numa conta de faturamento paga do Google Cloud
-  (fim de `pesquisa/reports/Qual IA usar no bot.md`).
+- **Kal'tsit** (plantão das 9h às 21h): card v0.24 em teste (pente fino pela página de teste, 13/10), v1.2 = card v0.11 é a última congelada (`dados/personagem/kaltsit/VERSAO.md`).
+- **Closure** (plantão das 21h às 9h): card v0.31, exemplos e vida feitos; pente fino em andamento; falta o Mizuki
+  aprovar e congelar a v1 (`dados/personagem/closure/ESTADO.md`).
+- **Lorebook** v1.9 (97 entradas) e busca no livro v8, na página de teste (`ferramentas/pagina_teste/`).
+- **Crédito do Google AI Pro:** ativado em 13/10/2026; a Vertex já respondeu com os cards
+  atuais (fim de `pesquisa/reports/Qual IA usar no bot.md`).
 
 Pra retomar numa conversa nova: [`docs/PROMPT-CONTINUIDADE.md`](docs/PROMPT-CONTINUIDADE.md).
 O plano completo está em [`docs/PLANEJAMENTO.md`](docs/PLANEJAMENTO.md) e

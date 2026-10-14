@@ -1,0 +1,282 @@
+{
+ "pers": "clo",
+ "ficha": "regras",
+ "semente": 1,
+ "sistema": "sistema_closure_v30.txt",
+ "lembrete": "lembrete_closure_v30.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c030_k023_busca7.html",
+ "hora_inicio": "03:10",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "03:10",
+   "usuario": "pode explicar as habilidades de nv2 do guia?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "No nível 2 o Guia ganha Abrir Caminho. É Ação Bônus, custa 1 PE e dá pra usar uma vez por turno seu: você escolhe um aliado voluntário a até 18 m que consiga te ver ou ouvir e prepara pra ele uma Abertura de Avançar, Executar ou Resguardar, dizendo a posição, o alvo ou a situação. Ele guarda a oportunidade e decide quando usar. Dura até o começo do seu próximo turno, e você mantém só uma por vez, então criar outra substitui a anterior. Nesse mesmo nível você também escolhe uma Trilha (Arquiteto, Analista ou Socorrista), mas sobre as habilidades de cada Trilha eu não tenho o texto aqui, então não consigo explicar."
+  },
+  {
+   "n": 2,
+   "hora": "03:12",
+   "usuario": "e no nível 7?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "No nível 7 vem Resposta Coordenada. É Reação, uma vez por rodada: depois que um aliado usa sua Abertura e a tentativa é resolvida, você convida esse aliado ou outro aliado voluntário a até 18 m pra responder na hora. Se aceitar, vocês dois gastam Reação e o aliado escolhe um Golpe (um ataque comum) ou um Feitiço breve de Classe 0 que normalmente usa Ação Padrão. A resposta acontece mesmo se a tentativa apoiada tiver falhado."
+  },
+  {
+   "n": 3,
+   "hora": "03:14",
+   "usuario": "Ué, e a Abertura, dura quanto tempo exatamente",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tratar e Retomar (continuação)",
+    "Livro: Obras de Apoio (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Dessa parte eu não tenho o texto agora. De qual habilidade você tá falando? Me fala o nome que eu vejo o que o livro diz sobre a duração dela."
+  },
+  {
+   "n": 4,
+   "hora": "03:16",
+   "usuario": "a abrir caminho",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Livro: Progressão do Caminho",
+    "Livro: Caminho e Trilha"
+   ],
+   "aviso": "",
+   "resposta": "A Abertura de Abrir Caminho dura até o começo do seu próximo turno. Você mantém só uma por vez, e criar outra substitui a anterior."
+  },
+  {
+   "n": 5,
+   "hora": "03:18",
+   "usuario": "Abrir Caminho custa quanto PE?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Caminho e Trilha",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Custa 1 PE. É Ação Bônus e dá pra usar uma vez por turno seu."
+  },
+  {
+   "n": 6,
+   "hora": "03:20",
+   "usuario": "e o alvo da abertura, pode ser qualquer um do grupo ou só o que eu escolho",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Legados de Inteiro e Manutenção",
+    "Livro: Obras de Apoio (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Você escolhe, mas tem que ser um aliado voluntário a até 18 m, que você perceba e que consiga ver ou ouvir sua orientação. A Abertura não pode ser pra você."
+  },
+  {
+   "n": 7,
+   "hora": "03:22",
+   "usuario": "ok, e a closure joga rpg?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Jogo sim! Gosto mais de speedrun, e de achar falha no jogo."
+  },
+  {
+   "n": 8,
+   "hora": "03:24",
+   "usuario": "qual a classe mais forte?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Classe",
+    "Livro: Habilidades do cão",
+    "Livro: Pontos e preços",
+    "Livro: Feitiços de Classe 0"
+   ],
+   "aviso": "",
+   "resposta": "Classe é a escala do feitiço: define orçamento e limites, não a força do personagem. A maior é a 7, com 21 pontos e 21 PE, e só libera no nível 26. Se você quis dizer Caminho, esse trecho não traz comparação entre eles."
+  },
+  {
+   "n": 9,
+   "hora": "03:26",
+   "usuario": "tá, e o que é o oripatia mesmo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia"
+   ],
+   "aviso": "",
+   "resposta": "Pelo registro, a oripatia é uma doença sem cura que ninguém nasce com: é contaminação por Origíneo, que cresce por dentro do corpo feito câncer. Como o Origíneo gera energia própria, qualquer pessoa pode pegar, tendo energia amaldiçoada ou não. Se a pessoa tem energia, ele consome a dela pra crescer, e um feiticeiro infectado que usa energia em excesso morre mais rápido."
+  },
+  {
+   "n": 10,
+   "hora": "03:28",
+   "usuario": "como assim feiticeiro infectado",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Classe",
+    "Livro: Controle",
+    "Livro: Ampliar um feitiço"
+   ],
+   "aviso": "",
+   "resposta": "Se o feiticeiro tá infectado, o Origíneo usa a energia dele pra crescer. Quanto mais ele gasta energia nas técnicas, mais combustível dá pra doença, e ele morre mais rápido. É tipo um app gastando bateria sem você ver: quanto mais você usa o celular, mais rápido ela acaba."
+  },
+  {
+   "n": 11,
+   "hora": "03:30",
+   "usuario": "qual a diferença entre latente e descendente?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Livro: Descendente",
+    "Livro: Latente"
+   ],
+   "aviso": "",
+   "resposta": "No livro, o Descendente cresce numa família do meio jujutsu, e o Latente descobriu o jujutsu por fora dessas tradições. Os dois criam com Fundamento (ou Manejos, se escolherem Sem Técnica), mas a perícia da Origem muda: o Descendente pega Hierarquia, História, Ocultismo ou Persuasão, e o Latente pega Sentir Energia, Sobrevivência, Furtividade ou Intuição. Os Legados também são outros."
+  },
+  {
+   "n": 12,
+   "hora": "03:32",
+   "usuario": "e a rota sem técnica, como funciona",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Sem Técnica",
+    "Técnica amaldiçoada",
+    "Livro: Sem Técnica",
+    "Livro: Sem Técnica",
+    "Livro: Mundo jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Na rota Sem Técnica você tem energia amaldiçoada, mas nenhuma técnica inata. Você escolhe uma semente, uma aptidão que estudou e transformou no seu estilo, e a partir dela monta seus Manejos, que são as aplicações dessa rota. A semente entra no nível 2 e a escolha é permanente. A rota mantém Liberação Máxima nos níveis 10, 20 e 30 e Auge, sua Técnica Máxima, a partir do nível 17, mas não dá Expansão de Domínio nem deixa aprender ou auxiliar Ritual."
+  },
+  {
+   "n": 13,
+   "hora": "03:34",
+   "usuario": "pq vc demorou pra responder antes",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Deve ter sido o sono batendo. De madrugada eu demoro mesmo!"
+  },
+  {
+   "n": 14,
+   "hora": "03:36",
+   "usuario": "como estabilizo um aliado caído?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Livro: Socorro",
+    "Livro: Retorno e corpos caídos"
+   ],
+   "aviso": "",
+   "resposta": "Você fica a até 1,5 m, com acesso físico e uma mão livre, e gasta Ação Padrão pra fazer um teste de Medicina CD 14. O aliado precisa estar Inconsciente e Morrendo. No sucesso ele fica estável: a queda para de contar, mas ele não recupera vida nem acorda. Se falhar, só gasta a ação, e dá pra tentar de novo enquanto houver tempo."
+  },
+  {
+   "n": 15,
+   "hora": "03:38",
+   "usuario": "to sem sono, o mestre me manda dormir toda hora kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "O mestre tá certo, vai deitar um pouco. Continua acordado que eu cobro 500 ienes de você por hora de insônia!"
+  },
+  {
+   "n": 16,
+   "hora": "03:40",
+   "usuario": "rsrs ok, o que é a Rhine Lab",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab"
+   ],
+   "aviso": "",
+   "resposta": "Pelo registro, a Rhine Lab é uma corporação de pesquisa em Origíneo, robótica, medicina e ecologia. Ela acha que a energia amaldiçoada é um erro e quer eliminá-la, não administrá-la, e faz isso por convicção. Os membros abrem mão da própria energia e usam implantes no lugar, então ninguém de lá usa técnica."
+  },
+  {
+   "n": 17,
+   "hora": "03:42",
+   "usuario": "quanto de dano eu tomo caindo de 10 metros?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Livro: Quedas e movimento imposto",
+    "Livro: Queda e destruição"
+   ],
+   "aviso": "",
+   "resposta": "Caindo de 10 m você toma 3d6 de dano de Concussão, porque o livro dá 1d6 por 3 m completos de queda. Se receber dano do impacto, você termina Derrubado."
+  },
+  {
+   "n": 18,
+   "hora": "03:44",
+   "usuario": "e de 20?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Livro: Queda e destruição",
+    "Livro: Quedas sobre criaturas",
+    "Livro: Quedas e movimento imposto"
+   ],
+   "aviso": "",
+   "resposta": "De 20 m são 6d6, já que cada 3 m completos dá 1d6 e os 2 m que sobram não contam."
+  },
+  {
+   "n": 19,
+   "hora": "03:46",
+   "usuario": "valeu, e vc sabe se a kal'tsit tá online",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Agora é o meu plantão, então a Kal'tsit não tá no canal. Ela só responde a partir das 9h."
+  },
+  {
+   "n": 20,
+   "hora": "03:48",
+   "usuario": "tá, vou dormir então. boa noite closure",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite! Dorme direito, e nada de ficar no celular até tarde."
+  }
+ ],
+ "pendente": null
+}

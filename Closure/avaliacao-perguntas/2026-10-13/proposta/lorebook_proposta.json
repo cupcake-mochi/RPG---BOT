@@ -1,0 +1,98 @@
+{
+ "mudar": {
+  "Criar um personagem": {
+   "key_adicionar": [
+    "faço uma ficha",
+    "faco uma ficha",
+    "fazer uma ficha",
+    "fazer minha ficha",
+    "criar ficha",
+    "criar uma ficha",
+    "sou novo",
+    "sou nova",
+    "sou novato",
+    "sou novata",
+    "nunca joguei",
+    "começar a jogar",
+    "comecar a jogar"
+   ],
+   "content": "[Criar um personagem] A ficha se monta pelo capítulo Criar um personagem do livro: Origem, Caminho e Trilha, capacidades iniciais e equipamento. (livro, âncora ab--ab-criacao)"
+  },
+  "Oripatia em mesa": {
+   "key_adicionar": [
+    "personagem é infectado",
+    "personagem e infectado",
+    "personagem infectada",
+    "sou infectado",
+    "sou infectada",
+    "infectado na ficha",
+    "infecção na ficha",
+    "infeccao na ficha"
+   ],
+   "content": null,
+   "nota": "content igual ao atual; só chaves novas. Não testado com modelo."
+  },
+  "Classe": {
+   "key_adicionar": [],
+   "content": "[Termo do livro: Classe] Escala que determina orçamento e limites de uma aplicação. É distinta do Caminho do personagem: quem pergunta pela \"classe\" do personagem quase sempre quer dizer Caminho. (livro, âncora fundamento--pontos)",
+   "nota": "Não testado com modelo."
+  }
+ },
+ "novas": [
+  {
+   "comment": "Subir de nível",
+   "group": "sistema",
+   "key": [
+    "subir de nível",
+    "subir de nivel",
+    "subo de nível",
+    "subo de nivel",
+    "sobe de nível",
+    "sobe de nivel",
+    "upar",
+    "upo",
+    "level up",
+    "ganhar nível",
+    "ganhar nivel",
+    "experiência",
+    "experiencia",
+    "xp"
+   ],
+   "content": "[Subir de nível] O personagem sobe de nível com experiência, pelo capítulo Experiência e Progressão do livro. (livro, âncora progressao--prog-inicio)"
+  },
+  {
+   "comment": "O que ganho por nível",
+   "group": "sistema",
+   "key": [
+    "ganho no nível",
+    "ganho no nivel",
+    "ganha no nível",
+    "ganha no nivel",
+    "ganho em cada nível",
+    "ganho em cada nivel",
+    "tabela de progressão",
+    "tabela de progressao",
+    "o que muda no nível",
+    "o que muda no nivel"
+   ],
+   "content": "[Progressão por nível] O que cada nível concede está nas tabelas de progressão do livro, dos níveis 1 a 15 e 16 a 30. (livro, âncora progressao--prog-tabela-inicial)"
+  },
+  {
+   "comment": "O sistema",
+   "group": "sistema",
+   "key": [
+    "explica o sistema",
+    "explicar o sistema",
+    "como funciona o sistema",
+    "como é o sistema",
+    "como e o sistema",
+    "que sistema é esse",
+    "que sistema e esse",
+    "o que é o ciclo maldito",
+    "o que e o ciclo maldito",
+    "resumo do sistema"
+   ],
+   "content": "[O sistema] Ciclo Maldito é o sistema de RPG de mesa da guilda, no mundo de Jujutsu Kaisen. A apresentação abre o livro. (livro, âncora ab--ab-apresentacao)"
+  }
+ ]
+}

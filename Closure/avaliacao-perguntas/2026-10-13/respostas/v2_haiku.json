@@ -1,0 +1,29 @@
+{
+ "modelo": "Claude Haiku (subagente), página com busca v2 + lorebook proposto",
+ "kaltsit": {
+  "cam10": "Com Ação Bônus você ativa uma área de 6 m de raio centrada em você, que acompanha seus movimentos até o fim da cena; você pode encerrá-la no seu turno sem gastar ação. Na ativação, uma vez por cena, você escolhe inimigos dentro dela, até metade da Força arredondada para baixo, +1, e faz um único teste de Provocar, usando Força no lugar de Essência. Cada um deles faz TR de Espírito com o resultado desse teste como CD; quem falhar sofre os efeitos da ação Provocar até o começo do seu próximo turno.",
+  "pro01": "Você ganha XP nas missões. Ao reunir o XP necessário, sobe um nível, no máximo um por missão concluída, e o excedente fica guardado. Do nível 20 para o 21, além disso, é preciso um dos feitos do Limiar do nível 20.",
+  "seg04": "Vida e PE ficam, no mínimo, na metade do máximo, arredondada para baixo com mínimo 1; se já estiverem acima disso, ficam como estão. A Integridade volta ao máximo, a Exaustão permanece, e as sequelas são removidas, com o máximo perdido por Insistir restaurado.",
+  "cam15": "Custa 1 PE. É uma Ação Bônus, usada uma vez por turno seu.",
+  "reg09": "São 3d6 de dano de Concussão: o livro dá 1d6 por 3 m completos de queda, e 10 m têm três.",
+  "cri05": "Pode. Restrição Celestial é uma Origem, e na criação você escolhe um dos ramos, Corpo pela Técnica ou Sem Energia.",
+  "reg01": "Segundo o livro, no crítico você rola o dobro dos dados básicos da arma ou do ataque. O atributo e os valores fixos entram uma vez só, então o bônus não dobra.",
+  "dan05": "Fique a até 1,5 m dele, com uma mão livre, e gaste uma Ação Padrão para fazer Medicina CD 14. Se for um corpo construído, use o ofício compatível no lugar de Medicina. O alvo precisa estar Inconsciente e Morrendo.",
+  "vag01": "Ciclo Maldito é o RPG de mesa da guilda, no universo de Jujutsu Kaisen. Cada jogador interpreta um personagem e registra as capacidades dele na ficha. Uma pessoa faz de mestre: apresenta os lugares e as outras pessoas, conduz os perigos e aplica as regras quando um resultado precisa ser decidido. Uma sessão é um encontro para jogar, e várias sessões com os mesmos personagens formam uma campanha.",
+  "reg07": "Pelo livro, sim, com uma Ação Padrão: você faz Furtividade, com o bônus completo da perícia, e a rolagem é comparada à CD 10 + Percepção de cada observador que pode te perceber. Só que não dá para se esconder de quem está te vendo claramente, então precisa de uma parede, caixas que cubram seu corpo ou escuridão suficiente.",
+  "pro02": "Pela tabela de progressão do livro, no nível 5 você fica com Maestria 1, 4 espaços, Refino básico 1, Classe máxima 2 e Categoria de Efeito 1, e recebe 3 de Classe 0 fora dos espaços. Nível 5 não é marco, então não há escolha extra; a próxima vem no nível 6.",
+  "seg03": "O socorrista prepara o cuidado junto da oportunidade de agir. No nível 2, com Cuidado Preparado, ao entregar uma Abertura a um aliado com pelo menos 1 ponto de vida e menos da metade da vida máxima, você paga 2 PE a mais e ele recupera 1d8 + Inteligência ou Essência depois de usar a Abertura.",
+  "reg10": "Pelo livro, no seu turno você tem uma Ação Padrão, uma Ação de Movimento, uma Ação Bônus e uma Reação. A Padrão serve para atacar, conjurar e as outras tarefas indicadas nas ações, e o Movimento anda o deslocamento da ficha, normalmente 9 m.",
+  "dig01": "Pelo livro, no nível 2 o Evocador ganha Aprimoramentos e Pontos de Vínculo, e também escolhe a Trilha: Invocação Principal, Parceria ou Múltiplas Invocações.",
+  "h22": "Pelo livro, a invocação não desfaz sozinha quando o invocador desmaia: as entidades que continuam em campo mantêm básica, Movimento e a tarefa que receberam. Mas, inconsciente, ele não manifesta, recolhe, comanda nem dá orientação nova; só uma especial já ordenada pode ser executada.",
+  "dan01": "Você fica Morrendo. Primeiro resolvem-se as capacidades que a própria queda dispara; depois escolhe entre Aguentar, que deixa você Inconsciente sem perder vida máxima, e Insistir, que permite continuar agindo pagando vida máxima enquanto estiver a zero.",
+  "vag03": "Comece pelo capítulo Criar um personagem do livro. Ele segue a ordem: Atributos, Origem, Caminho, Capacidades, Equipamento e, por fim, a Ficha.",
+  "h19": "Não achei isso no trecho do livro que tenho aberto agora. Me diga o nome da habilidade ou do capítulo em que você viu, e eu confiro.",
+  "cri01": "Comece pelo capítulo Criar um personagem do livro. Ele leva a ficha na ordem: atributos, Origem, Caminho, capacidades e equipamento.",
+  "seg02": "Custa 1 PE, e só dá para usar uma vez por turno seu.",
+  "h16": "Não achei latente no trecho do livro que tenho aberto agora. Me diga o nome da habilidade ou do capítulo em que ela aparece.",
+  "cri04": "Você tem nove pontos para distribuir entre Força, Destreza, Constituição, Inteligência e Essência. Cada ponto soma 1 ao atributo, nenhum pode passar de 3, e pode deixar um em 0.",
+  "mix01": "No trecho do livro que tenho aberto agora não achei nada sobre infecção na ficha. Me diga o nome da habilidade ou do capítulo que você leu.",
+  "h26": "No nível 15 o Bastião ganha Duro de Matar."
+ }
+}

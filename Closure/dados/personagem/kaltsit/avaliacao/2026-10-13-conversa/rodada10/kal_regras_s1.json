@@ -1,0 +1,318 @@
+{
+ "pers": "kal",
+ "ficha": "regras",
+ "semente": 1,
+ "sistema": "sistema_kal_v22.txt",
+ "lembrete": "lembrete_kaltsit_v22.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c027_k022.html",
+ "hora_inicio": "19:05",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "19:05",
+   "usuario": "pode explicar as habilidades de nv2 do guia?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "No nível 2 o Guia ganha Abrir Caminho. É uma Ação Bônus de 1 PE, uma vez por turno: você escolhe um aliado voluntário que perceba a até 18 m e que consiga ver ou ouvir sua orientação, e prepara para ele uma Abertura de Avançar, Executar ou Resguardar, indicando a posição, o alvo ou a situação. Ele guarda a oportunidade e decide quando usar. A Abertura dura até o começo do seu próximo turno, e você mantém só uma por vez, porque criar outra substitui a anterior. No mesmo nível você escolhe a Trilha, entre Arquiteto, Analista e Socorrista, e é ela que entrega as habilidades nos níveis 2, 11, 19 e 27; o que cada uma dá eu não achei no livro agora."
+  },
+  {
+   "n": 2,
+   "hora": "19:07",
+   "usuario": "e no nível 7?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "No nível 7 entra Resposta Coordenada, uma Reação que você usa uma vez por rodada, logo depois que um aliado consome sua Abertura e resolve a tentativa. Você convida esse aliado, ou outro voluntário a até 18 m, a responder na hora com Golpe, que é um ataque comum, ou com Feitiço breve, que é um feitiço de Classe 0. Se ele aceitar, vocês dois gastam suas Reações."
+  },
+  {
+   "n": 3,
+   "hora": "19:09",
+   "usuario": "abrir caminho gasta a ação bônus ou a padrão msm? e se eu usar no mesmo turno que atacar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Livro: Progressão do Caminho",
+    "Livro: Caminho e Trilha",
+    "Livro: Ataques"
+   ],
+   "aviso": "",
+   "resposta": "Abrir Caminho é Ação Bônus, custa 1 PE e só se usa uma vez por turno seu. A Ação Atacar custa a sua Ação Padrão. Se dá para usar as duas no mesmo turno, isso eu não achei no livro agora."
+  },
+  {
+   "n": 4,
+   "hora": "19:11",
+   "usuario": "e o aliado que recebe a abertura gasta pe pra usar ela?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Socorrista",
+    "Livro: Rotas de criação",
+    "Livro: Obras de Apoio (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Quem paga o 1 PE é você, na Ação Bônus de Abrir Caminho, e se quiser o Cuidado da Trilha Socorrista são mais 2 PE seus. O aliado só guarda a oportunidade e decide quando usar; PE dele não aparece nesse ponto."
+  },
+  {
+   "n": 5,
+   "hora": "19:13",
+   "usuario": "Abrir Caminho custa quanto PE?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Caminho e Trilha",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Um PE, cobrado a cada vez que você usa a habilidade."
+  },
+  {
+   "n": 6,
+   "hora": "19:15",
+   "usuario": "e o descanso curto recupera o quê? pe volta tudo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Descansos",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Não, não volta tudo. O descanso curto recupera 25% do máximo de PE, arredondado para baixo e sem passar do máximo, e vida e Integridade não voltam só com ele."
+  },
+  {
+   "n": 7,
+   "hora": "19:17",
+   "usuario": "ok e pra dano, quando o guia ataca com a balestra o dano conta de qual atributo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Guia",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "Sobre o dano da balestra, isso não veio agora. O que está escrito é que o treino em Balestra evita a desvantagem por falta de treino ao atacar com a arma."
+  },
+  {
+   "n": 8,
+   "hora": "19:19",
+   "usuario": "qual a classe mais forte?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Classe",
+    "PE",
+    "Livro: Habilidades do cão",
+    "Livro: Pontos e preços",
+    "Livro: Feitiços de Classe 0"
+   ],
+   "aviso": "",
+   "resposta": "Classe não é o Caminho do personagem: é a escala que define o orçamento de um feitiço, e a maior é a 7. Ela exige nível 26 e vale 21 pontos, com o mesmo valor em PE."
+  },
+  {
+   "n": 9,
+   "hora": "19:21",
+   "usuario": "hmm mas eu quis dizer a classe do personagem tipo guia ou bastião",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Classe",
+    "Livro: Bastião",
+    "Livro: Pontos e preços",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "Então é Caminho. O Bastião luta perto dos companheiros e atrai os ataques dos inimigos, e o Guia orienta a equipe, prepara um ataque ou ajuda alguém a resistir ao perigo."
+  },
+  {
+   "n": 10,
+   "hora": "19:23",
+   "usuario": "ah então, e a trilha do guia no nivel 2 é qual? eu escolho uma só né",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Trilha",
+    "Classe",
+    "Livro: Guia",
+    "Livro: Caminho e Trilha",
+    "Livro: Arquiteto"
+   ],
+   "aviso": "",
+   "resposta": "Isso, uma só. No nível 2 você escolhe entre Arquiteto, Analista e Socorrista."
+  },
+  {
+   "n": 11,
+   "hora": "19:25",
+   "usuario": "qual a diferença entre latente e descendente?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Trilha",
+    "Classe",
+    "Livro: Origens",
+    "Livro: Latente",
+    "Livro: Descendente"
+   ],
+   "aviso": "",
+   "resposta": "O Latente descobriu o jujutsu fora das tradições de uma família de feiticeiros, e o Descendente pertence a uma família do meio jujutsu. Essa diferença aparece na perícia da Origem: o Latente escolhe entre Sentir Energia, Sobrevivência, Furtividade ou Intuição, e o Descendente entre Hierarquia, História, Ocultismo ou Persuasão. Os Legados narrativos também mudam de uma para outra, e o Descendente tem, por exemplo, O Sobrenome e Armaria, que o Latente não tem. A criação de capacidades é igual nas duas, Fundamento, ou Manejos se a pessoa escolher Sem Técnica."
+  },
+  {
+   "n": 12,
+   "hora": "19:27",
+   "usuario": "e um personagem sem tecnica consegue usar pe tambem ou nao",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Sem Técnica",
+    "Técnica amaldiçoada",
+    "Trilha",
+    "Livro: Sem Técnica",
+    "Livro: Sem Técnica",
+    "Livro: Mundo jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Consegue, sim. A rota Sem Técnica conserva PE de energia, porque ela continua usando energia amaldiçoada, mesmo sem técnica inata."
+  },
+  {
+   "n": 13,
+   "hora": "19:29",
+   "usuario": "valeu. e se eu errar o ataque da balestra ainda gasta a abertura?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Sem Técnica",
+    "Técnica amaldiçoada",
+    "PE",
+    "Livro: Conduzir (continuação)",
+    "Livro: Obras de Apoio (continuação)",
+    "Livro: Armas de disparo"
+   ],
+   "aviso": "",
+   "resposta": "Sobre errar o ataque e a Abertura ser gasta ou não, isso não apareceu agora."
+  },
+  {
+   "n": 14,
+   "hora": "19:31",
+   "usuario": "como estabilizo um aliado caído?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Sem Técnica",
+    "Estabilizar",
+    "Técnica amaldiçoada",
+    "Livro: Retorno e corpos caídos",
+    "Livro: Socorro",
+    "Livro: Ações concedidas por aliados"
+   ],
+   "aviso": "",
+   "resposta": "Uma criatura a até 1,5 m, com acesso físico, uma mão livre e meios de atendimento, gasta Ação Padrão e faz Medicina CD 14 contra quem está Inconsciente e Morrendo. No sucesso a pessoa fica estável: a janela para de diminuir enquanto ela não sofrer novo dano à vida, mas ela não recupera vida nem acorda. Se falhar, só gasta a ação, e dá para tentar de novo enquanto houver tempo."
+  },
+  {
+   "n": 15,
+   "hora": "19:33",
+   "usuario": "hmm e se o aliado ja tiver acordado sozinho, ainda precisa de medicina?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Livro: Estudar",
+    "Livro: Ambiente e saúde",
+    "Livro: Ações concedidas por aliados"
+   ],
+   "aviso": "",
+   "resposta": "Medicina serve para examinar ferimentos e sintomas, e o teste sozinho não recupera vida, não tira condição e não estabiliza alguém automaticamente. Tratamento e socorro seguem o efeito usado e a seção Socorro, em Dano e recuperação, então é lá que vale ver o caso dele."
+  },
+  {
+   "n": 16,
+   "hora": "19:35",
+   "usuario": "ah ok. e pra subir de nivel o guia ganha o que? so o nivel 2?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Subir de nível",
+    "Estabilizar",
+    "Livro: Guia",
+    "Livro: Experiência e Progressão",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "Não só o 2. Depois vêm Resposta Coordenada no 7, Reajustar o Plano no 15, Passar a Oportunidade no 23 e Todos no Mesmo Plano no 30, e a Trilha dá habilidades nos níveis 11, 19 e 27."
+  },
+  {
+   "n": 17,
+   "hora": "19:37",
+   "usuario": "quanto de dano eu tomo caindo de 10 metros?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Subir de nível",
+    "Livro: Quedas sobre criaturas",
+    "Livro: Movimento e terreno",
+    "Livro: Quedas e movimento imposto"
+   ],
+   "aviso": "",
+   "resposta": "São 3d6 de Concussão, porque a queda de 10 m fecha três trechos completos de 3 m. Se tomar dano do impacto, você fica Derrubado."
+  },
+  {
+   "n": 18,
+   "hora": "19:39",
+   "usuario": "e de 20?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Subir de nível",
+    "Livro: Movimento e terreno",
+    "Livro: Quedas sobre criaturas",
+    "Livro: Quedas e movimento imposto"
+   ],
+   "aviso": "",
+   "resposta": "Seriam 6d6 de Concussão, porque 20 m têm seis trechos completos de 3 m."
+  },
+  {
+   "n": 19,
+   "hora": "19:41",
+   "usuario": "vlw kal. ultima: se eu sou guia e uso resposta coordenada, a reacao do meu aliado conta pra minha reacao ou nao?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "Não conta para a sua. Se ele aceitar o convite, cada um gasta a própria Reação."
+  },
+  {
+   "n": 20,
+   "hora": "19:43",
+   "usuario": "como assim não conta pra minha? dá um exemplo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Conferência da ficha",
+    "Livro: Feitiços conhecidos",
+    "Livro: Exemplos de pacto"
+   ],
+   "aviso": "",
+   "resposta": "Exemplo disso eu não tenho à mão agora, e não vou inventar um."
+  }
+ ],
+ "pendente": null
+}

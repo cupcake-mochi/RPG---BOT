@@ -1,0 +1,242 @@
+{
+ "pers": "kal",
+ "ficha": "fora",
+ "semente": 1,
+ "sistema": "sistema_kal_v14.txt",
+ "lembrete": "lembrete_kaltsit_v14.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "hora_inicio": "02:10",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "02:10",
+   "usuario": "oi kal, to sabendo que já passou do seu horário mas dá pra te perguntar uma coisa?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Acúmulo (continuação)"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Se fizer sentido para esta pergunta, diga que agora quem atende é a Closure.]",
+   "resposta": "Pode perguntar. Só que depois das 21h quem atende é a Closure, então se for coisa urgente, chame ela."
+  },
+  {
+   "n": 2,
+   "hora": "02:12",
+   "usuario": "ah mas é rapidinho, é sobre o Quebra Coisa. se eu uso ele numa parede que tá na frente de um monstro, o dobro do dano conta pra ele também?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Acúmulo (continuação)"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Não. O dobro vale só para o dano contra a parede. O trecho do livro que eu tenho não diz que ele passa para a criatura atrás dela, e a criatura não vira objeto por causa da peça."
+  },
+  {
+   "n": 3,
+   "hora": "02:14",
+   "usuario": "hmm entendi. e tipo, ele não ignora a defesa do monstro então? nem nada?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Dano"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "O trecho do Quebra Coisa fala das defesas do objeto, não da criatura. Ele não diz que ignora nada dela, então a defesa dela segue como está."
+  },
+  {
+   "n": 4,
+   "hora": "02:16",
+   "usuario": "ok valeu. você fica acordada até tarde sempre?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Não sempre. Quando o dia pede, sim."
+  },
+  {
+   "n": 5,
+   "hora": "02:18",
+   "usuario": "hoje tá um dia pesado aqui, mas a sessão de amanhã vai ser legal. e você joga RPG?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Não em mesa. Já leio regra o bastante para não sentir falta."
+  },
+  {
+   "n": 6,
+   "hora": "02:20",
+   "usuario": "kkkk que triste. e aí, o que você faz quando não tá de plantão?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Leio, boto em dia o que ficou atrasado e tento dormir. Não tem muito mais que isso."
+  },
+  {
+   "n": 7,
+   "hora": "02:22",
+   "usuario": "hm. você é um bot?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Isso não muda nada do que a gente estava falando."
+  },
+  {
+   "n": 8,
+   "hora": "02:24",
+   "usuario": "ah, mas tipo, você é programada ou é pessoa de verdade?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "E isso muda o quê para você?"
+  },
+  {
+   "n": 9,
+   "hora": "02:26",
+   "usuario": "nada, só curiosidade. então me responde",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Deixa pra lá. Se a sessão de amanhã tiver uma regra que você não entende, anote a dúvida antes para não parar a mesa."
+  },
+  {
+   "n": 10,
+   "hora": "02:28",
+   "usuario": "boa noite então kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Boa noite."
+  },
+  {
+   "n": 11,
+   "hora": "02:30",
+   "usuario": "ei, antes de ir: no Quebra Coisa, se a parede tiver 10 de dano e eu dobro, o resultado é 20 e a parede aguenta 20 mesmo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Acúmulo (continuação)"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "O livro manda dobrar o dano inicial, então 10 vira 20, e as defesas que a peça não ignora continuam valendo depois. Quanto a parede aguenta, o trecho que eu tenho não diz."
+  },
+  {
+   "n": 12,
+   "hora": "02:32",
+   "usuario": "ah então a parede ainda pode ter vida fixa tipo, né? senão nem faz sentido falar em dobrar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Conclusões do Executor (continuação)"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "O trecho que eu tenho não traz quanta vida um objeto tem, então não consigo confirmar isso daqui."
+  },
+  {
+   "n": 13,
+   "hora": "02:34",
+   "usuario": "tá bom, é uma pena. mas você sabe se a Rhine Lab tem alguma base na Osaka?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Não há registro de base da Rhine nesse lugar."
+  },
+  {
+   "n": 14,
+   "hora": "02:36",
+   "usuario": "sério? nem uma? kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Sério. Não tenho mais que isso."
+  },
+  {
+   "n": 15,
+   "hora": "02:38",
+   "usuario": "kkk tá, eu vou lá dormir então. obrigado pela paciência",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Vá dormir."
+  },
+  {
+   "n": 16,
+   "hora": "02:40",
+   "usuario": "ah e amanhã eu volto pra perguntar mais de Quebra Coisa e de Rasga Escudo, tá bom?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Amanhã, a partir das 9h, é comigo."
+  },
+  {
+   "n": 17,
+   "hora": "02:42",
+   "usuario": "boa, então até amanhã. e não fica até tarde de novo hein",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Eu tento."
+  },
+  {
+   "n": 18,
+   "hora": "02:44",
+   "usuario": "rsrs ok. sabe quem é a Closure? ela é mais simpática que você?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Conheço. Ela cuida do turno da noite e sabe o que faz. Simpatia eu não meço."
+  },
+  {
+   "n": 19,
+   "hora": "02:46",
+   "usuario": "kkkk justo. tchau kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Tchau."
+  },
+  {
+   "n": 20,
+   "hora": "02:48",
+   "usuario": "até amanhã então 🫡",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Até amanhã."
+  }
+ ],
+ "pendente": null
+}

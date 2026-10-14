@@ -30,8 +30,10 @@ quem está de plantão no horário da sessão é quem atende.
 - **No plantão:** responde quando chamam pelo nome ou respondem a uma mensagem dela. Não entra
   sozinha, nem quando o assunto é mundo ou regra.
 - **Fora do plantão:** responde só quando chamam ou respondem a ela, mais curta, sem iniciativa.
-  O lembrete ganha "Fora do plantão: responda o essencial." Ela pode dizer, no máximo uma vez por
-  pessoa por turno, que agora quem está de plantão é a Closure.
+  O lembrete ganha "Fora do plantão: responda o essencial, sobre o que foi perguntado." O aviso de que
+  quem atende é a Closure entra só quando faz sentido: pergunta de regra ou de mundo, ou mensagem que
+  fala de plantão, horário ou da outra guia, e uma vez por conversa (Mizuki, 13/10/2026: "pode ter o aviso,
+  mas tem q ser em um momento q faça sentido"; antes saiu até em "kal vc gosta de café?").
 - **As duas nunca respondem à mesma mensagem.** Responde quem foi chamada; fora do turno, a
   resposta é curta (padrão escolhido por mim: o Mizuki pode preferir que ela nem responda).
 - **Troca de turno:** sem anúncio.
@@ -151,7 +153,7 @@ modelo mais fraco ignora o estado quando ele só aparece no bloco 4:
 
 | Estado | Linha no lembrete |
 | ------ | ----------------- |
-| fora do plantão | "Fora do plantão: responda o essencial." |
+| fora do plantão | "Fora do plantão: responda o essencial, sobre o que foi perguntado." |
 | carga 2–3 | "Carga alta: uma frase." |
 | paciência 0–1 com quem fala | "Paciência baixa com esta pessoa: seca, sem explicar duas vezes." |
 | intimidade 4 e um fato de cuidado na ficha | "Se couber, dê uma instrução de cuidado curta com base nos fatos." |

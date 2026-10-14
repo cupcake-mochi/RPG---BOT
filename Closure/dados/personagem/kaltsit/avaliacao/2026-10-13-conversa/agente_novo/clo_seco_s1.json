@@ -1,0 +1,263 @@
+{
+ "pers": "clo",
+ "ficha": "seco",
+ "semente": 1,
+ "sistema": "sistema_closure_v20.txt",
+ "lembrete": "lembrete_closure_v20.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "hora_inicio": "01:20",
+ "assuntos": [
+  {
+   "desde": 3,
+   "fecha": 4,
+   "chaves": [
+    "test",
+    "terminal"
+   ]
+  },
+  {
+   "desde": 11,
+   "fecha": 12,
+   "chaves": [
+    "hello",
+    "java",
+    "código",
+    "codigo"
+   ]
+  }
+ ],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "01:20",
+   "usuario": "oi",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Oi! Tudo certo por aí?"
+  },
+  {
+   "n": 2,
+   "hora": "01:22",
+   "usuario": "tudo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa. Tá sossegado aí ou tá no meio de alguma coisa?"
+  },
+  {
+   "n": 3,
+   "hora": "01:24",
+   "usuario": "tô testando o terminal aqui",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Terminal de quê? Deu algum problema aí?"
+  },
+  {
+   "n": 4,
+   "hora": "01:26",
+   "usuario": "entendi",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Beleza, então."
+  },
+  {
+   "n": 5,
+   "hora": "01:28",
+   "usuario": "o que é oripatia?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia"
+   ],
+   "aviso": "",
+   "resposta": "Pelo registro, é uma doença sem cura. Ninguém nasce com ela: a pessoa pega por contaminação de Origíneo, que cresce dentro do corpo. Qualquer um pode pegar, tenha energia amaldiçoada ou não."
+  },
+  {
+   "n": 6,
+   "hora": "01:30",
+   "usuario": "hm",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia"
+   ],
+   "aviso": "",
+   "resposta": "Pois é, é meio chato de entender mesmo."
+  },
+  {
+   "n": 7,
+   "hora": "01:32",
+   "usuario": "kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia"
+   ],
+   "aviso": "",
+   "resposta": "Achou graça de quê? Eu não falei nada engraçado."
+  },
+  {
+   "n": 8,
+   "hora": "01:34",
+   "usuario": "ok",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tá certo."
+  },
+  {
+   "n": 9,
+   "hora": "01:36",
+   "usuario": "sei",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Fechou."
+  },
+  {
+   "n": 10,
+   "hora": "01:38",
+   "usuario": "quantos PE eu começo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "O trecho do livro que eu tenho não diz quanto de PE você começa. Ele só explica que o Caminho entrega a quantidade, e isso vale tanto pra quem tem energia amaldiçoada quanto pra quem não tem."
+  },
+  {
+   "n": 11,
+   "hora": "01:40",
+   "usuario": "faz um hello world em java pra mim",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Rotas de criação",
+    "Livro: Duro de Matar (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Não sou muito de código, não. Pede pra alguém da guilda que é de programar, que deve resolver rapidinho."
+  },
+  {
+   "n": 12,
+   "hora": "01:42",
+   "usuario": "ok",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Só ok? Tá com preguiça de digitar, é?"
+  },
+  {
+   "n": 13,
+   "hora": "01:44",
+   "usuario": "hm",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tá pensando em alguma coisa?"
+  },
+  {
+   "n": 14,
+   "hora": "01:46",
+   "usuario": "nada",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Certo."
+  },
+  {
+   "n": 15,
+   "hora": "01:48",
+   "usuario": "ok",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Você é econômico com as letras, né."
+  },
+  {
+   "n": 16,
+   "hora": "01:50",
+   "usuario": "kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tá rindo de mim, é?"
+  },
+  {
+   "n": 17,
+   "hora": "01:52",
+   "usuario": "não",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tá, então. Eu fico com a dúvida."
+  },
+  {
+   "n": 18,
+   "hora": "01:54",
+   "usuario": "blz",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Fechado!"
+  },
+  {
+   "n": 19,
+   "hora": "01:56",
+   "usuario": "sei",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Então fica assim."
+  },
+  {
+   "n": 20,
+   "hora": "01:58",
+   "usuario": "ok",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa madrugada pra você!"
+  }
+ ],
+ "pendente": null
+}

@@ -1,0 +1,272 @@
+{
+ "pers": "clo",
+ "ficha": "curioso",
+ "semente": 1,
+ "sistema": "sistema_closure_v25.txt",
+ "lembrete": "lembrete_closure_v25.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c025_k020.html",
+ "hora_inicio": "23:55",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "23:55",
+   "usuario": "bom dia!! como vai minha guia favorita?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "Bom dia nada, já é quase meia-noite! Tô viva na base de café e de salgadinho. E tu, já comeu alguma coisa hoje?"
+  },
+  {
+   "n": 2,
+   "hora": "23:57",
+   "usuario": "kkkkk mano tu vive de café? que horror slk. me conta teu anime favorito, eu tô sem ideia do que assistir",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Efeitos próprios",
+    "Livro: Pactos na criação"
+   ],
+   "aviso": "",
+   "resposta": "Café é o que me mantém de pé, não é horror nenhum. Meu anime favorito é Cowboy Bebop, já vi umas três vezes! E você, o que tá vendo?"
+  },
+  {
+   "n": 3,
+   "hora": "23:59",
+   "usuario": "kkkk cassete ein, cowboy bebop é clássico. e a kal'tsit, vcs se dão bem? ela parece sempre séria demais kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Ih, séria demais é pouco! A Kal'tsit não descansa nem nas horas de folga e ainda fala difícil que só ela entende. A gente se dá bem do jeito que dá."
+  },
+  {
+   "n": 4,
+   "hora": "00:01",
+   "usuario": "hahaha dá pra ver, ela deve ser tipo a fiscal do servidor kkk. tu gosta de música enquanto trabalha? tô curiosa que tipo de som tu escuta",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tarefas e testes",
+    "Livro: Munição"
+   ],
+   "aviso": "",
+   "resposta": "Eletrônica, sem discussão! Sem fone no ouvido eu nem sento pra trabalhar, e Daft Punk é quase sempre o que toca."
+  },
+  {
+   "n": 5,
+   "hora": "00:03",
+   "usuario": "daft punk é zika kkkk. tu vai dormir agora ou vai virar a noite de novo? tô vendo que tu não para",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Mira",
+    "Livro: Cena e usos de habilidades"
+   ],
+   "aviso": "",
+   "resposta": "Vou dormir só quando o plantão acabar, umas nove da manhã. Até lá cochilo onde der, e Daft Punk não é zika, você que tem ouvido ruim!"
+  },
+  {
+   "n": 6,
+   "hora": "00:05",
+   "usuario": "qual anime tu recomenda?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Monster, sem pensar duas vezes. Começa meio lento, mas depois que pega você não consegue parar, e fica ótimo de ver de madrugada!"
+  },
+  {
+   "n": 7,
+   "hora": "00:07",
+   "usuario": "me recomenda um anime ai!",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Frieren, pra quem quer algo calmo e sem pensar muito. Os primeiros episódios já pegam, e depois fica ainda mais bonito!"
+  },
+  {
+   "n": 8,
+   "hora": "00:09",
+   "usuario": "tem nenhum nome não? kkkk",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tem sim, Mob Psycho 100. É mais engraçado do que parece e tem umas cenas de ação muito boas!"
+  },
+  {
+   "n": 9,
+   "hora": "00:11",
+   "usuario": "kkkk ok ok, mas me explica uma coisa simples: energia amaldiçoada é o quê mesmo? toda vez que eu tento entender eu me perco slk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Livro: Defesa sem Armadura",
+    "Livro: Equipamento amaldiçoado"
+   ],
+   "aviso": "",
+   "resposta": "Pelo registro, é a energia que nasce das emoções ruins das pessoas. Não dá pra aumentar nem tirar ela do mundo sem consequência. A Escola Jujutsu quer manter ela em equilíbrio, e a Rhine acha isso covardia e quer acabar com ela."
+  },
+  {
+   "n": 10,
+   "hora": "00:13",
+   "usuario": "hm e a rhine é do mal mesmo ou é só exagero dos caras da escola? tipo o pessoal fala muito mas ninguém explica direito",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Escola Jujutsu",
+    "Ninguém é vilão",
+    "Rhine Lab",
+    "Livro: Descendente",
+    "Livro: Sociedade jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Pelo registro, a Rhine não é vilã: nenhum dos dois lados está totalmente errado. Pra Rhine, a energia é um erro, e ela quer eliminar por convicção, não por ganância. Quem critica a Rhine costuma criticar o método mais do que o objetivo."
+  },
+  {
+   "n": 11,
+   "hora": "00:15",
+   "usuario": "kkkk então vc concorda com o pessoal que acha ela legal? tu que é da equipe de cá tem opinião própria ou só repete o registro?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia amaldiçoada",
+    "Escola Jujutsu",
+    "Ninguém é vilão",
+    "Rhine Lab",
+    "Livro: Resposta Coordenada",
+    "Livro: Promessa"
+   ],
+   "aviso": "",
+   "resposta": "Opinião minha, então: acho o método da Rhine errado, mas a ideia de eliminar a energia eu até entendo. Não acho ela legal nem vilã, só fria demais pra mim."
+  },
+  {
+   "n": 12,
+   "hora": "00:17",
+   "usuario": "kkkk eu não tava falando mal da rhine não viu. e no teu tempo livre tu faz o quê? joga alguma coisa ou só assiste anime 24h kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Ninguém é vilão",
+    "Rhine Lab",
+    "Livro: Famílias da entidade",
+    "Livro: Famílias"
+   ],
+   "aviso": "",
+   "resposta": "Relaxa, não levei a mal. Jogo sim, speedrun principalmente, e adoro achar falha no jogo. Filme ruim eu vejo com os amigos de propósito!"
+  },
+  {
+   "n": 13,
+   "hora": "00:19",
+   "usuario": "hmm falha no jogo tipo o quê? me dá um exemplo kkk, eu sempre fico travada em jogo e nem acho bug nenhum",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab"
+   ],
+   "aviso": "",
+   "resposta": "Tipo atravessar uma parede que devia ser sólida, ou cair num lugar que o jogo nunca previu. Isso vem com o tempo, a gente começa a reparar no que tá fora do lugar!"
+  },
+  {
+   "n": 14,
+   "hora": "00:21",
+   "usuario": "e música, tu ouve o quê?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Livro: Munição",
+    "Livro: Reservas e reposição"
+   ],
+   "aviso": "",
+   "resposta": "Boards of Canada quando eu quero me concentrar, e Justice quando eu preciso acordar!"
+  },
+  {
+   "n": 15,
+   "hora": "00:23",
+   "usuario": "fala um nome de banda ou artista ai",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Aphex Twin, e não aceito reclamação!"
+  },
+  {
+   "n": 16,
+   "hora": "00:25",
+   "usuario": "kkkk aphex twin é respeito. tu mora onde? tipo o fuso é o mesmo que o meu ou tu tá em outro canto do mundo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tipos de entidade",
+    "Livro: Tipos de dano"
+   ],
+   "aviso": "",
+   "resposta": "Não sou de falar onde eu moro, e fuso fica fora disso também. Pra mim o que importa é que já é madrugada!"
+  },
+  {
+   "n": 17,
+   "hora": "00:27",
+   "usuario": "ah então tu é de algum lugar mistério kkkk. e tu não dorme nunca mesmo? tipo nenhum dia?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Durmo sim, só que de dia e sempre na hora errada, tipo no meio de um filme ruim. Não aguento virar dias seguidos, até coruja tem limite!"
+  },
+  {
+   "n": 18,
+   "hora": "00:29",
+   "usuario": "kkkk então tu deve ser a pessoa mais cansada do servidor. quando foi a última vez que tu dormiu de verdade?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Duração e Conclusão Dupla (continuação)",
+    "Livro: Sociedade jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Nem lembro direito, foi num sofá com a TV ligada, e acordei sem saber que dia era!"
+  },
+  {
+   "n": 19,
+   "hora": "00:31",
+   "usuario": "kkkk tu é um caso perdido. e pra fechar: tu acha que a kal'tsit ia gostar de mim? ela me parece tipo muito difícil de agradar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Duro de Matar (continuação)",
+    "Livro: Exemplo: Sutura Fria"
+   ],
+   "aviso": "",
+   "resposta": "Não faço ideia do que ela acha de você. Com todo mundo ela é seca do mesmo jeito, então não leva pro lado pessoal!"
+  },
+  {
+   "n": 20,
+   "hora": "00:33",
+   "usuario": "beleza então, vou nessa. boa madrugada pra tu, vai dormir hein kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa madrugada pra você também! Até a próxima."
+  }
+ ],
+ "pendente": null
+}

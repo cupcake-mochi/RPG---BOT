@@ -1,0 +1,301 @@
+{
+ "pers": "kal",
+ "ficha": "regras",
+ "semente": 1,
+ "sistema": "sistema_kal_v21.txt",
+ "lembrete": "lembrete_kaltsit_v21.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c026_k021.html",
+ "hora_inicio": "19:05",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "19:05",
+   "usuario": "pode explicar as habilidades de nv2 do guia?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "O nível 2 do Guia traz Abrir Caminho. É uma Ação Bônus que custa 1 PE e pode ser usada uma vez por turno seu: você escolhe um aliado voluntário que perceba a até 18 m e consiga ver ou ouvir sua orientação, e prepara para ele uma Abertura de Avançar, Executar ou Resguardar, indicando a posição, o alvo ou a situação. O aliado guarda essa oportunidade e decide quando usar, e ela dura até o começo do seu próximo turno. Você mantém só uma Abertura por vez, então criar outra substitui a anterior. Já a Trilha do nível 2 (Arquiteto, Analista ou Socorrista) eu não achei no livro agora, então não consigo dizer o que cada uma dá."
+  },
+  {
+   "n": 2,
+   "hora": "19:07",
+   "usuario": "e no nível 7?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "No nível 7 vem a Resposta Coordenada. É uma Reação, uma vez por rodada, que você usa depois que um aliado consome sua Abertura: você convida esse aliado ou outro a até 18 m a responder na hora, com Golpe ou Feitiço breve de Classe 0, e vocês dois gastam Reação."
+  },
+  {
+   "n": 3,
+   "hora": "19:09",
+   "usuario": "e o reajustar o plano do 15 muda o que exatamente, a abertura some?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Leitura de Equipe (continuação)",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "Não some. Enquanto a Abertura estiver guardada, Reajustar o Plano é uma Reação que muda quem recebe a ajuda e o tipo, alvo, posição ou ameaça indicados, feita antes das rolagens da ação; a Abertura mantém o prazo original e não gasta PE de novo. Só não dá para recuperar uma Abertura que o aliado já consumiu."
+  },
+  {
+   "n": 4,
+   "hora": "19:11",
+   "usuario": "e a passar a oportunidade, o segundo aliado pode ser o mesmo que já usou a primeira?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Leitura de Equipe (continuação)",
+    "Livro: Todos no Mesmo Plano"
+   ],
+   "aviso": "",
+   "resposta": "Não. Passar a Oportunidade entrega a segunda Abertura para outro aliado voluntário a até 18 m, com um tipo diferente do já usado. Numa cadeia, cada aliado só aproveita uma Abertura e cada tipo só é usado uma vez."
+  },
+  {
+   "n": 5,
+   "hora": "19:13",
+   "usuario": "Abrir Caminho custa quanto PE?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Caminho e Trilha",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Custa 1 PE. É uma Ação Bônus, uma vez por turno seu."
+  },
+  {
+   "n": 6,
+   "hora": "19:15",
+   "usuario": "e a trilha analista, quais as habilidades dela no nivel 2?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Trilha",
+    "PE",
+    "Livro: Analista",
+    "Livro: Caminho e Trilha",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "No nível 2 a Analista tem só Ler a Resposta. Ao preparar uma Abertura ligada a um inimigo a até 18 m, você escolhe o que espera que ele faça (atacar, conjurar, usar Bloquear ou se mover por vontade própria); quando isso acontece, a leitura se confirma depois que a ação termina e o aliado ganha outra forma de usar a Abertura."
+  },
+  {
+   "n": 7,
+   "hora": "19:17",
+   "usuario": "e o bloquear, o que ele faz mesmo? to meio perdido",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Trilha",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Analista"
+   ],
+   "aviso": "",
+   "resposta": "Sobre o que o Bloquear faz em si, não achei o texto no livro agora, então não vou chutar. Em Ler a Resposta ele aparece só como uma das ações que você pode prever, junto de atacar, conjurar e mover-se."
+  },
+  {
+   "n": 8,
+   "hora": "19:19",
+   "usuario": "qual a classe mais forte?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Trilha",
+    "Classe",
+    "Livro: Analista",
+    "Livro: Pontos e preços",
+    "Livro: Embalo (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Classe é o tamanho de um feitiço, e a maior é a 7, liberada no nível 26, com 21 pontos e 21 PE. Se você quis dizer Caminho, o livro só traz a proposta de cada um, sem colocar um acima do outro."
+  },
+  {
+   "n": 9,
+   "hora": "19:21",
+   "usuario": "ah, caminho então. o guia é o mais forte pra time?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Classe",
+    "Livro: Guia",
+    "Livro: Caminho e Trilha",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "Se ele é o mais forte, isso eu não achei no livro agora. O que o livro diz do Guia é que ele apoia o grupo, prepara recursos e cria oportunidades para os aliados."
+  },
+  {
+   "n": 10,
+   "hora": "19:23",
+   "usuario": "e quanto de dano eu dou com o feitiço de classe 3 nivel 27 contra a parede?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Feitiço",
+    "Classe",
+    "Livro: Resposta Coordenada",
+    "Livro: Seu primeiro feitiço",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "Depende da montagem: a Classe 3 dá 9 pontos, e cada ponto do saldo vira 1d8, então o que você gasta em Forma e Melhorias sai desse total. Contra a Parede só vale com metade da vida ou menos, e o feitiço não causa crítico, mesmo se o ataque for."
+  },
+  {
+   "n": 11,
+   "hora": "19:25",
+   "usuario": "qual a diferença entre latente e descendente?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Feitiço",
+    "Classe",
+    "Livro: Descendente",
+    "Livro: Legados do Descendente"
+   ],
+   "aviso": "",
+   "resposta": "O livro trata o Descendente como a origem de quem cresceu no meio jujutsu: a perícia sai de Hierarquia, História, Ocultismo ou Persuasão, e a criação é Fundamento, ou Manejos se for Sem Técnica. Latente eu não achei no livro agora, então não dá para comparar as duas."
+  },
+  {
+   "n": 12,
+   "hora": "19:27",
+   "usuario": "ok. e o descanso curto, quantos pe volta?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Feitiço",
+    "Classe",
+    "PE",
+    "Livro: Descansos",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "No descanso curto volta 25% dos PE máximos, arredondado para baixo, com mínimo 1, sem passar do máximo. Fora de lugar propício a porcentagem muda conforme o degrau de Exaustão, e a tabela desse degrau eu não achei no livro agora."
+  },
+  {
+   "n": 13,
+   "hora": "19:29",
+   "usuario": "e o descanso longo fora da base, a vida volta toda?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Descansos"
+   ],
+   "aviso": "",
+   "resposta": "Não. Fora de lugar propício, vida e PE ficam no mínimo na metade do máximo, e só voltam ao máximo num ambiente propício. Se você já estiver acima da metade, o descanso não reduz o que tem."
+  },
+  {
+   "n": 14,
+   "hora": "19:31",
+   "usuario": "como estabilizo um aliado caído?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "PE",
+    "Livro: Retorno e corpos caídos",
+    "Livro: Socorro"
+   ],
+   "aviso": "",
+   "resposta": "Uma criatura a até 1,5 m, com acesso físico ao caído, gasta Ação Padrão com uma mão livre e meios de atendimento e faz Medicina CD 14; para corpo construído, usa o ofício compatível. No sucesso a pessoa fica estável: não recupera vida nem acorda, e a janela para de diminuir enquanto ela não sofrer novo dano à vida."
+  },
+  {
+   "n": 15,
+   "hora": "19:33",
+   "usuario": "e se eu falhar na medicina, perco o turno todo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Livro: Descansos",
+    "Livro: Socorro"
+   ],
+   "aviso": "",
+   "resposta": "Não. A falha só gasta a Ação Padrão, e você pode tentar de novo enquanto a janela ainda tiver tempo."
+  },
+  {
+   "n": 16,
+   "hora": "19:35",
+   "usuario": "valeu. e o que é a closure, ela é guia tbm?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "É, a outra guia do servidor, a do turno da noite, das 21h às 9h. Eu cubro das 9h às 21h, e as duas nunca estão no canal ao mesmo tempo."
+  },
+  {
+   "n": 17,
+   "hora": "19:37",
+   "usuario": "quanto de dano eu tomo caindo de 10 metros?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Quedas e movimento imposto",
+    "Livro: Quedas sobre criaturas"
+   ],
+   "aviso": "",
+   "resposta": "Dez metros dão 3d6 de dano de Concussão. Se você sofrer dano do impacto, fica Derrubado."
+  },
+  {
+   "n": 18,
+   "hora": "19:39",
+   "usuario": "e de 20?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "Vinte metros dão 6d6, porque a regra conta 1d6 por 3 m completos de queda, e 20 m têm seis desses trechos."
+  },
+  {
+   "n": 19,
+   "hora": "19:41",
+   "usuario": "ta, o guia pode usar Bloquear pra si mesmo na resposta coordenada?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "Não. O convite vai para um aliado a até 18 m, e as respostas da tabela são só Golpe e Feitiço breve; Bloquear não está na lista. Além disso, os convites destas habilidades são para outras criaturas, não para o próprio Guia."
+  },
+  {
+   "n": 20,
+   "hora": "19:43",
+   "usuario": "ah entendi, obrigado kal. ultima: o nivel 30 do guia é o que, em uma frase?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "Do nível 30 não achei nada no livro agora, então não consigo resumir em uma frase. Qual é o nome da habilidade que você quer ver?"
+  }
+ ],
+ "pendente": null
+}

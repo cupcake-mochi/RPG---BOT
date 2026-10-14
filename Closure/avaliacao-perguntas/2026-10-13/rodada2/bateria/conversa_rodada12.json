@@ -1,0 +1,248 @@
+[
+ {
+  "id": "d1",
+  "msg": "hm, e ataque? é só rolar o dado e pronto",
+  "hist": [
+   [
+    "oi, sou nova aqui e nunca joguei rpg de mesa. por onde eu começo pra montar minha ficha?",
+    "Oi. Começa pelo capítulo Criar um personagem do livro. Ele segue a ordem: Origem, Caminho e Trilha, depois capacidades e equipamento."
+   ],
+   [
+    "kkkk ok. PE é tipo a vida, né?",
+    "Não. PE são Pontos de Energia, ou Pontos de Esforço para quem não tem energia amaldiçoada. Vida e PE são recursos diferentes."
+   ],
+   [
+    "ahh entendi. e descanso é tipo dormir de verdade?",
+    "Não é questão de horas. O livro tem descanso curto, uma pausa segura entre confrontos, e descanso longo, quando a missão termina; o mestre confirma qual dos dois aconteceu."
+   ]
+  ],
+  "gold": [
+   "geral--ataques"
+  ]
+ },
+ {
+  "id": "d2",
+  "msg": "ah entendi kkkk. e se eu quiser ser um médico no jogo, pode?",
+  "hist": [
+   [
+    "e trilha é tipo uma classe tipo mago?",
+    "Trilha é uma especialidade dentro do Caminho, escolhida no nível 2. Para definir o personagem, o que você escolhe é o Caminho, e a Trilha fica dentro dele. Classe é outra coisa: a escala de uma aplicação."
+   ],
+   [
+    "ah então eu escolho primeiro o caminho e depois a trilha? e o caminho é tipo a origem?",
+    "Isso, o Caminho vem primeiro e a Trilha fica dentro dele. Origem é outra coisa: a vida que o personagem levava antes da primeira missão, com Legados e treinos."
+   ],
+   [
+    "kkkk então pensei em um bastião que protege os amigos. faz sentido?",
+    "Faz. Bastião é justamente isso: luta perto dos companheiros e se coloca no caminho dos ataques."
+   ],
+   [
+    "e o que é esse olhos em mim? tipo eles me olham?",
+    "É uma habilidade de nível 2 do Bastião, e não envolve olhar: com Ação Bônus você ativa uma área de 6 m de raio centrada em você, que acompanha seus movimentos até o fim da cena. Dentro dela, você pode provocar inimigos e, com Reação, assumir um ataque contra um aliado."
+   ]
+  ],
+  "gold": [
+   "pericias--ambiente",
+   "guia--guia-socorrista"
+  ]
+ },
+ {
+  "id": "d3",
+  "msg": "hmm ok. e quando eu for jogar, preciso levar algo? tipo papel e caneta",
+  "hist": [
+   [
+    "ok. e quem é a closure? vi falarem dela no servidor",
+    "A Closure é a outra guia, a do turno da noite, das 21h às 9h. Sabe o que faz; o que cai fora do meu plantão vai para ela."
+   ],
+   [
+    "hm e a oripatia, dá pra curar? to com medo de ter pego sem perceber rs",
+    "Cura não existe, nem parcial nem promissora. Ninguém nasce com oripatia, e se o medo for de verdade, procure um médico."
+   ],
+   [
+    "kkkk valeu, mais calma agora. e tu é médica mesmo?",
+    "Sou. Pesquisadora também."
+   ],
+   [
+    "ah ok. e a rhine é do bem ou do mal? não entendi essa parte da escola",
+    "O registro não põe a Rhine no bem ou no mal: nenhuma das duas grandes é vilã. A Rhine acha que a energia amaldiçoada é um erro e quer eliminá-la, e a crítica que se faz a ela é ao método, mais do que ao objetivo."
+   ]
+  ],
+  "gold": [
+   "ab--ab-primeira-sessao"
+  ]
+ },
+ {
+  "id": "d4",
+  "msg": "mas antes me responde: o livro diz quanto custa um feitiço de Classe 1 no Rápido?",
+  "hist": [
+   [
+    "kkk vc é mó misteriosa hein. e a kal'tsit, ela é mais de boa que vc?",
+    "Ela é mais certinha, isso eu garanto. Eu sou a da madrugada, e aí a bagunça é outro nível!"
+   ],
+   [
+    "to meio triste hoje, a mesa que eu mestro desmontou e eu nem sei se quero continuar",
+    "Isso pesa mesmo, e você não precisa decidir nada sobre a mesa hoje. Se der, deita um pouco e pensa nisso com a cabeça mais descansada."
+   ],
+   [
+    "valeu. foi a mesa de 5 anos, sabe. dói",
+    "Cinco anos é muita coisa pra acabar de um dia pro outro. Faz sentido doer."
+   ],
+   [
+    "é, vou tentar dormir. boa madrugada closure",
+    "Durma bem. Essa parte da mesa pode esperar até amanhã."
+   ]
+  ],
+  "gold": [
+   "fundamento--pontos"
+  ]
+ },
+ {
+  "id": "d5",
+  "msg": "e o decanso recupera pe?",
+  "hist": [
+   [
+    "e no nível 7?",
+    "O nível 7 é a Resposta Coordenada, uma Reação por rodada. Depois que o aliado usa a sua Abertura, você pode convidar esse aliado ou outro a até 18 m pra responder na hora. Se aceitar, vocês dois gastam Reação, e a resposta pode ser um Golpe, que dá só um ataque comum, ou um Feitiço breve de Classe 0 que normalmente usaria Ação Padrão."
+   ],
+   [
+    "entao o golpe da resposta coordenada conta como Ação Atacar?",
+    "Não. O Golpe concede só um ataque comum, não uma Ação Atacar inteira, nem básica de entidade ou etapa de Sequência. Como qualquer ataque concedido, ele segue o custo e os limites da Reação que o concedeu."
+   ],
+   [
+    "o abrir caminho gasta o pe de quem, meu ou do aliado?",
+    "O livro dá o custo do Abrir Caminho como Ação Bônus e 1 PE, mas não diz de quem é esse PE. Essa parte eu não achei no livro agora."
+   ],
+   [
+    "Abrir Caminho custa quanto PE?",
+    "Custa 1 PE e é Ação Bônus, uma vez por turno seu."
+   ]
+  ],
+  "gold": [
+   "dano--descansos"
+  ]
+ },
+ {
+  "id": "d6",
+  "msg": "pera, o dano sobe conforme o nível ou eu compro de novo?",
+  "hist": [
+   [
+    "e se eu for Sem Técnica, o Guia ainda funciona pra mim?",
+    "Sem Técnica define de onde vêm suas aplicações: uma semente que vira Manejos, sem Expansão de Domínio nem aprender Ritual. Se o Guia combina com essa rota, eu não achei no livro agora; não consigo confirmar nem negar."
+   ],
+   [
+    "valeu. e descanso curto, quantos PE eu recupero?",
+    "No descanso curto você recupera 25% dos PE máximos, arredondado para baixo e com mínimo 1, sem passar do máximo; vida e Integridade não voltam por ele. Fora de ambiente propício, a porcentagem sai do seu degrau de Exaustão, e esse valor eu não achei no livro agora."
+   ],
+   [
+    "qual a classe mais forte?",
+    "A Classe mais alta da tabela é a 7: 21 pontos e 21 PE, a partir do nível 26. Qual Classe é a mais forte, isso eu não achei no livro agora."
+   ],
+   [
+    "ah ok. e o feitiço de classe 0 quantos pontos tem?",
+    "A Classe 0 não gasta PE e fica fora da tabela de pontos, porque tem regras próprias. O dano-base dela é 2d8 do nível 1 ao 4, e sobe conforme o nível até 6d8 do nível 25 ao 30."
+   ]
+  ],
+  "gold": [
+   "fundamento--classezero"
+  ]
+ },
+ {
+  "id": "d7",
+  "msg": "e se a Medicina do cara for 2 e ele tiver treino? qual o bônus dele pra rolar",
+  "hist": [
+   [
+    "qual a diferença entre latente e descendente?",
+    "O Descendente cresceu numa família do meio jujutsu. O Latente descobriu o jujutsu fora das tradições de uma família de feiticeiros. As perícias da Origem também mudam: o Descendente escolhe entre Hierarquia, História, Ocultismo e Persuasão, e o Latente entre Sentir Energia, Sobrevivência, Furtividade e Intuição."
+   ],
+   [
+    "hmm e o que é um manejo mesmo? fala sem enrolar",
+    "Manejo é uma aplicação criada a partir da sua semente, na rota Sem Técnica. Usar a aptidão e conjurar um Manejo são coisas diferentes: cada uma paga a própria ação e o próprio custo."
+   ],
+   [
+    "e o que é a Liberação Máxima, é tipo a técnica máxima?",
+    "Não. A Liberação Máxima concentra mais dano num feitiço preparado, e você recebe uma nos níveis 10, 20 e 30, acrescentando +Classe em d8 ao dano. A Técnica Máxima é outra capacidade, no nível 17, com dados e pontos próprios."
+   ],
+   [
+    "como estabilizo um aliado caído?",
+    "Alguém a até 1,5 m, com acesso físico à pessoa, gasta Ação Padrão com uma mão livre e meios de atendimento para fazer Medicina CD 14, desde que ela esteja Inconsciente e Morrendo. No sucesso a pessoa fica estável, sem recuperar vida nem acordar; na falha, só a ação é gasta, e dá para tentar de novo enquanto houver tempo."
+   ]
+  ],
+  "gold": [
+   "geral--pericias",
+   "geral--atributos"
+  ]
+ },
+ {
+  "id": "d8",
+  "msg": "hm, e a besta de uma mão ataca com a mesma perícia que a besta grande?",
+  "hist": [
+   [
+    "pode explicar as habilidades de nv2 do guia?",
+    "No nível 2 o Guia ganha Abrir Caminho e escolhe uma Trilha: Arquiteto, Analista ou Socorrista. Abrir Caminho é uma Ação Bônus, 1 PE, uma vez por turno seu. Você escolhe um aliado voluntário a até 18 m que consiga ver ou ouvir sua orientação e prepara para ele uma Abertura de Avançar, Executar ou Resguardar, indicando a posição, o alvo ou a situação. Ele guarda a oportunidade e decide quando usar; ela dura até o começo do seu próximo turno, e criar outra substitui a anterior. O que as Trilhas dão no nível 2 eu não achei no livro agora."
+   ],
+   [
+    "e no nível 7?",
+    "No nível 7 o Guia ganha Resposta Coordenada, uma Reação por rodada. Depois que um aliado consome sua Abertura e a tentativa termina, você convida esse aliado ou outro a até 18 m a responder na hora; se aceitarem, os dois gastam Reações e a resposta pode ser um Golpe ou um Feitiço breve de Classe 0. Ela acontece mesmo se a tentativa apoiada tiver falhado."
+   ],
+   [
+    "e o dano da balestra soma algum atributo ou é só o dado?",
+    "Só o dado. Na Balestra o dano é o da arma, sem somar atributo: a Besta rola 2d8 e a Besta de Uma Mão rola 1d10, ambos perfurantes."
+   ]
+  ],
+  "gold": [
+   "geral--ataques",
+   "equip--eqa-armas",
+   "equip--eq-propriedades"
+  ]
+ },
+ {
+  "id": "d9",
+  "msg": "e o ataque com arma de fogo, quem tem treino com ela?",
+  "hist": [
+   [
+    "percepção é com qual atributo?",
+    "Percepção usa Essência, como as outras perícias de percepção e influência."
+   ],
+   [
+    "e a intuição, usa o mesmo?",
+    "Não, Intuição usa Inteligência, junto com Investigação e as perícias de conhecimento."
+   ],
+   [
+    "qual a diferença entre latente e descendente?",
+    "Descendente é quem cresceu numa família do meio jujutsu. Latente descobriu o jujutsu fora dessas tradições. Muda a perícia da Origem: o Descendente escolhe entre Hierarquia, História, Ocultismo e Persuasão, e o Latente entre Sentir Energia, Sobrevivência, Furtividade e Intuição."
+   ],
+   [
+    "me da um exemplo com o latente?",
+    "No exemplo do livro, Mika pega Furtividade da lista do Latente e Tecnologia como perícia livre, já que trabalhava com manutenção. Os Legados são A Testemunha, que liga a uma antiga chefe que guardou o segredo, e Aprendi Apanhando, que dá uma repetição de perícia por dia."
+   ]
+  ],
+  "gold": [
+   "guia--guia",
+   "vanguarda--van-base",
+   "equip--eqa-tiro"
+  ]
+ },
+ {
+  "id": "d10",
+  "msg": "ok, mas faz quanto tempo que vc tá aí no plantão? ta cansada?",
+  "hist": [
+   [
+    "tudo, e vc? ainda acordada essa hora",
+    "Tudo bem por aqui! Sou coruja, então essa hora é tranquila. E você, o que tá te segurando acordado?"
+   ],
+   [
+    "to revirando o jogo novo que saiu ontem, achei um bug de sequencia de save kkkk",
+    "Ué, já achou falha no jogo novo? Me conta a sequência, que eu quero testar também!"
+   ],
+   [
+    "onde vc mora?",
+    "Isso eu guardo pra mim, não sou de falar onde moro. E você é de que canto do Brasil?"
+   ],
+   [
+    "sou de bh, e vc é de onde? kkk",
+    "Virou interrogatório agora? Tô com o café na mão, então fica pra depois."
+   ]
+  ],
+  "gold": "nenhum"
+ }
+]

@@ -1,0 +1,43 @@
+[
+ {
+  "id": "e1",
+  "msg": "Ué, e a Abertura, dura quanto tempo exatamente",
+  "hist": [
+   [
+    "pode explicar as habilidades de nv2 do guia?",
+    "No nível 2 o Guia ganha Abrir Caminho. É Ação Bônus, custa 1 PE e dá pra usar uma vez por turno seu: você escolhe um aliado voluntário a até 18 m que consiga te ver ou ouvir e prepara pra ele uma Abertura de Avançar, Executar ou Resguardar, dizendo a posição, o alvo ou a situação. Ele guarda a oportunidade e decide quando usar. Dura até o começo do seu próximo turno, e você mantém só uma por vez, então criar outra substitui a anterior. Nesse mesmo nível você também escolhe uma Trilha (Arquiteto, Analista ou Socorrista), mas sobre as habilidades de cada Trilha eu não tenho o texto aqui, então não consigo explicar."
+   ],
+   [
+    "e no nível 7?",
+    "No nível 7 vem Resposta Coordenada. É Reação, uma vez por rodada: depois que um aliado usa sua Abertura e a tentativa é resolvida, você convida esse aliado ou outro aliado voluntário a até 18 m pra responder na hora. Se aceitar, vocês dois gastam Reação e o aliado escolhe um Golpe (um ataque comum) ou um Feitiço breve de Classe 0 que normalmente usa Ação Padrão. A resposta acontece mesmo se a tentativa apoiada tiver falhado."
+   ]
+  ],
+  "gold": [
+   "guia--guia-progressao",
+   "guia--guia-aberturas"
+  ]
+ },
+ {
+  "id": "e2",
+  "msg": "kkkk verdade, o manual do armário tinha 40 páginas e uma foto. boa noite closure, vou tentar dormir",
+  "hist": [
+   [
+    "mas vc mora onde mesmo?",
+    "Não dou endereço nem de brincadeira. Insiste mais e eu cobro cem mil ienes de taxa!"
+   ],
+   [
+    "kkkk ok, cem mil eu não tenho, vou ficar devendo. tô com sono já",
+    "Vai dormir, então! Eu ainda tenho a noite toda de plantão pela frente e nem tô com sono."
+   ],
+   [
+    "você nunca dorme? a kal'tsit disse que você cochila no canal de vez em quando",
+    "Cochilo sim, em qualquer canto. Ela contou isso? Fofoqueira!"
+   ],
+   [
+    "ela contou sim kkk. tu lê revista técnica de tudo? eu só leio manual de montagem de móvel",
+    "Leio sim, revista técnica de tudo quanto é área. Manual de móvel é que é difícil de ler!"
+   ]
+  ],
+  "gold": "nenhum"
+ }
+]

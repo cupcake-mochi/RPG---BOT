@@ -115,7 +115,13 @@
     "diretor",
     "diretora",
     "direção da escola",
-    "direcao da escola"
+    "direcao da escola",
+    "quem dirige",
+    "dirige a escola",
+    "comanda a escola",
+    "manda na escola",
+    "chefe da escola",
+    "reitor"
    ],
    "keysecondary": [],
    "comment": "Ozpin",
@@ -475,13 +481,34 @@
   "17": {
    "uid": 17,
    "key": [
-    "cura",
-    "curar",
     "cura da oripatia",
-    "tratamento",
-    "remédio",
-    "remedio",
-    "perto da cura"
+    "curar a oripatia",
+    "curar oripatia",
+    "cura pra oripatia",
+    "cura para oripatia",
+    "oripatia tem cura",
+    "oripatia, tem cura",
+    "oripatia dá pra curar",
+    "oripatia da pra curar",
+    "oripatia, dá pra curar",
+    "oripatia, da pra curar",
+    "oripatia tem tratamento",
+    "tem cura",
+    "existe cura",
+    "perto da cura",
+    "curar infectado",
+    "curar infectados",
+    "curar os infectados",
+    "curar a infecção",
+    "curar a infeccao",
+    "curar a doença",
+    "curar a doenca",
+    "cura da doença",
+    "cura da doenca",
+    "remédio pra oripatia",
+    "remedio pra oripatia",
+    "tratamento pra oripatia",
+    "tratamento da oripatia"
    ],
    "keysecondary": [],
    "comment": "Cura da oripatia",
@@ -600,7 +627,15 @@
     "personagem infectado",
     "ficha de infectado",
     "jogar de infectado",
-    "jogar com infectado"
+    "jogar com infectado",
+    "personagem é infectado",
+    "personagem e infectado",
+    "personagem infectada",
+    "sou infectado",
+    "sou infectada",
+    "infectado na ficha",
+    "infecção na ficha",
+    "infeccao na ficha"
    ],
    "keysecondary": [],
    "comment": "Oripatia em mesa",
@@ -944,11 +979,24 @@
     "por onde começo",
     "por onde comeco",
     "por onde eu começo",
-    "por onde eu comeco"
+    "por onde eu comeco",
+    "faço uma ficha",
+    "faco uma ficha",
+    "fazer uma ficha",
+    "fazer minha ficha",
+    "criar ficha",
+    "criar uma ficha",
+    "sou novo",
+    "sou nova",
+    "sou novato",
+    "sou novata",
+    "nunca joguei",
+    "começar a jogar",
+    "comecar a jogar"
    ],
    "keysecondary": [],
    "comment": "Criar um personagem",
-   "content": "[Criar um personagem] A ficha se monta pelo capítulo Criar um personagem do livro: Origem, Caminho e Trilha, capacidades iniciais e equipamento.",
+   "content": "[Criar um personagem] A ficha se monta pelo capítulo Criar um personagem do livro: Origem, Caminho e Trilha, capacidades iniciais e equipamento. (livro, âncora ab--ab-criacao)",
    "constant": false,
    "selective": false,
    "order": 100,
@@ -966,6 +1014,438 @@
   },
   "33": {
    "uid": 33,
+   "key": [
+    "subir de nível",
+    "subir de nivel",
+    "subo de nível",
+    "subo de nivel",
+    "sobe de nível",
+    "sobe de nivel",
+    "upar",
+    "upo",
+    "level up",
+    "ganhar nível",
+    "ganhar nivel",
+    "experiência",
+    "experiencia",
+    "xp"
+   ],
+   "keysecondary": [],
+   "comment": "Subir de nível",
+   "content": "[Subir de nível] O personagem sobe de nível com experiência, pelo capítulo Experiência e Progressão do livro. (livro, âncora progressao--prog-inicio)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "34": {
+   "uid": 34,
+   "key": [
+    "ganho no nível",
+    "ganho no nivel",
+    "ganha no nível",
+    "ganha no nivel",
+    "ganho em cada nível",
+    "ganho em cada nivel",
+    "tabela de progressão",
+    "tabela de progressao",
+    "o que muda no nível",
+    "o que muda no nivel"
+   ],
+   "keysecondary": [],
+   "comment": "O que ganho por nível",
+   "content": "[Progressão por nível] O que cada nível concede está nas tabelas de progressão do livro, dos níveis 1 a 15 e 16 a 30. (livro, âncora progressao--prog-tabela-inicial)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "35": {
+   "uid": 35,
+   "key": [
+    "explica o sistema",
+    "explicar o sistema",
+    "como funciona o sistema",
+    "como é o sistema",
+    "como e o sistema",
+    "que sistema é esse",
+    "que sistema e esse",
+    "o que é o ciclo maldito",
+    "o que e o ciclo maldito",
+    "resumo do sistema"
+   ],
+   "keysecondary": [],
+   "comment": "O sistema",
+   "content": "[O sistema] Ciclo Maldito é o sistema de RPG de mesa da guilda, no mundo de Jujutsu Kaisen. A apresentação abre o livro. (livro, âncora ab--ab-apresentacao)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "36": {
+   "uid": 36,
+   "key": [
+    "atacar duas vezes",
+    "atacar 2 vezes",
+    "ataco duas vezes",
+    "ataco 2 vezes",
+    "dois ataques",
+    "2 ataques",
+    "ataque extra",
+    "mais de um ataque",
+    "atacar mais de uma vez",
+    "ataques por turno",
+    "quantos ataques"
+   ],
+   "keysecondary": [],
+   "comment": "Mais de um ataque",
+   "content": "[Mais de um ataque] A Ação Atacar dá um ataque; ataque a mais vem de habilidade, como o Ataque Extra do Bastião e da Vanguarda no nível 7. (livro, âncora geral--ataques)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "37": {
+   "uid": 37,
+   "key": [
+    "duas armas",
+    "2 armas",
+    "arma em cada mão",
+    "arma em cada mao",
+    "uma em cada mão",
+    "uma em cada mao",
+    "dual wield",
+    "duas espadas",
+    "duas facas",
+    "duas katanas",
+    "ambidestro",
+    "ambidestra",
+    "segunda arma",
+    "atacar com a outra mão",
+    "atacar com a outra mao"
+   ],
+   "keysecondary": [],
+   "comment": "Duas armas",
+   "content": "[Duas armas] Segurar uma arma em cada mão não dá ataque a mais: Par e Leve não concedem ataque adicional nem Ação Bônus, e ataque a mais vem de habilidade. (livro, âncora equip--eq-propriedades)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "38": {
+   "uid": 38,
+   "key": [
+    "quanto de xp",
+    "qnto de xp",
+    "quanta xp",
+    "quanto xp",
+    "qnto xp",
+    "xp pra subir",
+    "xp para subir",
+    "xp pro próximo",
+    "xp pro proximo",
+    "xp pra sair",
+    "xp para sair",
+    "xp eu preciso",
+    "xp preciso",
+    "xp pra upar",
+    "xp por nível",
+    "xp por nivel"
+   ],
+   "keysecondary": [],
+   "comment": "XP para subir",
+   "content": "[XP para subir] Quanto XP cada nível pede para o próximo está na tabela de Subir de nível. (livro, âncora progressao--prog-xp)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "39": {
+   "uid": 39,
+   "key": [
+    "dinheiro inicial",
+    "com quanto dinheiro",
+    "quanto dinheiro eu começo",
+    "quanto dinheiro eu comeco",
+    "quanto dinheiro começo",
+    "quanto dinheiro comeco",
+    "dinheiro pra começar",
+    "dinheiro pra comecar",
+    "dinheiro para começar",
+    "dinheiro para comecar",
+    "grana inicial",
+    "dinheiro na criação",
+    "dinheiro na criacao",
+    "ienes na criação",
+    "ienes na criacao",
+    "quanto de dinheiro",
+    "qnto de dinheiro",
+    "qnto dinheiro",
+    "quanta grana"
+   ],
+   "keysecondary": [],
+   "comment": "Dinheiro inicial",
+   "content": "[Dinheiro inicial] O dinheiro com que o personagem começa está em Equipamento inicial. (livro, âncora equip--eqc-inicial)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "40": {
+   "uid": 40,
+   "key": [
+    "ser ninja",
+    "ser um ninja",
+    "ser uma ninja",
+    "tipo ninja",
+    "tipo um ninja",
+    "tipo uma ninja",
+    "personagem ninja",
+    "ser assassino",
+    "ser assassina",
+    "tipo assassino",
+    "tipo assassina",
+    "ladino",
+    "ladina",
+    "rogue",
+    "furtivo",
+    "furtiva",
+    "sorrateiro",
+    "sorrateira"
+   ],
+   "keysecondary": [],
+   "comment": "Caminho: furtivo",
+   "content": "[Caminho para quem quer ser furtivo] O Incursor explora mobilidade, precisão e oportunidades de combate; a Trilha Assassino estuda uma vítima e concentra a força no momento de atacar. (livro, âncora incursor--inc-caminho)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "41": {
+   "uid": 41,
+   "key": [
+    "invoca bicho",
+    "invocar bicho",
+    "invoca criatura",
+    "invocar criatura",
+    "invocar monstro",
+    "invoca monstro",
+    "bicho pra lutar",
+    "bichos pra lutar",
+    "criatura pra lutar",
+    "criaturas pra lutar",
+    "summoner",
+    "domador",
+    "domadora",
+    "domar maldição",
+    "domar maldicao"
+   ],
+   "keysecondary": [],
+   "comment": "Caminho: invocar",
+   "content": "[Caminho para quem quer invocar] O Evocador comanda criaturas que lutam e cumprem tarefas ao lado dele. (livro, âncora evocador--evocador)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "42": {
+   "uid": 42,
+   "key": [
+    "curar os amigos",
+    "curar meus amigos",
+    "curar aliado",
+    "curar aliados",
+    "curar o grupo",
+    "curar a equipe",
+    "curar o time",
+    "curar os outros",
+    "healer",
+    "curandeiro",
+    "curandeira",
+    "médico no jogo",
+    "medico no jogo",
+    "médica no jogo",
+    "medica no jogo",
+    "personagem médico",
+    "personagem medico",
+    "médico do grupo",
+    "medico do grupo",
+    "suporte de cura"
+   ],
+   "keysecondary": [],
+   "comment": "Caminho: curar",
+   "content": "[Caminho para quem quer curar] O Guia apoia o grupo, e a Trilha Socorrista prepara o cuidado junto da Abertura que entrega ao aliado. A cura da Energia Reversa vem da rota de capacidades. (livro, âncora guia--guia-socorrista)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "43": {
+   "uid": 43,
+   "key": [
+    "ser mago",
+    "ser maga",
+    "tipo mago",
+    "tipo maga",
+    "tipo um mago",
+    "tipo uma maga",
+    "classe de mago",
+    "personagem mago",
+    "caster",
+    "conjurador",
+    "conjuradora"
+   ],
+   "keysecondary": [],
+   "comment": "Caminho: mago",
+   "content": "[Caminho para quem quer conjurar] O Emanador concentra a atuação na conjuração e no controle da energia, adaptando a técnica à situação. (livro, âncora emanador--ema-base)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "44": {
+   "uid": 44,
+   "key": [
+    "ser guerreiro",
+    "ser guerreira",
+    "tipo guerreiro",
+    "tipo guerreira",
+    "tipo um guerreiro",
+    "classe de guerreiro",
+    "espadachim",
+    "lutar de espada",
+    "lutar com espada"
+   ],
+   "keysecondary": [],
+   "comment": "Caminho: guerreiro",
+   "content": "[Caminho para quem quer bater] A Vanguarda sustenta a ofensiva com armas e golpes, preparando um adversário até encerrar a Sequência com uma execução. (livro, âncora vanguarda--van-base)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "45": {
+   "uid": 45,
    "key": [
     "caminho",
     "caminhos"
@@ -988,8 +1468,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "34": {
-   "uid": 34,
+  "46": {
+   "uid": 46,
    "key": [
     "trilha",
     "trilhas"
@@ -1012,8 +1492,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "35": {
-   "uid": 35,
+  "47": {
+   "uid": 47,
    "key": [
     "origem",
     "origens"
@@ -1036,8 +1516,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "36": {
-   "uid": 36,
+  "48": {
+   "uid": 48,
    "key": [
     "legado",
     "legados"
@@ -1060,15 +1540,15 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "37": {
-   "uid": 37,
+  "49": {
+   "uid": 49,
    "key": [
     "classe",
     "classes"
    ],
    "keysecondary": [],
    "comment": "Classe",
-   "content": "[Termo do livro: Classe] Escala que determina orçamento e limites de uma aplicação. É distinta do Caminho do personagem. (livro, âncora fundamento--pontos)",
+   "content": "[Termo do livro: Classe] Escala que determina orçamento e limites de uma aplicação. É distinta do Caminho do personagem: quem pergunta pela \"classe\" do personagem quase sempre quer dizer Caminho. (livro, âncora fundamento--pontos)",
    "constant": false,
    "selective": false,
    "order": 100,
@@ -1084,8 +1564,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "38": {
-   "uid": 38,
+  "50": {
+   "uid": 50,
    "key": [
     "classe 0",
     "classe zero"
@@ -1108,8 +1588,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "39": {
-   "uid": 39,
+  "51": {
+   "uid": 51,
    "key": [
     "categoria de efeito",
     "ce"
@@ -1132,8 +1612,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "40": {
-   "uid": 40,
+  "52": {
+   "uid": 52,
    "key": [
     "cd",
     "classe de dificuldade"
@@ -1156,8 +1636,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "41": {
-   "uid": 41,
+  "53": {
+   "uid": 53,
    "key": [
     "teste de resistência",
     "teste de resistencia",
@@ -1182,8 +1662,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "42": {
-   "uid": 42,
+  "54": {
+   "uid": 54,
    "key": [
     "pe",
     "pontos de energia",
@@ -1192,7 +1672,7 @@
    ],
    "keysecondary": [],
    "comment": "PE",
-   "content": "[Termo do livro: PE] Pontos de energia. Na rota sem energia amaldiçoada, significa Pontos de Esforço. (livro, âncora rotas--rotas)",
+   "content": "[Termo do livro: PE] Pontos de energia: pagam o uso de feitiços e habilidades. O máximo vem do Caminho, por nível. Na rota sem energia amaldiçoada, significa Pontos de Esforço, na mesma quantidade. (livro, âncora rotas--rotas)",
    "constant": false,
    "selective": false,
    "order": 100,
@@ -1208,8 +1688,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "43": {
-   "uid": 43,
+  "55": {
+   "uid": 55,
    "key": [
     "pv",
     "pontos de vida",
@@ -1233,8 +1713,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "44": {
-   "uid": 44,
+  "56": {
+   "uid": 56,
    "key": [
     "integridade"
    ],
@@ -1256,8 +1736,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "45": {
-   "uid": 45,
+  "57": {
+   "uid": 57,
    "key": [
     "exaustão",
     "exaustao"
@@ -1280,8 +1760,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "46": {
-   "uid": 46,
+  "58": {
+   "uid": 58,
    "key": [
     "refino"
    ],
@@ -1303,8 +1783,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "47": {
-   "uid": 47,
+  "59": {
+   "uid": 59,
    "key": [
     "maestria"
    ],
@@ -1326,8 +1806,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "48": {
-   "uid": 48,
+  "60": {
+   "uid": 60,
    "key": [
     "grau",
     "graus"
@@ -1350,8 +1830,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "49": {
-   "uid": 49,
+  "61": {
+   "uid": 61,
    "key": [
     "patente",
     "patentes"
@@ -1374,8 +1854,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "50": {
-   "uid": 50,
+  "62": {
+   "uid": 62,
    "key": [
     "feitiço",
     "feitico",
@@ -1400,8 +1880,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "51": {
-   "uid": 51,
+  "63": {
+   "uid": 63,
    "key": [
     "fundamento"
    ],
@@ -1423,8 +1903,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "52": {
-   "uid": 52,
+  "64": {
+   "uid": 64,
    "key": [
     "técnica amaldiçoada",
     "tecnica amaldicoada",
@@ -1449,8 +1929,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "53": {
-   "uid": 53,
+  "65": {
+   "uid": 65,
    "key": [
     "técnica máxima",
     "tecnica maxima"
@@ -1473,8 +1953,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "54": {
-   "uid": 54,
+  "66": {
+   "uid": 66,
    "key": [
     "técnica marcial",
     "tecnica marcial"
@@ -1497,8 +1977,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "55": {
-   "uid": 55,
+  "67": {
+   "uid": 67,
    "key": [
     "kata",
     "katas"
@@ -1521,8 +2001,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "56": {
-   "uid": 56,
+  "68": {
+   "uid": 68,
    "key": [
     "sem técnica",
     "sem tecnica"
@@ -1545,8 +2025,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "57": {
-   "uid": 57,
+  "69": {
+   "uid": 69,
    "key": [
     "manejo",
     "manejos"
@@ -1569,8 +2049,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "58": {
-   "uid": 58,
+  "70": {
+   "uid": 70,
    "key": [
     "lapidação",
     "lapidacao"
@@ -1593,8 +2073,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "59": {
-   "uid": 59,
+  "71": {
+   "uid": 71,
    "key": [
     "bênção",
     "bencao",
@@ -1619,8 +2099,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "60": {
-   "uid": 60,
+  "72": {
+   "uid": 72,
    "key": [
     "aptidão",
     "aptidao",
@@ -1645,8 +2125,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "61": {
-   "uid": 61,
+  "73": {
+   "uid": 73,
    "key": [
     "talento",
     "talentos"
@@ -1669,8 +2149,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "62": {
-   "uid": 62,
+  "74": {
+   "uid": 74,
    "key": [
     "melhoria",
     "melhorias"
@@ -1693,8 +2173,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "63": {
-   "uid": 63,
+  "75": {
+   "uid": 75,
    "key": [
     "família de melhorias",
     "familia de melhorias"
@@ -1717,8 +2197,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "64": {
-   "uid": 64,
+  "76": {
+   "uid": 76,
    "key": [
     "pontos de montagem",
     "montagem"
@@ -1741,8 +2221,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "65": {
-   "uid": 65,
+  "77": {
+   "uid": 77,
    "key": [
     "restrição de montagem",
     "restricao de montagem"
@@ -1765,8 +2245,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "66": {
-   "uid": 66,
+  "78": {
+   "uid": 78,
    "key": [
     "selo",
     "selos"
@@ -1789,8 +2269,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "67": {
-   "uid": 67,
+  "79": {
+   "uid": 79,
    "key": [
     "ritual",
     "rituais"
@@ -1813,8 +2293,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "68": {
-   "uid": 68,
+  "80": {
+   "uid": 80,
    "key": [
     "pacto",
     "pactos"
@@ -1837,8 +2317,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "69": {
-   "uid": 69,
+  "81": {
+   "uid": 81,
    "key": [
     "invocação",
     "invocacao",
@@ -1864,8 +2344,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "70": {
-   "uid": 70,
+  "82": {
+   "uid": 82,
    "key": [
     "entidade",
     "entidades"
@@ -1888,8 +2368,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "71": {
-   "uid": 71,
+  "83": {
+   "uid": 83,
    "key": [
     "invocador"
    ],
@@ -1911,8 +2391,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "72": {
-   "uid": 72,
+  "84": {
+   "uid": 84,
    "key": [
     "ferramenta amaldiçoada",
     "ferramenta amaldicoada",
@@ -1937,8 +2417,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "73": {
-   "uid": 73,
+  "85": {
+   "uid": 85,
    "key": [
     "regra da técnica",
     "regra da tecnica"
@@ -1961,8 +2441,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "74": {
-   "uid": 74,
+  "86": {
+   "uid": 86,
    "key": [
     "expressão da técnica",
     "expressao da tecnica"
@@ -1985,8 +2465,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "75": {
-   "uid": 75,
+  "87": {
+   "uid": 87,
    "key": [
     "espaço conhecido",
     "espaco conhecido",
@@ -2011,8 +2491,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "76": {
-   "uid": 76,
+  "88": {
+   "uid": 88,
    "key": [
     "ampliar"
    ],
@@ -2034,8 +2514,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "77": {
-   "uid": 77,
+  "89": {
+   "uid": 89,
    "key": [
     "marco",
     "marcos"
@@ -2058,8 +2538,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "78": {
-   "uid": 78,
+  "90": {
+   "uid": 90,
    "key": [
     "vida temporária",
     "vida temporaria"
@@ -2082,8 +2562,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "79": {
-   "uid": 79,
+  "91": {
+   "uid": 91,
    "key": [
     "redução de dano",
     "reducao de dano",
@@ -2107,8 +2587,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "80": {
-   "uid": 80,
+  "92": {
+   "uid": 92,
    "key": [
     "derrotado",
     "derrotada"
@@ -2131,8 +2611,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "81": {
-   "uid": 81,
+  "93": {
+   "uid": 93,
    "key": [
     "morrendo"
    ],
@@ -2154,10 +2634,15 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "82": {
-   "uid": 82,
+  "94": {
+   "uid": 94,
    "key": [
-    "estabilizar"
+    "estabilizar",
+    "estabilizo",
+    "estabiliza",
+    "estabilizou",
+    "estabilizei",
+    "estabilizando"
    ],
    "keysecondary": [],
    "comment": "Estabilizar",
@@ -2177,8 +2662,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "83": {
-   "uid": 83,
+  "95": {
+   "uid": 95,
    "key": [
     "vantagem"
    ],
@@ -2200,8 +2685,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "84": {
-   "uid": 84,
+  "96": {
+   "uid": 96,
    "key": [
     "desvantagem"
    ],

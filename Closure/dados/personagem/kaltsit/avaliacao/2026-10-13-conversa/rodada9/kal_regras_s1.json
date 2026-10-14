@@ -1,0 +1,322 @@
+{
+ "pers": "kal",
+ "ficha": "regras",
+ "semente": 1,
+ "sistema": "sistema_kal_v20.txt",
+ "lembrete": "lembrete_kaltsit_v20.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c025_k020.html",
+ "hora_inicio": "19:05",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "19:05",
+   "usuario": "pode explicar as habilidades de nv2 do guia?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "A habilidade de nível 2 do Caminho do Guia é Abrir Caminho. É uma Ação Bônus que custa 1 PE, e você só usa uma vez por turno seu. Você escolhe um aliado voluntário que perceba a até 18 m e que consiga ver ou ouvir a sua orientação, e prepara para ele uma Abertura de Avançar, Executar ou Resguardar, indicando a posição, o alvo ou a situação a que ela se refere. O aliado guarda a oportunidade e decide quando usá-la, e ela dura até o começo do seu próximo turno. Você mantém uma Abertura por vez, então criar outra substitui a anterior. Uma criatura também só guarda uma Abertura de cada vez: se aceitar outra, perde a que tinha, e essa troca não conta como consumo nem dispara respostas ou repasses. A orientação pode ser uma fala, um gesto ou um sinal combinado.\n\nAs habilidades de nível 2 das Trilhas Arquiteto, Analista e Socorrista não estão no trecho que tenho aberto agora, então essa parte eu não consigo responder daqui."
+  },
+  {
+   "n": 2,
+   "hora": "19:07",
+   "usuario": "e no nível 7?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Progressão do Caminho",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "No nível 7 do Caminho entra Resposta Coordenada. Pela tabela de progressão, ela converte o uso da oportunidade numa resposta imediata da equipe. O texto completo dela não está no trecho que tenho aberto agora."
+  },
+  {
+   "n": 3,
+   "hora": "19:09",
+   "usuario": "como assim converte o uso da oportunidade numa resposta imediata",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Essa parte eu não tenho aberta agora. Sem o texto da habilidade no trecho que está comigo, não consigo dizer como essa conversão funciona, e não vou chutar."
+  },
+  {
+   "n": 4,
+   "hora": "19:11",
+   "usuario": "ok. e pra descansar, quanto PE eu recupero",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Descansos",
+    "Livro: Rotas de criação",
+    "Livro: Derrota e morte"
+   ],
+   "aviso": "",
+   "resposta": "Depende do descanso. No curto, você recupera 25% dos PE máximos, arredondado para baixo, com mínimo de 1 quando a fração for positiva, e sem passar do máximo. No longo, em lugar propício, os PE voltam ao máximo; fora dele, ficam no mínimo na metade do máximo, e quem confirma se o lugar é propício é o mestre. Fora de lugar propício, no curto, a porcentagem muda pelo degrau de Exaustão, e essa tabela não está no trecho que tenho aberto."
+  },
+  {
+   "n": 5,
+   "hora": "19:13",
+   "usuario": "Abrir Caminho custa quanto PE?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Caminho e Trilha",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Um PE a cada uso."
+  },
+  {
+   "n": 6,
+   "hora": "19:15",
+   "usuario": "quando eu tomo dano primeiro cai a vid ou a integridade",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "Caminho",
+    "PE",
+    "Livro: Estágios de Integridade",
+    "Livro: Queda e destruição",
+    "Livro: Caminho e Trilha"
+   ],
+   "aviso": "",
+   "resposta": "No trecho que tenho aberto, não achei a ordem em que o dano desce. Ele diz que vida e Integridade são acompanhadas separadamente, e que, se o mesmo golpe zerar as duas, a derrota é resolvida pela Integridade."
+  },
+  {
+   "n": 7,
+   "hora": "19:17",
+   "usuario": "como assim separadamente",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "Caminho",
+    "PE",
+    "Livro: Estágios de Integridade",
+    "Livro: Queda e destruição",
+    "Livro: Caminho e Trilha"
+   ],
+   "aviso": "",
+   "resposta": "Cada reserva é contada à parte. Cura de vida não recupera Integridade, e a Integridade tem os próprios estágios de penalidade, que você recalcula quando ela volta."
+  },
+  {
+   "n": 8,
+   "hora": "19:19",
+   "usuario": "qual a classe mais forte?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "Classe",
+    "Livro: Habilidades do cão",
+    "Livro: Estágios de Integridade",
+    "Livro: Feitiços de Classe 0"
+   ],
+   "aviso": "",
+   "resposta": "Classe, no livro, é a escala que define o orçamento e os limites de uma aplicação. No trecho que tenho aberto, não achei nenhuma comparação de força entre as Classes. Se você quis dizer Caminho, a tabela só traz a proposta de cada um, sem colocar um acima do outro."
+  },
+  {
+   "n": 9,
+   "hora": "19:21",
+   "usuario": "ok e o teste de resistencia, quem escolhe o treinado eu ou a origem",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Teste de Resistência",
+    "Origem",
+    "Classe",
+    "Livro: Origem e treinos",
+    "Livro: Testes de Resistência",
+    "Livro: Escolhas da Origem"
+   ],
+   "aviso": "",
+   "resposta": "Você escolhe os dois. A Origem e o Caminho dão cada um um TR treinado, e os dois precisam ser diferentes, escolhidos entre Físico, Vigor, Intelecto e Espírito."
+  },
+  {
+   "n": 10,
+   "hora": "19:23",
+   "usuario": "e se eu errar a perícia num ataque com a arma, eu levo desvantagem?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Teste de Resistência",
+    "Desvantagem",
+    "Origem",
+    "Livro: Atributos e testes",
+    "Livro: Testes de Resistência",
+    "Livro: Treino e modificadores"
+   ],
+   "aviso": "",
+   "resposta": "Ataque e perícia são testes diferentes. No trecho que tenho aberto, a desvantagem por falta de treino com arma aparece para entidade, que ataca com arma sem treino com desvantagem. Para personagem, essa regra não está no trecho aberto, então não vou dizer se vale."
+  },
+  {
+   "n": 11,
+   "hora": "19:25",
+   "usuario": "qual a diferença entre latente e descendente?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Teste de Resistência",
+    "Desvantagem",
+    "Origem",
+    "Livro: Descendente",
+    "Livro: Testes de Resistência",
+    "Livro: Legados do Descendente"
+   ],
+   "aviso": "",
+   "resposta": "Do Descendente eu tenho o trecho aberto: a família participa do meio jujutsu, e a Origem dá uma perícia entre Hierarquia, História, Ocultismo e Persuasão, além de criação em Fundamento, ou em Manejos se a pessoa escolher Sem Técnica. Da Latente não achei nada no trecho que tenho aberto agora, então não consigo comparar as duas."
+  },
+  {
+   "n": 12,
+   "hora": "19:27",
+   "usuario": "hm ta. e a Rhine lab ta na mesa de vcs?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Desvantagem",
+    "Livro: Seu primeiro feitiço",
+    "Livro: Treino e modificadores"
+   ],
+   "aviso": "",
+   "resposta": "Isso depende do mestre de vocês, não do que eu tenho aqui. Se a Rhine entra na história de cada mesa, é ele que decide."
+  },
+  {
+   "n": 13,
+   "hora": "19:29",
+   "usuario": "ok. quantos feitiços de classe 0 eu conheço no nivel 5",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Classe 0",
+    "Feitiço",
+    "Classe",
+    "Livro: Feitiços de Classe 0",
+    "Livro: Feitiços conhecidos",
+    "Livro: Seu primeiro feitiço"
+   ],
+   "aviso": "",
+   "resposta": "Três. A tabela de Classe 0 dá 3 para a faixa de nível 5 a 10, e esses feitiços não ocupam os espaços de feitiço conhecido."
+  },
+  {
+   "n": 14,
+   "hora": "19:31",
+   "usuario": "como estabilizo um aliado caído?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Classe 0",
+    "Feitiço",
+    "Classe",
+    "Livro: Feitiços de Classe 0",
+    "Livro: Retorno e corpos caídos",
+    "Livro: Seu primeiro feitiço"
+   ],
+   "aviso": "",
+   "resposta": "Para personagem caído, o trecho que tenho aberto não traz como estabilizar, então não vou chutar. O que ele diz é sobre entidade caída: cura não funciona a zero, e ela volta, no seu turno, pagando o dobro do PE da entrada e sua Bônus, com metade da vida máxima."
+  },
+  {
+   "n": 15,
+   "hora": "19:33",
+   "usuario": "ok. e o que eu faço com a oripatia no RP, ela tem cura de verdade ou só no livro",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Cura da oripatia",
+    "Classe 0",
+    "Feitiço",
+    "Classe",
+    "Livro: Cura",
+    "Livro: Feitiços de Classe 0",
+    "Livro: Cura"
+   ],
+   "aviso": "",
+   "resposta": "Não tem cura. O registro diz que ninguém achou uma resposta, nem parcial nem promissora, mesmo com o melhor equipamento disponível. No RP, ela continua sem cura."
+  },
+  {
+   "n": 16,
+   "hora": "19:35",
+   "usuario": "vlw. e a closure, ela ta ai de noite ne",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Cura da oripatia",
+    "Livro: Exaustão"
+   ],
+   "aviso": "",
+   "resposta": "Ela cobre a noite, das 21h às 9h. Eu saio às 21h, e a partir daí quem responde é ela."
+  },
+  {
+   "n": 17,
+   "hora": "19:37",
+   "usuario": "quanto de dano eu tomo caindo de 10 metros?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Cura da oripatia",
+    "Livro: Quedas e movimento imposto",
+    "Livro: Quedas sobre criaturas"
+   ],
+   "aviso": "",
+   "resposta": "Dez metros dão 3d6 de Concussão, porque cada 3 m completos de queda rendem 1d6. Se o impacto causar dano, você também fica Derrubado."
+  },
+  {
+   "n": 18,
+   "hora": "19:39",
+   "usuario": "e de 20?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Quedas sobre criaturas",
+    "Livro: Quedas e movimento imposto"
+   ],
+   "aviso": "",
+   "resposta": "A tabela não tem 20 m, mas a regra dá 6d6 de Concussão, porque são seis trechos completos de 3 m."
+  },
+  {
+   "n": 19,
+   "hora": "19:41",
+   "usuario": "valeu. ultima coisa, o guia pode dar dois ataques no mesmo turno?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "Não. As habilidades do Caminho do Guia não concedem ataques adicionais ao próprio Guia. Na Resposta Coordenada, quem ataca é o aliado, e o Guia só gasta a própria Reação para convidá-lo."
+  },
+  {
+   "n": 20,
+   "hora": "19:43",
+   "usuario": "entendi. obrigado kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Resposta Coordenada",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "Certo."
+  }
+ ],
+ "pendente": null
+}

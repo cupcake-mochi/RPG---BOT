@@ -1,0 +1,373 @@
+[
+ {
+  "id": "n01",
+  "msg": "qnto de dano eu levo se cair de uns 9 metros?",
+  "gold": [
+   "geral--quedas"
+  ]
+ },
+ {
+  "id": "n02",
+  "msg": "o nunchaku da qnto de dano e tem q propriedade?",
+  "gold": [
+   "equip--eqa-impacto"
+  ]
+ },
+ {
+  "id": "n03",
+  "msg": "escudo torre da quanto de defesa e precisa de qnta força?",
+  "gold": [
+   "equip--eqp-escudo"
+  ]
+ },
+ {
+  "id": "n04",
+  "msg": "depois de qntas lutas no dia eu começo a ficar exausto?",
+  "gold": [
+   "dano--exaustao"
+  ]
+ },
+ {
+  "id": "n05",
+  "msg": "no descanso curto eu recupero qnto de mana?",
+  "gold": [
+   "dano--descansos"
+  ]
+ },
+ {
+  "id": "n06",
+  "msg": "se eu pegar hp temporario de duas fontes eles somam?",
+  "gold": [
+   "dano--temporarios"
+  ]
+ },
+ {
+  "id": "n07",
+  "msg": "ja tenho 1 sequela, qntas rodadas eu tenho pra alguem me levantar qnd cair a 0 de hp?",
+  "gold": [
+   "dano--zero",
+   "dano--sequelas"
+  ]
+ },
+ {
+  "id": "n08",
+  "msg": "como eu estabilizo um aliado q caiu? precisa de teste?",
+  "gold": [
+   "dano--socorro"
+  ]
+ },
+ {
+  "id": "n09",
+  "msg": "oq acontece com quem ta com guarda aberta?",
+  "gold": [
+   "dano--leves"
+  ]
+ },
+ {
+  "id": "n10",
+  "msg": "o guia gasta qnto de pe pra buffar um aliado e q ação é?",
+  "gold": [
+   "guia--guia-progressao"
+  ]
+ },
+ {
+  "id": "n11",
+  "msg": "como funciona o esconder? vs qual cd eu rolo?",
+  "gold": [
+   "geral--esconder"
+  ]
+ },
+ {
+  "id": "n12",
+  "msg": "sendo latente, qual pericia a origem me deixa escolher?",
+  "gold": [
+   "origens--origem-latente"
+  ]
+ },
+ {
+  "id": "n13",
+  "msg": "espingarda da qnto de dano e qntos tiros por carga?",
+  "gold": [
+   "equip--eqa-tiro",
+   "equip--eqm-municao"
+  ]
+ },
+ {
+  "id": "n14",
+  "msg": "energia reversa cura qnto de hp e com q nv eu pego?",
+  "gold": [
+   "aptidoes--apt-reversa"
+  ]
+ },
+ {
+  "id": "n15",
+  "msg": "a lanterna ilumina ate qnto?",
+  "gold": [
+   "equip--eqi-exploracao"
+  ]
+ },
+ {
+  "id": "n16",
+  "msg": "se eu passar do limite de carga oq acontece?",
+  "gold": [
+   "geral--carga"
+  ]
+ },
+ {
+  "id": "n17",
+  "msg": "no vanguarda qnto de pe custa conduzir na sequencia se minha maestria é 1?",
+  "gold": [
+   "vanguarda--van-sequencia"
+  ]
+ },
+ {
+  "id": "n18",
+  "msg": "sendo tank, como eu pego o golpe no lugar de um aliado?",
+  "gold": [
+   "bastiao--bas-olhos"
+  ]
+ },
+ {
+  "id": "n19",
+  "msg": "se eu tiver 2 fontes de vantagem e 1 de desvantagem, como fica?",
+  "gold": [
+   "geral--pericias",
+   "consulta--consulta-testes"
+  ]
+ },
+ {
+  "id": "n20",
+  "msg": "qual a cd do teste do ritual?",
+  "gold": [
+   "ritual--rit-teste"
+  ]
+ },
+ {
+  "id": "n21",
+  "msg": "um feitiço de classe 3 gasta qnto de pe e qntos pontos eu tenho pra montar?",
+  "gold": [
+   "fundamento--pontos"
+  ]
+ },
+ {
+  "id": "n22",
+  "msg": "qnd eu dou crit corpo a corpo tem chance de kokusen? como rola?",
+  "gold": [
+   "aptidoes--apt-kokusen"
+  ]
+ },
+ {
+  "id": "n23",
+  "msg": "como eu domo uma maldição pra virar minha invocação?",
+  "gold": [
+   "construcao--entidades-domar"
+  ]
+ },
+ {
+  "id": "n24",
+  "msg": "qntos pontos de atributo eu distribuo na criação e qual o max?",
+  "gold": [
+   "ab--ab-criacao",
+   "ab--ab-conferencia"
+  ]
+ },
+ {
+  "id": "n25",
+  "msg": "evocador ganha qntos pontos de vinculo por turno?",
+  "gold": [
+   "evocador--ev-vinculo"
+  ]
+ },
+ {
+  "id": "n26",
+  "msg": "e no nivel 23?",
+  "hist": [
+   [
+    "como funciona o bastiao?",
+    "Bastião é o Caminho de quem protege os aliados e aguenta a pressão dos inimigos. Ele começa com Olhos Em Mim no nível 2."
+   ],
+   [
+    "e o olhos em mim?",
+    "Com Ação Bônus você ativa uma área de 6 m de raio centrada em você. Dentro dela, gastando a Reação, pode assumir um ataque contra um aliado."
+   ]
+  ],
+  "gold": [
+   "bastiao--bas-aliados"
+  ]
+ },
+ {
+  "id": "n27",
+  "msg": "e como funciona o aparar?",
+  "hist": [
+   [
+    "como funciona o olhos em mim do bastiao?",
+    "Ação Bônus: ativa uma área de 6 m ao seu redor até o fim da cena. Com a Reação você assume o ataque contra um aliado dentro dela."
+   ]
+  ],
+  "gold": [
+   "geral--aparar"
+  ]
+ },
+ {
+  "id": "n28",
+  "msg": "e se eu cair na agua?",
+  "hist": [
+   [
+    "se eu cair de 6 metros levo quanto de dano?",
+    "2d6 de Concussão: 1d6 a cada 3 m completos de queda."
+   ]
+  ],
+  "gold": [
+   "geral--quedas"
+  ]
+ },
+ {
+  "id": "n29",
+  "msg": "e a naginata?",
+  "hist": [
+   [
+    "qual o dano da katana?",
+    "1d8 Cortante, com Fineza e Versátil. Custa 48.000 ienes."
+   ]
+  ],
+  "gold": [
+   "equip--eqa-hastes"
+  ]
+ },
+ {
+  "id": "n30",
+  "msg": "e do 11?",
+  "hist": [
+   [
+    "qnto de xp eu preciso pra sair do nv 2?",
+    "200 XP."
+   ]
+  ],
+  "gold": [
+   "progressao--prog-xp"
+  ]
+ },
+ {
+  "id": "n31",
+  "msg": "e se eu n tiver num lugar propicio?",
+  "hist": [
+   [
+    "como funciona o descanso longo?",
+    "Vale quando a missão termina e você pode parar. Em ambiente propício vida e PE voltam ao máximo."
+   ]
+  ],
+  "gold": [
+   "dano--descansos"
+  ]
+ },
+ {
+  "id": "n32",
+  "msg": "blz, e pra abrir expansao de dominio qnto de pe custa?",
+  "hist": [
+   [
+    "qnto de pe volta no descanso curto?",
+    "25% dos PE máximos."
+   ],
+   [
+    "e a vida?",
+    "Não volta só com o descanso curto."
+   ]
+  ],
+  "gold": [
+   "poderes--abertura"
+  ]
+ },
+ {
+  "id": "n33",
+  "msg": "e como eu rolo iniciativa?",
+  "hist": [
+   [
+    "qual meu deslocamento padrao?",
+    "9 m por Ação de Movimento."
+   ]
+  ],
+  "gold": [
+   "geral--turnos"
+  ]
+ },
+ {
+  "id": "n34",
+  "msg": "e se eu errar?",
+  "hist": [
+   [
+    "como eu escapo de um agarrao?",
+    "Ação Padrão e um TR Físico contra a CD da contenção, normalmente 8 + Força + maestria de quem agarrou."
+   ]
+  ],
+  "gold": [
+   "geral--contencoes"
+  ]
+ },
+ {
+  "id": "n35",
+  "msg": "e quanto custa?",
+  "hist": [
+   [
+    "qual traje dá defesa boa sem atrapalhar minha destreza?",
+    "Qualquer Traje: eles somam toda a Destreza à Defesa."
+   ],
+   [
+    "e o traje 2?",
+    "Proteção +2, sem teto de Destreza e sem Força mínima."
+   ]
+  ],
+  "gold": [
+   "equip--eqc-precos"
+  ]
+ },
+ {
+  "id": "n36",
+  "msg": "e aí kal, tudo bem?",
+  "gold": "nenhum"
+ },
+ {
+  "id": "n37",
+  "msg": "to morrendo de sono kkk",
+  "gold": "nenhum"
+ },
+ {
+  "id": "n38",
+  "msg": "vou dormir, boa noite pessoal",
+  "gold": "nenhum"
+ },
+ {
+  "id": "n39",
+  "msg": "que dano hein kkk",
+  "gold": "nenhum"
+ },
+ {
+  "id": "n40",
+  "msg": "bora jogar hoje?",
+  "gold": "nenhum"
+ },
+ {
+  "id": "n41",
+  "msg": "qual sua comida favorita kal?",
+  "gold": "nenhum"
+ },
+ {
+  "id": "n42",
+  "msg": "oq vc faz kal? vc é tipo a guia do servidor?",
+  "gold": "nenhum"
+ },
+ {
+  "id": "n43",
+  "msg": "hoje to sem energia nenhuma, so quero deitar",
+  "gold": "nenhum"
+ },
+ {
+  "id": "n44",
+  "msg": "essa semana minha vida ta uma correria, nao paro um minuto",
+  "gold": "nenhum"
+ },
+ {
+  "id": "n45",
+  "msg": "valeu kal, ajudou muito!",
+  "gold": "nenhum"
+ }
+]

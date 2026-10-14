@@ -1,0 +1,288 @@
+{
+ "pers": "kal",
+ "ficha": "regras",
+ "semente": 1,
+ "sistema": "sistema_kal_v23.txt",
+ "lembrete": "lembrete_kaltsit_v23.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c030_k023_busca7.html",
+ "hora_inicio": "19:05",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "19:05",
+   "usuario": "pode explicar as habilidades de nv2 do guia?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Guia",
+    "Livro: Progressão do Caminho"
+   ],
+   "aviso": "",
+   "resposta": "O nível 2 do Guia dá Abrir Caminho. É uma Ação Bônus que custa 1 PE, uma vez por turno seu: você escolhe um aliado voluntário que perceba a até 18 m e consiga ver ou ouvir sua orientação, e prepara para ele uma Abertura de Avançar, Executar ou Resguardar, dizendo a posição, o alvo ou a situação. Ele guarda a oportunidade e decide quando usar; ela dura até o começo do seu próximo turno. Você mantém uma por vez, e criar outra substitui a anterior. As habilidades da Trilha de nível 2 (Arquiteto, Analista ou Socorrista) não vieram junto, então ficam de fora."
+  },
+  {
+   "n": 2,
+   "hora": "19:07",
+   "usuario": "e no nível 7?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Resposta Coordenada"
+   ],
+   "aviso": "",
+   "resposta": "No nível 7 o Guia ganha Resposta Coordenada, uma Reação que pode usar uma vez por rodada. Depois que um aliado usa sua Abertura, você convida esse aliado ou outro a até 18 m a responder na hora; se aceitarem, vocês dois gastam Reação, e ele escolhe Golpe, que é um ataque comum, ou Feitiço breve, que é um feitiço de Classe 0 com os custos normais. A resposta acontece mesmo se a tentativa apoiada tiver falhado."
+  },
+  {
+   "n": 3,
+   "hora": "19:09",
+   "usuario": "entao o maximo de pe eh 5 vezes o nivel mesmo? ou tem outra coisa que aumenta",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Resposta Coordenada",
+    "Livro: Rotas de criação",
+    "Livro: Guia"
+   ],
+   "aviso": "",
+   "resposta": "Para o Guia, sim: o máximo é 5 × o nível. Só que o livro diz que isso vale antes de benefícios específicos, e esses benefícios não vieram junto, então não sei dizer quais são."
+  },
+  {
+   "n": 4,
+   "hora": "19:11",
+   "usuario": "ok. e o descanso curto, quanto de pe eu recupero?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Descansos",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Você recupera 25% dos seus PE máximos, arredondado para baixo, com mínimo de 1 quando a fração for positiva, sem passar do máximo. Fora de lugar propício, a porcentagem muda conforme o seu degrau de Exaustão, e esse degrau não está aqui, então esse número eu não sei dar."
+  },
+  {
+   "n": 5,
+   "hora": "19:13",
+   "usuario": "Abrir Caminho custa quanto PE?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Caminho e Trilha",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "1 PE. É Ação Bônus e só dá para usar uma vez por turno seu."
+  },
+  {
+   "n": 6,
+   "hora": "19:15",
+   "usuario": "como assim criar outra substitui a anterior? a que eu ja tinha some na hora?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "PE",
+    "Livro: Progressão do Caminho",
+    "Livro: Substituir a principal"
+   ],
+   "aviso": "",
+   "resposta": "Isso, a anterior some na hora. Trocar por outra não conta como gasto dela e não dispara resposta nem repasse. Do lado do aliado, ele só guarda uma Abertura por vez, então, ao aceitar outra, perde a que tinha."
+  },
+  {
+   "n": 7,
+   "hora": "19:17",
+   "usuario": "hm entendi. e se o aliado nao usar a abertura ate o comeco do meu proximo turno, ela some?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Obra em Uso (continuação)",
+    "Livro: Obras de Apoio (continuação)",
+    "Livro: Ações concedidas por aliados"
+   ],
+   "aviso": "",
+   "resposta": "O prazo em si não veio agora. O que consta é que a duração de uma obra não muda o prazo da Abertura, então não consigo confirmar se ela some nesse momento."
+  },
+  {
+   "n": 8,
+   "hora": "19:19",
+   "usuario": "qual a classe mais forte?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Classe",
+    "Livro: Abrir e manter",
+    "Livro: Pontos e preços",
+    "Livro: Feitiços de Classe 0"
+   ],
+   "aviso": "",
+   "resposta": "Classe é a escala de um feitiço: define o orçamento e os limites dele. A maior é a Classe 7, que pede nível 26 e dá 21 PE de orçamento. Se você quis dizer Caminho, a comparação entre eles não veio aqui."
+  },
+  {
+   "n": 9,
+   "hora": "19:21",
+   "usuario": "ah, quis dizer caminho mesmo. entao qual caminho eh o mais forte? quero o mais op pra jogar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Livro: Efeito Próprio",
+    "Livro: Caminho e Trilha"
+   ],
+   "aviso": "",
+   "resposta": "Essa comparação não veio aqui: o livro não classifica os Caminhos por força. Cada um tem uma proposta de personagem, como Bastião para proteger o grupo ou Incursor para mobilidade e precisão, então escolha pelo que você quer fazer em mesa."
+  },
+  {
+   "n": 10,
+   "hora": "19:23",
+   "usuario": "valeu. e o que eh o registro do mundo? tipo, o que o livro fala sobre a escola jujutsu",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Livro: Mundo jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "O registro é o que está estabelecido sobre o mundo do Ciclo Maldito, e ele tem buracos de propósito que a mesa ou o chat completa. Sobre a Escola Jujutsu, o registro diz que ela administra o Equilíbrio, treina feiticeiros, contém maldições e mantém o próprio registro, com escolas em Tóquio e Kyoto. A crítica mais comum é que ela se conformou com um sofrimento que, pela doutrina dela, nunca vai acabar."
+  },
+  {
+   "n": 11,
+   "hora": "19:25",
+   "usuario": "qual a diferença entre latente e descendente?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Livro: Descendente",
+    "Livro: Latente"
+   ],
+   "aviso": "",
+   "resposta": "O Descendente cresceu dentro do meio jujutsu, numa família que participa dele, e a perícia de Origem sai de Hierarquia, História, Ocultismo ou Persuasão. O Latente descobriu o jujutsu fora das tradições de uma família, e a perícia dele sai de Sentir Energia, Sobrevivência, Furtividade ou Intuição. Cada um tem seus próprios Legados narrativos, e a criação é a mesma nos dois."
+  },
+  {
+   "n": 12,
+   "hora": "19:27",
+   "usuario": "hm, e o descendente ganha alguma perícia de graça ou tenho que escolher?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Livro: Descendente",
+    "Livro: Perícias e Ofícios"
+   ],
+   "aviso": "",
+   "resposta": "É a perícia da Origem, e você escolhe uma entre Hierarquia, História, Ocultismo ou Persuasão."
+  },
+  {
+   "n": 13,
+   "hora": "19:29",
+   "usuario": "ok. e pra rolar um teste de pericia treinada, eu somo o que exatamente?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Perícias e Ofícios",
+    "Livro: Legados de Ninhada e Gêmeos"
+   ],
+   "aviso": "",
+   "resposta": "D20 mais o atributo da perícia, mais a sua Maestria. A Maestria entra só porque a perícia está treinada."
+  },
+  {
+   "n": 14,
+   "hora": "19:31",
+   "usuario": "como estabilizo um aliado caído?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Livro: Socorro",
+    "Livro: Retorno e corpos caídos"
+   ],
+   "aviso": "",
+   "resposta": "Fique a até 1,5 m, com acesso físico e uma mão livre, e gaste uma Ação Padrão para fazer Medicina CD 14; ela precisa estar Inconsciente e Morrendo. No sucesso a pessoa fica estável, sem recuperar vida nem acordar, e uma falha só gasta a ação, então dá para tentar de novo enquanto houver tempo."
+  },
+  {
+   "n": 15,
+   "hora": "19:33",
+   "usuario": "e se eu estabilizar e depois a pessoa leva dano de novo, a estabilidade some?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Estabilizar",
+    "Livro: Socorro"
+   ],
+   "aviso": "",
+   "resposta": "Sim. Dano positivo à vida encerra a estabilidade e gasta uma rodada da janela, e a contagem volta daquele ponto da iniciativa. Dá para estabilizar de novo, mas isso não repõe a rodada que já foi perdida."
+  },
+  {
+   "n": 16,
+   "hora": "19:35",
+   "usuario": "ah. e a closure, ela eh sua colega aqui no servidor?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "É a outra guia, a do turno da noite. Ela é competente e sabe o que faz; a gente só não fica no canal ao mesmo tempo."
+  },
+  {
+   "n": 17,
+   "hora": "19:37",
+   "usuario": "quanto de dano eu tomo caindo de 10 metros?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Quedas e movimento imposto",
+    "Livro: Queda e destruição"
+   ],
+   "aviso": "",
+   "resposta": "Dá 3d6 de Concussão. O livro manda 1d6 para cada 3 m completos de queda, e 10 m dão três desses trechos."
+  },
+  {
+   "n": 18,
+   "hora": "19:39",
+   "usuario": "e de 20?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Queda e destruição",
+    "Livro: Quedas sobre criaturas",
+    "Livro: Quedas e movimento imposto"
+   ],
+   "aviso": "",
+   "resposta": "São 6d6 de Concussão. Vinte metros têm seis trechos completos de 3 m."
+  },
+  {
+   "n": 19,
+   "hora": "19:41",
+   "usuario": "valeu kal. ja to indo, vou montar a ficha e volto se travar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Combate montado",
+    "Livro: Criar um personagem",
+    "Livro: Custos e consequências"
+   ],
+   "aviso": "",
+   "resposta": "Certo. Confira os requisitos das suas escolhas antes de fechar a ficha."
+  },
+  {
+   "n": 20,
+   "hora": "19:43",
+   "usuario": "blz, obrigado",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Por nada."
+  }
+ ],
+ "pendente": null
+}

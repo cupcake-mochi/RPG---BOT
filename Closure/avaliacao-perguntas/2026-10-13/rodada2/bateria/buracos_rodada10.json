@@ -1,0 +1,106 @@
+[
+ {
+  "id": "r1",
+  "msg": "e se eu bater com o escudo, da dano? quanto",
+  "hist": [
+   [
+    "qual a defesa do escudo torre?",
+    "+3 de proteção, teto de Destreza 1."
+   ]
+  ],
+  "gold": [
+   "equip--eqp-escudo",
+   "geral--ataques"
+  ]
+ },
+ {
+  "id": "r2",
+  "msg": "quantos pv eu começo? a constituicao conta?",
+  "gold": [
+   "guia--guia",
+   "vanguarda--van-base",
+   "evocador--evocador",
+   "incursor--inc-caminho",
+   "bastiao--bas-bastiao",
+   "ab--ab-equipamento"
+  ]
+ },
+ {
+  "id": "r3",
+  "msg": "nao entendi o que e duplo 10 no bloquear",
+  "gold": [
+   "geral--aparar",
+   "geral--bloquear"
+  ]
+ },
+ {
+  "id": "r4",
+  "msg": "e duplo 1 no bloquear",
+  "hist": [
+   [
+    "nao entendi o que e duplo 10 no bloquear",
+    "..."
+   ]
+  ],
+  "gold": [
+   "geral--aparar",
+   "geral--bloquear"
+  ]
+ },
+ {
+  "id": "r5",
+  "msg": "por onde eu começo a montar a ficha?",
+  "gold": [
+   "ab--ab-criacao"
+  ]
+ },
+ {
+  "id": "r6",
+  "msg": "e o que acontece se o aliado morrer de vez?",
+  "hist": [
+   [
+    "meu aliado caiu, como eu estabilizo?",
+    "Ação Padrão, Medicina CD 14."
+   ]
+  ],
+  "gold": [
+   "dano--derrota"
+  ]
+ },
+ {
+  "id": "r7",
+  "msg": "e se eu tiver zerado de PE, ainda consigo abrir caminho?",
+  "hist": [
+   [
+    "quanto custa o abrir caminho?",
+    "1 PE, Ação Bônus, uma vez por turno."
+   ]
+  ],
+  "gold": [
+   "guia--guia-progressao",
+   "guia--guia-aberturas"
+  ]
+ },
+ {
+  "id": "r8",
+  "msg": "tomei stun, perco o turno?",
+  "gold": [
+   "dano--pesadas"
+  ]
+ },
+ {
+  "id": "r9",
+  "msg": "o que acontece no clash de dominio?",
+  "gold": [
+   "poderes--disputa"
+  ]
+ },
+ {
+  "id": "r10",
+  "msg": "meu shikigami zerou o hp, e agora?",
+  "gold": [
+   "campo--inv-queda",
+   "dano--zero"
+  ]
+ }
+]

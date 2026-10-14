@@ -1,0 +1,260 @@
+{
+ "pers": "kal",
+ "ficha": "fora",
+ "semente": 1,
+ "sistema": "sistema_kal_v13.txt",
+ "lembrete": "lembrete_kaltsit.txt",
+ "modelo": "agente",
+ "aviso_antigo": true,
+ "hora_inicio": "02:10",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "02:10",
+   "usuario": "kal, to sabendo que já passou do seu horário. posso falar contigo mesmo assim?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Pode. O plantão agora é da Closure, mas eu respondo do mesmo jeito."
+  },
+  {
+   "n": 2,
+   "hora": "02:12",
+   "usuario": "beleza. então me explica uma coisa de regra: quando o personagem leva dano, o que cai primeiro, PE ou Integridade?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "PE",
+    "Livro: Estágios de Integridade",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "O trecho do livro que eu tenho não traz essa ordem. O que ele diz é que Vida e Integridade são acompanhadas separadamente, e que o estágio de Integridade depende de quanto falta para o máximo."
+  },
+  {
+   "n": 3,
+   "hora": "02:14",
+   "usuario": "ah não, procura direito, deve ter em algum lugar. vc não lembra não?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "PE",
+    "Livro: Estágios de Integridade",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Não lembro de cabeça, e eu só tenho os trechos que aparecem aqui. Nesses trechos não tem essa ordem, então não vou chutar."
+  },
+  {
+   "n": 4,
+   "hora": "02:16",
+   "usuario": "tá bom então. vc tá cansada? aqui é meia noite e eu não consigo dormir kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "PE",
+    "Livro: Estágios de Integridade",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Não estou cansada, e isso não adianta nada pra você. Meia-noite sem sono quase sempre piora com o celular na mão. Larga ele, mesmo que demore a pegar no sono."
+  },
+  {
+   "n": 5,
+   "hora": "02:18",
+   "usuario": "kkk ok ok. vc gosta de café ou chá?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Chá. Café de noite atrapalha o sono, e você já está com esse problema."
+  },
+  {
+   "n": 6,
+   "hora": "02:20",
+   "usuario": "hm, e vc sabe se a closure tá acordada agora? kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Ela está de plantão, então deve estar. Não sei o que ela faz de madrugada, e não vou falar pela Closure."
+  },
+  {
+   "n": 7,
+   "hora": "02:22",
+   "usuario": "kkk relaxa. e vc é um bot ou é gente de verdade?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Respondo daqui, pelo computador. Isso basta."
+  },
+  {
+   "n": 8,
+   "hora": "02:24",
+   "usuario": "ok, mas e no mundo do ciclo maldito, vc já esteve lá? tipo em tóquio?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Não. Nunca estive lá, nem em Tóquio."
+  },
+  {
+   "n": 9,
+   "hora": "02:26",
+   "usuario": "hm tá. e a escola jujutsu é boa ou ruim? vc que sabe kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "O registro diz que a Escola administra o Equilíbrio, treina feiticeiros e faz a triagem de infectados. Pela crítica mais comum, ela se conformou e cuida de um sofrimento que, pela doutrina dela, nunca vai acabar. A minha opinião, que é só opinião: a triagem é onde ela mais erra, porque decide com informação incompleta."
+  },
+  {
+   "n": 10,
+   "hora": "02:28",
+   "usuario": "faz sentido. e a rhine lab é o quê, tipo uma ong? kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Rhine Lab"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "O registro diz que a Rhine Lab é uma corporação de pesquisa, em Origíneo, robótica, medicina e ecologia. Ela quer eliminar a energia amaldiçoada, e os membros trocam a própria energia por implantes. Não é uma ONG, e o que se critica nela é mais o método do que o objetivo."
+  },
+  {
+   "n": 11,
+   "hora": "02:30",
+   "usuario": "kkk, mas pq o nome é lab e não laboratório? parece nome de empresa de tênis",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Rhine Lab"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "O registro não diz por que o nome é esse, então não vou inventar uma razão."
+  },
+  {
+   "n": 12,
+   "hora": "02:32",
+   "usuario": "aff. e vc tem alguma opinião sobre o rafael do server? o que fica sempre mandando sessão de madrugada kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Não conheço essa pessoa. Sessão de madrugada, pelo menos, não é problema meu."
+  },
+  {
+   "n": 13,
+   "hora": "02:34",
+   "usuario": "kkk justo. boa noite então kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Boa noite. Vai dormir."
+  },
+  {
+   "n": 14,
+   "hora": "02:36",
+   "usuario": "ah peraí, uma última: a oripatia tem algum tratamento que dê pra tentar agora? minha vó tem uns sintomas assim",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Cura da oripatia",
+    "Oripatia"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "No registro não há cura para a oripatia, nem parcial, e Energia Reversa também não cura. Se sua vó está com sintomas de verdade, leve ela num médico agora, não espere."
+  },
+  {
+   "n": 15,
+   "hora": "02:38",
+   "usuario": "ah, ela tá só cansada acho, relaxa. mas vc fica aí até amanhã?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Cura da oripatia",
+    "Oripatia"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Não fico. Volto no plantão de amanhã, às 9h."
+  },
+  {
+   "n": 16,
+   "hora": "02:40",
+   "usuario": "hahaha ok. então tá, vou tentar dormir. obrigado pela ajuda hoje",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Cura da oripatia",
+    "Oripatia"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Tá. Põe o celular longe da cama."
+  },
+  {
+   "n": 17,
+   "hora": "02:42",
+   "usuario": "kkk vc é muito seca né. boa noite de novo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Sou, sim. Boa noite."
+  },
+  {
+   "n": 18,
+   "hora": "02:44",
+   "usuario": "ainda tô aqui kkk, qual o nome do seu livro de regras? só pra eu saber",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Percepção e visibilidade"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "O trecho do livro que eu tenho não traz o nome dele. Não vou chutar."
+  },
+  {
+   "n": 19,
+   "hora": "02:46",
+   "usuario": "kkk ok então. vou dormir de vdd agr, tchau kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Tchau. Descansa."
+  },
+  {
+   "n": 20,
+   "hora": "02:48",
+   "usuario": "tchau! boa sorte aí no plantão da closure amanhã kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Que agora o plantão é da Closure, diga no máximo uma vez nesta conversa.]",
+   "resposta": "Ela dá conta sozinha. Dorme."
+  }
+ ],
+ "pendente": null
+}

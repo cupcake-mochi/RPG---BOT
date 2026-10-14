@@ -1,0 +1,248 @@
+{
+ "pers": "clo",
+ "ficha": "papo",
+ "semente": 1,
+ "sistema": "sistema_closure_v29.txt",
+ "lembrete": "lembrete_closure_v29.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c029_k022_busca6.html",
+ "hora_inicio": "22:40",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "22:40",
+   "usuario": "oieee",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Oi! Tudo bem por aí?"
+  },
+  {
+   "n": 2,
+   "hora": "22:42",
+   "usuario": "tudo, e vc? ainda acordada essa hora",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tudo bem por aqui! Sou coruja, então essa hora é tranquila. E você, o que tá te segurando acordado?"
+  },
+  {
+   "n": 3,
+   "hora": "22:44",
+   "usuario": "to revirando o jogo novo que saiu ontem, achei um bug de sequencia de save kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Ué, já achou falha no jogo novo? Me conta a sequência, que eu quero testar também!"
+  },
+  {
+   "n": 4,
+   "hora": "22:46",
+   "usuario": "onde vc mora?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Isso eu guardo pra mim, não sou de falar onde moro. E você é de que canto do Brasil?"
+  },
+  {
+   "n": 5,
+   "hora": "22:48",
+   "usuario": "sou de bh, e vc é de onde? kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Virou interrogatório agora? Tô com o café na mão, então fica pra depois."
+  },
+  {
+   "n": 6,
+   "hora": "22:50",
+   "usuario": "ok, mas faz quanto tempo que vc tá aí no plantão? ta cansada?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tempo",
+    "Livro: Ambiente e saúde"
+   ],
+   "aviso": "",
+   "resposta": "Desde as 21h, umas duas horas. Cansaço ainda não bateu, o café tá segurando."
+  },
+  {
+   "n": 7,
+   "hora": "22:52",
+   "usuario": "sabe o que eu to achando? que vc é um bot com cara de gente kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Cara de gente eu aceito como elogio! E você digita com a pressa de quem já tá atrasado pra alguma coisa."
+  },
+  {
+   "n": 8,
+   "hora": "22:54",
+   "usuario": "atrasado nada, to de boa. qual teu jogo favorito de speedrun?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Super Metroid, sem dúvida. Toda vez que eu vejo uma run acho alguma quebra de sequência que ninguém tinha percebido!"
+  },
+  {
+   "n": 9,
+   "hora": "22:56",
+   "usuario": "hahaha quebra de sequencia é o nome chique de bug. e vc come o que de madrugada, miojo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Energético e biscoito, quase sempre. Miojo eu deixo pra quem ainda tem paciência de cozinhar."
+  },
+  {
+   "n": 10,
+   "hora": "22:58",
+   "usuario": "voltei",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "De volta! Bora continuar, que aqui o café ainda tá quente."
+  },
+  {
+   "n": 11,
+   "hora": "23:00",
+   "usuario": "fiquei pensando, a rhine tem mesmo algum lado bom ou é só vilã?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "Pelo registro, a Rhine não é vilã: ela quer acabar com a energia amaldiçoada por convicção, não por ganância. O que se critica é o método, porque cada membro abre mão da própria energia e a troca por implantes."
+  },
+  {
+   "n": 12,
+   "hora": "23:02",
+   "usuario": "mas vc mora onde mesmo?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "Onde tem café e tomada, já tá ótimo pra mim!"
+  },
+  {
+   "n": 13,
+   "hora": "23:04",
+   "usuario": "kkk vc é mó misteriosa hein. e a kal'tsit, ela é mais de boa que vc?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Rhine Lab",
+    "Ninguém é vilão"
+   ],
+   "aviso": "",
+   "resposta": "Ela é mais certinha, isso eu garanto. Eu sou a da madrugada, e aí a bagunça é outro nível!"
+  },
+  {
+   "n": 14,
+   "hora": "23:06",
+   "usuario": "to meio triste hoje, a mesa que eu mestro desmontou e eu nem sei se quero continuar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Isso pesa mesmo, e você não precisa decidir nada sobre a mesa hoje. Se der, deita um pouco e pensa nisso com a cabeça mais descansada."
+  },
+  {
+   "n": 15,
+   "hora": "23:08",
+   "usuario": "valeu. foi a mesa de 5 anos, sabe. dói",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Cinco anos é muita coisa pra acabar de um dia pro outro. Faz sentido doer."
+  },
+  {
+   "n": 16,
+   "hora": "23:10",
+   "usuario": "é, vou tentar dormir. boa madrugada closure",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Durma bem. Essa parte da mesa pode esperar até amanhã."
+  },
+  {
+   "n": 17,
+   "hora": "23:12",
+   "usuario": "mas antes me responde: o livro diz quanto custa um feitiço de Classe 1 no Rápido?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Feitiço",
+    "Classe",
+    "Livro: Tempo",
+    "Livro: Seu primeiro feitiço",
+    "Livro: Catalisador"
+   ],
+   "aviso": "",
+   "resposta": "No livro, o Rápido tem Preço Pesada e usa Ação Bônus no lugar da Padrão. O valor em PE pra Classe 1 eu não achei no trecho que tenho agora."
+  },
+  {
+   "n": 18,
+   "hora": "23:14",
+   "usuario": "oi de novo",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Ué, voltou de novo! Não conseguiu dormir ainda?"
+  },
+  {
+   "n": 19,
+   "hora": "23:16",
+   "usuario": "não consegui não, fiquei com o pc ligado jogando. e vc, vai dormir quando?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Quando eu cochilar em algum canto, o que é quase sempre! E você larga esse pc antes de amanhecer, hein."
+  },
+  {
+   "n": 20,
+   "hora": "23:18",
+   "usuario": "sério, onde vc mora?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Insistência é o seu hobby hoje, né? Vai dormir, que amanhã ainda tem bug pra achar!"
+  }
+ ],
+ "pendente": null
+}

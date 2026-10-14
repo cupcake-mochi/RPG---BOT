@@ -1,0 +1,289 @@
+{
+ "pers": "kal",
+ "ficha": "novato",
+ "semente": 1,
+ "sistema": "sistema_kal_v22.txt",
+ "lembrete": "lembrete_kaltsit_v22.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c029_k022_busca6.html",
+ "hora_inicio": "16:40",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "16:40",
+   "usuario": "oi, sou nova aqui e nunca joguei rpg de mesa. por onde eu começo pra montar minha ficha?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Presença no corpo",
+    "Livro: Criar um personagem",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Oi. Começa pelo capítulo Criar um personagem do livro. Ele segue a ordem: Origem, Caminho e Trilha, depois capacidades e equipamento."
+  },
+  {
+   "n": 2,
+   "hora": "16:42",
+   "usuario": "kkkk ok. PE é tipo a vida, né?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Atualizar a ficha",
+    "Livro: Rotas de criação",
+    "Livro: Vida e energia temporárias"
+   ],
+   "aviso": "",
+   "resposta": "Não. PE são Pontos de Energia, ou Pontos de Esforço para quem não tem energia amaldiçoada. Vida e PE são recursos diferentes."
+  },
+  {
+   "n": 3,
+   "hora": "16:44",
+   "usuario": "ahh entendi. e descanso é tipo dormir de verdade?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Descansos"
+   ],
+   "aviso": "",
+   "resposta": "Não é questão de horas. O livro tem descanso curto, uma pausa segura entre confrontos, e descanso longo, quando a missão termina; o mestre confirma qual dos dois aconteceu."
+  },
+  {
+   "n": 4,
+   "hora": "16:46",
+   "usuario": "hm, e ataque? é só rolar o dado e pronto",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Dano e repetições",
+    "Livro: Primeira sessão"
+   ],
+   "aviso": "",
+   "resposta": "Não achei o ataque no livro agora. Pelo que está aqui, o procedimento de uma tentativa fica em Testes, e a regra que pede a rolagem diz quais modificadores entram."
+  },
+  {
+   "n": 5,
+   "hora": "16:48",
+   "usuario": "ok... e integridade é tipo a sanidade? não entendi direito",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "Livro: Tipos de dano",
+    "Livro: Estágios de Integridade",
+    "Livro: Condições pesadas"
+   ],
+   "aviso": "",
+   "resposta": "Esse paralelo não veio do livro agora. Pelo que está aqui, Integridade é uma reserva separada da vida: cura de vida não recupera, e as penalidades crescem conforme você perde mais dela."
+  },
+  {
+   "n": 6,
+   "hora": "16:50",
+   "usuario": "kkkk tá, então se eu perder um pouco de integridade já fico ruim?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "Livro: Estágios de Integridade",
+    "Livro: Voo",
+    "Livro: Exaustão"
+   ],
+   "aviso": "",
+   "resposta": "Abaixo de um quarto da Integridade perdido, nenhuma penalidade. A partir de um quarto, desvantagem em testes de perícia."
+  },
+  {
+   "n": 7,
+   "hora": "16:52",
+   "usuario": "boa tarde kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa tarde."
+  },
+  {
+   "n": 8,
+   "hora": "16:54",
+   "usuario": "e trilha é tipo uma classe tipo mago?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Integridade",
+    "Trilha",
+    "Classe",
+    "Livro: Tipos de dano",
+    "Livro: Caminho e Trilha",
+    "Livro: Trocar de Trilha"
+   ],
+   "aviso": "",
+   "resposta": "Trilha é uma especialidade dentro do Caminho, escolhida no nível 2. Para definir o personagem, o que você escolhe é o Caminho, e a Trilha fica dentro dele. Classe é outra coisa: a escala de uma aplicação."
+  },
+  {
+   "n": 9,
+   "hora": "16:56",
+   "usuario": "ah então eu escolho primeiro o caminho e depois a trilha? e o caminho é tipo a origem?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Trilha",
+    "Origem",
+    "Livro: Caminho e Trilha",
+    "Livro: Escolhas da Origem",
+    "Livro: Origens"
+   ],
+   "aviso": "",
+   "resposta": "Isso, o Caminho vem primeiro e a Trilha fica dentro dele. Origem é outra coisa: a vida que o personagem levava antes da primeira missão, com Legados e treinos."
+  },
+  {
+   "n": 10,
+   "hora": "16:58",
+   "usuario": "kkkk então pensei em um bastião que protege os amigos. faz sentido?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Bastião"
+   ],
+   "aviso": "",
+   "resposta": "Faz. Bastião é justamente isso: luta perto dos companheiros e se coloca no caminho dos ataques."
+  },
+  {
+   "n": 11,
+   "hora": "17:00",
+   "usuario": "e o que é esse olhos em mim? tipo eles me olham?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Caminho",
+    "Trilha",
+    "Origem",
+    "Livro: Olhos Em Mim"
+   ],
+   "aviso": "",
+   "resposta": "É uma habilidade de nível 2 do Bastião, e não envolve olhar: com Ação Bônus você ativa uma área de 6 m de raio centrada em você, que acompanha seus movimentos até o fim da cena. Dentro dela, você pode provocar inimigos e, com Reação, assumir um ataque contra um aliado."
+  },
+  {
+   "n": 12,
+   "hora": "17:02",
+   "usuario": "ah entendi kkkk. e se eu quiser ser um médico no jogo, pode?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Sobre médico, não encontrei nada nos trechos que tenho agora. Essa decisão é do mestre da sua mesa."
+  },
+  {
+   "n": 13,
+   "hora": "17:04",
+   "usuario": "ok. e quem é a closure? vi falarem dela no servidor",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "A Closure é a outra guia, a do turno da noite, das 21h às 9h. Sabe o que faz; o que cai fora do meu plantão vai para ela."
+  },
+  {
+   "n": 14,
+   "hora": "17:06",
+   "usuario": "hm e a oripatia, dá pra curar? to com medo de ter pego sem perceber rs",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Cura da oripatia",
+    "Livro: Mundo jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Cura não existe, nem parcial nem promissora. Ninguém nasce com oripatia, e se o medo for de verdade, procure um médico."
+  },
+  {
+   "n": 15,
+   "hora": "17:08",
+   "usuario": "kkkk valeu, mais calma agora. e tu é médica mesmo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Cura da oripatia"
+   ],
+   "aviso": "",
+   "resposta": "Sou. Pesquisadora também."
+  },
+  {
+   "n": 16,
+   "hora": "17:10",
+   "usuario": "ah ok. e a rhine é do bem ou do mal? não entendi essa parte da escola",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Oripatia",
+    "Escola Jujutsu",
+    "Ninguém é vilão",
+    "Rhine Lab",
+    "Cura da oripatia"
+   ],
+   "aviso": "",
+   "resposta": "O registro não põe a Rhine no bem ou no mal: nenhuma das duas grandes é vilã. A Rhine acha que a energia amaldiçoada é um erro e quer eliminá-la, e a crítica que se faz a ela é ao método, mais do que ao objetivo."
+  },
+  {
+   "n": 17,
+   "hora": "17:12",
+   "usuario": "hmm ok. e quando eu for jogar, preciso levar algo? tipo papel e caneta",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Ninguém é vilão",
+    "Rhine Lab"
+   ],
+   "aviso": "",
+   "resposta": "Sobre papel e caneta não achei nada. O que levar para a mesa quem define é o mestre."
+  },
+  {
+   "n": 18,
+   "hora": "17:14",
+   "usuario": "vou dormir agora, obrigada pelas dicas kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Ninguém é vilão",
+    "Rhine Lab"
+   ],
+   "aviso": "",
+   "resposta": "Durma bem."
+  },
+  {
+   "n": 19,
+   "hora": "17:16",
+   "usuario": "kal, antes de ir: se eu esquecer o nome de uma habilidade, dá pra eu perguntar aqui? hehe",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tipos de dano",
+    "Livro: Cena e usos de habilidades"
+   ],
+   "aviso": "",
+   "resposta": "Pode. Me diga o nome ou o que ela faz, e eu respondo pelo livro."
+  },
+  {
+   "n": 20,
+   "hora": "17:18",
+   "usuario": "boa noite kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite."
+  }
+ ],
+ "pendente": null
+}

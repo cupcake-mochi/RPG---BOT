@@ -27,9 +27,10 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/cogs/admin.py` | `/ping`, `/status`, `/teste_webhook` (este só pro dono) |
 | `closure_bot/cogs/chat.py` | Escuta as mensagens, decide quem responde, monta o pedido, chama o modelo e envia a fala |
 | `closure_bot/conversa.py` | A conversa em andamento com cada personagem por canal, só em memória (30 min, 12 turnos) |
-| `closure_bot/prompt.py` | Monta o pedido ao modelo. Hoje pela ponte do site, no Node; é o único ponto que depende dela |
+| `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
+| `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 144 testes; 26 deles precisam do discord.py e 4 da cryptography e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 146 testes; 26 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -129,9 +130,28 @@ python3 -m closure_bot
   no pedido como Mizuki.
 - **Espera:** cada tentativa tem 25 segundos. Provedor que falha fica de molho (10 min depois de cota
   estourada, 2 min depois de sobrecarga ou queda de rede) e a fila pula direto pro seguinte.
-- **Em aberto:** o bot em produção precisa do Node e da página do site baixada (`src/var/site/nucleo.js`), ou
-  a busca ganha versão em Python. Testado de ponta a ponta sem o Discord, com mensagem de mentira e o resto
-  de verdade; no Discord mesmo ainda não rodou.
+- **Sem Node na hospedagem** (13/10/2026): o JavaScript da página do site roda dentro do Python, pelo
+  `quickjs-ng`. Nos 14 pedidos de conferência ele monta o mesmo pedido que o Node, em uns 40 ms (o Node leva
+  quase 2 s por pedido, porque sobe um processo a cada vez). `python3 ferramentas/prompt_do_site/site_prompt.py
+  --conferir` compara os dois, e `--atualizar` já compara sozinho quando a máquina tem os dois. Depois de baixar
+  a página de novo, rode a conferência antes de empacotar. O `/status` mostra as versões que estão na página,
+  que é de onde sai o prompt.
+- **Testado de ponta a ponta sem o Discord**, com mensagem de mentira e o resto de verdade; no Discord mesmo
+  ainda não rodou.
+
+## Hospedagem (Discloud)
+
+`python3 ferramentas/empacotar.py` monta `src/var/closure-lab.zip` só com o que o bot precisa: `discloud.config`,
+`iniciar.py`, `requirements.txt`, o código, a ponte com a página já baixada, o manifesto e os dois `card.json`.
+Com `--com-env` o `.env` vai dentro; esse arquivo carrega segredo e não sai do computador a não ser pra
+hospedagem.
+
+- **Memória:** o processo chegou a 98 MB só de carregar e montar pedidos, sem conexão com o Discord. O
+  `discloud.config` pede 150 MB; os 100 MB do bot antigo não bastam.
+- **Banco:** fica em `src/var/bot.sqlite3` dentro da hospedagem. Não foi conferido se a Discloud preserva esse
+  arquivo quando se sobe um pacote novo; se não preservar, as fichas e os painéis de clima se perdem a cada
+  atualização. Conferir antes de confiar.
+- **Segredos:** a hospedagem precisa das mesmas variáveis do `.env`, inclusive a `CHAVE_DO_BANCO`.
 
 ## Regras de plantão implementadas
 

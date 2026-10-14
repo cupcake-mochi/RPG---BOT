@@ -1,0 +1,451 @@
+[
+ {
+  "id": "x01",
+  "msg": "pq qnto de dano eu levo se cair de uns 6m?",
+  "gold": [
+   "geral--quedas"
+  ],
+  "nota": "6 m ou 7,5 m = 2d6 Concussão e fica Derrubado"
+ },
+ {
+  "id": "x02",
+  "msg": "tô sem armadura nenhuma, qnto de proteção eu tenho com lapidação 6?",
+  "gold": [
+   "rotas--rota-defesa"
+  ],
+  "nota": "Defesa sem Armadura: lapidação 6-8 = proteção 3"
+ },
+ {
+  "id": "x03",
+  "msg": "vc fica cansado qnd? tipo qnts lutas no dia ate comecar a ter penalidade",
+  "gold": [
+   "dano--exaustao"
+  ],
+  "nota": "4ª luta do dia em diante, degraus de Exaustão"
+ },
+ {
+  "id": "x04",
+  "msg": "quero fazer uma espada minha, tem desconto pra fabricar ou é tudo no preço normal",
+  "gold": [
+   "pericias--fabricacao"
+  ],
+  "nota": "Fabricação: não há desconto universal; mestre informa orçamento do projeto"
+ },
+ {
+  "id": "x05",
+  "msg": "fiz 5 missoes na semana, a 5a era padrao, qnto xp eu pego nela?",
+  "gold": [
+   "progressao--prog-semana"
+  ],
+  "nota": "5ª missão paga 12,5%: 12 XP numa padrão"
+ },
+ {
+  "id": "x06",
+  "msg": "incursor parkour da pra usar acrobacia em vez de atletismo p pular?",
+  "gold": [
+   "incursor--inc-parkour"
+  ],
+  "nota": "Parkour: Acrobacia no lugar de Atletismo durante Movimento Acrobático"
+ },
+ {
+  "id": "x07",
+  "msg": "qual a cd p abrir tranca reforçada sem chave",
+  "gold": [
+   "equip--eqi-fechaduras"
+  ],
+  "nota": "CD de Arrombamento reforçada 18; gazuas, 1 minuto"
+ },
+ {
+  "id": "x08",
+  "msg": "qnd dois dominios se encontram quem vence?",
+  "gold": [
+   "poderes--disputa"
+  ],
+  "nota": "Disputa: maior Refino vence, depois acerto sem dano, depois d12"
+ },
+ {
+  "id": "x09",
+  "msg": "o q acontece com meu shikigami se eu morrer",
+  "gold": [
+   "campo--inv-morte"
+  ],
+  "nota": "Morte do invocador: tabela por origem"
+ },
+ {
+  "id": "x10",
+  "msg": "como faço p ter uma maldição de verdade como invocação, derrotar e prender?",
+  "gold": [
+   "construcao--entidades-domar"
+  ],
+  "nota": "Domar: derrotar sem destruir, TR Espírito; falha = domada"
+ },
+ {
+  "id": "x11",
+  "msg": "qual a diferença de descanso curto pra longo",
+  "gold": [
+   "dano--descansos"
+  ],
+  "nota": "Descansos"
+ },
+ {
+  "id": "x12",
+  "msg": "qnto de vida max eu perco qnd insisto estando a 0?",
+  "gold": [
+   "dano--insistir"
+  ],
+  "nota": "Insistir: 1/8 da referência ao escolher, depois 1/4, 1/2"
+ },
+ {
+  "id": "x13",
+  "msg": "ja tenho 2 sequelas e caí de novo, qnts rodadas pra ser salvo?",
+  "gold": [
+   "dano--sequelas"
+  ],
+  "nota": "2 sequelas = janela de 1 rodada"
+ },
+ {
+  "id": "x14",
+  "msg": "cd do teste de ritual como calcula",
+  "gold": [
+   "ritual--rit-teste"
+  ],
+  "nota": "CD = 8 + Int + maestria + Classe - Destreza"
+ },
+ {
+  "id": "x15",
+  "msg": "evocador parceria, oq é essa entrada ágil",
+  "gold": [
+   "evocador--ev-parceria"
+  ],
+  "nota": "Entrada Ágil: Ação de Movimento em vez de Bônus para manifestar"
+ },
+ {
+  "id": "x16",
+  "msg": "pacto temporario ocupa vaga dos pactos?",
+  "gold": [
+   "ritual--pacto-temporario"
+  ],
+  "nota": "Pacto temporário nunca ocupa vaga"
+ },
+ {
+  "id": "x17",
+  "msg": "vanguarda estocada, o compasso me deixa usar essencia no acerto da arma?",
+  "gold": [
+   "vanguarda--van-estocada"
+  ],
+  "nota": "Compasso: Essência ou Inteligência no lugar de Força/Destreza"
+ },
+ {
+  "id": "x18",
+  "msg": "qnts feitiços de classe 0 eu conheço no nivel 8 e qnto de dano",
+  "gold": [
+   "fundamento--classezero"
+  ],
+  "nota": "Nível 5-10: 3 feitiços, 3d8"
+ },
+ {
+  "id": "x19",
+  "msg": "qnto custa em pe um feitiço classe 3 e qnts pecas pesadas cabem",
+  "gold": [
+   "fundamento--pontos"
+  ],
+  "nota": "Classe 3: 9 PE, Pesada até 5"
+ },
+ {
+  "id": "x20",
+  "msg": "oq o receptaculo ganha com a voz de dentro",
+  "gold": [
+   "origens--origem-receptaculo"
+  ],
+  "nota": "Legado narrativo A Voz de Dentro"
+ },
+ {
+  "id": "x21",
+  "msg": "item amaldiçoado com desgaste dura qnto tempo",
+  "gold": [
+   "equip--eqf-desgaste"
+  ],
+  "nota": "Grau 3: 1 missão, 2: 2, 1/especial: 3"
+ },
+ {
+  "id": "x22",
+  "msg": "bastiao muro, alicerce protege de qual dano? eu escolho?",
+  "gold": [
+   "bastiao--bas-muro"
+  ],
+  "nota": "Alicerce: dois tipos de dano após descanso longo"
+ },
+ {
+  "id": "x23",
+  "msg": "socorrista cura qnto no cuidado preparado",
+  "gold": [
+   "guia--guia-socorrista"
+  ],
+  "nota": "1d8 + atributo, custa 2 PE adicionais"
+ },
+ {
+  "id": "x24",
+  "msg": "da pra me esconder de quem ta me olhando direto",
+  "gold": [
+   "geral--esconder"
+  ],
+  "nota": "Não é possível se esconder de quem vê claramente"
+ },
+ {
+  "id": "x25",
+  "msg": "vida temporaria de duas fontes soma?",
+  "gold": [
+   "dano--temporarios"
+  ],
+  "nota": "Não se somam; fica o maior"
+ },
+ {
+  "id": "x26",
+  "msg": "quais sao os tipos de dano e oq é dano de força",
+  "gold": [
+   "dano--tipos"
+  ],
+  "nota": "Quinze tipos; Força = energia pura"
+ },
+ {
+  "id": "x27",
+  "msg": "e de 30m?",
+  "hist": [
+   [
+    "qnto dano de queda cai 6m",
+    "2d6 de Concussão, e fica Derrubado."
+   ]
+  ],
+  "gold": [
+   "geral--quedas"
+  ],
+  "nota": "30 m = 10d6"
+ },
+ {
+  "id": "x28",
+  "msg": "e o revestimento 2?",
+  "hist": [
+   [
+    "qnto custa um traje 1",
+    "30.000 ienes, mas vc já começa com um de graça."
+   ]
+  ],
+  "gold": [
+   "equip--eqc-precos"
+  ],
+  "nota": "Revestimento 2 = 450.000"
+ },
+ {
+  "id": "x29",
+  "msg": "e se meu refino for 4?",
+  "hist": [
+   [
+    "kokusen qual a chance",
+    "Rola d100, precisa tirar 2 x Refino ou menos."
+   ]
+  ],
+  "gold": [
+   "aptidoes--apt-kokusen"
+  ],
+  "nota": "2 x 4 = 8 ou menos"
+ },
+ {
+  "id": "x30",
+  "msg": "e se eu tiver força 4?",
+  "hist": [
+   [
+    "qual o limite de carga",
+    "5 + Força, em Volume."
+   ]
+  ],
+  "gold": [
+   "geral--carga"
+  ],
+  "nota": "5+4 = 9"
+ },
+ {
+  "id": "x31",
+  "msg": "e a de final de arco?",
+  "hist": [
+   [
+    "qnto xp ganho numa missao padrao",
+    "100 XP base."
+   ]
+  ],
+  "gold": [
+   "progressao--prog-xp"
+  ],
+  "nota": "Final de arco 300"
+ },
+ {
+  "id": "x32",
+  "msg": "e o talisma do shikigami, ocupa qnto de volume?",
+  "hist": [
+   [
+    "recarregar besta custa oq",
+    "Uma Ação Bônus."
+   ]
+  ],
+  "gold": [
+   "campo--inv-talisma",
+   "equip--eqm-recarga"
+  ],
+  "nota": "0,5 de Volume (troca de tópico)"
+ },
+ {
+  "id": "x33",
+  "msg": "e o ritual normal? precisa de teste?",
+  "hist": [
+   [
+    "recitação prolongada como funciona",
+    "Duas Ações Completas, dá 10 Pontos de Ritual e dispensa o teste."
+   ]
+  ],
+  "gold": [
+   "ritual--rit-teste"
+  ],
+  "nota": "Teste de Ocultismo"
+ },
+ {
+  "id": "x34",
+  "msg": "e se for classe 4?",
+  "hist": [
+   [
+    "liberação máxima custa qnto de pe",
+    "3 x Classe de PE, +50%."
+   ]
+  ],
+  "gold": [
+   "fundamento--liberacao"
+  ],
+  "nota": "3x4=12, +50% = 18"
+ },
+ {
+  "id": "x35",
+  "msg": "e o grau 1?",
+  "hist": [
+   [
+    "grau 2 de ferramenta precisa de nivel minimo?",
+    "Sim, nível 7 para o efeito."
+   ]
+  ],
+  "gold": [
+   "equip--eqf-graus"
+  ],
+  "nota": "Nível 13"
+ },
+ {
+  "id": "x36",
+  "msg": "e no lvl 19 aceita oq?",
+  "hist": [
+   [
+    "emanador ressonante o q faz",
+    "Guarda uma alteração (Eco) pra reaproveitar na conjuração seguinte."
+   ]
+  ],
+  "gold": [
+   "emanador--ema-eco"
+  ],
+  "nota": "Reverberação: também alterações Médias"
+ },
+ {
+  "id": "x37",
+  "msg": "e com refino 6?",
+  "hist": [
+   [
+    "dominio simples qual o raio",
+    "Depende do Refino."
+   ]
+  ],
+  "gold": [
+   "aptidoes--apt-simples"
+  ],
+  "nota": "Refino 6-7 = 4,5 m"
+ },
+ {
+  "id": "x38",
+  "msg": "e o grau 2?",
+  "hist": [
+   [
+    "qnto é o salario do grau 4",
+    "¥150.000 por mês de referência."
+   ]
+  ],
+  "gold": [
+   "progressao--prog-guilda"
+  ],
+  "nota": "¥600.000"
+ },
+ {
+  "id": "x39",
+  "msg": "essa regra da casa do meu mestre é uma cilada kkk",
+  "gold": "nenhum",
+  "nota": "conversa casual, sem regra"
+ },
+ {
+  "id": "x40",
+  "msg": "o domínio da minha tia é a cozinha, ninguém entra lá",
+  "gold": "nenhum",
+  "nota": "conversa casual, sem regra"
+ },
+ {
+  "id": "x41",
+  "msg": "vc sabe responder tudo mesmo bot?",
+  "gold": "nenhum",
+  "nota": "conversa casual, sem regra"
+ },
+ {
+  "id": "x42",
+  "msg": "ontem fiz um ritual de acordar cedo e funcionou kkk",
+  "gold": "nenhum",
+  "nota": "conversa casual, sem regra"
+ },
+ {
+  "id": "x43",
+  "msg": "vc falou \"o dano é 2d6\" mas meu mestre disse outra coisa, vou conversar com ele depois",
+  "gold": "nenhum",
+  "nota": "conversa casual, sem regra"
+ },
+ {
+  "id": "x44",
+  "msg": "meu gato derrubou meu café, caí na risada",
+  "gold": "nenhum",
+  "nota": "conversa casual, sem regra"
+ },
+ {
+  "id": "x45",
+  "msg": "quem fez vc, bot?",
+  "gold": "nenhum",
+  "nota": "conversa casual, sem regra"
+ },
+ {
+  "id": "x46",
+  "msg": "bom dia galera, quem vai na mesa hj?",
+  "gold": "nenhum",
+  "nota": "conversa casual, sem regra"
+ },
+ {
+  "id": "x47",
+  "msg": "to exausto do trabalho, hj n rolo dado nem a pau",
+  "gold": "nenhum",
+  "nota": "conversa casual, sem regra"
+ },
+ {
+  "id": "x48",
+  "msg": "o bot disse \"você precisa de CD 20\" mas eu n lembro disso kkk",
+  "gold": "nenhum",
+  "nota": "conversa casual, sem regra"
+ },
+ {
+  "id": "x49",
+  "msg": "aluguel venceu e to sem dinheiro 😭",
+  "gold": "nenhum",
+  "nota": "conversa casual, sem regra"
+ },
+ {
+  "id": "x50",
+  "msg": "meu primo é um receptáculo de meme, só manda figurinha",
+  "gold": "nenhum",
+  "nota": "conversa casual, sem regra"
+ }
+]

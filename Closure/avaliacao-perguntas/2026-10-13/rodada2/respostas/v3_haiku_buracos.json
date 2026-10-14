@@ -1,0 +1,9 @@
+{
+ "k1": "O livro dá à katana 1d8 de dano Cortante. Ela também tem as propriedades Versátil e Fineza.",
+ "v1": "Só se uma capacidade sua conceder voo. O livro diz que um salto não concede voo.",
+ "i1": "Cada participante rola d20 + Destreza, com os modificadores ativos nessa rolagem, e quem obtiver o maior total age primeiro. Em empate, age quem tiver mais Destreza; se a Destreza também empatar, o jogador age antes do inimigo. Entre jogadores ainda empatados, eles mesmos escolhem a ordem, e entre inimigos quem escolhe é o mestre.",
+ "e1": "Esquivar custa Ação Padrão e impõe desvantagem aos ataques contra você, além de dar vantagem nos seus TRs Físicos, até o começo do seu próximo turno.",
+ "a1": "Você troca um ataque da Ação Atacar por Agarrar, contra uma criatura ao alcance do seu ataque desarmado (normalmente 1,5 m) e de até uma categoria maior que você. O alvo faz TR Físico contra CD 8 + sua Força + sua maestria; se falhar, fica Agarrado por você, com deslocamento zero, e uma das suas mãos fica ocupada.",
+ "d1": "Sim, a partir do nível 7. O Ataque Extra acrescenta um ataque simples à sua Ação Atacar, uma vez por rodada.",
+ "a3": "Pode, com a manobra Derrubar, trocando um ataque da Ação Atacar. Se o alvo estiver ao alcance do seu ataque desarmado e for até uma categoria maior que você, ele faz TR Físico contra CD 8 + sua Força + sua maestria; se falhar, fica Derrubado."
+}

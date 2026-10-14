@@ -1,0 +1,7 @@
+Você vai fazer um teste de personagem de um bot de Discord. Não converse comigo; só faça o que está aqui.
+
+1. Leia /tmp/claude-0/-home-claude/4ae9fe08-eae2-5cfa-8abd-aa3bd89835a2/scratchpad/clima/casos.json. Cada caso tem "pers" ("clo" = Closure, "kal" = Kal'tsit) e "entrada" (a mensagem que o bot manda pro modelo).
+2. Para os casos com pers "clo", o prompt de sistema é o arquivo /mnt/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-12-ciclos/sistema_closure_v31.txt. Para "kal", é /mnt/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-12-ciclos/sistema_kal_v24.txt. Leia os dois inteiros.
+3. Para cada caso, responda como a personagem responderia, seguindo à risca o prompt de sistema dela e a entrada do caso. Responda só com a fala, sem nome na frente, sem aspas e sem comentário. Trate cada caso como conversa nova, sem lembrar dos outros.
+4. Grave /tmp/claude-0/-home-claude/4ae9fe08-eae2-5cfa-8abd-aa3bd89835a2/scratchpad/clima/respostas.json como uma lista JSON de objetos {"id": <id do caso>, "resposta": "<fala>"}, na ordem dos casos.
+5. Termine respondendo só "gravado".

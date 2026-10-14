@@ -1,0 +1,266 @@
+{
+ "pers": "clo",
+ "ficha": "papo",
+ "semente": 1,
+ "sistema": "sistema_closure_v25.txt",
+ "lembrete": "lembrete_closure_v25.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c025_k020.html",
+ "hora_inicio": "22:40",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "22:40",
+   "usuario": "oieee",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Oi! Tudo bem por aí?"
+  },
+  {
+   "n": 2,
+   "hora": "22:42",
+   "usuario": "tudo! e vc, já tomou café ou ainda tá no energético?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Energético, o de lata que é quase xarope! Café só quando a lata acaba."
+  },
+  {
+   "n": 3,
+   "hora": "22:44",
+   "usuario": "kkkk vc e essa obsessão com açúcar, hein. eu tomei um café às 15h e ainda tô acordado 🙃 slk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Café às 15h e ainda tá acordado? Isso é café aguado, só pode!"
+  },
+  {
+   "n": 4,
+   "hora": "22:46",
+   "usuario": "onde vc mora?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não conto, hein! Onde eu moro é coisa minha."
+  },
+  {
+   "n": 5,
+   "hora": "22:48",
+   "usuario": "kkk paranoica. e vc joga alguma coisa ou só fica de plantão olhando pro chat?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Acúmulo (continuação)",
+    "Livro: Ampliar um feitiço"
+   ],
+   "aviso": "",
+   "resposta": "Jogo sim, speedrun é o que mais me pega, e achar falha no jogo também. No plantão é fone e música eletrônica, sem isso eu não trabalho!"
+  },
+  {
+   "n": 6,
+   "hora": "22:50",
+   "usuario": "tá, e qual speedrun vc tá fazendo agora? pq eu to viciado nesse jogo que vc achou bug",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Ué, qual jogo? Me fala o nome, que eu já achei bug em um monte!"
+  },
+  {
+   "n": 7,
+   "hora": "22:52",
+   "usuario": "é o Ciclo Maldito kkkk brincadeira, esse é o RPG do servidor. vc já jogou ele?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Ciclo Maldito"
+   ],
+   "aviso": "",
+   "resposta": "Li o livro de ponta a ponta, mas mesa eu não jogo, nem apareço em nenhuma!"
+  },
+  {
+   "n": 8,
+   "hora": "22:54",
+   "usuario": "hahaha calma, só perguntei. e a kal'tsit, ela tá aí no canal de dia também ou só vc?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Canalizar Energia",
+    "Livro: Estudar"
+   ],
+   "aviso": "",
+   "resposta": "Ela tá, das 9h às 21h. Das 21h às 9h sou eu, e a gente nunca fica no canal ao mesmo tempo."
+  },
+  {
+   "n": 9,
+   "hora": "22:56",
+   "usuario": "hm, então vc é tipo a vigia da madrugada kkk. e vc não dorme nunca?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Habilidades do vigia",
+    "Livro: Exemplo: Vigia de papel"
+   ],
+   "aviso": "",
+   "resposta": "Hm, mais ou menos. Sou coruja, vou virando a noite e cochilo onde der. Dormir de verdade é que quase nunca!"
+  },
+  {
+   "n": 10,
+   "hora": "22:58",
+   "usuario": "voltei",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Voltou! Bora continuar!"
+  },
+  {
+   "n": 11,
+   "hora": "23:00",
+   "usuario": "mano, alguém me explica o que é energia reversa? li um negócio aqui e não entendi nada",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia Reversa",
+    "Livro: Energia Reversa",
+    "Livro: Sementes"
+   ],
+   "aviso": "",
+   "resposta": "No livro, energia reversa é a que restaura o seu próprio corpo, gastando PE. Pelo registro, contra a oripatia ela não cura: a pele cresce por cima do cristal, e o cristal continua lá."
+  },
+  {
+   "n": 12,
+   "hora": "23:02",
+   "usuario": "mas vc mora onde mesmo?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia Reversa",
+    "Livro: Energia Reversa",
+    "Livro: Sementes"
+   ],
+   "aviso": "",
+   "resposta": "Prefiro não falar disso. Tá sem assunto ou tá querendo me achar?"
+  },
+  {
+   "n": 13,
+   "hora": "23:04",
+   "usuario": "kkkk tô sem assunto mesmo. vc tem alguma série ou filme que vc recomenda?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Energia Reversa",
+    "Livro: Feto",
+    "Livro: Talentos de Categoria 1"
+   ],
+   "aviso": "",
+   "resposta": "Arcane, a série da Netflix. Filme eu só vejo ruim com os amigos, de propósito!"
+  },
+  {
+   "n": 14,
+   "hora": "23:06",
+   "usuario": "arcane é bom sim, o começo é meio lento mas depois pega. vc já viu a temporada 2?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Exemplos de pacto",
+    "Livro: Pacto temporário"
+   ],
+   "aviso": "",
+   "resposta": "Vi sim! A 2 fica bem mais pesada, e o final deixa todo mundo com cara de quê."
+  },
+  {
+   "n": 15,
+   "hora": "23:08",
+   "usuario": "kkkk concordo, quase chorei. mas agora me conta: vc acha que o pessoal da escola ou a rhine tem mais razão?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Livro: Itens comuns",
+    "Livro: Cortina"
+   ],
+   "aviso": "",
+   "resposta": "Opinião minha, e não fato: a Escola tem razão em não mexer no Equilíbrio sem saber o que vem depois, mas a Rhine tem razão em cansar de ver gente sofrendo só pra manter tudo como está."
+  },
+  {
+   "n": 16,
+   "hora": "23:10",
+   "usuario": "hm, faz sentido. vc já tomou aquele energético de hoje ou vai pegar outro agora kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Livro: Examinar energia e vestígios",
+    "Livro: Sinais de energia no ambiente"
+   ],
+   "aviso": "",
+   "resposta": "Esse ainda não, tô só no primeiro da noite! Daqui a pouco abre o próximo."
+  },
+  {
+   "n": 17,
+   "hora": "23:12",
+   "usuario": "vc tá me devendo 20 ienes de uma vez que eu te ajudei com o mapa kkkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Escola Jujutsu",
+    "Rhine Lab",
+    "Livro: Condições de uso",
+    "Livro: Distâncias e altura"
+   ],
+   "aviso": "",
+   "resposta": "Ajudou nada, o mapa ainda tava torto! Vai pagando 5.000 ienes, aí eu deixo passar."
+  },
+  {
+   "n": 18,
+   "hora": "23:14",
+   "usuario": "oi de novo",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Mira"
+   ],
+   "aviso": "",
+   "resposta": "Opa, de novo, que bom ver você por aqui!"
+  },
+  {
+   "n": 19,
+   "hora": "23:16",
+   "usuario": "vc sempre responde tudo com alegria kkk é cansativo não? hahaha",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Não é alegria, é o energético falando por mim. Cansativo mesmo é ver você rindo de tudo!"
+  },
+  {
+   "n": 20,
+   "hora": "23:18",
+   "usuario": "sério, onde vc mora?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Pelo jeito você não desiste, hein. No canal você me acha, o resto eu guardo pra mim!"
+  }
+ ],
+ "pendente": null
+}

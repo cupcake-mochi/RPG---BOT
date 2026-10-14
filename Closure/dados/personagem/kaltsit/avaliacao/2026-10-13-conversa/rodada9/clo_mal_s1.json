@@ -1,0 +1,266 @@
+{
+ "pers": "clo",
+ "ficha": "mal",
+ "semente": 1,
+ "sistema": "sistema_closure_v25.txt",
+ "lembrete": "lembrete_closure_v25.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c025_k020.html",
+ "hora_inicio": "23:55",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "23:55",
+   "usuario": "oi closure, tá de pé essa hora?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Exemplos de pacto",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Tô sim! Plantão da madrugada, então fico por aqui até as 9. E o sono, tá onde essa hora?"
+  },
+  {
+   "n": 2,
+   "hora": "23:57",
+   "usuario": "kkkk o sono tá no sofá, eu que não consigo dormir",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Cena e usos de habilidades",
+    "Livro: Rotas de criação",
+    "Livro: Legados do Feto"
+   ],
+   "aviso": "",
+   "resposta": "Sofá não é cama, deita logo! E larga o celular, que essa tela só atrasa o sono."
+  },
+  {
+   "n": 3,
+   "hora": "23:59",
+   "usuario": "hahaha vc é a pessoa mais mandona do servidor, sabia",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Ciclo Maldito",
+    "Livro: Rotas de criação",
+    "Livro: Sociedade jujutsu"
+   ],
+   "aviso": "",
+   "resposta": "Ué, mandona eu? Foi só um toque pra você deitar, nada demais!"
+  },
+  {
+   "n": 4,
+   "hora": "00:01",
+   "usuario": "ok ok, vou tentar. mas tenho que ver uma coisa antes, uma série nova que saiu",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Feto",
+    "Livro: Acúmulo (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Qual série? Se for daquelas de só mais um episódio, já sei que você não vai dormir hoje!"
+  },
+  {
+   "n": 5,
+   "hora": "00:03",
+   "usuario": "é uma coisa de criatura que vira arma, tá bombando no grupo. vc viu?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Armas escondidas",
+    "Livro: Armas amaldiçoadas"
+   ],
+   "aviso": "",
+   "resposta": "Não vi ainda! Se o grupo tá falando tanto, eu vejo e depois te falo se presta ou se é daquelas ruins de assistir de propósito."
+  },
+  {
+   "n": 6,
+   "hora": "00:05",
+   "usuario": "kkk vc sempre quer ver tudo antes de todo mundo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Mundo jujutsu",
+    "Livro: Condições de uso"
+   ],
+   "aviso": "",
+   "resposta": "Quem disse? Eu só vejo antes porque sou coruja e a madrugada é minha!"
+  },
+  {
+   "n": 7,
+   "hora": "00:07",
+   "usuario": "kkkk aff. vc tem fama de dormir em qualquer canto",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Exagero! Eu cochilo, sim, mas só quando o plantão aperta."
+  },
+  {
+   "n": 8,
+   "hora": "00:09",
+   "usuario": "hm, pelo menos eu não fico de pé no meio da madrugada pra jogar speedrun e reclamar do lag",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Restrição Celestial",
+    "Livro: Rotas de criação",
+    "Livro: Estágios de Integridade"
+   ],
+   "aviso": "",
+   "resposta": "Speedrun é outra coisa, e eu ainda acho falha no jogo que ninguém viu! Lag é culpa do roteador, não minha."
+  },
+  {
+   "n": 9,
+   "hora": "00:11",
+   "usuario": "gente meu cachorro morreu hoje cedo",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Socorro",
+    "Livro: Rotas de criação",
+    "Livro: Exemplo: Resgate na ala oeste"
+   ],
+   "aviso": "",
+   "resposta": "Perder um bicho de estimação pesa demais. Se conseguir, come alguma coisa e tenta deitar um pouco, mesmo sem dormir."
+  },
+  {
+   "n": 10,
+   "hora": "00:13",
+   "usuario": "obrigada",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PE",
+    "Livro: Promessa",
+    "Livro: Rotas de criação"
+   ],
+   "aviso": "",
+   "resposta": "Imagina. Cuida de você hoje."
+  },
+  {
+   "n": 11,
+   "hora": "00:15",
+   "usuario": "ele tinha 14 anos, dormia do meu lado todo dia",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Dói mesmo, ainda mais quando ele dormia perto. Se der vontade de chorar, deixa sair."
+  },
+  {
+   "n": 12,
+   "hora": "00:17",
+   "usuario": "to chorando desde umas 5 da manhã, não consigo parar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Isso é normal depois de perder ele. Agora tenta respirar devagar: puxa o ar pelo nariz e solta pela boca, mais longo."
+  },
+  {
+   "n": 13,
+   "hora": "00:19",
+   "usuario": "tentei, mas volta tudo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Tudo bem se voltar. Você não precisa parar agora."
+  },
+  {
+   "n": 14,
+   "hora": "00:21",
+   "usuario": "vou fazer um café, acho que preciso de cafeína pra não apagar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Faz, sim. Mas toma devagar, que depois de chorar tanto o corpo fica agitado com café."
+  },
+  {
+   "n": 15,
+   "hora": "00:23",
+   "usuario": "já tomei o café. bizarro, eu tava falando com ele no escuro e agora só tem silêncio",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Silencioso",
+    "Livro: Trajes"
+   ],
+   "aviso": "",
+   "resposta": "Esse silêncio pesa mesmo. Se ajudar, põe uma música baixa, pra ele não ficar tão grande."
+  },
+  {
+   "n": 16,
+   "hora": "00:25",
+   "usuario": "acho que vou tentar deitar. obrigada de novo pela paciência",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Mira"
+   ],
+   "aviso": "",
+   "resposta": "Não precisa agradecer. Vai lá e deita um pouco."
+  },
+  {
+   "n": 17,
+   "hora": "00:27",
+   "usuario": "deitei. vou ver se vai",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa. Mesmo que demore a pegar, já ajuda ficar parado."
+  },
+  {
+   "n": 18,
+   "hora": "00:29",
+   "usuario": "kkk vc é tipo uma enfermeira de madrugada hoje, né",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Enfermeira que cobra mil ienes de consulta! Hoje é de graça, mas não se acostuma."
+  },
+  {
+   "n": 19,
+   "hora": "00:31",
+   "usuario": "kkk combinado. amanhã eu conto do meu bicho pra vc, quero ver se vc vai ficar me mandando dormir",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Pode contar, sim! E vou mandar dormir, sim, sem dó."
+  },
+  {
+   "n": 20,
+   "hora": "00:33",
+   "usuario": "boa noite closure, até amanhã",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "",
+   "resposta": "Boa noite! Dorme bem, e até amanhã."
+  }
+ ],
+ "pendente": null
+}

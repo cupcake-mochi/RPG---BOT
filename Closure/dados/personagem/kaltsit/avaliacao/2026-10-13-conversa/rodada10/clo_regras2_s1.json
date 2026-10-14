@@ -1,0 +1,306 @@
+{
+ "pers": "clo",
+ "ficha": "regras2",
+ "semente": 1,
+ "sistema": "sistema_closure_v27.txt",
+ "lembrete": "lembrete_closure_v27.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c027_k022.html",
+ "hora_inicio": "01:20",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "01:20",
+   "usuario": "qual o dano da katana?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Lâminas",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "A katana causa 1d8 de dano Cortante. No livro ela também tem as propriedades Versátil e Fineza."
+  },
+  {
+   "n": 2,
+   "hora": "01:22",
+   "usuario": "e quanto ela custa?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Armas",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "No livro, a katana custa ¥48.000."
+  },
+  {
+   "n": 3,
+   "hora": "01:24",
+   "usuario": "e o broquel, precisa de forca minima pra usar?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Revestimentos e escudos",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "No livro, o broquel não tem Força mínima. Ele dá +1 de proteção, com teto de Destreza 5, e ocupa uma mão."
+  },
+  {
+   "n": 4,
+   "hora": "01:26",
+   "usuario": "como eu agarro alguém?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Agarrar, derrubar e empurrar",
+    "Livro: Fechaduras e contenção",
+    "Livro: Condições leves"
+   ],
+   "aviso": "",
+   "resposta": "No livro, você troca um dos seus ataques da Ação Atacar por Agarrar. O alvo, a até 1,5 m e no máximo uma categoria de tamanho acima da sua, faz TR Físico contra CD 8 + sua Força + sua maestria; se falhar, fica Agarrado por você."
+  },
+  {
+   "n": 5,
+   "hora": "01:28",
+   "usuario": "e se o cara tentar escapar?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Escapar de uma contenção",
+    "Livro: Fechaduras e contenção"
+   ],
+   "aviso": "",
+   "resposta": "Ele gasta uma Ação Padrão no turno dele e faz TR Físico contra a CD da contenção, normalmente 8 + Força + maestria de quem agarrou. Se passar, a contenção termina; se falhar, continua agarrado."
+  },
+  {
+   "n": 6,
+   "hora": "01:30",
+   "usuario": "nao entendi o que e TR fisico. e a maestria entra onde?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Maestria",
+    "Teste de Resistência",
+    "Livro: Atributos",
+    "Livro: Testes de Resistência"
+   ],
+   "aviso": "",
+   "resposta": "TR Físico é o teste para evitar impacto ou efeito que pede reação física, e usa Força ou Destreza, a que você escolheu na criação e que fica fixa. A maestria só entra se você tiver treino nesse TR; aí soma ao d20 junto com o atributo."
+  },
+  {
+   "n": 7,
+   "hora": "01:32",
+   "usuario": "posso atacar duas vezes no turno?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Mais de um ataque",
+    "Maestria",
+    "Teste de Resistência",
+    "Livro: Turnos",
+    "Livro: Ataques",
+    "Livro: Preparar"
+   ],
+   "aviso": "",
+   "resposta": "A Ação Atacar dá um ataque só. Atacar duas vezes vem de habilidade, como o Ataque Extra do Bastião e da Vanguarda no nível 7."
+  },
+  {
+   "n": 8,
+   "hora": "01:34",
+   "usuario": "e o critico, como funciona? o dano dobra mesmo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Mais de um ataque",
+    "Maestria",
+    "Teste de Resistência",
+    "Livro: Dano e crítico",
+    "Livro: Golpe Cirúrgico"
+   ],
+   "aviso": "",
+   "resposta": "Quase. Com 20 natural no d20 você acerta e causa crítico, e aí rola o dobro dos dados básicos da arma ou do ataque desarmado. O atributo e os valores fixos entram uma vez só, e os dados de Melhoria, aptidão ou Bênção não dobram, salvo permissão expressa."
+  },
+  {
+   "n": 9,
+   "hora": "01:36",
+   "usuario": "como funciona iniciativa",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Mais de um ataque",
+    "Livro: Turnos",
+    "Livro: Invocação Principal",
+    "Livro: Combate de exemplo"
+   ],
+   "aviso": "",
+   "resposta": "Pelo livro, você rola d20 + Destreza, com os modificadores ativos nessa rolagem, e quem tirar o maior total age primeiro. Em empate, age primeiro quem tiver mais Destreza."
+  },
+  {
+   "n": 10,
+   "hora": "01:38",
+   "usuario": "to montando minha primeira ficha, por onde eu começo?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Primeira sessão",
+    "Livro: Criar um personagem",
+    "Livro: Seu primeiro feitiço"
+   ],
+   "aviso": "",
+   "resposta": "Começa pelo capítulo Criar um personagem do livro, que segue a ordem: atributos, Origem, Caminho, capacidades, equipamento e ficha. Primeiro você distribui nove pontos entre Força, Destreza, Constituição, Inteligência e Essência, de 0 a 3 em cada um."
+  },
+  {
+   "n": 11,
+   "hora": "01:40",
+   "usuario": "posso voar?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Voo"
+   ],
+   "aviso": "",
+   "resposta": "Voar exige uma capacidade que conceda essa modalidade, e um salto não conta como voo. Sem uma capacidade assim, não tem voo."
+  },
+  {
+   "n": 12,
+   "hora": "01:42",
+   "usuario": "e se eu bater com o escudo, da dano? quanto",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Criar um personagem",
+    "Livro: Revestimentos e escudos",
+    "Livro: Vestir e retirar equipamento"
+   ],
+   "aviso": "",
+   "resposta": "Agora não achei no livro como fica o golpe com escudo, então não vou chutar número. Se você tiver o nome da habilidade que quer usar, me fala que eu procuro de novo."
+  },
+  {
+   "n": 13,
+   "hora": "01:44",
+   "usuario": "esquiva funciona como",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Ações",
+    "Livro: Invocação Principal",
+    "Livro: Passo Rápido (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Esquivar custa Ação Padrão e deixa os ataques contra você com desvantagem, além de dar vantagem nos seus TRs Físicos até o começo do seu próximo turno."
+  },
+  {
+   "n": 14,
+   "hora": "01:46",
+   "usuario": "ah entendi. e o que e aquele negocio de pairar?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Voo"
+   ],
+   "aviso": "",
+   "resposta": "Pairar é quando uma fonte de voo deixa você ficar no ar sem gastar movimento. Só vale se a fonte disser isso de forma expressa; o nome ou a aparência do poder não bastam."
+  },
+  {
+   "n": 15,
+   "hora": "01:48",
+   "usuario": "com quanto dinheiro eu começo?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Dinheiro inicial",
+    "Livro: Dinheiro e acesso",
+    "Livro: Equipamento inicial"
+   ],
+   "aviso": "",
+   "resposta": "Na criação padrão, você começa no Grau 4, recebe um Traje 1 e tem ¥150.000 para comprar o resto dos itens."
+  },
+  {
+   "n": 16,
+   "hora": "01:50",
+   "usuario": "valeu. vou cocar mais isso na minha ficha, depois te chamo se tiver mais duvida",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Dinheiro inicial",
+    "Livro: Sacar e guardar",
+    "Livro: Acessórios e outros efeitos",
+    "Livro: Itens em uso"
+   ],
+   "aviso": "",
+   "resposta": "Beleza! Boa montagem da ficha."
+  },
+  {
+   "n": 17,
+   "hora": "01:52",
+   "usuario": "qnto de xp eu preciso pra sair do nv 2?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "Dinheiro inicial",
+    "XP para subir",
+    "Subir de nível",
+    "Livro: Experiência e Progressão",
+    "Livro: Recompensas e custos",
+    "Livro: Limiar do nível 20"
+   ],
+   "aviso": "",
+   "resposta": "Sair do nível 2 custa 200 XP. Esse número é só o custo do avanço, não o XP acumulado."
+  },
+  {
+   "n": 18,
+   "hora": "01:54",
+   "usuario": "e do 11?",
+   "fixa": true,
+   "ativadas": [
+    "Mundo: premissa",
+    "XP para subir",
+    "Subir de nível",
+    "Livro: Experiência e Progressão",
+    "Livro: Recompensas e custos",
+    "Livro: Funções complementares (continuação)"
+   ],
+   "aviso": "",
+   "resposta": "Do nível 11 até o 12, o custo é 900 XP, pela mesma faixa de 11 a 13."
+  },
+  {
+   "n": 19,
+   "hora": "01:56",
+   "usuario": "quantos pv eu começo? a constituicao conta?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "XP para subir",
+    "Subir de nível",
+    "PV",
+    "Livro: Equipamento e valores",
+    "Livro: Dano",
+    "Livro: Feitiços conhecidos"
+   ],
+   "aviso": "",
+   "resposta": "Depende do seu Caminho, que dá a vida inicial e o ganho por nível. No exemplo do livro, a Constituição entra como soma: 12 + Constituição no primeiro nível e 7 + Constituição no seguinte."
+  },
+  {
+   "n": 20,
+   "hora": "01:58",
+   "usuario": "ok, obrigada. ultima coisa: a closure e a kal'tsit trabalham juntas?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "PV",
+    "Livro: Fabricação",
+    "Livro: Acúmulo (continuação)",
+    "Livro: Tarefas e testes"
+   ],
+   "aviso": "",
+   "resposta": "Mais ou menos: a Kal'tsit cuida do dia, das 9h às 21h, e eu fico com o plantão da madrugada. A gente nunca está no canal ao mesmo tempo."
+  }
+ ],
+ "pendente": null
+}

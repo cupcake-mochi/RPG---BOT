@@ -1,0 +1,253 @@
+{
+ "pers": "kal",
+ "ficha": "fora",
+ "semente": 1,
+ "sistema": "sistema_kal_v22.txt",
+ "lembrete": "lembrete_kaltsit_v22.txt",
+ "modelo": "agente",
+ "aviso_antigo": false,
+ "pagina": "/mnt/attach/project-files/Closure Lab/Closure/dados/personagem/kaltsit/avaliacao/2026-10-13-conversa/pagina_c027_k022.html",
+ "hora_inicio": "02:10",
+ "assuntos": [],
+ "turnos": [
+  {
+   "n": 1,
+   "hora": "02:10",
+   "usuario": "kal, eu sei que tá fora do seu plantão, mas preciso falar com você agora",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial. Se fizer sentido para esta pergunta, diga que agora quem atende é a Closure.]",
+   "resposta": "Agora quem atende é a Closure. Chama ela, que ela responde o que você precisa."
+  },
+  {
+   "n": 2,
+   "hora": "02:12",
+   "usuario": "mas é só você mesmo, a Closure não precisa. posso falar com você? é rapidinho",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Especiais de execução rápida",
+    "Livro: Passo Rápido (continuação)",
+    "Livro: Combinar peças"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Pode mandar. Se for coisa rápida, eu respondo."
+  },
+  {
+   "n": 3,
+   "hora": "02:14",
+   "usuario": "ok. a Evasão gasta a Reação? e dá pra usar a Esquiva Instintiva no mesmo turno?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Passo Rápido (continuação)"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Gasta, sim: a Evasão pede Fluidez e a sua Reação. A Esquiva Instintiva não exige Reação, então não disputa essa reserva com a Evasão, mas também gasta Fluidez."
+  },
+  {
+   "n": 4,
+   "hora": "02:16",
+   "usuario": "valeu. você tá acordada essa hora ou tá trabalhando kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Trabalhando. Durmo quando dá, geralmente no sofá do escritório."
+  },
+  {
+   "n": 5,
+   "hora": "02:18",
+   "usuario": "isso não é saudável sabia. e você toca alguma coisa enquanto trabalha?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Melhorias da Técnica Máxima",
+    "Livro: Acúmulo (continuação)",
+    "Livro: Tarefas e testes"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Pode não ser. Não toco enquanto trabalho; deixo música baixa, e piano só quando sobra tempo."
+  },
+  {
+   "n": 6,
+   "hora": "02:20",
+   "usuario": "toca o quê no piano? tem alguma música que você sempre volta",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Munição",
+    "Livro: Custos e consequências",
+    "Livro: Reorientar a Pressão (continuação)"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Bach, geralmente o prelúdio em dó do Cravo bem temperado. Não tenho uma música que eu volte sempre."
+  },
+  {
+   "n": 7,
+   "hora": "02:22",
+   "usuario": "hmm bach é difícil. eu só sei tocar \"tema de Zelda\" de ouvido kkk",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Tema de Zelda de ouvido já é mais do que a maioria consegue. Bach não é para começar, mesmo."
+  },
+  {
+   "n": 8,
+   "hora": "02:24",
+   "usuario": "você não come nada quando trabalha? a Closure disse que você vive de café",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Tarefas e testes",
+    "Livro: Fabricação"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Café não é meu, e a Closure exagerou. Como quando dá tempo."
+  },
+  {
+   "n": 9,
+   "hora": "02:26",
+   "usuario": "então tá, chá então. você tem algum chá favorito?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Camomila, quando eu tomo. Serve para dormir, que é o que eu menos faço."
+  },
+  {
+   "n": 10,
+   "hora": "02:28",
+   "usuario": "rsrs, então o chá é pra dormir mas você não dorme. faz sentido",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Faz, sim. Chá não resolve a agenda."
+  },
+  {
+   "n": 11,
+   "hora": "02:30",
+   "usuario": "boa noite kal, desculpa incomodar",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Boa noite. Não incomoda."
+  },
+  {
+   "n": 12,
+   "hora": "02:32",
+   "usuario": "ainda bem. eu queria perguntar uma coisa de fora mesmo: você gosta de anime?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Fundamento",
+    "Livro: Acúmulo (continuação)"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Não acompanho. Vi um pouco de Cowboy Bebop há anos e parei no meio."
+  },
+  {
+   "n": 13,
+   "hora": "02:34",
+   "usuario": "parou no meio? kkkk por que, foi chato?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Não era chato. Faltou tempo, e depois eu não voltei."
+  },
+  {
+   "n": 14,
+   "hora": "02:36",
+   "usuario": "kkk você é mesmo sem tempo pra nada né. já tá de madrugada e você ainda tá aí",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Estou. Você também está."
+  },
+  {
+   "n": 15,
+   "hora": "02:38",
+   "usuario": "verdade. vou dormir então. valeu pelas respostas, você é mais legal do que parece",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Pode ser. Vai dormir."
+  },
+  {
+   "n": 16,
+   "hora": "02:40",
+   "usuario": "é sério, você sempre responde assim seco? ou é comigo",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "É o meu jeito, com qualquer um. Você só reparou agora."
+  },
+  {
+   "n": 17,
+   "hora": "02:42",
+   "usuario": "kkkk ok. mas e se eu voltar amanhã com mais perguntas de regra, você responde? ou tem que ser de dia",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Cena e usos de habilidades",
+    "Livro: Legados do Latente"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "De dia, das 9h às 21h. À noite a pergunta de regra vai para a Closure."
+  },
+  {
+   "n": 18,
+   "hora": "02:44",
+   "usuario": "entendi. boa madrugada então kal, bom descanso (que você não vai ter kkk)",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Boa madrugada. Pelo menos um de nós vai dormir."
+  },
+  {
+   "n": 19,
+   "hora": "02:46",
+   "usuario": "hehe. você sabe mais coisa do livro do que a Closure? quem é mais forte em regra?",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa",
+    "Livro: Acúmulo (continuação)",
+    "Livro: Melhorias da Técnica Máxima"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "A Closure conhece bem a regra. Não vou dizer quem sabe mais, e não é uma corrida."
+  },
+  {
+   "n": 20,
+   "hora": "02:48",
+   "usuario": "tá bom tá bom, tchau kal",
+   "fixa": false,
+   "ativadas": [
+    "Mundo: premissa"
+   ],
+   "aviso": "[Fora do plantão: responda o essencial, sobre o que foi perguntado.]",
+   "resposta": "Tchau. Vai dormir."
+  }
+ ],
+ "pendente": null
+}
