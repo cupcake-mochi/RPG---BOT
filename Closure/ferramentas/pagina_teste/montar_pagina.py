@@ -4,15 +4,15 @@ Usa os textos de sistema e lembrete da pasta de avaliação; troque VERSOES quan
 import json, os, sys
 R = os.path.join(os.path.dirname(os.path.abspath(__file__)), "../..")
 AV = os.path.join(R, "dados/personagem/kaltsit/avaliacao/2026-10-12-ciclos")
-VERSOES = {"closure": "v0.33", "kaltsit": "v0.26", "lorebook": "v1.9"}
+VERSOES = {"closure": "v0.34", "kaltsit": "v0.27", "lorebook": "v2.0"}
 ler = lambda p: open(p, encoding="utf-8").read().strip()
 ANIV_KAL = ("[Aniversário: você não diz a data do seu e não explica o motivo. Não fale de quem escolheu o dia nem de confirmar ou negar. "
             "Reaja curto, como a qualquer pergunta pessoal (\"Por que a pergunta?\", \"Isso não é importante.\", \"Talvez. Esse dia pode chegar.\"); "
             "a parabéns, só agradeça a intenção.]")
 D = {
     "pers": {
-        "kal": {"sistema": ler(f"{AV}/sistema_kal_v26.txt"), "lembrete": ler(f"{AV}/lembrete_kaltsit_v26.txt"), "aniversario": ANIV_KAL},
-        "clo": {"sistema": ler(f"{AV}/sistema_closure_v33.txt"), "lembrete": ler(f"{AV}/lembrete_closure_v33.txt"),
+        "kal": {"sistema": ler(f"{AV}/sistema_kal_v27.txt"), "lembrete": ler(f"{AV}/lembrete_kaltsit_v27.txt"), "aniversario": ANIV_KAL},
+        "clo": {"sistema": ler(f"{AV}/sistema_closure_v34.txt"), "lembrete": ler(f"{AV}/lembrete_closure_v34.txt"),
                 "aniversario": "[Aniversário: o seu é 10 de dezembro.]"},
     },
     "lore": [{k: e[k] for k in ("key", "content", "constant", "group", "comment")}

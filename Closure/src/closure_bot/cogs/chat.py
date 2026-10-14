@@ -24,6 +24,22 @@ CHAMADAS_POR_MINUTO = 8    # por pessoa; acima disso ela fica sem resposta até 
 NOME_DO_DONO = "Mizuki"  # a página do site reconhece o dono por este nome; aqui quem garante é o ID
 
 
+def em_partes(texto: str, limite: int = LIMITE_DO_DISCORD) -> list[str]:
+    """Corta uma resposta longa (a explicação de uma habilidade, por exemplo) em mensagens que o Discord aceita.
+
+    Corta no fim de parágrafo; sem parágrafo que caiba, no fim de linha, de frase ou de palavra, nessa ordem."""
+    partes = []
+    texto = texto.strip()
+    while len(texto) > limite:
+        trecho = texto[:limite]
+        corte = next((i + len(sep) for sep in ("\n\n", "\n", ". ", "? ", "! ", " ") if (i := trecho.rfind(sep)) > limite // 3), limite)
+        partes.append(texto[:corte].strip())
+        texto = texto[corte:].strip()
+    if texto:
+        partes.append(texto)
+    return partes
+
+
 class Chat(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
@@ -142,10 +158,15 @@ class Chat(commands.Cog):
         entrada = await montar_prompt(persona, texto, nome=nome, pronomes=estado.pronomes, turnos=turnos,
                                       falas_anteriores=anteriores, estado=para_a_ponte)
         resposta = await bot.modelos.responder(entrada, persona=persona, gatilho=decisao.motivo)
-        fala = resposta.texto.strip()[:LIMITE_DO_DISCORD]
-        if not fala:
+        fala = resposta.texto.strip()
+        partes = em_partes(fala)
+        if not partes:
             return
-        await bot.carteiro.enviar(canal, bot.personas[persona], fala)
+        for parte in partes:
+            # resposta em várias mensagens entra inteira na memória de falas, uma vez só
+            await bot.carteiro.enviar(canal, bot.personas[persona], parte, lembrar=len(partes) == 1)
+        if len(partes) > 1:
+            bot.registro.guardar_fala(canal_id=canal.id, persona=persona, texto=fala)
         bot.conversas.anotar(canal.id, persona, agora, texto, nome=nome)
         bot.conversas.anotar(canal.id, persona, agora, fala)
 

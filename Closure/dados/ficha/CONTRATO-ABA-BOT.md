@@ -1,9 +1,9 @@
 # Contrato da aba oculta `BOT`
 
-> **Rascunho de 12/10/2026, para o Mizuki ajustar.** Os campos foram tirados dos
-> catálogos do sistema (`dados/sistema/catalogos.json`), não da ficha: a ficha
-> "Ficha - Era da Revolução" ainda vai mudar (faltam as Origens). Quando ela fechar,
-> confira esta lista contra ela e suba `versao_ficha`.
+> **Versão 2, de 14/10/2026.** Os campos da Origem seguem o livro R51 (Ciclo Maldito
+> v0.364), combinados com o Mizuki. A versão 1 (12/10) era rascunho, de antes das
+> Origens novas. A ficha "Ficha - Era da Revolução" ainda vai ganhar esses campos; quando
+> ela fechar, confira esta lista contra ela.
 
 ## Por que existe
 
@@ -27,12 +27,18 @@ daqui continuem apontando para as células certas.
 
 | campo | o que é | exemplo de valor |
 | ----- | ------- | ---------------- |
-| `versao_ficha` | número do layout; sobe quando a ficha mudar | `1` |
+| `versao_ficha` | número do layout; sobe quando a ficha mudar | `2` |
 | `nome` | nome do personagem | `Kaori` |
 | `nivel` | nível total | `2` |
 | `caminho` | um dos Caminhos do catálogo | `Bastião` |
 | `trilha` | Trilha do Caminho (vazio antes de ter) | `Muro` |
-| `origem` | uma das Origens do catálogo | `Latente` |
+| `origem` | uma das sete Origens do livro: Latente, Receptáculo, Descendente, Encarnado, Híbrido, Corpo Amaldiçoado, Restrição Celestial | `Latente` |
+| `origem.ramo` | só na Restrição Celestial: `Sem Energia` ou `Restrição corporal`; vazio nas outras | |
+| `origem.marcante` | a capacidade marcante, ou a modalidade escolhida quando a Origem oferece | |
+| `origem.menor.1` | primeira capacidade menor | |
+| `origem.menor.2` | segunda capacidade menor | |
+| `origem.rota` | rota de criação: `Fundamento`, `Manejos` (quem escolheu Sem Técnica) ou `Técnica Marcial` | `Fundamento` |
+| `origem.oficio_compativel` | ofício que repara o corpo (Corpo Amaldiçoado e entidades de criação); vazio nas outras | `Entalhador` |
 | `atributo.forca` | valor do atributo | `2` |
 | `atributo.destreza` | | |
 | `atributo.constituicao` | | |
@@ -61,7 +67,9 @@ espaço virando `_` (`lidar_com_animais`, `sentir_energia`).
 ## O que o bot faz com isso
 
 1. Lê `versao_ficha`. Se for diferente da que ele conhece, avisa e não corrige.
-2. Confere os nomes (`caminho`, `trilha`, `origem`, perícias) contra `catalogos.json`.
+2. Confere os nomes (`caminho`, `trilha`, perícias) contra `catalogos.json`. A `origem` e os
+   campos `origem.*` são conferidos contra o capítulo de Origens do livro (âncoras `origens--*`):
+   na v0.364 a lista de Origens do `catalogos.json` ainda é a antiga, com Feto.
 3. Recalcula o que é derivado (vida, PE, Defesa, Integridade, contagem de perícias
    treinadas) e compara com o que a ficha diz.
 4. Devolve a lista de diferenças com a âncora do livro de cada regra.
