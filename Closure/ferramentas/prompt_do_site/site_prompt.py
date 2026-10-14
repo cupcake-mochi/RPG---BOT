@@ -40,23 +40,30 @@ PAGINA_NO_GH = "repos/cupcake-mochi/RPG---BOT/contents/site/publico/index.html?r
 FIM_DO_NUCLEO = "// ---------- tela ----------"
 
 
-def atualizar() -> Path:
-    """Baixa a página e separa o núcleo (dados e lógica, sem a parte que desenha a tela)."""
-    CACHE.mkdir(parents=True, exist_ok=True)
-    try:
-        with urllib.request.urlopen(PAGINA, timeout=60) as resposta:
-            html = resposta.read().decode("utf-8")
-    except urllib.error.HTTPError:
-        # repositório privado: o endereço público devolve 404. O gh, autenticado na conta do dono, lê o mesmo arquivo.
-        saida = subprocess.run(["gh", "api", "-H", "Accept: application/vnd.github.raw", PAGINA_NO_GH],
-                               capture_output=True, text=True, timeout=120)
-        if saida.returncode != 0:
-            raise RuntimeError("não deu pra baixar a página do site, nem pelo endereço público nem pelo gh: " + saida.stderr[-300:])
-        html = saida.stdout
+def atualizar(arquivo: Path | None = None, destino: Path | None = None) -> Path:
+    """Separa o núcleo da página (dados e lógica, sem a parte que desenha a tela) e guarda em `destino` (padrão: o cache do bot).
+
+    Sem `arquivo`, baixa a página publicada. Com ele, usa uma página montada aqui por ferramentas/pagina_teste/montar_pagina.py,
+    que é como se testa um card novo antes de publicar."""
+    destino = destino or CACHE
+    destino.mkdir(parents=True, exist_ok=True)
+    if arquivo:
+        html = Path(arquivo).read_text(encoding="utf-8")
+    else:
+        try:
+            with urllib.request.urlopen(PAGINA, timeout=60) as resposta:
+                html = resposta.read().decode("utf-8")
+        except urllib.error.HTTPError:
+            # repositório privado: o endereço público devolve 404. O gh, autenticado na conta do dono, lê o mesmo arquivo.
+            saida = subprocess.run(["gh", "api", "-H", "Accept: application/vnd.github.raw", PAGINA_NO_GH],
+                                   capture_output=True, text=True, timeout=120)
+            if saida.returncode != 0:
+                raise RuntimeError("não deu pra baixar a página do site, nem pelo endereço público nem pelo gh: " + saida.stderr[-300:])
+            html = saida.stdout
     inicio = html.index("const D =")
     fim = html.index(FIM_DO_NUCLEO, inicio)  # se a página mudar de forma, isto falha alto em vez de montar errado
-    (CACHE / "nucleo.js").write_text(html[inicio:fim], encoding="utf-8")
-    return CACHE / "nucleo.js"
+    (destino / "nucleo.js").write_text(html[inicio:fim], encoding="utf-8")
+    return destino / "nucleo.js"
 
 
 def nucleo() -> Path:
