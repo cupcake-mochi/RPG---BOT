@@ -91,7 +91,7 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.bot.tree.get_commands(guild=discord.Object(id=77)), [])
 
     async def test_comandos_registrados(self):
-        self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
+        self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ajuda", "ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
                           "meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados"})
 
     async def test_gatilho_por_nome_e_registrado(self):
@@ -428,6 +428,37 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.bot.config = replace(self.bot.config, politica_url="https://exemplo/politica")
         self.assertIn("Política de privacidade: https://exemplo/politica", await usar(pessoa.meus_dados))
         self.assertIn("Closure: você falou com ela em 0 dia(s)", await usar(pessoa.meus_dados))
+
+    async def test_ajuda_lista_os_comandos_de_cada_um_e_os_links(self):
+        from dataclasses import replace
+
+        admin = self.bot.get_cog("Admin")
+        self.bot.config = replace(self.bot.config, canais=frozenset({55}), politica_url="https://exemplo/p", termos_url="https://exemplo/t")
+        self.bot.mencoes = {"clima": "</clima:123>"}
+        self.bot._connection.user.display_avatar.url = "https://exemplo/avatar.png"
+
+        async def pedir(usuario, cuida):
+            interacao = MagicMock()
+            interacao.user.id = usuario
+            interacao.permissions.manage_guild = cuida
+            interacao.response.send_message = AsyncMock()
+            await admin.ajuda.callback(admin, interacao)
+            self.assertTrue(interacao.response.send_message.call_args.kwargs["ephemeral"])
+            return interacao.response.send_message.call_args.kwargs["embed"]
+
+        comum = await pedir(2, False)
+        campos = {c.name: c.value for c in comum.fields}
+        self.assertIn("Chame pelo nome em <#55>", comum.description)
+        self.assertEqual(list(campos), ["» Clima", "» Seus dados", "» Do bot", "» Links"])
+        self.assertIn("</clima:123> · Mostra como está o tempo", campos["» Clima"])
+        self.assertNotIn("clima_canal", campos["» Clima"])
+        self.assertIn("/meus_dados · ", campos["» Seus dados"])
+        self.assertNotIn("teste_webhook", campos["» Do bot"])
+        self.assertEqual(campos["» Links"], "[Privacidade](https://exemplo/p) | [Termos de uso](https://exemplo/t)")
+        moderador = {c.name: c.value for c in (await pedir(2, True)).fields}
+        self.assertIn("/clima_canal · ", moderador["» Para quem cuida do servidor"])
+        self.assertNotIn("teste_webhook", moderador["» Para quem cuida do servidor"])
+        self.assertIn("/teste_webhook · ", {c.name: c.value for c in (await pedir(1, False)).fields}["» Para quem cuida do servidor"])
 
     async def test_teste_webhook_so_pro_dono(self):
         admin = self.bot.get_cog("Admin")
