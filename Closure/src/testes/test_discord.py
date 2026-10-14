@@ -48,6 +48,8 @@ def _mensagem(texto, canal, *, bot=False, webhook_id=None, referencia=None):
     m.webhook_id = webhook_id
     m.channel = canal
     m.mentions = []
+    m.mention_everyone = False
+    m.role_mentions = []
     m.reference = referencia
     return m
 
@@ -426,6 +428,24 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
             await self.bot._erro_de_comando(interacao, RuntimeError("quebrou"))
         self.assertIn("Deu um erro", interacao.response.send_message.call_args.args[0])
         self.assertTrue(interacao.response.send_message.call_args.kwargs["ephemeral"])
+
+    async def test_aviso_pra_todos_ou_pra_cargo_nao_e_conversa(self):
+        canal, webhook = _canal()
+        chat = self.bot.get_cog("Chat")
+        todos = _mensagem("@everyone a closure avisou que hoje tem sessão", canal)
+        todos.mention_everyone = True
+        cargo = _mensagem("<@&77> kal, confirma o horário?", canal)
+        cargo.role_mentions = [MagicMock(id=77)]
+        cargo_e_bot = _mensagem("<@&77> <@999> oi", canal)
+        cargo_e_bot.role_mentions, cargo_e_bot.mentions = [MagicMock(id=77)], [self.bot.user]
+        for m in (todos, cargo, cargo_e_bot):
+            await chat.on_message(m)
+        webhook.send.assert_not_called()
+        self.assertEqual(self.bot.registro.contagens()["gatilhos"], 0)
+
+    async def test_mencao_ao_bot_nao_vira_comando_de_prefixo(self):
+        with self.assertNoLogs("discord.ext.commands.bot", level="ERROR"):
+            await self.bot.on_message(_mensagem("<@999> o rato roeu a roupa do rei de roma?", _canal()[0]))
 
     async def test_sem_resposta_do_modelo_ela_fica_calada(self):
         from closure_bot.modelo import Falhou
