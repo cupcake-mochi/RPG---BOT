@@ -39,7 +39,7 @@ FALA = {
               "reprovada": "Passei o pente fino na ficha e achei umas coisas pra arrumar.",
               "formato desconhecido": "Esse formato de ficha eu não conheço. Pega a versão nova da ficha?"},
 }
-COR = {"aprovada": 0x2E8B57, "reprovada": 0xCC0102, "formato desconhecido": 0xD4A017}
+COR = {"aprovada": 0x2E8B57, "pendente": 0xD4A017, "reprovada": 0xCC0102, "formato desconhecido": 0xD4A017}
 # Nome legível de cada aviso da ficha; o que não estiver aqui aparece pela chave.
 ROTULOS = {"aviso.escolhas_de_pericia": "Perícias e ofícios", "aviso.pontos_disponiveis": "Pontos de atributo",
            "aviso.pericias_disponiveis": "Perícias", "aviso.oficios_disponiveis": "Ofícios",
@@ -113,7 +113,8 @@ def painel(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: di
             titulo = f"Ficha de {caminho}"
             if isinstance(nivel, int) and not isinstance(nivel, bool) and nivel > 0:
                 titulo += f", nível {nivel}"
-    embed = discord.Embed(title=titulo, color=COR.get(resultado.veredito, 0xCC0102),
+    cor = COR["pendente"] if resultado.veredito == "aprovada" and resultado.pendencias else COR.get(resultado.veredito, 0xCC0102)
+    embed = discord.Embed(title=titulo, color=cor,
                           description=FALA.get(persona.chave, FALA[KALTSIT]).get(resultado.veredito, ""))
     embed.set_author(name=persona.nome, icon_url=persona.avatar_url or None)
     if resultado.problemas:

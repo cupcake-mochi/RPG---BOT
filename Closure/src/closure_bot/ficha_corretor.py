@@ -214,6 +214,10 @@ def classificar_aviso(chave: str, valor) -> str | None:
     texto = str(valor).strip()
     if texto in ("", "0"):
         return None
+    # Este aviso só testa se há escudo: não verifica o Selo da técnica (ausente na ANALISE).
+    # Sem impacto confirmado, não gera pendência. Outros avisos de Selo continuam classificados.
+    if chave == "aviso.selo" and texto == "Trava Selo de gesto":
+        return None
     if chave.endswith((".erros", ".pontos_acima")):
         return "erro"
     if chave.endswith(".avisos"):

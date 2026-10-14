@@ -13,6 +13,7 @@ o que falta ou manda pro mestre conferir.
 | 5 | O `ESQUEMA-ANALISE.md` chama os resultados de `vida.max`, `energia.max`... e a Origem de `origem.menor.1` | a aba usa `vida_max`, `energia_max`, `origem.menor_1` | o bot segue a aba (é ela o contrato); o esquema precisa ser atualizado |
 | 6 | Um treino extra da Origem deve ter uma conferência pelo mestre | o mesmo contador de excesso pode acender em Perícias, Ofícios (mesmo com dois marcados) e no resumo | junta avisos do mesmo excesso justificado em uma nota, preferindo o resumo; valores diferentes e excessos sem permissão continuam visíveis |
 | 7 | **Núcleo Dependente**: não possui barra de Integridade (`origens--corpo-inteiro-manutencao`) | a Teste 4 mantém a fórmula normal de Integridade 60 | fórmula normal recebe pendência para desconsiderar a reserva, sem certificar o número; zero/vazio reconhecem ausência de barra; outros valores reprovam |
+| 8 | Um escudo só impede o Selo se ocupar a mão exigida pelo Selo da técnica | `marca_selo` mostra "Trava Selo de gesto" sempre que há escudo, sem ler o Selo escolhido; a ANALISE não exporta essa escolha | omite esse aviso genérico por falta de impacto confirmado. Avisos específicos continuam classificados; retomar a conferência quando o contrato trouxer o requisito do Selo |
 
 ## O que bate (conferido)
 
