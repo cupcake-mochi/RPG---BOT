@@ -9,10 +9,10 @@ docs/PLANEJAMENTO.md e do ESQUEMA-ANALISE.md da ficha:
      a aba CONFIGURAÇÃO, que é a fase 2 do B47);
   4. nomes: Caminho e Trilha contra o catálogo, Origem contra o capítulo de Origens do livro;
   5. contas: vida, PE, Integridade, proteção e Defesa refeitas a partir das entradas e comparadas com os resultados;
-     feitiços e invocações ficam pra depois (conferir_feiticos, conferir_invocacoes);
+     feitiços e invocações têm conferência parcial de montagem em ficha_magia.py; entradas ausentes são declaradas;
   6. avisos: os que a própria ficha acende, só como primeiro filtro.
 
-As fórmulas são as do livro R51 (peças 1, 11, 14 e 24 do JJK---Project). As tabelas que dá pra tirar do texto do
+As fórmulas são as do livro R51. As tabelas que dá pra tirar do texto do
 livro (uniformes, escudos, níveis de marco, Origens) são lidas dele em `Referencias.do_livro`, não escritas aqui.
 """
 from __future__ import annotations
@@ -25,6 +25,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from .ficha_leitor import Campo
+from .ficha_magia import Magia
 
 FORMATOS_CONHECIDOS = {1}
 # O que a ficha mostra quando a pessoa ainda não escolheu: vale como vazio.
@@ -131,6 +132,7 @@ class Referencias:
     uniformes: dict[str, Peca]         # "Traje 1" ... "Revestimento 3"
     escudos: dict[str, Peca]           # "Broquel", "Médio", "Torre"
     duas_maos: frozenset[str] = frozenset()  # armas de duas mãos: com elas na mão principal, o escudo não conta
+    magia: Magia | None = None
 
     @classmethod
     def do_livro(cls, dados: Path) -> "Referencias":
@@ -173,12 +175,16 @@ class Referencias:
         for nome, (*_, ancora, trecho) in validacoes:
             if trecho not in bloco(ancora) or nome not in bloco(ancora):
                 raise ValueError(f"o livro mudou a capacidade {nome} ({ancora}): revise o corretor")
+        try:
+            magia = Magia.do_livro(livro)
+        except KeyError as erro:
+            raise ValueError(f"o livro mudou: referência de magia ausente ({erro})") from erro
         referencias = cls(
             caminhos={c["nome"]: c for c in catalogo["CAMINHOS"]}, origens=origens, ramos_restricao=ramos,
             aceitam_sem_tecnica=aceitam_sem_tecnica,
             marcos=tuple(int(n) for n in re.findall(r"\d+", niveis.group(1))) if niveis else (),
             refino_maximo=int(teto.group(1)) if teto else 0, uniformes=uniformes, escudos=_tabela_de_pecas(escudos),
-            duas_maos=frozenset(duas_maos))
+            duas_maos=frozenset(duas_maos), magia=magia)
         if len(origens) != 7 or len(ramos) != 2 or not referencias.marcos or len(uniformes) != 6 or len(referencias.escudos) != 3 \
                 or not duas_maos:
             raise ValueError("o livro mudou de forma: Origens, ramos, marcos, uniformes ou escudos não fecham")
@@ -353,14 +359,26 @@ def conferir_contas(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaC
     return problemas, pulou
 
 
-def conferir_feiticos(ficha: dict[str, Campo], ref: Referencias) -> list[Problema]:
-    """Lugar reservado: PE, dano, alcance e resolução de cada feitiço (feitico.N.*) a partir das peças."""
-    return []
+def conferir_feiticos(ficha: dict[str, Campo], ref: Referencias, resultado: Resultado | None = None) -> list[Problema]:
+    from .ficha_magia import conferir_feiticos as magia_feiticos
+    r = resultado if resultado is not None else Resultado("aprovada")
+    if ref.magia is None:
+        r.nao_conferido.append("feitiços: referências de magia indisponíveis")
+        return []
+    antes = len(r.problemas)
+    magia_feiticos(ficha, ref.magia, r)
+    return r.problemas[antes:]
 
 
-def conferir_invocacoes(ficha: dict[str, Campo], ref: Referencias) -> list[Problema]:
-    """Lugar reservado: nível, Classe, vida e custos de cada invocação (invocacao.N.*)."""
-    return []
+def conferir_invocacoes(ficha: dict[str, Campo], ref: Referencias, resultado: Resultado | None = None) -> list[Problema]:
+    from .ficha_magia import conferir_invocacoes as magia_invocacoes
+    r = resultado if resultado is not None else Resultado("aprovada")
+    if ref.magia is None:
+        r.nao_conferido.append("invocações: referências de magia indisponíveis")
+        return []
+    antes = len(r.problemas)
+    magia_invocacoes(ficha, ref.magia, ref.marcos, r)
+    return r.problemas[antes:]
 
 
 # ---------- nomes ----------
@@ -434,8 +452,9 @@ def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha
     contas, pulou = conferir_contas(ficha, ref, regras, resultado.conferidos, resultado.pendencias)
     resultado.problemas += contas
     resultado.nao_conferido += pulou
-    resultado.problemas += conferir_feiticos(ficha, ref) + conferir_invocacoes(ficha, ref)
-    resultado.nao_conferido.append("feitiços e invocações: contas ainda não feitas no bot")
+    conferir_feiticos(ficha, ref, resultado)
+    conferir_invocacoes(ficha, ref, resultado)
+    resultado.nao_conferido.append("feitiços e invocações: texto, Famílias, Classe 0 pessoal, Técnica Máxima e ajustes não estão completos na ANALISE")
     treinos, fontes = treinos_da_origem(ficha)
     notas_de_treino: dict[int, Problema] = {}
     for chave, campo in ficha.items():
