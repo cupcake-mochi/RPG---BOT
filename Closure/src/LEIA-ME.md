@@ -30,7 +30,7 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 146 testes; 26 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 147 testes; 26 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -128,7 +128,7 @@ python3 -m closure_bot
   mensagem de quem a chamou e a resposta dela; o resto do canal não vai pro modelo. Se o modelo falha, ela
   fica calada (frase pronta de erro não é fala dela) e o motivo vai pro log. Só o dono, pelo `DONO_ID`, vai
   no pedido como Mizuki.
-- **Espera:** cada tentativa tem 25 segundos. Provedor que falha fica de molho (10 min depois de cota
+- **Espera:** cada tentativa tem 25 segundos, e 12 no gratuito, que nos dois testes de ponta a ponta de 13/10 falhou nas 5 chamadas (sobrecarga, cota e demora). Provedor que falha fica de molho (10 min depois de cota
   estourada, 2 min depois de sobrecarga ou queda de rede) e a fila pula direto pro seguinte.
 - **Sem Node na hospedagem** (13/10/2026): o JavaScript da página do site roda dentro do Python, pelo
   `quickjs-ng`. Nos 14 pedidos de conferência ele monta o mesmo pedido que o Node, em uns 40 ms (o Node leva
