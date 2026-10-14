@@ -29,9 +29,11 @@ def conferir() -> int:
     modelos = Modelos(fila_do_chat(config.modelo_chat, config.fila_modelos), config.chaves, registro,
                       teto_usd=config.teto_mensal_usd if config.teto_mensal_usd is not None else TETO_PADRAO_USD,
                       argon_max_saida=config.argon_max_saida, vertex_projeto=config.vertex_projeto,
-                      argon_teto_usd=config.argon_teto_usd, argon_perfil=config.argon_perfil, dados=config.dados)
+                      argon_teto_usd=config.argon_teto_usd, argon_perfil=config.argon_perfil, dados=config.dados,
+                      teto_preco=config.teto_preco, gasto_externo_usd=config.gasto_externo_usd)
     print("Modelos: ", ", ".join(f"{p}:{m}" for p, m in modelos.fila) or "nenhum (faltam GEMINI_API_KEY e VERTEX_API_KEY no .env)")
-    print("Gasto:   ", f"US$ {modelos.gasto_do_mes():.4f} estimados + reservas por uso incerto; teto de US$ {modelos.teto_usd:.2f}")
+    print("Gasto:   ", f"US$ {modelos.gasto_do_mes():.4f} no mês (preço {modelos.teto_preco}, com reservas por uso incerto "
+                       f"e US$ {modelos.gasto_externo_usd:.2f} de fora do bot); teto de US$ {modelos.teto_usd:.2f}")
     print("Token:   ", "definido" if config.token else "FALTA (DISCORD_TOKEN no .env)")
     print("Servidor principal:", config.guild_id or "não definido")
     print("Dono:    ", config.dono_id or "não definido (/teste_webhook fica bloqueado)")

@@ -8,6 +8,7 @@ Variáveis (modelo em .env.exemplo, na raiz do repositório):
   CANAIS           IDs dos canais em que basta escrever o nome delas, separados por vírgula. Vazio = todos.
                    Fora desses, elas só respondem a quem marca o bot ou responde a uma mensagem dele.
   POLITICA_URL     link público da política de privacidade (o texto é o docs/PRIVACIDADE.md). Aparece no fim do /meus_dados.
+  LIVRO_URL        link do livro de regras em PDF, que o /livro e o GC:livro mandam. Padrão: o do site do sistema.
   TERMOS_URL       link público dos termos de uso (o texto é o docs/TERMOS.md). Aparece no /ajuda, junto do da política.
   CLIMA_CANAIS     IDs de canais que já nascem com o painel diário de clima, um por servidor. O comando
                    /clima_canal faz o mesmo de dentro do Discord; isto é pra não depender dele na primeira subida.
@@ -26,6 +27,10 @@ Variáveis (modelo em .env.exemplo, na raiz do repositório):
   RACIOCINIO       quanto o modelo pensa antes de falar: low, medium, high, ou "modelo" pro padrão do próprio
                    modelo. Vazio = low (modelo.RACIOCINIO_PADRAO).
   TETO_MENSAL_USD  quanto os provedores pagos podem gastar por mês, em dólar, antes de saírem da fila. Padrão: 9.
+  TETO_PRECO       como o teto soma o gasto: "cheio" (padrão) pelo preço de tabela sem promoção, ou "promocional".
+                   Cheio é o lado seguro enquanto a fatura não mostrar como o crédito do mês abate a promoção.
+  GASTO_EXTERNO_USD gasto do mês que o bot não vê (baterias e testes rodados em outro banco), lido na fatura e
+                   atualizado à mão. Entra no teto global; não entra no do Argon. Vazio = 0.
   BANCO            caminho do SQLite de registro. Padrão: src/var/bot.sqlite3.
   CHAVE_DO_BANCO   chave que cifra no disco o texto que fala de gente. Cria com: python3 -m closure_bot --gerar-chave.
                    Perder a chave é perder as fichas e as falas guardadas.
@@ -68,6 +73,9 @@ def _decimal(valor: str | None) -> float | None:
     return numero
 
 
+LIVRO_PADRAO = "https://ciclo-maldito.vercel.app/livro/Ciclo-Maldito-Livro-de-Regras.pdf"
+
+
 @dataclass(frozen=True)
 class Config:
     token: str
@@ -91,6 +99,9 @@ class Config:
     argon_canais: frozenset[int] = frozenset()
     argon_teto_usd: float = 1.0
     argon_perfil: str = "original"
+    teto_preco: str = "cheio"
+    livro_url: str = LIVRO_PADRAO
+    gasto_externo_usd: float = 0.0
 
     def escuta(self, canal_id: int) -> bool:
         return not self.canais or canal_id in self.canais
@@ -114,6 +125,9 @@ def carregar(arquivo: Path | None = None, ambiente: dict[str, str] | None = None
     perfil = valores.get("ARGON_PERFIL", "").strip() or "original"
     if perfil not in ("original", "compacto-v1", "compacto-v2"):
         raise ValueError("ARGON_PERFIL deve ser original, compacto-v1 ou compacto-v2")
+    teto_preco = valores.get("TETO_PRECO", "").strip().lower() or "cheio"
+    if teto_preco not in ("cheio", "promocional"):
+        raise ValueError("TETO_PRECO deve ser cheio ou promocional")
     limite = int(valores.get("ARGON_MAX_SAIDA") or 4096)
     if not 256 <= limite <= 32768:
         raise ValueError("ARGON_MAX_SAIDA deve ficar entre 256 e 32768")
@@ -141,4 +155,7 @@ def carregar(arquivo: Path | None = None, ambiente: dict[str, str] | None = None
         argon_canais=frozenset(int(c) for c in canais_argon.split(",") if c),
         argon_teto_usd=teto_argon if teto_argon is not None else 1.0,
         argon_perfil=perfil,
+        teto_preco=teto_preco,
+        livro_url=valores.get("LIVRO_URL", "").strip() or LIVRO_PADRAO,
+        gasto_externo_usd=_decimal(valores.get("GASTO_EXTERNO_USD")) or 0.0,
     )

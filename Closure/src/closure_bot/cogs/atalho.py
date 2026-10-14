@@ -1,6 +1,6 @@
 """Comandos escritos no chat com "GC:" na frente, pra quem não quer usar a barra (pedido do Mizuki, 13/10/2026).
 
-Só entram aqui os comandos de resposta pública: ajuda, clima, ping e status. Os que mostram ou mexem em dado da
+Só entram aqui os comandos de resposta pública: ajuda, livro, clima, ping e status. Os que mostram ou mexem em dado da
 pessoa, e os de quem cuida do servidor, continuam só na barra, porque lá a resposta aparece só pra quem pediu;
 aqui o bot aponta o comando certo. Funciona em qualquer canal que o bot leia, como os comandos de barra.
 """
@@ -19,7 +19,7 @@ log = logging.getLogger(__name__)
 PREFIXO = re.compile(r"\s*gc\s*:\s*(\w*)\s*(.*)", re.IGNORECASE | re.DOTALL)
 SO_NA_BARRA = {"meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados",
                "clima_canal", "clima_canal_desligar", "teste_webhook"}
-OUTROS_NOMES = {"help": "ajuda", "comandos": "ajuda", "tempo": "clima"}
+OUTROS_NOMES = {"help": "ajuda", "comandos": "ajuda", "tempo": "clima", "sistema": "livro", "pdf": "livro"}
 
 
 def separar(texto: str) -> tuple[str, str] | None:
@@ -58,6 +58,9 @@ class Atalho(commands.Cog):
             dono = mensagem.author.id == self.bot.config.dono_id
             permissoes = getattr(mensagem.author, "guild_permissions", None)
             await responder(embed=admin.painel_de_ajuda(cuida_do_servidor=dono or bool(permissoes and permissoes.manage_guild), dono=dono))
+        elif nome == "livro":
+            embed, botao = self.bot.get_cog("Regras").painel_do_livro()
+            await responder(embed=embed, view=botao)
         elif nome == "clima":
             embed, aviso = await self.bot.get_cog("ComandoClima").consultar(resto or None)
             if embed is None:

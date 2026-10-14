@@ -30,7 +30,8 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/conversa.py` | A conversa em andamento com cada personagem por canal, só em memória (30 min, 12 turnos) |
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
-| `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
+| `closure_bot/cogs/regras.py` | `/livro` (e `GC:livro`, `GC:sistema`): link do livro de regras em PDF, com quem está de plantão. A consulta por comando é da fase 2 |
+| `closure_bot/cogs/ficha.py` | Vazio: fase 3 |
 | `testes/` | 228 testes em 14/10; inclui 16 casos do verificador de respostas e um de retomada da bateria. Há testes que precisam do discord.py, da cryptography ou dos dois motores juntos e são pulados sem essas dependências. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
@@ -356,6 +357,6 @@ Depois, no primeiro uso na Discloud (14/10/2026):
 
 ## O que falta
 
-- Consulta de regra por comando e análise de ficha (`cogs/regras.py` e `cogs/ficha.py` estão vazios): eram do bot
+- Consulta de regra por comando e análise de ficha (`cogs/ficha.py` está vazio; `cogs/regras.py` só tem o `/livro`): eram do bot
   antigo e ainda não foram refeitas.
 - Calendário de sessões e aniversários, do desenho da vida.

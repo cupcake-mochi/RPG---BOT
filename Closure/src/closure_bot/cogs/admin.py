@@ -14,7 +14,7 @@ from ..prompt import versoes as versoes_do_site
 
 COR = 0xCC0102
 # Título de cada grupo no /ajuda, pelo módulo que tem o comando. A lista sai dos próprios comandos, então não envelhece.
-GRUPOS = {"ComandoClima": "Clima", "Pessoa": "Seus dados", "Admin": "Do bot"}
+GRUPOS = {"Regras": "Regras", "ComandoClima": "Clima", "Pessoa": "Seus dados", "Admin": "Do bot"}
 SO_DO_DONO = {"teste_webhook"}
 
 
@@ -44,7 +44,7 @@ class Admin(commands.Cog):
         for grupo in sorted(grupos, key=ordem.index):
             embed.add_field(name=f"» {grupo}", value="\n".join(grupos[grupo]), inline=False)
         embed.add_field(name="» Sem a barra", inline=False,
-                        value="`GC:ajuda`, `GC:clima` (ou `GC:clima Quioto`), `GC:ping` e `GC:status` fazem o mesmo, escritos no chat.")
+                        value="`GC:ajuda`, `GC:livro`, `GC:clima` (ou `GC:clima Quioto`), `GC:ping` e `GC:status` fazem o mesmo, escritos no chat.")
         links = [f"[{nome}]({url})" for nome, url in (("Privacidade", self.bot.config.politica_url), ("Termos de uso", self.bot.config.termos_url)) if url]
         if links:
             embed.add_field(name="» Links", value=" | ".join(links), inline=False)
@@ -75,8 +75,10 @@ class Admin(commands.Cog):
                 f"Prompt: {cards}.\n"
                 f"Registro: {contagens['gatilhos']} gatilhos, {contagens['chamadas_api']} chamadas de API, "
                 f"{contagens['mensagens_bot']} mensagens enviadas.\n"
-                f"Orçamento usado no mês (estimativa + reservas por consumo incerto): US$ {self.bot.modelos.gasto_do_mes():.2f} "
-                f"de US$ {self.bot.modelos.teto_usd:.2f}.")
+                f"Orçamento usado no mês: US$ {self.bot.modelos.gasto_do_mes():.2f} de US$ {self.bot.modelos.teto_usd:.2f} "
+                f"(preço {self.bot.modelos.teto_preco}, com reservas por consumo incerto"
+                + (f" e US$ {self.bot.modelos.gasto_externo_usd:.2f} gastos fora do bot" if self.bot.modelos.gasto_externo_usd else "")
+                + f"; pelo preço promocional, US$ {self.bot.modelos.gasto_do_mes(preco='promocional', externo=False):.2f} do bot).")
 
     @app_commands.command(name="ping", description="Confere se o bot está no ar e qual versão das regras ele leu.")
     async def ping(self, interacao: discord.Interaction) -> None:

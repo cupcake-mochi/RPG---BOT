@@ -227,10 +227,11 @@ class Registro:
 
         A reserva não é cobrança confirmada; custo antigo é recalculado pela data da chamada.
         """
+        # (modelo, quando, entrada, saída, cache, custo estimado, reserva): quem soma escolhe o preço e fica com o maior
+        # entre custo e reserva, pra não contar duas vezes.
         return self._db.execute(
             "SELECT modelo, quando, COALESCE(tokens_entrada, 0), COALESCE(tokens_saida, 0),"
-            " COALESCE(tokens_cache, 0), CASE WHEN reserva_sem_uso_usd > COALESCE(custo_estimado_usd, 0)"
-            " THEN reserva_sem_uso_usd ELSE custo_estimado_usd END FROM chamadas_api"
+            " COALESCE(tokens_cache, 0), custo_estimado_usd, COALESCE(reserva_sem_uso_usd, 0) FROM chamadas_api"
             " WHERE substr(quando, 1, 7) = ?", (quando.strftime("%Y-%m"),)).fetchall()
 
     def registrar_gatilho(self, *, canal_id: int, autor_id: int, persona: str, motivo: str, fora_do_plantao: bool,
