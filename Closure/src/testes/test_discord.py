@@ -116,7 +116,7 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         await self.bot.get_cog("Chat").on_message(_mensagem("mas e no descanso longo?", canal, referencia=referencia))
         self.assertEqual(self.bot.registro.contagens()["gatilhos"], 1)
 
-    async def test_canal_fora_da_lista_e_ignorado(self):
+    async def test_fora_dos_canais_delas_so_marcando_ou_respondendo(self):
         from closure_bot.bot import ClosureBot
 
         outro = ClosureBot(_config(CANAIS="10"))
@@ -124,10 +124,19 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         await outro.load_extension("closure_bot.cogs.chat")
         canal_fora, _ = _canal(11)
         canal_dentro, _ = _canal(10)
-        await outro.get_cog("Chat").on_message(_mensagem("closure, oi", canal_fora))
+        chat = outro.get_cog("Chat")
+        await chat.on_message(_mensagem("closure, oi", canal_fora))
         self.assertEqual(outro.registro.contagens()["gatilhos"], 0)
-        await outro.get_cog("Chat").on_message(_mensagem("closure, oi", canal_dentro))
+        await chat.on_message(_mensagem("closure, oi", canal_dentro))
         self.assertEqual(outro.registro.contagens()["gatilhos"], 1)
+        # fora dos canais delas, marcar o bot ou responder a uma mensagem dele ainda chama
+        marcou = _mensagem("<@999> o rato roeu a roupa do rei de roma?", canal_fora)
+        marcou.mentions = [outro.user]
+        await chat.on_message(marcou)
+        self.assertEqual(outro.registro.contagens()["gatilhos"], 2)
+        outro.registro.registrar_mensagem(message_id=888, canal_id=11, persona="closure")
+        await chat.on_message(_mensagem("e depois?", canal_fora, referencia=MagicMock(message_id=888, resolved=None)))
+        self.assertEqual(outro.registro.contagens()["gatilhos"], 3)
         outro.registro.fechar()
 
     async def test_webhook_leva_nome_e_avatar_e_guarda_o_id(self):
