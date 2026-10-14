@@ -1,4 +1,4 @@
-# Política de privacidade do bot Closure Lab
+# Política de privacidade do bot Guias do Ciclo
 
 Vale a partir de 13/10/2026. Este texto descreve o que o bot faz com dados de quem está num servidor onde ele foi adicionado. O bot é a Kal'tsit e a Closure, as duas guias do servidor para o RPG Ciclo Maldito.
 
