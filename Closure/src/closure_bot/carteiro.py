@@ -36,11 +36,18 @@ class Carteiro:
         Com `lembrar`, o texto entra nas últimas falas dela no canal (pra não repetir depois); mensagem de teste não entra."""
         topico = canal if isinstance(canal, discord.Thread) else None
         base = canal.parent if topico else canal
+        extras = {"thread": topico} if topico else {}
         try:
-            webhook = await self._webhook(base)
-            extras = {"thread": topico} if topico else {}
-            mensagem = await webhook.send(texto, username=persona.nome, avatar_url=persona.avatar_url,
-                                          allowed_mentions=discord.AllowedMentions.none(), wait=True, **extras)
+            try:
+                mensagem = await (await self._webhook(base)).send(
+                    texto, username=persona.nome, avatar_url=persona.avatar_url,
+                    allowed_mentions=discord.AllowedMentions.none(), wait=True, **extras)
+            except discord.NotFound:
+                # apagaram o webhook no servidor: o que estava guardado não serve mais; cria outro e tenta uma vez
+                self._webhooks.pop(base.id, None)
+                mensagem = await (await self._webhook(base)).send(
+                    texto, username=persona.nome, avatar_url=persona.avatar_url,
+                    allowed_mentions=discord.AllowedMentions.none(), wait=True, **extras)
         except (discord.Forbidden, AttributeError):
             # Sem permissão de gerenciar webhooks (ou canal que não tem webhook): sai pela conta do bot, com o nome na frente.
             log.warning("sem webhook no canal %s; enviando pela conta do bot", getattr(canal, "id", "?"))

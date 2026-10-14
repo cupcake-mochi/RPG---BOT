@@ -82,8 +82,10 @@ def _vocativo(texto: str) -> str | None:
     return None
 
 
-def decidir(texto: str, agora: datetime, *, mencionou_bot: bool = False, respondeu_ao_bot: bool = False) -> Decisao | None:
-    """Devolve quem responde, ou None se ninguém foi chamado."""
+def decidir(texto: str, agora: datetime, *, mencionou_bot: bool = False, respondeu_ao_bot: bool = False,
+            respondeu_a: str | None = None) -> Decisao | None:
+    """Devolve quem responde, ou None se ninguém foi chamado. `respondeu_a` é a personagem dona da mensagem respondida,
+    quando se sabe; nome escrito na mensagem vale mais que isso."""
     plantao = de_plantao(agora)
     citadas = nomes_chamados(texto)
 
@@ -92,6 +94,8 @@ def decidir(texto: str, agora: datetime, *, mencionou_bot: bool = False, respond
     elif len(citadas) == 2:
         # As duas citadas: fala-se com uma sobre a outra. Vale quem abre a mensagem; sem isso, quem está de plantão.
         persona = _vocativo(texto) or plantao
+    elif respondeu_a in APELIDOS:
+        persona = respondeu_a  # respondeu a uma fala dela: é ela quem continua, mesmo fora do plantão
     elif mencionou_bot or respondeu_ao_bot:
         persona = plantao
     else:

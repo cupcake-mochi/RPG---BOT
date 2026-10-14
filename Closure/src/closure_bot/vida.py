@@ -119,6 +119,11 @@ def escolher_fatos(fatos: tuple[str, ...], texto: str, sorteio: random.Random) -
     return (sorteio.choice(fatos),) if fatos and sorteio.random() < CHANCE_DE_FATO_SOLTO else ()
 
 
+def _plano(texto: str) -> str:
+    """Tira colchete e quebra de linha do que vem de gente (nome, pronomes, fato), pra não se passar por bloco do pedido."""
+    return " ".join(re.sub(r"[\[\]\r\n]", " ", texto).split())
+
+
 @dataclass(frozen=True)
 class Estado:
     persona: str
@@ -139,14 +144,14 @@ class Estado:
     def bloco(self) -> str:
         """O bloco de estado do pedido, no formato da página do site, com o que o bot sabe de verdade."""
         hora = self.agora.astimezone(FUSO)
-        pronomes = f"pronomes: {self.pronomes}" if self.pronomes else "pronomes não informados"
+        pronomes = f"pronomes: {_plano(self.pronomes)}" if self.pronomes else "pronomes não informados"
         if self.fatos:  # pano de fundo, como a memória de um assistente: saber não obriga a citar
-            fatos = "; ".join(self.fatos) + " (pano de fundo: use só se couber na conversa, sem acrescentar detalhe que não está aqui)"
+            fatos = "; ".join(_plano(f) for f in self.fatos) + " (pano de fundo: use só se couber na conversa, sem acrescentar detalhe que não está aqui)"
         else:
             fatos = "nenhum a lembrar agora; não suponha nada sobre a pessoa"
         return (f"[Estado agora: {'plantão' if self.no_plantao else 'fora do plantão'}; {hora:%H:%M} em Brasília; "
                 f"canal {self.movimento}; carga {self.carga}.\n"
-                f"Quem fala: {self.nome.strip() or 'alguém'} ({pronomes}). Como tratar: {TRATO[self.persona][self.intimidade]}.\n"
+                f"Quem fala: {_plano(self.nome) or 'alguém'} ({pronomes}). Como tratar: {TRATO[self.persona][self.intimidade]}.\n"
                 f"Fatos sobre a pessoa: {fatos}.]")
 
     def lembretes(self) -> list[str]:

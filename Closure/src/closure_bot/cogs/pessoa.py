@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import logging
 from dataclasses import replace
-from datetime import time
+from datetime import datetime, time, timedelta
 
 import discord
 from discord import app_commands
@@ -41,6 +41,24 @@ class Pessoa(commands.Cog):
             await refletir(self.bot.registro, self.bot.modelos)
         except Exception:  # um erro aqui não pode derrubar o laço: amanhã tem outra
             log.exception("reflexão diária falhou")
+
+    @reflexao_diaria.before_loop
+    async def _ao_subir(self) -> None:
+        await self.bot.wait_until_ready()
+        await self.por_em_dia(datetime.now(FUSO))
+
+    async def por_em_dia(self, agora: datetime) -> bool:
+        """Se ficou mensagem de antes da última reflexão marcada (o bot estava fora do ar às 4h30), reflete agora.
+        O texto de quem chamou não pode ficar guardado além disso."""
+        devida = datetime.combine(agora.date(), HORA_DA_REFLEXAO)
+        if agora < devida:
+            devida -= timedelta(days=1)
+        mais_antiga = self.bot.registro.mensagem_do_dia_mais_antiga()
+        if mais_antiga is None or mais_antiga >= devida:
+            return False
+        log.info("reflexão atrasada: tem mensagem guardada de antes das 4h30")
+        await self.reflexao_diaria()
+        return True
 
     @app_commands.command(name="meus_dados", description="Mostra o que a Kal'tsit e a Closure guardam sobre você.")
     async def meus_dados(self, interacao: discord.Interaction) -> None:

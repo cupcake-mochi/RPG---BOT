@@ -82,5 +82,23 @@ class Decisoes(unittest.TestCase):
         self.assertEqual(d.persona, KALTSIT)
 
 
+class RespostaAUmaFala(unittest.TestCase):
+    """Quem responde a uma fala continua com quem a disse, mesmo fora do plantão dela."""
+
+    def test_resposta_a_fala_dela_fica_com_ela(self):
+        from datetime import datetime
+
+        from closure_bot.plantao import CLOSURE, FUSO, KALTSIT, decidir
+
+        noite = datetime(2026, 10, 13, 23, 0, tzinfo=FUSO)
+        d = decidir("mas e no descanso longo?", noite, respondeu_ao_bot=True, respondeu_a=KALTSIT)
+        self.assertEqual((d.persona, d.motivo, d.fora_do_plantao), (KALTSIT, "resposta", True))
+        # nome escrito na mensagem vale mais do que a fala respondida
+        self.assertEqual(decidir("closure, e você, concorda?", noite, respondeu_ao_bot=True, respondeu_a=KALTSIT).persona, CLOSURE)
+        # resposta a mensagem do bot que não é fala de ninguém (o painel de clima): quem está de plantão
+        self.assertEqual(decidir("que frio", noite, respondeu_ao_bot=True).persona, CLOSURE)
+        self.assertEqual(decidir("que frio", noite, respondeu_ao_bot=True, respondeu_a="outra coisa").persona, CLOSURE)
+
+
 if __name__ == "__main__":
     unittest.main()

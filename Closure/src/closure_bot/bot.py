@@ -35,9 +35,22 @@ class ClosureBot(commands.Bot):
         self.clima = ServicoClima()
         self.vida = Vida(self.registro)
         self.conversas = Conversas()
+        self.tree.on_error = self._erro_de_comando
         self.mencoes: dict[str, str] = {}  # nome do comando -> menção clicável (</nome:id>), preenchida ao registrar
         self.modelos = Modelos(ler_fila(config.fila_modelos or FILA_PADRAO), config.chaves, self.registro,
                                teto_usd=config.teto_mensal_usd or TETO_PADRAO_USD, raciocinio=config.raciocinio or RACIOCINIO_PADRAO)
+
+    async def _erro_de_comando(self, interacao: discord.Interaction, erro: Exception) -> None:
+        """Sem isto, um comando que quebra deixa a pessoa olhando pra "o aplicativo não respondeu"."""
+        log.error("comando /%s falhou", getattr(interacao.command, "name", "?"), exc_info=erro)
+        aviso = "Deu um erro aqui do meu lado. Tenta de novo daqui a pouco."
+        try:
+            if interacao.response.is_done():
+                await interacao.followup.send(aviso, ephemeral=True)
+            else:
+                await interacao.response.send_message(aviso, ephemeral=True)
+        except discord.HTTPException:
+            pass
 
     async def setup_hook(self) -> None:
         for modulo in MODULOS:

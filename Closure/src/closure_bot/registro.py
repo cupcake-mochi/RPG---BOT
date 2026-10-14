@@ -299,6 +299,10 @@ class Registro:
         abertas = [MensagemDoDia(m, autor, persona, self.cofre.abrir(texto)) for m, autor, persona, texto in linhas]
         return [m for m in abertas if m.texto is not None]
 
+    def mensagem_do_dia_mais_antiga(self) -> datetime | None:
+        linha = self._db.execute("SELECT MIN(quando) FROM mensagens_do_dia").fetchone()
+        return datetime.fromisoformat(linha[0]) if linha and linha[0] else None
+
     def apagar_mensagens_do_dia(self, ids: list[int] | None = None) -> None:
         """Sem `ids`, apaga todas. Com eles, só as que entraram na reflexão (as que chegaram durante ela ficam pra próxima)."""
         if ids is None:
