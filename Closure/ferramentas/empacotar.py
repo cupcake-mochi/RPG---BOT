@@ -3,7 +3,7 @@
     python3 ferramentas/empacotar.py              sem o .env (as variáveis vão pelo painel da hospedagem)
     python3 ferramentas/empacotar.py --com-env    com o .env dentro, que é como a Discloud costuma receber
 
-O que entra: discloud.config, iniciar.py, requirements.txt (o de src/), o código em src/closure_bot, a ponte do
+O que entra: discloud.config, iniciar.py, closure_lab.py (o nome do arquivo principal do app antigo na Discloud), requirements.txt (o de src/), o código em src/closure_bot, a ponte do
 site com a página já baixada, o manifesto das regras e os dois card.json. O banco, os testes e o resto de dados/
 ficam de fora. O .zip sai em src/var/, que está fora do git: com --com-env ele carrega segredo.
 """
@@ -20,7 +20,7 @@ SAIDA = RAIZ / "src" / "var" / "closure-lab.zip"
 
 def arquivos(com_env: bool) -> list[tuple[Path, str]]:
     """(arquivo no disco, caminho dentro do .zip)."""
-    lista = [(RAIZ / "discloud.config", "discloud.config"), (RAIZ / "iniciar.py", "iniciar.py"),
+    lista = [(RAIZ / "discloud.config", "discloud.config"), (RAIZ / "iniciar.py", "iniciar.py"), (RAIZ / "closure_lab.py", "closure_lab.py"),
              (RAIZ / "src" / "requirements.txt", "requirements.txt")]
     pastas = [RAIZ / "src" / "closure_bot", RAIZ / "ferramentas" / "prompt_do_site"]
     for pasta in pastas:

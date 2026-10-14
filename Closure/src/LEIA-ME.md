@@ -178,6 +178,10 @@ que são os links postos no portal do Discord. O texto de origem fica em `docs/`
 Com `--com-env` o `.env` vai dentro; esse arquivo carrega segredo e não sai do computador a não ser pra
 hospedagem.
 
+- **Atualizar o app que já existe:** Commit com o `.zip`, depois Rebuild (reinstala as bibliotecas), depois Logs.
+  O Commit não troca o arquivo principal do app: a Discloud continua chamando `closure_lab.py`, o do bot antigo
+  (visto em 13/10/2026: o app caiu com `ModuleNotFoundError` do bot antigo). Por isso existe um `closure_lab.py` na
+  raiz que só repassa pro `iniciar.py`.
 - **Memória:** o processo chegou a 98 MB só de carregar e montar pedidos, sem conexão com o Discord. O
   `discloud.config` pede 256 MB; o plano do Mizuki vai até 1 GB, e os 100 MB do bot antigo não bastariam.
 - **Banco:** fica em `src/var/bot.sqlite3` dentro da hospedagem. A Discloud preserva o arquivo entre as
