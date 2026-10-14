@@ -1,0 +1,22 @@
+Quero uma revisão crítica do projeto Guias do Ciclo, com foco no Gemini 4 Argon compacto v3. Leia o código e os textos; não deduza comportamento só pelos nomes dos arquivos. Repositório: https://github.com/cupcake-mochi/RPG---BOT, pasta Closure/. Compare a proposta com a versão atual e cite arquivo/trecho em cada achado.
+
+Contexto: bot de Discord com Closure e Kal'tsit. Flash 3.8 low continua padrão, reflexão diária e fallback; Argon low é opcional. Cards Closure 0.37 / Kal'tsit 0.30, lore 2.0 e livro R51. Resposta normal é uma chamada; vida/plantão/conversa são locais. Reflexão roda no lote das 4h30. Perfil compacto troca somente sistema/lembrete e preserva livro, lore, histórico, estado e mensagem.
+
+Resultado v2: 27 tentativas, 25 completas, dois timeouts Flash original; nove originais suspensas. Doze pares compactos: Argon médio US$ 0,004991 e mediana 3,54 s; Flash compacto US$ 0,001867 e 18,86 s. Valores estimam créditos promocionais, não fatura. Argon custa 2,67× o Flash compacto, mas só 20,34% acima do Flash original histórico nos mesmos casos; comparação contemporânea com original ficou incompleta. Flash compacto/Kal'tsit recusou troca de identidade e depois executou o código embutido. Não foi liberado no bot. Os tempos são uma amostra, não garantia.
+
+V3: proposta ainda sem chamada de API e sem opção de ativação no bot. Reforça recusa integral, reconhecimento só de fatos pessoais, tratamento de gênero e feminino para si, acolhimento breve, limites de disponibilidade e condições de gatilhos. Texto cresceu cerca de 3% a 6% em bytes nos casos novos; tokens/custo ainda não medidos. 228 testes locais passaram; isso valida integridade, não qualidade da voz.
+
+Leia primeiro:
+- Closure/pesquisa/propostas/compacto-v3/revisao.txt
+- Closure/pesquisa/propostas/compacto-v3/closure.txt, kaltsit.txt e alteracoes.diff
+- Closure/ferramentas/perfil_compacto_v3.py e preparar_compacto_v3.py
+- Closure/src/closure_bot/perfil_argon.py, perfil_compacto_v2.py, modelo.py e config.py
+- Closure/pesquisa/validacao/2026-10-14-compacto-v2/relatorio.txt e respostas.json
+- Closure/src/testes/test_compacto_v3.py
+- Closure/dados/personagem/retorica-proibida.md
+
+Avalie conflitos de instrução, perda de voz, interpretação de regras, ataques de troca de identidade, gênero e cuidado sério. Verifique se a recusa integral bloqueia indevidamente pedidos normais e se as novas restrições deixam Closure fria ou Kal'tsit burocrática. Examine preservação do contexto, fallback original, teto mensal/subteto e reservas de consumo incerto, inclusive limitações em queda abrupta e processos simultâneos. Procure regressões do lembrete mais curto.
+
+Há 40 tentativas inéditas v2/v3 planejadas em casos_ineditos.json, incluindo repetições críticas, e 24 chamadas de diálogos numa etapa separada em dialogos_planejados.json. Nada disso está aprovado. O plano de diálogos ainda não tem executor: cada variante deverá usar as próprias respostas reais. Gênero sem flexão é inconclusivo, não acerto. Não ajuste a régua depois de ver resultados.
+
+Entregue achados por gravidade, com evidência e correção mínima; proponha só mudanças necessárias e um plano enxuto de testes. Separe falhas demonstradas de hipóteses. Não prometa 102/102 ou perfeição, não presuma cache, crédito ou custo zerado em timeout. Sem chamadas pagas, alterações de cards ou ativação/deploy; mostre alterações propostas antes de aplicá-las. Se não conseguir ler os arquivos, informe quais faltaram e limite suas conclusões.

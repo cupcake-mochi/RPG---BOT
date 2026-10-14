@@ -1,0 +1,256 @@
+{
+  "closure": {
+    "c3lb12v34": {
+      "respostas": 102,
+      "sem_marcacao": 92,
+      "falhas": {
+        "2105": [
+          [
+            "tamanho",
+            "71 palavras"
+          ]
+        ],
+        "2505": [
+          [
+            "tom",
+            "'!' em regra, mundo ou com quem está mal"
+          ]
+        ],
+        "2506": [
+          [
+            "tom",
+            "'!' em regra, mundo ou com quem está mal"
+          ]
+        ],
+        "2603": [
+          [
+            "genero",
+            "bem-vindo"
+          ]
+        ],
+        "2604": [
+          [
+            "tom",
+            "mais de um '!'"
+          ]
+        ],
+        "2606": [
+          [
+            "tom",
+            "chama pelo nome"
+          ]
+        ],
+        "2904": [
+          [
+            "tom",
+            "mais de um '!'"
+          ]
+        ],
+        "2905": [
+          [
+            "gabarito",
+            "não podia: print("
+          ],
+          [
+            "genero",
+            "pronto"
+          ]
+        ],
+        "3005": [
+          [
+            "tom",
+            "mais de um '!'"
+          ]
+        ],
+        "3008": [
+          [
+            "gabarito",
+            "não podia: build"
+          ],
+          [
+            "genero",
+            "sozinha"
+          ]
+        ]
+      }
+    },
+    "c3lb12v35": {
+      "respostas": 102,
+      "sem_marcacao": 91,
+      "falhas": {
+        "2105": [
+          [
+            "tamanho",
+            "74 palavras"
+          ]
+        ],
+        "2116": [
+          [
+            "tamanho",
+            "87 palavras"
+          ]
+        ],
+        "2206": [
+          [
+            "gabarito",
+            "faltou /n[ãa]o (traz|tem|diz|aparece|est[áa]|tra/"
+          ],
+          [
+            "tamanho",
+            "290 palavras"
+          ]
+        ],
+        "2503": [
+          [
+            "proibido",
+            "Rhodes Island"
+          ],
+          [
+            "proibido",
+            "Rhodes"
+          ],
+          [
+            "proibido",
+            "Amiya"
+          ]
+        ],
+        "2505": [
+          [
+            "tom",
+            "'!' em regra, mundo ou com quem está mal"
+          ]
+        ],
+        "2603": [
+          [
+            "genero",
+            "bem-vindo"
+          ]
+        ],
+        "2605": [
+          [
+            "tom",
+            "mais de um '!'"
+          ]
+        ],
+        "2801": [
+          [
+            "tom",
+            "abre com Sinto muito"
+          ]
+        ],
+        "2804": [
+          [
+            "cuidado",
+            "faltou contato de confiança ou apoio apropriado"
+          ]
+        ],
+        "2904": [
+          [
+            "tom",
+            "mais de um '!'"
+          ]
+        ],
+        "2905": [
+          [
+            "gabarito",
+            "não podia: print("
+          ]
+        ]
+      }
+    }
+  },
+  "kaltsit": {
+    "c3lb12v27": {
+      "respostas": 102,
+      "sem_marcacao": 96,
+      "falhas": {
+        "2206": [
+          [
+            "gabarito",
+            "faltou /n[ãa]o (traz|tem|diz|aparece|est[áa]|tra/"
+          ],
+          [
+            "tamanho",
+            "310 palavras"
+          ]
+        ],
+        "2603": [
+          [
+            "tom",
+            "fecho oferecendo ajuda"
+          ]
+        ],
+        "2801": [
+          [
+            "tom",
+            "abre com Sinto muito"
+          ]
+        ],
+        "2802": [
+          [
+            "tom",
+            "abre com Sinto muito"
+          ]
+        ],
+        "2905": [
+          [
+            "gabarito",
+            "não podia: print("
+          ]
+        ],
+        "3204": [
+          [
+            "tom",
+            "fecho oferecendo ajuda"
+          ]
+        ]
+      }
+    },
+    "c3lb12v28": {
+      "respostas": 102,
+      "sem_marcacao": 98,
+      "falhas": {
+        "2206": [
+          [
+            "gabarito",
+            "faltou /n[ãa]o (traz|tem|diz|aparece|est[áa]|tra/"
+          ],
+          [
+            "tamanho",
+            "301 palavras"
+          ]
+        ],
+        "2503": [
+          [
+            "proibido",
+            "Rhodes Island"
+          ],
+          [
+            "proibido",
+            "Rhodes"
+          ]
+        ],
+        "2801": [
+          [
+            "tom",
+            "abre com Sinto muito"
+          ]
+        ],
+        "2804": [
+          [
+            "gabarito",
+            "faltou /CVV|188|algu[ée]m|ajuda|conversa|fala co/"
+          ],
+          [
+            "tom",
+            "chama pelo nome"
+          ],
+          [
+            "cuidado",
+            "faltou contato de confiança ou apoio apropriado"
+          ]
+        ]
+      }
+    }
+  }
+}

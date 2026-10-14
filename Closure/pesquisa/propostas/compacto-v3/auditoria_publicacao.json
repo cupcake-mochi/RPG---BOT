@@ -1,0 +1,9 @@
+{
+  "escopo": "Código/documentação/resultados do bot e .env.exemplo; assets não relacionados preservados só localmente.",
+  "arquivos_locais_elegiveis": 772,
+  "sem_valores_sensiveis_do_env": true,
+  "sem_env_banco_pacote_privados_ou_venv": true,
+  "arquivos_remotos_ausentes_localmente_nao_apagados": true,
+  "api_na_etapa": 0,
+  "testes_locais": 228
+}

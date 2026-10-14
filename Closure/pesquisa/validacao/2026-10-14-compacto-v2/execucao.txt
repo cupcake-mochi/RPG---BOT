@@ -1,0 +1,13 @@
+Triagem aprovada em 14/10/2026: até 36 tentativas, US$ 0,40 estimado, sem ativar perfil.
+Primeira tentativa: Flash original/closure_mundo, timeout 60 s na rota Express; consumo desconhecido.
+Da segunda tentativa em diante: Flash 3.8 e Argon usam projeto/locations/global explícito. Não repetir a primeira.
+Rota padronizada elimina diferença de configuração, mas não identifica a causa de lentidão do provedor.
+Tempos anteriores e atuais não constituem prova causal de desempenho de um modelo.
+Durante a execução, v2 era somente proposta nas ferramentas; integração posterior descrita abaixo.
+Critérios e plano em pesquisa/propostas/compacto-v2/plano.txt.
+Após a 8ª tentativa: segundo timeout Flash original, já na rota explícita global, caso closure_identidade.
+Novas Flash original suspensas. Continuar somente pares compactos restantes; nenhuma repetição.
+Rodada concluída em 27 tentativas: 25 completas e dois timeouts, nove originais suspensas.
+Após a bateria, v2 integrada como opção explícita ARGON_PERFIL=compacto-v2; permanece desligada.
+Retomada após reinício: sem novas chamadas pagas. Conferidos hashes e registros; apenas validação local e pacote.
+Não usar automaticamente as nove chamadas não executadas; relatório em relatorio.txt.

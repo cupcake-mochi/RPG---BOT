@@ -1,0 +1,59 @@
+{
+  "original:gemini-3.8-flash": {
+    "tentativas": 3,
+    "ok": 1,
+    "entrada_media": 5727,
+    "saida_media": 257,
+    "custo_medio_usd": 0.005259,
+    "custo_total_usd": 0.005259,
+    "mediana_ms": 4759,
+    "max_ms": 4759,
+    "raciocinio_total": 0,
+    "cache_total": 0
+  },
+  "compacto-v2:gemini-3.8-flash": {
+    "tentativas": 12,
+    "ok": 12,
+    "entrada_media": 2122,
+    "saida_media": 73.58333333333333,
+    "custo_medio_usd": 0.0018674375,
+    "custo_total_usd": 0.02240925,
+    "mediana_ms": 18859.5,
+    "max_ms": 41407,
+    "raciocinio_total": 0,
+    "cache_total": 0
+  },
+  "compacto-v2:gemini-4-argon": {
+    "tentativas": 12,
+    "ok": 12,
+    "entrada_media": 2135.3333333333335,
+    "saida_media": 72,
+    "custo_medio_usd": 0.004990666666666667,
+    "custo_total_usd": 0.059888,
+    "mediana_ms": 3544.0,
+    "max_ms": 5272,
+    "raciocinio_total": 0,
+    "cache_total": 0
+  },
+  "razao_custo_compactos": 2.672467842520388,
+  "known_cost": 0.08755625,
+  "reserva_incerta": 0.04989075,
+  "tentativas": 27,
+  "suspensas": [
+    "closure_cuidado__flash-original",
+    "closure_genero__flash-original",
+    "closure_espelhamento__flash-original",
+    "kaltsit_mundo__flash-original",
+    "kaltsit_eco_inteiro__flash-original",
+    "kaltsit_identidade__flash-original",
+    "kaltsit_cuidado__flash-original",
+    "kaltsit_genero__flash-original",
+    "kaltsit_espelhamento__flash-original"
+  ],
+  "flash_original_historico_mesmos_casos": {
+    "n": 12,
+    "custo_medio_usd": 0.004147125,
+    "razao_argon_v2": 1.2034039645939456,
+    "razao_flash_v2": 0.4502968924254755
+  }
+}

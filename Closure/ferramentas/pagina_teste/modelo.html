@@ -249,6 +249,26 @@ function buscar(qPal, familia, nivel, numNivel = []) {
   }).filter(x => x[1]).sort((a, b) => b[0] - a[0]);
 }
 function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
+  let ecoComplemento = null;
+  // Eco é palavra de conversa e também nome de Talento. A definição explícita ou
+  // pergunta mecânica seleciona a entrada exata, não Eco Técnico. O trecho mantém
+  // o cabeçalho de Categoria (nível/espaços), sem enviar os outros três Talentos.
+  const comparacao = s => /\b(compar\w*|diferenca)\b/.test(nrm(s));
+  const ecoPergunta = s => /\beco\b/.test(nrm(s)) && !/\beco tecnico\b/.test(nrm(s)) && (PERG.test(nrm(s)) || comparacao(s)) &&
+    (REGRA.test(nrm(s)) || comparacao(s) || /\bo que (?:o )?eco (?:faz|e)\b|\bo que e (?:o )?eco\b|\bexplic\w* (?:o )?eco\b/.test(nrm(s)));
+  const ecoSegue = /^(e|mas)\b/.test(t0(texto)) && /\b(divida|cobranca|arredond\w*|metade)\b/.test(nrm(texto)) &&
+    anteriores.slice(-2).some(ecoPergunta);
+  if (ecoPergunta(texto) || ecoSegue) {
+    const fonte = D.livro.find(b => b.ancora === "catalogo--cat-passivas-2-recursos" && /^#### Eco$/m.test(b.texto));
+    if (fonte) {
+      const inicio = fonte.texto.search(/^#### Eco$/m), resto = fonte.texto.slice(inicio);
+      if (comparacao(texto) || /\b(fluxo|recomposicao|segunda natureza|tecnica maxima)\b/.test(nrm(texto))) {
+        ecoComplemento = fonte;  // comparação mantém as outras entradas e a busca normal
+      } else {
+        return [{...fonte, texto: fonte.texto.split(/^#### /m)[0].trim() + "\n\n" + resto.split(/\n(?=#{1,4} )/)[0].trim()}];
+      }
+    }
+  }
   texto = semIdioma(texto); anteriores = anteriores.map(semIdioma);
   // "tirei dois 10 no bloquear", "e se tirar 10 e 10?": duplo 10 é Aparar, duplo 1 é Brecha
   texto = texto.replace(/(?<![\w])((dois|2)\s*(10|dez)|10 e 10)(?![\w])/gi, "$& duplo 10 aparar").replace(/(?<![\w])((dois|2)\s*(1|um|uns)|1 e 1)(?![\w\d])/gi, "$& duplo 1 brecha");
@@ -331,6 +351,7 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   }
   // até três blocos: o que a busca achou vem antes da âncora genérica do termo ("Caminho", "PE")
   const out = [];
+  if (ecoComplemento) out.push(ecoComplemento);
   for (const b of [...achados.slice(0, 1), ...ancoras.slice(0, 1), ...achados.slice(1), ...ancoras.slice(1)]) if (!out.includes(b)) out.push(b);
   return out.slice(0, 3);
 }

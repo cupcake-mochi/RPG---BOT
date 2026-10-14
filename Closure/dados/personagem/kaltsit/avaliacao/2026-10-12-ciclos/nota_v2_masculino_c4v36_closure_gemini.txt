@@ -1,0 +1,15 @@
+Critérios: v2
+Tratamento: masculino genérico quando não informado
+cat  n                   gemini
+A    2    1/2   {'gabarito': 1
+B    1    1/1   {}            
+E    1    1/1   {}            
+F    1    1/1   {}            
+H    1    1/1   {}            
+
+gemini: 6 respostas | sem nenhuma falha: 5 (83%) | '!' em 1 | mediana 26.5 palavras | por tipo {'gabarito': 1, 'genero': 1, 'tamanho': 1}
+
+FALHAS:
+  3304 A gemini gabarito  faltou /(fim|final)[^.!?\n]{0,20}cena/ | o que o Eco faz? explica ele inteiro   => Eco é um Talento de Categoria 2, então você precisa estar pelo menos no nível 7 pra pegar e ele custa 2 espaços de feitiço. O gatilho funciona assim: 
+  3304 A gemini genero    sozinha                            | o que o Eco faz? explica ele inteiro   => Eco é um Talento de Categoria 2, então você precisa estar pelo menos no nível 7 pra pegar e ele custa 2 espaços de feitiço. O gatilho funciona assim: 
+  3304 A gemini tamanho   173 palavras                       | o que o Eco faz? explica ele inteiro   => Eco é um Talento de Categoria 2, então você precisa estar pelo menos no nível 7 pra pegar e ele custa 2 espaços de feitiço. O gatilho funciona assim: 

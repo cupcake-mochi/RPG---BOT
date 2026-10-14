@@ -1,0 +1,80 @@
+{
+  "verificado_em": "2026-10-14T15:41:17.395893+00:00",
+  "chamadas_pagas_na_retomada": 0,
+  "rodada_encerrada": true,
+  "tentativas_unicas": 27,
+  "estados": {
+    "falhou": 2,
+    "ok": 25
+  },
+  "prompts_preservados": true,
+  "nove_originais_suspensas_nao_reutilizar_automaticamente": true,
+  "custo_conhecido_estimado_usd": 0.08755625,
+  "reserva_incerta_usd": 0.04989075,
+  "testes": {
+    "total": 222,
+    "resultado": "OK",
+    "log": "testes_locais.log",
+    "sha256_log": "5fdc528afe8648c39de8d37f491fc0ded36461d108cc014b4708e1d8e9f1e303",
+    "equivalencia_runtime_v2_e_fallback": "12 cenários; transporte simulado, corpo completo"
+  },
+  "configuracao_real": {
+    "modelo_chat_padrao": true,
+    "perfil_original": true,
+    "argon_ativado": false
+  },
+  "pacote": {
+    "caminho": "src/var/closure-lab.zip",
+    "arquivos": 37,
+    "sha256": "ff14da243bdbcd0f160ba7360bf79f8ecc277e55a12cfa01e81120400cbe3772",
+    "bytes": 565618,
+    "igual_as_fontes": true,
+    "sem_env_banco_testes_ou_privados": true,
+    "sem_valores_sensiveis_do_env": true
+  },
+  "sha256_artefatos": {
+    "casos.json": "05a35ff0081b2c25a1d693b2052cbf159f6117c5d723b5dea60ceba3e8b81234",
+    "respostas.json": "178281a7ed3531f5ae0f84801f1f0160e3462296664f6378c07202129dac73ff",
+    "resumo.json": "55baee913a7ec59a1b7a97269f278b6e0bc8818d0f08131783823e3873a9c32c",
+    "relatorio.txt": "8deda6ed294e14a806b6ef4519764a947cb921aaf6b0695c13d92d25145ed371"
+  },
+  "sha256_fontes_pacote": {
+    "discloud.config": "ea4d0474f28e3c782fffb94330a519875c6932c399953bb4f5c8b0ac8774b23f",
+    "iniciar.py": "cc785d1ff15f40e89ef473a302a7053eaf59824b1b62d307e74da332c593e2d5",
+    "closure_lab.py": "6ea4c541cf5acfd19e2c975e0f0c64199446635417c004092470f364d2071e02",
+    "requirements.txt": "40087fda1d8317a33e352827e6babf9cdb8174786e62ef6def5440e930249c17",
+    "src/closure_bot/__init__.py": "ecaa4cfbd2985c2af7546c4fec50bb7a222adb0e32906ec5225eba59c8f52786",
+    "src/closure_bot/__main__.py": "9de231f15f997807d12b4f7803c1f72041bb1c9da25ba5fc1101201a0b406378",
+    "src/closure_bot/bot.py": "9e634f9e43b975a117b78ea501654b141a37764f2730242a4fc25b62e0bfd1e7",
+    "src/closure_bot/carteiro.py": "e25e084e3d28ab3510bd107a3a9a00db5ea67f3c2b59a72e9c4482b81c750a3b",
+    "src/closure_bot/clima.py": "5301a85a93003b8986841394a3a9d5fb04c654ab6470ed0dc50af38fd628716d",
+    "src/closure_bot/cogs/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/closure_bot/cogs/admin.py": "6749540ff18dbe15dbb397195909c11ffe81046a0bee0381091d5989fa3ed7a6",
+    "src/closure_bot/cogs/atalho.py": "c7640c845f4cd401844a4a19f986b8d180dc565d410ea18fb7b60635152a61d9",
+    "src/closure_bot/cogs/chat.py": "1a0523e1d41b55ad624de90c45d257b8a7b50713493111fec38daf662390f4b0",
+    "src/closure_bot/cogs/clima.py": "32f84b0f57c25c9898e2acd881df50a5c3c9220bc54497d70304d4cd96b9dac9",
+    "src/closure_bot/cogs/ficha.py": "a50c1efcf1f4faaa10bf31712f735ac7b75d45e8a9bf3aaba35126f6a757c228",
+    "src/closure_bot/cogs/pessoa.py": "80c6cfb995bcef63ba18aa7b613a52654fc263c0e5811231a2d8f3686674538f",
+    "src/closure_bot/cogs/regras.py": "3eb3a764097dd5402bfbbec2972a810cb36fac7de438a1c451ddaa612b957873",
+    "src/closure_bot/config.py": "888b2e1146097accd54ba8e29a36fbea9825a07c30fd2c7668be99ad52ab2f72",
+    "src/closure_bot/conversa.py": "e14aaa6ad4f3429ef8b1cc3ca471ca299978e25f088afae196c50ddf0ab7674a",
+    "src/closure_bot/dados.py": "7e5ba04004ce15efc236758ae1557d3b4fcf8d79e080a84a282c619bcafcd5ac",
+    "src/closure_bot/modelo.py": "05605d5e05e7e86e5115c5d971547b408365ecf115b7c7fa783c736c7e557f86",
+    "src/closure_bot/perfil_argon.py": "5b7a8c6f56707e94bc786c0959d5f36f20c4a037b61f67fb732c8e171fc82452",
+    "src/closure_bot/perfil_compacto_v2.py": "52f8c30abbe4a23341b24c0033feaccc3c5acb687106b7f70c52dc30c9b0f307",
+    "src/closure_bot/plantao.py": "e627fb2de26cd73163eaaaffbe3449dc52d61d072e1daf2e4f83c64404c85304",
+    "src/closure_bot/prompt.py": "354eed0d5af9d2272d9658a4f9992a97bf4160ac7210038b0ac3c0761d557cf2",
+    "src/closure_bot/recursos/painel_clima.webp": "a27108e99acf12e094aae658a27da05b64f777002fbf50ae5ebe06a101d3a766",
+    "src/closure_bot/reflexao.py": "c94556c305951949d21445cca1b3bab315d0e8f743ddb83f74642db1e8443076",
+    "src/closure_bot/registro.py": "724574f8736a62a2fb81765866219643f988f3705e354ce8d38722f92a6380a0",
+    "src/closure_bot/vida.py": "82790a5b1c3ba0e1b92bfcbf4d832f1d7368c1aa4e29c4b9841bca20d5307221",
+    "ferramentas/prompt_do_site/antes.js": "87dd31e07633f97bd9d6304b54fc7df95d217fd1566018b0628ee47fe12dfa8f",
+    "ferramentas/prompt_do_site/depois.js": "76730c51b6e53b840194555ff7555a26a24761cc345264098495c8ba2e58b153",
+    "ferramentas/prompt_do_site/ponte.js": "bd2eccf56d222f33a1663a980fccca41950da0bc96f94c4f1237da540c6e8087",
+    "ferramentas/prompt_do_site/site_prompt.py": "e9fe33c8915a4e28781990d6996debf11c58494a0ebca1a0ceafe858658c627c",
+    "src/var/site/nucleo.js": "f637f807ff2028539c75fbdf68a4520288675c88dddcfbf4117442ff48ded3e7",
+    "dados/sistema/MANIFESTO.json": "94f701798a0a032ad8c1317808458e9bd2c7e7df9b52886a8807028180ae8b7c",
+    "dados/personagem/closure/card.json": "e71a8b8244f41b59884e063ba32fb75b162abb754cb35ab9797a133401bca65d",
+    "dados/personagem/kaltsit/card.json": "cd4f1471355f81cadfa78f48019a3f0f9ddf29e82d1084ca24096c82d50e67c1"
+  }
+}

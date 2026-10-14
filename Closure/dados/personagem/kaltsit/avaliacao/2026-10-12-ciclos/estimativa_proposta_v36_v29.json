@@ -1,0 +1,16 @@
+{
+  "chamadas": 204,
+  "estimativa_por_proporcao_de_texto_usd": 0.8211733745920877,
+  "metodo": "Escala os tokens de entrada da rodada anterior pela proporção de caracteres de todos os pedidos; mantém a saída anterior. É aproximação, não tokenização nem fatura.",
+  "caracteres": {
+    "closure": {
+      "antes": 1952019,
+      "depois": 2237823
+    },
+    "kaltsit": {
+      "antes": 1606650,
+      "depois": 1870932
+    }
+  },
+  "referencia_gasto_anterior_usd": 0.71691075
+}

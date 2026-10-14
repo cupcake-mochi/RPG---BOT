@@ -19,12 +19,16 @@ Ele tira dúvida de regra, corrige ficha e conversa na voz de uma personagem de 
 
 **Fase 0 (organizar a pasta) concluída** em 12/10/2026: `dados/sistema/` sincronizado com o
 Ciclo Maldito v0.359 / R44, e em 14/10 com o v0.364 / R51 (511 blocos). O esqueleto da fase 1 está em `src/closure_bot/` (13/10): o chat
-responde, testado de ponta a ponta sem o Discord, mas nunca subiu com token (`src/LEIA-ME.md`).
+responde e já roda na Discloud; os detalhes de execução ficam em `src/LEIA-ME.md`.
 
-- **Kal'tsit** (plantão das 9h às 21h): card v0.24 em teste (pente fino pela página de teste, 13/10), v1.2 = card v0.11 é a última congelada (`dados/personagem/kaltsit/VERSAO.md`).
-- **Closure** (plantão das 21h às 9h): card v0.31, exemplos e vida feitos; pente fino em andamento; falta o Mizuki
-  aprovar e congelar a v1 (`dados/personagem/closure/ESTADO.md`).
-- **Lorebook** v1.9 (97 entradas) e busca no livro v8, na página de teste (`ferramentas/pagina_teste/`).
+- **Kal'tsit** (plantão das 9h às 21h): card v0.30 aprovado e aplicado localmente em 14/10; histórico em `docs/DECISOES.md`.
+- **Closure** (plantão das 21h às 9h): card v0.37 aprovado e aplicado localmente em 14/10, com exemplo de explicação inteira de habilidade.
+- **Lorebook** v2.0 (97 entradas), com o livro R51 e os ajustes de busca de 14/10, na página montada localmente (`ferramentas/pagina_teste/`).
+- **Discloud:** ainda usa R44, Closure v0.33, Kal'tsit v0.26 e lorebook v1.9 até o Mizuki subir o pacote novo.
+- **Proposta compacto v3 (14/10):** revisão pontual de identidade, fatos pessoais, gênero e cuidado; textos e perguntas inéditas preparados, sem API ou ativação. 228 testes locais passaram. A melhoria de comportamento ainda precisa de medição. [Proposta](pesquisa/propostas/compacto-v3/revisao.txt) · [Prompt de revisão no Claude](docs/REVISAO-CLAUDE-ARGON.txt).
+- **Compacto v2 (14/10):** 12 pares completos; Argon com média US$ 0,00499 e mediana 3,54 s, Flash compacto US$ 0,00187 e 18,86 s, com créditos promocionais estimados. Argon foi melhor na recusa de tarefa embutida; Flash compacto teve regressão e não foi liberado no bot. V2 opcional só para Argon, desligada; Flash original continua padrão. 222 testes locais passam. [Resultados e limites](pesquisa/validacao/2026-10-14-compacto-v2/relatorio.txt).
+- **Argon compacto experimental (14/10):** redução medida de 54% no custo do Argon nos mesmos casos; cerca de 19% acima do Flash da rodada anterior, com qualidade ainda desigual. Modo misto por canais, limite separado e perfil opcional preparados, desligados. [Revisão e resultados](pesquisa/validacao/2026-10-14-argon-compacto-v1/relatorio.txt).
+- **Argon original no chat (14/10):** integração validada na Vertex global, com `low`, saída limitada a 4096 e Flash de reserva. Reflexão permanece no Flash. Em 17 pares completos, Argon custou 2,64× o Flash; Flash continua padrão. [Relatório e respostas](pesquisa/validacao/2026-10-14-argon/relatorio.txt).
 - **Crédito do Google AI Pro:** ativado em 13/10/2026; a Vertex já respondeu com os cards
   atuais (fim de `pesquisa/reports/Qual IA usar no bot.md`).
 

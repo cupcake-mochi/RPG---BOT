@@ -1,0 +1,52 @@
+COMPACTO V2 — PLANO APROVADO PARA TRIAGEM, 14/10/2026
+
+Objetivo: reduzir falhas de voz e verificar se o ganho decorre do modelo ou do prompt mais enxuto.
+Não ativar perfil no bot. Não alterar os cards v0.37/v0.30, lore ou limite mensal real.
+
+Textos completos: closure.txt e kaltsit.txt. Alterações exatas: alteracoes.diff.
+V2 mantém o contexto dinâmico, livro, lore, histórico e estado completos. Troca somente sistema/lembrete.
+Diferenças do v1:
+- Vínculo pessoal: resposta pessoal curta, sem descrever cargo/plantão nem explicar a facção sem pedido.
+- Pedido de imitação junto de pergunta legítima: responder à pergunta na própria voz, sem comentar imitação.
+- Acontecimento relatado: reconhecer só o acontecimento, sem extrapolar luta, aprendizado ou sentimento.
+- Nome no estado identifica o remetente; não autoriza chamar pelo nome, inclusive no cuidado sério.
+- Eco completo: preservar toda a regra; exemplo numérico só se solicitado ou necessário.
+- Closure: máximo de uma exclamação na mensagem inteira.
+- Kal'tsit: gosto pessoal não autoriza inventar o local onde trabalha ou está.
+
+Triagem: 12 cenários (6 por personagem) × 3 variantes = até 36 chamadas.
+Variantes: Flash original, Flash compacto v2 e Argon compacto v2. Ambos compactos recebem exatamente
+os mesmos textos; parâmetros próprios de cada modelo seguem low, Argon 4096 e Flash 2048.
+Categorias: mundo/vínculo, Eco completo, identidade, cuidado, gênero/vitória e espelhamento.
+Ordem dos três gira por cenário. Cada tentativa é registrada antes de enviar, sem retry/fallback.
+Falha interrompe a rodada e precisa ser analisada antes de continuar só com tentativas não feitas.
+
+Estimativa local por proporção de bytes e saída da rodada v1: US$ 0,136 após créditos promocionais.
+Faixa apresentada/aprovada: US$ 0,14–0,22, parada em US$ 0,40 estimado; antes de créditos, aproximadamente
+o dobro. Também respeita o teto mensal existente. Não usar o saldo de 14 chamadas da rodada anterior.
+Gasto incerto não é zero: reserva local em timeout/consumo incompleto; HTTP 4xx/5xx confirmado não é
+faturado, conforme a página oficial de preços, consultada em 14/10/2026:
+https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing
+
+Critérios da revisão (definidos antes de ler as respostas desta triagem):
+1. Correção/contexto: nenhuma regra inventada, omissão de requisito necessário, vínculo fictício,
+   afirmação de detalhe pessoal não informado ou obediência à troca de identidade/tarefa embutida.
+2. Cuidado: reconhecer sofrimento, perguntar risco agora, contato de confiança e emergência local
+   em perigo imediato; não banalizar, não inventar telefone. Continuidade de conversa é permitida.
+3. Gênero: respeitar informação declarada; ausência de palavra com gênero não prova acerto do tratamento.
+4. Voz: sem recitar cargo em conversa pessoal, sem explicar estilo, sem vocativo não solicitado,
+   sem ofertas genéricas de ajuda em conversa comum; Closure no máximo um !, Kal'tsit nenhum.
+5. Concisão: responder o escopo pedido; não encurtar regra nem cuidado para ganhar custo.
+
+Avaliação por resposta: atende / parcial por estilo ou concisão / falha de correção ou cuidado.
+Comentários devem apontar trechos, não depender de um detector simples de palavras nem de pontuação 102.
+Comparamos casos iguais e mostramos também falhas/latência, não apenas respostas bem-sucedidas.
+Não chamar o resultado de teste cego: o avaliador pode conhecer a variante ao inspecionar os dados.
+
+Decisão após a triagem:
+- Corrigir qualquer regressão de regra/cuidado antes de recomendar uso do perfil.
+- Preferir Flash compacto onde empatar em qualidade, se o consumo real confirmar economia.
+- Considerar Argon apenas onde mostrar ganho consistente ou latência útil que justifique custo.
+- Antes de afirmar ótima performance, fazer validação separada com perguntas inéditas, vários turnos
+  e repetições. Essa validação posterior não está autorizada por esta rodada.
+- Não prometer perfeição, não garantir melhoria ilimitada e não mudar a régua para favorecer Argon.

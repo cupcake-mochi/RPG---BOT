@@ -54,7 +54,7 @@ class Preco(unittest.TestCase):
         self.assertAlmostEqual(custo_usd("gemini-3.1-flash-lite", 1_000_000, 1_000_000), 1.75)
 
     def test_modelo_fora_da_tabela_conta_pelo_mais_caro(self):
-        self.assertAlmostEqual(custo_usd("modelo-novo", 1_000_000, 0), 1.50)
+        self.assertAlmostEqual(custo_usd("modelo-novo", 1_000_000, 0), 4.0)
 
 
 class Fila(unittest.IsolatedAsyncioTestCase):
@@ -196,14 +196,17 @@ class DeMolho(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(resposta.provedor, "vertex")
         self.assertIn(("gemini", "a"), modelos._de_molho)
 
-    async def test_com_todos_de_molho_tenta_todos(self):
+    async def test_com_todos_de_molho_nao_repete_durante_intervalo(self):
+        chamadas = []
         async def enviar(url, corpo, chave):
+            chamadas.append(url)
             raise Falhou(503, "sobrecarga")
         modelos = Modelos([("gemini", "a"), ("vertex", "b")], {"gemini": "g", "vertex": "v"}, enviar=enviar)
         for _ in range(2):
             with self.assertRaises(Falhou):
                 await modelos.responder(ENTRADA)
         self.assertEqual(len(modelos._de_molho), 2)
+        self.assertEqual(len(chamadas), 2)
 
 
 if __name__ == "__main__":

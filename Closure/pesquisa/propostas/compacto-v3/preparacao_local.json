@@ -1,0 +1,106 @@
+{
+  "chamadas_api_feitas": 0,
+  "perfil_bot_ativado": false,
+  "proposta_validada_em_api": false,
+  "casos_base": 16,
+  "chamadas_planejadas_triagem": 40,
+  "nota": "Bytes medem tamanho do texto, não tokens/custo. Conversas têm plano separado; nada pago autorizado.",
+  "medidas": [
+    {
+      "id": "closure_identidade",
+      "bytes_v2": 9053,
+      "bytes_v3": 9509,
+      "variacao_bytes_pct": 5.03700430796421
+    },
+    {
+      "id": "closure_genero_declarado",
+      "bytes_v2": 15250,
+      "bytes_v3": 15706,
+      "variacao_bytes_pct": 2.9901639344262376
+    },
+    {
+      "id": "closure_genero_ausente",
+      "bytes_v2": 15104,
+      "bytes_v3": 15560,
+      "variacao_bytes_pct": 3.0190677966101642
+    },
+    {
+      "id": "closure_acontecimento",
+      "bytes_v2": 8974,
+      "bytes_v3": 9430,
+      "variacao_bytes_pct": 5.081346110987295
+    },
+    {
+      "id": "closure_cuidado",
+      "bytes_v2": 9004,
+      "bytes_v3": 9460,
+      "variacao_bytes_pct": 5.064415815193257
+    },
+    {
+      "id": "closure_eco_cena",
+      "bytes_v2": 9027,
+      "bytes_v3": 9483,
+      "variacao_bytes_pct": 5.051512130275837
+    },
+    {
+      "id": "closure_eco_gatilho",
+      "bytes_v2": 10411,
+      "bytes_v3": 10867,
+      "variacao_bytes_pct": 4.3799827105945655
+    },
+    {
+      "id": "closure_gosto",
+      "bytes_v2": 8968,
+      "bytes_v3": 9424,
+      "variacao_bytes_pct": 5.084745762711873
+    },
+    {
+      "id": "kaltsit_identidade",
+      "bytes_v2": 8877,
+      "bytes_v3": 9406,
+      "variacao_bytes_pct": 5.959220457361725
+    },
+    {
+      "id": "kaltsit_genero_declarado",
+      "bytes_v2": 15074,
+      "bytes_v3": 15603,
+      "variacao_bytes_pct": 3.5093538543186975
+    },
+    {
+      "id": "kaltsit_genero_ausente",
+      "bytes_v2": 14928,
+      "bytes_v3": 15457,
+      "variacao_bytes_pct": 3.543676312968924
+    },
+    {
+      "id": "kaltsit_acontecimento",
+      "bytes_v2": 8798,
+      "bytes_v3": 9327,
+      "variacao_bytes_pct": 6.012730165946811
+    },
+    {
+      "id": "kaltsit_cuidado",
+      "bytes_v2": 8828,
+      "bytes_v3": 9357,
+      "variacao_bytes_pct": 5.992297236067068
+    },
+    {
+      "id": "kaltsit_eco_cena",
+      "bytes_v2": 8851,
+      "bytes_v3": 9380,
+      "variacao_bytes_pct": 5.976725793695636
+    },
+    {
+      "id": "kaltsit_eco_gatilho",
+      "bytes_v2": 10235,
+      "bytes_v3": 10764,
+      "variacao_bytes_pct": 5.1685393258426915
+    },
+    {
+      "id": "kaltsit_gosto",
+      "bytes_v2": 8792,
+      "bytes_v3": 9321,
+      "variacao_bytes_pct": 6.016833484986361
+    }
+  ]
+}

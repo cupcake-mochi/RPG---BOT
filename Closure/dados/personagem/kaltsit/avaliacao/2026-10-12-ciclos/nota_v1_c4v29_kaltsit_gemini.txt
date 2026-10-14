@@ -1,0 +1,13 @@
+Critérios: v1 (original)
+cat  n                   gemini
+A    2    1/2   {'gabarito': 1
+B    1    1/1   {}            
+E    1    1/1   {}            
+F    1    1/1   {}            
+H    1    1/1   {}            
+
+gemini: 6 respostas | sem nenhuma falha: 5 (83%) | '!' em 0 | mediana 20.0 palavras | por tipo {'gabarito': 1, 'tamanho': 1}
+
+FALHAS:
+  3304 A gemini gabarito  faltou /(fim|final)[^.!?\n]{0,20}cena/ | o que o Eco faz? explica ele inteiro   => Para ter Eco, você precisa de nível 7 e de gastar 2 espaços de feitiço. O efeito funciona assim: quando um feitiço seu reduz um inimigo a 0 pontos de 
+  3304 A gemini tamanho   164 palavras                       | o que o Eco faz? explica ele inteiro   => Para ter Eco, você precisa de nível 7 e de gastar 2 espaços de feitiço. O efeito funciona assim: quando um feitiço seu reduz um inimigo a 0 pontos de 

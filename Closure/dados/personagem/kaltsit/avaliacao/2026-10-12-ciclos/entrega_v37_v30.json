@@ -1,0 +1,11 @@
+{
+  "cards": {
+    "closure": "0.37",
+    "kaltsit": "0.30"
+  },
+  "testes_locais": 187,
+  "comparacao_motores": "14/14",
+  "pacote_sha256": "e86917fc7857d70965fd4f58d878e67114fc6c9a08f453f27e31cc8a9563abe2",
+  "pacote_sem_env": true,
+  "nenhuma_publicacao_na_discloud": true
+}

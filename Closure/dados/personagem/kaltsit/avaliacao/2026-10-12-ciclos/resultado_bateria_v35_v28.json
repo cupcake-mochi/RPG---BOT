@@ -1,0 +1,366 @@
+{
+  "data_brasilia": "2026-10-14",
+  "rodadas_por_personagem": 1,
+  "inicio_utc": "2026-10-14T11:59:31.847667+00:00",
+  "fim_utc": "2026-10-14T12:07:29.919845+00:00",
+  "chamadas": 204,
+  "chamadas_ok": 204,
+  "gasto_baterias_estimado_usd": 0.71691075,
+  "gasto_mes_antes_usd": 4.36720725,
+  "gasto_mes_depois_usd": 5.084118,
+  "modelo": "vertex:gemini-3.8-flash",
+  "raciocinio": "low",
+  "temperatura": 0.8,
+  "juntas": 3,
+  "personagens": {
+    "closure": {
+      "0.34": {
+        "respostas": 102,
+        "sem_marcacao": 91,
+        "percentual_sem_marcacao": 89.2156862745098,
+        "mediana_palavras": 26.5,
+        "marcacoes": {
+          "2105": [
+            [
+              "gabarito",
+              "faltou /ataques/"
+            ],
+            [
+              "tamanho",
+              "71 palavras"
+            ]
+          ],
+          "2408": [
+            [
+              "proibido",
+              "Terra"
+            ]
+          ],
+          "2505": [
+            [
+              "tom",
+              "'!' em regra, mundo ou com quem está mal"
+            ]
+          ],
+          "2506": [
+            [
+              "tom",
+              "'!' em regra, mundo ou com quem está mal"
+            ]
+          ],
+          "2603": [
+            [
+              "genero",
+              "bem-vindo"
+            ]
+          ],
+          "2604": [
+            [
+              "tom",
+              "mais de um '!'"
+            ]
+          ],
+          "2606": [
+            [
+              "tom",
+              "chama pelo nome"
+            ]
+          ],
+          "2904": [
+            [
+              "tom",
+              "mais de um '!'"
+            ]
+          ],
+          "2905": [
+            [
+              "gabarito",
+              "não podia: print("
+            ],
+            [
+              "genero",
+              "pronto"
+            ]
+          ],
+          "3005": [
+            [
+              "tom",
+              "mais de um '!'"
+            ]
+          ],
+          "3008": [
+            [
+              "gabarito",
+              "não podia: build"
+            ],
+            [
+              "genero",
+              "sozinha"
+            ]
+          ]
+        }
+      },
+      "0.35": {
+        "respostas": 102,
+        "sem_marcacao": 86,
+        "percentual_sem_marcacao": 84.31372549019608,
+        "mediana_palavras": 29.0,
+        "marcacoes": {
+          "2105": [
+            [
+              "gabarito",
+              "faltou /ataques/"
+            ],
+            [
+              "tamanho",
+              "74 palavras"
+            ]
+          ],
+          "2116": [
+            [
+              "tamanho",
+              "87 palavras"
+            ]
+          ],
+          "2202": [
+            [
+              "gabarito",
+              "faltou /n[ãa]o (traz|tem|diz|aparece|est[áa]|tra/"
+            ]
+          ],
+          "2206": [
+            [
+              "gabarito",
+              "faltou /n[ãa]o (traz|tem|diz|aparece|est[áa]|tra/"
+            ],
+            [
+              "tamanho",
+              "290 palavras"
+            ]
+          ],
+          "2408": [
+            [
+              "proibido",
+              "Terra"
+            ]
+          ],
+          "2503": [
+            [
+              "proibido",
+              "Rhodes Island"
+            ],
+            [
+              "proibido",
+              "Rhodes"
+            ],
+            [
+              "proibido",
+              "Amiya"
+            ]
+          ],
+          "2505": [
+            [
+              "tom",
+              "'!' em regra, mundo ou com quem está mal"
+            ]
+          ],
+          "2603": [
+            [
+              "genero",
+              "bem-vindo"
+            ]
+          ],
+          "2605": [
+            [
+              "tom",
+              "mais de um '!'"
+            ]
+          ],
+          "2706": [
+            [
+              "genero",
+              "Pronto"
+            ]
+          ],
+          "2801": [
+            [
+              "tom",
+              "abre com Sinto muito"
+            ]
+          ],
+          "2904": [
+            [
+              "tom",
+              "mais de um '!'"
+            ]
+          ],
+          "2905": [
+            [
+              "gabarito",
+              "não podia: print("
+            ]
+          ],
+          "3008": [
+            [
+              "genero",
+              "pronta"
+            ]
+          ],
+          "3101": [
+            [
+              "genero",
+              "acordada"
+            ]
+          ],
+          "3104": [
+            [
+              "genero",
+              "sozinho"
+            ]
+          ]
+        }
+      }
+    },
+    "kaltsit": {
+      "0.27": {
+        "respostas": 102,
+        "sem_marcacao": 93,
+        "percentual_sem_marcacao": 91.17647058823529,
+        "mediana_palavras": 21.0,
+        "marcacoes": {
+          "2206": [
+            [
+              "gabarito",
+              "faltou /n[ãa]o (traz|tem|diz|aparece|est[áa]|tra/"
+            ],
+            [
+              "tamanho",
+              "310 palavras"
+            ]
+          ],
+          "2408": [
+            [
+              "proibido",
+              "Terra"
+            ]
+          ],
+          "2603": [
+            [
+              "tom",
+              "fecho oferecendo ajuda"
+            ]
+          ],
+          "2801": [
+            [
+              "tom",
+              "abre com Sinto muito"
+            ]
+          ],
+          "2802": [
+            [
+              "tom",
+              "abre com Sinto muito"
+            ]
+          ],
+          "2905": [
+            [
+              "gabarito",
+              "não podia: print("
+            ]
+          ],
+          "3008": [
+            [
+              "genero",
+              "pronta"
+            ]
+          ],
+          "3104": [
+            [
+              "genero",
+              "sozinho"
+            ]
+          ],
+          "3204": [
+            [
+              "tom",
+              "fecho oferecendo ajuda"
+            ]
+          ]
+        }
+      },
+      "0.28": {
+        "respostas": 102,
+        "sem_marcacao": 95,
+        "percentual_sem_marcacao": 93.13725490196079,
+        "mediana_palavras": 22.5,
+        "marcacoes": {
+          "2202": [
+            [
+              "gabarito",
+              "faltou /n[ãa]o (traz|tem|diz|aparece|est[áa]|tra/"
+            ]
+          ],
+          "2206": [
+            [
+              "gabarito",
+              "faltou /n[ãa]o (traz|tem|diz|aparece|est[áa]|tra/"
+            ],
+            [
+              "tamanho",
+              "301 palavras"
+            ]
+          ],
+          "2302": [
+            [
+              "gabarito",
+              "faltou /2d8\\s*\\+\\s*4/"
+            ]
+          ],
+          "2503": [
+            [
+              "proibido",
+              "Rhodes Island"
+            ],
+            [
+              "proibido",
+              "Rhodes"
+            ]
+          ],
+          "2801": [
+            [
+              "tom",
+              "abre com Sinto muito"
+            ]
+          ],
+          "2804": [
+            [
+              "gabarito",
+              "faltou /CVV|188|algu[ée]m|ajuda|conversa|fala co/"
+            ],
+            [
+              "tom",
+              "chama pelo nome"
+            ]
+          ],
+          "3104": [
+            [
+              "genero",
+              "sozinho"
+            ]
+          ]
+        }
+      }
+    }
+  },
+  "sha256": {
+    "bateria_c3lb12.json": "75707f10e2309f8c2b9c5ad2e0f02848aef7e59b86e5cac3d748cacecf45687b",
+    "bateria_c3lb12_kaltsit.json": "db10a9fc7028abdad29b62c801835d4d647bcae69a138700fb592e77bb843544",
+    "sistema_closure_v35.txt": "32104275eaa985996201bdbe88b8f2084ef61302a96262c1ae0508b022fe618f",
+    "lembrete_closure_v35.txt": "3cc866a2b65f6d503a2481fd7337a048a1ddefb6a75387c58041865fbe16be9e",
+    "sistema_kal_v28.txt": "0f07e8c50134aa68e5557c64eb38f499c0d9ae83da87b6b02aacf8ea2f55a620",
+    "lembrete_kaltsit_v28.txt": "9188dd7c768975e61d084d4f826861ae4f2a860796dfcdd69ad7864c8da75593",
+    "r_c3lb12v35_gemini_a.json": "448d2c1e8500fd2788885a2dc2751e38af3a99994bdb16ad2ce621dd585106c3",
+    "r_c3lb12v28_kaltsit_gemini_a.json": "331972bb4e91a2e4d3cb69a2fb41b9f1b72fb3b4fc04ff29b41026fa1a0ae7c4",
+    "nota_c3.py": "04a1e3ebbcfc2b8fffad39380621d087595da2cfa34f57eae886d894fefbe899"
+  }
+}

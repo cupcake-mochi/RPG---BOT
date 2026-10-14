@@ -75,7 +75,7 @@ class Admin(commands.Cog):
                 f"Prompt: {cards}.\n"
                 f"Registro: {contagens['gatilhos']} gatilhos, {contagens['chamadas_api']} chamadas de API, "
                 f"{contagens['mensagens_bot']} mensagens enviadas.\n"
-                f"Gasto estimado no mês com modelo pago: US$ {self.bot.modelos.gasto_do_mes():.2f} "
+                f"Orçamento usado no mês (estimativa + reservas por consumo incerto): US$ {self.bot.modelos.gasto_do_mes():.2f} "
                 f"de US$ {self.bot.modelos.teto_usd:.2f}.")
 
     @app_commands.command(name="ping", description="Confere se o bot está no ar e qual versão das regras ele leu.")

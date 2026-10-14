@@ -31,7 +31,7 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 166 testes; 39 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 228 testes em 14/10; inclui 16 casos do verificador de respostas e um de retomada da bateria. Há testes que precisam do discord.py, da cryptography ou dos dois motores juntos e são pulados sem essas dependências. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -64,6 +64,109 @@ Estado em 13/10/2026: tudo abaixo está feito, e o bot respondeu no servidor pri
    Ao subir, o bot registra os comandos em todo servidor, o que troca os do bot antigo.
 5. O painel diário de clima: `/clima_canal` no canal, ou o ID do canal em `CLIMA_CANAIS`, no `.env` (o do
    servidor principal já está lá). Quem desligar o painel por comando precisa tirar o ID do `.env` também.
+
+## Alternar Flash e Argon (14/10/2026)
+
+### Uso seletivo e perfil compacto experimental
+
+Flash 3.8 permanece padrão. Para um piloto em canais escolhidos, depois de revisar os resultados de
+`pesquisa/validacao/2026-10-14-compacto-v2/relatorio.txt`, configure explicitamente:
+
+```dotenv
+MODELO_CHAT=misto
+ARGON_CANAIS=ID_DO_CANAL_DE_TESTE
+ARGON_PERFIL=compacto-v2
+ARGON_TETO_USD=1
+```
+
+Substitua o ID e mantenha `VERTEX_PROJETO` e a chave privados. Sem canais selecionados, modo misto só
+usa Flash. O limite de US$ 1 é uma parcela do teto global (normalmente US$ 9), não um valor extra;
+zero bloqueia Argon e segue para o fallback. Não há classificador pago nem palavra do usuário que
+ative o modelo. Nos canais escolhidos, toda mensagem que já chamaria o bot tenta Argon, até o limite;
+isso não seleciona automaticamente apenas perguntas difíceis. A reflexão continua no Flash.
+
+`ARGON_PERFIL=original` mantém o prompt anterior. `compacto-v1` usa textos revisáveis em
+`pesquisa/propostas/argon-compacto-v1/`, implementados em `closure_bot/perfil_argon.py`. Compacta somente
+sistema/lembrete: histórico, livro, lore, estado, pronomes e mensagem atual permanecem completos. O
+fallback reconstrói a chamada Flash com o prompt original. Não edita os cards. Exige as versões
+Closure 0.37 / Kal'tsit 0.30 e o sistema original exato: em incompatibilidade, pula Argon sem enviar
+e usa o fallback. Uma mudança futura nos cards exige revisar o perfil.
+
+`compacto-v2` usa os textos aprovados de `pesquisa/propostas/compacto-v2/`, com núcleo em
+`closure_bot/perfil_compacto_v2.py`. Mantém as mesmas proteções da v1. O experimento e o bot
+compartilham a transformação; o teste local compara o corpo inteiro nos 12 cenários e força o
+fallback original. Flash compacto v2 existe apenas na ferramenta de avaliação: não há opção para
+ativá-lo no chat, pois executou uma tarefa embutida numa tentativa de troca de identidade.
+
+Na triagem v2 aprovada até 36 chamadas, encerramos em 27: 12 respostas de cada compacto,
+uma Flash original e dois timeouts Flash original; nove originais suspensas. Nenhuma repetição.
+Argon teve custo médio estimado US$ 0,004991 e mediana 3,54 s; Flash compacto US$ 0,001867 e
+18,86 s. São estimativas com créditos promocionais, não fatura. O Argon custou 2,67× o Flash
+compacto, e 20,34% acima do Flash original histórico nos mesmos 12 casos. A comparação com
+original desta rodada está incompleta. A v2 melhorou alguns comportamentos, mas mantém
+falhas de voz/inferência; gênero foi inconclusivo. Não é validação geral nem nota 102/102.
+`ferramentas/avaliar_compacto_v2.py` sem `--executar` só prepara/confere localmente. A rodada
+está concluída; não reaproveitar automaticamente as nove chamadas suspensas.
+
+A proposta v3 está em `pesquisa/propostas/compacto-v3/`, com preparação local em
+`ferramentas/preparar_compacto_v3.py`. Ainda não é uma opção de `ARGON_PERFIL` e não entra no
+pacote de execução. Os 228 testes locais conferem sua integridade e a reprodução da v2, sem
+chamadas de API. Os casos inéditos e o plano de diálogos não estão autorizados para execução paga.
+Revisão externa: `docs/REVISAO-CLAUDE-ARGON.txt`.
+
+Chamadas pagas agora esperam até 60 segundos; a gratuita continua com 12. O intervalo após falhas é
+respeitado mesmo se todos os modelos estiverem indisponíveis. Erros de autenticação/configuração
+ficam 30 minutos sem novas tentativas. HTTP 4xx/5xx confirmado não reserva custo, pois não é faturado.
+Timeouts, cancelamentos e respostas 200 sem consumo completo
+mantêm uma reserva cautelar no SQLite. Ela conta para os dois limites e sobrevive a reinício, mas
+não é cobrança confirmada: `custo_estimado_usd` e `reserva_sem_uso_usd` ficam separados. O status
+explicita estimativa + reservas. Não reconcilia automaticamente a fatura nem corrige chamadas antigas
+sem uso; queda abrupta do processo antes de registrar e processos simultâneos continuam limitações.
+Teto negativo, NaN, infinito ou inválido agora interrompe a configuração em vez de deixar um limite
+ineficaz. Nenhuma configuração real foi ativada nem enviada à Discloud nesta revisão.
+
+Na bateria, `--compacto-argon` mantém Flash original e prepara Argon compacto, com hash de ambos.
+`--somente-argon` permite suspender novas tentativas Flash; tentativas anteriores continuam contando
+no limite. A variante e o hash do pedido enviado ficam em cada resposta. Uma falha não é repetida.
+
+A comparação local funcionou pela Vertex, usando a mesma chave e o mesmo projeto. Flash continua como padrão.
+O relatório e as respostas estão em `pesquisa/validacao/2026-10-14-argon/`: 40 tentativas, 37 respostas,
+17 pares completos; Argon low custou 2,64 vezes o Flash low nessa amostra.
+
+No `Closure/.env` (ou nas variáveis da hospedagem), configure e reinicie:
+
+```dotenv
+# Vazio preserva FILA_MODELOS; este valor seleciona Argon no chat com Flash de reserva.
+MODELO_CHAT=gemini-4-argon
+# ID/número do mesmo projeto usado pela chave Vertex. Não publique o valor.
+VERTEX_PROJETO=
+ARGON_MAX_SAIDA=4096
+```
+
+Para voltar, use `MODELO_CHAT=gemini-3.8-flash`, ou deixe vazio para respeitar `FILA_MODELOS`.
+A chave continua em `VERTEX_API_KEY`. Com `VERTEX_PROJETO`, Argon e Flash 3.8 usam a rota explícita
+`locations/global`; sem projeto, permanece a rota Express. A rota curta do
+Flash retornou 404 para Argon. A reflexão das 4h30 usa Flash low na Vertex (Flash-Lite pago de reserva),
+independentemente de `MODELO_CHAT`. Ambos compartilham o registro e o teto de gasto.
+
+Argon sempre usa `low`, omite temperatura/amostragem/penalidades, aceita `ARGON_MAX_SAIDA` entre 256 e
+32768 e espera até 60 segundos. O limite inclui raciocínio e resposta; 4096 foi testado nos cinco casos
+finais, sem cortes. Flash mantém seus parâmetros; a revisão posterior aumentou a espera paga para 60 segundos. Cada tentativa monta seu próprio
+pedido, inclusive fallback. Logs e SQLite guardam tokens de entrada, resposta, raciocínio e cache,
+modelo efetivo, término/corte, latência e custo estimado. Falha com uso informado também entra na soma.
+
+O banco antigo ganha colunas automaticamente, sem apagar linhas. O limite faz uma reserva conservadora
+antes de cada chamada paga para coordenar concorrência na mesma instância. Não controla outro processo
+nem substitui o faturamento: timeouts podem ter cobrança sem retornar tokens. Os valores promocionais
+são estimativas após créditos sobre gasto líquido; a fatura decide a aplicação. Preços do Argon mudam
+em dezembro de 2026 e os do Flash em janeiro de 2027. Não é necessário Ultra para esta API.
+
+A ferramenta `ferramentas/comparar_argon.py` prepara os prompts sem gastar por padrão. `--executar` faz
+chamadas pagas, exige autorização prévia e usa um limite de 40 tentativas/US$ 0,50 estimado por pasta.
+Ela salva o início de cada tentativa antes de enviar, não repete tentativas nem usa fallback na comparação.
+Uma falha interrompe a rodada; `--continuar-apos-interrupcao` exige revisão manual e só avança nos casos
+não tentados. Use outra pasta apenas para uma nova bateria autorizada. A pasta da rodada de 14/10 já
+consumiu suas 40 tentativas: retomá-la não deve disparar novas chamadas.
 
 ## Modelo e prompt (13/10/2026)
 

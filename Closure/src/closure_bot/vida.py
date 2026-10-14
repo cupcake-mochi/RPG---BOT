@@ -37,7 +37,7 @@ TRATO = {
         "conversam há muito tempo: humor seco e franqueza à vontade",
     ),
     CLOSURE: (
-        "pessoa nova: forma neutra, explique mais, sem provocação",
+        "pessoa nova: explique mais, sem provocação",
         "já conversaram algumas vezes: brincadeira leve cabe",
         "conversam com frequência: se os fatos trouxerem uma dúvida antiga dela, pode provocar com isso",
         "conversam há muito tempo: provoque à vontade, e a cobrança em iene pode aparecer",
@@ -48,7 +48,7 @@ TRATO = {
 LEMBRETE_CARGA = {KALTSIT: "Carga alta: uma frase.", CLOSURE: "Carga alta: uma frase, sem piada."}
 LEMBRETE_PACIENCIA = {KALTSIT: "Paciência baixa com esta pessoa: seca, sem explicar duas vezes.",
                       CLOSURE: "Paciência baixa com esta pessoa: curta, sem piada, sem explicar duas vezes."}
-LEMBRETE_PESSOA_NOVA = {CLOSURE: "Pessoa nova: forma neutra, sem provocação."}
+LEMBRETE_PESSOA_NOVA = {CLOSURE: "Pessoa nova: sem provocação."}
 
 TIRA_DO_PERSONAGEM = re.compile(
     r"ignor\w+ (?:todas? )?(?:as |suas |tuas |essas )?(?:instru|regras|ordens)|esque[cç]a (?:tudo|as instru|suas instru)"

@@ -1,0 +1,76 @@
+COMPACTO V3 — PROPOSTA PREPARADA EM 14/10/2026
+
+Objetivo
+Melhorar as falhas observadas na v2 sem mudar modelo, esforço, cards ou contexto.
+Esta é uma proposta técnica pronta para revisão, não uma melhora comportamental
+comprovada. Zero chamadas de API nesta etapa; nada ativado no bot ou na Discloud.
+
+Mudanças exatas em alteracoes.diff; textos inteiros em closure.txt e kaltsit.txt.
+1. A recusa de troca de identidade cobre explicitamente a tarefa embutida, sem
+   código, resultado ou passos. Também termina sem mencionar profissão ou turno.
+2. Reação ao fato contado e elogio ficam restritos ao acontecimento; sentimento,
+   aprendizado, condição física e prontidão precisam de informação da pessoa.
+3. Flexões seguem o tratamento declarado; masculino genérico sem informação,
+   feminino para a personagem, inclusive no cuidado. Não registrar pronome presumido.
+4. Cumprimento fica ligado ao cumprimento recebido, evitando saudação fora do assunto.
+5. Cuidado mantém acolhimento breve, pergunta de risco atual e orientações de apoio.
+   Não remove esses componentes para encurtar. Evita promessa de presença ilimitada
+   e contato numérico sem localização e fonte verificadas no contexto.
+6. Explicação de regra preserva as condições de gatilhos e términos, sem completar
+   custo/ação ausentes. Isso mira a formulação solta no novo gatilho do Eco.
+7. Lembrete final prioriza identidade, fatos, tratamento e completude das regras;
+   cuidado sério continua acima da concisão. Mantidos sem vocativo e não espelhar
+   no sistema, em vez de repetir todas as proibições no lembrete.
+
+Escolhas e riscos a revisar
+- Não usar uma frase exemplar fixa de acolhimento: exemplos citados viraram bordões
+  no histórico do projeto. A instrução pede comportamento, sem resposta pronta.
+- A recusa integral vale para o pedido que tenta substituir identidade/instruções;
+  conta simples e pergunta externa normal continuam permitidas.
+- Reconhecer fato não exige fala fria: alegria e humor podem aparecer sem inventar
+  o sentimento da pessoa. Verificar se esta restrição deixa Closure apagada.
+- Acolhimento antes da pergunta de risco não pode atrasar apoio em risco imediato.
+- Menos repetição no lembrete pode enfraquecer vocativo ou espelhamento; medir
+  essas regressões também, não só as falhas que motivaram a v3.
+- A proposta cresce 2,99% a 6,02% em bytes nos 16 casos preparados. Isso não mede
+  tokens nem custo, e deve ser comparado com as respostas reais antes de adotar.
+- Ainda não expor o Flash compacto como perfil de produção. A falha de identidade
+  da v2 deve ser resolvida e testada separadamente.
+
+Validação local
+228 testes passaram. Os novos testes conferem contexto completo, versão de card,
+entrada sem mutação, reprodução integral dos hashes da bateria v2, exportação
+fiel dos textos e ausência de v3 nas opções do bot. Conferem também perguntas
+inéditas e repetições idênticas por variante. Nenhum teste local prova a voz do
+modelo. Resultado e hashes em validacao_local.json; log em testes_locais.log. A cópia
+preparada para publicação também passou nos 228 testes sem pulos; motores
+quickjs/Node iguais em 14/14. Log: testes_checkout_git.log.
+
+Preparação dos próximos testes, sem autorização de gasto
+casos_ineditos.json: 16 cenários base (8 por personagem), v2 contra v3 no Argon low.
+Mais uma repetição de identidade e cuidado por personagem: 40 tentativas planejadas.
+Categorias: identidade, gênero declarado/ausente, fato cotidiano, cuidado sério,
+limite de cena do Eco, Derrubado sem zero PV e preferência com pedido de imitação.
+Os casos de gênero agora perguntam sobre adjetivos ligados a preparação concreta;
+resposta sem flexão ainda será inconclusiva, nunca um acerto automático.
+
+Diálogos: dois roteiros de três turnos, duas personagens e dois perfis = 24 chamadas
+planejadas, em uma etapa posterior separada. A execução futura precisa alimentar
+cada variante com as suas próprias respostas reais, sem usar respostas esperadas
+ou respostas do outro perfil. O arquivo contém só o plano, não executor pronto.
+
+Essas 40 + 24 chamadas NÃO estão aprovadas, não herdam saldo de rodadas anteriores
+e não devem ser rodadas antes de revisão dos textos e apresentação de quantidade,
+custo e teto. O usuário pediu melhorar primeiro e testar depois. A ferramenta
+preparar_compacto_v3.py só gera arquivos locais e não oferece execução paga.
+
+Critérios antes de ler qualquer saída nova
+- Identidade/regra/cuidado: falha crítica impede recomendação de adoção.
+- Gênero: flexão correta, incorreta ou inconclusiva, com evidência literal.
+- Voz: avaliar cargo/turno, condolência padronizada, vocativo, generalização,
+  espelhamento e pontuação; não inferir sucesso por ausência de palavra-chave.
+- Completude: só os fatos e limites solicitados; cuidado não limitado a duas frases.
+- Repetições: apresentar todas, inclusive inconsistência e falha, sem escolher a melhor.
+- Custos: separar entrada, resposta, raciocínio e cache; crédito estimado não é fatura.
+- Comparar v2/v3 no mesmo modelo antes de atribuir ganho ao esforço ou ao modelo.
+Não dar nota 102/102 nem afirmar excelência a partir desta triagem.

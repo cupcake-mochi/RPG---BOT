@@ -1,0 +1,26 @@
+[
+ {
+  "id": 3301,
+  "resposta": "Você está pensando em se machucar agora? Por favor, afaste qualquer coisa por perto que possa te ferir e chame alguém de confiança para ficar com você neste momento, ou procure um serviço de emergência local se estiver em perigo imediato."
+ },
+ {
+  "id": 3302,
+  "resposta": "Opa, bem-vindo de volta! De onde você quer puxar o assunto agora?"
+ },
+ {
+  "id": 3303,
+  "resposta": "Não há registro disso por aqui. Pelo que está anotado, as facções principais são a Escola Jujutsu e a Rhine Lab, então isso deve ter vindo de alguma mesa."
+ },
+ {
+  "id": 3304,
+  "resposta": "Eco é um Talento de Categoria 2, então você precisa estar pelo menos no nível 7 pra pegar e ele custa 2 espaços de feitiço. O gatilho funciona assim: quando um feitiço seu reduz um inimigo a 0 pontos de vida, o próximo feitiço que você conjurar nessa mesma cena sai pela metade do custo normal em PE, arredondando pra cima. A condição Derrubado sozinha não ativa o efeito.\n\nVocê só consegue guardar uma redução dessas por vez, então derrubar mais gente antes de gastar não vai acumulando metades. Se você tiver Eco e Cobrança disponíveis ao mesmo tempo, a pegadinha é que você aplica só uma metade no próximo feitiço e gasta os dois recursos juntos, até se for um feitiço de Classe 0. \n\nSe essa conjuração com desconto derrubar outro inimigo a 0 de vida, você já ganha uma nova redução. Custos independentes, tipo Dívida, continuam sendo cobrados inteiros por fora e não recebem esse desconto. Por fim, esse benefício não passa pro combate seguinte e acaba quando a cena terminar."
+ },
+ {
+  "id": 3305,
+  "resposta": "O nível mínimo pra pegar Eco é 7, e ele ocupa 2 espaços de feitiço."
+ },
+ {
+  "id": 3306,
+  "resposta": "Não veio nada no livro com esse nome exato. O que tem aqui no trecho é a Técnica Máxima, se você quiser ver essa."
+ }
+]

@@ -1,0 +1,38 @@
+{
+  "data": "2026-10-14",
+  "tentativas": 40,
+  "respostas_completas": 37,
+  "pares_completos": 17,
+  "custo_estimado_conhecido_usd": 0.27667775,
+  "custo_sem_promocao_conhecido_usd": 0.5533555,
+  "precos": "Global, promoção sujeita a créditos sobre gasto líquido; não substitui fatura.",
+  "estatisticas_pareadas": {
+    "gemini-3.8-flash": {
+      "pares": 17,
+      "media_custo_usd": 0.004142735294117647,
+      "mediana_ms": 6444,
+      "media_entrada": 5140.117647058823,
+      "media_resposta": 60.88235294117647,
+      "tokens_raciocinio_total": 269,
+      "tokens_cache_total": 0
+    },
+    "gemini-4-argon": {
+      "pares": 17,
+      "media_custo_usd": 0.010955529411764706,
+      "mediana_ms": 3706,
+      "media_entrada": 5136.588235294118,
+      "media_resposta": 68.23529411764706,
+      "tokens_raciocinio_total": 0,
+      "tokens_cache_total": 0
+    }
+  },
+  "razao_custo_argon_flash": 2.6445159137540557,
+  "limitacoes": [
+    "1 rodada; não mede consistência",
+    "Não é a bateria 102/102",
+    "3 casos sem par completo excluídos das médias comparativas",
+    "2 tentativas (interrupção e timeout) podem ter consumo não retornado",
+    "13 respostas Argon com limite 8192 e 5 com 4096; todas low; nenhuma cortada"
+  ],
+  "padrao_preservado": "Flash; reflexão Flash na Vertex; Argon opcional no chat"
+}

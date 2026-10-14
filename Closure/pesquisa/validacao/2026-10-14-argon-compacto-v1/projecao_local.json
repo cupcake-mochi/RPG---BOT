@@ -1,0 +1,149 @@
+{
+  "metodo": "Projeção por proporção de bytes usando consumo anterior do mesmo caso; não é tokenização nem medição API. Qualidade pendente.",
+  "reducao_bytes_media": 0.5800708585886496,
+  "tokens_entrada_argon_projetados_media": 2191.448974301093,
+  "custo_argon_projetado_saida_67": 0.005052897948602186,
+  "custo_bateria_20_cada_projetado": 0.18391266485204372,
+  "casos": [
+    {
+      "id": "closure_cumprimento",
+      "bytes_original": 22388,
+      "bytes_compacto": 8156,
+      "reducao_bytes": 0.6356976951938538,
+      "tokens_entrada_projetados": null
+    },
+    {
+      "id": "closure_mundo",
+      "bytes_original": 23010,
+      "bytes_compacto": 8778,
+      "reducao_bytes": 0.6185136897001304,
+      "tokens_entrada_projetados": null
+    },
+    {
+      "id": "closure_eco_inteiro",
+      "bytes_original": 23533,
+      "bytes_compacto": 9301,
+      "reducao_bytes": 0.6047677729146306,
+      "tokens_entrada_projetados": 2248.8713721157524
+    },
+    {
+      "id": "closure_eco_curto",
+      "bytes_original": 23562,
+      "bytes_compacto": 9330,
+      "reducao_bytes": 0.6040234275528393,
+      "tokens_entrada_projetados": 2255.08658008658
+    },
+    {
+      "id": "closure_termo_inventado",
+      "bytes_original": 26891,
+      "bytes_compacto": 12659,
+      "reducao_bytes": 0.5292477036926853,
+      "tokens_entrada_projetados": 3055.1824030344724
+    },
+    {
+      "id": "closure_identidade",
+      "bytes_original": 22519,
+      "bytes_compacto": 8287,
+      "reducao_bytes": 0.631999644744438,
+      "tokens_entrada_projetados": 1991.985922998357
+    },
+    {
+      "id": "closure_cuidado",
+      "bytes_original": 22466,
+      "bytes_compacto": 8234,
+      "reducao_bytes": 0.6334906080299119,
+      "tokens_entrada_projetados": 1982.0827917742365
+    },
+    {
+      "id": "closure_genero",
+      "bytes_original": 22423,
+      "bytes_compacto": 8191,
+      "reducao_bytes": 0.634705436382286,
+      "tokens_entrada_projetados": 1971.86005440842
+    },
+    {
+      "id": "closure_seguimento",
+      "bytes_original": 24028,
+      "bytes_compacto": 9796,
+      "reducao_bytes": 0.5923089728649908,
+      "tokens_entrada_projetados": 2381.3232894955886
+    },
+    {
+      "id": "closure_espelhamento",
+      "bytes_original": 22435,
+      "bytes_compacto": 8203,
+      "reducao_bytes": 0.6343659460664142,
+      "tokens_entrada_projetados": 1975.8864274570983
+    },
+    {
+      "id": "kaltsit_cumprimento",
+      "bytes_original": 18754,
+      "bytes_compacto": 8002,
+      "reducao_bytes": 0.5733176922256585,
+      "tokens_entrada_projetados": 1911.53673882905
+    },
+    {
+      "id": "kaltsit_mundo",
+      "bytes_original": 19375,
+      "bytes_compacto": 8623,
+      "reducao_bytes": 0.5549419354838709,
+      "tokens_entrada_projetados": 2058.838606451613
+    },
+    {
+      "id": "kaltsit_eco_inteiro",
+      "bytes_original": 19898,
+      "bytes_compacto": 9146,
+      "reducao_bytes": 0.5403558146547391,
+      "tokens_entrada_projetados": 2195.720273394311
+    },
+    {
+      "id": "kaltsit_eco_curto",
+      "bytes_original": 19927,
+      "bytes_compacto": 9175,
+      "reducao_bytes": 0.53956942841371,
+      "tokens_entrada_projetados": 2201.7789933256386
+    },
+    {
+      "id": "kaltsit_termo_inventado",
+      "bytes_original": 23256,
+      "bytes_compacto": 12504,
+      "reducao_bytes": 0.4623323013415893,
+      "tokens_entrada_projetados": 2998.5727554179566
+    },
+    {
+      "id": "kaltsit_identidade",
+      "bytes_original": 18884,
+      "bytes_compacto": 8132,
+      "reducao_bytes": 0.5693708959966108,
+      "tokens_entrada_projetados": 2118.264562592671
+    },
+    {
+      "id": "kaltsit_cuidado",
+      "bytes_original": 18831,
+      "bytes_compacto": 8079,
+      "reducao_bytes": 0.5709733949338855,
+      "tokens_entrada_projetados": 1928.4745897721841
+    },
+    {
+      "id": "kaltsit_genero",
+      "bytes_original": 18788,
+      "bytes_compacto": 8036,
+      "reducao_bytes": 0.5722801788375559,
+      "tokens_entrada_projetados": 1918.3233979135618
+    },
+    {
+      "id": "kaltsit_seguimento",
+      "bytes_original": 20393,
+      "bytes_compacto": 9641,
+      "reducao_bytes": 0.5272397391261707,
+      "tokens_entrada_projetados": 2329.7625655862307
+    },
+    {
+      "id": "kaltsit_espelhamento",
+      "bytes_original": 18800,
+      "bytes_compacto": 8048,
+      "reducao_bytes": 0.5719148936170213,
+      "tokens_entrada_projetados": 1922.5302127659575
+    }
+  ]
+}

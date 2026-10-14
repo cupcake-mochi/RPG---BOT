@@ -50,7 +50,7 @@ class AvisoDeRepeticao(unittest.TestCase):
 @unittest.skipUnless(PRONTO, "sem motor ou sem a página do site baixada")
 class EstadoDoBot(unittest.TestCase):
     ESTADO = {"bloco": "[Estado agora: plantão; 22:10 em Brasília; canal cheio; carga 2.\nQuem fala: rafa (pronomes: ele/dele).]",
-              "lembretes": ["Carga alta: uma frase, sem piada.", "Paciência baixa com esta pessoa.", "Pessoa nova: forma neutra."]}
+              "lembretes": ["Carga alta: uma frase, sem piada.", "Paciência baixa com esta pessoa.", "Pessoa nova: sem provocação."]}
 
     def _ultimo(self, hora, **extra):
         return site_prompt.montar("clo", "closure, o que é Integridade?", nome="rafa", hora=hora, **extra)["input"][-1]["content"]
@@ -111,3 +111,33 @@ class PaginaMontadaAqui(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+@unittest.skipUnless(PRONTO, "sem motor ou livro")
+class EcoExato(unittest.TestCase):
+    def test_eco_inteiro_requisitos_e_seguimento(self):
+        for motor in MOTORES:
+            for mensagem, turnos in [
+                ("o que o Eco faz? explica ele inteiro", []),
+                ("qual o nível mínimo pra pegar Eco e quantos espaços ele ocupa?", []),
+                ("e se tiver uma Dívida de 4 PE junto?", [{"de": "user", "nome": "Alex", "texto": "Com Eco ativo, quanto custa meu feitiço de 9 PE?"}]),
+            ]:
+                p = site_prompt.montar("clo", mensagem, nome="Alex", hora=(22, 10), turnos=turnos, motor=motor)
+                texto = p["input"][-1]["content"]
+                self.assertIn("#### Eco\n", texto)
+                self.assertIn("Nível mínimo 7", texto)
+                self.assertIn("2 espaços de feitiço", texto)
+                self.assertIn("não atravessa o fim da cena", texto)
+                self.assertNotIn("#### Fluxo", texto)
+                self.assertNotIn("Livro: Eco Técnico (continuação)", p["ativadas"])
+
+    def test_eco_de_som_e_eco_tecnico_nao_viram_talento(self):
+        for mensagem in ("por que tem eco na minha sala?", "como funciona Eco Técnico?"):
+            p = site_prompt.montar("clo", mensagem, nome="Alex", hora=(22, 10))
+            self.assertNotIn("#### Eco\n", p["input"][-1]["content"])
+
+    def test_comparar_nao_descarta_a_outra_entrada(self):
+        for mensagem, outro in (("qual a diferença entre Eco e Fluxo?", "#### Fluxo"),
+                                 ("compare Eco e Técnica Máxima", "### Técnica Máxima")):
+            p = site_prompt.montar("clo", mensagem, nome="Alex", hora=(22, 10))
+            self.assertIn("#### Eco\n", p["input"][-1]["content"])
+            self.assertIn(outro, p["input"][-1]["content"])

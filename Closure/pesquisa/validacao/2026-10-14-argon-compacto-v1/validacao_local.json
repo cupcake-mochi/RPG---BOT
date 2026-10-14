@@ -1,0 +1,17 @@
+{
+  "testes_locais": 213,
+  "resultado": "OK",
+  "zip_arquivos": 36,
+  "zip_sha256": "58b1f20a76b9726f39ed2ef95ed4cf72dc2f8dda5e8ed649f24ccbdc03c9e640",
+  "zip_igual_fontes": true,
+  "zip_sem_segredos": true,
+  "tentativas_unicas": 26,
+  "hashes_dos_pedidos_conferidos": true,
+  "cards": {
+    "closure": "0.37",
+    "kaltsit": "0.30"
+  },
+  "modo_argon_ativado_no_env": false,
+  "perfil_compacto_ativado_no_env": false,
+  "implantado": false
+}

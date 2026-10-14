@@ -187,7 +187,10 @@ class Chat(commands.Cog):
         anteriores = [f for f in bot.registro.ultimas_falas(canal_id=canal.id, persona=persona, agora=agora) if f not in desta]
         entrada = await montar_prompt(persona, texto, nome=nome, pronomes=estado.pronomes, turnos=turnos,
                                       falas_anteriores=anteriores, estado=para_a_ponte)
-        resposta = await bot.modelos.responder(entrada, persona=persona, gatilho=decisao.motivo)
+        rota = {}
+        if bot.config.usa_argon(canal.id):
+            rota["usar_argon"] = True
+        resposta = await bot.modelos.responder(entrada, persona=persona, gatilho=decisao.motivo, **rota)
         fala = resposta.texto.strip()
         partes = em_partes(fala)
         if not partes:

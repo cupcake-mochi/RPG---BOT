@@ -59,7 +59,7 @@ Uma ficha por pessoa do servidor, guardada pelo ID do Discord.
 | Campo | O que guarda | Regra |
 | ----- | ------------ | ----- |
 | Nome de exibição | o atual | ela chama por ele, pouco |
-| Pronomes | só se a pessoa disser | sem isso, forma neutra |
+| Pronomes | só se a pessoa disser | respeita a informação; sem gênero ou pronomes informados, usa masculino genérico sem registrar um pronome presumido |
 | Fatos | 5 a 15 frases curtas | só o que a pessoa disse no servidor, sobre o jogo: personagem, Caminho, mesa, mestre, dúvida que repete, preferência de resposta. Fato mais velho e menos usado sai quando passa de 15 |
 | Intimidade | 0–4 | sobe no máximo 1 por semana, por dias com conversa de verdade (5 dias diferentes → 1; 15 → 2; 40 → 3; 100 → 4). Não desce, a não ser por atrito repetido |
 | Último contato | data | — |

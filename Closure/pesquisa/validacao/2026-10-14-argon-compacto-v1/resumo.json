@@ -1,0 +1,153 @@
+{
+  "tentativas": 26,
+  "concluidas": 24,
+  "argon": {
+    "n": 20,
+    "entrada_media": 2126.95,
+    "saida_media": 73.7,
+    "custo_medio_usd": 0.0049909,
+    "custo_total_usd": 0.099818,
+    "latencia_mediana_ms": 3400.0,
+    "cache_total": 0,
+    "raciocinio_total": 0,
+    "cortes": 0
+  },
+  "flash_novo": {
+    "n": 4,
+    "entrada_media": 5856.75,
+    "saida_media": 84,
+    "custo_medio_usd": 0.0047075625,
+    "custo_total_usd": 0.01883025,
+    "latencia_mediana_ms": 7190.0,
+    "cache_total": 0,
+    "raciocinio_total": 0,
+    "cortes": 0
+  },
+  "custo_conhecido_total_usd": 0.11864825,
+  "reserva_incerta_usd": 0.04989075,
+  "flash_mesma_rodada": {
+    "ids": [
+      "closure_cumprimento",
+      "closure_eco_curto",
+      "closure_eco_inteiro",
+      "closure_termo_inventado"
+    ],
+    "compacto": {
+      "n": 4,
+      "entrada_media": 2344.25,
+      "saida_media": 100.75,
+      "custo_medio_usd": 0.005696,
+      "custo_total_usd": 0.022784,
+      "latencia_mediana_ms": 4818.5,
+      "cache_total": 0,
+      "raciocinio_total": 0,
+      "cortes": 0
+    },
+    "comparador": {
+      "n": 4,
+      "entrada_media": 5856.75,
+      "saida_media": 84,
+      "custo_medio_usd": 0.0047075625,
+      "custo_total_usd": 0.01883025,
+      "latencia_mediana_ms": 7190.0,
+      "cache_total": 0,
+      "raciocinio_total": 0,
+      "cortes": 0
+    },
+    "razao_custo": 1.2099680036112106,
+    "reducao_entrada": 0.5997353481026166
+  },
+  "flash_rodada_anterior": {
+    "ids": [
+      "closure_cuidado",
+      "closure_cumprimento",
+      "closure_eco_curto",
+      "closure_eco_inteiro",
+      "closure_espelhamento",
+      "closure_genero",
+      "closure_identidade",
+      "closure_mundo",
+      "closure_seguimento",
+      "closure_termo_inventado",
+      "kaltsit_cuidado",
+      "kaltsit_cumprimento",
+      "kaltsit_eco_curto",
+      "kaltsit_eco_inteiro",
+      "kaltsit_espelhamento",
+      "kaltsit_genero",
+      "kaltsit_identidade",
+      "kaltsit_mundo",
+      "kaltsit_seguimento"
+    ],
+    "compacto": {
+      "n": 19,
+      "entrada_media": 2083,
+      "saida_media": 75.36842105263158,
+      "custo_medio_usd": 0.004919684210526316,
+      "custo_total_usd": 0.093474,
+      "latencia_mediana_ms": 3387,
+      "cache_total": 0,
+      "raciocinio_total": 0,
+      "cortes": 0
+    },
+    "comparador": {
+      "n": 19,
+      "entrada_media": 5177.263157894737,
+      "saida_media": 71.63157894736842,
+      "custo_medio_usd": 0.004151565789473684,
+      "custo_total_usd": 0.07887975,
+      "latencia_mediana_ms": 5050,
+      "cache_total": 0,
+      "raciocinio_total": 269,
+      "cortes": 0
+    },
+    "razao_custo": 1.1850189687467316,
+    "reducao_entrada": 0.5976638744307092
+  },
+  "argon_original_rodada_anterior": {
+    "ids": [
+      "closure_cuidado",
+      "closure_eco_curto",
+      "closure_eco_inteiro",
+      "closure_espelhamento",
+      "closure_genero",
+      "closure_identidade",
+      "closure_seguimento",
+      "closure_termo_inventado",
+      "kaltsit_cuidado",
+      "kaltsit_cumprimento",
+      "kaltsit_eco_curto",
+      "kaltsit_eco_inteiro",
+      "kaltsit_espelhamento",
+      "kaltsit_genero",
+      "kaltsit_identidade",
+      "kaltsit_mundo",
+      "kaltsit_seguimento",
+      "kaltsit_termo_inventado"
+    ],
+    "compacto": {
+      "n": 18,
+      "entrada_media": 2141.8888888888887,
+      "saida_media": 76.61111111111111,
+      "custo_medio_usd": 0.005049888888888889,
+      "custo_total_usd": 0.090898,
+      "latencia_mediana_ms": 3270.0,
+      "cache_total": 0,
+      "raciocinio_total": 0,
+      "cortes": 0
+    },
+    "comparador": {
+      "n": 18,
+      "entrada_media": 5161.055555555556,
+      "saida_media": 66.66666666666667,
+      "custo_medio_usd": 0.010988777777777778,
+      "custo_total_usd": 0.197798,
+      "latencia_mediana_ms": 3697.5,
+      "cache_total": 0,
+      "raciocinio_total": 0,
+      "cortes": 0
+    },
+    "razao_custo": 0.45954964155350414,
+    "reducao_entrada": 0.5849901505936554
+  }
+}

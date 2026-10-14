@@ -96,6 +96,15 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ajuda", "ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
                           "meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados"})
 
+    async def test_modo_misto_so_no_canal_escolhido(self):
+        from dataclasses import replace
+        self.bot.config = replace(self.bot.config, modelo_chat="misto", argon_canais=frozenset({10}))
+        chat = self.bot.get_cog("Chat")
+        for canal_id, esperado in ((10, True), (11, False)):
+            canal, _ = _canal(canal_id)
+            await chat.on_message(_mensagem("Closure, oi!", canal))
+            self.assertEqual(self.bot.modelos.responder.call_args.kwargs.get("usar_argon", False), esperado)
+
     async def test_gatilho_por_nome_e_registrado(self):
         canal, _ = _canal()
         await self.bot.get_cog("Chat").on_message(_mensagem("closure, o que é Refino?", canal))

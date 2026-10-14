@@ -16,6 +16,13 @@ Variáveis (modelo em .env.exemplo, na raiz do repositório):
   VERTEX_API_KEY   chave de API do Google Cloud pra Vertex AI (projeto do bot). É onde o crédito mensal abate.
   GEMINI_API_KEY   chave gratuita do AI Studio. Reserva e testes.
   FILA_MODELOS     "provedor:modelo,..." em ordem de tentativa. Padrão em modelo.FILA_PADRAO (gratuito primeiro).
+  MODELO_CHAT      vazio preserva FILA_MODELOS; gemini-4-argon ativa Vertex Argon com Flash de reserva;
+                   gemini-3.8-flash escolhe a fila padrão; misto limita Argon a ARGON_CANAIS.
+  ARGON_CANAIS     IDs dos canais selecionados no modo misto; vazio não ativa nenhum.
+  ARGON_TETO_USD   parcela máxima do teto global para Argon, padrão US$ 1; zero desativa.
+  ARGON_PERFIL     original (padrão), compacto-v1 ou compacto-v2 experimental; Flash preserva o prompt completo.
+  ARGON_MAX_SAIDA  limite conjunto de raciocínio e resposta do Argon (padrão 4096, entre 256 e 32768).
+  VERTEX_PROJETO   ID/número do projeto para chamar Argon e Flash 3.8 explicitamente em locations/global.
   RACIOCINIO       quanto o modelo pensa antes de falar: low, medium, high, ou "modelo" pro padrão do próprio
                    modelo. Vazio = low (modelo.RACIOCINIO_PADRAO).
   TETO_MENSAL_USD  quanto os provedores pagos podem gastar por mês, em dólar, antes de saírem da fila. Padrão: 9.
@@ -26,6 +33,7 @@ Variáveis (modelo em .env.exemplo, na raiz do repositório):
 from __future__ import annotations
 
 import os
+import math
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -52,10 +60,12 @@ def _inteiro(valor: str | None) -> int | None:
 
 
 def _decimal(valor: str | None) -> float | None:
-    try:
-        return float(valor.replace(",", ".")) if valor and valor.strip() else None
-    except ValueError:
+    if not valor or not valor.strip():
         return None
+    numero = float(valor.replace(",", "."))
+    if not math.isfinite(numero) or numero < 0:
+        raise ValueError("teto de gasto deve ser finito e não negativo")
+    return numero
 
 
 @dataclass(frozen=True)
@@ -75,15 +85,38 @@ class Config:
     clima_canais: tuple[int, ...] = ()
     politica_url: str | None = None
     termos_url: str | None = None
+    modelo_chat: str = ""
+    argon_max_saida: int = 4096
+    vertex_projeto: str = ""
+    argon_canais: frozenset[int] = frozenset()
+    argon_teto_usd: float = 1.0
+    argon_perfil: str = "original"
 
     def escuta(self, canal_id: int) -> bool:
         return not self.canais or canal_id in self.canais
+
+    def usa_argon(self, canal_id: int) -> bool:
+        """Seleção explícita por canal; nenhum texto do usuário ativa o modelo pago."""
+        return self.modelo_chat == "misto" and canal_id in self.argon_canais
 
 
 def carregar(arquivo: Path | None = None, ambiente: dict[str, str] | None = None) -> Config:
     valores = ler_env(arquivo or RAIZ / ".env")
     valores.update(os.environ if ambiente is None else ambiente)
     canais = frozenset(int(c) for c in valores.get("CANAIS", "").replace(" ", "").split(",") if c.isdigit())
+    modelo_chat = valores.get("MODELO_CHAT", "").strip()
+    if modelo_chat not in ("", "gemini-3.8-flash", "gemini-4-argon", "misto"):
+        raise ValueError("MODELO_CHAT deve ser gemini-3.8-flash, gemini-4-argon ou misto")
+    canais_argon = valores.get("ARGON_CANAIS", "").replace(" ", "")
+    if canais_argon and any(not c.isdigit() or int(c) <= 0 for c in canais_argon.split(",")):
+        raise ValueError("ARGON_CANAIS deve conter IDs positivos separados por vírgula")
+    teto_argon = _decimal(valores.get("ARGON_TETO_USD"))
+    perfil = valores.get("ARGON_PERFIL", "").strip() or "original"
+    if perfil not in ("original", "compacto-v1", "compacto-v2"):
+        raise ValueError("ARGON_PERFIL deve ser original, compacto-v1 ou compacto-v2")
+    limite = int(valores.get("ARGON_MAX_SAIDA") or 4096)
+    if not 256 <= limite <= 32768:
+        raise ValueError("ARGON_MAX_SAIDA deve ficar entre 256 e 32768")
     return Config(
         token=valores.get("DISCORD_TOKEN", ""),
         guild_id=_inteiro(valores.get("GUILD_ID")),
@@ -102,4 +135,10 @@ def carregar(arquivo: Path | None = None, ambiente: dict[str, str] | None = None
         politica_url=valores.get("POLITICA_URL") or None,
         termos_url=valores.get("TERMOS_URL") or None,
         clima_canais=tuple(int(c) for c in valores.get("CLIMA_CANAIS", "").replace(" ", "").split(",") if c.isdigit()),
+        modelo_chat=modelo_chat,
+        argon_max_saida=limite,
+        vertex_projeto=valores.get("VERTEX_PROJETO", "").strip(),
+        argon_canais=frozenset(int(c) for c in canais_argon.split(",") if c),
+        argon_teto_usd=teto_argon if teto_argon is not None else 1.0,
+        argon_perfil=perfil,
     )

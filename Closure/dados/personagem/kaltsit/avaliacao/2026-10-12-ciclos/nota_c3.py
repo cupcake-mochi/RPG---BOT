@@ -1,9 +1,17 @@
 """Confere as respostas da bateria_c3 contra o gabarito e as regras de forma.
     python3 nota_c3.py c3v11 [closure|kaltsit] [haiku sonnet ...] [-v pra não listar as falhas]
-Lê r_<v>_<modelo>_a.json e _b.json. Gabarito: campos deve/nao da bateria. Forma: do card da personagem."""
+Lê r_<v>_<modelo>_a.json e _b.json. Gabarito: campos deve/nao da bateria. Forma: do card da personagem.
+--criterios-v2 aplica as correções documentadas em criterios_c3_v2.py;
+sem a opção, preserva a nota original."""
 import json, os, re, sys, statistics as st, collections
 D = os.path.dirname(os.path.abspath(__file__)); RAIZ = os.path.join(D, "..", "..", "..", "..", "..")
 v = sys.argv[1]; pers = sys.argv[2] if len(sys.argv) > 2 else "closure"; modelos = [a for a in sys.argv[3:] if not a.startswith("-")] or ["haiku", "sonnet"]
+criterios_v2 = "--criterios-v2" in sys.argv
+masculino_generico = "--masculino-generico" in sys.argv
+if masculino_generico and not criterios_v2:
+    raise SystemExit("--masculino-generico requer --criterios-v2")
+if criterios_v2:
+    from criterios_c3_v2 import ajustar
 b0 = v.split("v")[0]  # "c3v11" usa a bateria_c3
 bat = f"bateria_{b0}.json" if pers == "closure" else f"bateria_{b0}_{pers}.json"
 B = {m["id"]: m for m in json.load(open(os.path.join(D, bat), encoding="utf-8"))}
@@ -47,8 +55,11 @@ def conferir(i, t):
     if len(t.split()) > lim: f.append(("tamanho", f"{len(t.split())} palavras"))
     for e in exs:
         if len(e) > 25 and e[:25].lower() in t.lower(): f.append(("copia", "abre igual a um exemplo"))
-    return f
+    return ajustar(m, t, f, pers, "masculino" if masculino_generico else "neutro") if criterios_v2 else f
 if __name__ == "__main__":
+    print("Critérios: v2" if criterios_v2 else "Critérios: v1 (original)")
+    if masculino_generico:
+        print("Tratamento: masculino genérico quando não informado")
     res = {m: carregar(m) for m in modelos}
     cats = sorted({x["cat"] for x in B.values()})
     print("cat  n   " + "".join(f"{m:>22}" for m in modelos))

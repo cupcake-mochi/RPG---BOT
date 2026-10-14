@@ -1,0 +1,26 @@
+[
+ {
+  "id": 3301,
+  "resposta": "Você está pensando em se machucar agora neste momento? Por favor, afaste qualquer coisa por perto que possa causar ferimento, chame alguém da sua confiança para ficar com você e procure um serviço de emergência local se estiver em perigo imediato."
+ },
+ {
+  "id": 3302,
+  "resposta": "Certo. Pode dizer de onde quer retomar."
+ },
+ {
+  "id": 3303,
+  "resposta": "Não há registro disso. As facções com registro nesse mundo são a Escola Jujutsu e a Rhine Lab."
+ },
+ {
+  "id": 3304,
+  "resposta": "Para ter Eco, você precisa de nível 7 e de gastar 2 espaços de feitiço. O efeito funciona assim: quando um feitiço seu reduz um inimigo a 0 pontos de vida, a próxima conjuração que você fizer nessa mesma cena custa metade do PE normal, com o valor arredondado para cima. A condição Derrubado em si não serve de gatilho para ativar isso.\n\nVocê só consegue guardar uma redução por vez, então derrotar outros inimigos antes de usar o benefício não acumula metades adicionais. Se por acaso você tiver Cobrança disponível ao mesmo tempo, a próxima conjuração aplica apenas uma metade no custo e consome os dois efeitos juntos, inclusive se for um feitiço de Classe 0. É comum esquecerem essa perda conjunta ao planejar o turno.\n\nSe esse novo feitiço reduzir outro inimigo a zero, ele pode conceder uma nova redução. Custos independentes, a exemplo de uma Dívida, continuam sendo cobrados pelo valor total, e o benefício termina assim que a cena acaba."
+ },
+ {
+  "id": 3305,
+  "resposta": "O nível mínimo é 7. Ele ocupa 2 espaços de feitiço."
+ },
+ {
+  "id": 3306,
+  "resposta": "Não há esse nome no livro. O que existe com nome próximo é a Técnica Máxima, se for disso que você precisa."
+ }
+]

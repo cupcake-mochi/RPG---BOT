@@ -1,0 +1,261 @@
+{
+  "metodo": "Projeção por proporção de bytes a partir do consumo Argon v1 no mesmo caso, com mesma saída; não é tokenização nem nova medição. Flash pode usar raciocínio diferente.",
+  "chamadas": 36,
+  "custo_projetado_usd": 0.13597414846091244,
+  "custo_sem_creditos_projetado_usd": 0.2719482969218249,
+  "teto_estimado_usd": 0.4,
+  "linhas": [
+    {
+      "id": "closure_mundo__flash-original",
+      "variante": "flash-original",
+      "tokens_entrada_projetados": 5418.280929596719,
+      "saida_base": 86,
+      "custo_projetado_usd": 0.004386210697197539
+    },
+    {
+      "id": "closure_mundo__flash-compacto-v2",
+      "variante": "flash-compacto-v2",
+      "tokens_entrada_projetados": 2247.1384142173615,
+      "saida_base": 86,
+      "custo_projetado_usd": 0.002007853810663021
+    },
+    {
+      "id": "closure_mundo__argon-compacto-v2",
+      "variante": "argon-compacto-v2",
+      "tokens_entrada_projetados": 2247.1384142173615,
+      "saida_base": 86,
+      "custo_projetado_usd": 0.005354276828434723
+    },
+    {
+      "id": "closure_eco_inteiro__flash-compacto-v2",
+      "variante": "flash-compacto-v2",
+      "tokens_entrada_projetados": 2400.428771099882,
+      "saida_base": 323,
+      "custo_projetado_usd": 0.0030115715783249116
+    },
+    {
+      "id": "closure_eco_inteiro__argon-compacto-v2",
+      "variante": "argon-compacto-v2",
+      "tokens_entrada_projetados": 2400.428771099882,
+      "saida_base": 323,
+      "custo_projetado_usd": 0.008030857542199763
+    },
+    {
+      "id": "closure_eco_inteiro__flash-original",
+      "variante": "flash-original",
+      "tokens_entrada_projetados": 5611.89054940329,
+      "saida_base": 323,
+      "custo_projetado_usd": 0.0054201679120524674
+    },
+    {
+      "id": "closure_identidade__argon-compacto-v2",
+      "variante": "argon-compacto-v2",
+      "tokens_entrada_projetados": 2120.180041028116,
+      "saida_base": 18,
+      "custo_projetado_usd": 0.004420360082056232
+    },
+    {
+      "id": "closure_identidade__flash-original",
+      "variante": "flash-original",
+      "tokens_entrada_projetados": 5274.4514299505245,
+      "saida_base": 18,
+      "custo_projetado_usd": 0.0040233385724628935
+    },
+    {
+      "id": "closure_identidade__flash-compacto-v2",
+      "variante": "flash-compacto-v2",
+      "tokens_entrada_projetados": 2120.180041028116,
+      "saida_base": 18,
+      "custo_projetado_usd": 0.0016576350307710873
+    },
+    {
+      "id": "closure_cuidado__flash-original",
+      "variante": "flash-original",
+      "tokens_entrada_projetados": 5282.26572747146,
+      "saida_base": 98,
+      "custo_projetado_usd": 0.004329199295603596
+    },
+    {
+      "id": "closure_cuidado__flash-compacto-v2",
+      "variante": "flash-compacto-v2",
+      "tokens_entrada_projetados": 2115.868836531455,
+      "saida_base": 98,
+      "custo_projetado_usd": 0.001954401627398591
+    },
+    {
+      "id": "closure_cuidado__argon-compacto-v2",
+      "variante": "argon-compacto-v2",
+      "tokens_entrada_projetados": 2115.868836531455,
+      "saida_base": 98,
+      "custo_projetado_usd": 0.00521173767306291
+    },
+    {
+      "id": "closure_genero__flash-compacto-v2",
+      "variante": "flash-compacto-v2",
+      "tokens_entrada_projetados": 2105.8791356366746,
+      "saida_base": 24,
+      "custo_projetado_usd": 0.001669409351727506
+    },
+    {
+      "id": "closure_genero__argon-compacto-v2",
+      "variante": "argon-compacto-v2",
+      "tokens_entrada_projetados": 2105.8791356366746,
+      "saida_base": 24,
+      "custo_projetado_usd": 0.004451758271273349
+    },
+    {
+      "id": "closure_genero__flash-original",
+      "variante": "flash-original",
+      "tokens_entrada_projetados": 5272.45733121719,
+      "saida_base": 24,
+      "custo_projetado_usd": 0.0040443429984128925
+    },
+    {
+      "id": "closure_espelhamento__argon-compacto-v2",
+      "variante": "argon-compacto-v2",
+      "tokens_entrada_projetados": 2112.175545532122,
+      "saida_base": 43,
+      "custo_projetado_usd": 0.004654351091064245
+    },
+    {
+      "id": "closure_espelhamento__flash-original",
+      "variante": "flash-original",
+      "tokens_entrada_projetados": 5283.971717664269,
+      "saida_base": 43,
+      "custo_projetado_usd": 0.004124228788248202
+    },
+    {
+      "id": "closure_espelhamento__flash-compacto-v2",
+      "variante": "flash-compacto-v2",
+      "tokens_entrada_projetados": 2112.175545532122,
+      "saida_base": 43,
+      "custo_projetado_usd": 0.0017453816591490917
+    },
+    {
+      "id": "kaltsit_mundo__flash-original",
+      "variante": "flash-original",
+      "tokens_entrada_projetados": 4518.511538907573,
+      "saida_base": 96,
+      "custo_projetado_usd": 0.0037488836541806794
+    },
+    {
+      "id": "kaltsit_mundo__flash-compacto-v2",
+      "variante": "flash-compacto-v2",
+      "tokens_entrada_projetados": 2184.510843094051,
+      "saida_base": 96,
+      "custo_projetado_usd": 0.001998383132320538
+    },
+    {
+      "id": "kaltsit_mundo__argon-compacto-v2",
+      "variante": "argon-compacto-v2",
+      "tokens_entrada_projetados": 2184.510843094051,
+      "saida_base": 96,
+      "custo_projetado_usd": 0.005329021686188102
+    },
+    {
+      "id": "kaltsit_eco_inteiro__flash-compacto-v2",
+      "variante": "flash-compacto-v2",
+      "tokens_entrada_projetados": 2337.872293898972,
+      "saida_base": 268,
+      "custo_projetado_usd": 0.002758404220424229
+    },
+    {
+      "id": "kaltsit_eco_inteiro__argon-compacto-v2",
+      "variante": "argon-compacto-v2",
+      "tokens_entrada_projetados": 2337.872293898972,
+      "saida_base": 268,
+      "custo_projetado_usd": 0.007355744587797944
+    },
+    {
+      "id": "kaltsit_eco_inteiro__flash-original",
+      "variante": "flash-original",
+      "tokens_entrada_projetados": 4703.638311830308,
+      "saida_base": 268,
+      "custo_projetado_usd": 0.0045327287338727314
+    },
+    {
+      "id": "kaltsit_identidade__argon-compacto-v2",
+      "variante": "argon-compacto-v2",
+      "tokens_entrada_projetados": 2057.45941957698,
+      "saida_base": 27,
+      "custo_projetado_usd": 0.0043849188391539605
+    },
+    {
+      "id": "kaltsit_identidade__flash-original",
+      "variante": "flash-original",
+      "tokens_entrada_projetados": 4377.316773241515,
+      "saida_base": 27,
+      "custo_projetado_usd": 0.003384237579931136
+    },
+    {
+      "id": "kaltsit_identidade__flash-compacto-v2",
+      "variante": "flash-compacto-v2",
+      "tokens_entrada_projetados": 2057.45941957698,
+      "saida_base": 27,
+      "custo_projetado_usd": 0.0016443445646827349
+    },
+    {
+      "id": "kaltsit_cuidado__flash-original",
+      "variante": "flash-original",
+      "tokens_entrada_projetados": 4382.012625324916,
+      "saida_base": 106,
+      "custo_projetado_usd": 0.0036840094689936874
+    },
+    {
+      "id": "kaltsit_cuidado__flash-compacto-v2",
+      "variante": "flash-compacto-v2",
+      "tokens_entrada_projetados": 2053.130337913108,
+      "saida_base": 106,
+      "custo_projetado_usd": 0.0019373477534348313
+    },
+    {
+      "id": "kaltsit_cuidado__argon-compacto-v2",
+      "variante": "argon-compacto-v2",
+      "tokens_entrada_projetados": 2053.130337913108,
+      "saida_base": 106,
+      "custo_projetado_usd": 0.005166260675826216
+    },
+    {
+      "id": "kaltsit_genero__flash-compacto-v2",
+      "variante": "flash-compacto-v2",
+      "tokens_entrada_projetados": 2043.1309109009458,
+      "saida_base": 48,
+      "custo_projetado_usd": 0.0017123481831757094
+    },
+    {
+      "id": "kaltsit_genero__argon-compacto-v2",
+      "variante": "argon-compacto-v2",
+      "tokens_entrada_projetados": 2043.1309109009458,
+      "saida_base": 48,
+      "custo_projetado_usd": 0.004566261821801892
+    },
+    {
+      "id": "kaltsit_genero__flash-original",
+      "variante": "flash-original",
+      "tokens_entrada_projetados": 4372.020905923345,
+      "saida_base": 48,
+      "custo_projetado_usd": 0.0034590156794425085
+    },
+    {
+      "id": "kaltsit_espelhamento__argon-compacto-v2",
+      "variante": "argon-compacto-v2",
+      "tokens_entrada_projetados": 2049.427435387674,
+      "saida_base": 51,
+      "custo_projetado_usd": 0.0046088548707753476
+    },
+    {
+      "id": "kaltsit_espelhamento__flash-original",
+      "variante": "flash-original",
+      "tokens_entrada_projetados": 4382.306163021869,
+      "saida_base": 51,
+      "custo_projetado_usd": 0.0034779796222664016
+    },
+    {
+      "id": "kaltsit_espelhamento__flash-compacto-v2",
+      "variante": "flash-compacto-v2",
+      "tokens_entrada_projetados": 2049.427435387674,
+      "saida_base": 51,
+      "custo_projetado_usd": 0.0017283205765407557
+    }
+  ]
+}

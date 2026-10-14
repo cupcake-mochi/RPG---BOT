@@ -186,6 +186,14 @@ class Registro:
             Path(caminho).parent.mkdir(parents=True, exist_ok=True)
         self._db = sqlite3.connect(str(caminho), check_same_thread=False)
         self._db.executescript(ESQUEMA)
+        # Migração aditiva: o banco da hospedagem mantém todo o histórico.
+        colunas = {r[1] for r in self._db.execute("PRAGMA table_info(chamadas_api)")}
+        for nome, tipo in {"tokens_resposta": "INTEGER", "tokens_raciocinio": "INTEGER",
+                           "tokens_cache": "INTEGER", "cortada": "INTEGER", "fim": "TEXT",
+                           "raciocinio": "TEXT", "custo_estimado_usd": "REAL",
+                           "reserva_sem_uso_usd": "REAL NOT NULL DEFAULT 0"}.items():
+            if nome not in colunas:
+                self._db.execute(f"ALTER TABLE chamadas_api ADD COLUMN {nome} {tipo}")
         self._db.commit()
 
     def fechar(self) -> None:
@@ -193,11 +201,17 @@ class Registro:
 
     def registrar_chamada(self, *, modelo: str, persona: str | None = None, gatilho: str | None = None,
                           tokens_entrada: int | None = None, tokens_saida: int | None = None,
-                          latencia_ms: int | None = None, ok: bool = True, erro: str | None = None) -> None:
+                          latencia_ms: int | None = None, ok: bool = True, erro: str | None = None,
+                          tokens_resposta: int | None = None, tokens_raciocinio: int | None = None,
+                          tokens_cache: int | None = None, cortada: bool | None = None, fim: str | None = None,
+                          raciocinio: str | None = None, custo_estimado_usd: float | None = None,
+                          reserva_sem_uso_usd: float = 0.0) -> None:
         self._db.execute(
-            "INSERT INTO chamadas_api (quando, modelo, persona, gatilho, tokens_entrada, tokens_saida, latencia_ms, ok, erro)"
-            " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-            (_agora(), modelo, persona, gatilho, tokens_entrada, tokens_saida, latencia_ms, int(ok), erro),
+            "INSERT INTO chamadas_api (quando, modelo, persona, gatilho, tokens_entrada, tokens_saida, latencia_ms, ok, erro,"
+            " tokens_resposta, tokens_raciocinio, tokens_cache, cortada, fim, raciocinio, custo_estimado_usd, reserva_sem_uso_usd)"
+            " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            (_agora(), modelo, persona, gatilho, tokens_entrada, tokens_saida, latencia_ms, int(ok), erro,
+             tokens_resposta, tokens_raciocinio, tokens_cache, cortada, fim, raciocinio, custo_estimado_usd, reserva_sem_uso_usd),
         )
         self._db.commit()
 
@@ -207,6 +221,17 @@ class Registro:
             "SELECT modelo, COALESCE(SUM(tokens_entrada), 0), COALESCE(SUM(tokens_saida), 0) FROM chamadas_api"
             " WHERE ok = 1 AND substr(quando, 1, 7) = ? GROUP BY modelo ORDER BY modelo", (quando.strftime("%Y-%m"),))
         return [tuple(linha) for linha in linhas]
+
+    def consumo_do_mes(self, quando: datetime) -> list[tuple]:
+        """Consumo para o limite: inclui reserva cautelar de uso desconhecido, sem somar duas vezes.
+
+        A reserva não é cobrança confirmada; custo antigo é recalculado pela data da chamada.
+        """
+        return self._db.execute(
+            "SELECT modelo, quando, COALESCE(tokens_entrada, 0), COALESCE(tokens_saida, 0),"
+            " COALESCE(tokens_cache, 0), CASE WHEN reserva_sem_uso_usd > COALESCE(custo_estimado_usd, 0)"
+            " THEN reserva_sem_uso_usd ELSE custo_estimado_usd END FROM chamadas_api"
+            " WHERE substr(quando, 1, 7) = ?", (quando.strftime("%Y-%m"),)).fetchall()
 
     def registrar_gatilho(self, *, canal_id: int, autor_id: int, persona: str, motivo: str, fora_do_plantao: bool,
                           quando: datetime | None = None) -> None:

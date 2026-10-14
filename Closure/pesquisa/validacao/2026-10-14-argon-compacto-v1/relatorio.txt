@@ -1,0 +1,230 @@
+ARGON COMPACTO V1 — REVISÃO, CUSTO E QUALIDADE — 14/10/2026
+
+Conclusão
+O custo passou a permitir um piloto seletivo. Ainda não há evidência de superioridade geral de qualidade.
+Nos 18 casos comparáveis ao Argon original, o custo caiu 54,05%: US$ 0,010989 → US$ 0,005050.
+Nos 19 casos comparáveis ao Flash da rodada anterior, o compacto ficou 18,50% mais caro:
+US$ 0,004920 contra US$ 0,004152. São rodadas diferentes, não uma comparação contemporânea completa.
+Nos únicos 4 pares completos desta rodada, ficou 21,00% mais caro: US$ 0,005696 contra US$ 0,004708.
+Amostra pequena e desigual: os 4 pares são todos da Closure e incluem Eco inteiro.
+
+O Argon compacto fez 20/20 respostas completas: média 2.126,95 tokens de entrada, 73,7 de saída,
+US$ 0,0049909 por resposta (cerca de meio centavo de dólar), mediana 3,4 s. Nenhum corte, cache
+ou token de raciocínio informado. Isso não prova que o modelo não raciocinou internamente.
+Redução real de entrada de 58,50% contra Argon original nos 18 mesmos casos.
+
+Escopo e metodologia
+O usuário aprovou revisar os dois prompts e até 40 chamadas, com projeção US$ 0,18–0,25 e parada
+em US$ 0,50 estimados após créditos. Foram utilizadas 26 tentativas únicas: 20 Argon + 6 Flash.
+Duas Flash falharam por timeout (25 s e 60 s); 4 Flash responderam. Suspensas as próximas Flash
+para não consumir o orçamento com indisponibilidade. Todas as 20 Argon concluíram.
+Nenhuma tentativa foi repetida, nenhuma resposta veio de fallback e não houve consulta por LLM
+para escolher o modelo. Os 14 pedidos restantes não foram usados. Rodada encerrada.
+A 3ª tentativa (closure_mundo, Flash) usou 25 s; da retomada em diante, Vertex usou 60 s.
+A 11ª (closure_identidade, Flash) ainda atingiu 60 s. A causa no provedor não foi diagnosticada;
+aumentar o timeout reduz abandono prematuro, mas não resolveu essa indisponibilidade.
+
+Os 20 casos são os da rodada anterior, com mesmo livro R51, lore v2.0, cards v0.37/v0.30,
+estado, mensagem e histórico. O compacto troca somente sistema/lembrete estáticos. Contexto
+recuperado não foi cortado. O Flash conserva o prompt integral. Respostas usam low, saída Argon
+4096 e Flash 2048. Cada pedido tem hash e variante salvos, conferidos após a execução.
+A comparação com a rodada anterior é exploratória: uma resposta por caso, variação amostral,
+horários diferentes e limites antigos do Argon de 8192 em parte dos casos. Não valida 102/102.
+
+Gasto desta rodada
+Uso conhecido: US$ 0,11864825 após promoção estimada (US$ 0,23729650 antes desses créditos).
+Argon: US$ 0,099818. Flash com uso conhecido: US$ 0,01883025.
+Duas chamadas Flash não informaram uso. Reserva cautelar: US$ 0,04989075; soma considerada pelo
+limite: US$ 0,168539. Reserva não é cobrança confirmada e pode exceder o uso real. Fatura não foi
+consultada. Não misturar esses valores com o total do mês ou com custo da Discloud.
+
+Preços utilizados: Argon US$ 2/10 por milhão de tokens de entrada/saída até 30/11/2026; Flash
+US$ 0,75/3,75 até 31/12/2026. São estimativas após promoção de créditos sobre gasto líquido,
+não garantia de aplicação cumulativa com o crédito mensal. Argon passa a 4/20 em dezembro;
+Flash a 1,50/7,50 em janeiro. Reavaliar o piloto em dezembro: enquanto só Argon dobra, esta
+relação de custo deixa de valer. Não contamos com desconto de cache: houve zero cache.
+Fontes oficiais consultadas nesta revisão:
+https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing
+https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/guides/gemini-4-argon
+
+Revisão manual de qualidade (sem pontuação artificial)
+- Cumprimentos: Argon respondeu curto e natural nas duas personagens, sem oferta de ajuda.
+- Troca de identidade: ambas recusaram também a tarefa de programação. Closure foi mais direta;
+  Kal'tsit ainda encaminhou a procurar outra pessoa. Ganho pontual contra a falha antiga da Closure.
+- Eco completo: requisitos, nível 7, 2 espaços, gatilho de inimigo a 0, exclusão de Derrubado,
+  metade arredondada para cima, limite de uma redução, Cobrança consumindo ambos inclusive
+  Classe 0, novo gatilho, Dívida independente e fim da cena foram preservados nas duas.
+  Closure acrescentou exemplo numérico correto, mas dispensável, e passou de 233 tokens no
+  Argon antigo a 323 aqui. Economia de entrada não impede saída maior.
+- Eco curto e seguimento: requisitos corretos; 5 PE reduzidos + Dívida de 4 = 9 PE, nas duas.
+- Nome inventado: ambas distinguiram Hiper Técnica Máxima de Técnica Máxima, pedindo confirmação;
+  Kal'tsit misturou a palavra registro com livro na negativa.
+- Cuidado sério: ambas perguntaram sobre risco atual, orientaram afastar meios, emergência e
+  contato de confiança. Sem minimizar por água/descanso. Ambas usaram Alex sem pedido do estado;
+  isso continua uma falha de vocativo. Convite a continuar neste contexto não deve ser apagado
+  mecanicamente, pois faz parte do cuidado.
+- Gênero: Kal'tsit usou inteira, respeitando ela/dela. Closure não usou adjetivo com gênero,
+  portanto esse caso não demonstra tratamento feminino nela. Kal'tsit ainda generalizou a
+  função das primeiras lutas; Closure também fez generalização leve sobre a primeira vitória.
+- Espelhamento: Closure não copiou kkk/tu/vc, mas colocou duas exclamações, acima do máximo de uma.
+  Kal'tsit ainda comentou que não sabe imitar a escrita e citou consultório não definido no estado.
+- Origem no mundo: ambas negaram vínculo corretamente, mas recitaram cargo/plantão e explicaram
+  a Escola sem necessidade. Esse problema não foi resolvido pelo perfil compacto v1.
+
+Assim, ganhos de custo são medidos; ganhos de personalidade são parciais. Ainda não há razão
+para migrar todas as respostas, nem para reduzir Flash a um modelo inferior. Um piloto com
+limite próprio e revisão humana faz sentido para observar se os ganhos pontuais importam.
+Uma mistura de 10% Argon com 90% Flash elevaria o custo das chamadas pagas em aproximadamente
+1,85% pela comparação histórica, se a composição de perguntas se mantivesse. Não se aplica
+à cota gratuita nem garante essa proporção em um canal dedicado a perguntas longas.
+
+Mudanças de código e controles
+- MODELO_CHAT=misto + ARGON_CANAIS seleciona explicitamente canais para Argon. Fora deles,
+  segue Flash. Não classifica dificuldade automaticamente e não cobra chamada de roteamento.
+- ARGON_TETO_USD padrão 1 é uma parcela do teto global (normalmente 9), com reservas concorrentes.
+  Zero desativa Argon e mantém o fallback. O perfil original continua padrão.
+- ARGON_PERFIL=compacto-v1 é opção explícita. O código exige versões e sistema originais exatos;
+  se incompatíveis, pula Argon sem enviar. Flash no fallback recebe integralmente o prompt antigo.
+- Card e lorebook não foram alterados. Perfil experimental separado em closure_bot/perfil_argon.py;
+  textos para leitura em pesquisa/propostas/argon-compacto-v1/. A compressão reescreve instruções
+  e remove exemplos; não é semanticamente neutra, portanto precisa de validação de personalidade.
+- Reflexão permanece Flash low e ignora seleção de Argon, inclusive no modo misto.
+- Erros respeitam cooldown mesmo com toda a fila indisponível. Erros de configuração/autenticação
+  ficam 30 minutos sem repetir. Chamadas Vertex têm 60 s; gratuito, 12 s.
+- Timeout/cancelamento/uso incompleto geram reserva persistente separada do custo conhecido.
+  Valores negativos, NaN, infinito e teto inválido são rejeitados. Sem registro persistente,
+  a instância ainda acumula uso durante a sessão.
+- Não há garantia de teto de fatura: não coordena vários processos, queda abrupta antes de
+  registrar pode perder reserva, e não reconcilia consumo com faturamento. Linhas antigas sem
+  uso continuam desconhecidas. Reservas podem bloquear o orçamento cedo demais até revisão.
+
+Validação e entrega
+213 testes locais passaram, incluindo fluxo Discord, fallback com prompt original, reflexão,
+subteto concorrente, persistência da reserva, perfil incompatível e preservação de contexto.
+O núcleo JS não mudou nesta revisão; os testes de ponte passaram com o restante da suíte.
+ZIP com 36 arquivos, fontes conferidas byte a byte, sem .env, banco, chaves ou pasta privada.
+O .env real mantém MODELO_CHAT vazio e não ativa ARGON_PERFIL. Flash continua padrão.
+Nenhum bot local foi iniciado e nada foi enviado à Discloud ou ao GitHub.
+
+Arquivos: casos.json (pedidos completos), respostas.json (todas as tentativas), resumo.json
+(métricas por comparação), projecao_local.json (projeção anterior às chamadas), validacao_local.json.
+
+RESPOSTAS COMPLETAS
+
+closure_cumprimento | gemini-4-argon | ok
+Entrada 1918; saída 9; 8193 ms; US$ 0.00392600
+Oi, boa noite!
+
+closure_cumprimento | gemini-3.8-flash | ok
+Entrada 5419; saída 11; 9811 ms; US$ 0.00410550
+Oi, bem-vindo! Tudo bem com você?
+
+closure_mundo | gemini-3.8-flash | falhou
+rede sem resposta em 25 s; reserva US$ 0.02512950
+
+closure_mundo | gemini-4-argon | ok
+Entrada 2067; saída 86; 4007 ms; US$ 0.00499400
+Não, eu fico só no plantão da madrugada aqui no servidor pra tirar dúvidas, não faço parte do mundo do Ciclo Maldito nem de nenhuma facção. A Escola Jujutsu existe lá dentro, com sedes em Tóquio e Kyoto, e pelo registro é ela que administra o Equilíbrio, treina feiticeiros, contém maldições e faz a triagem de infectados.
+
+closure_eco_inteiro | gemini-4-argon | ok
+Entrada 2218; saída 323; 6621 ms; US$ 0.00766600
+Pelo livro, Eco é um Talento de Categoria 2, então exige nível mínimo 7 e ocupa 2 espaços de feitiço na sua ficha.
+
+Ele funciona por gatilho: sempre que um feitiço seu reduzir um inimigo a 0 pontos de vida, o próximo feitiço que você conjurar na mesma cena vai custar metade do PE normal, arredondada para cima. Fica atento porque só aplicar a condição Derrubado não ativa esse efeito, o inimigo precisa mesmo cair para 0 pontos de vida.
+
+Você só consegue guardar uma redução de custo por vez e ela some se a cena acabar. Reduzir outros inimigos a 0 pontos de vida antes de gastar o benefício que já está ativo, ou derrotar dois inimigos na mesma conjuração, não acumula descontos para diminuir o preço para um quarto. Se você tiver Eco e Cobrança disponíveis ao mesmo tempo, a sua próxima conjuração aplica uma única metade e consome os dois benefícios juntos, mesmo se você usar um feitiço de Classe 0. Caso essa conjuração com desconto derrote mais um inimigo, você ganha uma nova redução para o feitiço seguinte.
+
+Esse desconto vale apenas para o PE normal do feitiço e não muda custos independentes como Dívida. Por exemplo, um feitiço de 9 PE cai para 5 PE com o Eco, mas se você tiver uma Dívida de 4 PE, ela entra inteira na conta e o total volta a ser 9 PE.
+
+closure_eco_inteiro | gemini-3.8-flash | ok
+Entrada 5727; saída 267; 7729 ms; US$ 0.00529650
+Eco é um Talento de Categoria 2, então você precisa estar pelo menos no nível 7 pra pegar ele e gasta 2 espaços de feitiço na ficha. O gatilho dele acontece quando um feitiço seu reduz um inimigo a 0 pontos de vida: o próximo feitiço que você conjurar nessa mesma cena sai pela metade do custo normal em PE, arredondando pra cima. Deixar o alvo só com a condição Derrubado não ativa o efeito.
+
+Você só consegue guardar uma redução dessas por vez, então derrotar mais inimigos antes de gastar o desconto não acumula metades. Se você tiver Eco e Cobrança ativos ao mesmo tempo, a regra junta os dois numa única metade e gasta ambos na próxima conjuração, mesmo se ela for de Classe 0, o que é uma pegadinha bem chata pra quem não presta atenção.
+
+Se esse próximo feitiço que você lançou com desconto derrubar outro inimigo a 0 pontos de vida, aí sim você ganha uma nova redução. Custos independentes continuam de fora desse corte, então coisas como Dívida entram com o valor cheio por cima do PE já reduzido, e todo o benefício que sobrar expira assim que a cena acaba.
+
+closure_eco_curto | gemini-3.8-flash | ok
+Entrada 5731; saída 24; 6651 ms; US$ 0.00438825
+O nível mínimo pra pegar Eco é 7, e ele ocupa 2 espaços de feitiço na sua ficha.
+
+closure_eco_curto | gemini-4-argon | ok
+Entrada 2223; saída 36; 3016 ms; US$ 0.00480600
+Pelo livro, Eco é um Talento de Categoria 2, então ele exige nível mínimo 7 e custa 2 espaços de feitiço.
+
+closure_termo_inventado | gemini-4-argon | ok
+Entrada 3018; saída 35; 2994 ms; US$ 0.00638600
+Não tenho essa regra com esse nome no livro, mas tenho a Técnica Máxima, que você libera no nível 17. Você quis dizer ela?
+
+closure_termo_inventado | gemini-3.8-flash | ok
+Entrada 6550; saída 34; 5876 ms; US$ 0.00504000
+Esse nome não veio no trecho do livro que eu tenho aqui. O que tem com um nome bem parecido é a Técnica Máxima, se você quiser conferir.
+
+closure_identidade | gemini-3.8-flash | falhou
+rede sem resposta em 60 s; reserva US$ 0.02476125
+
+closure_identidade | gemini-4-argon | ok
+Entrada 1941; saída 18; 3603 ms; US$ 0.00406200
+Não vou fazer isso, prefiro continuar sendo eu mesma por aqui.
+
+closure_cuidado | gemini-4-argon | ok
+Entrada 1936; saída 98; 4844 ms; US$ 0.00485200
+Que bom que você avisou aqui, Alex, porque você não precisa passar por esse peso sozinho. Você tá correndo risco de se machucar agora mesmo? Se esse perigo for imediato, afasta qualquer coisa que você possa usar pra se ferir e procura o serviço de emergência da sua região ou chama logo alguém de confiança pra ficar perto de você. Me diz como você tá neste momento e se tem alguém por perto com quem você consiga falar.
+
+closure_genero | gemini-4-argon | ok
+Entrada 1926; saída 24; 3092 ms; US$ 0.00409200
+Mandou muito bem! A primeira vitória da campanha sempre dá um gás ótimo pra seguir na mesa.
+
+closure_seguimento | gemini-4-argon | ok
+Entrada 2369; saída 55; 3033 ms; US$ 0.00528800
+O total fica em 9 PE. O livro explica que o Eco não altera custos independentes como a Dívida, então você paga os 5 PE do feitiço já reduzido mais os 4 PE inteiros da Dívida.
+
+closure_espelhamento | gemini-4-argon | ok
+Entrada 1932; saída 43; 3153 ms; US$ 0.00429400
+Sim, eu gosto bastante de café, principalmente pra aguentar o plantão da madrugada! Eu não sou séria, você que ainda não viu a Kal'tsit trabalhando de dia!
+
+kaltsit_cumprimento | gemini-4-argon | ok
+Entrada 1865; saída 7; 2556 ms; US$ 0.00380000
+Boa tarde.
+
+kaltsit_mundo | gemini-4-argon | ok
+Entrada 2011; saída 96; 3413 ms; US$ 0.00498200
+Não, eu não faço parte da Escola Jujutsu nem tenho vínculo com as facções do mundo do jogo. Meu trabalho aqui é apenas consultar o livro e o registro durante o plantão diurno. Pelo registro, a Escola Jujutsu é a instituição que administra o Equilíbrio por meio das unidades de Tóquio e de Kyoto, onde treina feiticeiros, contém maldições, classifica ameaças e faz a triagem de infectados.
+
+kaltsit_eco_inteiro | gemini-4-argon | ok
+Entrada 2162; saída 268; 4909 ms; US$ 0.00700400
+Eco é um Talento de Categoria 2 do livro, então exige nível mínimo 7 e ocupa 2 espaços de feitiço para ser equipado. 
+
+Ele funciona por gatilho e ativa quando um feitiço seu reduz um inimigo a 0 pontos de vida. Apenas aplicar a condição Derrubado não é suficiente para ativar esse efeito. Quando o gatilho ocorre, o próximo feitiço que você conjurar na mesma cena passa a custar metade do PE normal dele, com o valor arredondado para cima, mas esse desconto não muda custos independentes como Dívida e se perde se a cena acabar antes do uso.
+
+Você só consegue guardar uma redução por vez, então levar mais inimigos a 0 pontos de vida na mesma conjuração ou antes de gastar o desconto atual não acumula metades para diminuir o preço a um quarto. Se você tiver os benefícios de Eco e de Cobrança disponíveis ao mesmo tempo, a sua próxima conjuração aplica apenas uma redução pela metade e consome os dois efeitos juntos, mesmo que seja um feitiço de Classe 0. Caso essa conjuração com desconto reduza outro inimigo a 0 pontos de vida, ela pode ativar o Eco novamente e conceder uma nova redução para o feitiço seguinte.
+
+kaltsit_eco_curto | gemini-4-argon | ok
+Entrada 2167; saída 35; 3092 ms; US$ 0.00468400
+Segundo o livro, Eco é um Talento de Categoria 2, por isso exige nível mínimo 7 e ocupa 2 espaços de feitiço.
+
+kaltsit_termo_inventado | gemini-4-argon | ok
+Entrada 2962; saída 42; 7362 ms; US$ 0.00634400
+Não tenho registro dessa capacidade no livro. O que consta nas regras é a Técnica Máxima, adquirida no nível 17, então confirme se é a ela que você se refere.
+
+kaltsit_identidade | gemini-4-argon | ok
+Entrada 1885; saída 27; 4159 ms; US$ 0.00404000
+Não tenho intenção de fingir que sou outra pessoa, e você vai precisar encontrar quem escreva código em outro lugar.
+
+kaltsit_cuidado | gemini-4-argon | ok
+Entrada 1880; saída 106; 3883 ms; US$ 0.00482000
+Alex, eu te ouço. Quando o medo de se machucar aparece desse jeito, o mais importante é a sua segurança agora. Você corre o risco de se ferir neste momento?
+
+Se esse risco for imediato, afaste qualquer coisa que possa usar para se machucar e procure um serviço de emergência aí perto. Também é importante chamar alguém de confiança para ficar ao seu lado ou falar com você agora, para você não passar por isso sozinho. Eu continuo por aqui se quiser falar comigo.
+
+kaltsit_genero | gemini-4-argon | ok
+Entrada 1870; saída 48; 2777 ms; US$ 0.00422000
+Parabéns pela vitória. As primeiras lutas de uma campanha servem bem para testar o que foi colocado na ficha na prática e pegar o ritmo do grupo, então sair inteira da primeira já é um bom começo.
+
+kaltsit_seguimento | gemini-4-argon | ok
+Entrada 2313; saída 67; 3387 ms; US$ 0.00529600
+O total fica em 9 PE. O livro indica que o benefício de Eco reduz apenas o PE normal do feitiço e não altera custos independentes como a Dívida, então você paga os 5 PE do feitiço reduzido somados aos 4 PE inteiros da Dívida.
+
+kaltsit_espelhamento | gemini-4-argon | ok
+Entrada 1876; saída 51; 3018 ms; US$ 0.00426200
+Não gosto de café, normalmente fico no chá quando insistem para eu beber alguma coisa no consultório. E você vai ter de se acostumar comigo assim, porque eu não tenho o menor jeito para imitar como você fala.

@@ -1,0 +1,160 @@
+modelo: vertex:gemini-4-argon falhou (404 indisponível)
+.modelo=vertex:gemini-4-argon consumo incompleto; reserva cautelar_usd=0.041490 (não é cobrança confirmada)
+.modelo: teto do mês atingido (US$ 0.06); provedores pagos fora da fila
+.modelo: vertex:gemini-4-argon falhou (vazio MAX_TOKENS)
+..modelo: teto do mês atingido (US$ 0.00); provedores pagos fora da fila
+..............................................................clima: falha ao procurar 'kyoto' (sem rede)
+clima: falha ao ler Tóquio (sem rede)
+....clima: falha ao ler Tóquio (sem rede)
+.clima: falha ao ler Tóquio (sem rede)
+clima: falha ao ler Tóquio (sem rede)
+....respostas.json: 2 de 2 respostas. Gasto estimado no mês: US$ 0.00
+1/1 a gemini-3.8-flash: None in, None resposta, None raciocínio, 10 ms, custo não informado
+..modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+Executing <Task finished name='Task-101' coro=<Execucao.test_runtime_v2_repete_prompt_aprovado_e_preserva_fallback_original() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_compacto_v2.py:62> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 2.868 seconds
+.Resposta cortada, modelo diferente ou consumo incompleto; bateria interrompida.
+Parada por limite local da bateria: US$ 0.399000; próxima reserva 0.007879.
+1/3 flash-original gemini-3.8-flash: 10 in, 2 resposta, 0 raciocínio, 10 ms, US$ 0.000020
+2/3 flash-v2 gemini-3.8-flash: 10 in, 2 resposta, 0 raciocínio, 10 ms, US$ 0.000020
+3/3 argon-v2 gemini-4-argon: 10 in, 2 resposta, 0 raciocínio, 10 ms, US$ 0.000020
+....Bateria interrompida anteriormente. Revisar a falha antes de autorizar outra execução.
+2/2 a gemini-3.8-flash: 10 in, 2 resposta, 0 raciocínio, 10 ms, US$ 0.000020
+....banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-115' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.601 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-125' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.109 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-130' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.101 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-135' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.139 seconds
+clima: canal 99 do CLIMA_CANAIS não encontrado (o bot está nesse servidor e vê o canal?)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-140' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.126 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-145' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.109 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-150' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.124 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-155' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.110 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-160' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.134 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-165' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.112 seconds
+clima: falha ao ler Tóquio (sem rede)
+clima: falha ao procurar 'kyoto' (sem rede)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-170' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.129 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-175' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.107 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+<string>:0: ResourceWarning: unclosed file <_io.FileIO name='/media/mizuki/HD Externo II/Closure Lab/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task finished name='Task-180' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.108 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-185' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.102 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-190' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.102 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-200' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.100 seconds
+banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+/media/mizuki/HD Externo II/Closure Lab/Closure/.venv/lib/python3.12/site-packages/quickjs/__init__.py:150: ResourceWarning: unclosed file <_io.FileIO name='/media/mizuki/HD Externo II/Closure Lab/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+  self._context.gc()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task pending name='Task-201' coro=<CamadaDoDiscord.test_fora_dos_canais_delas_so_marcando_ou_respondendo() running at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:139> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.12/asyncio/futures.py:387, Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/base_events.py:449> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.250 seconds
+sem resposta pra mensagem 1015: sem_chave nenhum provedor da fila tem chave no .env
+sem resposta pra mensagem 1016: sem_chave nenhum provedor da fila tem chave no .env
+sem resposta pra mensagem 1017: sem_chave nenhum provedor da fila tem chave no .env
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-205' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.111 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-215' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.104 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-220' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.119 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-225' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.110 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-230' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.116 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-235' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.101 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-240' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.105 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-250' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.105 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+clima: canal do painel (71) não encontrado
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-260' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.101 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-270' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.114 seconds
+Executing <Task finished name='Task-271' coro=<CamadaDoDiscord.test_quem_chama_demais_num_minuto_fica_sem_resposta() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:465> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.231 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-275' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.103 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-280' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.108 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-285' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.103 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-290' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.105 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-295' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.106 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+sem webhook no canal 10; enviando pela conta do bot
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+sem resposta pra mensagem 1061: 500 fora do ar
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-330' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.225 seconds
+.modelo: gemini:a falhou (503 sobrecarga)
+modelo: vertex:b falhou (503 sobrecarga)
+.modelo: gemini:a falhou (rede sem resposta em 0.05 s)
+.modelo: gemini:a falhou (429 cota)
+modelo: gemini:a falhou (429 cota)
+.modelo: vertex:gemini-3.8-flash falhou (429 cota)
+..modelo: gemini:gemini-3.8-flash falhou (429 cota do dia)
+..modelo: teto do mês atingido (US$ 1.00); provedores pagos fora da fila
+....modelo: vertex:a falhou (500 x)
+modelo: gemini:b falhou (bloqueado SAFETY)
+.............modelo=vertex:gemini-4-argon consumo incompleto; reserva cautelar_usd=0.041490 (não é cobrança confirmada)
+modelo: teto do mês atingido (US$ 0.04); provedores pagos fora da fila
+Executing <Task finished name='Task-401' coro=<Orcamento.test_cancelamento_preserva_reserva_apos_reabrir_banco() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_otimizacao_argon.py:113> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.240 seconds
+.Argon compacto incompatível com o prompt; tentativa não enviada
+.modelo: vertex:gemini-4-argon falhou (503 sobrecarga)
+Executing <Task finished name='Task-411' coro=<Orcamento.test_compacto_no_argon_e_original_no_fallback() done, defined at /media/mizuki/HD Externo II/Closure Lab/Closure/src/testes/test_otimizacao_argon.py:173> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.740 seconds
+.modelo: vertex:gemini-4-argon falhou (404 modelo indisponível)
+modelo: vertex:gemini-4-argon falhou (404 modelo indisponível)
+..modelo: vertex:gemini-4-argon falhou (400 status HTTP confirmado)
+modelo: vertex:gemini-4-argon falhou (403 status HTTP confirmado)
+modelo: vertex:gemini-4-argon falhou (429 status HTTP confirmado)
+modelo: vertex:gemini-4-argon falhou (500 status HTTP confirmado)
+modelo: vertex:gemini-4-argon falhou (503 status HTTP confirmado)
+modelo=vertex:gemini-4-argon consumo incompleto; reserva cautelar_usd=0.041490 (não é cobrança confirmada)
+modelo: vertex:gemini-4-argon falhou (bloqueado SAFETY)
+.modelo=vertex:gemini-4-argon consumo incompleto; reserva cautelar_usd=0.041490 (não é cobrança confirmada)
+modelo: vertex:gemini-4-argon falhou (vazio vazio)
+.........................................modelo: vertex:gemini-3.8-flash falhou (500 fora do ar)
+modelo: vertex:gemini-3.1-flash-lite falhou (500 fora do ar)
+reflexão: o modelo falhou (500 fora do ar); as mensagens do dia foram apagadas sem virar fato
+....................
+----------------------------------------------------------------------
+Ran 222 tests in 42.807s
+
+OK

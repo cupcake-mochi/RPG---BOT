@@ -1,0 +1,11 @@
+{
+  "testes_locais": 201,
+  "resultado": "OK",
+  "motores_iguais": "14/14",
+  "pacote_arquivos": 35,
+  "pacote_sha256": "b23997b7520a27f1d57b03f68d3cb5a6f6e9bd7fffbe5632ff04a038b1bce716",
+  "segredos_no_pacote": false,
+  "deploy_realizado": false,
+  "padrao_chat": "gemini-3.8-flash",
+  "argon_max_saida": 4096
+}

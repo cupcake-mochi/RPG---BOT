@@ -10,7 +10,7 @@ from datetime import datetime
 
 from .config import carregar
 from .dados import carregar_personas, ler_manifesto, resumo_manifesto
-from .modelo import FILA_PADRAO, TETO_PADRAO_USD, Modelos, ler_fila
+from .modelo import TETO_PADRAO_USD, Modelos, fila_do_chat
 from .plantao import FUSO, de_plantao
 from .registro import Registro
 
@@ -26,10 +26,12 @@ def conferir() -> int:
     print("Registro:", config.banco, registro.contagens())
     print("Cifra:   ", "ligada (texto de falas, mensagens do dia e fichas vai cifrado pro disco)" if registro.cofre.ligado
           else "DESLIGADA: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)")
-    modelos = Modelos(ler_fila(config.fila_modelos or FILA_PADRAO), config.chaves, registro,
-                      teto_usd=config.teto_mensal_usd or TETO_PADRAO_USD)
+    modelos = Modelos(fila_do_chat(config.modelo_chat, config.fila_modelos), config.chaves, registro,
+                      teto_usd=config.teto_mensal_usd if config.teto_mensal_usd is not None else TETO_PADRAO_USD,
+                      argon_max_saida=config.argon_max_saida, vertex_projeto=config.vertex_projeto,
+                      argon_teto_usd=config.argon_teto_usd, argon_perfil=config.argon_perfil, dados=config.dados)
     print("Modelos: ", ", ".join(f"{p}:{m}" for p, m in modelos.fila) or "nenhum (faltam GEMINI_API_KEY e VERTEX_API_KEY no .env)")
-    print("Gasto:   ", f"US$ {modelos.gasto_do_mes():.4f} estimados neste mês nos provedores pagos; teto de US$ {modelos.teto_usd:.2f}")
+    print("Gasto:   ", f"US$ {modelos.gasto_do_mes():.4f} estimados + reservas por uso incerto; teto de US$ {modelos.teto_usd:.2f}")
     print("Token:   ", "definido" if config.token else "FALTA (DISCORD_TOKEN no .env)")
     print("Servidor principal:", config.guild_id or "não definido")
     print("Dono:    ", config.dono_id or "não definido (/teste_webhook fica bloqueado)")

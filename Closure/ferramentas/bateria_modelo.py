@@ -33,6 +33,14 @@ async def rodar(args) -> int:
     feitas = {r["id"]: r for r in json.loads(saida.read_text(encoding="utf-8"))} if saida.exists() else {}
     vagas = asyncio.Semaphore(args.juntas)
 
+    def salvar() -> None:
+        # Grava cada sucesso antes de pedir outro: uma interrupção não deve
+        # obrigar a pagar novamente pelas respostas que já chegaram.
+        temporario = saida.with_name(saida.name + ".tmp")
+        temporario.write_text(json.dumps([feitas[m["id"]] for m in bateria if m["id"] in feitas],
+                                        ensure_ascii=False, indent=1), encoding="utf-8")
+        temporario.replace(saida)
+
     async def uma(m: dict) -> None:
         entrada = [{"role": "user", "content": sistema + "\n\nContexto ativado:\n" + m["contexto"]},
                    {"role": "user", "content": f'{m["de"]}: {m["mensagem"]}\n\n{lembrete}'}]
@@ -40,6 +48,7 @@ async def rodar(args) -> int:
             for _ in range(3):
                 try:
                     feitas[m["id"]] = {"id": m["id"], "resposta": (await modelos.responder(entrada, gatilho="bateria")).texto.strip()}
+                    salvar()
                     return
                 except Falhou as erro:
                     ultimo = erro
@@ -47,7 +56,7 @@ async def rodar(args) -> int:
             print(f"  {m['id']}: sem resposta ({str(ultimo)[:80]})", flush=True)
 
     await asyncio.gather(*(uma(m) for m in bateria if m["id"] not in feitas))
-    saida.write_text(json.dumps([feitas[m["id"]] for m in bateria if m["id"] in feitas], ensure_ascii=False, indent=1), encoding="utf-8")
+    salvar()
     print(f"{args.saida}: {len(feitas)} de {len(bateria)} respostas. Gasto estimado no mês: US$ {modelos.gasto_do_mes():.2f}")
     return 0 if len(feitas) == len(bateria) else 1
 

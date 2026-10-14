@@ -1,0 +1,21 @@
+{
+  "inicio_utc": "2026-10-14T12:36:32.251120+00:00",
+  "gasto_mes_antes_usd": 5.084118,
+  "chamadas_autorizadas_previstas": 216,
+  "estimativa_autorizada_usd": 0.9,
+  "modelo": "vertex:gemini-3.8-flash",
+  "raciocinio": "low",
+  "juntas": 3,
+  "sha256": {
+    "bateria_c3lb12.json": "75707f10e2309f8c2b9c5ad2e0f02848aef7e59b86e5cac3d748cacecf45687b",
+    "bateria_c3lb12_kaltsit.json": "db10a9fc7028abdad29b62c801835d4d647bcae69a138700fb592e77bb843544",
+    "bateria_c4.json": "fdeabf0727ea790b1281f665a30f28a2da056411cc284bffa36279a6b6113f88",
+    "bateria_c4_kaltsit.json": "fdeabf0727ea790b1281f665a30f28a2da056411cc284bffa36279a6b6113f88",
+    "sistema_closure_v36.txt": "ec9d40826248b9ec6a77071791e86e09c33707c610c82daa51886d8b1f7ca5f2",
+    "lembrete_closure_v36.txt": "3fece7ce8e35c1365444ff9bd6df22eaf8694be0e10a3a3555a48263974a23c8",
+    "sistema_kal_v29.txt": "cef33f878e2911c2f347ed7a0dbb725b4a760f93903df8d9a569f5bed011145a",
+    "lembrete_kaltsit_v29.txt": "fb0786bc24c1d41c0da34607d384da02bd4a8a378c0f048d3449c4ca07df3caa",
+    "nota_c3.py": "faecf487280499884c751bf52f90a4bc13bfad07aea3132db893dcda44fb4d5e",
+    "criterios_c3_v2.py": "34e8e01ff992be8293ac9108739173569ece7cbc6750206a9f40835892705821"
+  }
+}

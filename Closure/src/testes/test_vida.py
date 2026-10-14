@@ -132,7 +132,7 @@ class BlocoELembrete(unittest.TestCase):
     def test_bloco_de_pessoa_nova(self):
         self.assertEqual(self._estado().bloco(),
                          "[Estado agora: plantão; 22:10 em Brasília; canal normal; carga 0.\n"
-                         "Quem fala: rafa (pronomes não informados). Como tratar: pessoa nova: forma neutra, explique mais, sem provocação.\n"
+                         "Quem fala: rafa (pronomes não informados). Como tratar: pessoa nova: explique mais, sem provocação.\n"
                          "Fatos sobre a pessoa: nenhum a lembrar agora; não suponha nada sobre a pessoa.]")
 
     def test_bloco_com_ficha_e_fora_do_plantao(self):
@@ -149,12 +149,12 @@ class BlocoELembrete(unittest.TestCase):
         self.assertIn("joga com Ren na mesa (pano de fundo", bloco)
 
     def test_lembretes_por_personagem_em_ordem_de_prioridade(self):
-        self.assertEqual(self._estado().lembretes(), ["Pessoa nova: forma neutra, sem provocação."])
+        self.assertEqual(self._estado().lembretes(), ["Pessoa nova: sem provocação."])
         self.assertEqual(self._estado(persona=KALTSIT, agora=TARDE).lembretes(), [])
         self.assertEqual(self._estado(intimidade=1).lembretes(), [])
         self.assertEqual(self._estado(carga=2, paciencia=1).lembretes(),
                          ["Carga alta: uma frase, sem piada.", "Paciência baixa com esta pessoa: curta, sem piada, sem explicar duas vezes.",
-                          "Pessoa nova: forma neutra, sem provocação."])
+                          "Pessoa nova: sem provocação."])
         self.assertEqual(self._estado(persona=KALTSIT, carga=3, paciencia=0).lembretes(),
                          ["Carga alta: uma frase.", "Paciência baixa com esta pessoa: seca, sem explicar duas vezes."])
 

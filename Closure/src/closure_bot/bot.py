@@ -11,7 +11,7 @@ from .clima import ServicoClima
 from .config import Config
 from .conversa import Conversas
 from .dados import carregar_personas, ler_manifesto
-from .modelo import FILA_PADRAO, RACIOCINIO_PADRAO, TETO_PADRAO_USD, Modelos, ler_fila
+from .modelo import RACIOCINIO_PADRAO, TETO_PADRAO_USD, Modelos, fila_do_chat
 from .registro import Registro
 from .vida import Vida
 
@@ -37,8 +37,11 @@ class ClosureBot(commands.Bot):
         self.conversas = Conversas()
         self.tree.on_error = self._erro_de_comando
         self.mencoes: dict[str, str] = {}  # nome do comando -> menção clicável (</nome:id>), preenchida ao registrar
-        self.modelos = Modelos(ler_fila(config.fila_modelos or FILA_PADRAO), config.chaves, self.registro,
-                               teto_usd=config.teto_mensal_usd or TETO_PADRAO_USD, raciocinio=config.raciocinio or RACIOCINIO_PADRAO)
+        self.modelos = Modelos(fila_do_chat(config.modelo_chat, config.fila_modelos), config.chaves, self.registro,
+                               teto_usd=config.teto_mensal_usd if config.teto_mensal_usd is not None else TETO_PADRAO_USD,
+                               raciocinio=config.raciocinio or RACIOCINIO_PADRAO,
+                               argon_max_saida=config.argon_max_saida, vertex_projeto=config.vertex_projeto,
+                               argon_teto_usd=config.argon_teto_usd, argon_perfil=config.argon_perfil, dados=config.dados)
 
     async def _erro_de_comando(self, interacao: discord.Interaction, erro: Exception) -> None:
         """Sem isto, um comando que quebra deixa a pessoa olhando pra "o aplicativo não respondeu"."""

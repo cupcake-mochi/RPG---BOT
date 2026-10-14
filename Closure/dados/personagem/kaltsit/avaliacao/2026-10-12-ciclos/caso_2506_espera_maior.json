@@ -1,0 +1,8 @@
+{
+  "caso": 2506,
+  "espera_excepcional_segundos": 60,
+  "latencia_ms": 16427,
+  "resposta_cortada": false,
+  "tokens_entrada": 4462,
+  "tokens_saida": 23
+}

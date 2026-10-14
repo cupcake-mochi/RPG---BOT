@@ -1,0 +1,37 @@
+{
+  "testes": 228,
+  "resultado": "OK",
+  "chamadas_api": 0,
+  "melhoria_comportamental_comprovada": false,
+  "cards_alterados_nesta_etapa": false,
+  "v3_no_runtime": false,
+  "configuracao_real_preservada": true,
+  "casos_ineditos_preparados": 40,
+  "execucao_paga_autorizada": false,
+  "pacote_v2_preservado": {
+    "arquivos": 37,
+    "sha256": "ff14da243bdbcd0f160ba7360bf79f8ecc277e55a12cfa01e81120400cbe3772"
+  },
+  "sha256": {
+    "closure.txt": "af983f403ea9829cdf776a249e9161c5a0372fdf97c310be3a21787c31ff7c3f",
+    "kaltsit.txt": "d890f3bffc00bc63e09bac94c22cb630bb8ddbd476cc24b56eeb4e2362109393",
+    "alteracoes.diff": "17b9eb14421fef07bb1c20c4c5ab5a8ddfd915dec8db0863a15d72dd2a787954",
+    "casos_ineditos.json": "af1e20c335883b3e5630c508a797d028f9b53ca7812c4a3980f380e17ffb3578",
+    "dialogos_planejados.json": "2778ce44e78c1f8c00dea1e35ac37326c44d52022cb7778a23fa87575809982c",
+    "testes_locais.log": "61cb9d3c065d9f75d1447406aa19f7737aa9cae4fd52518251da5f4a0f0a1a37",
+    "revisao.txt": "4cf8b845a3a36f5edf8689f96e3b3107bbde67e49200bd86262887effec450da"
+  },
+  "fontes": {
+    "ferramentas/perfil_compacto_v3.py": "d318e4ff6a1dd65668c319f70ec3e4fd0077ebc58dc5de6c7983fb10662673a2",
+    "ferramentas/preparar_compacto_v3.py": "d67be1a667b815ecadf9a4b1bdd837966c4eaf2b27b6555387d5a51b2acde0d8",
+    "src/testes/test_compacto_v3.py": "a64b4cb61fa1ffcbabcaec32f7ad5b7c16440db78316e4ed2c238ffecf6ce54b"
+  },
+  "checkout_publicacao": {
+    "testes": 228,
+    "resultado": "OK",
+    "sem_testes_pulados": true,
+    "motores_iguais": 14,
+    "total_conferido": 14,
+    "sha256_log": "e40bfde5c5f072f02fa93f21b2ea60bf3c32ecce0639d4fe533310c77abfaa26"
+  }
+}
