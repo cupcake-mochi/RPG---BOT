@@ -76,6 +76,12 @@ class Chat(commands.Cog):
         nome = " ".join(re.sub(r"[\[\]\r\n]", " ", str(autor.display_name)).split())[:40]
         return "outro Mizuki" if nome.lower() == NOME_DO_DONO.lower() else nome
 
+    def _cargo_dela(self, cargo) -> bool:
+        """O cargo que o Discord cria pro bot ao entrar no servidor (o "Guias do Ciclo"): marcar ele é marcar o bot."""
+        proprio = getattr(getattr(cargo, "guild", None), "self_role", None)
+        dono_do_cargo = getattr(getattr(cargo, "tags", None), "bot_id", None)
+        return (proprio is not None and getattr(proprio, "id", None) == cargo.id) or dono_do_cargo == self.bot.user.id
+
     def _texto(self, mensagem: discord.Message) -> str:
         """O texto como vai pro modelo e pro registro: sem a menção ao bot e sem ID de ninguém (menção vira @nome)."""
         texto = mensagem.content
@@ -85,7 +91,8 @@ class Chat(commands.Cog):
             quem = int(achou.group(1))
             return "" if quem == self.bot.user.id else "@" + nomes.get(quem, "alguém")
         texto = re.sub(r"<@!?(\d+)>", trocar, texto)
-        texto = re.sub(r"<@&\d+>", "@cargo", texto)
+        cargos_dela = {c.id for c in mensagem.role_mentions if self._cargo_dela(c)}
+        texto = re.sub(r"<@&(\d+)>", lambda achou: "" if int(achou.group(1)) in cargos_dela else "@cargo", texto)
         texto = re.sub(r"<#\d+>", "#canal", texto)
         texto = re.sub(r"<a?(:\w+:)\d+>", r"\1", texto)  # emoji do servidor: fica só o nome
         return " ".join(texto.split())[:LIMITE_DA_MENSAGEM]
@@ -120,12 +127,15 @@ class Chat(commands.Cog):
         fio = self._fios.get(mensagem.channel.id)
         if fio and fio.autor_id != mensagem.author.id:
             del self._fios[mensagem.channel.id]  # outra pessoa falou no canal: quem conversava com ela volta a chamar
-        if mensagem.mention_everyone or mensagem.role_mentions:
-            return  # aviso pra todo mundo ou pra um cargo não é conversa com as guias, mesmo citando o nome delas
+        cargo_dela = any(self._cargo_dela(c) for c in mensagem.role_mentions)
+        if mensagem.mention_everyone or any(not self._cargo_dela(c) for c in mensagem.role_mentions):
+            # aviso pra todo mundo ou pra outro cargo não é conversa com as guias, mesmo citando o nome delas ou o
+            # cargo delas junto. Só o cargo do próprio bot vale como marcar o bot.
+            return
         if separar_atalho(mensagem.content) is not None:
             return  # "GC:clima" é comando (cogs/atalho.py), não conversa com as guias
 
-        mencionou = self.bot.user in mensagem.mentions
+        mencionou = self.bot.user in mensagem.mentions or cargo_dela
         respondeu, persona_respondida, fala_respondida = self._respondida(mensagem)
         canal_id = getattr(mensagem.channel, "parent_id", None) or mensagem.channel.id
         agora = datetime.now(FUSO)

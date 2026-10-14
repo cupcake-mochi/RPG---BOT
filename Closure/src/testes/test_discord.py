@@ -512,14 +512,35 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         chat = self.bot.get_cog("Chat")
         todos = _mensagem("@everyone a closure avisou que hoje tem sessão", canal)
         todos.mention_everyone = True
+        outro = MagicMock(id=77)
+        outro.tags, outro.guild.self_role = None, None  # cargo de gente, não o do bot
         cargo = _mensagem("<@&77> kal, confirma o horário?", canal)
-        cargo.role_mentions = [MagicMock(id=77)]
+        cargo.role_mentions = [outro]
         cargo_e_bot = _mensagem("<@&77> <@999> oi", canal)
-        cargo_e_bot.role_mentions, cargo_e_bot.mentions = [MagicMock(id=77)], [self.bot.user]
+        cargo_e_bot.role_mentions, cargo_e_bot.mentions = [outro], [self.bot.user]
         for m in (todos, cargo, cargo_e_bot):
             await chat.on_message(m)
         webhook.send.assert_not_called()
         self.assertEqual(self.bot.registro.contagens()["gatilhos"], 0)
+
+    async def test_cargo_do_proprio_bot_chama_como_marcar_o_bot(self):
+        canal, webhook = _canal()
+        chat = self.bot.get_cog("Chat")
+        dela = MagicMock(id=88)
+        dela.tags.bot_id = self.bot.user.id  # o cargo que o Discord cria pro bot
+        outro = MagicMock(id=77)
+        outro.tags = None
+        outro.guild.self_role = None
+        m = _mensagem("<@&88> quanto custa a Recomposição?", canal)
+        m.role_mentions = [dela]
+        await chat.on_message(m)
+        self.assertEqual(webhook.send.call_count, 1)
+        self.assertEqual(self.montar.call_args.args[1], "quanto custa a Recomposição?")  # o cargo sai do texto
+        # o cargo dela junto de outro cargo é aviso, não conversa
+        junto = _mensagem("<@&88> <@&77> sessão hoje", _canal(11)[0])
+        junto.role_mentions = [dela, outro]
+        await chat.on_message(junto)
+        self.assertEqual(self.bot.registro.contagens()["gatilhos"], 1)
 
     async def test_mencao_ao_bot_nao_vira_comando_de_prefixo(self):
         with self.assertNoLogs("discord.ext.commands.bot", level="ERROR"):
