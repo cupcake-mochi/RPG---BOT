@@ -75,22 +75,25 @@ class Chat(commands.Cog):
         # Mensagem de bot ou de webhook (inclusive as nossas) nunca é gatilho; conversa privada fica pra depois.
         if mensagem.author.bot or mensagem.webhook_id or mensagem.guild is None:
             return
-        canal_id = getattr(mensagem.channel, "parent_id", None) or mensagem.channel.id
-        if not self.bot.config.escuta(canal_id):
-            return
-
         if mensagem.mention_everyone or mensagem.role_mentions:
             return  # aviso pra todo mundo ou pra um cargo não é conversa com as guias, mesmo citando o nome delas
         if separar_atalho(mensagem.content) is not None:
             return  # "GC:clima" é comando (cogs/atalho.py), não conversa com as guias
 
+        mencionou = self.bot.user in mensagem.mentions
+        respondeu, persona_respondida, fala_respondida = self._respondida(mensagem)
+        canal_id = getattr(mensagem.channel, "parent_id", None) or mensagem.channel.id
+        if not self.bot.config.escuta(canal_id) and not (mencionou or respondeu):
+            # Fora dos canais delas (CANAIS), o nome solto não chama ninguém: "closure" aparece em conversa dos outros.
+            # Marcar o bot ou responder a uma mensagem dele é chamar de propósito, e vale em qualquer canal.
+            return
+
         agora = datetime.now(FUSO)
         self.bot.vida.ouvir(mensagem.channel.id, agora)  # só a hora, pra saber se o canal está quieto ou cheio
-        respondeu, persona_respondida, fala_respondida = self._respondida(mensagem)
         decisao = decidir(
             mensagem.content,
             agora,
-            mencionou_bot=self.bot.user in mensagem.mentions,
+            mencionou_bot=mencionou,
             respondeu_ao_bot=respondeu,
             respondeu_a=persona_respondida,
         )

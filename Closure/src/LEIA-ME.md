@@ -60,7 +60,7 @@ Estado em 13/10/2026: tudo abaixo está feito, e o bot respondeu no servidor pri
 4. `DONO_ID`, `GUILD_ID`, `CANAIS` e as duas URLs de avatar no `.env`. O avatar da Closure passa por um
    redimensionador público (wsrv.nl) que corta a imagem em quadrado, centralizada; se esse serviço sair do ar, a
    foto dela some e a URL precisa ser trocada. `CANAIS` tem só o canal próprio delas no servidor principal:
-   enquanto estiver assim, o bot não responde em nenhum outro canal nem servidor.
+   é onde basta escrever o nome; nos outros canais elas respondem a quem marca o bot ou responde a uma mensagem dele.
    Ao subir, o bot registra os comandos em todo servidor, o que troca os do bot antigo.
 5. O painel diário de clima: `/clima_canal` no canal, ou o ID do canal em `CLIMA_CANAIS`, no `.env` (o do
    servidor principal já está lá). Quem desligar o painel por comando precisa tirar o ID do `.env` também.
@@ -241,6 +241,9 @@ Depois, no primeiro uso na Discloud (14/10/2026):
 
 - **Mensagem com `@everyone`, `@here` ou menção a cargo não é conversa**, mesmo citando o nome delas. E elas
   nunca marcam ninguém: as menções saem desligadas em toda fala.
+- **Marcar o bot ou responder a uma mensagem dele vale em qualquer canal.** `CANAIS` passou a limitar só o
+  chamado pelo nome ("closure, ..."), que fora do canal delas apareceria em conversa dos outros. Um jogador marcou
+  o bot no chat geral e ficou sem resposta; era isso, não o `GC:`.
 - **Mencionar o bot não vira mais "comando"** no log (`CommandNotFound`): o tratamento de prefixo do discord.py
   foi desligado, porque quem lê mensagem são os módulos.
 

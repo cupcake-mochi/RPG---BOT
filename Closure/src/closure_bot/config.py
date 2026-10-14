@@ -5,7 +5,8 @@ Variáveis (modelo em .env.exemplo, na raiz do repositório):
   GUILD_ID         servidor principal. Os comandos valem em todo servidor; aqui o bot só apaga comando antigo que
                    tenha ficado registrado só nesse servidor, pra não aparecer em dobro.
   DONO_ID          ID de quem pode usar os comandos de administração (o do Mizuki está em dados/personagem/servidor.md).
-  CANAIS           IDs dos canais em que o bot escuta, separados por vírgula. Vazio = todos.
+  CANAIS           IDs dos canais em que basta escrever o nome delas, separados por vírgula. Vazio = todos.
+                   Fora desses, elas só respondem a quem marca o bot ou responde a uma mensagem dele.
   POLITICA_URL     link público da política de privacidade (o texto é o docs/PRIVACIDADE.md). Aparece no fim do /meus_dados.
   TERMOS_URL       link público dos termos de uso (o texto é o docs/TERMOS.md). Aparece no /ajuda, junto do da política.
   CLIMA_CANAIS     IDs de canais que já nascem com o painel diário de clima, um por servidor. O comando
