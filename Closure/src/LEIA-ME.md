@@ -37,8 +37,12 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 Neste computador já existe `Closure/.venv` com as dependências (criada em 13/10/2026; fica fora do git). De
 dentro de `Closure/`:
 
-    .venv/bin/python iniciar.py                      sobe o bot (precisa do DISCORD_TOKEN no .env)
-    .venv/bin/python -m unittest discover -s src/testes -t src     roda os testes
+    .venv/bin/python iniciar.py                 sobe o bot (precisa do DISCORD_TOKEN no .env)
+    .venv/bin/python iniciar.py --conferir      mostra o que foi lido e o que falta, sem conectar
+
+E os testes, de dentro de `Closure/src/`:
+
+    ../.venv/bin/python -m unittest discover -s testes
 
 
 De dentro de `src/`:
