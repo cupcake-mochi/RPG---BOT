@@ -34,6 +34,13 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 
 ## Rodar
 
+Neste computador já existe `Closure/.venv` com as dependências (criada em 13/10/2026; fica fora do git). De
+dentro de `Closure/`:
+
+    .venv/bin/python iniciar.py                      sobe o bot (precisa do DISCORD_TOKEN no .env)
+    .venv/bin/python -m unittest discover -s src/testes -t src     roda os testes
+
+
 De dentro de `src/`:
 
 ```bash
@@ -147,10 +154,10 @@ Com `--com-env` o `.env` vai dentro; esse arquivo carrega segredo e não sai do 
 hospedagem.
 
 - **Memória:** o processo chegou a 98 MB só de carregar e montar pedidos, sem conexão com o Discord. O
-  `discloud.config` pede 150 MB; os 100 MB do bot antigo não bastam.
-- **Banco:** fica em `src/var/bot.sqlite3` dentro da hospedagem. Não foi conferido se a Discloud preserva esse
-  arquivo quando se sobe um pacote novo; se não preservar, as fichas e os painéis de clima se perdem a cada
-  atualização. Conferir antes de confiar.
+  `discloud.config` pede 256 MB; o plano do Mizuki vai até 1 GB, e os 100 MB do bot antigo não bastariam.
+- **Banco:** fica em `src/var/bot.sqlite3` dentro da hospedagem. A Discloud preserva o arquivo entre as
+  atualizações desde que ninguém o apague por lá (Mizuki, 13/10/2026). O pacote não leva banco nenhum, então
+  subir pacote novo não passa por cima dele.
 - **Segredos:** a hospedagem precisa das mesmas variáveis do `.env`, inclusive a `CHAVE_DO_BANCO`.
 
 ## Regras de plantão implementadas
