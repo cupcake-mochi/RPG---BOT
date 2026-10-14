@@ -30,7 +30,7 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 148 testes; 27 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 149 testes; 28 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -72,8 +72,11 @@ python3 -m closure_bot
 2. No Developer Portal, ligar o **Message Content Intent** do bot: sem ele o bot não lê o nome na mensagem.
 3. No servidor, a permissão **Gerenciar webhooks** pro bot. Sem ela a fala sai pela conta do bot, com o
    nome na frente ("**Closure:** ...").
-4. `DONO_ID` e as duas URLs de avatar no `.env`. `GUILD_ID` é opcional: é só um servidor de teste em que os
-   comandos aparecem na hora. O bot foi feito pra rodar em vários servidores.
+4. `DONO_ID`, `GUILD_ID`, `CANAIS` e as duas URLs de avatar já estão no `.env` (13/10/2026). O avatar da
+   Closure passa por um redimensionador público (wsrv.nl) que corta a imagem em quadrado, centralizada; se
+   esse serviço sair do ar, a foto dela some e a URL precisa ser trocada. `CANAIS` tem só o canal próprio
+   delas no servidor principal: enquanto estiver assim, o bot não responde nos outros servidores.
+   Ao subir, o bot registra os comandos em todo servidor, o que troca os do bot antigo.
 5. Em cada servidor, usar `/clima_canal` no canal que vai receber o painel diário (ou passar o canal).
    Pra não depender do comando na primeira subida, o ID do canal também pode ir em `CLIMA_CANAIS`, no `.env`;
    o do servidor principal já está lá. Quem desligar o painel por comando precisa tirar o ID do `.env` também.

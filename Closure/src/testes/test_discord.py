@@ -81,6 +81,15 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
     async def asyncTearDown(self):
         self.bot.registro.fechar()
 
+    async def test_ao_subir_registra_os_comandos_em_geral_e_limpa_os_locais_do_servidor_principal(self):
+        from dataclasses import replace
+
+        self.bot.config = replace(self.bot.config, guild_id=77)
+        with patch.object(self.bot, "load_extension", AsyncMock()), patch.object(self.bot.tree, "sync", AsyncMock()) as sync:
+            await self.bot.setup_hook()
+        self.assertEqual([c.kwargs.get("guild") and c.kwargs["guild"].id for c in sync.call_args_list], [None, 77])
+        self.assertEqual(self.bot.tree.get_commands(guild=discord.Object(id=77)), [])
+
     async def test_comandos_registrados(self):
         self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
                           "meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados"})
