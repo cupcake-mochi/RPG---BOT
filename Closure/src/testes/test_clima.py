@@ -7,6 +7,7 @@ import json
 import unittest
 from datetime import datetime
 from pathlib import Path
+from urllib.parse import unquote
 
 from closure_bot.clima import (TOLERANCIA, TOQUIO, VALIDADE, Lugar, ServicoClima, acao_painel, contexto_clima,
                                fala_de_clima, interpretar, interpretar_lugar, linha_bloco4, lugar_citado)
@@ -160,7 +161,7 @@ class Servico(unittest.IsolatedAsyncioTestCase):
         await s.procurar("são paulo&x=1")
         self.assertIn("name=s%C3%A3o%20paulo%26x%3D1&", self.urls[0])
         await s.procurar("nova york")
-        self.assertIn("name=Nova%20Iorque&", self.urls[1])
+        self.assertTrue(any("name=Nova%20Iorque&" in u for u in self.urls))
 
     async def test_contexto_so_quando_a_mensagem_puxa(self):
         s = self._servico()
@@ -226,3 +227,48 @@ class DesenhoDoTempo(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class LugarPorPartes(unittest.IsolatedAsyncioTestCase):
+    """Cidade com estado junto ("belo horizonte minas gerais", "Belo Horizonte - MG"), apelido e "e em X?" (14/10/2026)."""
+
+    CIDADES = {
+        "belo horizonte": [{"name": "Belo Horizonte", "admin1": "Minas Gerais", "country": "Brasil",
+                            "latitude": -19.9, "longitude": -43.9, "population": 2_500_000}],
+        "santa maria": [{"name": "Santa Maria", "admin1": "Rio Grande do Sul", "country": "Brasil",
+                         "latitude": -29.7, "longitude": -53.8, "population": 270_000},
+                        {"name": "Santa Maria", "admin1": "Distrito Federal", "country": "Brasil",
+                         "latitude": -16.0, "longitude": -48.0, "population": 120_000}],
+        "santa maria rio": [{"name": "Santa Maria Riopetra", "admin1": "Emília-Romanha", "country": "Itália",
+                             "latitude": 43.9, "longitude": 12.1, "population": 100}],
+    }
+
+    async def _buscar(self, url):
+        self.urls.append(url)
+        if "geocoding" in url:
+            nome = unquote(url.split("name=")[1].split("&")[0]).lower()
+            return {"results": self.CIDADES[nome]} if nome in self.CIDADES else {"generationtime_ms": 0.1}
+        return EXEMPLO
+
+    def setUp(self):
+        self.urls = []
+        self.s = ServicoClima(buscar=self._buscar)
+
+    async def test_cidade_com_estado_sem_virgula_traco_ou_barra(self):
+        for nome in ("belo horizonte minas gerais", "Belo Horizonte - MG", "belo horizonte/mg"):
+            self.assertEqual((await self.s.procurar(nome)).nome, "Belo Horizonte, Minas Gerais, Brasil", nome)
+
+    async def test_o_que_foi_cortado_tem_que_ser_o_estado(self):
+        self.assertEqual((await self.s.procurar("santa maria rio grande do sul")).nome,
+                         "Santa Maria, Rio Grande do Sul, Brasil")
+        self.assertEqual((await self.s.procurar("Santa Maria - DF")).nome, "Santa Maria, Distrito Federal, Brasil")
+        self.assertIsNone(await self.s.procurar("belo horizonte bahia"))  # a região escrita não bate: não chuta
+
+    async def test_apelido_de_capital(self):
+        self.assertEqual((await self.s.procurar("bh")).nome, "Belo Horizonte, Minas Gerais, Brasil")
+
+    async def test_e_em_outro_lugar_so_depois_de_pergunta_de_clima(self):
+        linha = await contexto_clima(self.s, "kal, e em belo horizonte?", "kal, como tá o clima em Tóquio?")
+        self.assertIn("Belo Horizonte", linha)
+        self.assertIsNone(await contexto_clima(self.s, "kal, e em belo horizonte?", "kal, o que é Integridade?"))
+        self.assertIsNone(await contexto_clima(self.s, "kal, e em belo horizonte?"))

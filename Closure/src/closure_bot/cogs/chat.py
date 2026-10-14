@@ -189,7 +189,8 @@ class Chat(commands.Cog):
             turnos = [Turno(agora, fala_respondida[:LIMITE_DO_DISCORD])] + turnos
         estado = bot.vida.estado(persona=persona, canal_id=canal.id, autor_id=mensagem.author.id, nome=nome, agora=agora, texto=texto)
         para_a_ponte = estado.para_a_ponte()
-        clima = await contexto_clima(bot.clima, texto)
+        anterior = next((t.texto for t in reversed(turnos) if t.nome is not None), None)  # o que a pessoa disse antes
+        clima = await contexto_clima(bot.clima, texto, anterior)
         if clima:  # a linha de clima entra antes do bloco de estado, só quando a mensagem puxa o assunto
             para_a_ponte["bloco"] = f"{clima}\n\n{para_a_ponte['bloco']}"
         # falas de outras conversas no canal; as desta já vão em `turnos`, e contá-las duas vezes viraria aviso falso de repetição
