@@ -43,6 +43,8 @@ class Admin(commands.Cog):
         ordem = [*GRUPOS.values(), "Outros", "Para quem cuida do servidor"]
         for grupo in sorted(grupos, key=ordem.index):
             embed.add_field(name=f"» {grupo}", value="\n".join(grupos[grupo]), inline=False)
+        embed.add_field(name="» Sem a barra", inline=False,
+                        value="`GC:ajuda`, `GC:clima` (ou `GC:clima Quioto`), `GC:ping` e `GC:status` fazem o mesmo, escritos no chat.")
         links = [f"[{nome}]({url})" for nome, url in (("Privacidade", self.bot.config.politica_url), ("Termos de uso", self.bot.config.termos_url)) if url]
         if links:
             embed.add_field(name="» Links", value=" | ".join(links), inline=False)
@@ -58,31 +60,31 @@ class Admin(commands.Cog):
         await interacao.response.send_message(
             embed=self.painel_de_ajuda(cuida_do_servidor=dono or bool(permissoes and permissoes.manage_guild), dono=dono), ephemeral=True)
 
+    def texto_ping(self) -> str:
+        return f"No ar ({round(self.bot.latency * 1000)} ms). Regras: {resumo_manifesto(self.bot.manifesto)}."
+
+    async def texto_status(self) -> str:
+        agora = datetime.now(FUSO)
+        plantao = self.bot.personas[de_plantao(agora)]
+        try:  # o que vale é o que está na página de onde sai o prompt; os card.json da pasta podem estar atrás
+            cards = ", ".join(f"{nome} {versao}" for nome, versao in (await versoes_do_site()).items())
+        except Exception as erro:
+            cards = f"não deu pra ler a página ({str(erro)[:80]})"
+        contagens = self.bot.registro.contagens()
+        return (f"Agora ({agora:%H:%M}, Brasília) o plantão é de {plantao.nome}.\n"
+                f"Prompt: {cards}.\n"
+                f"Registro: {contagens['gatilhos']} gatilhos, {contagens['chamadas_api']} chamadas de API, "
+                f"{contagens['mensagens_bot']} mensagens enviadas.\n"
+                f"Gasto estimado no mês com modelo pago: US$ {self.bot.modelos.gasto_do_mes():.2f} "
+                f"de US$ {self.bot.modelos.teto_usd:.2f}.")
+
     @app_commands.command(name="ping", description="Confere se o bot está no ar e qual versão das regras ele leu.")
     async def ping(self, interacao: discord.Interaction) -> None:
-        await interacao.response.send_message(
-            f"No ar ({round(self.bot.latency * 1000)} ms). Regras: {resumo_manifesto(self.bot.manifesto)}.",
-            ephemeral=True,
-        )
+        await interacao.response.send_message(self.texto_ping(), ephemeral=True)
 
     @app_commands.command(name="status", description="Quem está de plantão, versões dos cards e contagens do registro.")
     async def status(self, interacao: discord.Interaction) -> None:
-        agora = datetime.now(FUSO)
-        plantao = self.bot.personas[de_plantao(agora)]
-        try:  # o que vale é o que está na página do site, de onde sai o prompt; os card.json da pasta podem estar atrás
-            cards = ", ".join(f"{nome} {versao}" for nome, versao in (await versoes_do_site()).items())
-        except Exception as erro:
-            cards = f"não deu pra ler a página do site ({str(erro)[:80]})"
-        contagens = self.bot.registro.contagens()
-        await interacao.response.send_message(
-            f"Agora ({agora:%H:%M}, Brasília) o plantão é de {plantao.nome}.\n"
-            f"Prompt do site: {cards}.\n"
-            f"Registro: {contagens['gatilhos']} gatilhos, {contagens['chamadas_api']} chamadas de API, "
-            f"{contagens['mensagens_bot']} mensagens enviadas.\n"
-            f"Gasto estimado no mês com modelo pago: US$ {self.bot.modelos.gasto_do_mes():.2f} "
-            f"de US$ {self.bot.modelos.teto_usd:.2f}.",
-            ephemeral=True,
-        )
+        await interacao.response.send_message(await self.texto_status(), ephemeral=True)
 
     @app_commands.command(name="teste_webhook", description="Manda uma mensagem de teste com o nome e o avatar de quem está de plantão.")
     async def teste_webhook(self, interacao: discord.Interaction) -> None:
