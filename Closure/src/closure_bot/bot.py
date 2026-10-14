@@ -41,7 +41,8 @@ class ClosureBot(commands.Bot):
                                teto_usd=config.teto_mensal_usd if config.teto_mensal_usd is not None else TETO_PADRAO_USD,
                                raciocinio=config.raciocinio or RACIOCINIO_PADRAO,
                                argon_max_saida=config.argon_max_saida, vertex_projeto=config.vertex_projeto,
-                               argon_teto_usd=config.argon_teto_usd, argon_perfil=config.argon_perfil, dados=config.dados)
+                               argon_teto_usd=config.argon_teto_usd, argon_perfil=config.argon_perfil, dados=config.dados,
+                               teto_preco=config.teto_preco, gasto_externo_usd=config.gasto_externo_usd)
 
     async def _erro_de_comando(self, interacao: discord.Interaction, erro: Exception) -> None:
         """Sem isto, um comando que quebra deixa a pessoa olhando pra "o aplicativo não respondeu"."""

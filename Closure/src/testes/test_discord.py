@@ -93,7 +93,7 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.bot.tree.get_commands(guild=discord.Object(id=77)), [])
 
     async def test_comandos_registrados(self):
-        self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ajuda", "ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
+        self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ajuda", "livro", "ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
                           "meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados"})
 
     async def test_modo_misto_so_no_canal_escolhido(self):
@@ -625,7 +625,9 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         comum = await pedir(2, False)
         campos = {c.name: c.value for c in comum.fields}
         self.assertIn("Chame pelo nome em <#55>", comum.description)
-        self.assertEqual(list(campos), ["» Clima", "» Seus dados", "» Do bot", "» Sem a barra", "» Links"])
+        self.assertEqual(list(campos), ["» Regras", "» Clima", "» Seus dados", "» Do bot", "» Sem a barra", "» Links"])
+        self.assertIn("/livro · Link do livro de regras", campos["» Regras"])
+        self.assertIn("`GC:livro`", campos["» Sem a barra"])
         self.assertIn("</clima:123> · Mostra como está o tempo", campos["» Clima"])
         self.assertNotIn("clima_canal", campos["» Clima"])
         self.assertIn("/meus_dados · ", campos["» Seus dados"])
@@ -685,6 +687,28 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         with patch("closure_bot.cogs.admin.versoes_do_site", AsyncMock(return_value={"closure": "v0.33"})):
             await atalho.on_message(_mensagem("GC:status", canal))
         self.assertIn("Prompt: closure v0.33.", canal.send.call_args.args[0])
+
+    async def test_livro_manda_o_link_com_quem_esta_de_plantao_pela_barra_e_pelo_gc(self):
+        from closure_bot.config import LIVRO_PADRAO
+        regras = self.bot.get_cog("Regras")
+        interacao = MagicMock()
+        interacao.response.send_message = AsyncMock()
+        await regras.livro.callback(regras, interacao)
+        kwargs = interacao.response.send_message.call_args.kwargs
+        self.assertEqual(kwargs["embed"].url, LIVRO_PADRAO)
+        self.assertIn(kwargs["embed"].author.name, ("Closure", "Kal'tsit"))
+        self.assertEqual(kwargs["view"].children[0].url, LIVRO_PADRAO)
+        self.assertNotIn("ephemeral", kwargs)  # o link fica no canal, pra todo mundo
+        # GC:livro e GC:sistema fazem o mesmo
+        atalho = self.bot.get_cog("Atalho")
+        canal, _ = _canal()
+        canal.send = AsyncMock()
+        for texto in ("GC:livro", "gc: sistema"):
+            await atalho.on_message(_mensagem(texto, canal))
+            self.assertEqual(canal.send.call_args.kwargs["embed"].url, LIVRO_PADRAO)
+        # e o link pode vir do .env
+        self.bot.config = _config(LIVRO_URL="https://exemplo/livro.pdf")
+        self.assertEqual(regras.painel_do_livro()[0].url, "https://exemplo/livro.pdf")
 
     async def test_teste_webhook_so_pro_dono(self):
         admin = self.bot.get_cog("Admin")

@@ -60,9 +60,16 @@ ARGON_ESPERA = 60  # evita abandonar raciocínio ainda faturável e pagar outra 
 ESPERA = 25  # segundos por tentativa; resposta normal chega em 2 a 8
 # O gratuito espera menos: quando ele engasga, quem chamou a personagem não fica meio minuto olhando pro "digitando".
 ESPERA_POR_PROVEDOR = {"gemini": 12, "vertex": 60}
+# Prazo da mensagem inteira, somando as tentativas: quem chamou não fica mais que isso olhando pro "digitando".
+# Sem ele, a fila padrão podia esperar 144 s (204 s com o Argon na frente). A reflexão das 4h30 não tem quem
+# espere e fica fora do prazo. Tentativa que teria menos que TENTATIVA_MINIMA não é enviada.
+PRAZO_TOTAL = 75
+TENTATIVA_MINIMA = 5
 # Depois de falhar, o provedor fica de molho e a fila pula direto pro seguinte, pra ninguém esperar à toa:
 # cota estourada (429) demora a voltar; sobrecarga e queda de rede passam logo.
-MOLHO = {400: 1800, 401: 1800, 403: 1800, 404: 1800, 429: 600, 500: 120, 502: 120,
+# 400 fica de fora: é erro do pedido, não do provedor, e um pedido malformado (a reflexão já mandou um) não
+# pode tirar o modelo de todos os outros por meia hora.
+MOLHO = {401: 1800, 403: 1800, 404: 1800, 429: 600, 500: 120, 502: 120,
          503: 120, 504: 120, "rede": 120, "vazio": 120}
 BLOQUEIOS = ("SAFETY", "PROHIBITED_CONTENT", "BLOCKLIST", "OTHER")
 
@@ -182,7 +189,8 @@ class Modelos:
                  enviar: Callable[[str, dict, str], Awaitable[dict]] | None = None, teto_usd: float = TETO_PADRAO_USD,
                  raciocinio: str | None = RACIOCINIO_PADRAO, argon_max_saida: int = ARGON_MAX_SAIDA,
                  vertex_projeto: str = "", argon_teto_usd: float | None = None,
-                 argon_perfil: str = "original", dados: Path | None = None):
+                 argon_perfil: str = "original", dados: Path | None = None,
+                 teto_preco: str = "promocional", gasto_externo_usd: float = 0.0):
         self.fila = [(p, m) for p, m in fila if chaves.get(p)]  # provedor sem chave sai da fila
         self.teto_usd = teto_usd
         if not math.isfinite(teto_usd) or teto_usd < 0:
@@ -193,6 +201,12 @@ class Modelos:
         if argon_perfil not in ("original", "compacto-v1", "compacto-v2"):
             raise ValueError("perfil Argon não reconhecido")
         self.argon_perfil, self.dados = argon_perfil, dados
+        if teto_preco not in ("cheio", "promocional"):
+            raise ValueError("teto_preco deve ser cheio ou promocional")
+        if not math.isfinite(gasto_externo_usd) or gasto_externo_usd < 0:
+            raise ValueError("gasto externo deve ser finito e não negativo")
+        # "cheio" soma pelo preço sem promoção: a fatura pode abater o crédito do mês antes da promoção.
+        self.teto_preco, self.gasto_externo_usd = teto_preco, gasto_externo_usd
         self.raciocinio = raciocinio
         self.argon_max_saida = argon_max_saida
         if vertex_projeto and not re.fullmatch(r"[a-zA-Z0-9-]+", vertex_projeto):
@@ -209,16 +223,26 @@ class Modelos:
         self._registro = registro
         self._enviar = enviar or _enviar_http
 
-    def gasto_do_mes(self, apenas_modelo: str | None = None) -> float:
-        """Estimativa em US$ do que os provedores pagos já consumiram neste mês, pelo registro."""
+    def gasto_do_mes(self, apenas_modelo: str | None = None, *, preco: str | None = None, externo: bool = True) -> float:
+        """Estimativa em US$ do que os provedores pagos já consumiram neste mês, pelo registro, mais as reservas por
+        consumo incerto. `preco` "cheio" recalcula pelos tokens sem promoção (padrão: o do teto). O gasto externo
+        (GASTO_EXTERNO_USD) entra só na conta global, com `externo`."""
         agora = datetime.now(timezone.utc)
+        cheio = (preco or self.teto_preco) == "cheio"
         linhas = (self._registro.consumo_do_mes(agora) if self._registro else
                   [r for r in self._consumo_local if r[1][:7] == agora.strftime("%Y-%m")])
-        return sum(custo if custo is not None else custo_usd(modelo.partition(":")[2], entrada, saida,
-                                                            int(data[:4]), mes=int(data[5:7]), tokens_cache=cache)
-                   for modelo, data, entrada, saida, cache, custo in linhas
-                   if modelo.partition(":")[0] in PAGOS and
-                   (apenas_modelo is None or modelo.partition(":")[2] == apenas_modelo))
+        total = 0.0
+        for modelo, data, entrada, saida, cache, custo, reserva in linhas:
+            provedor, _, nome = modelo.partition(":")
+            if provedor not in PAGOS or (apenas_modelo is not None and nome != apenas_modelo):
+                continue
+            if cheio or custo is None:
+                custo = custo_usd(nome, entrada, saida, int(data[:4]), mes=int(data[5:7]), tokens_cache=cache,
+                                  sem_promocao=cheio)
+            total += max(custo, reserva or 0.0)
+        if externo and apenas_modelo is None:
+            total += self.gasto_externo_usd
+        return total
 
     async def responder(self, entrada: list[dict], *, persona: str | None = None, gatilho: str | None = None,
                         so_pagos: bool = False, usar_argon: bool = False) -> Resposta:
@@ -234,7 +258,12 @@ class Modelos:
         disponiveis = [par for par in fila if self._de_molho.get(par, 0) <= time.monotonic()]
         if not disponiveis:
             raise Falhou("aguardar", "modelos temporariamente indisponíveis; intervalo de recuperação em andamento")
+        prazo = None if gatilho == "reflexao" else time.monotonic() + PRAZO_TOTAL
         for provedor, modelo in disponiveis:
+            restante = prazo - time.monotonic() if prazo is not None else None
+            if restante is not None and restante < TENTATIVA_MINIMA:
+                ultimo_erro = ultimo_erro or Falhou("prazo", f"sem resposta em {PRAZO_TOTAL} s somando a fila")
+                break
             pedido = entrada
             if modelo == ARGON and self.argon_perfil != "original":
                 try:
@@ -253,7 +282,8 @@ class Modelos:
             # Reserva conservadora para chamadas concorrentes: bytes UTF-8 de texto + saída máxima.
             # Estimativa local, não uma garantia da fatura (timeouts podem ser cobrados sem usageMetadata).
             reserva = custo_usd(modelo, sum(len(m["content"].encode()) for m in pedido) + 256,
-                                corpo["generationConfig"]["maxOutputTokens"]) if provedor in PAGOS else 0.0
+                                corpo["generationConfig"]["maxOutputTokens"],
+                                sem_promocao=self.teto_preco == "cheio") if provedor in PAGOS else 0.0
             if provedor in PAGOS and self.gasto_do_mes() + self._reservado + reserva > self.teto_usd:
                 ultimo_erro = ultimo_erro or Falhou("teto", f"gasto do mês chegou ao teto de US$ {self.teto_usd:.2f}")
                 continue
@@ -268,13 +298,15 @@ class Modelos:
             uso = {}
             try:
                 espera = ARGON_ESPERA if modelo == ARGON else ESPERA_POR_PROVEDOR.get(provedor, ESPERA)
+                if restante is not None:
+                    espera = min(espera, restante)
                 url = URLS[provedor].format(modelo=modelo)
                 if provedor == "vertex" and modelo in (ARGON, FLASH) and self.vertex_projeto:
                     url = f"https://aiplatform.googleapis.com/v1/projects/{self.vertex_projeto}/locations/global/publishers/google/models/{modelo}:generateContent"
                 try:
                     dados = await asyncio.wait_for(self._enviar(url, corpo, self._chaves[provedor]), espera)
                 except asyncio.TimeoutError:
-                    raise Falhou("rede", f"sem resposta em {espera} s")
+                    raise Falhou("rede", f"sem resposta em {espera:.0f} s")
                 uso = ler_uso(dados)
                 texto, cortada, entrada_tk, saida_tk = ler_resposta(dados)
             except Falhou as erro:
@@ -300,6 +332,7 @@ class Modelos:
                                     reserva_sem_uso_usd=reserva, **uso)
             return Resposta(texto, provedor, modelo, entrada_tk, saida_tk, latencia, cortada,
                             uso["tokens_resposta"], uso["tokens_raciocinio"], uso["tokens_cache"], uso["fim"], custo)
+        ultimo_erro = ultimo_erro or Falhou("prazo", "nenhuma tentativa coube no prazo")
         if ultimo_erro.codigo == "teto":
             log.warning("modelo: teto do mês atingido (US$ %.2f); provedores pagos fora da fila", self.teto_usd)
         raise ultimo_erro
@@ -320,7 +353,7 @@ class Modelos:
         else:
             self._consumo_local.append((f"{provedor}:{modelo}", datetime.now(timezone.utc).isoformat(),
                                         entrada or 0, saida or 0, uso.get("tokens_cache") or 0,
-                                        max(custo or 0, incerto)))
+                                        custo, incerto))
         log.info("modelo=%s:%s ok=%s entrada=%s resposta=%s raciocinio=%s cache=%s fim=%s ms=%s custo_usd=%s",
                  provedor, modelo, ok, entrada, uso.get("tokens_resposta"), uso.get("tokens_raciocinio"),
                  uso.get("tokens_cache"), uso.get("fim"), latencia, custo)
