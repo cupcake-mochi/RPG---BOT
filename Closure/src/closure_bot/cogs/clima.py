@@ -136,6 +136,19 @@ class ComandoClima(commands.Cog):
     @painel_diario.before_loop
     async def _esperar_conexao(self) -> None:
         await self.bot.wait_until_ready()
+        self.semear_paineis()
+
+    def semear_paineis(self) -> None:
+        """Canais de painel que vêm do .env (CLIMA_CANAIS). Valem pro servidor que ainda não tem painel; quem já
+        escolheu o canal por /clima_canal fica com a escolha dele."""
+        for canal_id in self.bot.config.clima_canais:
+            canal = self.bot.get_channel(canal_id)
+            servidor = getattr(canal, "guild", None)
+            if servidor is None:
+                log.warning("clima: canal %s do CLIMA_CANAIS não encontrado (o bot está nesse servidor e vê o canal?)", canal_id)
+            elif self.bot.registro.painel(servidor.id) is None:
+                self.bot.registro.definir_painel(guild_id=servidor.id, canal_id=canal_id)
+                log.info("clima: painel diário do servidor %s ligado no canal %s pelo .env", servidor.id, canal_id)
 
 
 async def setup(bot: commands.Bot) -> None:

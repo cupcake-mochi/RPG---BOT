@@ -30,7 +30,7 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 147 testes; 26 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 148 testes; 27 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -75,6 +75,8 @@ python3 -m closure_bot
 4. `DONO_ID` e as duas URLs de avatar no `.env`. `GUILD_ID` é opcional: é só um servidor de teste em que os
    comandos aparecem na hora. O bot foi feito pra rodar em vários servidores.
 5. Em cada servidor, usar `/clima_canal` no canal que vai receber o painel diário (ou passar o canal).
+   Pra não depender do comando na primeira subida, o ID do canal também pode ir em `CLIMA_CANAIS`, no `.env`;
+   o do servidor principal já está lá. Quem desligar o painel por comando precisa tirar o ID do `.env` também.
 
 ## Modelo e prompt (13/10/2026)
 
