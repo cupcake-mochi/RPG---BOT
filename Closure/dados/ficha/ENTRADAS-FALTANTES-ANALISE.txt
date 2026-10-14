@@ -1,0 +1,47 @@
+ANALISE: cobertura das contas e entradas faltantes — R51, 14/10/2026
+
+Contrato vigente: formato.versao = 1, 2.650 chaves, contrato documental v3.
+Esta lista não muda as chaves nem o gerador. Cadastro e custom ficam para CONFIGURAÇÃO, a pedido do Mizuki.
+
+Conferido agora pelo bot, sem consultar modelo
+
+- Classe disponível e PE nominal dos feitiços e especiais; Liberação com 50% adicional, para cima, nível e quantidade.
+- Forma conhecida, restrições de Classe 0 e Liberação, número de Melhorias e Restrições (incluindo Corpo a Corpo).
+- Algumas incompatibilidades explícitas do livro, repetição de compra e requisito mínimo de Classe reconhecido.
+- Orçamento e devolução: a Forma não recebe desconto nem é paga pela Restrição. Livre pessoal usa metade para cima;
+  entidade, metade para baixo (mínimo 1). Como as escolhas completas de Famílias não chegam, o bot calcula as
+  possibilidades e só certifica dano-base invariável. Resultado fora das possibilidades reconhecíveis reprova.
+- Dano-base determinado: dados, face, média escrita e dados adicionais simples; corte dos dados iniciais respeita o teto
+  de 4 × Classe. Distribuição entre ataques, Controle sem dano, Alma, Remate, Onda/Apoio/Efeito e custom ficam de fora.
+- Nível das entidades a partir da aquisição, sem confiar no resultado da planilha; domada conserva nível, criada para
+  no último nível da Classe de criação, as outras acompanham o dono. Classe, entrada e retorno (dobro) refeitos.
+- Atributos de entidade: formato, teto total e teto inicial. Não certifica a distribuição inicial/marcos sem histórico.
+- Cartas vazias com Forma/Classe iniciais não contam. Erro de fórmula em peças/Restrições de carta preenchida impede
+  certificar a montagem. No LibreOffice, as junções de várias cartas vazias dos fixtures retornam #NAME?; isso não
+  cria uma habilidade. A leitura real do Google das quatro cópias não apresentou esse problema.
+
+Entradas que hoje faltam (conferidas contra analise-chaves.tsv e ficha-v01/analise.py)
+
+1. Fundamento/rota: Famílias Livres e Fechadas, Selo, atributo escolhido, Descrição/Regra, tipos de dano, escolhas de
+   resolução, TR e destino do saldo. Não usar cd_de_feitico ou conjuracao como entrada: ambos são resultados editáveis.
+   Alcance e resolução estão exportados como resultado por feitiço, mas faltam as escolhas para validá-los por inteiro.
+2. Classe 0 pessoal e Técnica Máxima: cartas e entradas completas. Não existem prefixos próprios no contrato atual.
+   Repertório: compras de Talentos, Regra Própria e Domínio, trocas por entidades e concessões fora dos espaços.
+3. Entidades: Buff/Debuff dos cinco atributos e dos resultados, aumentos de marcos, atributo de acerto, TR e atributo
+   usado na Defesa do conjunto, equipamento em uso e seus requisitos, alma/Integridade, deslocamento e sentidos.
+   Os cinco valores em invocacao.N.pontos não bastam para refazer vida/Defesa quando há ajustes. Portanto o bot NÃO
+   certifica vida, Defesa, acerto, CD ou deslocamento da entidade só porque batem com a fórmula sem Buff.
+4. Famílias da entidade: a lista vem junta sem rótulos de Livre/aberta. É preciso fixar o sentido das posições, as
+   concessões da Trilha e as regras vigentes. A montagem pessoal e a da entidade têm descontos e orçamentos diferentes.
+5. Habilidades de entidade: escolhas de resolução, alcance, tipo de dano, texto e condições de aplicação; vagas básicas,
+   especiais, habilidades extras de Trilha e Talentos; Liberação/Máxima/Domínio da domada com suas aquisições.
+6. CONFIGURAÇÃO: regra.*, efeito.* e custom.*, quando o gerador definir o contrato. Permissão, identidade da mesa e
+   aprovação do mestre por impressão digital serão desenhadas nessa etapa. Uma aprovação muda quando muda o conteúdo.
+
+Próxima validação
+
+Gerar novamente a lista de chaves pelo gerador oficial, depois de a ficha disponibilizar as entradas. Nunca editar
+analise-chaves.tsv ou dados/sistema manualmente. Preparar 3 a 5 fichas com feitiços e entidades efetivamente preenchidos,
+com e sem Buff, domada menor e criada no fim da Classe. Comparar os exemplos publicados do R51 e valores adulterados,
+sem confiar nos avisos da própria ficha. As quatro cópias atuais têm cartas vazias e só cobrem as regressões dos números
+do personagem. A suíte local não é prova de uma conferência integral da ficha ou de funcionamento já implantado.

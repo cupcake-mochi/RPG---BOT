@@ -32,9 +32,10 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py` | `/livro` (e `GC:livro`, `GC:sistema`): link do livro de regras em PDF, com quem está de plantão. A consulta por comando é da fase 2 |
 | `closure_bot/ficha_leitor.py` | Lê a aba oculta `ANALISE` da ficha, do `.xlsx` baixado (openpyxl) ou do link aberto (CSV), e normaliza os valores (fase 3) |
-| `closure_bot/ficha_corretor.py` | Confere a ficha sem IA: formato, nomes de Caminho, Trilha e Origem, contas de vida, PE, Integridade, proteção e Defesa, e os avisos da ficha. Estrutura das regras de campanha e do custom aprovado. Feitiço e invocação: lugar reservado |
+| `closure_bot/ficha_corretor.py` | Confere a ficha sem IA: formato, nomes, vida, PE, Integridade, proteção, Defesa e avisos. Chama as contas de montagem de `ficha_magia.py`. Regras de campanha e custom continuam só na estrutura, até CONFIGURAÇÃO |
+| `closure_bot/ficha_magia.py` | Tabelas e preços do R51 lidos do livro. Confere Classe, PE nominal, limites de peças/Restrições, parte do dano-base; nas entidades, nível, Classe, entrada e retorno. Não certifica contas que dependem de entradas ausentes na ANALISE; detalhes em `../dados/ficha/ENTRADAS-FALTANTES-ANALISE.txt` |
 | `closure_bot/cogs/ficha.py` | `/ficha analisar` e `GC:ficha` (link escrito depois ou `.xlsx` anexo na mensagem): painel no canal com o que corrigir, o que o mestre confere, o que bateu e o que falta conferir, aberto por frase fixa de quem está de plantão. **Ligado** desde 14/10 (`LIGADO`); lê `dados/sistema/catalogos.json` e `livro.jsonl`, que o pacote leva |
-| `testes/` | 277 testes em 14/10 (276 passaram; um teste online opcional foi pulado; os 34 da ficha em `test_ficha.py`; o que lê a ficha oficial pelo link só roda com `FICHA_ONLINE=1`); inclui 16 casos do verificador de respostas e um de retomada da bateria. Há testes que precisam do discord.py, da cryptography ou dos dois motores juntos e são pulados sem essas dependências. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 301 testes em 14/10 (300 passaram; um teste online opcional foi pulado; 34 da ficha em `test_ficha.py` e 24 de montagem em `test_ficha_magia.py`; o que lê a ficha oficial pelo link só roda com `FICHA_ONLINE=1`); inclui 16 casos do verificador de respostas e um de retomada da bateria. Há testes que precisam do discord.py, da cryptography ou dos dois motores juntos e são pulados sem essas dependências. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -362,6 +363,5 @@ Depois, no primeiro uso na Discloud (14/10/2026):
 
 ## O que falta
 
-- Consulta de regra por comando e análise de ficha (`cogs/ficha.py` faz a correção pela aba ANALISE; `cogs/regras.py` só tem o `/livro`): eram do bot
-  antigo e ainda não foram refeitas.
+- Consulta de regra por comando (`cogs/regras.py` só tem o `/livro`). A análise de ficha já existe em `/ficha analisar` e `GC:ficha`, com cobertura parcial declarada.
 - Calendário de sessões e aniversários, do desenho da vida.

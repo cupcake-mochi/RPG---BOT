@@ -58,7 +58,13 @@ def _rotulo(chave: str) -> str:
         return "Buff/Debuff de " + chave[5:].replace("_", " ")
     partes = chave.split(".")
     if partes[0] in ("feitico", "liberacao", "invocacao") and len(partes) > 1 and partes[1].isdigit():
-        return {"feitico": "Feitiço", "liberacao": "Liberação", "invocacao": "Invocação"}[partes[0]] + f" {partes[1]}"
+        nome = {"feitico": "Feitiço", "liberacao": "Liberação", "invocacao": "Invocação"}[partes[0]] + f" {partes[1]}"
+        if len(partes) > 3 and partes[2] in ("bas", "esp", "ext"):
+            nome += " · " + {"bas": "básica", "esp": "especial", "ext": "habilidade da Trilha"}[partes[2]] + " " + partes[3]
+        rotulos = {"pe": "PE", "dano": "dano", "classe": "Classe", "nivel": "nível", "retorno": "retorno",
+                   "entrada": "entrada", "pecas": "Melhorias", "restricoes": "Restrições", "pontos": "atributos",
+                   "nome": "nome", "forma": "Forma", "nivel_fixo": "nível de aquisição"}
+        return nome + (" · " + rotulos[partes[-1]] if partes[-1] in rotulos else "")
     return chave
 
 
@@ -146,7 +152,7 @@ class Ficha(commands.Cog):
                 raise FichaIlegivel("mande o link da ficha aberta pra leitura ou o .xlsx anexo")
         except FichaIlegivel as erro:
             return f"Não deu pra ler a ficha: {erro}."
-        resultado = conferir(ficha, self.referencias, LIVRO)  # campanha: o livro, até existir o cadastro
+        resultado = conferir(ficha, self.referencias, LIVRO)  # configuração de campanha fica para B47 fase 2
         log.info("ficha analisada: %s, %d problema(s)", resultado.veredito, len(resultado.problemas))
         persona = self.bot.personas[de_plantao(datetime.now(FUSO))]
         return painel(resultado, ficha, persona, getattr(self.bot, "manifesto", None))

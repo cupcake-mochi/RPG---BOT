@@ -37,10 +37,23 @@ repetido aparece uma vez; sem nome, o título usa Caminho e nível conhecidos. N
    pendência para desconsiderar essa reserva; zero/vazio reconhecem ausência de barra e outro valor reprova.
    A planilha não foi alterada. Retestar o novo aviso depois de atualizar o pacote na Discloud.
 5. **A cópia da Teste 3 estava como "Qualquer pessoa com o link, Editor"** e alguém mexeu nela antes do preenchimento.
-   As quatro cópias devem ficar só para leitura. Permissões não foram alteradas nesta revisão.
+   **Concluído**: metadados das quatro cópias conferidos. Testes 1, 2 e 4 já eram leitor; Teste 3 mudou de editor
+   para leitor e foi verificada pela interface e pelo conector. Colaboradores individuais preservados.
 6. **Fichas com customização** (uma aprovada pelo mestre, outra não): esperam a aba CONFIGURAÇÃO na ficha (B47,
    fase 2), as chaves `regra.*`, `efeito.*` e `custom.*` na ANALISE, e no bot o comando do mestre aprovar e a
    conferência por impressão digital. A estrutura do bot já existe (`RegrasDaCampanha`, `Aprovados`).
+   Mizuki confirmou que o cadastro fica para essa etapa, junto de CONFIGURAÇÃO; não entrou comando novo de campanha.
+
+## Continuação das contas
+
+As quatro cópias públicas foram relidas depois dos consertos: Teste 1 aprovada; Teste 2 reprovada pelo Grau, com duas
+pendências e uma nota de treino; Teste 3 reprovada por Defesa 19 (esperado 0); Teste 4 aprovada com a pendência de
+Integridade sem barra e a nota do Buff de PE 4. Nenhuma tem feitiço ou entidade preenchida pelo nome; os números
+iniciais das cartas vazias não contam como habilidade. Essas leituras confirmam as regressões, não uma bateria de magia.
+
+O bot passou a conferir parte das montagens independentemente dos avisos, com exemplos numéricos do R51 e alterações
+hostis nos testes locais. O que depende de dados ausentes fica declarado como não conferido. A lista para a etapa
+CONFIGURAÇÃO/expansão da ANALISE está em `ENTRADAS-FALTANTES-ANALISE.txt`. Falta o reteste na Discloud pelo Mizuki.
 
 Observações da outra conversa: o Revestimento 2 com Grau 4 só entrou trocando o Grau pra 3, escolhendo e voltando,
 porque o menu da ficha não oferece; a Besta com escudo some o escudo do menu, então foi escolhido antes. O `.venv` do

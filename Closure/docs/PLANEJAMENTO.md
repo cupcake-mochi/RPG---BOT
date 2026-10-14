@@ -96,8 +96,16 @@ e testar o webhook no servidor.*
 *Começou em 14/10/2026, depois de a ficha ganhar a aba `ANALISE` (B47, fase 1). Feito: leitor
 (`src/closure_bot/ficha_leitor.py`, `.xlsx` e link), corretor das contas de vida, PE, Integridade, proteção e
 Defesa, dos nomes de Caminho, Trilha e Origem e dos avisos da ficha (`src/closure_bot/ficha_corretor.py`), estrutura
-das regras de campanha e do registro de custom aprovado, e o `/ficha analisar` com o painel de resposta, ligado em 14/10. Falta: contas
-de feitiço e invocação, o cadastro de verdade e as 3 a 5 fichas reais.*
+das regras de campanha e do registro de custom aprovado, e o `/ficha analisar` com o painel de resposta, ligado em 14/10.
+Avanço posterior: contas parciais de montagem de feitiços e entidades em `ficha_magia.py`; Classe e PE nominal,
+limites de peças/Restrições e dano-base quando determinado, nível/Classe e entrada/retorno das entidades.
+Falta completar as entradas da ANALISE e conferir as contas restantes, além das 3 a 5 fichas reais com habilidades.
+As quatro cópias de teste recebidas foram relidas; têm as cartas de habilidades vazias, portanto não substituem esse ensaio.*
+
+Mizuki adiou o cadastro e a aprovação de conteúdo próprio para a etapa CONFIGURAÇÃO da ficha (14/10).
+Não registrar comandos de campanha nem criar novas tabelas no bot nesta etapa. O desenho deve ser retomado junto da
+CONFIGURAÇÃO; uma regra ou aprovação declarada pelo jogador não vale automaticamente como decisão do mestre.
+Entradas necessárias e limites atuais: `dados/ficha/ENTRADAS-FALTANTES-ANALISE.txt`.
 
 - Leitor da aba oculta (`.xlsx` exportado; o openpyxl lê aba oculta).
 - Corretor em funções puras: recebe os campos e devolve uma lista de problemas

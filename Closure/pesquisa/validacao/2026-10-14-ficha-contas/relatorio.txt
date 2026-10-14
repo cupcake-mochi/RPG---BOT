@@ -1,0 +1,43 @@
+Ficha — continuação da fase 3, 14/10/2026
+
+Escopo confirmado pelo Mizuki: Argon congelado. Cadastro de regras da campanha e aprovação de conteúdo próprio
+ficam para CONFIGURAÇÃO da ficha. Nenhuma tabela ou comando de campanha foi incluído nesta versão.
+
+Implementação
+
+ficha_magia.py lê preços, Formas, Melhorias, Restrições e progressão do livro R51. Refaz Classe disponível, PE nominal,
+limites de peças/Restrições e algumas incompatibilidades; respeita Corpo a Corpo embutida e não usa devolução para
+pagar Forma. Dano-base só é certificado quando determinado apesar das entradas omitidas pelo contrato; as diferenças
+entre orçamento e desconto pessoal e de entidade são preservadas. Confere dados, média escrita e repetições simples.
+Nas entidades: tipo/aquisição, nível, Classe, entrada, retorno e limites disponíveis dos pontos de atributo.
+
+Não é corretor integral de magia. Famílias e escolhas ausentes impedem certificar várias contas. Não verifica por
+inteiro alcance/resolução, repertório, Classe 0 pessoal, Técnica Máxima, trunfos, efeitos próprios nem distribuição
+complexa do dano. Vida/Defesa/acerto/CD/movimento da entidade não são certificados sem os ajustes, equipamento e
+escolhas omitidos pela ANALISE. Lista exata: dados/ficha/ENTRADAS-FALTANTES-ANALISE.txt.
+O painel continua com as falas fixas e mostra os limites. Não houve alteração de card, lorebook, livro ou .env.
+
+Verificação
+
+24 testes novos: Fio de Arrasto, Corte de ruptura (10d8, 14 PE), Liberação sem devolução por Atrasar, limite de
+Liberações, devolução limitada ao gasto com Melhorias, Salto com corte para o teto, Família desconhecida sem certificar
+número plausível, média e dano adulterados, limites de peças/embutida/frequência, peças próprias e Controle sem
+dano certificado, cartas vazias/erro de fórmula, Classe inválida, Mordida precisa, orçamento da especial distinto
+do pessoal, básica em d6 sem PE, domada menor, criada no fim da Classe atributos excessivos e referência do livro ausente tratada pelo bot.
+Suíte completa: 301 testes, OK, um online opcional pulado (300 passaram). Sem chamada paga.
+Log integral local: pesquisa/privado/testes-ficha-contas-final-14-10.log.
+
+Quatro cópias reais de teste relidas pela exportação pública, usando o mesmo leitor do bot:
+1 — aprovada, sem pendência nem nota.
+2 — reprovada pelo Grau; duas pendências e uma nota de treino (não três).
+3 — reprovada por Defesa 19, esperado 0.
+4 — aprovada; pendência de Integridade sem barra, nota do Buff PE 4; PE máximo 40 correto.
+São cópias de teste; suas cartas de habilidade estão vazias. Não equivalem a três a cinco personagens reais com
+magia preenchida. As leituras e resultados brutos ficam apenas em pesquisa/privado/.
+
+Permissões: metadados conferidos nas quatro cópias. 1, 2 e 4 já eram reader. Teste 3 mudou de anyone writer para
+anyone reader, preservando owner/writer individuais. Verificação pela interface e pelo conector. Evidência visual
+local em pesquisa/privado/teste-3-leitor.jpg. Nenhuma célula de planilha foi alterada.
+
+Próximos passos: reteste do pacote na Discloud pelo Mizuki; completar a ANALISE junto de CONFIGURAÇÃO e receber
+fichas com feitiços/entidades preenchidos. Nenhuma implantação ou nova bateria de modelo foi executada.
