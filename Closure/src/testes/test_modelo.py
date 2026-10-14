@@ -182,6 +182,20 @@ class DeMolho(unittest.IsolatedAsyncioTestCase):
             await modelos.responder(ENTRADA)
         self.assertEqual(urls[3:], ["gemini", "vertex"])
 
+    async def test_o_gratuito_que_demora_e_largado_e_o_pago_responde(self):
+        import asyncio
+        from unittest.mock import patch
+
+        async def enviar(url, corpo, chave):
+            if "generativelanguage" in url:
+                await asyncio.sleep(5)
+            return BOA
+        modelos = Modelos([("gemini", "a"), ("vertex", "b")], {"gemini": "g", "vertex": "v"}, enviar=enviar)
+        with patch.dict("closure_bot.modelo.ESPERA_POR_PROVEDOR", {"gemini": 0.05}):
+            resposta = await modelos.responder(ENTRADA)
+        self.assertEqual(resposta.provedor, "vertex")
+        self.assertIn(("gemini", "a"), modelos._de_molho)
+
     async def test_com_todos_de_molho_tenta_todos(self):
         async def enviar(url, corpo, chave):
             raise Falhou(503, "sobrecarga")

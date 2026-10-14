@@ -22,6 +22,7 @@ de sistema, o resto é a conversa.
 """
 from __future__ import annotations
 
+import asyncio
 import logging
 import time
 from dataclasses import dataclass
@@ -49,6 +50,8 @@ PRECO_DESCONHECIDO = (1.50, 7.50)  # modelo fora da tabela conta pelo mais caro,
 TEMPERATURA = 0.8
 MAX_SAIDA = 2048
 ESPERA = 25  # segundos por tentativa; resposta normal chega em 2 a 8
+# O gratuito espera menos: quando ele engasga, quem chamou a personagem não fica meio minuto olhando pro "digitando".
+ESPERA_POR_PROVEDOR = {"gemini": 12}
 # Depois de falhar, o provedor fica de molho e a fila pula direto pro seguinte, pra ninguém esperar à toa:
 # cota estourada (429) demora a voltar; sobrecarga e queda de rede passam logo.
 MOLHO = {429: 600, 503: 120, "rede": 120}
@@ -153,7 +156,11 @@ class Modelos:
                 continue
             inicio = time.monotonic()
             try:
-                dados = await self._enviar(URLS[provedor].format(modelo=modelo), corpo, self._chaves[provedor])
+                espera = ESPERA_POR_PROVEDOR.get(provedor, ESPERA)
+                try:
+                    dados = await asyncio.wait_for(self._enviar(URLS[provedor].format(modelo=modelo), corpo, self._chaves[provedor]), espera)
+                except asyncio.TimeoutError:
+                    raise Falhou("rede", f"sem resposta em {espera} s")
                 texto, cortada, entrada_tk, saida_tk = ler_resposta(dados)
             except Falhou as erro:
                 ultimo_erro = erro
