@@ -30,7 +30,7 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 149 testes; 28 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 151 testes; 28 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -156,6 +156,16 @@ python3 -m closure_bot
 - **Testado de ponta a ponta sem o Discord**, com mensagem de mentira e o resto de verdade; no Discord mesmo
   ainda não rodou.
 
+## Páginas públicas
+
+O repositório é privado, então a política de privacidade e os termos de uso moram em duas páginas avulsas (Gist),
+que são os links postos no portal do Discord. O texto de origem fica em `docs/`; a página não atualiza sozinha.
+
+| Página | Origem | Atualizar com |
+| --- | --- | --- |
+| https://gist.github.com/cupcake-mochi/7439b3894cf8ad935601e0f521e16c08 | `docs/PRIVACIDADE.md` | `gh gist edit 7439b3894cf8ad935601e0f521e16c08 docs/PRIVACIDADE.md` |
+| https://gist.github.com/cupcake-mochi/1bd7c72f8f47d5f47560443aa1861955 | `docs/TERMOS.md` | `gh gist edit 1bd7c72f8f47d5f47560443aa1861955 docs/TERMOS.md` |
+
 ## Hospedagem (Discloud)
 
 `python3 ferramentas/empacotar.py` monta `src/var/closure-lab.zip` só com o que o bot precisa: `discloud.config`,
@@ -169,6 +179,14 @@ hospedagem.
   atualizações desde que ninguém o apague por lá (Mizuki, 13/10/2026). O pacote não leva banco nenhum, então
   subir pacote novo não passa por cima dele.
 - **Segredos:** a hospedagem precisa das mesmas variáveis do `.env`, inclusive a `CHAVE_DO_BANCO`.
+
+## Painel de clima (desenho)
+
+Pedido do Mizuki em 13/10/2026, no jeito do painel do bot antigo: emoji e ícone do tempo, campos com emoji,
+chance de chuva do dia, a imagem `closure_bot/recursos/painel_clima.webp` anexada e, no rodapé, o crédito de quem
+desenhou (hatutaro), junto da fonte dos dados. Pra trocar a imagem, troque o arquivo e o `ARTE_DE` em
+`cogs/clima.py`. Mudou o desenho do painel? Mude também o `DESENHO`: é o que faz o painel do dia ser refeito na
+próxima volta, sem esperar o tempo virar.
 
 ## Regras de plantão implementadas
 

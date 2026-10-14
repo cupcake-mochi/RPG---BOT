@@ -188,14 +188,20 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         cog, interacao = self._clima_falso()
         await cog.clima.callback(cog, interacao)
         embed = interacao.followup.send.call_args.kwargs["embed"]
-        self.assertEqual((embed.title, embed.description), ("Tóquio agora", "Poucas nuvens"))
+        self.assertEqual((embed.title, embed.description), ("🌙 Clima em Tóquio", "**Poucas nuvens**"))
+        # a imagem vai anexada e o crédito de quem desenhou fica no rodapé, embaixo dela
+        self.assertEqual(interacao.followup.send.call_args.kwargs["file"].filename, "painel_clima.webp")
+        self.assertEqual(embed.image.url, "attachment://painel_clima.webp")
+        self.assertTrue(embed.footer.text.startswith("Arte: hatutaro • Dados: Open-Meteo • Leitura das "))
+        self.assertTrue(embed.thumbnail.url.startswith("https://openweathermap.org/img/wn/"))
+        self.assertIn("☔ Chuva hoje", [campo.name for campo in embed.fields])
         self.assertEqual(embed.fields[0].value, "18 °C")
         self.assertIn("Open-Meteo", embed.footer.text)
 
     async def test_clima_de_outro_lugar(self):
         cog, interacao = self._clima_falso()
         await cog.clima.callback(cog, interacao, "kyoto")
-        self.assertEqual(interacao.followup.send.call_args.kwargs["embed"].title, "Quioto, Japão agora")
+        self.assertTrue(interacao.followup.send.call_args.kwargs["embed"].title.endswith("Clima em Quioto, Japão"))
 
     async def test_clima_de_lugar_que_nao_existe(self):
         cog, interacao = self._clima_falso()
@@ -246,6 +252,7 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(await cog.atualizar_painel(registro.painel(1), manha.replace(hour=9, minute=20)), "editar")
         canal_a.fetch_message.assert_awaited_with(710)
         self.assertIn("Atualizado às 09:20", postada_a.edit.call_args.kwargs["embed"].footer.text)
+        self.assertEqual([a.filename for a in postada_a.edit.call_args.kwargs["attachments"]], ["painel_clima.webp"])
         self.assertEqual(canal_a.send.await_count, 1)
 
         # no dia seguinte, depois das 6h, sai um painel novo; o outro servidor recebe o dele

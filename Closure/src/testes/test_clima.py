@@ -202,5 +202,27 @@ class PainelDiario(unittest.TestCase):
         self.assertIsNone(acao_painel(self._hora(2, dia=14), "2026-10-13", "chuva|18", "chuva|12"))
 
 
+class DesenhoDoTempo(unittest.TestCase):
+    def test_emoji_e_icone_saem_do_codigo_e_de_ser_dia_ou_noite(self):
+        from dataclasses import replace
+
+        from closure_bot.clima import emoji_do_tempo, interpretar
+
+        self.assertEqual([emoji_do_tempo(c) for c in (0, 2, 3, 45, 53, 61, 81, 73, 95, 1234)], ["☀️", "⛅", "☁️", "🌫️", "🌦️", "🌧️", "🌧️", "🌨️", "⛈️", "☁️"])
+        self.assertEqual((emoji_do_tempo(0, de_dia=False), emoji_do_tempo(61, de_dia=False)), ("🌙", "🌧️"))
+        leitura = interpretar(json.loads((DADOS / "clima_open_meteo.json").read_text(encoding="utf-8")))
+        chuva_de_dia = replace(leitura, codigo=61, de_dia=True)
+        self.assertEqual(chuva_de_dia.icone, "https://openweathermap.org/img/wn/10d@2x.png")
+        self.assertTrue(replace(leitura, codigo=0, de_dia=False).icone.endswith("/01n@2x.png"))
+
+    def test_chance_de_chuva_e_opcional_na_leitura(self):
+        from closure_bot.clima import interpretar
+
+        resposta = json.loads((DADOS / "clima_open_meteo.json").read_text(encoding="utf-8"))
+        self.assertIsNone(interpretar(resposta).chuva_hoje)  # a amostra guardada é de antes de o bot pedir esse campo
+        resposta["daily"]["precipitation_probability_max"] = [62.4]
+        self.assertEqual(interpretar(resposta).chuva_hoje, 62)
+
+
 if __name__ == "__main__":
     unittest.main()
