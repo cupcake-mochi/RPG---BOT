@@ -1,0 +1,36 @@
+{
+  "quando": "2026-10-14T23:03:01.521599+00:00",
+  "chamadas_pagas": 0,
+  "suite": {
+    "executados": 275,
+    "passaram": 274,
+    "pulados": 1,
+    "pulou": "Teste online da ficha oficial, opt-in FICHA_ONLINE=1"
+  },
+  "reteste_final_de_contadores": {
+    "executados": 1,
+    "resultado": "OK",
+    "nota": "Caso de contadores distintos ajustado para Encarnado com Duas Vidas e Especialidade Antiga; nenhum código de produção mudou após a suíte."
+  },
+  "reteste_google_testes_1_a_3": false,
+  "teste4_existe": false,
+  "implantacao_discloud": false,
+  "pacote": {
+    "arquivo": "src/var/closure-lab.zip",
+    "arquivos": 41,
+    "bytes": 931303,
+    "sha256": "6b153444a5e3588e9c815d422b1d671ad467c29d1f9362b118b604919d3eb95a",
+    "igual_fontes": true,
+    "sem_segredos_ou_dados_execucao": true
+  },
+  "sha256_fontes": {
+    "src/closure_bot/ficha_corretor.py": "807b061228691fd8f116a370b87af48acdd52c43fb725824efd6c65cae8c3ea8",
+    "src/closure_bot/cogs/ficha.py": "abcc589b27c1acb50f5953e8e43e7c67e786fdb98bb243ae9b0235ea3e2ff7ed",
+    "src/testes/test_ficha.py": "9b698b4bbee54faf6909a0d1b31b6b7415adfcab889bfd6034a15e98d892c10c"
+  },
+  "sha256_resultados": {
+    "relatorio.txt": "efe8e2be2d4a0a83ab56710fdda9f0e348ff218893eaa4f233ed8ecb1ce2df90",
+    "testes_locais.log": "be0318e9dbb86dc448f14ca0849e7feb32476eba926772f0f5f2ecdb498b39e7",
+    "teste_contadores.log": "e2e48e35cd2d7a714ed3d695dd14fea403785f86b58b029c27f948d6ca5d4761"
+  }
+}

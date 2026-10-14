@@ -96,8 +96,16 @@ def _campo(linhas: list[str]) -> str:
 
 def painel(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: dict | None = None) -> discord.Embed:
     """O que o comando responde: veredito, o que corrigir, o que o mestre confere, o que bateu e o que falta conferir."""
-    nome = str(ficha.get("nome", Campo("", "", "")).valor).strip() or "sem nome"
-    embed = discord.Embed(title=f"Ficha de {nome}", color=COR.get(resultado.veredito, 0xCC0102),
+    nome = str(ficha.get("nome", Campo("", "", "")).valor).strip()
+    titulo = f"Ficha de {nome}" if nome else "Ficha sem nome"
+    if not nome:
+        caminho = str(ficha.get("caminho", Campo("", "", "")).valor).strip()
+        nivel = ficha.get("nivel", Campo("", "", "")).valor
+        if caminho and f"Caminho {caminho}" in resultado.conferidos:
+            titulo = f"Ficha de {caminho}"
+            if isinstance(nivel, int) and not isinstance(nivel, bool) and nivel > 0:
+                titulo += f", nível {nivel}"
+    embed = discord.Embed(title=titulo, color=COR.get(resultado.veredito, 0xCC0102),
                           description=FALA.get(persona.chave, FALA[KALTSIT]).get(resultado.veredito, ""))
     embed.set_author(name=persona.nome, icon_url=persona.avatar_url or None)
     if resultado.problemas:

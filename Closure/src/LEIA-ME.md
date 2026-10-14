@@ -34,7 +34,7 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/ficha_leitor.py` | Lê a aba oculta `ANALISE` da ficha, do `.xlsx` baixado (openpyxl) ou do link aberto (CSV), e normaliza os valores (fase 3) |
 | `closure_bot/ficha_corretor.py` | Confere a ficha sem IA: formato, nomes de Caminho, Trilha e Origem, contas de vida, PE, Integridade, proteção e Defesa, e os avisos da ficha. Estrutura das regras de campanha e do custom aprovado. Feitiço e invocação: lugar reservado |
 | `closure_bot/cogs/ficha.py` | `/ficha analisar` e `GC:ficha` (link escrito depois ou `.xlsx` anexo na mensagem): painel no canal com o que corrigir, o que o mestre confere, o que bateu e o que falta conferir, aberto por frase fixa de quem está de plantão. **Ligado** desde 14/10 (`LIGADO`); lê `dados/sistema/catalogos.json` e `livro.jsonl`, que o pacote leva |
-| `testes/` | 269 testes em 14/10 (os 20 da ficha em `test_ficha.py`; o que lê a ficha oficial pelo link só roda com `FICHA_ONLINE=1`); inclui 16 casos do verificador de respostas e um de retomada da bateria. Há testes que precisam do discord.py, da cryptography ou dos dois motores juntos e são pulados sem essas dependências. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 275 testes em 14/10 (274 passaram; um teste online opcional foi pulado; os 32 da ficha em `test_ficha.py`; o que lê a ficha oficial pelo link só roda com `FICHA_ONLINE=1`); inclui 16 casos do verificador de respostas e um de retomada da bateria. Há testes que precisam do discord.py, da cryptography ou dos dois motores juntos e são pulados sem essas dependências. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
