@@ -121,7 +121,7 @@ mesma maiúscula, e cita a âncora quando explica uma regra. Nunca troca por ter
 | CD (Classe de Dificuldade), TR (Teste de Resistência) | DC, save |
 | Integridade, vida | HP, sanidade |
 | Caminho (Bastião, Vanguarda, Guia, Evocador, Emanador, Incursor) e Trilha | classe (no sentido de D&D), subclasse |
-| Origem (Latente, Receptáculo, Descendente, Encarnado, Feto; especiais: Corpo Amaldiçoado, Restrição Celestial) e Legado | raça |
+| Origem (Latente, Receptáculo, Descendente, Encarnado, Híbrido, Corpo Amaldiçoado, Restrição Celestial), com uma marcante e duas menores; Legado de história | raça; Feto (nome antigo do Híbrido) |
 | Classe (do feitiço), Refino, Maestria | nível de magia, proficiência |
 | feitiço (aplicação preparada da técnica) | magia, spell |
 | Ação Padrão, Ação Bônus, Ação de Movimento, Reação | — |

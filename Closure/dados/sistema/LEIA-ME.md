@@ -20,3 +20,7 @@ python ferramentas/sincronizar.py --repo CAMINHO_DO_CLONE_DO_JJK---Project
 Precisa de Python 3 e Node. O script recusa o clone velho (o que não tem
 `## Nove lições` no README) e falha sem gravar nada se o livro mudar de forma.
 Depois de rodar, confira se o `MANIFESTO.json` tem a versão que você esperava.
+
+Na v0.364 a lista `ORIGENS` do `catalogos.json` ainda é a de antes do R45 (cinco, com Feto), porque o
+`dados.js` do repositório não foi atualizado. Até ele mudar, a fonte das Origens é o capítulo de
+Origens do livro (âncoras `origens--*`): sete, com Híbrido no lugar de Feto.

@@ -18,7 +18,7 @@ Ele tira dúvida de regra, corrige ficha e conversa na voz de uma personagem de 
 ## Estado atual
 
 **Fase 0 (organizar a pasta) concluída** em 12/10/2026: `dados/sistema/` sincronizado com o
-Ciclo Maldito v0.359 / R44. O esqueleto da fase 1 está em `src/closure_bot/` (13/10): o chat
+Ciclo Maldito v0.359 / R44, e em 14/10 com o v0.364 / R51 (511 blocos). O esqueleto da fase 1 está em `src/closure_bot/` (13/10): o chat
 responde, testado de ponta a ponta sem o Discord, mas nunca subiu com token (`src/LEIA-ME.md`).
 
 - **Kal'tsit** (plantão das 9h às 21h): card v0.24 em teste (pente fino pela página de teste, 13/10), v1.2 = card v0.11 é a última congelada (`dados/personagem/kaltsit/VERSAO.md`).
