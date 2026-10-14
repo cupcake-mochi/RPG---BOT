@@ -356,8 +356,10 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertEqual([(t.nome, t.texto) for t in segundo["turnos"]], [("rafa", "closure, o que é Refino?"), (None, "Resposta 1.")])
         self.assertEqual(segundo["falas_anteriores"], [])
         self.assertEqual(self.bot.registro.ultimas_falas(canal_id=10, persona="closure"), ["Resposta 1.", "Resposta 2."])
-        # mensagem que não chama ninguém não entra na conversa nem vira pedido
-        await chat.on_message(_mensagem("alguém vai jogar hoje?", canal))
+        # mensagem de outra pessoa que não chama ninguém não entra na conversa nem vira pedido
+        outra = _mensagem("alguém vai jogar hoje?", canal)
+        outra.author.id = 77
+        await chat.on_message(outra)
         self.assertEqual(self.montar.call_count, 2)
 
     async def test_resposta_a_uma_fala_fica_com_quem_falou_e_leva_a_fala_junto(self):
@@ -407,6 +409,49 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.bot.registro.ultimas_falas(canal_id=10, persona="closure"), [longa.strip()])
         # sem parágrafo nem espaço que caiba, corta no limite
         self.assertEqual([len(p) for p in em_partes("x" * 4000)], [1900, 1900, 200])
+
+    async def test_quem_ela_acabou_de_responder_continua_sem_chamar(self):
+        canal, webhook = _canal()
+        chat = self.bot.get_cog("Chat")
+        await chat.on_message(_mensagem("closure, o que é Refino?", canal))
+        await chat.on_message(_mensagem("e serve pra que?", canal))
+        self.assertEqual(webhook.send.call_count, 2)
+        self.assertEqual(self.bot.registro.ultimas_falas(canal_id=10, persona="closure"), ["Resposta 1.", "Resposta 2."])
+        # reação solta não pede resposta e fecha a conversa
+        await chat.on_message(_mensagem("kkkk valeu", canal))
+        await chat.on_message(_mensagem("e o Maestria?", canal))
+        self.assertEqual(webhook.send.call_count, 2)
+
+    async def test_conversa_sem_chamar_para_quando_outra_pessoa_fala_ou_o_tempo_passa(self):
+        from closure_bot.cogs import chat as modulo
+        canal, webhook = _canal()
+        chat = self.bot.get_cog("Chat")
+        await chat.on_message(_mensagem("closure, o que é Refino?", canal))
+        outra = _mensagem("alguém on pra jogar?", canal)
+        outra.author.id = 77
+        await chat.on_message(outra)
+        await chat.on_message(_mensagem("e serve pra que?", canal))
+        self.assertEqual(webhook.send.call_count, 1)
+        # mensagem que responde a outra pessoa também não é com ela
+        await chat.on_message(_mensagem("closure, e Maestria?", canal))
+        await chat.on_message(_mensagem("concordo", canal, referencia=MagicMock(message_id=999, resolved=None)))
+        self.assertEqual(webhook.send.call_count, 2)
+        # passou do tempo
+        await chat.on_message(_mensagem("closure, e Grau?", canal))
+        with patch.object(modulo, "SEGUIMENTO", modulo.timedelta(seconds=-1)):
+            await chat.on_message(_mensagem("e Integridade?", canal))
+        self.assertEqual(webhook.send.call_count, 3)
+
+    async def test_conversa_sem_chamar_vale_fora_dos_canais_delas_depois_de_marcar(self):
+        self.bot.config = _config(CANAIS="99")
+        canal, webhook = _canal()
+        chat = self.bot.get_cog("Chat")
+        m = _mensagem("<@1> oi", canal)
+        m.mentions = [self.bot.user]
+        await chat.on_message(m)
+        await chat.on_message(_mensagem("tudo bem?", canal))
+        await chat.on_message(_mensagem("closure, oi", _canal(11)[0]))  # nome solto fora dos canais dela: nada
+        self.assertEqual(webhook.send.call_count, 2)
 
     async def test_quem_chama_demais_num_minuto_fica_sem_resposta(self):
         from closure_bot.cogs.chat import CHAMADAS_POR_MINUTO

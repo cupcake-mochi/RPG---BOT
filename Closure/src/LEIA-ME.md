@@ -244,6 +244,10 @@ Depois, no primeiro uso na Discloud (14/10/2026):
 - **Marcar o bot ou responder a uma mensagem dele vale em qualquer canal.** `CANAIS` passou a limitar só o
   chamado pelo nome ("closure, ..."), que fora do canal delas apareceria em conversa dos outros. Um jogador marcou
   o bot no chat geral e ficou sem resposta; era isso, não o `GC:`.
+- **Conversa sem chamar de novo (14/10).** Depois que ela responde alguém, a mensagem seguinte dessa pessoa no
+  mesmo canal vai pra ela, sem nome, por até 3 minutos (`SEGUIMENTO` em `cogs/chat.py`). Para quando outra pessoa
+  fala no canal, quando a mensagem responde ou marca outra pessoa e quando é só reação ("kkk", "valeu", emoji),
+  que fecha a conversa. Vale também fora de `CANAIS`, pra quem começou marcando o bot. Fica na memória do programa.
 - **Mencionar o bot não vira mais "comando"** no log (`CommandNotFound`): o tratamento de prefixo do discord.py
   foi desligado, porque quem lê mensagem são os módulos.
 

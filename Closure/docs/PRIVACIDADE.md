@@ -1,12 +1,12 @@
 # Política de privacidade do Guias do Ciclo
 
-Atualizada em 13/10/2026.
+Atualizada em 14/10/2026.
 
 Eu sou o Mizuki e mantenho o Guias do Ciclo, o bot da Kal'tsit e da Closure. Aqui está o que ele faz com os dados de quem conversa com elas. Qualquer pedido sobre isso, me chame no servidor da guilda ou comente nesta página.
 
 ## O que o bot lê
 
-O bot vê as mensagens dos canais em que está, mas só usa as que chamam uma das duas, pelo nome, por menção ou respondendo a uma mensagem delas. O resto não é guardado nem enviado para lugar nenhum. Ele não lê mensagem privada.
+O bot vê as mensagens dos canais em que está, mas só usa as que chamam uma das duas, pelo nome, por menção ou respondendo a uma mensagem delas, e a mensagem seguinte de quem ela acabou de responder, se vier em até 3 minutos e ninguém tiver falado no meio. O resto não é guardado nem enviado para lugar nenhum. Ele não lê mensagem privada.
 
 ## O que fica guardado
 

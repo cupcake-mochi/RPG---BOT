@@ -29,7 +29,7 @@ class Admin(commands.Cog):
         embed = discord.Embed(title="Guias do Ciclo", color=COR, description=(
             "**» Como falar com elas**\n"
             f"Chame pelo nome {onde}, como `kal, o que é Integridade?` ou `closure, tá chovendo aí?`. "
-            "Responder a uma mensagem delas também vale.\n"
+            "Responder a uma mensagem delas também vale, e logo depois de ela responder você pode continuar sem chamar de novo.\n"
             "A Kal'tsit atende das 9h às 21h e a Closure das 21h às 9h, no horário de Brasília. "
             f"Agora quem atende é a {self.bot.personas[de_plantao(agora)].nome}."))
         grupos: dict[str, list[str]] = {}

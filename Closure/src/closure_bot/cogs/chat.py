@@ -4,6 +4,7 @@ from __future__ import annotations
 import logging
 import re
 from collections import deque
+from dataclasses import dataclass
 from datetime import datetime, timedelta
 
 import discord
@@ -12,7 +13,7 @@ from discord.ext import commands
 from ..clima import contexto_clima
 from ..conversa import Turno
 from ..modelo import Falhou
-from ..plantao import FUSO, Decisao, decidir
+from ..plantao import FUSO, MOTIVO_SEGUIMENTO, Decisao, de_plantao, decidir
 from ..prompt import montar as montar_prompt
 from .atalho import separar as separar_atalho
 
@@ -21,6 +22,9 @@ log = logging.getLogger(__name__)
 LIMITE_DO_DISCORD = 1900  # o Discord corta em 2000 caracteres
 LIMITE_DA_MENSAGEM = 1500  # o que passa disso numa mensagem de gente não vai pro modelo
 CHAMADAS_POR_MINUTO = 8    # por pessoa; acima disso ela fica sem resposta até o minuto passar (cada resposta custa)
+SEGUIMENTO = timedelta(minutes=3)  # quanto tempo depois da resposta dela a pessoa pode continuar sem chamar
+# mensagem que só reage ("kkk", "ok", "valeu", emoji) fecha a conversa em vez de pedir resposta
+SO_REACAO = re.compile(r"^(?:k{2,}|(?:ha|he|hi|rs){2,}|rs|ok+|okay|blz|beleza|vlw|valeu|obg|obrigad[oa]|brigad[oa]|tmj|show|top|entendi|ah|aah+|hm+|nossa|sim|uhum|isso|:\w+:|<a?:\w+:\d+>|[^\w\s]|\s)+$", re.I)
 NOME_DO_DONO = "Mizuki"  # a página do site reconhece o dono por este nome; aqui quem garante é o ID
 
 
@@ -40,10 +44,19 @@ def em_partes(texto: str, limite: int = LIMITE_DO_DISCORD) -> list[str]:
     return partes
 
 
+@dataclass
+class Fio:
+    """A última pessoa que ela respondeu num canal: enquanto ninguém mais fala ali, essa pessoa continua sem chamar."""
+    persona: str
+    autor_id: int
+    quando: datetime
+
+
 class Chat(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
         self._recentes: dict[int, deque[datetime]] = {}  # hora das últimas chamadas de cada pessoa
+        self._fios: dict[int, Fio] = {}  # por canal (ou tópico); só na memória, reiniciar o bot zera
 
     def _respondida(self, mensagem: discord.Message) -> tuple[bool, str | None, str | None]:
         """(respondeu a uma mensagem do bot?, de qual personagem era, o texto dela). A personagem vem do registro
@@ -86,11 +99,27 @@ class Chat(commands.Cog):
         fila.append(agora)
         return False
 
+    def _seguimento(self, mensagem: discord.Message, agora: datetime) -> Decisao | None:
+        """A pessoa que ela acabou de responder segue a conversa sem chamar: mesma pessoa, mesmo canal, pouco tempo
+        depois, ninguém falou no meio, e a mensagem não é pra outra pessoa nem só uma reação."""
+        fio = self._fios.get(mensagem.channel.id)
+        if not fio or fio.autor_id != mensagem.author.id or agora - fio.quando > SEGUIMENTO:
+            return None
+        if mensagem.reference or any(not m.bot for m in mensagem.mentions):
+            return None  # respondeu ou marcou outra pessoa: a conversa é com ela
+        if not mensagem.content.strip() or SO_REACAO.match(mensagem.content.strip()):
+            self._fios.pop(mensagem.channel.id, None)
+            return None
+        return Decisao(persona=fio.persona, motivo=MOTIVO_SEGUIMENTO, fora_do_plantao=fio.persona != de_plantao(agora))
+
     @commands.Cog.listener()
     async def on_message(self, mensagem: discord.Message) -> None:
         # Mensagem de bot ou de webhook (inclusive as nossas) nunca é gatilho; conversa privada fica pra depois.
         if mensagem.author.bot or mensagem.webhook_id or mensagem.guild is None:
             return
+        fio = self._fios.get(mensagem.channel.id)
+        if fio and fio.autor_id != mensagem.author.id:
+            del self._fios[mensagem.channel.id]  # outra pessoa falou no canal: quem conversava com ela volta a chamar
         if mensagem.mention_everyone or mensagem.role_mentions:
             return  # aviso pra todo mundo ou pra um cargo não é conversa com as guias, mesmo citando o nome delas
         if separar_atalho(mensagem.content) is not None:
@@ -99,12 +128,13 @@ class Chat(commands.Cog):
         mencionou = self.bot.user in mensagem.mentions
         respondeu, persona_respondida, fala_respondida = self._respondida(mensagem)
         canal_id = getattr(mensagem.channel, "parent_id", None) or mensagem.channel.id
-        if not self.bot.config.escuta(canal_id) and not (mencionou or respondeu):
+        agora = datetime.now(FUSO)
+        seguimento = self._seguimento(mensagem, agora)
+        if not self.bot.config.escuta(canal_id) and not (mencionou or respondeu or seguimento):
             # Fora dos canais delas (CANAIS), o nome solto não chama ninguém: "closure" aparece em conversa dos outros.
-            # Marcar o bot ou responder a uma mensagem dele é chamar de propósito, e vale em qualquer canal.
+            # Marcar o bot, responder a uma mensagem dele ou seguir a conversa com ela é falar com ela, em qualquer canal.
             return
 
-        agora = datetime.now(FUSO)
         self.bot.vida.ouvir(mensagem.channel.id, agora)  # só a hora, pra saber se o canal está quieto ou cheio
         decisao = decidir(
             mensagem.content,
@@ -112,7 +142,7 @@ class Chat(commands.Cog):
             mencionou_bot=mencionou,
             respondeu_ao_bot=respondeu,
             respondeu_a=persona_respondida,
-        )
+        ) or seguimento
         if decisao is None:
             return
         if self._passou_do_limite(mensagem.author.id, agora):
@@ -165,6 +195,8 @@ class Chat(commands.Cog):
         for parte in partes:
             # resposta em várias mensagens entra inteira na memória de falas, uma vez só
             await bot.carteiro.enviar(canal, bot.personas[persona], parte, lembrar=len(partes) == 1)
+        # a hora conta do fim da resposta: a pessoa ainda pode estar lendo enquanto ela escrevia
+        self._fios[canal.id] = Fio(persona, mensagem.author.id, datetime.now(FUSO))
         if len(partes) > 1:
             bot.registro.guardar_fala(canal_id=canal.id, persona=persona, texto=fala)
         bot.conversas.anotar(canal.id, persona, agora, texto, nome=nome)
