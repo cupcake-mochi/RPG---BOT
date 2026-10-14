@@ -34,6 +34,7 @@ APELIDOS = {
 MOTIVO_NOME = "nome"
 MOTIVO_MENCAO = "mencao"
 MOTIVO_RESPOSTA = "resposta"
+MOTIVO_SEGUIMENTO = "seguimento"  # quem ela acabou de responder continua falando, sem chamar (cogs/chat.py)
 
 
 @dataclass(frozen=True)
