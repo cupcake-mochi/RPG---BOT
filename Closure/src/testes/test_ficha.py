@@ -48,6 +48,16 @@ def _contas(resultado):
     return {p.campo: (p.esperado, p.encontrado) for p in resultado.problemas if p.regra == "conta"}
 
 
+def _com_campos(arquivo, **trocas):
+    """Entradas normalizadas da ficha real, com as alterações do caso de regressão."""
+    ficha = _ficha(arquivo)
+    for chave, valor in trocas.items():
+        chave = chave.replace("__", ".")
+        anterior = ficha[chave]
+        ficha[chave] = Campo(normaliza(valor), anterior.celula, anterior.parte)
+    return ficha
+
+
 class Normalizacao(unittest.TestCase):
     def test_valores_da_planilha(self):
         casos = {"1,5": 1.5, "3": 3, "-2": -2, "VERDADEIRO": 1, "FALSE": 0, None: "", "  Latente ": "Latente", "1.0": 1.0}
@@ -197,7 +207,7 @@ class Corretor(unittest.TestCase):
         resultado = conferir(ficha, self.ref)
         self.assertEqual([p.campo for p in resultado.problemas if p.regra == "aviso"], [])
         self.assertEqual({p.campo for p in resultado.notas if p.regra == "origem"},
-                         {"aviso.escolhas_de_pericia", "aviso.pericias_disponiveis"})
+                         {"aviso.escolhas_de_pericia"})
         dois = self._com("kaori", origem="Encarnado", origem__marcante="Duas Vidas", aviso__pericias_disponiveis="2 a mais")
         self.assertIn("aviso.pericias_disponiveis", [p.campo for p in conferir(dois, self.ref).problemas])
         # Especialidade Antiga: a especialização grátis só a partir do nível 10
@@ -242,6 +252,73 @@ class Corretor(unittest.TestCase):
         self.assertIn("Vida 11 (metade, Corpo Quebradiço)", quebradico.conferidos)  # 23 // 2
         self.assertEqual(_contas(quebradico), {})
 
+    def test_defesa_zero_distingue_formula_normal_de_adulteracao(self):
+        # Reprodução local do Teste 3: Incursor 14, Besta, escudo Médio sem efeito, Defesa normal 15.
+        for marcante in ("Corpo Debilitado", "Corpo Quebradiço", "Corpo Exaurido"):
+            for valor in (0, 15, 19, ""):
+                with self.subTest(marcante=marcante, defesa=valor):
+                    ficha = _com_campos("refino", origem="Restrição Celestial · Restrição corporal",
+                                        origem__marcante=marcante, em_uso__principal="Besta",
+                                        atributo__destreza__base=2, atributo__destreza__corpo=0,
+                                        protecao=3, defesa=valor)
+                    resultado = conferir(ficha, self.ref)
+                    pendencias = [p for p in resultado.pendencias if p.campo == "defesa"]
+                    if valor == 0:
+                        self.assertNotIn("defesa", _contas(resultado))
+                        self.assertEqual(pendencias, [])
+                        self.assertIn(f"Defesa 0 ({marcante})", resultado.conferidos)
+                    elif valor == 15:
+                        self.assertNotIn("defesa", _contas(resultado))
+                        self.assertEqual([p.encontrado for p in pendencias], ["15"])
+                    else:
+                        self.assertEqual(resultado.veredito, "reprovada")
+                        self.assertEqual(_contas(resultado)["defesa"], ("0", str(valor) or "vazio"))
+                        self.assertEqual(pendencias, [])
+
+    def test_defesa_zero_continua_conferindo_protecao(self):
+        ficha = _com_campos("kaori", origem="Restrição Celestial · Restrição corporal",
+                            origem__marcante="Corpo Debilitado", defesa=0, protecao=9)
+        resultado = conferir(ficha, self.ref)
+        self.assertEqual(_contas(resultado), {"protecao": ("1", "9")})
+        self.assertEqual(resultado.veredito, "reprovada")
+
+    def test_buff_nao_muda_defesa_fixada_e_formula_conhecida_ainda_avisa(self):
+        for valor in (0, 17, 19):
+            ficha = _com_campos("kaori", origem="Restrição Celestial · Restrição corporal",
+                                origem__marcante="Corpo Debilitado", buff__defesa=4, defesa=valor)
+            resultado = conferir(ficha, self.ref)
+            self.assertEqual([p.encontrado for p in resultado.notas if p.campo == "buff.defesa"], ["4"])
+            if valor == 0:
+                self.assertIn("Defesa 0 (Corpo Debilitado)", resultado.conferidos)
+            elif valor == 17:
+                self.assertNotIn("defesa", _contas(resultado))
+                self.assertEqual([p.encontrado for p in resultado.pendencias if p.campo == "defesa"], ["17"])
+            else:
+                self.assertEqual(_contas(resultado)["defesa"], ("0", "19"))
+
+    def test_tres_avisos_do_mesmo_treino_viram_uma_nota(self):
+        ficha = _com_campos("kaori", origem="Encarnado", origem__marcante="Duas Vidas",
+                            aviso__pericias_disponiveis="1 a mais", aviso__oficios_disponiveis="1 a mais",
+                            aviso__escolhas_de_pericia="Marcou 1 a mais: tire uma perícia, um ofício ou uma especialização")
+        for ordenada in (ficha, dict(reversed(list(ficha.items())))):
+            resultado = conferir(ordenada, self.ref)
+            self.assertEqual([p.campo for p in resultado.notas if p.regra == "origem"], ["aviso.escolhas_de_pericia"])
+            self.assertEqual([p for p in resultado.problemas if p.regra == "aviso"], [])
+
+    def test_agrupamento_nao_apaga_excesso_sem_permissao_ou_contadores_diferentes(self):
+        ficha = _com_campos("kaori", origem="Encarnado", origem__marcante="Duas Vidas",
+                            aviso__pericias_disponiveis="2 a mais", aviso__oficios_disponiveis="1 a mais",
+                            aviso__escolhas_de_pericia="Marcou 1 a mais")
+        resultado = conferir(ficha, self.ref)
+        self.assertEqual([p.campo for p in resultado.problemas if p.regra == "aviso"], ["aviso.pericias_disponiveis"])
+        self.assertEqual([p.campo for p in resultado.notas if p.regra == "origem"], ["aviso.escolhas_de_pericia"])
+        ficha = _com_campos("refino", origem="Encarnado", origem__marcante="Duas Vidas",
+                            origem__menor_1="Especialidade Antiga",
+                            aviso__pericias_disponiveis="2 a mais", aviso__escolhas_de_pericia="Marcou 1 a mais")
+        resultado = conferir(ficha, self.ref)
+        self.assertEqual({p.campo for p in resultado.notas if p.regra == "origem"},
+                         {"aviso.pericias_disponiveis", "aviso.escolhas_de_pericia"})
+
 
 class Avisos(unittest.TestCase):
     def test_classificacao(self):
@@ -276,6 +353,19 @@ class ConteudoCustom(unittest.TestCase):
 
 
 class Comando(unittest.IsolatedAsyncioTestCase):
+    @unittest.skipIf(openpyxl is None, "openpyxl não instalado")
+    def test_painel_sem_nome_usa_caminho_e_nivel_so_quando_conhecidos(self):
+        from types import SimpleNamespace
+        from closure_bot.cogs.ficha import painel
+        ref = Referencias.do_livro(RAIZ / "dados")
+        persona = SimpleNamespace(chave="closure", nome="Closure", avatar_url=None)
+        ficha = _com_campos("kaori", nome="")
+        self.assertEqual(painel(conferir(ficha, ref), ficha, persona).title, "Ficha de Bastião, nível 2")
+        ficha = _com_campos("kaori", nome="", caminho="Escolha seu Caminho")
+        self.assertEqual(painel(conferir(ficha, ref), ficha, persona).title, "Ficha sem nome")
+        ficha = _com_campos("kaori", nome="", nivel="")
+        self.assertEqual(painel(conferir(ficha, ref), ficha, persona).title, "Ficha de Bastião")
+
     async def test_ligado_registra_e_desligado_nao(self):
         from unittest.mock import AsyncMock, MagicMock, patch
         from closure_bot.cogs import ficha as modulo

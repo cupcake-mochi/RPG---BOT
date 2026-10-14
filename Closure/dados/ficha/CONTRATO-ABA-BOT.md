@@ -58,4 +58,4 @@
 4. **Resposta:** só no chat. O bot não escreve na ficha.
 
 O código: `src/closure_bot/ficha_leitor.py` (leitura), `src/closure_bot/ficha_corretor.py` (conferência, sem IA) e
-`src/closure_bot/cogs/ficha.py` (o comando, desligado).
+`src/closure_bot/cogs/ficha.py` (o comando está ligado).

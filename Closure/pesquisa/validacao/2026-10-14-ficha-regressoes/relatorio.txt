@@ -1,0 +1,40 @@
+REGRESSÕES DA FICHA — 14/10/2026
+
+Corrigidos os itens 1 a 3 da fila de testes; sem chamadas pagas ou ativação do bot local.
+O pacote deve ser enviado à Discloud pelo Mizuki; não houve deploy nesta revisão.
+
+Defesa fixa
+Antes, Corpo Debilitado/Quebradiço/Exaurido retornavam antes da conta de proteção e
+Defesa normal. Qualquer valor diferente de zero virava pendência, inclusive adulteração.
+Agora proteção e Defesa normal são refeitas. Zero é conferido; só o resultado normal
+conhecido recebe pendência de ajuste pela divergência da ficha. Outro valor, inclusive
+vazio, é erro de conta com esperado zero e âncora da capacidade que impõe Defesa zero.
+Buff aparece para o mestre conferir e não altera a Defesa fixada em zero.
+
+Reprodução local equivalente ao Teste 3: Incursor nível 14, Besta, escudo Médio sem
+contribuir por arma de duas mãos, Destreza 2, proteção 3, Defesa normal 15. Zero confere,
+15 recebe pendência e 19/vazio reprovam. Cobertos também Quebradiço e Exaurido, proteção
+adulterada e Buff. Não é reteste da cópia do Google: não tivemos o link nessa etapa.
+
+Treino extra
+As três células podem sinalizar o mesmo excesso. Notas justificadas pela Origem são
+agrupadas pelo número de excesso, com preferência pelo resumo, depois Perícias e Ofícios.
+O teste inverte a ordem dos campos para verificar que a escolha do resumo é estável.
+Excesso acima da permissão e números de excesso diferentes continuam visíveis; não
+juntamos qualquer aviso com texto parecido nem apagamos erros.
+O defeito do contador de Ofícios foi registrado como divergência do gerador da ficha.
+
+Painel
+Nome preenchido continua no título. Sem nome, usa Caminho já conferido e nível inteiro
+positivo; campos ausentes/desconhecidos não geram título inventado.
+
+Validação
+275 testes executados: 274 passaram; um teste online opcional não foi executado porque
+FICHA_ONLINE não foi ativado. Os seis novos testes cobrem as regressões; log persistido
+em testes_locais.log. O pacote e os hashes ficam em validacao_local.json.
+
+Correção da fila confirmada pelo usuário
+Só existem Testes 1 a 3. Teste 4 — Corpo Amaldiçoado/Evocador 6/Núcleo Dependente — ainda
+não foi criada; não há resultado real dela. A conferência do PE por Buff continua com
+cobertura unitária existente. Permissões das cópias não foram alteradas nesta revisão.
+Cadastro de campanha/customização e contas de feitiço/invocação permanecem etapas futuras.

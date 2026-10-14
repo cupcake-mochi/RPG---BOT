@@ -223,7 +223,8 @@ def classificar_aviso(chave: str, valor) -> str | None:
 
 # "N de M" nestes é o que ainda falta distribuir; as perícias e ofícios em falta já acendem aviso.escolhas_de_pericia.
 _SOBRA_E_PENDENCIA = {"aviso.pontos_disponiveis", "aviso.testes_disponiveis"}
-_TREINOS = {"aviso.pericias_disponiveis", "aviso.oficios_disponiveis", "aviso.escolhas_de_pericia"}
+# Os três avisos podem vir do mesmo contador. O resumo é a melhor representação.
+_TREINOS = ("aviso.escolhas_de_pericia", "aviso.pericias_disponiveis", "aviso.oficios_disponiveis")
 
 
 # ---------- contas ----------
@@ -313,16 +314,6 @@ def conferir_contas(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaC
         return problemas, pulou
     # Na rota sem energia a proteção passiva é a Defesa sem Armadura, pela Lapidação (rotas--rota-defesa): a mesma conta
     # e a mesma progressão do Refino (começa em 1, +1 por marco e +1 quando escolhida, teto 10), e a ficha usa a mesma célula.
-    zero = [n for n in DEFESA_ZERO if n in _capacidades(ficha)]
-    if zero:
-        # "Defesa fica fixada em 0, sem alteração por bônus": a ficha não aplica, então avisa em vez de reprovar
-        encontrada = ficha.get("defesa", Campo("", "", "")).valor
-        if encontrada == 0:
-            certos.append(f"Defesa 0 ({zero[0]})")
-        else:
-            pendencias.append(Problema("origem", "defesa", f"fica 0 por {zero[0]}, e a ficha não aplica sozinha", _fmt(encontrada),
-                                       DEFESA_ZERO[zero[0]]))
-        return problemas, pulou
     if uniforme is not None:
         protecao = uniforme.protecao
     else:
@@ -331,7 +322,19 @@ def conferir_contas(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaC
     protecao += (escudo.protecao if escudo else 0) + _bonus(ficha, "buff.protecao")
     _comparar(ficha, "protecao", protecao, problemas, certos)
     defesa = 10 + (min([destreza, *tetos]) if tetos else destreza) + protecao + _bonus(ficha, "buff.defesa")
-    _comparar(ficha, "defesa", defesa, problemas, certos)
+    zero = [n for n in DEFESA_ZERO if n in _capacidades(ficha)]
+    if zero:
+        encontrada = ficha.get("defesa", Campo("", "", "")).valor
+        if encontrada == 0:
+            certos.append(f"Defesa 0 ({zero[0]})")
+        elif encontrada == defesa:
+            # Só a fórmula normal conhecida recebe a tolerância pela divergência da ficha.
+            pendencias.append(Problema("origem", "defesa", f"fica 0 por {zero[0]}, e a ficha não aplica sozinha", _fmt(encontrada),
+                                       DEFESA_ZERO[zero[0]]))
+        else:
+            problemas.append(Problema("conta", "defesa", "0", _fmt(encontrada), DEFESA_ZERO[zero[0]]))
+    else:
+        _comparar(ficha, "defesa", defesa, problemas, certos)
     return problemas, pulou
 
 
@@ -419,6 +422,7 @@ def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha
     resultado.problemas += conferir_feiticos(ficha, ref) + conferir_invocacoes(ficha, ref)
     resultado.nao_conferido.append("feitiços e invocações: contas ainda não feitas no bot")
     treinos, fontes = treinos_da_origem(ficha)
+    notas_de_treino: dict[int, Problema] = {}
     for chave, campo in ficha.items():
         # Buff/Debuff entra na conta como a ficha faz, e vai pra lista do mestre conferir de onde veio
         if chave.startswith("buff.") and campo.valor not in ("", 0):
@@ -429,11 +433,15 @@ def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha
         excesso = _a_mais(str(campo.valor)) if chave in _TREINOS else 0
         if tipo == "erro" and excesso and excesso <= treinos:
             # a ficha conta como "a mais" o treino que a Origem dá: não reprova, e o mestre confere se é esse
-            resultado.notas.append(Problema("origem", chave, f"até {treinos} a mais por {', '.join(fontes)}", str(campo.valor),
-                                            "origens--origens"))
+            nota = Problema("origem", chave, f"até {treinos} a mais por {', '.join(fontes)}", str(campo.valor),
+                            "origens--origens")
+            anterior = notas_de_treino.get(excesso)
+            if anterior is None or _TREINOS.index(chave) < _TREINOS.index(anterior.campo):
+                notas_de_treino[excesso] = nota
         elif tipo:
             aviso = Problema("aviso", chave, "", str(campo.valor), "")
             {"erro": resultado.problemas, "pendente": resultado.pendencias, "nota": resultado.notas}[tipo].append(aviso)
+    resultado.notas.extend(notas_de_treino.values())
     buff_pe = _bonus(ficha, "buff.energia")
     for nome, extra in pe_da_origem(ficha, ref):
         if extra and buff_pe != extra:
