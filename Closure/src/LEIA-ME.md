@@ -348,6 +348,9 @@ Depois, no primeiro uso na Discloud (14/10/2026):
 - **Marcar o bot ou responder a uma mensagem dele vale em qualquer canal.** `CANAIS` passou a limitar só o
   chamado pelo nome ("closure, ..."), que fora do canal delas apareceria em conversa dos outros. Um jogador marcou
   o bot no chat geral e ficou sem resposta; era isso, não o `GC:`.
+- **O cargo do bot chama como marcar o bot (14/10).** O cargo que o Discord cria pro bot ao entrar no servidor
+  ("Guias do Ciclo") vale como menção, e sai do texto mandado ao modelo. Qualquer outro cargo continua sem chamar,
+  e o cargo dela junto de outro cargo também é aviso, não conversa.
 - **Conversa sem chamar de novo (14/10).** Depois que ela responde alguém, a mensagem seguinte dessa pessoa no
   mesmo canal vai pra ela, sem nome, por até 3 minutos (`SEGUIMENTO` em `cogs/chat.py`). Para quando outra pessoa
   fala no canal, quando a mensagem responde ou marca outra pessoa e quando é só reação ("kkk", "valeu", emoji),
