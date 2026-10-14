@@ -31,7 +31,7 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 164 testes; 37 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 166 testes; 39 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -236,6 +236,13 @@ O que a revisão do código achou e corrigiu, cada item com teste:
 - **Limite de 8 chamadas por minuto por pessoa** e de 1500 caracteres por mensagem, porque cada resposta custa.
 - **Reflexão atrasada roda ao subir**: se o bot estava fora do ar às 4h30, o texto guardado não fica parado.
 - **Webhook apagado no servidor é refeito**, e comando que quebra avisa a pessoa em vez de ficar mudo.
+
+Depois, no primeiro uso na Discloud (14/10/2026):
+
+- **Mensagem com `@everyone`, `@here` ou menção a cargo não é conversa**, mesmo citando o nome delas. E elas
+  nunca marcam ninguém: as menções saem desligadas em toda fala.
+- **Mencionar o bot não vira mais "comando"** no log (`CommandNotFound`): o tratamento de prefixo do discord.py
+  foi desligado, porque quem lê mensagem são os módulos.
 
 ## O que falta
 

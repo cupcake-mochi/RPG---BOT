@@ -61,6 +61,10 @@ class ClosureBot(commands.Bot):
             # Comando registrado só num servidor não sai com o registro geral e apareceria em dobro: limpa os desse.
             await self.tree.sync(guild=discord.Object(id=self.config.guild_id))
 
+    async def on_message(self, mensagem: discord.Message) -> None:
+        """Vazio de propósito. O padrão do discord.py lê toda mensagem que menciona o bot como comando de prefixo
+        ("@bot o rato roeu" virava o comando "o", com erro no log). Quem trata mensagem são os módulos, cada um no seu on_message."""
+
     async def on_ready(self) -> None:
         log.info("no ar como %s, em %d servidor(es)", self.user, len(self.guilds))
 

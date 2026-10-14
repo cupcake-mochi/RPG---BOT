@@ -79,6 +79,8 @@ class Chat(commands.Cog):
         if not self.bot.config.escuta(canal_id):
             return
 
+        if mensagem.mention_everyone or mensagem.role_mentions:
+            return  # aviso pra todo mundo ou pra um cargo não é conversa com as guias, mesmo citando o nome delas
         if separar_atalho(mensagem.content) is not None:
             return  # "GC:clima" é comando (cogs/atalho.py), não conversa com as guias
 
