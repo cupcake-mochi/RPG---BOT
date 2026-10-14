@@ -26,7 +26,8 @@ log = logging.getLogger(__name__)
 
 URL_CLIMA = ("https://api.open-meteo.com/v1/forecast?latitude={lat}&longitude={lon}"
              "&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,is_day"
-             "&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset&timezone=auto&forecast_days=1")
+             "&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max"
+             "&timezone=auto&forecast_days=1")
 URL_LUGAR = "https://geocoding-api.open-meteo.com/v1/search?name={nome}&count=10&language=pt&format=json"
 
 VALIDADE = 15 * 60        # segundos em que a última leitura é reaproveitada (o legado também lia de 15 em 15 min)
@@ -45,6 +46,22 @@ CONDICOES = {
     85: "pancadas de neve", 86: "pancadas de neve fortes",
     95: "trovoada", 96: "trovoada com granizo", 99: "trovoada com granizo forte",
 }
+
+
+_EMOJI = {0: "☀️", 1: "🌤️", 2: "⛅", 3: "☁️", 45: "🌫️", 48: "🌫️", 95: "⛈️", 96: "⛈️", 99: "⛈️"}
+_EMOJI.update({c: "🌦️" for c in (51, 53, 55, 56, 57)})
+_EMOJI.update({c: "🌧️" for c in (61, 63, 65, 66, 67, 80, 81, 82)})
+_EMOJI.update({c: "🌨️" for c in (71, 73, 75, 77, 85, 86)})
+_ICONE = {0: "01", 1: "02", 2: "03", 3: "04", 45: "50", 48: "50", 95: "11", 96: "11", 99: "11"}
+_ICONE.update({c: "09" for c in (51, 53, 55, 56, 57, 80, 81, 82)})
+_ICONE.update({c: "10" for c in (61, 63, 65)})
+_ICONE.update({c: "13" for c in (66, 67, 71, 73, 75, 77, 85, 86)})
+
+
+def emoji_do_tempo(codigo: int, de_dia: bool = True) -> str:
+    if not de_dia and codigo in (0, 1):
+        return "🌙"
+    return _EMOJI.get(codigo, "☁️")
 
 
 @dataclass(frozen=True)
@@ -74,6 +91,17 @@ class Clima:
     por_do_sol: str
     hora_local: str  # hora do lugar em que a leitura vale, "02:00"
     de_dia: bool
+    codigo: int = 3              # código de tempo da OMM, de onde saem o emoji e o ícone do painel
+    chuva_hoje: int | None = None  # maior chance de chuva do dia, em %; None quando a leitura não traz
+
+    @property
+    def emoji(self) -> str:
+        return emoji_do_tempo(self.codigo, self.de_dia)
+
+    @property
+    def icone(self) -> str:
+        """Endereço do desenho do tempo (os ícones públicos do OpenWeather, os mesmos do painel antigo)."""
+        return f"https://openweathermap.org/img/wn/{_ICONE.get(self.codigo, '04')}{'d' if self.de_dia else 'n'}@2x.png"
 
     @property
     def estado(self) -> str:
@@ -103,7 +131,13 @@ def interpretar(resposta: dict, lugar: str = TOQUIO.nome) -> Clima:
         por_do_sol=datetime.fromisoformat(dia["sunset"][0]).strftime("%H:%M"),
         hora_local=datetime.fromisoformat(atual["time"]).strftime("%H:%M"),
         de_dia=bool(atual["is_day"]),
+        codigo=codigo,
+        chuva_hoje=_inteiro_ou_nada((dia.get("precipitation_probability_max") or [None])[0]),
     )
+
+
+def _inteiro_ou_nada(valor) -> int | None:
+    return None if valor is None else round(valor)
 
 
 def interpretar_lugar(resposta: dict) -> Lugar | None:

@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import logging
 from datetime import datetime
+from pathlib import Path
 
 import discord
 from discord import app_commands
@@ -21,21 +22,42 @@ from ..registro import PainelClima
 log = logging.getLogger(__name__)
 
 COR = 0xCC0102  # a do painel do bot antigo
+ARTE = Path(__file__).resolve().parents[1] / "recursos" / "painel_clima.webp"
+ARTE_DE = "hatutaro"  # quem desenhou a imagem do painel; o crédito vai no rodapé, embaixo dela
+DESENHO = "p2"        # muda quando o desenho do painel muda, pra o painel do dia ser refeito sem esperar o tempo virar
+
+
+def arte() -> discord.File | None:
+    """A imagem do painel, pra ir anexada na mensagem. Sem o arquivo, o painel sai sem imagem."""
+    return discord.File(ARTE, filename=ARTE.name) if ARTE.exists() else None
 
 
 def painel(clima: Clima, atualizado: str | None = None) -> discord.Embed:
-    embed = discord.Embed(title=f"{clima.lugar} agora", description=clima.condicao.capitalize(), color=COR)
-    embed.add_field(name="Temperatura", value=f"{clima.temperatura} °C")
-    embed.add_field(name="Sensação", value=f"{clima.sensacao} °C")
-    embed.add_field(name="Umidade", value=f"{clima.umidade}%")
-    embed.add_field(name="Vento", value=f"{clima.vento_kmh} km/h")
-    embed.add_field(name="Hoje", value=f"{clima.minima} °C a {clima.maxima} °C")
-    embed.add_field(name="Sol", value=f"{clima.nascer} às {clima.por_do_sol}")
-    rodape = f"Leitura das {clima.hora_local} de lá. Dados: Open-Meteo"
+    embed = discord.Embed(title=f"{clima.emoji} Clima em {clima.lugar}", description=f"**{clima.condicao.capitalize()}**", color=COR)
+    embed.set_thumbnail(url=clima.icone)
+    embed.add_field(name="🌡️ Temperatura", value=f"{clima.temperatura} °C")
+    embed.add_field(name="🧠 Sensação", value=f"{clima.sensacao} °C")
+    embed.add_field(name="💧 Umidade", value=f"{clima.umidade}%")
+    embed.add_field(name="🍃 Vento", value=f"{clima.vento_kmh} km/h")
+    embed.add_field(name="📊 Mín. e máx.", value=f"{clima.minima} °C a {clima.maxima} °C")
+    embed.add_field(name="☔ Chuva hoje", value="sem previsão" if clima.chuva_hoje is None else f"{clima.chuva_hoje}% de chance")
+    embed.add_field(name="🌅 Nascer do sol", value=clima.nascer)
+    embed.add_field(name="🌇 Pôr do sol", value=clima.por_do_sol)
+    rodape = []
+    if ARTE.exists():
+        embed.set_image(url=f"attachment://{ARTE.name}")
+        rodape.append(f"Arte: {ARTE_DE}")
+    rodape += ["Dados: Open-Meteo", f"Leitura das {clima.hora_local} de {'Tóquio' if clima.lugar == TOQUIO.nome else 'lá'}"]
     if atualizado:
-        rodape += f". Atualizado às {atualizado} de Brasília"
-    embed.set_footer(text=rodape)
+        rodape.append(f"Atualizado às {atualizado} de Brasília")
+    embed.set_footer(text=" • ".join(rodape))
     return embed
+
+
+def _com_arte() -> dict:
+    """O que acompanha o painel num envio: o anexo da imagem, quando existe."""
+    anexo = arte()
+    return {"file": anexo} if anexo else {}
 
 
 class ComandoClima(commands.Cog):
@@ -67,7 +89,7 @@ class ComandoClima(commands.Cog):
         if leitura is None:
             await interacao.followup.send("Não consegui ler o clima agora. Tente de novo daqui a pouco.")
             return
-        await interacao.followup.send(embed=painel(leitura))
+        await interacao.followup.send(embed=painel(leitura), **_com_arte())
 
     @app_commands.command(name="clima_canal", description="Escolhe o canal do painel diário de clima deste servidor.")
     @app_commands.describe(canal="Canal do painel. Em branco, o canal em que o comando foi usado.")
@@ -103,7 +125,8 @@ class ComandoClima(commands.Cog):
         leitura = await self.bot.clima.agora()
         if leitura is None:
             return None
-        acao = acao_painel(agora, config.dia, config.estado, leitura.estado)
+        estado = f"{leitura.estado}|{DESENHO}"
+        acao = acao_painel(agora, config.dia, config.estado, estado)
         if acao is None:
             return None
         canal = self.bot.get_channel(config.canal_id)
@@ -112,16 +135,17 @@ class ComandoClima(commands.Cog):
             return None
         try:
             if acao == "postar":
-                mensagem = await canal.send(embed=painel(leitura))
+                mensagem = await canal.send(embed=painel(leitura), **_com_arte())
                 dia, mensagem_id = agora.date().isoformat(), mensagem.id
             else:
                 mensagem = await canal.fetch_message(config.mensagem_id or 0)
-                await mensagem.edit(embed=painel(leitura, atualizado=f"{agora:%H:%M}"))
+                anexo = arte()  # vai de novo a cada edição: é o que mantém a imagem presa ao painel
+                await mensagem.edit(embed=painel(leitura, atualizado=f"{agora:%H:%M}"), attachments=[anexo] if anexo else [])
                 dia, mensagem_id = config.dia, config.mensagem_id
         except discord.HTTPException as erro:  # apagaram a mensagem ou faltou permissão: tenta de novo na próxima volta
             log.warning("clima: painel do servidor %s falhou (%s)", config.guild_id, erro)
             return None
-        self.bot.registro.marcar_painel(config.guild_id, dia=dia, mensagem_id=mensagem_id, estado=leitura.estado)
+        self.bot.registro.marcar_painel(config.guild_id, dia=dia, mensagem_id=mensagem_id, estado=estado)
         return acao
 
     @tasks.loop(minutes=15)

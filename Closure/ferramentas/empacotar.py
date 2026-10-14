@@ -25,7 +25,7 @@ def arquivos(com_env: bool) -> list[tuple[Path, str]]:
     pastas = [RAIZ / "src" / "closure_bot", RAIZ / "ferramentas" / "prompt_do_site"]
     for pasta in pastas:
         lista += [(a, str(a.relative_to(RAIZ))) for a in sorted(pasta.rglob("*"))
-                  if a.is_file() and "__pycache__" not in a.parts and a.suffix in (".py", ".js")]
+                  if a.is_file() and "__pycache__" not in a.parts and a.suffix in (".py", ".js", ".webp", ".png", ".jpg")]
     lista.append((RAIZ / "src" / "var" / "site" / "nucleo.js", "src/var/site/nucleo.js"))
     lista.append((RAIZ / "dados" / "sistema" / "MANIFESTO.json", "dados/sistema/MANIFESTO.json"))
     lista += [(c, str(c.relative_to(RAIZ))) for c in sorted((RAIZ / "dados" / "personagem").glob("*/card.json"))]
