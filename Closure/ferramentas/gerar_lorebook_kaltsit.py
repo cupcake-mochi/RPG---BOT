@@ -95,7 +95,7 @@ TEXTO_TERMO = {"PE": "Pontos de energia: pagam o uso de feitiços e habilidades.
 
 # termos do Glossário do livro que só existem no sistema (os genéricos, como Ação, Turno ou Área, ficam de fora pra não disparar em conversa comum)
 TERMOS = {
- "Caminho": ["caminho", "caminhos"], "Trilha": ["trilha", "trilhas"], "Origem": ["origem", "origens"], "Legado": ["legado", "legados"],
+ "Caminho": ["caminho", "caminhos"], "Trilha": ["trilha", "trilhas"], "Origem": ["origem", "origens"], "Legado de história": ["legado", "legados", "legado de história", "legados de história"], "Marcante e menores": ["marcante", "marcantes", "capacidade marcante", "capacidades menores"],
  "Classe": ["classe", "classes"], "Classe 0": ["classe 0", "classe zero"], "Categoria de Efeito": ["categoria de efeito", "ce"],
  "CD": ["cd", "classe de dificuldade"], "Teste de Resistência": ["teste de resistência", "tr", "trs"], "PE": ["pe", "pontos de energia", "pontos de esforço"],
  "PV": ["pv", "pontos de vida", "hp"], "Integridade": ["integridade"], "Exaustão": ["exaustão"], "Refino": ["refino"], "Maestria": ["maestria"],

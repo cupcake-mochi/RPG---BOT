@@ -1500,7 +1500,7 @@
    ],
    "keysecondary": [],
    "comment": "Origem",
-   "content": "[Termo do livro: Origem] Escolha de criação que reúne traço, Legados, treinos e opções de rota. (livro, âncora origens--origens)",
+   "content": "[Termo do livro: Origem] Escolha de criação que reúne base de treinos, história, uma marcante, duas menores elegíveis e opções de rota. (livro, âncora origens--origens)",
    "constant": false,
    "selective": false,
    "order": 100,
@@ -1520,11 +1520,15 @@
    "uid": 48,
    "key": [
     "legado",
-    "legados"
+    "legados",
+    "legado de história",
+    "legado de historia",
+    "legados de história",
+    "legados de historia"
    ],
    "keysecondary": [],
-   "comment": "Legado",
-   "content": "[Termo do livro: Legado] Escolha da Origem que registra uma capacidade ou vínculo, conforme sua entrada. (livro, âncora origens--origens)",
+   "comment": "Legado de história",
+   "content": "[Termo do livro: Legado de história] Vínculo, lembrança, compromisso ou detalhe da sua existência que participa da campanha. Não concede benefício mecânico por si só nem ocupa escolha de marcante ou menor. (livro, âncora origens--legados)",
    "constant": false,
    "selective": false,
    "order": 100,
@@ -1542,6 +1546,32 @@
   },
   "49": {
    "uid": 49,
+   "key": [
+    "marcante",
+    "marcantes",
+    "capacidade marcante",
+    "capacidades menores"
+   ],
+   "keysecondary": [],
+   "comment": "Marcante e menores",
+   "content": "[Termo do livro: Marcante e menores] Uma capacidade central e duas escolhas elegíveis da Origem, sem trocar suas vagas entre si. (livro, âncora origens--origem-escolhas)",
+   "constant": false,
+   "selective": false,
+   "order": 100,
+   "position": 0,
+   "disable": false,
+   "excludeRecursion": true,
+   "preventRecursion": true,
+   "probability": 100,
+   "useProbability": true,
+   "depth": 4,
+   "group": "sistema",
+   "caseSensitive": false,
+   "matchWholeWords": true,
+   "scanDepth": null
+  },
+  "50": {
+   "uid": 50,
    "key": [
     "classe",
     "classes"
@@ -1564,8 +1594,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "50": {
-   "uid": 50,
+  "51": {
+   "uid": 51,
    "key": [
     "classe 0",
     "classe zero"
@@ -1588,8 +1618,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "51": {
-   "uid": 51,
+  "52": {
+   "uid": 52,
    "key": [
     "categoria de efeito",
     "ce"
@@ -1612,8 +1642,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "52": {
-   "uid": 52,
+  "53": {
+   "uid": 53,
    "key": [
     "cd",
     "classe de dificuldade"
@@ -1636,8 +1666,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "53": {
-   "uid": 53,
+  "54": {
+   "uid": 54,
    "key": [
     "teste de resistência",
     "teste de resistencia",
@@ -1662,8 +1692,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "54": {
-   "uid": 54,
+  "55": {
+   "uid": 55,
    "key": [
     "pe",
     "pontos de energia",
@@ -1688,8 +1718,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "55": {
-   "uid": 55,
+  "56": {
+   "uid": 56,
    "key": [
     "pv",
     "pontos de vida",
@@ -1713,8 +1743,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "56": {
-   "uid": 56,
+  "57": {
+   "uid": 57,
    "key": [
     "integridade"
    ],
@@ -1736,8 +1766,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "57": {
-   "uid": 57,
+  "58": {
+   "uid": 58,
    "key": [
     "exaustão",
     "exaustao"
@@ -1760,8 +1790,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "58": {
-   "uid": 58,
+  "59": {
+   "uid": 59,
    "key": [
     "refino"
    ],
@@ -1783,8 +1813,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "59": {
-   "uid": 59,
+  "60": {
+   "uid": 60,
    "key": [
     "maestria"
    ],
@@ -1806,8 +1836,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "60": {
-   "uid": 60,
+  "61": {
+   "uid": 61,
    "key": [
     "grau",
     "graus"
@@ -1830,8 +1860,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "61": {
-   "uid": 61,
+  "62": {
+   "uid": 62,
    "key": [
     "patente",
     "patentes"
@@ -1854,8 +1884,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "62": {
-   "uid": 62,
+  "63": {
+   "uid": 63,
    "key": [
     "feitiço",
     "feitico",
@@ -1880,8 +1910,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "63": {
-   "uid": 63,
+  "64": {
+   "uid": 64,
    "key": [
     "fundamento"
    ],
@@ -1903,8 +1933,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "64": {
-   "uid": 64,
+  "65": {
+   "uid": 65,
    "key": [
     "técnica amaldiçoada",
     "tecnica amaldicoada",
@@ -1929,8 +1959,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "65": {
-   "uid": 65,
+  "66": {
+   "uid": 66,
    "key": [
     "técnica máxima",
     "tecnica maxima"
@@ -1953,8 +1983,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "66": {
-   "uid": 66,
+  "67": {
+   "uid": 67,
    "key": [
     "técnica marcial",
     "tecnica marcial"
@@ -1977,8 +2007,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "67": {
-   "uid": 67,
+  "68": {
+   "uid": 68,
    "key": [
     "kata",
     "katas"
@@ -2001,8 +2031,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "68": {
-   "uid": 68,
+  "69": {
+   "uid": 69,
    "key": [
     "sem técnica",
     "sem tecnica"
@@ -2025,8 +2055,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "69": {
-   "uid": 69,
+  "70": {
+   "uid": 70,
    "key": [
     "manejo",
     "manejos"
@@ -2049,8 +2079,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "70": {
-   "uid": 70,
+  "71": {
+   "uid": 71,
    "key": [
     "lapidação",
     "lapidacao"
@@ -2073,8 +2103,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "71": {
-   "uid": 71,
+  "72": {
+   "uid": 72,
    "key": [
     "bênção",
     "bencao",
@@ -2099,8 +2129,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "72": {
-   "uid": 72,
+  "73": {
+   "uid": 73,
    "key": [
     "aptidão",
     "aptidao",
@@ -2125,8 +2155,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "73": {
-   "uid": 73,
+  "74": {
+   "uid": 74,
    "key": [
     "talento",
     "talentos"
@@ -2149,8 +2179,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "74": {
-   "uid": 74,
+  "75": {
+   "uid": 75,
    "key": [
     "melhoria",
     "melhorias"
@@ -2173,8 +2203,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "75": {
-   "uid": 75,
+  "76": {
+   "uid": 76,
    "key": [
     "família de melhorias",
     "familia de melhorias"
@@ -2197,8 +2227,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "76": {
-   "uid": 76,
+  "77": {
+   "uid": 77,
    "key": [
     "pontos de montagem",
     "montagem"
@@ -2221,8 +2251,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "77": {
-   "uid": 77,
+  "78": {
+   "uid": 78,
    "key": [
     "restrição de montagem",
     "restricao de montagem"
@@ -2245,8 +2275,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "78": {
-   "uid": 78,
+  "79": {
+   "uid": 79,
    "key": [
     "selo",
     "selos"
@@ -2269,8 +2299,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "79": {
-   "uid": 79,
+  "80": {
+   "uid": 80,
    "key": [
     "ritual",
     "rituais"
@@ -2293,8 +2323,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "80": {
-   "uid": 80,
+  "81": {
+   "uid": 81,
    "key": [
     "pacto",
     "pactos"
@@ -2317,8 +2347,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "81": {
-   "uid": 81,
+  "82": {
+   "uid": 82,
    "key": [
     "invocação",
     "invocacao",
@@ -2344,8 +2374,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "82": {
-   "uid": 82,
+  "83": {
+   "uid": 83,
    "key": [
     "entidade",
     "entidades"
@@ -2368,8 +2398,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "83": {
-   "uid": 83,
+  "84": {
+   "uid": 84,
    "key": [
     "invocador"
    ],
@@ -2391,8 +2421,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "84": {
-   "uid": 84,
+  "85": {
+   "uid": 85,
    "key": [
     "ferramenta amaldiçoada",
     "ferramenta amaldicoada",
@@ -2417,8 +2447,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "85": {
-   "uid": 85,
+  "86": {
+   "uid": 86,
    "key": [
     "regra da técnica",
     "regra da tecnica"
@@ -2441,8 +2471,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "86": {
-   "uid": 86,
+  "87": {
+   "uid": 87,
    "key": [
     "expressão da técnica",
     "expressao da tecnica"
@@ -2465,8 +2495,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "87": {
-   "uid": 87,
+  "88": {
+   "uid": 88,
    "key": [
     "espaço conhecido",
     "espaco conhecido",
@@ -2491,8 +2521,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "88": {
-   "uid": 88,
+  "89": {
+   "uid": 89,
    "key": [
     "ampliar"
    ],
@@ -2514,8 +2544,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "89": {
-   "uid": 89,
+  "90": {
+   "uid": 90,
    "key": [
     "marco",
     "marcos"
@@ -2538,8 +2568,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "90": {
-   "uid": 90,
+  "91": {
+   "uid": 91,
    "key": [
     "vida temporária",
     "vida temporaria"
@@ -2562,8 +2592,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "91": {
-   "uid": 91,
+  "92": {
+   "uid": 92,
    "key": [
     "redução de dano",
     "reducao de dano",
@@ -2587,8 +2617,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "92": {
-   "uid": 92,
+  "93": {
+   "uid": 93,
    "key": [
     "derrotado",
     "derrotada"
@@ -2611,14 +2641,14 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "93": {
-   "uid": 93,
+  "94": {
+   "uid": 94,
    "key": [
     "morrendo"
    ],
    "keysecondary": [],
    "comment": "Morrendo",
-   "content": "[Termo do livro: Morrendo] Situação resolvida pelas regras de queda e recuperação em Vida a zero. (livro, âncora dano--zero)",
+   "content": "[Termo do livro: Morrendo] Condição de quem caiu a zero de vida, resolvida pelo tratamento e pela janela de socorro de Vida a zero. (livro, âncora dano--zero)",
    "constant": false,
    "selective": false,
    "order": 100,
@@ -2634,8 +2664,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "94": {
-   "uid": 94,
+  "95": {
+   "uid": 95,
    "key": [
     "estabilizar",
     "estabilizo",
@@ -2662,8 +2692,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "95": {
-   "uid": 95,
+  "96": {
+   "uid": 96,
    "key": [
     "vantagem"
    ],
@@ -2685,8 +2715,8 @@
    "matchWholeWords": true,
    "scanDepth": null
   },
-  "96": {
-   "uid": 96,
+  "97": {
+   "uid": 97,
    "key": [
     "desvantagem"
    ],
