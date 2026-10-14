@@ -1,4 +1,4 @@
-"""Comandos de administração: /ping, /status e /teste_webhook."""
+"""Comandos do bot: /ajuda, /ping, /status e /teste_webhook."""
 from __future__ import annotations
 
 from datetime import datetime
@@ -12,9 +12,51 @@ from ..plantao import FUSO, de_plantao
 from ..prompt import versoes as versoes_do_site
 
 
+COR = 0xCC0102
+# Título de cada grupo no /ajuda, pelo módulo que tem o comando. A lista sai dos próprios comandos, então não envelhece.
+GRUPOS = {"ComandoClima": "Clima", "Pessoa": "Seus dados", "Admin": "Do bot"}
+SO_DO_DONO = {"teste_webhook"}
+
+
 class Admin(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
+
+    def painel_de_ajuda(self, *, cuida_do_servidor: bool, dono: bool) -> discord.Embed:
+        agora = datetime.now(FUSO)
+        canais = " ou ".join(f"<#{c}>" for c in sorted(self.bot.config.canais))
+        onde = f"em {canais}" if canais else "no canal"
+        embed = discord.Embed(title="Guias do Ciclo", color=COR, description=(
+            "**» Como falar com elas**\n"
+            f"Chame pelo nome {onde}, como `kal, o que é Integridade?` ou `closure, tá chovendo aí?`. "
+            "Responder a uma mensagem delas também vale.\n"
+            "A Kal'tsit atende das 9h às 21h e a Closure das 21h às 9h, no horário de Brasília. "
+            f"Agora quem atende é a {self.bot.personas[de_plantao(agora)].nome}."))
+        grupos: dict[str, list[str]] = {}
+        for comando in sorted(self.bot.tree.get_commands(), key=lambda c: c.name):
+            do_servidor = getattr(comando, "default_permissions", None) is not None
+            if (do_servidor and not cuida_do_servidor) or (comando.name in SO_DO_DONO and not dono):
+                continue
+            grupo = "Para quem cuida do servidor" if do_servidor or comando.name in SO_DO_DONO else \
+                GRUPOS.get(type(getattr(comando, "binding", None)).__name__, "Outros")
+            grupos.setdefault(grupo, []).append(f"{self.bot.mencoes.get(comando.name, '/' + comando.name)} · {comando.description}")
+        ordem = [*GRUPOS.values(), "Outros", "Para quem cuida do servidor"]
+        for grupo in sorted(grupos, key=ordem.index):
+            embed.add_field(name=f"» {grupo}", value="\n".join(grupos[grupo]), inline=False)
+        links = [f"[{nome}]({url})" for nome, url in (("Privacidade", self.bot.config.politica_url), ("Termos de uso", self.bot.config.termos_url)) if url]
+        if links:
+            embed.add_field(name="» Links", value=" | ".join(links), inline=False)
+        if self.bot.user and self.bot.user.display_avatar:
+            embed.set_thumbnail(url=self.bot.user.display_avatar.url)
+        embed.set_footer(text="Bot de fã, sem ligação oficial com nenhum jogo")
+        return embed
+
+    @app_commands.command(name="ajuda", description="Como falar com as guias e a lista de comandos.")
+    async def ajuda(self, interacao: discord.Interaction) -> None:
+        permissoes = getattr(interacao, "permissions", None)
+        dono = interacao.user.id == self.bot.config.dono_id
+        await interacao.response.send_message(
+            embed=self.painel_de_ajuda(cuida_do_servidor=dono or bool(permissoes and permissoes.manage_guild), dono=dono), ephemeral=True)
 
     @app_commands.command(name="ping", description="Confere se o bot está no ar e qual versão das regras ele leu.")
     async def ping(self, interacao: discord.Interaction) -> None:

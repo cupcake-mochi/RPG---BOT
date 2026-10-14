@@ -7,6 +7,7 @@ Variáveis (modelo em .env.exemplo, na raiz do repositório):
   DONO_ID          ID de quem pode usar os comandos de administração (o do Mizuki está em dados/personagem/servidor.md).
   CANAIS           IDs dos canais em que o bot escuta, separados por vírgula. Vazio = todos.
   POLITICA_URL     link público da política de privacidade (o texto é o docs/PRIVACIDADE.md). Aparece no fim do /meus_dados.
+  TERMOS_URL       link público dos termos de uso (o texto é o docs/TERMOS.md). Aparece no /ajuda, junto do da política.
   CLIMA_CANAIS     IDs de canais que já nascem com o painel diário de clima, um por servidor. O comando
                    /clima_canal faz o mesmo de dentro do Discord; isto é pra não depender dele na primeira subida.
   AVATAR_KALTSIT   URL da imagem que aparece nas mensagens da Kal'tsit.
@@ -72,6 +73,7 @@ class Config:
     chave_do_banco: str | None = None
     clima_canais: tuple[int, ...] = ()
     politica_url: str | None = None
+    termos_url: str | None = None
 
     def escuta(self, canal_id: int) -> bool:
         return not self.canais or canal_id in self.canais
@@ -97,5 +99,6 @@ def carregar(arquivo: Path | None = None, ambiente: dict[str, str] | None = None
         banco=Path(valores.get("BANCO") or RAIZ / "src" / "var" / "bot.sqlite3"),
         chave_do_banco=valores.get("CHAVE_DO_BANCO") or None,
         politica_url=valores.get("POLITICA_URL") or None,
+        termos_url=valores.get("TERMOS_URL") or None,
         clima_canais=tuple(int(c) for c in valores.get("CLIMA_CANAIS", "").replace(" ", "").split(",") if c.isdigit()),
     )

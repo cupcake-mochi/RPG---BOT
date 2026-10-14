@@ -35,6 +35,7 @@ class ClosureBot(commands.Bot):
         self.clima = ServicoClima()
         self.vida = Vida(self.registro)
         self.conversas = Conversas()
+        self.mencoes: dict[str, str] = {}  # nome do comando -> menção clicável (</nome:id>), preenchida ao registrar
         self.modelos = Modelos(ler_fila(config.fila_modelos or FILA_PADRAO), config.chaves, self.registro,
                                teto_usd=config.teto_mensal_usd or TETO_PADRAO_USD, raciocinio=config.raciocinio or RACIOCINIO_PADRAO)
 
@@ -42,7 +43,7 @@ class ClosureBot(commands.Bot):
         for modulo in MODULOS:
             await self.load_extension(f"closure_bot.cogs.{modulo}")
         # O registro geral troca, em todo servidor, a lista de comandos que o bot antigo deixou no mesmo aplicativo.
-        await self.tree.sync()
+        self.mencoes = {comando.name: comando.mention for comando in await self.tree.sync()}
         if self.config.guild_id:
             # Comando registrado só num servidor não sai com o registro geral e apareceria em dobro: limpa os desse.
             await self.tree.sync(guild=discord.Object(id=self.config.guild_id))
