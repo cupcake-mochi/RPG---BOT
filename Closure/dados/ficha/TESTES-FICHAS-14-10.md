@@ -1,7 +1,8 @@
 # Fichas de teste no Google (14/10/2026)
 
-Três cópias da ficha oficial, preenchidas por outra conversa e testadas pelo Mizuki no servidor com `GC:ficha` e o
-link. Mizuki confirmou em 14/10 que só existem as Testes 1 a 3; a Teste 4 ainda não foi criada.
+Cópias da ficha oficial, preenchidas e testadas pelo Mizuki no servidor com `GC:ficha` e o link.
+Inicialmente só tínhamos Testes 1 a 3. Em seguida, Mizuki enviou a Teste 4 — Corpo Amaldiçoado,
+e a leitura pública da ANALISE foi conferida junto dos valores da planilha pelo conector.
 
 Correção local de 14/10: Defesa fixa passou a distinguir 0, a fórmula normal e valor adulterado; treino extra
 repetido aparece uma vez; sem nome, o título usa Caminho e nível conhecidos. Não foi implantado nesta revisão.
@@ -11,7 +12,7 @@ repetido aparece uma vez; sem nome, o título usa Caminho e nível conhecidos. N
 | Teste 1 - Kaori (Bastião 2, Descendente) | aprovada, vida 23, PE 8, Integridade 26, Defesa 13 | aprovada, com os quatro números | ok |
 | Teste 2 - Vanguarda com pendências (nível 10, Encarnado com Duas Vidas, Revestimento 2 + Broquel, Grau 4, 1 ponto sobrando) | reprova pelo Grau, avisa o ponto, treino extra pro mestre | reprovou por "Pede Grau 3", avisou "faltam distribuir 1 de 11" e "Trava Selo de gesto", e o treino extra virou nota | notas repetidas corrigidas localmente; retestar na Discloud |
 | Teste 3 - Incursor com erros (nível 14, Restrição corporal com Corpo Debilitado, Besta + escudo Médio, Defesa 19 digitada por cima dos 15 da fórmula) | reprovada | **aprovada**, só com a pendência "Defesa fica 0 por Corpo Debilitado" | corrigido em reprodução local equivalente; retestar a cópia real na Discloud |
-| Teste 4 - Corpo Amaldiçoado (Evocador 6, Núcleo Dependente com o PE no Buff) | aprovada | não criada | criar antes de testar |
+| Teste 4 - Corpo Amaldiçoado (Evocador 6, Núcleo Dependente com o PE no Buff) | aprovada | aprovada no servidor e na leitura local | PE 40 correto; acrescentada pendência de Integridade sem barra |
 
 ## Fila, na ordem
 
@@ -29,11 +30,14 @@ repetido aparece uma vez; sem nome, o título usa Caminho e nível conhecidos. N
 3. **"Ficha de sem nome"** em todas: as cópias não têm o nome preenchido (FICHA!AB2). Não é erro, mas o título podia
    cair no Caminho e no nível ("Ficha de Bastião, nível 2") quando falta nome. **Concluído localmente**:
    só usa Caminho conferido e nível válido; na falta deles, título simples sem inventar dados.
-4. **Criar a Teste 4**, ainda inexistente: Corpo Amaldiçoado, Evocador 6, Núcleo Dependente com o PE no Buff.
-   Depois testar pelo `GC:ficha`. A conferência local do Buff permanece coberta pelos testes unitários existentes.
+4. **Teste 4 recebida e conferida**: Corpo Amaldiçoado, Evocador 6, Essência 3, Núcleo Dependente com
+   Buff de PE 4. PE 40 = 36 do Caminho + 4 da menor: correto, sem pendência de PE. Vida 38, proteção 1
+   e Defesa 12 também conferem. **Nova exceção corrigida no bot**: Núcleo Dependente não possui barra
+   de Integridade; os 60 mostrados pela ficha não podem constar como conferidos. Fórmula normal vira
+   pendência para desconsiderar essa reserva; zero/vazio reconhecem ausência de barra e outro valor reprova.
+   A planilha não foi alterada. Retestar o novo aviso depois de atualizar o pacote na Discloud.
 5. **A cópia da Teste 3 estava como "Qualquer pessoa com o link, Editor"** e alguém mexeu nela antes do preenchimento.
-   Trocar as três existentes pra Leitor; a futura Teste 4 também deve ficar só para leitura. Permissões não foram
-   alteradas nesta revisão.
+   As quatro cópias devem ficar só para leitura. Permissões não foram alteradas nesta revisão.
 6. **Fichas com customização** (uma aprovada pelo mestre, outra não): esperam a aba CONFIGURAÇÃO na ficha (B47,
    fase 2), as chaves `regra.*`, `efeito.*` e `custom.*` na ANALISE, e no bot o comando do mestre aprovar e a
    conferência por impressão digital. A estrutura do bot já existe (`RegrasDaCampanha`, `Aprovados`).
