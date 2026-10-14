@@ -55,10 +55,9 @@ ONDE PARAMOS
   geradores aqui, a pedido do Mizuki, com as regras dele contra retórica
   (dados/personagem/retorica-proibida.md) e um parágrafo sobre o bloco de estado que o bot manda
   (como tratar a pessoa; fatos são pano de fundo). O montar_pagina.py aponta pra elas e O BOT JÁ
-  USA ESSAS DUAS, por uma página montada aqui. Cuidado: rodar
-  python3 ferramentas/prompt_do_site/site_prompt.py --atualizar agora traria de volta a v0.31
-  e a v0.24, que são as do site.
-  O SITE DE TESTE NÃO FOI PUBLICADO com elas. Medidas na bateria c3lb12 pelo Gemini 3.8 Flash
+  USA ESSAS DUAS. A página do bot agora é montada aqui
+  (python3 ferramentas/prompt_do_site/site_prompt.py --atualizar), sem passar pelo site.
+  O SITE DE TESTE FOI DISPENSADO pelo Mizuki em 13/10 (pode ser desligado) e parou na v0.31 e na v0.24. Medidas na bateria c3lb12 pelo Gemini 3.8 Flash
   (ferramentas/bateria_modelo.py; saídas r_c3lb12v*_gemini_*.json): Closure 90 de 102 sem falha
   (a v0.31 fez 89 e 83), Kal'tsit 91 (a v0.24 fez 91). A v0.32 e a v0.25 existem só como
   histórico: a v0.32 piorou a Closure (80). Quem mexer nos cards parte da v0.33 e da v0.26.

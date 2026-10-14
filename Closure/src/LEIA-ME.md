@@ -30,7 +30,7 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 161 testes; 35 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 162 testes; 35 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -130,11 +130,11 @@ Estado em 13/10/2026: tudo abaixo está feito, e o bot respondeu no servidor pri
   no pedido como Mizuki.
 - **Espera:** cada tentativa tem 25 segundos, e 12 no gratuito, que nos dois testes de ponta a ponta de 13/10 falhou nas 5 chamadas (sobrecarga, cota e demora). Provedor que falha fica de molho (10 min depois de cota
   estourada, 2 min depois de sobrecarga ou queda de rede) e a fila pula direto pro seguinte.
-- **De onde vem a página do bot:** hoje, de uma página montada neste computador com a Closure v0.33 e a
-  Kal'tsit v0.26 (`python3 ferramentas/pagina_teste/montar_pagina.py PAGINA.html` e depois
-  `site_prompt.atualizar(arquivo=...)`). O site de teste ainda está na v0.31 e na v0.24, então
-  `site_prompt.py --atualizar` traria essas de volta. Depois que o site for publicado com as novas, volta a valer o
-  `--atualizar`.
+- **De onde vem a página do bot:** ela é montada neste computador, com os cards, o lorebook e o livro desta
+  pasta (`python3 ferramentas/prompt_do_site/site_prompt.py --atualizar`). O site de teste dos amigos foi
+  dispensado pelo Mizuki em 13/10/2026 e não é mais a fonte; `--atualizar --do-site` ainda baixa a página de lá,
+  que parou na Closure v0.31 e na Kal'tsit v0.24. Mudou card, lorebook ou livro: rode o `--atualizar` e empacote
+  de novo.
 - **Sem Node na hospedagem** (13/10/2026): o JavaScript da página do site roda dentro do Python, pelo
   `quickjs-ng`. Nos 14 pedidos de conferência ele monta o mesmo pedido que o Node, em uns 40 ms (o Node leva
   quase 2 s por pedido, porque sobe um processo a cada vez). `python3 ferramentas/prompt_do_site/site_prompt.py
@@ -241,4 +241,3 @@ O que a revisão do código achou e corrigiu, cada item com teste:
 - Consulta de regra por comando e análise de ficha (`cogs/regras.py` e `cogs/ficha.py` estão vazios): eram do bot
   antigo e ainda não foram refeitas.
 - Calendário de sessões e aniversários, do desenho da vida.
-- Publicar no site de teste os cards que o bot já usa.
