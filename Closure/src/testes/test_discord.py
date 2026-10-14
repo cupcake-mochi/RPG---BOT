@@ -406,7 +406,11 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertIn("Apagado", await usar(pessoa.apagar_meus_dados))
         self.assertEqual(self.bot.registro.mensagens_do_dia(), [])
         self.assertIn("Fatos: nenhum.", await usar(pessoa.meus_dados))
-        self.assertIn("docs/PRIVACIDADE.md", await usar(pessoa.meus_dados))
+        self.assertNotIn("Política de privacidade", await usar(pessoa.meus_dados))
+        from dataclasses import replace
+
+        self.bot.config = replace(self.bot.config, politica_url="https://exemplo/politica")
+        self.assertIn("Política de privacidade: https://exemplo/politica", await usar(pessoa.meus_dados))
         self.assertIn("Closure: você falou com ela em 0 dia(s)", await usar(pessoa.meus_dados))
 
     async def test_teste_webhook_so_pro_dono(self):

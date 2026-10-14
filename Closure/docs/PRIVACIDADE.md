@@ -2,7 +2,7 @@
 
 Vale a partir de 13/10/2026. Este texto descreve o que o bot faz com dados de quem está num servidor onde ele foi adicionado. O bot é a Kal'tsit e a Closure, as duas guias do servidor para o RPG Ciclo Maldito.
 
-Quem responde pelo bot é o Mizuki, que o criou e o mantém. Para falar com ele, mande mensagem no servidor da guilda ou abra um pedido em <https://github.com/cupcake-mochi/RPG---BOT/issues>.
+Quem responde pelo bot é o Mizuki, que o criou e o mantém. Para falar com ele, mande mensagem no servidor da guilda ou comente nesta página.
 
 ## O que o bot lê
 
@@ -59,4 +59,4 @@ O Discord exige pelo menos 13 anos, ou a idade mínima do país de quem usa. O b
 
 ## Mudanças
 
-Quando este texto mudar, a data do começo muda junto e a mudança aparece no histórico do arquivo, que é público.
+Quando este texto mudar, a data do começo muda junto. As versões anteriores ficam no histórico de revisões desta página.

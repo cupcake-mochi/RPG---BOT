@@ -27,6 +27,7 @@ import shutil
 import subprocess
 import sys
 import threading
+import urllib.error
 import urllib.request
 from datetime import datetime
 from pathlib import Path
@@ -35,14 +36,23 @@ from zoneinfo import ZoneInfo
 AQUI = Path(__file__).resolve().parent
 CACHE = AQUI.parents[1] / "src" / "var" / "site"
 PAGINA = "https://raw.githubusercontent.com/cupcake-mochi/RPG---BOT/site-teste/site/publico/index.html"
+PAGINA_NO_GH = "repos/cupcake-mochi/RPG---BOT/contents/site/publico/index.html?ref=site-teste"
 FIM_DO_NUCLEO = "// ---------- tela ----------"
 
 
 def atualizar() -> Path:
     """Baixa a página e separa o núcleo (dados e lógica, sem a parte que desenha a tela)."""
     CACHE.mkdir(parents=True, exist_ok=True)
-    with urllib.request.urlopen(PAGINA, timeout=60) as resposta:
-        html = resposta.read().decode("utf-8")
+    try:
+        with urllib.request.urlopen(PAGINA, timeout=60) as resposta:
+            html = resposta.read().decode("utf-8")
+    except urllib.error.HTTPError:
+        # repositório privado: o endereço público devolve 404. O gh, autenticado na conta do dono, lê o mesmo arquivo.
+        saida = subprocess.run(["gh", "api", "-H", "Accept: application/vnd.github.raw", PAGINA_NO_GH],
+                               capture_output=True, text=True, timeout=120)
+        if saida.returncode != 0:
+            raise RuntimeError("não deu pra baixar a página do site, nem pelo endereço público nem pelo gh: " + saida.stderr[-300:])
+        html = saida.stdout
     inicio = html.index("const D =")
     fim = html.index(FIM_DO_NUCLEO, inicio)  # se a página mudar de forma, isto falha alto em vez de montar errado
     (CACHE / "nucleo.js").write_text(html[inicio:fim], encoding="utf-8")
