@@ -1,6 +1,6 @@
 """Correção de ficha pela aba oculta ANALISE (fase 3 do docs/PLANEJAMENTO.md). LIGADO desde 14/10/2026.
 
-`/ficha analisar` com o link da planilha aberta ou o .xlsx anexo: lê a aba (ficha_leitor.py), confere sem IA
+`/ficha analisar` (e `GC:ficha`, em cogs/atalho.py) com o link da planilha aberta ou o .xlsx anexo: lê a aba (ficha_leitor.py), confere sem IA
 (ficha_corretor.py) e responde no canal com um painel: o que precisa corrigir (reprova), o que falta ou pede atenção
 (sobra de pontos, TR por escolher, falta de Força: avisa sem reprovar), o que o mestre confere (Buff/Debuff e Origem
 que a ficha não calcula), o que bateu e o que ainda não é conferido. A frase de abertura é fixa, uma por guia e
@@ -123,6 +123,24 @@ class Ficha(commands.Cog):
         self.bot = bot
         self.referencias = Referencias.do_livro(bot.config.dados)
 
+    async def analisar_fonte(self, *, link: str | None = None, arquivo: discord.Attachment | None = None) -> discord.Embed | str:
+        """Lê e confere a ficha. Devolve o painel, ou o texto do problema de leitura. Serve à barra e ao GC:ficha."""
+        try:
+            if arquivo is not None:
+                if not arquivo.filename.lower().endswith(".xlsx") or arquivo.size > LIMITE_ANEXO:
+                    raise FichaIlegivel("o anexo precisa ser a ficha em .xlsx")
+                ficha = de_xlsx(await arquivo.read())
+            elif link:
+                ficha = await de_link(link)
+            else:
+                raise FichaIlegivel("mande o link da ficha aberta pra leitura ou o .xlsx anexo")
+        except FichaIlegivel as erro:
+            return f"Não deu pra ler a ficha: {erro}."
+        resultado = conferir(ficha, self.referencias, LIVRO)  # campanha: o livro, até existir o cadastro
+        log.info("ficha analisada: %s, %d problema(s)", resultado.veredito, len(resultado.problemas))
+        persona = self.bot.personas[de_plantao(datetime.now(FUSO))]
+        return painel(resultado, ficha, persona, getattr(self.bot, "manifesto", None))
+
     @grupo.command(name="analisar", description="Confere a ficha pelo link da planilha ou pelo .xlsx anexo.")
     @app_commands.describe(link="Link da ficha no Google Planilhas, aberta pra leitura", arquivo="A ficha baixada em .xlsx")
     async def analisar(self, interacao: discord.Interaction, link: str | None = None,
@@ -131,21 +149,9 @@ class Ficha(commands.Cog):
             await interacao.response.send_message("Mande o link da ficha ou o .xlsx, um dos dois.", ephemeral=True)
             return
         await interacao.response.defer(thinking=True)  # o painel fica no canal, pra o mestre ver
-        try:
-            if arquivo is not None:
-                if not arquivo.filename.lower().endswith(".xlsx") or arquivo.size > LIMITE_ANEXO:
-                    raise FichaIlegivel("o anexo precisa ser a ficha em .xlsx")
-                ficha = de_xlsx(await arquivo.read())
-            else:
-                ficha = await de_link(link)
-        except FichaIlegivel as erro:
-            # depois do defer público o Discord não deixa a resposta ser só pra quem pediu
-            await interacao.followup.send(f"Não deu pra ler a ficha: {erro}.")
-            return
-        resultado = conferir(ficha, self.referencias, LIVRO)  # campanha: o livro, até existir o cadastro
-        log.info("ficha analisada por %s: %s, %d problema(s)", interacao.user.id, resultado.veredito, len(resultado.problemas))
-        persona = self.bot.personas[de_plantao(datetime.now(FUSO))]
-        await interacao.followup.send(embed=painel(resultado, ficha, persona, getattr(self.bot, "manifesto", None)))
+        resposta = await self.analisar_fonte(link=link, arquivo=arquivo)
+        # depois do defer público o Discord não deixa nem o aviso de erro ser só pra quem pediu
+        await interacao.followup.send(**({"embed": resposta} if isinstance(resposta, discord.Embed) else {"content": resposta}))
 
 
 async def setup(bot: commands.Bot) -> None:
