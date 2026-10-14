@@ -156,6 +156,16 @@ python3 -m closure_bot
 - **Testado de ponta a ponta sem o Discord**, com mensagem de mentira e o resto de verdade; no Discord mesmo
   ainda não rodou.
 
+## Páginas públicas
+
+O repositório é privado, então a política de privacidade e os termos de uso moram em duas páginas avulsas (Gist),
+que são os links postos no portal do Discord. O texto de origem fica em `docs/`; a página não atualiza sozinha.
+
+| Página | Origem | Atualizar com |
+| --- | --- | --- |
+| https://gist.github.com/cupcake-mochi/7439b3894cf8ad935601e0f521e16c08 | `docs/PRIVACIDADE.md` | `gh gist edit 7439b3894cf8ad935601e0f521e16c08 docs/PRIVACIDADE.md` |
+| https://gist.github.com/cupcake-mochi/1bd7c72f8f47d5f47560443aa1861955 | `docs/TERMOS.md` | `gh gist edit 1bd7c72f8f47d5f47560443aa1861955 docs/TERMOS.md` |
+
 ## Hospedagem (Discloud)
 
 `python3 ferramentas/empacotar.py` monta `src/var/closure-lab.zip` só com o que o bot precisa: `discloud.config`,
