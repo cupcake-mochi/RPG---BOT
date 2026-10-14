@@ -220,10 +220,38 @@ class Corretor(unittest.TestCase):
         # Núcleo Dependente, nível 2 e Essência 1: +1 PE (Essência, sem marco)
         sem_buff = conferir(self._com("kaori", origem__menor_1="Núcleo Dependente"), self.ref)
         self.assertEqual([(p.campo, p.esperado) for p in sem_buff.pendencias if p.regra == "origem"],
-                         [("energia_max", "+1 de Núcleo Dependente no Buff de PE")])
+                         [("integridade_max", "sem barra de Integridade (Núcleo Dependente)"),
+                          ("energia_max", "+1 de Núcleo Dependente no Buff de PE")])
         com_buff = conferir(self._com("kaori", origem__menor_1="Núcleo Dependente", buff__energia="1", energia_max="9"), self.ref)
-        self.assertEqual([p for p in com_buff.pendencias if p.regra == "origem"], [])
+        self.assertEqual([p for p in com_buff.pendencias if p.regra == "origem" and p.campo == "energia_max"], [])
         self.assertEqual(_contas(com_buff), {})
+
+    def test_nucleo_dependente_nao_confere_barra_de_integridade(self):
+        # Valores da Teste 4: Evocador 6, Essência 3, um marco, Buff de PE 4 e PE 40.
+        for valor in (60, 0, "", 99):
+            with self.subTest(integridade=valor):
+                ficha = _com_campos("kaori", origem="Corpo Amaldiçoado", origem__menor_1="Núcleo Dependente",
+                                    caminho="Evocador", trilha="Invocação Principal", nivel=6,
+                                    atributo__constituicao__base=2, atributo__constituicao__corpo=0,
+                                    atributo__essencia__base=3, atributo__essencia__corpo=0,
+                                    atributo__destreza__base=1, atributo__destreza__corpo=0,
+                                    buff__energia=4, energia_max=40, vida_max=38,
+                                    integridade_max=valor, defesa=12, protecao=1,
+                                    aviso__escolhas_de_pericia="Tudo escolhido")
+                resultado = conferir(ficha, self.ref)
+                self.assertIn("PE 40", resultado.conferidos)
+                self.assertFalse(any(t.startswith("Integridade ") for t in resultado.conferidos))
+                pendencias = [p for p in resultado.pendencias if p.campo == "integridade_max"]
+                if valor == 60:
+                    self.assertEqual(resultado.veredito, "aprovada")
+                    self.assertEqual([p.encontrado for p in pendencias], ["60"])
+                elif valor in (0, ""):
+                    self.assertEqual(pendencias, [])
+                    self.assertIn("Sem barra de Integridade (Núcleo Dependente)", resultado.conferidos)
+                else:
+                    self.assertEqual(resultado.veredito, "reprovada")
+                    self.assertEqual(_contas(resultado)["integridade_max"],
+                                     ("sem barra de Integridade (Núcleo Dependente)", "99"))
 
     def test_escudo_nao_conta_com_arma_de_duas_maos(self):
         # Incursor com escudo Médio: proteção 5 e Defesa 18; com uma Besta na mão principal, o escudo sai: 3 e 16
@@ -365,6 +393,18 @@ class Comando(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(painel(conferir(ficha, ref), ficha, persona).title, "Ficha sem nome")
         ficha = _com_campos("kaori", nome="", nivel="")
         self.assertEqual(painel(conferir(ficha, ref), ficha, persona).title, "Ficha de Bastião")
+
+    @unittest.skipIf(openpyxl is None, "openpyxl não instalado")
+    def test_painel_avisa_reserva_inexistente_sem_marcar_numero_como_certo(self):
+        from types import SimpleNamespace
+        from closure_bot.cogs.ficha import painel
+        ref = Referencias.do_livro(RAIZ / "dados")
+        ficha = _com_campos("kaori", origem="Corpo Amaldiçoado", origem__menor_1="Núcleo Dependente",
+                            buff__energia=1, energia_max=9)
+        persona = SimpleNamespace(chave="kaltsit", nome="Kal'tsit", avatar_url=None)
+        campos = {c.name: c.value for c in painel(conferir(ficha, ref), ficha, persona).fields}
+        self.assertIn("sem barra de Integridade (Núcleo Dependente)", campos["⚠️ Falta ou pede atenção"])
+        self.assertNotIn("Integridade 26", campos["✅ Conferido e certo"])
 
     async def test_ligado_registra_e_desligado_nao(self):
         from unittest.mock import AsyncMock, MagicMock, patch

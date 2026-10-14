@@ -71,6 +71,8 @@ def _linha(p: Problema) -> str:
         return f"**{_rotulo(p.campo)}**: {p.encontrado} não é {p.esperado}"
     if p.regra == "origem" and p.campo == "energia_max":
         return f"**PE**: falta pôr {p.esperado.removeprefix('+')} (hoje o {p.encontrado})"
+    if p.regra == "origem" and p.campo == "integridade_max":
+        return f"**Integridade**: {p.esperado}; desconsidere o valor {p.encontrado} da ficha"
     if p.regra == "origem" and p.campo in ("defesa", "vida_max"):
         return f"**{_rotulo(p.campo)}**: está {p.encontrado}, mas {p.esperado}; ajuste com o Buff/Debuff"
     if p.regra == "origem":

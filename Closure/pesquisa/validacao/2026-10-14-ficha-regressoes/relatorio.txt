@@ -38,3 +38,26 @@ Só existem Testes 1 a 3. Teste 4 — Corpo Amaldiçoado/Evocador 6/Núcleo Depe
 não foi criada; não há resultado real dela. A conferência do PE por Buff continua com
 cobertura unitária existente. Permissões das cópias não foram alteradas nesta revisão.
 Cadastro de campanha/customização e contas de feitiço/invocação permanecem etapas futuras.
+
+TESTE 4 RECEBIDA DEPOIS DA PRIMEIRA REVISÃO
+O usuário forneceu o link de Corpo Amaldiçoado. Leitura pública da ANALISE retornou
+2.650 campos; o conector confirmou o título Teste 4 - Corpo Amaldiçoado e os valores
+J30=40 e P30=4. Referência e recorte dos dados reais ficaram apenas em pesquisa/privado/.
+
+Evocador nível 6: 6 PE por nível = 36. Essência 3, um marco alcançado, metade
+arredondada para baixo = 1; Núcleo Dependente dá 3 + 1 × 1 = 4. Buff 4 está correto,
+e PE máximo 40 confere. Vida 38, proteção 1 e Defesa 12 também conferem.
+
+O livro ainda diz que essa menor não possui barra de Integridade. A ficha calculou
+60 e o bot inicialmente marcou como certo. Corrigido: a fórmula normal conhecida
+recebe pendência para ignorar essa reserva, sem certificar Integridade 60. Zero/vazio
+reconhecem ausência de barra; um número diferente da fórmula não recebe tolerância.
+Sem mudar a planilha. A referência agora valida ambos os trechos do livro: benefício
+de PE e ausência de barra, evitando perder a guarda do PE ao adicionar a exceção.
+
+A leitura real foi repetida depois da correção e os testes atualizados estão em
+testes_locais_nucleo.log. A implantação e o reteste do painel no servidor continuam
+com o Mizuki. A menção anterior a Teste 4 inexistente descreve o estado antes do link.
+
+Validação final da exceção: 277 testes executados, 276 passaram e um online opcional
+foi pulado. O pacote atualizado tem 41 arquivos e foi conferido contra as fontes.

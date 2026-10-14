@@ -2,8 +2,8 @@
   "quando": "2026-10-14T23:03:01.521599+00:00",
   "chamadas_pagas": 0,
   "suite": {
-    "executados": 275,
-    "passaram": 274,
+    "executados": 277,
+    "passaram": 276,
     "pulados": 1,
     "pulou": "Teste online da ficha oficial, opt-in FICHA_ONLINE=1"
   },
@@ -13,24 +13,42 @@
     "nota": "Caso de contadores distintos ajustado para Encarnado com Duas Vidas e Especialidade Antiga; nenhum código de produção mudou após a suíte."
   },
   "reteste_google_testes_1_a_3": false,
-  "teste4_existe": false,
+  "teste4_existe": true,
   "implantacao_discloud": false,
   "pacote": {
     "arquivo": "src/var/closure-lab.zip",
     "arquivos": 41,
-    "bytes": 931303,
-    "sha256": "6b153444a5e3588e9c815d422b1d671ad467c29d1f9362b118b604919d3eb95a",
+    "bytes": 931502,
+    "sha256": "f77dad6aa34961dbc50c4690ed6fde9a2f8946feabd3ef861bbe9593c50ba4d0",
     "igual_fontes": true,
     "sem_segredos_ou_dados_execucao": true
   },
   "sha256_fontes": {
-    "src/closure_bot/ficha_corretor.py": "807b061228691fd8f116a370b87af48acdd52c43fb725824efd6c65cae8c3ea8",
-    "src/closure_bot/cogs/ficha.py": "abcc589b27c1acb50f5953e8e43e7c67e786fdb98bb243ae9b0235ea3e2ff7ed",
-    "src/testes/test_ficha.py": "9b698b4bbee54faf6909a0d1b31b6b7415adfcab889bfd6034a15e98d892c10c"
+    "src/closure_bot/ficha_corretor.py": "d50c36d0fe1937617beeac28411ae070c0f5feead44069e17c220cff00af76ea",
+    "src/closure_bot/cogs/ficha.py": "8e1df5c589d441d385cdbba813e9d485478dedfaed513b2bdb2f4428e52b50d9",
+    "src/testes/test_ficha.py": "f661218a6f5635a8917680ec917e873e54cf2f2c468a4805677d09472ea6f4f0"
   },
   "sha256_resultados": {
-    "relatorio.txt": "efe8e2be2d4a0a83ab56710fdda9f0e348ff218893eaa4f233ed8ecb1ce2df90",
+    "relatorio.txt": "b071ffda5368db8a8e0acf276c00d7ea68b9ff49a6df86a6ee2b697333a77494",
     "testes_locais.log": "be0318e9dbb86dc448f14ca0849e7feb32476eba926772f0f5f2ecdb498b39e7",
-    "teste_contadores.log": "e2e48e35cd2d7a714ed3d695dd14fea403785f86b58b029c27f948d6ca5d4761"
+    "teste_contadores.log": "e2e48e35cd2d7a714ed3d695dd14fea403785f86b58b029c27f948d6ca5d4761",
+    "testes_locais_nucleo.log": "a3c80ac09d3a1ed673283078b777f678a913e29aec08a3f2b1bd490f1d3be122"
+  },
+  "suite_primeira_etapa": {
+    "executados": 275,
+    "passaram": 274,
+    "pulados": 1,
+    "pulou": "Teste online da ficha oficial, opt-in FICHA_ONLINE=1"
+  },
+  "teste4_lida_csv_e_confirmada_connector": true,
+  "teste4_apos_correcao": {
+    "veredito": "aprovada",
+    "pe_max": 40,
+    "buff_pe": 4,
+    "integridade": {
+      "valor_da_ficha": 60,
+      "conferido_como_reserva": false,
+      "pendencia": "sem barra por Núcleo Dependente"
+    }
   }
 }

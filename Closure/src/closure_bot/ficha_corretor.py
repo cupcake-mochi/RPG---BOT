@@ -106,6 +106,7 @@ PE_EXTRA = {  # a ficha não soma no PE máximo: o jogador põe no Buff de energ
     "Núcleo Dependente": ("origens--corpo-inteiro-manutencao", "Essência + quantidade de marcos alcançados"),
     "Reserva Excedente": ("origens--restricao-menores-corporais", "PE máximos aumentam em 2 × Essência"),
 }
+SEM_INTEGRIDADE = {"Núcleo Dependente": ("origens--corpo-inteiro-manutencao", "não possui barra de Integridade")}
 
 # Marcantes da Restrição corporal: Defesa fixada em 0, sem bônus nem penalidade; o Quebradiço também tem metade da vida
 DEFESA_ZERO = {"Corpo Debilitado": "origens--restricao-debilitado", "Corpo Quebradiço": "origens--restricao-quebradico",
@@ -168,7 +169,8 @@ class Referencias:
         conferir_texto = {**TREINO_EXTRA, **ESPECIALIZACAO_EXTRA, **{k: (0, *v) for k, v in PE_EXTRA.items()},
                           **{k: (0, a, "Defesa fica fixada em 0") for k, a in DEFESA_ZERO.items()},
                           **{k: (0, a, "vida máxima é metade da normal") for k, a in VIDA_METADE.items()}}
-        for nome, (*_, ancora, trecho) in conferir_texto.items():
+        validacoes = list(conferir_texto.items()) + [(nome, (0, *v)) for nome, v in SEM_INTEGRIDADE.items()]
+        for nome, (*_, ancora, trecho) in validacoes:
             if trecho not in bloco(ancora) or nome not in bloco(ancora):
                 raise ValueError(f"o livro mudou a capacidade {nome} ({ancora}): revise o corretor")
         referencias = cls(
@@ -301,7 +303,20 @@ def conferir_contas(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaC
             pulou.append("vida: a campanha rola a vida por nível")
         _comparar(ficha, "energia_max", caminho["peNv"] * nivel + _bonus(ficha, "buff.energia"), problemas, certos)
 
-    _comparar(ficha, "integridade_max", 20 + (essencia + 5) * (nivel - 1) + _bonus(ficha, "buff.integridade"), problemas, certos)
+    integridade = 20 + (essencia + 5) * (nivel - 1) + _bonus(ficha, "buff.integridade")
+    sem_integridade = [n for n in SEM_INTEGRIDADE if n in _capacidades(ficha)]
+    if sem_integridade:
+        encontrada = ficha.get("integridade_max", Campo("", "", "")).valor
+        esperado = f"sem barra de Integridade ({sem_integridade[0]})"
+        ancora = SEM_INTEGRIDADE[sem_integridade[0]][0]
+        if encontrada in ("", 0):
+            certos.append(f"Sem barra de Integridade ({sem_integridade[0]})")
+        elif encontrada == integridade:
+            pendencias.append(Problema("origem", "integridade_max", esperado, _fmt(encontrada), ancora))
+        else:
+            problemas.append(Problema("conta", "integridade_max", esperado, _fmt(encontrada), ancora))
+    else:
+        _comparar(ficha, "integridade_max", integridade, problemas, certos)
 
     # Defesa = 10 + Destreza permitida + proteção (equip--eqp-protecao). Uniforme troca a proteção passiva; escudo soma.
     vestindo, secundaria = _texto(ficha, "em_uso.vestindo"), _texto(ficha, "em_uso.secundaria")
