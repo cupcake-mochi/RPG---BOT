@@ -93,7 +93,7 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.bot.tree.get_commands(guild=discord.Object(id=77)), [])
 
     async def test_comandos_registrados(self):
-        self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ajuda", "livro", "ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
+        self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ajuda", "ficha", "livro", "ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
                           "meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados"})
 
     async def test_modo_misto_so_no_canal_escolhido(self):
@@ -646,7 +646,8 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         comum = await pedir(2, False)
         campos = {c.name: c.value for c in comum.fields}
         self.assertIn("Chame pelo nome em <#55>", comum.description)
-        self.assertEqual(list(campos), ["» Regras", "» Clima", "» Seus dados", "» Do bot", "» Sem a barra", "» Links"])
+        self.assertEqual(list(campos), ["» Regras", "» Ficha", "» Clima", "» Seus dados", "» Do bot", "» Sem a barra", "» Links"])
+        self.assertIn("/ficha analisar · Confere a ficha", campos["» Ficha"])
         self.assertIn("/livro · Link do livro de regras", campos["» Regras"])
         self.assertIn("`GC:livro`", campos["» Sem a barra"])
         self.assertIn("</clima:123> · Mostra como está o tempo", campos["» Clima"])

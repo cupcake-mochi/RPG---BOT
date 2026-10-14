@@ -1,0 +1,25 @@
+# Divergências entre a ficha e o livro (pente fino de 14/10/2026)
+
+Pente fino do corretor da fase 3 contra o livro R51 e as fórmulas da ficha gerada (B47, fase 1, commit `dbdf1d4`). O
+conserto destas é no gerador da ficha, não no bot. Até lá, o bot sabe de cada uma e **não reprova** por elas: avisa
+o que falta ou manda pro mestre conferir.
+
+| # | O que o livro diz | O que a ficha faz | O que o bot faz até a ficha mudar |
+| - | ----------------- | ----------------- | --------------------------------- |
+| 1 | **Especialidade Antiga** (Encarnado): no nível 10, especialista na competência do Conhecimento Reavivado, "sem precisar escolher Corpo no Marco" (`origens--encarnado-beneficios`) | conta toda especialização como uma escolha de Corpo gasta (`DADOS!AK15`, `AK16`) e mostra "1 a mais" | não reprova o "a mais" que ela explica; manda pro mestre conferir |
+| 2 | Treino além dos 9 ou 10 da criação: **Duas Vidas** (Encarnado, 1), **Aprendizado Complementar** (Restrição corporal, 1 perícia ou 2 ofícios), **Arquivo de Procedimentos** (Corpo Amaldiçoado, 1 ativo) | conta só 9 perícias e 2 ofícios, ou 10 e nenhum (`DADOS!AK19`, `AK20`), e mostra "a mais" | idem: até o número que a capacidade dá, vira nota pro mestre |
+| 3 | PE a mais: **Núcleo Dependente** (Essência + marcos × metade da Essência) e **Reserva Excedente** (2 × Essência) | o PE máximo (`FICHA!J30`) não soma | avisa que falta pôr o valor no Buff de PE e confere se o Buff tem esse valor |
+| 4 | **Corpo Debilitado, Quebradiço e Exaurido** (Restrição corporal): Defesa fixada em 0, sem bônus; o Quebradiço tem metade da vida máxima | a Defesa (`FICHA!D59`) e a vida (`FICHA!J26`) saem normais | avisa que a Defesa fica 0 (e a vida pela metade) e pede o ajuste no Buff/Debuff |
+| 5 | O `ESQUEMA-ANALISE.md` chama os resultados de `vida.max`, `energia.max`... e a Origem de `origem.menor.1` | a aba usa `vida_max`, `energia_max`, `origem.menor_1` | o bot segue a aba (é ela o contrato); o esquema precisa ser atualizado |
+
+## O que bate (conferido)
+
+- Vida, PE, Integridade, proteção e Defesa, pelas fórmulas das peças 1, 11, 14 e 24: iguais às da ficha em quatro
+  fichas recalculadas (em branco, Kaori, Revestimento 2 com Broquel e Buff, Refino 6 por marcos com escudo Médio).
+- Proteção da rota sem energia: a Defesa sem Armadura usa a Lapidação com a mesma conta e a mesma progressão do
+  Refino, e a ficha usa a mesma célula. Igual ao livro.
+- Escudo com arma de duas mãos não conta; as 21 armas de duas mãos do livro são as mesmas da ficha.
+- Maestria sobe nos níveis 10, 18 e 26; marcos nos níveis 6, 10, 14, 18, 22, 26 e 30; Refino até 10.
+- Especialização só a partir do nível 10, sem exceção de Origem antes disso.
+- Revestimento 2 pede Grau 3, Revestimento 3 pede Grau 2 (`equip--eqc-dinheiro`): o "Pede Grau" da ficha reprova.
+- Falta de Força pro equipamento: o livro deixa usar com penalidade; o bot avisa sem reprovar.

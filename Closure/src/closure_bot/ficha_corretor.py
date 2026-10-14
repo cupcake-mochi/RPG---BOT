@@ -39,7 +39,7 @@ ANCORA = {
 
 @dataclass(frozen=True)
 class Problema:
-    regra: str        # "formato", "escolha", "nome", "conta", "aviso" ou "buff"
+    regra: str        # "formato", "escolha", "nome", "conta", "aviso", "buff" ou "origem"
     campo: str        # a chave da ANALISE
     esperado: str
     encontrado: str
@@ -50,7 +50,8 @@ class Problema:
 class Resultado:
     veredito: str                                         # "aprovada", "reprovada" ou "formato desconhecido"
     problemas: list[Problema] = field(default_factory=list)
-    notas: list[Problema] = field(default_factory=list)   # avisos da ficha que não reprovam (penalidade do livro)
+    pendencias: list[Problema] = field(default_factory=list)  # falta ou pede atenção, sem reprovar (sobra, Força...)
+    notas: list[Problema] = field(default_factory=list)   # pro mestre conferir: Buff/Debuff, Origem que a ficha não calcula
     nao_conferido: list[str] = field(default_factory=list)  # o que faltou entrada ou ainda não tem conta no bot
     conferidos: list[str] = field(default_factory=list)     # o que o bot conferiu e bateu ("Vida 23", "Origem Latente")
 
@@ -93,6 +94,25 @@ class Aprovados:
         return impressao_digital(tipo, nome, campos) in self.impressoes
 
 
+# Capacidades de Origem que mudam conta ou contagem e que a ficha (B47, fase 1) não calcula. Sem isso o bot reprovaria
+# uma ficha certa. O nome é conferido no texto da âncora ao carregar as Referencias: se o livro mudar, falha alto.
+TREINO_EXTRA = {  # treinos além dos 9 ou 10 da criação: quantos a ficha pode mostrar "a mais" (ofício conta 1)
+    "Duas Vidas": (1, "origens--origem-encarnado", "Conhecimento Reavivado"),  # marcante do Encarnado
+    "Aprendizado Complementar": (2, "origens--restricao-beneficios", "uma perícia ou dois Ofícios"),
+    "Arquivo de Procedimentos": (1, "origens--corpo-ninhada-gemeos", "treino em um deles por vez"),
+}
+ESPECIALIZACAO_EXTRA = {"Especialidade Antiga": (10, "origens--encarnado-beneficios", "sem precisar escolher Corpo")}
+PE_EXTRA = {  # a ficha não soma no PE máximo: o jogador põe no Buff de energia, e o bot confere se pôs o valor certo
+    "Núcleo Dependente": ("origens--corpo-inteiro-manutencao", "Essência + quantidade de marcos alcançados"),
+    "Reserva Excedente": ("origens--restricao-menores-corporais", "PE máximos aumentam em 2 × Essência"),
+}
+
+# Marcantes da Restrição corporal: Defesa fixada em 0, sem bônus nem penalidade; o Quebradiço também tem metade da vida
+DEFESA_ZERO = {"Corpo Debilitado": "origens--restricao-debilitado", "Corpo Quebradiço": "origens--restricao-quebradico",
+               "Corpo Exaurido": "origens--restricao-exaurido"}
+VIDA_METADE = {"Corpo Quebradiço": "origens--restricao-quebradico"}
+
+
 @dataclass(frozen=True)
 class Peca:
     protecao: int
@@ -109,6 +129,7 @@ class Referencias:
     refino_maximo: int
     uniformes: dict[str, Peca]         # "Traje 1" ... "Revestimento 3"
     escudos: dict[str, Peca]           # "Broquel", "Médio", "Torre"
+    duas_maos: frozenset[str] = frozenset()  # armas de duas mãos: com elas na mão principal, o escudo não conta
 
     @classmethod
     def do_livro(cls, dados: Path) -> "Referencias":
@@ -139,12 +160,25 @@ class Referencias:
         escudo = bloco("equip--eqp-escudo")
         revestimentos, _, escudos = escudo.partition("#### Escudos")
         uniformes.update({f"Revestimento {d}": p for d, p in _tabela_de_pecas(revestimentos).items()})
+        duas_maos = set()
+        for ancora, texto in livro.items():
+            if ancora.startswith("equip--eqa-"):
+                for nome in re.findall(r"^\| ([^|]+?) \| 2 \| \d*d\d+", texto, re.M):
+                    duas_maos.update({nome.strip(), re.sub(r"\s*\(.*\)$", "", nome.strip())})  # "Kanabō (clava pesada)"
+        conferir_texto = {**TREINO_EXTRA, **ESPECIALIZACAO_EXTRA, **{k: (0, *v) for k, v in PE_EXTRA.items()},
+                          **{k: (0, a, "Defesa fica fixada em 0") for k, a in DEFESA_ZERO.items()},
+                          **{k: (0, a, "vida máxima é metade da normal") for k, a in VIDA_METADE.items()}}
+        for nome, (*_, ancora, trecho) in conferir_texto.items():
+            if trecho not in bloco(ancora) or nome not in bloco(ancora):
+                raise ValueError(f"o livro mudou a capacidade {nome} ({ancora}): revise o corretor")
         referencias = cls(
             caminhos={c["nome"]: c for c in catalogo["CAMINHOS"]}, origens=origens, ramos_restricao=ramos,
             aceitam_sem_tecnica=aceitam_sem_tecnica,
             marcos=tuple(int(n) for n in re.findall(r"\d+", niveis.group(1))) if niveis else (),
-            refino_maximo=int(teto.group(1)) if teto else 0, uniformes=uniformes, escudos=_tabela_de_pecas(escudos))
-        if len(origens) != 7 or len(ramos) != 2 or not referencias.marcos or len(uniformes) != 6 or len(referencias.escudos) != 3:
+            refino_maximo=int(teto.group(1)) if teto else 0, uniformes=uniformes, escudos=_tabela_de_pecas(escudos),
+            duas_maos=frozenset(duas_maos))
+        if len(origens) != 7 or len(ramos) != 2 or not referencias.marcos or len(uniformes) != 6 or len(referencias.escudos) != 3 \
+                or not duas_maos:
             raise ValueError("o livro mudou de forma: Origens, ramos, marcos, uniformes ou escudos não fecham")
         return referencias
 
@@ -166,8 +200,9 @@ _AVISO_NOTA = re.compile(r"^Falta Força|^Não cumprido|^Sem treino|^Trava Selo"
 
 
 def classificar_aviso(chave: str, valor) -> str | None:
-    """"erro", "nota" ou None (apagado). Os erros calculados por feitiço e invocação (colunas erros e pontos_acima)
-    são erro sempre que têm texto; os avisos deles são nota. Texto desconhecido vira nota: nunca some calado."""
+    """"erro" (reprova), "pendente" (falta ou pede atenção, sem reprovar), "nota" (pro mestre) ou None (apagado).
+    Os erros calculados por feitiço e invocação são erro sempre que têm texto; os avisos deles são nota. Texto
+    desconhecido vira nota: nunca some calado."""
     texto = str(valor).strip()
     if texto in ("", "0"):
         return None
@@ -177,15 +212,18 @@ def classificar_aviso(chave: str, valor) -> str | None:
         return "nota"
     if _AVISO_ERRO.search(texto):
         return "erro"
+    if _AVISO_NOTA.search(texto):
+        return "pendente"  # o livro deixa usar com penalidade, mas a pessoa precisa saber
     if _AVISO_OK.match(texto):
         if re.fullmatch(r"(\d+) de \d+", texto) and not texto.startswith("0 ") and chave in _SOBRA_E_PENDENCIA:
-            return "nota"  # sobrou ponto ou TR por escolher
+            return "pendente"  # sobrou ponto ou TR por escolher
         return None
     return "nota"
 
 
 # "N de M" nestes é o que ainda falta distribuir; as perícias e ofícios em falta já acendem aviso.escolhas_de_pericia.
 _SOBRA_E_PENDENCIA = {"aviso.pontos_disponiveis", "aviso.testes_disponiveis"}
+_TREINOS = {"aviso.pericias_disponiveis", "aviso.oficios_disponiveis", "aviso.escolhas_de_pericia"}
 
 
 # ---------- contas ----------
@@ -232,10 +270,11 @@ def refino(nivel: int, marcos_de_refino: int, ref: Referencias) -> int:
 
 
 def conferir_contas(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha = LIVRO,
-                    certos: list[str] | None = None) -> tuple[list[Problema], list[str]]:
+                    certos: list[str] | None = None, pendencias: list[Problema] | None = None) -> tuple[list[Problema], list[str]]:
     problemas: list[Problema] = []
     pulou: list[str] = []
     certos = certos if certos is not None else []
+    pendencias = pendencias if pendencias is not None else []
     nivel = _numero(ficha, "nivel")
     if not isinstance(nivel, int) or nivel < 1:
         return problemas, ["vida, PE, Integridade e Defesa: nível vazio ou inválido"]
@@ -246,8 +285,17 @@ def conferir_contas(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaC
         pulou.append("vida e PE: sem Caminho do livro escolhido")
     else:
         if regras.vida_por_nivel == "fixa":
-            vida = caminho["vida1"] + constituicao + (caminho["vidaNv"] + constituicao) * (nivel - 1) + _bonus(ficha, "buff.vida")
-            _comparar(ficha, "vida_max", vida, problemas, certos)
+            base = caminho["vida1"] + constituicao + (caminho["vidaNv"] + constituicao) * (nivel - 1)
+            vida = base + _bonus(ficha, "buff.vida")
+            metade = [n for n in VIDA_METADE if n in _capacidades(ficha)]
+            encontrada = ficha.get("vida_max", Campo("", "", "")).valor
+            if metade and encontrada in (max(1, vida // 2), max(1, base // 2)):
+                certos.append(f"Vida {_fmt(encontrada)} (metade, {metade[0]})")
+            elif metade:
+                pendencias.append(Problema("origem", "vida_max", f"metade da normal ({_fmt(max(1, base // 2))}) por {metade[0]}, "
+                                           "e a ficha não aplica sozinha", _fmt(encontrada), VIDA_METADE[metade[0]]))
+            else:
+                _comparar(ficha, "vida_max", vida, problemas, certos)
         else:
             pulou.append("vida: a campanha rola a vida por nível")
         _comparar(ficha, "energia_max", caminho["peNv"] * nivel + _bonus(ficha, "buff.energia"), problemas, certos)
@@ -257,14 +305,23 @@ def conferir_contas(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaC
     # Defesa = 10 + Destreza permitida + proteção (equip--eqp-protecao). Uniforme troca a proteção passiva; escudo soma.
     vestindo, secundaria = _texto(ficha, "em_uso.vestindo"), _texto(ficha, "em_uso.secundaria")
     uniforme = ref.uniformes.get(vestindo)
-    escudo = ref.escudos.get(secundaria)
+    principal = _texto(ficha, "em_uso.principal")
+    # com arma de duas mãos na principal, o escudo não está empunhado e não conta (equip--eqp-protecao); a ficha faz igual
+    escudo = None if principal in ref.duas_maos else ref.escudos.get(secundaria)
     if vestindo and uniforme is None:
         pulou.append(f"Defesa: uniforme desconhecido ({vestindo})")
         return problemas, pulou
-    origem, _, variante = _texto(ficha, "origem").partition(" · ")
-    if uniforme is None and origem == "Restrição Celestial" and variante == "Sem Energia":
-        # sem energia não há Refino: a proteção passiva é a da Defesa sem Armadura, pela Lapidação (rotas--rota-defesa)
-        pulou.append("Defesa: proteção passiva pela Lapidação (rota sem energia) ainda sem conta no bot")
+    # Na rota sem energia a proteção passiva é a Defesa sem Armadura, pela Lapidação (rotas--rota-defesa): a mesma conta
+    # e a mesma progressão do Refino (começa em 1, +1 por marco e +1 quando escolhida, teto 10), e a ficha usa a mesma célula.
+    zero = [n for n in DEFESA_ZERO if n in _capacidades(ficha)]
+    if zero:
+        # "Defesa fica fixada em 0, sem alteração por bônus": a ficha não aplica, então avisa em vez de reprovar
+        encontrada = ficha.get("defesa", Campo("", "", "")).valor
+        if encontrada == 0:
+            certos.append(f"Defesa 0 ({zero[0]})")
+        else:
+            pendencias.append(Problema("origem", "defesa", f"fica 0 por {zero[0]}, e a ficha não aplica sozinha", _fmt(encontrada),
+                                       DEFESA_ZERO[zero[0]]))
         return problemas, pulou
     if uniforme is not None:
         protecao = uniforme.protecao
@@ -321,6 +378,33 @@ def conferir_nomes(ficha: dict[str, Campo], ref: Referencias, certos: list[str] 
     return problemas
 
 
+# ---------- Origem que a ficha não calcula ----------
+def _capacidades(ficha: dict[str, Campo]) -> set[str]:
+    return {_texto(ficha, k) for k in ("origem.marcante", "origem.menor_1", "origem.menor_2")} - {""}
+
+
+def _a_mais(texto: str) -> int:
+    achou = re.search(r"(\d+) a mais", texto)
+    return int(achou.group(1)) if achou else 0
+
+
+def treinos_da_origem(ficha: dict[str, Campo]) -> tuple[int, list[str]]:
+    """Quantos treinos e especializações "a mais" a Origem justifica, e de quais capacidades."""
+    caps, nivel = _capacidades(ficha), _numero(ficha, "nivel") or 0
+    fontes = [n for n in TREINO_EXTRA if n in caps] + [n for n, (desde, *_) in ESPECIALIZACAO_EXTRA.items() if n in caps and nivel >= desde]
+    return sum(TREINO_EXTRA[n][0] if n in TREINO_EXTRA else 1 for n in fontes), fontes
+
+
+def pe_da_origem(ficha: dict[str, Campo], ref: Referencias) -> list[tuple[str, int]]:
+    caps, nivel, essencia = _capacidades(ficha), _numero(ficha, "nivel") or 0, _atributo(ficha, "essencia")
+    extras = []
+    if "Núcleo Dependente" in caps:
+        extras.append(("Núcleo Dependente", int(essencia + sum(1 for n in ref.marcos if n <= nivel) * (essencia // 2))))
+    if "Reserva Excedente" in caps:
+        extras.append(("Reserva Excedente", int(2 * essencia)))
+    return extras
+
+
 # ---------- tudo ----------
 def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha = LIVRO) -> Resultado:
     formato = ficha.get("formato.versao", Campo("", "", "")).valor
@@ -329,11 +413,12 @@ def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha
                                                            _fmt(formato))])
     resultado = Resultado("aprovada")
     resultado.problemas += conferir_nomes(ficha, ref, resultado.conferidos)
-    contas, pulou = conferir_contas(ficha, ref, regras, resultado.conferidos)
+    contas, pulou = conferir_contas(ficha, ref, regras, resultado.conferidos, resultado.pendencias)
     resultado.problemas += contas
     resultado.nao_conferido += pulou
     resultado.problemas += conferir_feiticos(ficha, ref) + conferir_invocacoes(ficha, ref)
     resultado.nao_conferido.append("feitiços e invocações: contas ainda não feitas no bot")
+    treinos, fontes = treinos_da_origem(ficha)
     for chave, campo in ficha.items():
         # Buff/Debuff entra na conta como a ficha faz, e vai pra lista do mestre conferir de onde veio
         if chave.startswith("buff.") and campo.valor not in ("", 0):
@@ -341,9 +426,19 @@ def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha
         if campo.parte != "aviso":
             continue
         tipo = classificar_aviso(chave, campo.valor)
-        if tipo:
+        excesso = _a_mais(str(campo.valor)) if chave in _TREINOS else 0
+        if tipo == "erro" and excesso and excesso <= treinos:
+            # a ficha conta como "a mais" o treino que a Origem dá: não reprova, e o mestre confere se é esse
+            resultado.notas.append(Problema("origem", chave, f"até {treinos} a mais por {', '.join(fontes)}", str(campo.valor),
+                                            "origens--origens"))
+        elif tipo:
             aviso = Problema("aviso", chave, "", str(campo.valor), "")
-            (resultado.problemas if tipo == "erro" else resultado.notas).append(aviso)
+            {"erro": resultado.problemas, "pendente": resultado.pendencias, "nota": resultado.notas}[tipo].append(aviso)
+    buff_pe = _bonus(ficha, "buff.energia")
+    for nome, extra in pe_da_origem(ficha, ref):
+        if extra and buff_pe != extra:
+            resultado.pendencias.append(Problema("origem", "energia_max", f"+{extra} de {nome} no Buff de PE",
+                                                 f"Buff de PE {_fmt(buff_pe)}", PE_EXTRA[nome][0]))
     if resultado.problemas:
         resultado.veredito = "reprovada"
     return resultado

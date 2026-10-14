@@ -14,7 +14,7 @@ from ..prompt import versoes as versoes_do_site
 
 COR = 0xCC0102
 # Título de cada grupo no /ajuda, pelo módulo que tem o comando. A lista sai dos próprios comandos, então não envelhece.
-GRUPOS = {"Regras": "Regras", "ComandoClima": "Clima", "Pessoa": "Seus dados", "Admin": "Do bot"}
+GRUPOS = {"Regras": "Regras", "Ficha": "Ficha", "ComandoClima": "Clima", "Pessoa": "Seus dados", "Admin": "Do bot"}
 SO_DO_DONO = {"teste_webhook"}
 
 
@@ -37,9 +37,16 @@ class Admin(commands.Cog):
             do_servidor = getattr(comando, "default_permissions", None) is not None
             if (do_servidor and not cuida_do_servidor) or (comando.name in SO_DO_DONO and not dono):
                 continue
-            grupo = "Para quem cuida do servidor" if do_servidor or comando.name in SO_DO_DONO else \
-                GRUPOS.get(type(getattr(comando, "binding", None)).__name__, "Outros")
-            grupos.setdefault(grupo, []).append(f"{self.bot.mencoes.get(comando.name, '/' + comando.name)} · {comando.description}")
+            # grupo de comandos (/ficha analisar): cada subcomando numa linha, com a menção clicável dele
+            itens = list(comando.commands) if isinstance(comando, app_commands.Group) else [comando]
+            for item in itens:
+                nome = comando.name if item is comando else f"{comando.name} {item.name}"
+                mencao = self.bot.mencoes.get(comando.name, "/" + comando.name)
+                if item is not comando:
+                    mencao = mencao.replace(f"</{comando.name}:", f"</{nome}:") if mencao.startswith("</") else "/" + nome
+                grupo = "Para quem cuida do servidor" if do_servidor or comando.name in SO_DO_DONO else \
+                    GRUPOS.get(type(getattr(item, "binding", None)).__name__, "Outros")
+                grupos.setdefault(grupo, []).append(f"{mencao} · {item.description}")
         ordem = [*GRUPOS.values(), "Outros", "Para quem cuida do servidor"]
         for grupo in sorted(grupos, key=ordem.index):
             embed.add_field(name=f"» {grupo}", value="\n".join(grupos[grupo]), inline=False)
