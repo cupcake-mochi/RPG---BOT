@@ -147,6 +147,11 @@ python3 -m closure_bot
   no pedido como Mizuki.
 - **Espera:** cada tentativa tem 25 segundos, e 12 no gratuito, que nos dois testes de ponta a ponta de 13/10 falhou nas 5 chamadas (sobrecarga, cota e demora). Provedor que falha fica de molho (10 min depois de cota
   estourada, 2 min depois de sobrecarga ou queda de rede) e a fila pula direto pro seguinte.
+- **De onde vem a página do bot:** hoje, de uma página montada neste computador com a Closure v0.33 e a
+  Kal'tsit v0.26 (`python3 ferramentas/pagina_teste/montar_pagina.py PAGINA.html` e depois
+  `site_prompt.atualizar(arquivo=...)`). O site de teste ainda está na v0.31 e na v0.24, então
+  `site_prompt.py --atualizar` traria essas de volta. Depois que o site for publicado com as novas, volta a valer o
+  `--atualizar`.
 - **Sem Node na hospedagem** (13/10/2026): o JavaScript da página do site roda dentro do Python, pelo
   `quickjs-ng`. Nos 14 pedidos de conferência ele monta o mesmo pedido que o Node, em uns 40 ms (o Node leva
   quase 2 s por pedido, porque sobe um processo a cada vez). `python3 ferramentas/prompt_do_site/site_prompt.py

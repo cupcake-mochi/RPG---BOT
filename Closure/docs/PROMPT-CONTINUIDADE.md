@@ -51,13 +51,16 @@ ONDE PARAMOS
   Os cards avançam pela página de teste (ferramentas/pagina_teste/montar_pagina.py), publicada
   como artifact do Claude e no site closure-teste.onrender.com; o bot lê o prompt dessa página
   pela ponte (ferramentas/prompt_do_site).
-- ATENÇÃO, CARDS NOVOS FEITOS NO PC EM 13/10 À NOITE: Closure v0.32 e Kal'tsit v0.25 saíram dos
+- ATENÇÃO, CARDS NOVOS FEITOS NO PC EM 13/10 À NOITE: Closure v0.33 e Kal'tsit v0.26 saíram dos
   geradores aqui, a pedido do Mizuki, com as regras dele contra retórica
   (dados/personagem/retorica-proibida.md) e um parágrafo sobre o bloco de estado que o bot manda
-  (como tratar a pessoa e fatos sobre ela). O montar_pagina.py já aponta pra elas. NÃO foram
-  publicadas: o site e o bot no ar seguem na v0.31 e na v0.24 até o Mizuki aprovar. Só passaram
-  por leitura de 12 mensagens (pesquisa/validacao/2026-10-13-23h11-cards-v032-v025.md), não por
-  bateria. Quem mexer nos cards depois parte da v0.32 e da v0.25.
+  (como tratar a pessoa; fatos são pano de fundo). O montar_pagina.py aponta pra elas e O BOT JÁ
+  USA ESSAS DUAS, por uma página montada aqui (python3 ferramentas/prompt_do_site/site_prompt.py
+  não baixa mais sozinho: rodar --atualizar agora traria de volta a v0.31 e a v0.24 do site).
+  O SITE DE TESTE NÃO FOI PUBLICADO com elas. Medidas na bateria c3lb12 pelo Gemini 3.8 Flash
+  (ferramentas/bateria_modelo.py; saídas r_c3lb12v*_gemini_*.json): Closure 90 de 102 sem falha
+  (a v0.31 fez 89 e 83), Kal'tsit 91 (a v0.24 fez 91). A v0.32 e a v0.25 existem só como
+  histórico: a v0.32 piorou a Closure (80). Quem mexer nos cards parte da v0.33 e da v0.26.
 - Feito nos cards (Closure v0.31, Kal'tsit v0.24): as duas acompanham o clima pelo
   computador e contam como está, de Tóquio ou de onde perguntarem, sem dizer que estão lá.
 - Duas personagens, que se revezam no plantão e nunca falam uma com a outra:
