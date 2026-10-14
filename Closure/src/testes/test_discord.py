@@ -452,6 +452,16 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         webhook.send.assert_not_called()
         self.assertEqual(self.bot.registro.contagens()["gatilhos"], 0)
 
+    async def test_marcar_o_cargo_do_bot_e_marcar_o_bot(self):
+        # o cargo "Guias do Ciclo" que o Discord cria pro bot aparece no @ do celular igual à conta dele
+        canal, webhook = _canal()
+        m = _mensagem("<@&88>  em que nível eu recebo um feitiço de classe 5?", canal)
+        m.role_mentions = [MagicMock(id=88, tags=MagicMock(bot_id=self.bot.user.id))]
+        await self.bot.get_cog("Chat").on_message(m)
+        webhook.send.assert_called_once()
+        self.assertEqual(self.montar.call_args.args[1], "em que nível eu recebo um feitiço de classe 5?")
+        self.assertEqual(self.bot.registro.contagens()["gatilhos"], 1)
+
     async def test_mencao_ao_bot_nao_vira_comando_de_prefixo(self):
         with self.assertNoLogs("discord.ext.commands.bot", level="ERROR"):
             await self.bot.on_message(_mensagem("<@999> o rato roeu a roupa do rei de roma?", _canal()[0]))

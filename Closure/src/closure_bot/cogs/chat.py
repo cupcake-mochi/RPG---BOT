@@ -40,6 +40,11 @@ class Chat(commands.Cog):
         do_bot = bool(persona) or (original is not None and original.author.id == self.bot.user.id)
         return do_bot, persona, (original.content or None) if original is not None and do_bot else None
 
+    def _cargo_do_bot(self, cargo) -> bool:
+        """O cargo que o Discord cria sozinho quando o bot entra no servidor, com o mesmo nome dele ("Guias do Ciclo").
+        No celular a lista do @ mostra esse cargo e a conta do bot lado a lado, iguais: escolher o cargo é marcar o bot."""
+        return getattr(getattr(cargo, "tags", None), "bot_id", None) == self.bot.user.id
+
     def _nome(self, autor) -> str:
         """O nome que vai no pedido. Só o dono, pelo ID, vai como Mizuki; outra pessoa com esse nome não ganha o tratamento dele."""
         if self.bot.config.dono_id and autor.id == self.bot.config.dono_id:
@@ -56,7 +61,8 @@ class Chat(commands.Cog):
             quem = int(achou.group(1))
             return "" if quem == self.bot.user.id else "@" + nomes.get(quem, "alguém")
         texto = re.sub(r"<@!?(\d+)>", trocar, texto)
-        texto = re.sub(r"<@&\d+>", "@cargo", texto)
+        do_bot = {c.id for c in mensagem.role_mentions if self._cargo_do_bot(c)}
+        texto = re.sub(r"<@&(\d+)>", lambda achou: "" if int(achou.group(1)) in do_bot else "@cargo", texto)
         texto = re.sub(r"<#\d+>", "#canal", texto)
         texto = re.sub(r"<a?(:\w+:)\d+>", r"\1", texto)  # emoji do servidor: fica só o nome
         return " ".join(texto.split())[:LIMITE_DA_MENSAGEM]
@@ -75,12 +81,13 @@ class Chat(commands.Cog):
         # Mensagem de bot ou de webhook (inclusive as nossas) nunca é gatilho; conversa privada fica pra depois.
         if mensagem.author.bot or mensagem.webhook_id or mensagem.guild is None:
             return
-        if mensagem.mention_everyone or mensagem.role_mentions:
+        cargos = [c for c in mensagem.role_mentions if not self._cargo_do_bot(c)]
+        if mensagem.mention_everyone or cargos:
             return  # aviso pra todo mundo ou pra um cargo não é conversa com as guias, mesmo citando o nome delas
         if separar_atalho(mensagem.content) is not None:
             return  # "GC:clima" é comando (cogs/atalho.py), não conversa com as guias
 
-        mencionou = self.bot.user in mensagem.mentions
+        mencionou = self.bot.user in mensagem.mentions or len(cargos) < len(mensagem.role_mentions)
         respondeu, persona_respondida, fala_respondida = self._respondida(mensagem)
         canal_id = getattr(mensagem.channel, "parent_id", None) or mensagem.channel.id
         if not self.bot.config.escuta(canal_id) and not (mencionou or respondeu):

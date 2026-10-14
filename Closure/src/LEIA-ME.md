@@ -31,7 +31,7 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 166 testes; 39 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 167 testes; 40 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
@@ -246,6 +246,9 @@ Depois, no primeiro uso na Discloud (14/10/2026):
   o bot no chat geral e ficou sem resposta; era isso, não o `GC:`.
 - **Mencionar o bot não vira mais "comando"** no log (`CommandNotFound`): o tratamento de prefixo do discord.py
   foi desligado, porque quem lê mensagem são os módulos.
+- **Marcar o cargo do bot é marcar o bot.** O Discord cria um cargo "Guias do Ciclo" quando o bot entra, e no
+  celular a lista do `@` mostra esse cargo e a conta do bot iguais. Um jogador escolheu o cargo, caiu no filtro de
+  "menção a cargo não é conversa" e ficou sem resposta. Agora só o cargo do próprio bot (`tags.bot_id`) passa.
 
 ## O que falta
 
