@@ -22,7 +22,6 @@ from ..vida import DIAS_POR_NIVEL, intimidade
 log = logging.getLogger(__name__)
 
 PRONOMES_MAX = 30
-POLITICA = "https://github.com/cupcake-mochi/RPG---BOT/blob/main/Closure/docs/PRIVACIDADE.md"
 HORA_DA_REFLEXAO = time(4, 30, tzinfo=FUSO)
 
 
@@ -56,7 +55,9 @@ class Pessoa(commands.Cog):
                           f"(intimidade {intimidade(dias)} de {len(DIAS_POR_NIVEL)}).")
         linhas.append("Quando você chama uma delas, o texto da mensagem fica guardado até as 4h30, vira no máximo alguns "
                       "fatos como os de cima e é apagado. /meu_fato acrescenta um, /esquecer_fato tira um, "
-                      f"/apagar_meus_dados apaga tudo. Política de privacidade: {POLITICA}")
+                      "/apagar_meus_dados apaga tudo.")
+        if self.bot.config.politica_url:
+            linhas.append(f"Política de privacidade: {self.bot.config.politica_url}")
         await interacao.response.send_message("\n".join(linhas), ephemeral=True)
 
     @app_commands.command(name="meus_pronomes", description="Diz às personagens como tratar você. Sem texto, volta pra forma neutra.")

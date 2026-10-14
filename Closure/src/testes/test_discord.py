@@ -244,6 +244,17 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(await cog.atualizar_painel(registro.painel(2), manha.replace(day=14)), "postar")
         self.assertEqual((canal_a.send.await_count, canal_b.send.await_count), (2, 1))
 
+    async def test_canal_de_clima_do_env_liga_o_painel_sem_passar_por_cima_do_comando(self):
+        from dataclasses import replace
+
+        cog = self.bot.get_cog("ComandoClima")
+        self.bot.config = replace(self.bot.config, clima_canais=(71, 72, 99))
+        canais = {71: MagicMock(guild=MagicMock(id=1)), 72: MagicMock(guild=MagicMock(id=2))}
+        self.bot.registro.definir_painel(guild_id=2, canal_id=720)  # o servidor 2 já escolheu por comando
+        with patch.object(self.bot, "get_channel", side_effect=canais.get):
+            cog.semear_paineis()
+        self.assertEqual({p.guild_id: p.canal_id for p in self.bot.registro.paineis()}, {1: 71, 2: 720})
+
     async def test_painel_com_canal_apagado_nao_quebra(self):
         from datetime import datetime
 
@@ -395,7 +406,11 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertIn("Apagado", await usar(pessoa.apagar_meus_dados))
         self.assertEqual(self.bot.registro.mensagens_do_dia(), [])
         self.assertIn("Fatos: nenhum.", await usar(pessoa.meus_dados))
-        self.assertIn("docs/PRIVACIDADE.md", await usar(pessoa.meus_dados))
+        self.assertNotIn("Política de privacidade", await usar(pessoa.meus_dados))
+        from dataclasses import replace
+
+        self.bot.config = replace(self.bot.config, politica_url="https://exemplo/politica")
+        self.assertIn("Política de privacidade: https://exemplo/politica", await usar(pessoa.meus_dados))
         self.assertIn("Closure: você falou com ela em 0 dia(s)", await usar(pessoa.meus_dados))
 
     async def test_teste_webhook_so_pro_dono(self):

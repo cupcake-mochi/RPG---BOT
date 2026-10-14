@@ -15,7 +15,7 @@ from .registro import Registro
 
 log = logging.getLogger(__name__)
 
-NOME_WEBHOOK = "Closure Lab"
+NOME_WEBHOOK = "Guias do Ciclo"
 
 
 class Carteiro:

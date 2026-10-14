@@ -30,9 +30,20 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 147 testes; 26 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 148 testes; 27 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
+
+Neste computador já existe `Closure/.venv` com as dependências (criada em 13/10/2026; fica fora do git). De
+dentro de `Closure/`:
+
+    .venv/bin/python iniciar.py                 sobe o bot (precisa do DISCORD_TOKEN no .env)
+    .venv/bin/python iniciar.py --conferir      mostra o que foi lido e o que falta, sem conectar
+
+E os testes, de dentro de `Closure/src/`:
+
+    ../.venv/bin/python -m unittest discover -s testes
+
 
 De dentro de `src/`:
 
@@ -64,6 +75,8 @@ python3 -m closure_bot
 4. `DONO_ID` e as duas URLs de avatar no `.env`. `GUILD_ID` é opcional: é só um servidor de teste em que os
    comandos aparecem na hora. O bot foi feito pra rodar em vários servidores.
 5. Em cada servidor, usar `/clima_canal` no canal que vai receber o painel diário (ou passar o canal).
+   Pra não depender do comando na primeira subida, o ID do canal também pode ir em `CLIMA_CANAIS`, no `.env`;
+   o do servidor principal já está lá. Quem desligar o painel por comando precisa tirar o ID do `.env` também.
 
 ## Modelo e prompt (13/10/2026)
 
@@ -114,8 +127,9 @@ python3 -m closure_bot
   ou, em uma de cada três, um sorteado (`vida.escolher_fatos`). Teste de verdade com 12 mensagens inventadas:
   8 fatos certos, e ficaram de fora a ansiedade, a idade, a cidade, a fofoca e o mau humor do dia.
 - **Regras de fora** (lidas em 13/10/2026): política e termos de desenvolvedor do Discord e termos da API do
-  Gemini. Feito por causa delas: a peneira dos fatos, a política de privacidade (`docs/PRIVACIDADE.md`,
-  com link no fim do `/meus_dados`) e a cifra do banco. Falta o Mizuki pôr o link da política no portal de desenvolvedor do
+  Gemini. Feito por causa delas: a peneira dos fatos, a política de privacidade (`docs/PRIVACIDADE.md`)
+  e a cifra do banco. O repositório vai ficar privado, então a política mora numa página avulsa (Gist) e o link
+  dela vai em `POLITICA_URL`, no `.env`: é o que aparece no fim do `/meus_dados` e o que vai no portal do Discord. Falta o Mizuki pôr o link da política no portal de desenvolvedor do
   Discord. Fica em aberto, por decisão dele: o gratuito continua primeiro na fila, e nessa cota o Google pode
   usar o que recebe pra treinar, o que a regra 21 do Discord não permite com conteúdo de mensagem.
 - **Banco cifrado:** `python3 -m closure_bot --gerar-chave` cria a `CHAVE_DO_BANCO` no `.env` (já criada neste
@@ -147,10 +161,10 @@ Com `--com-env` o `.env` vai dentro; esse arquivo carrega segredo e não sai do 
 hospedagem.
 
 - **Memória:** o processo chegou a 98 MB só de carregar e montar pedidos, sem conexão com o Discord. O
-  `discloud.config` pede 150 MB; os 100 MB do bot antigo não bastam.
-- **Banco:** fica em `src/var/bot.sqlite3` dentro da hospedagem. Não foi conferido se a Discloud preserva esse
-  arquivo quando se sobe um pacote novo; se não preservar, as fichas e os painéis de clima se perdem a cada
-  atualização. Conferir antes de confiar.
+  `discloud.config` pede 256 MB; o plano do Mizuki vai até 1 GB, e os 100 MB do bot antigo não bastariam.
+- **Banco:** fica em `src/var/bot.sqlite3` dentro da hospedagem. A Discloud preserva o arquivo entre as
+  atualizações desde que ninguém o apague por lá (Mizuki, 13/10/2026). O pacote não leva banco nenhum, então
+  subir pacote novo não passa por cima dele.
 - **Segredos:** a hospedagem precisa das mesmas variáveis do `.env`, inclusive a `CHAVE_DO_BANCO`.
 
 ## Regras de plantão implementadas
