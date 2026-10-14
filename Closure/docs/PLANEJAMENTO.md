@@ -93,7 +93,11 @@ e testar o webhook no servidor.*
 
 ### Fase 3: correção de ficha
 
-Depende da ficha fechar (faltam as Origens) e da aba oculta existir.
+*Começou em 14/10/2026, depois de a ficha ganhar a aba `ANALISE` (B47, fase 1). Feito: leitor
+(`src/closure_bot/ficha_leitor.py`, `.xlsx` e link), corretor das contas de vida, PE, Integridade, proteção e
+Defesa, dos nomes de Caminho, Trilha e Origem e dos avisos da ficha (`src/closure_bot/ficha_corretor.py`), estrutura
+das regras de campanha e do registro de custom aprovado, e o `/ficha analisar` com o painel de resposta, desligado. Falta: contas
+de feitiço e invocação, o cadastro de verdade e as 3 a 5 fichas reais.*
 
 - Leitor da aba oculta (`.xlsx` exportado; o openpyxl lê aba oculta).
 - Corretor em funções puras: recebe os campos e devolve uma lista de problemas
@@ -121,20 +125,16 @@ A pesquisa de fontes multilíngues e fidelidade já terminou: relatório em
 
 ## Contrato da aba oculta da ficha
 
-A aba visível (CARTEIRA) é toda de célula mesclada; o bot não lê ela. A aba oculta tem:
+O contrato é a aba `ANALISE` da própria ficha (B47, fase 1, testada no Sheets em 14/10/2026), descrito em
+[`dados/ficha/CONTRATO-ABA-BOT.md`](../dados/ficha/CONTRATO-ABA-BOT.md) (versão 3), com a lista de chaves gerada da
+ficha em `dados/ficha/analise-chaves.tsv`.
 
-| campo | valor | observação |
-| ----- | ----- | ---------- |
-| versao_ficha | 1 | sobe quando o layout mudar |
-| nome | =CARTEIRA!O9 | |
-| caminho | =CARTEIRA!… | |
-| forca | =… | |
-| pericia.atletismo | =… | |
-| tecnica.1.nome | =… | listas viram linhas numeradas |
-
-- Nome de campo em minúsculo, sem acento, com ponto pra agrupar.
-- A coluna `valor` é só fórmula apontando pra aba visível.
-- Ficha com `versao_ficha` diferente da esperada recebe aviso, não correção.
+- Quatro colunas: chave · valor · célula · parte (`cabeçalho`, `entrada`, `resultado`, `aviso`); 2.650 chaves.
+- Chave minúscula, sem acento, com ponto entre os níveis e o número do item nas listas (`feitico.7.pecas`).
+- Valores como texto; o bot converte (vírgula decimal, 1/0, vazio = não preenchido).
+- Lida do `.xlsx` baixado do Google ou pelo link aberto (CSV da aba).
+- `formato.versao` diferente da conhecida recebe aviso, não correção.
+- O bot nunca acredita na ficha: regras da campanha vêm do bot, contas são refeitas, avisos são só o primeiro filtro.
 
 ## O que depende do Mizuki
 
