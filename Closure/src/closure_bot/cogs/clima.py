@@ -70,26 +70,31 @@ class ComandoClima(commands.Cog):
     async def cog_unload(self) -> None:
         self.painel_diario.cancel()
 
-    @app_commands.command(name="clima", description="Mostra como está o tempo agora em Tóquio ou em outro lugar.")
-    @app_commands.describe(lugar="Cidade ou lugar. Em branco, Tóquio.")
-    async def clima(self, interacao: discord.Interaction, lugar: str | None = None) -> None:
-        await interacao.response.defer()
+    async def consultar(self, lugar: str | None) -> tuple[discord.Embed | None, str | None]:
+        """O painel do lugar (Tóquio sem lugar), ou o aviso de por que não saiu."""
         onde = TOQUIO
         if lugar:
             try:
                 onde = await self.bot.clima.procurar(lugar)
             except Exception as erro:
                 log.warning("clima: falha ao procurar %r (%s)", lugar, erro)
-                await interacao.followup.send("Não consegui procurar esse lugar agora. Tente de novo daqui a pouco.")
-                return
+                return None, "Não consegui procurar esse lugar agora. Tente de novo daqui a pouco."
             if onde is None:
-                await interacao.followup.send("Não achei esse lugar. Tente o nome da cidade.")
-                return
+                return None, "Não achei esse lugar. Tente o nome da cidade."
         leitura = await self.bot.clima.agora(onde)
         if leitura is None:
-            await interacao.followup.send("Não consegui ler o clima agora. Tente de novo daqui a pouco.")
-            return
-        await interacao.followup.send(embed=painel(leitura), **_com_arte())
+            return None, "Não consegui ler o clima agora. Tente de novo daqui a pouco."
+        return painel(leitura), None
+
+    @app_commands.command(name="clima", description="Mostra como está o tempo agora em Tóquio ou em outro lugar.")
+    @app_commands.describe(lugar="Cidade ou lugar. Em branco, Tóquio.")
+    async def clima(self, interacao: discord.Interaction, lugar: str | None = None) -> None:
+        await interacao.response.defer()
+        embed, aviso = await self.consultar(lugar)
+        if embed is None:
+            await interacao.followup.send(aviso)
+        else:
+            await interacao.followup.send(embed=embed, **_com_arte())
 
     @app_commands.command(name="clima_canal", description="Escolhe o canal do painel diário de clima deste servidor.")
     @app_commands.describe(canal="Canal do painel. Em branco, o canal em que o comando foi usado.")

@@ -527,7 +527,7 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         comum = await pedir(2, False)
         campos = {c.name: c.value for c in comum.fields}
         self.assertIn("Chame pelo nome em <#55>", comum.description)
-        self.assertEqual(list(campos), ["» Clima", "» Seus dados", "» Do bot", "» Links"])
+        self.assertEqual(list(campos), ["» Clima", "» Seus dados", "» Do bot", "» Sem a barra", "» Links"])
         self.assertIn("</clima:123> · Mostra como está o tempo", campos["» Clima"])
         self.assertNotIn("clima_canal", campos["» Clima"])
         self.assertIn("/meus_dados · ", campos["» Seus dados"])
@@ -537,6 +537,56 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertIn("/clima_canal · ", moderador["» Para quem cuida do servidor"])
         self.assertNotIn("teste_webhook", moderador["» Para quem cuida do servidor"])
         self.assertIn("/teste_webhook · ", {c.name: c.value for c in (await pedir(1, False)).fields}["» Para quem cuida do servidor"])
+
+    async def test_gc_no_chat_faz_o_mesmo_que_a_barra_nos_comandos_publicos(self):
+        from closure_bot.cogs.atalho import separar
+
+        self.assertEqual((separar("GC:clima"), separar("gc: Clima  São  Paulo"), separar(" Gc :help"), separar("GC:")),
+                         (("clima", ""), ("clima", "São Paulo"), ("ajuda", ""), ("", "")))
+        self.assertEqual((separar("closure, GC:clima"), separar("o gc: do carro"), separar("oi")), (None, None, None))
+
+        self._clima_falso()
+        atalho = self.bot.get_cog("Atalho")
+        self.bot.mencoes = {"meus_dados": "</meus_dados:9>"}
+
+        async def pedir(texto):
+            canal, _ = _canal()
+            canal.send = AsyncMock()
+            m = _mensagem(texto, canal)
+            m.author.guild_permissions.manage_guild = False
+            await atalho.on_message(m)
+            # a mesma mensagem não pode virar conversa com as guias
+            await self.bot.get_cog("Chat").on_message(m)
+            return canal.send.call_args, m
+
+        chamada, m = await pedir("GC:clima")
+        self.assertTrue(chamada.kwargs["embed"].title.endswith("Clima em Tóquio"))
+        self.assertEqual((chamada.kwargs["file"].filename, chamada.kwargs["reference"]), ("painel_clima.webp", m))
+        chamada, _ = await pedir("gc: clima kyoto")
+        self.assertTrue(chamada.kwargs["embed"].title.endswith("Clima em Quioto, Japão"))
+        chamada, _ = await pedir("GC:ajuda")
+        self.assertIn("» Sem a barra", [c.name for c in chamada.kwargs["embed"].fields])
+        self.assertNotIn("» Para quem cuida do servidor", [c.name for c in chamada.kwargs["embed"].fields])
+        chamada, _ = await pedir("GC:meus_dados")
+        self.assertIn("só pela barra", chamada.args[0])
+        self.assertIn("</meus_dados:9>", chamada.args[0])
+        chamada, _ = await pedir("GC:dancar")
+        self.assertIn("Não conheço", chamada.args[0])
+        self.assertEqual((self.bot.registro.contagens()["gatilhos"], self.montar.call_count), (0, 0))
+
+    async def test_gc_ping_e_status(self):
+        atalho = self.bot.get_cog("Atalho")
+        canal, _ = _canal()
+        canal.send = AsyncMock()
+        type(self.bot).latency = property(lambda _self: 0.05)
+        try:
+            await atalho.on_message(_mensagem("GC:ping", canal))
+        finally:
+            del type(self.bot).latency
+        self.assertIn("No ar (50 ms)", canal.send.call_args.args[0])
+        with patch("closure_bot.cogs.admin.versoes_do_site", AsyncMock(return_value={"closure": "v0.33"})):
+            await atalho.on_message(_mensagem("GC:status", canal))
+        self.assertIn("Prompt: closure v0.33.", canal.send.call_args.args[0])
 
     async def test_teste_webhook_so_pro_dono(self):
         admin = self.bot.get_cog("Admin")

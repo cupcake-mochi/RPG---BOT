@@ -25,12 +25,13 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/cogs/clima.py` | `/clima [lugar]`, `/clima_canal`, `/clima_canal_desligar` e o painel diário de Tóquio, um canal por servidor |
 | `closure_bot/modelo.py` | A chamada à IA numa camada só: fila de `provedor:modelo` com reserva (Vertex AI e AI Studio), e cada tentativa registrada com tokens e latência |
 | `closure_bot/cogs/admin.py` | `/ajuda` (a lista sai dos próprios comandos, e cada pessoa só vê os que pode usar), `/ping`, `/status`, `/teste_webhook` (este só pro dono) |
+| `closure_bot/cogs/atalho.py` | Comandos escritos no chat com `GC:` na frente (`GC:ajuda`, `GC:clima Quioto`, `GC:ping`, `GC:status`). Os que mexem em dado da pessoa ficam só na barra, onde a resposta é só pra ela |
 | `closure_bot/cogs/chat.py` | Escuta as mensagens, decide quem responde, monta o pedido, chama o modelo e envia a fala |
 | `closure_bot/conversa.py` | A conversa em andamento com cada personagem por canal, só em memória (30 min, 12 turnos) |
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 162 testes; 35 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 164 testes; 37 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 

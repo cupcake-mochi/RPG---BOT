@@ -14,6 +14,7 @@ from ..conversa import Turno
 from ..modelo import Falhou
 from ..plantao import FUSO, Decisao, decidir
 from ..prompt import montar as montar_prompt
+from .atalho import separar as separar_atalho
 
 log = logging.getLogger(__name__)
 
@@ -77,6 +78,9 @@ class Chat(commands.Cog):
         canal_id = getattr(mensagem.channel, "parent_id", None) or mensagem.channel.id
         if not self.bot.config.escuta(canal_id):
             return
+
+        if separar_atalho(mensagem.content) is not None:
+            return  # "GC:clima" é comando (cogs/atalho.py), não conversa com as guias
 
         agora = datetime.now(FUSO)
         self.bot.vida.ouvir(mensagem.channel.id, agora)  # só a hora, pra saber se o canal está quieto ou cheio
