@@ -30,56 +30,39 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py`, `ficha.py` | Vazios: fases 2 e 3 |
-| `testes/` | 152 testes; 29 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 161 testes; 35 deles precisam do discord.py, 4 da cryptography e 2 dos dois motores juntos e são pulados sem ele. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 
 Neste computador já existe `Closure/.venv` com as dependências (criada em 13/10/2026; fica fora do git). De
 dentro de `Closure/`:
 
-    .venv/bin/python iniciar.py                 sobe o bot (precisa do DISCORD_TOKEN no .env)
+    .venv/bin/python iniciar.py                 sobe o bot
     .venv/bin/python iniciar.py --conferir      mostra o que foi lido e o que falta, sem conectar
 
 E os testes, de dentro de `Closure/src/`:
 
     ../.venv/bin/python -m unittest discover -s testes
 
+Noutro computador: `python3 -m venv .venv` e `.venv/bin/pip install -r src/requirements.txt`.
 
-De dentro de `src/`:
+Só um bot ligado por vez com o mesmo token. O do computador e o da Discloud ao mesmo tempo respondem em dobro.
 
-```bash
-python3 -m unittest discover -s testes
-```
+## O que o bot precisa pra funcionar
 
-```bash
-python3 -m closure_bot --conferir
-```
+Estado em 13/10/2026: tudo abaixo está feito, e o bot respondeu no servidor principal.
 
-O `--conferir` não conecta ao Discord: mostra as regras lidas, a versão dos cards, quem está de plantão e o
-que falta no `.env`. Pra subir de verdade:
-
-```bash
-pip install -r requirements.txt
-```
-
-```bash
-python3 -m closure_bot
-```
-
-## O que falta pra subir (depende do Mizuki)
-
-1. **Token do app no Discord**, no `.env` da pasta `Closure/` (modelo em `.env.exemplo`, na raiz do repositório). Nunca no chat.
-2. No Developer Portal, ligar o **Message Content Intent** do bot: sem ele o bot não lê o nome na mensagem.
-3. No servidor, a permissão **Gerenciar webhooks** pro bot. Sem ela a fala sai pela conta do bot, com o
-   nome na frente ("**Closure:** ...").
-4. `DONO_ID`, `GUILD_ID`, `CANAIS` e as duas URLs de avatar já estão no `.env` (13/10/2026). O avatar da
-   Closure passa por um redimensionador público (wsrv.nl) que corta a imagem em quadrado, centralizada; se
-   esse serviço sair do ar, a foto dela some e a URL precisa ser trocada. `CANAIS` tem só o canal próprio
-   delas no servidor principal: enquanto estiver assim, o bot não responde nos outros servidores.
+1. **Token do bot** em `DISCORD_TOKEN`, no `.env` da pasta `Closure/` (modelo em `.env.exemplo`, na raiz do repositório).
+2. No portal de desenvolvedor, o **Message Content Intent** ligado: sem ele o bot não lê o nome na mensagem.
+3. No servidor, a permissão **Gerenciar webhooks**. Sem ela a fala sai pela conta do bot, com o nome na frente
+   ("**Closure:** ...").
+4. `DONO_ID`, `GUILD_ID`, `CANAIS` e as duas URLs de avatar no `.env`. O avatar da Closure passa por um
+   redimensionador público (wsrv.nl) que corta a imagem em quadrado, centralizada; se esse serviço sair do ar, a
+   foto dela some e a URL precisa ser trocada. `CANAIS` tem só o canal próprio delas no servidor principal:
+   enquanto estiver assim, o bot não responde em nenhum outro canal nem servidor.
    Ao subir, o bot registra os comandos em todo servidor, o que troca os do bot antigo.
-5. Em cada servidor, usar `/clima_canal` no canal que vai receber o painel diário (ou passar o canal).
-   Pra não depender do comando na primeira subida, o ID do canal também pode ir em `CLIMA_CANAIS`, no `.env`;
-   o do servidor principal já está lá. Quem desligar o painel por comando precisa tirar o ID do `.env` também.
+5. O painel diário de clima: `/clima_canal` no canal, ou o ID do canal em `CLIMA_CANAIS`, no `.env` (o do
+   servidor principal já está lá). Quem desligar o painel por comando precisa tirar o ID do `.env` também.
 
 ## Modelo e prompt (13/10/2026)
 
@@ -239,9 +222,23 @@ estar no lugar**.
   clima pelo computador e contam como está, sem dizer que estão lá. Elas respondem de outra estação, então
   não falam "aqui tá chovendo".
 
-## Pendências desta fase
+## Revisão de 13/10/2026 (pente fino antes de hospedar)
 
-- Subir de verdade com o token e testar `/teste_webhook` no servidor.
-- Deploy na Discloud: o `discloud.config` do legado aponta pra um arquivo só; aqui o pacote precisa levar
-  `src/` e a parte de `dados/` que o bot lê.
-- Se o Project do app tiver criado algo em `src/` depois de 12/10, juntar com isto.
+O que a revisão do código achou e corrigiu, cada item com teste:
+
+- **Responder a uma fala fica com quem falou.** Antes, responder a uma mensagem da Kal'tsit de noite fazia a
+  Closure atender. A fala respondida também entra no pedido quando já saiu da conversa em andamento.
+- **Menção e ID não vão no texto.** A menção ao bot sai, e a de outra pessoa vira `@nome`, no que vai pro modelo
+  e no que fica guardado até a reflexão. É o que a política de privacidade promete.
+- **Nome, pronomes e fatos entram no bloco de estado sem colchete nem quebra de linha**, pra ninguém montar um
+  bloco falso com o próprio apelido.
+- **Limite de 8 chamadas por minuto por pessoa** e de 1500 caracteres por mensagem, porque cada resposta custa.
+- **Reflexão atrasada roda ao subir**: se o bot estava fora do ar às 4h30, o texto guardado não fica parado.
+- **Webhook apagado no servidor é refeito**, e comando que quebra avisa a pessoa em vez de ficar mudo.
+
+## O que falta
+
+- Consulta de regra por comando e análise de ficha (`cogs/regras.py` e `cogs/ficha.py` estão vazios): eram do bot
+  antigo e ainda não foram refeitas.
+- Calendário de sessões e aniversários, do desenho da vida.
+- Publicar no site de teste os cards que o bot já usa.
