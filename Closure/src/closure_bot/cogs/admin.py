@@ -51,7 +51,8 @@ class Admin(commands.Cog):
         for grupo in sorted(grupos, key=ordem.index):
             embed.add_field(name=f"» {grupo}", value="\n".join(grupos[grupo]), inline=False)
         embed.add_field(name="» Sem a barra", inline=False,
-                        value="`GC:ajuda`, `GC:livro`, `GC:clima` (ou `GC:clima Quioto`), `GC:ping` e `GC:status` fazem o mesmo, escritos no chat.")
+                        value="`GC:ajuda`, `GC:livro`, `GC:ficha` (com o link ou o .xlsx anexo), `GC:clima` (ou `GC:clima Quioto`), "
+                              "`GC:ping` e `GC:status` fazem o mesmo, escritos no chat.")
         links = [f"[{nome}]({url})" for nome, url in (("Privacidade", self.bot.config.politica_url), ("Termos de uso", self.bot.config.termos_url)) if url]
         if links:
             embed.add_field(name="» Links", value=" | ".join(links), inline=False)

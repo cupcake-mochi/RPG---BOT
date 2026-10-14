@@ -696,6 +696,32 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertIn("Não conheço", chamada.args[0])
         self.assertEqual((self.bot.registro.contagens()["gatilhos"], self.montar.call_count), (0, 0))
 
+    async def test_gc_ficha_com_anexo_com_link_e_sem_nada(self):
+        from closure_bot.cogs.atalho import separar
+        link = "https://docs.google.com/spreadsheets/d/1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro/edit?usp=sharing"
+        self.assertEqual(separar(f"GC:ficha {link}"), ("ficha", link))  # o link inteiro, sem cortar
+        self.assertEqual(separar("gc: analisar")[0], "ficha")
+        atalho = self.bot.get_cog("Atalho")
+        canal, _ = _canal()
+        canal.send = AsyncMock()
+        canal.typing = MagicMock(return_value=AsyncMock())
+        anexo = MagicMock(filename="kaori.xlsx", size=70_000)
+        anexo.read = AsyncMock(return_value=(Path(__file__).parent / "dados" / "ficha_analise_kaori.xlsx").read_bytes())
+        m = _mensagem("GC:ficha", canal)
+        m.attachments = [anexo]
+        await atalho.on_message(m)
+        embed = canal.send.call_args.kwargs["embed"]
+        self.assertEqual(embed.title, "Ficha de Kaori")
+        self.assertIn("Vida 23", {c.name: c.value for c in embed.fields}["✅ Conferido e certo"])
+        sem_nada = _mensagem("GC:ficha", canal)
+        sem_nada.attachments = []
+        await atalho.on_message(sem_nada)
+        self.assertIn("mande o link da ficha", canal.send.call_args.args[0])
+        ruim = _mensagem("GC:ficha https://exemplo.com/minha-ficha", canal)
+        ruim.attachments = []
+        await atalho.on_message(ruim)
+        self.assertIn("não parece um link do Google Planilhas", canal.send.call_args.args[0])
+
     async def test_gc_ping_e_status(self):
         atalho = self.bot.get_cog("Atalho")
         canal, _ = _canal()
