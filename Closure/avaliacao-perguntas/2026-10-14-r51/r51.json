@@ -1,0 +1,19 @@
+[
+ {"id": "r01", "msg": "minha vida zerou, qnto de cura preciso pra sair do morrendo se eu só aguentar?", "gold": ["dano--zero", "dano--socorro"], "nota": "Aguentar: 1/4 do máximo de referência, para cima"},
+ {"id": "r02", "msg": "se eu insistir pela segunda vez na mesma cena o tratamento muda?", "gold": ["dano--insistir", "dano--zero"], "nota": "1/3 na primeira, 1/2 na segunda em diante, teto 15 × maior Classe"},
+ {"id": "r03", "msg": "tem limite máximo pro tratamento do insistir? meu personagem tem muita vida", "gold": ["dano--insistir", "dano--zero"], "nota": "teto de 15 × a maior Classe"},
+ {"id": "r04", "msg": "insistir ainda tira vida máxima?", "gold": ["dano--insistir", "dano--zero"], "nota": "não; o teto não reduz a vida máxima"},
+ {"id": "r05", "msg": "já tô com 3 sequelas e caí de novo, e agora?", "gold": ["dano--sequelas", "dano--zero"], "nota": "3 ou mais: Derrotado imediatamente"},
+ {"id": "r06", "msg": "quantas rodadas eu tenho pra ser socorrido se já tenho uma sequela?", "gold": ["dano--sequelas"], "nota": "1 Sequela: 2 rodadas"},
+ {"id": "r07", "msg": "qnto a recomposição cura?", "gold": ["catalogo--cat-passivas-2-recursos"], "nota": "4 × a maior Classe, uma vez por descanso curto, Ação Padrão"},
+ {"id": "r08", "msg": "como funciona o segundo fôlego agora?", "gold": ["rotas--rota-passivas-resposta"], "nota": "1x por descanso longo, ao Insistir usa 1/4 do máximo de referência"},
+ {"id": "r09", "msg": "quais origens existem no sistema?", "gold": ["origens--origens"], "nota": "sete: Latente, Receptáculo, Descendente, Encarnado, Híbrido, Corpo Amaldiçoado, Restrição Celestial"},
+ {"id": "r10", "msg": "cadê a origem feto? sumiu?", "gold": ["origens--origem-feto", "origens--origens"], "nota": "virou Híbrido"},
+ {"id": "r11", "msg": "quantas capacidades a origem me dá?", "gold": ["origens--origens", "origens--origem-escolhas"], "nota": "uma marcante e duas menores"},
+ {"id": "r12", "msg": "legado dá algum bonus mecânico?", "gold": ["origens--legados", "origens--origem-escolhas"], "nota": "Legado de história: sem benefício mecânico, não ocupa escolha"},
+ {"id": "r13", "msg": "posso ser corpo amaldiçoado sem técnica?", "gold": ["origens--origem-sem-tecnica", "origens--origem-corpo"], "nota": "não; Sem Técnica só nas cinco primeiras"},
+ {"id": "r14", "msg": "quais são os ramos da restrição celestial?", "gold": ["origens--origem-restricao"], "nota": "Sem Energia e Restrição corporal"},
+ {"id": "r15", "msg": "o ataque sem prenúncio eu anuncio antes ou depois do cara escolher bloquear?", "gold": ["origens--restricao-prenuncio"], "nota": "depois da escolha entre Defesa e Bloquear, antes do d20"},
+ {"id": "r16", "msg": "o olho adicional do híbrido enxerga no escuro?", "gold": ["origens--feto-beneficios"], "nota": "a até 9 m, penumbra e escuridão comum, sem cores"},
+ {"id": "r17", "msg": "sou corpo amaldiçoado de madeira, preciso de qual ofício?", "gold": ["origens--origem-corpo"], "nota": "ofício compatível com o corpo: Entalhador"}
+]

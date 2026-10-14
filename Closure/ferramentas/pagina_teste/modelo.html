@@ -139,10 +139,10 @@ const PARADA = new Set(("a o e de da do das dos que pra para por com sem um uma 
   "closure kal kaltsit kal'tsit mizuki livro regra regras dele dela deles delas oque qnt qnts cm for fosse seria tiver tivesse estiver nele nela neles nelas").split(" "));
 // "nv2", "nvl 2", "lv2" viram "nivel 2"; palavra longa fica com as 6 primeiras letras, pra "estabilizo" achar "estabilizar",
 // "habilidades" achar "habilidade" e erro no fim da palavra ("evocadr") não atrapalhar
-// "iniciativa" não pode virar "inicia" junto com "inicial"
-const RAIZ = w => /^(nivel|classe)\d+$/.test(w) ? w : w.startsWith("iniciativ") ? "inictv" : w.length > 6 ? w.slice(0, 6) : (w.length > 4 && w.endsWith("s") ? w.slice(0, -1) : w);
+// "iniciativa" não pode virar "inicia" junto com "inicial", nem "recomposição" virar "recomp" junto com "recompensa"
+const RAIZ = w => /^(nivel|classe)\d+$/.test(w) ? w : w.startsWith("iniciativ") ? "inictv" : w.startsWith("recompos") ? "recmps" : w.length > 6 ? w.slice(0, 6) : (w.length > 4 && w.endsWith("s") ? w.slice(0, -1) : w);
 // "nível 7" também vira a palavra "nivel7", pra pergunta de um nível achar a página que diz "Nível 7."
-const nrm = s => STRIP(s.toLowerCase()).replace(/(?<![a-z])(?:nv|nvl|niv|lv|lvl)\.?\s?(\d+)/g, "nivel $1").replace(/(?<![a-z])nivel\s?(\d+)/g, "nivel nivel$1").replace(/(?<![a-z])classe\s?(\d+)/g, "classe classe$1").replace(/(\d)(m|km|kg)(?![a-z0-9])/g, "$1 $2");
+const nrm = s => STRIP(s.toLowerCase()).replace(/(?<![a-z])(?:nv|nvl|niv|lv|lvl)\.?\s?(\d+)/g, "nivel $1").replace(/(?<![a-z])nivel\s?(\d+)/g, "nivel nivel$1").replace(/(?<![a-z])classe\s?(\d+)/g, "classe classe$1").replace(/(\d)(m|km|kg)(?![a-z0-9])/g, "$1 $2").replace(/(?<![a-z0-9])0\s?(?=(?:de\s)?(?:vida|pv|hp)(?![a-z]))/g, "zero ");
 // sinônimo de mesa pra palavra que o livro usa
 const SINONIMO = { caindo: "queda", cair: "queda", caio: "queda", upar: "nivel", level: "nivel", hp: "vida", shikig: "invoca", voar: "voo", voando: "voo", desmai: "incons",
   // verbo na primeira pessoa que não bate com o radical do livro ("agarro" e "agarrar")
@@ -154,7 +154,9 @@ const SINONIMO = { caindo: "queda", cair: "queda", caio: "queda", upar: "nivel",
   stun: "atordo", crit: "critic", critei: "critic", critou: "critic", stunad: "atordo", stunou: "atordo", clash: "disput", zerou: "zero", zerei: "zero", zerado: "zero", zerada: "zero", zerar: "zero", conser: "reparo", consert: "reparo",
   morrer: "morte", morre: "morte", morreu: "morte", morto: "morte", morta: "morte", pv: "vida", caneta: "lapis", vence: "vitori", venceu: "vitori", ganhador: "vitori", pular: "salto", pulo: "salto", pulei: "salto", pula: "salto", curar: "cura", curo: "cura", curando: "cura", curou: "cura",
   // "quantos pv eu começo?" é a Vida inicial
-  comeco: "inicia", comeca: "inicia", comecar: "inicia" };
+  comeco: "inicia", comeca: "inicia", comecar: "inicia",
+  // a Origem Feto virou Híbrido no R45 (item 193), e quem jogou antes ainda chama pelo nome velho
+  feto: "hibrid" };
 const tok = s => (nrm(s).match(/[a-z0-9]{3,}|(?<![a-z0-9])(?:xp|pe|pv|hp|cd|tr|rd|ce)(?![a-z0-9])/g) || []).map(RAIZ).map(w => SINONIMO[w] || w);
 const DF = new Map(), BTOK = D.livro.map(b => {
   const c = new Map(); for (const w of tok(b.titulo + " " + b.titulo + " " + (b.titulos || []).join(" ") + " " + b.texto)) c.set(w, (c.get(w) || 0) + 1);

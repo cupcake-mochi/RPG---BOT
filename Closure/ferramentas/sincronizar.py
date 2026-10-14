@@ -33,7 +33,7 @@ LIVRO = os.path.join('sistema', '05-material', 'livro', 'ciclo-maldito-r41', 'LI
 LIVRO_LEIA = os.path.join('sistema', '05-material', 'livro', 'ciclo-maldito-r41', 'LEIA-ME.md')
 DADOS_JS = os.path.join('sistema', '05-material', 'gerador-ficha', 'dados.js')
 
-# Prefixos de âncora que o livro tinha em 12/10/2026 (R44). Prefixo novo ou sumido
+# Prefixos de âncora que o livro tinha em 12/10/2026 (R44); o R51 (14/10) tem os mesmos. Prefixo novo ou sumido
 # quer dizer que a forma do livro mudou: confira e atualize esta lista.
 PREFIXOS = {
     'ab', 'aptidoes', 'bastiao', 'campo', 'catalogo', 'construcao', 'consulta', 'dano',
@@ -74,7 +74,11 @@ def achar_repo(arg):
 
 def edicao_do_livro(repo):
     with open(os.path.join(repo, LIVRO_LEIA), encoding='utf-8') as fh:
-        m = re.search(r'texto desta pasta é o (R\d+)', fh.read())
+        texto = fh.read()
+    # Desde a v0.364 o título diz a edição ("# Ciclo Maldito R41, hoje na edição R51");
+    # o corpo guarda o histórico, e a primeira frase "texto desta pasta é o" pode ser velha.
+    m = (re.search(r'^#.*hoje na edição (R\d+)', texto, re.M)
+         or re.search(r'texto desta pasta é o (R\d+)', texto))
     if not m:
         raise Falha('não achei a edição do livro no LEIA-ME do ciclo-maldito-r41')
     return m.group(1)

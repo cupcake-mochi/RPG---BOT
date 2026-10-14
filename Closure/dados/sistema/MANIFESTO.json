@@ -1,11 +1,11 @@
 {
   "sistema": "Ciclo Maldito",
-  "versao_sistema": "v0.359",
-  "edicao_livro": "R44",
-  "commit": "53a08595e6ed81a65f8dad2fa66e6618f5bf8bb2",
-  "data_commit": "2026-10-12T12:08:10-03:00",
-  "sincronizado_em": "2026-10-12T15:35:45+00:00",
-  "blocos": 499,
+  "versao_sistema": "v0.364",
+  "edicao_livro": "R51",
+  "commit": "82878e607fb4b31e253eeb85659ddb62122637ce",
+  "data_commit": "2026-10-14T00:23:47-03:00",
+  "sincronizado_em": "2026-10-14T08:02:08-03:00",
+  "blocos": 511,
   "capitulos": [
     {
       "numero": 1,
@@ -29,8 +29,8 @@
     },
     {
       "numero": 5,
-      "titulo": "Origens e Legados",
-      "blocos": 26
+      "titulo": "Origens",
+      "blocos": 38
     },
     {
       "numero": 6,
