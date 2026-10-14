@@ -74,7 +74,17 @@ class Lugar:
 TOQUIO = Lugar("Tóquio", 35.6895, 139.6917)
 
 # Jeitos de escrever que a busca em português não resolve sozinha
-APELIDOS_DE_LUGAR = {"nova york": "Nova Iorque", "new york": "New York City"}
+APELIDOS_DE_LUGAR = {"nova york": "Nova Iorque", "new york": "New York City",
+                     # apelido de capital que a busca não conhece ("tá chovendo em bh?")
+                     "bh": "Belo Horizonte", "sp": "São Paulo", "sampa": "São Paulo", "rj": "Rio de Janeiro",
+                     "bsb": "Brasília", "poa": "Porto Alegre", "floripa": "Florianópolis", "cwb": "Curitiba"}
+# Sigla de estado depois da cidade ("Belo Horizonte - MG", "belo horizonte/mg"): só ajuda a escolher entre homônimos.
+ESTADOS = {"ac": "acre", "al": "alagoas", "ap": "amapa", "am": "amazonas", "ba": "bahia", "ce": "ceara",
+           "df": "distrito federal", "es": "espirito santo", "go": "goias", "ma": "maranhao", "mt": "mato grosso",
+           "ms": "mato grosso do sul", "mg": "minas gerais", "pa": "para", "pb": "paraiba", "pr": "parana",
+           "pe": "pernambuco", "pi": "piaui", "rj": "rio de janeiro", "rn": "rio grande do norte",
+           "rs": "rio grande do sul", "ro": "rondonia", "rr": "roraima", "sc": "santa catarina", "sp": "sao paulo",
+           "se": "sergipe", "to": "tocantins"}
 
 
 @dataclass(frozen=True)
@@ -140,11 +150,19 @@ def _inteiro_ou_nada(valor) -> int | None:
     return None if valor is None else round(valor)
 
 
-def interpretar_lugar(resposta: dict) -> Lugar | None:
-    """Da lista da busca, fica o lugar mais populoso: "Paris" é a da França, não a do Texas."""
+def interpretar_lugar(resposta: dict, regiao: str = "", exigir: bool = False) -> Lugar | None:
+    """Da lista da busca, fica o lugar mais populoso: "Paris" é a da França, não a do Texas. Com `regiao` (o estado
+    ou país escrito depois da cidade), os resultados dessa região vêm na frente; com `exigir`, só eles valem."""
     resultados = resposta.get("results") or []
     if not resultados:
         return None
+    regiao = ESTADOS.get(_sem_acento(regiao).strip(), _sem_acento(regiao).strip())
+    if regiao:
+        da_regiao = [r for r in resultados
+                     if regiao in _sem_acento(f"{r.get('admin1', '')} {r.get('country', '')}")]
+        if exigir and not da_regiao:
+            return None
+        resultados = da_regiao or resultados
     melhor = max(resultados, key=lambda r: r.get("population") or 0)
     partes = [melhor["name"]]
     if melhor.get("admin1") and melhor["admin1"] != melhor["name"]:
@@ -202,7 +220,7 @@ def lugar_citado(texto: str) -> str | None:
     for prep in _ANTES_DO_LUGAR.finditer(norm, gatilho.start(), trecho_fim):
         palavras = []
         for achou in re.finditer(r"[\w'’\-]+|[^\w\s]", norm[prep.end():trecho_fim]):
-            if not re.match(r"[\w'’\-]+$", achou.group()) or achou.group() in _PARADAS or len(palavras) == 4:
+            if not re.match(r"[\w'’\-]+$", achou.group()) or achou.group() in _PARADAS or len(palavras) == 6:
                 break
             palavras.append((prep.end() + achou.start(), prep.end() + achou.end()))
         if not palavras:
@@ -258,15 +276,44 @@ class ServicoClima:
         if chave not in self._lugares:
             if len(self._lugares) >= MAX_LUGARES:
                 self._lugares.clear()
-            consulta = APELIDOS_DE_LUGAR.get(chave, nome.strip()[:60])
-            self._lugares[chave] = interpretar_lugar(await self._buscar(URL_LUGAR.format(nome=quote(consulta))))
+            self._lugares[chave] = await self._procurar_por_partes(nome.strip()[:60])
         return self._lugares[chave]
 
-
-async def contexto_clima(servico: ServicoClima, texto: str) -> str | None:
-    """A linha do bloco 4 pra esta mensagem: None se ela não puxa o clima ou se não deu pra ler."""
-    if not fala_de_clima(texto):
+    async def _procurar_por_partes(self, nome: str) -> Lugar | None:
+        """A busca só conhece o nome da cidade: "belo horizonte minas gerais" e "Belo Horizonte - MG" não acham nada.
+        Sem resultado, tenta a parte antes do traço, da barra ou da vírgula, e depois tira palavras do fim (até
+        cinco tentativas a mais); o que sobrou serve pra escolher o estado ou o país."""
+        consulta = APELIDOS_DE_LUGAR.get(_sem_acento(nome).strip(), nome)
+        lugar = interpretar_lugar(await self._buscar(URL_LUGAR.format(nome=quote(consulta))))
+        if lugar:
+            return lugar
+        partes = re.split(r"\s*[-/,]\s*", consulta, maxsplit=1)
+        cidade, resto = partes[0], (partes[1] if len(partes) > 1 else "")
+        palavras = cidade.split()
+        tentativas = [len(palavras)] if resto else []
+        tentativas += [k for k in range(len(palavras) - 1, 0, -1)][:5]
+        for k in tentativas:
+            regiao = " ".join(palavras[k:] + resto.split())
+            # o que foi cortado tem que ser o estado ou o país: "santa maria rio" não pode virar uma cidade italiana
+            lugar = interpretar_lugar(await self._buscar(URL_LUGAR.format(nome=quote(" ".join(palavras[:k])))), regiao,
+                                      exigir=True)
+            if lugar:
+                return lugar
         return None
+
+
+# "e em Belo Horizonte?" logo depois de uma pergunta de clima continua a pergunta
+_SEGUE_CLIMA = re.compile(r"(?<!\w)e (?=(em|no|na|nos|nas) )")
+
+
+async def contexto_clima(servico: ServicoClima, texto: str, anterior: str | None = None) -> str | None:
+    """A linha do bloco 4 pra esta mensagem: None se ela não puxa o clima ou se não deu pra ler. `anterior` é a
+    mensagem anterior da pessoa na conversa: se ela perguntou do clima, "e em X?" vira a mesma pergunta pra X."""
+    if not fala_de_clima(texto):
+        segue = _SEGUE_CLIMA.search(_sem_acento(texto)) if anterior and fala_de_clima(anterior) and len(texto) <= 80 else None
+        if not segue:
+            return None
+        texto = "como tá o clima " + unicodedata.normalize("NFC", texto)[segue.end():]
     citado = lugar_citado(texto)
     lugar = TOQUIO
     if citado:
