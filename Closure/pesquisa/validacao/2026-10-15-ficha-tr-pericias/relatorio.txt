@@ -86,3 +86,13 @@ Retomada/reprodução
   TEXTJOIN recebem prefixo de compatibilidade quando necessário. Perfil temporário isolado.
 - Arquivos para teste no Discord: ferramentas/preparar_testes_ficha_tr.py. Roteiro ao lado,
   TESTES-DISCORD.txt. Saída src/var/testes-tr-pericias/, fora do Git.
+
+Entrega e auditoria
+- Pacote closure-lab-tr-pericias.zip: 50 arquivos, 977508 bytes, sem .env.
+- SHA256: ef1dbc522235e9eacc780a17752bea21a4dde94b71415afd178bccefa42f0a0b.
+- Arquivos do ZIP idênticos às fontes; Python compilável; nenhum valor secreto do .env encontrado.
+- As tabulações finais de células vazias no TSV arquivado são estruturais: preservam a terceira
+  coluna. A conferência de whitespace sem blank-at-eol não encontra outros problemas.
+- Bot: https://github.com/cupcake-mochi/RPG---BOT/pull/48.
+- Gerador separado: https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/3. Não juntar sobre o
+  trabalho de CONFIGURAÇÃO sem combinar os dois contratos. Nenhum arquivo enviado ao Google.
