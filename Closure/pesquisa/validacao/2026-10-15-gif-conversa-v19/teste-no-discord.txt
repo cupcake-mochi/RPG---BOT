@@ -1,0 +1,11 @@
+Piloto v19 — link e conversa sobre GIF
+
+Suba closure-lab-gif-conversa-v19.zip por Commit e Rebuild. Preserve .env, banco e chave. Mantenha MIDIA_ATIVA=1; se MIDIA_CANAIS estiver preenchido, use um canal da lista.
+
+1. Cole novamente o link direto do attachment.gif que falhou, junto de “@Guias do Ciclo, consegue ver esse GIF?”. Esperado: o arquivo chega e a resposta confirma brevemente. Link assinado pode expirar; nesse caso copie um link novo do mesmo arquivo ou anexe o GIF.
+2. Na conversa em andamento, envie um GIF pelo seletor como reação ao assunto ou envie seu link com “ela fica muito fofinha nesse GIF, né?”. Esperado: responder ao comentário/à reação no jeito da guia, sem catálogo automático de aparência, quadros ou carregamento. Não precisa terminar oferecendo ajuda ou puxando uma pergunta.
+3. Envie novamente o mesmo GIF com “O que esse GIF mostra?”. Esperado: descrever agora, porque foi pedido, respeitando as amostras recebidas.
+
+Três respostas de mídia podem usar três chamadas pagas; estimativa de US$ 0,06–0,18 ao preço cheio, variável conforme contexto/saída. Vale o teto da hospedagem. O agente não executou essas chamadas.
+
+Se houver demora, mande os tempos da linha “mídia: prompt_ms=... preparo_ms=... modelo_ms=... total_ms=...” dos logs, sem chaves/tokens ou o conteúdo do .env. Eles não medem o envio ao Discord. O piloto valida os exemplos; não certifica todos os GIFs/reações.

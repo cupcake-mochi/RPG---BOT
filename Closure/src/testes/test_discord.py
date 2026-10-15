@@ -153,6 +153,24 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertIn('GIF do seletor (klipy)',e[-1]['content'])
         webhook.send.assert_awaited_once()
 
+    async def test_gif_por_link_discord_chega_sem_expor_url_nos_tempos(self):
+        from closure_bot.midia_anexos import Anexos, AVISO_VISUAL
+        from closure_bot.midia import AVISO
+        from testes.test_midia_gifs import DIRETO, gif
+        self.bot.anexos=Anexos(ativo=True,download=AsyncMock(return_value=gif()))
+        self.montar.return_value=[{'role':'user','content':AVISO},{'role':'user','content':'ficou fofo '+DIRETO}]
+        canal,webhook=_canal();m=_mensagem('Closure, ficou fofo '+DIRETO,canal)
+        m.attachments=[];m.embeds=[]
+        with self.assertLogs('closure_bot.cogs.chat',level='INFO') as logs:
+            await self.bot.get_cog('Chat').on_message(m)
+        e=self.bot.modelos.responder.call_args.args[0]
+        self.assertIn(AVISO_VISUAL,e[0]['content'])
+        self.assertIn('ficou fofo',e[-1]['content'])
+        self.assertEqual(len([p for p in e[-1]['midias'] if 'inlineData' in p]),3)
+        for fase in ('prompt_ms','preparo_ms','modelo_ms','total_ms'):self.assertIn(fase,str(logs.output))
+        self.assertNotIn('assinatura',str(logs.output));self.assertNotIn('ficou fofo',str(logs.output))
+        self.bot.modelos.responder.assert_awaited_once();webhook.send.assert_awaited_once()
+
     async def test_apagar_durante_preparo_de_midia_impede_envio(self):
         from closure_bot.midia_anexos import Preparo
         async def preparar(*a):

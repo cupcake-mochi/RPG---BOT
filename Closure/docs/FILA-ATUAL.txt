@@ -9,11 +9,13 @@ CONCLUÍDO
 - V16: silêncio digital convertido detectado localmente; pedido simples recebe aviso sem modelo. 75 testes locais passaram, zero chamadas pagas; não muda a nota da bateria anterior.
 
 - Política revisada publicada e conferida no mesmo gist em 15/10.
-- V17 candidata: medições de tons e orientação de escuta preparadas; ainda sem comparação de respostas.
+- V17: medições de tons e orientação de escuta preparadas; Mizuki confirmou três bipes na Discloud. A comparação controlada continua pendente.
+- V18: Mizuki confirmou GIFs do seletor por captura. Isso confirma os exemplos mostrados, não todos os provedores/arquivos.
+- V19: links diretos de GIF de anexos do Discord, orientação de conversa visual e tempos sem conteúdo preparados. O link real enviado foi baixado e convertido localmente, sem chamada ao modelo.
 
 PRÓXIMOS
-1. Retestar GIF do seletor com o pacote v18 na Discloud. Klipy fornece MP4 na prévia: leitura implementada com até três quadros, sem áudio, sem chave nova. Localmente validado; acesso ao exemplo real recusado por HTTP 403, sem contorno. Roteiro em pesquisa/validacao/2026-10-15-gif-seletor-v18/teste-no-discord.txt. Preservar MIDIA_ATIVA=1, banco e chave; não enviar .env no chat.
-2. Validar áudio v17 contra v16: proposta de 24 chamadas, US$ 0,25–0,50 estimados e teto US$ 1,50. Aguardar aprovação explícita; sem usar saldo anterior. Plano em pesquisa/validacao/2026-10-15-audio-v17/.
+1. Testar v19 na Discloud: GIF por link do Discord; reação sem pergunta; comentário sobre o GIF; pedido explícito de descrição. Manter MIDIA_ATIVA=1. Roteiro em pesquisa/validacao/2026-10-15-gif-conversa-v19/teste-no-discord.txt. A nova orientação ainda não teve respostas pagas medidas. A demora inicial da v18 não tem causa confirmada; usar tempos de preparo/modelo dos logs novos.
+2. Validar áudio v17 contra v16: proposta de 24 chamadas, US$ 0,25–0,50 estimados e teto US$ 1,50. Aguardar aprovação explícita; sem usar saldo anterior. Plano em pesquisa/validacao/2026-10-15-audio-v17/. Revalidar hashes/preparação antes de propor execução, pois o código de mídia evoluiu.
 3. Receber o resultado de CONFIGURAÇÃO do outro chat e só então integrar ao leitor/corretor. Preservar as 5.381 chaves ANALISE 4 e compatibilidade; PR 3 do gerador exige aprovação própria, não juntar por conta desta fila.
 
 PARA DEPOIS, QUANDO PEDIDO

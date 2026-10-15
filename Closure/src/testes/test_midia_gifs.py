@@ -10,13 +10,14 @@ from unittest.mock import AsyncMock, MagicMock, patch
 from PIL import Image
 from closure_bot import midia_gifs as gifs
 from closure_bot.midia import Midias
-from closure_bot.midia_anexos import Anexos, decodificar
+from closure_bot.midia_anexos import Anexos, decodificar, AVISO_VISUAL
 from closure_bot.modelo import montar_corpo, reserva_midia
 from testes.test_midia_anexos import pedido
 
 LINK = 'https://klipy.com/gifs/anime-my-dress-up-darling-3'
 CDN = 'https://static.klipy.com/ii/4493325008d34b7bf8cd6813cd5c1619/d4/7f/Nloy6vTYGBXbdhLIC53.mp4'
 PROXY = 'https://images-ext-1.discordapp.net/external/TgkYerDJEnilAgBC1JyGTiCoxS7BSiSuf-5fZ_-OeLU/https/' + CDN.split('https://')[1]
+DIRETO = 'https://cdn.discordapp.com/attachments/123/456/attachment.gif?ex=abc&is=def&hm=assinatura&'
 
 
 def mensagem(link=LINK, url=CDN, proxy=PROXY):
@@ -43,6 +44,23 @@ def mp4(segundos=None, fps=10):
 
 
 class Enderecos(unittest.TestCase):
+    def test_gif_direto_do_discord_com_assinatura_e_sem_previa(self):
+        for url in (DIRETO,DIRETO.replace('cdn.discordapp.com','media.discordapp.net'),DIRETO.replace('.gif?','.GIF?')):
+            with self.subTest(url=url):
+                self.assertTrue(gifs.gif_discord(url))
+                self.assertEqual(gifs.links(mensagem(link=url)),[url])
+        self.assertEqual(gifs.links(mensagem(link=DIRETO+' '+LINK)),[DIRETO,LINK])
+
+    def test_direto_nao_amplia_para_dominios_ou_formatos_arbitrarios(self):
+        for url in (DIRETO.replace('cdn.discordapp.com','cdn.discordapp.com.evil'),
+                    DIRETO.replace('/attachments/','/outro/'),DIRETO.replace('/123/','/../'),
+                    DIRETO.replace('/456/','/%2e%2e/'),DIRETO.replace('.gif?','.mp4?'),
+                    DIRETO.replace('.gif?','.png?'),DIRETO.replace('https:','http:'),
+                    DIRETO.replace('cdn.discordapp.com','cdn.discordapp.com:444'),
+                    DIRETO.replace('cdn.discordapp.com','cdn.discordapp.com@127.0.0.1'),
+                    DIRETO.replace('cdn.discordapp.com','media.giphy.com')):
+            with self.subTest(url=url):self.assertFalse(gifs.gif_discord(url))
+
     def test_link_real_e_proxy_correspondente(self):
         self.assertEqual(gifs.pagina(LINK), ('klipy', '/gifs/anime-my-dress-up-darling-3'))
         self.assertEqual(gifs.escolher(mensagem(), LINK), (PROXY, 'gif_video'))
@@ -74,6 +92,38 @@ class Enderecos(unittest.TestCase):
 
 
 class Fluxo(unittest.IsolatedAsyncioTestCase):
+    async def test_direto_baixa_url_intacta_sem_esperar_previa(self):
+        download=AsyncMock(return_value=gif());resolver=AsyncMock()
+        a=Anexos(ativo=True,download=download,resolver_gif=resolver)
+        m=mensagem(link=DIRETO);m.embeds=[]
+        p=await a.contexto(m)
+        self.assertTrue(p.partes);self.assertEqual(p.links_analisados,(DIRETO,))
+        download.assert_awaited_once_with(DIRETO);resolver.assert_not_awaited()
+        self.assertIn('GIF por link do Discord',p.nota)
+        e=pedido(p);self.assertIn(AVISO_VISUAL,e[0]['content'])
+        self.assertTrue(montar_corpo(e)['contents'][-1]['parts'][1:])
+        self.assertEqual(await Midias().contexto(m,m.content,links_analisados=p.links_analisados),'')
+
+    async def test_link_direto_expirado_ou_nao_gif_nao_chega_ao_modelo(self):
+        download=AsyncMock(side_effect=ValueError('HTTP 403'))
+        a=Anexos(ativo=True,download=download)
+        m=mensagem(link=DIRETO)
+        p=await a.contexto(m);self.assertFalse(p.partes);self.assertIn('expirado',p.nota)
+        download.side_effect=None;download.return_value=b'nao e gif'
+        self.assertFalse((await a.contexto(m)).partes)
+
+    async def test_links_diretos_respeitam_ativacao_canal_e_primeira_midia(self):
+        download=AsyncMock(return_value=gif())
+        for ativo,canais in [(False,()),(True,{20})]:
+            self.assertFalse((await Anexos(ativo=ativo,canais=canais,download=download).contexto(mensagem(link=DIRETO))).partes)
+        download.assert_not_awaited()
+        a=Anexos(ativo=True,download=download)
+        m=mensagem(link=DIRETO+' '+LINK)
+        self.assertIn('primeiro GIF',(await a.contexto(m)).nota)
+        download.assert_awaited_once_with(DIRETO)
+        download.reset_mock();m.attachments=[NS(filename='recusado.html')]
+        self.assertFalse((await a.contexto(m)).partes);download.assert_not_awaited()
+
     async def test_http_sem_redirecionamento_e_limite_no_fluxo(self):
         class Resposta:
             def __init__(self, status=200, tamanho=None, chunks=(b'gif',)):
