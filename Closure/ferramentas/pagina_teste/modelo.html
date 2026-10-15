@@ -134,7 +134,7 @@ function ativar(texto, soTermos = null) {
   return { nomes: E.map(e => e.comment), texto: E.map(e => e.content).join("\n\n"), termos };
 }
 
-// ---------- livro: âncora dos termos acionados + os blocos que mais casam com a mensagem (busca v8) ----------
+// ---------- livro: âncora dos termos acionados + os blocos que mais casam com a mensagem (busca v9) ----------
 const PARADA = new Set(("a o e de da do das dos que pra para por com sem um uma uns umas no na nos nas em é eu vc voce você tu se me te meu minha seu sua isso isto esse essa aqui ai aí la lá ja já mais menos muito pouco quando como qual quais quanto quantos onde porque pq tá ta to tô ou mas nao não sim ele ela eles elas ser ter tem tenho foi vai vou pode posso faz fazer " +
   "closure kal kaltsit kal'tsit mizuki livro regra regras dele dela deles delas oque qnt qnts cm for fosse seria tiver tivesse estiver nele nela neles nelas").split(" "));
 // "nv2", "nvl 2", "lv2" viram "nivel 2"; palavra longa fica com as 6 primeiras letras, pra "estabilizo" achar "estabilizar",
@@ -152,7 +152,7 @@ const SINONIMO = { caindo: "queda", cair: "queda", caio: "queda", upar: "nivel",
   tank: "bastia", tanker: "bastia", tanque: "bastia", ataquei: "atacar", corro: "correr", pulo: "pular", esquivo: "esquiv", voa: "voo",
   // gíria de jogo que o livro escreve em português ("stun" é Atordoado, "clash" de domínio é Disputa, "zerou o hp")
   stun: "atordo", crit: "critic", critei: "critic", critou: "critic", stunad: "atordo", stunou: "atordo", clash: "disput", zerou: "zero", zerei: "zero", zerado: "zero", zerada: "zero", zerar: "zero", conser: "reparo", consert: "reparo",
-  morrer: "morte", morre: "morte", morreu: "morte", morto: "morte", morta: "morte", pv: "vida", caneta: "lapis", vence: "vitori", venceu: "vitori", ganhador: "vitori", pular: "salto", pulo: "salto", pulei: "salto", pula: "salto", curar: "cura", curo: "cura", curando: "cura", curou: "cura",
+  morrer: "morte", morre: "morte", morreu: "morte", morto: "morte", morta: "morte", pv: "vida", caneta: "lapis", vence: "vitori", venceu: "vitori", ganhador: "vitori", pular: "salto", pulo: "salto", pulei: "salto", pula: "salto", saltar: "salto", curar: "cura", curo: "cura", curando: "cura", curou: "cura",
   // "quantos pv eu começo?" é a Vida inicial
   comeco: "inicia", comeca: "inicia", comecar: "inicia",
   // a Origem Feto virou Híbrido no R45 (item 193), e quem jogou antes ainda chama pelo nome velho
@@ -195,7 +195,7 @@ const poeTermo = (nome, i, limite = 40, M = TERMO) => { const k = tok(nome.repla
 D.livro.forEach((b, i) => {
   for (const m of b.texto.matchAll(/\[([^\]]+)\]\(#([\w-]+)\)/g)) if (POS.has(m[2])) poeTermo(m[1], POS.get(m[2]));
   for (const m of b.texto.matchAll(/^\| \*\*([^*|]+)\*\* \|/gm)) poeTermo(m[1], i);
-  for (const tab of b.texto.split(/\n(?!\|)/)) if (/^\|[^\n]*(Dano|Preço)/.test(tab.trim())) for (const m of tab.matchAll(/^\| ([^|*]+) \|/gm)) poeTermo(m[1], i);
+  for (const tab of b.texto.split(/\n(?!\|)/)) if (/^\|[^\n]*(Dano|Preço|Custo|Forma)/.test(tab.trim())) for (const m of tab.matchAll(/^\| ([^|*]+) \|/gm)) poeTermo(m[1], i);
   // títulos de seção, inteiros e em partes ("Agarrar, derrubar e empurrar" também vale "derrubar")
   if (!/exemplo/i.test(b.titulo)) for (const t of [b.titulo, ...(b.titulos || [])]) if (!/continua|exemplo/i.test(t)) for (const parte of [t, ...t.split(/,| e /)]) poeTermo(parte, i, t === b.titulo ? 100 : 40);
 });
@@ -205,6 +205,27 @@ const NEGRITO = new Map();
 D.livro.forEach((b, i) => { for (const m of b.texto.matchAll(/^\*\*([^*\n]{3,40})\.\*\*/gm)) if (!/^N[íi]vel/.test(m[1])) poeTermo(m[1], i, 8, NEGRITO); });
 // tabela por Classe ("| Classe | Nível mínimo | Pontos / PE |..."): "feitiço de classe 1" quer a linha dela; as outras colunas também contam
 const CLASSETAB = D.livro.map(b => new Set([...b.texto.matchAll(/^\| Classe \|([^\n]*)/gm)].flatMap(m => tok(m[1]))));
+// Índice das tabelas de todo o livro: cabeçalhos, nomes das linhas e eixo numérico.
+// Uma pergunta de valor precisa encontrar a tabela que cruza os campos pedidos,
+// mesmo quando o título da seção não repete a pergunta (Refino/Maestria por Nível).
+const TABELAS_VALORES = D.livro.map(b => [...b.texto.matchAll(/(?:^\|[^\n]*\|\n?)+/gm)].map(m => {
+  const linhas = m[0].trim().split("\n").filter(l => !/^\|\s*:?-/.test(l)).map(l => l.split("|").slice(1, -1).map(c => c.trim()));
+  const cab = linhas[0] || [], dados = linhas.slice(1), eixo = tok(cab[0] || "");
+  const numeros = new Set([...dados.map(l => l[0]), ...cab.slice(1)].filter(c => /^\d+$/.test(c)));
+  return { cab: new Set(tok(cab.join(" "))), eixo, numeros, nomes: dados.map(l => tok(l[0] || "").filter(w => !PARADA.has(w) && !/^\d+$/.test(w))) };
+}));
+function bonusDeTabela(i, qPal, texto) {
+  let melhor = 0;
+  const t = STRIP(texto.toLowerCase());
+  for (const tab of TABELAS_VALORES[i]) {
+    const campos = [...tab.cab].filter(w => qPal.get(w) === 1 && !tab.eixo.includes(w) && !PARADA.has(w) && !/^\d+$/.test(w));
+    if (!campos.length) continue;
+    const numerado = tab.eixo.some(w => { const m = t.match(new RegExp("\\b" + esc(w) + "[a-z]*\\s*(\\d+)\\b")); return m && tab.numeros.has(m[1]); });
+    const nomeado = tab.nomes.some(ws => ws.length && ws.every(w => qPal.get(w) === 1));
+    if (numerado || nomeado) melhor = Math.max(melhor, 10 + 6 * Math.min(campos.length, 3));
+  }
+  return melhor;
+}
 let BONUS_ANT = 10;
 const DEPOIS = { medico: "medici", medica: "medici", medicos: "medici", curandeiro: "cura" };
 const termosNa = (t, M = TERMO) => { const f = " " + tok(t).join(" ") + " ", r = new Map(); for (const [k, is] of M) if (f.includes(" " + k + " ")) for (const i of is) r.set(i, Math.max(r.get(i) || 0, k.split(" ").length)); return r; };
@@ -216,6 +237,24 @@ const NIVCAB = D.livro.map(b => new Set([...b.texto.matchAll(/\*\*N[ií]vel (\d+
 const LINHA = D.livro.map(b => { const m = new Map(); for (const l of b.texto.split("\n")) { if (!l.startsWith("|") || /^\|\s*:?-/.test(l)) continue; const cel = l.split("|").slice(1, -1); if (cel.length < 2) continue; for (const w of tok(cel[0])) if (!PARADA.has(w)) m.set(w, Math.max(m.get(w) || 0, cel.length >= 5 || /^\s*\*\*/.test(cel[0]) ? 2 : 1)); } return m; });
 // título principal da seção, pra pergunta que cobre o título inteiro ("turno" e "Turnos", "voar" e "Voo")
 const TPRIN = D.livro.map(b => tok(b.titulo).filter(w => !PARADA.has(w)));
+// Definições escritas como título ou abertura em negrito, em qualquer capítulo.
+// O nome principal prevalece sobre uma menção de mesmo nome numa subseção de outra rota.
+const nomePlano = s => " " + nrm(s).replace(/[^a-z0-9]+/g, " ").trim() + " ";
+const DEFINICOES = D.livro.flatMap((b, i) => [...b.texto.matchAll(/^#{1,6} ([^\n]+)$|^\*\*([^*\n]{3,60})\.\*\*/gm)].map(m => {
+  const nome = (m[1] || m[2]).trim(), frase = nomePlano(nome), palavras = tok(nome).filter(w => !PARADA.has(w));
+  return { i, frase, palavras, principal: frase === nomePlano(b.titulo), comum: !conteudo(nome) || (palavras.length === 1 && TITULO_COMUM.has(palavras[0])), nome };
+}).filter(d => d.palavras.length && !/^(nivel|classe|categoria|exemplo)\b/.test(STRIP(d.nome.toLowerCase()))));
+function definicoesNa(texto, familia) {
+  const frase = nomePlano(texto), grupos = new Map();
+  for (const d of DEFINICOES) {
+    if ((familia.size && !familia.has(FAM[d.i])) || !frase.includes(d.frase)) continue;
+    if (d.comum && !new RegExp("\\b(?:melhoria|restricao|talento|aptidao|condicao|pericia|forma|origem|trilha|bencao) (?:d[aeo] )?" + esc(d.frase.trim()) + "\\b").test(frase)) continue;
+    if (!grupos.has(d.frase)) grupos.set(d.frase, []);
+    grupos.get(d.frase).push(d);
+  }
+  const achadas = [...grupos.values()].flatMap(ds => ds.some(d => d.principal) ? ds.filter(d => d.principal) : ds);
+  return [...new Set(achadas.sort((a, b) => b.palavras.length - a.palavras.length || Number(b.principal) - Number(a.principal)).map(d => d.i))];
+}
 // página de exemplo de mesa conta menos que a regra, a não ser que peçam exemplo
 const EXEMPLO = D.livro.map(b => /exemplo/i.test(b.titulo));
 const TABELA = D.livro.map(b => /Progressão d[oa] (Caminho|Trilha)/.test(b.texto));
@@ -229,10 +268,37 @@ const CONVERSA = new Set(tok("tudo perdido perdida entendi entender obrigado obr
 // a mensagem anterior só passa o assunto adiante se ela mesma era pergunta de regra
 // cara de pergunta: palavra de regra comum ("dano", "vida", "carga", "golpe") só puxa o livro em pergunta; afirmação solta ("que dia cheio") não
 const PERG = /\?|(?<![a-z])(?:como|cm|qual|quais|quanto|quantos|quanta|quantas|qnto|qnta|qntos|qnts|qnt|qto|qtos|pode|posso|podemos|da pra|oq|o que|oque|fun[cs]iona\w*|serve|precis\w*|explic\w*|me diz|me fala|fala d[eoa]|fala sobre|me conta|quero saber|duvida|resume|resumo|lista|mostra|ensina|tem como|tem desconto|(?:quero|queria|preciso|vou) (?:saber|entender|fazer|criar|montar|comprar|fabricar)|acho que|sera que|quando)(?![a-z])/;
+// Pedido sem outro assunto ("explica melhor", "pode aprofundar?") retoma a última regra.
+// "explica café" tem assunto próprio e não herda o feitiço da mensagem anterior.
+const MAIS_DETALHE = new Set(tok("explica explicar melhor detalha detalhar detalhe detalhes aprofunda aprofundar funciona favor novamente"));
+const retomaDetalhe = s => { const ws = tok(s).filter(w => !PARADA.has(w)); return ws.length > 0 && ws.every(w => MAIS_DETALHE.has(w)) && ws.some(w => /^(explic|detalh|aprofu)/.test(w)); };
+// Uma conta de montagem precisa do orçamento E da conversão/limite da Forma.
+// As fontes conservam as tabelas do livro; não há números de regra copiados no código.
+function fontesDaMontagem(texto) {
+  const t = nrm(texto);
+  const amparo = /\b(cura\w*|curo|cure\w*|apoio|onda|vida temporaria)\b/.test(t);
+  const conta = /\b(classe|ponto\w*|orcamento|montagem|montar|maxim\w*|teto|limite\w*|dado\w*|custo|custa|pe)\b/.test(t);
+  const especial = /\b(especial|especiais|habilidade\w*)\b/.test(t) && /\b(invoc\w*|entidade\w*|shikigami\w*)\b/.test(t);
+  const feitico = /\b(feitic\w*|manejo\w*|forma|formas)\b/.test(t);
+  if ((!feitico && !especial && !/\btecnica maxima\b/.test(t)) || (!conta && !(amparo && /\bformas?\b/.test(t)))) return [];
+  if (/\btecnica maxima\b/.test(t)) return ["fundamento--maxima", "fundamento--maximadano"];
+  if (especial) return ["construcao--entidades-especiais", "construcao--entidades-saldo"];
+  if (/\bclasse classe0\b/.test(t)) return ["fundamento--classezero", ...(amparo ? ["fundamento--amparoformas"] : [])];
+  if (amparo) return ["fundamento--pontos", "fundamento--amparoformas"];
+  if (/\bdano\b/.test(t)) return ["fundamento--pontos", "fundamento--danolimites"];
+  if (/\b(ponto\w*|orcamento|montagem|montar|custo|custa)\b/.test(t)) return ["fundamento--pontos"];
+  return [];
+}
+// Duas definições que dependem de uma seção separada para a explicação completa.
+// Só entram ao explicar a aptidão inteira, sem substituir uma dúvida pontual de custo/requisito.
+const COMPLEMENTOS_APTIDAO = new Map([
+  ["aptidoes--apt-reversa", "aptidoes--apt-energia-positiva"],
+  ["aptidoes--apt-simples", "aptidoes--apt-simples-duracao"],
+]);
 // a anterior tem cara de regra também quando perguntou de um termo do livro ("qnto eu pulo com força 3?" → Saltos)
 // (palavra de regra na anterior só conta se ela perguntava ou tinha número: "sofá no escritório, que vida" não é regra)
 const temCaraDeRegra = s => { const n = nrm(s); return ((PERG.test(n) || /\d/.test(n)) && REGRA.test(n)) || tok(s).some(w => FAMILIA_DE.has(w)) || (PERG.test(n) && termosNa(s).size > 0); };
-function buscar(qPal, familia, nivel, numNivel = []) {
+function buscar(qPal, familia, nivel, numNivel = [], texto = "") {
   return BTOK.map((c, i) => {
     if (familia.size && !familia.has(FAM[i])) return [0, null];
     let s = 0; for (const [w, peso] of qPal) { const f = c.get(w); if (f) s += peso * Math.log(1 + NB / DF.get(w)) * (1 + Math.log(f)); }
@@ -244,6 +310,7 @@ function buscar(qPal, familia, nivel, numNivel = []) {
     for (const [w, peso] of qPal) if (peso === 1 && DF.get(w) <= 30 && LINHA[i].has(w)) s += 4 * LINHA[i].get(w);
     // título inteiro na pergunta; com duas palavras ou mais ("Reparo do corpo") é quase certeza
     if (TPRIN[i].length && TPRIN[i].every(w => qPal.get(w) === 1)) s += TPRIN[i].length > 1 ? 8 : 3;
+    s += bonusDeTabela(i, qPal, texto);
     if (EXEMPLO[i] && !qPal.has("exempl")) s *= 0.6;
     return [s, D.livro[i], i];
   }).filter(x => x[1]).sort((a, b) => b[0] - a[0]);
@@ -281,10 +348,12 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   const ult = anteriores[anteriores.length - 1] || "", penult = anteriores.length > 1 ? anteriores[anteriores.length - 2] : "";
   const ultSeg = SEGUIMENTO.test(t0(ult)) || tok(ult).filter(w => !PARADA.has(w)).length <= 2;
   const anterior = ultSeg && penult ? penult + " " + ult : ult;
-  const t = nrm(texto).replace(/atac\w*\s+(duas|2)\s+vezes|dois ataques|mais de um ataque/g, "$& ataque extra"), seg = anterior && temCaraDeRegra(anterior) && (liga || (proprias <= 2 && (REGRA.test(t) || /\d/.test(t))));
+  const detalhe = retomaDetalhe(texto);
+  const aspecto = /^(quanto (?:custa|gasta)|qual (?:e )?(?:o )?custo|quais (?:sao )?(?:os )?requisitos)[?.!]*$/.test(t0(texto));
+  const t = nrm(texto).replace(/atac\w*\s+(duas|2)\s+vezes|dois ataques|mais de um ataque/g, "$& ataque extra"), seg = anterior && temCaraDeRegra(anterior) && (liga || detalhe || aspecto || (proprias <= 2 && (REGRA.test(t) || /\d/.test(t))));
   const qPal = new Map();
   // a correção de digitação só entra depois que a mensagem já tem cara de regra; antes, "música" virava "munição"
-  for (const w of tok(texto)) if (!PARADA.has(w) && !CONVERSA.has(w) && DF.has(w)) qPal.set(w, 1);
+  if (!detalhe) for (const w of tok(texto)) if (!PARADA.has(w) && !CONVERSA.has(w) && DF.has(w)) qPal.set(w, 1);
   // "e no 15?" depois de uma pergunta de nível: o número é o nível
   if (seg && /(?<![a-z])nivel(?![a-z0-9])/.test(nrm(anterior))) for (const n of t.match(/(?<![a-z0-9])\d{1,2}(?![a-z0-9])/g) || []) if (DF.has("nivel" + n)) qPal.set("nivel" + n, 1);
   // "e o bloquear?" depois de uma pergunta do Guia: palavra que dá nome a poucas seções de fora do Caminho da anterior é assunto novo, e a anterior não passa nada
@@ -313,7 +382,7 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   // Trilha ou página com nome de palavra comum ("Assassino", "Muro", "Punho") só abre a busca em pergunta: "vi um filme de assassino" não
   const familiaAbre = familia.size && (pergunta || /\d/.test(t) || [...qPal.keys()].some(w => FAMILIA_DE.has(w) && !FAMILIA_TIT.has(w)));
   if (qPal.size && (termos.length || familiaAbre || titulo.size || seg || comTermo.size || ((pergunta || /\d/.test(semAspas)) && REGRA.test(semAspas)))) {
-    for (const w of tok(texto)) if (!PARADA.has(w) && !CONVERSA.has(w) && !DF.has(w)) { const c = corrigir(w); if (DF.has(c) && !CONVERSA.has(c) && !qPal.has(c)) qPal.set(c, 1); }
+    if (!detalhe) for (const w of tok(texto)) if (!PARADA.has(w) && !CONVERSA.has(w) && !DF.has(w)) { const c = corrigir(w); if (DF.has(c) && !CONVERSA.has(c) && !qPal.has(c)) qPal.set(c, 1); }
     const negrito = termosNa(texto, NEGRITO);
     // seguimento curto ("e sem correr antes?", "e a derrubado?"): as seções que a pergunta anterior trouxe ganham bônus
     const doAnterior = new Set(seg && !fundo && proprias <= 2 ? blocosLivro(ult, ativar(ult).termos, penult ? [penult] : [], 1).slice(0, 2).map(b => D.livro.indexOf(b)) : []);
@@ -327,7 +396,7 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
     // (só quando o Caminho veio de apelido, como "tank"; com o nome escrito, "habilidade do guia", a busca continua no Caminho)
     const apelido = ![...qPal.keys()].some(w => FAMILIA_DE.has(w) && t.includes(w));
     const naFamilia = apelido && familia.size && comTermo.size && ![...comTermo.keys()].some(i => familia.has(FAM[i])) ? new Set() : familia;
-    const nota = buscar(qPal, naFamilia, nivel, numNivel).map(([s, b, i]) => [s + (titulo.get(i) || 0) + (soTitulo.has(i) ? 12 : 0) + (doAnterior.has(i) && [...qPal].some(([w, p]) => p === 1 && BTOK[i].has(w)) ? BONUS_ANT : 0) + (CLASSETAB[i].size && [...qPal].some(([w, p]) => p === 1 && /^classe[1-7]$/.test(w)) ? 6 + 3 * [...qPal.keys()].filter(w => CLASSETAB[i].has(w) || (w === "preco" && (CLASSETAB[i].has("pe") || CLASSETAB[i].has("ponto")))).length : 0) + (comTermo.has(i) && !repete ? 4 + 4 * comTermo.get(i) : negrito.has(i) ? 4 + 4 * negrito.get(i) : 0), b]).sort((a, b) => b[0] - a[0]);
+    const nota = buscar(qPal, naFamilia, nivel, numNivel, texto).map(([s, b, i]) => [s + (titulo.get(i) || 0) + (soTitulo.has(i) ? 12 : 0) + (doAnterior.has(i) && [...qPal].some(([w, p]) => p === 1 && BTOK[i].has(w)) ? BONUS_ANT : 0) + (CLASSETAB[i].size && [...qPal].some(([w, p]) => p === 1 && /^classe[1-7]$/.test(w)) ? 6 + 3 * [...qPal.keys()].filter(w => CLASSETAB[i].has(w) || (w === "preco" && (CLASSETAB[i].has("pe") || CLASSETAB[i].has("ponto")))).length : 0) + (comTermo.has(i) && !repete ? 4 + 4 * comTermo.get(i) : negrito.has(i) ? 4 + 4 * negrito.get(i) : 0), b]).sort((a, b) => b[0] - a[0]);
     // o melhor entra se tiver nota mínima; o segundo só se chegar perto do primeiro
     if (nota[0] && nota[0][0] >= 4) { achados.push(nota[0][1]); if (nota[1] && nota[1][0] >= Math.max(6, 0.6 * nota[0][0])) achados.push(nota[1][1]); }
     // pergunta de um Caminho sem habilidade nem nível nomeado ("o guia gasta quanto PE pra ajudar?"): a página da progressão, que traz a habilidade base, entra junto
@@ -352,7 +421,30 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   // até três blocos: o que a busca achou vem antes da âncora genérica do termo ("Caminho", "PE")
   const out = [];
   if (ecoComplemento) out.push(ecoComplemento);
-  for (const b of [...achados.slice(0, 1), ...ancoras.slice(0, 1), ...achados.slice(1), ...ancoras.slice(1)]) if (!out.includes(b)) out.push(b);
+  const assunto = herda ? anterior + " " + texto : texto;
+  const fontes = pergunta || detalhe ? fontesDaMontagem(assunto) : [];
+  const aptidoes = [...comTermo.keys()].filter(i => FAM[i] === "aptidoes" && !["aptidoes--apt-refino", "aptidoes--apt-marcos", "aptidoes--apt-catalogo"].includes(D.livro[i].ancora));
+  if (pergunta && !aptidoes.length && /\baptidoes\b/.test(t) && /\b(quais|lista\w*|catalogo|todas|disponiveis)\b/.test(t)) fontes.push("aptidoes--apt-catalogo", "aptidoes--apt-refino");
+  const definidas = pergunta || detalhe ? definicoesNa(assunto, familia) : [];
+  for (const i of definidas) fontes.push(D.livro[i].ancora);
+  // Preço de peça nomeada: definição (Leve/Média/Pesada) junto da tabela da Classe.
+  if (definidas.some(i => FAM[i] === "catalogo") && /\bclasse\b/.test(t) && /\b(custo|custa|preco)\b/.test(t)) fontes.push("fundamento--pontos");
+  // A entrada da aptidão vem antes da menção à mesma aptidão numa rota de criação.
+  if (!fontes.length) for (const i of aptidoes) fontes.push(D.livro[i].ancora);
+  if (detalhe && !fontes.length && achados[0] && FAM[POS.get(achados[0].ancora)] === "aptidoes") fontes.push(achados[0].ancora);
+  // A concessão de nível/refino das sementes está na criação da rota, não na lista de sementes.
+  if (/\b(requisito\w*|aprend\w*|nivel|refino)\b/.test(t) && fontes.some(a => ["aptidoes--apt-reversa", "aptidoes--apt-simples", "aptidoes--apt-petala", "aptidoes--apt-propria"].includes(a))) fontes.push("rotas--rota-sem-tecnica");
+  const inteira = (detalhe || /\bo que (?:e|faz)\b|\bo que [^?!.]{1,70}\bfaz\b|\bcomo funciona\b|\bexplic\w*|\bme (?:fala|conta) (?:mais )?(?:sobre|d[aeo])\b/.test(t)) && !/\b(quanto\w*|custo|custa|requisito\w*|nivel|refino|so|apenas|resum\w*)\b/.test(t);
+  if (inteira) for (const a of [...fontes, ...achados.map(b => b.ancora)]) if (COMPLEMENTOS_APTIDAO.has(a)) fontes.push(COMPLEMENTOS_APTIDAO.get(a));
+  for (const a of fontes) { const i = POS.get(a); if (i !== undefined && !out.includes(D.livro[i])) out.push(D.livro[i]); }
+  for (const b of [...achados.slice(0, 1), ...ancoras.slice(0, 1), ...achados.slice(1), ...ancoras.slice(1)]) {
+    // Uma menção à cura não torna todo feitiço um Manejo da semente Energia Reversa.
+    if (fontes.length && fontes.some(a => a.startsWith("fundamento--") || a.startsWith("construcao--entidades")) && b.ancora.startsWith("rotas--") && !/\b(rota\w*|semente\w*|manejo\w*|sem tecnica)\b/.test(nrm(assunto))) continue;
+    if (fontes.includes("fundamento--pontos") && b.ancora.startsWith("construcao--") && !/\b(invoc\w*|entidade\w*|shikigami\w*)\b/.test(nrm(assunto))) continue;
+    // Não misture o teto da autocura de uma aptidão com o da Forma Cura ou da especial.
+    if (fontes.some(a => a === "fundamento--amparoformas" || a === "construcao--entidades-saldo") && b.ancora.startsWith("aptidoes--") && !definidas.includes(POS.get(b.ancora)) && !aptidoes.includes(POS.get(b.ancora))) continue;
+    if (!out.includes(b)) out.push(b);
+  }
   return out.slice(0, 3);
 }
 
@@ -428,7 +520,8 @@ function montarPrompt(msg, nome) {
   const regras = "Você está num teste de personagem de um bot de Discord. Siga o prompt de sistema abaixo à risca. Cada mensagem minha traz o contexto ativado, o estado do momento, a mensagem nova e um lembrete no fim. Responda só com a fala da personagem, sem prefixo de nome, sem aspas e sem comentário.\n\n=== PROMPT DE SISTEMA ===\n" + P.sistema;
   const hist = [];
   for (const t of turnos.slice(-24)) hist.push(t.de === "user" ? { role: "user", content: `${t.nome}: ${t.texto}` } : { role: "assistant", content: t.texto });
-  const ultimo = `[Contexto ativado]\n${ctx}\n\n${linhaEstado(nome, $("pron").value)}\n\n[Mensagem]\n${nome.trim() || "alguém"}: ${msg}\n\n${P.lembrete}${foraDoPlantao(msg, a.termos.length > 0, a.nomes.some(n => n.startsWith("Mundo:") && n !== "Mundo: premissa"))}${repeticoes()}`;
+  const consulta = livro.length ? "\n[Consulta do livro: se perguntam o que é ou como funciona uma regra nomeada, explique os requisitos, a ação, o custo, o efeito e os limites presentes na entrada, em parágrafos curtos e na sua voz. Os avisos de brevidade não devem cortar regras necessárias. Numa dúvida pontual, responda só ao aspecto pedido. Numa conta, use as tabelas e fórmulas fornecidas, mostre o cálculo e o resultado; diferencie quantidade de dados e valor máximo da rolagem quando couber. Não invente dados ausentes nem peça um trecho que já está no contexto.]" : "";
+  const ultimo = `[Contexto ativado]\n${ctx}\n\n${linhaEstado(nome, $("pron").value)}\n\n[Mensagem]\n${nome.trim() || "alguém"}: ${msg}\n\n${P.lembrete}${foraDoPlantao(msg, a.termos.length > 0, a.nomes.some(n => n.startsWith("Mundo:") && n !== "Mundo: premissa"))}${consulta}${repeticoes()}`;
   return { input: [{ role: "user", content: regras }, ...hist, { role: "user", content: ultimo }], ativadas: a.nomes.concat(livro.map(b => "Livro: " + b.titulo)), ctx };
 }
 
