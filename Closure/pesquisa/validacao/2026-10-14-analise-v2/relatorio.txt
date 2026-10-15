@@ -48,4 +48,5 @@ Proteção pela Lapidação na rota sem energia já estava implementada e perman
 
 A ampliação foi aplicada só a cópias de teste; a ficha oficial não foi reconstruída. O novo pacote do bot não
 foi enviado à Discloud. As fichas atuais em formato 1 continuam funcionando; as entradas novas precisam da
-ANALISE 2. O PR do gerador fica para revisão; a autorização automática de merge abrange somente RPG---BOT.
+ANALISE 2. O PR 41 do bot foi integrado; o PR 2 do gerador foi aprovado individualmente pelo Mizuki e
+integrado também. A autorização automática para futuros merges continua abrangendo somente RPG---BOT.
