@@ -1,0 +1,17 @@
+{
+  "data": "2026-10-15",
+  "testes": 552,
+  "passaram": 551,
+  "pulados": 1,
+  "segundos": 130.281,
+  "motores_iguais": 14,
+  "motores_total": 14,
+  "titulos_com_fonte": 425,
+  "titulos_total": 425,
+  "chamadas_modelo_reais": 0,
+  "consultas_publicas_oembed": 1,
+  "nucleo_sha256": "3cb97b96825df127e7e12785991f2bd96c708b9202cce84bc4e53e2676ff67a8",
+  "cards_alterados": false,
+  "livro_alterado": false,
+  "implantado": false
+}

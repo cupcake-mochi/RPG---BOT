@@ -541,6 +541,26 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   if (ecoComplemento) out.push(ecoComplemento);
   const assunto = herda ? anterior + " " + texto : texto;
   const fontes = pergunta || detalhe ? fontesDaMontagem(assunto) : [];
+  // Um item citado por nome precisa da sua tabela, mesmo no fim de uma
+  // conversa longa. Exemplos de compras não substituem o preço unitário.
+  if (pergunta && /\b(preco|valor|custa|custam|comprar|vender)\b/.test(nrm(assunto))) {
+    const fraseItem = nomePlano(assunto);
+    const itens = [];
+    D.livro.forEach((b, i) => {
+      if (FAM[i] !== "equip") return;
+      const linhas = b.texto.split("\n");
+      for (const linha of linhas) {
+        if (!linha.startsWith("|") || /^\|\s*:?-/.test(linha)) continue;
+        const celulas = linha.split("|").slice(1, -1);
+        if (celulas.length < 5) continue;
+        const nome = celulas[0].replace(/[*`]/g, "").replace(/\([^)]*\)/g, "").trim();
+        const palavras = tok(nome).filter(w => !PARADA.has(w));
+        if (palavras.length && fraseItem.includes(nomePlano(nome)) && palavras.some(w => (DF.get(w) || NB) <= 60)) itens.push([nome.length, b.ancora]);
+      }
+    });
+    itens.sort((a, b) => b[0] - a[0]);
+    fontes.unshift(...[...new Set(itens.map(x => x[1]))]);
+  }
   const aptidoes = [...comTermo.keys()].filter(i => FAM[i] === "aptidoes" && !["aptidoes--apt-refino", "aptidoes--apt-marcos", "aptidoes--apt-catalogo"].includes(D.livro[i].ancora));
   if (pergunta && !aptidoes.length && /\baptidoes\b/.test(t) && /\b(quais|lista\w*|catalogo|todas|disponiveis)\b/.test(t)) fontes.push("aptidoes--apt-catalogo", "aptidoes--apt-refino");
   const definidas = pergunta || detalhe ? definicoesNa(assunto, familia) : [];

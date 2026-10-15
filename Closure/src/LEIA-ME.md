@@ -1,5 +1,7 @@
 # src: código do bot
 
+**Revisão de memória, mídia e preços (15/10):** conversa recente agora usa o SQLite e a cifra existentes, mantendo 12 turnos por canal/personagem, 30 minutos sem conversa e corte às 4h30; limpeza periódica e remoção do fio pelo comando de apagar dados. Reinício não recupera conversas já perdidas nem dispensa preservar banco/chave na hospedagem. Identificação textual de até dois links YouTube por mensagem via oEmbed, com cache, timeout e prévia do Discord como reserva; sem áudio/vídeo/imagem, sem API de modelo extra. Metadados acompanham o histórico sem entrar na busca do livro ou na reflexão. Preço de item nomeado prioriza a tabela; reproduzida/corrigida a mensagem longa sobre música e katana. Livro R51 e cards preservados. Mizuki vai corrigir a regra de Origem no repositório do sistema; aguardar essa alteração antes de sincronizar. Sem CONFIGURAÇÃO ou implantação. Detalhes em `pesquisa/validacao/2026-10-15-memoria-midia-precos/relatorio.txt`.
+
 Esqueleto da fase 1 do `docs/PLANEJAMENTO.md`, escrito em 13/10/2026. O bot antigo em
 `../../Closure Legado/` serve só de consulta.
 
@@ -64,7 +66,8 @@ do bot, os controles antigos também precisam de nova análise. Funciona em `/fi
 | `closure_bot/cogs/admin.py` | `/ajuda` (a lista sai dos próprios comandos, e cada pessoa só vê os que pode usar), `/ping`, `/status`, `/teste_webhook` (este só pro dono) |
 | `closure_bot/cogs/atalho.py` | Comandos escritos no chat com `GC:` na frente (`GC:ajuda`, `GC:clima Quioto`, `GC:ping`, `GC:status`). Os que mexem em dado da pessoa ficam só na barra, onde a resposta é só pra ela |
 | `closure_bot/cogs/chat.py` | Escuta as mensagens, decide quem responde, monta o pedido, chama o modelo e envia a fala |
-| `closure_bot/conversa.py` | A conversa em andamento com cada personagem por canal, só em memória (30 min, 12 turnos) |
+| `closure_bot/conversa.py` | Conversa recente no SQLite existente (30 min sem conversa, 12 turnos, corte às 4h30); restaura após reiniciar |
+| `closure_bot/midia.py` | Identificação textual de YouTube e prévias; cache limitado, sem leitura de áudio/vídeo/imagem |
 | `closure_bot/prompt.py` | Monta o pedido ao modelo pela ponte do site, com o JavaScript da página rodando dentro do Python; é o único ponto que depende dela |
 | `../iniciar.py`, `../discloud.config`, `../ferramentas/empacotar.py` | Início, configuração e pacote pra hospedagem |
 | `closure_bot/cogs/regras.py` | `/livro` (e `GC:livro`, `GC:sistema`): link do livro de regras em PDF, com quem está de plantão. A consulta por comando é da fase 2 |

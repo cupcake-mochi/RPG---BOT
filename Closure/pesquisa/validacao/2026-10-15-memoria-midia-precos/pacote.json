@@ -1,0 +1,20 @@
+{
+  "pacote": "src/var/closure-lab-memoria-midia-v12.zip",
+  "sha256": "8dda9ab31862bdbc524a493b6301b6c14a5bbd8aa0465dcb745c6fee0b398cee",
+  "bytes": 985202,
+  "arquivos": 51,
+  "diferencas_versus_v11": [
+    "src/closure_bot/bot.py",
+    "src/closure_bot/cogs/chat.py",
+    "src/closure_bot/cogs/pessoa.py",
+    "src/closure_bot/conversa.py",
+    "src/closure_bot/midia.py",
+    "src/closure_bot/prompt.py",
+    "src/closure_bot/registro.py",
+    "src/var/site/nucleo.js"
+  ],
+  "sem_env": true,
+  "segredos_conferidos_sem_expor_valores": true,
+  "origens_identicas": true,
+  "python_compila": true
+}

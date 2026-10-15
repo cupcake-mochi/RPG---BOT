@@ -10,6 +10,7 @@ import sys
 from pathlib import Path
 
 from .conversa import Turno
+from .midia import AVISO
 from .plantao import CLOSURE, KALTSIT
 
 PONTE = Path(__file__).resolve().parents[2] / "ferramentas" / "prompt_do_site"
@@ -38,4 +39,14 @@ async def montar(persona: str, mensagem: str, *, nome: str, pronomes: str | None
     # fora do laço principal: a primeira chamada carrega a página (meio segundo) e as seguintes levam uns 40 ms
     montado = await asyncio.to_thread(site_prompt.montar, sigla, mensagem, nome=nome, pronomes=pronomes or "", turnos=conversa,
                                       falas_anteriores=falas_anteriores, estado=estado)
-    return montado["input"]
+    entrada = montado["input"]
+    # Metadados antigos acompanham o turno, mas ficam fora da busca do livro.
+    for pedido, turno in zip(entrada[1:-1], turnos[-24:]):
+        if turno.midia:
+            pedido["content"] += "\n\n" + turno.midia
+    entrada[0]["content"] += "\n\n" + AVISO
+    if not turnos:
+        entrada[0]["content"] += ("\n[Sem histórico recente disponível neste pedido. Se perguntarem onde a conversa parou, "
+                                  "diga que não tem esse trecho disponível e peça uma lembrança; "
+                                  "isso não prova que nunca houve conversa ou assunto anterior.]")
+    return entrada

@@ -31,9 +31,15 @@ class Pessoa(commands.Cog):
 
     async def cog_load(self) -> None:
         self.reflexao_diaria.start()
+        self.limpeza_conversas.start()
 
     async def cog_unload(self) -> None:
         self.reflexao_diaria.cancel()
+        self.limpeza_conversas.cancel()
+
+    @tasks.loop(minutes=1)
+    async def limpeza_conversas(self) -> None:
+        self.bot.conversas.limpar(datetime.now(FUSO))
 
     @tasks.loop(time=HORA_DA_REFLEXAO)
     async def reflexao_diaria(self) -> None:
@@ -71,7 +77,8 @@ class Pessoa(commands.Cog):
             dias = self.bot.registro.dias_de_conversa(autor_id=eu, persona=persona.chave)
             linhas.append(f"{persona.nome}: você falou com ela em {dias} dia(s) diferente(s) "
                           f"(intimidade {intimidade(dias)} de {len(DIAS_POR_NIVEL)}).")
-        linhas.append("Quando você chama uma delas, o texto da mensagem fica guardado até as 4h30, vira no máximo alguns "
+        linhas.append("A conversa recente guarda até 12 falas, por até 30 minutos sem conversa ou até as 4h30, "
+                      "mesmo após reiniciar. Quando você chama uma delas, o texto da mensagem fica guardado até as 4h30, vira no máximo alguns "
                       "fatos como os de cima e é apagado. /meu_fato acrescenta um, /esquecer_fato tira um, "
                       "/apagar_meus_dados apaga tudo.")
         if self.bot.config.politica_url:
