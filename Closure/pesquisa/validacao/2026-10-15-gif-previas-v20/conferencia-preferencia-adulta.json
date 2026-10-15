@@ -1,0 +1,54 @@
+{
+  "casos": [
+    {
+      "guia": "kaltsit",
+      "marcado_nsfw": true,
+      "canal_permitido": true,
+      "orientacao_adulta_ativa": true,
+      "identidade_texto_midia_preservados": true,
+      "sem_safety_settings": true
+    },
+    {
+      "guia": "kaltsit",
+      "marcado_nsfw": false,
+      "canal_permitido": true,
+      "orientacao_adulta_ativa": false,
+      "identidade_texto_midia_preservados": true,
+      "sem_safety_settings": true
+    },
+    {
+      "guia": "kaltsit",
+      "marcado_nsfw": true,
+      "canal_permitido": false,
+      "orientacao_adulta_ativa": false,
+      "identidade_texto_midia_preservados": true,
+      "sem_safety_settings": true
+    },
+    {
+      "guia": "closure",
+      "marcado_nsfw": true,
+      "canal_permitido": true,
+      "orientacao_adulta_ativa": true,
+      "identidade_texto_midia_preservados": true,
+      "sem_safety_settings": true
+    },
+    {
+      "guia": "closure",
+      "marcado_nsfw": false,
+      "canal_permitido": true,
+      "orientacao_adulta_ativa": false,
+      "identidade_texto_midia_preservados": true,
+      "sem_safety_settings": true
+    },
+    {
+      "guia": "closure",
+      "marcado_nsfw": true,
+      "canal_permitido": false,
+      "orientacao_adulta_ativa": false,
+      "identidade_texto_midia_preservados": true,
+      "sem_safety_settings": true
+    }
+  ],
+  "chamadas_pagas": 0,
+  "respostas_do_modelo_avaliadas": false
+}

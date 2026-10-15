@@ -1,0 +1,48 @@
+{
+  "casos": [
+    {
+      "persona": "kaltsit",
+      "caso": "propria",
+      "identidade_do_prompt_preservada": true,
+      "orientacao_presente": true,
+      "imagens_de_referencia_extras": 0
+    },
+    {
+      "persona": "kaltsit",
+      "caso": "outra",
+      "identidade_do_prompt_preservada": true,
+      "orientacao_presente": true,
+      "imagens_de_referencia_extras": 0
+    },
+    {
+      "persona": "kaltsit",
+      "caso": "incerta",
+      "identidade_do_prompt_preservada": true,
+      "orientacao_presente": true,
+      "imagens_de_referencia_extras": 0
+    },
+    {
+      "persona": "closure",
+      "caso": "propria",
+      "identidade_do_prompt_preservada": true,
+      "orientacao_presente": true,
+      "imagens_de_referencia_extras": 0
+    },
+    {
+      "persona": "closure",
+      "caso": "outra",
+      "identidade_do_prompt_preservada": true,
+      "orientacao_presente": true,
+      "imagens_de_referencia_extras": 0
+    },
+    {
+      "persona": "closure",
+      "caso": "incerta",
+      "identidade_do_prompt_preservada": true,
+      "orientacao_presente": true,
+      "imagens_de_referencia_extras": 0
+    }
+  ],
+  "chamadas_reais": 0,
+  "limite": "Verifica montagem e escopo da orientação, não acerto do reconhecimento."
+}

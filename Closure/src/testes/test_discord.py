@@ -291,7 +291,26 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
 
     async def test_comandos_registrados(self):
         self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ajuda", "ficha", "livro", "ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
-                          "meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados"})
+                          "meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados", "responder_nsfw", "nsfw_canal"})
+
+    async def test_preferencia_adulta_chega_ao_modelo_sem_mudar_rotas_ou_salvar_config_no_historico(self):
+        from closure_bot.conteudo_adulto import ATIVO, CONDUTA, INATIVO
+        from types import SimpleNamespace
+        self.bot.registro.definir_responder_nsfw(1, True)
+        canal, _ = _canal()
+        for marcado in (True, False):
+            self.montar.return_value = [{'role': 'user', 'content': 'IDENTIDADE'}, {'role': 'user', 'content': 'opinião?'}]
+            m = _mensagem('Closure, sua opinião?', canal)
+            m.guild = SimpleNamespace(id=1)
+            canal.is_nsfw.return_value = marcado
+            await self.bot.get_cog('Chat').on_message(m)
+            entrada = self.bot.modelos.responder.call_args.args[0]
+            self.assertIn(ATIVO if marcado else INATIVO, entrada[0]['content'])
+            self.assertIn(CONDUTA, entrada[0]['content'])
+            self.assertEqual(self.bot.modelos.responder.await_count, 1 if marcado else 2)
+            self.assertNotIn('usar_argon', self.bot.modelos.responder.call_args.kwargs)
+            historico = self.bot.registro._db.execute('SELECT texto FROM conversas_recentes').fetchone()[0]
+            self.assertNotIn(CONDUTA, historico)
 
     async def test_modo_misto_so_no_canal_escolhido(self):
         from dataclasses import replace
@@ -555,7 +574,13 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertEqual((primeiro.args, primeiro.kwargs["nome"], primeiro.kwargs["turnos"], primeiro.kwargs["falas_anteriores"]),
                          (("closure", "closure, o que é Refino?"), "rafa", [], []))
         self.assertIn("[Estado agora:", primeiro.kwargs["estado"]["bloco"])
-        self.assertEqual(self.bot.modelos.responder.call_args.args[0], [{"role": "user", "content": "PEDIDO"}])
+        entrada = self.bot.modelos.responder.call_args.args[0]
+        self.assertEqual(len(entrada), 1)
+        self.assertEqual(entrada[0]['role'], 'user')
+        self.assertTrue(entrada[0]['content'].startswith('PEDIDO\n\n'))
+        from closure_bot.conteudo_adulto import CONDUTA, INATIVO
+        self.assertIn(CONDUTA, entrada[0]['content'])
+        self.assertIn(INATIVO, entrada[0]['content'])
         # a segunda mensagem leva a conversa, e a fala desta conversa não entra de novo como "fala anterior"
         await chat.on_message(_mensagem("closure, e quanto custa?", canal))
         segundo = self.montar.call_args.kwargs

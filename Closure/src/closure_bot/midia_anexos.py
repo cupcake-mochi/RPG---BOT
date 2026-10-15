@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import asyncio
 import json
+import logging
 import os
 import re
 import unicodedata
@@ -15,6 +16,8 @@ from urllib.parse import urlsplit
 from .midia import AVISO
 from . import midia_gifs
 from .midia_preparar import MAX_BYTES
+
+log = logging.getLogger(__name__)
 
 EXT_IMAGEM = {'.png', '.jpg', '.jpeg', '.webp', '.gif'}
 EXT_AUDIO = {'.wav', '.mp3', '.ogg', '.opus', '.flac', '.m4a', '.webm'}
@@ -50,6 +53,14 @@ AVISO_VISUAL = ('[Conversa com imagem ou GIF: acompanhe a intenção da mensagem
     'Se o sentido da mídia não estiver claro, admita a dúvida de forma breve.]')
 
 
+AVISO_REPRESENTACAO = ('[Reconhecimento em imagens: ilustração, fanart, meme ou outra roupa podem representar '
+    'você ou a outra guia. Quando a identidade for reconhecível, reconheça a si mesma ou a outra guia, '
+    'mantendo sua identidade atual. Não negue a representação só por ser desenho ou não ser fotografia. '
+    'Se houver dúvida, indique a incerteza; não atribua automaticamente a você uma figura parecida. '
+    'Reconhecer a representação não comprova que você usou aquela roupa ou viveu a cena. '
+    'Não crie lembranças, ações, relações ou história a partir da imagem.]')
+
+
 @dataclass
 class Preparo:
     partes: list[dict] = field(default_factory=list, repr=False)
@@ -81,7 +92,7 @@ class Preparo:
             if any(p.get('inlineData', {}).get('mimeType', '').startswith('audio/') for p in self.partes):
                 entrada[0]['content'] += '\n\n' + AVISO_AUDIO
             if any(p.get('inlineData', {}).get('mimeType', '').startswith('image/') for p in self.partes):
-                entrada[0]['content'] += '\n\n' + AVISO_VISUAL
+                entrada[0]['content'] += '\n\n' + AVISO_VISUAL + '\n\n' + AVISO_REPRESENTACAO
             entrada[-1]['midias'] = self.partes
 
     @property
@@ -110,8 +121,10 @@ async def baixar(url):
     try:
         async with aiohttp.ClientSession(timeout=aiohttp.ClientTimeout(total=5)) as sessao:
             async with sessao.get(url, allow_redirects=False) as resposta:
-                if resposta.status != 200 or (resposta.content_length or 0) > MAX_BYTES:
-                    raise ValueError('download recusado')
+                if resposta.status != 200:
+                    raise midia_gifs.Indisponivel(resposta.status)
+                if (resposta.content_length or 0) > MAX_BYTES:
+                    raise ValueError('arquivo grande')
                 dados = bytearray()
                 async for parte in resposta.content.iter_chunked(65536):
                     dados.extend(parte)
@@ -149,10 +162,12 @@ async def decodificar(dados, tipo):
 
 class Anexos:
     def __init__(self, *, ativo=False, canais=frozenset(), download=baixar, preparar=decodificar,
-                 resolver_gif=midia_gifs.resolver, download_gif=midia_gifs.baixar):
+                 resolver_gif=midia_gifs.resolver, download_gif=midia_gifs.baixar,
+                 resolver_discord=midia_gifs.resolver_discord):
         self.ativo, self.canais = ativo, canais
         self.download, self.preparar = download, preparar
         self.resolver_gif, self.download_gif = resolver_gif, download_gif
+        self.resolver_discord = resolver_discord
         self._vaga = asyncio.Semaphore(1)
 
     async def contexto(self, mensagem):
@@ -191,26 +206,46 @@ class Anexos:
             await asyncio.wait_for(self._vaga.acquire(), timeout=0.2)
         except TimeoutError:
             return Preparo(nota='GIF não analisado: processamento ocupado; tente novamente depois.')
+        etapa = 'resolver'
+        status_resgate = None
         try:
             if midia_gifs.gif_discord(links[0]):
                 tipo, origem = 'imagem', 'GIF por link do Discord: '
-                dados = await self.download(links[0])
+                etapa = 'download'
+                try:
+                    dados = await self.download(links[0])
+                except midia_gifs.Indisponivel as erro:
+                    if erro.status not in (403, 404):
+                        raise
+                    status_resgate = erro.status
+                    etapa = 'resolver_discord'
+                    url, tipo = await self.resolver_discord(mensagem, links[0])
+                    if tipo != 'imagem' or midia_gifs._anexo(url) != midia_gifs._anexo(links[0]) or not midia_gifs.tipo_midia(url, 'discord'):
+                        raise ValueError('prévia de outro arquivo')
+                    etapa = 'download_previa'
+                    dados = await self.download_gif(url, 'discord')
             else:
                 url, tipo = await self.resolver_gif(mensagem, links[0])
                 provedor = midia_gifs.pagina(links[0])[0]
                 if midia_gifs.tipo_midia(url, provedor) != tipo:
                     raise ValueError('origem não permitida')
+                etapa = 'download'
                 dados = await self.download_gif(url, provedor)
                 origem = 'GIF do seletor (' + provedor + '): '
             if tipo == 'imagem' and dados[:6] not in (b'GIF87a', b'GIF89a'):
                 raise ValueError('não é GIF')
+            etapa = 'preparo'
             preparado = await self.preparar(dados, tipo)
             preparado.nota = origem + preparado.nota
             preparado.links_analisados = (links[0],)
             if len(links) > 1:
                 preparado.nota += '; somente o primeiro GIF foi analisado'
             return preparado
-        except (ValueError, OSError, TimeoutError):
+        except (ValueError, OSError, TimeoutError) as erro:
+            log.warning('mídia GIF não analisada: etapa=%s erro=%s status=%s',
+                        etapa, type(erro).__name__, getattr(erro, 'status', status_resgate or 'n/a'))
+            if midia_gifs.gif_discord(links[0]) and etapa == 'resolver_discord':
+                return Preparo(nota='GIF do Discord não analisado: o link não deu acesso ao arquivo e a prévia não forneceu outro endereço válido desse mesmo GIF. Peça que usem Copiar link de mídia e enviem o endereço completo, ou anexem o arquivo. Não descreva a animação sem recebê-la.')
             return Preparo(nota='GIF não analisado: link indisponível/expirado, prévia ausente ou arquivo fora dos limites (5 MB, 15 s, 120 quadros). Peça o arquivo .gif anexado; não descreva a animação sem recebê-la.')
         finally:
             self._vaga.release()

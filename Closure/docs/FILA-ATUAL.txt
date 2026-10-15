@@ -13,8 +13,14 @@ CONCLUÍDO
 - V18: Mizuki confirmou GIFs do seletor por captura. Isso confirma os exemplos mostrados, não todos os provedores/arquivos.
 - V19: links diretos de GIF de anexos do Discord, orientação de conversa visual e tempos sem conteúdo preparados. O link real enviado foi baixado e convertido localmente, sem chamada ao modelo.
 
+- V20: conferidos os objetos atuais das duas mensagens reais e a preparação de três quadros do Tenor e dois do GIF de anexo. A URL curta sozinha retorna 404 e agora pode usar a assinatura da prévia do mesmo arquivo. Sem chamada paga.
+
+- V20: comandos administrativos de resposta adulta não gráfica, com canal opcional e marcação NSFW obrigatória. Sem ERP, encenação ou alteração dos bloqueios do Google; sem chamadas pagas na implementação.
+
+- V20 completa: 638 testes passaram e um online opcional pulado; 41 testes no código extraído do ZIP passaram. Pacote pronto e sem segredos, política publicada/conferida no mesmo gist. Sem implantação nem chamadas pagas.
+
 PRÓXIMOS
-1. Testar v19 na Discloud: GIF por link do Discord; reação sem pergunta; comentário sobre o GIF; pedido explícito de descrição. Manter MIDIA_ATIVA=1. Roteiro em pesquisa/validacao/2026-10-15-gif-conversa-v19/teste-no-discord.txt. A nova orientação ainda não teve respostas pagas medidas. A demora inicial da v18 não tem causa confirmada; usar tempos de preparo/modelo dos logs novos.
+1. Testar v20 na Discloud: Tenor informado, GIF de anexo por link sem parâmetros e reconhecimento de ilustrações das duas guias e ativação/escopo de respostas adultas não gráficas (roteiro inclui comandos); depois conferir o polimento da v19: GIF por link do Discord; reação sem pergunta; comentário sobre o GIF; pedido explícito de descrição. Manter MIDIA_ATIVA=1. Roteiro em pesquisa/validacao/2026-10-15-gif-previas-v20/teste-no-discord.txt. A nova orientação ainda não teve respostas pagas medidas. A demora inicial da v18 não tem causa confirmada; usar tempos de preparo/modelo dos logs novos.
 2. Validar áudio v17 contra v16: proposta de 24 chamadas, US$ 0,25–0,50 estimados e teto US$ 1,50. Aguardar aprovação explícita; sem usar saldo anterior. Plano em pesquisa/validacao/2026-10-15-audio-v17/. Revalidar hashes/preparação antes de propor execução, pois o código de mídia evoluiu.
 3. Receber o resultado de CONFIGURAÇÃO do outro chat e só então integrar ao leitor/corretor. Preservar as 5.381 chaves ANALISE 4 e compatibilidade; PR 3 do gerador exige aprovação própria, não juntar por conta desta fila.
 

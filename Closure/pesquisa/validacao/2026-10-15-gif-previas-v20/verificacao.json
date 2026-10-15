@@ -1,0 +1,16 @@
+{
+  "testes_executados": 639,
+  "testes_passaram": 638,
+  "testes_pulados": 1,
+  "segundos": 133.628,
+  "testes_direcionados_config_discord": 74,
+  "testes_gif_config_zip": 41,
+  "pedidos_representacao_montados_sem_modelo": 6,
+  "pedidos_preferencia_adulta_montados_sem_modelo": 6,
+  "mensagens_reais_preparadas": 2,
+  "tenor_sem_previa_preparado": true,
+  "chamadas_pagas": 0,
+  "respostas_do_modelo_avaliadas_nesta_rodada": false,
+  "naturalidade_das_respostas": "aguarda piloto",
+  "politica_conferida_no_mesmo_gist": true
+}

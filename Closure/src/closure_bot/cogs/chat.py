@@ -16,6 +16,7 @@ from ..conversa import Turno
 from ..modelo import Falhou
 from ..plantao import FUSO, MOTIVO_SEGUIMENTO, Decisao, de_plantao, decidir
 from ..prompt import montar as montar_prompt
+from ..conteudo_adulto import aplicar as aplicar_preferencia_adulta
 from .atalho import separar as separar_atalho
 
 log = logging.getLogger(__name__)
@@ -227,6 +228,7 @@ class Chat(commands.Cog):
         if midia:
             entrada[-1]["content"] += "\n\n" + midia
         preparo.aplicar(entrada)
+        aplicar_preferencia_adulta(entrada, mensagem, bot.registro)
         rota = {}
         if bot.config.usa_argon(canal.id):
             rota["usar_argon"] = True

@@ -1,0 +1,29 @@
+{
+  "casos": [
+    {
+      "caso": "tenor",
+      "preparado": true,
+      "quadros": 3,
+      "nota": "GIF do seletor (tenor): 3 quadros de animação (0.33 s); movimentos entre os quadros não foram enviados",
+      "segundos": 1.569,
+      "links_excluidos_do_metadado": 1
+    },
+    {
+      "caso": "discord_sem_parametros",
+      "preparado": true,
+      "quadros": 2,
+      "nota": "GIF por link do Discord: 2 quadros de animação (0.20 s); movimentos entre os quadros não foram enviados",
+      "segundos": 0.507,
+      "links_excluidos_do_metadado": 1
+    }
+  ],
+  "chamadas_modelo": 0,
+  "evidencia": "Mensagens atuais fornecidas por Mizuki, com download e preparo reais; não reproduz o instante anterior.",
+  "tenor_sem_previa": {
+    "tenor_sem_previa": true,
+    "quadros": 3,
+    "nota": "GIF do seletor (tenor): 3 quadros de animação (0.33 s); movimentos entre os quadros não foram enviados",
+    "segundos": 3.494,
+    "chamadas_modelo": 0
+  }
+}
