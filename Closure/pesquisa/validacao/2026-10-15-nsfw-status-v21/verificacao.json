@@ -1,0 +1,16 @@
+{
+  "testes_executados": 643,
+  "testes_passaram": 642,
+  "testes_pulados": 1,
+  "segundos": 141.336,
+  "testes_direcionados": 77,
+  "testes_no_codigo_zip": 16,
+  "pedidos_reais_montados_sem_modelo": 8,
+  "status_e_contexto_concordam": true,
+  "canal_real_atual_sem_marcacao": true,
+  "chamadas_pagas_nesta_correcao": 0,
+  "filtros_modelo_preservados": true,
+  "marcacao_de_canal_alterada": false,
+  "respostas_modelo_avaliadas_nesta_correcao": false,
+  "politica_privacidade_sem_mudanca_de_tratamento": true
+}

@@ -1,0 +1,13 @@
+{
+  "arquivo": "closure-lab-nsfw-status-v21.zip",
+  "sha256": "f7af1b0e300921c1aca3c0678f98f8d2a8bb60e28be19df359c073e932a2cbe7",
+  "bytes": 1004365,
+  "arquivos": 56,
+  "codigo_conferido": true,
+  "sem_segredos": true,
+  "alteracoes_runtime": [
+    "src/closure_bot/cogs/admin.py",
+    "src/closure_bot/conteudo_adulto.py"
+  ],
+  "gifs_audio_cards_livro_ponte_modelos_preservados_v20": true
+}

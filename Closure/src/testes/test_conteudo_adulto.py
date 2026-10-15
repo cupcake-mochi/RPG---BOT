@@ -9,7 +9,7 @@ from unittest.mock import AsyncMock, MagicMock
 import discord
 from discord.ext import commands
 
-from closure_bot.conteudo_adulto import ATIVO, CONDUTA, INATIVO, aplicar, permitido
+from closure_bot.conteudo_adulto import ATIVO, CONDUTA, INATIVO, aplicar, permitido, motivo_inativo
 from closure_bot.registro import PreferenciasServidor, Registro
 
 
@@ -91,6 +91,19 @@ class PreferenciasAdultas(unittest.TestCase):
         self.registro.definir_responder_nsfw(1, False)
         self.assertFalse(permitido(mensagem(), self.registro))
 
+    def test_motivo_e_permissao_concordam_em_todos_os_estados(self):
+        m = mensagem()
+        self.assertEqual(motivo_inativo(m, self.registro), 'desativado')
+        self.assertFalse(permitido(m, self.registro))
+        self.registro.definir_responder_nsfw(1, True)
+        for m, motivo in ((mensagem(nsfw=False), 'sem_marcacao'), (mensagem(guild=None), 'sem_servidor'),
+                          (NS(guild=NS(id=1)), 'canal_indisponivel'), (mensagem(), None)):
+            self.assertEqual(motivo_inativo(m, self.registro), motivo)
+            self.assertEqual(permitido(m, self.registro), motivo is None)
+        self.registro.definir_canal_nsfw(1, 11)
+        self.assertEqual(motivo_inativo(mensagem(), self.registro), 'outro_canal')
+        self.assertFalse(permitido(mensagem(), self.registro))
+
     def test_pedido_preserva_midia_texto_e_identidade_e_nao_vira_erp(self):
         self.registro.definir_responder_nsfw(1, True)
         for ativa in (True, False):
@@ -122,7 +135,8 @@ class ComandosAdultos(unittest.IsolatedAsyncioTestCase):
 
     def interacao(self, *, guild=1, gerenciar=True, administrador=False):
         return NS(guild_id=guild, permissions=NS(manage_guild=gerenciar, administrator=administrador),
-                  user=NS(id=1), response=NS(send_message=AsyncMock()))
+                  user=NS(id=1), channel=NS(id=10, parent_id=None, is_nsfw=lambda: True),
+                  response=NS(send_message=AsyncMock()))
 
     def canal(self, canal_id=10, guild=1, nsfw=True):
         c = MagicMock(spec=discord.TextChannel)
@@ -178,3 +192,25 @@ class ComandosAdultos(unittest.IsolatedAsyncioTestCase):
                        {'canal': NS(id=11)}, {'canal': self.canal(11), 'todos': True}):
             await self.chamar('nsfw_canal', self.interacao(), **opcoes)
             self.assertEqual(self.registro.preferencias_servidor(1), PreferenciasServidor(False, 10))
+
+    async def test_ativacao_global_destaca_inativo_se_canal_nao_marcado(self):
+        i = self.interacao()
+        i.channel.is_nsfw = lambda: False
+        texto = await self.chamar('responder_nsfw', i, ativar=True)
+        self.assertTrue(texto.startswith('**Neste canal: inativo'))
+        self.assertIn('falta marcar o canal como NSFW', texto)
+        self.assertTrue(self.registro.preferencias_servidor(1).responder_nsfw)
+        texto = await self.chamar('responder_nsfw', self.interacao())
+        self.assertTrue(texto.startswith('**Neste canal: ativo.**'))
+
+    async def test_status_distingue_restricao_e_topico_sem_mudar_configuracao(self):
+        self.registro.definir_responder_nsfw(1, True)
+        self.registro.definir_canal_nsfw(1, 11)
+        texto = await self.chamar('nsfw_canal', self.interacao())
+        self.assertTrue(texto.startswith('**Neste canal: inativo'))
+        self.assertIn('não é o escolhido', texto)
+        i = self.interacao()
+        i.channel.parent_id = 11
+        texto = await self.chamar('nsfw_canal', i)
+        self.assertTrue(texto.startswith('**Neste canal: ativo.**'))
+        self.assertEqual(self.registro.preferencias_servidor(1), PreferenciasServidor(True, 11))
