@@ -5,8 +5,15 @@ Esqueleto da fase 1 do `docs/PLANEJAMENTO.md`, escrito em 13/10/2026. O bot anti
 
 **O que já faz:** sobe, responde `/ping` lendo o `MANIFESTO.json`, decide quem responde a cada mensagem
 (por horário e pelo nome chamado), monta o pedido com card, lorebook, livro, estado e ficha da pessoa, chama o
-modelo e envia a fala com o nome e o avatar de cada personagem. **O que ainda não fez:** rodar no Discord de
-verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de mentira.
+modelo e envia a fala com o nome e o avatar de cada personagem. Roda na Discloud desde 13/10.
+Em 14/10, Mizuki confirmou os testes de ficha depois de Commit e Rebuild. A ampliação ANALISE 2 posterior
+foi conferida fora do Discord e ainda não foi implantada.
+
+**Ficha, ANALISE 2:** 4.896 chaves; formatos 1 e 2 aceitos. `ficha_entidade.py` refaz atributos, vida com
+Buff, Defesa reconhecida, acerto desarmado, CD e deslocamento-base. `ficha_magia.py` lê Famílias exatas,
+Classe 0 e Máxima; confere entrada carregada/retorno e CE dos Talentos por ganho. Quatro cópias preenchidas
+foram calculadas no Google e relidas localmente. Não é correção integral de todo efeito, Domínio ou custom;
+limites em `../dados/ficha/ENTRADAS-FALTANTES-ANALISE.txt`. Sem Gemini pago nesta rodada.
 
 ## Arquivos
 

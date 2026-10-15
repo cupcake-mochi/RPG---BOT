@@ -27,7 +27,7 @@ from pathlib import Path
 from .ficha_leitor import Campo
 from .ficha_magia import Magia
 
-FORMATOS_CONHECIDOS = {1}
+FORMATOS_CONHECIDOS = {1, 2}
 # O que a ficha mostra quando a pessoa ainda não escolheu: vale como vazio.
 NAO_ESCOLHIDO = {"", "—", "-", "escolha seu caminho", "escolha sua trilha", "escolha sua origem"}
 
@@ -381,7 +381,7 @@ def conferir_invocacoes(ficha: dict[str, Campo], ref: Referencias, resultado: Re
         r.nao_conferido.append("invocações: referências de magia indisponíveis")
         return []
     antes = len(r.problemas)
-    magia_invocacoes(ficha, ref.magia, ref.marcos, r)
+    magia_invocacoes(ficha, ref.magia, ref.marcos, r, (ref.uniformes, ref.escudos, ref.duas_maos))
     return r.problemas[antes:]
 
 

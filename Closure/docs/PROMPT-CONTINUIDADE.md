@@ -7,6 +7,19 @@ Cole tudo abaixo da linha numa conversa nova (Claude, ChatGPT ou Codex) pra reto
 Oi, sou o Mizuki. Vamos continuar o Guias do Ciclo, o bot de Discord do servidor da minha guilda, que joga o Ciclo Maldito (meu RPG de mesa no universo de Jujutsu Kaisen). O bot tem duas personagens de Arknights que se revezam no plantão: a Kal'tsit, das 9h às 21h, e a Closure, das 21h às 9h, no horário de Brasília. Elas tiram dúvida de regra pelo livro, contam o mundo do jogo, mostram o clima e conversam. As duas ficam fora da história: são guias, não existem no mundo do jogo.
 
 COMO EU GOSTO DE TRABALHAR
+Estado mais recente desta continuação (14/10): Argon está congelado. Mizuki fez Commit e Rebuild na Discloud
+e confirmou os testes antigos de ficha por captura do Discord. A revisão posterior ampliou ANALISE para formato 2,
+4.896 chaves; todas as 2.650 antigas preservadas. Bot aceita 1/2. Fonte isolada em
+/tmp/ficha-analise-v2-20261014, branch codex/analise-completa-v2, repositório cupcake-mochi/Ficha---RPG-JJK.
+Não juntar PR do gerador sem autorização: a permissão automática de merge é só para RPG---BOT.
+Quatro cópias nativas preenchidas, sem alterar originais: Fundamento/Classe 0/Máxima, domada com Buff,
+criação com talismã e Principal, Kaori anterior com feitiços. Mizuki informou que não tem fichas de jogadores
+em uso e autorizou criar/preencher cópias. Todas passaram pela conferência local, mas há regras ainda parciais
+(texto/Selo, alcance/resolução, distribuição de dano, repertório completo, trunfos, perícias/TR/carga).
+CONFIGURAÇÃO/cadastro/custom continuam adiados. Resultados e limites em
+pesquisa/validacao/2026-10-14-analise-v2/relatorio.txt; links e publicação em pesquisa/privado/.
+Nenhuma chamada paga, mudança de card ou nova implantação nesta ampliação. Os itens mais antigos abaixo são histórico.
+
 - pt-BR informal, sem "tu" e sem português de Portugal. Respostas curtas. Precisão antes de velocidade.
 - Decisão pequena você toma sozinho e me conta. O que muda o resultado final você me pergunta, uma linha por opção.
 - Commit e pull request sem linha de coautoria de IA e sem rodapé "gerado com". Texto que eu publico (política, termos, descrição do bot) não fala de IA.
