@@ -114,7 +114,8 @@ class Chat(commands.Cog):
             return None
         if mensagem.reference or any(not m.bot for m in mensagem.mentions):
             return None  # respondeu ou marcou outra pessoa: a conversa é com ela
-        if not mensagem.content.strip() or SO_REACAO.match(mensagem.content.strip()):
+        tem_anexo = bool(list(getattr(mensagem, "attachments", ()) or ()))
+        if (not mensagem.content.strip() and not tem_anexo) or SO_REACAO.match(mensagem.content.strip()):
             self._fios.pop(mensagem.channel.id, None)
             return None
         return Decisao(persona=fio.persona, motivo=MOTIVO_SEGUIMENTO, fora_do_plantao=fio.persona != de_plantao(agora))
@@ -198,6 +199,9 @@ class Chat(commands.Cog):
         anteriores = [f for f in bot.registro.ultimas_falas(canal_id=canal.id, persona=persona, agora=agora) if f not in desta]
         entrada = await montar_prompt(persona, texto, nome=nome, pronomes=estado.pronomes, turnos=turnos,
                                       falas_anteriores=anteriores, estado=para_a_ponte)
+        midia = await bot.midias.contexto(mensagem, texto)
+        if midia:
+            entrada[-1]["content"] += "\n\n" + midia
         rota = {}
         if bot.config.usa_argon(canal.id):
             rota["usar_argon"] = True
@@ -213,8 +217,9 @@ class Chat(commands.Cog):
         self._fios[canal.id] = Fio(persona, mensagem.author.id, datetime.now(FUSO))
         if len(partes) > 1:
             bot.registro.guardar_fala(canal_id=canal.id, persona=persona, texto=fala)
-        bot.conversas.anotar(canal.id, persona, agora, texto, nome=nome)
-        bot.conversas.anotar(canal.id, persona, agora, fala)
+        bot.conversas.anotar(canal.id, persona, agora, texto, nome=nome,
+                             autor_id=mensagem.author.id, midia=midia)
+        bot.conversas.anotar(canal.id, persona, agora, fala, autor_id=mensagem.author.id)
 
 
 async def setup(bot: commands.Bot) -> None:

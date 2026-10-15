@@ -1,6 +1,6 @@
 # Política de privacidade do Guias do Ciclo
 
-Atualizada em 14/10/2026.
+Atualizada em 15/10/2026.
 
 Eu sou o Mizuki e mantenho o Guias do Ciclo, o bot da Kal'tsit e da Closure. Aqui está o que ele faz com os dados de quem conversa com elas. Qualquer pedido sobre isso, me chame no servidor da guilda ou comente nesta página.
 
@@ -11,6 +11,10 @@ O bot vê as mensagens dos canais em que está, mas só usa as que chamam uma da
 ## O que fica guardado
 
 Quando você chama uma delas, o texto da mensagem fica guardado até as 4h30 da manhã seguinte, no horário de Brasília. Nessa hora o bot tira do texto alguns fatos curtos sobre você e apaga o resto.
+
+Para retomar depois de um reinício, o bot também guarda as últimas 12 falas da conversa por canal e personagem, incluindo as respostas. Esse histórico deixa de ser usado após 30 minutos sem conversa ou às próximas 4h30, o que vier primeiro. A limpeza roda a cada minuto enquanto o bot está ligado e na retomada. O histórico usa a mesma proteção do banco; apagar seus dados também remove a conversa recente em que você participou.
+
+Quando você envia um link do YouTube numa conversa com as guias, o bot pode consultar o título e o canal do vídeo. Só o identificador do vídeo é enviado nessa consulta, sem seu nome nem o restante da mensagem. Esses metadados acompanham a conversa recente. O bot não baixa nem analisa áudio, vídeos ou imagens; nomes de anexos e prévias textuais podem acompanhar o pedido.
 
 Depois disso fica guardado:
 

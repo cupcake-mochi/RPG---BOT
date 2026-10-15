@@ -32,6 +32,19 @@ CASUAIS = (
 
 @unittest.skipUnless(PRONTO, "precisa do núcleo local e de um motor")
 class ConsultaCotidiana(unittest.TestCase):
+    def test_precos_em_relato_longo_priorizam_tabela_do_item(self):
+        for item, fonte, valor in (
+            ("katana", "equip--eqa-laminas", "48.000"),
+            ("espada longa", "equip--eqa-laminas", None),
+        ):
+            for pers in ("clo", "kal"):
+                msg = ("A gente tava falando mais sobre musica e talz, antes eu tava ouvindo sky fall "
+                       f"mas por sinal, tinha te pedido o valor da {item} no livro, quanto tá?")
+                p, fontes = self.montar(msg, pers=pers)
+                self.assertEqual(fontes[0], fonte)
+                if valor:
+                    self.assertIn(valor, p['ctx'])
+
     def montar(self, msg, anteriores=(), pers="kal", **extra):
         turnos = [{"de": "user", "nome": "Alex", "texto": t} for t in anteriores]
         p = site_prompt.montar(pers, msg, nome="Alex", hora=(14, 0), turnos=turnos, **extra)

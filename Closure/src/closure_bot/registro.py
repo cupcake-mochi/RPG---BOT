@@ -14,7 +14,9 @@
   fichas         o que as personagens sabem de cada pessoa: pronomes, se ela informou, e até 15 fatos curtos.
                  A pessoa vê com /meus_dados e apaga com /apagar_meus_dados.
   mensagens_do_dia  o texto das mensagens em que alguém chamou uma personagem, só até a reflexão das 4h30
-                 (closure_bot/reflexao.py), que tira os fatos e apaga o texto. É o único lugar com texto de gente.
+                 (closure_bot/reflexao.py), que tira os fatos e apaga o texto.
+  conversas_recentes  últimos turnos cifrados por canal/personagem; expiram após 30 minutos sem conversa ou às 4h30.
+  participantes_conversa  IDs locais para apagar o fio completo quando um participante apaga seus dados.
 
 Com a CHAVE_DO_BANCO no .env, o texto que fala de gente vai cifrado pro disco: falas, mensagens do dia, pronomes e
 fatos. IDs, horas e contagens ficam em claro, porque as consultas dependem deles.
@@ -28,6 +30,19 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ESQUEMA = """
+CREATE TABLE IF NOT EXISTS conversas_recentes (
+    canal_id INTEGER NOT NULL,
+    persona TEXT NOT NULL,
+    expira TEXT NOT NULL,
+    texto TEXT NOT NULL,
+    PRIMARY KEY (canal_id, persona)
+);
+CREATE TABLE IF NOT EXISTS participantes_conversa (
+    canal_id INTEGER NOT NULL,
+    persona TEXT NOT NULL,
+    autor_id INTEGER NOT NULL,
+    PRIMARY KEY (canal_id, persona, autor_id)
+);
 CREATE TABLE IF NOT EXISTS chamadas_api (
     id INTEGER PRIMARY KEY,
     quando TEXT NOT NULL,
@@ -339,9 +354,37 @@ class Registro:
 
     def apagar_pessoa(self, autor_id: int) -> None:
         """Apaga tudo o que o bot guarda de uma pessoa: ficha, paciência, mensagens do dia e o histórico de quando ela chamou."""
+        # A resposta e falas dos demais podem citar a pessoa: apague o fio todo.
+        fios = list(self._db.execute("SELECT canal_id, persona FROM participantes_conversa WHERE autor_id = ?", (autor_id,)))
+        for canal, persona in fios:
+            self._db.execute("DELETE FROM conversas_recentes WHERE canal_id = ? AND persona = ?", (canal, persona))
+            self._db.execute("DELETE FROM participantes_conversa WHERE canal_id = ? AND persona = ?", (canal, persona))
+            self._db.execute("DELETE FROM falas WHERE canal_id = ? AND persona = ?", (canal, persona))
         for tabela in ("fichas", "paciencia", "gatilhos", "mensagens_do_dia"):
             self._db.execute(f"DELETE FROM {tabela} WHERE autor_id = ?", (autor_id,))
         self._db.commit()
+
+    def limpar_conversas(self, agora: datetime) -> None:
+        self._db.execute("DELETE FROM conversas_recentes WHERE expira <= ?", (_iso(agora),))
+        self._db.execute("DELETE FROM participantes_conversa WHERE NOT EXISTS (SELECT 1 FROM conversas_recentes c "
+                         "WHERE c.canal_id = participantes_conversa.canal_id AND c.persona = participantes_conversa.persona)")
+        self._db.commit()
+
+    def ler_conversa(self, canal_id: int, persona: str, agora: datetime) -> list[dict]:
+        self.limpar_conversas(agora)
+        linha = self._db.execute("SELECT texto FROM conversas_recentes WHERE canal_id = ? AND persona = ?",
+                                (canal_id, persona)).fetchone()
+        aberto = self.cofre.abrir(linha[0]) if linha else None
+        return json.loads(aberto) if aberto else []
+
+    def guardar_conversa(self, canal_id: int, persona: str, turnos: list[dict], expira: datetime) -> None:
+        with self._db:
+            self._db.execute("INSERT OR REPLACE INTO conversas_recentes VALUES (?, ?, ?, ?)",
+                             (canal_id, persona, _iso(expira), self.cofre.fechar(json.dumps(turnos, ensure_ascii=False))))
+            # Conserve participantes até o fio expirar: uma resposta posterior
+            # ainda pode citar quem já saiu dos últimos 12 turnos.
+            self._db.executemany("INSERT OR IGNORE INTO participantes_conversa VALUES (?, ?, ?)",
+                                 [(canal_id, persona, t['autor_id']) for t in turnos if t.get('autor_id') is not None])
 
     def definir_painel(self, *, guild_id: int, canal_id: int) -> None:
         """Liga o painel diário do servidor nesse canal (ou troca de canal); o próximo passo posta um painel novo."""

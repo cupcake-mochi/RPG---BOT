@@ -1,0 +1,35 @@
+Revisão de memória, mídia e preço de itens — 15/10/2026
+
+Motivo
+Mizuki relatou perda do assunto após atualização, falha no preço da katana numa mensagem longa, respostas inconsistentes a links/GIFs e divergência sobre personalizar Origem.
+
+O que foi confirmado
+- Conversas guardava só em RAM os últimos 12 turnos, por até 30 minutos sem conversa. O SQLite já guardava fatos e outras informações, mas não esse histórico de turnos.
+- O chat encaminhava message.content; não consultava YouTube, não encaminhava títulos dos embeds e não analisava áudio, vídeo ou imagens. A resposta sobre o piano de Skyfall não comprova pesquisa ou percepção.
+- A mensagem longa “A gente tava falando mais sobre musica e talz, antes eu tava ouvindo sky fall mas por sinal, tinha te pedido o valor da katana no livro, quanto tá?” trazia equip--eqc-inicial, geral--queda-criatura e equip--eqm-municao. Faltava equip--eqa-laminas, onde está Katana por ¥48.000.
+- O bloco origens--legado-criar do R51 permite literalmente criar com o mestre uma marcante e menores compatíveis com a Origem. Mizuki informou que vai modificar o livro; a cópia gerada e a interpretação de regra não foram editadas nesta revisão.
+
+Mudanças
+1. Conversas recentes em novas tabelas aditivas do banco existente, usando o Cofre/Fernet já configurado. Mantidos 12 turnos e 30 minutos sem conversa; corte adicional às próximas 4h30. Limpeza a cada minuto e ao ler. Apagar dados remove o fio inteiro em que a pessoa participou e suas respostas recentes associadas, evitando reintroduzir citações pelo histórico. IDs de autoria ficam locais. Sem cache de conversa em RAM quando o banco está conectado.
+2. Consulta textual ao oEmbed do YouTube: somente IDs validados em domínio exato; destino fixo, sem redirects, resposta limitada a 32 KiB, até dois vídeos por mensagem, prazo de 2,5 s por consulta e guarda externa de 3 s. Cache limitado a 128 itens/6h; falhas por 60 s. Prévia textual do Discord serve de reserva. Não consulta outros links arbitrários.
+3. Metadados identificados seguem para o modelo e para o histórico; não entram na pesquisa do livro nem no texto usado pela reflexão. Orientação de capacidade distingue conhecer uma obra identificada de ouvir/ver esta gravação. GIFs/anexos são marcados como não analisados. Anexo sozinho pode continuar um fio válido, respeitando pessoa/canal/prazo.
+4. Na ausência de histórico, o pedido orienta não afirmar que nunca houve conversa anterior.
+5. Em perguntas de preço, a tabela do item nomeado ganha prioridade sobre exemplos de compras. A regra usa os nomes das linhas do livro, sem preço hardcoded e sem tratamento exclusivo para Katana.
+
+Verificação
+552 testes executados: 551 passaram, um online opcional pulado (130,281 s). Contagens finais e hashes em verificacao.json e pacote.json. A auditoria de títulos manteve 425/425 fontes esperadas. QuickJS/Node iguais em 14/14 pedidos.
+Testes cobrem banco reaberto, cifra/chave errada, isolamento entre canais/personagens, expiração/4h30/12 turnos, exclusão, domínio malicioso, falha/cache/limites, identificação sem embed, reserva pela prévia, metadados históricos fora da busca e sem ID, envio real pela camada simulada do Discord e anexo no seguimento. Sem conexão ao Discord ou modelo pago. Uma consulta pública real e pequena ao oEmbed confirmou título/canal do link de Skyfall, sem baixar mídia.
+Isso verifica a montagem e o comportamento do código, não certifica qualidade de novas respostas do Gemini. Os testes de geração pagos anteriores continuam consumidos; nenhuma nova chamada autorizada foi usada.
+
+Entrega e limites
+Pacote sem .env: src/var/closure-lab-memoria-midia-v12.zip; closure-lab.zip é idêntico. Preserve banco e CHAVE_DO_BANCO na hospedagem. A mudança só recupera turnos gravados a partir desta versão; não reconstrói conversas antigas perdidas. O gatilho automático de 3 minutos continua sendo reiniciado por segurança; depois de reiniciar, chame a guia pelo nome/menção/resposta.
+Identificação por título não equivale a pesquisar análises ou verificar instrumentos da gravação. Não há áudio/vídeo/visão nem promessa de reconhecê-los. Falha do serviço deve resultar em identificação indisponível, não palpite. Há pequeno acréscimo de texto ao pedido normal; não há chamada adicional ao Gemini. A política local foi atualizada; o gist público não foi publicado automaticamente.
+Cards/lorebook, livro R51, modelo, limites de orçamento, Argon, otimizações inativas, CONFIGURAÇÃO, gerador e Discloud preservados.
+
+Teste manual após Commit e Rebuild
+1. Repita a mensagem longa de música/katana: deve trazer ¥48.000, preço unitário.
+2. Envie um link de YouTube, pergunte qual é e depois “conhece essa?”. O título deve ser consistente; não deve alegar ter ouvido/assistido à gravação.
+3. Envie GIF/anexo e pergunte o que aparece: deve reconhecer o limite de leitura, sem inventar cena.
+4. Converse sobre um assunto novo; reinicie em menos de 30 minutos sem apagar banco/chave; mencione a mesma guia no mesmo canal e pergunte onde parou. Deve receber os turnos gravados. Após 30 minutos sem conversa, não deve afirmar que nunca houve assunto: peça apenas uma lembrança.
+5. Em teste próprio, /apagar_meus_dados deve impedir retomar aquele fio.
+Origem: aguardar a correção no repositório do sistema, sincronizar pelo gerador e então repetir os testes da regra.

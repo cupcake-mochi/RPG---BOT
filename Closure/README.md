@@ -1,5 +1,7 @@
 # Closure
 
+**Revisão de memória, mídia e preços (15/10):** conversa recente agora usa o SQLite e a cifra existentes, mantendo 12 turnos por canal/personagem, 30 minutos sem conversa e corte às 4h30; limpeza periódica e remoção do fio pelo comando de apagar dados. Reinício não recupera conversas já perdidas nem dispensa preservar banco/chave na hospedagem. Identificação textual de até dois links YouTube por mensagem via oEmbed, com cache, timeout e prévia do Discord como reserva; sem áudio/vídeo/imagem, sem API de modelo extra. Metadados acompanham o histórico sem entrar na busca do livro ou na reflexão. Preço de item nomeado prioriza a tabela; reproduzida/corrigida a mensagem longa sobre música e katana. Livro R51 e cards preservados. Mizuki vai corrigir a regra de Origem no repositório do sistema; aguardar essa alteração antes de sincronizar. Sem CONFIGURAÇÃO ou implantação. Detalhes em `pesquisa/validacao/2026-10-15-memoria-midia-precos/relatorio.txt`.
+
 > Ponto de entrada do projeto. Aqui fica o resumo e o índice das pesquisas;
 > o detalhe de cada uma mora em `pesquisa/`.
 

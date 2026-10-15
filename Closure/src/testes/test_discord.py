@@ -83,6 +83,32 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
     async def asyncTearDown(self):
         self.bot.registro.fechar()
 
+    async def test_midia_vai_ao_pedido_e_historico_sem_virar_fato(self):
+        canal, _ = _canal()
+        chat = self.bot.get_cog("Chat")
+        self.bot.midias.contexto = AsyncMock(return_value='[Metadados] Adele - Skyfall')
+        m = _mensagem('Closure, conhece? https://youtu.be/DeumyOzKqgI', canal)
+        await chat.on_message(m)
+        enviado = self.bot.modelos.responder.call_args.args[0]
+        self.assertIn('Adele - Skyfall', enviado[-1]['content'])
+        from datetime import datetime
+        turnos = self.bot.conversas.turnos(10, 'closure', datetime.now().astimezone())
+        self.assertIn('Adele - Skyfall', turnos[0].midia)
+        self.assertNotIn('Adele - Skyfall', self.bot.registro.mensagens_do_dia()[0].texto)
+        self.bot.modelos.responder.assert_awaited_once()
+
+    async def test_anexo_no_seguimento_recebe_limite_de_midia(self):
+        canal, _ = _canal()
+        chat = self.bot.get_cog("Chat")
+        await chat.on_message(_mensagem('Closure, oi!', canal))
+        m = _mensagem('', canal)
+        from types import SimpleNamespace
+        m.attachments = [SimpleNamespace(filename='reacao.gif')]
+        m.embeds = []
+        await chat.on_message(m)
+        self.assertEqual(self.bot.modelos.responder.await_count, 2)
+        self.assertIn('não analisado', self.bot.modelos.responder.call_args.args[0][-1]['content'])
+
     async def test_ao_subir_registra_os_comandos_em_geral_e_limpa_os_locais_do_servidor_principal(self):
         from dataclasses import replace
 
