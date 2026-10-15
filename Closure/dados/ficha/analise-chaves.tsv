@@ -1,5 +1,5 @@
-# Chaves da aba ANALISE, geradas por ferramentas/ficha_analise.py em 14/10/2026
-# fonte: ficha-projeto-m-0.1.xlsx · formato.versao 2 · 4896 chaves. Não edite à mão.
+# Chaves da aba ANALISE, geradas por ferramentas/ficha_analise.py em 15/10/2026
+# fonte: exportação do gerador oficial da ficha · formato.versao 4 · 5381 chaves. Não edite à mão.
 chave	parte	célula
 formato.versao	cabeçalho	
 ficha.versao	cabeçalho	DADOS!B1
@@ -4897,3 +4897,488 @@ invocacao.12.ext.3.resolucao_escolha	entrada	'INVOCAÇÕES'!AP1156
 invocacao.12.ext.3.acao	resultado	'INVOCAÇÕES'!AN1157
 invocacao.12.ext.3.resolve	resultado	'INVOCAÇÕES'!AP1157
 invocacao.12.ext.3.alcance	resultado	'INVOCAÇÕES'!AN1158
+pericia.atletismo.atributo	entrada	FICHA!N80
+pericia.atletismo.ajuste	entrada	FICHA!R80
+pericia.atletismo.bonus	resultado	FICHA!P80
+pericia.acrobacia.atributo	entrada	FICHA!N81
+pericia.acrobacia.ajuste	entrada	FICHA!R81
+pericia.acrobacia.bonus	resultado	FICHA!P81
+pericia.furtividade.atributo	entrada	FICHA!N82
+pericia.furtividade.ajuste	entrada	FICHA!R82
+pericia.furtividade.bonus	resultado	FICHA!P82
+pericia.pontaria.atributo	entrada	FICHA!N83
+pericia.pontaria.ajuste	entrada	FICHA!R83
+pericia.pontaria.bonus	resultado	FICHA!P83
+pericia.prestidigitacao.atributo	entrada	FICHA!N84
+pericia.prestidigitacao.ajuste	entrada	FICHA!R84
+pericia.prestidigitacao.bonus	resultado	FICHA!P84
+pericia.investigacao.atributo	entrada	FICHA!N85
+pericia.investigacao.ajuste	entrada	FICHA!R85
+pericia.investigacao.bonus	resultado	FICHA!P85
+pericia.intuicao.atributo	entrada	FICHA!N86
+pericia.intuicao.ajuste	entrada	FICHA!R86
+pericia.intuicao.bonus	resultado	FICHA!P86
+pericia.ocultismo.atributo	entrada	FICHA!N87
+pericia.ocultismo.ajuste	entrada	FICHA!R87
+pericia.ocultismo.bonus	resultado	FICHA!P87
+pericia.religiao.atributo	entrada	FICHA!N88
+pericia.religiao.ajuste	entrada	FICHA!R88
+pericia.religiao.bonus	resultado	FICHA!P88
+pericia.historia.atributo	entrada	FICHA!N89
+pericia.historia.ajuste	entrada	FICHA!R89
+pericia.historia.bonus	resultado	FICHA!P89
+pericia.hierarquia.atributo	entrada	FICHA!N90
+pericia.hierarquia.ajuste	entrada	FICHA!R90
+pericia.hierarquia.bonus	resultado	FICHA!P90
+pericia.medicina.atributo	entrada	FICHA!AD83
+pericia.medicina.ajuste	entrada	FICHA!AH83
+pericia.medicina.bonus	resultado	FICHA!AF83
+pericia.sobrevivencia.atributo	entrada	FICHA!AD79
+pericia.sobrevivencia.ajuste	entrada	FICHA!AH79
+pericia.sobrevivencia.bonus	resultado	FICHA!AF79
+pericia.natureza.atributo	entrada	FICHA!AD80
+pericia.natureza.ajuste	entrada	FICHA!AH80
+pericia.natureza.bonus	resultado	FICHA!AF80
+pericia.lidar_com_animais.atributo	entrada	FICHA!AD81
+pericia.lidar_com_animais.ajuste	entrada	FICHA!AH81
+pericia.lidar_com_animais.bonus	resultado	FICHA!AF81
+pericia.tecnologia.atributo	entrada	FICHA!AD82
+pericia.tecnologia.ajuste	entrada	FICHA!AH82
+pericia.tecnologia.bonus	resultado	FICHA!AF82
+pericia.sentir_energia.atributo	entrada	FICHA!AD84
+pericia.sentir_energia.ajuste	entrada	FICHA!AH84
+pericia.sentir_energia.bonus	resultado	FICHA!AF84
+pericia.percepcao.atributo	entrada	FICHA!AD85
+pericia.percepcao.ajuste	entrada	FICHA!AH85
+pericia.percepcao.bonus	resultado	FICHA!AF85
+pericia.persuasao.atributo	entrada	FICHA!AD86
+pericia.persuasao.ajuste	entrada	FICHA!AH86
+pericia.persuasao.bonus	resultado	FICHA!AF86
+pericia.enganacao.atributo	entrada	FICHA!AD87
+pericia.enganacao.ajuste	entrada	FICHA!AH87
+pericia.enganacao.bonus	resultado	FICHA!AF87
+pericia.intimidacao.atributo	entrada	FICHA!AD88
+pericia.intimidacao.ajuste	entrada	FICHA!AH88
+pericia.intimidacao.bonus	resultado	FICHA!AF88
+pericia.atuacao.atributo	entrada	FICHA!AD89
+pericia.atuacao.ajuste	entrada	FICHA!AH89
+pericia.atuacao.bonus	resultado	FICHA!AF89
+pericia.provocar.atributo	entrada	FICHA!AD90
+pericia.provocar.ajuste	entrada	FICHA!AH90
+pericia.provocar.bonus	resultado	FICHA!AF90
+oficio.conducao.atributo	entrada	FICHA!K95
+oficio.conducao.ajuste	entrada	FICHA!O95
+oficio.conducao.bonus	resultado	FICHA!N95
+oficio.arrombamento.atributo	entrada	FICHA!K96
+oficio.arrombamento.ajuste	entrada	FICHA!O96
+oficio.arrombamento.bonus	resultado	FICHA!N96
+oficio.herbalismo.atributo	entrada	FICHA!K97
+oficio.herbalismo.ajuste	entrada	FICHA!O97
+oficio.herbalismo.bonus	resultado	FICHA!N97
+oficio.forja.atributo	entrada	FICHA!K98
+oficio.forja.ajuste	entrada	FICHA!O98
+oficio.forja.bonus	resultado	FICHA!N98
+oficio.caligrafia.atributo	entrada	FICHA!K99
+oficio.caligrafia.ajuste	entrada	FICHA!O99
+oficio.caligrafia.bonus	resultado	FICHA!N99
+oficio.burocracia.atributo	entrada	FICHA!K100
+oficio.burocracia.ajuste	entrada	FICHA!O100
+oficio.burocracia.bonus	resultado	FICHA!N100
+oficio.entalhador.atributo	entrada	FICHA!X95
+oficio.entalhador.ajuste	entrada	FICHA!AB95
+oficio.entalhador.bonus	resultado	FICHA!AA95
+oficio.alfaiate.atributo	entrada	FICHA!X96
+oficio.alfaiate.ajuste	entrada	FICHA!AB96
+oficio.alfaiate.bonus	resultado	FICHA!AA96
+oficio.culinaria.atributo	entrada	FICHA!X97
+oficio.culinaria.ajuste	entrada	FICHA!AB97
+oficio.culinaria.bonus	resultado	FICHA!AA97
+oficio.instrumento.atributo	entrada	FICHA!X99
+oficio.instrumento.ajuste	entrada	FICHA!AB99
+oficio.instrumento.bonus	resultado	FICHA!AA99
+oficio.jogatina.atributo	entrada	FICHA!X98
+oficio.jogatina.ajuste	entrada	FICHA!AB98
+oficio.jogatina.bonus	resultado	FICHA!AA98
+tr.fisico.atributo	entrada	FICHA!AK95
+tr.fisico.ajuste	entrada	FICHA!AJ95
+tr.fisico.bonus	resultado	FICHA!AP95
+tr.vigor.atributo	entrada	FICHA!AK96
+tr.vigor.ajuste	entrada	FICHA!AJ96
+tr.vigor.bonus	resultado	FICHA!AP96
+tr.intelecto.atributo	entrada	FICHA!AK97
+tr.intelecto.ajuste	entrada	FICHA!AJ97
+tr.intelecto.bonus	resultado	FICHA!AP97
+tr.espirito.atributo	entrada	FICHA!AK98
+tr.espirito.ajuste	entrada	FICHA!AJ98
+tr.espirito.bonus	resultado	FICHA!AP98
+equipavel.1.nome	entrada	'FICHA PESSOAL'!D92
+equipavel.1.quantidade	entrada	'FICHA PESSOAL'!K92
+equipavel.1.grau	entrada	'FICHA PESSOAL'!AI92
+equipavel.1.volume	resultado	'FICHA PESSOAL'!AG92
+equipavel.2.nome	entrada	'FICHA PESSOAL'!D93
+equipavel.2.quantidade	entrada	'FICHA PESSOAL'!K93
+equipavel.2.grau	entrada	'FICHA PESSOAL'!AI93
+equipavel.2.volume	resultado	'FICHA PESSOAL'!AG93
+equipavel.3.nome	entrada	'FICHA PESSOAL'!D94
+equipavel.3.quantidade	entrada	'FICHA PESSOAL'!K94
+equipavel.3.grau	entrada	'FICHA PESSOAL'!AI94
+equipavel.3.volume	resultado	'FICHA PESSOAL'!AG94
+equipavel.4.nome	entrada	'FICHA PESSOAL'!D95
+equipavel.4.quantidade	entrada	'FICHA PESSOAL'!K95
+equipavel.4.grau	entrada	'FICHA PESSOAL'!AI95
+equipavel.4.volume	resultado	'FICHA PESSOAL'!AG95
+equipavel.5.nome	entrada	'FICHA PESSOAL'!D96
+equipavel.5.quantidade	entrada	'FICHA PESSOAL'!K96
+equipavel.5.grau	entrada	'FICHA PESSOAL'!AI96
+equipavel.5.volume	resultado	'FICHA PESSOAL'!AG96
+equipavel.6.nome	entrada	'FICHA PESSOAL'!D97
+equipavel.6.quantidade	entrada	'FICHA PESSOAL'!K97
+equipavel.6.grau	entrada	'FICHA PESSOAL'!AI97
+equipavel.6.volume	resultado	'FICHA PESSOAL'!AG97
+equipavel.7.nome	entrada	'FICHA PESSOAL'!D98
+equipavel.7.quantidade	entrada	'FICHA PESSOAL'!K98
+equipavel.7.grau	entrada	'FICHA PESSOAL'!AI98
+equipavel.7.volume	entrada	'FICHA PESSOAL'!AG98
+equipavel.8.nome	entrada	'FICHA PESSOAL'!D99
+equipavel.8.quantidade	entrada	'FICHA PESSOAL'!K99
+equipavel.8.grau	entrada	'FICHA PESSOAL'!AI99
+equipavel.8.volume	entrada	'FICHA PESSOAL'!AG99
+item.1.nome	entrada	'FICHA PESSOAL'!D104
+item.1.quantidade	entrada	'FICHA PESSOAL'!T104
+item.1.volume	entrada	'FICHA PESSOAL'!V104
+item.7.nome	entrada	'FICHA PESSOAL'!Z104
+item.7.quantidade	entrada	'FICHA PESSOAL'!AP104
+item.7.volume	entrada	'FICHA PESSOAL'!AR104
+item.2.nome	entrada	'FICHA PESSOAL'!D105
+item.2.quantidade	entrada	'FICHA PESSOAL'!T105
+item.2.volume	entrada	'FICHA PESSOAL'!V105
+item.8.nome	entrada	'FICHA PESSOAL'!Z105
+item.8.quantidade	entrada	'FICHA PESSOAL'!AP105
+item.8.volume	entrada	'FICHA PESSOAL'!AR105
+item.3.nome	entrada	'FICHA PESSOAL'!D106
+item.3.quantidade	entrada	'FICHA PESSOAL'!T106
+item.3.volume	entrada	'FICHA PESSOAL'!V106
+item.9.nome	entrada	'FICHA PESSOAL'!Z106
+item.9.quantidade	entrada	'FICHA PESSOAL'!AP106
+item.9.volume	entrada	'FICHA PESSOAL'!AR106
+item.4.nome	entrada	'FICHA PESSOAL'!D107
+item.4.quantidade	entrada	'FICHA PESSOAL'!T107
+item.4.volume	entrada	'FICHA PESSOAL'!V107
+item.10.nome	entrada	'FICHA PESSOAL'!Z107
+item.10.quantidade	entrada	'FICHA PESSOAL'!AP107
+item.10.volume	entrada	'FICHA PESSOAL'!AR107
+item.5.nome	entrada	'FICHA PESSOAL'!D108
+item.5.quantidade	entrada	'FICHA PESSOAL'!T108
+item.5.volume	entrada	'FICHA PESSOAL'!V108
+item.11.nome	entrada	'FICHA PESSOAL'!Z108
+item.11.quantidade	entrada	'FICHA PESSOAL'!AP108
+item.11.volume	entrada	'FICHA PESSOAL'!AR108
+item.6.nome	entrada	'FICHA PESSOAL'!D109
+item.6.quantidade	entrada	'FICHA PESSOAL'!T109
+item.6.volume	entrada	'FICHA PESSOAL'!V109
+item.12.nome	entrada	'FICHA PESSOAL'!Z109
+item.12.quantidade	entrada	'FICHA PESSOAL'!AP109
+item.12.volume	entrada	'FICHA PESSOAL'!AR109
+carga.ajuste_limite	entrada	'FICHA PESSOAL'!L86
+carga.total	resultado	DADOS!CZ40
+carga.limite	resultado	DADOS!CZ41
+invocacao.1.tr.fisico.bonus	resultado	'INVOCAÇÕES'!O29
+invocacao.1.tr.vigor.bonus	resultado	'INVOCAÇÕES'!P29
+invocacao.1.tr.intelecto.bonus	resultado	'INVOCAÇÕES'!Q29
+invocacao.1.tr.espirito.bonus	resultado	'INVOCAÇÕES'!R29
+invocacao.1.pericia.1.bonus	resultado	'INVOCAÇÕES'!R38
+invocacao.1.pericia.2.bonus	resultado	'INVOCAÇÕES'!R39
+invocacao.1.pericia.3.bonus	resultado	'INVOCAÇÕES'!R40
+invocacao.1.pericia.4.bonus	resultado	'INVOCAÇÕES'!R41
+invocacao.1.pericia.5.bonus	resultado	'INVOCAÇÕES'!R42
+invocacao.1.pericia.6.bonus	resultado	'INVOCAÇÕES'!R43
+invocacao.1.pericia.7.bonus	resultado	'INVOCAÇÕES'!R44
+invocacao.1.carga.item.1.nome	entrada	'INVOCAÇÕES'!U37
+invocacao.1.carga.item.1.volume	entrada	'INVOCAÇÕES'!Y37
+invocacao.1.carga.item.2.nome	entrada	'INVOCAÇÕES'!U38
+invocacao.1.carga.item.2.volume	entrada	'INVOCAÇÕES'!Y38
+invocacao.1.carga.item.3.nome	entrada	'INVOCAÇÕES'!U39
+invocacao.1.carga.item.3.volume	entrada	'INVOCAÇÕES'!Y39
+invocacao.1.carga.item.4.nome	entrada	'INVOCAÇÕES'!U40
+invocacao.1.carga.item.4.volume	entrada	'INVOCAÇÕES'!Y40
+invocacao.1.carga.item.5.nome	entrada	'INVOCAÇÕES'!U41
+invocacao.1.carga.item.5.volume	entrada	'INVOCAÇÕES'!Y41
+invocacao.1.carga.item.6.nome	entrada	'INVOCAÇÕES'!U42
+invocacao.1.carga.item.6.volume	entrada	'INVOCAÇÕES'!Y42
+invocacao.1.carga.total	resultado	DADOS_INVOC!EI2
+invocacao.1.carga.limite	resultado	DADOS_INVOC!HC2
+invocacao.2.tr.fisico.bonus	resultado	'INVOCAÇÕES'!O227
+invocacao.2.tr.vigor.bonus	resultado	'INVOCAÇÕES'!P227
+invocacao.2.tr.intelecto.bonus	resultado	'INVOCAÇÕES'!Q227
+invocacao.2.tr.espirito.bonus	resultado	'INVOCAÇÕES'!R227
+invocacao.2.pericia.1.bonus	resultado	'INVOCAÇÕES'!R236
+invocacao.2.pericia.2.bonus	resultado	'INVOCAÇÕES'!R237
+invocacao.2.pericia.3.bonus	resultado	'INVOCAÇÕES'!R238
+invocacao.2.pericia.4.bonus	resultado	'INVOCAÇÕES'!R239
+invocacao.2.pericia.5.bonus	resultado	'INVOCAÇÕES'!R240
+invocacao.2.pericia.6.bonus	resultado	'INVOCAÇÕES'!R241
+invocacao.2.pericia.7.bonus	resultado	'INVOCAÇÕES'!R242
+invocacao.2.carga.item.1.nome	entrada	'INVOCAÇÕES'!U235
+invocacao.2.carga.item.1.volume	entrada	'INVOCAÇÕES'!Y235
+invocacao.2.carga.item.2.nome	entrada	'INVOCAÇÕES'!U236
+invocacao.2.carga.item.2.volume	entrada	'INVOCAÇÕES'!Y236
+invocacao.2.carga.item.3.nome	entrada	'INVOCAÇÕES'!U237
+invocacao.2.carga.item.3.volume	entrada	'INVOCAÇÕES'!Y237
+invocacao.2.carga.item.4.nome	entrada	'INVOCAÇÕES'!U238
+invocacao.2.carga.item.4.volume	entrada	'INVOCAÇÕES'!Y238
+invocacao.2.carga.item.5.nome	entrada	'INVOCAÇÕES'!U239
+invocacao.2.carga.item.5.volume	entrada	'INVOCAÇÕES'!Y239
+invocacao.2.carga.item.6.nome	entrada	'INVOCAÇÕES'!U240
+invocacao.2.carga.item.6.volume	entrada	'INVOCAÇÕES'!Y240
+invocacao.2.carga.total	resultado	DADOS_INVOC!EI3
+invocacao.2.carga.limite	resultado	DADOS_INVOC!HC3
+invocacao.3.tr.fisico.bonus	resultado	'INVOCAÇÕES'!O425
+invocacao.3.tr.vigor.bonus	resultado	'INVOCAÇÕES'!P425
+invocacao.3.tr.intelecto.bonus	resultado	'INVOCAÇÕES'!Q425
+invocacao.3.tr.espirito.bonus	resultado	'INVOCAÇÕES'!R425
+invocacao.3.pericia.1.bonus	resultado	'INVOCAÇÕES'!R434
+invocacao.3.pericia.2.bonus	resultado	'INVOCAÇÕES'!R435
+invocacao.3.pericia.3.bonus	resultado	'INVOCAÇÕES'!R436
+invocacao.3.pericia.4.bonus	resultado	'INVOCAÇÕES'!R437
+invocacao.3.pericia.5.bonus	resultado	'INVOCAÇÕES'!R438
+invocacao.3.pericia.6.bonus	resultado	'INVOCAÇÕES'!R439
+invocacao.3.pericia.7.bonus	resultado	'INVOCAÇÕES'!R440
+invocacao.3.carga.item.1.nome	entrada	'INVOCAÇÕES'!U433
+invocacao.3.carga.item.1.volume	entrada	'INVOCAÇÕES'!Y433
+invocacao.3.carga.item.2.nome	entrada	'INVOCAÇÕES'!U434
+invocacao.3.carga.item.2.volume	entrada	'INVOCAÇÕES'!Y434
+invocacao.3.carga.item.3.nome	entrada	'INVOCAÇÕES'!U435
+invocacao.3.carga.item.3.volume	entrada	'INVOCAÇÕES'!Y435
+invocacao.3.carga.item.4.nome	entrada	'INVOCAÇÕES'!U436
+invocacao.3.carga.item.4.volume	entrada	'INVOCAÇÕES'!Y436
+invocacao.3.carga.item.5.nome	entrada	'INVOCAÇÕES'!U437
+invocacao.3.carga.item.5.volume	entrada	'INVOCAÇÕES'!Y437
+invocacao.3.carga.item.6.nome	entrada	'INVOCAÇÕES'!U438
+invocacao.3.carga.item.6.volume	entrada	'INVOCAÇÕES'!Y438
+invocacao.3.carga.total	resultado	DADOS_INVOC!EI4
+invocacao.3.carga.limite	resultado	DADOS_INVOC!HC4
+invocacao.4.tr.fisico.bonus	resultado	'INVOCAÇÕES'!O623
+invocacao.4.tr.vigor.bonus	resultado	'INVOCAÇÕES'!P623
+invocacao.4.tr.intelecto.bonus	resultado	'INVOCAÇÕES'!Q623
+invocacao.4.tr.espirito.bonus	resultado	'INVOCAÇÕES'!R623
+invocacao.4.pericia.1.bonus	resultado	'INVOCAÇÕES'!R632
+invocacao.4.pericia.2.bonus	resultado	'INVOCAÇÕES'!R633
+invocacao.4.pericia.3.bonus	resultado	'INVOCAÇÕES'!R634
+invocacao.4.pericia.4.bonus	resultado	'INVOCAÇÕES'!R635
+invocacao.4.pericia.5.bonus	resultado	'INVOCAÇÕES'!R636
+invocacao.4.pericia.6.bonus	resultado	'INVOCAÇÕES'!R637
+invocacao.4.pericia.7.bonus	resultado	'INVOCAÇÕES'!R638
+invocacao.4.carga.item.1.nome	entrada	'INVOCAÇÕES'!U631
+invocacao.4.carga.item.1.volume	entrada	'INVOCAÇÕES'!Y631
+invocacao.4.carga.item.2.nome	entrada	'INVOCAÇÕES'!U632
+invocacao.4.carga.item.2.volume	entrada	'INVOCAÇÕES'!Y632
+invocacao.4.carga.item.3.nome	entrada	'INVOCAÇÕES'!U633
+invocacao.4.carga.item.3.volume	entrada	'INVOCAÇÕES'!Y633
+invocacao.4.carga.item.4.nome	entrada	'INVOCAÇÕES'!U634
+invocacao.4.carga.item.4.volume	entrada	'INVOCAÇÕES'!Y634
+invocacao.4.carga.item.5.nome	entrada	'INVOCAÇÕES'!U635
+invocacao.4.carga.item.5.volume	entrada	'INVOCAÇÕES'!Y635
+invocacao.4.carga.item.6.nome	entrada	'INVOCAÇÕES'!U636
+invocacao.4.carga.item.6.volume	entrada	'INVOCAÇÕES'!Y636
+invocacao.4.carga.total	resultado	DADOS_INVOC!EI5
+invocacao.4.carga.limite	resultado	DADOS_INVOC!HC5
+invocacao.5.tr.fisico.bonus	resultado	'INVOCAÇÕES'!O821
+invocacao.5.tr.vigor.bonus	resultado	'INVOCAÇÕES'!P821
+invocacao.5.tr.intelecto.bonus	resultado	'INVOCAÇÕES'!Q821
+invocacao.5.tr.espirito.bonus	resultado	'INVOCAÇÕES'!R821
+invocacao.5.pericia.1.bonus	resultado	'INVOCAÇÕES'!R830
+invocacao.5.pericia.2.bonus	resultado	'INVOCAÇÕES'!R831
+invocacao.5.pericia.3.bonus	resultado	'INVOCAÇÕES'!R832
+invocacao.5.pericia.4.bonus	resultado	'INVOCAÇÕES'!R833
+invocacao.5.pericia.5.bonus	resultado	'INVOCAÇÕES'!R834
+invocacao.5.pericia.6.bonus	resultado	'INVOCAÇÕES'!R835
+invocacao.5.pericia.7.bonus	resultado	'INVOCAÇÕES'!R836
+invocacao.5.carga.item.1.nome	entrada	'INVOCAÇÕES'!U829
+invocacao.5.carga.item.1.volume	entrada	'INVOCAÇÕES'!Y829
+invocacao.5.carga.item.2.nome	entrada	'INVOCAÇÕES'!U830
+invocacao.5.carga.item.2.volume	entrada	'INVOCAÇÕES'!Y830
+invocacao.5.carga.item.3.nome	entrada	'INVOCAÇÕES'!U831
+invocacao.5.carga.item.3.volume	entrada	'INVOCAÇÕES'!Y831
+invocacao.5.carga.item.4.nome	entrada	'INVOCAÇÕES'!U832
+invocacao.5.carga.item.4.volume	entrada	'INVOCAÇÕES'!Y832
+invocacao.5.carga.item.5.nome	entrada	'INVOCAÇÕES'!U833
+invocacao.5.carga.item.5.volume	entrada	'INVOCAÇÕES'!Y833
+invocacao.5.carga.item.6.nome	entrada	'INVOCAÇÕES'!U834
+invocacao.5.carga.item.6.volume	entrada	'INVOCAÇÕES'!Y834
+invocacao.5.carga.total	resultado	DADOS_INVOC!EI6
+invocacao.5.carga.limite	resultado	DADOS_INVOC!HC6
+invocacao.6.tr.fisico.bonus	resultado	'INVOCAÇÕES'!O1019
+invocacao.6.tr.vigor.bonus	resultado	'INVOCAÇÕES'!P1019
+invocacao.6.tr.intelecto.bonus	resultado	'INVOCAÇÕES'!Q1019
+invocacao.6.tr.espirito.bonus	resultado	'INVOCAÇÕES'!R1019
+invocacao.6.pericia.1.bonus	resultado	'INVOCAÇÕES'!R1028
+invocacao.6.pericia.2.bonus	resultado	'INVOCAÇÕES'!R1029
+invocacao.6.pericia.3.bonus	resultado	'INVOCAÇÕES'!R1030
+invocacao.6.pericia.4.bonus	resultado	'INVOCAÇÕES'!R1031
+invocacao.6.pericia.5.bonus	resultado	'INVOCAÇÕES'!R1032
+invocacao.6.pericia.6.bonus	resultado	'INVOCAÇÕES'!R1033
+invocacao.6.pericia.7.bonus	resultado	'INVOCAÇÕES'!R1034
+invocacao.6.carga.item.1.nome	entrada	'INVOCAÇÕES'!U1027
+invocacao.6.carga.item.1.volume	entrada	'INVOCAÇÕES'!Y1027
+invocacao.6.carga.item.2.nome	entrada	'INVOCAÇÕES'!U1028
+invocacao.6.carga.item.2.volume	entrada	'INVOCAÇÕES'!Y1028
+invocacao.6.carga.item.3.nome	entrada	'INVOCAÇÕES'!U1029
+invocacao.6.carga.item.3.volume	entrada	'INVOCAÇÕES'!Y1029
+invocacao.6.carga.item.4.nome	entrada	'INVOCAÇÕES'!U1030
+invocacao.6.carga.item.4.volume	entrada	'INVOCAÇÕES'!Y1030
+invocacao.6.carga.item.5.nome	entrada	'INVOCAÇÕES'!U1031
+invocacao.6.carga.item.5.volume	entrada	'INVOCAÇÕES'!Y1031
+invocacao.6.carga.item.6.nome	entrada	'INVOCAÇÕES'!U1032
+invocacao.6.carga.item.6.volume	entrada	'INVOCAÇÕES'!Y1032
+invocacao.6.carga.total	resultado	DADOS_INVOC!EI7
+invocacao.6.carga.limite	resultado	DADOS_INVOC!HC7
+invocacao.7.tr.fisico.bonus	resultado	'INVOCAÇÕES'!AH29
+invocacao.7.tr.vigor.bonus	resultado	'INVOCAÇÕES'!AI29
+invocacao.7.tr.intelecto.bonus	resultado	'INVOCAÇÕES'!AJ29
+invocacao.7.tr.espirito.bonus	resultado	'INVOCAÇÕES'!AK29
+invocacao.7.pericia.1.bonus	resultado	'INVOCAÇÕES'!AK38
+invocacao.7.pericia.2.bonus	resultado	'INVOCAÇÕES'!AK39
+invocacao.7.pericia.3.bonus	resultado	'INVOCAÇÕES'!AK40
+invocacao.7.pericia.4.bonus	resultado	'INVOCAÇÕES'!AK41
+invocacao.7.pericia.5.bonus	resultado	'INVOCAÇÕES'!AK42
+invocacao.7.pericia.6.bonus	resultado	'INVOCAÇÕES'!AK43
+invocacao.7.pericia.7.bonus	resultado	'INVOCAÇÕES'!AK44
+invocacao.7.carga.item.1.nome	entrada	'INVOCAÇÕES'!AN37
+invocacao.7.carga.item.1.volume	entrada	'INVOCAÇÕES'!AR37
+invocacao.7.carga.item.2.nome	entrada	'INVOCAÇÕES'!AN38
+invocacao.7.carga.item.2.volume	entrada	'INVOCAÇÕES'!AR38
+invocacao.7.carga.item.3.nome	entrada	'INVOCAÇÕES'!AN39
+invocacao.7.carga.item.3.volume	entrada	'INVOCAÇÕES'!AR39
+invocacao.7.carga.item.4.nome	entrada	'INVOCAÇÕES'!AN40
+invocacao.7.carga.item.4.volume	entrada	'INVOCAÇÕES'!AR40
+invocacao.7.carga.item.5.nome	entrada	'INVOCAÇÕES'!AN41
+invocacao.7.carga.item.5.volume	entrada	'INVOCAÇÕES'!AR41
+invocacao.7.carga.item.6.nome	entrada	'INVOCAÇÕES'!AN42
+invocacao.7.carga.item.6.volume	entrada	'INVOCAÇÕES'!AR42
+invocacao.7.carga.total	resultado	DADOS_INVOC!EI8
+invocacao.7.carga.limite	resultado	DADOS_INVOC!HC8
+invocacao.8.tr.fisico.bonus	resultado	'INVOCAÇÕES'!AH227
+invocacao.8.tr.vigor.bonus	resultado	'INVOCAÇÕES'!AI227
+invocacao.8.tr.intelecto.bonus	resultado	'INVOCAÇÕES'!AJ227
+invocacao.8.tr.espirito.bonus	resultado	'INVOCAÇÕES'!AK227
+invocacao.8.pericia.1.bonus	resultado	'INVOCAÇÕES'!AK236
+invocacao.8.pericia.2.bonus	resultado	'INVOCAÇÕES'!AK237
+invocacao.8.pericia.3.bonus	resultado	'INVOCAÇÕES'!AK238
+invocacao.8.pericia.4.bonus	resultado	'INVOCAÇÕES'!AK239
+invocacao.8.pericia.5.bonus	resultado	'INVOCAÇÕES'!AK240
+invocacao.8.pericia.6.bonus	resultado	'INVOCAÇÕES'!AK241
+invocacao.8.pericia.7.bonus	resultado	'INVOCAÇÕES'!AK242
+invocacao.8.carga.item.1.nome	entrada	'INVOCAÇÕES'!AN235
+invocacao.8.carga.item.1.volume	entrada	'INVOCAÇÕES'!AR235
+invocacao.8.carga.item.2.nome	entrada	'INVOCAÇÕES'!AN236
+invocacao.8.carga.item.2.volume	entrada	'INVOCAÇÕES'!AR236
+invocacao.8.carga.item.3.nome	entrada	'INVOCAÇÕES'!AN237
+invocacao.8.carga.item.3.volume	entrada	'INVOCAÇÕES'!AR237
+invocacao.8.carga.item.4.nome	entrada	'INVOCAÇÕES'!AN238
+invocacao.8.carga.item.4.volume	entrada	'INVOCAÇÕES'!AR238
+invocacao.8.carga.item.5.nome	entrada	'INVOCAÇÕES'!AN239
+invocacao.8.carga.item.5.volume	entrada	'INVOCAÇÕES'!AR239
+invocacao.8.carga.item.6.nome	entrada	'INVOCAÇÕES'!AN240
+invocacao.8.carga.item.6.volume	entrada	'INVOCAÇÕES'!AR240
+invocacao.8.carga.total	resultado	DADOS_INVOC!EI9
+invocacao.8.carga.limite	resultado	DADOS_INVOC!HC9
+invocacao.9.tr.fisico.bonus	resultado	'INVOCAÇÕES'!AH425
+invocacao.9.tr.vigor.bonus	resultado	'INVOCAÇÕES'!AI425
+invocacao.9.tr.intelecto.bonus	resultado	'INVOCAÇÕES'!AJ425
+invocacao.9.tr.espirito.bonus	resultado	'INVOCAÇÕES'!AK425
+invocacao.9.pericia.1.bonus	resultado	'INVOCAÇÕES'!AK434
+invocacao.9.pericia.2.bonus	resultado	'INVOCAÇÕES'!AK435
+invocacao.9.pericia.3.bonus	resultado	'INVOCAÇÕES'!AK436
+invocacao.9.pericia.4.bonus	resultado	'INVOCAÇÕES'!AK437
+invocacao.9.pericia.5.bonus	resultado	'INVOCAÇÕES'!AK438
+invocacao.9.pericia.6.bonus	resultado	'INVOCAÇÕES'!AK439
+invocacao.9.pericia.7.bonus	resultado	'INVOCAÇÕES'!AK440
+invocacao.9.carga.item.1.nome	entrada	'INVOCAÇÕES'!AN433
+invocacao.9.carga.item.1.volume	entrada	'INVOCAÇÕES'!AR433
+invocacao.9.carga.item.2.nome	entrada	'INVOCAÇÕES'!AN434
+invocacao.9.carga.item.2.volume	entrada	'INVOCAÇÕES'!AR434
+invocacao.9.carga.item.3.nome	entrada	'INVOCAÇÕES'!AN435
+invocacao.9.carga.item.3.volume	entrada	'INVOCAÇÕES'!AR435
+invocacao.9.carga.item.4.nome	entrada	'INVOCAÇÕES'!AN436
+invocacao.9.carga.item.4.volume	entrada	'INVOCAÇÕES'!AR436
+invocacao.9.carga.item.5.nome	entrada	'INVOCAÇÕES'!AN437
+invocacao.9.carga.item.5.volume	entrada	'INVOCAÇÕES'!AR437
+invocacao.9.carga.item.6.nome	entrada	'INVOCAÇÕES'!AN438
+invocacao.9.carga.item.6.volume	entrada	'INVOCAÇÕES'!AR438
+invocacao.9.carga.total	resultado	DADOS_INVOC!EI10
+invocacao.9.carga.limite	resultado	DADOS_INVOC!HC10
+invocacao.10.tr.fisico.bonus	resultado	'INVOCAÇÕES'!AH623
+invocacao.10.tr.vigor.bonus	resultado	'INVOCAÇÕES'!AI623
+invocacao.10.tr.intelecto.bonus	resultado	'INVOCAÇÕES'!AJ623
+invocacao.10.tr.espirito.bonus	resultado	'INVOCAÇÕES'!AK623
+invocacao.10.pericia.1.bonus	resultado	'INVOCAÇÕES'!AK632
+invocacao.10.pericia.2.bonus	resultado	'INVOCAÇÕES'!AK633
+invocacao.10.pericia.3.bonus	resultado	'INVOCAÇÕES'!AK634
+invocacao.10.pericia.4.bonus	resultado	'INVOCAÇÕES'!AK635
+invocacao.10.pericia.5.bonus	resultado	'INVOCAÇÕES'!AK636
+invocacao.10.pericia.6.bonus	resultado	'INVOCAÇÕES'!AK637
+invocacao.10.pericia.7.bonus	resultado	'INVOCAÇÕES'!AK638
+invocacao.10.carga.item.1.nome	entrada	'INVOCAÇÕES'!AN631
+invocacao.10.carga.item.1.volume	entrada	'INVOCAÇÕES'!AR631
+invocacao.10.carga.item.2.nome	entrada	'INVOCAÇÕES'!AN632
+invocacao.10.carga.item.2.volume	entrada	'INVOCAÇÕES'!AR632
+invocacao.10.carga.item.3.nome	entrada	'INVOCAÇÕES'!AN633
+invocacao.10.carga.item.3.volume	entrada	'INVOCAÇÕES'!AR633
+invocacao.10.carga.item.4.nome	entrada	'INVOCAÇÕES'!AN634
+invocacao.10.carga.item.4.volume	entrada	'INVOCAÇÕES'!AR634
+invocacao.10.carga.item.5.nome	entrada	'INVOCAÇÕES'!AN635
+invocacao.10.carga.item.5.volume	entrada	'INVOCAÇÕES'!AR635
+invocacao.10.carga.item.6.nome	entrada	'INVOCAÇÕES'!AN636
+invocacao.10.carga.item.6.volume	entrada	'INVOCAÇÕES'!AR636
+invocacao.10.carga.total	resultado	DADOS_INVOC!EI11
+invocacao.10.carga.limite	resultado	DADOS_INVOC!HC11
+invocacao.11.tr.fisico.bonus	resultado	'INVOCAÇÕES'!AH821
+invocacao.11.tr.vigor.bonus	resultado	'INVOCAÇÕES'!AI821
+invocacao.11.tr.intelecto.bonus	resultado	'INVOCAÇÕES'!AJ821
+invocacao.11.tr.espirito.bonus	resultado	'INVOCAÇÕES'!AK821
+invocacao.11.pericia.1.bonus	resultado	'INVOCAÇÕES'!AK830
+invocacao.11.pericia.2.bonus	resultado	'INVOCAÇÕES'!AK831
+invocacao.11.pericia.3.bonus	resultado	'INVOCAÇÕES'!AK832
+invocacao.11.pericia.4.bonus	resultado	'INVOCAÇÕES'!AK833
+invocacao.11.pericia.5.bonus	resultado	'INVOCAÇÕES'!AK834
+invocacao.11.pericia.6.bonus	resultado	'INVOCAÇÕES'!AK835
+invocacao.11.pericia.7.bonus	resultado	'INVOCAÇÕES'!AK836
+invocacao.11.carga.item.1.nome	entrada	'INVOCAÇÕES'!AN829
+invocacao.11.carga.item.1.volume	entrada	'INVOCAÇÕES'!AR829
+invocacao.11.carga.item.2.nome	entrada	'INVOCAÇÕES'!AN830
+invocacao.11.carga.item.2.volume	entrada	'INVOCAÇÕES'!AR830
+invocacao.11.carga.item.3.nome	entrada	'INVOCAÇÕES'!AN831
+invocacao.11.carga.item.3.volume	entrada	'INVOCAÇÕES'!AR831
+invocacao.11.carga.item.4.nome	entrada	'INVOCAÇÕES'!AN832
+invocacao.11.carga.item.4.volume	entrada	'INVOCAÇÕES'!AR832
+invocacao.11.carga.item.5.nome	entrada	'INVOCAÇÕES'!AN833
+invocacao.11.carga.item.5.volume	entrada	'INVOCAÇÕES'!AR833
+invocacao.11.carga.item.6.nome	entrada	'INVOCAÇÕES'!AN834
+invocacao.11.carga.item.6.volume	entrada	'INVOCAÇÕES'!AR834
+invocacao.11.carga.total	resultado	DADOS_INVOC!EI12
+invocacao.11.carga.limite	resultado	DADOS_INVOC!HC12
+invocacao.12.tr.fisico.bonus	resultado	'INVOCAÇÕES'!AH1019
+invocacao.12.tr.vigor.bonus	resultado	'INVOCAÇÕES'!AI1019
+invocacao.12.tr.intelecto.bonus	resultado	'INVOCAÇÕES'!AJ1019
+invocacao.12.tr.espirito.bonus	resultado	'INVOCAÇÕES'!AK1019
+invocacao.12.pericia.1.bonus	resultado	'INVOCAÇÕES'!AK1028
+invocacao.12.pericia.2.bonus	resultado	'INVOCAÇÕES'!AK1029
+invocacao.12.pericia.3.bonus	resultado	'INVOCAÇÕES'!AK1030
+invocacao.12.pericia.4.bonus	resultado	'INVOCAÇÕES'!AK1031
+invocacao.12.pericia.5.bonus	resultado	'INVOCAÇÕES'!AK1032
+invocacao.12.pericia.6.bonus	resultado	'INVOCAÇÕES'!AK1033
+invocacao.12.pericia.7.bonus	resultado	'INVOCAÇÕES'!AK1034
+invocacao.12.carga.item.1.nome	entrada	'INVOCAÇÕES'!AN1027
+invocacao.12.carga.item.1.volume	entrada	'INVOCAÇÕES'!AR1027
+invocacao.12.carga.item.2.nome	entrada	'INVOCAÇÕES'!AN1028
+invocacao.12.carga.item.2.volume	entrada	'INVOCAÇÕES'!AR1028
+invocacao.12.carga.item.3.nome	entrada	'INVOCAÇÕES'!AN1029
+invocacao.12.carga.item.3.volume	entrada	'INVOCAÇÕES'!AR1029
+invocacao.12.carga.item.4.nome	entrada	'INVOCAÇÕES'!AN1030
+invocacao.12.carga.item.4.volume	entrada	'INVOCAÇÕES'!AR1030
+invocacao.12.carga.item.5.nome	entrada	'INVOCAÇÕES'!AN1031
+invocacao.12.carga.item.5.volume	entrada	'INVOCAÇÕES'!AR1031
+invocacao.12.carga.item.6.nome	entrada	'INVOCAÇÕES'!AN1032
+invocacao.12.carga.item.6.volume	entrada	'INVOCAÇÕES'!AR1032
+invocacao.12.carga.total	resultado	DADOS_INVOC!EI13
+invocacao.12.carga.limite	resultado	DADOS_INVOC!HC13

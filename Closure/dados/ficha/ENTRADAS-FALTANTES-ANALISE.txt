@@ -1,7 +1,8 @@
 ANALISE: cobertura e contas restantes — R51, atualizado em 15/10/2026
 
-Formato 2 preparado no gerador: 4.896 chaves; preservadas as 2.650 anteriores.
-Bot aceita 1 e 2. A ampliação só foi aplicada a cópias de teste. CONFIGURAÇÃO continua adiada.
+Formato 4 preparado no gerador: 5.381 chaves; preservadas as 4.896 anteriores.
+Bot aceita 1/2/4. Formato 3 pertence ao trabalho paralelo de CONFIGURAÇÃO e não está integrado.
+A ficha oficial do Google não foi alterada por esta rodada.
 
 Conferido pelo bot, sem modelo
 
@@ -45,13 +46,17 @@ O que continua sem conferência integral
    explícita conferidos. Trunfos: exclusividade da domada, quantidade/Classe/PE/pontos/ação de Liberação,
    faixa de dados/pontos/PE/ação da Máxima e requisitos/custo/espaços/Acerto numérico do Domínio conferidos
    nas contas declaradas. Não provam técnica própria, não aprovam peças em texto nem finalidade do Acerto.
-   Domínio Sem Barreiras ainda exige conferir especialização do dono, na etapa de perícias.
+   Domínio Sem Barreiras exige Ocultismo treinado/especialista do dono; agora conferido quando as marcações são exportadas.
    Equipamento tabelado: Força/patente e acerto armado com atributos permitidos; ausência de treino da
    entidade gera pendência. Anatomia, modalidade/Fineza e itens próprios permanecem revisão manual.
-   Carga da entidade é subtotal das três peças, não inventário completo nem autorização de armazenamento.
-   Carga pessoal não pode ser certificada: equipavel.N junta nome com Grau, omitindo quantidade; faltam
-   Volume dos itens livres e Buff do limite. Ampliar o contrato sem usar o total calculado como entrada.
-   Resultados de perícias/TR ficam para a próxima etapa, por pedido do Mizuki; CONFIGURAÇÃO segue no outro chat.
+   Formato 4: carga soma peças e objetos declarados; formato 2 mantém apenas o subtotal. Carga pessoal
+   refaz quantidades, Volumes e limite. Itens de catálogo usam o livro; livres continuam declarados,
+   sujeitos ao mestre. Arma em uso precisa estar no inventário. Ferramentas Integradas sem conjunto
+   vinculado impedem certificar o total. Armazenamento da entidade exige autorização/anatomia.
+   TR/perícias/Ofícios são recalculados no formato 4; os antigos resultados não eram exportados.
+   Quantidades respeitam criação, Corpo, trocas e concessões de Origem por possibilidades. Não provam
+   qual treino veio de cada concessão, se era elegível na aquisição, ou a data de uma especialização.
+   Mudança de atributo de Ofício depende da tarefa; bônus sem treino não autoriza tentativa.
 5. Nenhuma versão confirma o histórico de quando um ponto foi ganho ou uma escolha foi reescrita.
 
 Validação desta rodada
@@ -90,3 +95,13 @@ Dois módulos novos: ficha_equipamento.py e ficha_entidade_repertorio.py. 50 tes
 valores adulterados, entradas ausentes e divergências exatas do gerador. Controle de saldo/CD, montagens
 em texto, anatomia e escolhas não exportadas continuam explicitamente parciais. Relatório em
 pesquisa/validacao/2026-10-15-ficha-equipamento-trunfos/relatorio.txt. Parada antes de TR/perícias.
+
+Continuação TR/perícias e carga — 15/10
+
+Formato 4 com 485 campos novos. Três casos nativos recalculados no LibreOffice, incluindo especialista
+e domada de nível 5 com dono de nível 18. Resultados de TR/perícias, atributos e carga adulterados
+são rejeitados; dados ausentes impedem certificar a conta. Corda: fórmula genérica legada exata
+vira pendência; valor incompatível reprova. Mesma cautela no limite de Porte Incomum sem vínculo
+do ajuste. Página TR e perícias separa os bônus do resumo. Histórico acima descreve cada etapa.
+Relatório: pesquisa/validacao/2026-10-15-ficha-tr-pericias/relatorio.txt.
+Parada antes de CONFIGURAÇÃO. Nenhum modelo real, card ou livro alterado.

@@ -118,4 +118,5 @@ def conferir_numeros(ficha, magia, base, nivel, r, equipamento=None, catalogo=No
     # O resultado de deslocamento exportado é a base, não o ajuste de carga em campo.
     comparar(base + ".deslocamento", 9 + ajustes[base + ".buff.deslocamento"], "construcao--entidades-definicao")
     conferir_uso(ficha, catalogo, r, base=base, atributos=totais)
-    r.nao_conferido.append(f"{nome}: perícias e TR aguardam a próxima etapa")
+    if valor(ficha, "formato.versao") != 4:
+        r.nao_conferido.append(f"{nome}: perícias e TR exigem a exportação completa da ANALISE 4")

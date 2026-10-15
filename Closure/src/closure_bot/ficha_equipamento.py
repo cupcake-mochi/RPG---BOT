@@ -33,6 +33,7 @@ class Equipamento:
 class CatalogoEquipamento:
     pecas: dict[str, Equipamento]
     patentes: dict[str, int]
+    itens: dict[str, Decimal]
 
     @classmethod
     def do_livro(cls, livro):
@@ -67,13 +68,15 @@ class CatalogoEquipamento:
                     1 if nome in ("Broquel", "Médio", "Torre") else 0,
                     tipo="escudo" if nome in ("Broquel", "Médio", "Torre") else "uniforme")
         patentes = {n: int(g) for n, g in re.findall(r"^\| ([^|]+) \| Grau (\d+) ou superior", livro["equip--eqc-dinheiro"], re.M)}
+        itens = {nome: Decimal(volume.replace(",", ".")) for nome, volume in re.findall(
+            r"^\| ([^|]+) \| [^|]+ \| [^|]+ \| (\d+(?:,\d+)?) \|$", livro["equip--eqi-itens"], re.M)}
         guardas = {"geral--carga": "5 + Força", "equip--eq-equipamento": "Sem a Força exigida",
                    "equip--eqp-protecao": "recebe sua proteção e seus benefícios",
                    "equip--eqc-dinheiro": "Revestimento 3", "campo--inv-carga": "5 + Força"}
-        if len(patentes) != 3 or not all(n in pecas for n in ("Katana", "Besta", "Pistola", "Traje 3", "Revestimento 3", "Torre")) or any(
+        if len(patentes) != 3 or len(itens) != 13 or not all(n in pecas for n in ("Katana", "Besta", "Pistola", "Traje 3", "Revestimento 3", "Torre")) or any(
                 t not in livro[a] for a, t in guardas.items()):
             raise ValueError("o livro mudou os requisitos/carga: revise o corretor")
-        return cls(pecas, patentes)
+        return cls(pecas, patentes, itens)
 
 
 def conferir_uso(ficha, catalogo, r, *, base="", atributos=None):
@@ -137,8 +140,11 @@ def conferir_uso(ficha, catalogo, r, *, base="", atributos=None):
             r.pendencias.append(Problema("carga", base + ".equipamento",
                 "reduzir a carga para se deslocar" if soma > 2 * limite else "deslocamento pela metade enquanto acima do limite",
                 f"{soma} de {limite} Volume apenas nas peças listadas", "campo--inv-carga"))
-    r.nao_conferido.append(f"{nome}: anatomia e carga adicional/total precisam de conferência" if entidade else
-        "Carga pessoal: a ANALISE não exporta quantidade dos equipáveis, Volume dos itens livres nem Buff do limite; total não certificado")
+    if valor(ficha, "formato.versao") != 4:
+        r.nao_conferido.append(f"{nome}: anatomia e carga adicional/total precisam de conferência" if entidade else
+            "Carga pessoal: a ANALISE não exporta quantidade dos equipáveis, Volume dos itens livres nem Buff do limite; total não certificado")
+    elif entidade:
+        r.nao_conferido.append(f"{nome}: anatomia e autorização de armazenamento/passageiros dependem da definição e do mestre")
 
 
 def ataques_armados(e, atributos, maestria, buff):

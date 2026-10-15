@@ -101,19 +101,21 @@ def amostra(ficha: str, nome: str = AMOSTRA.name, *preencher: str) -> None:
         copia = pasta / "ficha.xlsx"
         shutil.copy(ficha, copia)
         livro = load_workbook(copia)
-        for aba in livro:  # o LibreOffice só reconhece o IFS com o prefixo do Excel (como no ler-analise.py)
+        for aba in livro:  # o LibreOffice precisa do prefixo do Excel para funções recentes (como no ler-analise.py)
             for celula in tuple(aba._cells.values()):
-                if isinstance(celula.value, str) and celula.value.startswith("=") and "IFS(" in celula.value \
-                        and "_xlfn.IFS(" not in celula.value:
-                    celula.value = re.sub(r"(?<![A-Z_.])IFS\(", "_xlfn.IFS(", celula.value)
+                if isinstance(celula.value, str) and celula.value.startswith("="):
+                    for funcao in ("IFS", "TEXTJOIN"):
+                        celula.value = re.sub(rf"(?<![A-Z_.]){funcao}\(", "_xlfn." + funcao + "(", celula.value)
         for item in preencher:  # "FICHA!D11=Bastião", "'FICHA PESSOAL'!AH64="
             alvo, _, valor = item.partition("=")
             aba_alvo, _, celula = alvo.rpartition("!")
-            livro[aba_alvo.strip("'")][celula] = int(valor) if re.fullmatch(r"-?\d+", valor) else (valor or None)
+            livro[aba_alvo.strip("'")][celula] = (valor.upper() == "TRUE" if valor.upper() in ("TRUE", "FALSE") else
+                int(valor) if re.fullmatch(r"-?\d+", valor) else (valor or None))
         livro.save(copia)
         livro.close()
         saida = pasta / "saida"
-        subprocess.run(["libreoffice", "--headless", "--convert-to", "xlsx", "--outdir", str(saida), str(copia)],
+        subprocess.run(["libreoffice", f"-env:UserInstallation={(pasta / 'perfil').as_uri()}",
+                        "--headless", "--convert-to", "xlsx", "--outdir", str(saida), str(copia)],
                        capture_output=True, timeout=900, check=False)
         feito = saida / "ficha.xlsx"
         if not feito.exists():

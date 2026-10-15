@@ -9,7 +9,7 @@ modelo e envia a fala com o nome e o avatar de cada personagem. Roda na Discloud
 Em 14/10, Mizuki confirmou os testes de ficha depois de Commit e Rebuild, incluindo as quatro novas cópias
 ANALISE 2, e cinco testes de consulta no chat. Mizuki também confirmou o painel por páginas às 23h05.
 
-**Ficha, ANALISE 2:** 4.896 chaves; formatos 1 e 2 aceitos. `ficha_entidade.py` refaz atributos, vida com
+**Ficha:** formatos 1, 2 e 4 aceitos. ANALISE 4 tem 5.381 chaves, com as 4.896 anteriores preservadas. O formato 3 pertence à implementação paralela de CONFIGURAÇÃO e não é aceito sem integrar suas regras. `ficha_entidade.py` refaz atributos, vida com
 Buff, Defesa reconhecida, acerto desarmado, CD e deslocamento-base. `ficha_magia.py` lê Famílias exatas,
 Classe 0 e Máxima; confere entrada carregada/retorno e CE dos Talentos por ganho. Quatro cópias preenchidas
 foram calculadas no Google e relidas localmente. Não é correção integral de todo efeito, Domínio ou custom;
@@ -21,10 +21,23 @@ sem retirar proteção. Extras da Principal não acumulam carta e Talento; CE pr
 o ganho. Trunfos da domada usam seu nível fixo, tabelas próprias e vagas de especiais para Domínio.
 Ataque/CD das habilidades vêm das entradas, incluindo Precisão, sem usar os resultados calculados.
 Reserva Profunda prevê o acréscimo por Classe; o Buff legado exige revisão para não contar duas vezes.
-Carga pessoal, texto/custom e efeitos condicionais continuam parciais. Paramos antes de TR/perícias;
-CONFIGURAÇÃO está no outro chat. Esta continuação tem validação local; ainda precisa de novo pacote na Discloud.
+Essa etapa foi seguida pela conferência de TR/perícias e carga descrita abaixo. Texto/custom e efeitos
+condicionais continuam parciais. CONFIGURAÇÃO está no outro chat; não foi integrada nesta entrega.
 
-**Painel de ficha:** resumo, revisão, habilidades, invocações e limites em páginas do mesmo embed.
+**TR/perícias e carga, 15/10:** `ficha_testes.py` refaz Maestria pelo nível, bônus dos quatro TR,
+23 perícias e 11 Ofícios, especialização, pontos de atributo e quantidades de treino. Nas entidades, usa
+atributos próprios e Maestria do dono. O antigo `buff.pericia.N` não é ajuste: permanece preservado no
+contrato e os novos resultados são `pericia.N.bonus`. `ficha_carga.py` soma posições/quantidades do
+inventário, uniforme vestido e armazenamento das entidades. Volume tabelado prevalece; livre é declarado
+e vai ao mestre. Faltas geram pendência amarela; valores adulterados reprovam. Fórmulas legadas exatas
+(Corda/Porte Incomum) recebem pendência. Origem temporal dos treinos, autorizações, anatomia e custom
+continuam manuais. Três fichas geradas/recalculadas no LibreOffice cobrem os fluxos pessoais e domada.
+A validação local soma 502 casos: 501 aprovados, um online opcional não executado.
+A ampliação do gerador está separada da CONFIGURAÇÃO; antes de juntar, preservar os dois conjuntos de
+chaves, escolher uma única versão final e regenerar os contratos/testes. Detalhes no relatório
+`../pesquisa/validacao/2026-10-15-ficha-tr-pericias/relatorio.txt`.
+
+**Painel de ficha:** resumo, revisão, TR/perícias, habilidades, invocações e limites em páginas do mesmo embed.
 `ficha_paginacao.py` controla o seletor e as quatro setas; qualquer pessoa no canal pode folhear sem nova
 leitura ou cálculo. Dez minutos sem interação encerram os controles e devolvem o resumo à mensagem.
 Depois disso, rode a análise novamente para abrir. Não persiste a ficha ou as páginas em banco; após reinício
@@ -57,7 +70,9 @@ do bot, os controles antigos também precisam de nova análise. Funciona em `/fi
 | `closure_bot/ficha_corretor.py` | Confere a ficha sem IA: formato, nomes, vida, PE, Integridade, proteção, Defesa e avisos. Chama as contas de montagem de `ficha_magia.py`. Regras de campanha e custom continuam só na estrutura, até CONFIGURAÇÃO |
 | `closure_bot/ficha_repertorio.py` | Recalcula capacidade e ocupação do repertório, Categoria/nível dos Talentos, concessões de Leque/Origem, Regra Própria e requisitos/custo cumulativo de Domínio. Não converte aplicações gratuitas em vagas nem aprova efeitos/custom por um custo válido |
 | `closure_bot/ficha_entidade_repertorio.py` | Confere escolhas extras da Principal e custos/níveis/quantidades dos trunfos da domada; Domínio compartilha vagas com especiais. Não aprova a técnica própria nem a montagem escrita só em texto |
-| `closure_bot/ficha_equipamento.py` | Extrai requisitos, mãos e Volume das tabelas do livro; confere Força/patente e subtotal equipado das entidades. Quantidade, Volume livre e Buff de carga faltantes impedem certificar a carga pessoal |
+| `closure_bot/ficha_equipamento.py` | Extrai requisitos, mãos e Volume das tabelas do livro; confere Força/patente e subtotal equipado das entidades. O inventário completo no formato 4 é conferido em ficha_carga.py; os formatos antigos continuam parciais |
+| `closure_bot/ficha_testes.py` | Recalcula TR, perícias, Ofícios e quantidades de treinos da ANALISE 4; origem temporal e escolhas sem vínculo ficam manuais |
+| `closure_bot/ficha_carga.py` | Soma o inventário completo e compara total/limite; catálogo do livro, quantidades e Volumes livres separados. Não presume autorização de armazenamento |
 | `closure_bot/ficha_efeitos.py` | Bases e escadas de alcance/área extraídas do R51; confere as medidas e o tipo de resolução. Não usa bônus exportados como entrada nem interpreta escolhas escritas em prosa |
 | `closure_bot/ficha_magia.py` | Tabelas e preços do R51 lidos do livro. Confere Classe, PE nominal, limites de peças/Restrições, parte do dano-base; nas entidades, nível, Classe, entrada e retorno. Na ANALISE 2 também confere Famílias, Classe 0/Máxima e CE por ganho; os números de entidade ficam em `ficha_entidade.py`. Não certifica contas ainda parciais; detalhes em `../dados/ficha/ENTRADAS-FALTANTES-ANALISE.txt` |
 | `closure_bot/cogs/ficha.py` | `/ficha analisar` e `GC:ficha` (link escrito depois ou `.xlsx` anexo na mensagem): painel no canal com o que corrigir, o que o mestre confere, o que bateu e o que falta conferir, aberto por frase fixa de quem está de plantão. **Ligado** desde 14/10 (`LIGADO`); lê `dados/sistema/catalogos.json` e `livro.jsonl`, que o pacote leva |

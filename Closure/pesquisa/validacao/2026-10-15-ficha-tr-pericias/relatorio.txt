@@ -1,0 +1,88 @@
+TR, perícias, Ofícios e carga — 15/10/2026
+
+Escopo autorizado
+Mizuki pediu avançar até antes de CONFIGURAÇÃO, passar pente fino e só depois fazer os testes
+no Discord. Sem chamada real a modelos, sem custo de API, sem mudar cards, lorebook ou livro.
+A ficha oficial do Google e a Discloud não foram alteradas. Argon continua congelado.
+
+Exportação
+- Base do gerador: main 15e0af949ce8870646df834afcb877cf7edb59d4.
+- ANALISE formato 4: 5.381 chaves (4 cabeçalhos, 3.398 entradas, 1.563 resultados, 416 avisos).
+  As 4.896 chaves do formato 2 conservam parte, célula e fórmula. Só formato.versao muda.
+- O formato 3 está reservado ao trabalho paralelo de CONFIGURAÇÃO/Bônus. Esta revisão 4 deriva
+  do formato 2 e NÃO contém aquela implementação. O bot aceita 1/2/4; não interpreta 3 silenciosamente.
+  Antes de integrar: unir as duas exportações, implementar as regras da CONFIGURAÇÃO, escolher
+  uma versão final única e regenerar contrato, Apps Script, XLSX e regressões. Não sobrescrever
+  o trabalho do outro chat com estes arquivos gerados.
+- Novos campos separam atributo/ajuste de bônus, inventário/quantidade/Volume de total/limite,
+  e resultados de TR/perícias das entidades. A antiga buff.pericia.K da entidade é resultado,
+  não um Buff independente: preservada no contrato, nunca somada como ajuste.
+- Comparação dos XLSX antes/depois: só docProps/core.xml e xl/worksheets/sheet10.xml (ANALISE)
+  diferem. As outras nove abas, estilos e imagens são idênticos em bytes. Hashes preservados
+  no manifesto público regressao-analise-tr-base.json do gerador. A ampliação é só de leitura.
+- Analise.gs passou do teto interno de 900 KB. As 485 linhas novas agora saem em AnaliseTestes.gs,
+  usando a junção de valores existente. Arquivos finais: Analise.gs 905.853 bytes;
+  AnaliseTestes.gs 84.520 bytes; Ficha.gs 887.543 bytes. Todos abaixo de 921.600 bytes.
+  As seis ordens de carga, repetição sem duplicação e falta do complemento foram testadas no Node.
+  Falta do complemento obrigatório interrompe a construção antes de editar a planilha.
+- O verificador antigo exigia fórmula em todos os valores, mas dez campos Classe/PE das cartas
+  Classe 0 já eram constantes zero na base v2. Foi ajustado só para esses nomes/partes/zero exatos;
+  não se liberou constante arbitrária e nenhuma fórmula antiga mudou para fazer o teste passar.
+
+Conferência do bot
+- Maestria recalculada pelo nível; pontos iniciais/marcos e Corpo separados; total de atributo até 6.
+- Quatro TR, escolha fixa de Força/Destreza, dois treinos pessoais distintos e um da entidade.
+- 23 perícias e 11 Ofícios: atributo, treino, especialização após nível 10, metade da Maestria para
+  baixo e ajuste numérico finito. Ofício pode mudar atributo conforme a tarefa, sujeito ao mestre.
+  Bônus de Ofício sem treino não autoriza automaticamente a tentativa.
+- Quantidades por possibilidades: 9 perícias + 2 Ofícios ou 10 sem Ofícios, trocas por arma,
+  Corpo, Duas Vidas, Aprendizado Complementar, Arquivo de Procedimentos e Especialidade Antiga.
+  Fonte e momento de cada escolha não são deduzidos. Ausências não são tratadas como zero.
+- Entidades usam atributos próprios e Maestria do dono, inclusive domada de nível menor.
+  Perícias repetidas não duplicam treino. Buff de Inteligência não prova aquisição permanente.
+- Domínio Sem Barreiras confere Ocultismo treinado e especialista do dono se as marcações existem;
+  sem elas, permanece manual.
+- Carga: oito equipáveis, doze itens, uniforme vestido e ajuste do limite separados. Catálogo do
+  livro prevalece; quantidade vazia vale um, zero continua zero. Volume livre é total declarado,
+  sem multiplicar duas vezes. Itens próprios e ajustes permanecem para o mestre.
+- Entidades: três peças mais seis linhas de armazenamento, sem presumir quantidade/autorização.
+  Anatomia, passageiros e permissões de armazenamento não são certificados.
+- Limite 5 + Força + ajustes; Porte Incomum elegível acrescenta Maestria. Sobrecarga indica meia
+  marcha/desvantagem ou impossibilidade de andar, sem multiplicar penalidades nem alterar a base.
+- Divergências legadas exatas (item genérico versus catálogo e Porte Incomum) ficam amarelas;
+  valor arbitrário reprova. Ferramentas Integradas sem identificar o conjunto impede certificar carga.
+- O resumo mantém alertas e uma contagem; bônus vão à página TR e perícias, com seletor e setas.
+  Sem nova leitura, cálculo ou API ao folhear. Verde/amarelo/vermelho preservados.
+
+Fichas nativas e regressões
+- Três fichas preenchidas no XLSX do gerador e recalculadas no LibreOffice com perfil isolado.
+  Só a ANALISE com valores ficou nos fixtures; não são fichas completas para jogar.
+- Pessoal nível 2: aprovada, sem erros/pendências. TR Físico +4, Vigor +3, carga 0,3/8.
+- Especialista nível 10: Atletismo +7. Sem erro; duas pendências da Corda: a planilha mostra 0,2
+  por duas unidades e carga 0,5; o livro pede 1,0 e total 1,3. Não se corrigiram fórmulas visíveis
+  do gerador nesta ampliação; o bot sinaliza a divergência.
+- Domada nível 5/dono 18: aprovada, sem erros/pendências; TR Vigor +5 (Debuff -1), Atletismo +4.
+  Três notas do mestre preservadas (ajustes/efeito parcial). Não há erro de fórmula nas 5.381
+  linhas de cada fixture. Os nomes e escolhas são sintéticos.
+- Valores de bônus/carga adulterados reprovam mesmo sem aviso da planilha. Treino ausente gera
+  uma pendência independente, sem triplicar o aviso legado. Entradas ausentes não certificam conta.
+- Suíte final do bot: 502 testes em 123,094 s, 501 passaram e um online opcional pulado.
+  A rodada focada de 53 testes também passou. O pente fino removeu a duplicação do alerta
+  de subtotal/total de carga, mantendo o parcial quando faltam dados.
+- Gerador: cinco regressões próprias aprovadas, incluindo transporte no Node e equivalência XLSX/GS.
+
+Limites da conclusão
+Não é validação integral de toda habilidade do livro. Texto de Regra/efeito/Selo, custom, autorização,
+anatomia, histórico, origem temporal e vínculo de aquisições continuam manuais. Controle com CD
+condicionada e distribuições em texto mantêm limites documentados. Não há integração de CONFIGURAÇÃO.
+No formato 2 antigo, os resultados novos continuam não certificados; não se inventam entradas.
+Testes no Discord ainda são necessários para validar a apresentação no ambiente hospedado.
+
+Retomada/reprodução
+- Bot: de src/, ../.venv/bin/python -m unittest discover -s testes.
+- Gerador: python3 regressao-analise-tr.py; bash rodar-tudo.sh (com dependências/LibreOffice).
+- Metadados: monta.py --exportar-analise SAIDA.json; ficha_analise.py chaves SAIDA.json.
+- Fixtures: ficha_analise.py amostra, com o XLSX completo preenchido e LibreOffice; funções IFS e
+  TEXTJOIN recebem prefixo de compatibilidade quando necessário. Perfil temporário isolado.
+- Arquivos para teste no Discord: ferramentas/preparar_testes_ficha_tr.py. Roteiro ao lado,
+  TESTES-DISCORD.txt. Saída src/var/testes-tr-pericias/, fora do Git.
