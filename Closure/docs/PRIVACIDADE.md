@@ -14,7 +14,7 @@ Quando você chama uma delas, o texto da mensagem fica guardado até as 4h30 da 
 
 Para retomar depois de um reinício, o bot também guarda as últimas 12 falas da conversa por canal e personagem, incluindo as respostas. Esse histórico deixa de ser usado após 30 minutos sem conversa ou às próximas 4h30, o que vier primeiro. A limpeza roda a cada minuto enquanto o bot está ligado e na retomada. O histórico usa a mesma proteção do banco; apagar seus dados também remove a conversa recente em que você participou.
 
-Quando você envia um link do YouTube numa conversa com as guias, o bot pode consultar o título e o canal do vídeo. Só o identificador do vídeo é enviado nessa consulta, sem seu nome nem o restante da mensagem. Esses metadados acompanham a conversa recente. O bot não baixa nem analisa áudio, vídeos ou imagens; nomes de anexos e prévias textuais podem acompanhar o pedido.
+Quando você envia um link do YouTube numa conversa com as guias, o bot pode consultar o título e o canal do vídeo. Só o identificador do vídeo é enviado nessa consulta, sem seu nome nem o restante da mensagem. Esses metadados acompanham a conversa recente. Nomes de anexos e prévias textuais podem acompanhar o pedido. Quando a leitura de mídia estiver habilitada no canal, o bot pode baixar e enviar ao acesso pago do Google um anexo da mensagem: imagem reduzida, até três quadros de uma animação ou áudio de até 30 segundos. Arquivos são preparados temporariamente em memória, sem guardar o binário no banco ou em arquivo local; não são reenviados nos próximos turnos. Uma nota sobre o tipo de mídia acompanha o histórico recente, e a resposta pode conter uma descrição. O arquivo não entra na reflexão diária. Links de vídeos continuam sendo identificados pelo título/canal, sem reprodução. O bot não entra em chamadas de voz.
 
 Depois disso fica guardado:
 
@@ -30,7 +30,7 @@ O bot não guarda fato sobre saúde, dinheiro, religião, política, relacioname
 
 O texto das respostas é gerado pelo Gemini, um serviço do Google. A cada resposta vão para lá a mensagem em que você chamou a personagem, as mensagens recentes dessa conversa, seu nome de exibição, seus pronomes e os fatos usados naquela resposta. Seu ID do Discord não vai.
 
-O bot tenta primeiro a cota gratuita do Gemini. Pelos termos do Google, o que passa por ela pode ser usado pelo Google para desenvolver e melhorar os serviços dele e pode ser lido por revisores humanos, já separado da conta de quem enviou. Quando a cota gratuita não responde, e sempre na leitura das 4h30, o bot usa o acesso pago, em que o Google não faz esse uso.
+O bot tenta primeiro a cota gratuita do Gemini. Pelos termos do Google, o que passa por ela pode ser usado pelo Google para desenvolver e melhorar os serviços dele e pode ser lido por revisores humanos, já separado da conta de quem enviou. Quando a cota gratuita não responde, sempre na leitura das 4h30 e nas mensagens com anexos efetivamente analisados, o bot usa o acesso pago, em que o Google não faz esse uso.
 
 Os dados não são vendidos nem repassados a mais ninguém.
 

@@ -1,0 +1,9 @@
+{
+  "arquivo": "src/var/closure-lab-midia-v15.zip",
+  "arquivos": 53,
+  "bytes": 992594,
+  "sha256": "d934e21dc059ef89f7d01c4a18f205d1849715ee23d8c074db32aa451b298c0f",
+  "segredos": false,
+  "midia_padrao": "desligada; habilitação exige MIDIA_ATIVA=1",
+  "implantado": false
+}

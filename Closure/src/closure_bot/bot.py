@@ -11,6 +11,7 @@ from .clima import ServicoClima
 from .config import Config
 from .conversa import Conversas
 from .midia import Midias
+from .midia_anexos import Anexos
 from .dados import carregar_personas, ler_manifesto
 from .modelo import RACIOCINIO_PADRAO, TETO_PADRAO_USD, Modelos, fila_do_chat
 from .registro import Registro
@@ -37,6 +38,7 @@ class ClosureBot(commands.Bot):
         self.vida = Vida(self.registro)
         self.conversas = Conversas(self.registro)
         self.midias = Midias()
+        self.anexos = Anexos(ativo=self.config.midia_ativa, canais=self.config.midia_canais)
         self.tree.on_error = self._erro_de_comando
         self.mencoes: dict[str, str] = {}  # nome do comando -> menção clicável (</nome:id>), preenchida ao registrar
         self.modelos = Modelos(fila_do_chat(config.modelo_chat, config.fila_modelos), config.chaves, self.registro,

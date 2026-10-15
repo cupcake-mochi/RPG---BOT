@@ -97,6 +97,38 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertNotIn('Adele - Skyfall', self.bot.registro.mensagens_do_dia()[0].texto)
         self.bot.modelos.responder.assert_awaited_once()
 
+    async def test_midia_visual_so_no_turno_atual_sem_binario_no_banco(self):
+        from closure_bot.midia_anexos import Preparo
+        from closure_bot.midia import AVISO
+        import base64
+        segredo = base64.b64encode(b"\xff\xd8imagem-sintetica-de-teste").decode()
+        p = Preparo([{"inlineData":{"mimeType":"image/jpeg","data":segredo}}], "uma imagem", 4096)
+        self.bot.anexos.contexto = AsyncMock(return_value=p)
+        self.montar.return_value = [{"role":"user","content":AVISO}, {"role":"user","content":"qual a cor?"}]
+        canal, _ = _canal();chat=self.bot.get_cog("Chat")
+        await chat.on_message(_mensagem("Closure, qual a cor?", canal))
+        e=self.bot.modelos.responder.call_args.args[0]
+        self.assertEqual(e[-1]['midias'][0]['inlineData']['data'], segredo)
+        self.assertNotIn(AVISO,e[0]['content'])
+        for table,col in [('conversas_recentes','texto'),('falas','texto'),('mensagens_do_dia','texto')]:
+            rows=self.bot.registro._db.execute(f'SELECT {col} FROM {table}').fetchall()
+            self.assertNotIn(segredo,str(rows))
+        self.bot.anexos.contexto.return_value=Preparo()
+        self.montar.return_value=[{"role":"user","content":AVISO},{"role":"user","content":"obrigado"}]
+        await chat.on_message(_mensagem("Closure, e agora?", canal))
+        self.assertTrue(all('midias' not in e for e in self.bot.modelos.responder.call_args.args[0]))
+
+    async def test_apagar_durante_preparo_de_midia_impede_envio(self):
+        from closure_bot.midia_anexos import Preparo
+        async def preparar(*a):
+            self.bot.registro.apagar_pessoa(42)
+            return Preparo(nota='arquivo preparado')
+        self.bot.anexos.contexto=AsyncMock(side_effect=preparar)
+        canal,webhook=_canal()
+        await self.bot.get_cog("Chat").on_message(_mensagem("Closure, veja a imagem",canal))
+        self.bot.modelos.responder.assert_not_awaited()
+        webhook.send.assert_not_awaited()
+
     async def test_anexo_no_seguimento_recebe_limite_de_midia(self):
         canal, _ = _canal()
         chat = self.bot.get_cog("Chat")

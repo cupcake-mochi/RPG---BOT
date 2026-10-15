@@ -214,11 +214,15 @@ class Chat(commands.Cog):
                                       falas_anteriores=anteriores, estado=para_a_ponte)
         if leitura.apagados:
             return
-        midia = await bot.midias.contexto(mensagem, texto)
+        preparo = await bot.anexos.contexto(mensagem)
+        if leitura.apagados:
+            return
+        midia = await bot.midias.contexto(mensagem, texto, incluir_anexos=not bool(preparo.partes))
         if leitura.apagados:
             return
         if midia:
             entrada[-1]["content"] += "\n\n" + midia
+        preparo.aplicar(entrada)
         rota = {}
         if bot.config.usa_argon(canal.id):
             rota["usar_argon"] = True
@@ -239,7 +243,7 @@ class Chat(commands.Cog):
         self._fios[canal.id] = Fio(persona, mensagem.author.id, datetime.now(FUSO))
         bot.registro.guardar_fala(canal_id=canal.id, persona=persona, texto=fala)
         bot.conversas.anotar(canal.id, persona, agora, texto, nome=nome,
-                             autor_id=mensagem.author.id, midia=midia)
+                             autor_id=mensagem.author.id, midia='\n'.join(filter(None, [midia, preparo.historico])))
         bot.conversas.anotar(canal.id, persona, agora, fala, autor_id=mensagem.author.id)
 
 

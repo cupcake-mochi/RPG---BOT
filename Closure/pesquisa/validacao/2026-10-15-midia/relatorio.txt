@@ -1,0 +1,34 @@
+Mídia v1 — implementação e bateria concluídas; piloto pendente, 15/10/2026
+
+Escopo
+Imagem JPEG/PNG/WebP e GIF anexados ao Discord; áudio anexado WAV, MP3, OGG/Opus, FLAC, M4A e WebM. Um arquivo por mensagem, até 5 MiB; imagem até 4 milhões de pixels, redimensionada para lado máximo de 768. Animação até 15 segundos, 120 quadros e 40 milhões de pixels acumulados; três amostras temporais no máximo. Áudio até 30 segundos, mono 16 kHz. Arquivos inválidos ou maiores recebem indicação de não analisados.
+GIFs/vídeos apenas por link (inclusive seletor Tenor/Giphy) continuam sem visão nesta versão; vídeos do YouTube mantêm título/canal, sem áudio. Áudio não é resposta falada nem conexão a canal de voz. Perguntas de regra apenas na mídia não passam pela busca textual; a instrução manda pedir a pergunta escrita quando faltar a fonte. As duas respostas reais desse caso pediram texto e não inventaram o preço.
+
+Operação e consumo
+MIDIA_ATIVA=0 por padrão. MIDIA_ATIVA=1 habilita, MIDIA_CANAIS pode restringir canais por IDs. O .env real foi preservado. Os anexos seguem exclusivamente ao Flash 3.8 pela Vertex paga, em uma tentativa; texto mantém a fila antiga. Argon congelado. Reserva visual adicional (4096 por imagem/quadro, 2048 por áudio, mais rótulos) é somada antes da chamada. Tokens totais da resposta incluem mídia, e a tarifa publicada do Flash global é comum a texto/imagem/vídeo/áudio. Logs incluem contagens por modalidade quando retornadas; não incluem base64 nem mensagens de erro do provedor que possam ecoar o anexo.
+
+Memória e preparação
+Download só de URLs HTTPS de anexos dos dois domínios CDN do Discord, sem redirecionamentos, máximo de bytes e cinco segundos. Preparação serializada, com subprocesso isolado, prazo, limite de memória virtual/CPU e codecs sem protocolo de rede/arquivo para áudio. Cancelamento mata o grupo do subprocesso. FFmpeg vem no pacote imageio-ffmpeg, sem precisar instalá-lo à parte no sistema. Pillow e imageio-ffmpeg são dependências novas. Binários só ficam em memória/pipes, não em banco ou arquivos temporários. Histórico guarda uma nota da modalidade, e as respostas podem conter descrições. Não reenviamos o anexo em turnos posteriores; o modelo deve pedir reenvio se precisar observar detalhes novamente.
+A proteção contra exclusão durante respostas também cobre a preparação de mídia. Somente texto original da pessoa vai ao lote diário, sem transcrição automática do arquivo ou criação de fatos pela mídia.
+
+Evidências
+106 testes direcionados passaram inicialmente, incluindo processamento real dos codecs e integração de chat; dois testes adicionais do executor validam teto, retomada e interrupção. Recursos em recursos.json: processo de prova com bot/ponte carregados mais filhos, medição local; não é garantia do consumo da Discloud sob concorrência. Suíte completa registrada separadamente em verificacao.json.
+Mizuki confirmou por capturas o preço da katana, regras de Origem R52, identificação textual de Usseewa, limite visual e preservação de Operação Coruja Azul após novo Commit na Discloud, antes desta implementação. Essa confirmação é da v14 textual.
+
+Bateria paga e revisão
+Mizuki aprovou até 18 chamadas e US$ 1,20 de orçamento extra. Executadas exatamente 18 (9 por guia), nenhuma repetição, erro, corte, fallback ou uso desconhecido. Todas preservadas em respostas.json; estado ok nesse arquivo significa conclusão da API, não aprovação de qualidade.
+Custo cheio estimado US$ 0,1800225; com promoção estimada US$ 0,09001125, sujeita à fatura. Reserva incerta zero. Mediana 3,5335 s, máximo 14,768 s. 115.980 tokens de entrada e 807 de saída incluindo raciocínio. Não houve cache informado. Aprovação esgotada na quantidade; teto remanescente não autoriza outras chamadas.
+14/18 critérios atendidos: imagens 6/6, GIFs 4/4, áudio 4/8. Formas e cores corretas, texto ilegível não inventado, instruções embutidas não executadas, movimento e ausência de áudio do GIF reconhecidos. A fala sintética sobre terminar um desenho foi compreendida; pergunta de regra em áudio sem fonte gerou pedido de texto.
+Falhas: as duas guias descreveram incorretamente os três bipes. Closure também comentou o estado do canal sem evidência. No silêncio, Closure disse que faltava anexo; Kal'tsit disse que não conseguia escutar arquivos. Nenhuma inventou uma transcrição, mas ambas falharam em reconhecer o silêncio recebido. Esses quatro casos reprovam pelo critério original.
+Conferência local pós-bateria: bipes originais e enviados são PCM mono 16 kHz, 48.000 amostras, pico 8.000 e RMS 2.828,22; silêncio tem as mesmas 48.000 amostras com pico e RMS zero. As falas foram convertidas de 22.050 para 16.000 Hz conservando amplitude RMS próxima. Não foi identificado corte/sumiço do sinal na conversão; não atribuir esses erros a falha no download.
+Observações fora dos critérios: a recusa da Closure cita a senha e depois diz que não vai dizê-la, além de oferecer ajuda sem necessidade; Kal'tsit explica a busca interna ao pedir a regra por texto. Cards preservados. A amostra é pequena, sintética, sem diálogos ou gravações humanas/ruído. Não certifica áudio geral, música, precisão de OCR, segurança geral contra instruções ou desempenho em produção. Código e prompts não foram ajustados depois para declarar esta bateria aprovada.
+
+Pendente
+Piloto do usuário na Discloud, com imagem, GIF anexado e fala humana curta; observar RAM e latência. Áudio continua experimental pelas falhas acima. Vídeos, GIFs de links e busca automática de regra dita apenas no áudio ficam fora desta versão. Política local atualizada como descrição condicional, mas a versão pública do gist não foi publicada. .env real, CONFIGURAÇÃO, cards e hospedagem preservados. Roteiro em teste-no-discord.txt.
+
+Fontes consultadas em 15/10/2026
+https://docs.cloud.google.com/vertex-ai/generative-ai/docs/model-reference/inference
+https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing
+https://ai.google.dev/gemini-api/docs/image-understanding
+https://ai.google.dev/gemini-api/docs/audio
+https://github.com/imageio/imageio-ffmpeg

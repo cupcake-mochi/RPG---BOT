@@ -3,3 +3,5 @@ tzdata
 cryptography>=41
 quickjs-ng==0.17.0.1
 openpyxl>=3.1  # leitor do .xlsx da ficha (cogs/ficha.py)
+Pillow==12.3.0  # imagens/GIFs em processo isolado
+imageio-ffmpeg==0.6.0  # binário para normalizar áudios curtos

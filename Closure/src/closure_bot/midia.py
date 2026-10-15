@@ -88,7 +88,7 @@ class Midias:
             self._cache.popitem(last=False)
         return info
 
-    async def contexto(self, mensagem, texto: str) -> str:
+    async def contexto(self, mensagem, texto: str, *, incluir_anexos=True) -> str:
         links = URL.findall(texto)
         ids = list(dict.fromkeys(i for url in links if (i := video_id(url))))[:2]
         dados = []
@@ -112,7 +112,7 @@ class Midias:
                         dados[indice] = {**info, 'video': ident}
                 else:
                     dados.append(info)
-        anexos = list(getattr(mensagem, 'attachments', ()) or ())[:3]
+        anexos = list(getattr(mensagem, 'attachments', ()) or ())[:3] if incluir_anexos else []
         for a in anexos:
             dados.append({'anexo': limpo(getattr(a, 'filename', '')), 'conteudo': 'não analisado'})
         # Um GIF por URL também é mídia, ainda que não tenha título no embed.

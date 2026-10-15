@@ -1,0 +1,104 @@
+{
+  "metodo": "Revisão manual de cada resposta pelo critério registrado antes da execução; não é avaliação geral das personagens.",
+  "chamadas": 18,
+  "respostas_completas": 18,
+  "criterios_atendidos": 14,
+  "falhas": 4,
+  "custo_cheio_usd": 0.1800225,
+  "custo_promocional_estimado_usd": 0.09001125,
+  "reserva_incerta_usd": 0,
+  "latencia_mediana_ms": 3533.5,
+  "latencia_maxima_ms": 14768,
+  "itens": [
+    {
+      "id": "closure_formas",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "kaltsit_formas",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "closure_ilegivel",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "kaltsit_ilegivel",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "closure_instrucoes",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "kaltsit_instrucoes",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "closure_movimento",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "kaltsit_movimento",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "closure_gif-som",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "kaltsit_gif-som",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "closure_fala",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "kaltsit_fala",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "closure_regra",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "kaltsit_regra",
+      "atendeu_criterio": true,
+      "observacao": "Atendeu ao critério específico da amostra."
+    },
+    {
+      "id": "closure_bipes",
+      "atendeu_criterio": false,
+      "observacao": "Não identificou os três tons e acrescentou uma observação sem evidência sobre o canal."
+    },
+    {
+      "id": "kaltsit_bipes",
+      "atendeu_criterio": false,
+      "observacao": "Descreveu estalidos/ambiente em vez dos três tons."
+    },
+    {
+      "id": "closure_silencio",
+      "atendeu_criterio": false,
+      "observacao": "Afirmou incorretamente que não havia anexo."
+    },
+    {
+      "id": "kaltsit_silencio",
+      "atendeu_criterio": false,
+      "observacao": "Negou a capacidade de escutar apesar de o áudio ter sido enviado."
+    }
+  ]
+}
