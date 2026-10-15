@@ -13,6 +13,7 @@ from pathlib import Path
 from urllib.parse import urlsplit
 
 from .midia import AVISO
+from . import midia_gifs
 from .midia_preparar import MAX_BYTES
 
 EXT_IMAGEM = {'.png', '.jpg', '.jpeg', '.webp', '.gif'}
@@ -44,6 +45,7 @@ class Preparo:
     nota: str = ''
     reserva: int = 0
     silencio: bool = False
+    links_analisados: tuple[str, ...] = ()
 
     def resposta_local(self, texto):
         if not self.silencio:
@@ -108,7 +110,7 @@ async def baixar(url):
 
 
 async def decodificar(dados, tipo):
-    if not dados or len(dados) > MAX_BYTES or tipo not in ('imagem', 'audio'):
+    if not dados or len(dados) > MAX_BYTES or tipo not in ('imagem', 'audio', 'gif_video'):
         raise ValueError('entrada inválida')
     proc = await asyncio.create_subprocess_exec(
         sys.executable, str(Path(__file__).with_name('midia_preparar.py')), tipo,
@@ -133,9 +135,11 @@ async def decodificar(dados, tipo):
 
 
 class Anexos:
-    def __init__(self, *, ativo=False, canais=frozenset(), download=baixar, preparar=decodificar):
+    def __init__(self, *, ativo=False, canais=frozenset(), download=baixar, preparar=decodificar,
+                 resolver_gif=midia_gifs.resolver, download_gif=midia_gifs.baixar):
         self.ativo, self.canais = ativo, canais
         self.download, self.preparar = download, preparar
+        self.resolver_gif, self.download_gif = resolver_gif, download_gif
         self._vaga = asyncio.Semaphore(1)
 
     async def contexto(self, mensagem):
@@ -143,7 +147,7 @@ class Anexos:
             return Preparo()
         anexos = list(getattr(mensagem, 'attachments', ()) or ())
         if not anexos:
-            return Preparo()
+            return await self._gif(mensagem)
         # Um anexo por mensagem; não escolhe silenciosamente outro arquivo.
         a = anexos[0]
         ext = Path(str(getattr(a, 'filename', ''))).suffix.lower()
@@ -163,5 +167,32 @@ class Anexos:
             return preparado
         except (ValueError, OSError, TimeoutError):
             return falha
+        finally:
+            self._vaga.release()
+
+    async def _gif(self, mensagem):
+        links = midia_gifs.links(mensagem)
+        if not links:
+            return Preparo()
+        try:
+            await asyncio.wait_for(self._vaga.acquire(), timeout=0.2)
+        except TimeoutError:
+            return Preparo(nota='GIF não analisado: processamento ocupado; tente novamente depois.')
+        try:
+            url, tipo = await self.resolver_gif(mensagem, links[0])
+            provedor = midia_gifs.pagina(links[0])[0]
+            if midia_gifs.tipo_midia(url, provedor) != tipo:
+                raise ValueError('origem não permitida')
+            dados = await self.download_gif(url, provedor)
+            if tipo == 'imagem' and dados[:6] not in (b'GIF87a', b'GIF89a'):
+                raise ValueError('não é GIF')
+            preparado = await self.preparar(dados, tipo)
+            preparado.nota = 'GIF do seletor (' + provedor + '): ' + preparado.nota
+            preparado.links_analisados = (links[0],)
+            if len(links) > 1:
+                preparado.nota += '; somente o primeiro GIF foi analisado'
+            return preparado
+        except (ValueError, OSError, TimeoutError):
+            return Preparo(nota='GIF do seletor não analisado: prévia indisponível ou arquivo fora dos limites (5 MB, 15 s, 120 quadros). Peça o arquivo .gif anexado; não descreva a animação sem recebê-la.')
         finally:
             self._vaga.release()

@@ -217,7 +217,8 @@ class Chat(commands.Cog):
         preparo = await bot.anexos.contexto(mensagem)
         if leitura.apagados:
             return
-        midia = await bot.midias.contexto(mensagem, texto, incluir_anexos=not (preparo.partes or preparo.silencio))
+        midia = await bot.midias.contexto(mensagem, texto, incluir_anexos=not (preparo.partes or preparo.silencio),
+                                        links_analisados=preparo.links_analisados)
         if leitura.apagados:
             return
         if midia:
