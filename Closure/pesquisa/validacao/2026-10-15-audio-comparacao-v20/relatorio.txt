@@ -1,0 +1,35 @@
+Comparação de áudio — contexto v20, 15/10/2026
+
+Autorização: até 24 chamadas no Gemini 3.8 Flash low, Vertex global, teto extra de US$ 1,50 ao preço cheio. Estimativa aprovada de US$ 0,25–0,50. Nenhuma alteração de teto/configuração na Discloud. Soma das reservas conservadoras por tentativa: US$ 1.332171. Executor registra a tentativa antes de enviar, não repete falhas e para em erro, corte ou uso desconhecido.
+
+Método: seis áudios sintéticos × duas guias × orientação anterior/melhoria v17. Arquivos e pedidos propostos na v17 revalidados por hash antes de acrescentar o contexto comum da v20. As duas variantes recebem os mesmos bytes de áudio normalizado, texto, cards, estado e parâmetros. A variante anterior recebe só a nota de duração e capacidade; a atual recebe também AVISO_AUDIO e medidas tonais quando disponíveis. Ambas recebem a orientação geral da v20, com resposta adulta desativada, como numa conversa comum. Não testa NSFW nem usa imagens fornecidas pelo usuário.
+
+Ordem: pares consecutivos, seis começando pela antiga e seis pela atual. Uma geração por combinação; sem avaliador de modelo adicional, fallback ou repetição. Critérios de núcleo/fidelidade registrados em criterios.json antes das chamadas. Pedidos sem base64 em prompts.json; hashes do código, arquivos e pedidos em plano.json. Arquivos de áudio são os de ../2026-10-15-audio-v17/arquivos/.
+
+A avaliação é pequena e sintética. Não mede fala humana, música real, ambiente real ou taxas gerais de acerto. Não substitui nem recalcula a bateria anterior de 18. Uma resposta isolada melhor/pior pode refletir variação do modelo; apresentar os pares e limitações junto aos totais.
+
+Preparação e controle: 24 pedidos preparados, pares com mídia idêntica e os hashes anteriores preservados antes do contexto comum. Três testes do executor passaram, incluindo orçamento, interrupção sem repetição e identificação própria da comparação. Código de execução do bot e ZIP v20 preservados.
+
+Preço conferido em 15/10 na fonte primária https://ai.google.dev/gemini-api/docs/pricing: o preço vigente do Flash 3.8 é US$ 0,75/3,75 por milhão de tokens de entrada/saída, incluindo raciocínio na saída, até 31/12/2026. O teto e os comparativos desta bateria usam a estimativa conservadora sem promoção de US$ 1,50/7,50. Créditos e fatura real não são inferidos pelos tokens. Fonte do modelo: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-8-flash.
+
+Resultado: 24 tentativas únicas, 24 respostas completas pelo modelo previsto, sem corte, fallback, repetição ou reserva incerta. Registro SQLite conferido: mesmo gatilho exclusivo, 24 chamadas e somas de tokens iguais às respostas. Hashes do código/plano preservados durante a execução. Aprovação e recibos privados não entram no Git.
+
+Núcleo solicitado atendido (uma resposta por guia em cada célula; revisão pelo agente desta conversa, sem outra chamada de avaliação):
+Caso                      anterior v16   atual v17
+Três tons separados       0/2            2/2
+Cinco tons/alturas         0/2            2/2
+Acordes sobrepostos        0/2            0/2
+Ruído/chiado               2/2            2/2 *
+Fala baixa                2/2            2/2
+Fala com ruído            0/2            0/2
+Total do núcleo           4/12           8/12 *
+
+* Esta pontuação mede o conteúdo principal pedido, não uma aprovação integral da resposta. A Closure atual reconheceu o chiado, mas acrescentou um estalo inicial que não foi gerado como evento separado. Esse detalhe não foi confirmado e não deve ser considerado acerto certificado. As observações de fidelidade ficam junto aos 24 casos em avaliacao.json; nenhuma falha da bateria anterior foi reclassificada.
+
+Ganho observado: com a instrução de escuta e as medidas tonais atuais, as duas guias contaram corretamente três e cinco sinais, com pausas/alturas. Nas quatro respostas antigas correspondentes houve descrição errada de som contínuo/estática ou negação da capacidade de ouvir. Isso sustenta uma melhora nesta amostra de tons simples, exatamente onde há medidas locais úteis; não prova reconhecimento geral de sons.
+
+Limites que continuam: nenhuma das quatro respostas a acordes reconheceu a sobreposição e a mudança corretamente; houve descrições de cliques, chuva/trovões, ruído e batidas. Em fala com ruído, as quatro entenderam a ideia principal do desenho/contentamento, mas negaram o ruído que foi misturado; algumas citações também alteraram palavras. Fala baixa teve resposta adequada nas quatro tentativas. O caso do chiado tem a ressalva acima. Não houve mudança adicional de prompt para esconder os resultados nem tentativas extras.
+
+Custo estimado pelos tokens retornados: US$ 0,241773 ao preço cheio conservador, sendo US$ 0,1298475 na anterior e US$ 0,1119255 na atual; pela tabela vigente consultada, US$ 0,1208865 no total antes de créditos. Sem uso incerto, cache ou fatura consultada. O teto aprovado foi US$ 1,50 e todas as 24 chamadas foram consumidas; a diferença de teto não autoriza outras chamadas. Mediana de latência de geração: 3.170,5 ms anterior e 3.209 ms atual. Uma resposta antiga demorou 19.552 ms e usou bastante raciocínio; os custos/tempos desta amostra não estabelecem economia ou velocidade geral.
+
+Encaminhamento: manter a melhoria v17 que já acompanha a v20, pois acertou os pares de tons simples que antes falhavam. Áudio continua experimental para acordes e fala misturada a ruído. Não houve alteração de execução do bot ou do ZIP v20 durante a comparação, nem implantação na Discloud. Nenhum novo ZIP é necessário para estes resultados. CONFIGURAÇÃO continua no outro chat; testes manuais da v20 continuam com Mizuki.

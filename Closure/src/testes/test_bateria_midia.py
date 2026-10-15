@@ -35,3 +35,13 @@ class Bateria(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(rs[0]['estado'],'iniciada');self.assertEqual(rs[0]['reserva_usd'],.1)
             with self.assertRaises(ValueError): await bateria.executar(self.plano(),{'0':[],'1':[]},m,p)
             self.assertEqual(m.responder.await_count,1)
+
+    async def test_comparacao_tem_identificacao_propria_sem_mudar_rota(self):
+        with tempfile.TemporaryDirectory() as pasta:
+            m=AsyncMock()
+            m.responder.return_value=Resposta('ok','vertex',FLASH,100,10,30,False)
+            self.assertEqual(await bateria.executar(self.plano(),{'0':[],'1':[]},m,Path(pasta),
+                                                    gatilho='bateria_audio_comparacao_v20'),0)
+            for chamada in m.responder.call_args_list:
+                self.assertEqual(chamada.kwargs['gatilho'],'bateria_audio_comparacao_v20')
+                self.assertTrue(chamada.kwargs['so_pagos'])

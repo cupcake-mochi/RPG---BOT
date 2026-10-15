@@ -1,0 +1,29 @@
+{
+  "v16": {
+    "respostas": 12,
+    "nucleo_atendido": 4,
+    "custo_cheio_usd": 0.1298475,
+    "custo_vigente_estimado_usd": 0.06492375,
+    "latencia_mediana_ms": 3170.5,
+    "tokens_entrada": 69765,
+    "tokens_saida_inclui_raciocinio": 3360,
+    "tokens_cache": 0
+  },
+  "v17": {
+    "respostas": 12,
+    "nucleo_atendido": 8,
+    "custo_cheio_usd": 0.1119255,
+    "custo_vigente_estimado_usd": 0.05596275,
+    "latencia_mediana_ms": 3209.0,
+    "tokens_entrada": 72417,
+    "tokens_saida_inclui_raciocinio": 440,
+    "tokens_cache": 0
+  },
+  "chamadas": 24,
+  "custo_cheio_total_usd": 0.241773,
+  "custo_vigente_estimado_total_usd": 0.1208865,
+  "reserva_incerta_usd": 0,
+  "fallbacks": 0,
+  "repeticoes": 0,
+  "avaliacao": "manual; critérios de núcleo/fidelidade fixados antes; pontuação apresentada mede núcleo, com ressalvas de fidelidade nas observações"
+}

@@ -66,7 +66,7 @@ async def preparar():
  return plano,pedidos
 
 
-async def executar(plano,pedidos,modelos,pasta=PASTA):
+async def executar(plano,pedidos,modelos,pasta=PASTA,*,gatilho='bateria_midia_v1'):
  saida=pasta/'respostas.json';rs=json.loads(saida.read_text()) if saida.exists() else []
  if any(r.get('plano_sha256')!=digest(plano) or r['estado']!='ok' for r in rs):
   raise ValueError('tentativa incompleta/falha ou plano alterado; não repetir sem revisão')
@@ -78,7 +78,7 @@ async def executar(plano,pedidos,modelos,pasta=PASTA):
   item={**c,'plano_sha256':digest(plano),'estado':'iniciada','reserva_usd':c['reserva_cheia_usd']}
   rs.append(item);gravar(saida,rs)  # antes de enviar; reinício não repete a tentativa
   try:
-   r=await modelos.responder(pedidos[c['id']],persona=c['persona'],gatilho='bateria_midia_v1',so_pagos=True)
+   r=await modelos.responder(pedidos[c['id']],persona=c['persona'],gatilho=gatilho,so_pagos=True)
    item.update(asdict(r));completo=r.tokens_entrada is not None and r.tokens_saida is not None
    item['custo_cheio_usd']=custo_usd(FLASH,r.tokens_entrada,r.tokens_saida,tokens_cache=r.tokens_cache or 0,sem_promocao=True) if completo else None
    item['reserva_usd']=0 if completo else c['reserva_cheia_usd']

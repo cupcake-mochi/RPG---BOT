@@ -1,0 +1,11 @@
+{
+  "pedidos_24": true,
+  "registros_24_mesmo_gatilho": true,
+  "tokens_conferidos": true,
+  "hashes_fontes_preservados": true,
+  "todas_respostas_completas": true,
+  "sem_reserva_incerta": true,
+  "sem_fallback_repeticao": true,
+  "testes_executor_passaram": 3,
+  "discloud_alterada": false
+}
