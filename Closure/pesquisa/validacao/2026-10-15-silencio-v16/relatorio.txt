@@ -1,0 +1,17 @@
+Silêncio digital — v16, 15/10/2026
+
+Continuação autorizada pelo Mizuki após a bateria de mídia. Zero chamadas ao modelo nesta revisão. A bateria paga anterior continua encerrada: 18 respostas, 14 critérios atendidos, quatro falhas. Não recalculamos sua nota nem repetimos tentativas.
+
+Mudança
+O preparador verifica se todas as amostras PCM depois da conversão são zero. Nesse caso, não produz partes de áudio/base64 nem reserva de tokens. Um pedido simples de transcrever/ouvir/analisar o áudio, ou envio sem texto além do nome/menção, recebe aviso local com o webhook da guia: o arquivo chegou, mas o trecho processado está sem som; pede reenvio. Não depende do modelo para reconhecer esse fato. A resposta é operacional, sem alterar card/lorebook.
+
+Perguntas adicionais em texto não são descartadas: continuam no modelo, com a nota de silêncio verificado localmente e sem binário. Se houver mais de um anexo, o aviso diz que só o primeiro foi analisado. Histórico distingue a conferência local de arquivo não analisado e mantém a proteção contra exclusão durante processamento.
+
+Limites
+Só detecta zero exato no áudio convertido, não silêncio percebido, volume baixo, ausência de voz ou música. Não elimina o processamento por haver pausas. Som de amplitude mínima não nula continua na rota normal. Conversão pode perder sinal ou cancelar canais: por isso o aviso se refere ao trecho processado, não afirma que a gravação original nunca teve som. Arquivo maior que 30 s continua recusado antes da detecção. A descrição errada dos bipes pelo modelo não foi corrigida nem reavaliada.
+
+Verificação
+75 testes direcionados passaram (19,590 s): preparador com codecs reais, limites, sinal fraco preservado, silêncio sem reserva/binário, pergunta mista, resposta do webhook sem modelo, privacidade/exclusão e executor de bateria. O primeiro teste de envio foi ajustado para ler o argumento posicional usado pelo webhook; nenhum erro funcional encontrado nessa rodada. Sem nova suíte completa: a anterior da v15 teve 584 aprovações e um teste online pulado.
+
+Implantação
+Pacote novo v16 sem .env, mídia desligada por padrão. Usuário faz Commit/Rebuild e piloto. CONFIGURAÇÃO, Argon, cards, livro, teto e .env real preservados. Política pública segue pendente. Fila consolidada em docs/FILA-ATUAL.txt.

@@ -217,7 +217,7 @@ class Chat(commands.Cog):
         preparo = await bot.anexos.contexto(mensagem)
         if leitura.apagados:
             return
-        midia = await bot.midias.contexto(mensagem, texto, incluir_anexos=not bool(preparo.partes))
+        midia = await bot.midias.contexto(mensagem, texto, incluir_anexos=not (preparo.partes or preparo.silencio))
         if leitura.apagados:
             return
         if midia:
@@ -226,10 +226,12 @@ class Chat(commands.Cog):
         rota = {}
         if bot.config.usa_argon(canal.id):
             rota["usar_argon"] = True
-        resposta = await bot.modelos.responder(entrada, persona=persona, gatilho=decisao.motivo, **rota)
-        if leitura.apagados:
-            return
-        fala = resposta.texto.strip()
+        fala = preparo.resposta_local(texto)
+        if fala is None:
+            resposta = await bot.modelos.responder(entrada, persona=persona, gatilho=decisao.motivo, **rota)
+            if leitura.apagados:
+                return
+            fala = resposta.texto.strip()
         partes = em_partes(fala)
         if not partes:
             return

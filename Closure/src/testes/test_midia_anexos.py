@@ -23,11 +23,11 @@ def foto(tamanho=(800, 600), formato='PNG'):
     return b.getvalue()
 
 
-def wav(segundos=1):
+def wav(segundos=1, *, silencio=False, amostra=1):
     b = io.BytesIO()
     with wave.open(b, 'wb') as w:
         w.setnchannels(1); w.setsampwidth(2); w.setframerate(16000)
-        w.writeframes(b'\0\0' * int(segundos * 16000))
+        w.writeframes((b'\0\0' if silencio else amostra.to_bytes(2, 'little', signed=True)) * int(segundos * 16000))
     return b.getvalue()
 
 
@@ -80,13 +80,30 @@ class Decodificacao(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(ValueError): await decodificar(wav(30.1), 'audio')
         with self.assertRaises(ValueError): await decodificar(b'#EXTM3U\nfile:///etc/passwd', 'audio')
 
+    async def test_silencio_exato_local_sem_descartar_sinal_fraco(self):
+        p = await decodificar(wav(silencio=True), 'audio')
+        self.assertTrue(p.silencio)
+        self.assertFalse(p.partes)
+        self.assertEqual(reserva_midia(pedido(p)), 0)
+        self.assertIn('conferido localmente', p.historico)
+        self.assertIsNotNone(p.resposta_local("Kal'tsit, pode transcrever esse áudio?"))
+        self.assertIsNone(p.resposta_local('Pode transcrever esse áudio? Quanto custa a katana?'))
+        self.assertIsNone(p.resposta_local('Quanto custa uma katana?'))
+        p.nota += '; os demais não foram analisados'
+        self.assertIn('só o primeiro', p.resposta_local(''))
+        fraco = await decodificar(wav(), 'audio')
+        self.assertFalse(fraco.silencio)
+        self.assertTrue(fraco.partes)
+        with self.assertRaises(ValueError):
+            await decodificar(wav(30.1, silencio=True), 'audio')
+
     async def test_excesso_de_bytes_recusado_antes_de_processar(self):
         with self.assertRaises(ValueError): await decodificar(b'a' * (MAX_BYTES + 1), 'imagem')
 
     async def test_ogg_mp3_flac_e_m4a(self):
         import imageio_ffmpeg, subprocess
         with tempfile.TemporaryDirectory() as pasta:
-            origem = Path(pasta) / 'fala.wav'; origem.write_bytes(wav())
+            origem = Path(pasta) / 'fala.wav'; origem.write_bytes(wav(amostra=10000))
             for ext, codec in (('ogg', 'libopus'), ('mp3', 'libmp3lame'), ('flac', 'flac'), ('m4a', 'aac')):
                 with self.subTest(ext=ext):
                     saida = Path(pasta) / ('voz.' + ext)

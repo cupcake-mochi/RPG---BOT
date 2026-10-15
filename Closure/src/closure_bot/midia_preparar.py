@@ -94,6 +94,11 @@ def audio(dados: bytes) -> dict:
         raise ValueError('áudio inválido ou não decodificável')
     if len(pcm) > AUDIO_SEGUNDOS * 32000:
         raise ValueError('áudio maior que 30 segundos; envie um trecho menor')
+    # Só silêncio digital exato após a conversão. Não usa limiar de volume
+    # que poderia eliminar voz baixa ou confundir pausas com arquivo mudo.
+    if not any(pcm):
+        return {'partes': [], 'reserva': 0, 'silencio': True,
+                'nota': 'anexo recebido e processado localmente; todas as amostras do áudio convertido são zero; nenhum áudio enviado ao modelo'}
     buf = io.BytesIO()
     with wave.open(buf, 'wb') as wav:
         wav.setnchannels(1)

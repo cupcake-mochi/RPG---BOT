@@ -1,0 +1,21 @@
+Fila atual — Guias do Ciclo, 15/10/2026
+Este arquivo resume o estado vigente. Os registros de continuidade mais antigos são histórico e não reabrem itens já confirmados.
+
+CONCLUÍDO
+- Correções de ficha até TR, perícias/Ofícios e carga; painéis paginados. Testes das cópias nativas do Sheets confirmados pelo Mizuki no Discord.
+- Busca ampliada do livro, preços e Origem R52; Mizuki confirmou os casos novos no Discord.
+- Conversa recente persistida no SQLite cifrado; Mizuki confirmou preservação após novo Commit. Proteção contra exclusão durante respostas implementada.
+- Imagem/GIF anexado e áudio curto implementados, desligados. Bateria de 18 encerrada: visuais 10/10, áudio 4/8; US$ 0,1800225 cheio, sem uso incerto.
+- V16: silêncio digital convertido detectado localmente; pedido simples recebe aviso sem modelo. 75 testes locais passaram, zero chamadas pagas; não muda a nota da bateria anterior.
+
+PRÓXIMOS
+1. Piloto de mídia na Discloud pelo Mizuki: pacote v16, imagem, GIF como arquivo e voz humana curta. Conferir memória/latência. Roteiro em pesquisa/validacao/2026-10-15-midia/teste-no-discord.txt, com adendo v16. Não enviar .env ou chave no chat.
+2. Áudio não verbal: investigar bipes/sons mal descritos. Não há autorização para repetir a bateria ou gastar saldo; qualquer nova medição pede quantidade/custo antes. Fala sintética funcionou, mas não certifica música ou gravação ruidosa.
+3. Atualizar o gist da política pública com o trecho já preparado em docs/PRIVACIDADE.md antes de ampliar o piloto a outras pessoas. Arquivo local atualizado, gist ainda não publicado nesta tarefa.
+4. Receber o resultado de CONFIGURAÇÃO do outro chat e só então integrar ao leitor/corretor. Preservar as 5.381 chaves ANALISE 4 e compatibilidade; PR 3 do gerador exige aprovação própria, não juntar por conta desta fila.
+
+PARA DEPOIS, QUANDO PEDIDO
+- Consulta automática do livro para perguntas apenas faladas/em imagem; hoje é necessário texto para recuperar a fonte.
+- GIFs por link/Tenor/Giphy e vídeos completos; não fazem parte do piloto atual.
+- Comandos de consulta de regras, calendário de sessões e aniversários.
+- Cards/lorebook: mudanças só após proposta aprovada. Argon e otimizações inativas continuam congelados.
