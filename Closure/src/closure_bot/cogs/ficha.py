@@ -51,7 +51,12 @@ ROTULOS = {"aviso.escolhas_de_pericia": "Perícias e ofícios", "aviso.pontos_di
            "aviso.forca_v": "Força do uniforme", "aviso.requisito": "Requisito de Força", "aviso.treino": "Treino da arma",
            "aviso.selo": "Selo", "aviso.vagas_de_pacto": "Vagas de pacto", "caminho": "Caminho", "trilha": "Trilha",
            "origem": "Origem", "vida_max": "Vida", "energia_max": "PE", "integridade_max": "Integridade",
-           "protecao": "Proteção", "defesa": "Defesa", "formato.versao": "Formato da ficha"}
+           "protecao": "Proteção", "defesa": "Defesa", "formato.versao": "Formato da ficha",
+           "repertorio": "Repertório", "espacos_de_feitico": "Espaços de repertório",
+           "marco.leque": "Marcos de Leque", "marco.corpo": "Marcos de Corpo", "marco.refino": "Marcos de Refino",
+           "tecnica.rota.nome": "Rota de criação", "tecnica.regra_propria.categoria": "Categoria da Regra Própria",
+           "tecnica.regra_propria.espacos": "Espaços da Regra Própria", "dominio.degrau": "Degrau do Domínio",
+           "dominio.custo": "Espaços do Domínio", "origem.ce4": "Talento CE4 da Origem"}
 
 
 def _rotulo(chave: str) -> str:
@@ -60,6 +65,8 @@ def _rotulo(chave: str) -> str:
     if chave.startswith("buff."):
         return "Buff/Debuff de " + chave[5:].replace("_", " ")
     partes = chave.split(".")
+    if partes[0] == "passiva" and len(partes) >= 2:
+        return "Talento " + partes[1] + (" · " + _nome_do_valor(".".join(partes[2:])) if len(partes) > 2 else "")
     if partes[0] in ("feitico", "liberacao", "invocacao", "zero") and len(partes) > 1 and partes[1].isdigit():
         nome = {"feitico": "Feitiço", "liberacao": "Liberação", "invocacao": "Invocação", "zero": "Classe 0"}[partes[0]] + f" {partes[1]}"
         resto = partes[2:]

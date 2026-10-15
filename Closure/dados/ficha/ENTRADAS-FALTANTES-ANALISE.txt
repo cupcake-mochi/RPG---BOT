@@ -32,8 +32,12 @@ O que continua sem conferência integral
    secundários continuam manuais. Controle usa o saldo calculado, Remate entra no teto e Alma reduz os
    dados simples; permissão da Regra e interações de Alma com adicionais/distribuição não são certificadas.
    Benefícios especiais de Máxima continuam parciais.
-3. Repertório pessoal completo: compras de Talentos, Regra Própria, Domínio, trocas por entidades e concessões
-   fora dos espaços. As cartas existem no formato 2, mas a conta completa ainda não foi implementada.
+3. Repertório: capacidade, ocupação de aplicações/Talentos pagos/Regra Própria/Domínio/entidades por espaço,
+   categorias e nível atual dos Talentos e requisitos cumulativos da Expansão já são conferidos. Leque e
+   Coexistência concedem aplicações, sem converter em vagas comuns. Origem com Talento gratuito sem
+   vinculação é tratada por possibilidades e impede certificar a ocupação completa. Efeitos dos Talentos,
+   incluindo benefícios nas reservas, aptidões e histórico/origem temporal das aquisições continuam parciais.
+   A Regra/Descrição deve justificar a invocação por espaço; esse texto não é aprovado automaticamente.
 4. Vagas extras de Trilha e trunfos da domada, CE/custom dos extras, Domínio compartilhando espaços,
    resultados de perícias/TR, carga e requisitos do equipamento. Ataque com arma e equipamento não
    reconhecido não são certificados. Não usar um resultado da planilha como substituto dessas escolhas.
@@ -60,3 +64,11 @@ mas não os quatro resultados de TR. As chaves invocacao.N.buff.pericia.K aponta
 bônus calculado das perícias (perb), não para Buffs independentes; não devem ser usadas como ajuste
 confiável. Corrigir o contrato/exportação em conjunto com o gerador, preservando as chaves antigas,
 antes de certificar esses resultados. Nenhuma mudança no gerador foi feita nesta continuação.
+
+Continuação de repertório — 14/10
+
+Novo núcleo ficha_repertorio.py com 25 testes próprios: progressão, Leque, Coexistência, Talentos
+pagos/próprios/gratuitos, CE4, Regra Própria, Expansão, entidades por espaço e exportações incompletas.
+Prática Cotidiana também amplia em dois a quantidade de Classe 0 do ramo corporal, sem gerar vagas.
+Sem alteração do gerador, livro, cards ou CONFIGURAÇÃO. Relatório em
+pesquisa/validacao/2026-10-14-ficha-repertorio/relatorio.txt.

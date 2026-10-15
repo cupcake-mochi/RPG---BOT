@@ -130,7 +130,7 @@ class Corretor(unittest.TestCase):
         self.assertEqual([(p.regra, p.campo) for p in resultado.problemas],
                          [("escolha", "caminho"), ("escolha", "trilha"), ("aviso", "aviso.escolhas_de_pericia")])
         self.assertTrue(resultado.problemas[-1].encontrado.startswith("Falta: 9 perícias"))
-        self.assertEqual(resultado.conferidos, ["Origem Latente", "Integridade 25", "Proteção 1", "Defesa 11"])
+        self.assertEqual(resultado.conferidos, ["Origem Latente", "Integridade 25", "Proteção 1", "Defesa 11", "Repertório: capacidade 3 espaços"])
         self.assertIn("vida e PE: sem Caminho do livro escolhido", resultado.nao_conferido)
 
     def test_kaori_bate_com_o_livro_e_com_a_ficha(self):
@@ -141,7 +141,7 @@ class Corretor(unittest.TestCase):
         self.assertEqual(_contas(resultado), {})
         self.assertEqual([p.regra for p in resultado.problemas if p.regra in ("nome", "escolha")], [])
         self.assertEqual(resultado.conferidos, ["Caminho Bastião", "Trilha Muro", "Origem Descendente", "Vida 23", "PE 8",
-                                                "Integridade 26", "Proteção 1", "Defesa 13"])
+                                                "Integridade 26", "Proteção 1", "Defesa 13", "Repertório: capacidade 3 espaços"])
 
     def test_buff_entra_na_conta_e_vai_pro_mestre_conferir(self):
         notas = [(p.regra, p.campo, p.encontrado) for p in conferir(_ficha("revestimento"), self.ref).notas if p.regra == "buff"]
@@ -231,7 +231,7 @@ class Corretor(unittest.TestCase):
         for valor in (60, 0, "", 99):
             with self.subTest(integridade=valor):
                 ficha = _com_campos("kaori", origem="Corpo Amaldiçoado", origem__menor_1="Núcleo Dependente",
-                                    caminho="Evocador", trilha="Invocação Principal", nivel=6,
+                                    caminho="Evocador", trilha="Invocação Principal", nivel=6, espacos_de_feitico=6,
                                     atributo__constituicao__base=2, atributo__constituicao__corpo=0,
                                     atributo__essencia__base=3, atributo__essencia__corpo=0,
                                     atributo__destreza__base=1, atributo__destreza__corpo=0,

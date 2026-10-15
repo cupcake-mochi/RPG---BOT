@@ -13,6 +13,7 @@ from dataclasses import dataclass
 
 from .ficha_leitor import Campo
 from .ficha_efeitos import Medidas, conferir_medidas, conferir_resolucao
+from .ficha_repertorio import Repertorio, zeros_adicionais
 
 ERROS_PLANILHA = {"#NAME?", "#VALUE!", "#REF!", "#DIV/0!", "#N/A", "#NUM!", "#ERROR!", "#SPILL!"}
 
@@ -41,6 +42,7 @@ class Magia:
     talentos_entidade: dict[str, int]
     ganhos_talento: tuple[tuple[int, int], ...]
     medidas: Medidas
+    repertorio: Repertorio
 
     @classmethod
     def do_livro(cls, livro: dict[str, str]) -> Magia:
@@ -107,7 +109,7 @@ class Magia:
         if len(talentos) != 12 or len(ganhos) != 8:
             raise ValueError("o livro mudou os Talentos das entidades")
         return cls(classes, especiais, formas, melhorias, restricoes, familias, tipos, aquisicoes, maestria, talentos, ganhos,
-                   Medidas.do_livro(livro))
+                   Medidas.do_livro(livro), Repertorio.do_livro(livro))
 
     def classe_maxima(self, nivel: int) -> int:
         return max(c for c, v in self.classes.items() if v[0] <= nivel)
@@ -507,10 +509,8 @@ def conferir_feiticos(ficha, magia, resultado):
     if inteiro(nivel, 1) and len(liberacoes) > nivel // 10:
         resultado.problemas.append(Problema("conta", liberacoes[-1] + ".nome", f"até {nivel // 10} Liberação(ões) no nível {nivel}",
                                             str(len(liberacoes)), "fundamento--liberacao"))
-    if any(ativa(ficha, b) for b in bases(ficha, r"(?:feitico|liberacao)\.\d+")):
-        resultado.nao_conferido.append("repertório completo: concessões e compras fora dos espaços ainda precisam de conferência")
     zeros = [b for b in cartas if b.startswith("zero.")]
-    if inteiro(nivel, 1) and len(zeros) > (2 if nivel < 5 else 3 if nivel < 11 else 4 if nivel < 17 else 5):
+    if inteiro(nivel, 1) and len(zeros) > (2 if nivel < 5 else 3 if nivel < 11 else 4 if nivel < 17 else 5) + zeros_adicionais(ficha):
         resultado.problemas.append(Problema("conta", zeros[-1] + ".nome", "quantidade de Classe 0 da progressão", str(len(zeros)), "fundamento--classezero"))
     conferir_maxima(ficha, magia, resultado, familias)
 
