@@ -8,7 +8,11 @@ Oi, sou o Mizuki. Vamos continuar o Guias do Ciclo, o bot de Discord do servidor
 
 COMO EU GOSTO DE TRABALHAR
 Estado mais recente desta continuação (14/10): Argon está congelado. Mizuki fez Commit e Rebuild na Discloud
-e confirmou os testes antigos de ficha por captura do Discord. A revisão posterior ampliou ANALISE para formato 2,
+e confirmou os testes antigos de ficha por captura do Discord. A revisão posterior do bot foi integrada ao main
+pelo PR 41. Mizuki também aprovou individualmente o PR 2 do gerador,
+integrado ao main de Ficha---RPG-JJK; os recibos estão em pesquisa/privado/publicacao-analise-v2.json.
+Essa aprovação valeu para esse PR, sem ampliar a autorização automática a futuros PRs de outros repositórios.
+O pacote posterior ainda não foi implantado. A revisão ampliou ANALISE para formato 2,
 4.896 chaves; todas as 2.650 antigas preservadas. Bot aceita 1/2. Fonte isolada em
 /tmp/ficha-analise-v2-20261014, branch codex/analise-completa-v2, repositório cupcake-mochi/Ficha---RPG-JJK.
 Não juntar PR do gerador sem autorização: a permissão automática de merge é só para RPG---BOT.
