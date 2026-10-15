@@ -1,4 +1,4 @@
-"""GIFs do seletor: somente a mídia da prévia do Discord vinculada ao link."""
+"""GIFs do seletor e links diretos para GIFs hospedados no Discord."""
 from __future__ import annotations
 
 import asyncio
@@ -41,12 +41,19 @@ def pagina(url):
     return None
 
 
+def gif_discord(url):
+    """Reconhece só arquivo GIF de anexo; preserva a assinatura da URL."""
+    p = _url(url)
+    return bool(p and p.hostname in {'cdn.discordapp.com', 'media.discordapp.net'}
+                and re.fullmatch(r'/attachments/[0-9]+/[0-9]+/[^/]+\.gif', p.path, re.I))
+
+
 def links(mensagem):
     texto = getattr(mensagem, 'content', '')
     if not isinstance(texto, str):
         return []
-    return list(dict.fromkeys(u.rstrip('.,!?)]') for u in URL.findall(texto)
-                             if pagina(u.rstrip('.,!?)]'))))
+    urls = (u.rstrip('.,!?)]') for u in URL.findall(texto))
+    return list(dict.fromkeys(u for u in urls if pagina(u) or gif_discord(u)))
 
 
 def tipo_midia(url, provedor):

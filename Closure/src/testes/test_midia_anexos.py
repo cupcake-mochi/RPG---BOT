@@ -10,7 +10,7 @@ from types import SimpleNamespace
 from unittest.mock import AsyncMock
 from PIL import Image
 from closure_bot.midia import AVISO
-from closure_bot.midia_anexos import Anexos, Preparo, decodificar, url_discord, AVISO_ATIVO
+from closure_bot.midia_anexos import Anexos, Preparo, decodificar, url_discord, AVISO_ATIVO, AVISO_VISUAL
 from closure_bot.midia_preparar import MAX_BYTES
 from closure_bot.modelo import Modelos, montar_corpo, reserva_midia, Falhou, FLASH
 from closure_bot.registro import Registro
@@ -44,6 +44,15 @@ def mensagem(nome='foto.png', **attrs):
 
 
 class Decodificacao(unittest.IsolatedAsyncioTestCase):
+    async def test_orientacao_visual_so_quando_imagem_foi_enviada(self):
+        imagem=await decodificar(foto(),'imagem')
+        audio=await decodificar(wav(),'audio')
+        for preparado,esperado in [(imagem,True),(audio,False),(Preparo(nota='GIF não analisado'),False),(Preparo(),False)]:
+            with self.subTest(esperado=esperado,nota=preparado.nota):
+                e=pedido(preparado)
+                self.assertEqual(AVISO_VISUAL in e[0]['content'],esperado)
+                self.assertNotIn(AVISO_VISUAL,preparado.historico)
+
     async def test_foto_reduzida_sem_exif_e_reserva(self):
         p = await decodificar(foto((1500, 1000)), 'imagem')
         data = base64.b64decode(p.partes[0]['inlineData']['data'])

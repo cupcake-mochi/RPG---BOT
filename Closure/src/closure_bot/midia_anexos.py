@@ -39,6 +39,17 @@ AVISO_AUDIO = ('[Escuta do anexo: o áudio deste pedido foi recebido; examine o 
     'Responda à pergunta no jeito habitual, sem expor rotinas internas ou preencher lacunas com imaginação.]')
 
 
+AVISO_VISUAL = ('[Conversa com imagem ou GIF: acompanhe a intenção da mensagem e o assunto em andamento '
+    'no jeito habitual da personagem. Se a pessoa compartilha uma reação, brincadeira ou algo de que gostou, '
+    'responda a essa troca com base no que está visível. Um arquivo ou link sozinho pode ser uma reação '
+    'ao assunto anterior; não pede automaticamente uma descrição. '
+    'Descreva ou identifique o conteúdo quando a pessoa pedir ou quando isso for necessário para responder. '
+    'Em uma pergunta só sobre conseguir ver, confirme brevemente, sem relatório de quadros ou carregamento. '
+    'Uma resposta anterior descritiva não obriga a narrar a próxima imagem. '
+    'Não invente a intenção da pessoa, sentimentos, sons ou detalhes ausentes. '
+    'Se o sentido da mídia não estiver claro, admita a dúvida de forma breve.]')
+
+
 @dataclass
 class Preparo:
     partes: list[dict] = field(default_factory=list, repr=False)
@@ -69,6 +80,8 @@ class Preparo:
                 entrada[0]['content'] += '\n\n' + AVISO_ATIVO
             if any(p.get('inlineData', {}).get('mimeType', '').startswith('audio/') for p in self.partes):
                 entrada[0]['content'] += '\n\n' + AVISO_AUDIO
+            if any(p.get('inlineData', {}).get('mimeType', '').startswith('image/') for p in self.partes):
+                entrada[0]['content'] += '\n\n' + AVISO_VISUAL
             entrada[-1]['midias'] = self.partes
 
     @property
@@ -179,20 +192,25 @@ class Anexos:
         except TimeoutError:
             return Preparo(nota='GIF não analisado: processamento ocupado; tente novamente depois.')
         try:
-            url, tipo = await self.resolver_gif(mensagem, links[0])
-            provedor = midia_gifs.pagina(links[0])[0]
-            if midia_gifs.tipo_midia(url, provedor) != tipo:
-                raise ValueError('origem não permitida')
-            dados = await self.download_gif(url, provedor)
+            if midia_gifs.gif_discord(links[0]):
+                tipo, origem = 'imagem', 'GIF por link do Discord: '
+                dados = await self.download(links[0])
+            else:
+                url, tipo = await self.resolver_gif(mensagem, links[0])
+                provedor = midia_gifs.pagina(links[0])[0]
+                if midia_gifs.tipo_midia(url, provedor) != tipo:
+                    raise ValueError('origem não permitida')
+                dados = await self.download_gif(url, provedor)
+                origem = 'GIF do seletor (' + provedor + '): '
             if tipo == 'imagem' and dados[:6] not in (b'GIF87a', b'GIF89a'):
                 raise ValueError('não é GIF')
             preparado = await self.preparar(dados, tipo)
-            preparado.nota = 'GIF do seletor (' + provedor + '): ' + preparado.nota
+            preparado.nota = origem + preparado.nota
             preparado.links_analisados = (links[0],)
             if len(links) > 1:
                 preparado.nota += '; somente o primeiro GIF foi analisado'
             return preparado
         except (ValueError, OSError, TimeoutError):
-            return Preparo(nota='GIF do seletor não analisado: prévia indisponível ou arquivo fora dos limites (5 MB, 15 s, 120 quadros). Peça o arquivo .gif anexado; não descreva a animação sem recebê-la.')
+            return Preparo(nota='GIF não analisado: link indisponível/expirado, prévia ausente ou arquivo fora dos limites (5 MB, 15 s, 120 quadros). Peça o arquivo .gif anexado; não descreva a animação sem recebê-la.')
         finally:
             self._vaga.release()

@@ -1,0 +1,54 @@
+{
+  "casos": [
+    {
+      "persona": "kaltsit",
+      "tipo": "reacao",
+      "texto_preservado": true,
+      "historico_descritivo_preservado": true,
+      "orientacao_visual_no_sistema": true,
+      "imagens_so_no_turno_atual": true
+    },
+    {
+      "persona": "kaltsit",
+      "tipo": "comentario",
+      "texto_preservado": true,
+      "historico_descritivo_preservado": true,
+      "orientacao_visual_no_sistema": true,
+      "imagens_so_no_turno_atual": true
+    },
+    {
+      "persona": "kaltsit",
+      "tipo": "descricao",
+      "texto_preservado": true,
+      "historico_descritivo_preservado": true,
+      "orientacao_visual_no_sistema": true,
+      "imagens_so_no_turno_atual": true
+    },
+    {
+      "persona": "closure",
+      "tipo": "reacao",
+      "texto_preservado": true,
+      "historico_descritivo_preservado": true,
+      "orientacao_visual_no_sistema": true,
+      "imagens_so_no_turno_atual": true
+    },
+    {
+      "persona": "closure",
+      "tipo": "comentario",
+      "texto_preservado": true,
+      "historico_descritivo_preservado": true,
+      "orientacao_visual_no_sistema": true,
+      "imagens_so_no_turno_atual": true
+    },
+    {
+      "persona": "closure",
+      "tipo": "descricao",
+      "texto_preservado": true,
+      "historico_descritivo_preservado": true,
+      "orientacao_visual_no_sistema": true,
+      "imagens_so_no_turno_atual": true
+    }
+  ],
+  "chamadas_reais": 0,
+  "limite": "Confere montagem, não o comportamento do modelo."
+}

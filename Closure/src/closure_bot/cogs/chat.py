@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import logging
 import re
+import time
 from collections import deque
 from dataclasses import dataclass
 from datetime import datetime, timedelta
@@ -210,10 +211,12 @@ class Chat(commands.Cog):
         desta = {t.texto for t in turnos if t.nome is None}
         leitura.autores |= bot.registro.autores_conversa(canal.id, persona)
         anteriores = [f for f in bot.registro.ultimas_falas(canal_id=canal.id, persona=persona, agora=agora) if f not in desta]
+        inicio_prompt = time.monotonic()
         entrada = await montar_prompt(persona, texto, nome=nome, pronomes=estado.pronomes, turnos=turnos,
                                       falas_anteriores=anteriores, estado=para_a_ponte)
         if leitura.apagados:
             return
+        inicio_preparo = time.monotonic()
         preparo = await bot.anexos.contexto(mensagem)
         if leitura.apagados:
             return
@@ -228,11 +231,17 @@ class Chat(commands.Cog):
         if bot.config.usa_argon(canal.id):
             rota["usar_argon"] = True
         fala = preparo.resposta_local(texto)
+        inicio_modelo = time.monotonic()
         if fala is None:
             resposta = await bot.modelos.responder(entrada, persona=persona, gatilho=decisao.motivo, **rota)
             if leitura.apagados:
                 return
             fala = resposta.texto.strip()
+        if preparo.partes or preparo.silencio:
+            fim = time.monotonic()
+            log.info('mídia: prompt_ms=%d preparo_ms=%d modelo_ms=%d total_ms=%d',
+                     (inicio_preparo - inicio_prompt) * 1000, (inicio_modelo - inicio_preparo) * 1000,
+                     (fim - inicio_modelo) * 1000, (fim - inicio_prompt) * 1000)
         partes = em_partes(fala)
         if not partes:
             return
