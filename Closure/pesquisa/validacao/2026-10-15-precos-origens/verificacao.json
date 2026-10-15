@@ -1,0 +1,18 @@
+{
+  "data": "2026-10-15",
+  "testes": 559,
+  "passaram": 558,
+  "pulados": 1,
+  "segundos": 156.123,
+  "motores_iguais": 14,
+  "motores_total": 14,
+  "titulos_com_fonte": 425,
+  "titulos_total": 425,
+  "precos_antes": 149,
+  "precos_depois": 166,
+  "precos_total": 166,
+  "chamadas_reais_modelo": 0,
+  "nucleo_sha256": "1cd5b2bd6d0149271255a77ee71a505f3c723b1a73747bf38738ec64e3947e3b",
+  "livro_edicao": "R52",
+  "implantado": false
+}

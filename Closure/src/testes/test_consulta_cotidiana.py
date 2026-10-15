@@ -45,6 +45,20 @@ class ConsultaCotidiana(unittest.TestCase):
                 if valor:
                     self.assertIn(valor, p['ctx'])
 
+    def test_precos_de_tabelas_curtas_e_nomes_curtos(self):
+        for item, fonte in (("Bō", "equip--eqa-impacto"), ("Pé de cabra", "equip--eqi-itens"),
+                            ("Telefone", "equip--eqi-itens"), ("Traje 2", "equip--eqc-precos"),
+                            ("Escudo Médio", "equip--eqc-precos")):
+            for prefixo in ("", "Meu computador travou. "):
+                with self.subTest(item=item, prefixo=prefixo):
+                    _, fontes = self.montar(prefixo + f"Quanto custa {item} no livro?")
+                    self.assertEqual(fontes[0], fonte)
+
+    def test_preco_de_conversa_nao_e_preco_de_equipamento(self):
+        for msg in ("Quanto custa uma playlist de música clássica?", "Meu celular quebrou, quanto custa o conserto?"):
+            _, fontes = self.montar(msg)
+            self.assertEqual(fontes, [])
+
     def montar(self, msg, anteriores=(), pers="kal", **extra):
         turnos = [{"de": "user", "nome": "Alex", "texto": t} for t in anteriores]
         p = site_prompt.montar(pers, msg, nome="Alex", hora=(14, 0), turnos=turnos, **extra)

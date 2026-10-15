@@ -106,7 +106,7 @@ const D = /*__DATADOS__*/null;
 const $ = id => document.getElementById(id);
 const STRIP = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "");
 // expressão de conversa com palavra de regra ("morrendo de sono", "que dano", "a guia do servidor") sai antes de procurar termo e livro
-const IDIOMA = /(?<![\p{L}])(?:(?:morrendo|morta|morto|morri|morro) de (?:sono|fome|rir|tédio|tedio|vergonha|calor|frio|saudade|cansaço|cansaco|medo|raiva)|que dano(?=\s*(?:hein|kkk+|mano|cara|véi|vei|[!.]|$))|(?:to|tô|tou|estou|fiquei|fico|ando|tava|tô meio|to meio) sem energia|(?:minha|tua|sua|nossa) vida (?:t[aá]|est[aá]|anda) (?:uma|um|muito|meio|corrida|dif[ií]cil|complicada|bagun[cç]ada|parada)|vida corrida|(?:a|uma) guia do servidor|(?:minha|sua|tua|nossa|essa) guia|guia (?:favorita|preferida|querida|predileta)|guias? turístic\w*|(?:filme|filmes|série|series|séries|anime|animes|novela|documentário|documentario|desenho|mangá|manga) d[eoa]s? \p{L}+|(?:obg|obgd|obrigad[oa]|valeu|vlw|brigad[oa]|tmj),? guia(?![\p{L}])|classes? d[aeo] (?:faculdade|escola|aula|colégio|colegio|facul)|nível de (?:cansaço|cansaco|estresse|stress|sono|paciência|paciencia|fome|tédio|tedio|ódio|odio|preguiça|preguica)|ritua(?:l|is) de iniciação|ritua(?:l|is) de iniciacao|revistas? técnic\p{L}*|(?:assistência|assistencia|suporte|curso|ensino|escola|falha|problema|parte|ficha) técnic\p{L}*|técnicas? de (?:estudo|respiração|respiracao|relaxamento|venda|cozinha)\p{L}*|(?:manual|manuais) de montagem|montagem d[eoa]s? (?:móve|move|armário|armario|guarda|estante|lego|pc|computador|vídeo|video)\p{L}*|guias? (?:de|do|da|dos|das|pra|para) (?:restaurante|viage|turism|estud|compra|bolso|carreira|cidade|bairro|museu|filme|série|serie|anime|jogo|presente|receita|sobreviv|programa|instala|configura|celular)\p{L}*|ritua(?:l|is) (?:matina\p{L}*|di[aá]ri\p{L}*|de sempre|de beleza|de skincare|de limpeza|de toda (?:manhã|manha|noite)|de todo (?:dia|domingo)|da (?:manhã|manha|noite)|de (?:café|cafe|academia|estudo|sono|acordar|dormir|treino|treinar|estudar|leitura|ler|meditar|meditação|meditacao|organização|organizacao)\p{L}*)|(?:é|e|sou|ser|tipo) (?:a|uma) guia|(?:a )?outra guia|(?:as|das|duas) guias|(?:t[aáoô]|tou|fic\w*|est[aáo]\w*|bot\w*|levant\w*) (?:de )?p[eé]|(?:em|a|no|com o) p[eé]|(?<!ainda de )pé)(?![\p{L}])/giu;
+const IDIOMA = /(?<![\p{L}])(?:(?:morrendo|morta|morto|morri|morro) de (?:sono|fome|rir|tédio|tedio|vergonha|calor|frio|saudade|cansaço|cansaco|medo|raiva)|que dano(?=\s*(?:hein|kkk+|mano|cara|véi|vei|[!.]|$))|(?:to|tô|tou|estou|fiquei|fico|ando|tava|tô meio|to meio) sem energia|(?:minha|tua|sua|nossa) vida (?:t[aá]|est[aá]|anda) (?:uma|um|muito|meio|corrida|dif[ií]cil|complicada|bagun[cç]ada|parada)|vida corrida|(?:a|uma) guia do servidor|(?:minha|sua|tua|nossa|essa) guia|guia (?:favorita|preferida|querida|predileta)|guias? turístic\w*|(?:filme|filmes|série|series|séries|anime|animes|novela|documentário|documentario|desenho|mangá|manga) d[eoa]s? \p{L}+|(?:obg|obgd|obrigad[oa]|valeu|vlw|brigad[oa]|tmj),? guia(?![\p{L}])|classes? d[aeo] (?:faculdade|escola|aula|colégio|colegio|facul)|nível de (?:cansaço|cansaco|estresse|stress|sono|paciência|paciencia|fome|tédio|tedio|ódio|odio|preguiça|preguica)|ritua(?:l|is) de iniciação|ritua(?:l|is) de iniciacao|revistas? técnic\p{L}*|(?:assistência|assistencia|suporte|curso|ensino|escola|falha|problema|parte|ficha) técnic\p{L}*|técnicas? de (?:estudo|respiração|respiracao|relaxamento|venda|cozinha)\p{L}*|(?:manual|manuais) de montagem|montagem d[eoa]s? (?:móve|move|armário|armario|guarda|estante|lego|pc|computador|vídeo|video)\p{L}*|guias? (?:de|do|da|dos|das|pra|para) (?:restaurante|viage|turism|estud|compra|bolso|carreira|cidade|bairro|museu|filme|série|serie|anime|jogo|presente|receita|sobreviv|programa|instala|configura|celular)\p{L}*|ritua(?:l|is) (?:matina\p{L}*|di[aá]ri\p{L}*|de sempre|de beleza|de skincare|de limpeza|de toda (?:manhã|manha|noite)|de todo (?:dia|domingo)|da (?:manhã|manha|noite)|de (?:café|cafe|academia|estudo|sono|acordar|dormir|treino|treinar|estudar|leitura|ler|meditar|meditação|meditacao|organização|organizacao)\p{L}*)|(?:é|e|sou|ser|tipo) (?:a|uma) guia|(?:a )?outra guia|(?:as|das|duas) guias|(?:t[aáoô]|tou|fic\w*|est[aáo]\w*|bot\w*|levant\w*) (?:de )?p[eé]|(?:em|a|no|com o) p[eé]|(?<!ainda de )pé)(?![\p{L}]|\s+de\s+cabra\b)/giu;
 // fala citada entre aspas, com três palavras ou mais ("você precisa de CD 20"), não aciona o lorebook; termo citado sozinho ("Refino") aciona
 const CITACAO = /"([^"]*)"|“([^”]*)”/g;
 const semIdioma = s => s.replace(CITACAO, (m, a, b) => ((a ?? b).trim().split(/\s+/).length >= 3 ? " " : m)).replace(IDIOMA, " ");
@@ -296,9 +296,7 @@ function textoDeConsulta(texto) {
   return texto.split(/(?<=[?!.;])\s+|\n|\s+(?:mas|porem)\s+/i).map(parte => {
     const limpa = semIdioma(parte), semContexto = t0(limpa).replace(new RegExp(COTIDIANO.source, "g"), " ");
     const nomeada = DEFINICOES.some(d => !d.comum && (d.palavras.length > 1 || (d.principal && CAMINHOS.includes(FAM[d.i]))) && nomePlano(semContexto).includes(d.frase));
-    const palavras = new Set(tok(semContexto));
-    const item = /\b(custa\w*|preco|valor|comprar|vender)\b/.test(semContexto) && LINHA.some((linha, i) =>
-      FAM[i] === "equip" && [...linha].some(([w, peso]) => peso === 2 && (DF.get(w) || 0) <= 60 && palavras.has(w)));
+    const item = itensDePreco(semContexto).length > 0;
     if (!MECANICA.test(semContexto) && !nomeada && !item) return "";
     // Uma oração mecânica conserva seus substantivos: o marcador cotidiano
     // também pode ser o objeto real da pergunta, inclusive em livros futuros.
@@ -429,6 +427,26 @@ function buscar(qPal, familia, nivel, numNivel = [], texto = "") {
     return [s, D.livro[i], i];
   }).filter(x => x[1]).sort((a, b) => b[0] - a[0]);
 }
+// Preços vêm de tabelas com coluna de Preço, independentemente da largura.
+// Inclui nomes curtos (Bō) e proteções, sem preço ou item fixado no código.
+function itensDePreco(texto) {
+  if (!/\b(preco|valor|custa\w*|comprar|vender)\b/.test(nrm(texto))) return [];
+  const frase = nomePlano(texto), itens = [];
+  D.livro.forEach((b, i) => {
+    if (FAM[i] !== "equip" || b.ancora === "equip--eqc-inicial") return;
+    let preco = false;
+    for (const linha of b.texto.split("\n")) {
+      if (!linha.startsWith("|")) { preco = false; continue; }
+      const celulas = linha.split("|").slice(1, -1);
+      if (celulas.some(c => /\bpreco\b/.test(t0(c)))) { preco = true; continue; }
+      if (!preco || /^\|\s*:?-/.test(linha)) continue;
+      const nome = celulas[0].replace(/[*`]/g, "").replace(/\([^)]*\)/g, "").trim();
+      if (nome && frase.includes(nomePlano(nome))) itens.push([nome.length, b.ancora]);
+    }
+  });
+  itens.sort((a, b) => b[0] - a[0]);
+  return [...new Set(itens.map(x => x[1]))];
+}
 function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   const consulta = textoDeConsulta(texto);
   if (consulta !== texto) termos = ativar(consulta).termos;
@@ -541,26 +559,8 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   if (ecoComplemento) out.push(ecoComplemento);
   const assunto = herda ? anterior + " " + texto : texto;
   const fontes = pergunta || detalhe ? fontesDaMontagem(assunto) : [];
-  // Um item citado por nome precisa da sua tabela, mesmo no fim de uma
-  // conversa longa. Exemplos de compras não substituem o preço unitário.
-  if (pergunta && /\b(preco|valor|custa|custam|comprar|vender)\b/.test(nrm(assunto))) {
-    const fraseItem = nomePlano(assunto);
-    const itens = [];
-    D.livro.forEach((b, i) => {
-      if (FAM[i] !== "equip") return;
-      const linhas = b.texto.split("\n");
-      for (const linha of linhas) {
-        if (!linha.startsWith("|") || /^\|\s*:?-/.test(linha)) continue;
-        const celulas = linha.split("|").slice(1, -1);
-        if (celulas.length < 5) continue;
-        const nome = celulas[0].replace(/[*`]/g, "").replace(/\([^)]*\)/g, "").trim();
-        const palavras = tok(nome).filter(w => !PARADA.has(w));
-        if (palavras.length && fraseItem.includes(nomePlano(nome)) && palavras.some(w => (DF.get(w) || NB) <= 60)) itens.push([nome.length, b.ancora]);
-      }
-    });
-    itens.sort((a, b) => b[0] - a[0]);
-    fontes.unshift(...[...new Set(itens.map(x => x[1]))]);
-  }
+  // Tabela de preço por nome, antes de exemplos e descrições do item.
+  if (pergunta) fontes.unshift(...itensDePreco(assunto));
   const aptidoes = [...comTermo.keys()].filter(i => FAM[i] === "aptidoes" && !["aptidoes--apt-refino", "aptidoes--apt-marcos", "aptidoes--apt-catalogo"].includes(D.livro[i].ancora));
   if (pergunta && !aptidoes.length && /\baptidoes\b/.test(t) && /\b(quais|lista\w*|catalogo|todas|disponiveis)\b/.test(t)) fontes.push("aptidoes--apt-catalogo", "aptidoes--apt-refino");
   const definidas = pergunta || detalhe ? definicoesNa(assunto, familia) : [];

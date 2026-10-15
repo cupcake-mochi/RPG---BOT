@@ -1,10 +1,10 @@
 {
   "sistema": "Ciclo Maldito",
   "versao_sistema": "v0.364",
-  "edicao_livro": "R51",
-  "commit": "82878e607fb4b31e253eeb85659ddb62122637ce",
-  "data_commit": "2026-10-14T00:23:47-03:00",
-  "sincronizado_em": "2026-10-14T08:02:08-03:00",
+  "edicao_livro": "R52",
+  "commit": null,
+  "data_commit": null,
+  "sincronizado_em": "2026-10-15T12:40:21-03:00",
   "blocos": 511,
   "capitulos": [
     {
@@ -114,7 +114,17 @@
     }
   ],
   "arquivos": {
-    "livro.jsonl": "sistema/05-material/livro/ciclo-maldito-r41/LIVRO-COMPLETO.md",
+    "livro.jsonl": "livro-diagramado-r52/LIVRO-COMPLETO.md",
     "catalogos.json": "sistema/05-material/gerador-ficha/dados.js"
+  },
+  "commit_catalogos": "82878e607fb4b31e253eeb85659ddb62122637ce",
+  "data_commit_catalogos": "2026-10-14T00:23:47-03:00",
+  "commit_livro": null,
+  "fonte_livro": {
+    "tipo": "entrega_local_aprovada",
+    "pasta": "livro-diagramado-r52",
+    "edicao": "R52",
+    "texto_sha256": "c29d49befd671a1d654476b807a196548c0bc94ced134b2dfe6be5b556172ba8",
+    "pdf_sha256": "c04d86e11ac867d9dc60b398528cd0eac8626455ab5c125e6191a26b1e03e026"
   }
 }

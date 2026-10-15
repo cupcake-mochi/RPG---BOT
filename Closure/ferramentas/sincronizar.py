@@ -8,6 +8,9 @@ fica uma cópia gerada, e este script é o único jeito de atualizar essa cópia
 Uso:
     python ferramentas/sincronizar.py --repo CAMINHO_DO_CLONE
     (ou defina JJK_REPO com o caminho e rode sem argumento)
+    --entrega-livro PASTA_LIVRO_DIAGRAMADO_RN permite usar uma entrega local aprovada
+    enquanto o repositório do sistema ainda não a incorporou; registra hashes e proveniência.
+    Uma edição anterior é recusada, salvo --permitir-retrocesso explícito.
 
 Gera, em dados/sistema/:
     livro.jsonl      um bloco do LIVRO-COMPLETO.md por linha, com a âncora
@@ -19,11 +22,13 @@ forma, em vez de gerar uma cópia pela metade.
 """
 import argparse
 import datetime
+import hashlib
 import json
 import os
 import re
 import subprocess
 import sys
+from pathlib import Path
 
 AQUI = os.path.dirname(os.path.abspath(__file__))
 CLOSURE = os.path.dirname(AQUI)
@@ -97,8 +102,8 @@ def limpa(txt):
     return re.sub(r'[*`_]', '', txt).strip()
 
 
-def blocos_do_livro(repo):
-    with open(os.path.join(repo, LIVRO), encoding='utf-8') as fh:
+def blocos_do_livro(repo, arquivo=None):
+    with open(arquivo or os.path.join(repo, LIVRO), encoding='utf-8') as fh:
         bruto = fh.read()
 
     marca = re.compile(r'<a id="(capitulo-(\d+))"></a>|<a id="([a-z0-9]+)--([^"]+)"></a>')
@@ -179,14 +184,42 @@ def gravar(nome, conteudo):
     os.replace(tmp, final)
 
 
+def ler_entrega(pasta):
+    """Identifica a fonte aprovada sem publicar caminhos privados ou inventar commit."""
+    pasta = Path(pasta)
+    m = re.fullmatch(r'livro-diagramado-r(\d+)', pasta.name)
+    if not m:
+        raise Falha('a entrega deve ser uma pasta livro-diagramado-rN')
+    edicao = 'R' + m[1]
+    livro, leia = pasta / 'LIVRO-COMPLETO.md', pasta / f'LEIA-ME-{edicao}.md'
+    pdf = pasta / 'output/pdf' / f'Ciclo-Maldito-{edicao}.pdf'
+    if not all(p.is_file() for p in (livro, leia, pdf)):
+        raise Falha('entrega incompleta: faltam texto, LEIA-ME ou PDF da edição')
+    if not re.search(r'^#.*\b' + edicao + r'\b', leia.read_text(encoding='utf-8'), re.M):
+        raise Falha('o LEIA-ME não confirma a edição da entrega')
+    return {'tipo': 'entrega_local_aprovada', 'pasta': pasta.name, 'edicao': edicao,
+            'texto_sha256': hashlib.sha256(livro.read_bytes()).hexdigest(),
+            'pdf_sha256': hashlib.sha256(pdf.read_bytes()).hexdigest()}
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--repo', help='caminho do clone do JJK---Project')
+    ap.add_argument('--entrega-livro', type=Path, help='entrega local aprovada (pasta livro-diagramado-rN com texto e LEIA-ME-RN); catálogos continuam do repo')
+    ap.add_argument('--permitir-retrocesso', action='store_true', help='autoriza explicitamente importar uma edição anterior')
     args = ap.parse_args()
     try:
         repo, versao = achar_repo(args.repo)
         edicao = edicao_do_livro(repo)
-        blocos = blocos_do_livro(repo)
+        entrega = ler_entrega(args.entrega_livro) if args.entrega_livro else None
+        if entrega:
+            edicao = entrega['edicao']
+        anterior = Path(SAIDA) / 'MANIFESTO.json'
+        if anterior.exists() and not args.permitir_retrocesso:
+            velha = json.loads(anterior.read_text())['edicao_livro']
+            if int(edicao[1:]) < int(velha[1:]):
+                raise Falha(f'a origem está em {edicao}, mas o bot já usa {velha}; não vou regredir sem --permitir-retrocesso')
+        blocos = blocos_do_livro(repo, args.entrega_livro / 'LIVRO-COMPLETO.md' if entrega else None)
         cats = catalogos(repo)
     except Falha as e:
         print(f'FALHOU: {e}', file=sys.stderr)
@@ -209,13 +242,23 @@ def main():
             'catalogos.json': DADOS_JS.replace(os.sep, '/'),
         },
     }
+    if entrega:
+        # Não atribua ao commit do catálogo um livro ainda não publicado nele.
+        manifesto['commit_catalogos'] = sha
+        manifesto['data_commit_catalogos'] = data_commit
+        manifesto['commit_livro'] = None
+        manifesto['commit'] = None
+        manifesto['data_commit'] = None
+        manifesto['fonte_livro'] = entrega
+        manifesto['arquivos']['livro.jsonl'] = entrega['pasta'] + '/LIVRO-COMPLETO.md'
 
     os.makedirs(SAIDA, exist_ok=True)
     gravar('livro.jsonl', ''.join(json.dumps(b, ensure_ascii=False) + '\n' for b in blocos))
     gravar('catalogos.json', json.dumps(cats, ensure_ascii=False, indent=2) + '\n')
     gravar('MANIFESTO.json', json.dumps(manifesto, ensure_ascii=False, indent=2) + '\n')
     print(f'ok: Ciclo Maldito {versao} / {edicao}, {len(blocos)} blocos em '
-          f'{len(capitulos)} capítulos, commit {(sha or "?")[:8]}')
+          f'{len(capitulos)} capítulos, ' + (f'entrega local aprovada; catálogo no commit {(sha or "?")[:8]}'
+                                          if entrega else f'commit {(sha or "?")[:8]}'))
     return 0
 
 

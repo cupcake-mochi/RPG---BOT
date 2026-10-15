@@ -1,0 +1,23 @@
+{
+  "edicao_anterior": "R51",
+  "edicao_atual": "R52",
+  "blocos": 511,
+  "ancoras_preservadas": true,
+  "blocos_alterados": [
+    "origens--legado-criar"
+  ],
+  "catalogos_preservados": true,
+  "fonte_livro": {
+    "tipo": "entrega_local_aprovada",
+    "pasta": "livro-diagramado-r52",
+    "edicao": "R52",
+    "texto_sha256": "c29d49befd671a1d654476b807a196548c0bc94ced134b2dfe6be5b556172ba8",
+    "pdf_sha256": "c04d86e11ac867d9dc60b398528cd0eac8626455ab5c125e6191a26b1e03e026"
+  },
+  "commit_livro": null,
+  "commit_catalogos": "82878e607fb4b31e253eeb85659ddb62122637ce",
+  "pdf_paginas_conferidas": [
+    99,
+    100
+  ]
+}

@@ -8,6 +8,8 @@ Cole tudo abaixo da linha numa conversa nova (Claude, ChatGPT ou Codex) pra reto
 
 Oi, sou o Mizuki. Vamos continuar o Guias do Ciclo, o bot de Discord do servidor da minha guilda, que joga o Ciclo Maldito (meu RPG de mesa no universo de Jujutsu Kaisen). O bot tem duas personagens de Arknights que se revezam no plantão: a Kal'tsit, das 9h às 21h, e a Closure, das 21h às 9h, no horário de Brasília. Elas tiram dúvida de regra pelo livro, contam o mundo do jogo, mostram o clima e conversam. As duas ficam fora da história: são guias, não existem no mundo do jogo.
 
+**R52 e revisão de preços (15/10):** entrega local aprovada pelo Mizuki integrada pelo sincronizador com `--entrega-livro`. O repositório do sistema ainda está em R51/v0.364: o manifesto registra hashes do texto/PDF R52, commit do catálogo e ausência de commit do livro novo. Apenas `origens--legado-criar` mudou, mantendo 511 blocos. Menores e Legados podem ser criados; marcantes seguem as opções publicadas, com a exceção da Restrição corporal; família própria do Descendente usa modalidade publicada. Busca de preço considera a coluna Preço, incluindo tabelas de itens/proteções e nomes curtos; “Pé de cabra” é preservado pelo filtro. Relatório: `pesquisa/validacao/2026-10-15-precos-origens/relatorio.txt`. Memória/mídia v12 continuam incluídas. Sem chamadas ao modelo, alteração de cards, CONFIGURAÇÃO ou implantação.
+
 COMO EU GOSTO DE TRABALHAR
 Mais recente (15/10, busca v11; prevalece sobre os estados históricos abaixo): Mizuki confirmou
 os cinco resumos nativos de TR/perícias/carga no Discord, com verde/vermelho/amarelo/verde/amarelo.
