@@ -1,0 +1,14 @@
+{
+  "testes_existentes_passaram": 16,
+  "segundos": 0.419,
+  "novos_testes_textuais": 0,
+  "suite_completa_repetida": false,
+  "pedidos_reais_montados_sem_modelo": 4,
+  "codigo_zip_conferido_por_bytes": true,
+  "cards_preservados": true,
+  "chamadas_pagas": 0,
+  "modelo_avaliado_apos_mudanca": false,
+  "captura_usuario_recebida_durante_ajuste": true,
+  "versao_da_captura_confirmada": false,
+  "discloud_alterada_pelo_agente": false
+}

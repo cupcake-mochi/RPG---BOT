@@ -23,8 +23,10 @@ CONCLUÍDO
 
 - Mizuki confirmou por relato/capturas o funcionamento dos GIFs e o reconhecimento de si na v20. A ativação administrativa NSFW respondeu corretamente, mas o comportamento adulto ainda está em diagnóstico.
 
+- Mizuki mostrou nova captura de Kaltsit reconhecendo a ilustração/opinando e Closure comentando a arte. Confirma esses exemplos na versão em uso; versão exata não confirmada. V22 esclarece voz/personalidade na orientação, com 16 testes existentes e quatro pedidos montados sem modelo; sem mudança de cards.
+
 PRÓXIMOS
-1. Retestar a v21: os três links reais foram conferidos; o canal atual está sem marcação NSFW. Novo status mostra estado/motivo no canal de execução. Mizuki decide a marcação de idade no Discord e testa reconhecimento/opinião neutra e reação adulta não gráfica nos contextos corretos. Roteiro em pesquisa/validacao/2026-10-15-nsfw-status-v21/teste-no-discord.txt. Sem novas chamadas pagas pelo agente.
+1. Retestar a v22 (inclui v21 e esclarece que a resposta mantém a personalidade): os três links reais foram conferidos; o canal atual está sem marcação NSFW. Novo status mostra estado/motivo no canal de execução. Mizuki decide a marcação de idade no Discord e testa reconhecimento/comentário no jeito de cada guia e reação adulta não gráfica nos contextos corretos. Roteiros em pesquisa/validacao/2026-10-15-voz-reacoes-v22/teste-no-discord.txt e na validação da v21. Sem novas chamadas pagas pelo agente.
 2. Receber o resultado de CONFIGURAÇÃO do outro chat e só então integrar ao leitor/corretor. Preservar as 5.381 chaves ANALISE 4 e compatibilidade; PR 3 do gerador exige aprovação própria, não juntar por conta desta fila.
 
 PARA DEPOIS, QUANDO PEDIDO

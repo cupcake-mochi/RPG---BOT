@@ -1,0 +1,37 @@
+{
+  "casos": [
+    {
+      "guia": "kaltsit",
+      "modo_adulto": true,
+      "identidade_card_preservada": true,
+      "pergunta_midia_preservadas": true,
+      "orientacao_de_voz_presente": true,
+      "resposta_modelo_avaliada": false
+    },
+    {
+      "guia": "kaltsit",
+      "modo_adulto": false,
+      "identidade_card_preservada": true,
+      "pergunta_midia_preservadas": true,
+      "orientacao_de_voz_presente": true,
+      "resposta_modelo_avaliada": false
+    },
+    {
+      "guia": "closure",
+      "modo_adulto": true,
+      "identidade_card_preservada": true,
+      "pergunta_midia_preservadas": true,
+      "orientacao_de_voz_presente": true,
+      "resposta_modelo_avaliada": false
+    },
+    {
+      "guia": "closure",
+      "modo_adulto": false,
+      "identidade_card_preservada": true,
+      "pergunta_midia_preservadas": true,
+      "orientacao_de_voz_presente": true,
+      "resposta_modelo_avaliada": false
+    }
+  ],
+  "chamadas_pagas": 0
+}

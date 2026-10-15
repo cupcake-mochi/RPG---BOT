@@ -1,0 +1,12 @@
+{
+  "arquivo": "closure-lab-voz-reacoes-v22.zip",
+  "sha256": "401699c68e2abf8609ecc7c94585dfef1ee85254d72c5fda250ee577a8b75b2a",
+  "bytes": 1004445,
+  "arquivos": 56,
+  "codigo_conferido": true,
+  "sem_segredos": true,
+  "alteracoes_runtime": [
+    "src/closure_bot/conteudo_adulto.py"
+  ],
+  "cards_modelos_midia_comandos_preservados_v21": true
+}

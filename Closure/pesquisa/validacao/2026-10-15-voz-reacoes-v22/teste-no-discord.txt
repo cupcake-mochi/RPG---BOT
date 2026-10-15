@@ -1,0 +1,9 @@
+Piloto v22 — voz das guias
+
+Use closure-lab-voz-reacoes-v22.zip por Commit → Rebuild, preservando .env, banco/chave e MIDIA_ATIVA=1. Este pacote já inclui todas as correções da v21.
+
+Na conversa com cada guia, compartilhe uma fanart/reação com uma pergunta simples ou brincadeira. A resposta deve continuar no jeito dela, sem virar legenda técnica, atendimento impessoal ou redirecionamento a RPG. Humor/ironia não são obrigatórios em toda fala: devem acompanhar o card e o contexto.
+
+O conteúdo continua não gráfico e sem ERP/participação sexual. A marcação de canal e a ativação administrativa continuam necessárias para o modo adulto; reconhecimento/comentário sem conteúdo sexual não precisam perder a voz da personagem. /responder_nsfw continua mostrando o estado local e o motivo.
+
+Os comandos não chamam modelo. O piloto de conversa pode gerar chamadas pagas normais do bot; o agente não as executou. As 24 chamadas da comparação de áudio já foram consumidas.
