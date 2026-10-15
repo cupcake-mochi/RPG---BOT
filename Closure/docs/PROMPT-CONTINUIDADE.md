@@ -7,6 +7,22 @@ Cole tudo abaixo da linha numa conversa nova (Claude, ChatGPT ou Codex) pra reto
 Oi, sou o Mizuki. Vamos continuar o Guias do Ciclo, o bot de Discord do servidor da minha guilda, que joga o Ciclo Maldito (meu RPG de mesa no universo de Jujutsu Kaisen). O bot tem duas personagens de Arknights que se revezam no plantão: a Kal'tsit, das 9h às 21h, e a Closure, das 21h às 9h, no horário de Brasília. Elas tiram dúvida de regra pelo livro, contam o mundo do jogo, mostram o clima e conversam. As duas ficam fora da história: são guias, não existem no mundo do jogo.
 
 COMO EU GOSTO DE TRABALHAR
+Mais recente (15/10, busca v11; prevalece sobre os estados históricos abaixo): Mizuki confirmou
+os cinco resumos nativos de TR/perícias/carga no Discord, com verde/vermelho/amarelo/verde/amarelo.
+Capturas mostram resumo e controles, não cada página interna. Foi concluído o filtro da consulta
+para usos cotidianos explícitos: trilha sonora, computador/arquivo, cansaço, videogame, defesa
+interpessoal e tratamento de pronomes. Mensagem/histórico originais e contexto de mundo preservados;
+dúvidas mecânicas na mesma mensagem continuam com fontes. Reconstrução exata dos 48 pedidos v10:
+12 ambíguos passam de fontes de RPG em todos para nenhuma; 24,6% menos caracteres nesse grupo.
+16 pedidos de regra e seis turnos da Origem ficaram idênticos. Isso não mede novos tokens/custo/respostas.
+537 testes executados: 536 passaram e um online opcional pulado; motores 14/14 e fontes 425/425.
+Relatório pesquisa/validacao/2026-10-15-consulta-livro-v11/. Pacote acumulado sem .env:
+src/var/closure-lab-consulta-v11.zip; canonical closure-lab.zip igual. Só nucleo.js mudou versus v10.
+Recibo local de publicação pesquisa/privado/publicacao-consulta-v11.json. Nova busca ainda não
+testada com respostas reais nem implantada pelo agente. Nenhuma chamada paga nesta revisão.
+As 48 tentativas aprovadas foram consumidas anteriormente; qualquer nova bateria exige proposta.
+Parar antes de CONFIGURAÇÃO e não juntar o PR 3 do gerador. Argon/perfis inativos preservados.
+
 Mais recente nesta continuação (15/10, após busca v10): bateria mista aprovada pelo Mizuki, 48 tentativas
 Flash low únicas, 47 respostas e um timeout clo_musica de 60 s. Pausa e retomada manual apenas das
 15 inéditas sob o mesmo plano; todas as 48 tentativas foram consumidas. Conhecido cheio US$ 0,491862,

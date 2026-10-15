@@ -1,0 +1,71 @@
+Consulta do livro — filtro de conversa v11
+15/10/2026
+
+O que foi concluído
+Mizuki confirmou os cinco resumos nativos de TR/perícias/carga no Discord por capturas:
+verde/vermelho/amarelo/verde/amarelo, com alertas esperados. O relatório dessas fichas
+foi atualizado separadamente; não se certifica cada página interna pelos resumos.
+
+A bateria paga v10 já havia mostrado que as guias conseguiram responder ao assunto
+cotidiano nos 11 casos ambíguos completos, embora as 12 tentativas recebessem regras
+irrelevantes. A mudança atual remove esse contexto antes de chamar o modelo. Não houve
+nova chamada real ao Gemini, aprovação consumida, modificação de card ou implantação.
+
+Como funciona
+A consulta detecta contextos cotidianos explícitos, como sistema operacional, trilha
+sonora, integridade do arquivo, cansaço, videogame, defesa de amigo e pronomes. Nesses
+casos, só as orações que também nomeiam mecânica ou referência específica entram na
+busca. Orações só cotidianas ficam fora da consulta; uma oração mecânica preserva seus
+substantivos. A mensagem original entregue à guia e o histórico continuam integrais. Contexto de mundo continua olhando o texto original.
+Uma consulta real de Energia Reversa, Origem, Forma ou Trilha na mesma mensagem continua
+recebendo fontes. Nomes próprios de Trilhas não exigem repetir o rótulo Trilha. Consultas
+de preço de itens tabelados, como katana, são preservadas mesmo sem o rótulo livro.
+A presença de um objeto cotidiano num exemplo não comprova que ele tenha preço tabelado.
+Uma troca casual encerra a herança de regra; uma nova pergunta de regra pode reabri-la.
+A regra de até seis mensagens para confirmações e contestações permanece.
+
+É um filtro determinístico de contextos reconhecidos, não uma compreensão universal da
+intenção. Frases novas ou usos ambíguos sem esses sinais podem ainda puxar contexto errado;
+não se bloqueiam genericamente as palavras energia, defesa, integridade ou trilha.
+
+Validação local
+- 537 testes: 536 passaram e um online opcional foi pulado, em 135,670 s. A suíte inclui
+  onze testes novos com múltiplos casos de conversa, paráfrases inéditas, pares mecânicos,
+  mensagens mistas, continuação de Origem, troca de assunto e ambas as personagens.
+- QuickJS e Node: 14/14 na atualização, mais cinco casos do novo filtro iguais nos motores.
+- Auditoria dos títulos: 425/425 fontes esperadas preservadas. Mede a presença da fonte
+  em perguntas uniformes, não 425 respostas certas nem todas as paráfrases do livro.
+- Cards v0.37/v0.30, lorebook v2.0, livro R51 e todo o bloco de dados embutidos permanecem
+  iguais ao núcleo anterior. Os erros HTTP, reservas e chamadas da suíte são simulados.
+
+Comparação offline com a bateria encerrada
+O auditor reconstrói os 48 pedidos anteriores e verifica igualdade exata com cada captura
+privada antes de comparar a busca nova. Usa respostas já salvas apenas como histórico,
+sem executar os modelos ou alterar a rodada paga. Resultados em comparacao-contextos.json:
+- 16 perguntas de sistema: pedidos inteiros idênticos aos anteriores.
+- Seis turnos sobre Origem: pedidos inteiros idênticos, preservando a permissão e fontes.
+- 12 ambíguos: antes todos recebiam fontes de RPG; depois nenhum. Caracteres da entrada
+  somada passam de 319.854 para 241.240 (-24,6%); bytes UTF-8 de 328.786 para 247.640.
+- Duas falas de tratamento no feminino perdem as regras espúrias de Tratar/Retomar.
+- Duas trocas de assunto da Origem para música também deixam de levar regras.
+- Contexto de Escola Jujutsu e famílias permanece: é um pedido legítimo sobre o mundo.
+
+Caracteres e bytes não são tokens, custo faturado ou qualidade de resposta. Nenhuma
+melhora de fala ou economia em dólar foi medida para a v11. A rodada paga continua sendo
+v10, com 48 tentativas consumidas; não há saldo automático para testar a mudança atual.
+
+Pacote e publicação
+src/var/closure-lab-consulta-v11.zip, sem .env; closure-lab.zip é a mesma cópia. Auditoria
+em pacote.json: 50 arquivos, origens idênticas, Python compila, ZIP íntegro e sem valores
+das chaves/tokens locais. Só src/var/site/nucleo.js difere do pacote consulta-revisada v10.
+O ZIP v10 foi preservado. Não há atualização de ficha, gerador, CONFIGURAÇÃO ou perfis
+opcionais nesta mudança. O código e relatório seguem ao Git; o pacote fica fora do Git.
+A implantação na Discloud continua com Mizuki.
+
+Próxima conferência manual, depois do novo Commit/Rebuild
+1. Perguntar sobre trilha sonora; conversar sobre integridade de um download.
+2. Na mesma mensagem, citar trilha sonora e perguntar os requisitos de Energia Reversa.
+3. Perguntar o que pode criar na Origem; contestar e pedir a fonte; depois mudar para música.
+4. Conferir que as respostas de regra mantêm requisitos/limites e que o papo acompanha
+   o assunto cotidiano. Falas novas do modelo ainda precisam dessa validação.
+CONFIGURAÇÃO segue no outro chat; PR 3 do gerador permanece separado e em rascunho.

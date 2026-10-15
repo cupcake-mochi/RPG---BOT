@@ -134,7 +134,7 @@ function ativar(texto, soTermos = null) {
   return { nomes: E.map(e => e.comment), texto: E.map(e => e.content).join("\n\n"), termos };
 }
 
-// ---------- livro: âncora dos termos acionados + os blocos que mais casam com a mensagem (busca v9) ----------
+// ---------- livro: âncora dos termos acionados + os blocos que mais casam com a mensagem (busca v11) ----------
 const PARADA = new Set(("a o e de da do das dos que pra para por com sem um uma uns umas no na nos nas em é eu vc voce você tu se me te meu minha seu sua isso isto esse essa aqui ai aí la lá ja já mais menos muito pouco quando como qual quais quanto quantos onde porque pq tá ta to tô ou mas nao não sim ele ela eles elas ser ter tem tenho foi vai vou pode posso faz fazer " +
   "closure kal kaltsit kal'tsit mizuki livro regra regras dele dela deles delas oque qnt qnts cm for fosse seria tiver tivesse estiver nele nela neles nelas").split(" "));
 // "nv2", "nvl 2", "lv2" viram "nivel 2"; palavra longa fica com as 6 primeiras letras, pra "estabilizo" achar "estabilizar",
@@ -282,12 +282,36 @@ const PERG = /\?|(?<![a-z])(?:como|cm|qual|quais|quanto|quantos|quanta|quantas|q
 const PEDE_OPCOES = /\b(recomen\w*|sugir\w*|sugest\w*|suger\w*|indiqu\w*|indic[ao]\w*|compar\w*|melhor\w*|quais|lista\w*|opcoes)\b/;
 const CONTESTA = /\b(tem certeza|certeza disso|onde (?:esta|ta|diz|fala|voce leu)|de onde (?:tirou|veio)|(?:por que|pq) (?:voce )?(?:disse|falou)|qual (?:e )?a fonte|(?:achei|achava|acreditava|pensei) que|isso (?:esta|ta) (?:certo|errado)|voce (?:se )?(?:enganou|errou))\b/;
 const contestaRegra = s => CONTESTA.test(t0(s));
+// Desambiguação só da consulta, nunca da mensagem entregue à personagem.
+// Um contexto cotidiano explícito limita a busca às partes que também nomeiam
+// uma mecânica. Assim "trilha sonora" não abre o livro por "trilha", enquanto
+// uma pergunta de Energia Reversa na mesma mensagem continua recebendo a fonte.
+const COTIDIANO = /\b(?:sistema operacional|(?:windows|linux|computador|notebook|celular|videogame|video game|console|playlist|download)\w*|trilhas? sonoras?|musicas? (?:eletronicas?|classicas?)|integridade (?:d[eo] (?:meu |seu |um )?|d[oa]s? )(?:arquivos?|downloads?|pacotes?|dados)|(?:em )?defesa d[eoa] (?:um[ao]? |meu |minha |seu |sua )?(?:amig[oa]|colega|irmao|irma|familiar)\w*|(?:sem|pouca) energia (?:pra|para|hoje|depois)|(?:fiquei|estou|ando|to|tava|acordei|cheguei) (?:muito |meio |totalmente )?(?:sem energia|cansad[oa]|esgotad[oa])|(?:me )?tratar (?:no|pelo|com o) (?:feminino|masculino)|(?:meus |meu )?pronomes? (?:sao|e)|(?:passei|passado|aprovad[oa]) (?:na|numa) prova)\b/;
+const MECANICA = /\b(?:rpg|ciclo maldito|livro|regras?|mecanica|personagem|ficha|feitic\w*|aptid\w*|talentos?|melhorias?|restric\w*|origem|origens|pericias?|trilhas?|caminhos?|formas?|testes? de resistencia|energia (?:amaldi\w*|reversa)|p[ev]|refino|maestria|combate|classe\s*\d|nivel\s*\d|\d+d(?:4|6|8|10|12|20))\b/;
+function textoDeConsulta(texto) {
+  const n = t0(texto);
+  if (!COTIDIANO.test(n)) return semIdioma(texto);
+  // As expressões são reconhecidas antes de semIdioma, que já apaga alguns
+  // usos figurados. O sinal mecânico precisa estar fora da expressão cotidiana.
+  return texto.split(/(?<=[?!.;])\s+|\n|\s+(?:mas|porem)\s+/i).map(parte => {
+    const limpa = semIdioma(parte), semContexto = t0(limpa).replace(new RegExp(COTIDIANO.source, "g"), " ");
+    const nomeada = DEFINICOES.some(d => !d.comum && (d.palavras.length > 1 || (d.principal && CAMINHOS.includes(FAM[d.i]))) && nomePlano(semContexto).includes(d.frase));
+    const palavras = new Set(tok(semContexto));
+    const item = /\b(custa\w*|preco|valor|comprar|vender)\b/.test(semContexto) && LINHA.some((linha, i) =>
+      FAM[i] === "equip" && [...linha].some(([w, peso]) => peso === 2 && (DF.get(w) || 0) <= 60 && palavras.has(w)));
+    if (!MECANICA.test(semContexto) && !nomeada && !item) return "";
+    // Uma oração mecânica conserva seus substantivos: o marcador cotidiano
+    // também pode ser o objeto real da pergunta, inclusive em livros futuros.
+    return limpa;
+  }).filter(Boolean).join(" ");
+}
 // Recomendações precisam enxergar as alternativas. O panorama contém recortes
 // literais do livro e suas âncoras; não é um catálogo de regras escrito à mão.
 const RAIZES_CAMINHOS = D.livro.filter(b => CAMINHOS.includes(b.ancora.split("--")[0]) && /^#### Características$/m.test(b.texto));
 const TRILHAS_LIVRO = D.livro.filter(b => CAMINHOS.includes(b.ancora.split("--")[0]) &&
   (/^### [^\n]+[\s\S]*?^#### Progressão da Trilha$/m.test(b.texto) || /^### Batedor(?:\n|:)/.test(b.texto)));
 function assuntoDeOpcoes(texto, anteriores = []) {
+  texto = textoDeConsulta(texto);
   if (contestaRegra(texto) || retomaDetalhe(texto)) {
     const ant = consultaAnterior(anteriores);
     return temCaraDeRegra(ant) ? ant + " " + texto : texto;
@@ -354,7 +378,9 @@ const retomaDetalhe = s => { const ws = tok(s).filter(w => !PARADA.has(w)); retu
 function consultaAnterior(anteriores) {
   const usadas = [];
   for (const s of anteriores.slice(-6).reverse()) {
-    usadas.unshift(s);
+    const consulta = textoDeConsulta(s);
+    if (!consulta.trim()) break;
+    usadas.unshift(consulta);
     const n = nrm(s), curtas = tok(s).filter(w => !PARADA.has(w)).length <= 2;
     if (!(SEGUIMENTO.test(t0(s)) || contestaRegra(s) || retomaDetalhe(s) || (curtas && (REGRA.test(n) || /\d/.test(n))))) break;
   }
@@ -385,7 +411,7 @@ const COMPLEMENTOS_APTIDAO = new Map([
 ]);
 // a anterior tem cara de regra também quando perguntou de um termo do livro ("qnto eu pulo com força 3?" → Saltos)
 // (palavra de regra na anterior só conta se ela perguntava ou tinha número: "sofá no escritório, que vida" não é regra)
-const temCaraDeRegra = s => { const n = nrm(s); return ((PERG.test(n) || /\d/.test(n)) && REGRA.test(n)) || tok(s).some(w => FAMILIA_DE.has(w)) || (PERG.test(n) && termosNa(s).size > 0); };
+const temCaraDeRegra = s => { s = textoDeConsulta(s); const n = nrm(s); return ((PERG.test(n) || /\d/.test(n)) && REGRA.test(n)) || tok(s).some(w => FAMILIA_DE.has(w)) || (PERG.test(n) && termosNa(s).size > 0); };
 function buscar(qPal, familia, nivel, numNivel = [], texto = "") {
   return BTOK.map((c, i) => {
     if (familia.size && !familia.has(FAM[i])) return [0, null];
@@ -404,6 +430,9 @@ function buscar(qPal, familia, nivel, numNivel = [], texto = "") {
   }).filter(x => x[1]).sort((a, b) => b[0] - a[0]);
 }
 function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
+  const consulta = textoDeConsulta(texto);
+  if (consulta !== texto) termos = ativar(consulta).termos;
+  texto = consulta;
   let ecoComplemento = null;
   // Eco é palavra de conversa e também nome de Talento. A definição explícita ou
   // pergunta mecânica seleciona a entrada exata, não Eco Técnico. O trecho mantém
@@ -424,7 +453,7 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
       }
     }
   }
-  texto = semIdioma(texto); anteriores = anteriores.map(semIdioma);
+  texto = semIdioma(texto); anteriores = anteriores.map(textoDeConsulta);
   // "tirei dois 10 no bloquear", "e se tirar 10 e 10?": duplo 10 é Aparar, duplo 1 é Brecha
   texto = texto.replace(/(?<![\w])((dois|2)\s*(10|dez)|10 e 10)(?![\w])/gi, "$& duplo 10 aparar").replace(/(?<![\w])((dois|2)\s*(1|um|uns)|1 e 1)(?![\w\d])/gi, "$& duplo 1 brecha");
   const ancoras = [];
@@ -612,11 +641,12 @@ function montarPrompt(msg, nome) {
   const P = D.pers[pers];
   const recentes = turnos.filter(t => t.de === "user").slice(-2).map(t => t.texto).join(" ");
   // mundo olha as duas mensagens anteriores, pra conversa não perder o assunto; termo do livro só vale na mensagem em que aparece, a não ser num seguimento ("e o custo?")
-  const a = ativar(recentes + " " + msg, /^(e|mas|entao|tipo|como assim)\b/.test(STRIP(msg.toLowerCase()).trim()) ? null : msg);
-  // a âncora do livro vem só dos termos da mensagem atual; termo que ficou das mensagens anteriores não ocupa vaga do livro
   const anterioresLivro = turnos.filter(t => t.de === "user").slice(-6).map(t => t.texto);
-  const livro = blocosLivro(msg, ativar(msg).termos, anterioresLivro);
-  const panorama = panoramaCaminhos(assuntoDeOpcoes(msg, anterioresLivro), livro);
+  const consultaAtual = textoDeConsulta(msg);
+  const a = ativar(recentes + " " + msg, /^(e|mas|entao|tipo|como assim)\b/.test(t0(consultaAtual)) ? consultaAnterior(anterioresLivro) + " " + consultaAtual : consultaAtual);
+  // A busca recebe a consulta filtrada; fala, histórico e contexto de mundo preservam o texto original.
+  const livro = blocosLivro(consultaAtual, ativar(consultaAtual).termos, anterioresLivro);
+  const panorama = panoramaCaminhos(assuntoDeOpcoes(consultaAtual, anterioresLivro), livro);
   let ctx = a.texto;
   if (panorama) ctx += "\n\n" + panorama.texto;
   for (const b of livro) ctx += `\n\n[Livro, âncora ${b.ancora}]\n${b.texto}`;
