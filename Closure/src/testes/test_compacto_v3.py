@@ -50,11 +50,20 @@ class Proposta(unittest.TestCase):
                 anterior = por_perfil.setdefault(caso["perfil"], caso["input"])
                 self.assertEqual(anterior, caso["input"])
 
-    def test_v2_aprovada_ainda_reproduz_todos_os_hashes(self):
+    def test_v2_aprovada_reproduz_hashes_das_bases_congeladas(self):
         raiz = Path(__file__).resolve().parents[2]
         import perfil_compacto_v2 as ferramenta_v2
         congelados = json.loads((raiz / "pesquisa/validacao/2026-10-14-compacto-v2/casos.json").read_text())
-        atuais = ferramenta_v2.preparar(comparar_argon.preparar())
+        # A busca atual pode evoluir. A aprovação antiga cobre os pedidos salvos,
+        # não uma nova consulta ao livro. Valide o perfil sobre aquelas mesmas bases.
+        bases = []
+        for caso in congelados:
+            self.assertEqual(ferramenta_v2.hash_entrada(caso["input"]), caso["sha256"])
+            if caso["variante"] == "flash-original":
+                base = copy.deepcopy(caso)
+                base["id"] = base["caso_base"]
+                bases.append(base)
+        atuais = ferramenta_v2.preparar(bases)
         self.assertEqual([(c["id"], c["sha256"]) for c in atuais],
                          [(c["id"], c["sha256"]) for c in congelados])
 

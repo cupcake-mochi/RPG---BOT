@@ -1,0 +1,196 @@
+{
+  "quais os requisitos para se ter energia reversa?": {
+    "antes": {
+      "ancoras": [
+        "aptidoes--apt-reversa",
+        "rotas--rota-sementes"
+      ],
+      "caracteres_pedido": 21744
+    },
+    "depois": {
+      "ancoras": [
+        "aptidoes--apt-reversa",
+        "rotas--rota-sem-tecnica",
+        "rotas--rota-sementes"
+      ],
+      "caracteres_pedido": 24384
+    }
+  },
+  "Qual é o máximo que um feitiço de classe 5 pode fornecer de cura?": {
+    "antes": {
+      "ancoras": [
+        "rotas--rota-cura",
+        "fundamento--primeiro",
+        "dano--cura"
+      ],
+      "caracteres_pedido": 23707
+    },
+    "depois": {
+      "ancoras": [
+        "fundamento--pontos",
+        "fundamento--amparoformas",
+        "fundamento--primeiro"
+      ],
+      "caracteres_pedido": 24869
+    }
+  },
+  "qual o refino e a maestria no nível 14?": {
+    "antes": {
+      "ancoras": [
+        "aptidoes--apt-refino",
+        "geral--atributos",
+        "aptidoes--apt-catalogo"
+      ],
+      "caracteres_pedido": 24035
+    },
+    "depois": {
+      "ancoras": [
+        "progressao--prog-tabela-inicial",
+        "geral--atributos",
+        "aptidoes--apt-refino"
+      ],
+      "caracteres_pedido": 24394
+    }
+  },
+  "quanto custa a Melhoria Longe na classe 5?": {
+    "antes": {
+      "ancoras": [
+        "fundamento--pontos",
+        "fundamento--ampliar"
+      ],
+      "caracteres_pedido": 22347
+    },
+    "depois": {
+      "ancoras": [
+        "catalogo--cat-alcance",
+        "fundamento--pontos"
+      ],
+      "caracteres_pedido": 22529
+    }
+  },
+  "quanto custa a Melhoria Fura na classe 5?": {
+    "antes": {
+      "ancoras": [
+        "fundamento--ampliar",
+        "fundamento--pontos",
+        "catalogo--cat-defesas"
+      ],
+      "caracteres_pedido": 23533
+    },
+    "depois": {
+      "ancoras": [
+        "catalogo--cat-defesas",
+        "fundamento--pontos",
+        "fundamento--ampliar"
+      ],
+      "caracteres_pedido": 24068
+    }
+  },
+  "como funciona a Forma Cura?": {
+    "antes": {
+      "ancoras": [
+        "rotas--rota-cura",
+        "dano--cura"
+      ],
+      "caracteres_pedido": 21488
+    },
+    "depois": {
+      "ancoras": [
+        "fundamento--pontos",
+        "fundamento--amparoformas",
+        "dano--cura"
+      ],
+      "caracteres_pedido": 24121
+    }
+  },
+  "quanto consigo saltar com Força 3?": {
+    "antes": {
+      "ancoras": [],
+      "caracteres_pedido": 18152
+    },
+    "depois": {
+      "ancoras": [
+        "geral--saltos"
+      ],
+      "caracteres_pedido": 21245
+    }
+  },
+  "como funciona energia reversa?": {
+    "antes": {
+      "ancoras": [
+        "aptidoes--apt-reversa",
+        "rotas--rota-sementes"
+      ],
+      "caracteres_pedido": 21726
+    },
+    "depois": {
+      "ancoras": [
+        "aptidoes--apt-reversa",
+        "aptidoes--apt-energia-positiva",
+        "rotas--rota-sementes"
+      ],
+      "caracteres_pedido": 23896
+    }
+  },
+  "quanto cura a especial da minha invocação de classe 5?": {
+    "antes": {
+      "ancoras": [
+        "rotas--rota-cura",
+        "construcao--entidades-aquisicao",
+        "campo--inv-reparo"
+      ],
+      "caracteres_pedido": 25086
+    },
+    "depois": {
+      "ancoras": [
+        "construcao--entidades-especiais",
+        "construcao--entidades-saldo",
+        "construcao--entidades-aquisicao"
+      ],
+      "caracteres_pedido": 24789
+    }
+  },
+  "qual a cura máxima da Técnica Máxima?": {
+    "antes": {
+      "ancoras": [
+        "fundamento--maxima",
+        "ab--ab-mundo"
+      ],
+      "caracteres_pedido": 22481
+    },
+    "depois": {
+      "ancoras": [
+        "fundamento--maxima",
+        "fundamento--maximadano",
+        "ab--ab-mundo"
+      ],
+      "caracteres_pedido": 25121
+    }
+  },
+  "quanto custa uma katana?": {
+    "antes": {
+      "ancoras": [
+        "equip--eqa-laminas",
+        "equip--eqc-inicial"
+      ],
+      "caracteres_pedido": 21907
+    },
+    "depois": {
+      "ancoras": [
+        "equip--eqa-laminas",
+        "equip--eqc-inicial"
+      ],
+      "caracteres_pedido": 22442
+    }
+  },
+  "oi, tudo bem?": {
+    "antes": {
+      "ancoras": [],
+      "caracteres_pedido": 18131
+    },
+    "depois": {
+      "ancoras": [],
+      "caracteres_pedido": 18131
+    }
+  }
+}

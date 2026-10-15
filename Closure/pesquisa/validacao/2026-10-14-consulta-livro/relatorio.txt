@@ -1,0 +1,71 @@
+Consulta do livro — busca v9
+14/10/2026
+
+Pedido
+Mizuki relatou que o bot não forneceu a cura máxima de um feitiço de Classe 5,
+embora os valores estejam no R51, e pediu a melhoria para as regras do livro em geral.
+
+Diagnóstico
+- A consulta real de Classe 5 trazia a cura da rota de Sementes, o primeiro exemplo
+  de feitiço e a regra geral de cura. Faltavam orçamento e conversão/teto da Forma.
+- Refino e Maestria no nível 14 não traziam a tabela comum de progressão.
+- Longe não trazia sua definição ao perguntar o preço da Melhoria na Classe 5.
+- "Saltar" não encontrava Saltos. "Explica melhor" podia perder o assunto.
+- Os cards já pedem explicação integral de regra nomeada; o aviso de carga alta
+  vinha depois mandando responder em uma frase.
+
+Mudança
+1. Índice de definições por títulos e aberturas em negrito em todos os capítulos.
+   Prioriza a entrada que define o nome, antes de uma menção a ele em outro trecho.
+   Nomes comuns, como Longe, precisam de contexto explícito de regra nomeada.
+2. Índice geral de cabeçalhos, nomes de linhas e eixos numéricos de tabelas.
+   O cruzamento dos campos pedidos ganha prioridade: por exemplo Nível + Refino
+   + Maestria. Linhas de tabelas de Forma/Custo também entram nos termos conhecidos.
+3. Contas de montagem recebem orçamento e conversão/teto. Separados feitiço comum,
+   Classe 0, Técnica Máxima e especial de entidade. Não misturar autocura da aptidão
+   com o teto da Forma Cura ou da especial, sem pergunta explícita sobre a aptidão.
+4. Catálogo para lista de aptidões. Energia Reversa/Ferir maldições e Domínio Simples/
+   duração ficam juntos numa explicação inteira; requisitos das sementes também
+   recebem a concessão de Sem Técnica, que diz nível 2 e dispensa comum de nível/refino.
+5. Continuação sem assunto novo e orientação de consulta: explicação suficiente,
+   cálculo com resultado, distinção entre número de dados e máximo da rolagem.
+   Dúvida pontual continua pontual. A brevidade não corta regra necessária.
+
+Escopo e custo
+- Até três blocos por pedido. Sem segunda chamada automática ao modelo.
+- Zero chamada de API paga ou gratuita nesta validação; nenhum gasto novo.
+- As consultas podem ter mais ou menos contexto conforme as fontes necessárias.
+  Caracteres em comparacao-contextos.json não são medida de tokens nem de custo.
+- Cards Closure v0.37, Kal'tsit v0.30, lorebook v2.0 e livro v0.364/R51 preservados.
+- Modelos, esforço e limites de saída preservados. Argon continua congelado.
+- O teste de integridade da proposta antiga do Argon agora aplica o perfil às
+  próprias bases salvas e confere os 36 hashes. Não recompõe aprovação antiga
+  com a busca nova, não reescreve casos/resultados e não libera gasto ou perfil.
+
+Validação
+- 338 testes executados em 104,032 s: 337 passaram; 1 online opcional pulado.
+- QuickJS e Node iguais nos 14/14 pedidos de conferência padrão e nos novos
+  casos de fontes/continuação comparados pelo teste específico.
+- 19 novos testes, com variações de todas as Classes comuns, tipos de montagem,
+  aptidões, Melhorias, lista, pergunta pontual, carga, continuação e assunto novo.
+- 19 perguntas adicionais de outros capítulos: equipamentos/preços, saltos, carga,
+  quedas, descanso, Integridade, XP, entidades, Ritual, crítico, Talentos e Caminho.
+  Progressão conferida separadamente nos níveis 1, 14, 16 e 30.
+- Entradas esperadas verificadas inteiras, não só o título da fonte.
+- comparacao-contextos.json registra fontes e tamanho dos pedidos antes/depois
+  para 12 consultas. A conversa casual ficou igual em fontes e tamanho.
+
+Exemplo de conferência pelo livro, sem modelo
+Forma Cura comum de Classe 5: 3 × 5 = 15 pontos; custo Médio da Forma = 5;
+saldo 15 − 5 = 10; teto 2 × 5 = 10d8. A rolagem-base pode somar até 80.
+Isso não certifica bônus específicos, cura total em vários alvos ou outro tipo de
+capacidade. Onda, autocura de Energia Reversa e especial de entidade têm suas contas.
+
+Entrega e limites
+- src/var/closure-lab-consulta-livro.zip: 43 arquivos, sem .env; cada membro
+  comparado ao original, varredura dos segredos locais aprovada. ZIP anterior preservado.
+- Nenhum envio à Discloud e nenhuma alteração da ficha oficial nesta tarefa.
+- Esta validação prova a seleção das fontes e a montagem do pedido. Não prova
+  a resposta final do modelo nem cobre todas as combinações dos 511 blocos.
+- Próxima conferência: no Discord, repetir as duas perguntas reais e testar
+  preço de Melhoria e valores de progressão; observar cálculo, limites e voz.

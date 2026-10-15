@@ -256,6 +256,15 @@ consumiu suas 40 tentativas: retomá-la não deve disparar novas chamadas.
   --conferir` compara os dois, e `--atualizar` já compara sozinho quando a máquina tem os dois. Depois de baixar
   a página de novo, rode a conferência antes de empacotar. O `/status` mostra as versões que estão na página,
   que é de onde sai o prompt.
+- **Consulta do livro, busca v9 (14/10):** definições por título/abertura em negrito e campos de tabelas
+  são indexados em todos os capítulos. Perguntas de conta reúnem orçamento e conversão/teto: feitiço comum,
+  Classe 0, Técnica Máxima e especial de entidade conservam suas fontes diferentes. A lista de aptidões
+  traz o catálogo; Energia Reversa e Domínio Simples recebem o complemento quando a pergunta pede a
+  explicação inteira. "Explica melhor" e "quanto custa?" podem retomar a regra anterior. O pedido reforça
+  que brevidade/carga não cortam uma regra necessária e que dúvidas pontuais continuam pontuais. Até três
+  blocos por pedido; sem segunda chamada automática. Cards, modelos e esforço preservados. Os testes
+  conferem fontes e montagem do pedido, não a resposta gerada. Relatório em
+  `../pesquisa/validacao/2026-10-14-consulta-livro/relatorio.txt`.
 - **Testado de ponta a ponta sem o Discord**, com mensagem de mentira e o resto de verdade; no Discord mesmo
   ainda não rodou.
 

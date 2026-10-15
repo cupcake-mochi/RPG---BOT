@@ -66,11 +66,12 @@ class EstadoDoBot(unittest.TestCase):
 
     def test_no_plantao_entram_duas_linhas_no_fim_do_lembrete(self):
         ultimo = self._ultimo((22, 10), estado=self.ESTADO)
-        self.assertTrue(ultimo.endswith("]\n[Carga alta: uma frase, sem piada.]\n[Paciência baixa com esta pessoa.]"), ultimo[-200:])
+        self.assertIn("]\n[Carga alta: uma frase, sem piada.]\n[Paciência baixa com esta pessoa.]", ultimo)
+        self.assertGreater(ultimo.index("[Consulta do livro:"), ultimo.index("[Carga alta:"))
 
     def test_fora_do_plantao_a_linha_da_pagina_vem_antes_e_sobra_uma(self):
         ultimo = self._ultimo((14, 0), estado=self.ESTADO)
-        self.assertRegex(ultimo, r"\[Fora do plantão: [^\]]+\]\n\[Carga alta: uma frase, sem piada\.\]$")
+        self.assertRegex(ultimo, r"\[Fora do plantão: [^\]]+\]\n\[Carga alta: uma frase, sem piada\.\]\n\[Consulta do livro:")
         self.assertNotIn("Paciência baixa", ultimo)
 
 
