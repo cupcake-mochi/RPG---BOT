@@ -17,6 +17,7 @@
                  (closure_bot/reflexao.py), que tira os fatos e apaga o texto.
   conversas_recentes  últimos turnos cifrados por canal/personagem; expiram após 30 minutos sem conversa ou às 4h30.
   participantes_conversa  IDs locais para apagar o fio completo quando um participante apaga seus dados.
+  preferencias_servidor  ativação de reações adultas não gráficas e restrição opcional de canal, sem texto pessoal.
 
 Com a CHAVE_DO_BANCO no .env, o texto que fala de gente vai cifrado pro disco: falas, mensagens do dia, pronomes e
 fatos. IDs, horas e contagens ficam em claro, porque as consultas dependem deles.
@@ -31,6 +32,11 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ESQUEMA = """
+CREATE TABLE IF NOT EXISTS preferencias_servidor (
+    guild_id INTEGER PRIMARY KEY,
+    responder_nsfw INTEGER NOT NULL DEFAULT 0 CHECK (responder_nsfw IN (0, 1)),
+    canal_nsfw_id INTEGER
+);
 CREATE TABLE IF NOT EXISTS conversas_recentes (
     canal_id INTEGER NOT NULL,
     persona TEXT NOT NULL,
@@ -107,6 +113,12 @@ CREATE TABLE IF NOT EXISTS fichas (
     fatos TEXT NOT NULL DEFAULT '[]'
 );
 """
+
+
+@dataclass(frozen=True)
+class PreferenciasServidor:
+    responder_nsfw: bool = False
+    canal_nsfw_id: int | None = None
 
 
 @dataclass(frozen=True)
@@ -222,6 +234,41 @@ class Registro:
 
     def fechar(self) -> None:
         self._db.close()
+
+    @staticmethod
+    def _id_servidor(valor: int) -> None:
+        if type(valor) is not int or not 0 < valor < 2**63:
+            raise ValueError("ID de servidor/canal inválido")
+
+    def preferencias_servidor(self, guild_id: int) -> PreferenciasServidor:
+        self._id_servidor(guild_id)
+        linha = self._db.execute(
+            "SELECT responder_nsfw, canal_nsfw_id FROM preferencias_servidor WHERE guild_id = ?",
+            (guild_id,),
+        ).fetchone()
+        return PreferenciasServidor(bool(linha[0]), linha[1]) if linha else PreferenciasServidor()
+
+    def definir_responder_nsfw(self, guild_id: int, ativar: bool) -> None:
+        self._id_servidor(guild_id)
+        if type(ativar) is not bool:
+            raise ValueError("A ativação deve ser Sim ou Não")
+        self._db.execute(
+            "INSERT INTO preferencias_servidor (guild_id, responder_nsfw) VALUES (?, ?) "
+            "ON CONFLICT(guild_id) DO UPDATE SET responder_nsfw = excluded.responder_nsfw",
+            (guild_id, int(ativar)),
+        )
+        self._db.commit()
+
+    def definir_canal_nsfw(self, guild_id: int, canal_id: int | None) -> None:
+        self._id_servidor(guild_id)
+        if canal_id is not None:
+            self._id_servidor(canal_id)
+        self._db.execute(
+            "INSERT INTO preferencias_servidor (guild_id, canal_nsfw_id) VALUES (?, ?) "
+            "ON CONFLICT(guild_id) DO UPDATE SET canal_nsfw_id = excluded.canal_nsfw_id",
+            (guild_id, canal_id),
+        )
+        self._db.commit()
 
     def registrar_chamada(self, *, modelo: str, persona: str | None = None, gatilho: str | None = None,
                           tokens_entrada: int | None = None, tokens_saida: int | None = None,

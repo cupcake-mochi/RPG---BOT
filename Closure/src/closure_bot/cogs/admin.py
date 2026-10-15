@@ -1,4 +1,4 @@
-"""Comandos do bot: /ajuda, /ping, /status e /teste_webhook."""
+"""Comandos do bot e preferências administrativas do servidor."""
 from __future__ import annotations
 
 from datetime import datetime
@@ -95,6 +95,60 @@ class Admin(commands.Cog):
     @app_commands.command(name="status", description="Quem está de plantão, versões dos cards e contagens do registro.")
     async def status(self, interacao: discord.Interaction) -> None:
         await interacao.response.send_message(await self.texto_status(), ephemeral=True)
+
+    async def _administrador(self, interacao: discord.Interaction) -> bool:
+        if not interacao.guild_id:
+            await interacao.response.send_message("Use este comando dentro de um servidor.", ephemeral=True)
+            return False
+        permissoes = interacao.permissions
+        if not (permissoes.manage_guild or permissoes.administrator):
+            await interacao.response.send_message("É preciso ter a permissão Gerenciar servidor.", ephemeral=True)
+            return False
+        return True
+
+    def _status_nsfw(self, guild_id: int) -> str:
+        p = self.bot.registro.preferencias_servidor(guild_id)
+        estado = "ativadas" if p.responder_nsfw else "desativadas"
+        onde = (f"somente em <#{p.canal_nsfw_id}> e seus tópicos" if p.canal_nsfw_id is not None
+                else "em todos os canais marcados como NSFW onde o bot já atende")
+        return (f"Respostas adultas não gráficas **{estado}** neste servidor; {onde}. "
+                "O canal precisa estar marcado como NSFW no Discord. "
+                "Permite reação e opinião, sem ERP ou encenação sexual; os bloqueios do Google continuam.")
+
+    @app_commands.command(name="responder_nsfw", description="Ativa ou desativa reações adultas não gráficas neste servidor.")
+    @app_commands.describe(ativar="Sim para ativar, Não para desativar. Em branco, consulta a configuração.")
+    @app_commands.guild_only()
+    @app_commands.default_permissions(manage_guild=True)
+    async def responder_nsfw(self, interacao: discord.Interaction, ativar: bool | None = None) -> None:
+        if not await self._administrador(interacao):
+            return
+        if ativar is not None:
+            self.bot.registro.definir_responder_nsfw(interacao.guild_id, ativar)
+        await interacao.response.send_message(self._status_nsfw(interacao.guild_id), ephemeral=True)
+
+    @app_commands.command(name="nsfw_canal", description="Limita as reações adultas a um canal ou remove essa restrição.")
+    @app_commands.describe(canal="Canal de texto marcado como NSFW; inclui seus tópicos.",
+                           todos="Sim para remover a restrição de canal. Sem opções, consulta a configuração.")
+    @app_commands.guild_only()
+    @app_commands.default_permissions(manage_guild=True)
+    async def nsfw_canal(self, interacao: discord.Interaction, canal: discord.TextChannel | None = None,
+                         todos: bool = False) -> None:
+        if not await self._administrador(interacao):
+            return
+        if canal is not None and todos:
+            await interacao.response.send_message("Escolha um canal ou `todos:Sim`, sem combinar os dois.", ephemeral=True)
+            return
+        if canal is not None:
+            if not isinstance(canal, discord.TextChannel) or canal.guild.id != interacao.guild_id:
+                await interacao.response.send_message("Escolha um canal de texto deste servidor.", ephemeral=True)
+                return
+            if not canal.is_nsfw():
+                await interacao.response.send_message("Marque o canal como NSFW nas configurações do Discord antes de escolhê-lo.", ephemeral=True)
+                return
+            self.bot.registro.definir_canal_nsfw(interacao.guild_id, canal.id)
+        elif todos:
+            self.bot.registro.definir_canal_nsfw(interacao.guild_id, None)
+        await interacao.response.send_message(self._status_nsfw(interacao.guild_id), ephemeral=True)
 
     @app_commands.command(name="teste_webhook", description="Manda uma mensagem de teste com o nome e o avatar de quem está de plantão.")
     async def teste_webhook(self, interacao: discord.Interaction) -> None:

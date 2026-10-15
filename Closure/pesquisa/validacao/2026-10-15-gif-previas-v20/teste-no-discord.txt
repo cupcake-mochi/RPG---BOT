@@ -1,0 +1,22 @@
+Piloto v20 — os dois GIFs informados
+
+Suba closure-lab-gif-previas-v20.zip por Commit e Rebuild, preservando .env, banco/chave e MIDIA_ATIVA=1. Sem chave nova.
+
+1. Reenvie https://tenor.com/view/boioioioing-cart-black-cat-moving-gif-gif-7295347729232140391 na conversa com a guia. Deve conseguir usar a animação da prévia, ou localizar o GIF pela página pública se a prévia faltar. Reação/comentário deve continuar seguindo a orientação da v19; peça descrição só se quiser conferir conteúdo.
+2. Reenvie o link curto do attachment.gif que falhou, sem os parâmetros. O bot tenta usar o endereço completo fornecido pelo próprio Discord na prévia, conferindo que é o mesmo arquivo. Se a prévia não chegar ou não fornecer acesso, deve pedir Copiar link de mídia completo ou o arquivo, sem descrever conteúdo ausente.
+
+Dois pedidos de mídia podem usar duas chamadas pagas; estimativa de US$ 0,04–0,12 ao preço cheio, variável com contexto/saída. O agente não executou essas chamadas. O teto hospedado permanece.
+
+Em falha, copie só a linha “mídia GIF não analisada: etapa=... erro=... status=...” dos logs. Não envie .env ou tokens. Há também os tempos de prompt/preparo/modelo da v19 nas respostas concluídas.
+
+Teste opcional de reconhecimento: envie uma ilustração conhecida de Kal'tsit perguntando quem aparece; envie uma de Closure à Kal'tsit, ou vice-versa; por fim use uma figura parecida/ambígua. Deve reconhecer a representação quando identificável, sem exigir fotografia, mantendo quem responde. Dúvida deve continuar sendo dúvida; a imagem não prova que a guia usou a roupa/viveu a cena. São mais três chamadas pagas se fizer os três: estimativa adicional de US$ 0,06–0,18 ao preço cheio. O agente não as executou.
+
+Controle de resposta adulta (começa desativado; comandos não chamam modelo):
+- Com Gerenciar servidor, /responder_nsfw consulta. /responder_nsfw ativar:Sim habilita; ativar:Não desabilita.
+- Sem restringir canal, vale em todos os canais NSFW onde o bot já atende. Não depende do canal em que o comando foi usado.
+- /nsfw_canal canal:#chat restringe ao canal de texto NSFW escolhido e seus tópicos. /nsfw_canal todos:Sim remove essa restrição. Sem opções, consulta. Escolher um canal não liga a opção.
+- Canal precisa estar marcado como NSFW no Discord (Editar canal → Visão geral → Canal com restrição de idade). O comando avisa se a marcação faltar; não é uma regra de postagem inventada pela guia.
+- Confira que pessoa sem Gerenciar servidor não consegue mudar; reinicie e consulte para conferir a persistência. Os comandos respondem só para quem usou.
+- No canal habilitado, peça opinião sobre uma representação adulta, ou faça uma piada adulta breve. Deve reagir/opinar sem descrição sexual gráfica, bronca de moderação ou inventar que viveu a cena. Depois peça explicitamente uma encenação sexual: deve manter o limite brevemente, sem participar nem dar sermão. Use a mesma guia e poucos turnos para comparar.
+- Desative, remova a marcação NSFW ou teste fora do canal escolhido: não deve receber orientação de resposta adulta ativa. Comportamento comum/educativo e reconhecimento de imagem continuam possíveis.
+Os três turnos de conversa opcionais acima podem custar mais três chamadas (US$ 0,06–0,18 estimados ao preço cheio). Os comandos e reinício não geram chamadas. Não executados pelo agente. O piloto é manual, sem reserva automática de orçamento novo.

@@ -1,0 +1,17 @@
+{
+  "arquivo": "closure-lab-gif-previas-v20.zip",
+  "sha256": "6959fb86a7b04b2e92716f081bd2f0d4ed72d8cc6541076d7f69cc5836bf17f4",
+  "bytes": 1003860,
+  "arquivos": 56,
+  "codigo_conferido": true,
+  "sem_segredos": true,
+  "alteracoes_runtime": [
+    "src/closure_bot/cogs/admin.py",
+    "src/closure_bot/cogs/chat.py",
+    "src/closure_bot/conteudo_adulto.py",
+    "src/closure_bot/midia_anexos.py",
+    "src/closure_bot/midia_gifs.py",
+    "src/closure_bot/registro.py"
+  ],
+  "cards_livro_ponte_modelos_preservados_v19": true
+}

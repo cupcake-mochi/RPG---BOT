@@ -18,6 +18,9 @@ LINK = 'https://klipy.com/gifs/anime-my-dress-up-darling-3'
 CDN = 'https://static.klipy.com/ii/4493325008d34b7bf8cd6813cd5c1619/d4/7f/Nloy6vTYGBXbdhLIC53.mp4'
 PROXY = 'https://images-ext-1.discordapp.net/external/TgkYerDJEnilAgBC1JyGTiCoxS7BSiSuf-5fZ_-OeLU/https/' + CDN.split('https://')[1]
 DIRETO = 'https://cdn.discordapp.com/attachments/123/456/attachment.gif?ex=abc&is=def&hm=assinatura&'
+SEM_PARAMETROS = DIRETO.split('?')[0]
+TENOR = 'https://tenor.com/view/boioioioing-cart-black-cat-moving-gif-gif-7295347729232140391'
+TENOR_GIF = 'https://media1.tenor.com/m/ZT5IG3nVmGcAAAAC/boioioioing-cart.gif'
 
 
 def mensagem(link=LINK, url=CDN, proxy=PROXY):
@@ -44,6 +47,36 @@ def mp4(segundos=None, fps=10):
 
 
 class Enderecos(unittest.TestCase):
+    def test_tenor_identidade_pelo_id_e_cdn_alternativo(self):
+        for url in (TENOR,'https://tenor.com/view/7295347729232140391',
+                    'https://tenor.com/pt-BR/view/outro-nome-7295347729232140391'):
+            self.assertEqual(gifs.pagina(url),('tenor','7295347729232140391'))
+        m=mensagem(link=TENOR,url='https://media.tenor.com/abc/animacao.mp4',proxy=None)
+        m.embeds[0].url='https://tenor.com/view/7295347729232140391'
+        m.embeds[0].thumbnail=NS(url=TENOR_GIF,proxy_url=None)
+        self.assertEqual(gifs.escolher(m,TENOR),(TENOR_GIF,'imagem'))
+        self.assertIsNone(gifs.tipo_midia(TENOR_GIF.replace('media1.','media99.'),'tenor'))
+
+    def test_previa_discord_precisa_ser_do_mesmo_arquivo(self):
+        m=mensagem(link=SEM_PARAMETROS)
+        m.embeds=[NS(thumbnail=NS(url=DIRETO,proxy_url=None))]
+        self.assertEqual(gifs.escolher_discord(m,SEM_PARAMETROS),(DIRETO,'imagem'))
+        m.embeds=[NS(thumbnail=NS(url=None,proxy_url=DIRETO.replace('cdn.discordapp.com','media.discordapp.net')))]
+        self.assertEqual(gifs.escolher_discord(m,SEM_PARAMETROS),
+                         (DIRETO.replace('cdn.discordapp.com','media.discordapp.net'),'imagem'))
+        for ruim in (DIRETO.replace('/456/','/999/'),DIRETO.replace('attachment.gif','outro.gif'),
+                     DIRETO.replace('cdn.discordapp.com','evil.example'),SEM_PARAMETROS):
+            m.embeds=[NS(thumbnail=NS(url=ruim,proxy_url=None))]
+            self.assertIsNone(gifs.escolher_discord(m,SEM_PARAMETROS))
+
+    def test_metadados_tenor_so_usam_urls_de_midia_permitidas(self):
+        html='<meta property="og:video" content="https://media.tenor.com/abc/arquivo.mp4">'+f'<meta property="og:image" content="{TENOR_GIF}">'
+        self.assertEqual(gifs.metadados_tenor(html),(TENOR_GIF,'imagem'))
+        for html in ('<script>https://media.tenor.com/a.gif</script>',
+                     '<meta property="og:image" content="https://localhost/a.gif">',
+                     '<meta property="og:image" content="https://media.tenor.com.evil/a.gif">'):
+            with self.assertRaises(ValueError):gifs.metadados_tenor(html)
+
     def test_gif_direto_do_discord_com_assinatura_e_sem_previa(self):
         for url in (DIRETO,DIRETO.replace('cdn.discordapp.com','media.discordapp.net'),DIRETO.replace('.gif?','.GIF?')):
             with self.subTest(url=url):
@@ -92,6 +125,78 @@ class Enderecos(unittest.TestCase):
 
 
 class Fluxo(unittest.IsolatedAsyncioTestCase):
+    async def test_404_do_discord_recupera_url_completa_da_previa(self):
+        download=AsyncMock(side_effect=gifs.Indisponivel(404))
+        alternativo=AsyncMock(return_value=gif())
+        m=mensagem(link=SEM_PARAMETROS)
+        m.embeds=[NS(thumbnail=NS(url=DIRETO,proxy_url=None))]
+        a=Anexos(ativo=True,download=download,download_gif=alternativo)
+        p=await a.contexto(m)
+        self.assertTrue(p.partes);self.assertEqual(p.links_analisados,(SEM_PARAMETROS,))
+        download.assert_awaited_once_with(SEM_PARAMETROS)
+        alternativo.assert_awaited_once_with(DIRETO,'discord')
+
+    async def test_recuperacao_tardia_so_uma_releitura_da_mesma_mensagem(self):
+        atual=mensagem(link=SEM_PARAMETROS);atual.embeds=[NS(image=NS(url=DIRETO,proxy_url=None))]
+        m=mensagem(link=SEM_PARAMETROS);m.embeds=[]
+        m.channel.fetch_message=AsyncMock(return_value=atual)
+        with patch.object(gifs.asyncio,'sleep',new=AsyncMock()):
+            self.assertEqual(await gifs.resolver_discord(m,SEM_PARAMETROS),(DIRETO,'imagem'))
+        m.channel.fetch_message.assert_awaited_once_with(m.id)
+        atual.content='editado'
+        with patch.object(gifs.asyncio,'sleep',new=AsyncMock()):
+            with self.assertRaises(ValueError):await gifs.resolver_discord(m,SEM_PARAMETROS)
+
+    async def test_nao_resgata_outro_arquivo_nem_refaz_download_grande_ou_500(self):
+        resolver=AsyncMock(return_value=(DIRETO.replace('/456/','/999/'),'imagem'))
+        alternativo=AsyncMock()
+        a=Anexos(ativo=True,download=AsyncMock(side_effect=gifs.Indisponivel(404)),
+                 resolver_discord=resolver,download_gif=alternativo)
+        self.assertFalse((await a.contexto(mensagem(link=SEM_PARAMETROS))).partes)
+        alternativo.assert_not_awaited();resolver.reset_mock()
+        for falha in (ValueError('arquivo grande'),gifs.Indisponivel(500),TimeoutError()):
+            a.download=AsyncMock(side_effect=falha)
+            self.assertFalse((await a.contexto(mensagem(link=SEM_PARAMETROS))).partes)
+        resolver.assert_not_awaited()
+
+    async def test_falha_sem_assinatura_tem_aviso_especifico_e_log_sem_url(self):
+        a=Anexos(ativo=True,download=AsyncMock(side_effect=gifs.Indisponivel(404)))
+        m=mensagem(link=SEM_PARAMETROS);m.embeds=[]
+        with self.assertLogs('closure_bot.midia_anexos',level='WARNING') as logs:
+            p=await a.contexto(m)
+        self.assertIn('Copiar link de mídia',p.nota)
+        self.assertIn('status=404',str(logs.output));self.assertNotIn(SEM_PARAMETROS,str(logs.output))
+
+    async def test_tenor_sem_previa_usa_apenas_sua_pagina_publica(self):
+        m=mensagem(link=TENOR);m.embeds=[]
+        with patch.object(gifs,'pagina_tenor',new=AsyncMock(return_value=(TENOR_GIF,'imagem'))) as pagina:
+            self.assertEqual(await gifs.resolver(m,TENOR),(TENOR_GIF,'imagem'))
+            pagina.assert_awaited_once_with(TENOR);pagina.reset_mock()
+            with self.assertRaises(ValueError):await gifs.resolver(mensagem(url='https://localhost/a.gif',proxy=None),LINK)
+            pagina.assert_not_awaited()
+
+    async def test_pagina_tenor_limites_e_sem_redirecionar(self):
+        class Resposta:
+            status=200;content_length=None
+            def __init__(self,chunks):self.content=self;self.chunks=chunks
+            async def __aenter__(self):return self
+            async def __aexit__(self,*a):return False
+            async def iter_chunked(self,*a):
+                for p in self.chunks:yield p
+        html=f'<meta property="og:image" content="{TENOR_GIF}">'.encode()
+        for status,chunks,ok in [(200,[html],True),(302,[html],False),(200,[b'x'*262144,b'x'],False)]:
+            resposta=Resposta(chunks);resposta.status=status
+            sessao=MagicMock();sessao.__aenter__=AsyncMock(return_value=sessao)
+            sessao.__aexit__=AsyncMock(return_value=False);sessao.get.return_value=resposta
+            with patch('aiohttp.ClientSession',return_value=sessao):
+                if ok:self.assertEqual(await gifs.pagina_tenor(TENOR),(TENOR_GIF,'imagem'))
+                else:
+                    with self.assertRaises(ValueError):await gifs.pagina_tenor(TENOR)
+            sessao.get.assert_called_once_with(TENOR,allow_redirects=False)
+        with patch('aiohttp.ClientSession') as sessao:
+            with self.assertRaises(ValueError):await gifs.pagina_tenor('https://localhost/a')
+            sessao.assert_not_called()
+
     async def test_direto_baixa_url_intacta_sem_esperar_previa(self):
         download=AsyncMock(return_value=gif());resolver=AsyncMock()
         a=Anexos(ativo=True,download=download,resolver_gif=resolver)
