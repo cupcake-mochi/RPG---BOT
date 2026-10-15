@@ -1,0 +1,66 @@
+Continuação do corretor: efeitos e medidas — R51, 14/10/2026
+
+Pedido e escopo
+Após confirmar o painel paginado no Discord às 23h05, Mizuki autorizou seguir a fila.
+Esta etapa amplia contas determinísticas de magia e registra as dependências restantes.
+Sem chamadas de modelo, alterações de cards/lorebook/livro, gerador da ficha ou implantação.
+
+O que passou a ser conferido
+- Alcance e área das cartas exportadas: tabelas pessoais e próprias das entidades, Classe 0,
+  Classes 1–5/6–7 e redução da área das especiais até Classe 6. Escadas extraídas do livro;
+  Longe muda distância, Maior muda área, e Linha cresce em largura depois dos 60 m.
+- Tipo da resolução normal pessoal: Acerto, Acerto + TR para Controle, TR/metade,
+  Certeiro e aplicação automática. Entidades têm comparação do tipo com a escolha estruturada;
+  os bônus de ataque/CD exportados não são usados como entradas nem certificados.
+- Apoio: três de vida temporária por ponto útil. Junto divide esse total, sem multiplicá-lo.
+  Duas compras de Junto são permitidas, conforme a redação do livro; uma terceira reprova.
+- Cura: total de dados e média, com o orçamento/teto pessoal e próprio da entidade.
+- Onda: valores fora dos limites possíveis reprovam; valores plausíveis continuam não certificados,
+  porque falta entrada estruturada da escolha cura/apoio. O resultado não decide o modo da montagem.
+- Classe 0 de Apoio e Efeito não recebem dano/vida temporária pelos dados ou pontos descartados.
+- Controle: saldo real calcula a rodada adicional e, no zero, +2 apenas na CD do Controle.
+  Escrever Sem dano não transforma o saldo calculado em zero. Até uma condição Pesada.
+- Remate entra no teto junto dos adicionais simples. Aquecer é incompatível; Condicional
+  dependente de vida/duração continua exigindo leitura manual do gatilho.
+- Alma: metade dos dados simples, para baixo. A permissão pela Regra continua manual;
+  interação com adicionais/distribuição não certificada.
+- Formas de Área/Amparo bloqueadas por Família Fechada também no personagem; Corrói exige Mira Livre.
+  Terreno requer área, Rajada requer alvo individual por ataque; Junto usa Cura/Apoio,
+  Mais Um não as substitui. Inescapável não entra em Liberação ou Técnica Máxima.
+- Montagem com erro de Classe/Forma/peças/Restrições não produz certificação do dano dependente.
+
+Divergências conhecidas do gerador
+O gerador publicado com ANALISE 2 ainda conserva 1,5 m de largura em Linha ampliada e não reduz
+os dados simples por Toca a Alma. Só sua fórmula exata recebe pendência amarela com o valor correto.
+O valor do livro é conferido, qualquer outro valor incorreto reprova. Não certificamos a fórmula antiga.
+Nenhuma alteração foi feita no gerador, que segue em outra conversa com CONFIGURAÇÃO.
+
+Validação local
+- 23 testes novos, incluindo diversas faixas/combinações e valores adulterados, ausência de campos,
+  totais de cura/apoio, Onda, Controle, Remate, Alma e requisitos de peças.
+- Grupo focal com regressões de montagem, ANALISE 2 e painel: 78 testes aprovados.
+- Suíte completa: 374 testes em 150,691 s; 373 aprovados e um online opcional pulado.
+  O grupo focal de 78 regressões passou também após o último ajuste de Mais Um em Efeito.
+- Quatro capturas completas arquivadas da ANALISE 2 relidas: todas aprovadas, zero erros/pendências.
+  Respectivamente 18, 28, 28 e 15 itens conferidos. São cópias sintéticas anteriormente calculadas
+  no Google, não quatro personagens reais em uso. Sem nova consulta de rede.
+- O painel paginado foi confirmado pelo usuário; estas novas contas ainda não foram testadas por ele
+  no Discord. Os testes de Python usam os dados locais e simulam a camada do Discord/modelos.
+
+Limites e fila
+- Distribuição de dados entre tiros/alvos, efeitos indivisíveis, gatilhos e aplicações em prosa
+  continuam manuais. O total disponível não prova que uma distribuição específica é válida.
+- Os bônus numéricos da resolução das entidades, interações de Alma, benefícios especiais de Máxima,
+  permissões da Regra e Selo não foram integralmente automatizados.
+- Repertório completo, compras/concessões de Talentos, Regra Própria/Domínio, trunfos da domada,
+  carga, anatomia e requisitos do equipamento continuam na fila.
+- TR/perícias dependem da exportação: faltam os quatro resultados de TR; as caixas perb das perícias
+  foram exportadas como buff.pericia.K, mas são bônus calculados. Elas não são ajustes de entrada.
+  A correção deve ser combinada com o gerador preservando as chaves antigas. Não inventar Buff zero.
+- Regras de campanha e aprovações de custom aguardam CONFIGURAÇÃO na outra conversa.
+
+Pacote e publicação
+src/var/closure-lab-efeitos-ficha.zip: 45 arquivos, sem .env, conteúdo comparado às origens
+e varredura dos segredos locais aprovada. Inclui busca v9, ANALISE 2 e painel paginado.
+Pacotes anteriores preservados. Publicação e hash registrados localmente em
+pesquisa/privado/publicacao-ficha-efeitos.json. Nenhum envio à Discloud pelo agente.

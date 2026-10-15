@@ -25,8 +25,13 @@ O que continua sem conferência integral
 
 1. Texto da Regra/efeito, definição/anatomia, Selo em texto livre, custom e permissão do mestre. A exportação
    agora inclui textos; sua presença não dá aprovação automática. Cadastro/aprovação esperam CONFIGURAÇÃO.
-2. Alcance e resolução completos, distribuição de Rajada/Mais Um/Junto, Remate, Controle, Alma,
-   Onda/Apoio/Efeito e benefícios especiais de Máxima. Resultados dependentes continuam declarados.
+2. Medidas de alcance/área e tipo de resolução normal já são conferidos quando exportados. Não há
+   certificação dos bônus numéricos da resolução das entidades. Apoio e Cura têm o total recalculado;
+   Onda verifica os limites possíveis, mas falta entrada estruturada da escolha cura/apoio. Distribuição
+   entre tiros/alvos de Rajada/Mais Um/Junto, escolhas de resolução em texto livre, gatilhos e efeitos
+   secundários continuam manuais. Controle usa o saldo calculado, Remate entra no teto e Alma reduz os
+   dados simples; permissão da Regra e interações de Alma com adicionais/distribuição não são certificadas.
+   Benefícios especiais de Máxima continuam parciais.
 3. Repertório pessoal completo: compras de Talentos, Regra Própria, Domínio, trocas por entidades e concessões
    fora dos espaços. As cartas existem no formato 2, mas a conta completa ainda não foi implementada.
 4. Vagas extras de Trilha e trunfos da domada, CE/custom dos extras, Domínio compartilhando espaços,
@@ -43,3 +48,15 @@ São personagens/casos montados para teste, autorizados pelo Mizuki, que informo
 Os detalhes e os limites estão em pesquisa/validacao/2026-10-14-analise-v2/relatorio.txt.
 As quatro fichas anteriores sem magia já tiveram o fluxo na Discloud confirmado pelo Mizuki. Esta nova
 rodada testa leitura/conferência fora do Discord; ainda não é validação de todas as regras nem novo deploy.
+
+Continuação após o painel paginado — 14/10
+
+23 testes novos de efeitos/medidas, incluindo valores adulterados, ausência de entradas, três faixas
+pessoais e as faixas de área das entidades. As quatro leituras completas arquivadas continuam aprovadas.
+Painel paginado confirmado pelo Mizuki às 23h05. Relatório: pesquisa/validacao/2026-10-14-ficha-efeitos/relatorio.txt.
+
+Dependência identificada para TR/perícias: a ANALISE 2 exporta a escolha de TR treinado e Buffs de TR,
+mas não os quatro resultados de TR. As chaves invocacao.N.buff.pericia.K apontam para as caixas de
+bônus calculado das perícias (perb), não para Buffs independentes; não devem ser usadas como ajuste
+confiável. Corrigir o contrato/exportação em conjunto com o gerador, preservando as chaves antigas,
+antes de certificar esses resultados. Nenhuma mudança no gerador foi feita nesta continuação.

@@ -5,7 +5,7 @@ Quatro cópias nativas com feitiços/entidades foram calculadas, lidas e conferi
 originais preservadas. Mizuki confirmou depois as quatro aprovadas no Discord, com capturas de 22h34–22h35.
 Domada: vida 34/Defesa 13 e duas notas de Buff; criação: vida 98/Defesa 14. Resultado/limites em
 `../../pesquisa/validacao/2026-10-14-analise-v2/relatorio.txt`. A navegação por páginas foi preparada após
-essas capturas e aguarda seu próprio teste de apresentação.
+essas capturas e também foi confirmada pelo Mizuki às 23h05.
 
 **Reteste concluído pelo Mizuki em 14/10:** fez Commit e Rebuild na Discloud e confirmou que os quatro
 testes funcionaram no Discord, com captura dos painéis. A confirmação é do usuário; o agente não acessou

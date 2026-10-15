@@ -12,6 +12,7 @@ import unicodedata
 from dataclasses import dataclass
 
 from .ficha_leitor import Campo
+from .ficha_efeitos import Medidas, conferir_medidas, conferir_resolucao
 
 ERROS_PLANILHA = {"#NAME?", "#VALUE!", "#REF!", "#DIV/0!", "#N/A", "#NUM!", "#ERROR!", "#SPILL!"}
 
@@ -39,6 +40,7 @@ class Magia:
     maestria: dict[int, int]
     talentos_entidade: dict[str, int]
     ganhos_talento: tuple[tuple[int, int], ...]
+    medidas: Medidas
 
     @classmethod
     def do_livro(cls, livro: dict[str, str]) -> Magia:
@@ -66,7 +68,7 @@ class Magia:
                 devolve = re.search(r"\*\*Devolução: (Leve|Média)( ou Média)?\.\*\*", parte)
                 if peso:
                     minimo = re.search(r"(?:Requer|Exige|exige) \*\*?Classe (\d+)", parte)
-                    repeticoes = 2 if "Pode comprar duas vezes" in parte else 1
+                    repeticoes = 2 if re.search(r"Pode comprar (?:esta peça )?duas vezes", parte) else 1
                     melhorias[nome] = Melhoria(peso[1], familia, ancora, repeticoes, int(minimo[1]) if minimo else 0)
                 if devolve:
                     if devolve[2]:
@@ -104,7 +106,8 @@ class Magia:
                        for n in re.findall(r"\d+", niveis))
         if len(talentos) != 12 or len(ganhos) != 8:
             raise ValueError("o livro mudou os Talentos das entidades")
-        return cls(classes, especiais, formas, melhorias, restricoes, familias, tipos, aquisicoes, maestria, talentos, ganhos)
+        return cls(classes, especiais, formas, melhorias, restricoes, familias, tipos, aquisicoes, maestria, talentos, ganhos,
+                   Medidas.do_livro(livro))
 
     def classe_maxima(self, nivel: int) -> int:
         return max(c for c, v in self.classes.items() if v[0] <= nivel)
@@ -185,9 +188,11 @@ def escolhas_familias(ficha, magia, raiz, problemas):
     return {f for f, e in zip(magia.familias, estados) if e == "Livre"}, {f for f, e in zip(magia.familias, estados) if e != "Fechada"}
 
 
-def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, entidade=False, basica=False, liberacao=False, familias=None):
+def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, entidade=False, basica=False, liberacao=False, familias=None, pendencias=None):
     from .ficha_corretor import Problema
     nome = rotulo(base)
+    inicio = len(problemas)
+    pendencias = pendencias if pendencias is not None else []
     def erro(sufixo, esperado, encontrado=None, ancora="fundamento--pontos"):
         problemas.append(Problema("conta", base + "." + sufixo, esperado,
                                   str(valor(ficha, base + "." + sufixo) if encontrado is None else encontrado), ancora))
@@ -247,9 +252,9 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
         fechadas = sorted({p.familia for p in conhecidas if p.familia and p.familia not in abertas})
         if fechadas:
             erro("pecas", "Melhorias de Famílias abertas; fechadas: " + ", ".join(fechadas), ancora="fundamento--familias")
-        exige = "Área" if forma in ("Alvos", "Explosão", "Cone", "Linha", "Aura") else "Amparo" if forma in ("Cura", "Onda") else None
-        if entidade and exige and exige not in abertas:
-            erro("forma", f"{forma} exige {exige} aberta", ancora="construcao--entidades-formas")
+        exige = "Área" if forma in ("Explosão", "Cone", "Linha", "Aura") else "Amparo" if forma in ("Cura", "Apoio", "Onda") else None
+        if exige and exige not in abertas:
+            erro("forma", f"{forma} exige {exige} aberta", ancora="construcao--entidades-formas" if entidade else "fundamento--familias")
     desconhecidas = [n for n in pecas if n not in magia.melhorias]
     if desconhecidas:
         pulou.append(f"{nome}: peças próprias ou não reconhecidas ({', '.join(desconhecidas)}); aprovação do mestre ainda não conferida")
@@ -278,11 +283,46 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
         erro("pecas", "Inescapável: só Projétil, sem outra Melhoria ou Restrição", ancora="catalogo--cat-mira")
     if liberacao and any(n in pecas for n in ("Rápido", "Reação")):
         erro("pecas", "Liberação exige Ação Completa", ancora="fundamento--liberacao")
-    pulou.append(f"{nome}: falta conferir {'Famílias, ' if abertas is None else ''}Selo, texto do efeito e resolução pela ficha completa")
-    if (desconhecidas or len(restricoes) != len(res) or any(p.familia == "Controle" for p in conhecidas)
-            or any(n in pecas for n in ("Toca a Alma", "Rajada", "Mais Um", "Junto", "Remate"))):
+    if liberacao and any(n in pecas for n in ("Inescapável", "Toca a Alma")):
+        erro("pecas", "peça incompatível com Liberação", ancora="catalogo--cat-mira" if "Inescapável" in pecas else "catalogo--cat-defesas")
+    if "Junto" in pecas and forma not in ("Cura", "Apoio"):
+        erro("pecas", "Junto somente em Cura ou Apoio", ancora="catalogo--cat-amparo-protecao")
+    if "Mais Um" in pecas and forma not in ("Projétil", "Toque", "Efeito"):
+        erro("pecas", "Mais Um exige alvo individual; Cura e Apoio usam Junto", ancora="catalogo--cat-area")
+    if "Mais Um" in pecas and forma == "Efeito":
+        pulou.append(f"{nome}: Mais Um exige alvo individual; conferir a aplicação de Efeito escrita")
+    if "Rajada" in pecas and (forma not in ("Projétil", "Toque") or "Certeiro" in pecas
+                              or str(valor(ficha, base + ".resolucao_escolha")).startswith("TR")):
+        erro("pecas", "Rajada exige alvo individual e ataque", ancora="catalogo--cat-area")
+    pesadas = [p for n, p in zip([n for n in pecas if n in magia.melhorias], conhecidas)
+               if p.familia == "Controle" and p.peso == "Pesada" and (n.startswith("Condição: ") or n not in ("Desarma o Feitiço",))]
+    if len(pesadas) > 1:
+        erro("pecas", "no máximo uma condição Pesada", ancora="catalogo--cat-controle")
+    if "Terreno" in pecas and forma not in ("Explosão", "Aura", "Cone", "Linha", "Onda"):
+        erro("pecas", "Terreno exige Forma de área", ancora="catalogo--cat-controle")
+    if "Corrói" in pecas:
+        if livres is None:
+            pulou.append(f"{nome}: Corrói exige confirmar Mira Livre")
+        elif "Mira" not in livres:
+            erro("pecas", "Corrói exige Mira Livre", ancora="catalogo--cat-defesas")
+    if "Remate" in pecas and "Aquecer" in nomes_res:
+        erro("pecas", "Remate não combina com Aquecer", ancora="catalogo--cat-castigo-dano")
+    if "Remate" in pecas and "Condicional" in nomes_res:
+        pulou.append(f"{nome}: Remate não combina com Condicional de vida/duração; conferir o gatilho escrito")
+    if not desconhecidas:
+        conferir_medidas(ficha, magia, base, classe, forma, pecas, problemas, certos, pulou, pendencias, entidade=entidade)
+        conferir_resolucao(ficha, magia, base, forma, pecas, problemas, certos, pulou, entidade=entidade)
+    pulou.append(f"{nome}: falta conferir {'Famílias, ' if abertas is None else ''}Selo e texto do efeito pela ficha completa")
+    if any(p.campo.rsplit(".", 1)[-1] in ("classe", "forma", "pecas", "restricoes") for p in problemas[inicio:]):
+        pulou.append(f"{nome}: dano/benefício não certificado com montagem inválida")
+        return
+    if desconhecidas or len(restricoes) != len(res):
         pulou.append(f"{nome}: dano/benefício exige escolhas ou distribuição da ficha completa")
         return
+    if any(n in pecas for n in ("Rajada", "Mais Um", "Junto")):
+        pulou.append(f"{nome}: total disponível não se multiplica; distribuição entre tiros/alvos deve ser registrada antes de rolar")
+    if "Toca a Alma" in pecas:
+        pulou.append(f"{nome}: dano de Alma exige Regra que trate diretamente da alma; conferir essa permissão com o mestre")
     if classe == 0:
         inicial = (1 if nivel < 5 else 2 if nivel < 17 else 3) if entidade else (2 if nivel < 5 else 3 if nivel < 11 else 4 if nivel < 17 else 5 if nivel < 25 else 6)
         danos = {max(0, inicial - int(bool(pecas)) + int(bool(pecas) and bool(res)))}
@@ -316,8 +356,52 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
         if forma not in ("Cura", "Onda", "Apoio", "Efeito"):
             danos = {max(d for d in range(inicial + 1) if cabe(d)) for inicial in danos}
         faces = 8
+    controle = any(p.familia == "Controle" for p in conhecidas)
+    if controle and classe and len(danos) == 1 and forma not in ("Efeito", "Cura", "Apoio", "Onda"):
+        saldo = next(iter(danos))
+        if saldo <= classe:
+            certos.append(f"{nome}: Controle com uma rodada adicional" + (" e +2 na CD apenas do Controle" if saldo == 0 else ""))
+        if str(valor(ficha, base + ".dano")) == "Sem dano" and saldo > 0:
+            pulou.append(f"{nome}: dano descartado; bônus de Controle usam o saldo calculado {saldo}, não zero")
+            return
+    if forma == "Efeito" or classe == 0 and forma == "Apoio":
+        esperado = "Sem dano"
+        if str(valor(ficha, base + ".dano")).casefold() != esperado.casefold():
+            erro("dano", esperado + "; saldo/dados não concedem vida temporária", ancora="fundamento--efeito" if forma == "Efeito" else "fundamento--classezero")
+        else:
+            certos.append(f"{nome}: sem dano e sem vida temporária")
+        return
+    if forma == "Apoio":
+        beneficios = {3 * d for d in danos}
+        texto = str(valor(ficha, base + ".dano"))
+        match = re.fullmatch(r"(\d+) de vida temp\.", texto, re.I)
+        if not match or int(match[1]) not in beneficios:
+            erro("dano", " ou ".join(f"{v} de vida temp." for v in sorted(beneficios)), ancora="fundamento--amparoformas")
+        elif len(beneficios) == 1:
+            certos.append(f"{nome}: vida temporária {next(iter(beneficios))}")
+        else:
+            pulou.append(f"{nome}: vida temporária não certificada sem Famílias")
+        return
+    if forma == "Onda":
+        # A escolha cura/apoio ainda não tem entrada estruturada; o resultado não escolhe por ela.
+        texto = str(valor(ficha, base + ".dano"))
+        cura = re.fullmatch(r"Cura (\d+)d8(?: = (\d+))?", texto, re.I)
+        apoio = re.fullmatch(r"(\d+) de vida temp\.", texto, re.I)
+        valido = (cura and int(cura[1]) in danos and (cura[2] is None or int(cura[2]) == int(cura[1]) * 9 // 2)
+                  or apoio and int(apoio[1]) in {3 * d for d in danos} or texto == "Sem cura" and 0 in danos)
+        if not valido:
+            erro("dano", "cura de " + "/".join(map(str, sorted(danos))) + "d8 ou apoio de " +
+                 "/".join(str(3 * d) for d in sorted(danos)) + " de vida temporária por aliado", ancora="construcao--entidades-saldo" if entidade else "fundamento--amparoformas")
+        pulou.append(f"{nome}: falta escolha estruturada de cura ou apoio da Onda; valor não certificado")
+        return
+    if "Toca a Alma" in pecas and any(n in pecas for n in ("Salto", "Queima", "Estilhaço", "Rajada", "Mais Um")):
+        pulou.append(f"{nome}: interação de Alma com adicionais/distribuição ainda precisa de conferência")
+        return
+    antes_alma = danos
+    if "Toca a Alma" in pecas:
+        danos = {d // 2 for d in danos}
     # Com Famílias ausentes, só uma conta invariável pode ser certificada.
-    if len(danos) != 1 or forma in ("Apoio", "Onda", "Efeito"):
+    if len(danos) != 1:
         if len(danos) > 1 and forma not in ("Apoio", "Onda", "Efeito"):
             bruto = str(valor(ficha, base + ".dano"))
             match = re.match(r"(?:Cura\s*:?\s*)?(\d+)d(6|8)\b", bruto, re.I)
@@ -328,9 +412,9 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
         return
     dado = next(iter(danos))
     texto = str(valor(ficha, base + ".dano"))
-    esperado = f"{dado}d{faces}" if dado else "Sem dano"
+    esperado = f"{dado}d{faces}" if dado else "Sem cura" if forma == "Cura" else "Sem dano"
     match = re.match(r"(?:Cura\s*:?\s*)?(\d+)d(6|8)\b", texto, re.I)
-    bate = (bool(match) and int(match[1]) == dado and int(match[2]) == faces) or (dado == 0 and texto == "Sem dano")
+    bate = (bool(match) and int(match[1]) == dado and int(match[2]) == faces) or (dado == 0 and texto == esperado)
     adicionais = sum(dado // 2 for n in pecas if n in ("Salto", "Queima", "Estilhaço")) if classe else 0
     parcelas = re.findall(r"\+\s*(\d+)d8", texto)
     if sum(map(int, parcelas)) != adicionais:
@@ -342,10 +426,17 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
     resto = re.sub(r"\d+d(?:6|8)", "", resto, count=1)
     if re.search(r"\d|[×*/]", resto):
         bate = False
+    # O gerador anterior não reduz Alma. Só sua fórmula exata recebe pendência;
+    # um valor diferente continua sendo erro. Não certifica o resultado antigo.
+    if not bate and "Toca a Alma" in pecas and len(antes_alma) == 1:
+        original = next(iter(antes_alma))
+        if re.fullmatch(rf"{original}d8(?:\s*=\s*{original * 9 // 2})?", texto):
+            pendencias.append(Problema("conta", base + ".dano", esperado + " de Alma", texto, "catalogo--cat-defesas"))
+            return
     if not bate:
         erro("dano", esperado + (f" +{adicionais}d8 adicionais" if adicionais else ""), ancora="fundamento--danolimites")
     else:
-        certos.append(f"{nome}: dano-base {esperado}")
+        certos.append(f"{nome}: {'cura' if forma == 'Cura' else 'dano-base'} {esperado}")
 
 
 def conferir_maxima(ficha, magia, resultado, familias=None):
@@ -383,6 +474,11 @@ def conferir_maxima(ficha, magia, resultado, familias=None):
         p = magia.melhorias[n]
         if pecas.count(n) > p.repeticoes or classe < p.minima or p.familia and p.familia not in abertas:
             erro("pecas", f"requisitos, repetição e Família aberta de {n}")
+    if "Inescapável" in pecas:
+        erro("pecas", "Inescapável não combina com Técnica Máxima")
+    exige = "Área" if forma in ("Explosão", "Aura", "Cone", "Linha") else "Amparo" if forma in ("Cura", "Apoio", "Onda") else None
+    if exige and exige not in abertas:
+        erro("forma", f"{forma} exige {exige} aberta")
     gasto += sum(max(1, magia.preco(p.peso, classe) - (math.ceil(classe / 2) if p.familia in livres else 0)) for p in conhecidas)
     if gasto > pontos:
         erro("pecas", f"montagem de até {pontos} pontos; gasto {gasto}")
@@ -406,7 +502,7 @@ def conferir_feiticos(ficha, magia, resultado):
     familias = escolhas_familias(ficha, magia, "tecnica", resultado.problemas) if cartas or valor(ficha, "maxima.nome") or lista(ficha, "maxima.pecas") or valor(ficha, "maxima.texto") else None
     for base in cartas:
         conferir_montagem(ficha, magia, base, nivel, resultado.problemas, resultado.conferidos, resultado.nao_conferido,
-                          liberacao=base.startswith("liberacao."), basica=base.startswith("zero."), familias=familias)
+                          liberacao=base.startswith("liberacao."), basica=base.startswith("zero."), familias=familias, pendencias=resultado.pendencias)
     liberacoes = [b for b in bases(ficha, r"liberacao\.\d+") if ativa(ficha, b)]
     if inteiro(nivel, 1) and len(liberacoes) > nivel // 10:
         resultado.problemas.append(Problema("conta", liberacoes[-1] + ".nome", f"até {nivel // 10} Liberação(ões) no nível {nivel}",
@@ -483,7 +579,7 @@ def conferir_invocacoes(ficha, magia, marcos, resultado, equipamento=None):
                 erro(campo, f"até CE {teto} na escolha do nível {abre}", "construcao--entidades-passivas")
         for b in cartas:
             conferir_montagem(ficha, magia, b, nivel, resultado.problemas, resultado.conferidos, resultado.nao_conferido,
-                              entidade=True, basica=".bas." in b or (".ext." in b and valor(ficha, b + ".classe") == 0), familias=familias)
+                              entidade=True, basica=".bas." in b or (".ext." in b and valor(ficha, b + ".classe") == 0), familias=familias, pendencias=resultado.pendencias)
         from .ficha_entidade import conferir_numeros
         conferir_numeros(ficha, magia, base, nivel, resultado, equipamento)
         resultado.nao_conferido.append(f"{rotulo(base)}: {'Famílias, ' if familias[0] is None else ''}vagas extras da Trilha, Talentos, trunfos e texto da aquisição ainda precisam de conferência")
