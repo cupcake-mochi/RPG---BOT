@@ -1,0 +1,78 @@
+{
+  "casos": [
+    {
+      "cenario": "marcacao_real_atual",
+      "guia": "kaltsit",
+      "modo_ativo": false,
+      "motivo": "sem_marcacao",
+      "status_primeira_linha": "**Neste canal: inativo — falta marcar o canal como NSFW no Discord.**",
+      "status_modelo_concordam": true,
+      "identidade_preservada": true
+    },
+    {
+      "cenario": "marcacao_real_atual",
+      "guia": "closure",
+      "modo_ativo": false,
+      "motivo": "sem_marcacao",
+      "status_primeira_linha": "**Neste canal: inativo — falta marcar o canal como NSFW no Discord.**",
+      "status_modelo_concordam": true,
+      "identidade_preservada": true
+    },
+    {
+      "cenario": "canal_adulto_liberado",
+      "guia": "kaltsit",
+      "modo_ativo": true,
+      "motivo": null,
+      "status_primeira_linha": "**Neste canal: ativo.**",
+      "status_modelo_concordam": true,
+      "identidade_preservada": true
+    },
+    {
+      "cenario": "canal_adulto_liberado",
+      "guia": "closure",
+      "modo_ativo": true,
+      "motivo": null,
+      "status_primeira_linha": "**Neste canal: ativo.**",
+      "status_modelo_concordam": true,
+      "identidade_preservada": true
+    },
+    {
+      "cenario": "fora_da_restricao",
+      "guia": "kaltsit",
+      "modo_ativo": false,
+      "motivo": "outro_canal",
+      "status_primeira_linha": "**Neste canal: inativo — este canal não é o escolhido em /nsfw_canal.**",
+      "status_modelo_concordam": true,
+      "identidade_preservada": true
+    },
+    {
+      "cenario": "fora_da_restricao",
+      "guia": "closure",
+      "modo_ativo": false,
+      "motivo": "outro_canal",
+      "status_primeira_linha": "**Neste canal: inativo — este canal não é o escolhido em /nsfw_canal.**",
+      "status_modelo_concordam": true,
+      "identidade_preservada": true
+    },
+    {
+      "cenario": "servidor_desligado",
+      "guia": "kaltsit",
+      "modo_ativo": false,
+      "motivo": "desativado",
+      "status_primeira_linha": "**Neste canal: inativo — a opção está desligada no servidor.**",
+      "status_modelo_concordam": true,
+      "identidade_preservada": true
+    },
+    {
+      "cenario": "servidor_desligado",
+      "guia": "closure",
+      "modo_ativo": false,
+      "motivo": "desativado",
+      "status_primeira_linha": "**Neste canal: inativo — a opção está desligada no servidor.**",
+      "status_modelo_concordam": true,
+      "identidade_preservada": true
+    }
+  ],
+  "chamadas_pagas": 0,
+  "respostas_modelo_avaliadas": false
+}

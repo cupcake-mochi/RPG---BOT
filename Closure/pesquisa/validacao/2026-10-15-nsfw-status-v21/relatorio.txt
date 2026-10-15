@@ -1,0 +1,23 @@
+Estado do modo adulto no canal — v21, 15/10/2026
+
+Motivo: o usuário confirmou GIFs/autorreconhecimento, mas relatou recusas de NSFW depois da ativação administrativa. A primeira checagem foi em um servidor anterior; os três links seguintes identificaram o servidor real do teste. Leitura REST específica confirmou o canal atual com nsfw=false, três mensagens com anexo e referências às recusas. IDs, nomes de servidor/canal, endereços assinados e texto de mensagem ficam somente em pesquisa/privado/nsfw-v20-casos-reais.json. Nenhuma mensagem foi enviada pelo bot local; sem gateway, mídia explícita baixada ou nova chamada ao modelo.
+
+Diagnóstico: ligar a opção do servidor não elimina a exigência da marcação NSFW do canal. Com nsfw=false, o código aplica a orientação inativa. A captura mostra ativação global, mas a confirmação anterior só explicava a condição em prosa e não mostrava o estado local. A leitura atual não recupera o prompt nem a marcação exata no instante da resposta antiga, e não demonstra bloqueio SAFETY do Google.
+
+Mudança v21: /responder_nsfw e /nsfw_canal passam a começar por Neste canal: ativo/inativo, com motivo. Distingue opção desligada, marcação ausente, canal fora da restrição e canal indisponível. O pedido ao modelo e o comando consultam a mesma decisão, sem duplicar a lógica de autorização. Os parâmetros, permissões, persistência, restrição opcional e tópicos permanecem compatíveis. O comando mostra o estado do canal de execução, mesmo quando o administrador escolhe outro canal permitido.
+
+Após a pergunta sobre ignorar a marcação: preservada a exigência 18+ para o modo adulto. A regra 9 das Diretrizes do Discord exige marcação em canais com conteúdo sexual explícito; a política de desenvolvedores exige respeitar os controles da plataforma. Isso não exige que a guia atue como moderadora. A orientação normal foi esclarecida para permitir a parte neutra de um pedido, como identificar personagem ou comentar estilo/composição, inclusive quando uma imagem contiver conteúdo adulto, sem detalhes sexuais, erotização ou inventar participação na cena. Conversas sobre imagem/brincadeira não devem virar redirecionamento automático a RPG. Nenhuma safetySettings foi alterada e não se desativaram bloqueios do provedor.
+
+Escopo: reação/opinião não gráfica, sem ERP, encenação sexual, submissão ou assumir que participou da cena. Não obriga a guia a aceitar proposta sexual ou a gostar de toda imagem. A marcação do canal do usuário não foi alterada pelo agente. A política de privacidade segue correta e permanece no mesmo link, sem nova coleta, retenção ou mudança de configuração descrita.
+
+Validação inicial: 77 testes de configuração/Discord passaram após corrigir a posição de um bloco no teste acrescentado. Inclui status local para servidor ligado/canal comum, canal marcado, canal fora da restrição e tópico do canal permitido; as verificações anteriores de permissão e isolamento permanecem. Os pedidos ao modelo continuam sem baixar anexos novos ou gerar chamadas extras. Suíte final e auditoria do ZIP registradas ao fim.
+
+Limites: testes locais verificam decisões e montagem do pedido, não a naturalidade de respostas de NSFW. As 24 chamadas de áudio já foram consumidas, e nenhuma nova tentativa paga foi autorizada/executada para NSFW. O piloto é feito pelo usuário na hospedagem. Não atribuir recusa futura ao provedor sem verificar status local e logs.
+
+Fontes primárias consultadas em 15/10/2026:
+https://discord.com/guidelines (regra 9)
+https://support-dev.discord.com/hc/en-us/articles/8563934450327-Discord-Developer-Policy (Protect Discord Users, item 3; Respect Our Platform Rules, item 10)
+
+Conferência final: 643 testes executados em 141,336 s; 642 passaram e um online opcional foi pulado. Os 77 direcionados passaram e os 16 testes de configuração/comandos no código extraído do ZIP passaram. Oito pedidos com o prompt real (duas guias × quatro estados) preservaram identidade e mostraram concordância entre primeira linha do comando e orientação enviada ao modelo. Sem safetySettings ou chamada ao modelo nesta prova.
+
+Pacote closure-lab-nsfw-status-v21.zip auditado: 56 arquivos, sem .env, banco, testes ou dados privados. Todos os conteúdos conferidos com o código local; somente cogs/admin.py e conteudo_adulto.py diferem da v20. GIFs, áudio, cards, livro, ponte e modelos mantêm os mesmos bytes no pacote. A política segue no mesmo link, sem mudança de tratamento de dados. Hash/tamanho em pacote.json. Sem implantação pelo agente; a confirmação de naturalidade continua com o usuário.

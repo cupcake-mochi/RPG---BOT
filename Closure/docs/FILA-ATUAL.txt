@@ -24,7 +24,7 @@ CONCLUÍDO
 - Mizuki confirmou por relato/capturas o funcionamento dos GIFs e o reconhecimento de si na v20. A ativação administrativa NSFW respondeu corretamente, mas o comportamento adulto ainda está em diagnóstico.
 
 PRÓXIMOS
-1. Investigar a recusa de NSFW na v20. Mizuki confirmou GIFs e reconhecimento de ilustrações, mas mostrou recusa da Closure após ativar. Link da mensagem solicitado para conferir a marcação NSFW real do canal e o contexto; não atribuir a bloqueio técnico do provedor sem evidência. Opção ligada no servidor ainda exige canal marcado NSFW. Sem novas chamadas pagas autorizadas para este diagnóstico.
+1. Retestar a v21: os três links reais foram conferidos; o canal atual está sem marcação NSFW. Novo status mostra estado/motivo no canal de execução. Mizuki decide a marcação de idade no Discord e testa reconhecimento/opinião neutra e reação adulta não gráfica nos contextos corretos. Roteiro em pesquisa/validacao/2026-10-15-nsfw-status-v21/teste-no-discord.txt. Sem novas chamadas pagas pelo agente.
 2. Receber o resultado de CONFIGURAÇÃO do outro chat e só então integrar ao leitor/corretor. Preservar as 5.381 chaves ANALISE 4 e compatibilidade; PR 3 do gerador exige aprovação própria, não juntar por conta desta fila.
 
 PARA DEPOIS, QUANDO PEDIDO

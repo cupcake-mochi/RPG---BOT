@@ -1,0 +1,11 @@
+Piloto v21 — estado local do modo adulto
+
+Suba closure-lab-nsfw-status-v21.zip por Commit → Rebuild, preservando .env, banco/chave e MIDIA_ATIVA=1. Não exige variável nova nem muda sozinho a marcação dos canais.
+
+1. No canal comum do teste, use /responder_nsfw sem opções. Mesmo com a opção global ligada, a primeira linha deve dizer Neste canal: inativo — falta marcar o canal como NSFW no Discord.
+2. Para o modo adulto nesse canal, quem administra precisa marcar Canal com restrição de idade nas configurações do Discord. Depois consulte de novo: com a opção global ligada e sem restrição conflitante, deve mostrar Neste canal: ativo.
+3. /nsfw_canal canal:#outro pode limitar a outro canal NSFW. A consulta no canal atual deve informar que ele não é o escolhido. /nsfw_canal todos:Sim remove essa restrição. Tópicos do canal escolhido continuam incluídos. Desativar /responder_nsfw mostra opção desligada.
+4. Para testar reconhecimento/opinião neutra, use uma pergunta nova e direta: Quem aparece nessa fanart? ou O que acha do estilo do desenho?. Isso não exige assumir ato/participação sexual. Deve reconhecer quando identificável e responder à parte neutra, sem bronca ou desvio automático para o livro.
+5. No canal adulto permitido, teste uma brincadeira não gráfica e confira que a guia reage no jeito dela sem entrar em ERP. Continuam possíveis limites e bloqueios do Google; o estado ativo não garante aceitação de toda imagem/pedido.
+
+Os comandos não chamam modelo. Cada conversa com mídia pode usar uma chamada paga; o agente não executou o piloto. Não enviar .env ou chaves junto de logs. Se houver nova falha, copie a primeira linha do status local, o link da mensagem e o erro técnico se existir.

@@ -2,12 +2,14 @@
 from __future__ import annotations
 
 from datetime import datetime
+from types import SimpleNamespace
 
 import discord
 from discord import app_commands
 from discord.ext import commands
 
 from ..dados import resumo_manifesto
+from ..conteudo_adulto import motivo_inativo
 from ..plantao import FUSO, de_plantao
 from ..prompt import versoes as versoes_do_site
 
@@ -106,12 +108,19 @@ class Admin(commands.Cog):
             return False
         return True
 
-    def _status_nsfw(self, guild_id: int) -> str:
+    def _status_nsfw(self, guild_id: int, canal) -> str:
         p = self.bot.registro.preferencias_servidor(guild_id)
+        motivo = motivo_inativo(SimpleNamespace(guild=SimpleNamespace(id=guild_id), channel=canal), self.bot.registro)
+        local = {
+            None: '**Neste canal: ativo.**',
+            'desativado': '**Neste canal: inativo — a opção está desligada no servidor.**',
+            'sem_marcacao': '**Neste canal: inativo — falta marcar o canal como NSFW no Discord.**',
+            'outro_canal': '**Neste canal: inativo — este canal não é o escolhido em /nsfw_canal.**',
+        }.get(motivo, '**Neste canal: não foi possível conferir o canal atual.**')
         estado = "ativadas" if p.responder_nsfw else "desativadas"
         onde = (f"somente em <#{p.canal_nsfw_id}> e seus tópicos" if p.canal_nsfw_id is not None
                 else "em todos os canais marcados como NSFW onde o bot já atende")
-        return (f"Respostas adultas não gráficas **{estado}** neste servidor; {onde}. "
+        return (f"{local}\n\nRespostas adultas não gráficas **{estado}** neste servidor; {onde}. "
                 "O canal precisa estar marcado como NSFW no Discord. "
                 "Permite reação e opinião, sem ERP ou encenação sexual; os bloqueios do Google continuam.")
 
@@ -124,7 +133,7 @@ class Admin(commands.Cog):
             return
         if ativar is not None:
             self.bot.registro.definir_responder_nsfw(interacao.guild_id, ativar)
-        await interacao.response.send_message(self._status_nsfw(interacao.guild_id), ephemeral=True)
+        await interacao.response.send_message(self._status_nsfw(interacao.guild_id, interacao.channel), ephemeral=True)
 
     @app_commands.command(name="nsfw_canal", description="Limita as reações adultas a um canal ou remove essa restrição.")
     @app_commands.describe(canal="Canal de texto marcado como NSFW; inclui seus tópicos.",
@@ -148,7 +157,7 @@ class Admin(commands.Cog):
             self.bot.registro.definir_canal_nsfw(interacao.guild_id, canal.id)
         elif todos:
             self.bot.registro.definir_canal_nsfw(interacao.guild_id, None)
-        await interacao.response.send_message(self._status_nsfw(interacao.guild_id), ephemeral=True)
+        await interacao.response.send_message(self._status_nsfw(interacao.guild_id, interacao.channel), ephemeral=True)
 
     @app_commands.command(name="teste_webhook", description="Manda uma mensagem de teste com o nome e o avatar de quem está de plantão.")
     async def teste_webhook(self, interacao: discord.Interaction) -> None:
