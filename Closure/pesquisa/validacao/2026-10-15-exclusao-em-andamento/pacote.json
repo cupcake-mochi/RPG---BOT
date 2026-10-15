@@ -1,0 +1,13 @@
+{
+  "arquivo": "src/var/closure-lab-memoria-v14.zip",
+  "arquivos": 51,
+  "bytes": 986182,
+  "sha256": "3491b3b430d50d55578caae1e2299b5bc8f620f614cb4392d95e71a70d9abc54",
+  "alterados_desde_v13": [
+    "src/closure_bot/cogs/chat.py",
+    "src/closure_bot/reflexao.py",
+    "src/closure_bot/registro.py"
+  ],
+  "sem_segredos": true,
+  "implantado": false
+}

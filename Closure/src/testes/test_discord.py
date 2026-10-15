@@ -109,6 +109,92 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.bot.modelos.responder.await_count, 2)
         self.assertIn('não analisado', self.bot.modelos.responder.call_args.args[0][-1]['content'])
 
+    async def test_apagar_durante_modelo_descarta_resposta_e_permite_nova_conversa(self):
+        canal, webhook = _canal()
+        chat = self.bot.get_cog("Chat")
+        async def resposta(*a, **kw):
+            self.bot.registro.apagar_pessoa(42)
+            return MagicMock(texto="Resposta que não pode voltar ao banco.")
+        self.bot.modelos.responder.side_effect = resposta
+        await chat.on_message(_mensagem("Closure, lembra de mim?", canal))
+        webhook.send.assert_not_awaited()
+        self.assertEqual(self.bot.registro.ultimas_falas(canal_id=10, persona="closure"), [])
+        self.assertEqual(self.bot.registro.mensagens_do_dia(), [])
+        self.assertNotIn(10, chat._fios)
+        self.assertEqual(self.bot.registro._leituras, [])
+        self.bot.modelos.responder.side_effect = None
+        self.bot.modelos.responder.return_value = MagicMock(texto="Nova conversa.")
+        await chat.on_message(_mensagem("Closure, vamos começar outra conversa?", canal))
+        webhook.send.assert_awaited_once()
+        self.assertEqual(self.bot.registro.ultimas_falas(canal_id=10, persona="closure"), ["Nova conversa."])
+
+    async def test_apagar_durante_metadados_evitar_chamada_ao_modelo(self):
+        canal, webhook = _canal()
+        async def midia(*a):
+            self.bot.registro.apagar_pessoa(42)
+            return "metadados antigos"
+        self.bot.midias.contexto = AsyncMock(side_effect=midia)
+        await self.bot.get_cog("Chat").on_message(_mensagem("Closure, conhece essa música?", canal))
+        self.bot.modelos.responder.assert_not_awaited()
+        webhook.send.assert_not_awaited()
+        self.assertEqual(self.bot.registro._leituras, [])
+
+    async def test_apagar_participante_anterior_invalida_resposta_de_outro(self):
+        canal, webhook = _canal()
+        chat = self.bot.get_cog("Chat")
+        await chat.on_message(_mensagem("Closure, gosto de música.", canal))
+        webhook.send.reset_mock()
+        async def resposta(*a, **kw):
+            self.bot.registro.apagar_pessoa(42)
+            return MagicMock(texto="A pessoa anterior gosta de música.")
+        self.bot.modelos.responder.side_effect = resposta
+        m = _mensagem("Closure, sobre o que conversavam?", canal)
+        m.author.id = 43
+        await chat.on_message(m)
+        webhook.send.assert_not_awaited()
+        self.assertEqual(self.bot.registro.autores_conversa(10, "closure"), set())
+        self.assertEqual(self.bot.registro.ultimas_falas(canal_id=10, persona="closure"), [])
+
+    async def test_participante_chegado_durante_digitacao_tambem_e_protegido(self):
+        from datetime import datetime
+        canal, webhook = _canal()
+        async def digitando(*a):
+            self.bot.conversas.anotar(10, "closure", datetime.now().astimezone(),
+                                      "gosto de piano", nome="outra pessoa", autor_id=43)
+        canal.typing.return_value.__aenter__.side_effect = digitando
+        async def resposta(*a, **kw):
+            self.bot.registro.apagar_pessoa(43)
+            return MagicMock(texto="A outra pessoa gosta de piano.")
+        self.bot.modelos.responder.side_effect = resposta
+        await self.bot.get_cog("Chat").on_message(_mensagem("Closure, oi!", canal))
+        webhook.send.assert_not_awaited()
+        self.assertEqual(self.bot.registro.autores_conversa(10, "closure"), set())
+
+    async def test_apagar_durante_envio_nao_regrava_nem_envia_proximas_partes(self):
+        canal, webhook = _canal()
+        chat = self.bot.get_cog("Chat")
+        self.bot.modelos.responder.side_effect = None
+        self.bot.modelos.responder.return_value = MagicMock(texto="Um parágrafo comprido. " * 250)
+        async def enviar(*a, **kw):
+            self.bot.registro.apagar_pessoa(42)
+            return MagicMock(id=555)
+        webhook.send.side_effect = enviar
+        await chat.on_message(_mensagem("Closure, explique isso em detalhes.", canal))
+        webhook.send.assert_awaited_once()
+        self.assertEqual(self.bot.registro.ultimas_falas(canal_id=10, persona="closure"), [])
+        self.assertEqual(self.bot.registro.autores_conversa(10, "closure"), set())
+        self.assertNotIn(10, chat._fios)
+
+    async def test_exclusao_de_pessoa_sem_relacao_nao_interrompe_resposta(self):
+        canal, webhook = _canal()
+        async def resposta(*a, **kw):
+            self.bot.registro.apagar_pessoa(9999)
+            return MagicMock(texto="Resposta normal.")
+        self.bot.modelos.responder.side_effect = resposta
+        await self.bot.get_cog("Chat").on_message(_mensagem("Closure, olá!", canal))
+        webhook.send.assert_awaited_once()
+        self.assertEqual(self.bot.registro.ultimas_falas(canal_id=10, persona="closure"), ["Resposta normal."])
+
     async def test_ao_subir_registra_os_comandos_em_geral_e_limpa_os_locais_do_servidor_principal(self):
         from dataclasses import replace
 

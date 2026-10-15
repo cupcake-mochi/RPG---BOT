@@ -95,6 +95,23 @@ class Reflexao(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(await refletir(self.r, self._modelos(erro=Falhou(500, "fora do ar"))), {})
         self.assertEqual((self.r.mensagens_do_dia(), self.r.ficha(9)), ([], Ficha()))
 
+    async def test_apagar_durante_reflexao_nao_recria_fatos_e_preserva_outros(self):
+        from types import SimpleNamespace
+        from unittest.mock import AsyncMock
+        async def resposta(*a, **kw):
+            self.r.apagar_pessoa(9)
+            # Dado novo escrito depois da exclusão não libera o lote antigo.
+            self.r.gravar_ficha(9, Ficha(None, ("gosta de xadrez",)))
+            return SimpleNamespace(texto=json.dumps([
+                {"autor": 1, "mensagem": 1, "fato": "joga com um Bastião chamado Ren"},
+                {"autor": 2, "mensagem": 2, "fato": "gosta de desenhar"}]))
+        novos = await refletir(self.r, SimpleNamespace(responder=AsyncMock(side_effect=resposta)))
+        self.assertEqual(novos, {10: ["gosta de desenhar"]})
+        self.assertEqual(self.r.ficha(9).fatos, ("gosta de xadrez",))
+        self.assertEqual(self.r.ficha(10).fatos, ("gosta de desenhar",))
+        self.assertEqual(self.r.mensagens_do_dia(), [])
+        self.assertEqual(self.r._leituras, [])
+
     async def test_sem_mensagem_nao_chama_o_modelo(self):
         self.r.apagar_mensagens_do_dia()
         self.assertEqual(await refletir(self.r, self._modelos(_resposta([]))), {})

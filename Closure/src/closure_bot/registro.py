@@ -25,7 +25,8 @@ from __future__ import annotations
 
 import json
 import sqlite3
-from dataclasses import dataclass
+from contextlib import contextmanager
+from dataclasses import dataclass, field
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -194,9 +195,17 @@ def _iso(quando: datetime) -> str:
     return quando.astimezone(timezone.utc).isoformat(timespec="seconds")
 
 
+@dataclass(eq=False)
+class LeituraDados:
+    """Só vive durante uma operação assíncrona; exclusão invalida a cópia em uso."""
+    autores: frozenset[int]
+    apagados: set[int] = field(default_factory=set)
+
+
 class Registro:
     def __init__(self, caminho: Path | str, chave: str | None = None):
         self.cofre = Cofre(chave)
+        self._leituras: list[LeituraDados] = []
         if str(caminho) != ":memory:":
             Path(caminho).parent.mkdir(parents=True, exist_ok=True)
         self._db = sqlite3.connect(str(caminho), check_same_thread=False)
@@ -352,6 +361,20 @@ class Registro:
             self._db.executemany("DELETE FROM mensagens_do_dia WHERE message_id = ?", [(i,) for i in ids])
         self._db.commit()
 
+    @contextmanager
+    def proteger_dados(self, autores):
+        leitura = LeituraDados(frozenset(autores))
+        self._leituras.append(leitura)
+        try:
+            yield leitura
+        finally:
+            self._leituras.remove(leitura)
+
+    def autores_conversa(self, canal_id: int, persona: str) -> set[int]:
+        return {r[0] for r in self._db.execute(
+            "SELECT autor_id FROM participantes_conversa WHERE canal_id = ? AND persona = ?",
+            (canal_id, persona))}
+
     def apagar_pessoa(self, autor_id: int) -> None:
         """Apaga tudo o que o bot guarda de uma pessoa: ficha, paciência, mensagens do dia e o histórico de quando ela chamou."""
         # A resposta e falas dos demais podem citar a pessoa: apague o fio todo.
@@ -363,6 +386,11 @@ class Registro:
         for tabela in ("fichas", "paciencia", "gatilhos", "mensagens_do_dia"):
             self._db.execute(f"DELETE FROM {tabela} WHERE autor_id = ?", (autor_id,))
         self._db.commit()
+        # Uma chamada já enviada pode terminar depois da exclusão. A resposta
+        # continua contabilizada, mas não pode recriar dados que foram apagados.
+        for leitura in self._leituras:
+            if autor_id in leitura.autores:
+                leitura.apagados.add(autor_id)
 
     def limpar_conversas(self, agora: datetime) -> None:
         self._db.execute("DELETE FROM conversas_recentes WHERE expira <= ?", (_iso(agora),))

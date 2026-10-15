@@ -110,15 +110,17 @@ async def refletir(registro: Registro, modelos: Modelos) -> dict[int, list[str]]
     autores = sorted({m.autor_id for m in mensagens})
     fatos_atuais = {autor: registro.ficha(autor).fatos for autor in autores}
     novos: dict[int, list[str]] = {}
-    try:
-        resposta = await modelos.responder(montar_pedido(mensagens, fatos_atuais), gatilho="reflexao", so_pagos=True)
-        novos = conferir(resposta.texto, mensagens, fatos_atuais)
-        for autor, fatos in novos.items():
-            ficha = registro.ficha(autor)
-            registro.gravar_ficha(autor, replace(ficha, fatos=(ficha.fatos + tuple(fatos))[-FATOS_MAX:]))
-    except Falhou as erro:
-        log.warning("reflexão: o modelo falhou (%s); as mensagens do dia foram apagadas sem virar fato", str(erro)[:200])
-    finally:
-        registro.apagar_mensagens_do_dia([m.message_id for m in mensagens])
+    with registro.proteger_dados(autores) as leitura:
+        try:
+            resposta = await modelos.responder(montar_pedido(mensagens, fatos_atuais), gatilho="reflexao", so_pagos=True)
+            novos = {autor: fatos for autor, fatos in conferir(resposta.texto, mensagens, fatos_atuais).items()
+                     if autor not in leitura.apagados}
+            for autor, fatos in novos.items():
+                ficha = registro.ficha(autor)
+                registro.gravar_ficha(autor, replace(ficha, fatos=(ficha.fatos + tuple(fatos))[-FATOS_MAX:]))
+        except Falhou as erro:
+            log.warning("reflexão: o modelo falhou (%s); as mensagens do dia foram apagadas sem virar fato", str(erro)[:200])
+        finally:
+            registro.apagar_mensagens_do_dia([m.message_id for m in mensagens])
     log.info("reflexão: %d mensagens de %d pessoas, %d fatos novos", len(mensagens), len(autores), sum(map(len, novos.values())))
     return novos
