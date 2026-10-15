@@ -1,0 +1,15 @@
+{
+  "pacote": "src/var/closure-lab-r52-precos-v13.zip",
+  "sha256": "9014da5460e3eddb5743aec1a2274371356474d4bbf42feb39b03411b4828aef",
+  "arquivos": 51,
+  "bytes": 985549,
+  "diferencas_versus_v12": [
+    "src/var/site/nucleo.js",
+    "dados/sistema/MANIFESTO.json",
+    "dados/sistema/livro.jsonl"
+  ],
+  "sem_env": true,
+  "origens_identicas": true,
+  "segredos_conferidos_sem_expor_valores": true,
+  "python_compila": true
+}

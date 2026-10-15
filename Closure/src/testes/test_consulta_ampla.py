@@ -29,8 +29,34 @@ class ConsultaAmpla(unittest.TestCase):
         self.assertEqual(fontes[:2], ["origens--legado-criar", "origens--origem-escolhas"])
         for a in fontes[:2]:
             self.assertIn(self.livro[a]["texto"], texto)
-        self.assertIn("criar com o mestre uma marcante e menores", texto)
+        self.assertIn("criar com o mestre menores compatíveis", texto)
+        self.assertIn("A marcante segue as opções publicadas para sua Origem", texto)
+        self.assertIn("Criar sua Restrição", texto)
+        self.assertNotIn("criar com o mestre uma marcante e menores", texto)
         return texto
+
+    def test_r52_familia_propria_e_excecao_corporal_com_fontes_inteiras(self):
+        for pers in ("clo", "kal"):
+            for msg, fonte in (
+                ("Posso criar uma marcante própria para uma família Descendente?", "origens--origem-descendente"),
+                ("E a marcante da Restrição corporal, posso criar?", "origens--restricao-corpo"),
+                ("Na Origem, posso criar menores e Legados de história?", "origens--legados"),
+            ):
+                with self.subTest(pers=pers, msg=msg):
+                    texto, fontes = self.montar(msg, pers=pers)
+                    self.assertIn(fonte, fontes)
+                    self.assertIn(self.livro[fonte]['texto'], texto)
+                    self.assertIn(self.livro['origens--legado-criar']['texto'], texto)
+                    self.assertIn("Para a marcante, adotem uma das modalidades publicadas do Descendente", texto)
+
+    def test_r52_conserva_fonte_nova_mesmo_com_resposta_antiga_no_historico(self):
+        p = site_prompt.montar('kal', 'Tem certeza? Qual a fonte?', nome='Alex', turnos=[
+            {'de': 'user', 'nome': 'Alex', 'texto': 'Posso criar uma marcante própria na Origem?'},
+            {'de': 'bot', 'pers': 'kal', 'texto': 'Pode criar uma marcante própria em qualquer Origem.'},
+        ])
+        atual = p['input'][-1]['content']
+        self.assertIn(self.livro['origens--legado-criar']['texto'], atual)
+        self.assertNotIn('criar com o mestre uma marcante e menores', atual)
 
     def test_criacao_de_origem_inclui_permissao_e_escolha_padrao(self):
         for msg in ("oq eu posso criar na origem?", "posso criar uma marcante própria?",

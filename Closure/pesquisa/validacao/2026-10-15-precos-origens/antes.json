@@ -1,0 +1,1969 @@
+{
+  "escopo": "fontes e linhas de preços únicos; sem modelo ou rede",
+  "total": 166,
+  "passaram": 149,
+  "casos": [
+    {
+      "item": "Aljava de flechas",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Aljava de flechas | Hankyū e Daikyū | 20 flechas | ¥3.000 | 0,5 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Aljava de flechas no livro?",
+      "fontes": [
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Aljava de flechas",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Aljava de flechas | Hankyū e Daikyū | 20 flechas | ¥3.000 | 0,5 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Aljava de flechas no livro, quanto está?",
+      "fontes": [
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Estojo de virotes",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Estojo de virotes | Besta e Besta de Uma Mão | 20 virotes | ¥3.000 | 0,5 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Estojo de virotes no livro?",
+      "fontes": [
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Estojo de virotes",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Estojo de virotes | Besta e Besta de Uma Mão | 20 virotes | ¥3.000 | 0,5 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Estojo de virotes no livro, quanto está?",
+      "fontes": [
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Pistola: carregador",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Pistola: carregador | 2 | ¥1.000 | 0,2 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Pistola: carregador no livro?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Pistola: carregador",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Pistola: carregador | 2 | ¥1.000 | 0,2 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Pistola: carregador no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Revólver: conjunto de cartuchos",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Revólver: conjunto de cartuchos | 2 | ¥1.000 | 0,2 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Revólver: conjunto de cartuchos no livro?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Revólver: conjunto de cartuchos",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Revólver: conjunto de cartuchos | 2 | ¥1.000 | 0,2 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Revólver: conjunto de cartuchos no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Espingarda: conjunto de cartuchos",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Espingarda: conjunto de cartuchos | 2 | ¥1.000 | 0,3 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Espingarda: conjunto de cartuchos no livro?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Espingarda: conjunto de cartuchos",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Espingarda: conjunto de cartuchos | 2 | ¥1.000 | 0,3 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Espingarda: conjunto de cartuchos no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Rifle: carregador",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Rifle: carregador | 3 | ¥1.500 | 0,3 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Rifle: carregador no livro?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Rifle: carregador",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Rifle: carregador | 3 | ¥1.500 | 0,3 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Rifle: carregador no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Submetralhadora: carregador",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Submetralhadora: carregador | 3 | ¥1.500 | 0,3 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Submetralhadora: carregador no livro?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Submetralhadora: carregador",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Submetralhadora: carregador | 3 | ¥1.500 | 0,3 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Submetralhadora: carregador no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Rifle de Precisão: carregador",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Rifle de Precisão: carregador | 2 | ¥2.000 | 0,3 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Rifle de Precisão: carregador no livro?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "catalogo--cat-mira",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Rifle de Precisão: carregador",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Rifle de Precisão: carregador | 2 | ¥2.000 | 0,3 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Rifle de Precisão: carregador no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "catalogo--cat-mira",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Metralhadora Pesada: caixa de munição",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Metralhadora Pesada: caixa de munição | 4 | ¥4.000 | 0,5 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Metralhadora Pesada: caixa de munição no livro?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Metralhadora Pesada: caixa de munição",
+      "esperada": "equip--eqm-municao",
+      "linha": "| Metralhadora Pesada: caixa de munição | 4 | ¥4.000 | 0,5 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Metralhadora Pesada: caixa de munição no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Canivete",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Canivete | 1 | 1d4 Cortante | Fineza · Oculta · Rompe · Leve | — | 0,1 | 8.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Canivete no livro?",
+      "fontes": [
+        "equip--eqa-laminas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Canivete",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Canivete | 1 | 1d4 Cortante | Fineza · Oculta · Rompe · Leve | — | 0,1 | 8.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Canivete no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Faca",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Faca | 1 | 1d6 Cortante | Fineza · Rompe · Leve | — | 0,2 | 16.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Faca no livro?",
+      "fontes": [
+        "equip--eqa-laminas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Faca",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Faca | 1 | 1d6 Cortante | Fineza · Rompe · Leve | — | 0,2 | 16.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Faca no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqm-municao",
+        "equip--eqm-reserva"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Punhal",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Punhal | 1 | 1d6 Perfurante | Fineza · Longo Alcance 6/18 m · Leve | — | 0,3 | 16.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Punhal no livro?",
+      "fontes": [
+        "equip--eqa-laminas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Punhal",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Punhal | 1 | 1d6 Perfurante | Fineza · Longo Alcance 6/18 m · Leve | — | 0,3 | 16.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Punhal no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Sai",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Sai (arma de três pontas) | 1 | 1d6 Perfurante | Fineza · Par · Leve | — | 0,5 | 16.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Sai no livro?",
+      "fontes": [
+        "equip--eqa-laminas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Sai",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Sai (arma de três pontas) | 1 | 1d6 Perfurante | Fineza · Par · Leve | — | 0,5 | 16.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Sai no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqm-municao",
+        "equip--eqm-reserva"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Tanto",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Tanto (lâmina curta) | 1 | 1d6 Cortante | Fineza · Oculta · Leve | — | 0,3 | 32.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Tanto no livro?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqf-armas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Tanto",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Tanto (lâmina curta) | 1 | 1d6 Cortante | Fineza · Oculta · Leve | — | 0,3 | 32.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Tanto no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqm-municao",
+        "equip--eqf-armas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Espada Longa",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Espada Longa | 1 | 1d8 Cortante | Versátil · Rompe | — | 1 | 48.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Espada Longa no livro?",
+      "fontes": [
+        "equip--eqa-laminas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Espada Longa",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Espada Longa | 1 | 1d8 Cortante | Versátil · Rompe | — | 1 | 48.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Espada Longa no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Espadão",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Espadão | 2 | 1d12 Cortante | Alcance 3 m | 3 | 2 | 60.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Espadão no livro?",
+      "fontes": [
+        "equip--eqa-laminas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Espadão",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Espadão | 2 | 1d12 Cortante | Alcance 3 m | 3 | 2 | 60.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Espadão no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqf-armas",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Katana",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Katana (espada curva) | 1 | 1d8 Cortante | Versátil · Fineza | — | 1 | 48.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Katana no livro?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqc-inicial"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Katana",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Katana (espada curva) | 1 | 1d8 Cortante | Versátil · Fineza | — | 1 | 48.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Katana no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqc-inicial",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Machete",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Machete | 1 | 1d8 Cortante | Rompe | — | 0,5 | 16.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Machete no livro?",
+      "fontes": [
+        "equip--eqa-laminas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Machete",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Machete | 1 | 1d8 Cortante | Rompe | — | 0,5 | 16.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Machete no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Nodachi",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Nodachi (espada grande) | 2 | 1d12 Cortante | Alcance 3 m · Rompe · Volumosa | 3 | 2 | 60.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Nodachi no livro?",
+      "fontes": [
+        "equip--eqa-laminas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Nodachi",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Nodachi (espada grande) | 2 | 1d12 Cortante | Alcance 3 m · Rompe · Volumosa | 3 | 2 | 60.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Nodachi no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Odachi",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Odachi (espada grande) | 2 | 1d12 Cortante | Alcance 3 m · Talha · Embainhada | 3 | 2 | 90.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Odachi no livro?",
+      "fontes": [
+        "equip--eqa-laminas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Odachi",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Odachi (espada grande) | 2 | 1d12 Cortante | Alcance 3 m · Talha · Embainhada | 3 | 2 | 90.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Odachi no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Rapieira",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Rapieira | 1 | 1d6 Perfurante | Fineza · Talha | — | 1 | 32.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Rapieira no livro?",
+      "fontes": [
+        "equip--eqa-laminas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Rapieira",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Rapieira | 1 | 1d6 Perfurante | Fineza · Talha | — | 1 | 32.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Rapieira no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Wakizashi",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Wakizashi (espada curta) | 1 | 1d8 Cortante | Oculta · Leve | — | 0,5 | 32.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Wakizashi no livro?",
+      "fontes": [
+        "equip--eqa-laminas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Wakizashi",
+      "esperada": "equip--eqa-laminas",
+      "linha": "| Wakizashi (espada curta) | 1 | 1d8 Cortante | Oculta · Leve | — | 0,5 | 32.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Wakizashi no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-laminas",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Kanabō",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Kanabō (clava pesada) | 2 | 1d12 Concussão | Talha | 3 | 3 | 36.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Kanabō no livro?",
+      "fontes": [
+        "equip--eqa-impacto"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Kanabō",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Kanabō (clava pesada) | 2 | 1d12 Concussão | Talha | 3 | 3 | 36.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Kanabō no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-impacto",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Maça",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Maça | 1 | 1d8 Concussão | Talha | — | 1 | 32.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Maça no livro?",
+      "fontes": [
+        "equip--eqa-impacto"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Maça",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Maça | 1 | 1d8 Concussão | Talha | — | 1 | 32.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Maça no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-impacto",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Marreta",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Marreta | 2 | 1d10 Concussão | Rompe · Talha | 3 | 3 | 36.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Marreta no livro?",
+      "fontes": [
+        "equip--eqa-impacto"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Marreta",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Marreta | 2 | 1d10 Concussão | Rompe · Talha | 3 | 3 | 36.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Marreta no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-impacto",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Maul",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Maul (martelo de combate) | 2 | 1d12 Concussão | Rompe | 3 | 3 | 36.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Maul no livro?",
+      "fontes": [
+        "equip--eqa-impacto"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Maul",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Maul (martelo de combate) | 2 | 1d12 Concussão | Rompe | 3 | 3 | 36.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Maul no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-impacto",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Taco",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Taco | 1 | 1d8 Concussão | Versátil · Discreta | — | 1 | 16.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Taco no livro?",
+      "fontes": [
+        "equip--eqa-impacto"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Taco",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Taco | 1 | 1d8 Concussão | Versátil · Discreta | — | 1 | 16.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Taco no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-impacto",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Bastão",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Bastão | 1 | 1d6 Concussão | Versátil · Alcance 3 m · Rompe | — | 1 | 16.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Bastão no livro?",
+      "fontes": [
+        "equip--eqa-impacto"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Bastão",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Bastão | 1 | 1d6 Concussão | Versátil · Alcance 3 m · Rompe | — | 1 | 16.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Bastão no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-impacto",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Bō",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Bō (bastão longo) | 2 | 1d10 Concussão | Alcance 3 m · Emaranha | 3 | 2 | 20.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Bō no livro?",
+      "fontes": [
+        "emanador--ema-instintiva"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Bō",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Bō (bastão longo) | 2 | 1d10 Concussão | Alcance 3 m · Emaranha | 3 | 2 | 20.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Bō no livro, quanto está?",
+      "fontes": [
+        "equip--eqm-municao",
+        "equip--eqm-reserva"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Cassetete",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Cassetete | 1 | 1d6 Concussão | Oculta · Vestida · Leve | — | 0,3 | 8.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Cassetete no livro?",
+      "fontes": [
+        "equip--eqa-impacto"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Cassetete",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Cassetete | 1 | 1d6 Concussão | Oculta · Vestida · Leve | — | 0,3 | 8.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Cassetete no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-impacto",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Nunchaku",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Nunchaku (bastões ligados) | 1 | 1d6 Concussão | Par · Emaranha | — | 0,5 | 16.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Nunchaku no livro?",
+      "fontes": [
+        "equip--eqa-impacto"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Nunchaku",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Nunchaku (bastões ligados) | 1 | 1d6 Concussão | Par · Emaranha | — | 0,5 | 16.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Nunchaku no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-impacto",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Tonfa",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Tonfa (bastão com cabo lateral) | 1 | 1d6 Concussão | Par · Vestida · Leve | — | 0,5 | 16.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Tonfa no livro?",
+      "fontes": [
+        "equip--eqa-impacto"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Tonfa",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Tonfa (bastão com cabo lateral) | 1 | 1d6 Concussão | Par · Vestida · Leve | — | 0,5 | 16.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Tonfa no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-impacto",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Soqueira",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Soqueira | 1 | 1d4 Concussão | Vestida · Oculta · Par · Leve | — | 0,2 | 8.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Soqueira no livro?",
+      "fontes": [
+        "equip--eqa-impacto"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Soqueira",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Soqueira | 1 | 1d4 Concussão | Vestida · Oculta · Par · Leve | — | 0,2 | 8.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Soqueira no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-impacto",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Tekko",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Tekko (proteção de punho) | 1 | 1d4 Concussão | Vestida · Par · Oculta · Leve | — | 0,2 | 8.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Tekko no livro?",
+      "fontes": [
+        "equip--eqa-impacto"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Tekko",
+      "esperada": "equip--eqa-impacto",
+      "linha": "| Tekko (proteção de punho) | 1 | 1d4 Concussão | Vestida · Par · Oculta · Leve | — | 0,2 | 8.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Tekko no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-impacto",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Machadinha",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Machadinha | 1 | 1d6 Cortante | Longo Alcance 6/18 m · Rompe | — | 0,5 | 16.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Machadinha no livro?",
+      "fontes": [
+        "equip--eqa-hastes"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Machadinha",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Machadinha | 1 | 1d6 Cortante | Longo Alcance 6/18 m · Rompe | — | 0,5 | 16.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Machadinha no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-hastes",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Machado",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Machado | 1 | 1d8 Cortante | Rompe | — | 1 | 32.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Machado no livro?",
+      "fontes": [
+        "equip--eqa-hastes"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Machado",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Machado | 1 | 1d8 Cortante | Rompe | — | 1 | 32.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Machado no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-hastes",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Machado de Guerra",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Machado de Guerra | 2 | 1d12 Cortante | Rompe · Talha · Volumosa | 3 | 2 | 60.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Machado de Guerra no livro?",
+      "fontes": [
+        "equip--eqa-hastes"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Machado de Guerra",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Machado de Guerra | 2 | 1d12 Cortante | Rompe · Talha · Volumosa | 3 | 2 | 60.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Machado de Guerra no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-hastes"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Foice",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Foice | 2 | 1d10 Cortante | Emaranha · Talha | 3 | 2 | 36.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Foice no livro?",
+      "fontes": [
+        "equip--eqa-hastes"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Foice",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Foice | 2 | 1d10 Cortante | Emaranha · Talha | 3 | 2 | 36.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Foice no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-hastes",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Kama",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Kama (foice curta) | 1 | 1d6 Cortante | Par · Rompe | — | 0,5 | 16.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Kama no livro?",
+      "fontes": [
+        "equip--eqa-hastes"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Kama",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Kama (foice curta) | 1 | 1d6 Cortante | Par · Rompe | — | 0,5 | 16.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Kama no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-hastes",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Kusarigama",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Kusarigama (foice com corrente) | 2 | 1d8 Cortante | Alcance 3 m · Emaranha · Longo Alcance 6/18 m | — | 2 | 20.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Kusarigama no livro?",
+      "fontes": [
+        "equip--eqa-hastes"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Kusarigama",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Kusarigama (foice com corrente) | 2 | 1d8 Cortante | Alcance 3 m · Emaranha · Longo Alcance 6/18 m | — | 2 | 20.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Kusarigama no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-hastes",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Lança",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Lança | 1 | 1d6 Perfurante | Alcance 3 m · Longo Alcance 6/18 m | — | 2 | 16.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Lança no livro?",
+      "fontes": [
+        "equip--eqa-hastes"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Lança",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Lança | 1 | 1d6 Perfurante | Alcance 3 m · Longo Alcance 6/18 m | — | 2 | 16.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Lança no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-hastes",
+        "equip--eqf-reliquias",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Naginata",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Naginata (haste com lâmina) | 2 | 1d10 Cortante | Alcance 3 m · Rompe | 3 | 2 | 36.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Naginata no livro?",
+      "fontes": [
+        "equip--eqa-hastes",
+        "equip--eqc-inicial"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Naginata",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Naginata (haste com lâmina) | 2 | 1d10 Cortante | Alcance 3 m · Rompe | 3 | 2 | 36.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Naginata no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-hastes",
+        "equip--eqc-inicial",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Yari",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Yari (lança longa) | 2 | 1d10 Perfurante | Alcance 3 m · Talha | 3 | 2 | 36.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Yari no livro?",
+      "fontes": [
+        "equip--eqa-hastes"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Yari",
+      "esperada": "equip--eqa-hastes",
+      "linha": "| Yari (lança longa) | 2 | 1d10 Perfurante | Alcance 3 m · Talha | 3 | 2 | 36.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Yari no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-hastes",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Chicote",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Chicote | 1 | 1d4 Concussão | Alcance 3 m · Emaranha · Oculta · Leve | — | 0,5 | 16.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Chicote no livro?",
+      "fontes": [
+        "equip--eqa-flexiveis"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Chicote",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Chicote | 1 | 1d4 Concussão | Alcance 3 m · Emaranha · Oculta · Leve | — | 0,5 | 16.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Chicote no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-flexiveis",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Corrente",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Corrente | 2 | 1d8 Concussão | Alcance 3 m · Emaranha · Rompe | — | 2 | 20.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Corrente no livro?",
+      "fontes": [
+        "equip--eqa-flexiveis"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Corrente",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Corrente | 2 | 1d8 Concussão | Alcance 3 m · Emaranha · Rompe | — | 2 | 20.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Corrente no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-flexiveis",
+        "equip--eqf-armas",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Manriki",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Manriki (corrente com pesos) | 1 | 1d6 Concussão | Emaranha · Oculta · Leve | — | 0,5 | 8.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Manriki no livro?",
+      "fontes": [
+        "equip--eqa-flexiveis"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Manriki",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Manriki (corrente com pesos) | 1 | 1d6 Concussão | Emaranha · Oculta · Leve | — | 0,5 | 8.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Manriki no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-flexiveis",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Chakram",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Chakram (anel cortante) | 1 | 1d4 Cortante | Longo Alcance 6/18 m · Fineza · Oculta · Leve | — | 0,2 | 8.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Chakram no livro?",
+      "fontes": [
+        "equip--eqa-flexiveis"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Chakram",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Chakram (anel cortante) | 1 | 1d4 Cortante | Longo Alcance 6/18 m · Fineza · Oculta · Leve | — | 0,2 | 8.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Chakram no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-flexiveis",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Kunai",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Kunai (lâmina de arremesso) | 1 | 1d6 Perfurante | Longo Alcance 6/18 m · Oculta · Leve | — | 0,2 | 8.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Kunai no livro?",
+      "fontes": [
+        "equip--eqa-flexiveis",
+        "equip--eqf-armas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Kunai",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Kunai (lâmina de arremesso) | 1 | 1d6 Perfurante | Longo Alcance 6/18 m · Oculta · Leve | — | 0,2 | 8.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Kunai no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-flexiveis",
+        "equip--eqm-municao",
+        "equip--eqf-armas"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Shuriken",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Shuriken (lâmina de arremesso) | 1 | 1d4 Perfurante | Longo Alcance 6/18 m · Oculta · Par · Leve | — | 0,1 | 8.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Shuriken no livro?",
+      "fontes": [
+        "equip--eqa-flexiveis"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Shuriken",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Shuriken (lâmina de arremesso) | 1 | 1d4 Perfurante | Longo Alcance 6/18 m · Oculta · Par · Leve | — | 0,1 | 8.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Shuriken no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-flexiveis",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Tessen",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Tessen (leque de combate) | 1 | 1d4 Concussão | Longo Alcance 6/18 m · Oculta · Vestida · Leve | — | 0,3 | 8.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Tessen no livro?",
+      "fontes": [
+        "equip--eqa-flexiveis"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Tessen",
+      "esperada": "equip--eqa-flexiveis",
+      "linha": "| Tessen (leque de combate) | 1 | 1d4 Concussão | Longo Alcance 6/18 m · Oculta · Vestida · Leve | — | 0,3 | 8.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Tessen no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-flexiveis",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Daikyū",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Daikyū (arco longo) | 2 | 1d10 Perfurante | Longo Alcance 45/180 m | — | 2 | 60.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Daikyū no livro?",
+      "fontes": [
+        "equip--eqa-tiro"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Daikyū",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Daikyū (arco longo) | 2 | 1d10 Perfurante | Longo Alcance 45/180 m | — | 2 | 60.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Daikyū no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Hankyū",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Hankyū (arco curto) | 2 | 1d8 Perfurante | Longo Alcance 24/96 m · Oculta | — | 1 | 40.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Hankyū no livro?",
+      "fontes": [
+        "equip--eqa-tiro"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Hankyū",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Hankyū (arco curto) | 2 | 1d8 Perfurante | Longo Alcance 24/96 m · Oculta | — | 1 | 40.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Hankyū no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Besta",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Besta | 2 | 2d8 Perfurante | Longo Alcance 30/120 m · Munição · Rompe | 3 | 2 | 80.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Besta no livro?",
+      "fontes": [
+        "equip--eqa-tiro"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Besta",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Besta | 2 | 2d8 Perfurante | Longo Alcance 30/120 m · Munição · Rompe | 3 | 2 | 80.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Besta no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Besta de Uma Mão",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Besta de Uma Mão | 1 | 1d10 Perfurante | Longo Alcance 9/36 m · Munição · Oculta · Leve | — | 1 | 50.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Besta de Uma Mão no livro?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Besta de Uma Mão",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Besta de Uma Mão | 1 | 1d10 Perfurante | Longo Alcance 9/36 m · Munição · Oculta · Leve | — | 1 | 50.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Besta de Uma Mão no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Espingarda",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Espingarda | 2 | 2d8 Perfurante | Longo Alcance 9/27 m · Munição · Rompe | 1 | 2 | 150.000 / 300.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Espingarda no livro?",
+      "fontes": [
+        "equip--eqa-tiro"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Espingarda",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Espingarda | 2 | 2d8 Perfurante | Longo Alcance 9/27 m · Munição · Rompe | 1 | 2 | 150.000 / 300.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Espingarda no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Metralhadora Pesada",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Metralhadora Pesada | 2 | 2d10 Perfurante | Longo Alcance 24/72 m · Munição · Rompe · Volumosa | 3 | 4 | 450.000 / 900.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Metralhadora Pesada no livro?",
+      "fontes": [
+        "equip--eqa-tiro"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Metralhadora Pesada",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Metralhadora Pesada | 2 | 2d10 Perfurante | Longo Alcance 24/72 m · Munição · Rompe · Volumosa | 3 | 4 | 450.000 / 900.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Metralhadora Pesada no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Pistola",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Pistola | 1 | 1d10 Perfurante | Longo Alcance 9/27 m · Munição · Oculta · Leve | — | 0,5 | 125.000 / 250.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Pistola no livro?",
+      "fontes": [
+        "equip--eqa-tiro"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Pistola",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Pistola | 1 | 1d10 Perfurante | Longo Alcance 9/27 m · Munição · Oculta · Leve | — | 0,5 | 125.000 / 250.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Pistola no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Revólver",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Revólver | 1 | 1d10 Perfurante | Longo Alcance 12/36 m · Munição · Oculta · Leve | — | 0,5 | 150.000 / 300.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Revólver no livro?",
+      "fontes": [
+        "equip--eqa-tiro"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Revólver",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Revólver | 1 | 1d10 Perfurante | Longo Alcance 12/36 m · Munição · Oculta · Leve | — | 0,5 | 150.000 / 300.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Revólver no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Rifle",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Rifle | 2 | 2d8 Perfurante | Longo Alcance 24/72 m · Munição · Talha | 1 | 2 | 175.000 / 350.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Rifle no livro?",
+      "fontes": [
+        "equip--eqa-tiro"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Rifle",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Rifle | 2 | 2d8 Perfurante | Longo Alcance 24/72 m · Munição · Talha | 1 | 2 | 175.000 / 350.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Rifle no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Rifle de Precisão",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Rifle de Precisão | 2 | 2d10 Perfurante | Longo Alcance 24/72 m · Munição | 3 | 3 | 300.000 / 600.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Rifle de Precisão no livro?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "catalogo--cat-mira"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Rifle de Precisão",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Rifle de Precisão | 2 | 2d10 Perfurante | Longo Alcance 24/72 m · Munição | 3 | 3 | 300.000 / 600.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Rifle de Precisão no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "catalogo--cat-mira",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Submetralhadora",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Submetralhadora | 2 | 2d6 Perfurante | Longo Alcance 15/45 m · Munição · Par · Oculta | — | 2 | 200.000 / 400.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Submetralhadora no livro?",
+      "fontes": [
+        "equip--eqa-tiro"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Submetralhadora",
+      "esperada": "equip--eqa-tiro",
+      "linha": "| Submetralhadora | 2 | 2d6 Perfurante | Longo Alcance 15/45 m · Munição · Par · Oculta | — | 2 | 200.000 / 400.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Submetralhadora no livro, quanto está?",
+      "fontes": [
+        "equip--eqa-tiro",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Corda",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Corda | 15 m | 3.000 | 0,5 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Corda no livro?",
+      "fontes": [
+        "equip--eqi-itens",
+        "equip--eqi-exploracao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Corda",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Corda | 15 m | 3.000 | 0,5 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Corda no livro, quanto está?",
+      "fontes": [
+        "equip--eqi-exploracao",
+        "equip--eqm-municao",
+        "equip--eqi-itens"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Lanterna elétrica",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Lanterna elétrica | Com pilhas; 8 horas de uso | 3.000 | 0,2 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Lanterna elétrica no livro?",
+      "fontes": [
+        "equip--eqi-exploracao",
+        "equip--eqi-itens"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Lanterna elétrica",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Lanterna elétrica | Com pilhas; 8 horas de uso | 3.000 | 0,2 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Lanterna elétrica no livro, quanto está?",
+      "fontes": [
+        "equip--eqi-exploracao",
+        "equip--eqi-itens",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Pilhas de reserva",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Pilhas de reserva | Uma reposição para a lanterna | 500 | 0,1 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Pilhas de reserva no livro?",
+      "fontes": [
+        "catalogo--cat-amparo-protecao",
+        "equip--eqi-itens"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Pilhas de reserva",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Pilhas de reserva | Uma reposição para a lanterna | 500 | 0,1 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Pilhas de reserva no livro, quanto está?",
+      "fontes": [
+        "catalogo--cat-amparo-protecao",
+        "equip--eqi-itens",
+        "equip--eqm-reserva"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Algema",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Algema | Um par com chave | 3.000 | 0,2 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Algema no livro?",
+      "fontes": [
+        "equip--eqi-itens"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Algema",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Algema | Um par com chave | 3.000 | 0,2 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Algema no livro, quanto está?",
+      "fontes": [
+        "equip--eqm-municao",
+        "equip--eqi-fechaduras"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Pé de cabra",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Pé de cabra | Uma peça | 3.000 | 0,5 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Pé de cabra no livro?",
+      "fontes": [
+        "equip--eq-objetos",
+        "equip--eqi-exploracao"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Pé de cabra",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Pé de cabra | Uma peça | 3.000 | 0,5 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Pé de cabra no livro, quanto está?",
+      "fontes": [
+        "equip--eqm-municao",
+        "equip--eqi-exploracao"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Gazuas",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Gazuas | Um conjunto para fechaduras mecânicas | 3.000 | 0,1 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Gazuas no livro?",
+      "fontes": [
+        "equip--eqi-itens"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Gazuas",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Gazuas | Um conjunto para fechaduras mecânicas | 3.000 | 0,1 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Gazuas no livro, quanto está?",
+      "fontes": [
+        "equip--eqm-municao",
+        "equip--eqi-itens"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Kit de escalada",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Kit de escalada | Arnês, fixadores e conectores; sem corda | 3.000 | 0,5 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Kit de escalada no livro?",
+      "fontes": [
+        "equip--eqi-itens",
+        "equip--eqi-exploracao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Kit de escalada",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Kit de escalada | Arnês, fixadores e conectores; sem corda | 3.000 | 0,5 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Kit de escalada no livro, quanto está?",
+      "fontes": [
+        "equip--eqi-exploracao",
+        "equip--eqm-municao"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Mochila",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Mochila | Vazia | 5.000 | 0,2 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Mochila no livro?",
+      "fontes": [
+        "equip--eqi-itens"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Mochila",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Mochila | Vazia | 5.000 | 0,2 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Mochila no livro, quanto está?",
+      "fontes": [
+        "equip--eqi-itens",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Cantil",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Cantil | Cheio, com 1,5 litro de água | 1.500 | 0,3 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Cantil no livro?",
+      "fontes": [
+        "equip--eqi-itens"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Cantil",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Cantil | Cheio, com 1,5 litro de água | 1.500 | 0,3 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Cantil no livro, quanto está?",
+      "fontes": [
+        "equip--eqi-itens",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Ração de viagem",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Ração de viagem | Alimento para uma pessoa por dia | 1.000 | 0,1 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Ração de viagem no livro?",
+      "fontes": [
+        "equip--eqi-itens"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Ração de viagem",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Ração de viagem | Alimento para uma pessoa por dia | 1.000 | 0,1 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Ração de viagem no livro, quanto está?",
+      "fontes": [
+        "equip--eqi-itens",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Telefone",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Telefone | Aparelho básico com câmera | 30.000 | 0,1 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Telefone no livro?",
+      "fontes": [
+        "equip--eqi-exploracao",
+        "equip--eqi-itens"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Telefone",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Telefone | Aparelho básico com câmera | 30.000 | 0,1 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Telefone no livro, quanto está?",
+      "fontes": [
+        "equip--eqi-exploracao",
+        "equip--eqm-municao"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Bateria portátil",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Bateria portátil | Uma recarga completa do telefone | 3.000 | 0,1 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Bateria portátil no livro?",
+      "fontes": [
+        "equip--eqi-itens"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Bateria portátil",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Bateria portátil | Uma recarga completa do telefone | 3.000 | 0,1 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Bateria portátil no livro, quanto está?",
+      "fontes": [
+        "equip--eqi-itens",
+        "equip--eqm-municao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Ferramentas de ofício",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Ferramentas de ofício | Estojo portátil para um ofício escolhido | 10.000 | 0,5 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Ferramentas de ofício no livro?",
+      "fontes": [
+        "equip--eqi-itens",
+        "equip--eqi-exploracao"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Ferramentas de ofício",
+      "esperada": "equip--eqi-itens",
+      "linha": "| Ferramentas de ofício | Estojo portátil para um ofício escolhido | 10.000 | 0,5 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Ferramentas de ofício no livro, quanto está?",
+      "fontes": [
+        "equip--eqi-exploracao",
+        "equip--eqm-municao",
+        "pericias--oficios"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Traje 1",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Traje 1 | 30.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Traje 1 no livro?",
+      "fontes": [
+        "equip--eqc-precos",
+        "equip--eqp-traje"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Traje 1",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Traje 1 | 30.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Traje 1 no livro, quanto está?",
+      "fontes": [
+        "equip--eqp-traje",
+        "equip--eqm-municao",
+        "equip--eqf-roupas"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Traje 2",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Traje 2 | 90.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Traje 2 no livro?",
+      "fontes": [
+        "equip--eqc-precos",
+        "equip--eqp-traje"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Traje 2",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Traje 2 | 90.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Traje 2 no livro, quanto está?",
+      "fontes": [
+        "equip--eqp-traje",
+        "equip--eqm-municao",
+        "equip--eqf-roupas"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Traje 3",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Traje 3 | 270.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Traje 3 no livro?",
+      "fontes": [
+        "equip--eqc-precos",
+        "equip--eqp-traje"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Traje 3",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Traje 3 | 270.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Traje 3 no livro, quanto está?",
+      "fontes": [
+        "equip--eqp-traje",
+        "equip--eqm-municao",
+        "equip--eqf-roupas"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Revestimento 1",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Revestimento 1 | 150.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Revestimento 1 no livro?",
+      "fontes": [
+        "equip--eqc-precos",
+        "equip--eqp-escudo"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Revestimento 1",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Revestimento 1 | 150.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Revestimento 1 no livro, quanto está?",
+      "fontes": [
+        "equip--eqc-dinheiro",
+        "equip--eqm-municao",
+        "equip--eqp-escudo"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Revestimento 2",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Revestimento 2 | 450.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Revestimento 2 no livro?",
+      "fontes": [
+        "equip--eqc-precos",
+        "equip--eqp-escudo"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Revestimento 2",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Revestimento 2 | 450.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Revestimento 2 no livro, quanto está?",
+      "fontes": [
+        "equip--eqc-dinheiro",
+        "equip--eqm-municao",
+        "equip--eqp-escudo"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Revestimento 3",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Revestimento 3 | 1.350.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Revestimento 3 no livro?",
+      "fontes": [
+        "equip--eqc-precos",
+        "equip--eqp-escudo"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Revestimento 3",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Revestimento 3 | 1.350.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Revestimento 3 no livro, quanto está?",
+      "fontes": [
+        "equip--eqc-dinheiro",
+        "equip--eqm-municao",
+        "equip--eqp-escudo"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Broquel",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Broquel | 12.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Broquel no livro?",
+      "fontes": [
+        "equip--eqp-escudo",
+        "equip--eqc-precos"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Broquel",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Broquel | 12.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Broquel no livro, quanto está?",
+      "fontes": [
+        "equip--eqp-escudo",
+        "equip--eqc-inicial",
+        "equip--eqm-municao"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Escudo Médio",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Escudo Médio | 36.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Escudo Médio no livro?",
+      "fontes": [
+        "equip--eqp-escudo",
+        "equip--eqp-protecao",
+        "equip--eqc-precos"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Escudo Médio",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Escudo Médio | 36.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Escudo Médio no livro, quanto está?",
+      "fontes": [
+        "equip--eqp-escudo",
+        "equip--eqp-protecao",
+        "equip--eqm-municao"
+      ],
+      "achou": false
+    },
+    {
+      "item": "Escudo Torre",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Escudo Torre | 108.000 |",
+      "tipo": "direta",
+      "pergunta": "Quanto custa Escudo Torre no livro?",
+      "fontes": [
+        "equip--eqp-escudo",
+        "equip--eqp-protecao",
+        "equip--eqc-precos"
+      ],
+      "achou": true
+    },
+    {
+      "item": "Escudo Torre",
+      "esperada": "equip--eqc-precos",
+      "linha": "| Escudo Torre | 108.000 |",
+      "tipo": "mista",
+      "pergunta": "A gente estava falando de música e antes eu estava ouvindo Skyfall, mas por sinal, tinha pedido o valor de Escudo Torre no livro, quanto está?",
+      "fontes": [
+        "equip--eqp-escudo",
+        "equip--eqp-protecao",
+        "equip--eqm-municao"
+      ],
+      "achou": false
+    }
+  ]
+}

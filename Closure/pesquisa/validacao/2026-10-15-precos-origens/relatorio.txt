@@ -1,0 +1,27 @@
+R52 e preços do livro — 15/10/2026
+
+Escopo
+Continuação do pente fino autorizado, sem CONFIGURAÇÃO, cards, Argon ou chamadas pagas. Mizuki entregou o PDF R52 após a correção da permissão de personalizar Origens. O texto-fonte correspondente foi encontrado na mesma entrega local e comparado com os 511 blocos do R51. Páginas 99 e 100 do PDF foram conferidas visualmente; esta verificação não é uma auditoria da diagramação inteira.
+
+R52
+Apenas origens--legado-criar mudou. A regra permite criar menores compatíveis e Legados de história; a marcante segue opções publicadas, com a exceção de Criar sua Restrição no ramo corporal. Família própria do Descendente usa uma modalidade publicada para sua marcante. Base, vagas e demais números permanecem. Os testes incluem fonte completa de cada ramo, contestação em sequência e histórico contendo uma resposta antiga incorreta.
+
+O clone e o remoto JJK---Project ainda estavam em R51/v0.364 (82878e6). Não alteramos o repositório do sistema nem fingimos que o R52 está naquele commit. O sincronizador ganhou --entrega-livro para entregas locais aprovadas; registra hashes do texto e do PDF, edição, commit do catálogo e commit_livro nulo. commit/data_commit gerais ficam nulos nessa modalidade. A cópia do livro continua sendo gerada pelo sincronizador; não houve edição manual em dados/sistema. Catálogos preservados byte a byte.
+
+Uma sincronização comum a partir de R51 agora recusa regressar sobre R52; um retorno deliberado exige --permitir-retrocesso. A integração da entrega R52 no repositório do sistema e o PDF público do /livro continuam sendo trabalho separado do autor. O comando mantém o link configurado e informa a edição usada nas respostas; não publicamos o PDF nem mudamos o .env.
+
+Preços
+A auditoria percorre 83 nomes únicos de itens nas tabelas com coluna Preço, em duas formas de pergunta: direta e relato misto de música seguido de preço. Exclui nomes duplicados e exemplos de compras em conjunto; não certifica todos os apelidos, cálculos ou respostas do modelo.
+Antes: 149/166 consultas traziam a fonte e a linha esperadas. Faltavam 17 consultas, incluindo Bō, Pé de cabra, itens em tabelas de quatro colunas e proteções em tabelas de duas colunas.
+Depois: 166/166. A prioridade usa o cabeçalho Preço e o nome da linha, sem depender de cinco colunas ou de frequência do vocábulo; o filtro cotidiano consulta esse mesmo índice. O filtro de expressão “pé” conserva “pé de cabra”. Nenhum preço foi escrito no código. Bō 20.000, Pé de cabra 3.000, Telefone 30.000 e Traje 2 90.000 são lidos do livro em ienes.
+A auditoria de títulos manteve 425/425 fontes esperadas; QuickJS/Node iguais em 14/14 pedidos. 559 testes: 558 passaram, um online opcional pulado (156,123 s). Testes e hashes finais em verificacao.json e pacote.json.
+
+Limites e entrega
+Sem chamadas reais ao Gemini e sem implantação. Recuperar fonte correta não certifica que o modelo responderá corretamente; o teste manual continua necessário. Pacote acumulado sem .env em src/var/closure-lab-r52-precos-v13.zip, idêntico a closure-lab.zip. Mantém memória e mídia v12. Só núcleo gerado, livro.jsonl e MANIFESTO.json mudam dentro do ZIP em relação à v12.
+
+Reteste sugerido, após Commit e Rebuild
+1. O que posso criar na Origem? Depois: E a marcante? Deve limitar a criação às menores e à história, com a exceção corporal explícita.
+2. Posso criar uma marcante para uma família própria do Descendente? Deve adotar uma modalidade publicada.
+3. E a Restrição corporal? Pode criar? Deve consultar Criar sua Restrição e manter essa exceção.
+4. A música ficou na cabeça, mas qual o preço de um Pé de cabra no livro? Esperado ¥3.000. Repetir com Bō (¥20.000), Telefone (¥30.000) e Traje 2 (¥90.000).
+Os testes de memória/reinício e mídia propostos na v12 continuam válidos caso ainda não tenham sido feitos.
