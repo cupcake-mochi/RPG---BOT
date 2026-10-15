@@ -1,0 +1,24 @@
+Teste final no Discord — TR/perícias/carga
+
+Só após colocar o pacote novo na Discloud (preservando suas variáveis) e dar Commit + Rebuild.
+Os arquivos são dados sintéticos de validação, só a aba ANALISE; não substituem a ficha oficial.
+Não precisa chamar o chat da personagem nem gastar Gemini. Envie cada XLSX junto de GC:ficha.
+Para gerar os arquivos: .venv/bin/python ferramentas/preparar_testes_ficha_tr.py.
+Pasta: src/var/testes-tr-pericias/.
+
+1. 01-pessoal-verde.xlsx
+   Verde. Na página TR e perícias: Físico +4, Vigor +3, Intelecto +1, Espírito +1.
+   Confira que o resumo ficou curto e os bônus aparecem na página certa.
+2. 02-especialista-corda-amarelo.xlsx
+   Amarelo. Atletismo +7. Duas pendências da fórmula antiga: Corda 0,2 -> 1,0 e carga 0,5 -> 1,3.
+3. 03-domada-verde.xlsx
+   Verde. Na página TR e perícias, Invocação 1: Vigor +5 e Atletismo +4.
+   As notas de Buff/efeito para o mestre continuam visíveis em revisão.
+4. 04-tr-adulterado-vermelho.xlsx
+   Vermelho. Só o TR Vigor da Invocação 1 foi adulterado para 999; esperado +5.
+5. 05-tr-faltante-amarelo.xlsx
+   Amarelo. Falta escolher um dos dois TR. Deve dar uma pendência de TR, sem três avisos repetidos.
+
+Em qualquer painel: teste seletor, primeira/anterior/próxima/última. Bônus não devem sumir ao trocar.
+Se algum resultado diferir, mande a imagem e diga o nome do arquivo. Não precisa repetir testes antigos.
+Google com CONFIGURAÇÃO será outra validação, depois da integração dos dois contratos.

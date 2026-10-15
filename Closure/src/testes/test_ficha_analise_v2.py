@@ -44,7 +44,7 @@ class AnaliseV2(unittest.TestCase):
         def contrato(nome):
             linhas = (RAIZ / "dados/ficha" / nome).read_text().splitlines()
             return {k: (p, c) for k, p, c in (l.split("\t") for l in linhas if l and not l.startswith(("#", "chave\t")))}
-        antigo, novo = contrato("analise-chaves-v1.tsv"), contrato("analise-chaves.tsv")
+        antigo, novo = contrato("analise-chaves-v1.tsv"), contrato("analise-chaves-v2.tsv")
         self.assertEqual(len(novo), 4896)
         self.assertTrue(antigo.items() <= novo.items())
         for i in (1, 2, 3):

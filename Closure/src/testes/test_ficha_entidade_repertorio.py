@@ -173,12 +173,16 @@ class EntidadeRepertorio(unittest.TestCase):
         r = self.analisar(self.dominio(nivel=14, marco__refino=0), nivel=14)
         self.assertTrue(any("Refino 5" in p.esperado for p in r.problemas))
 
-    def test_dominio_sem_barreiras_custa_sete_e_nao_aprova_pericia(self):
+    def test_dominio_sem_barreiras_custa_sete_e_exige_ocultismo_do_dono(self):
         f = self.dominio(nivel=30, marco__refino=7, invocacao__1__exp__degrau="Sem Barreiras",
-                        invocacao__1__exp__pe="49 PE", invocacao__1__exp__acerto="Acerto 12d8")
+                        invocacao__1__exp__pe="49 PE", invocacao__1__exp__acerto="Acerto 12d8",
+                        pericia__ocultismo__treino=1, pericia__ocultismo__especialista=1)
         r = self.analisar(f, nivel=30)
         self.assertEqual(r.problemas, [])
-        self.assertTrue(any("perícias fica para a próxima etapa" in s for s in r.nao_conferido))
+        f["pericia.ocultismo.especialista"] = Campo(0, "", "entrada")
+        self.assertTrue(any("Ocultismo" in p.esperado for p in self.analisar(f, nivel=30).problemas))
+        del f["pericia.ocultismo.especialista"]
+        self.assertTrue(any("faltam as escolhas" in s for s in self.analisar(f, nivel=30).nao_conferido))
 
 
 class ResolucaoETalento(unittest.TestCase):

@@ -28,8 +28,9 @@ from .ficha_leitor import Campo
 from .ficha_magia import Magia
 from .ficha_equipamento import CatalogoEquipamento
 from .ficha_entidade_repertorio import RegrasEntidade
+from .ficha_testes import RegrasTestes
 
-FORMATOS_CONHECIDOS = {1, 2}
+FORMATOS_CONHECIDOS = {1, 2, 4}
 # O que a ficha mostra quando a pessoa ainda não escolheu: vale como vazio.
 NAO_ESCOLHIDO = {"", "—", "-", "escolha seu caminho", "escolha sua trilha", "escolha sua origem"}
 
@@ -137,6 +138,7 @@ class Referencias:
     magia: Magia | None = None
     equipamento: CatalogoEquipamento | None = None
     entidades: RegrasEntidade | None = None
+    testes: RegrasTestes | None = None
 
     @classmethod
     def do_livro(cls, dados: Path) -> "Referencias":
@@ -183,6 +185,7 @@ class Referencias:
             magia = Magia.do_livro(livro)
             equipamento = CatalogoEquipamento.do_livro(livro)
             entidades = RegrasEntidade.do_livro(livro)
+            testes = RegrasTestes.do_livro(livro, catalogo)
         except KeyError as erro:
             raise ValueError(f"o livro mudou: referência de magia ausente ({erro})") from erro
         referencias = cls(
@@ -190,7 +193,7 @@ class Referencias:
             aceitam_sem_tecnica=aceitam_sem_tecnica,
             marcos=tuple(int(n) for n in re.findall(r"\d+", niveis.group(1))) if niveis else (),
             refino_maximo=int(teto.group(1)) if teto else 0, uniformes=uniformes, escudos=_tabela_de_pecas(escudos),
-            duas_maos=frozenset(duas_maos), magia=magia, equipamento=equipamento, entidades=entidades)
+            duas_maos=frozenset(duas_maos), magia=magia, equipamento=equipamento, entidades=entidades, testes=testes)
         if len(origens) != 7 or len(ramos) != 2 or not referencias.marcos or len(uniformes) != 6 or len(referencias.escudos) != 3 \
                 or not duas_maos:
             raise ValueError("o livro mudou de forma: Origens, ramos, marcos, uniformes ou escudos não fecham")
@@ -480,8 +483,12 @@ def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha
     conferir_invocacoes(ficha, ref, resultado)
     from .ficha_repertorio import conferir_repertorio
     conferir_repertorio(ficha, ref, resultado)
+    from .ficha_testes import conferir_testes
+    avisos_substituidos = conferir_testes(ficha, ref, resultado)
     from .ficha_equipamento import conferir_uso
     conferir_uso(ficha, ref.equipamento, resultado)
+    from .ficha_carga import conferir_carga
+    conferir_carga(ficha, ref, resultado)
     if formato == 1:
         resultado.nao_conferido.append("feitiços e invocações: texto, Famílias, Classe 0 pessoal, Técnica Máxima e ajustes não estão completos na ANALISE")
     treinos, fontes = treinos_da_origem(ficha)
@@ -491,6 +498,8 @@ def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha
         if chave.startswith("buff.") and campo.valor not in ("", 0):
             resultado.notas.append(Problema("buff", chave, "", _fmt(campo.valor), ""))
         if campo.parte != "aviso":
+            continue
+        if chave in avisos_substituidos:
             continue
         tipo = classificar_aviso(chave, campo.valor)
         excesso = _a_mais(str(campo.valor)) if chave in _TREINOS else 0

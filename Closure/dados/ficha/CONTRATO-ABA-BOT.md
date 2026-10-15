@@ -1,5 +1,30 @@
 # Contrato da aba oculta `ANALISE`
 
+> **Versão documental 5, 15/10/2026.** O formato 4 amplia para **5.381 chaves**:
+> 4 cabeçalhos, 3.398 entradas, 1.563 resultados e 416 avisos. Preserva as 4.896 chaves do
+> formato 2, com a mesma célula, parte e fórmula; só `formato.versao` muda no prefixo antigo.
+> O bot aceita 1, 2 e 4. **O formato 3 está reservado à implementação paralela de CONFIGURAÇÃO**;
+> esta exportação 4 deriva do formato 2 e não incorpora CONFIGURAÇÃO/Bônus. A numeração não
+> significa que o bot já interprete aquela aba. Não aceitar 3 silenciosamente nem substituir a
+> exportação do outro trabalho por esta. A integração deve unir chaves e regras, escolher uma versão
+> final única e regenerar os testes/contratos antes de liberar a ficha consolidada.
+
+## Ampliação do formato 4
+
+- `pericia.<nome>.atributo/ajuste/bonus`, `oficio.<nome>.atributo/ajuste/bonus`,
+  `tr.<nome>.atributo/ajuste/bonus`: escolha e Buff/Debuff separados do resultado.
+- `invocacao.N.tr.<nome>.bonus` e `invocacao.N.pericia.K.bonus`: resultados.
+  As antigas `invocacao.N.buff.pericia.K` apontam para os mesmos resultados: ficam preservadas,
+  mas **não são ajustes independentes e nunca devem ser somadas como Buff**.
+- `equipavel.N.nome/quantidade/grau/volume` e `item.N.nome/quantidade/volume`: posições completas.
+  Nos seis equipáveis de menu, Volume é resultado; nas linhas livres, entrada declarada.
+- `carga.ajuste_limite`, `carga.total/limite`: ajuste separado dos resultados.
+- `invocacao.N.carga.item.K.nome/volume` e `carga.total/limite`: Volume de cada linha armazenada
+  é o total declarado; não há quantidade exportada para multiplicar de novo.
+- Lista atual gerada em `analise-chaves.tsv`; arquivos `analise-chaves-v1.tsv` e
+  `analise-chaves-v2.tsv` conservam os contratos antigos. Nenhuma das nove abas anteriores
+  mudou neste incremento de exportação; XLSX e Apps Script foram regenerados pelo gerador.
+
 > **Versão documental 4, 14/10/2026.** O formato 2 amplia a exportação para **4.896 chaves**:
 > quatro de cabeçalho, 3.115 entradas, 1.361 resultados e 416 avisos. Preserva todas as 2.650 chaves
 > anteriores, com a mesma parte e célula. O bot aceita os formatos 1 e 2; uma ficha antiga continua
@@ -18,7 +43,7 @@
   A lista antiga `familias` permanece compactada e não serve para reconstruir essas posições.
 - Textos, resolução escolhida e tipo de dano das cartas de entidades; registro dos trunfos da domada.
   Exportar um campo não significa que o bot já confira todo o seu efeito: cobertura em `ENTRADAS-FALTANTES-ANALISE.txt`.
-- A lista atual é `analise-chaves.tsv`; `analise-chaves-v1.tsv` conserva o contrato dos fixtures antigos.
+- Naquela etapa a lista era `analise-chaves.tsv`; hoje está arquivada em `analise-chaves-v2.tsv`.
   Para gerar a lista atual, use `ficha_analise.py chaves` com o XLSX ou o JSON de `monta.py --exportar-analise`.
   O XLSX e `apps-script/Analise.gs` foram regerados na branch `codex/analise-completa-v2` do gerador.
 

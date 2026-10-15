@@ -166,7 +166,11 @@ def conferir_repertorio_entidade(ficha, ref, base, nivel, cartas, familias, r):
     elif refino(dono, marcos_refino, ref) < rf:
         erro(b + ".degrau", f"Refino {rf}+ do invocador", ancora)
     if especializacao:
-        r.nao_conferido.append(f"{nome}: Sem Barreiras exige especialização em Ocultismo do dono; conferência de perícias fica para a próxima etapa")
+        ks = ("pericia.ocultismo.treino", "pericia.ocultismo.especialista")
+        if not all(k in ficha for k in ks):
+            r.nao_conferido.append(f"{nome}: faltam as escolhas de treino/especialização em Ocultismo do dono para Sem Barreiras")
+        elif any(valor(ficha, k) != 1 or isinstance(valor(ficha, k), bool) for k in ks):
+            erro(b + ".degrau", "treino e especialização em Ocultismo do invocador para Sem Barreiras", ancora)
     especiais = sum(".esp." in c for c in cartas)
     capacidade = 1 + nivel // 4
     if especiais + custo > capacidade:

@@ -58,7 +58,10 @@ ROTULOS = {"aviso.escolhas_de_pericia": "Perícias e ofícios", "aviso.pontos_di
            "tecnica.regra_propria.espacos": "Espaços da Regra Própria", "dominio.degrau": "Degrau do Domínio",
            "dominio.custo": "Espaços do Domínio", "origem.ce4": "Talento CE4 da Origem",
            "em_uso.principal": "Arma principal", "em_uso.secundaria": "Mão secundária",
-           "em_uso.vestindo": "Uniforme", "carga": "Carga"}
+           "em_uso.vestindo": "Uniforme", "carga": "Carga", "carga.total": "Carga total",
+           "carga.limite": "Limite de carga", "carga.ajuste_limite": "Buff/Debuff do limite de carga",
+           "treinos": "Escolhas de treino", "tr": "Testes de Resistência",
+           "atributos.base": "Pontos de atributo por criação e marcos", "atributos.corpo": "Pontos de Corpo"}
 
 
 def _rotulo(chave: str) -> str:
@@ -92,6 +95,13 @@ VALORES = {"vida": "Vida", "vida.max": "Vida", "vida_max": "Vida", "energia_max"
 
 def _nome_do_valor(chave: str) -> str:
     partes = chave.split(".")
+    if partes[0] in ("pericia", "oficio", "tr", "equipavel", "item") and len(partes) >= 2:
+        tipo = {"pericia": "Perícia", "oficio": "Ofício", "tr": "TR", "equipavel": "Equipável", "item": "Item"}[partes[0]]
+        nomes_tr = {"fisico": "Físico", "vigor": "Vigor", "intelecto": "Intelecto", "espirito": "Espírito"}
+        nome = nomes_tr.get(partes[1], partes[1].replace("_", " ").title()) if tipo == "TR" else partes[1].replace("_", " ").title()
+        campos = {"atributo": "atributo", "ajuste": "Buff/Debuff", "bonus": "bônus",
+                  "especialista": "especialização", "quantidade": "quantidade", "volume": "Volume", "nome": "nome"}
+        return tipo + " " + nome + (" · " + campos.get(partes[-1], partes[-1]) if len(partes) > 2 else "")
     if partes[0] == "atributo" and len(partes) >= 2:
         nome = ATRIBUTOS.get(partes[1], partes[1])
         return "Buff/Debuff de " + nome if partes[-1] == "buff" else nome
@@ -108,7 +118,7 @@ def _linha(p: Problema) -> str:
         return f"**{_rotulo(p.campo)}**: {valor}"
     if p.regra in ("conta", "formato"):
         return f"**{_rotulo(p.campo)}**: está {p.encontrado}, o certo é {p.esperado}"
-    if p.regra in ("equipamento", "carga", "talento"):
+    if p.regra in ("equipamento", "carga", "talento", "testes"):
         return f"**{_rotulo(p.campo)}**: {p.esperado} (informado: {p.encontrado})"
     if p.regra == "escolha":
         return f"**{_rotulo(p.campo)}**: falta {p.esperado.removeprefix('escolher ')}"
@@ -235,8 +245,18 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
             if len(linhas) < len(problemas):
                 valor += f"\n• Mais {len(problemas) - len(linhas)} na página Correções e revisão."
             resumo.add_field(name=nome, value=valor, inline=False)
-    pessoais, grupos = [], OrderedDict()
+    pessoais, grupos, testes = [], OrderedDict(), OrderedDict()
     for linha in resultado.conferidos:
+        numerico = re.fullmatch(r"(.+): bônus ([+-]\d+(?:\.\d+)?)", linha)
+        if numerico:
+            nome, valor = numerico.groups()
+            entidade = re.match(r"^(Invocação \d+) · (.+)$", nome)
+            if entidade:
+                categoria, nome = entidade.groups()
+            else:
+                categoria = "Testes de Resistência" if nome.startswith("TR ") else "Perícias e Ofícios"
+            testes.setdefault(categoria, []).append(f"**{nome}**: {valor}")
+            continue
         m = GRUPO.match(linha)
         if m:
             grupos.setdefault(m[1], []).append(_valor_legivel(m[2]))
@@ -254,6 +274,8 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
         inv = {re.match(r"Invocação \d+", g)[0] for g in grupos if g.startswith("Invocação ")}
         habilidades = sum(not re.fullmatch(r"Invocação \d+", g) for g in grupos)
         resumo.add_field(name="Detalhes conferidos", value=f"{habilidades} habilidade(s) · {len(inv)} invocação(ões). Use o seletor ou as setas para consultar.", inline=False)
+    if testes:
+        resumo.add_field(name="TR e perícias", value=f"{sum(map(len, testes.values()))} bônus conferidos. Veja a página TR e perícias.", inline=False)
     if resultado.nao_conferido:
         resumo.add_field(name="⏳ Ainda não conferido", value="Conferência parcial: há itens para revisão manual. Veja a página Limites da análise.", inline=False)
     saida.append(("Resumo", resumo))
@@ -263,6 +285,10 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
             campos_revisao += _campos(nome, [_linha(p) for p in problemas])
     adicionar("Correções e revisão", campos_revisao)
     adicionar("Personagem", _campos("Outros valores conferidos", extras))
+    campos_testes = []
+    for categoria, linhas in testes.items():
+        campos_testes += _campos(categoria, linhas)
+    adicionar("TR e perícias", campos_testes)
     feiticos, entidades = [], OrderedDict()
     for grupo, linhas in grupos.items():
         if re.fullmatch(r"Invocação \d+", grupo):
