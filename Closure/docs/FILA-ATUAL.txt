@@ -5,19 +5,19 @@ CONCLUÍDO
 - Correções de ficha até TR, perícias/Ofícios e carga; painéis paginados. Testes das cópias nativas do Sheets confirmados pelo Mizuki no Discord.
 - Busca ampliada do livro, preços e Origem R52; Mizuki confirmou os casos novos no Discord.
 - Conversa recente persistida no SQLite cifrado; Mizuki confirmou preservação após novo Commit. Proteção contra exclusão durante respostas implementada.
-- Imagem/GIF anexado e áudio curto implementados, desligados. Bateria de 18 encerrada: visuais 10/10, áudio 4/8; US$ 0,1800225 cheio, sem uso incerto.
+- Imagem/GIF anexado e áudio curto implementados. Mizuki ativou mídia na Discloud e confirmou GIF anexado, voz e três bipes na v17. Bateria de 18 encerrada: visuais 10/10, áudio 4/8; US$ 0,1800225 cheio, sem uso incerto.
 - V16: silêncio digital convertido detectado localmente; pedido simples recebe aviso sem modelo. 75 testes locais passaram, zero chamadas pagas; não muda a nota da bateria anterior.
 
 - Política revisada publicada e conferida no mesmo gist em 15/10.
 - V17 candidata: medições de tons e orientação de escuta preparadas; ainda sem comparação de respostas.
 
 PRÓXIMOS
-1. Piloto de mídia na Discloud pelo Mizuki: pacote v16, imagem, GIF como arquivo e voz humana curta. Conferir memória/latência. Roteiro em pesquisa/validacao/2026-10-15-midia/teste-no-discord.txt, com adendo v16. Não enviar .env ou chave no chat.
+1. Retestar GIF do seletor com o pacote v18 na Discloud. Klipy fornece MP4 na prévia: leitura implementada com até três quadros, sem áudio, sem chave nova. Localmente validado; acesso ao exemplo real recusado por HTTP 403, sem contorno. Roteiro em pesquisa/validacao/2026-10-15-gif-seletor-v18/teste-no-discord.txt. Preservar MIDIA_ATIVA=1, banco e chave; não enviar .env no chat.
 2. Validar áudio v17 contra v16: proposta de 24 chamadas, US$ 0,25–0,50 estimados e teto US$ 1,50. Aguardar aprovação explícita; sem usar saldo anterior. Plano em pesquisa/validacao/2026-10-15-audio-v17/.
 3. Receber o resultado de CONFIGURAÇÃO do outro chat e só então integrar ao leitor/corretor. Preservar as 5.381 chaves ANALISE 4 e compatibilidade; PR 3 do gerador exige aprovação própria, não juntar por conta desta fila.
 
 PARA DEPOIS, QUANDO PEDIDO
 - Consulta automática do livro para perguntas apenas faladas/em imagem; hoje é necessário texto para recuperar a fonte.
-- GIFs por link/Tenor/Giphy e vídeos completos; não fazem parte do piloto atual.
+- Vídeos completos e links de provedores sem suporte. GIFs do seletor Klipy/Tenor/Giphy agora estão no piloto v18.
 - Comandos de consulta de regras, calendário de sessões e aniversários.
 - Cards/lorebook: mudanças só após proposta aprovada. Argon e otimizações inativas continuam congelados.

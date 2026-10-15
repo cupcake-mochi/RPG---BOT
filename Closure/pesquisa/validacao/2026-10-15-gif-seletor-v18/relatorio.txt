@@ -1,0 +1,24 @@
+GIF do seletor do Discord — v18, 15/10/2026
+
+Pedido: Mizuki confirmou o GIF anexado, a voz e os três bipes na Discloud com a mídia ativada. Pediu o mesmo fluxo para GIFs enviados pelo seletor. O exemplo fornecido é https://klipy.com/gifs/anime-my-dress-up-darling-3; a URL de mídia que ele copiou do Discord aponta para uma prévia MP4 em images-ext-1.discordapp.net, originária de static.klipy.com.
+
+Implementação: midia_gifs.py reconhece páginas de Klipy/Tenor/Giphy no texto e usa apenas a prévia do Discord associada ao mesmo link. Aceita GIF ou MP4 em CDNs exatas desses provedores, diretamente ou pelo proxy externo validado do Discord. Não busca a página do provedor, não precisa de chave adicional, não segue redirecionamentos e não aceita links arbitrários/YouTube. Sem prévia inicial, aguarda 0,6 s e faz uma única releitura da mesma mensagem (até 2 s), conferindo que o link não foi removido. Não responde de novo a eventos de atualização.
+
+O primeiro anexo tem prioridade; sem anexo, apenas o primeiro GIF reconhecido é tentado. A mesma vaga de processamento cobre download e preparação. Mantidos 5 MiB, 4 milhões de pixels por quadro, 15 s, 120 quadros, 40 milhões de pixels de trabalho, processo isolado e limites de CPU/memória. O MP4 da prévia é decodificado por pipe com demuxer MOV fixo e protocolo pipe apenas, sem arquivo local. A primeira passagem mede quadros/duração; a segunda extrai início, meio e fim em JPEG reduzido, sem áudio. Vídeos genéricos anexados não foram habilitados. O pedido inclui até três imagens, usa a reserva e a rota Vertex Flash existentes, sem nova chamada auxiliar ao modelo. O arquivo não entra no histórico/reflexão nem em turnos futuros. Metadados do link já analisado são omitidos para não dizer ao modelo que o conteúdo não foi visto.
+
+Validação: 14 testes específicos passaram, cobrindo URL real fornecida, normalização sem acesso externo, vínculo entre link e embed, proxy, host/porta/credenciais/caminhos inválidos, GIF puro, MP4 sintético com cores diferentes, início/fim, atraso da prévia, edição da mensagem, download bloqueado, redirecionamento, limites no cabeçalho e no fluxo de bytes, excesso de duração/quadros, ausência de áudio no pedido, prioridade de anexo, primeiro GIF, configuração desligada, canal não permitido, cancelamento e limpeza de vaga. Os mesmos 14 passaram a partir do ZIP extraído (2,084 s), com código idêntico ao local. Um teste da camada Discord adicional passa a mídia real preparada até o pedido, com transporte do modelo simulado.
+
+A primeira execução geral encontrou uma falha no teste de HTTP: o gerenciador de contexto simulado tinha __aexit__ sem retorno False e suprimia as exceções. Corrigido somente esse mock. As recusas reais do downloader foram preservadas. Durante a revisão também foi reforçada a recusa de URL sem hostname, com teste correspondente. Resultado da execução geral final no fim deste relatório.
+
+Limite da evidência: o acesso daqui à mensagem e à mídia reais devolveu HTTP 403. Não foi contornado e nenhuma imagem do exemplo foi enviada ao Gemini. A prévia está representada pelos endereços públicos fornecidos pelo Mizuki e pelo formato de objeto documentado; a interpretação e o download na hospedagem ainda dependem do reteste dele. Tenor/Giphy têm testes de seleção/validação de URLs, não certificação online. Não afirmar que o vídeo inteiro foi visto, que houve escuta ou que todos os GIFs do seletor funcionam.
+
+Política: docs/PRIVACIDADE.md publicada novamente no mesmo gist, conteúdo relido e comparado exatamente, visibilidade preservada. Inclui arquivos do seletor, origem e limite de quadros, sem áudio da prévia. Registros da publicação e tentativas de leitura ficam em pesquisa/privado/. Nada alterado na Discloud pelo agente; .env real, banco, teto, cards/lorebook, Argon e CONFIGURAÇÃO preservados. Zero chamadas pagas. A proposta comparativa de 24 chamadas de áudio continua sem aprovação.
+
+Pacote: src/var/closure-lab-gif-seletor-v18.zip, 55 arquivos; tamanho/hash em pacote.json. Sem .env, banco, pesquisa privada ou chaves conhecidas. A ativação continua MIDIA_ATIVA=1 na hospedagem. Roteiro em teste-no-discord.txt.
+
+Fontes técnicas consultadas:
+- Discord, tipos e campos de Embed (inclui gifv, video, thumbnail e proxy_url): https://github.com/discord/discord-api-docs/blob/main/developers/resources/message.mdx
+- Klipy, domínios de entrega documentados: https://docs.klipy.com/
+- Tenor, formatos de mídia: https://developers.google.com/tenor/guides/response-objects-and-errors
+
+Resultado final: 609 testes executados, 608 passaram e um online opcional foi pulado, em 140,207 segundos. Os 14 testes específicos também passaram separadamente e no ZIP extraído. Logs gerais em pesquisa/privado/testes-gif-seletor-final.log; log do pacote em testes-pacote.log.

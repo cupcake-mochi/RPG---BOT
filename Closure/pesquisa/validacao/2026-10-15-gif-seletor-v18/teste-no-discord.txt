@@ -1,0 +1,10 @@
+Piloto v18 — GIF do seletor
+
+1. Suba src/var/closure-lab-gif-seletor-v18.zip por Commit e Rebuild. Preserve o .env, o banco e a chave do banco. MIDIA_ATIVA=1 já foi configurado pelo Mizuki; não precisa de outra chave nem de outra variável. Se MIDIA_CANAIS estiver preenchido, use um canal dessa lista.
+2. Pelo seletor do Discord, envie novamente o GIF https://klipy.com/gifs/anime-my-dress-up-darling-3 e chame a guia: “@Guias do Ciclo, o que acontece nesse GIF?”. Se precisar mandar em duas mensagens, coloque a pergunta como resposta à mensagem que contém o link e inclua o link novamente no texto, porque a mídia só é recebida no turno atual.
+3. Confira se a resposta descreve a animação observável, sem dizer que recebeu só texto nem inventar som. São até três quadros, não a animação inteira. Não há descrição esperada fixada: o agente não conseguiu baixar o arquivo real, que devolveu HTTP 403.
+4. Se disser que a prévia não chegou ou que o arquivo passou dos limites, mande a resposta aqui. Não fique repetindo: pode ser um limite do arquivo ou da prévia, não falta de ativação. Uma mensagem por vez.
+
+Uma tentativa de análise usa uma chamada paga, como um GIF anexado; estimativa de US$ 0,02–0,06 para uma resposta curta, variável conforme contexto e saída. O teto da hospedagem continua valendo. Nenhuma chamada automática foi feita pelo agente nesta entrega.
+
+Limites: um anexo ou primeiro GIF por pedido, até 5 MiB, 15 segundos, 120 quadros e 40 milhões de pixels de trabalho. MP4 é aceito apenas como a prévia vinculada a um GIF do seletor, não como vídeo genérico. Klipy, Tenor e Giphy possuem URLs reconhecidas; disponibilidade real depende da prévia do Discord e do servidor de mídia. YouTube continua somente título/canal. Não enviar prints do .env.

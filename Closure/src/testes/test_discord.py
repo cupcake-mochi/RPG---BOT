@@ -136,6 +136,23 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertIn('todas as amostras', entrada[-1]['content'])
         self.assertTrue(all('midias' not in m for m in entrada))
 
+    async def test_gif_do_seletor_entra_no_chat_sem_metadado_contraditorio(self):
+        from closure_bot.midia_anexos import Anexos
+        from closure_bot.midia import AVISO
+        from testes.test_midia_gifs import LINK, mensagem, mp4
+        self.bot.anexos=Anexos(ativo=True,download_gif=AsyncMock(return_value=mp4()))
+        self.montar.return_value=[{'role':'user','content':AVISO},{'role':'user','content':'Veja o GIF '+LINK}]
+        canal,webhook=_canal();m=_mensagem('Closure, o que aparece? '+LINK,canal)
+        m.attachments=[];m.embeds=mensagem().embeds
+        await self.bot.get_cog('Chat').on_message(m)
+        self.bot.modelos.responder.assert_awaited_once()
+        e=self.bot.modelos.responder.call_args.args[0]
+        self.assertEqual(len([p for p in e[-1]['midias'] if 'inlineData' in p]),3)
+        self.assertNotIn(AVISO,e[0]['content'])
+        self.assertNotIn('conteúdo não assistido/ouvido',e[-1]['content'])
+        self.assertIn('GIF do seletor (klipy)',e[-1]['content'])
+        webhook.send.assert_awaited_once()
+
     async def test_apagar_durante_preparo_de_midia_impede_envio(self):
         from closure_bot.midia_anexos import Preparo
         async def preparar(*a):

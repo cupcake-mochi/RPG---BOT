@@ -88,8 +88,8 @@ class Midias:
             self._cache.popitem(last=False)
         return info
 
-    async def contexto(self, mensagem, texto: str, *, incluir_anexos=True) -> str:
-        links = URL.findall(texto)
+    async def contexto(self, mensagem, texto: str, *, incluir_anexos=True, links_analisados=()) -> str:
+        links = [u for u in URL.findall(texto) if u.rstrip('.,!?)]') not in links_analisados]
         ids = list(dict.fromkeys(i for url in links if (i := video_id(url))))[:2]
         dados = []
         if ids:
