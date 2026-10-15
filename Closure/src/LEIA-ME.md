@@ -15,6 +15,15 @@ Classe 0 e Máxima; confere entrada carregada/retorno e CE dos Talentos por ganh
 foram calculadas no Google e relidas localmente. Não é correção integral de todo efeito, Domínio ou custom;
 limites em `../dados/ficha/ENTRADAS-FALTANTES-ANALISE.txt`. Sem Gemini pago nesta rodada.
 
+**Continuação de 15/10:** equipamento tabelado tem requisitos refeitos sem depender dos avisos da ficha.
+Entidades com arma conhecida recebem Defesa e acerto conferidos; falta de treino/Força é pendência,
+sem retirar proteção. Extras da Principal não acumulam carta e Talento; CE própria explícita respeita
+o ganho. Trunfos da domada usam seu nível fixo, tabelas próprias e vagas de especiais para Domínio.
+Ataque/CD das habilidades vêm das entradas, incluindo Precisão, sem usar os resultados calculados.
+Reserva Profunda prevê o acréscimo por Classe; o Buff legado exige revisão para não contar duas vezes.
+Carga pessoal, texto/custom e efeitos condicionais continuam parciais. Paramos antes de TR/perícias;
+CONFIGURAÇÃO está no outro chat. Esta continuação tem validação local; ainda precisa de novo pacote na Discloud.
+
 **Painel de ficha:** resumo, revisão, habilidades, invocações e limites em páginas do mesmo embed.
 `ficha_paginacao.py` controla o seletor e as quatro setas; qualquer pessoa no canal pode folhear sem nova
 leitura ou cálculo. Dez minutos sem interação encerram os controles e devolvem o resumo à mensagem.
@@ -47,6 +56,8 @@ do bot, os controles antigos também precisam de nova análise. Funciona em `/fi
 | `closure_bot/ficha_leitor.py` | Lê a aba oculta `ANALISE` da ficha, do `.xlsx` baixado (openpyxl) ou do link aberto (CSV), e normaliza os valores (fase 3) |
 | `closure_bot/ficha_corretor.py` | Confere a ficha sem IA: formato, nomes, vida, PE, Integridade, proteção, Defesa e avisos. Chama as contas de montagem de `ficha_magia.py`. Regras de campanha e custom continuam só na estrutura, até CONFIGURAÇÃO |
 | `closure_bot/ficha_repertorio.py` | Recalcula capacidade e ocupação do repertório, Categoria/nível dos Talentos, concessões de Leque/Origem, Regra Própria e requisitos/custo cumulativo de Domínio. Não converte aplicações gratuitas em vagas nem aprova efeitos/custom por um custo válido |
+| `closure_bot/ficha_entidade_repertorio.py` | Confere escolhas extras da Principal e custos/níveis/quantidades dos trunfos da domada; Domínio compartilha vagas com especiais. Não aprova a técnica própria nem a montagem escrita só em texto |
+| `closure_bot/ficha_equipamento.py` | Extrai requisitos, mãos e Volume das tabelas do livro; confere Força/patente e subtotal equipado das entidades. Quantidade, Volume livre e Buff de carga faltantes impedem certificar a carga pessoal |
 | `closure_bot/ficha_efeitos.py` | Bases e escadas de alcance/área extraídas do R51; confere as medidas e o tipo de resolução. Não usa bônus exportados como entrada nem interpreta escolhas escritas em prosa |
 | `closure_bot/ficha_magia.py` | Tabelas e preços do R51 lidos do livro. Confere Classe, PE nominal, limites de peças/Restrições, parte do dano-base; nas entidades, nível, Classe, entrada e retorno. Na ANALISE 2 também confere Famílias, Classe 0/Máxima e CE por ganho; os números de entidade ficam em `ficha_entidade.py`. Não certifica contas ainda parciais; detalhes em `../dados/ficha/ENTRADAS-FALTANTES-ANALISE.txt` |
 | `closure_bot/cogs/ficha.py` | `/ficha analisar` e `GC:ficha` (link escrito depois ou `.xlsx` anexo na mensagem): painel no canal com o que corrigir, o que o mestre confere, o que bateu e o que falta conferir, aberto por frase fixa de quem está de plantão. **Ligado** desde 14/10 (`LIGADO`); lê `dados/sistema/catalogos.json` e `livro.jsonl`, que o pacote leva |

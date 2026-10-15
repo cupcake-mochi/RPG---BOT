@@ -44,7 +44,9 @@ class Repertorio:
                    "origens--latente-beneficios": "Manifestação Instintiva", "origens--receptaculo-excecoes": "Traço Incorporado",
                    "origens--corpo-ninhada-gemeos": "Construção Especializada",
                    "origens--origem-receptaculo": "dois feitiços adicionais",
-                   "origens--restricao-menores-corporais": "Prática Cotidiana"}
+                   "origens--restricao-menores-corporais": "Prática Cotidiana",
+                   "catalogo--cat-passivas-3": "PE máximo aumenta em 3 × sua maior Classe",
+                   "catalogo--cat-mira": "+2 no ataque ou +2 na CD"}
         if (set(progressao) != set(range(1, 31)) or len(talentos) != 20 or len(dominios) != 3
                 or any(t not in livro[a] for a, t in guardas.items())):
             raise ValueError("o livro mudou a aquisição do repertório: revise o corretor")
