@@ -1,4 +1,4 @@
-# Prompt de continuidade (14/10/2026)
+# Prompt de continuidade (15/10/2026)
 
 Cole tudo abaixo da linha numa conversa nova (Claude, ChatGPT ou Codex) pra retomar de onde paramos.
 
@@ -7,6 +7,21 @@ Cole tudo abaixo da linha numa conversa nova (Claude, ChatGPT ou Codex) pra reto
 Oi, sou o Mizuki. Vamos continuar o Guias do Ciclo, o bot de Discord do servidor da minha guilda, que joga o Ciclo Maldito (meu RPG de mesa no universo de Jujutsu Kaisen). O bot tem duas personagens de Arknights que se revezam no plantão: a Kal'tsit, das 9h às 21h, e a Closure, das 21h às 9h, no horário de Brasília. Elas tiram dúvida de regra pelo livro, contam o mundo do jogo, mostram o clima e conversam. As duas ficam fora da história: são guias, não existem no mundo do jogo.
 
 COMO EU GOSTO DE TRABALHAR
+Estado mais recente (15/10, prevalece sobre o histórico abaixo): Argon congelado; CONFIGURAÇÃO em outro
+chat, sem integração aqui. Etapas de magia, repertório, equipamento, trunfos, TR/perícias/Ofícios e carga
+foram ampliadas no bot. ANALISE formato 4, 5.381 chaves, preserva as 4.896 do formato 2; formato 3
+reservado à CONFIGURAÇÃO. Gerador em /tmp/ficha-tr-pericias-20261015, PR 3 de Ficha---RPG-JJK em
+rascunho: não juntar sem aprovação específica. O bot anterior foi integrado pelo PR 48 de RPG---BOT.
+O pente fino posterior é a busca v10: nomes exatos, fontes nas contestações e panorama de recomendações,
+incluindo Malabarista, Condutor Armado e o Treino de Combate da Parceria (nível 2, uma categoria de armas).
+O R51 permite criar com o mestre uma marcante e menores: a primeira fala da imagem tinha respaldo;
+o erro foi negar a permissão após o usuário questionar. Fonte origens--legado-criar, junto da escolha padrão.
+Auditoria 425/425 títulos únicos achou as fontes; não prova a qualidade de 425 respostas. Testes e limites em
+pesquisa/validacao/2026-10-15-consulta-livro-v10/relatorio.txt. Pacote acumulado sem .env:
+src/var/closure-lab-consulta-revisada.zip. Recibo Git em pesquisa/privado/publicacao-consulta-v10.json.
+Nenhuma API real ou implantação nesta revisão; o novo pacote ainda precisa de conferência no Discord.
+Cards, lorebook e livro preservados. As confirmações anteriores de Discord não validam as etapas posteriores.
+
 Estado mais recente desta continuação (14/10): Argon está congelado. Mizuki fez Commit e Rebuild na Discloud
 e confirmou os testes antigos de ficha por captura do Discord. A revisão posterior do bot foi integrada ao main
 pelo PR 41. Mizuki também aprovou individualmente o PR 2 do gerador,

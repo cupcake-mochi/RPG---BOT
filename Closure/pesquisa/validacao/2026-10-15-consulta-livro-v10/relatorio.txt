@@ -1,0 +1,114 @@
+Pente fino da consulta do livro — busca v10
+15/10/2026
+
+Resultado
+A seleção de fontes foi ampliada para recomendações, contestação e nomes exatos.
+517 testes locais executados: 516 passaram e um online opcional foi pulado (112,936 s).
+Os 49 testes focados passaram (47,883 s); QuickJS e Node também coincidiram nos
+14 pedidos da atualização e nos três casos novos de recomendação/contestação/nome exato.
+Nenhuma chamada real ao Gemini/Vertex ou implantação na Discloud nesta revisão.
+
+O que as imagens mostraram
+1. Origem: a primeira resposta tinha respaldo no livro. O R51, em Personalizar sua Origem
+   (origens--legado-criar), permite criar com o mestre uma marcante e menores compatíveis,
+   usando as entradas publicadas como referência e registrando o pacote antes da sessão.
+   O erro foi negar essa permissão depois da contestação. A terceira pergunta já recebia
+   fontes de criar Domínio/entidades, perdendo o assunto da Origem.
+2. Armas: a pergunta ampla recebia apenas ab--ab-caminho e emanador--ema-condutor.
+   Faltavam alternativas e condições para comparar Trilhas. Mizuki também pediu Parceria:
+   seu Treino de Combate de nível 2 concede uma categoria de armas, não todas.
+3. A associação de Condutor Armado à Vanguarda foi esclarecida pelo Mizuki; ele pertence
+   ao Emanador. Não foi alterada nenhuma regra para acompanhar essa associação equivocada.
+
+Fonte conferida
+Ciclo Maldito v0.364 / R51, 511 blocos. O clone do sistema e o main remoto estavam no
+mesmo commit 82878e607fb4b31e253eeb85659ddb62122637ce durante a conferência.
+Livros, catálogos, manifesto, cards Closure v0.37/Kal'tsit v0.30 e lorebook v2.0 conservam
+os hashes anteriores. Os dados embutidos na página continuam iguais: só a lógica mudou.
+
+Mudanças
+- Títulos dos metadados entram nas definições, mesmo quando não se repetem no Markdown.
+  Nome principal exato prevalece sobre radical ou subseção parecida: Socorro/Socorrista,
+  Artes do Vínculo/Vínculo, entre outros. Uma comparação que pede ambos mantém ambos.
+  Definições específicas dispensam preenchimento por fontes de outra família; complementos
+  explícitos, como os da Energia Reversa e das contas de montagem, continuam permitidos.
+- Até seis mensagens anteriores do usuário podem conservar uma cadeia de confirmações,
+  detalhes ou contestações. Um assunto novo interrompe a cadeia. Conversa casual não
+  ressuscita uma regra antiga. O histórico que vai ao modelo conserva o limite anterior.
+- Personalização da Origem recebe a permissão específica e a escolha padrão juntas.
+  A nota de consulta manda conferir as fontes antes de mudar uma conclusão e distinguir
+  regra padrão, personalização autorizada e história sem benefício mecânico.
+- Recomendações/listas/comparações de Caminhos e Trilhas recebem um panorama derivado
+  do livro: seis Caminhos, 18 Trilhas principais e as duas entradas adicionais de rotas
+  do Batedor. Recortes literais trazem âncoras, apresentação e treinos de arma dos Caminhos.
+  Uma subseção relevante inteira de cada Trilha pode acompanhar o panorama, com nível,
+  custo e condições; não se corta a regra no meio para caber. Conteúdo e rótulos têm
+  orçamento de 12.000 caracteres, além do cabeçalho. Não se repete seção já enviada inteira.
+- A recomendação ampla de armas recebe Malabarista e Condutor Armado completos, além
+  do panorama com o Treino de Combate da Parceria e os treinos da Vanguarda. Pergunta
+  explícita sobre um Caminho restringe o panorama a ele; rotas do mesmo Batedor não
+  consomem as três vagas de fontes completas numa comparação.
+- Permanecem até três blocos completos e uma chamada de modelo por resposta normal.
+  A nota distingue os recortes do panorama das regras completas, sem certificar o que
+  não aparece neles. Não houve alteração de card, esforço, modelo ou perfil Argon.
+
+Validação e alcance da régua
+auditoria-titulos.json registra antes/depois para os 425 títulos principais únicos do
+livro, com perguntas uniformes "No livro, como funciona TITULO?". A fonte esperada
+aparecia em 421/425 e passou a 425/425. Essa contagem mede presença de fonte, não
+425 respostas corretas. Títulos repetidos, exemplos, continuações e paráfrases ficam
+fora da régua e podem continuar exigindo desambiguação/contexto.
+
+Os 15 testes novos cobrem a sequência das imagens, confirmações além de dois turnos,
+assunto novo, café, condições da Parceria, fontes literais, limite do panorama, catálogo
+independente dos Caminhos/Trilhas, preço pontual, Caminho associado errado, nomes
+exatos, comparação de nomes contidos e igualdade dos motores. A suíte anterior de
+consulta/montagem e os testes da ficha também passaram; a análise da ficha não mudou.
+Erros HTTP e valores de reserva nos logs da suíte são simulados pelos testes, não gastos.
+
+Tamanho do contexto
+comparacao-contextos.json registra 12 consultas antes/depois, com hora/nome fixos.
+Caracteres da última mensagem montada, não tokens nem estimativa de preço:
+- Café: 2.774 → 2.774; recomendação de café: 2.775 → 2.775. Pedidos completos iguais.
+- Origem: 9.301 → 9.840; contestação: 7.670 → 8.209; terceiro turno: 7.466 → 10.198.
+- Armas, recomendação ampla: 7.120 → 21.393; Parceria pontual: 6.852 → 7.391.
+- Trilhas da Vanguarda: 6.689 → 12.581.
+- Reversa: 9.021 → 9.560; Cura: 9.489 → 10.028; katana: 7.079 → 7.618.
+- Socorro: 7.101 → 7.537, agora com a própria entrada sem Socorrista.
+A ampliação mais relevante fica nas recomendações que precisam comparar alternativas.
+Não foi medido custo ou tempo de uma resposta real; não se promete economia.
+
+Reprodução local, sem modelo
+De Closure/:
+  .venv/bin/python ferramentas/prompt_do_site/site_prompt.py --atualizar
+  .venv/bin/python ferramentas/auditar_consulta_livro.py --saida /tmp/auditoria-titulos.json
+De Closure/src/:
+  ../.venv/bin/python -m unittest discover -s testes
+A opção --comparar da auditoria aceita um nucleo.js anterior salvo e não modifica o
+cache persistente. O núcleo anterior usado nesta revisão está só em pesquisa/privado/.
+
+Pacote para conferir no Discord
+src/var/closure-lab-consulta-revisada.zip, sem .env, 50 arquivos, 979.989 bytes.
+SHA256: 873a59aa31064b305a19a7c26b259f6065badd04169ca3be41dd45a263d7fb5e.
+Também salvo como src/var/closure-lab.zip. Conteúdo idêntico às fontes e Python compilável;
+nenhum valor secreto do .env encontrado. Contra closure-lab-tr-pericias.zip, a única
+diferença é src/var/site/nucleo.js: as melhorias anteriores de ficha estão preservadas.
+O ZIP fica fora do Git; o repositório recebe modelo, testes, auditor e este relatório.
+
+Roteiro curto de confirmação após o Mizuki subir Commit + Rebuild
+1. "O que posso criar na Origem?" Depois: "Tem certeza? Achei que só a menor e os Legados."
+   Depois: "Então por que disse que dá para criar?" Manter a permissão de criar marcante
+   e menores com o mestre, com compatibilidade e registro, citando Personalizar sua Origem.
+2. "Recomende Trilhas para lutar com várias armas diferentes." Comparar condições; não
+   alegar que só Condutor Armado está disponível. "E a Parceria?" deve explicar seu treino
+   de nível 2 em uma categoria; não tratar isso como treino de todas as armas.
+3. "No livro, como funciona Socorro?" Não responder com a Trilha Socorrista.
+4. "Qual a diferença entre Artes do Vínculo e Vínculo?" Distinguir as duas entradas.
+5. Repetir uma conta de Cura Classe 5 e uma pergunta de preço/progressão da rodada anterior.
+As respostas reais podem variar mesmo com a fonte correta; essa etapa ainda está pendente.
+Os testes de Discord confirmados em 14/10 pertencem às versões anteriores.
+
+Limites preservados
+Sem integração de CONFIGURAÇÃO ou alterações no gerador/planilha oficial. O PR 3 do
+gerador continua separado, em rascunho. Argon permanece congelado. Não se declara
+conhecimento integral de todas as regras nem resistência perfeita a contestação.
