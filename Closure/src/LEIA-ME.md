@@ -6,14 +6,20 @@ Esqueleto da fase 1 do `docs/PLANEJAMENTO.md`, escrito em 13/10/2026. O bot anti
 **O que já faz:** sobe, responde `/ping` lendo o `MANIFESTO.json`, decide quem responde a cada mensagem
 (por horário e pelo nome chamado), monta o pedido com card, lorebook, livro, estado e ficha da pessoa, chama o
 modelo e envia a fala com o nome e o avatar de cada personagem. Roda na Discloud desde 13/10.
-Em 14/10, Mizuki confirmou os testes de ficha depois de Commit e Rebuild. A ampliação ANALISE 2 posterior
-foi conferida fora do Discord e ainda não foi implantada.
+Em 14/10, Mizuki confirmou os testes de ficha depois de Commit e Rebuild, incluindo as quatro novas cópias
+ANALISE 2, e cinco testes de consulta no chat. A navegação do painel por páginas foi preparada depois e aguarda atualização.
 
 **Ficha, ANALISE 2:** 4.896 chaves; formatos 1 e 2 aceitos. `ficha_entidade.py` refaz atributos, vida com
 Buff, Defesa reconhecida, acerto desarmado, CD e deslocamento-base. `ficha_magia.py` lê Famílias exatas,
 Classe 0 e Máxima; confere entrada carregada/retorno e CE dos Talentos por ganho. Quatro cópias preenchidas
 foram calculadas no Google e relidas localmente. Não é correção integral de todo efeito, Domínio ou custom;
 limites em `../dados/ficha/ENTRADAS-FALTANTES-ANALISE.txt`. Sem Gemini pago nesta rodada.
+
+**Painel de ficha:** resumo, revisão, habilidades, invocações e limites em páginas do mesmo embed.
+`ficha_paginacao.py` controla o seletor e as quatro setas; qualquer pessoa no canal pode folhear sem nova
+leitura ou cálculo. Dez minutos sem interação encerram os controles e devolvem o resumo à mensagem.
+Depois disso, rode a análise novamente para abrir. Não persiste a ficha ou as páginas em banco; após reinício
+do bot, os controles antigos também precisam de nova análise. Funciona em `/ficha analisar` e `GC:ficha`.
 
 ## Arquivos
 

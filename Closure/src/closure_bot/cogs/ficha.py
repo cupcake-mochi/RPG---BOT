@@ -1,7 +1,7 @@
 """Correção de ficha pela aba oculta ANALISE (fase 3 do docs/PLANEJAMENTO.md). LIGADO desde 14/10/2026.
 
 `/ficha analisar` (e `GC:ficha`, em cogs/atalho.py) com o link da planilha aberta ou o .xlsx anexo: lê a aba (ficha_leitor.py), confere sem IA
-(ficha_corretor.py) e responde no canal com um painel: o que precisa corrigir (reprova), o que falta ou pede atenção
+(ficha_corretor.py) e responde no canal com um painel paginado: o que precisa corrigir (reprova), o que falta ou pede atenção
 (sobra de pontos, TR por escolher, falta de Força: avisa sem reprovar), o que o mestre confere (Buff/Debuff e Origem
 que a ficha não calcula), o que bateu e o que ainda não é conferido. A frase de abertura é fixa, uma por guia e
 por veredito, com o nome e o avatar de quem está de plantão (o Mizuki, 14/10/2026: "na voz dela, no chat", com
@@ -14,7 +14,9 @@ from __future__ import annotations
 
 import logging
 import re
+from collections import OrderedDict
 from datetime import datetime
+from functools import partial
 
 import discord
 from discord import app_commands
@@ -22,6 +24,7 @@ from discord.ext import commands
 
 from ..ficha_corretor import LIVRO, Problema, Referencias, Resultado, conferir
 from ..ficha_leitor import Campo, FichaIlegivel, de_link, de_xlsx
+from ..ficha_paginacao import enviar_relatorio
 from ..plantao import CLOSURE, FUSO, KALTSIT, de_plantao
 
 log = logging.getLogger(__name__)
@@ -57,18 +60,43 @@ def _rotulo(chave: str) -> str:
     if chave.startswith("buff."):
         return "Buff/Debuff de " + chave[5:].replace("_", " ")
     partes = chave.split(".")
-    if partes[0] in ("feitico", "liberacao", "invocacao") and len(partes) > 1 and partes[1].isdigit():
-        nome = {"feitico": "Feitiço", "liberacao": "Liberação", "invocacao": "Invocação"}[partes[0]] + f" {partes[1]}"
+    if partes[0] in ("feitico", "liberacao", "invocacao", "zero") and len(partes) > 1 and partes[1].isdigit():
+        nome = {"feitico": "Feitiço", "liberacao": "Liberação", "invocacao": "Invocação", "zero": "Classe 0"}[partes[0]] + f" {partes[1]}"
+        resto = partes[2:]
         if len(partes) > 3 and partes[2] in ("bas", "esp", "ext"):
             nome += " · " + {"bas": "básica", "esp": "especial", "ext": "habilidade da Trilha"}[partes[2]] + " " + partes[3]
-        rotulos = {"pe": "PE", "dano": "dano", "classe": "Classe", "nivel": "nível", "retorno": "retorno",
-                   "entrada": "entrada", "pecas": "Melhorias", "restricoes": "Restrições", "pontos": "atributos",
-                   "nome": "nome", "forma": "Forma", "nivel_fixo": "nível de aquisição"}
-        return nome + (" · " + rotulos[partes[-1]] if partes[-1] in rotulos else "")
-    return chave
+            resto = partes[4:]
+        return nome + (" · " + _nome_do_valor(".".join(resto)) if resto else "")
+    if partes[0] == "maxima":
+        return "Técnica Máxima · " + _nome_do_valor(".".join(partes[1:]))
+    return _nome_do_valor(chave)
+
+
+ATRIBUTOS = {"forca": "Força", "destreza": "Destreza", "constituicao": "Constituição",
+             "inteligencia": "Inteligência", "essencia": "Essência"}
+VALORES = {"vida": "Vida", "vida.max": "Vida", "vida_max": "Vida", "energia_max": "PE", "pe": "PE", "dano": "dano-base",
+           "classe": "Classe", "nivel": "nível", "retorno": "retorno", "entrada": "entrada", "cd": "CD",
+           "acerto": "acerto", "defesa": "Defesa", "deslocamento": "deslocamento", "pecas": "Melhorias",
+           "restricoes": "Restrições", "pontos": "atributos", "nome": "nome", "forma": "Forma",
+           "nivel_fixo": "nível de aquisição", "familias": "Famílias", "montagem": "montagem"}
+
+
+def _nome_do_valor(chave: str) -> str:
+    partes = chave.split(".")
+    if partes[0] == "atributo" and len(partes) >= 2:
+        nome = ATRIBUTOS.get(partes[1], partes[1])
+        return "Buff/Debuff de " + nome if partes[-1] == "buff" else nome
+    if partes[0] == "buff":
+        return "Buff/Debuff de " + VALORES.get(".".join(partes[1:]), " ".join(partes[1:]))
+    return VALORES.get(chave, chave.replace("_", " ").replace(".", " · "))
 
 
 def _linha(p: Problema) -> str:
+    if p.regra == "buff":
+        valor = p.encontrado
+        if re.fullmatch(r"\d+(?:[.,]\d+)?", valor):
+            valor = "+" + valor
+        return f"**{_rotulo(p.campo)}**: {valor}"
     if p.regra in ("conta", "formato"):
         return f"**{_rotulo(p.campo)}**: está {p.encontrado}, o certo é {p.esperado}"
     if p.regra == "escolha":
@@ -89,21 +117,7 @@ def _linha(p: Problema) -> str:
     return f"**{_rotulo(p.campo)}**: {p.encontrado}"
 
 
-def _campo(linhas: list[str]) -> str:
-    """Até 1024 caracteres por campo do embed; o que não couber vira "e mais N"."""
-    texto, usadas = "", 0
-    for linha in linhas:
-        if len(texto) + len(linha) + 40 > 1024:
-            break
-        texto += ("\n" if texto else "") + "• " + linha
-        usadas += 1
-    if usadas < len(linhas):
-        texto += f"\n• e mais {len(linhas) - usadas}"
-    return texto
-
-
-def painel(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: dict | None = None) -> discord.Embed:
-    """O que o comando responde: veredito, o que corrigir, o que o mestre confere, o que bateu e o que falta conferir."""
+def _base(resultado: Resultado, ficha: dict[str, Campo], persona) -> discord.Embed:
     nome = str(ficha.get("nome", Campo("", "", "")).valor).strip()
     titulo = f"Ficha de {nome}" if nome else "Ficha sem nome"
     if not nome:
@@ -114,23 +128,178 @@ def painel(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: di
             if isinstance(nivel, int) and not isinstance(nivel, bool) and nivel > 0:
                 titulo += f", nível {nivel}"
     cor = COR["pendente"] if resultado.veredito == "aprovada" and resultado.pendencias else COR.get(resultado.veredito, 0xCC0102)
-    embed = discord.Embed(title=titulo, color=cor,
+    embed = discord.Embed(title=titulo[:256], color=cor,
                           description=FALA.get(persona.chave, FALA[KALTSIT]).get(resultado.veredito, ""))
     embed.set_author(name=persona.nome, icon_url=persona.avatar_url or None)
-    if resultado.problemas:
-        embed.add_field(name="❌ Precisa corrigir", value=_campo([_linha(p) for p in resultado.problemas]), inline=False)
-    if resultado.pendencias:
-        embed.add_field(name="⚠️ Falta ou pede atenção", value=_campo([_linha(p) for p in resultado.pendencias]), inline=False)
-    if resultado.notas:
-        embed.add_field(name="👀 Pro mestre conferir", value=_campo([_linha(p) for p in resultado.notas]), inline=False)
-    if resultado.conferidos:
-        embed.add_field(name="✅ Conferido e certo", value=_campo(resultado.conferidos), inline=False)
-    if resultado.nao_conferido:
-        embed.add_field(name="⏳ Ainda não conferido", value=_campo(resultado.nao_conferido), inline=False)
-    livro = (manifesto or {}).get("edicao_livro")
-    embed.set_footer(text=f"Veredito: {resultado.veredito} · regras do livro" + (f" {livro}" if livro else "")
-                          + " · o mestre pode recusar mesmo com tudo certo")
     return embed
+
+
+def _dividir(texto: str, limite=950) -> list[str]:
+    """Preserva o conteúdo completo, inclusive uma linha sem espaços maior que um campo."""
+    partes = []
+    while len(texto) > limite:
+        corte = texto.rfind(" ", 0, limite + 1)
+        if corte < limite // 2:
+            corte = limite
+        partes.append(texto[:corte])
+        texto = texto[corte:].lstrip(" ")
+    if texto:
+        partes.append(texto)
+    return partes
+
+
+def _campos(nome: str, linhas: list[str]) -> list[tuple[str, str]]:
+    campos, partes = [], []
+    for linha in linhas:
+        partes.extend(_dividir("• " + linha))
+    atual = ""
+    for parte in partes:
+        if atual and len(atual) + len(parte) + 1 > 1000:
+            campos.append((nome, atual))
+            atual = ""
+        atual += ("\n" if atual else "") + parte
+    if atual:
+        campos.append((nome, atual))
+    return campos
+
+
+def _valor_legivel(texto: str) -> str:
+    if " " not in texto:
+        return texto
+    chave, valor = texto.split(" ", 1)
+    if re.fullmatch(r"-?\d+(?:\.\d+)?", valor):
+        if chave in ("entrada", "retorno"):
+            valor += " PE"
+        elif chave == "deslocamento":
+            valor += " m"
+        elif chave == "acerto" and not valor.startswith("-"):
+            valor = "+" + valor
+    return _nome_do_valor(chave) + " " + valor
+
+
+GRUPO = re.compile(r"^((?:Feitiço|Liberação|Classe 0) \d+|Técnica Máxima|Invocação \d+(?: · (?:básica|especial|habilidade da Trilha) \d+)?): (.*)$")
+
+
+def _nome_grupo(grupo: str, ficha: dict[str, Campo]) -> str:
+    chave = grupo.replace("Técnica Máxima", "maxima").replace("Classe 0", "zero")
+    for de, para in (("Feitiço", "feitico"), ("Liberação", "liberacao"), ("Invocação", "invocacao"),
+                     ("habilidade da Trilha", "ext"), ("básica", "bas"), ("especial", "esp")):
+        chave = chave.replace(de, para)
+    chave = chave.replace(" · ", ".").replace(" ", ".") + ".nome"
+    nome = str(ficha.get(chave, Campo("", "", "")).valor).strip()
+    nome = discord.utils.escape_mentions(discord.utils.escape_markdown(nome))
+    return (grupo + (" — " + nome if nome else ""))[:220]
+
+
+def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: dict | None = None) -> list[discord.Embed]:
+    """Resumo e páginas por assunto. Só apresenta o Resultado; não refaz nem altera contas."""
+    saida: list[tuple[str, discord.Embed]] = []
+
+    def adicionar(categoria, campos):
+        atual = None
+        for nome, valor in campos:
+            if atual is None or len(atual) + len(nome) + len(valor) > 3800 or len(atual.fields) >= 8:
+                atual = _base(resultado, ficha, persona)
+                atual.description = f"**{categoria}**"
+                saida.append((categoria, atual))
+            atual.add_field(name=nome[:256], value=valor, inline=False)
+
+    resumo = _base(resultado, ficha, persona)
+    estado = "Aprovada com pendências" if resultado.veredito == "aprovada" and resultado.pendencias else resultado.veredito.capitalize()
+    titulo_estado = f"{estado} nas verificações feitas" if resultado.veredito != "formato desconhecido" else "Formato desconhecido — análise não realizada"
+    resumo.add_field(name="Resultado", value=f"**{titulo_estado}**\n"
+                     f"{len(resultado.problemas)} erro(s) · {len(resultado.pendencias)} pendência(s) · {len(resultado.notas)} ajuste(s) para o mestre", inline=False)
+    revisao = [("❌ Precisa corrigir", resultado.problemas), ("⚠️ Falta ou pede atenção", resultado.pendencias),
+               ("👀 Pro mestre conferir", resultado.notas)]
+    for nome, problemas in revisao:
+        if problemas:
+            linhas, tamanho = [], 0
+            for p in problemas[:3]:
+                linha = _linha(p)
+                if tamanho + len(linha) > 600:
+                    break
+                linhas.append(linha)
+                tamanho += len(linha) + 3
+            valor = "\n".join("• " + l for l in linhas)
+            if len(linhas) < len(problemas):
+                valor += f"\n• Mais {len(problemas) - len(linhas)} na página Correções e revisão."
+            resumo.add_field(name=nome, value=valor, inline=False)
+    pessoais, grupos = [], OrderedDict()
+    for linha in resultado.conferidos:
+        m = GRUPO.match(linha)
+        if m:
+            grupos.setdefault(m[1], []).append(_valor_legivel(m[2]))
+        else:
+            pessoais.append(linha)
+    basicos, extras = [], []
+    for prefixos in (("Caminho ", "Trilha ", "Origem "), ("Vida ", "PE ", "Integridade "), ("Proteção ", "Defesa ")):
+        linha = " · ".join(t for t in pessoais if t.startswith(prefixos))
+        if linha:
+            basicos.append(linha)
+    extras = [t for t in pessoais if not t.startswith(("Caminho ", "Trilha ", "Origem ", "Vida ", "PE ", "Integridade ", "Proteção ", "Defesa "))]
+    if basicos:
+        resumo.add_field(name="✅ Conferido e certo", value="\n".join(basicos)[:1000], inline=False)
+    if grupos:
+        inv = {re.match(r"Invocação \d+", g)[0] for g in grupos if g.startswith("Invocação ")}
+        habilidades = sum(not re.fullmatch(r"Invocação \d+", g) for g in grupos)
+        resumo.add_field(name="Detalhes conferidos", value=f"{habilidades} habilidade(s) · {len(inv)} invocação(ões). Use o seletor ou as setas para consultar.", inline=False)
+    if resultado.nao_conferido:
+        resumo.add_field(name="⏳ Ainda não conferido", value="Conferência parcial: há itens para revisão manual. Veja a página Limites da análise.", inline=False)
+    saida.append(("Resumo", resumo))
+    campos_revisao = []
+    for nome, problemas in revisao:
+        if problemas:
+            campos_revisao += _campos(nome, [_linha(p) for p in problemas])
+    adicionar("Correções e revisão", campos_revisao)
+    adicionar("Personagem", _campos("Outros valores conferidos", extras))
+    feiticos, entidades = [], OrderedDict()
+    for grupo, linhas in grupos.items():
+        if re.fullmatch(r"Invocação \d+", grupo):
+            linhas_agrupadas = []
+            usadas = set()
+            for prefixos in (("nível ", "Classe "), ("Vida ", "Defesa ", "acerto ", "CD ", "deslocamento "),
+                             ("entrada ", "retorno "), tuple(a + " " for a in ATRIBUTOS.values())):
+                partes = [l for l in linhas if l.startswith(prefixos)]
+                usadas.update(partes)
+                if partes:
+                    linhas_agrupadas.append(" · ".join(partes))
+            linhas_agrupadas.extend(l for l in linhas if l not in usadas)
+        else:
+            linhas_agrupadas = [" · ".join(linhas)]
+        campos = _campos(_nome_grupo(grupo, ficha), linhas_agrupadas)
+        if grupo.startswith("Invocação "):
+            entidade = re.match(r"Invocação \d+", grupo)[0]
+            entidades.setdefault(entidade, []).extend(campos)
+        else:
+            feiticos.extend(campos)
+    adicionar("Feitiços e técnicas", feiticos)
+    for nome, campos in entidades.items():
+        adicionar(nome, campos)
+    limites = OrderedDict()
+    for linha in resultado.nao_conferido:
+        if ": " in linha:
+            assunto, detalhe = linha.split(": ", 1)
+            limites.setdefault(detalhe, []).append(assunto)
+        else:
+            limites.setdefault(linha, []).append("Conferência manual")
+    campos_limites = []
+    for detalhe, assuntos in limites.items():
+        assuntos = list(dict.fromkeys(assuntos))
+        nome = " · ".join(assuntos)
+        linhas = [detalhe] if len(nome) <= 220 else [" · ".join(assuntos[i:i+8]) for i in range(0, len(assuntos), 8)] + [detalhe]
+        campos_limites += _campos(nome if len(nome) <= 220 else "Vários itens", linhas)
+    adicionar("Limites da análise", campos_limites)
+    livro = (manifesto or {}).get("edicao_livro")
+    for i, (categoria, embed) in enumerate(saida):
+        embed.set_footer(text=f"Página {i + 1} de {len(saida)} · {categoria} · Veredito: {resultado.veredito} · livro"
+                         + (f" {livro}" if livro else "") + (" · controles por 10 min" if len(saida) > 1 else "")
+                         + " · o mestre pode recusar mesmo com tudo certo")
+    return [embed for _, embed in saida]
+
+
+def painel(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: dict | None = None) -> discord.Embed:
+    """Compatibilidade para quem só precisa do resumo da análise."""
+    return paginas(resultado, ficha, persona, manifesto)[0]
 
 
 class Ficha(commands.Cog):
@@ -140,8 +309,8 @@ class Ficha(commands.Cog):
         self.bot = bot
         self.referencias = Referencias.do_livro(bot.config.dados)
 
-    async def analisar_fonte(self, *, link: str | None = None, arquivo: discord.Attachment | None = None) -> discord.Embed | str:
-        """Lê e confere a ficha. Devolve o painel, ou o texto do problema de leitura. Serve à barra e ao GC:ficha."""
+    async def analisar_fonte(self, *, link: str | None = None, arquivo: discord.Attachment | None = None) -> list[discord.Embed] | str:
+        """Lê e confere a ficha. Devolve as páginas, ou o erro de leitura. Serve à barra e ao GC:ficha."""
         try:
             if arquivo is not None:
                 if not arquivo.filename.lower().endswith(".xlsx") or arquivo.size > LIMITE_ANEXO:
@@ -156,7 +325,7 @@ class Ficha(commands.Cog):
         resultado = conferir(ficha, self.referencias, LIVRO)  # configuração de campanha fica para B47 fase 2
         log.info("ficha analisada: %s, %d problema(s)", resultado.veredito, len(resultado.problemas))
         persona = self.bot.personas[de_plantao(datetime.now(FUSO))]
-        return painel(resultado, ficha, persona, getattr(self.bot, "manifesto", None))
+        return paginas(resultado, ficha, persona, getattr(self.bot, "manifesto", None))
 
     @grupo.command(name="analisar", description="Confere a ficha pelo link da planilha ou pelo .xlsx anexo.")
     @app_commands.describe(link="Link da ficha no Google Planilhas, aberta pra leitura", arquivo="A ficha baixada em .xlsx")
@@ -168,7 +337,7 @@ class Ficha(commands.Cog):
         await interacao.response.defer(thinking=True)  # o painel fica no canal, pra o mestre ver
         resposta = await self.analisar_fonte(link=link, arquivo=arquivo)
         # depois do defer público o Discord não deixa nem o aviso de erro ser só pra quem pediu
-        await interacao.followup.send(**({"embed": resposta} if isinstance(resposta, discord.Embed) else {"content": resposta}))
+        await enviar_relatorio(resposta, partial(interacao.followup.send, wait=True, allowed_mentions=discord.AllowedMentions.none()))
 
 
 async def setup(bot: commands.Bot) -> None:

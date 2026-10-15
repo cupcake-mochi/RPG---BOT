@@ -1,0 +1,53 @@
+Painel de ficha por páginas — 14/10/2026
+
+Pedido
+Mizuki confirmou as quatro fichas ANALISE 2 no Discord, mas considerou difícil ler o painel.
+Aprovou embed com primeira/anterior/próxima/última e trouxe exemplos do seletor da Nekotina
+e das setas da Mudae, permitindo emojis padrão. Implementados seletor de páginas e quatro botões.
+
+Apresentação
+- Resumo com resultado, contagens, erros/pendências/notas principais e os números básicos agrupados.
+- Páginas de correções/revisão, outros valores pessoais quando houver, feitiços/técnicas,
+  cada invocação e limites da análise. Só as seções com conteúdo geram páginas.
+- Atributos e valores da entidade recebem nomes legíveis; Buffs identificam o atributo/reserva e sinal.
+- Invocação agrupa nível/Classe, vida/Defesa/acerto/CD/movimento, PE de entrada/retorno e atributos.
+  Básicas e especiais aparecem separadas, com o nome escrito na ficha.
+- Avisos de mesmo conteúdo compartilham a lista de assuntos. Nenhum item é descartado para caber.
+  Texto longo é repartido em campos e páginas; limites de 1.024 por campo e 6.000 por embed respeitados.
+- O resumo pode abreviar a lista de problemas, sempre apontando para a revisão completa nas páginas.
+- Cor vermelha para erro, amarela para aprovada com pendência e verde sem pendência preservadas.
+  O resultado continua limitado às verificações feitas; os limites seguem acessíveis.
+
+Navegação
+- Seletor direto e botões ⏮️ Primeira, ◀️ Anterior, ▶️ Próxima, ⏭️ Última.
+- Indicador Página X de Y e seção no rodapé. Botões de borda desabilitados quando não se aplicam.
+- Qualquer pessoa que veja a mensagem no canal pode folhear; a página exibida é compartilhada.
+- Até 25 opções visíveis por janela; as setas alcançam páginas fora dela. Teste com 60 páginas.
+- Dez minutos de inatividade encerram os controles e devolvem o resumo à mensagem.
+  O último clique fornece a interação para encerrar também após uma navegação longa.
+- Sem persistência nova: reiniciar o bot encerra os controles antigos; rode a análise novamente.
+- GC:ficha e /ficha analisar usam o mesmo envio. Não há leitura, cálculo ou modelo ao folhear.
+
+Diagnóstico corrigido
+O aviso geral de falta de textos/Famílias/Classe 0/Máxima/ajustes continua no formato 1.
+No formato 2 ele era desatualizado: os campos já existem. Removido só esse aviso geral;
+limitações específicas de Selo, texto, resolução, repertório e entidade permanecem.
+Não foi ampliada a cobertura das contas nesta alteração.
+
+Validação
+- Suíte completa: 351 testes em 141,122 s; 350 aprovados e um online opcional pulado.
+- 13 testes específicos aprovados: cores/avisos, rótulos e Buffs, quatro montagens, limites de texto,
+  agrupamento sem perda, SDK de componentes, setas/seletor, janela com 60 páginas, cliques simultâneos,
+  timeout com e sem clique, envio simples/paginado e comando de barra sem reler ao navegar.
+- Quatro capturas completas da ANALISE arquivadas foram relidas localmente: todas continuam aprovadas
+  sem erros ou pendências. Domada: vida 34/Defesa 13; criação: vida 98/Defesa 14.
+- Páginas por caso: 3, 4, 3 e 3. Resumos: 661, 773, 669 e 644 caracteres, incluindo metadados.
+- previa.txt contém a apresentação calculada dessas quatro cópias, sem links/identificadores de conta.
+- Nenhuma chamada de modelo, envio ao Discord ou mudança de card/lorebook/livro pelo agente.
+- Os testes ao vivo enviados pelo usuário validam a apresentação anterior. Os controles novos
+  precisam de um teste de interface no Discord após atualizar o pacote, sem uso de Gemini.
+
+Pacote
+src/var/closure-lab-painel-ficha.zip: 44 arquivos, sem .env. Conteúdo comparado aos originais
+e varredura dos segredos locais aprovada. Inclui ANALISE 2 e busca v9, além da nova apresentação.
+Pacotes anteriores preservados. Nenhum envio à Discloud pelo agente.

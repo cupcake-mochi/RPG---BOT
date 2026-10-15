@@ -69,3 +69,9 @@ Entrega e limites
   a resposta final do modelo nem cobre todas as combinações dos 511 blocos.
 - Próxima conferência: no Discord, repetir as duas perguntas reais e testar
   preço de Melhoria e valores de progressão; observar cálculo, limites e voz.
+
+Confirmação posterior no Discord — 14/10/2026
+Mizuki enviou duas capturas de 22h32–22h33. Os cinco casos de conversa passaram na conferência visual:
+Energia Reversa com funcionamento/limites; Cura 10d8 e Onda 7d8 na Classe 5; continuação com 15−5 e 15−8;
+Refino básico 4/Maestria +2 no nível 14; Longe normal por 3 pontos na Classe 5.
+Validação destes cinco casos, não de todas as combinações do livro. Nenhuma chamada adicional pelo agente.
