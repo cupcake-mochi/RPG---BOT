@@ -1,0 +1,23 @@
+{
+  "metodo": "RSS somado do processo de prova com ClosureBot/ponte carregados e seus filhos, amostrado a cada 10 ms; ambiente local, sem conexão Discord ou modelo. Inclui bibliotecas de geração de fixture; não é medição da Discloud nem garantia sob concorrência.",
+  "amostras": [
+    {
+      "caso": "imagem_4mp",
+      "segundos": 0.345,
+      "pico_rss_soma_kib": 184228,
+      "nota": "uma imagem reduzida; detalhes e textos pequenos podem estar ilegíveis"
+    },
+    {
+      "caso": "gif_3_quadros",
+      "segundos": 0.265,
+      "pico_rss_soma_kib": 138292,
+      "nota": "3 quadros de animação (3.00 s); movimentos entre os quadros não foram enviados"
+    },
+    {
+      "caso": "audio_fala",
+      "segundos": 0.164,
+      "pico_rss_soma_kib": 142024,
+      "nota": "um áudio de 4.37 segundos; sem vídeo"
+    }
+  ]
+}

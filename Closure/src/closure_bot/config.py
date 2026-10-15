@@ -102,6 +102,8 @@ class Config:
     teto_preco: str = "cheio"
     livro_url: str = LIVRO_PADRAO
     gasto_externo_usd: float = 0.0
+    midia_ativa: bool = False
+    midia_canais: frozenset[int] = frozenset()
 
     def escuta(self, canal_id: int) -> bool:
         return not self.canais or canal_id in self.canais
@@ -119,6 +121,12 @@ def carregar(arquivo: Path | None = None, ambiente: dict[str, str] | None = None
     if modelo_chat not in ("", "gemini-3.8-flash", "gemini-4-argon", "misto"):
         raise ValueError("MODELO_CHAT deve ser gemini-3.8-flash, gemini-4-argon ou misto")
     canais_argon = valores.get("ARGON_CANAIS", "").replace(" ", "")
+    midia = valores.get("MIDIA_ATIVA", "0").strip().lower()
+    if midia not in ('0', '1', 'false', 'true'):
+        raise ValueError('MIDIA_ATIVA deve ser 0 ou 1')
+    canais_midia = valores.get('MIDIA_CANAIS', '').replace(' ', '')
+    if canais_midia and any(not c.isdigit() or int(c) <= 0 for c in canais_midia.split(',')):
+        raise ValueError('MIDIA_CANAIS deve conter IDs positivos separados por vírgula')
     if canais_argon and any(not c.isdigit() or int(c) <= 0 for c in canais_argon.split(",")):
         raise ValueError("ARGON_CANAIS deve conter IDs positivos separados por vírgula")
     teto_argon = _decimal(valores.get("ARGON_TETO_USD"))
@@ -158,4 +166,6 @@ def carregar(arquivo: Path | None = None, ambiente: dict[str, str] | None = None
         teto_preco=teto_preco,
         livro_url=valores.get("LIVRO_URL", "").strip() or LIVRO_PADRAO,
         gasto_externo_usd=_decimal(valores.get("GASTO_EXTERNO_USD")) or 0.0,
+        midia_ativa=midia in ('1', 'true'),
+        midia_canais=frozenset(int(c) for c in canais_midia.split(',') if c),
     )

@@ -1,0 +1,16 @@
+{
+  "data": "2026-10-15",
+  "testes_completos": {
+    "executados": 585,
+    "passaram": 584,
+    "pulados": 1,
+    "segundos": 136.845
+  },
+  "testes_direcionados": 106,
+  "testes_executor": 2,
+  "chamadas_reais": 18,
+  "midia_ativa": false,
+  "discloud_alterada": false,
+  "avaliacao": "avaliacao.json",
+  "reserva_incerta_usd": 0
+}

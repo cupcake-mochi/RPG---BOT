@@ -23,6 +23,7 @@ de sistema, o resto é a conversa.
 from __future__ import annotations
 
 import asyncio
+import base64
 import logging
 import math
 import re
@@ -137,6 +138,40 @@ def ler_fila(texto: str) -> list[tuple[str, str]]:
     return fila
 
 
+def reserva_midia(entrada: list[dict]) -> int:
+    """Reserva visual conservadora, independente dos bytes do texto/base64.
+
+    Só aceita a saída normalizada do preparador, no último turno do usuário.
+    Não autoriza enviar mídia ao modelo apenas por uma estimativa declarada.
+    """
+    imagens = audios = extras = 0
+    for i, m in enumerate(entrada):
+        partes = m.get('midias', [])
+        if not partes:
+            continue
+        if i != len(entrada) - 1 or i == 0 or m['role'] != 'user' or len(partes) > 6:
+            raise ValueError('mídia só é permitida no último turno do usuário')
+        for parte in partes:
+            if set(parte) == {'text'} and isinstance(parte['text'], str) and len(parte['text']) <= 180:
+                extras += len(parte['text'].encode())
+                continue
+            if set(parte) != {'inlineData'} or set(parte['inlineData']) != {'mimeType', 'data'}:
+                raise ValueError('parte de mídia inválida')
+            blob = parte['inlineData']
+            if not isinstance(blob['data'], str) or len(blob['data']) > 1_400_000:
+                raise ValueError('mídia grande')
+            dados = base64.b64decode(blob['data'], validate=True)
+            if blob['mimeType'] == 'image/jpeg' and dados.startswith(b'\xff\xd8'):
+                imagens += 1
+            elif blob['mimeType'] == 'audio/wav' and dados[:4] == b'RIFF' and dados[8:12] == b'WAVE':
+                audios += 1
+            else:
+                raise ValueError('tipo de mídia inválido')
+    if imagens > 3 or audios > 1 or (imagens and audios):
+        raise ValueError('limite de mídia por mensagem excedido')
+    return imagens * 4096 + audios * 2048 + extras
+
+
 def montar_corpo(entrada: list[dict], raciocinio: str | None = None, *, modelo: str = FLASH,
                  argon_max_saida: int = ARGON_MAX_SAIDA) -> dict:
     """`raciocinio` ("low", "medium", "high") limita o quanto o modelo pensa antes de falar; None ou "modelo" deixa o padrão dele."""
@@ -147,9 +182,12 @@ def montar_corpo(entrada: list[dict], raciocinio: str | None = None, *, modelo: 
         raciocinio = "low"
     if raciocinio and raciocinio != "modelo":
         geracao["thinkingConfig"] = {"thinkingLevel": raciocinio}
+    tem_midia = reserva_midia(entrada)
+    if tem_midia and modelo != FLASH:
+        raise ValueError('mídia exige o Flash validado para esta integração')
     return {
         "system_instruction": {"parts": [{"text": entrada[0]["content"]}]},
-        "contents": [{"role": "user" if m["role"] == "user" else "model", "parts": [{"text": m["content"]}]}
+        "contents": [{"role": "user" if m["role"] == "user" else "model", "parts": [{"text": m["content"]}] + m.get('midias', [])}
                      for m in entrada[1:]],
         "generationConfig": geracao,
     }
@@ -249,7 +287,12 @@ class Modelos:
         """`so_pagos` deixa de fora o provedor gratuito, que pelos termos do Google pode usar o que recebe pra
         treinar modelo e passar por revisão humana. É pra pedido com mensagem de várias pessoas, como a reflexão diária."""
         base = FILA_REFLEXAO if gatilho == "reflexao" else self.fila
-        if usar_argon and gatilho != "reflexao":
+        adicionais_midia = reserva_midia(entrada)
+        if adicionais_midia:
+            # Piloto com uma única tentativa: não replica anexos no gratuito ou
+            # em modelo sem validação. O fluxo textual mantém a fila anterior.
+            base, so_pagos = [("vertex", FLASH)], True
+        if usar_argon and gatilho != "reflexao" and not adicionais_midia:
             base = [("vertex", ARGON)] + [(p, m) for p, m in base if m != ARGON]
         fila = [(p, m) for p, m in base if self._chaves.get(p) and (not so_pagos or p in PAGOS)]
         if not fila:
@@ -281,7 +324,7 @@ class Modelos:
             corpo = montar_corpo(pedido, raciocinio, modelo=modelo, argon_max_saida=self.argon_max_saida)
             # Reserva conservadora para chamadas concorrentes: bytes UTF-8 de texto + saída máxima.
             # Estimativa local, não uma garantia da fatura (timeouts podem ser cobrados sem usageMetadata).
-            reserva = custo_usd(modelo, sum(len(m["content"].encode()) for m in pedido) + 256,
+            reserva = custo_usd(modelo, sum(len(m["content"].encode()) for m in pedido) + 256 + adicionais_midia,
                                 corpo["generationConfig"]["maxOutputTokens"],
                                 sem_promocao=self.teto_preco == "cheio") if provedor in PAGOS else 0.0
             if provedor in PAGOS and self.gasto_do_mes() + self._reservado + reserva > self.teto_usd:
@@ -308,6 +351,12 @@ class Modelos:
                 except asyncio.TimeoutError:
                     raise Falhou("rede", f"sem resposta em {espera:.0f} s")
                 uso = ler_uso(dados)
+                if adicionais_midia:
+                    # Só contagens retornadas pela API; nenhum conteúdo do anexo.
+                    modalidades = {str(x.get('modality')): x.get('tokenCount')
+                        for x in dados.get('usageMetadata', {}).get('promptTokensDetails', [])
+                        if x.get('modality') in ('IMAGE', 'AUDIO', 'TEXT')}
+                    log.info('mídia: tokens de entrada por modalidade=%s', modalidades)
                 texto, cortada, entrada_tk, saida_tk = ler_resposta(dados)
             except Falhou as erro:
                 ultimo_erro = erro
@@ -373,6 +422,10 @@ async def _enviar_http(url: str, corpo: dict, chave: str) -> dict:
             # a chave vai no cabeçalho, não na URL, pra não aparecer em registro de acesso
             async with sessao.post(url, json=corpo, headers={"x-goog-api-key": chave}) as resposta:
                 if resposta.status != 200:
+                    if any(p.get('inlineData') for c in corpo.get('contents', []) for p in c.get('parts', [])):
+                        # Erros do provedor podem ecoar o pedido: nunca grave
+                        # base64 ou conteúdo de um anexo nos logs/banco.
+                        raise Falhou(resposta.status, 'pedido com mídia recusado pelo provedor')
                     motivo = (await resposta.text()).replace(chave, "[chave omitida]")
                     motivo = re.sub(r"projects/[^/`\s]+", "projects/[omitido]", motivo)
                     raise Falhou(resposta.status, motivo[:3000].replace("\n", " "))

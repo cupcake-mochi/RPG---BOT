@@ -1,0 +1,18 @@
+Piloto de mídia v15 — roteiro para Mizuki
+
+Pacote: Closure/src/var/closure-lab-midia-v15.zip (sem .env).
+Faça Commit e Rebuild como de costume, preservando banco e chave. A mídia vem desligada: para o piloto, coloque MIDIA_ATIVA=1 nas variáveis da hospedagem e, de preferência, MIDIA_CANAIS com o ID do canal de teste. Para desligar, volte MIDIA_ATIVA=0. Não altere o teto de gasto; anexo analisado usa a Vertex paga e pode ser bloqueado se a cota mensal local estiver esgotada.
+
+Envie UM arquivo anexado por mensagem e marque @Guias do Ciclo junto da pergunta, para não depender do seguimento. Um link para imagem/GIF não é equivalente a anexar o arquivo. O seletor de GIFs do Discord pode enviar link do Tenor/Giphy e não está coberto nesta versão.
+
+1. Imagem: anexe arquivos/formas.png e pergunte “Quais formas e cores aparecem aqui?”. Esperado: círculo azul, triângulo amarelo e quadrado vermelho. Depois faça uma pergunta sobre a imagem; ela pode usar o relato anterior, mas não deve alegar examinar novamente detalhes que não descreveu.
+2. GIF: anexe arquivos/movimento.gif e pergunte “O que muda nessa animação e onde o quadrado termina?”. Esperado: deslocamento para a direita. Envie novamente perguntando pelo som: não deve inventar áudio.
+3. Voz: grave um áudio curto, até 30 segundos, dizendo algo simples como “Terminei meu desenho e fiquei contente”. Anexe e peça uma resposta. Esperado: entender o conteúdo; pode responder por texto. Esta rodada automática só usou voz sintética, então fala humana é o teste novo mais útil.
+4. Limites: anexe arquivo maior que 5 MiB ou áudio maior que 30 segundos. Esperado: informar que não analisou e pedir arquivo dentro do limite. Não deve descrever conteúdo inexistente.
+5. Regressão: pergunte por texto “Quanto custa uma katana no livro?”. Esperado: ¥48.000. Em pergunta enviada só por áudio, a busca textual do livro não é acionada; pode pedir que escreva.
+
+Observe se o bot reinicia, demora ou deixa de responder; confira memória no painel da Discloud durante um anexo. A prova local ficou abaixo de 256 MB nas amostras, mas não mediu o processo hospedado sob uso real/concorrência.
+
+Falhas já conhecidas: as duas guias erraram ao descrever três bipes e ao reconhecer um arquivo silencioso. Não use a interpretação de sons como verificação confiável. Não é necessário repetir esses quatro casos para confirmar a instalação; continuam registrados como falhas em respostas.json/avaliacao.json.
+
+YouTube segue identificado pelo título/canal, sem baixar o áudio. Não há escuta de canal de voz nem resposta falada. Imagens reduzidas podem perder letras pequenas; GIF tem até três quadros enviados. Para teste com outras pessoas, a política pública deve refletir o trecho de mídia já preparado em docs/PRIVACIDADE.md (gist ainda não atualizado).
