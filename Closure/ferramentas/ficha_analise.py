@@ -18,6 +18,7 @@ O LibreOffice pesa: rode um por vez e com teto, assim:
 from __future__ import annotations
 
 import asyncio
+import json
 import os
 import re
 import shutil
@@ -60,7 +61,13 @@ def linhas_do_xlsx(caminho: str) -> list[tuple[str, str, str, str]]:
 
 
 def chaves(fonte: str) -> None:
-    if fonte.lower().endswith(".xlsx"):
+    if fonte.lower().endswith(".json"):
+        # Exportação do próprio monta.py --exportar-analise; não transcrever chaves.
+        exportada = json.loads(Path(fonte).read_text(encoding="utf-8"))
+        linhas = [(str(k), str(c), str(p), "" if str(v).startswith("=") else str(v))
+                  for k, v, c, p in exportada["linhas"]]
+        origem = "exportação do gerador oficial da ficha"
+    elif fonte.lower().endswith(".xlsx"):
         linhas = linhas_do_xlsx(fonte)
         origem = Path(fonte).name
     else:

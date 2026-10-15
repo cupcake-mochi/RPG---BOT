@@ -92,7 +92,7 @@ class Leitor(unittest.TestCase):
         self.assertEqual(ficha["em_uso.vestindo"].celula, "'FICHA PESSOAL'!AH64")
 
     def test_contrato_tem_as_mesmas_chaves_da_ficha(self):
-        linhas = (RAIZ / "dados" / "ficha" / "analise-chaves.tsv").read_text(encoding="utf-8").splitlines()
+        linhas = (RAIZ / "dados" / "ficha" / "analise-chaves-v1.tsv").read_text(encoding="utf-8").splitlines()
         chaves = [l.split("\t")[0] for l in linhas if l and not l.startswith("#") and not l.startswith("chave\t")]
         self.assertEqual(chaves, list(_ficha("branca")))
 
@@ -170,9 +170,9 @@ class Corretor(unittest.TestCase):
         self.assertEqual(LIVRO.vida_por_nivel, "fixa")
 
     def test_formato_desconhecido_avisa_sem_corrigir(self):
-        resultado = conferir(_adulterada("kaori", "formato.versao", "2"), self.ref)
+        resultado = conferir(_adulterada("kaori", "formato.versao", "3"), self.ref)
         self.assertEqual(resultado.veredito, "formato desconhecido")
-        self.assertEqual([(p.regra, p.encontrado) for p in resultado.problemas], [("formato", "2")])
+        self.assertEqual([(p.regra, p.encontrado) for p in resultado.problemas], [("formato", "3")])
 
     def test_nomes_contra_o_catalogo_e_o_capitulo_de_origens(self):
         casos = {

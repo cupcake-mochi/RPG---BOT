@@ -1,47 +1,45 @@
-ANALISE: cobertura das contas e entradas faltantes — R51, 14/10/2026
+ANALISE: cobertura e contas restantes — R51, 14/10/2026
 
-Contrato vigente: formato.versao = 1, 2.650 chaves, contrato documental v3.
-Esta lista não muda as chaves nem o gerador. Cadastro e custom ficam para CONFIGURAÇÃO, a pedido do Mizuki.
+Formato 2 preparado no gerador: 4.896 chaves; preservadas as 2.650 anteriores.
+Bot aceita 1 e 2. A ampliação só foi aplicada a cópias de teste. CONFIGURAÇÃO continua adiada.
 
-Conferido agora pelo bot, sem consultar modelo
+Conferido pelo bot, sem modelo
 
-- Classe disponível e PE nominal dos feitiços e especiais; Liberação com 50% adicional, para cima, nível e quantidade.
-- Forma conhecida, restrições de Classe 0 e Liberação, número de Melhorias e Restrições (incluindo Corpo a Corpo).
-- Algumas incompatibilidades explícitas do livro, repetição de compra e requisito mínimo de Classe reconhecido.
-- Orçamento e devolução: a Forma não recebe desconto nem é paga pela Restrição. Livre pessoal usa metade para cima;
-  entidade, metade para baixo (mínimo 1). Como as escolhas completas de Famílias não chegam, o bot calcula as
-  possibilidades e só certifica dano-base invariável. Resultado fora das possibilidades reconhecíveis reprova.
-- Dano-base determinado: dados, face, média escrita e dados adicionais simples; corte dos dados iniciais respeita o teto
-  de 4 × Classe. Distribuição entre ataques, Controle sem dano, Alma, Remate, Onda/Apoio/Efeito e custom ficam de fora.
-- Nível das entidades a partir da aquisição, sem confiar no resultado da planilha; domada conserva nível, criada para
-  no último nível da Classe de criação, as outras acompanham o dono. Classe, entrada e retorno (dobro) refeitos.
-- Atributos de entidade: formato, teto total e teto inicial. Não certifica a distribuição inicial/marcos sem histórico.
-- Cartas vazias com Forma/Classe iniciais não contam. Erro de fórmula em peças/Restrições de carta preenchida impede
-  certificar a montagem. No LibreOffice, as junções de várias cartas vazias dos fixtures retornam #NAME?; isso não
-  cria uma habilidade. A leitura real do Google das quatro cópias não apresentou esse problema.
+- Classe, nível e PE nominal; Liberação com 50% adicional para cima, nível e quantidade.
+- Formas, limites de Melhorias/Restrições, repetição, requisitos mínimos e incompatibilidades já implementadas.
+- Famílias exatas do formato 2: duas Livres pessoais, três Fechadas; entidades com concessões de Trilha,
+  incluindo a segunda Livre da Principal. Peça de Família Fechada reprova. Forma não recebe desconto nem
+  devolução de Restrição. Sem entradas válidas, usa possibilidades conservadoras e declara a limitação.
+- Dano-base e adicionais simples; devolução limitada às Melhorias e teto de 4 × Classe.
+- Classe 0 pessoal: quantidade por nível, PE zero e progressão do dano. Cartas vazias não viram habilidades.
+- Técnica Máxima: nível, PE, orçamento separado dos dados, até quatro Melhorias, Famílias e dano simples.
+- Entidade: aquisição, nível fixo/domada, criação até o fim da Classe, entrada carregada do shikigami e retorno
+  integral. Pontos individuais não podem burlar o total ou os marcos, mesmo se a lista antiga foi adulterada.
+- Com entradas completas: atributos atuais, vida com Buff de Constituição e de vida, Defesa sem equipamento
+  e com peças reconhecidas, acerto desarmado, CD e deslocamento-base. Maestria é a do dono, mesmo na domada.
+  Buff/Debuff numérico continua nota para o mestre; entrada ausente não vira ajuste zero.
+- Quantidade normal de básicas/especiais; Talento conhecido respeita CE e nível do marco de aquisição.
+- Proteção da rota sem energia pela Lapidação já era conferida; teste local preservado.
 
-Entradas que hoje faltam (conferidas contra analise-chaves.tsv e ficha-v01/analise.py)
+O que continua sem conferência integral
 
-1. Fundamento/rota: Famílias Livres e Fechadas, Selo, atributo escolhido, Descrição/Regra, tipos de dano, escolhas de
-   resolução, TR e destino do saldo. Não usar cd_de_feitico ou conjuracao como entrada: ambos são resultados editáveis.
-   Alcance e resolução estão exportados como resultado por feitiço, mas faltam as escolhas para validá-los por inteiro.
-2. Classe 0 pessoal e Técnica Máxima: cartas e entradas completas. Não existem prefixos próprios no contrato atual.
-   Repertório: compras de Talentos, Regra Própria e Domínio, trocas por entidades e concessões fora dos espaços.
-3. Entidades: Buff/Debuff dos cinco atributos e dos resultados, aumentos de marcos, atributo de acerto, TR e atributo
-   usado na Defesa do conjunto, equipamento em uso e seus requisitos, alma/Integridade, deslocamento e sentidos.
-   Os cinco valores em invocacao.N.pontos não bastam para refazer vida/Defesa quando há ajustes. Portanto o bot NÃO
-   certifica vida, Defesa, acerto, CD ou deslocamento da entidade só porque batem com a fórmula sem Buff.
-4. Famílias da entidade: a lista vem junta sem rótulos de Livre/aberta. É preciso fixar o sentido das posições, as
-   concessões da Trilha e as regras vigentes. A montagem pessoal e a da entidade têm descontos e orçamentos diferentes.
-5. Habilidades de entidade: escolhas de resolução, alcance, tipo de dano, texto e condições de aplicação; vagas básicas,
-   especiais, habilidades extras de Trilha e Talentos; Liberação/Máxima/Domínio da domada com suas aquisições.
-6. CONFIGURAÇÃO: regra.*, efeito.* e custom.*, quando o gerador definir o contrato. Permissão, identidade da mesa e
-   aprovação do mestre por impressão digital serão desenhadas nessa etapa. Uma aprovação muda quando muda o conteúdo.
+1. Texto da Regra/efeito, definição/anatomia, Selo em texto livre, custom e permissão do mestre. A exportação
+   agora inclui textos; sua presença não dá aprovação automática. Cadastro/aprovação esperam CONFIGURAÇÃO.
+2. Alcance e resolução completos, distribuição de Rajada/Mais Um/Junto, Remate, Controle, Alma,
+   Onda/Apoio/Efeito e benefícios especiais de Máxima. Resultados dependentes continuam declarados.
+3. Repertório pessoal completo: compras de Talentos, Regra Própria, Domínio, trocas por entidades e concessões
+   fora dos espaços. As cartas existem no formato 2, mas a conta completa ainda não foi implementada.
+4. Vagas extras de Trilha e trunfos da domada, CE/custom dos extras, Domínio compartilhando espaços,
+   resultados de perícias/TR, carga e requisitos do equipamento. Ataque com arma e equipamento não
+   reconhecido não são certificados. Não usar um resultado da planilha como substituto dessas escolhas.
+5. Nenhuma versão confirma o histórico de quando um ponto foi ganho ou uma escolha foi reescrita.
 
-Próxima validação
+Validação desta rodada
 
-Gerar novamente a lista de chaves pelo gerador oficial, depois de a ficha disponibilizar as entradas. Nunca editar
-analise-chaves.tsv ou dados/sistema manualmente. Preparar 3 a 5 fichas com feitiços e entidades efetivamente preenchidos,
-com e sem Buff, domada menor e criada no fim da Classe. Comparar os exemplos publicados do R51 e valores adulterados,
-sem confiar nos avisos da própria ficha. As quatro cópias atuais têm cartas vazias e só cobrem as regressões dos números
-do personagem. A suíte local não é prova de uma conferência integral da ficha ou de funcionamento já implantado.
+Quatro cópias no Google com habilidades preenchidas: Fundamento/Classe 0/Máxima; domada de nível 5 com
+Buff e dono de nível 18; criação adquirida no 13, limitada ao 16, com talismã e Principal; cópia da Kaori
+anterior com feitiço e Classe 0. Todas sem erro de fórmula e sem erro de conta na conferência local.
+São personagens/casos montados para teste, autorizados pelo Mizuki, que informou não ter fichas em uso.
+Os detalhes e os limites estão em pesquisa/validacao/2026-10-14-analise-v2/relatorio.txt.
+As quatro fichas anteriores sem magia já tiveram o fluxo na Discloud confirmado pelo Mizuki. Esta nova
+rodada testa leitura/conferência fora do Discord; ainda não é validação de todas as regras nem novo deploy.

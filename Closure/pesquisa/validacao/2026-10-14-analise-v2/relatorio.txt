@@ -1,0 +1,51 @@
+ANALISE 2 e conferência de magia — 14/10/2026
+
+Pedido: continuar a ficha; Argon congelado; cadastro/custom esperam CONFIGURAÇÃO. Mizuki confirmou Commit e
+Rebuild e o reteste antigo no Discord. Sem sessão remota do Discord; esta ampliação foi testada fora dele.
+Como não há fichas de jogadores em uso disponíveis, Mizuki autorizou cópias preenchidas para validação.
+
+Contrato: formato 2, 4.896 chaves (4 cabeçalhos, 3.115 entradas, 1.361 resultados, 416 avisos).
+Todas as 2.650 chaves antigas mantêm parte/célula. Formato 1 continua aceito e usa cobertura conservadora.
+Gerador isolado da outra conversa: base dbdf1d4, branch codex/analise-completa-v2. Regerados XLSX e Analise.gs.
+Novo modo --exportar-analise emite contrato/geometrias sem precisar gerar imagens ou montar um XLSX.
+Lista TSV regerada pelo XLSX, sem transcrição manual. Cópias conservam abas, fórmulas, validações e aparência.
+
+Novas contas: Famílias exatas e desconto pessoal/entidade, segunda Livre da Principal, Classe 0 pessoal,
+Máxima com dados separados do orçamento, Buff dos atributos/resultados da entidade, Maestria do dono,
+vida/Defesa/acerto desarmado/CD/movimento-base, entrada com talismã, retorno integral e CE por marco de Talento.
+Campos ausentes, equipamento desconhecido e texto próprio não são certificados como zero ou aprovados.
+Corrigidos também: cartas vazias de Classe 0 exibem dados sem virar habilidades; entradas individuais não
+burlam o total de pontos da lista antiga; texto preenchido sem nome não é ignorado como carta vazia.
+
+Quatro cópias preenchidas e calculadas no Google
+
+1. Fundamento: dono 17, Fio de arrasto Classe 1 com Empurrão: 3 PE, 2d8 = 9; Classe 0 com Empurrão:
+   4d8 = 18; Máxima simples: 25 PE, 24d8 = 108, montagem 0 de 8.
+2. Domada: dono 18, entidade fixa 5, Constituição 2 + Buff 1 e vida +2: vida 34, acerto 5 e CD 13
+   usando Maestria 3 do dono. Defesa 13, entrada 2, retorno 4, especial 1d8. Duas notas de Buff para o mestre.
+3. Criação/Principal: dono 18, aquisição no 13, nível limitado ao 16. Vida 98, Defesa 14, entrada carregada 2,
+   retorno 8. Especial Classe 3, Área Livre e Tempo Livre: 3d8 + 1d8 de Salto. Não confundir com o desconto
+   pessoal arredondado para cima ou limitar a Principal a uma Livre.
+4. Cópia da Teste 1/Kaori: números básicos preservados; feitiço e Classe 0 com Empurrão acrescentados.
+   Passa pela conferência completa atual; mudar PE do feitiço ou dados da Classe 0 faz reprovar.
+
+Todos os valores da ANALISE sem erro de fórmula; quatro vereditos locais aprovados, sem erro ou pendência.
+Isso significa aprovação nas verificações implementadas: permanecem 4 a 5 observações de cobertura parcial.
+As alterações hostis dos testes são feitas nos dados capturados, sem adulterar a versão final das planilhas.
+Incluem PE/dano/vida/Defesa/CD/movimento falsos, Família Fechada, segunda Livre indevida, Talento acima da CE,
+ajuste inválido/ausente e tentativa de usar a lista antiga para burlar atributos individuais.
+
+Dados de regressão: quatro recortes dos valores do Google em src/testes/dados/ficha_v2_montagem_*.json.
+Leitura integral, links, capturas e recibos ficam em pesquisa/privado/. Testes pagos: zero.
+Suíte final: 319 testes, 318 passaram e um online opcional foi pulado (69,38 s). A leitura pública das quatro
+cópias foi executada separadamente com o leitor real do bot. As nove abas comuns entre XLSX anterior/novo
+preservam valores/fórmulas e formatos numéricos; o que mudou é a ANALISE. Recibo de publicação em pesquisa/privado/.
+
+Limites explícitos: não certifica todo Selo em texto livre, Regra/efeito, distribuição complexa/Controle/Alma,
+repertório pessoal completo, Domínio e trunfos, vagas extras de Trilha, anatomia/carga/requisitos de equipamento,
+modificadores de perícia/TR ou aprovação de conteúdo próprio. Fonte detalhada: ENTRADAS-FALTANTES-ANALISE.txt.
+Proteção pela Lapidação na rota sem energia já estava implementada e permanece coberta pelo teste local.
+
+A ampliação foi aplicada só a cópias de teste; a ficha oficial não foi reconstruída. O novo pacote do bot não
+foi enviado à Discloud. As fichas atuais em formato 1 continuam funcionando; as entradas novas precisam da
+ANALISE 2. O PR do gerador fica para revisão; a autorização automática de merge abrange somente RPG---BOT.

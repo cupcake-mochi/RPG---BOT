@@ -5,8 +5,15 @@ Esqueleto da fase 1 do `docs/PLANEJAMENTO.md`, escrito em 13/10/2026. O bot anti
 
 **O que já faz:** sobe, responde `/ping` lendo o `MANIFESTO.json`, decide quem responde a cada mensagem
 (por horário e pelo nome chamado), monta o pedido com card, lorebook, livro, estado e ficha da pessoa, chama o
-modelo e envia a fala com o nome e o avatar de cada personagem. **O que ainda não fez:** rodar no Discord de
-verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de mentira.
+modelo e envia a fala com o nome e o avatar de cada personagem. Roda na Discloud desde 13/10.
+Em 14/10, Mizuki confirmou os testes de ficha depois de Commit e Rebuild. A ampliação ANALISE 2 posterior
+foi conferida fora do Discord e ainda não foi implantada.
+
+**Ficha, ANALISE 2:** 4.896 chaves; formatos 1 e 2 aceitos. `ficha_entidade.py` refaz atributos, vida com
+Buff, Defesa reconhecida, acerto desarmado, CD e deslocamento-base. `ficha_magia.py` lê Famílias exatas,
+Classe 0 e Máxima; confere entrada carregada/retorno e CE dos Talentos por ganho. Quatro cópias preenchidas
+foram calculadas no Google e relidas localmente. Não é correção integral de todo efeito, Domínio ou custom;
+limites em `../dados/ficha/ENTRADAS-FALTANTES-ANALISE.txt`. Sem Gemini pago nesta rodada.
 
 ## Arquivos
 
@@ -33,9 +40,9 @@ verdade. Falta o token; até aqui o caminho todo foi testado com mensagem de men
 | `closure_bot/cogs/regras.py` | `/livro` (e `GC:livro`, `GC:sistema`): link do livro de regras em PDF, com quem está de plantão. A consulta por comando é da fase 2 |
 | `closure_bot/ficha_leitor.py` | Lê a aba oculta `ANALISE` da ficha, do `.xlsx` baixado (openpyxl) ou do link aberto (CSV), e normaliza os valores (fase 3) |
 | `closure_bot/ficha_corretor.py` | Confere a ficha sem IA: formato, nomes, vida, PE, Integridade, proteção, Defesa e avisos. Chama as contas de montagem de `ficha_magia.py`. Regras de campanha e custom continuam só na estrutura, até CONFIGURAÇÃO |
-| `closure_bot/ficha_magia.py` | Tabelas e preços do R51 lidos do livro. Confere Classe, PE nominal, limites de peças/Restrições, parte do dano-base; nas entidades, nível, Classe, entrada e retorno. Não certifica contas que dependem de entradas ausentes na ANALISE; detalhes em `../dados/ficha/ENTRADAS-FALTANTES-ANALISE.txt` |
+| `closure_bot/ficha_magia.py` | Tabelas e preços do R51 lidos do livro. Confere Classe, PE nominal, limites de peças/Restrições, parte do dano-base; nas entidades, nível, Classe, entrada e retorno. Na ANALISE 2 também confere Famílias, Classe 0/Máxima e CE por ganho; os números de entidade ficam em `ficha_entidade.py`. Não certifica contas ainda parciais; detalhes em `../dados/ficha/ENTRADAS-FALTANTES-ANALISE.txt` |
 | `closure_bot/cogs/ficha.py` | `/ficha analisar` e `GC:ficha` (link escrito depois ou `.xlsx` anexo na mensagem): painel no canal com o que corrigir, o que o mestre confere, o que bateu e o que falta conferir, aberto por frase fixa de quem está de plantão. **Ligado** desde 14/10 (`LIGADO`); lê `dados/sistema/catalogos.json` e `livro.jsonl`, que o pacote leva |
-| `testes/` | 301 testes em 14/10 (300 passaram; um teste online opcional foi pulado; 34 da ficha em `test_ficha.py` e 24 de montagem em `test_ficha_magia.py`; o que lê a ficha oficial pelo link só roda com `FICHA_ONLINE=1`); inclui 16 casos do verificador de respostas e um de retomada da bateria. Há testes que precisam do discord.py, da cryptography ou dos dois motores juntos e são pulados sem essas dependências. `testes/dados/` guarda respostas reais da Open-Meteo |
+| `testes/` | 319 testes em 14/10 (318 passaram; um teste online opcional foi pulado; 34 da ficha em `test_ficha.py` e 24 de montagem em `test_ficha_magia.py`; o que lê a ficha oficial pelo link só roda com `FICHA_ONLINE=1`); inclui 16 casos do verificador de respostas e um de retomada da bateria. Há testes que precisam do discord.py, da cryptography ou dos dois motores juntos e são pulados sem essas dependências. `testes/dados/` guarda respostas reais da Open-Meteo |
 
 ## Rodar
 

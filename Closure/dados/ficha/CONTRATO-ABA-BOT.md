@@ -1,5 +1,27 @@
 # Contrato da aba oculta `ANALISE`
 
+> **Versão documental 4, 14/10/2026.** O formato 2 amplia a exportação para **4.896 chaves**:
+> quatro de cabeçalho, 3.115 entradas, 1.361 resultados e 416 avisos. Preserva todas as 2.650 chaves
+> anteriores, com a mesma parte e célula. O bot aceita os formatos 1 e 2; uma ficha antiga continua
+> recebendo conferência parcial nas contas que dependem das entradas novas. O histórico da versão 3 segue abaixo.
+
+## Ampliação do formato 2
+
+- `tecnica.familia.*`: estado de cada uma das nove Famílias; também Regra, Descrição, Selo textual, atributo
+  escolhido, rota e Regra Própria. Texto livre de Selo não é um requisito mecanicamente certificado.
+- `zero.N.*`, `maxima.*`, `dominio.*`: entradas e resultados antes ausentes. Carta de Classe 0 sem nome ou peças
+  não conta como preenchida só porque mostra os dados-base da progressão.
+- `invocacao.N.atributo.<nome>.base/buff/total`: entradas separadas dos atributos, sem perder posições vazias.
+- `invocacao.N.buff.*`, `atributo_acerto`, `atributo_fisico`, `tr_treinado`, `equipamento.N`, `pericia.N`,
+  `talento.N`, `talento_extra.N`: escolhas e ajustes que o cálculo independente precisa ler.
+- `invocacao.N.familia.1/2/3/4/5`: Livre; Livre da Principal; aberta; aberta; aberta da Trilha, respectivamente.
+  A lista antiga `familias` permanece compactada e não serve para reconstruir essas posições.
+- Textos, resolução escolhida e tipo de dano das cartas de entidades; registro dos trunfos da domada.
+  Exportar um campo não significa que o bot já confira todo o seu efeito: cobertura em `ENTRADAS-FALTANTES-ANALISE.txt`.
+- A lista atual é `analise-chaves.tsv`; `analise-chaves-v1.tsv` conserva o contrato dos fixtures antigos.
+  Para gerar a lista atual, use `ficha_analise.py chaves` com o XLSX ou o JSON de `monta.py --exportar-analise`.
+  O XLSX e `apps-script/Analise.gs` foram regerados na branch `codex/analise-completa-v2` do gerador.
+
 > **Versão 3, de 14/10/2026.** A ficha ganhou a aba de verdade (B47, fase 1, commit `dbdf1d4` do gerador da ficha),
 > testada no Google Sheets, e o desenho é dela. **O que mudou da versão 2:**
 > - **o nome da aba:** `ANALISE`, sem acento (decisão do Mizuki), no lugar de `BOT`;

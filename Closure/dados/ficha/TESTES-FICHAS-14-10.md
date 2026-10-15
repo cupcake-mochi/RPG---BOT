@@ -1,5 +1,16 @@
 # Fichas de teste no Google (14/10/2026)
 
+**Rodada seguinte, ANALISE 2:** Mizuki informou não ter fichas em uso e autorizou preencher cópias.
+Quatro cópias nativas com feitiços/entidades foram calculadas, lidas e conferidas fora do Discord;
+originais preservadas. Resultado/limites em `../../pesquisa/validacao/2026-10-14-analise-v2/relatorio.txt`.
+Esta ampliação é posterior ao deploy confirmado abaixo e ainda precisa de novo pacote.
+
+**Reteste concluído pelo Mizuki em 14/10:** fez Commit e Rebuild na Discloud e confirmou que os quatro
+testes funcionaram no Discord, com captura dos painéis. A confirmação é do usuário; o agente não acessou
+o Discord. As pendências e correções abaixo descrevem o histórico anterior a esse reteste. Isso valida
+o envio do comando, a leitura das cópias e os painéis publicados; as quatro cópias continuam sem cartas
+de magia preenchidas e não validam essas contas.
+
 Cópias da ficha oficial, preenchidas e testadas pelo Mizuki no servidor com `GC:ficha` e o link.
 Inicialmente só tínhamos Testes 1 a 3. Em seguida, Mizuki enviou a Teste 4 — Corpo Amaldiçoado,
 e a leitura pública da ANALISE foi conferida junto dos valores da planilha pelo conector.
