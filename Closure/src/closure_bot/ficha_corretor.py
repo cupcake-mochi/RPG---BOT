@@ -458,6 +458,8 @@ def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha
     resultado.nao_conferido += pulou
     conferir_feiticos(ficha, ref, resultado)
     conferir_invocacoes(ficha, ref, resultado)
+    from .ficha_repertorio import conferir_repertorio
+    conferir_repertorio(ficha, ref, resultado)
     if formato == 1:
         resultado.nao_conferido.append("feitiços e invocações: texto, Famílias, Classe 0 pessoal, Técnica Máxima e ajustes não estão completos na ANALISE")
     treinos, fontes = treinos_da_origem(ficha)

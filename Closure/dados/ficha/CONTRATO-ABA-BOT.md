@@ -22,6 +22,21 @@
   Para gerar a lista atual, use `ficha_analise.py chaves` com o XLSX ou o JSON de `monta.py --exportar-analise`.
   O XLSX e `apps-script/Analise.gs` foram regerados na branch `codex/analise-completa-v2` do gerador.
 
+### Aquisições no formato atual
+
+As posições `passiva.1` a `passiva.5` são os cinco lugares pagos do gerador; `passiva.6` a
+`passiva.12` são os sete lugares de Leque. O bot usa essa organização para a conta e lê Categoria/nível
+pelo catálogo, sem confiar no custo exibido. Categoria declarada diferente da entrada conhecida é correção.
+
+Talentos gratuitos da Origem ainda não têm posição/vinculação própria. O bot não escolhe quem foi
+recebido assim: admite as possibilidades elegíveis de CE1 sem duplicação, verifica apenas excessos
+inevitáveis e declara a aquisição/total não certificados. `origem.ce4` é separado dos cinco pagos.
+A Regra Própria e `dominio.degrau` também são separados e consomem seus custos totais atuais.
+
+Leque e Coexistência concedem aplicações, não vagas livres para Talento pago, Domínio ou invocação.
+As posições ausentes numa exportação parcial não são convertidas silenciosamente em escolhas vazias;
+nesse caso o bot não certifica a ocupação completa. Nenhuma chave ou versão foi alterada nesta leitura.
+
 > **Versão 3, de 14/10/2026.** A ficha ganhou a aba de verdade (B47, fase 1, commit `dbdf1d4` do gerador da ficha),
 > testada no Google Sheets, e o desenho é dela. **O que mudou da versão 2:**
 > - **o nome da aba:** `ANALISE`, sem acento (decisão do Mizuki), no lugar de `BOT`;

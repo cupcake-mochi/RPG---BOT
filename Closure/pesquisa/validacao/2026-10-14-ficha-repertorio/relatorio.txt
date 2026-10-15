@@ -1,0 +1,60 @@
+Repertório, Talentos e aquisições — R51, 14/10/2026
+
+Pedido
+Mizuki perguntou se precisava repetir os testes. Informado de que a etapa anterior já teve testes
+locais, autorizou continuar. Esta etapa não exige nova chamada de modelo nem implantação.
+
+Contas
+- Capacidade por nível extraída da progressão do livro: 2/3/4/9/12/16/21/24 nos níveis
+  1/2/5/10/14/20/26/30, sem somar o ganho comum do marco novamente.
+- Contagem de Corpo/Refino/Leque validada contra marcos alcançados; entrada inválida não recebe
+  concessão automática. Na ausência de dados, não certifica o total como se fossem escolhas zero.
+- Aplicações de Leque e as duas de Coexistência ficam fora do repertório comum. Não pagam
+  Talentos, Regra Própria, Domínio ou entidades. Classe 0, Liberação e Máxima seguem fora da conta.
+- Os cinco lugares pagos de Talento usam CE como custo. Os sete lugares restantes usam a concessão
+  de Leque. Categoria e nível atual de 20 entradas conhecidas lidos do livro, incluindo marciais;
+  nome próprio precisa de Categoria válida e sua aprovação continua aguardando CONFIGURAÇÃO.
+- Categoria faltante é pendência; Categoria inválida ou incompatível com a entrada conhecida é erro.
+  Talento com erro de aquisição não entra como conferido. Não verifica o momento histórico do ganho.
+- Regra Própria custa zero/um/dois espaços nos CE 1/2/3; preço atual não se soma aos anteriores.
+  Níveis de acesso são respeitados. Conta válida não aprova o efeito escrito.
+- Domínio ocupa 2/3/5 espaços totais. Requisitos cumulativos de nível/Refino extraídos do livro;
+  Refino recalculado das escolhas, sem usar o resultado exportado. Sem Barreiras exige também
+  treino/especialização em Ocultismo e conserva os requisitos anteriores. Sem Técnica e Técnica
+  Marcial não recebem Expansão só por avançar de Classe; rota vem da Origem, não do rótulo calculado.
+- Cada entidade por Espaço conhecido ocupa uma vaga. Domada, Criação e Lista de ritual não são
+  cobradas como se fossem essa aquisição. O feitiço da lista ainda conta como aplicação normal.
+- Gratuidade CE1 de Manifestação Instintiva, Traço Incorporado e Construção Especializada respeita
+  a Origem. Como falta vinculação própria, verifica possibilidades e rejeita só excessos inevitáveis,
+  sem inventar o beneficiário ou certificar o total completo. CE4 usa seu campo da Restrição corporal.
+- Prática Cotidiana concede os dois Classe 0 adicionais do ramo corporal; não aumenta espaços.
+
+Apresentação e compatibilidade
+- Rótulos legíveis para Talentos, marcos, repertório, Regra Própria e Domínio.
+- Categoria/nome/degrau ainda por escolher entram como pendência, mantendo amarelo no painel.
+- Exportação parcial não vira lista completa vazia. Formato 1 conserva conferência parcial;
+  formato 2 completo permite fechar as contas cobertas, sem aprovar texto, custom ou histórico.
+- Nenhuma chave, regra gerada, card, dependência ou configuração de modelo foi alterada.
+
+Validação
+- 25 testes próprios; grupo focal de 103 regressões aprovado após revisão final.
+- Suíte completa final: 399 testes em 142,574 s; 398 aprovados e um online opcional pulado.
+- Quatro capturas completas da ANALISE 2 relidas localmente: todas aprovadas, sem erros/pendências.
+  Capacidade/ocupação comuns: 13/1, 15/0, 15/0 e 3/1. As especiais da entidade não ocupam
+  aplicações pessoais; Classe 0 e Máxima não foram cobradas como vagas comuns.
+  São cópias montadas para teste, não quatro personagens reais em uso.
+- Testes antigos receberam o novo item de capacidade nos resultados esperados. O cenário isolado
+  de Núcleo Dependente de nível 6 também recebeu sua capacidade correta de seis espaços: herdava
+  os três da Kaori de nível 2, conta que antes não era conferida.
+- Sem modelo real, leitura remota de planilha, alteração das cópias, envio ao Discord ou deploy.
+
+Limites
+A aprovação do texto de Talentos/Regra Própria, compatibilidade de tema/Famílias e Regra de entidades,
+benefícios nas reservas, efeitos/Acerto de Domínio, rituais, trunfos, aptidões e histórico dos ganhos
+continuam sem certificação integral. TR/perícias aguardam os campos de exportação já documentados;
+regras de campanha/custom esperam CONFIGURAÇÃO na outra conversa.
+
+Pacote e Git
+src/var/closure-lab-repertorio-ficha.zip: 46 arquivos, sem .env; conteúdo comparado às origens
+e varredura dos segredos locais aprovada. Reúne as contas anteriores de magia e o painel por páginas.
+Publicação/hashes em pesquisa/privado/publicacao-ficha-repertorio.json. Sem envio à Discloud pelo agente.
