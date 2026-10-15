@@ -290,15 +290,25 @@ consumiu suas 40 tentativas: retomá-la não deve disparar novas chamadas.
   --conferir` compara os dois, e `--atualizar` já compara sozinho quando a máquina tem os dois. Depois de baixar
   a página de novo, rode a conferência antes de empacotar. O `/status` mostra as versões que estão na página,
   que é de onde sai o prompt.
-- **Consulta do livro, busca v9 (14/10):** definições por título/abertura em negrito e campos de tabelas
+- **Consulta do livro, busca v10 (15/10):** definições por título/abertura em negrito e campos de tabelas
   são indexados em todos os capítulos. Perguntas de conta reúnem orçamento e conversão/teto: feitiço comum,
   Classe 0, Técnica Máxima e especial de entidade conservam suas fontes diferentes. A lista de aptidões
   traz o catálogo; Energia Reversa e Domínio Simples recebem o complemento quando a pergunta pede a
   explicação inteira. "Explica melhor" e "quanto custa?" podem retomar a regra anterior. O pedido reforça
   que brevidade/carga não cortam uma regra necessária e que dúvidas pontuais continuam pontuais. Até três
-  blocos por pedido; sem segunda chamada automática. Cards, modelos e esforço preservados. Os testes
-  conferem fontes e montagem do pedido, não a resposta gerada. Relatório em
-  `../pesquisa/validacao/2026-10-14-consulta-livro/relatorio.txt`.
+  blocos completos por pedido; sem segunda chamada automática. Nomes exatos consideram o título dos
+  metadados, evitam nomes contidos em outros (Artes do Vínculo/Vínculo) e dispensam preenchimento de
+  outra família numa definição específica. Comparações explícitas conservam as duas entradas.
+  Confirmações e contestações podem manter a fonte por até seis mensagens anteriores; um novo assunto
+  encerra essa cadeia. Personalização da Origem prioriza a permissão escrita e a escolha padrão juntas.
+  Recomendações de Caminhos/Trilhas recebem ainda um panorama com recortes literais, âncoras e uma
+  subseção pertinente inteira por Trilha, quando cabe no limite de 12.000 caracteres do conteúdo e seus
+  rótulos (mais o cabeçalho). Isso inclui o Treino de Combate da Parceria com nível e condição, sem
+  transformar o panorama em regras completas. Cards, modelos e esforço preservados. Os testes
+  conferem fontes e montagem do pedido, não a resposta gerada; nenhuma API real foi chamada.
+  Auditoria de títulos únicos: 421/425 antes e 425/425 depois. Títulos repetidos, paráfrases e qualidade
+  das respostas ficam fora dessa régua. Relatório em
+  `../pesquisa/validacao/2026-10-15-consulta-livro-v10/relatorio.txt`.
 - **Testado de ponta a ponta sem o Discord**, com mensagem de mentira e o resto de verdade; no Discord mesmo
   ainda não rodou.
 

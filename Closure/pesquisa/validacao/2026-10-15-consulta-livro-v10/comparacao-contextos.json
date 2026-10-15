@@ -1,0 +1,358 @@
+[
+  {
+    "fase": "antes",
+    "caso": "casual",
+    "pergunta": "você gosta de café?",
+    "anteriores": [],
+    "fontes": [],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 2774,
+    "pedido_completo_caracteres": 21659
+  },
+  {
+    "fase": "antes",
+    "caso": "casual-recomendacao",
+    "pergunta": "me recomende um café",
+    "anteriores": [],
+    "fontes": [],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 2775,
+    "pedido_completo_caracteres": 21660
+  },
+  {
+    "fase": "antes",
+    "caso": "origem",
+    "pergunta": "oq eu posso criar na origem?",
+    "anteriores": [],
+    "fontes": [
+      "origens--origem-escolhas",
+      "origens--origens",
+      "origens--legado-criar"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 9301,
+    "pedido_completo_caracteres": 28186
+  },
+  {
+    "fase": "antes",
+    "caso": "origem-contestada",
+    "pergunta": "Mas a capacidade marcante da pra criar?",
+    "anteriores": [
+      "oq eu posso criar na origem?"
+    ],
+    "fontes": [
+      "origens--origem-escolhas",
+      "origens--legado-criar"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 7670,
+    "pedido_completo_caracteres": 26589
+  },
+  {
+    "fase": "antes",
+    "caso": "origem-seguimento",
+    "pergunta": "Ent pq disse q da pra criar?",
+    "anteriores": [
+      "oq eu posso criar na origem?",
+      "Mas a capacidade marcante da pra criar?"
+    ],
+    "fontes": [
+      "poderes--criardominio",
+      "construcao--entidades-criar"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 7466,
+    "pedido_completo_caracteres": 26430
+  },
+  {
+    "fase": "antes",
+    "caso": "armas",
+    "pergunta": "me recomende uma trilha para um indivíduo que luta com várias armas diferentes.",
+    "anteriores": [],
+    "fontes": [
+      "ab--ab-caminho",
+      "emanador--ema-condutor"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 7120,
+    "pedido_completo_caracteres": 26005
+  },
+  {
+    "fase": "antes",
+    "caso": "parceria",
+    "pergunta": "e a Parceria?",
+    "anteriores": [
+      "me recomende uma trilha para lutar com várias armas diferentes"
+    ],
+    "fontes": [
+      "evocador--ev-parceria",
+      "evocador--evocador"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 6852,
+    "pedido_completo_caracteres": 25805
+  },
+  {
+    "fase": "antes",
+    "caso": "vanguarda",
+    "pergunta": "quais trilhas da Vanguarda você recomenda?",
+    "anteriores": [],
+    "fontes": [
+      "vanguarda--van-base",
+      "ab--ab-caminho"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 6689,
+    "pedido_completo_caracteres": 25574
+  },
+  {
+    "fase": "antes",
+    "caso": "reversa",
+    "pergunta": "quais os requisitos para se ter Energia Reversa?",
+    "anteriores": [],
+    "fontes": [
+      "aptidoes--apt-reversa",
+      "rotas--rota-sem-tecnica",
+      "rotas--rota-sementes"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 9021,
+    "pedido_completo_caracteres": 27906
+  },
+  {
+    "fase": "antes",
+    "caso": "cura",
+    "pergunta": "qual o máximo de cura de um feitiço de Classe 5?",
+    "anteriores": [],
+    "fontes": [
+      "fundamento--pontos",
+      "fundamento--amparoformas",
+      "fundamento--primeiro"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 9489,
+    "pedido_completo_caracteres": 28374
+  },
+  {
+    "fase": "antes",
+    "caso": "katana",
+    "pergunta": "quanto custa uma katana?",
+    "anteriores": [],
+    "fontes": [
+      "equip--eqa-laminas",
+      "equip--eqc-inicial"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 7079,
+    "pedido_completo_caracteres": 25964
+  },
+  {
+    "fase": "antes",
+    "caso": "socorro",
+    "pergunta": "No livro, como funciona Socorro?",
+    "anteriores": [],
+    "fontes": [
+      "guia--guia-socorrista",
+      "guia--guia-progressao"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 7101,
+    "pedido_completo_caracteres": 25986
+  },
+  {
+    "fase": "depois",
+    "caso": "casual",
+    "pergunta": "você gosta de café?",
+    "anteriores": [],
+    "fontes": [],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 2774,
+    "pedido_completo_caracteres": 21659
+  },
+  {
+    "fase": "depois",
+    "caso": "casual-recomendacao",
+    "pergunta": "me recomende um café",
+    "anteriores": [],
+    "fontes": [],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 2775,
+    "pedido_completo_caracteres": 21660
+  },
+  {
+    "fase": "depois",
+    "caso": "origem",
+    "pergunta": "oq eu posso criar na origem?",
+    "anteriores": [],
+    "fontes": [
+      "origens--legado-criar",
+      "origens--origem-escolhas",
+      "origens--origens"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 9840,
+    "pedido_completo_caracteres": 28725
+  },
+  {
+    "fase": "depois",
+    "caso": "origem-contestada",
+    "pergunta": "Mas a capacidade marcante da pra criar?",
+    "anteriores": [
+      "oq eu posso criar na origem?"
+    ],
+    "fontes": [
+      "origens--legado-criar",
+      "origens--origem-escolhas"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 8209,
+    "pedido_completo_caracteres": 27128
+  },
+  {
+    "fase": "depois",
+    "caso": "origem-seguimento",
+    "pergunta": "Ent pq disse q da pra criar?",
+    "anteriores": [
+      "oq eu posso criar na origem?",
+      "Mas a capacidade marcante da pra criar?"
+    ],
+    "fontes": [
+      "origens--legado-criar",
+      "origens--origem-escolhas",
+      "ab--ab-criacao"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 10198,
+    "pedido_completo_caracteres": 29162
+  },
+  {
+    "fase": "depois",
+    "caso": "armas",
+    "pergunta": "me recomende uma trilha para um indivíduo que luta com várias armas diferentes.",
+    "anteriores": [],
+    "fontes": [
+      "emanador--ema-condutor",
+      "incursor--inc-malabarista",
+      "evocador--ev-principal"
+    ],
+    "panorama": [
+      "bastiao--bas-bastiao",
+      "vanguarda--van-base",
+      "guia--guia",
+      "emanador--ema-base",
+      "evocador--evocador",
+      "incursor--inc-caminho",
+      "bastiao--bas-muro",
+      "bastiao--bas-punho",
+      "bastiao--bas-combatente",
+      "vanguarda--van-estocada",
+      "vanguarda--van-yumi",
+      "vanguarda--van-besta",
+      "vanguarda--van-fogo",
+      "vanguarda--van-executor",
+      "guia--guia-arquiteto",
+      "guia--guia-analista",
+      "guia--guia-socorrista",
+      "emanador--ema-condutor",
+      "emanador--ema-eco",
+      "emanador--ema-impulso",
+      "evocador--ev-principal",
+      "evocador--ev-parceria",
+      "evocador--ev-multiplas",
+      "incursor--inc-assassino",
+      "incursor--inc-pugilista",
+      "incursor--inc-malabarista"
+    ],
+    "ultima_mensagem_caracteres": 21393,
+    "pedido_completo_caracteres": 40278
+  },
+  {
+    "fase": "depois",
+    "caso": "parceria",
+    "pergunta": "e a Parceria?",
+    "anteriores": [
+      "me recomende uma trilha para lutar com várias armas diferentes"
+    ],
+    "fontes": [
+      "evocador--ev-parceria",
+      "evocador--evocador"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 7391,
+    "pedido_completo_caracteres": 26344
+  },
+  {
+    "fase": "depois",
+    "caso": "vanguarda",
+    "pergunta": "quais trilhas da Vanguarda você recomenda?",
+    "anteriores": [],
+    "fontes": [
+      "vanguarda--van-yumi",
+      "vanguarda--van-estocada",
+      "vanguarda--van-executor"
+    ],
+    "panorama": [
+      "vanguarda--van-base",
+      "vanguarda--van-estocada",
+      "vanguarda--van-yumi",
+      "vanguarda--van-besta",
+      "vanguarda--van-fogo",
+      "vanguarda--van-executor"
+    ],
+    "ultima_mensagem_caracteres": 12581,
+    "pedido_completo_caracteres": 31466
+  },
+  {
+    "fase": "depois",
+    "caso": "reversa",
+    "pergunta": "quais os requisitos para se ter Energia Reversa?",
+    "anteriores": [],
+    "fontes": [
+      "aptidoes--apt-reversa",
+      "rotas--rota-sem-tecnica",
+      "rotas--rota-sementes"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 9560,
+    "pedido_completo_caracteres": 28445
+  },
+  {
+    "fase": "depois",
+    "caso": "cura",
+    "pergunta": "qual o máximo de cura de um feitiço de Classe 5?",
+    "anteriores": [],
+    "fontes": [
+      "fundamento--pontos",
+      "fundamento--amparoformas",
+      "fundamento--primeiro"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 10028,
+    "pedido_completo_caracteres": 28913
+  },
+  {
+    "fase": "depois",
+    "caso": "katana",
+    "pergunta": "quanto custa uma katana?",
+    "anteriores": [],
+    "fontes": [
+      "equip--eqa-laminas",
+      "equip--eqc-inicial"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 7618,
+    "pedido_completo_caracteres": 26503
+  },
+  {
+    "fase": "depois",
+    "caso": "socorro",
+    "pergunta": "No livro, como funciona Socorro?",
+    "anteriores": [],
+    "fontes": [
+      "dano--socorro"
+    ],
+    "panorama": [],
+    "ultima_mensagem_caracteres": 7537,
+    "pedido_completo_caracteres": 26422
+  }
+]
