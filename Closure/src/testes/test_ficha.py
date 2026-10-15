@@ -444,7 +444,7 @@ class Comando(unittest.IsolatedAsyncioTestCase):
         self.assertEqual((embed.title, embed.author.name, embed.description), ("Ficha de Kaori", "Closure", FALA["closure"]["reprovada"]))
         self.assertIn("**Defesa**: está 15, o certo é 13", campos["❌ Precisa corrigir"])
         self.assertIn("Vida 23", campos["✅ Conferido e certo"])
-        self.assertIn("feitiços e invocações", campos["⏳ Ainda não conferido"])
+        self.assertIn("Conferência parcial", campos["⏳ Ainda não conferido"])
         self.assertIn("R51", embed.footer.text)
         limpa = _com_campos("kaori", aviso__escolhas_de_pericia="Tudo escolhido", aviso__testes_disponiveis="0 de 2")
         self.assertEqual(painel(conferir(limpa, ref), limpa, closure).colour.value, 0x2E8B57)

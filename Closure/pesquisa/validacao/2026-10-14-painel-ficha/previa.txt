@@ -1,0 +1,199 @@
+CASO 1: Ficha de Mika — validação de montagem
+
+
+Página 1 de 3 · Resumo · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+Passei o pente fino na ficha e o que dá pra conferir tá batendo.
+
+Resultado
+**Aprovada nas verificações feitas**
+0 erro(s) · 0 pendência(s) · 0 ajuste(s) para o mestre
+
+✅ Conferido e certo
+Caminho Evocador · Trilha Parceria · Origem Latente
+Vida 121 · PE 102 · Integridade 148
+Proteção 1 · Defesa 13
+
+Detalhes conferidos
+3 habilidade(s) · 0 invocação(ões). Use o seletor ou as setas para consultar.
+
+⏳ Ainda não conferido
+Conferência parcial: há itens para revisão manual. Veja a página Limites da análise.
+
+
+Página 2 de 3 · Feitiços e técnicas · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+**Feitiços e técnicas**
+
+Feitiço 1 — Fio de arrasto
+• PE 3 · dano-base 2d8
+
+Classe 0 1 — Fio curto
+• PE 0 · dano-base 4d8
+
+Técnica Máxima — Fio decisivo
+• PE 25 · montagem 0 de 8 · 24d8
+
+
+Página 3 de 3 · Limites da análise · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+**Limites da análise**
+
+Feitiço 1 · Classe 0 1
+• falta conferir Selo, texto do efeito e resolução pela ficha completa
+
+repertório completo
+• concessões e compras fora dos espaços ainda precisam de conferência
+
+Técnica Máxima
+• texto, requisitos e recarga precisam de conferência do mestre
+
+CASO 2: Ficha de Kaito — validação domada
+
+
+Página 1 de 4 · Resumo · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+Passei o pente fino na ficha e o que dá pra conferir tá batendo.
+
+Resultado
+**Aprovada nas verificações feitas**
+0 erro(s) · 0 pendência(s) · 2 ajuste(s) para o mestre
+
+👀 Pro mestre conferir
+• **Invocação 1 · Buff/Debuff de Constituição**: +1
+• **Invocação 1 · Buff/Debuff de Vida**: +2
+
+✅ Conferido e certo
+Caminho Evocador · Trilha Parceria · Origem Latente
+Vida 128 · PE 108 · Integridade 156
+Proteção 1 · Defesa 14
+
+Detalhes conferidos
+2 habilidade(s) · 1 invocação(ões). Use o seletor ou as setas para consultar.
+
+⏳ Ainda não conferido
+Conferência parcial: há itens para revisão manual. Veja a página Limites da análise.
+
+
+Página 2 de 4 · Correções e revisão · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+**Correções e revisão**
+
+👀 Pro mestre conferir
+• **Invocação 1 · Buff/Debuff de Constituição**: +1
+• **Invocação 1 · Buff/Debuff de Vida**: +2
+
+
+Página 3 de 4 · Invocação 1 · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+**Invocação 1**
+
+Invocação 1 — Guardião de teste
+• nível 5 · Classe 2
+• Vida 34 · Defesa 13 · CD 13 · acerto +5 · deslocamento 9 m
+• entrada 2 PE · retorno 4 PE
+• Força 1 · Destreza 2 · Constituição 3 · Inteligência 2 · Essência 2
+
+Invocação 1 · básica 1 — Golpe básico
+• PE 0 · dano-base 2d6
+
+Invocação 1 · especial 1 — Golpe preparado
+• PE 6 · dano-base 1d8
+
+
+Página 4 de 4 · Limites da análise · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+**Limites da análise**
+
+Invocação 1 · básica 1 · Invocação 1 · especial 1
+• falta conferir Selo, texto do efeito e resolução pela ficha completa
+
+Invocação 1
+• anatomia, carga, requisitos do equipamento, perícias e TR ainda precisam de conferência
+
+Invocação 1
+• vagas extras da Trilha, Talentos, trunfos e texto da aquisição ainda precisam de conferência
+
+CASO 3: Ficha de Kaito — validação criacao
+
+
+Página 1 de 3 · Resumo · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+Passei o pente fino na ficha e o que dá pra conferir tá batendo.
+
+Resultado
+**Aprovada nas verificações feitas**
+0 erro(s) · 0 pendência(s) · 0 ajuste(s) para o mestre
+
+✅ Conferido e certo
+Caminho Evocador · Trilha Invocação Principal · Origem Latente
+Vida 128 · PE 108 · Integridade 156
+Proteção 1 · Defesa 14
+
+Detalhes conferidos
+2 habilidade(s) · 1 invocação(ões). Use o seletor ou as setas para consultar.
+
+⏳ Ainda não conferido
+Conferência parcial: há itens para revisão manual. Veja a página Limites da análise.
+
+
+Página 2 de 3 · Invocação 1 · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+**Invocação 1**
+
+Invocação 1 — Guardião de teste
+• nível 16 · Classe 4
+• Vida 98 · Defesa 14 · CD 13 · acerto +5 · deslocamento 9 m
+• entrada 2 PE · retorno 8 PE
+• Força 2 · Destreza 3 · Constituição 3 · Inteligência 2 · Essência 2
+
+Invocação 1 · básica 1 — Golpe básico
+• PE 0 · dano-base 2d6
+
+Invocação 1 · especial 1 — Golpe preparado
+• PE 9 · dano-base 3d8
+
+
+Página 3 de 3 · Limites da análise · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+**Limites da análise**
+
+Invocação 1 · básica 1 · Invocação 1 · especial 1
+• falta conferir Selo, texto do efeito e resolução pela ficha completa
+
+Invocação 1
+• anatomia, carga, requisitos do equipamento, perícias e TR ainda precisam de conferência
+
+Invocação 1
+• vagas extras da Trilha, Talentos, trunfos e texto da aquisição ainda precisam de conferência
+
+CASO 4: Ficha de Bastião, nível 2
+
+
+Página 1 de 3 · Resumo · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+Passei o pente fino na ficha e o que dá pra conferir tá batendo.
+
+Resultado
+**Aprovada nas verificações feitas**
+0 erro(s) · 0 pendência(s) · 0 ajuste(s) para o mestre
+
+✅ Conferido e certo
+Caminho Bastião · Trilha Muro · Origem Descendente
+Vida 23 · PE 8 · Integridade 26
+Proteção 1 · Defesa 13
+
+Detalhes conferidos
+2 habilidade(s) · 0 invocação(ões). Use o seletor ou as setas para consultar.
+
+⏳ Ainda não conferido
+Conferência parcial: há itens para revisão manual. Veja a página Limites da análise.
+
+
+Página 2 de 3 · Feitiços e técnicas · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+**Feitiços e técnicas**
+
+Feitiço 1 — Fio de arrasto
+• PE 3 · dano-base 2d8
+
+Classe 0 1 — Fio curto
+• PE 0 · dano-base 1d8
+
+
+Página 3 de 3 · Limites da análise · Veredito: aprovada · livro R51 · controles por 10 min · o mestre pode recusar mesmo com tudo certo
+**Limites da análise**
+
+Feitiço 1 · Classe 0 1
+• falta conferir Selo, texto do efeito e resolução pela ficha completa
+
+repertório completo
+• concessões e compras fora dos espaços ainda precisam de conferência

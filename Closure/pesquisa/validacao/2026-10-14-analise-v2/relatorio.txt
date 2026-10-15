@@ -50,3 +50,10 @@ A ampliação foi aplicada só a cópias de teste; a ficha oficial não foi reco
 foi enviado à Discloud. As fichas atuais em formato 1 continuam funcionando; as entradas novas precisam da
 ANALISE 2. O PR 41 do bot foi integrado; o PR 2 do gerador foi aprovado individualmente pelo Mizuki e
 integrado também. A autorização automática para futuros merges continua abrangendo somente RPG---BOT.
+
+Confirmação posterior no Discord — 14/10/2026
+Mizuki enviou cinco capturas dos quatro painéis, às 22h34–22h35, e confirmou que as fichas passaram.
+Fundamento/Classe 0/Máxima, domada com Buff, criação/Principal e Kaori foram aprovadas nas verificações
+implementadas. Domada: vida 34, Defesa 13 e duas notas de Buff; criação: vida 98, Defesa 14.
+Isso confirma o fluxo e os valores mostrados, sem ampliar a cobertura para regras ainda não verificadas.
+A lista longa motivou o painel por páginas, preparado depois e registrado em ../2026-10-14-painel-ficha/.

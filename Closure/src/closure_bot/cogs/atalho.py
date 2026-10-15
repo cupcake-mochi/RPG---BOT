@@ -14,6 +14,7 @@ import discord
 from discord.ext import commands
 
 from .clima import _com_arte
+from ..ficha_paginacao import enviar_relatorio
 
 log = logging.getLogger(__name__)
 
@@ -52,7 +53,7 @@ class Atalho(commands.Cog):
 
     async def _atender(self, mensagem: discord.Message, nome: str, resto: str) -> None:
         async def responder(texto: str | None = None, **extras) -> None:
-            await mensagem.channel.send(texto, reference=mensagem, mention_author=False,
+            return await mensagem.channel.send(texto, reference=mensagem, mention_author=False,
                                         allowed_mentions=discord.AllowedMentions.none(), **extras)
 
         admin = self.bot.get_cog("Admin")
@@ -72,7 +73,7 @@ class Atalho(commands.Cog):
             link = resto.split()[0] if resto else None
             async with mensagem.channel.typing():
                 resposta = await ficha.analisar_fonte(link=None if anexo else link, arquivo=anexo)
-            await responder(**({"embed": resposta} if isinstance(resposta, discord.Embed) else {"texto": resposta}))
+            await enviar_relatorio(resposta, responder)
         elif nome == "clima":
             embed, aviso = await self.bot.get_cog("ComandoClima").consultar(resto or None)
             if embed is None:
