@@ -14,6 +14,8 @@ o que falta ou manda pro mestre conferir.
 | 6 | Um treino extra da Origem deve ter uma conferência pelo mestre | o mesmo contador de excesso pode acender em Perícias, Ofícios (mesmo com dois marcados) e no resumo | junta avisos do mesmo excesso justificado em uma nota, preferindo o resumo; valores diferentes e excessos sem permissão continuam visíveis |
 | 7 | **Núcleo Dependente**: não possui barra de Integridade (`origens--corpo-inteiro-manutencao`) | a Teste 4 mantém a fórmula normal de Integridade 60 | fórmula normal recebe pendência para desconsiderar a reserva, sem certificar o número; zero/vazio reconhecem ausência de barra; outros valores reprovam |
 | 8 | Um escudo só impede o Selo se ocupar a mão exigida pelo Selo da técnica | `marca_selo` mostra "Trava Selo de gesto" sempre que há escudo, sem ler o Selo escolhido; a ANALISE não exporta essa escolha | omite esse aviso genérico por falta de impacto confirmado. Avisos específicos continuam classificados; retomar a conferência quando o contrato trouxer o requisito do Selo |
+| 9 | Linha cresce em comprimento até 60 m e depois em largura para 3 m e 4,5 m (`fundamento--alcance`) | o gerador publicado com ANALISE 2 conserva largura 1,5 m mesmo nesses aumentos | só a largura antiga exata gera pendência com a medida correta; medida do livro é conferida, outros valores reprovam |
+| 10 | Toca a Alma reduz os dados pela metade, para baixo (`catalogo--cat-defesas`) | fórmula comum do gerador mantém os dados anteriores à redução | só os dados e a média exatos da fórmula antiga recebem pendência; resultado correto é conferido numericamente, permissão da Regra continua manual. Interação com adicionais/distribuição continua não certificada |
 
 ## O que bate (conferido)
 
