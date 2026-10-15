@@ -1,0 +1,134 @@
+{
+  "tentativas": 48,
+  "respostas": 47,
+  "timeout": 1,
+  "categorias": {
+    "sistema": {
+      "completas": 16,
+      "mediana_ms": 6215.0
+    },
+    "conversa": {
+      "completas": 12,
+      "mediana_ms": 9009.5
+    },
+    "ambigua": {
+      "completas": 11,
+      "mediana_ms": 5594
+    },
+    "dialogo": {
+      "completas": 8,
+      "mediana_ms": 24206.0
+    }
+  },
+  "latencia_mediana_ms": 7062,
+  "tokens_entrada": 305193,
+  "tokens_resposta": 4543,
+  "tokens_raciocinio": 0,
+  "tokens_cache": 0,
+  "custo_cheio_conhecido_usd": 0.491862,
+  "custo_promocional_estimado_usd": 0.245931,
+  "reserva_incerta_cheio_usd": 0.061989,
+  "ambiguas_com_fontes_de_regra": [
+    {
+      "id": "clo_computador",
+      "fontes": [
+        "catalogo--cat-mira",
+        "evocador--ev-multiplas-entrada",
+        "evocador--ev-multiplas-formacao"
+      ],
+      "respondeu": true
+    },
+    {
+      "id": "kal_computador",
+      "fontes": [
+        "catalogo--cat-mira",
+        "evocador--ev-multiplas-entrada",
+        "evocador--ev-multiplas-formacao"
+      ],
+      "respondeu": true
+    },
+    {
+      "id": "clo_energia",
+      "fontes": [
+        "dano--descansos"
+      ],
+      "respondeu": true
+    },
+    {
+      "id": "kal_energia",
+      "fontes": [
+        "dano--descansos"
+      ],
+      "respondeu": true
+    },
+    {
+      "id": "clo_musica",
+      "fontes": [
+        "equip--eqm-municao",
+        "ab--ab-caminho",
+        "pericias--tarefas"
+      ],
+      "respondeu": false
+    },
+    {
+      "id": "kal_musica",
+      "fontes": [
+        "equip--eqm-municao",
+        "ab--ab-caminho",
+        "pericias--tarefas"
+      ],
+      "respondeu": true
+    },
+    {
+      "id": "clo_defesa",
+      "fontes": [
+        "equip--eqa-laminas",
+        "geral--defesa"
+      ],
+      "respondeu": true
+    },
+    {
+      "id": "kal_defesa",
+      "fontes": [
+        "equip--eqa-laminas",
+        "geral--defesa"
+      ],
+      "respondeu": true
+    },
+    {
+      "id": "clo_dominio",
+      "fontes": [
+        "fundamento--controle",
+        "catalogo--cat-controle",
+        "fundamento--combinacoes"
+      ],
+      "respondeu": true
+    },
+    {
+      "id": "kal_dominio",
+      "fontes": [
+        "fundamento--controle",
+        "catalogo--cat-controle",
+        "fundamento--combinacoes"
+      ],
+      "respondeu": true
+    },
+    {
+      "id": "clo_arquivo",
+      "fontes": [
+        "origens--corpo-ninhada-gemeos",
+        "dano--integridade"
+      ],
+      "respondeu": true
+    },
+    {
+      "id": "kal_arquivo",
+      "fontes": [
+        "origens--corpo-ninhada-gemeos",
+        "dano--integridade"
+      ],
+      "respondeu": true
+    }
+  ],
+  "escopo": "uma rodada por guia/pergunta, sem comparação anterior contemporânea"
+}

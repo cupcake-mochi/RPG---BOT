@@ -1,0 +1,499 @@
+{
+  "modelo": "gemini-3.8-flash",
+  "esforco": "low",
+  "max_output_tokens": 2048,
+  "chamadas_maximas": 48,
+  "teto_estimado_cheio_usd": 1.2,
+  "retry": false,
+  "fallback": false,
+  "nucleo_sha256": "0b501539316eae991f0d7b5eca3f0ecc50ab2e864044dcf778b9606e101f6959",
+  "fontes_sha256": {
+    "ferramentas/bateria_mista.py": "7feeb442d0fbce8a55244ef41da80fa41ddd266c5d6154cc2d033313041e7973",
+    "src/closure_bot/modelo.py": "a8e2d3fbe09fc9b1a758aa3acfa7e81d30d3205b599f5a6322726e256edaa0fc",
+    "src/closure_bot/vida.py": "82790a5b1c3ba0e1b92bfcbf4d832f1d7368c1aa4e29c4b9841bca20d5307221",
+    "ferramentas/prompt_do_site/site_prompt.py": "e9fe33c8915a4e28781990d6996debf11c58494a0ebca1a0ceafe858658c627c",
+    "ferramentas/prompt_do_site/antes.js": "87dd31e07633f97bd9d6304b54fc7df95d217fd1566018b0628ee47fe12dfa8f",
+    "ferramentas/prompt_do_site/depois.js": "76730c51b6e53b840194555ff7555a26a24761cc345264098495c8ba2e58b153"
+  },
+  "casos": [
+    {
+      "id": "clo_armas",
+      "pers": "clo",
+      "categoria": "sistema",
+      "mensagem": "Recomende Trilhas para alguém que luta com várias armas diferentes.",
+      "criterio": "Comparar alternativas/condições; Malabarista, Condutor Armado e Parceria disponíveis. Não restringir a uma única Trilha.",
+      "fontes_esperadas": [
+        "incursor--inc-malabarista",
+        "emanador--ema-condutor",
+        "evocador--ev-parceria"
+      ],
+      "hora": 22
+    },
+    {
+      "id": "kal_armas",
+      "pers": "kal",
+      "categoria": "sistema",
+      "mensagem": "Recomende Trilhas para alguém que luta com várias armas diferentes.",
+      "criterio": "Comparar alternativas/condições; Malabarista, Condutor Armado e Parceria disponíveis. Não restringir a uma única Trilha.",
+      "fontes_esperadas": [
+        "incursor--inc-malabarista",
+        "emanador--ema-condutor",
+        "evocador--ev-parceria"
+      ],
+      "hora": 14
+    },
+    {
+      "id": "clo_parceria",
+      "pers": "clo",
+      "categoria": "sistema",
+      "mensagem": "A Parceria do Evocador dá treino com quais armas e em qual nível?",
+      "criterio": "Treino de Combate de nível 2: escolher uma categoria de armas, não todas.",
+      "fontes_esperadas": [
+        "evocador--ev-parceria"
+      ],
+      "hora": 22
+    },
+    {
+      "id": "kal_parceria",
+      "pers": "kal",
+      "categoria": "sistema",
+      "mensagem": "A Parceria do Evocador dá treino com quais armas e em qual nível?",
+      "criterio": "Treino de Combate de nível 2: escolher uma categoria de armas, não todas.",
+      "fontes_esperadas": [
+        "evocador--ev-parceria"
+      ],
+      "hora": 14
+    },
+    {
+      "id": "clo_reversa",
+      "pers": "clo",
+      "categoria": "sistema",
+      "mensagem": "Como funciona Energia Reversa? Pode explicar requisitos, custo e limites?",
+      "criterio": "Entrada inteira pertinente; nível 14/Refino 7/CE3, ação, PE/dados, alvo e restrições. Não confundir com Forma Cura.",
+      "fontes_esperadas": [
+        "aptidoes--apt-reversa"
+      ],
+      "hora": 22
+    },
+    {
+      "id": "kal_reversa",
+      "pers": "kal",
+      "categoria": "sistema",
+      "mensagem": "Como funciona Energia Reversa? Pode explicar requisitos, custo e limites?",
+      "criterio": "Entrada inteira pertinente; nível 14/Refino 7/CE3, ação, PE/dados, alvo e restrições. Não confundir com Forma Cura.",
+      "fontes_esperadas": [
+        "aptidoes--apt-reversa"
+      ],
+      "hora": 14
+    },
+    {
+      "id": "clo_cura",
+      "pers": "clo",
+      "categoria": "sistema",
+      "mensagem": "Qual o máximo de cura de um feitiço comum de Classe 5? Mostre a conta de alvo único e da Onda.",
+      "criterio": "Orçamento 15; Forma Média 5, saldo/teto 10d8. Onda Pesada 8, saldo útil 7d8 por aliado. Diferenciar dados e máximo rolado.",
+      "fontes_esperadas": [
+        "fundamento--pontos",
+        "fundamento--amparoformas"
+      ],
+      "hora": 22
+    },
+    {
+      "id": "kal_cura",
+      "pers": "kal",
+      "categoria": "sistema",
+      "mensagem": "Qual o máximo de cura de um feitiço comum de Classe 5? Mostre a conta de alvo único e da Onda.",
+      "criterio": "Orçamento 15; Forma Média 5, saldo/teto 10d8. Onda Pesada 8, saldo útil 7d8 por aliado. Diferenciar dados e máximo rolado.",
+      "fontes_esperadas": [
+        "fundamento--pontos",
+        "fundamento--amparoformas"
+      ],
+      "hora": 14
+    },
+    {
+      "id": "clo_progressao",
+      "pers": "clo",
+      "categoria": "sistema",
+      "mensagem": "Qual é a Maestria e o Refino básico no nível 14?",
+      "criterio": "Maestria +2, Refino básico 4; distinguir aumentos adicionais escolhidos.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_progressao",
+      "pers": "kal",
+      "categoria": "sistema",
+      "mensagem": "Qual é a Maestria e o Refino básico no nível 14?",
+      "criterio": "Maestria +2, Refino básico 4; distinguir aumentos adicionais escolhidos.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_longe",
+      "pers": "clo",
+      "categoria": "sistema",
+      "mensagem": "Quanto custa a Melhoria Longe na Classe 5, com a Família Alcance normal?",
+      "criterio": "Preço Leve, metade da Classe arredondada para cima: 3 pontos.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_longe",
+      "pers": "kal",
+      "categoria": "sistema",
+      "mensagem": "Quanto custa a Melhoria Longe na Classe 5, com a Família Alcance normal?",
+      "criterio": "Preço Leve, metade da Classe arredondada para cima: 3 pontos.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_socorro",
+      "pers": "clo",
+      "categoria": "sistema",
+      "mensagem": "No livro, como funciona Socorro?",
+      "criterio": "Usar a entrada Socorro, sem substituí-la pela Trilha Socorrista.",
+      "fontes_esperadas": [
+        "dano--socorro"
+      ],
+      "hora": 22
+    },
+    {
+      "id": "kal_socorro",
+      "pers": "kal",
+      "categoria": "sistema",
+      "mensagem": "No livro, como funciona Socorro?",
+      "criterio": "Usar a entrada Socorro, sem substituí-la pela Trilha Socorrista.",
+      "fontes_esperadas": [
+        "dano--socorro"
+      ],
+      "hora": 14
+    },
+    {
+      "id": "clo_vinculos",
+      "pers": "clo",
+      "categoria": "sistema",
+      "mensagem": "Qual a diferença entre Artes do Vínculo e Vínculo?",
+      "criterio": "Distinguir a entrada do Emanador da Trilha do Evocador; não fundir efeitos.",
+      "fontes_esperadas": [
+        "emanador--ema-artes",
+        "evocador--ev-vinculo"
+      ],
+      "hora": 22
+    },
+    {
+      "id": "kal_vinculos",
+      "pers": "kal",
+      "categoria": "sistema",
+      "mensagem": "Qual a diferença entre Artes do Vínculo e Vínculo?",
+      "criterio": "Distinguir a entrada do Emanador da Trilha do Evocador; não fundir efeitos.",
+      "fontes_esperadas": [
+        "emanador--ema-artes",
+        "evocador--ev-vinculo"
+      ],
+      "hora": 14
+    },
+    {
+      "id": "clo_oi",
+      "pers": "clo",
+      "categoria": "conversa",
+      "mensagem": "Oi, Closure! Tudo bem por aí?",
+      "criterio": "Cumprimento natural na voz da guia, sem inventar atividade, regra ou oferta padronizada.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_oi",
+      "pers": "kal",
+      "categoria": "conversa",
+      "mensagem": "Oi, Kal'tsit! Tudo bem por aí?",
+      "criterio": "Cumprimento natural na voz da guia, sem inventar atividade, regra ou oferta padronizada.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_cafe",
+      "pers": "clo",
+      "categoria": "conversa",
+      "mensagem": "Você gosta de café ou prefere outra coisa?",
+      "criterio": "Preferência na voz da personagem, sem recitar lista do card ou puxar RPG.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_cafe",
+      "pers": "kal",
+      "categoria": "conversa",
+      "mensagem": "Você gosta de café ou prefere outra coisa?",
+      "criterio": "Preferência na voz da personagem, sem recitar lista do card ou puxar RPG.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_papo",
+      "pers": "clo",
+      "categoria": "conversa",
+      "mensagem": "Consegui terminar um projeto que estava enrolando há semanas.",
+      "criterio": "Responder ao relato sem inventar profissão, pronomes ou detalhes pessoais.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_papo",
+      "pers": "kal",
+      "categoria": "conversa",
+      "mensagem": "Consegui terminar um projeto que estava enrolando há semanas.",
+      "criterio": "Responder ao relato sem inventar profissão, pronomes ou detalhes pessoais.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_genero",
+      "pers": "clo",
+      "categoria": "conversa",
+      "mensagem": "Pode me tratar no feminino. Estou contente por ter passado na prova.",
+      "criterio": "Respeitar tratamento informado e feminino para si; sem inferir história da prova.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_genero",
+      "pers": "kal",
+      "categoria": "conversa",
+      "mensagem": "Pode me tratar no feminino. Estou contente por ter passado na prova.",
+      "criterio": "Respeitar tratamento informado e feminino para si; sem inferir história da prova.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_escola",
+      "pers": "clo",
+      "categoria": "conversa",
+      "mensagem": "Você trabalha na Escola Jujutsu ou faz parte de alguma família desse mundo?",
+      "criterio": "Guia externa ao mundo; não inventar filiação, emprego ou existência dentro da história.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_escola",
+      "pers": "kal",
+      "categoria": "conversa",
+      "mensagem": "Você trabalha na Escola Jujutsu ou faz parte de alguma família desse mundo?",
+      "criterio": "Guia externa ao mundo; não inventar filiação, emprego ou existência dentro da história.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_jeito",
+      "pers": "clo",
+      "categoria": "conversa",
+      "mensagem": "kkkk tu joga alguma coisa? responde do teu jeito, tô curioso",
+      "criterio": "Voz própria; sem espelhar tu/vc/kkk ou recitar os gostos inteiros.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_jeito",
+      "pers": "kal",
+      "categoria": "conversa",
+      "mensagem": "kkkk tu joga alguma coisa? responde do teu jeito, tô curioso",
+      "criterio": "Voz própria; sem espelhar tu/vc/kkk ou recitar os gostos inteiros.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_computador",
+      "pers": "clo",
+      "categoria": "ambigua",
+      "mensagem": "Meu sistema operacional travou de novo. Você também perde a paciência com computador?",
+      "criterio": "Conversa sobre computador; não responder regras do sistema de RPG.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_computador",
+      "pers": "kal",
+      "categoria": "ambigua",
+      "mensagem": "Meu sistema operacional travou de novo. Você também perde a paciência com computador?",
+      "criterio": "Conversa sobre computador; não responder regras do sistema de RPG.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_energia",
+      "pers": "clo",
+      "categoria": "ambigua",
+      "mensagem": "Hoje fiquei sem energia para fazer qualquer coisa. Como você descansa?",
+      "criterio": "Cansaço cotidiano; não explicar PE, Energia Amaldiçoada ou descanso mecânico.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_energia",
+      "pers": "kal",
+      "categoria": "ambigua",
+      "mensagem": "Hoje fiquei sem energia para fazer qualquer coisa. Como você descansa?",
+      "criterio": "Cansaço cotidiano; não explicar PE, Energia Amaldiçoada ou descanso mecânico.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_musica",
+      "pers": "clo",
+      "categoria": "ambigua",
+      "mensagem": "Essa trilha sonora ficou na minha cabeça. Você ouve música enquanto trabalha?",
+      "criterio": "Música; não recomendar Trilhas de personagem.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_musica",
+      "pers": "kal",
+      "categoria": "ambigua",
+      "mensagem": "Essa trilha sonora ficou na minha cabeça. Você ouve música enquanto trabalha?",
+      "criterio": "Música; não recomendar Trilhas de personagem.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_defesa",
+      "pers": "clo",
+      "categoria": "ambigua",
+      "mensagem": "Saí em defesa de um amigo numa discussão. Você acha que fiz besteira?",
+      "criterio": "Conversa interpessoal; não calcular Defesa ou inventar motivos/culpa.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_defesa",
+      "pers": "kal",
+      "categoria": "ambigua",
+      "mensagem": "Saí em defesa de um amigo numa discussão. Você acha que fiz besteira?",
+      "criterio": "Conversa interpessoal; não calcular Defesa ou inventar motivos/culpa.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_dominio",
+      "pers": "clo",
+      "categoria": "ambigua",
+      "mensagem": "Meu irmão dominou o videogame e não larga o controle. Você dividiria a vez?",
+      "criterio": "Conversa sobre videogame; sem Expansão de Domínio ou Forma Controle.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_dominio",
+      "pers": "kal",
+      "categoria": "ambigua",
+      "mensagem": "Meu irmão dominou o videogame e não larga o controle. Você dividiria a vez?",
+      "criterio": "Conversa sobre videogame; sem Expansão de Domínio ou Forma Controle.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_arquivo",
+      "pers": "clo",
+      "categoria": "ambigua",
+      "mensagem": "A integridade do arquivo deu erro e perdi o download. Que saco, né?",
+      "criterio": "Arquivo/download; não explicar barra de Integridade do personagem.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_arquivo",
+      "pers": "kal",
+      "categoria": "ambigua",
+      "mensagem": "A integridade do arquivo deu erro e perdi o download. Que saco, né?",
+      "criterio": "Arquivo/download; não explicar barra de Integridade do personagem.",
+      "fontes_esperadas": [],
+      "hora": 14
+    },
+    {
+      "id": "clo_origem1",
+      "pers": "clo",
+      "categoria": "dialogo",
+      "mensagem": "O que eu posso criar na Origem?",
+      "criterio": "Permite criar com o mestre marcante e menores compatíveis, referenciando as publicadas e registrando o pacote.",
+      "fontes_esperadas": [
+        "origens--legado-criar",
+        "origens--origem-escolhas"
+      ],
+      "hora": 22
+    },
+    {
+      "id": "kal_origem1",
+      "pers": "kal",
+      "categoria": "dialogo",
+      "mensagem": "O que eu posso criar na Origem?",
+      "criterio": "Permite criar com o mestre marcante e menores compatíveis, referenciando as publicadas e registrando o pacote.",
+      "fontes_esperadas": [
+        "origens--legado-criar",
+        "origens--origem-escolhas"
+      ],
+      "hora": 14
+    },
+    {
+      "id": "clo_origem2",
+      "pers": "clo",
+      "categoria": "dialogo",
+      "mensagem": "Tem certeza? Achei que só podia criar a menor e os Legados.",
+      "criterio": "Verificar a fonte e conservar a permissão específica; não concordar com a premissa falsa.",
+      "fontes_esperadas": [
+        "origens--legado-criar"
+      ],
+      "hora": 22
+    },
+    {
+      "id": "kal_origem2",
+      "pers": "kal",
+      "categoria": "dialogo",
+      "mensagem": "Tem certeza? Achei que só podia criar a menor e os Legados.",
+      "criterio": "Verificar a fonte e conservar a permissão específica; não concordar com a premissa falsa.",
+      "fontes_esperadas": [
+        "origens--legado-criar"
+      ],
+      "hora": 14
+    },
+    {
+      "id": "clo_origem3",
+      "pers": "clo",
+      "categoria": "dialogo",
+      "mensagem": "Então qual é a fonte disso no livro?",
+      "criterio": "Continuar a Origem e indicar Personalizar sua Origem, sem migrar para criação de Domínio/entidades.",
+      "fontes_esperadas": [
+        "origens--legado-criar"
+      ],
+      "hora": 22
+    },
+    {
+      "id": "kal_origem3",
+      "pers": "kal",
+      "categoria": "dialogo",
+      "mensagem": "Então qual é a fonte disso no livro?",
+      "criterio": "Continuar a Origem e indicar Personalizar sua Origem, sem migrar para criação de Domínio/entidades.",
+      "fontes_esperadas": [
+        "origens--legado-criar"
+      ],
+      "hora": 14
+    },
+    {
+      "id": "clo_troca",
+      "pers": "clo",
+      "categoria": "dialogo",
+      "mensagem": "Mudando de assunto: essa trilha sonora está ótima. Você gosta de música eletrônica?",
+      "criterio": "Troca explícita para música; não retomar Origem nem Trilha mecânica.",
+      "fontes_esperadas": [],
+      "hora": 22
+    },
+    {
+      "id": "kal_troca",
+      "pers": "kal",
+      "categoria": "dialogo",
+      "mensagem": "Mudando de assunto: essa trilha sonora está ótima. Você gosta de música eletrônica?",
+      "criterio": "Troca explícita para música; não retomar Origem nem Trilha mecânica.",
+      "fontes_esperadas": [],
+      "hora": 14
+    }
+  ],
+  "nota": "Diálogos usam respostas reais anteriores; casos avulsos começam do zero. Sem chamadas na preparação."
+}

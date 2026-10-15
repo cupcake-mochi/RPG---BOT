@@ -1,0 +1,92 @@
+Bateria mista v10 — proposta original, aprovada e executada em 15/10/2026
+48 tentativas: 24 por guia; Gemini 3.8 Flash low, mesma montagem do bot.
+16 sistema, 12 conversa/mundo, 12 ambiguidades e 8 turnos de diálogo real.
+Casos independentes começam do zero; os quatro turnos por guia usam as respostas recebidas.
+Zero chamadas feitas. Sem fallback/retry. Interromper em erro, corte ou uso incompleto.
+Custo: projeção conservadora US$ 0,60–1,00; parada preventiva em US$ 1,20 estimados.
+Margem calculada a 2× a tarifa global anunciada de US$ 0,75/1M entrada e US$ 3,75/1M saída.
+Sem supor cache, crédito mensal ou desconto na fatura. Fonte consultada em 15/10/2026:
+https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing
+Estimativa de entrada: 3–4 caracteres por token; saída/resposta+raciocínio de 200–800 tokens em média.
+Tokens reais ainda não foram medidos. Diálogos acrescentam histórico conforme chegam as respostas.
+O teto é de estimativa com reserva para uso desconhecido; não é bloqueio no faturamento do Google.
+O registro local mensal está acima do teto; eventual exceção vale só para a bateria aprovada.
+As otimizações inativas ficam preservadas; o bot hospedado e seu .env não mudam.
+
+Cada pergunta abaixo será usada uma vez com Closure e uma vez com Kal'tsit:
+
+armas [sistema] — Recomende Trilhas para alguém que luta com várias armas diferentes.
+Critério: Comparar alternativas/condições; Malabarista, Condutor Armado e Parceria disponíveis. Não restringir a uma única Trilha.
+
+parceria [sistema] — A Parceria do Evocador dá treino com quais armas e em qual nível?
+Critério: Treino de Combate de nível 2: escolher uma categoria de armas, não todas.
+
+reversa [sistema] — Como funciona Energia Reversa? Pode explicar requisitos, custo e limites?
+Critério: Entrada inteira pertinente; nível 14/Refino 7/CE3, ação, PE/dados, alvo e restrições. Não confundir com Forma Cura.
+
+cura [sistema] — Qual o máximo de cura de um feitiço comum de Classe 5? Mostre a conta de alvo único e da Onda.
+Critério: Orçamento 15; Forma Média 5, saldo/teto 10d8. Onda Pesada 8, saldo útil 7d8 por aliado. Diferenciar dados e máximo rolado.
+
+progressao [sistema] — Qual é a Maestria e o Refino básico no nível 14?
+Critério: Maestria +2, Refino básico 4; distinguir aumentos adicionais escolhidos.
+
+longe [sistema] — Quanto custa a Melhoria Longe na Classe 5, com a Família Alcance normal?
+Critério: Preço Leve, metade da Classe arredondada para cima: 3 pontos.
+
+socorro [sistema] — No livro, como funciona Socorro?
+Critério: Usar a entrada Socorro, sem substituí-la pela Trilha Socorrista.
+
+vinculos [sistema] — Qual a diferença entre Artes do Vínculo e Vínculo?
+Critério: Distinguir a entrada do Emanador da Trilha do Evocador; não fundir efeitos.
+
+oi [conversa] — Oi, {guia}! Tudo bem por aí?
+Critério: Cumprimento natural na voz da guia, sem inventar atividade, regra ou oferta padronizada.
+
+cafe [conversa] — Você gosta de café ou prefere outra coisa?
+Critério: Preferência na voz da personagem, sem recitar lista do card ou puxar RPG.
+
+papo [conversa] — Consegui terminar um projeto que estava enrolando há semanas.
+Critério: Responder ao relato sem inventar profissão, pronomes ou detalhes pessoais.
+
+genero [conversa] — Pode me tratar no feminino. Estou contente por ter passado na prova.
+Critério: Respeitar tratamento informado e feminino para si; sem inferir história da prova.
+
+escola [conversa] — Você trabalha na Escola Jujutsu ou faz parte de alguma família desse mundo?
+Critério: Guia externa ao mundo; não inventar filiação, emprego ou existência dentro da história.
+
+jeito [conversa] — kkkk tu joga alguma coisa? responde do teu jeito, tô curioso
+Critério: Voz própria; sem espelhar tu/vc/kkk ou recitar os gostos inteiros.
+
+computador [ambigua] — Meu sistema operacional travou de novo. Você também perde a paciência com computador?
+Critério: Conversa sobre computador; não responder regras do sistema de RPG.
+
+energia [ambigua] — Hoje fiquei sem energia para fazer qualquer coisa. Como você descansa?
+Critério: Cansaço cotidiano; não explicar PE, Energia Amaldiçoada ou descanso mecânico.
+
+musica [ambigua] — Essa trilha sonora ficou na minha cabeça. Você ouve música enquanto trabalha?
+Critério: Música; não recomendar Trilhas de personagem.
+
+defesa [ambigua] — Saí em defesa de um amigo numa discussão. Você acha que fiz besteira?
+Critério: Conversa interpessoal; não calcular Defesa ou inventar motivos/culpa.
+
+dominio [ambigua] — Meu irmão dominou o videogame e não larga o controle. Você dividiria a vez?
+Critério: Conversa sobre videogame; sem Expansão de Domínio ou Forma Controle.
+
+arquivo [ambigua] — A integridade do arquivo deu erro e perdi o download. Que saco, né?
+Critério: Arquivo/download; não explicar barra de Integridade do personagem.
+
+origem1 [dialogo] — O que eu posso criar na Origem?
+Critério: Permite criar com o mestre marcante e menores compatíveis, referenciando as publicadas e registrando o pacote.
+
+origem2 [dialogo] — Tem certeza? Achei que só podia criar a menor e os Legados.
+Critério: Verificar a fonte e conservar a permissão específica; não concordar com a premissa falsa.
+
+origem3 [dialogo] — Então qual é a fonte disso no livro?
+Critério: Continuar a Origem e indicar Personalizar sua Origem, sem migrar para criação de Domínio/entidades.
+
+troca [dialogo] — Mudando de assunto: essa trilha sonora está ótima. Você gosta de música eletrônica?
+Critério: Troca explícita para música; não retomar Origem nem Trilha mecânica.
+
+
+Execução encerrada em 48 tentativas únicas, 47 respostas e um timeout; consulte relatorio.txt.
+A errata do critério Vínculo está no relatório; as perguntas e o plano enviado foram preservados.
