@@ -7,6 +7,20 @@ Cole tudo abaixo da linha numa conversa nova (Claude, ChatGPT ou Codex) pra reto
 Oi, sou o Mizuki. Vamos continuar o Guias do Ciclo, o bot de Discord do servidor da minha guilda, que joga o Ciclo Maldito (meu RPG de mesa no universo de Jujutsu Kaisen). O bot tem duas personagens de Arknights que se revezam no plantão: a Kal'tsit, das 9h às 21h, e a Closure, das 21h às 9h, no horário de Brasília. Elas tiram dúvida de regra pelo livro, contam o mundo do jogo, mostram o clima e conversam. As duas ficam fora da história: são guias, não existem no mundo do jogo.
 
 COMO EU GOSTO DE TRABALHAR
+Mais recente nesta continuação (15/10, após busca v10): bateria mista aprovada pelo Mizuki, 48 tentativas
+Flash low únicas, 47 respostas e um timeout clo_musica de 60 s. Pausa e retomada manual apenas das
+15 inéditas sob o mesmo plano; todas as 48 tentativas foram consumidas. Conhecido cheio US$ 0,491862,
+reserva incerta US$ 0,061989; reserva não é fatura. Não repetir nem usar saldo sem nova proposta.
+Origem manteve a permissão após contestação; contas principais bateram; respostas cotidianas ignoraram
+regras espúrias, mas as 12 tentativas ambíguas receberam fontes de RPG desnecessárias. Sem prova de
+estabilidade ou nota 102/102. Otimizações inativas preservadas. Relatório pesquisa/validacao/2026-10-15-bateria-mista-v10/.
+Mizuki apontou que os XLSX novos eram diferentes de um teste no Sheets: criadas cinco cópias nativas
+completas e ANALISE 4, lidas publicamente pelo bot. Resultados verde/vermelho/amarelo/verde/amarelo,
+em pesquisa/validacao/2026-10-15-ficha-tr-google/. Roteiro src/var/TESTES-GOOGLE-TR.txt; links/capturas
+em pesquisa/privado/. Domada nativa tem Vigor +3 e Atletismo +4, distinta do XLSX sintético com Vigor +5.
+Nada implantado; o pacote consulta-revisada continua igual. Recibo de publicação desta rodada:
+pesquisa/privado/publicacao-bateria-mista-v10.json. CONFIGURAÇÃO e PR 3 do gerador seguem separados.
+
 Estado mais recente (15/10, prevalece sobre o histórico abaixo): Argon congelado; CONFIGURAÇÃO em outro
 chat, sem integração aqui. Etapas de magia, repertório, equipamento, trunfos, TR/perícias/Ofícios e carga
 foram ampliadas no bot. ANALISE formato 4, 5.381 chaves, preserva as 4.896 do formato 2; formato 3

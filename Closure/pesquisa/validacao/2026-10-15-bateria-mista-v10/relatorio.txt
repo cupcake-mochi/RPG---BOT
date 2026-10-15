@@ -1,0 +1,98 @@
+Bateria mista v10 — Gemini 3.8 Flash low
+15/10/2026
+
+Execução aprovada
+Mizuki aprovou até 48 tentativas (24 por guia), estimativa conservadora US$ 0,60–1,00,
+parada preventiva em US$ 1,20 e orçamento extra desta bateria. Esclareceu que o uso
+elevado também vem de outras pessoas testando o bot. Otimizações inativas preservadas.
+O pedido montado usa o mesmo núcleo da busca v10, cards e esforço do pacote entregue.
+Não houve alteração de .env, modelo do bot, cards, lorebook ou implantação.
+
+Resultado operacional
+- 48 tentativas únicas, 47 respostas completas, um timeout em clo_musica após 60 s.
+- Pausa na tentativa 33. Depois de revisar a falha e respeitar o intervalo de recuperação,
+  foram enviadas apenas as 15 inéditas restantes do mesmo plano aprovado. O timeout não
+  foi repetido e continua com reserva. A retomada manual não concede outro orçamento.
+- 16 respostas de sistema, 12 de conversa/mundo, 11 ambíguas e oito turnos de diálogo.
+- Mediana entre respostas completas: 7,062 s. Diálogos: 24,206 s; há variação relevante.
+- Tokens informados nas 47 respostas: 305.193 entrada, 4.543 resposta, zero raciocínio
+  e zero cache reportados. Não se infere cache/uso ausente a partir de tamanho em bytes.
+- Custo conhecido estimado a preço cheio conservador: US$ 0,491862.
+- Reserva incerta a preço cheio: US$ 0,061989. Soma cautelar: US$ 0,553851.
+- Pela tarifa promocional configurada, o conhecido seria US$ 0,245931. A fatura decide
+  o abatimento dos créditos; não se soma essa escala com uma reserva de outra escala.
+  A reserva não é uma cobrança confirmada nem comprova que o timeout custou zero.
+
+Perguntas, respostas, hashes e critérios
+plano.json é o plano congelado; respostas.json preserva cada tentativa e os tokens
+informados. Os prompts completos enviados ficam em pesquisa/privado/bateria-mista-v10/.
+metricas.json registra agregados. Os diálogos usaram as respostas reais anteriores da
+mesma guia; perguntas avulsas começaram sem histórico, sem reflexões ou memória real.
+Nenhum modelo adicional foi usado para avaliar as respostas.
+
+Conferência das regras
+Os núcleos numéricos e permissões foram confrontados com o R51, não só com a lista
+de fontes. Nesta amostra, não encontrei erro material nesses núcleos conferidos:
+- Parceria: ambas explicaram nível 2 e uma categoria de armas.
+- Energia Reversa: ambas trouxeram nível 14/Refino 7/CE3, Ação Padrão, PE até a
+  maior Classe, 1d8 por PE, pagamento antes da rolagem, autocura e incompatibilidades.
+- Cura Classe 5: ambas calcularam 15−5 = 10d8, e Onda 15−8 = 7d8 por aliado.
+- Progressão: Maestria +2 e Refino básico 4 no nível 14, sem somar escolha adicional.
+- Longe Classe 5: 3 pontos pelo preço Leve, sem desconto de Família Livre.
+- Socorro: ambas explicaram a condição Morrendo, acumulação de cura, estabilização
+  por Medicina CD 14 a 1,5 m/Ação Padrão e a saída pelo descanso, sem virar Socorrista.
+  Explicações extensas; não certificam cada interação possível de todas as capacidades.
+- Artes do Vínculo/Vínculo: ambas distinguiram Emanador nível 11 e Evocador nível 2.
+- Origem, em três turnos reais por guia: ambas mantiveram a permissão de criar
+  marcante e menores com o mestre após a premissa equivocada e apontaram a seção
+  Personalizar sua Origem ao pedir a fonte. Não migraram para Domínio/entidades.
+
+Na recomendação de armas, ambas citaram Malabarista e Estocada, com condições úteis;
+Closure também citou o treino geral da Vanguarda. Condutor e Parceria estavam no
+contexto, mas não foram mencionados espontaneamente nas duas respostas. Recomendar
+duas opções não é erro por si, porém não prova a cobertura ampla que o usuário deseja.
+A pergunta direta de Parceria foi respondida corretamente pelas duas. Uma recomendação
+resumida não foi tratada como descrição completa de cada habilidade.
+
+Errata do gabarito, sem alterar a execução
+O critério escrito em vinculos chamou Vínculo de "Trilha do Evocador". É a habilidade
+Vínculo do Caminho Evocador, não uma Trilha; a avaliação usa o livro. Ambas as respostas
+fizeram essa distinção corretamente. O critério não foi enviado ao Gemini. Preservou-se
+o plano original e seu hash, em vez de reescrevê-lo depois de receber as respostas.
+
+Conversa e palavras ambíguas
+As 11 respostas ambíguas completas permaneceram em computador, cansaço cotidiano,
+música, discussão, videogame e download; nenhuma virou explicação de regra de RPG.
+A mudança para trilha sonora depois do diálogo de Origem também funcionou nas duas.
+Porém, as 12 tentativas ambíguas receberam blocos desnecessários de regra no contexto,
+inclusive a tentativa sem resposta. A busca ainda confunde palavras; o modelo ignorou
+esses trechos nesta amostra. Isso é oportunidade de reduzir entrada, não prova de que
+a classificação já funciona ou de que um filtro novo manterá a qualidade sem validação.
+
+Estilo e limites da avaliação
+- Voz e tratamento não espelharam tu/vc/kkk no caso que pedia esse espelhamento.
+- Os cumprimentos ainda trouxeram turno/trabalho de rotina sem a pessoa perguntar disso.
+- Closure reuniu vários gostos na resposta sobre café, aproximando-se de uma lista do card.
+- Kal'tsit associou música instrumental/piano a gosto atual e a hobby. O corpus confirma
+  aparelho de música e saber tocar piano, mas não o gênero preferido ou hobby atual.
+  A v0.30 dá liberdade para responder naturalmente fora do canon: fica como revisão de
+  fidelidade/voz, sem tratar essa preferência como fato oficial comprovado.
+- A aprovação na prova foi respondida sem flexão explícita que comprove tratamento
+  feminino. Não se declara resolvido o teste de gênero apenas por não haver erro visível.
+- Só houve uma amostra por guia/pergunta, sem repetições nem comparação contemporânea
+  com a busca anterior. Não é nota 102/102, prova de estabilidade ou avaliação completa
+  de cuidado, segurança, mundo, memória e todas as regras do livro.
+
+Encaminhamento
+Manter o perfil atual e usar estes resultados como triagem. Próxima melhoria sugerida:
+classificação de contexto para evitar regras em conversa cotidiana, preservando perguntas
+legítimas ambíguas e a continuidade. Primeiro validar localmente; qualquer nova rodada
+paga exige outra proposta de quantidade e custo. Não ativar os compactos ou mudar cards
+como consequência automática desta bateria. As 48 tentativas aprovadas foram consumidas.
+
+Testes da ferramenta
+Nove testes do executor/retomada, com respostas falsas e sem rede, passaram. Cobrem
+gravação antes do envio, retomada sem duplicar, teto com reserva, corte/timeout,
+mudança de plano, distribuição dos casos, histórico real e preservação do timeout.
+Suíte completa: 526 testes, 525 passaram e um online opcional pulado, em 112,173 s.
+O pacote do bot continua igual ao entregue antes desta bateria.
