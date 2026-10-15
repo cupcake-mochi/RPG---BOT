@@ -100,7 +100,11 @@ das regras de campanha e do registro de custom aprovado, e o `/ficha analisar` c
 Avanço posterior: contas parciais de montagem de feitiços e entidades em `ficha_magia.py`; Classe e PE nominal,
 limites de peças/Restrições e dano-base quando determinado, nível/Classe e entrada/retorno das entidades.
 Falta completar as entradas da ANALISE e conferir as contas restantes, além das 3 a 5 fichas reais com habilidades.
-As quatro cópias de teste recebidas foram relidas; têm as cartas de habilidades vazias, portanto não substituem esse ensaio.*
+As quatro cópias de teste iniciais tinham as cartas vazias. Depois, Mizuki autorizou criar cópias preenchidas:
+quatro casos foram calculados no Google, relidos e confirmados por ele no Discord; são casos montados,
+sem substituir personagens reais em uso. Em 15/10, seguiram equipamento, extras da Principal e trunfos da domada,
+com parada antes de TR/perícias. Cobertura parcial e validação em
+`pesquisa/validacao/2026-10-15-ficha-equipamento-trunfos/relatorio.txt`.*
 
 Mizuki adiou o cadastro e a aprovação de conteúdo próprio para a etapa CONFIGURAÇÃO da ficha (14/10).
 Não registrar comandos de campanha nem criar novas tabelas no bot nesta etapa. O desenho deve ser retomado junto da

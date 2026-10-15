@@ -313,7 +313,8 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
         pulou.append(f"{nome}: Remate não combina com Condicional de vida/duração; conferir o gatilho escrito")
     if not desconhecidas:
         conferir_medidas(ficha, magia, base, classe, forma, pecas, problemas, certos, pulou, pendencias, entidade=entidade)
-        conferir_resolucao(ficha, magia, base, forma, pecas, problemas, certos, pulou, entidade=entidade)
+        conferir_resolucao(ficha, magia, base, forma, pecas, problemas, certos, pulou,
+                          entidade=entidade, pendencias=pendencias)
     pulou.append(f"{nome}: falta conferir {'Famílias, ' if abertas is None else ''}Selo e texto do efeito pela ficha completa")
     if any(p.campo.rsplit(".", 1)[-1] in ("classe", "forma", "pecas", "restricoes") for p in problemas[inicio:]):
         pulou.append(f"{nome}: dano/benefício não certificado com montagem inválida")
@@ -515,12 +516,15 @@ def conferir_feiticos(ficha, magia, resultado):
     conferir_maxima(ficha, magia, resultado, familias)
 
 
-def conferir_invocacoes(ficha, magia, marcos, resultado, equipamento=None):
+def conferir_invocacoes(ficha, magia, marcos, resultado, equipamento=None, referencias=None):
     from .ficha_corretor import Problema
     dono = valor(ficha, "nivel")
     for base in bases(ficha, r"invocacao\.\d+"):
         cartas = [b for b in bases(ficha, re.escape(base) + r"\.(?:bas|esp|ext)\.\d+") if ativa(ficha, b)]
-        if not valor(ficha, base + ".nome") and not cartas:
+        outras = any(valor(ficha, k) and re.fullmatch(re.escape(base) +
+            r"\.(?:talento(?:_extra)?\.\d+|liberacao\.\d+\.(?:nome|como)|(?:tm|exp)\.(?:nome|como|degrau))", k)
+            for k in ficha)
+        if not valor(ficha, base + ".nome") and not cartas and not outras:
             continue
         def erro(campo, esperado, ancora="construcao--entidades-aquisicao"):
             resultado.problemas.append(Problema("conta", base + "." + campo, esperado, str(valor(ficha, base + "." + campo)), ancora))
@@ -580,6 +584,10 @@ def conferir_invocacoes(ficha, magia, marcos, resultado, equipamento=None):
         for b in cartas:
             conferir_montagem(ficha, magia, b, nivel, resultado.problemas, resultado.conferidos, resultado.nao_conferido,
                               entidade=True, basica=".bas." in b or (".ext." in b and valor(ficha, b + ".classe") == 0), familias=familias, pendencias=resultado.pendencias)
+        if referencias and referencias.entidades:
+            from .ficha_entidade_repertorio import conferir_repertorio_entidade
+            conferir_repertorio_entidade(ficha, referencias, base, nivel, cartas, familias, resultado)
         from .ficha_entidade import conferir_numeros
-        conferir_numeros(ficha, magia, base, nivel, resultado, equipamento)
-        resultado.nao_conferido.append(f"{rotulo(base)}: {'Famílias, ' if familias[0] is None else ''}vagas extras da Trilha, Talentos, trunfos e texto da aquisição ainda precisam de conferência")
+        conferir_numeros(ficha, magia, base, nivel, resultado, equipamento,
+                         referencias.equipamento if referencias else None)
+        resultado.nao_conferido.append(f"{rotulo(base)}: {'Famílias, ' if familias[0] is None else ''}efeitos dos Talentos, situação em campo e texto da aquisição ainda precisam de conferência")

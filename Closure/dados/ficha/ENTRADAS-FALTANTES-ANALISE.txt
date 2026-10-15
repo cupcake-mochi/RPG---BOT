@@ -1,4 +1,4 @@
-ANALISE: cobertura e contas restantes — R51, 14/10/2026
+ANALISE: cobertura e contas restantes — R51, atualizado em 15/10/2026
 
 Formato 2 preparado no gerador: 4.896 chaves; preservadas as 2.650 anteriores.
 Bot aceita 1 e 2. A ampliação só foi aplicada a cópias de teste. CONFIGURAÇÃO continua adiada.
@@ -16,7 +16,7 @@ Conferido pelo bot, sem modelo
 - Entidade: aquisição, nível fixo/domada, criação até o fim da Classe, entrada carregada do shikigami e retorno
   integral. Pontos individuais não podem burlar o total ou os marcos, mesmo se a lista antiga foi adulterada.
 - Com entradas completas: atributos atuais, vida com Buff de Constituição e de vida, Defesa sem equipamento
-  e com peças reconhecidas, acerto desarmado, CD e deslocamento-base. Maestria é a do dono, mesmo na domada.
+  e com peças reconhecidas, acerto desarmado/armado, CD e deslocamento-base. Maestria é a do dono, mesmo na domada.
   Buff/Debuff numérico continua nota para o mestre; entrada ausente não vira ajuste zero.
 - Quantidade normal de básicas/especiais; Talento conhecido respeita CE e nível do marco de aquisição.
 - Proteção da rota sem energia pela Lapidação já era conferida; teste local preservado.
@@ -26,21 +26,32 @@ O que continua sem conferência integral
 1. Texto da Regra/efeito, definição/anatomia, Selo em texto livre, custom e permissão do mestre. A exportação
    agora inclui textos; sua presença não dá aprovação automática. Cadastro/aprovação esperam CONFIGURAÇÃO.
 2. Medidas de alcance/área e tipo de resolução normal já são conferidos quando exportados. Não há
-   certificação dos bônus numéricos da resolução das entidades. Apoio e Cura têm o total recalculado;
+   certificação integral da resolução das entidades: bônus simples já são recalculados, mas a CD de
+   Controle permanece parcial. Apoio e Cura têm o total recalculado;
    Onda verifica os limites possíveis, mas falta entrada estruturada da escolha cura/apoio. Distribuição
    entre tiros/alvos de Rajada/Mais Um/Junto, escolhas de resolução em texto livre, gatilhos e efeitos
    secundários continuam manuais. Controle usa o saldo calculado, Remate entra no teto e Alma reduz os
    dados simples; permissão da Regra e interações de Alma com adicionais/distribuição não são certificadas.
-   Benefícios especiais de Máxima continuam parciais.
+   Benefícios especiais de Máxima continuam parciais. Nas entidades, ataque/CD simples e Precisão agora são
+   recalculados; a separação da CD do Controle e seu bônus por saldo zero continua manual.
 3. Repertório: capacidade, ocupação de aplicações/Talentos pagos/Regra Própria/Domínio/entidades por espaço,
    categorias e nível atual dos Talentos e requisitos cumulativos da Expansão já são conferidos. Leque e
    Coexistência concedem aplicações, sem converter em vagas comuns. Origem com Talento gratuito sem
    vinculação é tratada por possibilidades e impede certificar a ocupação completa. Efeitos dos Talentos,
-   incluindo benefícios nas reservas, aptidões e histórico/origem temporal das aquisições continuam parciais.
+   incluindo aptidões e histórico/origem temporal das aquisições continuam parciais. Reserva Profunda tem
+   acréscimo por Classe calculado; fórmula legada só com Caminho + Buff exige revisão da origem do ajuste.
    A Regra/Descrição deve justificar a invocação por espaço; esse texto não é aprovado automaticamente.
-4. Vagas extras de Trilha e trunfos da domada, CE/custom dos extras, Domínio compartilhando espaços,
-   resultados de perícias/TR, carga e requisitos do equipamento. Ataque com arma e equipamento não
-   reconhecido não são certificados. Não usar um resultado da planilha como substituto dessas escolhas.
+4. Extras da Principal: níveis 8/16/24 da entidade, escolha única de carta ou Talento CE1 e Categoria própria
+   explícita conferidos. Trunfos: exclusividade da domada, quantidade/Classe/PE/pontos/ação de Liberação,
+   faixa de dados/pontos/PE/ação da Máxima e requisitos/custo/espaços/Acerto numérico do Domínio conferidos
+   nas contas declaradas. Não provam técnica própria, não aprovam peças em texto nem finalidade do Acerto.
+   Domínio Sem Barreiras ainda exige conferir especialização do dono, na etapa de perícias.
+   Equipamento tabelado: Força/patente e acerto armado com atributos permitidos; ausência de treino da
+   entidade gera pendência. Anatomia, modalidade/Fineza e itens próprios permanecem revisão manual.
+   Carga da entidade é subtotal das três peças, não inventário completo nem autorização de armazenamento.
+   Carga pessoal não pode ser certificada: equipavel.N junta nome com Grau, omitindo quantidade; faltam
+   Volume dos itens livres e Buff do limite. Ampliar o contrato sem usar o total calculado como entrada.
+   Resultados de perícias/TR ficam para a próxima etapa, por pedido do Mizuki; CONFIGURAÇÃO segue no outro chat.
 5. Nenhuma versão confirma o histórico de quando um ponto foi ganho ou uma escolha foi reescrita.
 
 Validação desta rodada
@@ -72,3 +83,10 @@ pagos/próprios/gratuitos, CE4, Regra Própria, Expansão, entidades por espaço
 Prática Cotidiana também amplia em dois a quantidade de Classe 0 do ramo corporal, sem gerar vagas.
 Sem alteração do gerador, livro, cards ou CONFIGURAÇÃO. Relatório em
 pesquisa/validacao/2026-10-14-ficha-repertorio/relatorio.txt.
+
+Continuação até equipamento/trunfos — 15/10
+
+Dois módulos novos: ficha_equipamento.py e ficha_entidade_repertorio.py. 50 testes próprios, incluindo
+valores adulterados, entradas ausentes e divergências exatas do gerador. Controle de saldo/CD, montagens
+em texto, anatomia e escolhas não exportadas continuam explicitamente parciais. Relatório em
+pesquisa/validacao/2026-10-15-ficha-equipamento-trunfos/relatorio.txt. Parada antes de TR/perícias.

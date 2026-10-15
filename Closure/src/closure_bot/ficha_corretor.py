@@ -26,6 +26,8 @@ from pathlib import Path
 
 from .ficha_leitor import Campo
 from .ficha_magia import Magia
+from .ficha_equipamento import CatalogoEquipamento
+from .ficha_entidade_repertorio import RegrasEntidade
 
 FORMATOS_CONHECIDOS = {1, 2}
 # O que a ficha mostra quando a pessoa ainda não escolheu: vale como vazio.
@@ -133,6 +135,8 @@ class Referencias:
     escudos: dict[str, Peca]           # "Broquel", "Médio", "Torre"
     duas_maos: frozenset[str] = frozenset()  # armas de duas mãos: com elas na mão principal, o escudo não conta
     magia: Magia | None = None
+    equipamento: CatalogoEquipamento | None = None
+    entidades: RegrasEntidade | None = None
 
     @classmethod
     def do_livro(cls, dados: Path) -> "Referencias":
@@ -177,6 +181,8 @@ class Referencias:
                 raise ValueError(f"o livro mudou a capacidade {nome} ({ancora}): revise o corretor")
         try:
             magia = Magia.do_livro(livro)
+            equipamento = CatalogoEquipamento.do_livro(livro)
+            entidades = RegrasEntidade.do_livro(livro)
         except KeyError as erro:
             raise ValueError(f"o livro mudou: referência de magia ausente ({erro})") from erro
         referencias = cls(
@@ -184,7 +190,7 @@ class Referencias:
             aceitam_sem_tecnica=aceitam_sem_tecnica,
             marcos=tuple(int(n) for n in re.findall(r"\d+", niveis.group(1))) if niveis else (),
             refino_maximo=int(teto.group(1)) if teto else 0, uniformes=uniformes, escudos=_tabela_de_pecas(escudos),
-            duas_maos=frozenset(duas_maos), magia=magia)
+            duas_maos=frozenset(duas_maos), magia=magia, equipamento=equipamento, entidades=entidades)
         if len(origens) != 7 or len(ramos) != 2 or not referencias.marcos or len(uniformes) != 6 or len(referencias.escudos) != 3 \
                 or not duas_maos:
             raise ValueError("o livro mudou de forma: Origens, ramos, marcos, uniformes ou escudos não fecham")
@@ -311,7 +317,16 @@ def conferir_contas(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaC
                 _comparar(ficha, "vida_max", vida, problemas, certos)
         else:
             pulou.append("vida: a campanha rola a vida por nível")
-        _comparar(ficha, "energia_max", caminho["peNv"] * nivel + _bonus(ficha, "buff.energia"), problemas, certos)
+        pe_base = caminho["peNv"] * nivel + _bonus(ficha, "buff.energia")
+        reserva = any(re.fullmatch(r"passiva\.\d+", k) and c.valor == "Reserva Profunda" for k, c in ficha.items())
+        extra = 3 * ref.magia.classe_maxima(nivel) if reserva and ref.magia else 0
+        if extra and _numero(ficha, "energia_max") == pe_base:
+            pendencias.append(Problema("talento", "energia_max",
+                f"Reserva Profunda acrescenta {extra} PE; confirmar se o Buff já contém esse acréscimo antes de somar de novo",
+                _fmt(pe_base), "catalogo--cat-passivas-3"))
+            pulou.append("PE com Reserva Profunda: a fórmula antiga usa só Caminho + Buff; origem do ajuste não certificada")
+        else:
+            _comparar(ficha, "energia_max", pe_base + extra, problemas, certos)
 
     integridade = 20 + (essencia + 5) * (nivel - 1) + _bonus(ficha, "buff.integridade")
     sem_integridade = [n for n in SEM_INTEGRIDADE if n in _capacidades(ficha)]
@@ -336,6 +351,11 @@ def conferir_contas(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaC
     escudo = None if principal in ref.duas_maos else ref.escudos.get(secundaria)
     if vestindo and uniforme is None:
         pulou.append(f"Defesa: uniforme desconhecido ({vestindo})")
+        return problemas, pulou
+    if (ref.equipamento is not None and
+            (secundaria and secundaria not in ref.escudos and secundaria not in ref.equipamento.pecas
+             or secundaria in ref.escudos and principal and principal != "Soco" and principal not in ref.equipamento.pecas)):
+        pulou.append("Defesa: ocupação das mãos depende de equipamento não reconhecido")
         return problemas, pulou
     # Na rota sem energia a proteção passiva é a Defesa sem Armadura, pela Lapidação (rotas--rota-defesa): a mesma conta
     # e a mesma progressão do Refino (começa em 1, +1 por marco e +1 quando escolhida, teto 10), e a ficha usa a mesma célula.
@@ -381,7 +401,7 @@ def conferir_invocacoes(ficha: dict[str, Campo], ref: Referencias, resultado: Re
         r.nao_conferido.append("invocações: referências de magia indisponíveis")
         return []
     antes = len(r.problemas)
-    magia_invocacoes(ficha, ref.magia, ref.marcos, r, (ref.uniformes, ref.escudos, ref.duas_maos))
+    magia_invocacoes(ficha, ref.magia, ref.marcos, r, (ref.uniformes, ref.escudos, ref.duas_maos), ref)
     return r.problemas[antes:]
 
 
@@ -460,6 +480,8 @@ def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha
     conferir_invocacoes(ficha, ref, resultado)
     from .ficha_repertorio import conferir_repertorio
     conferir_repertorio(ficha, ref, resultado)
+    from .ficha_equipamento import conferir_uso
+    conferir_uso(ficha, ref.equipamento, resultado)
     if formato == 1:
         resultado.nao_conferido.append("feitiços e invocações: texto, Famílias, Classe 0 pessoal, Técnica Máxima e ajustes não estão completos na ANALISE")
     treinos, fontes = treinos_da_origem(ficha)

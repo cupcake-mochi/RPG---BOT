@@ -56,7 +56,9 @@ ROTULOS = {"aviso.escolhas_de_pericia": "Perícias e ofícios", "aviso.pontos_di
            "marco.leque": "Marcos de Leque", "marco.corpo": "Marcos de Corpo", "marco.refino": "Marcos de Refino",
            "tecnica.rota.nome": "Rota de criação", "tecnica.regra_propria.categoria": "Categoria da Regra Própria",
            "tecnica.regra_propria.espacos": "Espaços da Regra Própria", "dominio.degrau": "Degrau do Domínio",
-           "dominio.custo": "Espaços do Domínio", "origem.ce4": "Talento CE4 da Origem"}
+           "dominio.custo": "Espaços do Domínio", "origem.ce4": "Talento CE4 da Origem",
+           "em_uso.principal": "Arma principal", "em_uso.secundaria": "Mão secundária",
+           "em_uso.vestindo": "Uniforme", "carga": "Carga"}
 
 
 def _rotulo(chave: str) -> str:
@@ -106,6 +108,8 @@ def _linha(p: Problema) -> str:
         return f"**{_rotulo(p.campo)}**: {valor}"
     if p.regra in ("conta", "formato"):
         return f"**{_rotulo(p.campo)}**: está {p.encontrado}, o certo é {p.esperado}"
+    if p.regra in ("equipamento", "carga", "talento"):
+        return f"**{_rotulo(p.campo)}**: {p.esperado} (informado: {p.encontrado})"
     if p.regra == "escolha":
         return f"**{_rotulo(p.campo)}**: falta {p.esperado.removeprefix('escolher ')}"
     if p.regra == "nome":

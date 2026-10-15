@@ -1,0 +1,92 @@
+Equipamento, resolução e trunfos das entidades — R51, 15/10/2026
+
+Escopo autorizado
+Mizuki pediu continuar e parar em TR/perícias; CONFIGURAÇÃO está sendo feita no outro chat.
+Foram implementadas as verificações possíveis com as entradas atuais. Nenhuma mudança no gerador,
+na exportação, no livro, em cards, lorebook ou modelos. Nenhum modelo real foi chamado.
+
+Equipamento
+- Catálogo com 84 nomes/aliases, extraído das tabelas de armas, Trajes, Revestimentos e escudos.
+  Força, mãos, Fineza, disparo/arremesso, Volume decimal e acesso por patente vêm do livro.
+- Requisitos pessoais e das entidades não dependem dos avisos calculados da ficha. Falta de Força
+  gera pendência; não remove proteção nem reprova o uso que o livro permite com penalidade.
+  Um aviso idêntico da planilha não vira uma segunda pendência. Aviso apagado/falso não oculta a conta.
+- Escudo inativo com arma de duas mãos não impõe requisito de uso, mas seu Volume ainda entra no
+  subtotal equipado da entidade. A indicação de Selo genérica continua omitida.
+- Revestimentos respeitam patente; armas de fogo abaixo do Grau comum pedem revisão da autorização,
+  sem reprovar automaticamente uma exceção prevista no livro. Dinheiro/acesso não garantem compra.
+- Defesa de entidade com arma de uma mão reconhecida agora é conferida. Equipamento desconhecido
+  não é tratado como se fosse zero; na Defesa pessoal, mãos com peça própria também limitam a análise.
+- Ataque armado usa atributo permitido pela arma e Maestria do dono; CD permanece pelo atributo
+  escolhido da entidade. Fineza/modalidade não exportada gera revisão da escolha, não uma escolha inventada.
+  Entidade não recebe treino em armas: desvantagem indicada como pendência.
+- Quando a fórmula antiga usa o atributo mágico no ataque armado, apenas aquele resultado exato
+  recebe pendência. Outro bônus fora das possibilidades reprova. Atributo inválido tem erro específico.
+- Soma decimal das três peças da entidade é subtotal, não inventário completo. Excesso indica meia
+  marcha ou impossibilidade de se deslocar com a carga; não altera o deslocamento-base exportado.
+  Anatomia, passageiros, armazenamento e objetos adicionais continuam manuais.
+- Carga pessoal permanece sem certificação. Confirmado no gerador: equipavel.N junta nome e Grau,
+  não quantidade. Faltam também Volume dos itens livres e Buff do limite; não se usa o resultado
+  carga para deduzir essas entradas. Nenhum ajuste do gerador foi feito nesta entrega.
+
+Extras e Talentos das entidades
+- Invocação Principal precisa de dono Evocador, Trilha e nível de acesso. As escolhas extras usam
+  os níveis 8/16/24 da entidade, não os do dono. Uma escolha não recebe carta e Talento ao mesmo tempo.
+- Todo Talento extra deve ser CE1, inclusive os dois ganhos tardios. Categoria própria explicitada
+  também respeita o ganho; sua CE correta não aprova o efeito. Nome próprio sem CE continua manual.
+- Talentos pessoais fora do catálogo permitido para entidades são rejeitados nessa aquisição.
+  Limites de oito ganhos normais e três extras não podem ser ampliados com posições inventadas.
+- Posições ausentes impedem certificar o conjunto. Benefícios da Principal continuam condicionados
+  à única entidade ativa; a análise de ficha não afirma o estado atual do combate.
+
+Trunfos da domada
+- Só uma Maldição domada pode apresentar esses trunfos. Técnica própria é requisito declarado
+  como revisão: não se infere do nome nem se aprova a conversão/texto do mestre automaticamente.
+- Liberação: quantidade pelo nível fixo, Classe mínima/máxima, PE arredondado para cima, pontos
+  da especial + Classe d8 e ação do dono/atuação da entidade. Não ocupa especial normal.
+- Máxima: faixas próprias 19/22/26d8, orçamento 8/12/16 e custo 25/30/35 PE, conforme nível dela;
+  nunca recebe os dados maiores da Máxima pessoal. Peças e uso/recarga permanecem em texto.
+- Domínio: requisitos cumulativos de nível dela e Refino recalculado do dono, custos 2/3/5 vagas,
+  ocupação compartilhada com especiais normais e PE de abertura 6/7 × maior Classe da domada.
+  Acerto numérico usa pontos da especial menos Médio, com desconto Livre da entidade.
+- Acerto informativo/regra de ambiente não é forçado a dano. Valor numérico compatível não escolhe
+  a finalidade nem aprova a montagem. Texto e permissões continuam manuais.
+- Sem Barreiras exige especialização em Ocultismo do dono: deixada explicitamente para perícias.
+- Fórmulas pré-preenchidas de cartas vazias não ativam trunfos. Trunfo/Talento preenchido sem nome
+  da entidade não é ignorado pelo fluxo completo.
+
+Resolução e reserva pessoal
+- Bônus simples de ataque/CD das habilidades das entidades são calculados de atributo base, Buff
+  e Maestria do dono; acerto/CD calculados exportados não são usados como entrada.
+- Precisão soma +2 ao ataque ou à CD da resolução. A CD antiga exata sem esse +2 recebe pendência;
+  valores impossíveis reprovam. Ajuste ausente não vira zero. Frações e penalidades numéricas são preservadas.
+- Controle continua parcial: a carta não separa sua CD exclusiva nem o bônus condicionado ao saldo
+  zero. Verifica os limites possíveis sem certificar o valor; TR escolhido/efeito no sucesso exigem texto.
+- Reserva Profunda aumenta PE em 3 × maior Classe, uma vez. O total direto do livro é conferido.
+  Se o total vier da fórmula antiga Caminho + Buff, recebe pendência para confirmar se o ajuste já
+  contém o Talento. Não certifica a origem do Buff nem exige somar o mesmo acréscimo duas vezes.
+- Novas pendências mostram a instrução necessária no painel, mantendo a cor amarela.
+
+Validação
+- 50 testes novos, com números do R51, adulterações, entradas ausentes, compatibilidade legada,
+  ganho de categoria, ações/custos e níveis da entidade separados dos do dono.
+- Suíte completa: 449 testes em 108,271 s, 448 aprovados e um online opcional pulado.
+  Depois de ajustar apenas a descrição do limite de Controle, os 50 testes próprios passaram novamente.
+- Quatro capturas completas já arquivadas, de 4.896 chaves cada, relidas no código final: aprovadas,
+  zero erros/pendências; o caso domado mantém suas duas notas de Buff. São cópias montadas para teste,
+  não personagens reais em uso nem novas execuções no Discord.
+- Nenhuma leitura remota das fichas, alteração delas, bateria paga ou envio ao Discord nesta rodada.
+  Consulta somente do código publicado do gerador para confirmar fórmulas/entradas; fontes em registro privado.
+
+Pacote e publicação
+src/var/closure-lab-equipamento-trunfos.zip: 48 arquivos, sem .env, reúne também o painel paginado
+e as etapas anteriores. Conteúdo comparado byte a byte às origens; segredos locais não encontrados.
+SHA-256: 76af951645f15579e3398eb2876c4c9f474b5aa66fbf9c36c2ad69ac8ebc1abb.
+Auditoria, resumo das capturas, log dos testes e recibo do Git em pesquisa/privado/.
+Sem implantação na Discloud pelo agente. Mizuki faz Commit/Rebuild quando quiser testar a nova versão.
+
+Ponto de parada
+TR/perícias não foram implementados nesta continuação. As lacunas da exportação já registradas
+continuam: resultados de TR ausentes e caixas de bônus calculado no lugar de Buff independente de perícia.
+CONFIGURAÇÃO, aprovação de custom e regras de campanha seguem com o outro chat. Texto, anatomia,
+rituais, circunstâncias em campo e histórico dos ganhos continuam sem certificação integral.
