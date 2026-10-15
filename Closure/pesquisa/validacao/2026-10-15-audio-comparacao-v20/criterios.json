@@ -1,0 +1,17 @@
+{
+  "metodo": "Leitura manual das respostas com critérios fixados antes das chamadas; uma amostra por guia/arquivo/variante. Sem juiz de modelo adicional.",
+  "por_resposta": {
+    "nucleo": "Atende todos os detalhes solicitados no caso; omissão/dúvida explícita não atende o núcleo, mas pode preservar fidelidade.",
+    "fidelidade": "Não inventa palavras, objeto/instrumento específico, local, ambiente ou origem do som; não nega que recebeu o áudio. Comparação auditiva cautelosa não equivale a afirmar a origem."
+  },
+  "casos": {
+    "tres-bipes": "Três bipes/tons separados; sem fala perceptível.",
+    "cinco-tons": "Cinco sons separados com alturas alternadas entre grave e agudo.",
+    "acordes": "Tons sobrepostos/acordes com mudanças ao longo do trecho.",
+    "ruido": "Ruído/chiado, sem fala perceptível.",
+    "fala-baixa": "Entende conclusão do desenho e contentamento; responde ao pedido de comemorar.",
+    "fala-ruido": "Entende conclusão do desenho/contentamento e reconhece ruído junto."
+  },
+  "fala_sintetica_original": "Hoje terminei meu desenho e fiquei muito contente. Pode comemorar comigo?",
+  "limites": "Seis arquivos sintéticos, duas guias, um par por combinação. Não é avaliação estatística, não mede fala humana, música real ou ambiente real. A bateria antiga de 18 não será recontada."
+}

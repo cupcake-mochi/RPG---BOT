@@ -9,7 +9,7 @@ CONCLUÍDO
 - V16: silêncio digital convertido detectado localmente; pedido simples recebe aviso sem modelo. 75 testes locais passaram, zero chamadas pagas; não muda a nota da bateria anterior.
 
 - Política revisada publicada e conferida no mesmo gist em 15/10.
-- V17: medições de tons e orientação de escuta preparadas; Mizuki confirmou três bipes na Discloud. A comparação controlada continua pendente.
+- V17: medições de tons e orientação de escuta preparadas; Mizuki confirmou três bipes na Discloud. A comparação controlada foi concluída; resultado específico abaixo.
 - V18: Mizuki confirmou GIFs do seletor por captura. Isso confirma os exemplos mostrados, não todos os provedores/arquivos.
 - V19: links diretos de GIF de anexos do Discord, orientação de conversa visual e tempos sem conteúdo preparados. O link real enviado foi baixado e convertido localmente, sem chamada ao modelo.
 
@@ -19,10 +19,13 @@ CONCLUÍDO
 
 - V20 completa: 638 testes passaram e um online opcional pulado; 41 testes no código extraído do ZIP passaram. Pacote pronto e sem segredos, política publicada/conferida no mesmo gist. Sem implantação nem chamadas pagas.
 
+- Comparação de áudio autorizada e concluída: 24/24 chamadas completas, US$ 0,241773 estimados ao preço cheio, sem uso incerto/repetição. Núcleos atendidos de 4/12 para 8/12, com ressalva de detalhe não confirmado no chiado atual. Tons simples melhoraram; acordes e ruído misturado à fala seguem falhando. Manter áudio experimental; sem ZIP novo ou mudança na Discloud. Relatório em pesquisa/validacao/2026-10-15-audio-comparacao-v20/relatorio.txt. As 24 chamadas estão esgotadas.
+
+- Mizuki confirmou por relato/capturas o funcionamento dos GIFs e o reconhecimento de si na v20. A ativação administrativa NSFW respondeu corretamente, mas o comportamento adulto ainda está em diagnóstico.
+
 PRÓXIMOS
-1. Testar v20 na Discloud: Tenor informado, GIF de anexo por link sem parâmetros e reconhecimento de ilustrações das duas guias e ativação/escopo de respostas adultas não gráficas (roteiro inclui comandos); depois conferir o polimento da v19: GIF por link do Discord; reação sem pergunta; comentário sobre o GIF; pedido explícito de descrição. Manter MIDIA_ATIVA=1. Roteiro em pesquisa/validacao/2026-10-15-gif-previas-v20/teste-no-discord.txt. A nova orientação ainda não teve respostas pagas medidas. A demora inicial da v18 não tem causa confirmada; usar tempos de preparo/modelo dos logs novos.
-2. Validar áudio v17 contra v16: proposta de 24 chamadas, US$ 0,25–0,50 estimados e teto US$ 1,50. Aguardar aprovação explícita; sem usar saldo anterior. Plano em pesquisa/validacao/2026-10-15-audio-v17/. Revalidar hashes/preparação antes de propor execução, pois o código de mídia evoluiu.
-3. Receber o resultado de CONFIGURAÇÃO do outro chat e só então integrar ao leitor/corretor. Preservar as 5.381 chaves ANALISE 4 e compatibilidade; PR 3 do gerador exige aprovação própria, não juntar por conta desta fila.
+1. Investigar a recusa de NSFW na v20. Mizuki confirmou GIFs e reconhecimento de ilustrações, mas mostrou recusa da Closure após ativar. Link da mensagem solicitado para conferir a marcação NSFW real do canal e o contexto; não atribuir a bloqueio técnico do provedor sem evidência. Opção ligada no servidor ainda exige canal marcado NSFW. Sem novas chamadas pagas autorizadas para este diagnóstico.
+2. Receber o resultado de CONFIGURAÇÃO do outro chat e só então integrar ao leitor/corretor. Preservar as 5.381 chaves ANALISE 4 e compatibilidade; PR 3 do gerador exige aprovação própria, não juntar por conta desta fila.
 
 PARA DEPOIS, QUANDO PEDIDO
 - Consulta automática do livro para perguntas apenas faladas/em imagem; hoje é necessário texto para recuperar a fonte.

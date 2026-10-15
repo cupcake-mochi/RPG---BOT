@@ -1,0 +1,194 @@
+[
+  {
+    "id": "closure_tres-bipes_v16",
+    "variante": "v16",
+    "arquivo": "tres-bipes.wav",
+    "persona": "closure",
+    "nucleo_atendido": false,
+    "observacao": "Trata os três sinais separados como som contínuo."
+  },
+  {
+    "id": "closure_tres-bipes_v17",
+    "variante": "v17",
+    "arquivo": "tres-bipes.wav",
+    "persona": "closure",
+    "nucleo_atendido": true,
+    "observacao": "Três apitos separados, mesma altura, pausas e ausência de fala."
+  },
+  {
+    "id": "kaltsit_tres-bipes_v17",
+    "variante": "v17",
+    "arquivo": "tres-bipes.wav",
+    "persona": "kaltsit",
+    "nucleo_atendido": true,
+    "observacao": "Três sinais da mesma altura com pausas; sem fala."
+  },
+  {
+    "id": "kaltsit_tres-bipes_v16",
+    "variante": "v16",
+    "arquivo": "tres-bipes.wav",
+    "persona": "kaltsit",
+    "nucleo_atendido": false,
+    "observacao": "Descreve ruído estático, que não corresponde aos tons."
+  },
+  {
+    "id": "closure_cinco-tons_v16",
+    "variante": "v16",
+    "arquivo": "cinco-tons.wav",
+    "persona": "closure",
+    "nucleo_atendido": false,
+    "observacao": "Nega capacidade de ouvir, apesar de receber o anexo."
+  },
+  {
+    "id": "closure_cinco-tons_v17",
+    "variante": "v17",
+    "arquivo": "cinco-tons.wav",
+    "persona": "closure",
+    "nucleo_atendido": true,
+    "observacao": "Cinco bips, com alternância entre grave e agudo."
+  },
+  {
+    "id": "kaltsit_cinco-tons_v17",
+    "variante": "v17",
+    "arquivo": "cinco-tons.wav",
+    "persona": "kaltsit",
+    "nucleo_atendido": true,
+    "observacao": "Cinco pulsos separados e alturas alternadas."
+  },
+  {
+    "id": "kaltsit_cinco-tons_v16",
+    "variante": "v16",
+    "arquivo": "cinco-tons.wav",
+    "persona": "kaltsit",
+    "nucleo_atendido": false,
+    "observacao": "Nega capacidade de ouvir, apesar de receber o anexo."
+  },
+  {
+    "id": "closure_acordes_v16",
+    "variante": "v16",
+    "arquivo": "acordes.wav",
+    "persona": "closure",
+    "nucleo_atendido": false,
+    "observacao": "Descreve cliques e introduz assunto de música no fone, sem responder aos acordes."
+  },
+  {
+    "id": "closure_acordes_v17",
+    "variante": "v17",
+    "arquivo": "acordes.wav",
+    "persona": "closure",
+    "nucleo_atendido": false,
+    "observacao": "Descreve ruído monótono e não reconhece sobreposição/mudança de tons."
+  },
+  {
+    "id": "kaltsit_acordes_v17",
+    "variante": "v17",
+    "arquivo": "acordes.wav",
+    "persona": "kaltsit",
+    "nucleo_atendido": false,
+    "observacao": "Descreve batidas secas e silêncio; não corresponde ao sinal contínuo com acordes."
+  },
+  {
+    "id": "kaltsit_acordes_v16",
+    "variante": "v16",
+    "arquivo": "acordes.wav",
+    "persona": "kaltsit",
+    "nucleo_atendido": false,
+    "observacao": "Atribui chuva e trovões ausentes do arquivo."
+  },
+  {
+    "id": "closure_ruido_v16",
+    "variante": "v16",
+    "arquivo": "ruido.wav",
+    "persona": "closure",
+    "nucleo_atendido": true,
+    "observacao": "Ruído branco/chiado contínuo, sem voz."
+  },
+  {
+    "id": "closure_ruido_v17",
+    "variante": "v17",
+    "arquivo": "ruido.wav",
+    "persona": "closure",
+    "nucleo_atendido": true,
+    "observacao": "Reconhece ruído contínuo e ausência de fala; acrescenta um estalo inicial que não foi gerado como evento separado. Detalhe não confirmado: núcleo atendido não significa resposta integralmente certificada."
+  },
+  {
+    "id": "kaltsit_ruido_v17",
+    "variante": "v17",
+    "arquivo": "ruido.wav",
+    "persona": "kaltsit",
+    "nucleo_atendido": true,
+    "observacao": "Ruído contínuo de três segundos, sem voz."
+  },
+  {
+    "id": "kaltsit_ruido_v16",
+    "variante": "v16",
+    "arquivo": "ruido.wav",
+    "persona": "kaltsit",
+    "nucleo_atendido": true,
+    "observacao": "Ruído contínuo sem voz."
+  },
+  {
+    "id": "closure_fala-baixa_v16",
+    "variante": "v16",
+    "arquivo": "fala-baixa.wav",
+    "persona": "closure",
+    "nucleo_atendido": true,
+    "observacao": "Responde à conclusão do desenho e ao pedido de comemorar."
+  },
+  {
+    "id": "closure_fala-baixa_v17",
+    "variante": "v17",
+    "arquivo": "fala-baixa.wav",
+    "persona": "closure",
+    "nucleo_atendido": true,
+    "observacao": "Reconhece desenho/contentamento e comemora."
+  },
+  {
+    "id": "kaltsit_fala-baixa_v17",
+    "variante": "v17",
+    "arquivo": "fala-baixa.wav",
+    "persona": "kaltsit",
+    "nucleo_atendido": true,
+    "observacao": "Reconhece conclusão do desenho e responde ao contentamento."
+  },
+  {
+    "id": "kaltsit_fala-baixa_v16",
+    "variante": "v16",
+    "arquivo": "fala-baixa.wav",
+    "persona": "kaltsit",
+    "nucleo_atendido": true,
+    "observacao": "Reconhece conclusão/contentamento e motivo para comemorar."
+  },
+  {
+    "id": "closure_fala-ruido_v16",
+    "variante": "v16",
+    "arquivo": "fala-ruido.wav",
+    "persona": "closure",
+    "nucleo_atendido": false,
+    "observacao": "Entende a ideia da fala, mas nega o ruído presente; cita Pô em vez de Hoje."
+  },
+  {
+    "id": "closure_fala-ruido_v17",
+    "variante": "v17",
+    "arquivo": "fala-ruido.wav",
+    "persona": "closure",
+    "nucleo_atendido": false,
+    "observacao": "Entende desenho/contentamento, mas nega o ruído e altera palavras na citação."
+  },
+  {
+    "id": "kaltsit_fala-ruido_v17",
+    "variante": "v17",
+    "arquivo": "fala-ruido.wav",
+    "persona": "kaltsit",
+    "nucleo_atendido": false,
+    "observacao": "Entende desenho/contentamento, mas nega o ruído e altera o início da citação."
+  },
+  {
+    "id": "kaltsit_fala-ruido_v16",
+    "variante": "v16",
+    "arquivo": "fala-ruido.wav",
+    "persona": "kaltsit",
+    "nucleo_atendido": false,
+    "observacao": "Parafraseia o conteúdo principal, mas nega o ruído presente."
+  }
+]
