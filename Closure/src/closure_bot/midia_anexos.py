@@ -4,6 +4,8 @@ from __future__ import annotations
 import asyncio
 import json
 import os
+import re
+import unicodedata
 import signal
 import sys
 from dataclasses import dataclass, field
@@ -30,6 +32,19 @@ class Preparo:
     partes: list[dict] = field(default_factory=list, repr=False)
     nota: str = ''
     reserva: int = 0
+    silencio: bool = False
+
+    def resposta_local(self, texto):
+        if not self.silencio:
+            return None
+        simples = "".join(c for c in unicodedata.normalize("NFD", texto.lower()) if not unicodedata.combining(c))
+        simples = re.sub(r"^(?:closure|kal[’']?tsit)\b[ ,:!]*", "", simples).strip(" ?!. ")
+        # Só pedidos inteiros de escuta/transcrição. Pergunta adicional em
+        # texto continua na rota normal e recebe a nota factual do preparo.
+        if re.fullmatch(r"(?:|(?:pode |consegue )?(?:transcrever|ouvir|escutar|analisar) (?:esse |este |o |meu )?audio|o que voce ouve aqui|tem alguem falando)", simples):
+            aviso = "Analisei só o primeiro anexo. " if "demais não foram analisados" in self.nota else ""
+            return aviso + "O arquivo chegou, mas o trecho que consegui processar está sem som. Pode reenviar a gravação?"
+        return None
 
     def aplicar(self, entrada):
         if self.nota:
@@ -43,6 +58,8 @@ class Preparo:
 
     @property
     def historico(self):
+        if self.silencio:
+            return '[Histórico de áudio conferido localmente] ' + self.nota
         if self.partes:
             return '[Histórico de mídia: arquivo enviado apenas no turno original; não está disponível neste pedido.] ' + self.nota
         return '[Histórico de mídia não analisada] ' + self.nota if self.nota else ''
@@ -92,7 +109,7 @@ async def decodificar(dados, tipo):
         resultado = json.loads(saida)
         if 'erro' in resultado:
             raise ValueError(resultado['erro'])
-        return Preparo(resultado['partes'], resultado['nota'], resultado['reserva'])
+        return Preparo(resultado['partes'], resultado['nota'], resultado['reserva'], resultado.get('silencio', False))
     finally:
         # Inclui eventual ffmpeg filho; limpeza também no cancelamento/timeout.
         try:

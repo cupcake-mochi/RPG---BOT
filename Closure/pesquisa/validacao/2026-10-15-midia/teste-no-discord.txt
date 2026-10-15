@@ -1,3 +1,5 @@
+ATUALIZAÇÃO V16: use agora Closure/src/var/closure-lab-midia-v16.zip. Além do roteiro abaixo, anexe arquivos/silencio.wav com “Pode transcrever esse áudio?”: deve confirmar que o arquivo chegou e que o trecho processado está sem som, sem chamar o Gemini. Isso é detecção local e não corrige interpretação dos bipes.
+
 Piloto de mídia v15 — roteiro para Mizuki
 
 Pacote: Closure/src/var/closure-lab-midia-v15.zip (sem .env).

@@ -118,6 +118,24 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         await chat.on_message(_mensagem("Closure, e agora?", canal))
         self.assertTrue(all('midias' not in e for e in self.bot.modelos.responder.call_args.args[0]))
 
+    async def test_silencio_responde_sem_modelo_e_preserva_pergunta_mista(self):
+        from closure_bot.midia_anexos import decodificar
+        from testes.test_midia_anexos import wav
+        p = await decodificar(wav(silencio=True), 'audio')
+        self.bot.anexos.contexto = AsyncMock(return_value=p)
+        canal, webhook = _canal()
+        chat = self.bot.get_cog('Chat')
+        await chat.on_message(_mensagem('Closure, pode transcrever esse áudio?', canal))
+        self.bot.modelos.responder.assert_not_awaited()
+        self.assertIn('sem som', webhook.send.call_args.args[0])
+        self.montar.return_value = [{'role':'user','content':'sistema'}, {'role':'user','content':'Quanto custa uma katana?'}]
+        await chat.on_message(_mensagem('Closure, quanto custa uma katana?', canal))
+        self.bot.modelos.responder.assert_awaited_once()
+        entrada = self.bot.modelos.responder.call_args.args[0]
+        self.assertIn('Quanto custa uma katana?', entrada[-1]['content'])
+        self.assertIn('todas as amostras', entrada[-1]['content'])
+        self.assertTrue(all('midias' not in m for m in entrada))
+
     async def test_apagar_durante_preparo_de_midia_impede_envio(self):
         from closure_bot.midia_anexos import Preparo
         async def preparar(*a):
