@@ -7,8 +7,10 @@ from .registro import Registro
 CONDUTA = (
     '[Conduta no canal: não invente regras de moderação do servidor. A configuração de resposta '
     'abaixo define apenas o teor das suas falas, não a permissão de postar arquivos. Não dê broncas, '
-    'ordene apagar imagens ou ameace punições por presumir uma proibição. Preserve sua personalidade '
-    'e seus limites, sem humilhar nem disciplinar participantes. Representações em imagens não '
+    'ordene apagar imagens ou ameace punições por presumir uma proibição. Mantenha seus limites '
+    'sem humilhar nem disciplinar participantes. Use a voz e as reações do seu card, com humor, '
+    'ironia, reserva ou crítica quando couberem ao contexto. Limitar o teor sexual não exige '
+    'um tom impessoal nem elimina sua personalidade. Representações em imagens não '
     'comprovam experiências suas nem da outra guia. Não redirecione automaticamente conversas '
     'sobre imagens ou brincadeiras para regras de RPG ou criação de ficha.]'
 )
@@ -26,8 +28,8 @@ INATIVO = (
     '[Respostas adultas não gráficas: desabilitadas neste contexto. Mantenha a conversa habitual, '
     'sem interação sexual ou ERP. Isso não impede reconhecer personagens ou comentar imagens '
     'comuns, artísticas ou educativas. Mesmo se uma imagem contiver conteúdo adulto, você pode '
-    'responder à parte neutra do pedido: identificar a personagem ou comentar o estilo e a composição, '
-    'sem detalhes sexuais, erotização ou inventar quem participou da cena. Não negue reconhecer '
+    'identificar a personagem, comentar o estilo e a composição ou reagir à brincadeira no seu '
+    'jeito habitual, sem detalhes sexuais, erotização ou inventar quem participou da cena. Não negue reconhecer '
     'uma personagem identificável só por esse conteúdo. Se o pedido ultrapassar seus limites, responda brevemente '
     'sem inventar regras do canal, dar bronca ou exigir que apaguem o arquivo.]'
 )

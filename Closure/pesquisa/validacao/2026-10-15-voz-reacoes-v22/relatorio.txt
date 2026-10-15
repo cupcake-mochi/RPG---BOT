@@ -1,0 +1,15 @@
+Voz das guias nas reações — v22, 15/10/2026
+
+Pedido do Mizuki: as respostas não precisam ter tom neutro; devem preservar a personalidade de cada guia. A palavra neutra na explicação anterior se referia ao conteúdo não gráfico, mas deixava ambíguo o estilo desejado.
+
+Ajuste somente na orientação de conteúdo recebida em execução: usar a voz e as reações do card, com humor, ironia, reserva ou crítica quando couberem ao contexto. Limitar o teor sexual não exige tom impessoal nem apaga a personalidade. No modo inativo, retirada a expressão parte neutra do pedido; identificar, comentar a arte ou reagir à brincadeira pode ser feito no jeito habitual, sem desenvolver conteúdo sexual. Sem exemplo pronto ou nova característica canônica imposta às guias.
+
+Cards e versões não mudaram. Condições de ativação, comandos/status da v21, marcação NSFW, limites contra ERP/participação sexual, filtros do provedor, memória e mídia permanecem. Política de privacidade continua no mesmo endereço, sem mudança de dados ou retenção. Sem nova chamada ao modelo, envio de imagens explícitas ou implantação na Discloud.
+
+Validação proporcional ao texto alterado: os testes existentes de configuração/preservação de pedido foram executados; sem testes novos que apenas repitam frases do prompt. Conferência adicional monta pedidos reais com os cards das duas guias e verifica preservação da identidade, pergunta e mídia nos modos ativo/inativo. O ZIP é comparado à v21 e só deve diferir em conteudo_adulto.py. Não há nova avaliação de qualidade das respostas do modelo; depende do piloto.
+
+Resultado da conferência: 16 testes existentes passaram em 0,419 s. Quatro pedidos com o prompt real (duas guias × modo ativo/inativo) preservaram o sistema/card original, pergunta e mídia, com a nova orientação presente no sistema; corpo do modelo sem safetySettings. Nenhuma chamada paga. A suíte completa da v21 não foi repetida para este ajuste textual e não se declara nova nota de naturalidade.
+
+ZIP closure-lab-voz-reacoes-v22.zip: 56 arquivos, todos conferidos byte a byte com a origem local e sem .env, banco, testes ou pesquisa privada. Somente conteudo_adulto.py difere da v21; cards, comandos, modelos, mídia e ponte são idênticos. Hash/tamanho em pacote.json.
+
+Feedback recebido durante o ajuste: Mizuki mostrou Kaltsit reconhecendo a ilustração e emitindo crítica no jeito dela, e Closure comentando a arte. Confirma o comportamento desses exemplos na versão em uso; a versão exata da captura não foi confirmada. Não atribuir esse resultado ao delta da v22 nem usar como comparação controlada.
