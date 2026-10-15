@@ -66,6 +66,17 @@ class Persistencia(unittest.TestCase):
         self.assertEqual(len(self.conv.turnos(8, 'kaltsit', AGORA)), 2)
         self.assertEqual(self.reg._db.execute('SELECT count(*) FROM falas WHERE canal_id=7').fetchone()[0], 0)
 
+    def test_protecao_em_andamento_e_liberada_mesmo_com_erro(self):
+        with self.assertRaises(RuntimeError):
+            with self.reg.proteger_dados({42}) as a, self.reg.proteger_dados({42}) as b:
+                self.reg.apagar_pessoa(42)
+                self.assertEqual(a.apagados, {42})
+                self.assertEqual(b.apagados, {42})
+                raise RuntimeError("simulado")
+        self.assertEqual(self.reg._leituras, [])
+        with self.reg.proteger_dados({42}) as nova:
+            self.assertEqual(nova.apagados, set())
+
     def test_chave_errada_nao_manda_cifra_ao_modelo(self):
         self.par()
         self.reg.cofre = Cofre(Cofre.nova_chave())

@@ -1,0 +1,14 @@
+Exclusão durante operações em andamento — 15/10/2026
+
+Problema
+O comando de apagar dados removia as linhas existentes, mas não invalidava cópias em uso enquanto o bot esperava clima, montagem do pedido, metadados, Gemini ou Discord. A resposta podia recriar conversa/falas após a exclusão. A reflexão diária também podia repor fatos de um lote anterior.
+
+Correção
+Registro mantém marcadores temporários das operações ativas e dos autores cujos dados foram lidos. A exclusão invalida as leituras relacionadas. O chat verifica a validade depois das esperas, antes de chamar o modelo e antes de guardar qualquer fala. Envio não grava texto por conta própria neste fluxo; a gravação única ocorre após a verificação. Leituras de outros usuários sem relação com o fio continuam normalmente. A reflexão descarta os fatos antigos da pessoa apagada e conserva os demais. Os marcadores saem da memória ao terminar, mesmo se houver erro; não há tabela de exclusões permanente nem mudança de esquema.
+
+Evidência
+Cinco testes novos executados contra o código anterior do main a0fb5bc falharam por comportamento: exclusão durante modelo, metadados, resposta sobre outro participante, envio multipartes e reflexão. Os mesmos cenários passam na correção. Oito testes adicionados, incluindo liberação dos marcadores e continuidade de usuários não relacionados. Suíte direcionada inicial: 77 testes passaram. A revisão acrescentou outro teste, também aprovado, para um participante cuja conversa terminou enquanto o indicador de digitação era enviado. As dependências são atualizadas antes de cada leitura do banco, inclusive depois da espera pelo clima. Sem rede/modelo reais. Resultado da suíte completa em verificacao.json.
+
+Limites
+Uma requisição já enviada ao modelo pode ter custo e continua contabilizada; descartar a resposta não estorna o consumo. Uma mensagem já em trânsito para o Discord pode chegar mesmo se houver exclusão durante esse envio; o código interrompe as partes seguintes e não repõe texto no banco. O comando continua sem apagar mensagens já publicadas no Discord. A proteção acompanha a mesma instância do Registro/event loop: apenas um processo do bot deve rodar com o token, conforme a operação atual.
+Não certifica ausência de informação inferida ou copiada por terceiros. Cards, R52, CONFIGURAÇÃO, Argon e parâmetros de modelo preservados. Sem chamadas pagas ou implantação. Mídia visual apenas proposta em pesquisa/propostas/midia-visual/proposta.txt.

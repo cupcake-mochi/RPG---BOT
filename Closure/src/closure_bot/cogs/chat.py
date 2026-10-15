@@ -171,9 +171,8 @@ class Chat(commands.Cog):
         log.info("gatilho: %s responde (%s%s%s)", decisao.persona, decisao.motivo,
                  ", fora do plantão" if decisao.fora_do_plantao else "", f", atrito: {atrito}" if atrito else "")
         try:
-            async with mensagem.channel.typing():
-                await self._responder(mensagem, decisao, agora, texto,
-                                      fala_respondida if persona_respondida == decisao.persona else None)
+            await self._responder(mensagem, decisao, agora, texto,
+                                  fala_respondida if persona_respondida == decisao.persona else None)
         except Falhou as erro:
             # sem resposta do modelo ela fica calada: frase pronta de erro não é fala dela
             log.warning("sem resposta pra mensagem %s: %s", mensagem.id, str(erro)[:200])
@@ -182,8 +181,19 @@ class Chat(commands.Cog):
 
     async def _responder(self, mensagem: discord.Message, decisao: Decisao, agora: datetime, texto: str,
                          fala_respondida: str | None = None) -> None:
+        autores = self.bot.registro.autores_conversa(mensagem.channel.id, decisao.persona)
+        autores.add(mensagem.author.id)
+        with self.bot.registro.proteger_dados(autores) as leitura:
+            async with mensagem.channel.typing():
+                if not leitura.apagados:
+                    await self._responder_com_leitura(mensagem, decisao, agora, texto, fala_respondida, leitura)
+
+    async def _responder_com_leitura(self, mensagem, decisao, agora, texto, fala_respondida, leitura):
         bot, persona, canal = self.bot, decisao.persona, mensagem.channel
         nome = self._nome(mensagem.author)
+        # Outra conversa pode ter terminado enquanto o indicador de digitação
+        # era enviado. Inclua os autores exatamente antes de ler seus dados.
+        leitura.autores |= bot.registro.autores_conversa(canal.id, persona)
         turnos = bot.conversas.turnos(canal.id, persona, agora)
         if fala_respondida and all(t.texto != fala_respondida for t in turnos):
             # respondeu a uma fala antiga dela, de fora da conversa em andamento: a fala entra na frente, só neste pedido
@@ -192,31 +202,42 @@ class Chat(commands.Cog):
         para_a_ponte = estado.para_a_ponte()
         anterior = next((t.texto for t in reversed(turnos) if t.nome is not None), None)  # o que a pessoa disse antes
         clima = await contexto_clima(bot.clima, texto, anterior)
+        if leitura.apagados:
+            return
         if clima:  # a linha de clima entra antes do bloco de estado, só quando a mensagem puxa o assunto
             para_a_ponte["bloco"] = f"{clima}\n\n{para_a_ponte['bloco']}"
         # falas de outras conversas no canal; as desta já vão em `turnos`, e contá-las duas vezes viraria aviso falso de repetição
         desta = {t.texto for t in turnos if t.nome is None}
+        leitura.autores |= bot.registro.autores_conversa(canal.id, persona)
         anteriores = [f for f in bot.registro.ultimas_falas(canal_id=canal.id, persona=persona, agora=agora) if f not in desta]
         entrada = await montar_prompt(persona, texto, nome=nome, pronomes=estado.pronomes, turnos=turnos,
                                       falas_anteriores=anteriores, estado=para_a_ponte)
+        if leitura.apagados:
+            return
         midia = await bot.midias.contexto(mensagem, texto)
+        if leitura.apagados:
+            return
         if midia:
             entrada[-1]["content"] += "\n\n" + midia
         rota = {}
         if bot.config.usa_argon(canal.id):
             rota["usar_argon"] = True
         resposta = await bot.modelos.responder(entrada, persona=persona, gatilho=decisao.motivo, **rota)
+        if leitura.apagados:
+            return
         fala = resposta.texto.strip()
         partes = em_partes(fala)
         if not partes:
             return
         for parte in partes:
-            # resposta em várias mensagens entra inteira na memória de falas, uma vez só
-            await bot.carteiro.enviar(canal, bot.personas[persona], parte, lembrar=len(partes) == 1)
+            # Grave só depois de confirmar que ninguém apagou os dados durante
+            # o envio. Uma mensagem já em trânsito não pode ser desfeita aqui.
+            await bot.carteiro.enviar(canal, bot.personas[persona], parte, lembrar=False)
+            if leitura.apagados:
+                return
         # a hora conta do fim da resposta: a pessoa ainda pode estar lendo enquanto ela escrevia
         self._fios[canal.id] = Fio(persona, mensagem.author.id, datetime.now(FUSO))
-        if len(partes) > 1:
-            bot.registro.guardar_fala(canal_id=canal.id, persona=persona, texto=fala)
+        bot.registro.guardar_fala(canal_id=canal.id, persona=persona, texto=fala)
         bot.conversas.anotar(canal.id, persona, agora, texto, nome=nome,
                              autor_id=mensagem.author.id, midia=midia)
         bot.conversas.anotar(canal.id, persona, agora, fala, autor_id=mensagem.author.id)

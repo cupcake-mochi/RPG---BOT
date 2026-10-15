@@ -1,0 +1,26 @@
+{
+  "data": "2026-10-15",
+  "base_comparacao": "a0fb5bc310152a9c1c97f96842d7621d321fc8d9",
+  "regressoes_antes": {
+    "executadas": 5,
+    "falhas": 5,
+    "erros": 0
+  },
+  "direcionados": {
+    "executados": 77,
+    "passaram": 77
+  },
+  "completos": {
+    "executados": 567,
+    "passaram": 566,
+    "pulados": 1,
+    "segundos": 153.475
+  },
+  "novos_testes": 8,
+  "chamadas_reais_modelo": 0,
+  "implantado": false,
+  "teste_adicional_digitacao": {
+    "executados": 1,
+    "passaram": 1
+  }
+}

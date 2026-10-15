@@ -1,0 +1,28 @@
+Mídia visual — proposta, sem ativação — 15/10/2026
+
+Estado conferido no código
+O bot envia somente partes de texto ao generateContent. A v12 identifica até dois vídeos do YouTube por título/canal, com oEmbed e prévia do Discord. Não ouve a gravação, não recebe pixels nem pesquisa informações gerais sobre a música. Uma resposta coerente sobre piano não comprova que o vídeo foi visto ou ouvido.
+
+Capacidade disponível
+A documentação do Gemini descreve análise de imagens e de vídeo com áudio. GIF não consta da lista de formatos de imagem; a opção proposta é extrair quadros locais e enviá-los como imagens. Isso depende de integração e de validar a rota Vertex usada pelo bot, não de mudar para Argon.
+
+Primeira etapa proposta
+- Uma imagem por mensagem dirigida à guia; JPEG/PNG/WebP. Dimensão reduzida com limite de pixels, bytes e tempo de decodificação. Prints extensos podem perder texto: não prometer ler o que ficou ilegível.
+- GIF anexo: até três quadros distribuídos pelo trecho aceito, com horário e indicação de amostra parcial. Não interpretar o primeiro quadro como a animação inteira. Definir também teto de duração, quantidade de quadros decodificados e memória.
+- Links Tenor/Giphy não são anexos: precisarão de integração própria e validação de origem. Não prometer suporte universal a GIF por link.
+- Enviar imagens junto da chamada normal, sem uma segunda chamada apenas para descrevê-las. Ainda haverá consumo adicional de tokens visuais.
+- Vídeos/músicas: manter título/canal por padrão. A análise audiovisual de um trecho curto seria uma etapa separada, solicitada pela pessoa, com limite de duração. Ouvir vídeos é possível; não é necessário para identificar Skyfall pelo título.
+
+Condições antes de ativar
+A camada modelo.py precisa aceitar partes visuais e reservar o custo delas antes da chamada: hoje a reserva calcula apenas bytes de texto. Confirmar limites/tarifas da rota Vertex e compatibilidade dos modelos de reserva. Se a visão falhar ou não for suportada, informar que a mídia não foi analisada; não enviar um pedido que induza uma descrição inventada.
+Só baixar anexos de origem permitida, sem seguir redirecionamentos arbitrários. Validar o arquivo decodificado, não apenas extensão/MIME declarado. Conservar binários apenas durante o pedido; não armazená-los no SQLite nem reenviar automaticamente em cada turno. No histórico textual, distinguir descrição fornecida pela pessoa de observação do modelo. Atualizar a política para explicar o envio de imagens ao provedor.
+Manter a indicação de capacidade fora dos cards. Qualquer alteração de personalidade/card continua dependendo de aprovação.
+
+Validação proposta
+Offline: formatos e tamanho, imagem corrompida, GIF muito longo, amostragem, orçamento, falha da rota, fallback, ausência de binários em logs/banco, exclusão de dados durante o processamento.
+Depois: apresentar quantidade e estimativa para uma bateria pequena com imagens sintéticas e GIFs conhecidos, incluindo texto ilegível e perguntas sobre cenas ausentes. Não há autorização nova de gasto nem implementação visual nesta entrega.
+
+Fontes oficiais consultadas em 15/10/2026
+https://ai.google.dev/gemini-api/docs/image-understanding
+https://ai.google.dev/gemini-api/docs/video-understanding
+Os exemplos atuais dessas páginas usam também Interactions. O bot usa generateContent na Vertex: não copiar o formato de pedido sem verificar o contrato da rota.
