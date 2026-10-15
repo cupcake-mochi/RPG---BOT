@@ -1,0 +1,9 @@
+Bateria comparativa de áudio v16/v17 — proposta, 15/10/2026
+
+24 chamadas: seis áudios × duas guias × duas versões, Gemini 3.8 Flash low, Vertex global. Mesmos arquivos, perguntas, cards, parâmetros e áudio normalizado em cada par. V16 usa o aviso anterior; v17 acrescenta instrução de escuta e medidas locais quando o sinal permite. Nenhuma chamada paga executada.
+
+Estimativa US$ 0,25–0,50 cheio; teto US$ 1,50, adicional ao orçamento local já consumido, sem alterar o teto hospedado. Soma das reservas conservadoras: US$ 1.303587. Uma tentativa por caso; parar em erro, corte ou uso incerto. Sem fallback ou repetição; aprovação anterior de 18 chamadas está esgotada.
+
+Casos: três bipes históricos; cinco tons inéditos alternando altura; acordes sintéticos; ruído; fala sintética baixa; fala sintética com ruído. Conferir descrição, contagem, incerteza e conteúdo de fala, além de invenções de palavras, objeto ou ambiente. Os números da medição não identificam a fonte e não autorizam alegar ausência de voz.
+
+A amostra é pequena e sintética; não valida fala humana, música real ou sons ambientais em geral. O silêncio já é tratado localmente na v16 e não consome chamada nesta proposta. Pedidos completos em prompts.json; hashes em plano.json; arquivos em arquivos/.

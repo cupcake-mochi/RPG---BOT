@@ -105,8 +105,13 @@ def audio(dados: bytes) -> dict:
         wav.setsampwidth(2)
         wav.setframerate(16000)
         wav.writeframes(pcm)
+    if __package__:
+        from .audio_sinais import resumo_sinais
+    else:
+        from audio_sinais import resumo_sinais
+    medida = resumo_sinais(pcm)
     return {'partes': [{'inlineData': {'mimeType': 'audio/wav', 'data': base64.b64encode(buf.getvalue()).decode()}}],
-            'reserva': 2048, 'nota': f'um áudio de {len(pcm) / 32000:.2f} segundos; sem vídeo'}
+            'reserva': 2048, 'nota': f'um áudio de {len(pcm) / 32000:.2f} segundos; sem vídeo' + ('; ' + medida if medida else '')}
 
 
 def main():

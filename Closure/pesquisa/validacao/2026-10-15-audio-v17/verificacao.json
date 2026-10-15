@@ -1,0 +1,14 @@
+{
+  "data": "2026-10-15",
+  "testes_completos": {
+    "executados": 594,
+    "passaram": 593,
+    "pulados": 1,
+    "segundos": 173.463
+  },
+  "testes_iniciais": 22,
+  "chamadas_reais": 0,
+  "politica_publicada": true,
+  "comparacao_respostas": "aguardando autorização",
+  "discloud_alterada": false
+}
