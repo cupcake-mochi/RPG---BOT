@@ -1,0 +1,23 @@
+Áudio v17 — melhoria candidata e política publicada, 15/10/2026
+
+Escopo
+Mizuki pediu tentar melhorar sons e atualizar a política. Publicado o texto revisado em https://gist.github.com/cupcake-mochi/7439b3894cf8ad935601e0f521e16c08, arquivo PRIVACIDADE.md, mantendo o mesmo link e a visibilidade não listada. Leitura posterior confirmou igualdade com docs/PRIVACIDADE.md. Inclui seguimento, conversa recente persistida, mídia opcional, preparação temporária, silêncio local e envio de anexos à rota paga. Nenhuma alteração na hospedagem.
+
+Melhoria candidata
+Novo audio_sinais.py usa apenas biblioteca padrão para medir trechos tonais estáveis em PCM mono 16 kHz. Janelas de 20 ms, cruzamentos regulares e ajuste de seno/cosseno com ao menos 98,5% da energia variável explicada. Só informa trechos de pelo menos 80 ms que, somados, representem ao menos 95% da energia do arquivo; máximo de 12. Há faixas de frequência e tolerância explícitas. Fala, ruído e acordes dos testes não receberam a medição de tom puro. A ausência de medição não significa ausência de som.
+As medidas dão quantidade, intervalos e frequência aproximada. Não classificam instrumento, objeto, música, emoção, pessoa ou ambiente e não provam ausência de voz. Um sinal humano quase senoidal ainda pode ser tonal; por isso não se usa a medição para dizer que não há fala. Não contamos número de eventos naturais pela segmentação: uma variação de altura pode virar mais de um trecho.
+O áudio original normalizado permanece igual; não elevamos volume, cortamos trechos ou removemos ruído. A nota vai no pedido atual e no histórico textual existente. Não é criada memória pessoal pela medição. Áudio silencioso continua tratado localmente pela v16.
+Só pedidos contendo áudio recebem uma instrução adicional para separar fala e sons não verbais, reconhecer incerteza, não negar anexo recebido nem deduzir ambiente do canal. Cards/lorebook e o comportamento de imagem/texto não foram alterados. Um pedido continua tendo no máximo uma chamada de geração, na Vertex Flash; não foi adicionado um segundo modelo de transcrição ou análise.
+
+Evidência e limites
+22 testes iniciais passaram, incluindo os novos casos de tons em quantidades/alturas/volumes variados, ruído, acordes, estalidos, voz sintética, sinal misto e transporte dos mesmos bytes. Três bipes de 660 Hz do arquivo que falhou na bateria agora recebem três trechos medidos. Isso é resultado do analisador local, não prova de que as guias responderão melhor.
+Uma prova local com tom contínuo de 30 segundos levou 1,891 s no preparador completo, ainda sob o limite de execução existente. Não é medição da Discloud nem garantia sob concorrência. Suíte completa: 594 testes executados em 173,463 s; 593 passaram e um online opcional foi pulado.
+A documentação do Gemini API declara compreensão de sons não verbais, enquanto a documentação da rota Vertex destaca que pode errar nesse reconhecimento. Não inferimos que mudar de rota resolveria. Preservamos o acesso pago e preparamos comparação controlada.
+
+Bateria proposta, ainda sem execução
+24 chamadas, seis áudios × duas guias × v16/v17. Estimativa US$ 0,25–0,50 cheia, teto US$ 1,50 extra; soma das reservas conservadoras US$ 1,303587. Plano e pedidos preparados com hashes; tentativa única, parar em falha, corte ou uso desconhecido. Aprovação solicitada separadamente. As 18 chamadas anteriores estão esgotadas, sem reutilizar saldo. A amostra contém cinco arquivos inéditos e o caso histórico dos bipes; vozes são sintéticas. Não cobre fala humana ou música comercial real.
+Nenhuma nova chamada paga foi executada nesta preparação. Os 14/18 critérios da bateria v15 permanecem registrados, sem trocar a régua. Não declarar ganho de qualidade antes da comparação.
+
+Fontes consultadas em 15/10/2026
+https://ai.google.dev/gemini-api/docs/audio#technical-details-about-audio
+https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/capabilities/audio-understanding#limitations

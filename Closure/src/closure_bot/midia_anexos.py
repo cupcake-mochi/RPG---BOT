@@ -27,6 +27,17 @@ AVISO_ATIVO = ('[Capacidade de mídia neste pedido: apenas os arquivos/quadros e
     'pedido, peça que escrevam a pergunta; não use regras inventadas ou de outro sistema.]')
 
 
+AVISO_AUDIO = ('[Escuta do anexo: o áudio deste pedido foi recebido; examine o arquivo para responder. '
+    'Separe o que entende da fala dos sons não verbais. Quando a pergunta for sobre sons, '
+    'descreva apenas características perceptíveis, como repetição, pausas ou altura; '
+    'não atribua objeto, instrumento, lugar ou palavras sem evidência. '
+    'As medições locais, quando presentes, são medidas físicas aproximadas, não uma transcrição nem reconhecimento de origem. '
+    'Se não distinguir algo, diga qual detalhe ficou incerto, sem negar que recebeu o arquivo. '
+    'Não deduza que o canal ou a sala estão quietos pelo anexo. '
+    'Conhecer uma música pelo título não comprova o que existe nesta gravação. '
+    'Responda à pergunta no jeito habitual, sem expor rotinas internas ou preencher lacunas com imaginação.]')
+
+
 @dataclass
 class Preparo:
     partes: list[dict] = field(default_factory=list, repr=False)
@@ -54,6 +65,8 @@ class Preparo:
                 entrada[0]['content'] = entrada[0]['content'].replace(AVISO, AVISO_ATIVO)
             else:
                 entrada[0]['content'] += '\n\n' + AVISO_ATIVO
+            if any(p.get('inlineData', {}).get('mimeType', '').startswith('audio/') for p in self.partes):
+                entrada[0]['content'] += '\n\n' + AVISO_AUDIO
             entrada[-1]['midias'] = self.partes
 
     @property

@@ -8,11 +8,13 @@ CONCLUÍDO
 - Imagem/GIF anexado e áudio curto implementados, desligados. Bateria de 18 encerrada: visuais 10/10, áudio 4/8; US$ 0,1800225 cheio, sem uso incerto.
 - V16: silêncio digital convertido detectado localmente; pedido simples recebe aviso sem modelo. 75 testes locais passaram, zero chamadas pagas; não muda a nota da bateria anterior.
 
+- Política revisada publicada e conferida no mesmo gist em 15/10.
+- V17 candidata: medições de tons e orientação de escuta preparadas; ainda sem comparação de respostas.
+
 PRÓXIMOS
 1. Piloto de mídia na Discloud pelo Mizuki: pacote v16, imagem, GIF como arquivo e voz humana curta. Conferir memória/latência. Roteiro em pesquisa/validacao/2026-10-15-midia/teste-no-discord.txt, com adendo v16. Não enviar .env ou chave no chat.
-2. Áudio não verbal: investigar bipes/sons mal descritos. Não há autorização para repetir a bateria ou gastar saldo; qualquer nova medição pede quantidade/custo antes. Fala sintética funcionou, mas não certifica música ou gravação ruidosa.
-3. Atualizar o gist da política pública com o trecho já preparado em docs/PRIVACIDADE.md antes de ampliar o piloto a outras pessoas. Arquivo local atualizado, gist ainda não publicado nesta tarefa.
-4. Receber o resultado de CONFIGURAÇÃO do outro chat e só então integrar ao leitor/corretor. Preservar as 5.381 chaves ANALISE 4 e compatibilidade; PR 3 do gerador exige aprovação própria, não juntar por conta desta fila.
+2. Validar áudio v17 contra v16: proposta de 24 chamadas, US$ 0,25–0,50 estimados e teto US$ 1,50. Aguardar aprovação explícita; sem usar saldo anterior. Plano em pesquisa/validacao/2026-10-15-audio-v17/.
+3. Receber o resultado de CONFIGURAÇÃO do outro chat e só então integrar ao leitor/corretor. Preservar as 5.381 chaves ANALISE 4 e compatibilidade; PR 3 do gerador exige aprovação própria, não juntar por conta desta fila.
 
 PARA DEPOIS, QUANDO PEDIDO
 - Consulta automática do livro para perguntas apenas faladas/em imagem; hoje é necessário texto para recuperar a fonte.
