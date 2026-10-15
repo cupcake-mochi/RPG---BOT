@@ -1,0 +1,13 @@
+{
+  "pacote": "src/var/closure-lab-consulta-v11.zip",
+  "sha256": "9889a9417b59ea9b6e2a8d62e3c3e1ea530bd43c918b0baddf22f63bb1825af8",
+  "bytes": 981158,
+  "arquivos": 50,
+  "diferencas_versus_v10": [
+    "src/var/site/nucleo.js"
+  ],
+  "sem_env": true,
+  "segredos_conferidos_sem_expor_valores": true,
+  "origens_identicas": true,
+  "python_compila": true
+}

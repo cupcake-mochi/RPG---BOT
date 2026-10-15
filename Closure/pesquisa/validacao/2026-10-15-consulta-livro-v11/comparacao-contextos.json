@@ -1,0 +1,1722 @@
+{
+  "escopo": "reconstrução exata dos 48 pedidos antigos; contexto novo sem API, sem tokens ou custo novos",
+  "nucleo_antes_sha256": "0b501539316eae991f0d7b5eca3f0ecc50ab2e864044dcf778b9606e101f6959",
+  "nucleo_depois_sha256": "92afea7da827b5b9d02358c87e11508a3fc778471fdf4f26112985d73a2644a8",
+  "pedidos_anteriores_iguais_as_capturas": 48,
+  "resumo": {
+    "sistema": {
+      "casos": 16,
+      "pedidos_iguais": 16,
+      "antes": {
+        "caracteres_entrada": 439878,
+        "bytes_entrada_utf8": 452276,
+        "casos_com_fontes": 16
+      },
+      "depois": {
+        "caracteres_entrada": 439878,
+        "bytes_entrada_utf8": 452276,
+        "casos_com_fontes": 16
+      }
+    },
+    "conversa": {
+      "casos": 12,
+      "pedidos_iguais": 10,
+      "antes": {
+        "caracteres_entrada": 266363,
+        "bytes_entrada_utf8": 273543,
+        "casos_com_fontes": 4
+      },
+      "depois": {
+        "caracteres_entrada": 252945,
+        "bytes_entrada_utf8": 259709,
+        "casos_com_fontes": 2
+      }
+    },
+    "ambigua": {
+      "casos": 12,
+      "pedidos_iguais": 0,
+      "antes": {
+        "caracteres_entrada": 319854,
+        "bytes_entrada_utf8": 328786,
+        "casos_com_fontes": 12
+      },
+      "depois": {
+        "caracteres_entrada": 241240,
+        "bytes_entrada_utf8": 247640,
+        "casos_com_fontes": 0
+      }
+    },
+    "dialogo": {
+      "casos": 8,
+      "pedidos_iguais": 6,
+      "antes": {
+        "caracteres_entrada": 227361,
+        "bytes_entrada_utf8": 233741,
+        "casos_com_fontes": 8
+      },
+      "depois": {
+        "caracteres_entrada": 213485,
+        "bytes_entrada_utf8": 219465,
+        "casos_com_fontes": 6
+      }
+    }
+  },
+  "casos": [
+    {
+      "id": "clo_armas",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 40045,
+        "bytes_entrada_utf8": 41190,
+        "caracteres_ultima_mensagem": 21160,
+        "fontes": [
+          "emanador--ema-condutor",
+          "incursor--inc-malabarista",
+          "evocador--ev-principal"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Trilha",
+          "Livro: Condutor Armado",
+          "Livro: Malabarista",
+          "Livro: Invocação Principal",
+          "Panorama: Bastião",
+          "Panorama: Vanguarda",
+          "Panorama: Guia",
+          "Panorama: Emanador",
+          "Panorama: Evocador",
+          "Panorama: Incursor",
+          "Panorama: Muro",
+          "Panorama: Punho",
+          "Panorama: Combatente Amaldiçoado",
+          "Panorama: Estocada",
+          "Panorama: Batedor",
+          "Panorama: Batedor: Besta",
+          "Panorama: Batedor: Arma de Fogo",
+          "Panorama: Executor",
+          "Panorama: Arquiteto",
+          "Panorama: Analista",
+          "Panorama: Socorrista",
+          "Panorama: Condutor Armado",
+          "Panorama: Ressonante",
+          "Panorama: Catalisador",
+          "Panorama: Invocação Principal",
+          "Panorama: Parceria",
+          "Panorama: Múltiplas Invocações",
+          "Panorama: Assassino",
+          "Panorama: Pugilista",
+          "Panorama: Malabarista"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 40045,
+        "bytes_entrada_utf8": 41190,
+        "caracteres_ultima_mensagem": 21160,
+        "fontes": [
+          "emanador--ema-condutor",
+          "incursor--inc-malabarista",
+          "evocador--ev-principal"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Trilha",
+          "Livro: Condutor Armado",
+          "Livro: Malabarista",
+          "Livro: Invocação Principal",
+          "Panorama: Bastião",
+          "Panorama: Vanguarda",
+          "Panorama: Guia",
+          "Panorama: Emanador",
+          "Panorama: Evocador",
+          "Panorama: Incursor",
+          "Panorama: Muro",
+          "Panorama: Punho",
+          "Panorama: Combatente Amaldiçoado",
+          "Panorama: Estocada",
+          "Panorama: Batedor",
+          "Panorama: Batedor: Besta",
+          "Panorama: Batedor: Arma de Fogo",
+          "Panorama: Executor",
+          "Panorama: Arquiteto",
+          "Panorama: Analista",
+          "Panorama: Socorrista",
+          "Panorama: Condutor Armado",
+          "Panorama: Ressonante",
+          "Panorama: Catalisador",
+          "Panorama: Invocação Principal",
+          "Panorama: Parceria",
+          "Panorama: Múltiplas Invocações",
+          "Panorama: Assassino",
+          "Panorama: Pugilista",
+          "Panorama: Malabarista"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_armas",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 36490,
+        "bytes_entrada_utf8": 37555,
+        "caracteres_ultima_mensagem": 20568,
+        "fontes": [
+          "emanador--ema-condutor",
+          "incursor--inc-malabarista",
+          "evocador--ev-principal"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Trilha",
+          "Livro: Condutor Armado",
+          "Livro: Malabarista",
+          "Livro: Invocação Principal",
+          "Panorama: Bastião",
+          "Panorama: Vanguarda",
+          "Panorama: Guia",
+          "Panorama: Emanador",
+          "Panorama: Evocador",
+          "Panorama: Incursor",
+          "Panorama: Muro",
+          "Panorama: Punho",
+          "Panorama: Combatente Amaldiçoado",
+          "Panorama: Estocada",
+          "Panorama: Batedor",
+          "Panorama: Batedor: Besta",
+          "Panorama: Batedor: Arma de Fogo",
+          "Panorama: Executor",
+          "Panorama: Arquiteto",
+          "Panorama: Analista",
+          "Panorama: Socorrista",
+          "Panorama: Condutor Armado",
+          "Panorama: Ressonante",
+          "Panorama: Catalisador",
+          "Panorama: Invocação Principal",
+          "Panorama: Parceria",
+          "Panorama: Múltiplas Invocações",
+          "Panorama: Assassino",
+          "Panorama: Pugilista",
+          "Panorama: Malabarista"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 36490,
+        "bytes_entrada_utf8": 37555,
+        "caracteres_ultima_mensagem": 20568,
+        "fontes": [
+          "emanador--ema-condutor",
+          "incursor--inc-malabarista",
+          "evocador--ev-principal"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Trilha",
+          "Livro: Condutor Armado",
+          "Livro: Malabarista",
+          "Livro: Invocação Principal",
+          "Panorama: Bastião",
+          "Panorama: Vanguarda",
+          "Panorama: Guia",
+          "Panorama: Emanador",
+          "Panorama: Evocador",
+          "Panorama: Incursor",
+          "Panorama: Muro",
+          "Panorama: Punho",
+          "Panorama: Combatente Amaldiçoado",
+          "Panorama: Estocada",
+          "Panorama: Batedor",
+          "Panorama: Batedor: Besta",
+          "Panorama: Batedor: Arma de Fogo",
+          "Panorama: Executor",
+          "Panorama: Arquiteto",
+          "Panorama: Analista",
+          "Panorama: Socorrista",
+          "Panorama: Condutor Armado",
+          "Panorama: Ressonante",
+          "Panorama: Catalisador",
+          "Panorama: Invocação Principal",
+          "Panorama: Parceria",
+          "Panorama: Múltiplas Invocações",
+          "Panorama: Assassino",
+          "Panorama: Pugilista",
+          "Panorama: Malabarista"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_parceria",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 26392,
+        "bytes_entrada_utf8": 27120,
+        "caracteres_ultima_mensagem": 7507,
+        "fontes": [
+          "evocador--evocador",
+          "evocador--ev-parceria"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Evocador",
+          "Livro: Parceria"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 26392,
+        "bytes_entrada_utf8": 27120,
+        "caracteres_ultima_mensagem": 7507,
+        "fontes": [
+          "evocador--evocador",
+          "evocador--ev-parceria"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Evocador",
+          "Livro: Parceria"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_parceria",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 22837,
+        "bytes_entrada_utf8": 23485,
+        "caracteres_ultima_mensagem": 6915,
+        "fontes": [
+          "evocador--evocador",
+          "evocador--ev-parceria"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Evocador",
+          "Livro: Parceria"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 22837,
+        "bytes_entrada_utf8": 23485,
+        "caracteres_ultima_mensagem": 6915,
+        "fontes": [
+          "evocador--evocador",
+          "evocador--ev-parceria"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Evocador",
+          "Livro: Parceria"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_reversa",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 28637,
+        "bytes_entrada_utf8": 29425,
+        "caracteres_ultima_mensagem": 9752,
+        "fontes": [
+          "aptidoes--apt-reversa",
+          "rotas--rota-sem-tecnica",
+          "rotas--rota-sementes"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Energia Reversa",
+          "Livro: Energia Reversa",
+          "Livro: Sem Técnica",
+          "Livro: Sementes"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 28637,
+        "bytes_entrada_utf8": 29425,
+        "caracteres_ultima_mensagem": 9752,
+        "fontes": [
+          "aptidoes--apt-reversa",
+          "rotas--rota-sem-tecnica",
+          "rotas--rota-sementes"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Energia Reversa",
+          "Livro: Energia Reversa",
+          "Livro: Sem Técnica",
+          "Livro: Sementes"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_reversa",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 25082,
+        "bytes_entrada_utf8": 25790,
+        "caracteres_ultima_mensagem": 9160,
+        "fontes": [
+          "aptidoes--apt-reversa",
+          "rotas--rota-sem-tecnica",
+          "rotas--rota-sementes"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Energia Reversa",
+          "Livro: Energia Reversa",
+          "Livro: Sem Técnica",
+          "Livro: Sementes"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 25082,
+        "bytes_entrada_utf8": 25790,
+        "caracteres_ultima_mensagem": 9160,
+        "fontes": [
+          "aptidoes--apt-reversa",
+          "rotas--rota-sem-tecnica",
+          "rotas--rota-sementes"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Energia Reversa",
+          "Livro: Energia Reversa",
+          "Livro: Sem Técnica",
+          "Livro: Sementes"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_cura",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 29126,
+        "bytes_entrada_utf8": 29936,
+        "caracteres_ultima_mensagem": 10241,
+        "fontes": [
+          "fundamento--pontos",
+          "fundamento--amparoformas",
+          "fundamento--primeiro"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Feitiço",
+          "Classe",
+          "Livro: Pontos e preços",
+          "Livro: Formas de amparo e Efeito",
+          "Livro: Seu primeiro feitiço"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 29126,
+        "bytes_entrada_utf8": 29936,
+        "caracteres_ultima_mensagem": 10241,
+        "fontes": [
+          "fundamento--pontos",
+          "fundamento--amparoformas",
+          "fundamento--primeiro"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Feitiço",
+          "Classe",
+          "Livro: Pontos e preços",
+          "Livro: Formas de amparo e Efeito",
+          "Livro: Seu primeiro feitiço"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_cura",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 25571,
+        "bytes_entrada_utf8": 26301,
+        "caracteres_ultima_mensagem": 9649,
+        "fontes": [
+          "fundamento--pontos",
+          "fundamento--amparoformas",
+          "fundamento--primeiro"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Feitiço",
+          "Classe",
+          "Livro: Pontos e preços",
+          "Livro: Formas de amparo e Efeito",
+          "Livro: Seu primeiro feitiço"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 25571,
+        "bytes_entrada_utf8": 26301,
+        "caracteres_ultima_mensagem": 9649,
+        "fontes": [
+          "fundamento--pontos",
+          "fundamento--amparoformas",
+          "fundamento--primeiro"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Feitiço",
+          "Classe",
+          "Livro: Pontos e preços",
+          "Livro: Formas de amparo e Efeito",
+          "Livro: Seu primeiro feitiço"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_progressao",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 28059,
+        "bytes_entrada_utf8": 28834,
+        "caracteres_ultima_mensagem": 9174,
+        "fontes": [
+          "progressao--prog-tabela-inicial",
+          "geral--atributos",
+          "aptidoes--apt-marcos"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Maestria",
+          "Refino",
+          "Livro: Progressão dos níveis 1 a 15",
+          "Livro: Atributos",
+          "Livro: Progressão de Refino"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 28059,
+        "bytes_entrada_utf8": 28834,
+        "caracteres_ultima_mensagem": 9174,
+        "fontes": [
+          "progressao--prog-tabela-inicial",
+          "geral--atributos",
+          "aptidoes--apt-marcos"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Maestria",
+          "Refino",
+          "Livro: Progressão dos níveis 1 a 15",
+          "Livro: Atributos",
+          "Livro: Progressão de Refino"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_progressao",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 24504,
+        "bytes_entrada_utf8": 25199,
+        "caracteres_ultima_mensagem": 8582,
+        "fontes": [
+          "progressao--prog-tabela-inicial",
+          "geral--atributos",
+          "aptidoes--apt-marcos"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Maestria",
+          "Refino",
+          "Livro: Progressão dos níveis 1 a 15",
+          "Livro: Atributos",
+          "Livro: Progressão de Refino"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 24504,
+        "bytes_entrada_utf8": 25199,
+        "caracteres_ultima_mensagem": 8582,
+        "fontes": [
+          "progressao--prog-tabela-inicial",
+          "geral--atributos",
+          "aptidoes--apt-marcos"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Maestria",
+          "Refino",
+          "Livro: Progressão dos níveis 1 a 15",
+          "Livro: Atributos",
+          "Livro: Progressão de Refino"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_longe",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 28629,
+        "bytes_entrada_utf8": 29434,
+        "caracteres_ultima_mensagem": 9744,
+        "fontes": [
+          "catalogo--cat-alcance",
+          "fundamento--pontos",
+          "fundamento--familias"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Melhoria",
+          "Classe",
+          "Livro: Alcance",
+          "Livro: Pontos e preços",
+          "Livro: Famílias"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 28629,
+        "bytes_entrada_utf8": 29434,
+        "caracteres_ultima_mensagem": 9744,
+        "fontes": [
+          "catalogo--cat-alcance",
+          "fundamento--pontos",
+          "fundamento--familias"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Melhoria",
+          "Classe",
+          "Livro: Alcance",
+          "Livro: Pontos e preços",
+          "Livro: Famílias"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_longe",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 25074,
+        "bytes_entrada_utf8": 25799,
+        "caracteres_ultima_mensagem": 9152,
+        "fontes": [
+          "catalogo--cat-alcance",
+          "fundamento--pontos",
+          "fundamento--familias"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Melhoria",
+          "Classe",
+          "Livro: Alcance",
+          "Livro: Pontos e preços",
+          "Livro: Famílias"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 25074,
+        "bytes_entrada_utf8": 25799,
+        "caracteres_ultima_mensagem": 9152,
+        "fontes": [
+          "catalogo--cat-alcance",
+          "fundamento--pontos",
+          "fundamento--familias"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Melhoria",
+          "Classe",
+          "Livro: Alcance",
+          "Livro: Pontos e preços",
+          "Livro: Famílias"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_socorro",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 26589,
+        "bytes_entrada_utf8": 27294,
+        "caracteres_ultima_mensagem": 7704,
+        "fontes": [
+          "dano--socorro"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Socorro"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 26589,
+        "bytes_entrada_utf8": 27294,
+        "caracteres_ultima_mensagem": 7704,
+        "fontes": [
+          "dano--socorro"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Socorro"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_socorro",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 23034,
+        "bytes_entrada_utf8": 23659,
+        "caracteres_ultima_mensagem": 7112,
+        "fontes": [
+          "dano--socorro"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Socorro"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 23034,
+        "bytes_entrada_utf8": 23659,
+        "caracteres_ultima_mensagem": 7112,
+        "fontes": [
+          "dano--socorro"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Socorro"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_vinculos",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 26682,
+        "bytes_entrada_utf8": 27445,
+        "caracteres_ultima_mensagem": 7797,
+        "fontes": [
+          "emanador--ema-artes",
+          "evocador--ev-vinculo"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Artes do Vínculo",
+          "Livro: Vínculo"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 26682,
+        "bytes_entrada_utf8": 27445,
+        "caracteres_ultima_mensagem": 7797,
+        "fontes": [
+          "emanador--ema-artes",
+          "evocador--ev-vinculo"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Artes do Vínculo",
+          "Livro: Vínculo"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_vinculos",
+      "categoria": "sistema",
+      "antes": {
+        "caracteres_entrada": 23127,
+        "bytes_entrada_utf8": 23810,
+        "caracteres_ultima_mensagem": 7205,
+        "fontes": [
+          "emanador--ema-artes",
+          "evocador--ev-vinculo"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Artes do Vínculo",
+          "Livro: Vínculo"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 23127,
+        "bytes_entrada_utf8": 23810,
+        "caracteres_ultima_mensagem": 7205,
+        "fontes": [
+          "emanador--ema-artes",
+          "evocador--ev-vinculo"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Artes do Vínculo",
+          "Livro: Vínculo"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_oi",
+      "categoria": "conversa",
+      "antes": {
+        "caracteres_entrada": 21836,
+        "bytes_entrada_utf8": 22408,
+        "caracteres_ultima_mensagem": 2951,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 21836,
+        "bytes_entrada_utf8": 22408,
+        "caracteres_ultima_mensagem": 2951,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_oi",
+      "categoria": "conversa",
+      "antes": {
+        "caracteres_entrada": 18282,
+        "bytes_entrada_utf8": 18774,
+        "caracteres_ultima_mensagem": 2360,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 18282,
+        "bytes_entrada_utf8": 18774,
+        "caracteres_ultima_mensagem": 2360,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_cafe",
+      "categoria": "conversa",
+      "antes": {
+        "caracteres_entrada": 21849,
+        "bytes_entrada_utf8": 22422,
+        "caracteres_ultima_mensagem": 2964,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 21849,
+        "bytes_entrada_utf8": 22422,
+        "caracteres_ultima_mensagem": 2964,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_cafe",
+      "categoria": "conversa",
+      "antes": {
+        "caracteres_entrada": 18294,
+        "bytes_entrada_utf8": 18787,
+        "caracteres_ultima_mensagem": 2372,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 18294,
+        "bytes_entrada_utf8": 18787,
+        "caracteres_ultima_mensagem": 2372,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_papo",
+      "categoria": "conversa",
+      "antes": {
+        "caracteres_entrada": 21868,
+        "bytes_entrada_utf8": 22440,
+        "caracteres_ultima_mensagem": 2983,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 21868,
+        "bytes_entrada_utf8": 22440,
+        "caracteres_ultima_mensagem": 2983,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_papo",
+      "categoria": "conversa",
+      "antes": {
+        "caracteres_entrada": 18313,
+        "bytes_entrada_utf8": 18805,
+        "caracteres_ultima_mensagem": 2391,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 18313,
+        "bytes_entrada_utf8": 18805,
+        "caracteres_ultima_mensagem": 2391,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_genero",
+      "categoria": "conversa",
+      "antes": {
+        "caracteres_entrada": 28579,
+        "bytes_entrada_utf8": 29357,
+        "caracteres_ultima_mensagem": 9694,
+        "fontes": [
+          "guia--guia-tratamento",
+          "origens--legados-exemplos",
+          "geral--contencoes"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Tratar e Retomar",
+          "Livro: Exemplos de personagens",
+          "Livro: Escapar de uma contenção"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 21870,
+        "bytes_entrada_utf8": 22440,
+        "caracteres_ultima_mensagem": 2985,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "kal_genero",
+      "categoria": "conversa",
+      "antes": {
+        "caracteres_entrada": 25024,
+        "bytes_entrada_utf8": 25722,
+        "caracteres_ultima_mensagem": 9102,
+        "fontes": [
+          "guia--guia-tratamento",
+          "origens--legados-exemplos",
+          "geral--contencoes"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Tratar e Retomar",
+          "Livro: Exemplos de personagens",
+          "Livro: Escapar de uma contenção"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 18315,
+        "bytes_entrada_utf8": 18805,
+        "caracteres_ultima_mensagem": 2393,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "clo_escola",
+      "categoria": "conversa",
+      "antes": {
+        "caracteres_entrada": 27847,
+        "bytes_entrada_utf8": 28610,
+        "caracteres_ultima_mensagem": 8962,
+        "fontes": [
+          "ab--ab-mundo",
+          "ab--ab-sociedade"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Escola Jujutsu",
+          "Livro: Mundo jujutsu",
+          "Livro: Sociedade jujutsu"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 27847,
+        "bytes_entrada_utf8": 28610,
+        "caracteres_ultima_mensagem": 8962,
+        "fontes": [
+          "ab--ab-mundo",
+          "ab--ab-sociedade"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Escola Jujutsu",
+          "Livro: Mundo jujutsu",
+          "Livro: Sociedade jujutsu"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_escola",
+      "categoria": "conversa",
+      "antes": {
+        "caracteres_entrada": 24292,
+        "bytes_entrada_utf8": 24975,
+        "caracteres_ultima_mensagem": 8370,
+        "fontes": [
+          "ab--ab-mundo",
+          "ab--ab-sociedade"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Escola Jujutsu",
+          "Livro: Mundo jujutsu",
+          "Livro: Sociedade jujutsu"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 24292,
+        "bytes_entrada_utf8": 24975,
+        "caracteres_ultima_mensagem": 8370,
+        "fontes": [
+          "ab--ab-mundo",
+          "ab--ab-sociedade"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Escola Jujutsu",
+          "Livro: Mundo jujutsu",
+          "Livro: Sociedade jujutsu"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_jeito",
+      "categoria": "conversa",
+      "antes": {
+        "caracteres_entrada": 21867,
+        "bytes_entrada_utf8": 22439,
+        "caracteres_ultima_mensagem": 2982,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 21867,
+        "bytes_entrada_utf8": 22439,
+        "caracteres_ultima_mensagem": 2982,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_jeito",
+      "categoria": "conversa",
+      "antes": {
+        "caracteres_entrada": 18312,
+        "bytes_entrada_utf8": 18804,
+        "caracteres_ultima_mensagem": 2390,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 18312,
+        "bytes_entrada_utf8": 18804,
+        "caracteres_ultima_mensagem": 2390,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_computador",
+      "categoria": "ambigua",
+      "antes": {
+        "caracteres_entrada": 28335,
+        "bytes_entrada_utf8": 29155,
+        "caracteres_ultima_mensagem": 9450,
+        "fontes": [
+          "catalogo--cat-mira",
+          "evocador--ev-multiplas-entrada",
+          "evocador--ev-multiplas-formacao"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Mira",
+          "Livro: Manifestação em Grupo",
+          "Livro: Formação Renovada"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 21892,
+        "bytes_entrada_utf8": 22466,
+        "caracteres_ultima_mensagem": 3007,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "kal_computador",
+      "categoria": "ambigua",
+      "antes": {
+        "caracteres_entrada": 24780,
+        "bytes_entrada_utf8": 25520,
+        "caracteres_ultima_mensagem": 8858,
+        "fontes": [
+          "catalogo--cat-mira",
+          "evocador--ev-multiplas-entrada",
+          "evocador--ev-multiplas-formacao"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Mira",
+          "Livro: Manifestação em Grupo",
+          "Livro: Formação Renovada"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 18337,
+        "bytes_entrada_utf8": 18831,
+        "caracteres_ultima_mensagem": 2415,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "clo_energia",
+      "categoria": "ambigua",
+      "antes": {
+        "caracteres_entrada": 25767,
+        "bytes_entrada_utf8": 26461,
+        "caracteres_ultima_mensagem": 6882,
+        "fontes": [
+          "dano--descansos"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Descansos"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 21877,
+        "bytes_entrada_utf8": 22449,
+        "caracteres_ultima_mensagem": 2992,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "kal_energia",
+      "categoria": "ambigua",
+      "antes": {
+        "caracteres_entrada": 22212,
+        "bytes_entrada_utf8": 22826,
+        "caracteres_ultima_mensagem": 6290,
+        "fontes": [
+          "dano--descansos"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Descansos"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 18322,
+        "bytes_entrada_utf8": 18814,
+        "caracteres_ultima_mensagem": 2400,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "clo_musica",
+      "categoria": "ambigua",
+      "antes": {
+        "caracteres_entrada": 30045,
+        "bytes_entrada_utf8": 30830,
+        "caracteres_ultima_mensagem": 11160,
+        "fontes": [
+          "equip--eqm-municao",
+          "ab--ab-caminho",
+          "pericias--tarefas"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Trilha",
+          "Livro: Munição",
+          "Livro: Caminho e Trilha",
+          "Livro: Tarefas e testes"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 21884,
+        "bytes_entrada_utf8": 22458,
+        "caracteres_ultima_mensagem": 2999,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "kal_musica",
+      "categoria": "ambigua",
+      "antes": {
+        "caracteres_entrada": 26490,
+        "bytes_entrada_utf8": 27195,
+        "caracteres_ultima_mensagem": 10568,
+        "fontes": [
+          "equip--eqm-municao",
+          "ab--ab-caminho",
+          "pericias--tarefas"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Trilha",
+          "Livro: Munição",
+          "Livro: Caminho e Trilha",
+          "Livro: Tarefas e testes"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 18329,
+        "bytes_entrada_utf8": 18823,
+        "caracteres_ultima_mensagem": 2407,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "clo_defesa",
+      "categoria": "ambigua",
+      "antes": {
+        "caracteres_entrada": 26940,
+        "bytes_entrada_utf8": 27683,
+        "caracteres_ultima_mensagem": 8055,
+        "fontes": [
+          "equip--eqa-laminas",
+          "geral--defesa"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Lâminas",
+          "Livro: Defesa e cobertura"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 21876,
+        "bytes_entrada_utf8": 22450,
+        "caracteres_ultima_mensagem": 2991,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "kal_defesa",
+      "categoria": "ambigua",
+      "antes": {
+        "caracteres_entrada": 23385,
+        "bytes_entrada_utf8": 24048,
+        "caracteres_ultima_mensagem": 7463,
+        "fontes": [
+          "equip--eqa-laminas",
+          "geral--defesa"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Lâminas",
+          "Livro: Defesa e cobertura"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 18321,
+        "bytes_entrada_utf8": 18815,
+        "caracteres_ultima_mensagem": 2399,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "clo_dominio",
+      "categoria": "ambigua",
+      "antes": {
+        "caracteres_entrada": 30357,
+        "bytes_entrada_utf8": 31229,
+        "caracteres_ultima_mensagem": 11472,
+        "fontes": [
+          "fundamento--controle",
+          "catalogo--cat-controle",
+          "fundamento--combinacoes"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Controle",
+          "Livro: Combinar peças"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 21882,
+        "bytes_entrada_utf8": 22456,
+        "caracteres_ultima_mensagem": 2997,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "kal_dominio",
+      "categoria": "ambigua",
+      "antes": {
+        "caracteres_entrada": 26802,
+        "bytes_entrada_utf8": 27594,
+        "caracteres_ultima_mensagem": 10880,
+        "fontes": [
+          "fundamento--controle",
+          "catalogo--cat-controle",
+          "fundamento--combinacoes"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Livro: Controle",
+          "Livro: Combinar peças"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 18327,
+        "bytes_entrada_utf8": 18821,
+        "caracteres_ultima_mensagem": 2405,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "clo_arquivo",
+      "categoria": "ambigua",
+      "antes": {
+        "caracteres_entrada": 29148,
+        "bytes_entrada_utf8": 29940,
+        "caracteres_ultima_mensagem": 10263,
+        "fontes": [
+          "origens--corpo-ninhada-gemeos",
+          "dano--integridade"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Integridade",
+          "Livro: Menores do Corpo Amaldiçoado",
+          "Livro: Estágios de Integridade"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 21874,
+        "bytes_entrada_utf8": 22446,
+        "caracteres_ultima_mensagem": 2989,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "kal_arquivo",
+      "categoria": "ambigua",
+      "antes": {
+        "caracteres_entrada": 25593,
+        "bytes_entrada_utf8": 26305,
+        "caracteres_ultima_mensagem": 9671,
+        "fontes": [
+          "origens--corpo-ninhada-gemeos",
+          "dano--integridade"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Integridade",
+          "Livro: Menores do Corpo Amaldiçoado",
+          "Livro: Estágios de Integridade"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 18319,
+        "bytes_entrada_utf8": 18811,
+        "caracteres_ultima_mensagem": 2397,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "clo_origem1",
+      "categoria": "dialogo",
+      "antes": {
+        "caracteres_entrada": 28895,
+        "bytes_entrada_utf8": 29710,
+        "caracteres_ultima_mensagem": 10010,
+        "fontes": [
+          "origens--legado-criar",
+          "origens--origem-escolhas",
+          "origens--origens"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Origem",
+          "Livro: Personalizar sua Origem",
+          "Livro: Escolhas da Origem",
+          "Livro: Origens"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 28895,
+        "bytes_entrada_utf8": 29710,
+        "caracteres_ultima_mensagem": 10010,
+        "fontes": [
+          "origens--legado-criar",
+          "origens--origem-escolhas",
+          "origens--origens"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Origem",
+          "Livro: Personalizar sua Origem",
+          "Livro: Escolhas da Origem",
+          "Livro: Origens"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_origem1",
+      "categoria": "dialogo",
+      "antes": {
+        "caracteres_entrada": 25340,
+        "bytes_entrada_utf8": 26075,
+        "caracteres_ultima_mensagem": 9418,
+        "fontes": [
+          "origens--legado-criar",
+          "origens--origem-escolhas",
+          "origens--origens"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Origem",
+          "Livro: Personalizar sua Origem",
+          "Livro: Escolhas da Origem",
+          "Livro: Origens"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 25340,
+        "bytes_entrada_utf8": 26075,
+        "caracteres_ultima_mensagem": 9418,
+        "fontes": [
+          "origens--legado-criar",
+          "origens--origem-escolhas",
+          "origens--origens"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Origem",
+          "Livro: Personalizar sua Origem",
+          "Livro: Escolhas da Origem",
+          "Livro: Origens"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_origem2",
+      "categoria": "dialogo",
+      "antes": {
+        "caracteres_entrada": 30348,
+        "bytes_entrada_utf8": 31189,
+        "caracteres_ultima_mensagem": 10572,
+        "fontes": [
+          "origens--legado-criar",
+          "origens--origem-escolhas",
+          "origens--legados"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Legado de história",
+          "Livro: Personalizar sua Origem",
+          "Livro: Escolhas da Origem",
+          "Livro: Legados de história"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 30348,
+        "bytes_entrada_utf8": 31189,
+        "caracteres_ultima_mensagem": 10572,
+        "fontes": [
+          "origens--legado-criar",
+          "origens--origem-escolhas",
+          "origens--legados"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Legado de história",
+          "Livro: Personalizar sua Origem",
+          "Livro: Escolhas da Origem",
+          "Livro: Legados de história"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_origem2",
+      "categoria": "dialogo",
+      "antes": {
+        "caracteres_entrada": 26851,
+        "bytes_entrada_utf8": 27609,
+        "caracteres_ultima_mensagem": 9980,
+        "fontes": [
+          "origens--legado-criar",
+          "origens--origem-escolhas",
+          "origens--legados"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Legado de história",
+          "Livro: Personalizar sua Origem",
+          "Livro: Escolhas da Origem",
+          "Livro: Legados de história"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 26851,
+        "bytes_entrada_utf8": 27609,
+        "caracteres_ultima_mensagem": 9980,
+        "fontes": [
+          "origens--legado-criar",
+          "origens--origem-escolhas",
+          "origens--legados"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Legado de história",
+          "Livro: Personalizar sua Origem",
+          "Livro: Escolhas da Origem",
+          "Livro: Legados de história"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_origem3",
+      "categoria": "dialogo",
+      "antes": {
+        "caracteres_entrada": 30939,
+        "bytes_entrada_utf8": 31802,
+        "caracteres_ultima_mensagem": 10831,
+        "fontes": [
+          "origens--legado-criar",
+          "origens--origem-escolhas",
+          "origens--legados"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Legado de história",
+          "Origem",
+          "Livro: Personalizar sua Origem",
+          "Livro: Escolhas da Origem",
+          "Livro: Legados de história"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 30939,
+        "bytes_entrada_utf8": 31802,
+        "caracteres_ultima_mensagem": 10831,
+        "fontes": [
+          "origens--legado-criar",
+          "origens--origem-escolhas",
+          "origens--legados"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Legado de história",
+          "Origem",
+          "Livro: Personalizar sua Origem",
+          "Livro: Escolhas da Origem",
+          "Livro: Legados de história"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "kal_origem3",
+      "categoria": "dialogo",
+      "antes": {
+        "caracteres_entrada": 27465,
+        "bytes_entrada_utf8": 28249,
+        "caracteres_ultima_mensagem": 10127,
+        "fontes": [
+          "origens--legado-criar",
+          "origens--origem-escolhas",
+          "origens--legados"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Legado de história",
+          "Origem",
+          "Livro: Personalizar sua Origem",
+          "Livro: Escolhas da Origem",
+          "Livro: Legados de história"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 27465,
+        "bytes_entrada_utf8": 28249,
+        "caracteres_ultima_mensagem": 10127,
+        "fontes": [
+          "origens--legado-criar",
+          "origens--origem-escolhas",
+          "origens--legados"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Legado de história",
+          "Origem",
+          "Livro: Personalizar sua Origem",
+          "Livro: Escolhas da Origem",
+          "Livro: Legados de história"
+        ]
+      },
+      "pedido_igual": true
+    },
+    {
+      "id": "clo_troca",
+      "categoria": "dialogo",
+      "antes": {
+        "caracteres_entrada": 30400,
+        "bytes_entrada_utf8": 31229,
+        "caracteres_ultima_mensagem": 10055,
+        "fontes": [
+          "equip--eqm-municao",
+          "ab--ab-caminho",
+          "progressao--prog-trilhas"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Trilha",
+          "Livro: Munição",
+          "Livro: Caminho e Trilha",
+          "Livro: Trocar de Trilha"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 23462,
+        "bytes_entrada_utf8": 24091,
+        "caracteres_ultima_mensagem": 3117,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    },
+    {
+      "id": "kal_troca",
+      "categoria": "dialogo",
+      "antes": {
+        "caracteres_entrada": 27123,
+        "bytes_entrada_utf8": 27878,
+        "caracteres_ultima_mensagem": 9434,
+        "fontes": [
+          "equip--eqm-municao",
+          "ab--ab-caminho",
+          "progressao--prog-trilhas"
+        ],
+        "ativadas": [
+          "Mundo: premissa",
+          "Trilha",
+          "Livro: Munição",
+          "Livro: Caminho e Trilha",
+          "Livro: Trocar de Trilha"
+        ]
+      },
+      "depois": {
+        "caracteres_entrada": 20185,
+        "bytes_entrada_utf8": 20740,
+        "caracteres_ultima_mensagem": 2496,
+        "fontes": [],
+        "ativadas": [
+          "Mundo: premissa"
+        ]
+      },
+      "pedido_igual": false
+    }
+  ]
+}

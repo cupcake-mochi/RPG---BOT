@@ -9,7 +9,9 @@
     "leitura_sha256": "259aba7eabd4b1404daa9a494ca260e1f15512c30e9089577e380db6c45f1acd",
     "resultado_esperado": "Base pessoal — verde; TR Físico +4, Vigor +3, Intelecto +1, Espírito +1.",
     "leitura_publica_confirmada": true,
-    "publico_somente_leitor": true
+    "publico_somente_leitor": true,
+    "painel_discord_confirmado_usuario": "2026-10-15",
+    "escopo_captura_discord": "Resumo: resultado, cor e alertas esperados; não certifica cada página interna."
   },
   {
     "teste": 2,
@@ -23,7 +25,9 @@
     "leitura_sha256": "38bf01a65c757e1cbb40a7c98c161d7e3e58b849559d21d669b9153a1ddc4fe0",
     "resultado_esperado": "Vigor adulterado — vermelho; rejeitar 999, esperado +3 nesta cópia.",
     "leitura_publica_confirmada": true,
-    "publico_somente_leitor": true
+    "publico_somente_leitor": true,
+    "painel_discord_confirmado_usuario": "2026-10-15",
+    "escopo_captura_discord": "Resumo: resultado, cor e alertas esperados; não certifica cada página interna."
   },
   {
     "teste": 3,
@@ -37,7 +41,9 @@
     "leitura_sha256": "109d2e64016461e5d24ca55e5aeb5fe2523c3b6a24130968aac74d2901fc65a1",
     "resultado_esperado": "Treino faltante — amarelo; uma pendência de TR por escolher; Vigor +2.",
     "leitura_publica_confirmada": true,
-    "publico_somente_leitor": true
+    "publico_somente_leitor": true,
+    "painel_discord_confirmado_usuario": "2026-10-15",
+    "escopo_captura_discord": "Resumo: resultado, cor e alertas esperados; não certifica cada página interna."
   },
   {
     "teste": 4,
@@ -49,7 +55,9 @@
     "leitura_sha256": "aedbf2aca53ec8377df184a659f386a7faedae0ae817375e7ad0ae5af83f09f5",
     "resultado_esperado": "Domada — verde; Invocação 1: Vigor +3 e Atletismo +4. É outro caso, diferente do XLSX de Vigor +5.",
     "leitura_publica_confirmada": true,
-    "publico_somente_leitor": true
+    "publico_somente_leitor": true,
+    "painel_discord_confirmado_usuario": "2026-10-15",
+    "escopo_captura_discord": "Resumo: resultado, cor e alertas esperados; não certifica cada página interna."
   },
   {
     "teste": 5,
@@ -64,6 +72,8 @@
     "leitura_sha256": "5f1c93f9f92e3d351d05fe99121857c045526b30201611c1823f982404475a16",
     "resultado_esperado": "Corda e carga — amarelo; Corda 0,2 → 1,0 e carga 0,5 → 1,3.",
     "leitura_publica_confirmada": true,
-    "publico_somente_leitor": true
+    "publico_somente_leitor": true,
+    "painel_discord_confirmado_usuario": "2026-10-15",
+    "escopo_captura_discord": "Resumo: resultado, cor e alertas esperados; não certifica cada página interna."
   }
 ]

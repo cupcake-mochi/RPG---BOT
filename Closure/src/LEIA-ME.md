@@ -9,6 +9,8 @@ modelo e envia a fala com o nome e o avatar de cada personagem. Roda na Discloud
 Em 14/10, Mizuki confirmou os testes de ficha depois de Commit e Rebuild, incluindo as quatro novas cópias
 ANALISE 2, e cinco testes de consulta no chat. Mizuki também confirmou o painel por páginas às 23h05.
 
+**Confirmação e filtro, 15/10:** Mizuki confirmou por captura os cinco resumos das cópias nativas de TR/perícias/carga: verde, vermelho para Vigor 999, amarelo para treino faltante, domada verde e Corda/carga amarelas. A busca v11 filtra usos cotidianos explícitos sem alterar a mensagem original entregue à guia. A auditoria offline dos 48 pedidos antigos remove as fontes dos 12 ambíguos e mantém idênticos 16 pedidos de regra e seis turnos de Origem. 537 testes executados: 536 passaram, um online opcional pulado; QuickJS/Node 14/14, fontes de títulos 425/425. Não houve novas chamadas ao modelo. Relatório `../pesquisa/validacao/2026-10-15-consulta-livro-v11/relatorio.txt`; pacote `var/closure-lab-consulta-v11.zip`, sem `.env`. CONFIGURAÇÃO segue separada.
+
 **Ficha:** formatos 1, 2 e 4 aceitos. ANALISE 4 tem 5.381 chaves, com as 4.896 anteriores preservadas. O formato 3 pertence à implementação paralela de CONFIGURAÇÃO e não é aceito sem integrar suas regras. `ficha_entidade.py` refaz atributos, vida com
 Buff, Defesa reconhecida, acerto desarmado, CD e deslocamento-base. `ficha_magia.py` lê Famílias exatas,
 Classe 0 e Máxima; confere entrada carregada/retorno e CE dos Talentos por ganho. Quatro cópias preenchidas

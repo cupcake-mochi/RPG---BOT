@@ -52,7 +52,12 @@ Entrega e limites
 Índice dos cinco links em pesquisa/privado/google-tr-copias.json e roteiro com comandos
 completos em src/var/TESTES-GOOGLE-TR.txt. Os links são entregues diretamente ao Mizuki.
 As leituras/resultados completos ficam em pesquisa/privado/google-tr-N-*.json; resumo sem
-identificadores em resumo.json. O novo teste no Discord ainda precisa confirmar o painel.
+identificadores em resumo.json. Mizuki confirmou os cinco painéis no Discord em 15/10,
+com capturas: verde/vermelho/amarelo/verde/amarelo. Os resumos mostram o erro único
+de Vigor, a pendência única de treino e os dois avisos legados de Corda/carga. As notas
+de Ofício e os Buffs da domada permaneceram para o mestre. As capturas mostram resumo
+e controles; não certificam a navegação por todas as páginas ou cada valor interno.
+Evidências com identificadores guardadas somente em pesquisa/privado/google-tr-discord-N.png.
 Não se afirma equivalência integral Sheets/Excel nem aprovação de todas as regras.
 
 Zero chamadas adicionais de modelo para esta validação de fichas. A bateria de 48
