@@ -7,11 +7,16 @@ efeito alterado, resultado adulterado e campanha não autorizada. Encontrado
 e corrigido no código o falso cadastro de Caminho/Trilha pelos menus default
 de cartões vazios; **817 testes: 816 aprovados e um opcional pulado**. Esse
 patch ainda não foi implantado. As cópias limpam esses menus não usados para
-permitir o teste também no runtime anterior. Servidor/cadastro e Discord real
-continuam separados da validação local.
+permitir o teste também no runtime anterior. Com autorização posterior do
+Mizuki, seis cópias receberam leitura por link e quatro hashes sintéticos
+foram instalados somente no servidor escolhido. Cadastro ativo relido e
+conferido; sem mudar regras gerais, reiniciar ou implantar código. Os seis
+links anônimos coincidem com os XLSX nas 8.190 chaves. Discord/painel real
+continuam pendentes; não são comprovados por essa comparação.
 
 Branch: `codex/integracao-b47`, em `cupcake-mochi/RPG---BOT`.
-PR para revisão: https://github.com/cupcake-mochi/RPG---BOT/pull/64 (mesclada; publicação autorizada concluída).
+PR de correção para revisão: https://github.com/cupcake-mochi/RPG---BOT/pull/65 (rascunho; patch ainda não implantado).
+PR 64: mesclada; publicação autorizada concluída.
 Primeiro checkpoint publicado: `cfec482` (contrato/leitor). Continuação do
 usuário: completar conferências possíveis e testar tudo ao final. Os checkpoints
 seguintes desta branch contêm implementação, regressões e documentação.
@@ -30,14 +35,16 @@ Bot inicial: `7e4dc35209ea840549d5ccf5a0b49834da21d117`.
 `1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.
 Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados
 idênticos ao ZIP; `.env` e dois bancos preservados byte a byte, integridade ok.
-Memória de 1.000 MB mantida. Cadastro B47 de campanha ainda não existe na
-produção; nenhuma aprovação real foi presumida. Testes reais por link/XLSX,
-campanha e navegação do painel continuam pendentes. Evidências em
+Memória de 1.000 MB mantida. Nessa publicação inicial o cadastro B47 de campanha
+ainda não existia; posteriormente foram instaladas apenas as aprovações
+sintéticas autorizadas, conforme registro acima. Testes reais no Discord por
+link/XLSX e navegação do painel continuam pendentes. Evidências iniciais em
 `pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
 
-Retomar de `origin/main`, após conferir remotos e árvore local. O merge
-contém exatamente o runtime testado; o registro posterior muda somente docs.
-Não refazer merge/deploy. Próximo passo é o roteiro funcional no Discord,
+Retomar de `origin/codex/integracao-b47`, após conferir remotos e árvore local.
+`main` contém a publicação da PR 64; a PR 65 acrescenta a correção dos cartões
+vazios e o registro dos testes. Não refazer merge/deploy da PR 64 nem presumir
+publicação do patch 65. Próximo passo é o roteiro funcional no Discord,
 sem chamadas a modelos e com campanha real somente após decisão do mestre.
 Backups privados ficam fora do Git; não anexar seus arquivos à PR.
 

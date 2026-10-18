@@ -6,6 +6,22 @@ exportados depois do cálculo nativo; não houve importação, LibreOffice ou
 execução/publicação de Apps Script. IDs das cópias e arquivos ficam na entrega
 local ignorada `src/var/testes-b47/`, fora do pacote do bot.
 
+**Configuração aplicada depois da preparação:** Mizuki informou o servidor de
+teste e autorizou leitura pública por link somente nas seis cópias sintéticas.
+Todas têm `anyone/reader`, sem descoberta por busca. O arquivo de campanha não
+existia em `src/var/` na Discloud. Foi criado com nome temporário, preenchido,
+salvo, relido e só então renomeado para `ficha-campanhas.json`. O arquivo ativo
+foi relido idêntico ao preparado: um servidor, quatro aprovações, sem regras
+gerais ou nome de campanha alterados. Não houve reinício nem implantação de
+código. IDs/cadastro e comprovantes privados ficam fora do Git.
+
+Cada link foi lido anonimamente pelo leitor real do bot e comparado com o
+respectivo XLSX: 8.190 chaves e zero diferenças de Campo, com os resultados da
+tabela. Outro servidor simulado mantém as quatro aprovações pendentes na 02.
+Isso valida acesso/contrato e o cadastro relido; o envio e o painel no Discord
+ainda serão testados pelo usuário. Evidência agregada em
+`pesquisa/validacao/2026-10-18-b47-bateria-nativa/validacao-links-servidor.json`.
+
 ## Casos e resultado esperado
 
 | Caso | Conteúdo | Resultado esperado com as quatro aprovações de teste |
@@ -30,8 +46,9 @@ de um servidor real para fazer a 06 passar.
 
 ## Execução no Discord
 
-1. Instalar somente os quatro hashes de teste no cadastro do servidor
-   escolhido pelo mestre, preservando outras campanhas e aprovações.
+1. As quatro aprovações de teste já estão instaladas no servidor escolhido.
+   Para reproduzir em outro ambiente, instalar somente os quatro hashes,
+   preservando outras campanhas e aprovações.
    `ferramentas/ficha_campanha.py inspecionar/aprovar` aceita os XLSX nativos.
    Nunca publicar esse cadastro operacional no Git.
 2. Rodar `/ficha analisar` com cada link legível pelo bot e repetir com o XLSX
@@ -45,8 +62,8 @@ de um servidor real para fazer a 06 passar.
    interação, fazer uma nova análise para reabrir os controles.
 
 Links privados abrem para o proprietário, mas não para o GET anônimo do bot.
-Somente as cópias sintéticas podem receber leitura por link após autorização;
-o XLSX permite testar sem mudar compartilhamento.
+As seis cópias sintéticas desta rodada já receberam essa leitura com autorização;
+a oficial não teve permissões alteradas. O XLSX continua disponível.
 
 ## Defeito encontrado durante a preparação
 
@@ -78,5 +95,6 @@ instalada por causa da criação das cópias.
 - Suíte: 817 executados em 206,224 s; 816 passaram, um online opcional pulado.
   Módulo de cobertura: 15 testes aprovados, em 6,700 s.
 - Sem chamadas pagas, mensagens ao Discord, alteração da oficial ou
-  implantação do patch durante a preparação. A configuração do servidor e os
-  testes do painel dependem do ambiente real e devem ser registrados à parte.
+  implantação do patch durante a preparação. Configuração e leitura anônima
+  posteriores foram verificadas conforme registro acima. Testes do painel
+  e respostas reais no Discord continuam separados.

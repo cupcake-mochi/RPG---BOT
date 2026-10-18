@@ -1,5 +1,5 @@
 Fila atual — Guias do Ciclo, 18/10/2026
-Nova rodada: seis fichas nativas de teste preparadas e conferidas por XLSX; dados/ficha/BATERIA-NATIVA-B47.md. Casos de aprovação exata, MESTRE VIU, alteração posterior, Vida 999 e campanha sem autorização. Cadastro no servidor e testes reais dependem da definição do ambiente pelo Mizuki.
+Nova rodada: seis fichas nativas conferidas por link anônimo e XLSX, 8.190 chaves e zero diferenças em cada uma; dados/ficha/BATERIA-NATIVA-B47.md. Mizuki escolheu o servidor e autorizou leitura das seis cópias; quatro hashes de teste instalados no cadastro ativo da Discloud, relido idêntico ao preparado. Regras gerais preservadas, sem reinício/deploy de código. Faltam os testes reais no Discord e do painel pelo usuário.
 Patch novo de cartões custom vazios: defaults de Caminho/Trilha não ativam cadastros inexistentes; 817 testes executados, 816 aprovados e um opcional pulado, 206,224 s. Publicação desse patch separada; não confundir com a versão já instalada abaixo.
 PR 64 mesclada: 1997f25fe990eb307204365cda172aeec831969f. Publicação na Discloud autorizada pelo Mizuki e concluída; bot online em cinco servidores. Backups privados, .env e bancos preservados, 67 arquivos do ZIP conferidos.
 Suíte da versão publicada: 814 executados, 813 aprovados e um opcional pulado; 17 regressões também aprovadas no ZIP. O patch novo acima ainda não está nessa publicação.
@@ -33,7 +33,7 @@ CONCLUÍDO
 - Mizuki confirmou posteriormente a v22 funcionando no Discord. Reteste principal encerrado por ele; não reabrir mídia/modo adulto nesta integração.
 
 PRÓXIMOS
-1. PR 64 mesclada e implantação concluída com autorização. Conferir somente novos defeitos e resultados do roteiro externo; não refazer publicação sem motivo novo.
+1. PR 64 mesclada e implantação concluída com autorização. PR 65 em rascunho contém o patch de cartões vazios; revisão/merge/publicação dele continuam separados. As seis cópias permitem testar a versão instalada sem esse patch. Não refazer a publicação anterior.
 2. Executar dados/ficha/ROTEIRO-EXTERNO-B47.md na versão já publicada: Discord por link/XLSX, campanha/aprovações reais, navegação e encerramento dos controles. Leitura HTTP da oficial já comparada, sem confundir com esses cenários.
 3. Examinar separadamente dados/ficha/PROPOSTA-CONTRATO-B47.md: entradas ausentes e quatro defeitos estáticos do produtor. Nenhuma alteração da ficha oficial autorizada por essa proposta. Manter compatibilidade 1/2/TR-v4 e limites das 485 chaves não exportadas pela B47.
 4. Mestre: aprendizado, história dos marcos, autorizações efetivas, requisitos livres, narrativa, distribuição entre alvos e Alma não automatizada continuam humanos. Suíte aprovada não conclui a conferência integral da ficha.

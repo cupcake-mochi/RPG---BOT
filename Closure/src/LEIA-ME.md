@@ -7,16 +7,21 @@ efeito alterado, resultado adulterado e campanha não autorizada. Encontrado
 e corrigido no código o falso cadastro de Caminho/Trilha pelos menus default
 de cartões vazios; **817 testes: 816 aprovados e um opcional pulado**. Esse
 patch ainda não foi implantado. As cópias limpam esses menus não usados para
-permitir o teste também no runtime anterior. Servidor/cadastro e Discord real
-continuam separados da validação local.
+permitir o teste também no runtime anterior. Com autorização posterior do
+Mizuki, seis cópias receberam leitura por link e quatro hashes sintéticos
+foram instalados somente no servidor escolhido. Cadastro ativo relido e
+conferido; sem mudar regras gerais, reiniciar ou implantar código. Os seis
+links anônimos coincidem com os XLSX nas 8.190 chaves. Discord/painel real
+continuam pendentes; não são comprovados por essa comparação.
 
 **Publicação autorizada em 18/10:** PR 64 mesclada em
 `1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.
 Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados
 idênticos ao ZIP; `.env` e dois bancos preservados byte a byte, integridade ok.
-Memória de 1.000 MB mantida. Cadastro B47 de campanha ainda não existe na
-produção; nenhuma aprovação real foi presumida. Testes reais por link/XLSX,
-campanha e navegação do painel continuam pendentes. Evidências em
+Memória de 1.000 MB mantida. Nessa publicação inicial o cadastro B47 de campanha
+ainda não existia; posteriormente foram instaladas apenas as aprovações
+sintéticas autorizadas, conforme registro acima. Testes reais no Discord por
+link/XLSX e navegação do painel continuam pendentes. Evidências iniciais em
 `pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
 
 **Revisão vigente de 18/10:** Máxima confere montagem, combinações e
