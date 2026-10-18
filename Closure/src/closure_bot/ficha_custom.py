@@ -41,6 +41,13 @@ def definicoes(ficha):
         usados = {k:v for k,v in campos.items() if k not in ('mestre_viu','tipo','nome') and v not in ('',None)}
         # Defaults de cartões não são cadastros de personagem.
         defaults = {'base':'Nenhuma','modalidade':'Melhoria','estado':'Neutra','tipo':''}
+        # Cartões vazios da B47 nativa já vêm com estes menus selecionados.
+        # O default só deixa de ativar o cartão; permanece nos campos e no
+        # hash quando houver nome, conteúdo ou MESTRE VIU preenchido.
+        if tipo == 'caminho':
+            defaults.update({'campo.troca_pericias_por_arma':'Não', 'campo.treino_de_arma':'Todas'})
+        elif tipo == 'trilha':
+            defaults['campo.base_do_livro'] = 'Nenhuma'
         relevantes = {k:v for k,v in usados.items() if defaults.get(k) != v}
         if nome or relevantes or campos.get('mestre_viu',0) not in ('',0):
             saida.append(Definicao(raiz,tipo,nome,campos))

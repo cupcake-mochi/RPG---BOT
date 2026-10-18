@@ -1,5 +1,15 @@
 # src: código do bot
 
+**Bateria nativa preparada em 18/10:** seis cópias sintéticas calculadas no
+Sheets, 8.190 chaves por XLSX e resultados locais conferidos. Roteiro em
+`../dados/ficha/BATERIA-NATIVA-B47.md`. Inclui aprovação exata, MESTRE VIU sem autorização,
+efeito alterado, resultado adulterado e campanha não autorizada. Encontrado
+e corrigido no código o falso cadastro de Caminho/Trilha pelos menus default
+de cartões vazios; **817 testes: 816 aprovados e um opcional pulado**. Esse
+patch ainda não foi implantado. As cópias limpam esses menus não usados para
+permitir o teste também no runtime anterior. Servidor/cadastro e Discord real
+continuam separados da validação local.
+
 **Publicação autorizada em 18/10:** PR 64 mesclada em
 `1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.
 Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados

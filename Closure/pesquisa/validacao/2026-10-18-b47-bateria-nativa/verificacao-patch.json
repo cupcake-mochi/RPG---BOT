@@ -1,0 +1,21 @@
+{
+  "baseline_cartoes_inexistentes": [
+    "custom.caminho",
+    "custom.trilha"
+  ],
+  "corrigido": [],
+  "suite": {
+    "executados": 817,
+    "aprovados": 816,
+    "pulados": 1,
+    "segundos": 206.224
+  },
+  "pacote": {
+    "arquivos": 67,
+    "sha256": "3a6a4cc76cd4cdafd01956337b360cd3cf8950924f7efa76fa0cc04cf65ee2cc",
+    "diferencas": []
+  },
+  "chamadas_pagas": 0,
+  "discord_enviado": false,
+  "implantado": false
+}

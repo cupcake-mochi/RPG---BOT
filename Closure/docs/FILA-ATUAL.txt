@@ -1,6 +1,8 @@
 Fila atual — Guias do Ciclo, 18/10/2026
+Nova rodada: seis fichas nativas de teste preparadas e conferidas por XLSX; dados/ficha/BATERIA-NATIVA-B47.md. Casos de aprovação exata, MESTRE VIU, alteração posterior, Vida 999 e campanha sem autorização. Cadastro no servidor e testes reais dependem da definição do ambiente pelo Mizuki.
+Patch novo de cartões custom vazios: defaults de Caminho/Trilha não ativam cadastros inexistentes; 817 testes executados, 816 aprovados e um opcional pulado, 206,224 s. Publicação desse patch separada; não confundir com a versão já instalada abaixo.
 PR 64 mesclada: 1997f25fe990eb307204365cda172aeec831969f. Publicação na Discloud autorizada pelo Mizuki e concluída; bot online em cinco servidores. Backups privados, .env e bancos preservados, 67 arquivos do ZIP conferidos.
-Suíte vigente: 814 executados, 813 aprovados e um opcional pulado; 17 regressões também aprovadas no ZIP. Nenhuma alteração de runtime após esses testes.
+Suíte da versão publicada: 814 executados, 813 aprovados e um opcional pulado; 17 regressões também aprovadas no ZIP. O patch novo acima ainda não está nessa publicação.
 Registro de publicação: pesquisa/validacao/2026-10-18-b47-publicacao/relatorio.txt. Próximo passo: roteiro funcional no Discord; não confundir startup/arquivos com teste real por link/XLSX.
 Contrato/limites em dados/ficha/INTEGRACAO-B47.md. Campos ausentes e quatro defeitos do produtor em proposta separada. A ficha oficial permanece intocada; não retomar C/D.
 Checkpoints e números anteriores abaixo são histórico; não reabrem os pilotos já confirmados.
