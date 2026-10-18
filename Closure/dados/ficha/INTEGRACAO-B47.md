@@ -46,6 +46,7 @@ daquela variante paralela. A integração não inventa esses dados ausentes.
 | Textos, nomes, descrições, requisitos, escadas | Tipo semântico; preserva `007`, `1,5`, `VERDADEIRO`, `*?~`, `=` e espaços nos campos textuais | Texto não é fórmula nem concessão mecânica |
 | `regra.*` e `.campanha` | Compara com cadastro **do servidor no bot**, incluindo valores efetivos e declaração; vazio difere de zero | XP manual/histórico de missões e Limiar não são comprovados pela ficha |
 | Vida fixa/rolada, PE, Integridade, Proteção, Defesa | Recalcula de entradas, regras autorizadas e efeitos; dado do Caminho, rolagens ausentes/inválidas e exceções de Origem | Origem do Buff e duplicação com concessões requerem mestre; equipamento desconhecido não certifica Defesa |
+| Origem publicada e capacidades | Confere vínculo de marcante/menores ao catálogo R52 e rejeita menores repetidas, sem depender dos avisos | Capacidade criada sem definição/aprovação permanece pendente; escolhas incompatíveis não certificam contas dependentes |
 | Atributos/Corpo/marcos | Pontos e tetos da campanha; conserva cálculos de progressão existentes | Sequência histórica de escolhas não é inferida de totais |
 | `efeito.1..30.*` | Valida ligado, alvo, modo, número, fonte, conflitos; `trocar por` vence soma/Buff, inclusive zero | Fonte digitada não é aprovação. Alvos sem conta integrada ficam explicitamente não conferidos |
 | Efeitos de Vida/PE/Integridade/Proteção/Defesa | Aplicados uma vez à conta independente; Proteção efetiva alimenta Defesa | Conflito impede certificação do alvo |
@@ -107,7 +108,7 @@ Comandos de dentro de `Closure/src/`:
 ../.venv/bin/python -m unittest discover -s testes
 ```
 
-**Resultado na nuvem:** suíte completa com 690 testes, 689 aprovados e um online opcional pulado. Verificação focal posterior da Forma e cadastro: quatro testes aprovados. Pacote gerado sem `.env`/banco, com módulos e todos os recursos B47 presentes. Não houve recálculo Google/LibreOffice.
+**Resultado na nuvem:** suíte completa com 694 testes, 693 aprovados e um online opcional pulado. Regressões focais da revisão final: 68 testes aprovados. Pacote gerado sem `.env`/banco, com módulos e todos os recursos B47 presentes. Não houve recálculo Google/LibreOffice.
 
 As fixtures B47 são sintéticas e montadas em memória pelo manifesto. Não há
 cópia de ficha privada nem dependência do PC. Motor puro de personagem foi
@@ -127,6 +128,10 @@ Falhas investigadas durante a implementação:
    sintético para testar a seleção da campanha, como a interação real oferece.
 4. A primeira fixture nova omitia `tecnica.rota.nome`. Corrigiu-se a fixture
    para emitir Fundamento, sem relaxar a conferência desse resultado.
+5. A orientação legada de PE da Origem só conhecia Buff. A B47 confere o
+   acréscimo uma única vez entre Buff e efeitos identificados; não recomenda
+   duplicar um ganho já aplicado. Regressões cobrem vínculo de Origem e menores
+   repetidas sem aviso, além do campo estruturado EXIGE TR da Melhoria.
 
 ## Validação externa e publicação
 

@@ -138,9 +138,13 @@ def conferir_resolucao(ficha, magia, base, forma, pecas, problemas, certos, pulo
     if base + ".resolve" not in ficha:
         pulou.append(f"{nome}: resolução não exportada nesta ficha")
         return
-    controle = any(n in ("Prende", "Cerca") or n.startswith("Condição: ")
-                   or n in magia.melhorias and magia.melhorias[n].familia == "Controle"
-                   and n not in ("Terreno", "Desarma o Feitiço") for n in pecas)
+    def exige_tr(n):
+        d=next((d for d in magia.contexto.registros.values() if d.tipo=='melhoria' and d.nome==n and d.valida and d.aprovada),None) if magia.contexto else None
+        if d and d.efetivos.get('exige_tr') in ('Sim','Não'):
+            return d.efetivos['exige_tr']=='Sim'
+        return (n in ("Prende", "Cerca") or n.startswith("Condição: ") or
+                n in magia.melhorias and magia.melhorias[n].familia == "Controle" and n not in ("Terreno", "Desarma o Feitiço"))
+    controle = any(exige_tr(n) for n in pecas)
     automatico = forma in ("Cura", "Apoio", "Onda", "Efeito") or "Inescapável" in pecas
     escolhido = valor(ficha, base + ".resolucao_escolha") if entidade else ""
     opcoes = ("", "Ataque", "TR Físico", "TR Vigor", "TR Intelecto", "TR Espírito")

@@ -1,6 +1,7 @@
 # Retomada da integração do bot com B47 · 18/10/2026
 
 Branch: `codex/integracao-b47`, em `cupcake-mochi/RPG---BOT`.
+PR para revisão: https://github.com/cupcake-mochi/RPG---BOT/pull/64 (rascunho, sem merge/implantação).
 Primeiro checkpoint publicado: `cfec482` (contrato/leitor). Os checkpoints
 seguintes desta branch contêm implementação, regressões e documentação.
 Use `git log -5 --oneline` e `git rev-parse HEAD` para identificar a entrega
@@ -43,8 +44,8 @@ Bot inicial: `7e4dc35209ea840549d5ccf5a0b49834da21d117`.
 
 ## Evidência já obtida
 
-Suíte completa: 690 testes, 689 aprovados e um online opcional pulado.
-Verificação focal final: quatro aprovados. O pacote local foi inspecionado:
+Suíte completa: 694 testes, 693 aprovados e um online opcional pulado.
+Regressões focais da revisão final: 68 aprovados. O pacote local foi inspecionado:
 contratos/módulos B47 presentes; sem `.env` ou banco.
 
 ## O que permanece externo ou parcial

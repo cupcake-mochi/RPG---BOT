@@ -52,6 +52,10 @@ def conferir_b47(ficha, ref, campanha, aprovados):
     ref=preparar_custom(ficha,ref,ctx,r)
     ref=replace(ref,magia=replace(ref.magia,contexto=ctx))
     conferir_efeitos(ficha,ctx,r)
+    if not conferir_origem(ficha,ctx,r):
+        r.nao_conferido.append('Origem: escolhas incompatíveis impedem certificar as contas dependentes')
+        r.veredito='reprovada'
+        return r
     identidades = _identidades_validas(ficha,r)
     # A campanha vem do bot; uma regra adulterada na ficha nunca dirige o cálculo.
     antigo=_conferir_legado(ficha,ref,campanha)
@@ -86,6 +90,39 @@ def _identidades_validas(ficha,r):
     if not str(valor(ficha,'nome')).strip():
         problema(r,'nome','identificar o personagem; ficha branca não aprova personagem','vazio',pendente=True,regra='informação')
     return escolhas
+
+
+def conferir_origem(ficha,ctx,r):
+    import json
+    from pathlib import Path
+    origens=json.loads((Path(__file__).parent/'recursos/b47-livro.json').read_text(encoding='utf-8'))['origens']
+    nome=valor(ficha,'origem')
+    pai=next((o for o in origens if o['menu']==nome or str(nome).endswith(' · Sem Técnica') and o['menu']==str(nome).split(' · ')[0]),None)
+    propria=next((d for d in ctx.registros.values() if d.tipo=='Origem' and d.nome==nome and d.valida and d.aprovada),None)
+    if propria:
+        base=propria.campos.get('campo.base_do_livro','')
+        pai=next((o for o in origens if o['menu']==base),None)
+    if pai is None:return True  # Nome/registro/base ausentes são diagnosticados nas outras etapas.
+    antes=len(r.problemas)
+    vistas=set()
+    for campo,grupo in [('origem.marcante','marcantes'),('origem.menor_1','menores'),('origem.menor_2','menores')]:
+        escolhido=valor(ficha,campo)
+        if not escolhido:
+            problema(r,campo,'escolher capacidade da Origem','vazio',pendente=True,regra='informação',ancora='origens--origens');continue
+        permitidas={c['nome'] for c in pai[grupo]}
+        registro=next((d for d in ctx.registros.values() if d.tipo==('Marcante' if grupo=='marcantes' else 'Menor') and d.nome==escolhido and d.valida),None)
+        if registro and registro.campos.get('campo.origem') in (nome,pai['menu']):
+            if not registro.aprovada:
+                problema(r,campo,'aprovação da capacidade custom pelo mestre',escolhido,pendente=True,regra='aprovação')
+        elif escolhido not in permitidas:
+            if 'mestre' in str(escolhido).casefold():
+                problema(r,campo,'definição/aprovação verificável da capacidade criada',escolhido,pendente=True,regra='aprovação')
+            else:
+                problema(r,campo,'capacidade publicada ou cadastro válido vinculado a esta Origem',escolhido,regra='custom',ancora='origens--origens')
+        if grupo=='menores' and escolhido in vistas:
+            problema(r,campo,'duas menores distintas',escolhido,regra='custom',ancora='origens--origens')
+        vistas.add(escolhido)
+    return len(r.problemas)==antes
 
 
 def conferir_familias(ficha,magia,raiz,problemas,r=None):

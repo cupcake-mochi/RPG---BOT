@@ -520,7 +520,15 @@ def _conferir_legado(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDa
     resultado.notas.extend(notas_de_treino.values())
     buff_pe = _bonus(ficha, "buff.energia")
     for nome, extra in pe_da_origem(ficha, ref):
-        if extra and buff_pe != extra:
+        if formato == 11 and extra:
+            efeitos = ref.magia.contexto.efeitos.get("PE máximo", [])
+            explicitos = [e for e in efeitos if e.tipo_de_fonte in ("Origem", "Origem custom") and e.fonte == nome]
+            ganho = sum(e.valor for e in explicitos if e.como == "somar")
+            if buff_pe + ganho != extra or buff_pe and ganho or any(e.como == "trocar por" for e in explicitos):
+                resultado.pendencias.append(Problema("aprovação", "energia_max",
+                    f"conferir +{extra} de {nome} uma única vez entre Buff e efeitos, sem duplicar outras fontes",
+                    f"Buff {_fmt(buff_pe)}; efeitos identificados {_fmt(ganho)}", PE_EXTRA[nome][0]))
+        elif extra and buff_pe != extra:
             resultado.pendencias.append(Problema("origem", "energia_max", f"+{extra} de {nome} no Buff de PE",
                                                  f"Buff de PE {_fmt(buff_pe)}", PE_EXTRA[nome][0]))
     if resultado.problemas:

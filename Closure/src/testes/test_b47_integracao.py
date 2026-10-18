@@ -104,6 +104,19 @@ class Contrato(unittest.TestCase):
             self.assertEqual(r.veredito,'reprovada')
             self.assertFalse(r.conferidos)
 
+    def test_capacidade_de_outra_origem_nao_altera_as_contas(self):
+        f=trocar(completa(),origem__menor_1='Núcleo Dependente')
+        r=conferir(f,REF)
+        self.assertEqual(r.veredito,'reprovada')
+        self.assertTrue(any(p.campo=='origem.menor_1' for p in r.problemas))
+        self.assertFalse(any(c.startswith('PE ') for c in r.conferidos))
+
+    def test_menores_repetidas_adulteradas_sem_aviso(self):
+        livro=json.loads((RAIZ/'src/closure_bot/recursos/b47-livro.json').read_text())
+        menor=livro['origens'][0]['menores'][0]['nome']
+        f=trocar(completa(),origem__menor_1=menor,origem__menor_2=menor)
+        self.assertTrue(any(p.campo=='origem.menor_2' for p in conferir(f,REF).problemas))
+
 
 class CampanhaEfeitos(unittest.TestCase):
     def test_regra_declarada_divergente_nao_dirige_conta(self):
@@ -162,6 +175,17 @@ class CampanhaEfeitos(unittest.TestCase):
             trocar(f,vida__rolagem__2=v);r=conferir(f,REF,c)
             self.assertFalse(any(x.startswith('Vida ') for x in r.conferidos))
             self.assertTrue(any(p.campo=='vida.rolagem.2' for p in r.problemas+r.pendencias))
+
+    def test_pe_da_origem_no_efeito_nao_pede_buff_duplicado(self):
+        f=trocar(completa(),origem='Restrição Celestial · Restrição corporal',tecnica__rota__nome='Fundamento',
+                 origem__menor_1='Reserva Excedente',energia_max=10,integridade_max=26)
+        self.efeito(f,caixa='PE máximo',valor=2,tipo_de_fonte='Origem',fonte='Reserva Excedente')
+        r=conferir(f,REF)
+        self.assertFalse(any(p.campo=='energia_max' and ('no Buff' in p.esperado or 'uma única vez' in p.esperado)
+                             for p in r.pendencias),r.pendencias)
+        trocar(f,buff__energia=2,energia_max=12)
+        r=conferir(f,REF)
+        self.assertTrue(any(p.campo=='energia_max' and 'sem duplicar' in p.esperado for p in r.pendencias))
 
 
 class Custom(unittest.TestCase):
@@ -230,6 +254,14 @@ class Custom(unittest.TestCase):
         r=conferir(f,REF,aprovados=aprovar(f,'custom.forma.1'))
         self.assertFalse(any(p.campo.startswith('feitico.1.') for p in r.problemas),r.problemas)
         self.assertTrue(any('benefício numérico da Forma custom 3d8' in c for c in r.conferidos))
+
+    def test_melhoria_exige_tr_sem_inferir_da_descricao(self):
+        from closure_bot.ficha_efeitos import conferir_resolucao
+        f=trocar(completa(),custom__melhoria__1__nome='Fagulha',custom__melhoria__1__peso='Leve',custom__melhoria__1__familia='Mira',
+                 custom__melhoria__1__exige_tr='Sim',custom__melhoria__1__mestre_viu=0,feitico__1__resolve='Acerto + TR')
+        c,r,ref=contexto(f,aprovar(f,'custom.melhoria.1'))
+        conferir_resolucao(f,ref.magia,'feitico.1','Projétil',['Fagulha'],r.problemas,r.conferidos,r.nao_conferido)
+        self.assertFalse(any(p.campo=='feitico.1.resolve' for p in r.problemas),r.problemas)
 
     def test_tipo_aprovado_altera_vida_sem_ligar_talisma(self):
         from closure_bot.ficha_entidade import conferir_numeros
