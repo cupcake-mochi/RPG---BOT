@@ -16,6 +16,11 @@ from __future__ import annotations
 import csv
 import io
 import re
+import math
+import asyncio
+from xml.etree import ElementTree as ET
+
+from .ficha_esquema import tipo
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -38,8 +43,10 @@ class Campo:
     parte: str
 
 
-def normaliza(valor) -> object:
+def normaliza(valor, chave: str | None = None) -> object:
     """'1,5' -> 1.5, '3' -> 3, 'VERDADEIRO'/'TRUE' -> 1, 'FALSO'/'FALSE' -> 0, None -> "", o resto texto sem as pontas."""
+    if chave is not None and tipo(chave) == "texto":
+        return "" if valor is None else str(valor)
     if valor is None:
         return ""
     if isinstance(valor, bool):
@@ -61,12 +68,25 @@ def normaliza(valor) -> object:
 def de_linhas(linhas) -> dict[str, Campo]:
     """[[chave, valor, célula, parte], ...], com ou sem o cabeçalho -> {chave: Campo}."""
     ficha: dict[str, Campo] = {}
-    for linha in linhas:
+    erros = {"#REF!", "#N/A", "#N/D", "#NAME?", "#NOME?", "#VALUE!", "#VALOR!", "#DIV/0!", "#NUM!", "#NULL!", "#ERROR!", "#SPILL!", "#CALC!"}
+    erros_encontrados = []
+    for n, linha in enumerate(linhas):
+        if n > 20000:
+            raise FichaIlegivel("a aba ANALISE excede o limite de linhas")
         linha = (list(linha) + ["", "", "", ""])[:4]
         chave = str(linha[0] or "").strip()
         if not chave or chave == "chave":
             continue
-        ficha[chave] = Campo(normaliza(linha[1]), str(linha[2] or ""), str(linha[3] or ""))
+        if chave in ficha:
+            raise FichaIlegivel(f"chave duplicada na ANALISE: {chave}")
+        if str(linha[1]).strip().upper() in erros:
+            erros_encontrados.append(f"{chave}: {linha[1]}")
+        valor = normaliza(linha[1], chave)
+        if isinstance(valor, (int, float)) and not math.isfinite(valor):
+            raise FichaIlegivel(f"número não finito em {chave}")
+        ficha[chave] = Campo(valor, str(linha[2] or ""), str(linha[3] or ""))
+    if erros_encontrados and ficha.get("formato.versao", Campo("", "", "")).valor in ("", 11):
+        raise FichaIlegivel("erro de fórmula em " + erros_encontrados[0])
     return ficha
 
 
@@ -93,7 +113,18 @@ def de_xlsx(origem: str | Path | io.BytesIO | bytes) -> dict[str, Campo]:
     try:
         if ABA not in livro.sheetnames:
             raise FichaIlegivel("a planilha não tem a aba ANALISE (a ficha é de uma versão anterior?)")
-        ficha = de_linhas(livro[ABA].iter_rows(max_col=4, values_only=True))
+        aba = livro[ABA]
+        info = livro._archive.getinfo(aba._worksheet_path)
+        if info.file_size > 20_000_000:
+            raise FichaIlegivel("a aba ANALISE descompactada é grande demais")
+        xml = ET.fromstring(livro._archive.read(aba._worksheet_path))
+        ns = {"s": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+        for c in xml.findall(".//s:sheetData/s:row/s:c", ns):
+            if c.find("s:f", ns) is not None:
+                v = c.find("s:v", ns)
+                if (v is None or v.text is None) and c.get("t") != "str":
+                    raise FichaIlegivel("o arquivo tem fórmula sem resultado calculado em ANALISE!" + c.get("r", ""))
+        ficha = de_linhas(aba.iter_rows(max_col=4, values_only=True))
     finally:
         livro.close()
     if "formato.versao" not in ficha:
@@ -131,7 +162,7 @@ async def de_link(link: str, *, sessao=None, espera: float = 60) -> dict[str, Ca
                 corpo += pedaco
                 if len(corpo) > LIMITE_BYTES:
                     break
-    except aiohttp.ClientError as erro:
+    except (aiohttp.ClientError, asyncio.TimeoutError) as erro:
         raise FichaIlegivel("não deu pra baixar a planilha agora") from erro
     finally:
         if propria:
