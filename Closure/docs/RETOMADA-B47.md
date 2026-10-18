@@ -14,7 +14,33 @@ Ficha: `ccbd053c8f7e68f8b4ac223f721b309111d2dcc0`.
 Sistema: `e593ba8cf24ce6bbd2f517f5431a73a96610e02b`.
 Bot inicial: `7e4dc35209ea840549d5ccf5a0b49834da21d117`.
 
-## Continuação atual · 18/10 · computador autorizado pelo usuário
+## Revisão vigente · Máxima e teto de dano · 18/10
+
+Checkpoint de código: `a981416a7d8af1879ed5c95f8d41eb424f2176b0`.
+A Máxima confere `maxima.montagem`, dependências aprovadas, identidade das
+peças e combinações; montagem inválida não certifica dados dependentes.
+Toca a Alma simples confere metade da tabela, conservando permissão humana.
+A fórmula fixa conhecida do produtor recebe pendência, nunca aprovação.
+Quebra Coisa entra no teto de dano comum/custom/Liberação/entidade, sem
+multiplicar dados secundários ou aplicar Remate ao mesmo objeto.
+
+Suíte vigente: **814 executados, 813 aprovados e um online opcional pulado**,
+em 208,229 s. Dezessete regressões novas passaram também no ZIP; contra
+`89d56db`, produziram 26 falhas de asserção/subcasos e nenhum erro de execução.
+Evidências: `pesquisa/validacao/2026-10-18-b47-maxima/`.
+Pacote local: 67 arquivos iguais aos fontes, 1.151.110 bytes, sem credenciais,
+banco ou cadastro real. SHA256:
+`3d35f83e6ea31f30b4fec9d6487a0fc9e9aa392549c66e72fcc79f6b705d2c75`.
+
+A PR 64 continua rascunho, sem revisão humana, merge ou implantação.
+Não há autorização específica para publicar/enviar mensagens no Discord.
+O roteiro externo foi ampliado para esses casos. O produtor permanece
+inalterado: quatro defeitos estáticos têm reprodução separada. Seletores,
+competências, inventário/carga, TR e estado ativo ausentes continuam sem
+certificação; histórico, permissões, narrativa, distribuição e interações de
+Alma não automatizadas dependem do mestre. A suíte não encerra essas etapas.
+
+## Checkpoint anterior · 89d56db · 18/10
 
 Remotos conferidos: os três projetos mantêm as bases indicadas acima. Retomada
 de `7015c80`, preservando a branch e a PR 64. Checkpoints de código publicados:
@@ -58,7 +84,7 @@ Detalhes/reprodução em `relatorio.txt`, `verificacao.json` e `pacote.json`.
    ficha está concluída: não retomar C/D, não repetir migrações e não usar
    endereços de documentos históricos como contrato.
 3. De `Closure/src/`, executar:
-   `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao testes.test_b47_cobertura`.
+   `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao testes.test_b47_cobertura testes.test_b47_maxima testes.test_b47_teto`.
    Depois de uma mudança relevante, executar
    `../.venv/bin/python -m unittest discover -s testes` e registrar os resultados.
 4. Leitor/esquema: `ficha_leitor.py`, `ficha_esquema.py` e manifesto em recursos.

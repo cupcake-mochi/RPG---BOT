@@ -1,5 +1,12 @@
 # src: código do bot
 
+**Revisão vigente de 18/10:** Máxima confere montagem, combinações e
+herança/aprovação; montagem inválida não certifica dano. Toca a Alma simples
+confere metade sem conceder permissão; a fórmula fixa do produtor fica pendente.
+Quebra Coisa entra no teto, sem multiplicar dano secundário. **814 testes,
+813 aprovados e um online opcional pulado**; 17 regressões passaram no ZIP.
+[Retomada](../docs/RETOMADA-B47.md). Sem merge, implantação ou alteração da oficial.
+
 **Continuação B47 em 18/10:** o link CSV declara `headers=1`; a leitura real da
 oficial e o XLSX exportado retornaram 8.190 chaves e Campos/Resultado iguais,
 sem escrita. Trilha custom usa a base aprovada em Famílias/extras; troca fixa
@@ -8,7 +15,7 @@ bônus/treinos. Testes finais, pacote e limitações em
 [`RETOMADA-B47.md`](../docs/RETOMADA-B47.md). Antes de concluir publicação,
 seguir [`ROTEIRO-EXTERNO-B47.md`](../dados/ficha/ROTEIRO-EXTERNO-B47.md).
 Cards, memória, mídia e rotas de modelos preservados.
-Suíte final: 797 testes, 796 aprovados e um online opcional pulado; teste
+Checkpoint anterior: 797 testes, 796 aprovados e um online opcional pulado; teste
 online separado aprovado. Pacote final e roteiro ainda não foram implantados.
 
 **Integração B47 (18/10/2026):** ANALISE 11 por chave, leitor tipado, regras por servidor, efeitos e custom aprovados por definição exata. Cadastro local em `src/var/ficha-campanhas.json`; ferramenta do operador e comandos de teste em [`../dados/ficha/INTEGRACAO-B47.md`](../dados/ficha/INTEGRACAO-B47.md). Preserve esse arquivo na publicação junto do estado operacional. A B47 não emite as 485 adições exclusivas do TR-v4; os limites ficam visíveis no painel. Estados e formatos antigos abaixo são históricos. Não houve implantação nem validação Discord/Google nesta integração.

@@ -1,5 +1,12 @@
 # Integração B47 no bot · 18/10/2026
 
+**Revisão vigente de 18/10:** Máxima confere montagem, combinações e
+herança/aprovação; montagem inválida não certifica dano. Toca a Alma simples
+confere metade sem conceder permissão; a fórmula fixa do produtor fica pendente.
+Quebra Coisa entra no teto, sem multiplicar dano secundário. **814 testes,
+813 aprovados e um online opcional pulado**; 17 regressões passaram no ZIP.
+[Retomada](../../docs/RETOMADA-B47.md). Sem merge, implantação ou alteração da oficial.
+
 Implementação determinística no projeto `Closure/`. A ficha oficial não foi editada,
 nenhum Apps Script foi publicado, nenhum XLSX foi importado no Google e nenhuma
 mensagem foi enviada ao Discord. Não há chamadas reais a modelos nestes testes.
@@ -10,7 +17,7 @@ Trilha custom herda a base aprovada para Famílias/extras; troca fixa independe
 da conta-base; especialização inválida não certifica bônus. Evidências e limites
 em `pesquisa/validacao/2026-10-18-b47-cobertura/`. Os remotos continuam nas três
 bases abaixo. Nenhuma escrita nativa, mudança do produtor ou implantação.
-Suíte final: **797 executados, 796 aprovados e um opcional pulado**, em
+Checkpoint anterior: **797 executados, 796 aprovados e um opcional pulado**, em
 182,286 s; teste online de leitura executado separadamente e aprovado.
 
 ## Bases conferidas

@@ -25,4 +25,4 @@ na voz de uma personagem de Arknights (Kal'tsit de dia, Closure de noite).
 
 ## Análise B47
 
-O projeto `Closure/` integra o contrato ANALISE 11 da ficha atual. [Contrato, cobertura e execução](Closure/dados/ficha/INTEGRACAO-B47.md) · [Retomada da integração](Closure/docs/RETOMADA-B47.md).
+O projeto `Closure/` integra o contrato ANALISE 11 da ficha atual. Revisão vigente: 814 testes (813 aprovados, um opcional pulado), Máxima e teto de Quebra Coisa corrigidos no bot; publicação e validação externa pendentes. [Contrato, cobertura e execução](Closure/dados/ficha/INTEGRACAO-B47.md) · [Retomada da integração](Closure/docs/RETOMADA-B47.md).

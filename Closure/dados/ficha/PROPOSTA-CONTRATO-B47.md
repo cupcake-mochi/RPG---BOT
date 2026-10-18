@@ -99,6 +99,7 @@ restauração → publicar esquema/manifestações e exemplos sem dados pessoais
 adaptar o bot e testar compatibilidade por identidade → piloto de link/XLSX e
 painel → revisão/merge/implantação somente com suas autorizações próprias.
 
-Os dois defeitos estáticos já registrados permanecem separados em
+Os quatro defeitos estáticos registrados (critérios literais, CD de Controle,
+teto de Quebra Coisa e dados fixos da Máxima com Alma) permanecem separados em
 [LACUNAS-PRODUTOR-B47.md](LACUNAS-PRODUTOR-B47.md). Não houve mudança do produtor,
 teste Google ou migração para executar esta proposta.

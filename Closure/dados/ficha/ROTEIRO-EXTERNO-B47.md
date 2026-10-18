@@ -36,6 +36,10 @@ pendências e páginas; diferenças de horário/guia não mudam as contas.
 | Efeito inválido | Valor não numérico em efeito de CD/ataque | Diagnóstico da linha; conta dependente não certificada, painel e contas independentes funcionam. |
 | Curingas | Perícias `Runa*` e `Runas`, INT 1; efeito +7 só em Runas | Bot espera 1/8. Se o produtor aplicar 7 à primeira, registrar divergência; não relaxar o consumidor. |
 | Controle | Caso mínimo de LACUNAS-PRODUTOR-B47.md: ataque +6 e Controle CD 14 | Fórmula conhecida com CD 12 recebe pendência específica; outro número incorreto reprova. Sem alegar que a fórmula foi corrigida. |
+| Máxima válida | Nível 17, Projétil, Precisão; Mira Livre | 25 PE, 1 de 8 e 24d8; pontos não compram nem retiram dados. |
+| Máxima incompatível | Toque com Longe ou Projétil com Inescapável | Divergência; montagem e dados dependentes não aparecem como conferidos. PE permanece independente. |
+| Máxima com Alma | Nível 17, Projétil, Toca a Alma | 3 de 8; 12d8 quando exportados. Fórmula fixa de 24d8 recebe pendência específica; autorização da Regra continua humana. |
+| Teto de objeto | Classe 3, Projétil e Quebra Coisa, preços normais | Base 6d8; 7d8 excede o teto quando dobrado. Divergência do produtor não autoriza relaxar o bot. |
 
 ## Campanha e aprovação reais
 

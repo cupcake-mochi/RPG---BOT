@@ -4,6 +4,11 @@ Fonte examinada: `Ficha---RPG-JJK@ccbd053c8f7e68f8b4ac223f721b309111d2dcc0`.
 Nenhum arquivo desse repositório ou da ficha oficial foi alterado. Esta lista
 não autoriza publicação, migração ou uso de Google/LibreOffice.
 
+Revisão seguinte de 18/10: acrescentados abaixo o teto de Quebra Coisa e a
+apresentação fixa da Máxima com Toca a Alma. São quatro reproduções estáticas,
+sem ensaio nativo. Evidência adicional em
+`pesquisa/validacao/2026-10-18-b47-maxima/produtor-estatico.json`.
+
 Reexame estático em 18/10: fragmentos entregues ainda contêm os critérios A54
 diretos e a apresentação de Controle com CD-base, conforme o relatório
 `pesquisa/validacao/2026-10-18-b47-cobertura/produtor-estatico.json` (hashes dos
@@ -100,3 +105,43 @@ No bot, `test_formula_atual_sem_bonus_obrigatorio_fica_pendente` conserva
 uma pendência precisa para essa fórmula conhecida e recusa outros números
 incorretos. Saldo positivo não recebe a tolerância de +2. A montagem continua
 parcial quanto a permissões, escolha do TR e resultado no sucesso.
+
+## Teto de Quebra Coisa
+
+O livro em `catalogo--cat-castigo-dano` manda contar o multiplicador de
+Quebra Coisa na montagem. O produtor em `ficha_amaldicoada.py` declara
+`MULTIPLICA = ("Remate", 1.25)`, sem Quebra Coisa em `PECAS_CITADAS`;
+`ficha_invocacoes.py` também usa esse multiplicador único na conferência.
+Esta é inspeção dos emissores, sem recálculo no Google.
+
+Caso mínimo: Classe 3, Projétil, Quebra Coisa a preço normal, sem Restrição.
+O saldo é `9 - 2 = 7`. Dobrar sete dados excede o teto 12; a base deve cair
+para **6d8**, que dobra para 12 contra o objeto. O bot agora confere seis e
+reprova sete, inclusive em Forma custom aprovada e Liberação. O adicional
+de Salto/Queima/Estilhaço não reaplica o multiplicador. Remate vale contra
+criaturas; não se multiplica 2 por 1,25 contra um mesmo alvo.
+
+Proposta no produtor: incluir a identidade de Quebra Coisa e o multiplicador
+de objeto na conferência do teto; preservar a diferença de alvo e os dados
+secundários. Ensaiar seis/sete, adicionais, alias e Liberação em cópia
+descartável antes de alterar o contrato/artefatos. Não se corrigiu a oficial.
+
+## Apresentação fixa da Máxima com Alma
+
+A fórmula emitida de `maxima.dano` imprime os dados da tabela de nível,
+independentemente das Melhorias. Confirmada também no JSON entregue de
+`apps-script/Ficha.gs`, tabela de remapeamento em `DADOS_AM`, linha 38,
+coluna 308: destino `L356` e fórmula com `DADOS_AM!$HM$36` e sua média.
+Coordenadas são diagnóstico desse artefato, nunca identidade no consumidor.
+
+Caso mínimo: nível 17, Projétil, Toca a Alma. Montagem **3 de 8**, 25 PE,
+tabela 24d8. O livro manda conservar a redução na Máxima: **12d8 de Alma**.
+O campo fixo continua imprimindo `24d8 = 108`. O bot confere doze quando
+exportados e mantém a permissão da Regra como revisão do mestre. Somente a
+fórmula fixa exata recebe pendência específica; `999d8` continua erro.
+
+Proposta no produtor: separar os dados da tabela e a quantidade efetiva da
+aplicação, reduzindo Alma após as escolhas estruturadas. Manter genérica a
+quantidade de Cura quando o campo não exporta tipo; não inferir um seletor
+ausente do resultado. Combinações de Alma com adicionais/distribuição continuam
+dependendo de regras e entradas suficientes, sem aprovação por prosa.

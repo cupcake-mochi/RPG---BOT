@@ -1,7 +1,14 @@
+**Revisão vigente de 18/10:** Máxima confere montagem, combinações e
+herança/aprovação; montagem inválida não certifica dano. Toca a Alma simples
+confere metade sem conceder permissão; a fórmula fixa do produtor fica pendente.
+Quebra Coisa entra no teto, sem multiplicar dano secundário. **814 testes,
+813 aprovados e um online opcional pulado**; 17 regressões passaram no ZIP.
+[Retomada](docs/RETOMADA-B47.md). Sem merge, implantação ou alteração da oficial.
+
 **Atualização de 18/10/2026 — integração B47 do bot:** implementação, contrato auditado, aprovações por servidor e testes offline em [`dados/ficha/INTEGRACAO-B47.md`](dados/ficha/INTEGRACAO-B47.md). A entrega da ficha está concluída; não retomar C/D. O bot apresenta análise parcial onde faltam dados/automação. Publicação e teste externo permanecem separados.
 
 Continuação: corrigidos cabeçalho CSV do Google, herança de Trilha e duas certificações dependentes. CSV/XLSX reais da B47 atual: 8.190 chaves, zero diferenças, somente leitura. [Retomada](docs/RETOMADA-B47.md) · [Proposta separada do produtor](dados/ficha/PROPOSTA-CONTRATO-B47.md) · [Roteiro externo](dados/ficha/ROTEIRO-EXTERNO-B47.md). PR 64 continua rascunho; sem merge/implantação.
-Suíte final: 797 testes, 796 aprovados e um online opcional pulado; teste online separado aprovado.
+Checkpoint anterior: 797 testes, 796 aprovados e um online opcional pulado; teste online separado aprovado.
 
 # Closure
 

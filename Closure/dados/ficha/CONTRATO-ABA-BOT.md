@@ -1,5 +1,12 @@
 # Contrato vigente · B47 formato 11 · 18/10/2026
 
+Máxima agora compara a montagem exportada com o orçamento independente e
+preserva identidades, requisitos e aprovação exata no uso. Montagem inválida
+bloqueia certificação dos dados. Metade simples de Alma é conferível, sem
+permissão automática; interações complexas permanecem não conferidas.
+Quebra Coisa conta no teto sem multiplicar adicionais. Nenhuma nova chave,
+parte ou tipo exigido. Casos do produtor em LACUNAS-PRODUTOR-B47.md.
+
 Requisição CSV informa `headers=1`: a ANALISE tem uma linha de cabeçalho e
 colunas de texto. Inferência automática pode absorver registros como rótulos;
 o limite do parser continua preservado. CSV/XLSX atuais foram relidos com

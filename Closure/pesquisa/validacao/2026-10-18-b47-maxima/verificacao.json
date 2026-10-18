@@ -1,0 +1,49 @@
+{
+  "data": "2026-10-18",
+  "checkpoint_anterior": "89d56db492a09ce30472ca2b925f519be7464b09",
+  "checkpoint_codigo": "a981416a7d8af1879ed5c95f8d41eb424f2176b0",
+  "suite": {
+    "comando": "../.venv/bin/python -m unittest discover -s testes",
+    "diretorio": "Closure/src",
+    "executados": 814,
+    "aprovados": 813,
+    "pulados": 1,
+    "falhas": 0,
+    "segundos": 208.229
+  },
+  "regressoes_novas": {
+    "executados": 17,
+    "aprovados": 17,
+    "segundos": 9.32,
+    "baseline_falhas_assercao_subcasos": 26,
+    "baseline_erros_execucao": 0
+  },
+  "pacote": {
+    "arquivos": 67,
+    "bytes": 1151110,
+    "sha256": "3d35f83e6ea31f30b4fec9d6487a0fc9e9aa392549c66e72fcc79f6b705d2c75",
+    "iguais_aos_fontes": true,
+    "sem_credenciais_bancos_cadastro_real": true
+  },
+  "regressoes_zip": {
+    "executados": 17,
+    "aprovados": 17,
+    "falhas": 0,
+    "segundos": 9.394
+  },
+  "runtime_sha256": {
+    "Closure/src/closure_bot/ficha_efeitos.py": "d90b4826b6d2e8e080741de4def05cac453ace35e8238ec37e419cd71cf3f592",
+    "Closure/src/closure_bot/ficha_forma_custom.py": "3cc980265cb5b9d36ddcc511b32138b9b3e966776f70040a00b7e1cbd18f8079",
+    "Closure/src/closure_bot/ficha_magia.py": "f09fc66da7fe1c983a8194e5c3eb3a5fd7f2469c132c86c33aea35f9d9424393"
+  },
+  "nao_executado": [
+    "Google nativo desses cenários",
+    "Discord real de link/XLSX",
+    "campanha e aprovações reais",
+    "navegação real",
+    "merge",
+    "implantação"
+  ],
+  "alteracoes_produtor": false,
+  "chamadas_pagas": 0
+}
