@@ -1,5 +1,43 @@
 # src: código do bot
 
+**Revisão vigente de 18/10:** Máxima confere montagem, combinações e
+herança/aprovação; montagem inválida não certifica dano. Toca a Alma simples
+confere metade sem conceder permissão; a fórmula fixa do produtor fica pendente.
+Quebra Coisa entra no teto, sem multiplicar dano secundário. **814 testes,
+813 aprovados e um online opcional pulado**; 17 regressões passaram no ZIP.
+[Retomada](../docs/RETOMADA-B47.md). Sem merge, implantação ou alteração da oficial.
+
+**Continuação B47 em 18/10:** o link CSV declara `headers=1`; a leitura real da
+oficial e o XLSX exportado retornaram 8.190 chaves e Campos/Resultado iguais,
+sem escrita. Trilha custom usa a base aprovada em Famílias/extras; troca fixa
+não depende da conta-base incompleta; especialização inválida não certifica
+bônus/treinos. Testes finais, pacote e limitações em
+[`RETOMADA-B47.md`](../docs/RETOMADA-B47.md). Antes de concluir publicação,
+seguir [`ROTEIRO-EXTERNO-B47.md`](../dados/ficha/ROTEIRO-EXTERNO-B47.md).
+Cards, memória, mídia e rotas de modelos preservados.
+Checkpoint anterior: 797 testes, 796 aprovados e um online opcional pulado; teste
+online separado aprovado. Pacote final e roteiro ainda não foram implantados.
+
+**Integração B47 (18/10/2026):** ANALISE 11 por chave, leitor tipado, regras por servidor, efeitos e custom aprovados por definição exata. Cadastro local em `src/var/ficha-campanhas.json`; ferramenta do operador e comandos de teste em [`../dados/ficha/INTEGRACAO-B47.md`](../dados/ficha/INTEGRACAO-B47.md). Preserve esse arquivo na publicação junto do estado operacional. A B47 não emite as 485 adições exclusivas do TR-v4; os limites ficam visíveis no painel. Estados e formatos antigos abaixo são históricos. Não houve implantação nem validação Discord/Google nesta integração.
+
+Continuação: `ficha_derivados_b47.py` confere Iniciativa, progressão numérica,
+Sequelas/janela de Morrendo e escolhas de TR. CD/ataques/deslocamento distinguem
+trocas conferíveis, contradições e entradas ausentes. Herança de Origem/Forma/
+Ferramenta reutiliza contas da base; aprovação não executa prosa. Regressões:
+`../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao`
+(de `Closure/src/`); suíte completa: `../.venv/bin/python -m unittest discover -s testes`.
+
+Menores publicadas agora conferem também a marcante exigida pelo catálogo,
+incluindo clã/modalidade, Sem Técnica e Origem custom herdada. Marcante vazia
+é pendência. Efeitos inválidos em CD/ataques preservam as outras contas e o
+painel; CSV malformado/excessivo recebe erro de leitura, sem alterar os limites.
+
+A revisão seguinte acrescenta dependências aprovadas de Restrições embutidas,
+limites por identidade/modalidade, bloqueio de contas de entidade com distribuição
+inválida e CD de Controle por saldo recalculado. O motor puro interno recebe
+contexto explícito de TR de Melhorias. Checkpoint anterior: 784 testes, 783
+aprovados e um opcional pulado; estado detalhado em [`RETOMADA-B47.md`](../docs/RETOMADA-B47.md).
+
 **Voz das reações v22 (15/10):** Mizuki esclareceu que o limite de conteúdo não deve neutralizar a personalidade. A orientação usa a voz/reações do card, inclusive humor, ironia, reserva ou crítica quando couberem, e retira a expressão parte neutra do pedido. Cards, comandos, ativação e limites preservados. Sem chamadas pagas; naturalidade depende do piloto. Relatório em `pesquisa/validacao/2026-10-15-voz-reacoes-v22/relatorio.txt`.
 
 **Estado local do modo adulto v21 (15/10):** os comandos agora destacam se o modo está ativo no canal atual e explicam opção desligada, falta de marcação NSFW ou restrição a outro canal. Mesma decisão usada na conversa. A marcação 18+ continua necessária para o modo adulto; reconhecer personagem e comentar arte de forma neutra não exige entrar em interação sexual. Orientação evita desvio automático para RPG. 642 testes passaram e um online opcional foi pulado; 16 passaram no código do ZIP. Sem chamadas pagas, mudança de card ou marcação automática de canais. Relatório em `pesquisa/validacao/2026-10-15-nsfw-status-v21/relatorio.txt`.

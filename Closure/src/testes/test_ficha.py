@@ -25,8 +25,6 @@ from closure_bot.ficha_leitor import Campo, FichaIlegivel, de_csv, de_link, de_x
 DADOS = Path(__file__).parent / "dados"
 RAIZ = Path(__file__).resolve().parents[2]
 FICHA_OFICIAL = "https://docs.google.com/spreadsheets/d/1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro/edit"
-FICHA_GERADA = Path("/media/mizuki/HD Externo II/Claude/Claude 3/.claude/worktrees/ficha-invocacao-update-a350cb/"
-                    "ficha-v01/ficha-projeto-m-0.1.xlsx")
 
 
 def _ficha(nome):
@@ -104,9 +102,18 @@ class Leitor(unittest.TestCase):
             de_xlsx(memoria.getvalue())
         with self.assertRaises(FichaIlegivel):
             de_xlsx(b"isso nao e uma planilha")
-        if FICHA_GERADA.exists():  # a ficha saída do gerador tem só as fórmulas, sem os resultados
-            with self.assertRaisesRegex(FichaIlegivel, "valores calculados"):
-                de_xlsx(FICHA_GERADA)
+        # Fórmula sem cache, reproduzida em qualquer checkout. O caso antigo
+        # dependia de um arquivo particular do PC e era omitido na nuvem.
+        sem_valores = openpyxl.Workbook()
+        aba = sem_valores.active
+        aba.title = "ANALISE"
+        aba.append(["chave", "valor", "célula", "parte"])
+        aba.append(["formato.versao", "1", "", "cabeçalho"])
+        aba.append(["vida_max", "=20+3", "FICHA!D59", "resultado"])
+        memoria = io.BytesIO()
+        sem_valores.save(memoria)
+        with self.assertRaisesRegex(FichaIlegivel, "sem resultado calculado.*ANALISE!B3"):
+            de_xlsx(memoria.getvalue())
 
 
 @unittest.skipIf(openpyxl is None, "openpyxl não instalado")
@@ -447,7 +454,8 @@ class Comando(unittest.IsolatedAsyncioTestCase):
         self.assertIn("Conferência parcial", campos["⏳ Ainda não conferido"])
         self.assertIn("R51", embed.footer.text)
         limpa = _com_campos("kaori", aviso__escolhas_de_pericia="Tudo escolhido", aviso__testes_disponiveis="0 de 2")
-        self.assertEqual(painel(conferir(limpa, ref), limpa, closure).colour.value, 0x2E8B57)
+        self.assertTrue(conferir(limpa, ref).nao_conferido)  # partes ausentes e erros históricos não são aprovação integral
+        self.assertEqual(painel(conferir(limpa, ref), limpa, closure).colour.value, 0xD4A017)
         cheia = painel(conferir(_ficha("revestimento"), ref), _ficha("revestimento"), closure)
         campos_cheia = {c.name: c.value for c in cheia.fields}
         self.assertIn("Buff/Debuff de defesa", campos_cheia["👀 Pro mestre conferir"])
@@ -461,11 +469,12 @@ class Comando(unittest.IsolatedAsyncioTestCase):
 
 @unittest.skipUnless(os.environ.get("FICHA_ONLINE") == "1", "precisa de internet: rode com FICHA_ONLINE=1")
 class PeloLink(unittest.TestCase):
-    def test_ficha_oficial_pelo_link_tem_as_2650_chaves(self):
+    def test_ficha_oficial_pelo_link_corresponde_ao_manifesto_b47(self):
+        from closure_bot.ficha_esquema import campos_b47, variante
         ficha = asyncio.run(de_link(FICHA_OFICIAL))
-        self.assertEqual(len(ficha), 2650)
-        self.assertEqual(ficha["formato.versao"].valor, 1)
-        self.assertEqual(conferir(ficha, Referencias.do_livro(RAIZ / "dados")).veredito, "reprovada")
+        self.assertEqual(set(ficha),set(campos_b47()))
+        self.assertEqual(variante(ficha),'b47-v11')
+        self.assertNotEqual(conferir(ficha, Referencias.do_livro(RAIZ / "dados")).veredito,'formato desconhecido')
 
 
 if __name__ == "__main__":

@@ -1,3 +1,64 @@
+# Contrato vigente · B47 formato 11 · 18/10/2026
+
+Máxima agora compara a montagem exportada com o orçamento independente e
+preserva identidades, requisitos e aprovação exata no uso. Montagem inválida
+bloqueia certificação dos dados. Metade simples de Alma é conferível, sem
+permissão automática; interações complexas permanecem não conferidas.
+Quebra Coisa conta no teto sem multiplicar adicionais. Nenhuma nova chave,
+parte ou tipo exigido. Casos do produtor em LACUNAS-PRODUTOR-B47.md.
+
+Requisição CSV informa `headers=1`: a ANALISE tem uma linha de cabeçalho e
+colunas de texto. Inferência automática pode absorver registros como rótulos;
+o limite do parser continua preservado. CSV/XLSX atuais foram relidos com
+8.190 chaves e zero diferenças, sem escrever na oficial. Trilha custom usa a
+BASE DO LIVRO válida/aprovada nas contas de Famílias e extras; Nenhuma não
+herda. Troca fixa preserva o valor mesmo com conta-base incompleta, sem apagar
+pendências; especialização inválida não certifica bônus/treinos dependentes.
+O parâmetro e o risco de inferência em colunas textuais estão descritos na
+[documentação do Google](https://developers.google.com/chart/interactive/docs/spreadsheets).
+
+Contas derivadas, efeitos e herança foram ampliados na continuação da integração.
+Não há novos campos exigidos além do contrato entregue. Seletores pessoais,
+inventário e resultados de TR ausentes estão discriminados em
+[LACUNAS-PRODUTOR-B47.md](LACUNAS-PRODUTOR-B47.md); resultados agregados não
+substituem essas entradas. Formas apenas renomeadas conservam as regras da base;
+alterações estruturadas usam o motor custom e mantêm explícitas suas limitações.
+
+Restrição custom embutida é dependência da Forma: precisa de definição válida e
+aprovação própria, e sua assinatura entra na aprovação da Forma. A Família
+custom usada pela Forma também exige aprovação própria. Frequência,
+repetição e limite de Condições Pesadas não dependem de avisos exportados.
+Distribuição incompleta/incompatível da entidade bloqueia suas contas
+dependentes. CD de Controle usa saldo independente quando disponível;
+descartar dano não compra bônus. As reproduções do produtor permanecem no
+documento de lacunas, sem alteração da ficha oficial.
+
+Menores publicadas usam também o requisito estruturado `exige` do catálogo:
+Receptáculo respeita Coexistência/Conflito e Descendente respeita o clã escolhido.
+Isso vale nas duas vagas, na rota Sem Técnica e em Origem custom com base.
+Marcante vazia é informação insuficiente; uma marcante incompatível é divergência.
+Descrições editadas pelo jogador não substituem esses requisitos. Efeitos inválidos
+ou duplicados bloqueiam a conta dependente de CD/ataque sem interromper a análise.
+CSV truncado ou com campo além do limite recebe erro de leitura; aspas e quebras
+de linha válidas continuam preservadas literalmente.
+
+O bot integra a ANALISE 11 entregue em `ccbd053c8f7e68f8b4ac223f721b309111d2dcc0`.
+Contrato, mapa de campos, colisão do formato 4, cobertura, limites e cadastro de
+aprovações estão em [INTEGRACAO-B47.md](INTEGRACAO-B47.md). O manifesto completo
+por chave/parte/origem fica em `src/closure_bot/recursos/b47-campos.tsv`.
+
+- Leitura por chave, sem depender de ordem, contagem exata ou endereço antigo.
+- Nomes/textos literais são preservados; números e caixas usam tipos semânticos.
+- Duplicatas, erro de fórmula B47 e fórmulas XLSX sem cache são diagnosticados.
+- Regras e aprovações vêm do cadastro confiável do servidor no bot.
+- Ausência, vazio, zero e falso são distintos. Exportação incompleta não certifica contas.
+- Formatos 1/2 e variante TR-v4 comprovada permanecem compatíveis; 4 de campanha
+  não é equivalente ao TR-v4. A B47 não contém as 485 adições exclusivas dele.
+- Aprovação integral nunca é mostrada com partes relevantes não conferidas.
+
+As seções seguintes são **histórico do contrato**, preservado para explicar
+fixtures e compatibilidade. Suas contagens/estados não substituem a versão vigente.
+
 # Contrato da aba oculta `ANALISE`
 
 > **Versão documental 5, 15/10/2026.** O formato 4 amplia para **5.381 chaves**:

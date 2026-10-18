@@ -1,0 +1,46 @@
+{
+  "data": "2026-10-18",
+  "base_retomada": "7015c801349ec76b14cb198f12882ab89f6c238f",
+  "suite": {
+    "comando": "../.venv/bin/python -m unittest discover -s testes",
+    "diretorio": "Closure/src",
+    "executados": 797,
+    "aprovados": 796,
+    "pulados": 1,
+    "falhas": 0,
+    "segundos": 182.286
+  },
+  "online_separado": {
+    "teste": "testes.test_ficha.PeloLink",
+    "executados": 1,
+    "aprovados": 1,
+    "segundos": 2.668
+  },
+  "runtime_sha256": {
+    "Closure/src/closure_bot/ficha_b47.py": "384281674698beb3e1c2193a16f50d1fd3809489817bf655b220c6bc9f778767",
+    "Closure/src/closure_bot/ficha_configuracao.py": "7f1f4b8e90c69747df4651c96bbb77a79a1169c2c824a8fe25d12189e9388804",
+    "Closure/src/closure_bot/ficha_custom.py": "9481deb27467cec2f940f0f476334a54c05293a6b10548a6f66bc90eb3689da0",
+    "Closure/src/closure_bot/ficha_entidade_repertorio.py": "6380db0e6983c515530dbd4da5cbb46235b19b8d17ceef992cadcaad39b7676f",
+    "Closure/src/closure_bot/ficha_leitor.py": "3d2be9ee3489546e48eb5fd3225b6aabc154b7fcaa16c9701ac925ea9d6d964e"
+  },
+  "protegidos_sem_alteracao": [
+    "cards",
+    "livro",
+    "ponte",
+    "modelos",
+    "memoria",
+    "midia",
+    "manifestos_historicos",
+    "produtor",
+    "sistema"
+  ],
+  "pacote": {
+    "arquivos": 67,
+    "bytes": 1150030,
+    "sha256": "3ff568f2773bc631d2564919628ec7d67deb27c5cba62f6a14d4bbc193312a1d",
+    "igual_aos_fontes": true,
+    "segredos_banco_cadastro_real_incluidos": false
+  },
+  "discord_merge_implantacao_executados": false,
+  "chamadas_pagas_modelos": 0
+}

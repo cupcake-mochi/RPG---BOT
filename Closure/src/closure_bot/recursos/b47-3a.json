@@ -1,0 +1,336 @@
+{
+  "listas": {
+    "tipos": [
+      "Origem",
+      "Marcante",
+      "Menor",
+      "Arma",
+      "Escudo",
+      "Uniforme",
+      "Item comum",
+      "Ferramenta amaldiçoada"
+    ],
+    "pericias": [
+      "Atletismo",
+      "Acrobacia",
+      "Furtividade",
+      "Pontaria",
+      "Prestidigitação",
+      "Investigação",
+      "Intuição",
+      "Ocultismo",
+      "Religião",
+      "História",
+      "Hierarquia",
+      "Medicina",
+      "Sobrevivência",
+      "Natureza",
+      "Lidar com Animais",
+      "Tecnologia",
+      "Sentir Energia",
+      "Percepção",
+      "Persuasão",
+      "Enganação",
+      "Intimidação",
+      "Atuação",
+      "Provocar"
+    ],
+    "rotas": [
+      "Fundamento",
+      "Manejos",
+      "Técnica Marcial com energia",
+      "Técnica Marcial sem energia"
+    ],
+    "origens": [
+      "Latente",
+      "Receptáculo",
+      "Descendente",
+      "Encarnado",
+      "Híbrido",
+      "Corpo Amaldiçoado",
+      "Restrição Celestial · Sem Energia",
+      "Restrição Celestial · Restrição corporal"
+    ],
+    "bases": [
+      "Nenhuma",
+      "Latente",
+      "Receptáculo",
+      "Descendente",
+      "Encarnado",
+      "Híbrido",
+      "Corpo Amaldiçoado",
+      "Restrição Celestial · Sem Energia",
+      "Restrição Celestial · Restrição corporal"
+    ],
+    "oficios": [
+      "—",
+      "Condução",
+      "Arrombamento",
+      "Herbalismo",
+      "Forja",
+      "Caligrafia",
+      "Burocracia",
+      "Entalhador",
+      "Alfaiate",
+      "Culinária",
+      "Instrumento",
+      "Jogatina"
+    ],
+    "categorias": [
+      "Arma de Fogo",
+      "Armas Longas",
+      "Arremesso",
+      "Balestra",
+      "Ceifa",
+      "Flexível",
+      "Lâmina Curta",
+      "Lâmina Longa",
+      "Machado",
+      "Manopla",
+      "Massa",
+      "Porrete",
+      "Yumi"
+    ],
+    "maos": [
+      1,
+      2
+    ],
+    "danos": [
+      "Cortante",
+      "Perfurante",
+      "Concussão",
+      "Fogo",
+      "Frio",
+      "Elétrico",
+      "Ácido",
+      "Trovejante",
+      "Veneno",
+      "Radiante",
+      "Necrótico",
+      "Psíquico",
+      "Energia Reversa",
+      "Força",
+      "Alma"
+    ],
+    "propriedades": [
+      "—",
+      "Leve",
+      "Fineza",
+      "Versátil",
+      "Par",
+      "Alcance",
+      "Longo Alcance",
+      "Duas mãos",
+      "Vestida",
+      "Emaranha",
+      "Rompe",
+      "Talha",
+      "Oculta",
+      "Discreta",
+      "Munição",
+      "Volumosa",
+      "Embainhada"
+    ],
+    "graus": [
+      "—",
+      "Grau 4",
+      "Grau 3",
+      "Grau 2",
+      "Grau 1",
+      "Especial"
+    ],
+    "equipamentos": [
+      "Bastão",
+      "Besta",
+      "Besta de Uma Mão",
+      "Bō",
+      "Canivete",
+      "Cassetete",
+      "Chakram",
+      "Chicote",
+      "Corrente",
+      "Daikyū",
+      "Espada Longa",
+      "Espadão",
+      "Espingarda",
+      "Faca",
+      "Foice",
+      "Hankyū",
+      "Kama",
+      "Kanabō",
+      "Katana",
+      "Kunai",
+      "Kusarigama",
+      "Lança",
+      "Machadinha",
+      "Machado",
+      "Machado de Guerra",
+      "Machete",
+      "Manriki",
+      "Marreta",
+      "Maul",
+      "Maça",
+      "Metralhadora Pesada",
+      "Naginata",
+      "Nodachi",
+      "Nunchaku",
+      "Odachi",
+      "Pistola",
+      "Punhal",
+      "Rapieira",
+      "Revólver",
+      "Rifle",
+      "Rifle de Precisão",
+      "Sai",
+      "Shuriken",
+      "Soqueira",
+      "Submetralhadora",
+      "Taco",
+      "Tanto",
+      "Tekko",
+      "Tessen",
+      "Tonfa",
+      "Wakizashi",
+      "Yari",
+      "Broquel",
+      "Médio",
+      "Torre",
+      "Traje 1",
+      "Traje 2",
+      "Traje 3",
+      "Revestimento 1",
+      "Revestimento 2",
+      "Revestimento 3",
+      "Corda",
+      "Lanterna elétrica",
+      "Pilhas de reserva",
+      "Algema",
+      "Pé de cabra",
+      "Gazuas",
+      "Kit de escalada",
+      "Mochila",
+      "Cantil",
+      "Ração de viagem",
+      "Telefone",
+      "Bateria portátil",
+      "Ferramentas de ofício"
+    ],
+    "marcantes": [
+      "—",
+      "Tentativa e Erro",
+      "Coexistência",
+      "Conflito",
+      "Zenin",
+      "Kamo",
+      "Gojo",
+      "Inumaki",
+      "Duas Vidas",
+      "Regeneração Orgânica",
+      "Existência Artificial",
+      "Ataque sem Prenúncio",
+      "Corpo Debilitado",
+      "Corpo Quebradiço",
+      "Corpo Exaurido"
+    ],
+    "vazio": []
+  },
+  "campos": {
+    "Origem": [
+      [
+        "PERÍCIA 1",
+        "PERÍCIA 2",
+        "PERÍCIA 3",
+        "PERÍCIA 4",
+        "ROTA",
+        "BASE DO LIVRO",
+        "OFÍCIO"
+      ],
+      [
+        "TALENTO CE 4"
+      ]
+    ],
+    "Marcante": [
+      [
+        "ORIGEM"
+      ],
+      [
+        "FREQUÊNCIA"
+      ]
+    ],
+    "Menor": [
+      [
+        "ORIGEM",
+        "EXIGE MARCANTE"
+      ],
+      [
+        "FREQUÊNCIA"
+      ]
+    ],
+    "Arma": [
+      [
+        "CATEGORIA",
+        "MÃO",
+        "TIPO DE DANO",
+        "PROPRIEDADE 1",
+        "PROPRIEDADE 2",
+        "PROPRIEDADE 3",
+        "PROPRIEDADE 4"
+      ],
+      [
+        "DADO",
+        "FORÇA",
+        "VOLUME",
+        "ALCANCE",
+        "RECARGA",
+        "PREÇO"
+      ]
+    ],
+    "Escudo": [
+      [],
+      [
+        "PROTEÇÃO",
+        "TETO DE DESTREZA",
+        "FORÇA",
+        "VOLUME",
+        "PREÇO"
+      ]
+    ],
+    "Uniforme": [
+      [
+        "GRAU MÍNIMO"
+      ],
+      [
+        "PROTEÇÃO",
+        "TETO DE DESTREZA",
+        "FORÇA",
+        "VOLUME",
+        "PREÇO"
+      ]
+    ],
+    "Item comum": [
+      [],
+      [
+        "VOLUME",
+        "PREÇO"
+      ]
+    ],
+    "Ferramenta amaldiçoada": [
+      [
+        "BASE",
+        "GRAU"
+      ],
+      [
+        "ESTIGMA",
+        "DESGASTE",
+        "VOLUME",
+        "PREÇO"
+      ]
+    ]
+  },
+  "rotas": [
+    "Fundamento",
+    "Manejos",
+    "Técnica Marcial com energia",
+    "Técnica Marcial sem energia"
+  ]
+}

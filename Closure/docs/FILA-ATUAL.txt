@@ -1,4 +1,11 @@
-Fila atual — Guias do Ciclo, 15/10/2026
+Fila atual — Guias do Ciclo, 18/10/2026
+Suíte vigente: 814 testes, 813 aprovados e um opcional pulado; 17 regressões também aprovadas no ZIP. Pacote comparado aos fontes, sem dados operacionais.
+Revisão vigente: a981416 publicado na PR 64, ainda rascunho. Máxima, aprovação/identidade e teto de Quebra Coisa conferidos. Relatório: pesquisa/validacao/2026-10-18-b47-maxima/relatorio.txt.
+Checkpoint anterior: 881e6da/2da707f. Corrigidos base da Trilha, troca fixa, especialização e cabeçalho CSV. Leitura pública CSV/XLSX atual: 8.190 chaves, zero diferenças. Nenhuma escrita na oficial, chamada paga, merge ou implantação. Relatório atual: pesquisa/validacao/2026-10-18-b47-cobertura/relatorio.txt.
+Integração B47 do bot implementada em codex/integracao-b47; contrato e limites em dados/ficha/INTEGRACAO-B47.md. Nenhuma edição da oficial, chamada paga ou implantação.
+Continuação: contas derivadas, efeitos de Famílias, herança de Origem/Formas/Ferramentas e contagem de PE ampliados; lacunas e reprodução de critério com curingas em dados/ficha/LACUNAS-PRODUTOR-B47.md. Testes finais e retomada em docs/RETOMADA-B47.md.
+Revisão seguinte: Restrição custom embutida vincula aprovações; frequência e Condições por identidade; distribuição inválida bloqueia contas da entidade; CD de Controle por saldo independente. Suíte completa anterior: 772 testes, 771 aprovados e um online opcional pulado. Pacote atualizado, sem implantação.
+Continuação atual: menores publicadas exigem marcante/clã/modalidade estruturados, inclusive com base custom; vazio é pendência. Efeito inválido/duplicado em CD/ataques não interrompe análise; CSV malformado/excessivo recebe erro de leitura. Suíte final: 784 testes, 783 aprovados e um opcional pulado; pacote conferido, sem implantação.
 Este arquivo resume o estado vigente. Os registros de continuidade mais antigos são histórico e não reabrem itens já confirmados.
 
 CONCLUÍDO
@@ -24,10 +31,13 @@ CONCLUÍDO
 - Mizuki confirmou por relato/capturas o funcionamento dos GIFs e o reconhecimento de si na v20. A ativação administrativa NSFW respondeu corretamente, mas o comportamento adulto ainda está em diagnóstico.
 
 - Mizuki mostrou nova captura de Kaltsit reconhecendo a ilustração/opinando e Closure comentando a arte. Confirma esses exemplos na versão em uso; versão exata não confirmada. V22 esclarece voz/personalidade na orientação, com 16 testes existentes e quatro pedidos montados sem modelo; sem mudança de cards.
+- Mizuki confirmou posteriormente a v22 funcionando no Discord. Reteste principal encerrado por ele; não reabrir mídia/modo adulto nesta integração.
 
 PRÓXIMOS
-1. Retestar a v22 (inclui v21 e esclarece que a resposta mantém a personalidade): os três links reais foram conferidos; o canal atual está sem marcação NSFW. Novo status mostra estado/motivo no canal de execução. Mizuki decide a marcação de idade no Discord e testa reconhecimento/comentário no jeito de cada guia e reação adulta não gráfica nos contextos corretos. Roteiros em pesquisa/validacao/2026-10-15-voz-reacoes-v22/teste-no-discord.txt e na validação da v21. Sem novas chamadas pagas pelo agente.
-2. Receber o resultado de CONFIGURAÇÃO do outro chat e só então integrar ao leitor/corretor. Preservar as 5.381 chaves ANALISE 4 e compatibilidade; PR 3 do gerador exige aprovação própria, não juntar por conta desta fila.
+1. Revisar a integração na PR 64. Merge/implantação exigem autorização específica, ainda não executados. B47 entregue na ficha: não retomar C/D, migrações ou construção.
+2. Após publicação autorizada pelo operador, executar dados/ficha/ROTEIRO-EXTERNO-B47.md: Discord por link/XLSX, campanha/aprovações reais, navegação e encerramento dos controles. Leitura HTTP da oficial já comparada, sem confundir com esses cenários.
+3. Examinar separadamente dados/ficha/PROPOSTA-CONTRATO-B47.md: entradas ausentes e quatro defeitos estáticos do produtor. Nenhuma alteração da ficha oficial autorizada por essa proposta. Manter compatibilidade 1/2/TR-v4 e limites das 485 chaves não exportadas pela B47.
+4. Mestre: aprendizado, história dos marcos, autorizações efetivas, requisitos livres, narrativa, distribuição entre alvos e Alma não automatizada continuam humanos. Suíte aprovada não conclui a conferência integral da ficha.
 
 PARA DEPOIS, QUANDO PEDIDO
 - Consulta automática do livro para perguntas apenas faladas/em imagem; hoje é necessário texto para recuperar a fonte.

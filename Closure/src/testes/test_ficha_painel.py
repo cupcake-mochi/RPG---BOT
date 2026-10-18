@@ -58,10 +58,11 @@ class Apresentacao(unittest.TestCase):
                 self.assertEqual(resultado.veredito, "aprovada")
                 self.assertLessEqual(len(ps[0]), 2500)
                 self.assertGreater(len(ps), 1)
-                self.assertIn("Aprovada nas verificações feitas", texto(ps[:1]))
+                self.assertTrue(resultado.nao_conferido)  # fixtures têm limites mecânicos reais
+                self.assertIn("Conferência parcial", texto(ps[:1]))
                 for i, p in enumerate(ps):
                     self.assertTrue(p.footer.text.startswith(f"Página {i+1} de {len(ps)} · "))
-                    self.assertEqual((p.author.name, p.colour.value), ("Closure", 0x2E8B57))
+                    self.assertEqual((p.author.name, p.colour.value), ("Closure", 0xD4A017))
                     self.assertLessEqual(len(p), 6000)
                     self.assertLessEqual(len(p.fields), 25)
                     self.assertTrue(all(0 < len(c.value) <= 1024 and len(c.name) <= 256 for c in p.fields))
@@ -234,7 +235,7 @@ class Navegacao(unittest.IsolatedAsyncioTestCase):
                               personas={"closure": PERSONA, "kaltsit": PERSONA}, manifesto={"edicao_livro": "R51"})
         cog = Ficha(bot)
         mensagem = SimpleNamespace(edit=AsyncMock())
-        interacao = SimpleNamespace(response=SimpleNamespace(defer=AsyncMock()),
+        interacao = SimpleNamespace(guild_id=123, response=SimpleNamespace(defer=AsyncMock()),
                                     followup=SimpleNamespace(send=AsyncMock(return_value=mensagem)))
         with patch("closure_bot.cogs.ficha.de_link", AsyncMock(return_value=ficha)) as ler:
             await cog.analisar.callback(cog, interacao, link="https://exemplo.invalid/ficha")

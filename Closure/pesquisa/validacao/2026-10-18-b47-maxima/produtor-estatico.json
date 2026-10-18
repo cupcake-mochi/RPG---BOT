@@ -1,0 +1,44 @@
+{
+  "data": "2026-10-18",
+  "produtor_sha": "ccbd053c8f7e68f8b4ac223f721b309111d2dcc0",
+  "execucao": "somente inspeção estática; sem Google/Calc",
+  "fonte": "ficha-v01/ficha_amaldicoada.py",
+  "sha256_fonte": "11365928712d878b1c52c7589aecbffcd861ec4ed8c5f808ce1e4984ab8f7bb4",
+  "fragmentos": {
+    "PECAS_CITADAS": "PECAS_CITADAS = (\"Longe\", \"Muito Longe\", \"Maior\", \"Muito Maior\", \"Mais Um\", \"Rajada\", \"Salto\", \"Queima\", \"Estilhaço\", \"Remate\",",
+    "MULTIPLICA": "MULTIPLICA = (\"Remate\", 1.25)",
+    "SOMAM_METADE": "SOMAM_METADE = (\"Salto\", \"Queima\", \"Estilhaço\")",
+    "formula_dano_maxima": "assert f.caixa(\"L\", \"N\", t, \"DANO\", f'=IF({dados_tm}=0,\"Nível {n_tm}\",{dados_tm}&\"d8 = \"&FLOOR({dados_tm}*4.5,1))', \"num\","
+  },
+  "quebra_coisa": {
+    "caso": "Classe 3, Projétil, Quebra Coisa, sem Restrição/desconto",
+    "saldo": 7,
+    "teto": 12,
+    "esperado_base": 6,
+    "total_objeto": 12,
+    "formula_anterior_sem_multiplicador": 7
+  },
+  "alma_maxima": {
+    "caso": "Nível 17, Projétil, Toca a Alma, preço normal",
+    "montagem": "3 de 8",
+    "tabela": 24,
+    "esperado_alma": 12,
+    "apresentacao_fixa": 24
+  },
+  "limites": [
+    "Não prova recálculo nativo",
+    "Não altera a ficha oficial",
+    "Alma com adicionais/distribuição continua manual"
+  ],
+  "celulas_maxima": [
+    {
+      "arquivo": "Ficha.gs",
+      "sha256": "c017f4813c141fb9734eeaad8347c68bf46ea45c330b7597adad970629ccb7da",
+      "aba": "DADOS_AM",
+      "linha": 38,
+      "coluna": 308,
+      "destino": "L356",
+      "formula": "=IF(DADOS_AM!$HM$36=0,\"Nível 17\",DADOS_AM!$HM$36&\"d8 = \"&FLOOR(DADOS_AM!$HM$36*4.5,1))"
+    }
+  ]
+}

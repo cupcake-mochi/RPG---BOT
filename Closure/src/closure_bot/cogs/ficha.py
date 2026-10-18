@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import logging
 import re
+from pathlib import Path
 from collections import OrderedDict
 from datetime import datetime
 from functools import partial
@@ -42,6 +43,8 @@ FALA = {
               "reprovada": "Passei o pente fino na ficha e achei umas coisas pra arrumar.",
               "formato desconhecido": "Esse formato de ficha eu não conheço. Pega a versão nova da ficha?"},
 }
+FALA[KALTSIT]["pendente"] = "A conferência é parcial. Há pendências que precisam ser resolvidas antes de aprovar a ficha."
+FALA[CLOSURE]["pendente"] = "O pente fino ficou parcial. Separei as pendências e o que ainda precisa de conferência."
 COR = {"aprovada": 0x2E8B57, "pendente": 0xD4A017, "reprovada": 0xCC0102, "formato desconhecido": 0xD4A017}
 # Nome legível de cada aviso da ficha; o que não estiver aqui aparece pela chave.
 ROTULOS = {"aviso.escolhas_de_pericia": "Perícias e ofícios", "aviso.pontos_disponiveis": "Pontos de atributo",
@@ -118,8 +121,8 @@ def _linha(p: Problema) -> str:
         return f"**{_rotulo(p.campo)}**: {valor}"
     if p.regra in ("conta", "formato"):
         return f"**{_rotulo(p.campo)}**: está {p.encontrado}, o certo é {p.esperado}"
-    if p.regra in ("equipamento", "carga", "talento", "testes"):
-        return f"**{_rotulo(p.campo)}**: {p.esperado} (informado: {p.encontrado})"
+    if p.regra in ("equipamento", "carga", "talento", "testes", "custom", "configuração", "campanha", "aprovação", "informação", "famílias", "progressão", "treinos", "aptidão"):
+        return f"**{_rotulo(p.campo)}** (`{p.campo}`): {p.esperado} (informado: {p.encontrado})" + (f" · regra `{p.ancora}`" if p.ancora else "")
     if p.regra == "escolha":
         return f"**{_rotulo(p.campo)}**: falta {p.esperado.removeprefix('escolher ')}"
     if p.regra == "nome":
@@ -148,9 +151,10 @@ def _base(resultado: Resultado, ficha: dict[str, Campo], persona) -> discord.Emb
             titulo = f"Ficha de {caminho}"
             if isinstance(nivel, int) and not isinstance(nivel, bool) and nivel > 0:
                 titulo += f", nível {nivel}"
-    cor = COR["pendente"] if resultado.veredito == "aprovada" and resultado.pendencias else COR.get(resultado.veredito, 0xCC0102)
+    cor = COR["pendente"] if resultado.veredito == "aprovada" and (resultado.pendencias or resultado.nao_conferido or resultado.notas) else COR.get(resultado.veredito, 0xCC0102)
+    visual = "pendente" if resultado.veredito=="aprovada" and (resultado.pendencias or resultado.nao_conferido or resultado.notas) else resultado.veredito
     embed = discord.Embed(title=titulo[:256], color=cor,
-                          description=FALA.get(persona.chave, FALA[KALTSIT]).get(resultado.veredito, ""))
+                          description=FALA.get(persona.chave, FALA[KALTSIT]).get(visual, ""))
     embed.set_author(name=persona.nome, icon_url=persona.avatar_url or None)
     return embed
 
@@ -226,7 +230,7 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
             atual.add_field(name=nome[:256], value=valor, inline=False)
 
     resumo = _base(resultado, ficha, persona)
-    estado = "Aprovada com pendências" if resultado.veredito == "aprovada" and resultado.pendencias else resultado.veredito.capitalize()
+    estado = "Conferência parcial; pendências abertas" if resultado.veredito in ("aprovada", "pendente") and (resultado.pendencias or resultado.nao_conferido or resultado.notas) else resultado.veredito.capitalize()
     titulo_estado = f"{estado} nas verificações feitas" if resultado.veredito != "formato desconhecido" else "Formato desconhecido — análise não realizada"
     resumo.add_field(name="Resultado", value=f"**{titulo_estado}**\n"
                      f"{len(resultado.problemas)} erro(s) · {len(resultado.pendencias)} pendência(s) · {len(resultado.notas)} ajuste(s) para o mestre", inline=False)
@@ -326,9 +330,10 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
         linhas = [detalhe] if len(nome) <= 220 else [" · ".join(assuntos[i:i+8]) for i in range(0, len(assuntos), 8)] + [detalhe]
         campos_limites += _campos(nome if len(nome) <= 220 else "Vários itens", linhas)
     adicionar("Limites da análise", campos_limites)
+    visual = "pendente" if resultado.veredito=="aprovada" and (resultado.pendencias or resultado.nao_conferido or resultado.notas) else resultado.veredito
     livro = (manifesto or {}).get("edicao_livro")
     for i, (categoria, embed) in enumerate(saida):
-        embed.set_footer(text=f"Página {i + 1} de {len(saida)} · {categoria} · Veredito: {resultado.veredito} · livro"
+        embed.set_footer(text=f"Página {i + 1} de {len(saida)} · {categoria} · Veredito: {visual} · livro"
                          + (f" {livro}" if livro else "") + (" · controles por 10 min" if len(saida) > 1 else "")
                          + " · o mestre pode recusar mesmo com tudo certo")
     return [embed for _, embed in saida]
@@ -345,8 +350,9 @@ class Ficha(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
         self.referencias = Referencias.do_livro(bot.config.dados)
+        self.campanhas = bot.config.dados.parent / "src" / "var" / "ficha-campanhas.json"
 
-    async def analisar_fonte(self, *, link: str | None = None, arquivo: discord.Attachment | None = None) -> list[discord.Embed] | str:
+    async def analisar_fonte(self, *, link: str | None = None, arquivo: discord.Attachment | None = None, servidor: int | None = None) -> list[discord.Embed] | str:
         """Lê e confere a ficha. Devolve as páginas, ou o erro de leitura. Serve à barra e ao GC:ficha."""
         try:
             if arquivo is not None:
@@ -359,7 +365,13 @@ class Ficha(commands.Cog):
                 raise FichaIlegivel("mande o link da ficha aberta pra leitura ou o .xlsx anexo")
         except FichaIlegivel as erro:
             return f"Não deu pra ler a ficha: {erro}."
-        resultado = conferir(ficha, self.referencias, LIVRO)  # configuração de campanha fica para B47 fase 2
+        from ..ficha_configuracao import carregar_campanha
+        try:
+            regras, aprovados = carregar_campanha(self.campanhas, servidor)
+            resultado = conferir(ficha, self.referencias, regras, aprovados)
+        except (ValueError, OSError) as erro:
+            log.error("cadastro de campanha indisponível: %s", type(erro).__name__)
+            return "Não deu para carregar a configuração autorizada desta campanha. O operador precisa conferir o cadastro do bot."
         log.info("ficha analisada: %s, %d problema(s)", resultado.veredito, len(resultado.problemas))
         persona = self.bot.personas[de_plantao(datetime.now(FUSO))]
         return paginas(resultado, ficha, persona, getattr(self.bot, "manifesto", None))
@@ -372,7 +384,7 @@ class Ficha(commands.Cog):
             await interacao.response.send_message("Mande o link da ficha ou o .xlsx, um dos dois.", ephemeral=True)
             return
         await interacao.response.defer(thinking=True)  # o painel fica no canal, pra o mestre ver
-        resposta = await self.analisar_fonte(link=link, arquivo=arquivo)
+        resposta = await self.analisar_fonte(link=link, arquivo=arquivo, servidor=interacao.guild_id)
         # depois do defer público o Discord não deixa nem o aviso de erro ser só pra quem pediu
         await enviar_relatorio(resposta, partial(interacao.followup.send, wait=True, allowed_mentions=discord.AllowedMentions.none()))
 

@@ -1,0 +1,79 @@
+Revisão B47 — Máxima e teto de dano — 18/10/2026
+
+Retomada de 89d56db, branch codex/integracao-b47 e PR 64 preservadas.
+Código publicado em a981416a7d8af1879ed5c95f8d41eb424f2176b0.
+Remoto main continua 7e4dc35209ea840549d5ccf5a0b49834da21d117.
+Referências da ficha/sistema permanecem nos SHAs do checkpoint anterior.
+Computador autorizado pelo usuário; nenhum AGENTS aplicável no checkout do bot.
+Python 3.12, Node, QuickJS, discord.py e openpyxl disponíveis. LibreOffice
+não usado. Sem credenciais de produção copiadas, gateway ou modelos reais.
+
+Mudanças do bot
+- Máxima compara maxima.montagem com gasto/pontos independentes. Valor vazio
+  fica pendente, não vira zero. Forma não recebe desconto e dados continuam
+  separados dos pontos de montagem.
+- Identidades das Melhorias, inclusive aliases aprovados, conservam repetição,
+  Famílias e incompatibilidades; Forma custom conserva identidade e aprovação.
+  Montagem inválida não certifica dano/montagem. PE é conta independente.
+- Máxima com Toca a Alma simples calcula metade da tabela. A permissão da
+  Regra continua humana. A apresentação fixa exata do produtor recebe
+  pendência específica; outro dano incorreto é erro. Cura pode exportar só a
+  quantidade genérica, como o produtor realmente faz; não exigimos um seletor
+  ou prefixo ausente. Interações/adicionais/distribuição permanecem explícitos.
+- Quebra Coisa entra no teto de 4 x Classe nas Formas comuns e custom,
+  Liberações e entidades. Adicionais não reaplicam multiplicador. Remate se
+  aplica a criaturas e Quebra Coisa a objetos; não se multiplicam entre si.
+  A Técnica Máxima conserva a tabela própria, fora desse teto comum.
+
+Validação
+17 regressões novas (11 da Máxima, seis do teto), cobrindo tabelas nas três
+faixas, orçamento/resultado vazio/adulterado, combinações, identidade,
+aprovação, cura, Alma, adicionais, alias, Liberação e entidade. Os mesmos
+casos contra o pacote Python extraído de 89d56db em pasta temporária deram
+26 falhas de asserção/subcasos e zero erros de execução.
+Fixtures conferidas com o catálogo: Linha Leve, Toque grátis, Cura Média e
+Maestria 2 no nível 10; corrigidos os valores das fixtures antes de registrar
+o resultado contra a base anterior. Expectativas mecânicas não foram
+relaxadas para aprovar o código.
+
+Suíte completa: 814 executados, 813 aprovados e um online opcional pulado,
+208,229 s. Comando de Closure/src/:
+../.venv/bin/python -m unittest discover -s testes
+Logs com falhas/custos de modelos são dublês locais; zero chamadas pagas.
+Depois do ajuste isolado da fixture de ataque da entidade para +5, as 17
+regressões passaram novamente em 9,320 s; mesmo conjunto no código extraído
+do ZIP passou em 9,394 s. Não houve alteração de runtime após a suíte completa.
+O teste online de leitura aprovado no checkpoint anterior permanece histórico;
+não foi repetido nesta revisão, que não mudou o leitor/contrato.
+
+Empacotamento
+67 arquivos, 1.151.110 bytes, igualdade byte a byte com os fontes previstos.
+SHA256 3d35f83e6ea31f30b4fec9d6487a0fc9e9aa392549c66e72fcc79f6b705d2c75.
+Sem .env, banco, testes ou cadastro real de campanha. ZIP ignorado em
+Closure/src/var/closure-lab.zip. Não implantado.
+
+Produtor separado
+Quebra Coisa está ausente do multiplicador de teto dos emissores examinados;
+Máxima imprime dados fixos sem Alma, inclusive no JSON entregue Ficha.gs.
+Reprodução e hashes em produtor-estatico.json e LACUNAS-PRODUTOR-B47.md.
+Somam-se aos dois casos anteriores, de critérios literais e CD de Controle.
+Não se executou Google/Calc nem se alterou o produtor. Exigir futura cópia
+sintética para validação nativa, com processo próprio.
+
+Cobertura restante e publicação
+Bot: implementação desta revisão e ensaio offline encerrados; revisão humana
+da PR, leitura/arquivo no Discord, campanha/aprovação e navegação reais ainda
+não executados. Roteiro externo ampliado; merge/implantação dependem da
+instrução específica do usuário. Projeto não declarado integralmente concluído.
+Produtor: seletores pessoais, ajustes/resultados de competências, TR finais
+das entidades, inventário/carga e teto/estado ativo ainda sem dados completos;
+proposta separada de campos/semântica/testes, sem editar a ficha oficial.
+Mestre: aprendizado, ordem histórica dos marcos, autorizações reais, requisitos
+livres, narrativa, distribuição e interações de Alma não automatizadas.
+Cards, modelos, memória, mídia, ponte, livro e manifestos históricos preservados.
+
+Retomada exata
+Ler Closure/docs/RETOMADA-B47.md e Closure/docs/FILA-ATUAL.txt. Conferir status
+local, remoto e SHA da PR 64; continuar nesta branch sem reset/force-push.
+Não reabrir C/D da ficha. Para publicar, seguir dados/ficha/ROTEIRO-EXTERNO-B47.md
+somente após a autorização específica de merge/implantação/Discord.

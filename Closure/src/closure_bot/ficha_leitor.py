@@ -5,9 +5,10 @@ A aba tem quatro colunas, chave · valor · célula · parte, e a linha 1 é o c
     openpyxl lê com data_only, mesmo com a aba oculta;
   - o link da planilha aberta pra leitura: a aba sai em CSV pela exportação do Google (gviz), sem conta e sem chave.
 
-A coluna de valores vem toda como texto (no CSV o Google escolhe um tipo por coluna, e misturar número com texto
-apagava os textos), então `normaliza` converte: número com vírgula decimal, caixa de marcar como 1/0 e vazio como
-"não preenchido" (""). Referência: o ler-analise.py da worktree da ficha (B47, fase 1).
+A coluna de valores vem toda como texto. `normaliza` usa o tipo semântico da chave:
+texto conserva o conteúdo literal; números e caixas são convertidos somente nos
+campos correspondentes. Vazio continua "não preenchido" (""). O manifesto B47
+fica em recursos/b47-campos.tsv; célula de origem é apenas diagnóstico.
 
 Este módulo só lê. Quem confere é o ficha_corretor.py, sem IA, e o bot nunca escreve na ficha.
 """
@@ -16,6 +17,11 @@ from __future__ import annotations
 import csv
 import io
 import re
+import math
+import asyncio
+from xml.etree import ElementTree as ET
+
+from .ficha_esquema import tipo
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -23,7 +29,10 @@ ABA = "ANALISE"
 CABECALHO = ("chave", "valor", "célula", "parte")
 # A aba é pública na ficha aberta pra leitura; o id da planilha é o que vem depois de /d/ no link.
 ID_PLANILHA = re.compile(r"^[A-Za-z0-9_-]{20,}$")
-URL_CSV = "https://docs.google.com/spreadsheets/d/{id}/gviz/tq?tqx=out:csv&sheet=" + ABA
+# O contrato tem exatamente uma linha de cabeçalho. Como todos os valores
+# são texto, a inferência do gviz pode absorver milhares de registros como
+# rótulos de coluna e produzir um cabeçalho maior que o limite do parser.
+URL_CSV = "https://docs.google.com/spreadsheets/d/{id}/gviz/tq?tqx=out:csv&headers=1&sheet=" + ABA
 LIMITE_BYTES = 5_000_000  # a ANALISE inteira tem uns 300 KB; mais que isso não é a aba
 
 
@@ -38,18 +47,22 @@ class Campo:
     parte: str
 
 
-def normaliza(valor) -> object:
-    """'1,5' -> 1.5, '3' -> 3, 'VERDADEIRO'/'TRUE' -> 1, 'FALSO'/'FALSE' -> 0, None -> "", o resto texto sem as pontas."""
+def normaliza(valor, chave: str | None = None) -> object:
+    """Preserva texto literal; converte números/caixas conforme a chave. Sem chave, mantém a API legada."""
+    if chave is not None and tipo(chave) == "texto":
+        return "" if valor is None else str(valor)
     if valor is None:
         return ""
     if isinstance(valor, bool):
-        return int(valor)
-    if isinstance(valor, (int, float)):
+        return valor if chave is not None and tipo(chave) == 'numero' else int(valor)
+    if isinstance(valor, int):
+        return valor
+    if isinstance(valor, float):
         return int(valor) if float(valor).is_integer() else float(valor)
     texto = str(valor).strip()
-    if texto.upper() in ("VERDADEIRO", "TRUE"):
+    if texto.upper() in ("VERDADEIRO", "TRUE") and (chave is None or tipo(chave) == 'booleano'):
         return 1
-    if texto.upper() in ("FALSO", "FALSE"):
+    if texto.upper() in ("FALSO", "FALSE") and (chave is None or tipo(chave) == 'booleano'):
         return 0
     if re.fullmatch(r"-?\d+", texto):
         return int(texto)
@@ -61,12 +74,28 @@ def normaliza(valor) -> object:
 def de_linhas(linhas) -> dict[str, Campo]:
     """[[chave, valor, célula, parte], ...], com ou sem o cabeçalho -> {chave: Campo}."""
     ficha: dict[str, Campo] = {}
-    for linha in linhas:
+    erros = {"#REF!", "#N/A", "#N/D", "#NAME?", "#NOME?", "#VALUE!", "#VALOR!", "#DIV/0!", "#NUM!", "#NULL!", "#ERROR!", "#SPILL!", "#CALC!"}
+    erros_encontrados = []
+    for n, linha in enumerate(linhas):
+        if n > 20000:
+            raise FichaIlegivel("a aba ANALISE excede o limite de linhas")
         linha = (list(linha) + ["", "", "", ""])[:4]
         chave = str(linha[0] or "").strip()
         if not chave or chave == "chave":
             continue
-        ficha[chave] = Campo(normaliza(linha[1]), str(linha[2] or ""), str(linha[3] or ""))
+        if chave in ficha:
+            raise FichaIlegivel(f"chave duplicada na ANALISE: {chave}")
+        if str(linha[1]).strip().upper() in erros:
+            erros_encontrados.append(f"{chave}: {linha[1]}")
+        try:
+            valor = normaliza(linha[1], chave)
+            if isinstance(valor, (int, float)) and not math.isfinite(valor):
+                raise ValueError('número fora do intervalo')
+        except (ValueError, OverflowError) as erro:
+            raise FichaIlegivel(f"número inválido ou fora do intervalo em {chave}") from erro
+        ficha[chave] = Campo(valor, str(linha[2] or ""), str(linha[3] or ""))
+    if erros_encontrados and ficha.get("formato.versao", Campo("", "", "")).valor in ("", 11):
+        raise FichaIlegivel("erro de fórmula em " + erros_encontrados[0])
     return ficha
 
 
@@ -74,7 +103,10 @@ def de_csv(texto: str) -> dict[str, Campo]:
     """O CSV que o Google devolve pelo link. Página de login ou de erro no lugar do CSV vira FichaIlegivel."""
     if texto.lstrip()[:15].lower().startswith(("<!doctype", "<html")):
         raise FichaIlegivel("a planilha não está aberta pra leitura pelo link")
-    ficha = de_linhas(csv.reader(io.StringIO(texto)))
+    try:
+        ficha = de_linhas(csv.reader(io.StringIO(texto), strict=True))
+    except csv.Error as erro:
+        raise FichaIlegivel("o CSV da aba ANALISE está malformado ou contém um campo grande demais") from erro
     if "formato.versao" not in ficha:
         raise FichaIlegivel("a planilha não tem a aba ANALISE")
     return ficha
@@ -93,7 +125,18 @@ def de_xlsx(origem: str | Path | io.BytesIO | bytes) -> dict[str, Campo]:
     try:
         if ABA not in livro.sheetnames:
             raise FichaIlegivel("a planilha não tem a aba ANALISE (a ficha é de uma versão anterior?)")
-        ficha = de_linhas(livro[ABA].iter_rows(max_col=4, values_only=True))
+        aba = livro[ABA]
+        info = livro._archive.getinfo(aba._worksheet_path)
+        if info.file_size > 20_000_000:
+            raise FichaIlegivel("a aba ANALISE descompactada é grande demais")
+        xml = ET.fromstring(livro._archive.read(aba._worksheet_path))
+        ns = {"s": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+        for c in xml.findall(".//s:sheetData/s:row/s:c", ns):
+            if c.find("s:f", ns) is not None:
+                v = c.find("s:v", ns)
+                if (v is None or v.text is None) and c.get("t") != "str":
+                    raise FichaIlegivel("o arquivo tem fórmula sem resultado calculado em ANALISE!" + c.get("r", ""))
+        ficha = de_linhas(aba.iter_rows(max_col=4, values_only=True))
     finally:
         livro.close()
     if "formato.versao" not in ficha:
@@ -131,7 +174,7 @@ async def de_link(link: str, *, sessao=None, espera: float = 60) -> dict[str, Ca
                 corpo += pedaco
                 if len(corpo) > LIMITE_BYTES:
                     break
-    except aiohttp.ClientError as erro:
+    except (aiohttp.ClientError, asyncio.TimeoutError) as erro:
         raise FichaIlegivel("não deu pra baixar a planilha agora") from erro
     finally:
         if propria:
