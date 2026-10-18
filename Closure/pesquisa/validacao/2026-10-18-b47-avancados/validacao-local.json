@@ -1,0 +1,273 @@
+[
+  {
+    "caso": 1,
+    "arquivo": "01-incompleta.xlsx",
+    "passou": true,
+    "chaves": 8189,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 1,
+    "sha256": "305a92a70bf11db455ead71a53f28d2ab95880a30af6ebed89091d45dcb4fd2c"
+  },
+  {
+    "caso": 2,
+    "arquivo": "02-sem-cache.xlsx",
+    "passou": true,
+    "diagnostico": "o arquivo tem fórmula sem resultado calculado em ANALISE!B2614",
+    "sha256": "d771cb7c861a149a45174536e317d9227e75f72adbd3462a5f25b4cbef11e77e"
+  },
+  {
+    "caso": 3,
+    "arquivo": "03-erro-formula.xlsx",
+    "passou": true,
+    "diagnostico": "erro de fórmula em vida_max: #REF!",
+    "sha256": "cae369e277c2050055a21c32bb203a69b400fd4fc4be1f3f9e07787637acac2c"
+  },
+  {
+    "caso": 4,
+    "arquivo": "04-duplicada.xlsx",
+    "passou": true,
+    "diagnostico": "chave duplicada na ANALISE: vida_max",
+    "sha256": "655f241a9256224e82308380519474f35a0e3bab12ad5d6125f6ea4f360237ac"
+  },
+  {
+    "caso": 5,
+    "arquivo": "05-origem.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 1,
+    "pendencias": 0,
+    "sha256": "b522dfcb127e488f2383a4af0a2da52fa0f8ffa976c079002c22f1eb6a264b0f"
+  },
+  {
+    "caso": 6,
+    "arquivo": "06-trilha-pendente.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 1,
+    "sha256": "781a92da9e3d41831592cd941d3cd385ede5743859c21edc5879668d821e5a9e"
+  },
+  {
+    "caso": 7,
+    "arquivo": "07-trilha-aprovada.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 0,
+    "sha256": "d323bb63c08ceb86aa0ae92743ac3b4f912465cebb71b76547c2281e1552e38a"
+  },
+  {
+    "caso": 8,
+    "arquivo": "08-trilha-alterada.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 1,
+    "sha256": "480654594b348a593bb67c54849391b9a59ceda14d41a03392614a12694e6741"
+  },
+  {
+    "caso": 9,
+    "arquivo": "09-nao-autonoma.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 0,
+    "sha256": "0f0b93afee55f57471279eb136d228f7e4af664e039d64e12c617975f40d602b"
+  },
+  {
+    "caso": 10,
+    "arquivo": "10-especializacao.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 1,
+    "pendencias": 0,
+    "sha256": "ab69d010b524ce320e3e206d3ea23c3af20cc72582fa314ce98081143047df61"
+  },
+  {
+    "caso": 11,
+    "arquivo": "11-efeito-invalido.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 1,
+    "pendencias": 0,
+    "sha256": "5c55973f5ca522ac2cf2f9d9de4df704b4ee0e5b36be14e44b20c409101f88b5"
+  },
+  {
+    "caso": 12,
+    "arquivo": "12-troca-zero.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 3,
+    "sha256": "61abae6a39f781ed97ce1053a46a7fcc927d112dd2d363b388e0cc96bb6020ae"
+  },
+  {
+    "caso": 13,
+    "arquivo": "13-conflito.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 2,
+    "pendencias": 2,
+    "sha256": "5e17dfb48a104fac6c3ccd22380a4486e9dd50fd6cd81858949c877932bf2a71"
+  },
+  {
+    "caso": 14,
+    "arquivo": "14-curinga-valido.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 3,
+    "sha256": "0bab92539d0a4d77e58ff7599ad0006921755e4cdf43802e236ce845b9011023"
+  },
+  {
+    "caso": 15,
+    "arquivo": "15-curinga-errado.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 1,
+    "pendencias": 3,
+    "sha256": "75a0940e481143bb833be7e6ef419ccb4fea0285fc86879e69adc62b56bbc4a1"
+  },
+  {
+    "caso": 16,
+    "arquivo": "16-entidades-validas.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 0,
+    "sha256": "8c9cb4e85b296d333912f2188c2a14983152d90226ff2dc6c95f4614deaa0da4"
+  },
+  {
+    "caso": 17,
+    "arquivo": "17-entidades-isoladas.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 2,
+    "pendencias": 0,
+    "sha256": "88dbf2b813af6b74b725e8097851c523b2c1b689385b4b9b918b125d0f9f810c"
+  },
+  {
+    "caso": 18,
+    "arquivo": "18-controle-14.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 0,
+    "sha256": "23589f05a3bb83898602f731d72651fbcd8da9db42b3b33836fa780a3b3b674d"
+  },
+  {
+    "caso": 19,
+    "arquivo": "19-controle-produtor.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 1,
+    "sha256": "c17d4641dde55445f6a1bc4743cc7322021798c70d7eb99c1850ce5e72ad9ea9"
+  },
+  {
+    "caso": 20,
+    "arquivo": "20-controle-999.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 1,
+    "pendencias": 0,
+    "sha256": "7f44c272316bbcf92932a05d9f7d44392cf638268cfd19f1e603624bba628cc7"
+  },
+  {
+    "caso": 21,
+    "arquivo": "21-controle-positivo.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 1,
+    "pendencias": 0,
+    "sha256": "016dcdf1d0faba5f9649834a3335db196a4e8d06bd9053bd8756cfb4e3e627d0"
+  },
+  {
+    "caso": 22,
+    "arquivo": "22-maxima-valida.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 11,
+    "sha256": "6ecd10b9e7fc5e07f2591c8d4d58a65cb4e90fce2f186842a82ab0ddfc4a418e"
+  },
+  {
+    "caso": 23,
+    "arquivo": "23-maxima-incompativel.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 1,
+    "pendencias": 11,
+    "sha256": "5ad1fbaad96eb4543c4f751c9b2574052bf8acfb5e4e100dcd7e4dc9bc69c600"
+  },
+  {
+    "caso": 24,
+    "arquivo": "24-maxima-alma.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 11,
+    "sha256": "b1941c20c6e777e178e7fe362436c28bae49bf387ac0b3d8095a6309b6e8fe9a"
+  },
+  {
+    "caso": 25,
+    "arquivo": "25-maxima-produtor.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 12,
+    "sha256": "6139c94e12856f59d9c6c3c2389bb448fd1a3e8659f7cc141d699107887c3340"
+  },
+  {
+    "caso": 26,
+    "arquivo": "26-objeto-6.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 11,
+    "sha256": "6918166309a78d9bc325f9d67aa453b7ce9d3258db0e2e54d5be9d678c7804d1"
+  },
+  {
+    "caso": 27,
+    "arquivo": "27-objeto-7.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 1,
+    "pendencias": 11,
+    "sha256": "559c2e665aba33bb3a0d67e24aaced84c680c7dccc2baf3e40b5c733d3a9b8c4"
+  },
+  {
+    "caso": 28,
+    "arquivo": "28-liberacao.xlsx",
+    "passou": true,
+    "chaves": 8190,
+    "campos_identicos": true,
+    "erros": 0,
+    "pendencias": 11,
+    "sha256": "150a8e219caadad46414b04dafd4860e545bd8da76c7ce2c5a07cb461fd6d4f2"
+  }
+]

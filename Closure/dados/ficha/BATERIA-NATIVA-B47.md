@@ -1,5 +1,12 @@
 # Bateria nativa B47 · 18/10/2026
 
+A continuação de 28 casos avançados está em
+`pesquisa/validacao/2026-10-18-b47-avancados/` (28 análises/143 páginas no
+Discord). Ela usa arquivos técnicos do contrato e não é um segundo recálculo
+nativo destes Sheets. As seis cópias e suas quatro aprovações continuam
+preservadas; a aprovação extra temporária da continuação foi removida.
+
+
 Seis cópias integrais de uma ficha B47 nativa, com 22 abas. A oficial foi
 somente lida. Entradas foram preenchidas pelo Sheets e os XLSX foram
 exportados depois do cálculo nativo; não houve importação, LibreOffice ou

@@ -1,5 +1,32 @@
 # Integração B47 no bot · 18/10/2026
 
+**Continuação avançada · 18/10:** passaram 28 análises reais por XLSX no
+Discord e 143 páginas conferidas, além das 13 análises nativas anteriores.
+Inclui Trilha aprovada/alterada, entidades isoladas, efeitos, curingas,
+Controle, Máxima/Alma e teto de objeto/Liberação. Os arquivos desta rodada
+são casos sintéticos do consumidor, não novos recálculos nativos do produtor.
+A aprovação temporária de Trilha foi retirada; o cadastro original foi relido
+byte a byte. Evidência: `pesquisa/validacao/2026-10-18-b47-avancados/`.
+
+**Patch da PR 65, ainda não publicado:** cores locais por página (resumo com
+veredito geral; erro exibido vermelho, pendência/limite amarelo, conferido
+verde), rodapé explícito e leitura XLSX/conferência fora do loop do Discord.
+Mantém a correção anterior de cartões vazios. Suíte atual: **822 executados,
+821 aprovados e um opcional pulado**, em 217,436 s; **26/26 testes contra o
+ZIP**. Cinco regressões novas falham no código anterior por asserção. Pacote
+com 67 arquivos iguais aos fontes, SHA256
+`8a210c5aa82bf54a5b8af56486123e0b0199d1d09314b71cf2067b20aab54e40`.
+A validação completa usou fonte idêntica e as mesmas dependências em disco
+local, após timeouts de mídia no disco externo; detalhes no relatório.
+
+O Discord continua na publicação da PR 64. Faltam revisão/publicação da PR 65,
+observação das novas cores após implantação autorizada, segunda pessoa no
+painel e recálculo nativo dos casos ampliados. Produtor e decisões do mestre
+continuam limitando a aprovação integral. Não houve modelo pago, novo deploy,
+reinício ou alteração da oficial nesta continuação. Os números abaixo são
+checkpoints anteriores, não a suíte atual.
+
+
 **Bateria nativa preparada em 18/10:** seis cópias sintéticas calculadas no
 Sheets, 8.190 chaves por XLSX e resultados locais conferidos. Roteiro em
 `BATERIA-NATIVA-B47.md`. Inclui aprovação exata, MESTRE VIU sem autorização,
@@ -21,9 +48,9 @@ alterado; 05 reprovou Vida 999/23; 06 reprovou a regra/total não autorizados.
 As seis páginas da 02, quatro setas e seletor foram exercitados. Encerramento
 após dez minutos e reabertura por nova análise foram observados. Sem chamadas
 pagas, reinício, implantação do patch 65 ou alteração da oficial nesta rodada.
-Evidências: `pesquisa/validacao/2026-10-18-b47-discord/`. Segunda pessoa no painel
-e os demais casos ampliados do roteiro externo ainda não foram exercitados
-no Discord; aprovação integral continua limitada pelo produtor e pelo mestre.
+Evidências da primeira rodada: `pesquisa/validacao/2026-10-18-b47-discord/`.
+A continuação avançada está registrada acima; segunda pessoa e validação
+nativa ampliada continuam pendentes. Produtor e mestre limitam a aprovação integral.
 
 **Publicação autorizada em 18/10:** PR 64 mesclada em
 `1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.

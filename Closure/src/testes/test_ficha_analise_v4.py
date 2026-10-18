@@ -56,7 +56,9 @@ class AnaliseV4(unittest.TestCase):
         self.assertIn("Atletismo: bônus +7", r.conferidos)
         self.assertEqual({p.campo for p in r.pendencias}, {"item.1.volume", "carga.total"})
         ps = paginas(r, self.fichas["especialista"], SimpleNamespace(nome="Closure", chave="closure", avatar_url=None))
-        self.assertTrue(all(p.colour.value == 0xD4A017 for p in ps))
+        self.assertEqual(ps[0].colour.value, 0xD4A017)
+        self.assertTrue(all(p.colour.value != 0xCC0102 for p in ps))
+        self.assertTrue(any(p.colour.value == 0x2E8B57 for p in ps[1:]))
 
     def test_resultados_adulterados_reprovam_sem_precisar_de_aviso(self):
         for nome, campos in (("pessoal", ("tr.fisico.bonus", "pericia.atletismo.bonus", "oficio.conducao.bonus", "carga.total", "carga.limite")),

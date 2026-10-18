@@ -10,9 +10,20 @@ Setas, seletor, dez minutos de inatividade e reabertura também passaram.
 Evidências: `pesquisa/validacao/2026-10-18-b47-discord/` e
 [BATERIA-NATIVA-B47.md](BATERIA-NATIVA-B47.md).
 
-**Ainda não executados no Discord:** segunda pessoa no painel e os demais
-cenários ampliados da tabela abaixo. As regressões locais desses cenários não
-são validação nativa. A PR 65 continua em rascunho e não foi implantada.
+**Continuação avançada concluída:** mais 28 análises por XLSX e 143 páginas
+conferidas no Discord, com todos os diagnósticos-alvo esperados. Foram casos
+sintéticos de uma aba ANALISE, incluindo recusas de leitura, Origem, Trilha,
+efeitos, curingas, entidades, Controle, Máxima/Alma e teto de objeto/Liberação.
+A aprovação extra de Trilha foi temporária; o cadastro original de quatro
+aprovações foi restaurado e relido idêntico. Relatório e casos em
+`pesquisa/validacao/2026-10-18-b47-avancados/`.
+
+**Ainda externos:** segunda pessoa no painel e recálculo nativo dos cenários
+ampliados por link/XLSX. A troca independente avançada usou CD por zero;
+Vida rolada com rolagem ausente permanece no roteiro abaixo. As 28 análises
+comprovam o consumidor, não as fórmulas nativas. Cores locais por página e
+trabalho fora do loop foram testados no código/ZIP da PR 65, ainda não no
+runtime real. A PR 65 continua em rascunho e não foi implantada.
 Não repetir publicação. Nova campanha de jogo, aprovações ou mensagens fora
 do tópico/bateria autorizados exigem escopo específico; a conta não usa modelo.
 
@@ -78,8 +89,12 @@ rascunhos anteriores precisam ser refeitas quando o hash mudar.
 ## Painel e comandos
 
 Executados: ambos os comandos, link/XLSX, as seis páginas da 02, revisões da
-03/05, quatro setas, seletor, encerramento e reabertura. Nenhuma entidade foi
-incluída nesses seis casos. Falta navegação por uma segunda pessoa no Discord.
+03/05, quatro setas, seletor, encerramento e reabertura. A rodada avançada
+acrescentou entidades e conferiu as 143 páginas dos 28 ensaios. Houve esperas
+expiradas na automação, resolvidas conferindo o estado visível e retargetando
+controles; não se comprovou falha de conteúdo por isso. Falta navegação por
+uma segunda pessoa no Discord. A nova semântica de cores da PR 65 precisa
+ser observada depois de implantação autorizada, sem repetir contas já cobertas.
 
 Exercitar `/ficha analisar` e `GC:ficha`: link e anexo XLSX. Verificar resumo,
 revisão, TR/perícias, habilidades, entidades e limites; primeira/anterior/

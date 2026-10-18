@@ -1,0 +1,276 @@
+[
+  {
+    "n": 1,
+    "slug": "incompleta",
+    "titulo": "Exportação incompleta",
+    "alvo": "efeito.30.valor",
+    "esperado": "Ausência não vira zero; nenhuma conta certificada",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 1
+  },
+  {
+    "n": 2,
+    "slug": "sem-cache",
+    "titulo": "Fórmula sem cache",
+    "alvo": "vida_max",
+    "esperado": "Erro de leitura claro",
+    "reader": "fórmula sem resultado calculado"
+  },
+  {
+    "n": 3,
+    "slug": "erro-formula",
+    "titulo": "Erro de fórmula",
+    "alvo": "vida_max",
+    "esperado": "Erro de leitura claro",
+    "reader": "erro de fórmula em vida_max"
+  },
+  {
+    "n": 4,
+    "slug": "duplicada",
+    "titulo": "Chave duplicada",
+    "alvo": "vida_max",
+    "esperado": "Duplicata recusada",
+    "reader": "chave duplicada na ANALISE: vida_max"
+  },
+  {
+    "n": 5,
+    "slug": "origem",
+    "titulo": "Origem incompatível",
+    "alvo": "origem.menor_1",
+    "esperado": "Exige Coexistência; Vida não certificada",
+    "reader": null,
+    "erros": 1,
+    "pendencias": 0
+  },
+  {
+    "n": 6,
+    "slug": "trilha-pendente",
+    "titulo": "Trilha sem aprovação",
+    "alvo": "custom.trilha",
+    "esperado": "Perfil não certificado antes da aprovação",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 1
+  },
+  {
+    "n": 7,
+    "slug": "trilha-aprovada",
+    "titulo": "Trilha herdada aprovada",
+    "alvo": "invocacao.1.limite_familias",
+    "esperado": "5 abertas e 2 Livres pela base Principal",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 0
+  },
+  {
+    "n": 8,
+    "slug": "trilha-alterada",
+    "titulo": "Base de Trilha alterada",
+    "alvo": "custom.trilha",
+    "esperado": "Aprovação reaberta; perfil não presumido",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 1
+  },
+  {
+    "n": 9,
+    "slug": "nao-autonoma",
+    "titulo": "Trilha e não autônoma",
+    "alvo": "invocacao.1.limite_familias",
+    "esperado": "6 abertas e 3 Livres",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 0
+  },
+  {
+    "n": 10,
+    "slug": "especializacao",
+    "titulo": "Especialização prematura",
+    "alvo": "personagem.pericia_custom.1.especializacao",
+    "esperado": "Erro: requer nível 10; bônus dependente não certificado",
+    "reader": null,
+    "erros": 1,
+    "pendencias": 0
+  },
+  {
+    "n": 11,
+    "slug": "efeito-invalido",
+    "titulo": "Efeito com valor inválido",
+    "alvo": "efeito.1",
+    "esperado": "Erro da linha; CD não certificada; Vida preservada",
+    "reader": null,
+    "erros": 1,
+    "pendencias": 0
+  },
+  {
+    "n": 12,
+    "slug": "troca-zero",
+    "titulo": "Troca por zero",
+    "alvo": "cd_de_feitico",
+    "esperado": "CD 0 independe do seletor ausente e sobrepõe Buff/soma",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 3
+  },
+  {
+    "n": 13,
+    "slug": "conflito",
+    "titulo": "Duas trocas conflitantes",
+    "alvo": "vida_max",
+    "esperado": "Conflito impede certificar Vida",
+    "reader": null,
+    "erros": 2,
+    "pendencias": 2
+  },
+  {
+    "n": 14,
+    "slug": "curinga-valido",
+    "titulo": "Nomes com curinga literal",
+    "alvo": "personagem.pericia_custom.1.resultado",
+    "esperado": "Runa* 1 e Runas 8; aprovação continua separada",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 3
+  },
+  {
+    "n": 15,
+    "slug": "curinga-errado",
+    "titulo": "Efeito cruzado indevido",
+    "alvo": "personagem.pericia_custom.1.resultado",
+    "esperado": "Reprova Runa* 8; esperado 1",
+    "reader": null,
+    "erros": 1,
+    "pendencias": 3
+  },
+  {
+    "n": 16,
+    "slug": "entidades-validas",
+    "titulo": "Duas entidades válidas",
+    "alvo": "invocacao.2.vida.max",
+    "esperado": "Contas independentes nas duas entidades",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 0
+  },
+  {
+    "n": 17,
+    "slug": "entidades-isoladas",
+    "titulo": "Uma entidade inválida",
+    "alvo": "invocacao.1.pontos",
+    "esperado": "Não certifica 1; preserva Vida 12 da entidade 2",
+    "reader": null,
+    "erros": 2,
+    "pendencias": 0
+  },
+  {
+    "n": 18,
+    "slug": "controle-14",
+    "titulo": "Controle saldo zero correto",
+    "alvo": "invocacao.1.esp.1.resolve",
+    "esperado": "CD exclusiva 14 com saldo calculado zero",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 0
+  },
+  {
+    "n": 19,
+    "slug": "controle-produtor",
+    "titulo": "Controle fórmula conhecida",
+    "alvo": "invocacao.1.esp.1.resolve",
+    "esperado": "Pendência específica da fórmula conhecida; não certifica CD14",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 1
+  },
+  {
+    "n": 20,
+    "slug": "controle-999",
+    "titulo": "Controle CD adulterada",
+    "alvo": "invocacao.1.esp.1.resolve",
+    "esperado": "CD999 é erro, sem tolerância",
+    "reader": null,
+    "erros": 1,
+    "pendencias": 0
+  },
+  {
+    "n": 21,
+    "slug": "controle-positivo",
+    "titulo": "Controle com saldo positivo",
+    "alvo": "invocacao.1.esp.1.resolve",
+    "esperado": "Reprova bônus indevido; esperado CD12",
+    "reader": null,
+    "erros": 1,
+    "pendencias": 0
+  },
+  {
+    "n": 22,
+    "slug": "maxima-valida",
+    "titulo": "Máxima válida",
+    "alvo": "maxima.montagem",
+    "esperado": "25 PE, 1 de 8 e 24d8",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 11
+  },
+  {
+    "n": 23,
+    "slug": "maxima-incompativel",
+    "titulo": "Máxima incompatível",
+    "alvo": "maxima.pecas",
+    "esperado": "Toque com Longe rejeitado; dano não certificado",
+    "reader": null,
+    "erros": 1,
+    "pendencias": 11
+  },
+  {
+    "n": 24,
+    "slug": "maxima-alma",
+    "titulo": "Máxima com Alma correta",
+    "alvo": "maxima.dano",
+    "esperado": "12d8 conferido; permissão continua humana",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 11
+  },
+  {
+    "n": 25,
+    "slug": "maxima-produtor",
+    "titulo": "Máxima com fórmula fixa",
+    "alvo": "maxima.dano",
+    "esperado": "24d8 fixos geram pendência específica",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 12
+  },
+  {
+    "n": 26,
+    "slug": "objeto-6",
+    "titulo": "Objeto dentro do teto",
+    "alvo": "feitico.1.dano",
+    "esperado": "6d8 dobram a12; conferido",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 11
+  },
+  {
+    "n": 27,
+    "slug": "objeto-7",
+    "titulo": "Objeto excede teto",
+    "alvo": "feitico.1.dano",
+    "esperado": "7d8 excedem teto12 após dobrar",
+    "reader": null,
+    "erros": 1,
+    "pendencias": 11
+  },
+  {
+    "n": 28,
+    "slug": "liberacao",
+    "titulo": "Liberação com teto",
+    "alvo": "liberacao.1.dano",
+    "esperado": "Liberação 14PE e 6d8; mesmo teto",
+    "reader": null,
+    "erros": 0,
+    "pendencias": 11
+  }
+]

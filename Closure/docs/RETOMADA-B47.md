@@ -1,5 +1,32 @@
 # Retomada da integração do bot com B47 · 18/10/2026
 
+**Continuação avançada · 18/10:** passaram 28 análises reais por XLSX no
+Discord e 143 páginas conferidas, além das 13 análises nativas anteriores.
+Inclui Trilha aprovada/alterada, entidades isoladas, efeitos, curingas,
+Controle, Máxima/Alma e teto de objeto/Liberação. Os arquivos desta rodada
+são casos sintéticos do consumidor, não novos recálculos nativos do produtor.
+A aprovação temporária de Trilha foi retirada; o cadastro original foi relido
+byte a byte. Evidência: `pesquisa/validacao/2026-10-18-b47-avancados/`.
+
+**Patch da PR 65, ainda não publicado:** cores locais por página (resumo com
+veredito geral; erro exibido vermelho, pendência/limite amarelo, conferido
+verde), rodapé explícito e leitura XLSX/conferência fora do loop do Discord.
+Mantém a correção anterior de cartões vazios. Suíte atual: **822 executados,
+821 aprovados e um opcional pulado**, em 217,436 s; **26/26 testes contra o
+ZIP**. Cinco regressões novas falham no código anterior por asserção. Pacote
+com 67 arquivos iguais aos fontes, SHA256
+`8a210c5aa82bf54a5b8af56486123e0b0199d1d09314b71cf2067b20aab54e40`.
+A validação completa usou fonte idêntica e as mesmas dependências em disco
+local, após timeouts de mídia no disco externo; detalhes no relatório.
+
+O Discord continua na publicação da PR 64. Faltam revisão/publicação da PR 65,
+observação das novas cores após implantação autorizada, segunda pessoa no
+painel e recálculo nativo dos casos ampliados. Produtor e decisões do mestre
+continuam limitando a aprovação integral. Não houve modelo pago, novo deploy,
+reinício ou alteração da oficial nesta continuação. Os números abaixo são
+checkpoints anteriores, não a suíte atual.
+
+
 **Bateria nativa preparada em 18/10:** seis cópias sintéticas calculadas no
 Sheets, 8.190 chaves por XLSX e resultados locais conferidos. Roteiro em
 `../dados/ficha/BATERIA-NATIVA-B47.md`. Inclui aprovação exata, MESTRE VIU sem autorização,
@@ -21,9 +48,9 @@ alterado; 05 reprovou Vida 999/23; 06 reprovou a regra/total não autorizados.
 As seis páginas da 02, quatro setas e seletor foram exercitados. Encerramento
 após dez minutos e reabertura por nova análise foram observados. Sem chamadas
 pagas, reinício, implantação do patch 65 ou alteração da oficial nesta rodada.
-Evidências: `pesquisa/validacao/2026-10-18-b47-discord/`. Segunda pessoa no painel
-e os demais casos ampliados do roteiro externo ainda não foram exercitados
-no Discord; aprovação integral continua limitada pelo produtor e pelo mestre.
+Evidências da primeira rodada: `pesquisa/validacao/2026-10-18-b47-discord/`.
+A continuação avançada está registrada acima; segunda pessoa e validação
+nativa ampliada continuam pendentes. Produtor e mestre limitam a aprovação integral.
 
 Branch: `codex/integracao-b47`, em `cupcake-mochi/RPG---BOT`.
 PR de correção para revisão: https://github.com/cupcake-mochi/RPG---BOT/pull/65 (rascunho; patch ainda não implantado).
@@ -53,11 +80,11 @@ acima passou nessa versão; não publica o patch 65. Evidências da implantaçã
 `pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
 
 Retomar de `origin/codex/integracao-b47`, após conferir remotos e árvore local.
-`main` contém a publicação da PR 64; a PR 65 acrescenta a correção dos cartões
-vazios e o registro dos testes. Não refazer merge/deploy da PR 64 nem presumir
+`main` contém a publicação da PR 64; a PR 65 acrescenta correção dos cartões
+vazios, cores locais por página, responsividade e registro dos testes. Não refazer merge/deploy da PR 64 nem presumir
 publicação do patch 65. Próximo passo: revisão da PR 65; merge/implantação
 continuam separados desta bateria. Para ampliar o piloto, usar o roteiro externo:
-segunda pessoa e cenários ainda não executados, sem modelos pagos. Campanha de
+segunda pessoa e os recálculos nativos ainda não executados, sem modelos pagos. Campanha de
 jogo e novas aprovações dependem de decisão real do mestre. Retomada exata:
 conferir `git status --short --branch`, `git fetch origin` e a PR 65; ler esta
 retomada e `dados/ficha/ROTEIRO-EXTERNO-B47.md`. Preservar os seis casos aprovados
@@ -74,7 +101,7 @@ A fórmula fixa conhecida do produtor recebe pendência, nunca aprovação.
 Quebra Coisa entra no teto de dano comum/custom/Liberação/entidade, sem
 multiplicar dados secundários ou aplicar Remate ao mesmo objeto.
 
-Suíte vigente: **814 executados, 813 aprovados e um online opcional pulado**,
+Suíte desse checkpoint: **814 executados, 813 aprovados e um online opcional pulado**,
 em 208,229 s. Dezessete regressões novas passaram também no ZIP; contra
 `89d56db`, produziram 26 falhas de asserção/subcasos e nenhum erro de execução.
 Evidências: `pesquisa/validacao/2026-10-18-b47-maxima/`.
@@ -135,7 +162,7 @@ Detalhes/reprodução em `relatorio.txt`, `verificacao.json` e `pacote.json`.
    ficha está concluída: não retomar C/D, não repetir migrações e não usar
    endereços de documentos históricos como contrato.
 3. De `Closure/src/`, executar:
-   `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao testes.test_b47_cobertura testes.test_b47_maxima testes.test_b47_teto`.
+   `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao testes.test_b47_cobertura testes.test_b47_maxima testes.test_b47_teto testes.test_ficha_painel testes.test_ficha_analise_v4`.
    Depois de uma mudança relevante, executar
    `../.venv/bin/python -m unittest discover -s testes` e registrar os resultados.
 4. Leitor/esquema: `ficha_leitor.py`, `ficha_esquema.py` e manifesto em recursos.
@@ -220,8 +247,9 @@ não faz parte do ZIP. Não houve envio à Discloud.
 
 ## O que permanece externo ou parcial
 
-Houve leitura pública CSV/XLSX no Google, sem escrita. Não houve Discord,
-LibreOffice nem implantação nesta continuação. O roteiro externo está
+No checkpoint histórico acima houve leitura pública CSV/XLSX no Google, sem
+escrita, e não houve Discord, LibreOffice ou implantação. As baterias reais
+posteriores e a publicação vigente estão descritas no início deste documento. O roteiro externo está
 no fim de `INTEGRACAO-B47.md`. B47 não emite as 485 chaves exclusivas TR-v4;
 carga integral e vários bônus do livro continuam explicitamente não conferidos.
 Seletores pessoais de CD/ataques, ajustes/resultados de TR/perícias do livro,

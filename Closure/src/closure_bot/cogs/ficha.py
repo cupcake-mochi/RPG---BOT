@@ -12,6 +12,7 @@ estrutura (ficha_corretor.RegrasDaCampanha e Aprovados): por enquanto toda ficha
 """
 from __future__ import annotations
 
+import asyncio
 import logging
 import re
 from pathlib import Path
@@ -220,13 +221,20 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
     """Resumo e páginas por assunto. Só apresenta o Resultado; não refaz nem altera contas."""
     saida: list[tuple[str, discord.Embed]] = []
 
-    def adicionar(categoria, campos):
+    def adicionar(categoria, campos, *, estado="aprovada", estados_por_campo=None):
         atual = None
+        prioridade = {"aprovada": 0, "pendente": 1, "reprovada": 2}
         for nome, valor in campos:
             if atual is None or len(atual) + len(nome) + len(valor) > 3800 or len(atual.fields) >= 8:
                 atual = _base(resultado, ficha, persona)
                 atual.description = f"**{categoria}**"
+                estado_atual = estado
+                atual.colour = discord.Colour(COR[estado_atual])
                 saida.append((categoria, atual))
+            estado_campo = (estados_por_campo or {}).get(nome, estado)
+            if prioridade[estado_campo] > prioridade[estado_atual]:
+                estado_atual = estado_campo
+                atual.colour = discord.Colour(COR[estado_atual])
             atual.add_field(name=nome[:256], value=valor, inline=False)
 
     resumo = _base(resultado, ficha, persona)
@@ -287,7 +295,10 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
     for nome, problemas in revisao:
         if problemas:
             campos_revisao += _campos(nome, [_linha(p) for p in problemas])
-    adicionar("Correções e revisão", campos_revisao)
+    # A prioridade acompanha apenas os campos presentes em cada página,
+    # inclusive quando erros e pendências ocupam páginas diferentes.
+    adicionar("Correções e revisão", campos_revisao, estado="pendente",
+              estados_por_campo={"❌ Precisa corrigir": "reprovada"})
     adicionar("Personagem", _campos("Outros valores conferidos", extras))
     campos_testes = []
     for categoria, linhas in testes.items():
@@ -329,11 +340,11 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
         nome = " · ".join(assuntos)
         linhas = [detalhe] if len(nome) <= 220 else [" · ".join(assuntos[i:i+8]) for i in range(0, len(assuntos), 8)] + [detalhe]
         campos_limites += _campos(nome if len(nome) <= 220 else "Vários itens", linhas)
-    adicionar("Limites da análise", campos_limites)
+    adicionar("Limites da análise", campos_limites, estado="pendente")
     visual = "pendente" if resultado.veredito=="aprovada" and (resultado.pendencias or resultado.nao_conferido or resultado.notas) else resultado.veredito
     livro = (manifesto or {}).get("edicao_livro")
     for i, (categoria, embed) in enumerate(saida):
-        embed.set_footer(text=f"Página {i + 1} de {len(saida)} · {categoria} · Veredito: {visual} · livro"
+        embed.set_footer(text=f"Página {i + 1} de {len(saida)} · {categoria} · Veredito geral: {visual} · livro"
                          + (f" {livro}" if livro else "") + (" · controles por 10 min" if len(saida) > 1 else "")
                          + " · o mestre pode recusar mesmo com tudo certo")
     return [embed for _, embed in saida]
@@ -358,7 +369,7 @@ class Ficha(commands.Cog):
             if arquivo is not None:
                 if not arquivo.filename.lower().endswith(".xlsx") or arquivo.size > LIMITE_ANEXO:
                     raise FichaIlegivel("o anexo precisa ser a ficha em .xlsx")
-                ficha = de_xlsx(await arquivo.read())
+                ficha = await asyncio.to_thread(de_xlsx, await arquivo.read())
             elif link:
                 ficha = await de_link(link)
             else:
@@ -368,7 +379,7 @@ class Ficha(commands.Cog):
         from ..ficha_configuracao import carregar_campanha
         try:
             regras, aprovados = carregar_campanha(self.campanhas, servidor)
-            resultado = conferir(ficha, self.referencias, regras, aprovados)
+            resultado = await asyncio.to_thread(conferir, ficha, self.referencias, regras, aprovados)
         except (ValueError, OSError) as erro:
             log.error("cadastro de campanha indisponível: %s", type(erro).__name__)
             return "Não deu para carregar a configuração autorizada desta campanha. O operador precisa conferir o cadastro do bot."
