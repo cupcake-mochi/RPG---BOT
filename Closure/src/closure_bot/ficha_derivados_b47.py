@@ -78,7 +78,7 @@ def conferir_derivados(ficha, ref, ctx, r):
         trocas = [e for e in ctx.efeitos.get(caixa, []) if e.como == 'trocar por']
         if len(trocas) == 1:
             comparar(k, ctx.aplicar(caixa, 0), modo)
-        elif len(trocas) > 1 or b is None or len(atrs) != 5:
+        elif caixa in ctx.alvos_invalidos or len(trocas) > 1 or b is None or len(atrs) != 5:
             comparar(k, None, modo)
         else:
             possibilidades = {ctx.aplicar(caixa, a + maestria + parcela + b) for a in atrs.values()}

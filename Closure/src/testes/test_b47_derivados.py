@@ -184,6 +184,34 @@ class EfeitosFamilias(unittest.TestCase):
         r=derivados(f)
         self.assertFalse(any(s.startswith('iniciativa:') for s in r.conferidos))
 
+    def test_efeito_invalido_nos_ataques_nao_interrompe_analise(self):
+        for caixa,k in [('CD de feitiço','cd_de_feitico'),('Conjuração','conjuracao'),
+                        ('Corpo a corpo','corpo_a_corpo'),('À distância','a_distancia')]:
+            with self.subTest(caixa=caixa):
+                f=efeito(trocar(ficha(),**{k:999}),caixa,'não é número')
+                r=conferir(f,REF)
+                self.assertEqual(r.veredito,'reprovada')
+                self.assertIn('efeito.1',[p.campo for p in r.problemas])
+                self.assertFalse(any(s.startswith(k+':') for s in r.conferidos))
+                self.assertTrue(any(s.startswith(k+': entradas insuficientes') for s in r.nao_conferido))
+                self.assertIn('Vida 23',r.conferidos)
+
+    def test_efeito_duplicado_na_cd_bloqueia_so_a_conta_dependente(self):
+        f=efeito(ficha(),'CD de feitiço',2)
+        efeito(f,'CD de feitiço',2,i=2)
+        r=conferir(f,REF)
+        self.assertIn('efeito.2',[p.campo for p in r.pendencias])
+        self.assertFalse(any(p.campo=='cd_de_feitico' for p in r.problemas))
+        self.assertFalse(any(s.startswith('cd_de_feitico:') for s in r.conferidos))
+        self.assertTrue(any(s.startswith('cd_de_feitico: entradas insuficientes') for s in r.nao_conferido))
+
+    def test_linha_invalida_nao_e_ignorada_ao_haver_troca_valida(self):
+        f=efeito(trocar(ficha(),cd_de_feitico=0),'CD de feitiço',0,'trocar por')
+        efeito(f,'CD de feitiço','inválido',i=2,fonte='Outra fonte')
+        r=conferir(f,REF)
+        self.assertIn('efeito.2',[p.campo for p in r.problemas])
+        self.assertFalse(any(s.startswith('cd_de_feitico:') for s in r.conferidos))
+
     def test_nome_literal_com_curinga_nao_recebe_efeito_da_outra_pericia(self):
         from closure_bot.ficha_b47 import conferir_treinos
         f=ficha()

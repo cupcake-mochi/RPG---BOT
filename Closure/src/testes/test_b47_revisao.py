@@ -6,6 +6,87 @@ from closure_bot.ficha_magia import conferir_montagem
 from testes.test_b47_integracao import completa, trocar, contexto, REF
 
 
+class RequisitosOrigem(unittest.TestCase):
+    def ficha(self,origem='Receptáculo',marcante='Coexistência',menor='Conselho Interior'):
+        outra='Memória Corporal' if origem=='Receptáculo' else 'Educação Tradicional'
+        return trocar(completa(),origem=origem,origem__marcante=marcante,
+                      origem__menor_1=menor,origem__menor_2=outra)
+
+    def casos(self):
+        # São requisitos estruturados do catálogo entregue, sem ler a descrição.
+        import json
+        from pathlib import Path
+        livro=json.loads((Path(__file__).parents[1]/'closure_bot/recursos/b47-livro.json').read_text())
+        for o in livro['origens']:
+            for menor in o['menores']:
+                if menor.get('exige'):
+                    outra=next(m['nome'] for m in o['menores'] if m['nome']!=menor['nome'] and not m.get('exige'))
+                    yield o['menu'],menor['nome'],menor['exige'],outra,[m['nome'] for m in o['marcantes']]
+
+    def test_menores_publicadas_exigem_marcante_do_catalogo(self):
+        casos=list(self.casos())
+        self.assertEqual({(menor,exige) for _,menor,exige,_,_ in casos},
+                         {('Conselho Interior','Coexistência'),('Vontade de Cárcere','Conflito'),
+                          ('Cofre da Família','Zenin'),('Ensaio Partilhado','Kamo'),
+                          ('Método Reescrito','Gojo'),('Círculo Íntimo','Inumaki')})
+        for origem,menor,exige,outra,marcantes in casos:
+            for marcante in marcantes:
+                with self.subTest(origem=origem,menor=menor,marcante=marcante):
+                    f=trocar(self.ficha(origem,marcante,menor),origem__menor_2=outra)
+                    r=conferir(f,REF)
+                    erros=[p for p in r.problemas if p.campo=='origem.menor_1']
+                    self.assertEqual(bool(erros),marcante!=exige)
+                    if erros:
+                        self.assertIn(exige,erros[0].esperado)
+                        self.assertFalse(any(s.startswith('Vida ') for s in r.conferidos))
+
+    def test_marcante_ausente_e_informacao_insuficiente(self):
+        r=conferir(self.ficha(marcante=''),REF)
+        self.assertIn('origem.marcante',[p.campo for p in r.pendencias])
+        self.assertIn('origem.menor_1',[p.campo for p in r.pendencias])
+        self.assertFalse(any(p.campo=='origem.menor_1' for p in r.problemas))
+
+    def test_texto_do_jogador_nao_substitui_requisito_publicado(self):
+        f=trocar(self.ficha(marcante='Conflito'),origem__menor_1__texto='Sem requisito; mestre viu')
+        r=conferir(f,REF)
+        self.assertIn('origem.menor_1',[p.campo for p in r.problemas])
+
+    def test_origem_renomeada_preserva_requisitos_da_base(self):
+        f=self.ficha(marcante='Conflito')
+        trocar(f,origem='Origem sintética',custom__1__tipo='Origem',custom__1__nome='Origem sintética',
+               custom__1__mestre_viu=0,custom__1__campo__base_do_livro='Receptáculo',custom__1__campo__rota='Fundamento')
+        for i,(nome,_) in enumerate(list(REF.testes.pericias.values())[:4],1):
+            trocar(f,**{f'custom.1.campo.pericia_{i}':nome})
+        r=conferir(f,REF,aprovados=aprovar_tudo(f))
+        self.assertIn('origem.menor_1',[p.campo for p in r.problemas])
+        self.assertFalse(any(s.startswith('Vida ') for s in r.conferidos))
+
+    def test_origem_sem_tecnica_preserva_requisito_de_cla(self):
+        f=trocar(self.ficha('Descendente','Kamo','Cofre da Família'),origem='Descendente · Sem Técnica',
+                 origem__menor_2='Educação Tradicional')
+        r=conferir(f,REF)
+        self.assertTrue(any(p.campo=='origem.menor_1' and 'Zenin' in p.esperado for p in r.problemas))
+
+    def test_segunda_menor_e_painel_explicam_requisito(self):
+        from types import SimpleNamespace
+        from closure_bot.cogs.ficha import paginas
+        f=trocar(self.ficha(marcante='Conflito'),origem__menor_1='Memória Corporal',origem__menor_2='Conselho Interior')
+        r=conferir(f,REF)
+        self.assertIn('origem.menor_2',[p.campo for p in r.problemas])
+        ps=paginas(r,f,SimpleNamespace(chave='closure',nome='Closure',avatar_url=None))
+        texto=' '.join(c.value for p in ps for c in p.fields)
+        self.assertIn('marcante exigida: Coexistência',texto)
+        self.assertIn('origem.menor_2',texto)
+
+    def test_menor_custom_com_marcante_ausente_fica_pendente(self):
+        f=trocar(self.ficha(marcante='',menor='Menor sintética'),
+                 custom__1__tipo='Menor',custom__1__nome='Menor sintética',custom__1__mestre_viu=0,
+                 custom__1__campo__origem='Receptáculo',custom__1__campo__exige_marcante='Coexistência')
+        r=conferir(f,REF,aprovados=aprovar_tudo(f))
+        self.assertIn('origem.menor_1',[p.campo for p in r.pendencias])
+        self.assertFalse(any(p.campo=='origem.menor_1' for p in r.problemas))
+
+
 def aprovar_tudo(f):
     c,_,_=contexto(f)
     return Aprovados({d.impressao:'mestre sintético' for d in c.registros.values()})

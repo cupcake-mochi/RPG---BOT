@@ -16,6 +16,15 @@ dependentes. CD de Controle usa saldo independente quando disponível;
 descartar dano não compra bônus. As reproduções do produtor permanecem no
 documento de lacunas, sem alteração da ficha oficial.
 
+Menores publicadas usam também o requisito estruturado `exige` do catálogo:
+Receptáculo respeita Coexistência/Conflito e Descendente respeita o clã escolhido.
+Isso vale nas duas vagas, na rota Sem Técnica e em Origem custom com base.
+Marcante vazia é informação insuficiente; uma marcante incompatível é divergência.
+Descrições editadas pelo jogador não substituem esses requisitos. Efeitos inválidos
+ou duplicados bloqueiam a conta dependente de CD/ataque sem interromper a análise.
+CSV truncado ou com campo além do limite recebe erro de leitura; aspas e quebras
+de linha válidas continuam preservadas literalmente.
+
 O bot integra a ANALISE 11 entregue em `ccbd053c8f7e68f8b4ac223f721b309111d2dcc0`.
 Contrato, mapa de campos, colisão do formato 4, cobertura, limites e cadastro de
 aprovações estão em [INTEGRACAO-B47.md](INTEGRACAO-B47.md). O manifesto completo

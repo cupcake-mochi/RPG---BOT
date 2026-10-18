@@ -46,26 +46,35 @@ Bot inicial: `7e4dc35209ea840549d5ccf5a0b49834da21d117`.
 
 ## Evidência já obtida
 
-Suíte completa final desta revisão: **772 testes executados, 771 aprovados
-e um online opcional pulado**, em 106,725 s. Comando: de `Closure/src/`,
+Suíte completa final desta revisão: **784 testes executados, 783 aprovados
+e um online opcional pulado**, em 108,989 s. Comando: de `Closure/src/`,
 `../.venv/bin/python -m unittest discover -s testes`. A suíte inclui legado,
 leitor, integração, campanha, custom, painel e demais funcionalidades do projeto.
-As 30 novas regressões em `test_b47_revisao.py` passaram isoladamente antes
-da suíte completa. As 48 de `test_b47_derivados.py` permanecem incluídas.
+As 12 regressões desta continuação cobrem requisitos de Origem, efeitos que
+interrompiam CD/ataques e CSV malformado/excessivo. Os quatro módulos B47
+passaram com 139 testes antes dos dois novos casos de leitura; os oito testes
+do leitor passaram após essa alteração. Tudo está incluído na suíte completa.
 Sem chamadas reais a modelos. PR conferida sem comentários/revisões pendentes.
 
 Primeiro fechamento: 694 testes (693 + um opcional). As revisões anteriores
-passaram com 733, 737 e 742 testes; a entrega final acima inclui todas as
+passaram com 733, 737, 742 e 772 testes; a entrega final acima inclui todas as
 mudanças posteriores, sem reutilizar um resultado anterior como validação final.
 
 Pacote local regenerado: `Closure/src/var/closure-lab.zip` (ignorado pelo Git),
-67 arquivos, cerca de 1122 KB. Os 52 fontes/recursos Python/JSON/TSV correspondem
+67 arquivos, cerca de 1122 KB. Os 59 fontes/recursos Python/JSON/TSV correspondem
 exatamente ao checkout final; sem `.env`, banco ou cadastro real da campanha.
-SHA256: `85f7d575ea858008f60e8fb04b6a14e62e08620086a969f5c969ab624348ff49`.
+SHA256: `13eefb60a0922d53ae54a4260c15544de9419b018f77a80c585cf7a3f2bcdcf3`.
 O operador deve preservar o cadastro de campanha existente ao publicar; ele
 não faz parte do ZIP. Não houve envio à Discloud.
 
 ## Continuação implementada
+
+- Menores publicadas conferem a marcante exigida (modalidade/clã) pelo catálogo,
+  nas duas vagas, Sem Técnica e Origem custom com base. Marcante vazia é
+  informação insuficiente; incompatibilidade bloqueia contas da Origem.
+- Efeito inválido/duplicado em CD/ataques não interrompe análise nem permite
+  certificar o alvo; contas independentes continuam. CSV truncado/excessivo
+  recebe erro de leitura, preservando aspas/quebras de linha válidas.
 
 - Iniciativa, Maestria/Classe/Refino/Classes 0 gratuitas e Sequelas/Morrendo.
 - CD/ataques: troca numérica, divergências impossíveis e seletor ausente

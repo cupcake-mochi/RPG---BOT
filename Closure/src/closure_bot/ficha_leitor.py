@@ -5,9 +5,10 @@ A aba tem quatro colunas, chave · valor · célula · parte, e a linha 1 é o c
     openpyxl lê com data_only, mesmo com a aba oculta;
   - o link da planilha aberta pra leitura: a aba sai em CSV pela exportação do Google (gviz), sem conta e sem chave.
 
-A coluna de valores vem toda como texto (no CSV o Google escolhe um tipo por coluna, e misturar número com texto
-apagava os textos), então `normaliza` converte: número com vírgula decimal, caixa de marcar como 1/0 e vazio como
-"não preenchido" (""). Referência: o ler-analise.py da worktree da ficha (B47, fase 1).
+A coluna de valores vem toda como texto. `normaliza` usa o tipo semântico da chave:
+texto conserva o conteúdo literal; números e caixas são convertidos somente nos
+campos correspondentes. Vazio continua "não preenchido" (""). O manifesto B47
+fica em recursos/b47-campos.tsv; célula de origem é apenas diagnóstico.
 
 Este módulo só lê. Quem confere é o ficha_corretor.py, sem IA, e o bot nunca escreve na ficha.
 """
@@ -44,7 +45,7 @@ class Campo:
 
 
 def normaliza(valor, chave: str | None = None) -> object:
-    """'1,5' -> 1.5, '3' -> 3, 'VERDADEIRO'/'TRUE' -> 1, 'FALSO'/'FALSE' -> 0, None -> "", o resto texto sem as pontas."""
+    """Preserva texto literal; converte números/caixas conforme a chave. Sem chave, mantém a API legada."""
     if chave is not None and tipo(chave) == "texto":
         return "" if valor is None else str(valor)
     if valor is None:
@@ -99,7 +100,10 @@ def de_csv(texto: str) -> dict[str, Campo]:
     """O CSV que o Google devolve pelo link. Página de login ou de erro no lugar do CSV vira FichaIlegivel."""
     if texto.lstrip()[:15].lower().startswith(("<!doctype", "<html")):
         raise FichaIlegivel("a planilha não está aberta pra leitura pelo link")
-    ficha = de_linhas(csv.reader(io.StringIO(texto)))
+    try:
+        ficha = de_linhas(csv.reader(io.StringIO(texto), strict=True))
+    except csv.Error as erro:
+        raise FichaIlegivel("o CSV da aba ANALISE está malformado ou contém um campo grande demais") from erro
     if "formato.versao" not in ficha:
         raise FichaIlegivel("a planilha não tem a aba ANALISE")
     return ficha

@@ -125,19 +125,26 @@ def conferir_origem(ficha,ctx,r):
         escolhido=valor(ficha,campo)
         if not escolhido:
             problema(r,campo,'escolher capacidade da Origem','vazio',pendente=True,regra='informação',ancora='origens--origens');continue
-        permitidas={c['nome'] for c in pai[grupo]} if pai else set()
+        permitidas={c['nome']:c for c in pai[grupo]} if pai else {}
+        exige=''
         registro=next((d for d in ctx.registros.values() if d.tipo==('Marcante' if grupo=='marcantes' else 'Menor') and d.nome==escolhido and d.valida),None)
         if registro and registro.campos.get('campo.origem') in (nome,pai['menu'] if pai else nome):
             if not registro.aprovada:
                 problema(r,campo,'aprovação da capacidade custom pelo mestre',escolhido,pendente=True,regra='aprovação')
             exige=registro.campos.get('campo.exige_marcante','')
-            if grupo=='menores' and exige not in ('','—') and valor(ficha,'origem.marcante')!=exige:
-                problema(r,campo,'marcante exigida: '+exige,valor(ficha,'origem.marcante'),regra='custom',ancora='origens--origens')
         elif escolhido not in permitidas:
             if 'mestre' in str(escolhido).casefold():
                 problema(r,campo,'definição/aprovação verificável da capacidade criada',escolhido,pendente=True,regra='aprovação')
             else:
                 problema(r,campo,'capacidade publicada ou cadastro válido vinculado a esta Origem',escolhido,regra='custom',ancora='origens--origens')
+        elif grupo=='menores':
+            exige=permitidas[escolhido].get('exige') or ''
+        if grupo=='menores' and exige not in ('','—'):
+            marcante=valor(ficha,'origem.marcante')
+            if marcante!=exige:
+                problema(r,campo,'marcante exigida: '+exige,marcante or 'vazio',
+                         pendente=marcante=='',regra='informação' if marcante=='' else 'custom',
+                         ancora='origens--origem-escolhas')
         if grupo=='menores' and escolhido in vistas:
             problema(r,campo,'duas menores distintas',escolhido,regra='custom',ancora='origens--origens')
         vistas.add(escolhido)

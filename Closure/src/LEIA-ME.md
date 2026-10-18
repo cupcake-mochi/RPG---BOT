@@ -9,10 +9,15 @@ Ferramenta reutiliza contas da base; aprovação não executa prosa. Regressões
 `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao`
 (de `Closure/src/`); suíte completa: `../.venv/bin/python -m unittest discover -s testes`.
 
+Menores publicadas agora conferem também a marcante exigida pelo catálogo,
+incluindo clã/modalidade, Sem Técnica e Origem custom herdada. Marcante vazia
+é pendência. Efeitos inválidos em CD/ataques preservam as outras contas e o
+painel; CSV malformado/excessivo recebe erro de leitura, sem alterar os limites.
+
 A revisão seguinte acrescenta dependências aprovadas de Restrições embutidas,
 limites por identidade/modalidade, bloqueio de contas de entidade com distribuição
 inválida e CD de Controle por saldo recalculado. O motor puro interno recebe
-contexto explícito de TR de Melhorias. Resultados atuais: 772 testes, 771
+contexto explícito de TR de Melhorias. Resultados atuais: 784 testes, 783
 aprovados e um opcional pulado; estado detalhado em [`RETOMADA-B47.md`](../docs/RETOMADA-B47.md).
 
 **Voz das reações v22 (15/10):** Mizuki esclareceu que o limite de conteúdo não deve neutralizar a personalidade. A orientação usa a voz/reações do card, inclusive humor, ironia, reserva ou crítica quando couberem, e retira a expressão parte neutra do pedido. Cards, comandos, ativação e limites preservados. Sem chamadas pagas; naturalidade depende do piloto. Relatório em `pesquisa/validacao/2026-10-15-voz-reacoes-v22/relatorio.txt`.

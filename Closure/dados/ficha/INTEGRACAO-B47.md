@@ -120,9 +120,9 @@ Comandos de dentro de `Closure/src/`:
 ```
 
 **Primeiro fechamento na nuvem:** 694 testes, 693 aprovados e um online opcional
-pulado. **Revisão atual: 772 testes, 771 aprovados e um online opcional pulado**,
-em 106,725 s. As 30 novas regressões de `test_b47_revisao.py` passaram também
-isoladamente; as 48 de contas/herança da entrega anterior continuam na suíte.
+pulado. **Revisão atual: 784 testes, 783 aprovados e um online opcional pulado**,
+em 108,989 s. São 12 regressões adicionais nesta continuação; os casos anteriores
+de dependências, distribuição, Controle e contas/herança continuam na suíte.
 Estado de empacotamento em `docs/RETOMADA-B47.md`. Não houve recálculo Google/LibreOffice.
 
 As fixtures B47 são sintéticas e montadas em memória pelo manifesto. Não há
@@ -182,6 +182,23 @@ Falhas investigadas durante a implementação:
 13. O helper `testar` da bateria nova foi renomeado para `analisar`, pois o
     unittest coleta qualquer método iniciado por `test`. Não se alterou
     nenhuma expectativa mecânica para corrigir esse erro de coleta.
+14. A continuação reproduziu uma interrupção real: efeito com número inválido
+    ou duplicado na CD/ataque levava `None` ao formatador de possibilidades.
+    Agora a caixa inválida bloqueia somente a conta dependente, mantendo o
+    diagnóstico da linha do efeito e as outras contas independentes. Troca
+    válida não encobre uma segunda linha inválida na mesma caixa.
+15. Menores publicadas só tinham o vínculo com a Origem conferido, sem seu
+    requisito estruturado `exige`. Conselho Interior com Conflito e as
+    menores exclusivas de outro clã eram aceitos. As seis exigências atuais
+    são verificadas nas duas vagas, em Sem Técnica e em Origem custom com
+    base. Marcante vazia é pendência de informação; incompatível é erro,
+    impedindo certificação das contas dependentes da Origem. Prosa editada
+    pelo jogador não altera o requisito. Os testes novos falharam no código
+    anterior e passaram com a correção, sem mudar expectativas para verde.
+16. CSV com campo acima do limite do parser lançava `csv.Error` fora do
+    tratamento de leitura. O leitor devolve `FichaIlegivel` para esse caso e
+    CSV truncado, conservando aspas/quebras/literais de CSV válido. Não se
+    aumentou o limite global para aceitar a entrada excessiva.
 
 ## Validação externa e publicação
 
@@ -202,6 +219,10 @@ Em servidor de teste, após revisão da PR e implantação **pelo operador**:
    Famílias diferentes em duas entidades, treino e Ofício custom nos limites.
 6. Conferir seletor/setas, páginas de pendências e limites. Não interpretar
    conferência parcial como autorização para jogo.
+7. Escolher Conselho Interior com Conflito e uma menor exclusiva de outro clã;
+   conferir campo/requisito no painel. Deixar a marcante vazia deve mostrar
+   pendência. Um efeito com valor não numérico em CD/ataque deve gerar um
+   diagnóstico e preservar as demais páginas, sem falha do comando.
 
 Não executar `construir()`/`continuar()`, editar a oficial, importar XLSX no Google,
 alterar acessos, chamar modelos pagos ou reiniciar produção para esse roteiro.

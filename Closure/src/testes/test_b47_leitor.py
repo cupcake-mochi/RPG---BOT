@@ -48,6 +48,19 @@ class LeitorB47(unittest.TestCase):
         self.assertEqual(variante(de_linhas([['formato.versao','4'],['tr.fisico.bonus','2']])), 'legado-tr-v4')
         self.assertIsNone(variante(de_csv('chave,valor\nformato.versao,99\nnome,007\n')))
 
+    def test_csv_truncado_ou_campo_excessivo_tem_erro_de_leitura(self):
+        import csv
+        for texto in ('chave,valor\nformato.versao,11\nnome,"texto interrompido',
+                      'chave,valor\nformato.versao,11\nnome,'+'x'*(csv.field_size_limit()+1)):
+            with self.subTest(tamanho=len(texto)), self.assertRaisesRegex(FichaIlegivel,'CSV.*malformado'):
+                de_csv(texto)
+
+    def test_csv_com_aspas_e_quebras_preserva_texto_valido(self):
+        texto='chave,valor\nformato.versao,11\nnome,"Nome, com ""aspas"""\ncustom.dano.1.definicao,"=literal\nsegunda linha *?~"\n'
+        f=de_csv(texto)
+        self.assertEqual(f['nome'].valor,'Nome, com "aspas"')
+        self.assertEqual(f['custom.dano.1.definicao'].valor,'=literal\nsegunda linha *?~')
+
 
 if __name__ == '__main__':
     unittest.main()
