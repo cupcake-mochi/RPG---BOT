@@ -16,8 +16,9 @@ Mantém a correção anterior de cartões vazios. Suíte atual: **822 executados
 ZIP**. Cinco regressões novas falham no código anterior por asserção. Pacote
 com 67 arquivos iguais aos fontes, SHA256
 `8a210c5aa82bf54a5b8af56486123e0b0199d1d09314b71cf2067b20aab54e40`.
-A validação completa usou fonte idêntica e as mesmas dependências em disco
-local, após timeouts de mídia no disco externo; detalhes no relatório.
+O código validado e as 67 entradas do ZIP permanecem idênticos ao checkout;
+o registro documental foi atualizado depois. Mesmas dependências em disco
+local após timeouts de mídia no disco externo; detalhes no relatório.
 
 O Discord continua na publicação da PR 64. Faltam revisão/publicação da PR 65,
 observação das novas cores após implantação autorizada, segunda pessoa no

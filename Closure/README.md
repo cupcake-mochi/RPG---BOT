@@ -1,25 +1,32 @@
-**Publicação autorizada em 18/10:** PR 64 mesclada em
-`1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.
-Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados
-idênticos ao ZIP; `.env` e dois bancos preservados byte a byte, integridade ok.
-Memória de 1.000 MB mantida. Cadastro B47 de campanha ainda não existe na
-produção; nenhuma aprovação real foi presumida. Testes reais por link/XLSX,
-campanha e navegação do painel continuam pendentes. Evidências em
-`pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
-
-**Revisão vigente de 18/10:** Máxima confere montagem, combinações e
-herança/aprovação; montagem inválida não certifica dano. Toca a Alma simples
-confere metade sem conceder permissão; a fórmula fixa do produtor fica pendente.
-Quebra Coisa entra no teto, sem multiplicar dano secundário. **814 testes,
-813 aprovados e um online opcional pulado**; 17 regressões passaram no ZIP.
-[Retomada](docs/RETOMADA-B47.md). No checkpoint de testes, ainda sem merge/implantação; oficial preservada.
-
-**Atualização de 18/10/2026 — integração B47 do bot:** implementação, contrato auditado, aprovações por servidor e testes offline em [`dados/ficha/INTEGRACAO-B47.md`](dados/ficha/INTEGRACAO-B47.md). A entrega da ficha está concluída; não retomar C/D. O bot apresenta análise parcial onde faltam dados/automação. Publicação e teste externo permanecem separados.
-
-Continuação: corrigidos cabeçalho CSV do Google, herança de Trilha e duas certificações dependentes. CSV/XLSX reais da B47 atual: 8.190 chaves, zero diferenças, somente leitura. [Retomada](docs/RETOMADA-B47.md) · [Proposta separada do produtor](dados/ficha/PROPOSTA-CONTRATO-B47.md) · [Roteiro externo](dados/ficha/ROTEIRO-EXTERNO-B47.md). PR 64 continua rascunho; sem merge/implantação.
-Checkpoint anterior: 797 testes, 796 aprovados e um online opcional pulado; teste online separado aprovado.
-
 # Closure
+
+**B47 · estado atual de 18/10/2026:** 41 análises reais no Discord concluídas:
+13 da bateria nativa (seis links/seis XLSX/reanálise) e 28 ensaios avançados
+por XLSX, com 143 páginas conferidas. A segunda rodada usa casos técnicos do
+consumidor; não é novo recálculo nativo. Aprovação extra de Trilha removida,
+cadastro original restaurado e relido idêntico.
+
+**Código da PR 65, ainda não implantado:** cartões custom vazios não ativam
+cadastros pelos defaults; resumo conserva veredito geral e páginas internas
+usam cor local (erro vermelho, pendência/limite amarelo, conferido verde).
+Leitura XLSX e contas saem do loop principal do Discord. Suíte: **822
+executados, 821 aprovados e um opcional pulado**; **26/26 testes no ZIP**.
+Pacote regenerado, 67 arquivos iguais aos fontes, sem dados operacionais.
+
+**Produção:** continua na PR 64 mesclada em
+`1997f25fe990eb307204365cda172aeec831969f`, publicação autorizada e conferida.
+Não houve novo merge, deploy, reinício, modelo pago ou alteração da oficial
+nos testes avançados. Faltam revisão/publicação da PR 65, observação das novas
+cores e segunda pessoa no painel. Lacunas e defeitos do produtor, recálculo
+nativo ampliado e decisões humanas do mestre continuam explicitamente parciais.
+A ficha B47 foi entregue; não retomar C/D nem alterar a oficial.
+
+[Contrato e cobertura](dados/ficha/INTEGRACAO-B47.md) ·
+[Retomada exata](docs/RETOMADA-B47.md) ·
+[Roteiro externo](dados/ficha/ROTEIRO-EXTERNO-B47.md) ·
+[Proposta separada do produtor](dados/ficha/PROPOSTA-CONTRATO-B47.md) ·
+[Evidências avançadas](pesquisa/validacao/2026-10-18-b47-avancados/relatorio.txt).
+Os registros datados abaixo são históricos.
 
 **Voz das reações v22 (15/10):** Mizuki esclareceu que o limite de conteúdo não deve neutralizar a personalidade. A orientação usa a voz/reações do card, inclusive humor, ironia, reserva ou crítica quando couberem, e retira a expressão parte neutra do pedido. Cards, comandos, ativação e limites preservados. Sem chamadas pagas; naturalidade depende do piloto. Relatório em `pesquisa/validacao/2026-10-15-voz-reacoes-v22/relatorio.txt`.
 

@@ -64,7 +64,9 @@ Cinco testes novos, contra c78aee6, produziram sete falhas de asserção/subcaso
 e zero erro de execução. No código atual: painel 18/18; suíte completa
 822 executados, 821 aprovados e um online opcional pulado, em 217,436 s.
 Os 26 testes de painel e compatibilidade v4 passaram contra o ZIP extraído
-(em 22,892 s). O snapshot de teste coincide com 711 fontes/recursos do checkout.
+(em 22,892 s). Antes deste registro documental, o snapshot de teste coincidiu com 711
+fontes/recursos do checkout. O código não mudou depois; as 67 entradas do ZIP
+foram reconferidas idênticas ao checkout final.
 
 As primeiras execuções no disco externo tiveram timeouts de subprocessos de
 mídia existentes. A rodada na árvore local com dependências no disco externo
