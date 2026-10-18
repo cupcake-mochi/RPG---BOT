@@ -1,7 +1,7 @@
 """Regressões de cobertura B47: entradas próprias, herança e dependências."""
 import unittest
 
-from closure_bot.ficha_corretor import Aprovados, Resultado, conferir
+from closure_bot.ficha_corretor import conferir
 from closure_bot.ficha_configuracao import ContextoB47, Efeito
 from closure_bot.ficha_b47 import conferir_familias
 from closure_bot.ficha_entidade_repertorio import conferir_repertorio_entidade
@@ -111,4 +111,3 @@ class EspecializacaoCustom(unittest.TestCase):
                 r=conferir(f,REF,aprovados=aprovar(f,'custom.pericia.1'))
                 self.assertIn('personagem.pericia_custom.1.especializacao',[p.campo for p in r.problemas])
                 self.assertFalse(any('Runa sintética: bônus' in s for s in r.conferidos))
-

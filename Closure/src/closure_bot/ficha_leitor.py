@@ -29,7 +29,10 @@ ABA = "ANALISE"
 CABECALHO = ("chave", "valor", "célula", "parte")
 # A aba é pública na ficha aberta pra leitura; o id da planilha é o que vem depois de /d/ no link.
 ID_PLANILHA = re.compile(r"^[A-Za-z0-9_-]{20,}$")
-URL_CSV = "https://docs.google.com/spreadsheets/d/{id}/gviz/tq?tqx=out:csv&sheet=" + ABA
+# O contrato tem exatamente uma linha de cabeçalho. Como todos os valores
+# são texto, a inferência do gviz pode absorver milhares de registros como
+# rótulos de coluna e produzir um cabeçalho maior que o limite do parser.
+URL_CSV = "https://docs.google.com/spreadsheets/d/{id}/gviz/tq?tqx=out:csv&headers=1&sheet=" + ABA
 LIMITE_BYTES = 5_000_000  # a ANALISE inteira tem uns 300 KB; mais que isso não é a aba
 
 

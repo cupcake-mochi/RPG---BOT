@@ -2,7 +2,7 @@
 import io
 import unittest
 from openpyxl import Workbook
-from closure_bot.ficha_leitor import de_linhas, de_csv, de_xlsx, FichaIlegivel
+from closure_bot.ficha_leitor import de_linhas, de_csv, de_xlsx, de_link, FichaIlegivel
 from closure_bot.ficha_esquema import campos_b47, variante
 
 
@@ -60,6 +60,35 @@ class LeitorB47(unittest.TestCase):
         f=de_csv(texto)
         self.assertEqual(f['nome'].valor,'Nome, com "aspas"')
         self.assertEqual(f['custom.dano.1.definicao'].valor,'=literal\nsegunda linha *?~')
+
+
+class CabecalhoPeloLink(unittest.IsolatedAsyncioTestCase):
+    async def test_link_preserva_dados_em_vez_de_inferir_cabecalho_gigante(self):
+        from urllib.parse import urlsplit, parse_qs
+
+        class Resposta:
+            status=200
+            def __init__(self, corpo):
+                self.corpo=corpo.encode()
+                self.content=self
+            async def __aenter__(self): return self
+            async def __aexit__(self,*args): pass
+            async def iter_chunked(self,tamanho):
+                for i in range(0,len(self.corpo),tamanho):
+                    yield self.corpo[i:i+tamanho]
+
+        class Sessao:
+            def get(self,url):
+                # Simula o comportamento observado no gviz para colunas de
+                # texto: sem cabeçalho explícito, dados viram rótulo da coluna.
+                q=parse_qs(urlsplit(url).query)
+                if q.get('headers')==['1']:
+                    return Resposta('chave,valor,célula,parte\nformato.versao,11,,cabeçalho\nnome,007,,entrada\n')
+                return Resposta('"chave '+'campo '*25000+'",valor,célula,parte\n')
+
+        f=await de_link('a'*20,sessao=Sessao())
+        self.assertEqual(f['formato.versao'].valor,11)
+        self.assertEqual(f['nome'].valor,'007')
 
 
 if __name__ == '__main__':
