@@ -11,8 +11,19 @@ permitir o teste também no runtime anterior. Com autorização posterior do
 Mizuki, seis cópias receberam leitura por link e quatro hashes sintéticos
 foram instalados somente no servidor escolhido. Cadastro ativo relido e
 conferido; sem mudar regras gerais, reiniciar ou implantar código. Os seis
-links anônimos coincidem com os XLSX nas 8.190 chaves. Discord/painel real
-continuam pendentes; não são comprovados por essa comparação.
+links anônimos coincidem com os XLSX nas 8.190 chaves.
+
+**Discord executado com autorização em 18/10:** 13 análises reais na versão
+já publicada: seis links, seis XLSX e uma reanálise. Os seis pares devolveram
+resumos idênticos: casos 01/02 sem divergências nem aprovação pendente; 03 com
+quatro aprovações pendentes apesar de MESTRE VIU; 04 reabriu somente o efeito
+alterado; 05 reprovou Vida 999/23; 06 reprovou a regra/total não autorizados.
+As seis páginas da 02, quatro setas e seletor foram exercitados. Encerramento
+após dez minutos e reabertura por nova análise foram observados. Sem chamadas
+pagas, reinício, implantação do patch 65 ou alteração da oficial nesta rodada.
+Evidências: `pesquisa/validacao/2026-10-18-b47-discord/`. Segunda pessoa no painel
+e os demais casos ampliados do roteiro externo ainda não foram exercitados
+no Discord; aprovação integral continua limitada pelo produtor e pelo mestre.
 
 **Publicação autorizada em 18/10:** PR 64 mesclada em
 `1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.
@@ -20,11 +31,11 @@ Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados
 idênticos ao ZIP; `.env` e dois bancos preservados byte a byte, integridade ok.
 Memória de 1.000 MB mantida. Nessa publicação inicial o cadastro B47 de campanha
 ainda não existia; posteriormente foram instaladas apenas as aprovações
-sintéticas autorizadas, conforme registro acima. Testes reais no Discord por
-link/XLSX e navegação do painel continuam pendentes. Evidências iniciais em
+sintéticas autorizadas. A bateria real por link/XLSX e navegação descrita
+acima passou nessa versão; não publica o patch 65. Evidências da implantação em
 `pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
 
-**Revisão vigente de 18/10:** Máxima confere montagem, combinações e
+**Checkpoint anterior de código em 18/10:** Máxima confere montagem, combinações e
 herança/aprovação; montagem inválida não certifica dano. Toca a Alma simples
 confere metade sem conceder permissão; a fórmula fixa do produtor fica pendente.
 Quebra Coisa entra no teto, sem multiplicar dano secundário. **814 testes,
@@ -32,10 +43,11 @@ Quebra Coisa entra no teto, sem multiplicar dano secundário. **814 testes,
 [Retomada](../../docs/RETOMADA-B47.md). No checkpoint de testes, ainda sem merge/implantação; oficial preservada.
 
 Implementação determinística no projeto `Closure/`. A ficha oficial não foi editada,
-nenhum Apps Script foi publicado, nenhum XLSX foi importado no Google e nenhuma
-mensagem foi enviada ao Discord. Não há chamadas reais a modelos nestes testes.
+nenhum Apps Script foi publicado e nenhum XLSX foi importado no Google. Mensagens
+sintéticas de teste foram enviadas somente após a autorização posterior registrada
+acima. Não há chamadas reais a modelos nestes testes.
 
-Continuação de 18/10: leitura pública CSV/XLSX da B47 oficial, 8.190 chaves em
+Checkpoint anterior de 18/10: leitura pública CSV/XLSX da B47 oficial, 8.190 chaves em
 ambas e zero diferenças. Corrigido cabeçalho automático do gviz com `headers=1`;
 Trilha custom herda a base aprovada para Famílias/extras; troca fixa independe
 da conta-base; especialização inválida não certifica bônus. Evidências e limites
@@ -247,13 +259,19 @@ Falhas investigadas durante a implementação:
 
 ## Validação externa e publicação
 
-Nesta continuação Google foi usado somente para leitura pública de CSV/XLSX;
-Discord e LibreOffice não foram usados. Git/Python/Node/testes estavam
-disponíveis; acesso Git foi verificado. A conta colaboradora passou a permitir
-push durante esta tarefa. A API GitHub depende da política de rede da nuvem.
+Na primeira continuação, Google foi usado somente para leitura pública de
+CSV/XLSX. Depois, com autorização, seis cópias foram preenchidas e calculadas no
+Sheets, exportadas e exercitadas no Discord: os 13 comandos descritos acima.
+Git, Python, Node, Sheets e navegador autenticado estavam disponíveis; não foi
+necessário LibreOffice. Acesso Git/push conferido. A evidência agregada fica em
+`pesquisa/validacao/2026-10-18-b47-discord/`; capturas e links das respostas ficam
+na entrega local, sem cadastro operacional ou IDs de Discord publicados no Git.
 
 Roteiro detalhado: [ROTEIRO-EXTERNO-B47.md](ROTEIRO-EXTERNO-B47.md).
-Em servidor de teste, após revisão da PR e implantação **pelo operador**:
+Os itens abaixo são o roteiro ampliado. A bateria de seis casos cobriu base,
+custom/aprovação exata, efeito alterado, resultado adulterado, campanha e painel;
+os demais cenários não passam a ser nativamente comprovados por essa rodada.
+Usar a versão já publicada, sem repetir implantação:
 
 1. Preservar banco/chave/cadastro de campanha e garantir uma única instância.
 2. `/ficha analisar` e `GC:ficha` com uma cópia sintética B47 calculada, primeiro

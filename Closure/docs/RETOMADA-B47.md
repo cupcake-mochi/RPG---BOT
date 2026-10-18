@@ -11,8 +11,19 @@ permitir o teste também no runtime anterior. Com autorização posterior do
 Mizuki, seis cópias receberam leitura por link e quatro hashes sintéticos
 foram instalados somente no servidor escolhido. Cadastro ativo relido e
 conferido; sem mudar regras gerais, reiniciar ou implantar código. Os seis
-links anônimos coincidem com os XLSX nas 8.190 chaves. Discord/painel real
-continuam pendentes; não são comprovados por essa comparação.
+links anônimos coincidem com os XLSX nas 8.190 chaves.
+
+**Discord executado com autorização em 18/10:** 13 análises reais na versão
+já publicada: seis links, seis XLSX e uma reanálise. Os seis pares devolveram
+resumos idênticos: casos 01/02 sem divergências nem aprovação pendente; 03 com
+quatro aprovações pendentes apesar de MESTRE VIU; 04 reabriu somente o efeito
+alterado; 05 reprovou Vida 999/23; 06 reprovou a regra/total não autorizados.
+As seis páginas da 02, quatro setas e seletor foram exercitados. Encerramento
+após dez minutos e reabertura por nova análise foram observados. Sem chamadas
+pagas, reinício, implantação do patch 65 ou alteração da oficial nesta rodada.
+Evidências: `pesquisa/validacao/2026-10-18-b47-discord/`. Segunda pessoa no painel
+e os demais casos ampliados do roteiro externo ainda não foram exercitados
+no Discord; aprovação integral continua limitada pelo produtor e pelo mestre.
 
 Branch: `codex/integracao-b47`, em `cupcake-mochi/RPG---BOT`.
 PR de correção para revisão: https://github.com/cupcake-mochi/RPG---BOT/pull/65 (rascunho; patch ainda não implantado).
@@ -37,15 +48,20 @@ Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados
 idênticos ao ZIP; `.env` e dois bancos preservados byte a byte, integridade ok.
 Memória de 1.000 MB mantida. Nessa publicação inicial o cadastro B47 de campanha
 ainda não existia; posteriormente foram instaladas apenas as aprovações
-sintéticas autorizadas, conforme registro acima. Testes reais no Discord por
-link/XLSX e navegação do painel continuam pendentes. Evidências iniciais em
+sintéticas autorizadas. A bateria real por link/XLSX e navegação descrita
+acima passou nessa versão; não publica o patch 65. Evidências da implantação em
 `pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
 
 Retomar de `origin/codex/integracao-b47`, após conferir remotos e árvore local.
 `main` contém a publicação da PR 64; a PR 65 acrescenta a correção dos cartões
 vazios e o registro dos testes. Não refazer merge/deploy da PR 64 nem presumir
-publicação do patch 65. Próximo passo é o roteiro funcional no Discord,
-sem chamadas a modelos e com campanha real somente após decisão do mestre.
+publicação do patch 65. Próximo passo: revisão da PR 65; merge/implantação
+continuam separados desta bateria. Para ampliar o piloto, usar o roteiro externo:
+segunda pessoa e cenários ainda não executados, sem modelos pagos. Campanha de
+jogo e novas aprovações dependem de decisão real do mestre. Retomada exata:
+conferir `git status --short --branch`, `git fetch origin` e a PR 65; ler esta
+retomada e `dados/ficha/ROTEIRO-EXTERNO-B47.md`. Preservar os seis casos aprovados
+como evidência, sem repetir a bateria ou a publicação por rotina.
 Backups privados ficam fora do Git; não anexar seus arquivos à PR.
 
 ## Checkpoint de código · Máxima e teto de dano · 18/10

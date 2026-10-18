@@ -1,0 +1,84 @@
+{
+  "data": "2026-10-18",
+  "runtime_publicado": "1997f25fe990eb307204365cda172aeec831969f",
+  "patch_cartoes_vazios_implantado": false,
+  "analises_reais": 13,
+  "links": 7,
+  "xlsx": 6,
+  "comandos": {
+    "slash": 2,
+    "GC:ficha": 11
+  },
+  "casos": [
+    {
+      "caso": 1,
+      "erros": 0,
+      "pendencias": 0,
+      "resumos_link_xlsx_identicos": true
+    },
+    {
+      "caso": 2,
+      "erros": 0,
+      "pendencias": 0,
+      "resumos_link_xlsx_identicos": true
+    },
+    {
+      "caso": 3,
+      "erros": 0,
+      "pendencias": 4,
+      "resumos_link_xlsx_identicos": true
+    },
+    {
+      "caso": 4,
+      "erros": 0,
+      "pendencias": 1,
+      "resumos_link_xlsx_identicos": true
+    },
+    {
+      "caso": 5,
+      "erros": 1,
+      "pendencias": 0,
+      "resumos_link_xlsx_identicos": true
+    },
+    {
+      "caso": 6,
+      "erros": 3,
+      "pendencias": 0,
+      "resumos_link_xlsx_identicos": true
+    }
+  ],
+  "painel": {
+    "seis_paginas_caso_02": true,
+    "setas": [
+      "Primeira",
+      "Anterior",
+      "Próxima",
+      "Última"
+    ],
+    "seletor_direto": true,
+    "revisao_quatro_aprovacoes_caso_03": true,
+    "revisao_vida_999_esperado_23": true,
+    "expiracao_10_min_observada": true,
+    "quatro_botoes_desabilitados": true,
+    "retorno_resumo_na_expiracao": true,
+    "nova_analise_abriu_controles": true,
+    "callback_novo_navegou_pagina_2": true,
+    "segunda_pessoa_testada": false
+  },
+  "aprovacoes": {
+    "exatas_sinteticas": 4,
+    "mestre_viu_autoriza": false,
+    "efeito_alterado_reabre_so_sua_aprovacao": true,
+    "isolamento_outro_servidor": "simulado localmente; não exercitado em outro servidor no Discord"
+  },
+  "nova_implantacao": false,
+  "reinicio": false,
+  "chamadas_pagas": 0,
+  "ficha_oficial_alterada": false,
+  "nao_executado_nesta_bateria": [
+    "segunda pessoa no painel",
+    "demais casos do roteiro externo",
+    "correções nativas dos quatro defeitos do produtor"
+  ],
+  "limite": "Os casos sem divergências continuam parciais por lacunas do contrato e decisões humanas; não certificam a ficha inteira."
+}

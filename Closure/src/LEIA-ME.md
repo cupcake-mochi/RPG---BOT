@@ -11,8 +11,19 @@ permitir o teste também no runtime anterior. Com autorização posterior do
 Mizuki, seis cópias receberam leitura por link e quatro hashes sintéticos
 foram instalados somente no servidor escolhido. Cadastro ativo relido e
 conferido; sem mudar regras gerais, reiniciar ou implantar código. Os seis
-links anônimos coincidem com os XLSX nas 8.190 chaves. Discord/painel real
-continuam pendentes; não são comprovados por essa comparação.
+links anônimos coincidem com os XLSX nas 8.190 chaves.
+
+**Discord executado com autorização em 18/10:** 13 análises reais na versão
+já publicada: seis links, seis XLSX e uma reanálise. Os seis pares devolveram
+resumos idênticos: casos 01/02 sem divergências nem aprovação pendente; 03 com
+quatro aprovações pendentes apesar de MESTRE VIU; 04 reabriu somente o efeito
+alterado; 05 reprovou Vida 999/23; 06 reprovou a regra/total não autorizados.
+As seis páginas da 02, quatro setas e seletor foram exercitados. Encerramento
+após dez minutos e reabertura por nova análise foram observados. Sem chamadas
+pagas, reinício, implantação do patch 65 ou alteração da oficial nesta rodada.
+Evidências: `pesquisa/validacao/2026-10-18-b47-discord/`. Segunda pessoa no painel
+e os demais casos ampliados do roteiro externo ainda não foram exercitados
+no Discord; aprovação integral continua limitada pelo produtor e pelo mestre.
 
 **Publicação autorizada em 18/10:** PR 64 mesclada em
 `1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.
@@ -20,11 +31,11 @@ Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados
 idênticos ao ZIP; `.env` e dois bancos preservados byte a byte, integridade ok.
 Memória de 1.000 MB mantida. Nessa publicação inicial o cadastro B47 de campanha
 ainda não existia; posteriormente foram instaladas apenas as aprovações
-sintéticas autorizadas, conforme registro acima. Testes reais no Discord por
-link/XLSX e navegação do painel continuam pendentes. Evidências iniciais em
+sintéticas autorizadas. A bateria real por link/XLSX e navegação descrita
+acima passou nessa versão; não publica o patch 65. Evidências da implantação em
 `pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
 
-**Revisão vigente de 18/10:** Máxima confere montagem, combinações e
+**Checkpoint anterior de código em 18/10:** Máxima confere montagem, combinações e
 herança/aprovação; montagem inválida não certifica dano. Toca a Alma simples
 confere metade sem conceder permissão; a fórmula fixa do produtor fica pendente.
 Quebra Coisa entra no teto, sem multiplicar dano secundário. **814 testes,
@@ -42,7 +53,7 @@ Cards, memória, mídia e rotas de modelos preservados.
 Checkpoint anterior: 797 testes, 796 aprovados e um online opcional pulado; teste
 online separado aprovado. Pacote final e roteiro ainda não foram implantados.
 
-**Integração B47 (18/10/2026):** ANALISE 11 por chave, leitor tipado, regras por servidor, efeitos e custom aprovados por definição exata. Cadastro local em `src/var/ficha-campanhas.json`; ferramenta do operador e comandos de teste em [`../dados/ficha/INTEGRACAO-B47.md`](../dados/ficha/INTEGRACAO-B47.md). Preserve esse arquivo na publicação junto do estado operacional. A B47 não emite as 485 adições exclusivas do TR-v4; os limites ficam visíveis no painel. Estados e formatos antigos abaixo são históricos. Não houve implantação nem validação Discord/Google nesta integração.
+**Integração B47 (18/10/2026):** ANALISE 11 por chave, leitor tipado, regras por servidor, efeitos e custom aprovados por definição exata. Cadastro local em `src/var/ficha-campanhas.json`; ferramenta do operador e comandos de teste em [`../dados/ficha/INTEGRACAO-B47.md`](../dados/ficha/INTEGRACAO-B47.md). Preserve esse arquivo na publicação junto do estado operacional. A B47 não emite as 485 adições exclusivas do TR-v4; os limites ficam visíveis no painel. Estados e formatos antigos abaixo são históricos. No checkpoint inicial ainda não havia implantação ou validação Discord/Google; os registros atuais acima prevalecem.
 
 Continuação: `ficha_derivados_b47.py` confere Iniciativa, progressão numérica,
 Sequelas/janela de Morrendo e escolhas de TR. CD/ataques/deslocamento distinguem

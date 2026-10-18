@@ -2,9 +2,19 @@
 
 Estado em 18/10/2026: PR 64 mesclada e implantação autorizada concluída.
 Startup, backups e igualdade dos arquivos instalados foram conferidos.
-Este roteiro funcional **ainda não registra execução real no Discord/Sheets**.
-Não repetir publicação. Campanha/aprovações reais e envio de mensagens exigem
-suas autorizações específicas; a conta matemática não usa modelo.
+A bateria nativa de seis fichas passou depois, com autorização do usuário:
+13 comandos reais no Discord (seis links, seis XLSX e uma reanálise), seis
+pares com resumos idênticos. Cobertos base, custom aprovada, MESTRE VIU sem
+permissão, efeito alterado após aprovação, Vida adulterada e campanha divergente.
+Setas, seletor, dez minutos de inatividade e reabertura também passaram.
+Evidências: `pesquisa/validacao/2026-10-18-b47-discord/` e
+[BATERIA-NATIVA-B47.md](BATERIA-NATIVA-B47.md).
+
+**Ainda não executados no Discord:** segunda pessoa no painel e os demais
+cenários ampliados da tabela abaixo. As regressões locais desses cenários não
+são validação nativa. A PR 65 continua em rascunho e não foi implantada.
+Não repetir publicação. Nova campanha de jogo, aprovações ou mensagens fora
+do tópico/bateria autorizados exigem escopo específico; a conta não usa modelo.
 
 ## Preparação do operador
 
@@ -45,6 +55,11 @@ pendências e páginas; diferenças de horário/guia não mudam as contas.
 
 ## Campanha e aprovação reais
 
+As quatro aprovações sintéticas desta bateria foram instaladas e lidas pelo
+runtime; 02/03/04 confirmaram aprovação exata, MESTRE VIU sem poder de autorização
+e reabertura do efeito alterado. Não representam aprovação de personagem real.
+Outro servidor foi simulado localmente, não exercitado no Discord nesta rodada.
+
 No computador do operador, em `Closure/`, cadastro privado e servidor corretos:
 
 ```bash
@@ -61,6 +76,10 @@ com base agora vinculam também o registro publicado da base; aprovações de
 rascunhos anteriores precisam ser refeitas quando o hash mudar.
 
 ## Painel e comandos
+
+Executados: ambos os comandos, link/XLSX, as seis páginas da 02, revisões da
+03/05, quatro setas, seletor, encerramento e reabertura. Nenhuma entidade foi
+incluída nesses seis casos. Falta navegação por uma segunda pessoa no Discord.
 
 Exercitar `/ficha analisar` e `GC:ficha`: link e anexo XLSX. Verificar resumo,
 revisão, TR/perícias, habilidades, entidades e limites; primeira/anterior/

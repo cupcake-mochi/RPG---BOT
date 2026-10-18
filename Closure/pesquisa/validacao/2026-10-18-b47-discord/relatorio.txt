@@ -1,0 +1,49 @@
+Validação real no Discord — B47 — 18/10/2026
+
+Ambiente: runtime da PR 64 já publicado (1997f25fe990eb307204365cda172aeec831969f).
+A PR 65, de cartões custom vazios, NÃO foi implantada nesta rodada. As seis
+cópias tinham somente os três menus padrão não utilizados limpos, como registrado
+em BATERIA-NATIVA-B47.md. Nenhuma mudança de código, reinício ou nova implantação.
+
+Autorização: o usuário indicou o tópico de testes e pediu a execução. Foram
+usadas seis fichas sintéticas nativas, publicadas com acesso de leitor autorizado,
+e as quatro aprovações sintéticas previamente autorizadas para o servidor.
+Nenhuma mensagem alheia aos testes foi enviada; nenhuma chamada paga a modelo.
+
+Executado: 13 análises reais — seis links, seis XLSX e uma reanálise por link.
+Duas por /ficha analisar (link e arquivo da 02); onze por GC:ficha.
+Os seis pares retornaram resumos textualmente idênticos. Resultados:
+
+Caso                         Erros  Aprovações pendentes  Resultado
+01 Base                      0      0                     Parcial; Vida 23
+02 Custom aprovada           0      0                     Parcial; Vida 25
+03 MESTRE VIU sem permissão   0      4                     Parcial; não autoriza
+04 Efeito +2 alterado a +3    0      1                     Só efeito.1 reaberto; Vida 26
+05 Vida adulterada 999       1      0                     Reprovada; esperado 23
+06 Orçamento 10 sem permissão 3      0                     Reprovada; livro autoriza 9
+
+Na 02, seis páginas examinadas: resumo, personagem, TR/perícias, habilidades
+e limites. Runologia Coruja B47 +1; Agulha de teste com PE 3, 18 m, Acerto e 2d8.
+Revisão da 03 listou as quatro aprovações; revisão da 05 mostrou Vida 999/23.
+Setas Primeira/Anterior/Próxima/Última e seletor direto funcionaram. Após dez
+minutos sem interação, o painel inicial da 02 voltou ao resumo e os quatro
+botões ficaram desabilitados. A 13ª análise criou controles novos e o clique
+Próxima abriu a página 2. O painel novo foi deixado no resumo.
+
+Não executado: navegação com segunda conta/pessoa. Demais cenários ampliados
+(Origem/Trilha herdada/entidades/Máxima/Alma/curingas/erros de arquivo) não fazem
+parte destes seis casos. Mantêm suas regressões locais e o roteiro externo;
+esta rodada não alega validação nativa desses cenários ou correção do produtor.
+
+Limites preservados: faltam entradas do produtor para partes de CD/ataques,
+competências, TR das entidades, inventário/carga e entidades ativas. Aprendizado,
+histórico, autorizações, requisitos livres, narrativa, distribuição entre alvos
+e interações de Alma não automatizadas continuam dependendo do mestre.
+Aprovação exata não converte prosa em benefício; parcial não é aprovação integral.
+
+Evidência pública: resultados.json agrega somente casos sintéticos, sem IDs de
+Discord, cadastro operacional, mensagens de jogadores, credenciais ou screenshots.
+Registros completos, URLs das respostas e capturas ficam na entrega local.
+A suíte de código vigente permanece 817 executados/816 aprovados/1 opcional
+pulado; não foi repetida porque esta rodada alterou somente documentação.
+O ZIP do bot permanece o mesmo; nenhum pacote de código novo foi necessário.

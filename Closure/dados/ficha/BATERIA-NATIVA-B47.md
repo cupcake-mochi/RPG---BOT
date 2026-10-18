@@ -18,8 +18,8 @@ código. IDs/cadastro e comprovantes privados ficam fora do Git.
 Cada link foi lido anonimamente pelo leitor real do bot e comparado com o
 respectivo XLSX: 8.190 chaves e zero diferenças de Campo, com os resultados da
 tabela. Outro servidor simulado mantém as quatro aprovações pendentes na 02.
-Isso valida acesso/contrato e o cadastro relido; o envio e o painel no Discord
-ainda serão testados pelo usuário. Evidência agregada em
+Isso valida acesso/contrato e o cadastro relido. A execução real no Discord foi
+concluída depois com autorização, conforme seção abaixo. Evidência de acesso em
 `pesquisa/validacao/2026-10-18-b47-bateria-nativa/validacao-links-servidor.json`.
 
 ## Casos e resultado esperado
@@ -44,7 +44,31 @@ As aprovações sintéticas cobrem somente os três cadastros e o efeito exato d
 03 e 04 não devem ser aprovadas durante esta rodada. Não mudar regras globais
 de um servidor real para fazer a 06 passar.
 
-## Execução no Discord
+## Execução real no Discord · concluída nesta bateria
+
+Na versão já publicada, passaram 13 análises: seis por link, seis por XLSX e
+uma reanálise após encerramento dos controles. Foram dois comandos slash (link
+e arquivo da 02) e onze `GC:ficha`. Os seis pares tiveram resumo idêntico.
+
+| Caso | Erros observados | Aprovações pendentes observadas |
+| --- | ---: | ---: |
+| 01 | 0 | 0 |
+| 02 | 0 | 0 |
+| 03 | 0 | 4 |
+| 04 | 0 | 1 (somente efeito.1) |
+| 05 | 1 (Vida 999; correto 23) | 0 |
+| 06 | 3 (regra e orçamento não autorizados) | 0 |
+
+Na 02, as seis páginas foram abertas; perícia +1 e feitiço PE 3/2d8/18 m
+corresponderam ao esperado. As quatro setas e o seletor funcionaram. O painel
+voltou ao resumo e desabilitou os quatro botões após dez minutos; uma nova
+análise reabriu controles, e o callback Próxima abriu a página 2.
+**Não exercitado:** segunda pessoa no painel. Os demais casos ampliados do
+roteiro externo também não fazem parte desta bateria. Sem modelos pagos,
+reinício, implantação da PR 65 ou alteração da oficial durante esses testes.
+Evidências agregadas: `pesquisa/validacao/2026-10-18-b47-discord/`.
+
+## Reprodução no Discord
 
 1. As quatro aprovações de teste já estão instaladas no servidor escolhido.
    Para reproduzir em outro ambiente, instalar somente os quatro hashes,
@@ -96,5 +120,6 @@ instalada por causa da criação das cópias.
   Módulo de cobertura: 15 testes aprovados, em 6,700 s.
 - Sem chamadas pagas, mensagens ao Discord, alteração da oficial ou
   implantação do patch durante a preparação. Configuração e leitura anônima
-  posteriores foram verificadas conforme registro acima. Testes do painel
-  e respostas reais no Discord continuam separados.
+  posteriores foram verificadas conforme registro acima. A execução posterior
+  de 13 análises reais e do painel tem evidência separada, sem repetir a suíte
+  ou regenerar o ZIP: esta rodada final mudou somente documentação.
