@@ -1,4 +1,5 @@
-Fila atual — Guias do Ciclo, 15/10/2026
+Fila atual — Guias do Ciclo, 18/10/2026
+Integração B47 do bot implementada em codex/integracao-b47; contrato e limites em dados/ficha/INTEGRACAO-B47.md. Nenhuma edição da oficial, chamada paga ou implantação.
 Este arquivo resume o estado vigente. Os registros de continuidade mais antigos são histórico e não reabrem itens já confirmados.
 
 CONCLUÍDO
@@ -27,7 +28,7 @@ CONCLUÍDO
 
 PRÓXIMOS
 1. Retestar a v22 (inclui v21 e esclarece que a resposta mantém a personalidade): os três links reais foram conferidos; o canal atual está sem marcação NSFW. Novo status mostra estado/motivo no canal de execução. Mizuki decide a marcação de idade no Discord e testa reconhecimento/comentário no jeito de cada guia e reação adulta não gráfica nos contextos corretos. Roteiros em pesquisa/validacao/2026-10-15-voz-reacoes-v22/teste-no-discord.txt e na validação da v21. Sem novas chamadas pagas pelo agente.
-2. Receber o resultado de CONFIGURAÇÃO do outro chat e só então integrar ao leitor/corretor. Preservar as 5.381 chaves ANALISE 4 e compatibilidade; PR 3 do gerador exige aprovação própria, não juntar por conta desta fila.
+2. Revisar a integração B47 e executar o roteiro externo em dados/ficha/INTEGRACAO-B47.md depois da publicação pelo operador. B47 já entregue na ficha: não retomar C/D, não repetir migrações. Compatibilidade 1/2/TR-v4 preservada; as 485 chaves exclusivas TR-v4 não existem na B47. Cobertura parcial e autorizações pendentes devem permanecer visíveis.
 
 PARA DEPOIS, QUANDO PEDIDO
 - Consulta automática do livro para perguntas apenas faladas/em imagem; hoje é necessário texto para recuperar a fonte.

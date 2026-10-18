@@ -50,13 +50,15 @@ def normaliza(valor, chave: str | None = None) -> object:
     if valor is None:
         return ""
     if isinstance(valor, bool):
-        return int(valor)
-    if isinstance(valor, (int, float)):
+        return valor if chave is not None and tipo(chave) == 'numero' else int(valor)
+    if isinstance(valor, int):
+        return valor
+    if isinstance(valor, float):
         return int(valor) if float(valor).is_integer() else float(valor)
     texto = str(valor).strip()
-    if texto.upper() in ("VERDADEIRO", "TRUE"):
+    if texto.upper() in ("VERDADEIRO", "TRUE") and (chave is None or tipo(chave) == 'booleano'):
         return 1
-    if texto.upper() in ("FALSO", "FALSE"):
+    if texto.upper() in ("FALSO", "FALSE") and (chave is None or tipo(chave) == 'booleano'):
         return 0
     if re.fullmatch(r"-?\d+", texto):
         return int(texto)
@@ -81,9 +83,12 @@ def de_linhas(linhas) -> dict[str, Campo]:
             raise FichaIlegivel(f"chave duplicada na ANALISE: {chave}")
         if str(linha[1]).strip().upper() in erros:
             erros_encontrados.append(f"{chave}: {linha[1]}")
-        valor = normaliza(linha[1], chave)
-        if isinstance(valor, (int, float)) and not math.isfinite(valor):
-            raise FichaIlegivel(f"número não finito em {chave}")
+        try:
+            valor = normaliza(linha[1], chave)
+            if isinstance(valor, (int, float)) and not math.isfinite(valor):
+                raise ValueError('número fora do intervalo')
+        except (ValueError, OverflowError) as erro:
+            raise FichaIlegivel(f"número inválido ou fora do intervalo em {chave}") from erro
         ficha[chave] = Campo(valor, str(linha[2] or ""), str(linha[3] or ""))
     if erros_encontrados and ficha.get("formato.versao", Campo("", "", "")).valor in ("", 11):
         raise FichaIlegivel("erro de fórmula em " + erros_encontrados[0])

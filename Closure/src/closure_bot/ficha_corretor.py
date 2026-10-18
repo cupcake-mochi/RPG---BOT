@@ -30,7 +30,7 @@ from .ficha_equipamento import CatalogoEquipamento
 from .ficha_entidade_repertorio import RegrasEntidade
 from .ficha_testes import RegrasTestes
 
-FORMATOS_CONHECIDOS = {1, 2, 4}
+FORMATOS_CONHECIDOS = {1, 2, 4, 11}
 # O que a ficha mostra quando a pessoa ainda não escolheu: vale como vazio.
 NAO_ESCOLHIDO = {"", "—", "-", "escolha seu caminho", "escolha sua trilha", "escolha sua origem"}
 
@@ -63,10 +63,11 @@ class Resultado:
 @dataclass(frozen=True)
 class RegrasDaCampanha:
     """As regras de cada campanha vêm do cadastro do bot, nunca da ficha. Padrão: o livro, sem mudança.
-    Hoje só a variante que mexe numa conta conferida: a vida por nível rolada no dado do Caminho
-    (ab--ab-equipamento, com permissão do mestre), que deixa a vida sem valor exato pra conferir."""
+    O campo legado vida_por_nivel preserva sua posição; valores amplia o cadastro
+    para as regras B47. A ANALISE nunca fornece esse cadastro."""
     nome: str = "livro"
     vida_por_nivel: str = "fixa"  # "fixa" ou "rolada"
+    valores: dict = field(default_factory=dict)  # cadastro confiável, nunca ANALISE
 
 
 LIVRO = RegrasDaCampanha()
@@ -293,6 +294,9 @@ def refino(nivel: int, marcos_de_refino: int, ref: Referencias) -> int:
 
 def conferir_contas(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha = LIVRO,
                     certos: list[str] | None = None, pendencias: list[Problema] | None = None) -> tuple[list[Problema], list[str]]:
+    if ficha.get("formato.versao", Campo("", "", "")).valor == 11:
+        from .ficha_b47 import conferir_contas_b47
+        return conferir_contas_b47(ficha, ref, regras, certos if certos is not None else [], pendencias if pendencias is not None else [])
     problemas: list[Problema] = []
     pulou: list[str] = []
     certos = certos if certos is not None else []
@@ -469,7 +473,7 @@ def pe_da_origem(ficha: dict[str, Campo], ref: Referencias) -> list[tuple[str, i
 
 
 # ---------- tudo ----------
-def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha = LIVRO) -> Resultado:
+def _conferir_legado(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha = LIVRO) -> Resultado:
     formato = ficha.get("formato.versao", Campo("", "", "")).valor
     if formato not in FORMATOS_CONHECIDOS:
         return Resultado("formato desconhecido", [Problema("formato", "formato.versao", " ou ".join(map(str, sorted(FORMATOS_CONHECIDOS))),
@@ -522,3 +526,20 @@ def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha
     if resultado.problemas:
         resultado.veredito = "reprovada"
     return resultado
+
+
+def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha = LIVRO, aprovados: Aprovados | None = None) -> Resultado:
+    from .ficha_esquema import variante
+    identificada = variante(ficha)
+    if identificada is None:
+        formato = ficha.get("formato.versao", Campo("", "", "")).valor
+        return Resultado("formato desconhecido", [Problema("formato", "formato.versao",
+            "1, 2, variante TR-v4 comprovada ou B47-v11; formato 4 de campanha é outra variante", str(formato))])
+    if identificada == "b47-v11":
+        from .ficha_b47 import conferir_b47
+        return conferir_b47(ficha, ref, regras, aprovados or Aprovados())
+    r = _conferir_legado(ficha, ref, regras)
+    for k, c in ficha.items():
+        if str(c.valor).strip().upper() in {"#NAME?", "#REF!", "#VALUE!", "#DIV/0!", "#N/A", "#NUM!", "#ERROR!"}:
+            r.nao_conferido.append(f"{k}: erro de fórmula legado ({c.valor}); este campo não é certificado")
+    return r

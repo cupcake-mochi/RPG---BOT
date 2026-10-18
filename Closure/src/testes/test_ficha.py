@@ -447,7 +447,8 @@ class Comando(unittest.IsolatedAsyncioTestCase):
         self.assertIn("Conferência parcial", campos["⏳ Ainda não conferido"])
         self.assertIn("R51", embed.footer.text)
         limpa = _com_campos("kaori", aviso__escolhas_de_pericia="Tudo escolhido", aviso__testes_disponiveis="0 de 2")
-        self.assertEqual(painel(conferir(limpa, ref), limpa, closure).colour.value, 0x2E8B57)
+        self.assertTrue(conferir(limpa, ref).nao_conferido)  # partes ausentes e erros históricos não são aprovação integral
+        self.assertEqual(painel(conferir(limpa, ref), limpa, closure).colour.value, 0xD4A017)
         cheia = painel(conferir(_ficha("revestimento"), ref), _ficha("revestimento"), closure)
         campos_cheia = {c.name: c.value for c in cheia.fields}
         self.assertIn("Buff/Debuff de defesa", campos_cheia["👀 Pro mestre conferir"])

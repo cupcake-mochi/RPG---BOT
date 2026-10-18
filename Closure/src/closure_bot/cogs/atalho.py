@@ -72,7 +72,7 @@ class Atalho(commands.Cog):
             anexo = next((a for a in mensagem.attachments if a.filename.lower().endswith(".xlsx")), None)
             link = resto.split()[0] if resto else None
             async with mensagem.channel.typing():
-                resposta = await ficha.analisar_fonte(link=None if anexo else link, arquivo=anexo)
+                resposta = await ficha.analisar_fonte(link=None if anexo else link, arquivo=anexo, servidor=mensagem.guild.id)
             await enviar_relatorio(resposta, responder)
         elif nome == "clima":
             embed, aviso = await self.bot.get_cog("ComandoClima").consultar(resto or None)

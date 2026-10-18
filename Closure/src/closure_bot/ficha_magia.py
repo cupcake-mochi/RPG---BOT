@@ -43,6 +43,7 @@ class Magia:
     ganhos_talento: tuple[tuple[int, int], ...]
     medidas: Medidas
     repertorio: Repertorio
+    contexto: object = None  # somente contrato B47; isolado das referências globais
 
     @classmethod
     def do_livro(cls, livro: dict[str, str]) -> Magia:
@@ -160,6 +161,9 @@ def escolhas_familias(ficha, magia, raiz, problemas):
     São as posições do gerador, não a ordem da lista compactada da v1.
     """
     from .ficha_corretor import Problema
+    if valor(ficha, "formato.versao") == 11 and magia.contexto is not None:
+        from .ficha_b47 import conferir_familias
+        return conferir_familias(ficha, magia, raiz, problemas)
     entidade = raiz.startswith("invocacao.")
     chaves = ([f"{raiz}.familia.{i}" for i in range(1, 6)] if entidade else
               ["tecnica.familia." + re.sub(r"[^a-z0-9]+", "_", unicodedata.normalize('NFKD', f).encode('ascii', 'ignore').decode().lower())
@@ -229,6 +233,20 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
     comparar("pe", math.ceil(4.5 * classe) if liberacao else 3 * classe,
              "fundamento--liberacao" if liberacao else "construcao--entidades-especiais" if entidade else "fundamento--pontos")
     forma = str(valor(ficha, base + ".forma"))
+    if magia.contexto is not None:
+        registros = magia.contexto.registros.values()
+        selecionados = [forma, *lista(ficha, base + ".pecas"), *lista(ficha, base + ".restricoes")]
+        familias_usadas={magia.melhorias[n].familia for n in lista(ficha,base+'.pecas') if n in magia.melhorias}
+        bloqueados = [d for d in registros if (d.nome in selecionados or d.tipo=='familia' and d.nome in familias_usadas) and (not d.valida or not d.aprovada)]
+        formas_custom = [d for d in registros if d.tipo == 'forma' and d.nome == forma]
+        if bloqueados:
+            pulou.append(f"{nome}: conteúdo sem aprovação/mecânica completa; montagem não certificada")
+            return
+        if formas_custom:
+            from .ficha_forma_custom import conferir as conferir_forma_custom
+            conferir_forma_custom(ficha, magia, base, nivel, problemas, certos, pulou, entidade=entidade,
+                                  basica=basica, liberacao=liberacao, familias=familias)
+            return
     if forma not in magia.formas:
         erro("forma", "Forma do livro", ancora="fundamento--formas")
         return
@@ -242,6 +260,7 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
         else:
             erro("forma", "Forma permitida nesta montagem", ancora="fundamento--liberacao" if liberacao else "fundamento--classezero")
     pecas, res = lista(ficha, base + ".pecas"), lista(ficha, base + ".restricoes")
+    pecas_regras = [magia.contexto.aliases.get('melhoria:'+n, n) for n in pecas] if magia.contexto else pecas
     embutida = int(forma in ("Toque", "Aura") and classe > 0)
     limite = 1 if classe == 0 else 2 if classe <= 2 else 3 if classe <= 4 else 4
     if len(pecas) > limite:
@@ -262,54 +281,57 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
         pulou.append(f"{nome}: peças próprias ou não reconhecidas ({', '.join(desconhecidas)}); aprovação do mestre ainda não conferida")
     for nome_peca in set(pecas):
         p = magia.melhorias.get(nome_peca)
-        if p and (pecas.count(nome_peca) > p.repeticoes or classe < p.minima or (classe == 0 and p.peso != "Leve")):
+        if p and (sum((magia.contexto.aliases.get("melhoria:"+n,n) if magia.contexto else n) == (magia.contexto.aliases.get("melhoria:"+nome_peca,nome_peca) if magia.contexto else nome_peca) for n in pecas) > p.repeticoes or classe < p.minima or (classe == 0 and p.peso != "Leve")):
             erro("pecas", f"{nome_peca}: até {p.repeticoes} compra(s), Classe mínima {p.minima}" + (" e só Leve na Classe 0" if classe == 0 else ""), ancora=p.ancora)
     restricoes = [magia.restricoes[n] for n in res if n in magia.restricoes]
     if len(restricoes) != len(res):
         pulou.append(f"{nome}: Restrição própria ou não reconhecida; preço e aprovação do mestre não conferidos")
     if classe == 0 and any(p != "Leve" for p, _ in restricoes):
         erro("restricoes", "somente Restrição Leve", ancora="fundamento--classezero")
-    nomes_res = [re.sub(r" \((Leve|Média)\)$", "", n) for n in res]
+    nomes_res = [re.sub(r" \((Leve|Média)\)$", "", magia.contexto.aliases.get("restricao:"+n,n) if magia.contexto else n) for n in res]
     if len(set(nomes_res)) != len(nomes_res) or (embutida and "Corpo a Corpo" in res):
         erro("restricoes", "não repetir devolução pelo mesmo impedimento", ancora="fundamento--restricoes")
-    if sum(n in ("Uma Vez", "Condicional", "Aquecer", "Dívida") for n in nomes_res) > 1:
+    def frequencia(n):
+        d=next((d for d in magia.contexto.registros.values() if d.tipo=='restricao' and d.nome==n and d.valida and d.aprovada),None) if magia.contexto else None
+        return d.efetivos.get('frequencia')=='Sim' if d else re.sub(r" \((Leve|Média)\)$", "", n) in ("Uma Vez", "Condicional", "Aquecer", "Dívida")
+    if sum(frequencia(n) for n in res) > 1:
         erro("restricoes", "no máximo uma de frequência", ancora="fundamento--restricoes")
-    if forma in ("Toque", "Aura", "Onda") and any(n in pecas for n in ("Longe", "Muito Longe")):
+    if forma in ("Toque", "Aura", "Onda") and any(n in pecas_regras for n in ("Longe", "Muito Longe")):
         erro("pecas", f"{forma} não aceita aumento de distância", ancora="catalogo--cat-alcance")
     pares = [("Atrasar", "Parado"), ("Silencioso", "Gesto"), ("Passo", "Parado"), ("Passo", "Atrasar"),
              ("Rápido", "Reação"), ("Barulho", "Assinatura")]
     for a, b in pares:
-        if a in pecas + nomes_res and b in pecas + nomes_res:
+        if a in pecas_regras + nomes_res and b in pecas_regras + nomes_res:
             erro("pecas", f"não combinar {a} com {b}", ancora="fundamento--restricoes")
-    if "Inescapável" in pecas and (forma != "Projétil" or len(pecas) > 1 or res or embutida):
+    if "Inescapável" in pecas_regras and (forma != "Projétil" or len(pecas) > 1 or res or embutida):
         erro("pecas", "Inescapável: só Projétil, sem outra Melhoria ou Restrição", ancora="catalogo--cat-mira")
-    if liberacao and any(n in pecas for n in ("Rápido", "Reação")):
+    if liberacao and any(n in pecas_regras for n in ("Rápido", "Reação")):
         erro("pecas", "Liberação exige Ação Completa", ancora="fundamento--liberacao")
-    if liberacao and any(n in pecas for n in ("Inescapável", "Toca a Alma")):
-        erro("pecas", "peça incompatível com Liberação", ancora="catalogo--cat-mira" if "Inescapável" in pecas else "catalogo--cat-defesas")
-    if "Junto" in pecas and forma not in ("Cura", "Apoio"):
+    if liberacao and any(n in pecas_regras for n in ("Inescapável", "Toca a Alma")):
+        erro("pecas", "peça incompatível com Liberação", ancora="catalogo--cat-mira" if "Inescapável" in pecas_regras else "catalogo--cat-defesas")
+    if "Junto" in pecas_regras and forma not in ("Cura", "Apoio"):
         erro("pecas", "Junto somente em Cura ou Apoio", ancora="catalogo--cat-amparo-protecao")
-    if "Mais Um" in pecas and forma not in ("Projétil", "Toque", "Efeito"):
+    if "Mais Um" in pecas_regras and forma not in ("Projétil", "Toque", "Efeito"):
         erro("pecas", "Mais Um exige alvo individual; Cura e Apoio usam Junto", ancora="catalogo--cat-area")
-    if "Mais Um" in pecas and forma == "Efeito":
+    if "Mais Um" in pecas_regras and forma == "Efeito":
         pulou.append(f"{nome}: Mais Um exige alvo individual; conferir a aplicação de Efeito escrita")
-    if "Rajada" in pecas and (forma not in ("Projétil", "Toque") or "Certeiro" in pecas
+    if "Rajada" in pecas_regras and (forma not in ("Projétil", "Toque") or "Certeiro" in pecas
                               or str(valor(ficha, base + ".resolucao_escolha")).startswith("TR")):
         erro("pecas", "Rajada exige alvo individual e ataque", ancora="catalogo--cat-area")
     pesadas = [p for n, p in zip([n for n in pecas if n in magia.melhorias], conhecidas)
                if p.familia == "Controle" and p.peso == "Pesada" and (n.startswith("Condição: ") or n not in ("Desarma o Feitiço",))]
     if len(pesadas) > 1:
         erro("pecas", "no máximo uma condição Pesada", ancora="catalogo--cat-controle")
-    if "Terreno" in pecas and forma not in ("Explosão", "Aura", "Cone", "Linha", "Onda"):
+    if "Terreno" in pecas_regras and forma not in ("Explosão", "Aura", "Cone", "Linha", "Onda"):
         erro("pecas", "Terreno exige Forma de área", ancora="catalogo--cat-controle")
-    if "Corrói" in pecas:
+    if "Corrói" in pecas_regras:
         if livres is None:
             pulou.append(f"{nome}: Corrói exige confirmar Mira Livre")
         elif "Mira" not in livres:
             erro("pecas", "Corrói exige Mira Livre", ancora="catalogo--cat-defesas")
-    if "Remate" in pecas and "Aquecer" in nomes_res:
+    if "Remate" in pecas_regras and "Aquecer" in nomes_res:
         erro("pecas", "Remate não combina com Aquecer", ancora="catalogo--cat-castigo-dano")
-    if "Remate" in pecas and "Condicional" in nomes_res:
+    if "Remate" in pecas_regras and "Condicional" in nomes_res:
         pulou.append(f"{nome}: Remate não combina com Condicional de vida/duração; conferir o gatilho escrito")
     if not desconhecidas:
         conferir_medidas(ficha, magia, base, classe, forma, pecas, problemas, certos, pulou, pendencias, entidade=entidade)
@@ -322,9 +344,9 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
     if desconhecidas or len(restricoes) != len(res):
         pulou.append(f"{nome}: dano/benefício exige escolhas ou distribuição da ficha completa")
         return
-    if any(n in pecas for n in ("Rajada", "Mais Um", "Junto")):
+    if any(n in pecas_regras for n in ("Rajada", "Mais Um", "Junto")):
         pulou.append(f"{nome}: total disponível não se multiplica; distribuição entre tiros/alvos deve ser registrada antes de rolar")
-    if "Toca a Alma" in pecas:
+    if "Toca a Alma" in pecas_regras:
         pulou.append(f"{nome}: dano de Alma exige Regra que trate diretamente da alma; conferir essa permissão com o mestre")
     if classe == 0:
         inicial = (1 if nivel < 5 else 2 if nivel < 17 else 3) if entidade else (2 if nivel < 5 else 3 if nivel < 11 else 4 if nivel < 17 else 5 if nivel < 25 else 6)
@@ -354,8 +376,8 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
         if liberacao:
             danos = {d + classe for d in danos}
         def cabe(d):
-            extra = sum(d // 2 for n in pecas if n in ("Salto", "Queima", "Estilhaço"))
-            return d * (1.25 if "Remate" in pecas else 1) + extra <= 4 * classe
+            extra = sum(d // 2 for n in pecas_regras if n in ("Salto", "Queima", "Estilhaço"))
+            return d * (1.25 if "Remate" in pecas_regras else 1) + extra <= 4 * classe
         if forma not in ("Cura", "Onda", "Apoio", "Efeito"):
             danos = {max(d for d in range(inicial + 1) if cabe(d)) for inicial in danos}
         faces = 8
@@ -397,11 +419,11 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
                  "/".join(str(3 * d) for d in sorted(danos)) + " de vida temporária por aliado", ancora="construcao--entidades-saldo" if entidade else "fundamento--amparoformas")
         pulou.append(f"{nome}: falta escolha estruturada de cura ou apoio da Onda; valor não certificado")
         return
-    if "Toca a Alma" in pecas and any(n in pecas for n in ("Salto", "Queima", "Estilhaço", "Rajada", "Mais Um")):
+    if "Toca a Alma" in pecas_regras and any(n in pecas_regras for n in ("Salto", "Queima", "Estilhaço", "Rajada", "Mais Um")):
         pulou.append(f"{nome}: interação de Alma com adicionais/distribuição ainda precisa de conferência")
         return
     antes_alma = danos
-    if "Toca a Alma" in pecas:
+    if "Toca a Alma" in pecas_regras:
         danos = {d // 2 for d in danos}
     # Com Famílias ausentes, só uma conta invariável pode ser certificada.
     if len(danos) != 1:
@@ -418,7 +440,7 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
     esperado = f"{dado}d{faces}" if dado else "Sem cura" if forma == "Cura" else "Sem dano"
     match = re.match(r"(?:Cura\s*:?\s*)?(\d+)d(6|8)\b", texto, re.I)
     bate = (bool(match) and int(match[1]) == dado and int(match[2]) == faces) or (dado == 0 and texto == esperado)
-    adicionais = sum(dado // 2 for n in pecas if n in ("Salto", "Queima", "Estilhaço")) if classe else 0
+    adicionais = sum(dado // 2 for n in pecas_regras if n in ("Salto", "Queima", "Estilhaço")) if classe else 0
     parcelas = re.findall(r"\+\s*(\d+)d8", texto)
     if sum(map(int, parcelas)) != adicionais:
         bate = False
@@ -431,7 +453,7 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
         bate = False
     # O gerador anterior não reduz Alma. Só sua fórmula exata recebe pendência;
     # um valor diferente continua sendo erro. Não certifica o resultado antigo.
-    if not bate and "Toca a Alma" in pecas and len(antes_alma) == 1:
+    if not bate and "Toca a Alma" in pecas_regras and len(antes_alma) == 1:
         original = next(iter(antes_alma))
         if re.fullmatch(rf"{original}d8(?:\s*=\s*{original * 9 // 2})?", texto):
             pendencias.append(Problema("conta", base + ".dano", esperado + " de Alma", texto, "catalogo--cat-defesas"))
@@ -534,8 +556,9 @@ def conferir_invocacoes(ficha, magia, marcos, resultado, equipamento=None, refer
         if tipo not in magia.tipos or aquis not in magia.aquisicoes or not inteiro(dono, 1):
             erro("aquisicao", "tipo, aquisição e nível do invocador válidos")
             continue
+        tipo_custom = next((d for d in magia.contexto.registros.values() if d.tipo=='tipo_entidade' and d.nome==tipo),None) if magia.contexto else None
         esperada = "Maldição domada" if tipo == "Maldição domada" else "Criação" if tipo.endswith(" de criação") else None
-        if (esperada and aquis != esperada) or (not esperada and aquis in ("Maldição domada", "Criação")):
+        if tipo_custom is None and ((esperada and aquis != esperada) or (not esperada and aquis in ("Maldição domada", "Criação"))):
             erro("aquisicao", f"aquisição compatível com {tipo}")
             continue
         fixo = valor(ficha, base + ".nivel_fixo")
@@ -552,7 +575,8 @@ def conferir_invocacoes(ficha, magia, marcos, resultado, equipamento=None, refer
         else:
             nivel = dono
         classe = magia.classe_maxima(nivel)
-        entrada = math.ceil(classe / 2) if tipo == "Shikigami de criação" and valor(ficha, base + ".talisma") == "Com carga" else classe
+        usa_talisma = tipo_custom.efetivos.get("talisma")=="Usa" if tipo_custom else tipo=="Shikigami de criação"
+        entrada = math.ceil(classe / 2) if usa_talisma and valor(ficha, base + ".talisma") == "Com carga" else classe
         for campo, esperado in (("nivel", nivel), ("classe", classe), ("entrada", entrada), ("retorno", 2 * classe)):
             if valor(ficha, base + "." + campo) != esperado:
                 erro(campo, str(esperado), "campo--inv-retorno" if campo == "retorno" else "construcao--entidades-progressao")

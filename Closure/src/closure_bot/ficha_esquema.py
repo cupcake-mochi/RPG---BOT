@@ -12,12 +12,16 @@ def campos_b47():
 
 
 def tipo(chave):
+    if chave == 'dominio.degrau':
+        return 'texto'
     campo = campos_b47().get(chave)
     if campo and campo['booleano'] == '1':
         return 'booleano'
     if re.fullmatch(r'(?:pericia|oficio|tr)\.[^.]+\.(?:treino|especialista)|sequela\.\d+|treino_arma\..+|personagem\.(?:pericia|oficio)_custom\.\d+\.(?:treino|especializacao)', chave):
         return 'booleano'
     # Enumerações e texto não passam pelo conversor numérico, mesmo que pareçam números.
+    if re.fullmatch(r'custom\.forma\.\d+\.(?:peso|resultado)', chave):
+        return 'numero'
     if chave.startswith(('aviso.', 'custom.')):
         if re.fullmatch(r'custom\.\d+\.campo\.(?:forca|volume|preco|protecao|desgaste|recarga)', chave):
             return 'numero'
@@ -30,7 +34,7 @@ def tipo(chave):
         return 'texto' if chave in ('regra.vida_rolada', 'regra.vida_rolada.campanha') else 'numero'
     if re.fullmatch(r'formato\.versao|nivel|xp|xp\.total|exaustao|sequela\.extras|vida\.rolagem\.\d+|atributo\.[^.]+\.(?:base|corpo)|marco\..+|marcos\.escolhidos|buff\..+|(?:vida|energia|integridade)_max|defesa|protecao|maestria|espacos_de_feitico|classe_maxima|refino_de_graca|classe_0_gratis|morrendo_(?:aguentar|insistir_1|insistir_2)|tecnica\.regra_propria\.(?:categoria|espacos)|dominio\.(?:degrau|custo|refino|corrida)|(?:passiva|aptidao)\.\d+\.categoria|carga\.(?:total|limite|ajuste_limite)', chave):
         return 'numero'
-    if re.fullmatch(r'(?:pericia|oficio|tr)\.[^.]+\.(?:ajuste|bonus)|(?:equipavel|item)\.\d+\.(?:grau|volume|quantidade)|personagem\.(?:pericia|oficio)_custom\.\d+\.bonus', chave):
+    if re.fullmatch(r'(?:pericia|oficio|tr)\.[^.]+\.(?:ajuste|bonus)|(?:equipavel|item)\.\d+\.(?:grau|volume|quantidade)|personagem\.(?:pericia|oficio)_custom\.\d+\.(?:bonus|resultado)', chave):
         return 'numero'
     if re.fullmatch(r'(?:feitico|liberacao|zero)\.\d+\.classe|(?:feitico|liberacao|zero)\.\d+\.pe|maxima\.pe', chave):
         return 'numero'

@@ -1,3 +1,22 @@
+# Contrato vigente · B47 formato 11 · 18/10/2026
+
+O bot integra a ANALISE 11 entregue em `ccbd053c8f7e68f8b4ac223f721b309111d2dcc0`.
+Contrato, mapa de campos, colisão do formato 4, cobertura, limites e cadastro de
+aprovações estão em [INTEGRACAO-B47.md](INTEGRACAO-B47.md). O manifesto completo
+por chave/parte/origem fica em `src/closure_bot/recursos/b47-campos.tsv`.
+
+- Leitura por chave, sem depender de ordem, contagem exata ou endereço antigo.
+- Nomes/textos literais são preservados; números e caixas usam tipos semânticos.
+- Duplicatas, erro de fórmula B47 e fórmulas XLSX sem cache são diagnosticados.
+- Regras e aprovações vêm do cadastro confiável do servidor no bot.
+- Ausência, vazio, zero e falso são distintos. Exportação incompleta não certifica contas.
+- Formatos 1/2 e variante TR-v4 comprovada permanecem compatíveis; 4 de campanha
+  não é equivalente ao TR-v4. A B47 não contém as 485 adições exclusivas dele.
+- Aprovação integral nunca é mostrada com partes relevantes não conferidas.
+
+As seções seguintes são **histórico do contrato**, preservado para explicar
+fixtures e compatibilidade. Suas contagens/estados não substituem a versão vigente.
+
 # Contrato da aba oculta `ANALISE`
 
 > **Versão documental 5, 15/10/2026.** O formato 4 amplia para **5.381 chaves**:

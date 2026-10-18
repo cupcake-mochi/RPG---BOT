@@ -22,3 +22,7 @@ na voz de uma personagem de Arknights (Kal'tsit de dia, Closure de noite).
 - `closure_lab.db`: dados de execução do bot antigo.
 - A chave de clima (OpenWeatherMap) do bot antigo: fica só na cópia local de `Closure Legado/closure_lab.py`, no PC. Aqui o código lê `WEATHER_API_KEY` do `.env`.
 - `Closure/dados/corpus_*`: falas extraídas do jogo, regeneráveis com `Closure/ferramentas/extrair_corpus.py`.
+
+## Análise B47
+
+O projeto `Closure/` integra o contrato ANALISE 11 da ficha atual. [Contrato, cobertura e execução](Closure/dados/ficha/INTEGRACAO-B47.md) · [Retomada da integração](Closure/docs/RETOMADA-B47.md).
