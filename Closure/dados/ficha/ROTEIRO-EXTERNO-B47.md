@@ -1,5 +1,15 @@
 # Validação externa e publicação B47
 
+**Publicação posterior concluída em 18/10:** código 40d32a7 da PR 65 instalado
+com autorização, sem merge novo. Três análises após publicação e dez páginas
+conferidas: Vida 999/23 por link, custom aprovada por XLSX e arquivo sem cache
+recusado. Cores locais, quatro setas e seletor confirmados. Backup antes/depois
+preservou variáveis, bancos e as quatro aprovações. Ver
+`pesquisa/validacao/2026-10-18-b47-cores-publicacao/`. Esta etapa está encerrada;
+as rodadas abaixo são histórico e os recálculos nativos ampliados continuam
+propostos. Segunda pessoa no painel permanece sem teste real.
+
+
 Estado em 18/10/2026: PR 64 mesclada e implantação autorizada concluída.
 Startup, backups e igualdade dos arquivos instalados foram conferidos.
 A bateria nativa de seis fichas passou depois, com autorização do usuário:
@@ -22,8 +32,9 @@ aprovações foi restaurado e relido idêntico. Relatório e casos em
 ampliados por link/XLSX. A troca independente avançada usou CD por zero;
 Vida rolada com rolagem ausente permanece no roteiro abaixo. As 28 análises
 comprovam o consumidor, não as fórmulas nativas. Cores locais por página e
-trabalho fora do loop foram testados no código/ZIP da PR 65, ainda não no
-runtime real. A PR 65 continua em rascunho e não foi implantada.
+trabalho fora do loop foram depois publicados; os três testes finais e as
+cores no runtime real estão registrados no início deste documento. A PR 65
+permanece aberta, sem merge.
 Não repetir publicação. Nova campanha de jogo, aprovações ou mensagens fora
 do tópico/bateria autorizados exigem escopo específico; a conta não usa modelo.
 
@@ -93,8 +104,8 @@ Executados: ambos os comandos, link/XLSX, as seis páginas da 02, revisões da
 acrescentou entidades e conferiu as 143 páginas dos 28 ensaios. Houve esperas
 expiradas na automação, resolvidas conferindo o estado visível e retargetando
 controles; não se comprovou falha de conteúdo por isso. Falta navegação por
-uma segunda pessoa no Discord. A nova semântica de cores da PR 65 precisa
-ser observada depois de implantação autorizada, sem repetir contas já cobertas.
+uma segunda pessoa no Discord. A nova semântica de cores da PR 65 foi
+observada na publicação posterior, sem repetir toda a bateria mecânica.
 
 Exercitar `/ficha analisar` e `GC:ficha`: link e anexo XLSX. Verificar resumo,
 revisão, TR/perícias, habilidades, entidades e limites; primeira/anterior/

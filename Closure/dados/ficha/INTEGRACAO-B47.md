@@ -1,32 +1,31 @@
 # Integração B47 no bot · 18/10/2026
 
-**Continuação avançada · 18/10:** passaram 28 análises reais por XLSX no
-Discord e 143 páginas conferidas, além das 13 análises nativas anteriores.
-Inclui Trilha aprovada/alterada, entidades isoladas, efeitos, curingas,
-Controle, Máxima/Alma e teto de objeto/Liberação. Os arquivos desta rodada
-são casos sintéticos do consumidor, não novos recálculos nativos do produtor.
-A aprovação temporária de Trilha foi retirada; o cadastro original foi relido
-byte a byte. Evidência: `pesquisa/validacao/2026-10-18-b47-avancados/`.
+**Publicação e checagem concluídas · 18/10:** o usuário autorizou aplicar na
+Discloud. O código `40d32a7` da PR 65 está instalado no app existente e online
+em cinco servidores desde 15:23:32 (Brasília), com 1.000 MB mantidos. Backup
+antes/depois: 67 arquivos iguais ao ZIP; variáveis, dois bancos e cadastro de
+campanha idênticos, integridade dos bancos ok e quatro aprovações preservadas.
+PR 65 permanece aberta, sem novo merge; `main` ainda contém a PR 64.
 
-**Patch da PR 65, ainda não publicado:** cores locais por página (resumo com
-veredito geral; erro exibido vermelho, pendência/limite amarelo, conferido
-verde), rodapé explícito e leitura XLSX/conferência fora do loop do Discord.
-Mantém a correção anterior de cartões vazios. Suíte atual: **822 executados,
-821 aprovados e um opcional pulado**, em 217,436 s; **26/26 testes contra o
-ZIP**. Cinco regressões novas falham no código anterior por asserção. Pacote
-com 67 arquivos iguais aos fontes, SHA256
+**Três testes após implantação passaram, com dez páginas conferidas:** ficha
+com Vida 999/23 por link, custom aprovada por XLSX e recusa de fórmula sem
+cache. Vermelho na página de erro, verde nos valores corretos e amarelo nos
+limites; resumo e rodapé conservam o veredito geral. Quatro setas e seletor
+funcionaram. Evidência: `pesquisa/validacao/2026-10-18-b47-cores-publicacao/`.
+Somadas às rodadas anteriores, são 44 análises reais (13 + 28 + 3), sem
+chamadas pagas nestes ensaios. A rodada avançada anterior conferiu 143
+páginas de casos técnicos do consumidor, sem novo recálculo nativo; evidências
+em `pesquisa/validacao/2026-10-18-b47-avancados/`. A suíte continua **822
+executados, 821 aprovados e um opcional pulado**, além de **26/26 no ZIP**;
+não foi repetida sem mudança de código. SHA256 do pacote instalado:
 `8a210c5aa82bf54a5b8af56486123e0b0199d1d09314b71cf2067b20aab54e40`.
-O código validado e as 67 entradas do ZIP permanecem idênticos ao checkout;
-o registro documental foi atualizado depois. Mesmas dependências em disco
-local após timeouts de mídia no disco externo; detalhes no relatório.
 
-O Discord continua na publicação da PR 64. Faltam revisão/publicação da PR 65,
-observação das novas cores após implantação autorizada, segunda pessoa no
-painel e recálculo nativo dos casos ampliados. Produtor e decisões do mestre
-continuam limitando a aprovação integral. Não houve modelo pago, novo deploy,
-reinício ou alteração da oficial nesta continuação. Os números abaixo são
-checkpoints anteriores, não a suíte atual.
-
+**Fechamento desta etapa:** publicação autorizada e smoke test concluídos.
+Para novo trabalho, retomar `origin/codex/integracao-b47` e conferir árvore,
+remoto e PR 65 antes de editar; não refazer deploy/baterias por rotina. Ficam
+separados revisão/merge no Git, segunda pessoa no painel, recálculos nativos
+ampliados e os limites do produtor/mestre. A oficial foi preservada. Os
+registros seguintes são históricos; não indicam o runtime atual.
 
 **Bateria nativa preparada em 18/10:** seis cópias sintéticas calculadas no
 Sheets, 8.190 chaves por XLSX e resultados locais conferidos. Roteiro em

@@ -1,0 +1,132 @@
+{
+  "data": "2026-10-18",
+  "autorizacao": "Aplicar na Discloud e testar, recebida nesta conversa",
+  "codigo_publicado": "40d32a7eed244aaaad8fcd379eec2ef55b091b5b",
+  "branch": "codex/integracao-b47",
+  "pr": 65,
+  "merge_realizado": false,
+  "pacote": {
+    "sha256": "8a210c5aa82bf54a5b8af56486123e0b0199d1d09314b71cf2067b20aab54e40",
+    "arquivos": 67,
+    "diferencas_instaladas": [],
+    "codigo_alterado_para_publicar": false
+  },
+  "antes_depois": {
+    "backups_integros": true,
+    "env_identico": true,
+    "dois_bancos_identicos": true,
+    "quick_check_dois_bancos": "ok",
+    "campanha_identica": true,
+    "aprovacoes_sinteticas": 4,
+    "arquivos_de_codigo_alterados": [
+      "src/closure_bot/cogs/ficha.py",
+      "src/closure_bot/ficha_custom.py"
+    ]
+  },
+  "startup": {
+    "horario_brasilia": "2026-10-18 15:23:32",
+    "servidores": 5,
+    "online": true,
+    "limite_memoria_mb": 1000
+  },
+  "testes_reais": {
+    "analises": 3,
+    "paginas": 10,
+    "chamadas_pagas": 0,
+    "erro_por_link": {
+      "passou": true,
+      "erros": 1,
+      "pendencias": 0,
+      "vida_informada": 999,
+      "vida_esperada": 23,
+      "paginas": [
+        {
+          "pagina": 1,
+          "categoria": "Resumo",
+          "cor_css": "rgb(204, 1, 1)"
+        },
+        {
+          "pagina": 2,
+          "categoria": "Correções e revisão",
+          "cor_css": "rgb(204, 1, 1)"
+        },
+        {
+          "pagina": 3,
+          "categoria": "Personagem",
+          "cor_css": "rgb(46, 139, 86)"
+        },
+        {
+          "pagina": 4,
+          "categoria": "Limites da análise",
+          "cor_css": "rgb(212, 159, 23)"
+        }
+      ]
+    },
+    "custom_por_xlsx": {
+      "passou": true,
+      "erros": 0,
+      "pendencias": 0,
+      "vida": 25,
+      "pericia": "+1",
+      "feitico": "3 PE / 2d8 / 18 m",
+      "paginas": [
+        {
+          "pagina": 1,
+          "categoria": "Resumo",
+          "cor_css": "rgb(212, 159, 23)"
+        },
+        {
+          "pagina": 3,
+          "categoria": "TR e perícias",
+          "cor_css": "rgb(46, 139, 86)"
+        },
+        {
+          "pagina": 4,
+          "categoria": "Feitiços e técnicas",
+          "cor_css": "rgb(46, 139, 86)"
+        },
+        {
+          "pagina": 6,
+          "categoria": "Limites da análise",
+          "cor_css": "rgb(212, 159, 23)"
+        },
+        {
+          "pagina": 5,
+          "categoria": "Limites da análise",
+          "cor_css": "rgb(212, 159, 23)"
+        },
+        {
+          "pagina": 2,
+          "categoria": "Personagem",
+          "cor_css": "rgb(46, 139, 86)"
+        }
+      ]
+    },
+    "xlsx_sem_cache": {
+      "passou": true,
+      "diagnostico": "fórmula sem resultado calculado em ANALISE!B2614"
+    },
+    "navegacao": [
+      "primeira",
+      "anterior",
+      "proxima",
+      "ultima",
+      "seletor"
+    ]
+  },
+  "validacao_previa_do_mesmo_codigo": {
+    "suite": {
+      "executados": 822,
+      "aprovados": 821,
+      "opcional_pulado": 1
+    },
+    "testes_no_zip": 26,
+    "suite_repetida_sem_mudanca": false
+  },
+  "limites": [
+    "segunda pessoa no painel ainda não exercitada",
+    "recálculos nativos ampliados do produtor não executados",
+    "campos ausentes e quatro defeitos do produtor preservados em proposta separada",
+    "autorizações reais, histórico e decisões narrativas continuam com o mestre"
+  ]
+}
