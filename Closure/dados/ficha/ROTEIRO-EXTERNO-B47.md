@@ -1,15 +1,17 @@
 # Validação externa e publicação B47
 
-Estado em 18/10/2026: testes determinísticos locais; PR 64 ainda rascunho.
-Este roteiro prepara a validação; **não registra execução no Discord/Sheets**.
-Revisão, merge e implantação continuam pendentes e exigem autorização própria.
+Estado em 18/10/2026: PR 64 mesclada e implantação autorizada concluída.
+Startup, backups e igualdade dos arquivos instalados foram conferidos.
+Este roteiro funcional **ainda não registra execução real no Discord/Sheets**.
+Não repetir publicação. Campanha/aprovações reais e envio de mensagens exigem
+suas autorizações específicas; a conta matemática não usa modelo.
 
 ## Preparação do operador
 
 1. Rever a PR e o SHA final em `docs/RETOMADA-B47.md`. Fazer backup do estado
    operacional: banco, chave, variáveis e `src/var/ficha-campanhas.json`.
-2. Após autorização de publicação, implantar em ambiente de teste com apenas
-   uma instância do bot. Nenhum modelo é necessário para analisar/navegar.
+2. Usar a versão já implantada; não criar outra instância. Nenhum modelo é
+   necessário para analisar/navegar. A publicação preservou o estado anterior.
 3. Usar cópia sintética da B47 no Sheets. Não executar construir/continuar na
    oficial, importar XLSX no Google ou mudar suas permissões. O acesso por link
    precisa já estar autorizado; XLSX pode ser baixado normalmente da cópia.

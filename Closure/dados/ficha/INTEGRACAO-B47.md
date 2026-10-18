@@ -1,11 +1,20 @@
 # Integração B47 no bot · 18/10/2026
 
+**Publicação autorizada em 18/10:** PR 64 mesclada em
+`1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.
+Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados
+idênticos ao ZIP; `.env` e dois bancos preservados byte a byte, integridade ok.
+Memória de 1.000 MB mantida. Cadastro B47 de campanha ainda não existe na
+produção; nenhuma aprovação real foi presumida. Testes reais por link/XLSX,
+campanha e navegação do painel continuam pendentes. Evidências em
+`pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
+
 **Revisão vigente de 18/10:** Máxima confere montagem, combinações e
 herança/aprovação; montagem inválida não certifica dano. Toca a Alma simples
 confere metade sem conceder permissão; a fórmula fixa do produtor fica pendente.
 Quebra Coisa entra no teto, sem multiplicar dano secundário. **814 testes,
 813 aprovados e um online opcional pulado**; 17 regressões passaram no ZIP.
-[Retomada](../../docs/RETOMADA-B47.md). Sem merge, implantação ou alteração da oficial.
+[Retomada](../../docs/RETOMADA-B47.md). No checkpoint de testes, ainda sem merge/implantação; oficial preservada.
 
 Implementação determinística no projeto `Closure/`. A ficha oficial não foi editada,
 nenhum Apps Script foi publicado, nenhum XLSX foi importado no Google e nenhuma

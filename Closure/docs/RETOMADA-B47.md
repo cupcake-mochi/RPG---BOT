@@ -1,7 +1,7 @@
 # Retomada da integração do bot com B47 · 18/10/2026
 
 Branch: `codex/integracao-b47`, em `cupcake-mochi/RPG---BOT`.
-PR para revisão: https://github.com/cupcake-mochi/RPG---BOT/pull/64 (rascunho, sem merge/implantação).
+PR para revisão: https://github.com/cupcake-mochi/RPG---BOT/pull/64 (mesclada; publicação autorizada concluída).
 Primeiro checkpoint publicado: `cfec482` (contrato/leitor). Continuação do
 usuário: completar conferências possíveis e testar tudo ao final. Os checkpoints
 seguintes desta branch contêm implementação, regressões e documentação.
@@ -14,7 +14,24 @@ Ficha: `ccbd053c8f7e68f8b4ac223f721b309111d2dcc0`.
 Sistema: `e593ba8cf24ce6bbd2f517f5431a73a96610e02b`.
 Bot inicial: `7e4dc35209ea840549d5ccf5a0b49834da21d117`.
 
-## Revisão vigente · Máxima e teto de dano · 18/10
+## Publicação vigente · 18/10
+
+**Publicação autorizada em 18/10:** PR 64 mesclada em
+`1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.
+Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados
+idênticos ao ZIP; `.env` e dois bancos preservados byte a byte, integridade ok.
+Memória de 1.000 MB mantida. Cadastro B47 de campanha ainda não existe na
+produção; nenhuma aprovação real foi presumida. Testes reais por link/XLSX,
+campanha e navegação do painel continuam pendentes. Evidências em
+`pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
+
+Retomar de `origin/main`, após conferir remotos e árvore local. O merge
+contém exatamente o runtime testado; o registro posterior muda somente docs.
+Não refazer merge/deploy. Próximo passo é o roteiro funcional no Discord,
+sem chamadas a modelos e com campanha real somente após decisão do mestre.
+Backups privados ficam fora do Git; não anexar seus arquivos à PR.
+
+## Checkpoint de código · Máxima e teto de dano · 18/10
 
 Checkpoint de código: `a981416a7d8af1879ed5c95f8d41eb424f2176b0`.
 A Máxima confere `maxima.montagem`, dependências aprovadas, identidade das
@@ -32,8 +49,9 @@ Pacote local: 67 arquivos iguais aos fontes, 1.151.110 bytes, sem credenciais,
 banco ou cadastro real. SHA256:
 `3d35f83e6ea31f30b4fec9d6487a0fc9e9aa392549c66e72fcc79f6b705d2c75`.
 
-A PR 64 continua rascunho, sem revisão humana, merge ou implantação.
-Não há autorização específica para publicar/enviar mensagens no Discord.
+No checkpoint acima, a PR 64 ainda era rascunho e não havia autorização de
+publicação. O usuário autorizou merge/implantação depois; envio de mensagens
+no Discord continua separado.
 O roteiro externo foi ampliado para esses casos. O produtor permanece
 inalterado: quatro defeitos estáticos têm reprodução separada. Seletores,
 competências, inventário/carga, TR e estado ativo ausentes continuam sem

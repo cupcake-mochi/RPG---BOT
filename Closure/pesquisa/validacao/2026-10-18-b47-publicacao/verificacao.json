@@ -1,0 +1,22 @@
+{
+  "data": "2026-10-18",
+  "merge_sha": "1997f25fe990eb307204365cda172aeec831969f",
+  "pr": 64,
+  "zip_sha256": "3d35f83e6ea31f30b4fec9d6487a0fc9e9aa392549c66e72fcc79f6b705d2c75",
+  "arquivos_instalados_identicos_ao_zip": 67,
+  "faltantes": 0,
+  "diferentes": 0,
+  "env_preservado_byte_a_byte": true,
+  "bancos_verificados": 2,
+  "integridade_dos_bancos_ok": true,
+  "bancos_identicos_antes_depois": true,
+  "cadastro_campanha_ausente_antes_e_depois": true,
+  "protegidos_sem_diferencas_no_pacote": true,
+  "ram_mb_preservada": 1000,
+  "startup": "2026-10-18 11:32:09,018 INFO closure_bot.bot: no ar; 5 servidores",
+  "backup_antes_e_depois_zip_integridade_ok": true,
+  "testes_discord_reais_executados": false,
+  "smoke_analise_console_comprovado": false,
+  "chamadas_a_modelos_pelo_agente": 0,
+  "alteracao_ficha_oficial": false
+}

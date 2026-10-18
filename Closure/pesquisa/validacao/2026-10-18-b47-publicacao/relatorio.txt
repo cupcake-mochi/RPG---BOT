@@ -1,0 +1,51 @@
+Publicação B47 — 18/10/2026
+
+Autorização específica recebida do usuário: "Autorizo merge e implantação".
+A sessão da Discloud foi autenticada pelo próprio usuário. Nenhuma senha,
+chave ou token foi pedido/copiado para o Git.
+
+PR 64 marcada pronta e mesclada com guarda do head b805aa8.
+Merge: 1997f25fe990eb307204365cda172aeec831969f.
+A árvore desse merge é idêntica à entrega testada; nenhum código alterado
+para a publicação. ZIP SHA256:
+3d35f83e6ea31f30b4fec9d6487a0fc9e9aa392549c66e72fcc79f6b705d2c75.
+A suíte anterior permanece: 814 executados, 813 aprovados, um online opcional
+pulado; 17 regressões nos fontes e no ZIP. Não se repetiu sem mudança de código.
+
+Discloud
+Backup manual anterior, download e teste de integridade do ZIP concluídos.
+Cópia privada fora do Git, com acesso restrito. Dois bancos com quick_check
+ok. Cadastro de campanha B47 ainda ausente em produção; não foi criado um
+cadastro fictício nem presumida aprovação real do mestre.
+
+Commit do ZIP validado aplicado ao app existente Guias do Ciclo, sem criar
+nova instância. Operação mostrou Concluído. Log de inicialização em
+18/10 11:32:09,018 informou "no ar" em cinco servidores. Visão geral online,
+memória limite 1.000 MB preservada. Sem alteração de variáveis ou configuração
+de conta. O discloud.config do pacote já era idêntico ao anterior.
+
+Backup pós atualização baixado e comparado: 67 arquivos do pacote presentes,
+zero diferenças de bytes. .env e ambos os bancos byte a byte idênticos aos
+do backup anterior; integridade dos bancos ok. Ausência do cadastro de campanha
+preservada. Os arquivos protegidos de cards, memória, mídia, modelos e ponte
+não tinham diferenças entre o pacote e a produção anterior.
+
+Limites da validação
+Não se enviou mensagem ao Discord nem se chamou modelo. A autenticação e o
+startup confirmam inicialização, não o roteiro funcional completo. O console
+respondeu pwd; a tentativa adicional de leitura/análise pelo console não teve
+retorno visual comprovado e não é contabilizada como teste aprovado. A sessão
+do console foi desconectada. A conferência de arquivos foi pelo backup real,
+não pelo resultado desse comando não confirmado.
+
+Ainda pendente: testes reais por link/XLSX, navegação/timeout do painel e
+campanha/aprovações reais. Roteiro: dados/ficha/ROTEIRO-EXTERNO-B47.md.
+Campos ausentes e quatro defeitos estáticos do produtor continuam separados;
+nenhuma edição da ficha oficial ou execução de Apps Script. Histórico,
+permissões efetivas, narrativa, distribuição e Alma não automatizada seguem
+sob decisão do mestre. Publicação não transforma a análise parcial em completa.
+
+Retomada
+Usar origin/main, que contém a integração mesclada, e conferir o SHA remoto
+antes de editar. codex/integracao-b47 conserva os checkpoints e o registro desta
+publicação. Não reabrir a PR 64 ou refazer o deploy sem um motivo novo.
