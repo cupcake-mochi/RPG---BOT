@@ -253,7 +253,9 @@ class Custom(unittest.TestCase):
                  feitico__1__pe='3 PE',feitico__1__dano='3d8',feitico__1__alcance='18 m, um alvo',feitico__1__resolve='Acerto')
         r=conferir(f,REF,aprovados=aprovar(f,'custom.forma.1'))
         self.assertFalse(any(p.campo.startswith('feitico.1.') for p in r.problemas),r.problemas)
-        self.assertTrue(any('benefício numérico da Forma custom 3d8' in c for c in r.conferidos))
+        # Renomeação pura agora usa o verificador da base, incluindo interações;
+        # o benefício esperado continua 3d8, apenas a identificação mudou.
+        self.assertTrue(any('dano-base 3d8' in c for c in r.conferidos))
 
     def test_melhoria_exige_tr_sem_inferir_da_descricao(self):
         from closure_bot.ficha_efeitos import conferir_resolucao

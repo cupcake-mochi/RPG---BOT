@@ -243,10 +243,19 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
             pulou.append(f"{nome}: conteúdo sem aprovação/mecânica completa; montagem não certificada")
             return
         if formas_custom:
-            from .ficha_forma_custom import conferir as conferir_forma_custom
-            conferir_forma_custom(ficha, magia, base, nivel, problemas, certos, pulou, entidade=entidade,
-                                  basica=basica, liberacao=liberacao, familias=familias)
-            return
+            d = formas_custom[0]
+            metadados = {'tipo','nome','base','mestre_viu','efeito','requisitos'}
+            herdada = d.campos.get('base')
+            if herdada in magia.formas and all(v == '' or k in metadados for k,v in d.campos.items()):
+                # Uma renomeação sem mudanças estruturadas conserva TODAS as
+                # restrições/interações da base. A prosa continua não executável.
+                forma = herdada
+                pulou.append(f'{nome}: requisitos livres e aplicação da Forma custom exigem mestre')
+            else:
+                from .ficha_forma_custom import conferir as conferir_forma_custom
+                conferir_forma_custom(ficha, magia, base, nivel, problemas, certos, pulou, entidade=entidade,
+                                      basica=basica, liberacao=liberacao, familias=familias,pendencias=pendencias)
+                return
     if forma not in magia.formas:
         erro("forma", "Forma do livro", ancora="fundamento--formas")
         return
@@ -355,6 +364,10 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
     else:
         orcamento = magia.especiais[classe] if entidade else magia.classes[classe][1]
         custo_forma = magia.preco(magia.formas[forma], classe)
+        if magia.contexto is not None and not entidade and livres is not None:
+            definicao = magia.contexto.catalogo_personagem.obter('forma', forma)
+            if definicao and definicao.get('familia') in livres and custo_forma:
+                custo_forma = max(1, custo_forma - math.ceil(classe / 2))
         devolucao = (classe if embutida else 0) + sum(magia.preco(p, classe) for n, (p, _) in zip(res, restricoes)
                      if not (liberacao and n in ("Atrasar", "Parado")))
         usadas = sorted({p.familia for p in conhecidas})

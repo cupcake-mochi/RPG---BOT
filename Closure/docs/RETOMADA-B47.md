@@ -2,7 +2,8 @@
 
 Branch: `codex/integracao-b47`, em `cupcake-mochi/RPG---BOT`.
 PR para revisão: https://github.com/cupcake-mochi/RPG---BOT/pull/64 (rascunho, sem merge/implantação).
-Primeiro checkpoint publicado: `cfec482` (contrato/leitor). Os checkpoints
+Primeiro checkpoint publicado: `cfec482` (contrato/leitor). Continuação do
+usuário: completar conferências possíveis e testar tudo ao final. Os checkpoints
 seguintes desta branch contêm implementação, regressões e documentação.
 Use `git log -5 --oneline` e `git rev-parse HEAD` para identificar a entrega
 atual sem depender de outro chat. Não criar worktree, resetar ou usar force-push.
@@ -22,13 +23,14 @@ Bot inicial: `7e4dc35209ea840549d5ccf5a0b49834da21d117`.
    ficha está concluída: não retomar C/D, não repetir migrações e não usar
    endereços de documentos históricos como contrato.
 3. De `Closure/src/`, executar:
-   `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao`.
+   `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados`.
    Depois de uma mudança relevante, executar
    `../.venv/bin/python -m unittest discover -s testes` e registrar os resultados.
 4. Leitor/esquema: `ficha_leitor.py`, `ficha_esquema.py` e manifesto em recursos.
    Orquestração: `ficha_b47.py`; campanha: `ficha_configuracao.py`; custom:
    `ficha_custom.py`, `ficha_forma_custom.py` e motor puro internalizado.
-   As contas antigas continuam em `ficha_*.py`.
+   `ficha_derivados_b47.py` separa contas derivadas completas, contradições e
+   seletores ausentes. As contas antigas continuam em `ficha_*.py`.
 5. Cadastro por servidor: `Closure/src/var/ficha-campanhas.json`, ignorado pelo
    Git. Use `ferramentas/ficha_campanha.py --help` como operador autorizado.
    Não versionar definições/fichas privadas ou estado real. Aprovar um hash não
@@ -44,19 +46,55 @@ Bot inicial: `7e4dc35209ea840549d5ccf5a0b49834da21d117`.
 
 ## Evidência já obtida
 
-Suíte completa: 694 testes, 693 aprovados e um online opcional pulado.
-Regressões focais da revisão final: 68 aprovados. O pacote local foi inspecionado:
-contratos/módulos B47 presentes; sem `.env` ou banco.
+Suíte completa final desta continuação: **742 testes executados, 741 aprovados
+e um online opcional pulado**, em 97,093 s. Comando: de `Closure/src/`,
+`../.venv/bin/python -m unittest discover -s testes`. A suíte inclui legado,
+leitor, integração, campanha, custom, painel e demais funcionalidades do projeto.
+As 48 novas regressões de contas/herança em `test_b47_derivados.py` passaram
+também isoladamente antes da suíte completa. Sem chamadas reais a modelos.
+
+Primeiro fechamento: 694 testes (693 + um opcional). A revisão intermediária
+passou com 733 e depois 737 testes; a entrega final acima inclui todas as
+mudanças posteriores, sem reutilizar um resultado anterior como validação final.
+
+Pacote local regenerado: `Closure/src/var/closure-lab.zip` (ignorado pelo Git),
+67 arquivos, cerca de 1120 KB. Os 52 fontes/recursos Python/JSON/TSV correspondem
+exatamente ao checkout final; sem `.env`, banco ou cadastro real da campanha.
+SHA256: `f2d81eba1d2fbbb3589b413160cb1593ad0a235c0b5806549318c754982e26ba`.
+O operador deve preservar o cadastro de campanha existente ao publicar; ele
+não faz parte do ZIP. Não houve envio à Discloud.
+
+## Continuação implementada
+
+- Iniciativa, Maestria/Classe/Refino/Classes 0 gratuitas e Sequelas/Morrendo.
+- CD/ataques: troca numérica, divergências impossíveis e seletor ausente
+  separados. Deslocamento: Exaustão, possibilidades de penalidade e troca final.
+- Dois TR pessoais e escolha/atributo físico de TR de cada entidade.
+- Efeito de Famílias aplicado antes da autonomia; inteiros e nove vagas.
+- Efeito inválido ou literalmente duplicado não certifica o alvo.
+- Origem aprovada com base usa seu pacote e rota compatível nas contas; Menor
+  respeita a Marcante exigida. Origem sem base não herda capacidades publicadas.
+- Formas apenas renomeadas usam a base; Formas estruturadas conferem Liberação,
+  Remate, adicionais, totais de Rajada/distribuição e Alma simples, além da
+  resolução numérica da entidade. Incompatibilidades impedem certificação.
+- Desconto da Forma Livre pessoal corrigido. Ferramenta vincula aprovação à
+  base (também item comum), herda Proteção/mãos e aceita Volume zero explícito.
+- Reserva Profunda herdada conserva ganho; efeito identificado não duplica esse
+  ganho e Buff ambíguo permanece pendente.
 
 ## O que permanece externo ou parcial
 
 Não houve Google/Discord/LibreOffice nem implantação. O roteiro externo está
 no fim de `INTEGRACAO-B47.md`. B47 não emite as 485 chaves exclusivas TR-v4;
 carga integral e vários bônus do livro continuam explicitamente não conferidos.
-Aprendizado/autorizações, histórico de escolhas, aplicações livres, efeitos de
-alvos sem automação e interações especiais de Formas próprias não podem ser
-certificados por descrições ou resultados exportados. Essa limitação deve
-continuar visível, sem painel verde ou aprovação integral.
+Seletores pessoais de CD/ataques, ajustes/resultados de TR/perícias do livro,
+inventário completo e teto/estado de entidades ativas não foram exportados.
+Aprendizado/autorizações, histórico de escolhas, aplicações livres, composição
+de Alma com adicionais/distribuição e CD exclusiva do Controle ainda exigem
+revisão. Essa limitação deve continuar visível, sem aprovação integral.
+Lacunas e reprodução estática de efeito com critério de curinga estão em
+`dados/ficha/LACUNAS-PRODUTOR-B47.md`; somente uma entrega futura do produtor
+poderá completar a exportação/corrigir sua fórmula. Não editar a oficial.
 
 Nenhum defeito confirmado da ficha deve ser escondido tornando o bot permissivo.
 Se houver nova divergência, registrar chave, entradas sintéticas, resultado

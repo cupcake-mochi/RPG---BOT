@@ -60,8 +60,11 @@ class ContextoB47:
     familias: dict = field(default_factory=dict)
     aliases: dict = field(default_factory=dict)
     catalogo_personagem: object = None
+    alvos_invalidos: set = field(default_factory=set)
 
     def aplicar(self, caixa, base):
+        if caixa in self.alvos_invalidos:
+            return None
         efeitos = self.efeitos.get(caixa, [])
         trocas = [e.valor for e in efeitos if e.como == 'trocar por']
         if len(trocas) > 1 or base is None:
@@ -134,12 +137,14 @@ def conferir_efeitos(ficha, ctx, r):
         ligado = valor(ficha, base+'.ligado')
         if ligado not in ('',0,1) or isinstance(ligado, bool):
             problema(r, base+'.ligado','marcação 0 ou 1',ligado)
+            ctx.alvos_invalidos.add(valor(ficha,base+'.caixa'))
             continue
         if ligado != 1:
             continue
         caixa, como, n, tipo, fonte = [valor(ficha, base+'.'+k) for k in ('caixa','como','valor','tipo_de_fonte','fonte')]
         if caixa not in alvos or como not in ('somar','trocar por') or not numero(n) or tipo not in fontes or not str(fonte).strip():
             problema(r, base,'alvo conhecido, somar/trocar por, número finito e fonte identificada',f'{caixa}; {como}; {n}; {tipo}; {fonte}')
+            ctx.alvos_invalidos.add(caixa)
             continue
         e = Efeito(i,caixa,como,n,fonte,tipo)
         ctx.efeitos.setdefault(caixa, []).append(e)
@@ -147,13 +152,22 @@ def conferir_efeitos(ficha, ctx, r):
         if not ctx.aprovados or impressao_exata('efeito', fonte, campos) not in ctx.aprovados.impressoes:
             problema(r, base, 'aprovação da fonte e aplicação desta definição exata pelo mestre', fonte, pendente=True, regra='aprovação')
     for caixa, efeitos in ctx.efeitos.items():
+        vistos = set()
+        for e in efeitos:
+            identidade = (e.como, e.valor, e.tipo_de_fonte, e.fonte)
+            if identidade in vistos:
+                ctx.alvos_invalidos.add(caixa)
+                problema(r, f'efeito.{e.indice}', 'distinguir concessões da mesma fonte; linha idêntica pode contar duas vezes',
+                         caixa, pendente=True, regra='aprovação')
+            vistos.add(identidade)
         if sum(e.como == 'trocar por' for e in efeitos) > 1:
             for e in efeitos:
                 problema(r, f'efeito.{e.indice}.como','somente uma troca por caixa; conflito não resolvido',caixa)
-        if caixa not in {'Vida máxima','PE máximo','Integridade máxima','Proteção','Defesa'} and not any(
+        if caixa not in {'Vida máxima','PE máximo','Integridade máxima','Proteção','Defesa','Iniciativa',
+                         'Invocações · famílias da trilha'} and not any(
                 caixa == f'{"Perícia" if d.tipo=="pericia" else "Ofício"} · {d.nome}'
                 for d in ctx.registros.values() if d.tipo in ('pericia','oficio')):
-            r.nao_conferido.append(f'Efeito em {caixa}: aplicação numérica ainda não automatizada neste alvo; fonte/aprovação não certificam o resultado')
+            r.nao_conferido.append(f'Efeito em {caixa}: conferência limitada pelas entradas/resultados não exportados; fonte/aprovação não certificam o alvo inteiro')
 
 
 def carregar_campanha(arquivo, servidor):

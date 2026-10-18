@@ -1,5 +1,12 @@
 # Contrato vigente · B47 formato 11 · 18/10/2026
 
+Contas derivadas, efeitos e herança foram ampliados na continuação da integração.
+Não há novos campos exigidos além do contrato entregue. Seletores pessoais,
+inventário e resultados de TR ausentes estão discriminados em
+[LACUNAS-PRODUTOR-B47.md](LACUNAS-PRODUTOR-B47.md); resultados agregados não
+substituem essas entradas. Formas apenas renomeadas conservam as regras da base;
+alterações estruturadas usam o motor custom e mantêm explícitas suas limitações.
+
 O bot integra a ANALISE 11 entregue em `ccbd053c8f7e68f8b4ac223f721b309111d2dcc0`.
 Contrato, mapa de campos, colisão do formato 4, cobertura, limites e cadastro de
 aprovações estão em [INTEGRACAO-B47.md](INTEGRACAO-B47.md). O manifesto completo

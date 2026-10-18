@@ -72,6 +72,7 @@ def catalogos(ref):
     }
     for tipo in ('Arma','Escudo','Uniforme','Ferramenta amaldiçoada','Item comum'):
         tabelas[tipo] = {n:{'equipamento':p} for n,p in ref.equipamento.pecas.items()} if tipo!='Item comum' else {n:{'volume':float(p)} for n,p in ref.equipamento.itens.items()}
+    tabelas['Ferramenta amaldiçoada'].update(tabelas['Item comum'])
     person = json.loads((Path(__file__).parent/'recursos/b47-personagem-livro.json').read_text(encoding='utf-8'))
     for grupo in ('forma','aptidao','talento'):
         tabelas[grupo]={x['nome']:dict(x) for x in person[grupo]}
@@ -151,13 +152,22 @@ def preparar_custom(ficha, ref, ctx, r):
             if d.tipo=='Origem':
                 pericias=[d.campos.get(f'campo.pericia_{i}','') for i in range(1,5)]
                 if len(set(pericias))!=4:falha('campo.pericia_1','quatro perícias diferentes')
+                base_origem=d.campos.get('campo.base_do_livro','')
+                if base_origem not in ('','Nenhuma'):
+                    publicadas=list(tabelas['Origem'])
+                    rotas=('Fundamento','Manejos') if base_origem in publicadas[:5] else (
+                        'Técnica Marcial sem energia',) if 'Sem Energia' in base_origem else (
+                        'Técnica Marcial com energia',) if base_origem=='Corpo Amaldiçoado' else ('Fundamento',)
+                    if d.campos.get('campo.rota') not in rotas:
+                        falha('campo.rota','ROTA compatível com o pacote herdado da BASE DO LIVRO')
             if sum(x.chave.split('.')[1].isdigit() and str(x.nome).casefold()==str(d.nome).casefold() for x in registros)>1:
                 falha('nome','nome único entre os 25 cadastros compartilhados 3a')
-        base = d.campos.get('base',d.campos.get('campo.base_do_livro',d.campos.get('campo.base','')))
+        campo_base = 'campo.base' if d.tipo=='Ferramenta amaldiçoada' else 'campo.base_do_livro' if d.tipo=='Origem' else 'base'
+        base = d.campos.get(campo_base,'')
         tem_base = base not in ('','Nenhuma')
         heranca = tabelas.get(d.tipo,{}).get(base)
         if tem_base and heranca is None and d.tipo=='Ferramenta amaldiçoada':
-            candidato=next((x for x in registros if x.nome==base and x.tipo in ('Arma','Escudo','Uniforme')),None)
+            candidato=next((x for x in registros if x.nome==base and x.tipo in ('Arma','Escudo','Uniforme','Item comum')),None)
             if candidato:
                 heranca={'base_custom':{k:v for k,v in candidato.campos.items() if k!='mestre_viu'}}
         if tem_base and heranca is None:
@@ -265,6 +275,7 @@ def ampliar_referencias(ref,ctx,r):
     caminhos=copy.deepcopy(ref.caminhos)
     origens=list(ref.origens)
     tipos=list(ref.magia.tipos)
+    duas_maos=set(ref.duas_maos)
     for d in sorted(ctx.registros.values(),key=lambda d:d.tipo=='Ferramenta amaldiçoada'):
         if not d.valida or not d.aprovada:
             continue
@@ -292,12 +303,24 @@ def ampliar_referencias(ref,ctx,r):
             p=ref.equipamento.pecas.get(base)
             if d.tipo=='Ferramenta amaldiçoada':
                 # A base pode ser um registro básico aprovado, nunca outra ferramenta.
-                bd=next((x for x in ctx.registros.values() if x.nome==base and x.tipo in ('Arma','Escudo','Uniforme') and x.valida and x.aprovada),None)
                 p=ref.equipamento.pecas.get(base)
-                if p is None:
+                v=campo('volume')
+                if v!='' and (not numero(v) or v<0):
+                    d.valida=False
+                    problema(r,d.chave+'.campo.volume','Volume numérico não negativo ou vazio para herdar',v,regra='custom')
+                    continue
+                item=ref.equipamento.itens.get(base)
+                if p is None and item is None:
                     r.nao_conferido.append(d.chave+': base de ferramenta sem mecânica numérica comprovada')
                     continue
-                ref.equipamento.pecas[d.nome]=p
+                if p is None:
+                    ref.equipamento.itens[d.nome]=Decimal(str(v)) if v!='' else item
+                else:
+                    ref.equipamento.pecas[d.nome]=replace(p,volume=Decimal(str(v))) if v!='' else p
+                    if p.maos==2:duas_maos.add(d.nome)
+                    for tabela in (ref.escudos,ref.uniformes):
+                        if base in tabela:tabela[d.nome]=tabela[base]
+                r.nao_conferido.append(d.chave+': grau, estigma, desgaste e efeitos livres da ferramenta exigem conferência do mestre')
                 continue
             volume,forca=campo('volume'),campo('forca')
             if forca=='—':forca=0
@@ -311,8 +334,10 @@ def ampliar_referencias(ref,ctx,r):
                 problema(r,d.chave+'.campo.mao','1 ou 2',maos,regra='custom');continue
             props={campo('propriedade_'+str(i)) for i in range(1,5)}
             tipo='arma' if d.tipo=='Arma' else 'escudo' if d.tipo=='Escudo' else 'uniforme'
+            disparo=campo('categoria') in ('Yumi','Balestra','Arma de Fogo')
             ref.equipamento.pecas[d.nome]=Equipamento(forca,Decimal(str(volume)),int(maos) if d.tipo=='Arma' else int(d.tipo=='Escudo'),
-                'Fineza' in props,False,False,'Longo Alcance' in props,tipo)
+                'Fineza' in props,disparo,campo('categoria')=='Arma de Fogo','Longo Alcance' in props and not disparo,tipo)
+            if d.tipo=='Arma' and int(maos)==2:duas_maos.add(d.nome)
             if d.tipo in ('Escudo','Uniforme'):
                 protecao,teto=campo('protecao'),campo('teto_de_destreza')
                 if isinstance(teto,str) and teto.isdecimal():teto=int(teto)
@@ -331,7 +356,7 @@ def ampliar_referencias(ref,ctx,r):
             else:
                 caminhos[caminho]['trilhas']=list(caminhos[caminho]['trilhas'])+[d.nome]
             r.nao_conferido.append(d.chave+': habilidades textuais da Trilha e concessões exclusivas exigem conferência manual')
-    return replace(ref,caminhos=caminhos,origens=tuple(origens),magia=replace(ref.magia,tipos=tuple(tipos)))
+    return replace(ref,caminhos=caminhos,origens=tuple(origens),duas_maos=frozenset(duas_maos),magia=replace(ref.magia,tipos=tuple(tipos)))
 
 
 def _serializavel(obj):

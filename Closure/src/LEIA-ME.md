@@ -2,6 +2,13 @@
 
 **Integração B47 (18/10/2026):** ANALISE 11 por chave, leitor tipado, regras por servidor, efeitos e custom aprovados por definição exata. Cadastro local em `src/var/ficha-campanhas.json`; ferramenta do operador e comandos de teste em [`../dados/ficha/INTEGRACAO-B47.md`](../dados/ficha/INTEGRACAO-B47.md). Preserve esse arquivo na publicação junto do estado operacional. A B47 não emite as 485 adições exclusivas do TR-v4; os limites ficam visíveis no painel. Estados e formatos antigos abaixo são históricos. Não houve implantação nem validação Discord/Google nesta integração.
 
+Continuação: `ficha_derivados_b47.py` confere Iniciativa, progressão numérica,
+Sequelas/janela de Morrendo e escolhas de TR. CD/ataques/deslocamento distinguem
+trocas conferíveis, contradições e entradas ausentes. Herança de Origem/Forma/
+Ferramenta reutiliza contas da base; aprovação não executa prosa. Regressões:
+`../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados`
+(de `Closure/src/`); suíte completa: `../.venv/bin/python -m unittest discover -s testes`.
+
 **Voz das reações v22 (15/10):** Mizuki esclareceu que o limite de conteúdo não deve neutralizar a personalidade. A orientação usa a voz/reações do card, inclusive humor, ironia, reserva ou crítica quando couberem, e retira a expressão parte neutra do pedido. Cards, comandos, ativação e limites preservados. Sem chamadas pagas; naturalidade depende do piloto. Relatório em `pesquisa/validacao/2026-10-15-voz-reacoes-v22/relatorio.txt`.
 
 **Estado local do modo adulto v21 (15/10):** os comandos agora destacam se o modo está ativo no canal atual e explicam opção desligada, falta de marcação NSFW ou restrição a outro canal. Mesma decisão usada na conversa. A marcação 18+ continua necessária para o modo adulto; reconhecer personagem e comentar arte de forma neutra não exige entrar em interação sexual. Orientação evita desvio automático para RPG. 642 testes passaram e um online opcional foi pulado; 16 passaram no código do ZIP. Sem chamadas pagas, mudança de card ou marcação automática de canais. Relatório em `pesquisa/validacao/2026-10-15-nsfw-status-v21/relatorio.txt`.

@@ -57,8 +57,22 @@ def conferir_b47(ficha, ref, campanha, aprovados):
         r.veredito='reprovada'
         return r
     identidades = _identidades_validas(ficha,r)
+    mecanica = ficha
+    origem_custom=next((d for d in ctx.registros.values() if d.tipo=='Origem' and d.nome==valor(ficha,'origem') and d.valida and d.aprovada),None)
+    if origem_custom:
+        origem_base=origem_custom.campos.get('campo.base_do_livro','')
+        if origem_base not in ('','Nenhuma'):
+            # Visão interna para os cálculos existentes. Hashes e diagnósticos
+            # continuam ligados ao cadastro literal, sem alterar a exportação.
+            mecanica=dict(ficha)
+            if origem_custom.campos.get('campo.rota')=='Manejos':
+                origem_base+=' · Sem Técnica'
+            c=ficha['origem']
+            mecanica['origem']=Campo(origem_base,c.celula,c.parte)
     # A campanha vem do bot; uma regra adulterada na ficha nunca dirige o cálculo.
-    antigo=_conferir_legado(ficha,ref,campanha)
+    antigo=_conferir_legado(mecanica,ref,campanha)
+    if mecanica is not ficha:
+        antigo.conferidos=[f'Origem {origem_custom.nome} (base {origem_base})' if c.startswith('Origem ') else c for c in antigo.conferidos]
     for d in ctx.registros.values():
         campo={'caminho':'caminho','trilha':'trilha','Origem':'origem'}.get(d.tipo)
         if campo and d.valida and not d.aprovada and valor(ficha,campo)==d.nome:
@@ -72,9 +86,11 @@ def conferir_b47(ficha, ref, campanha, aprovados):
             conferir_familias(ficha,ref.magia,base,r.problemas,r)
             conferir_competencias_entidade(ficha,ref,ctx,r,base)
     conferir_progressao(ficha,ref,ctx,r)
+    from .ficha_derivados_b47 import conferir_derivados
+    conferir_derivados(ficha,ref,ctx,r)
     r.nao_conferido.append('Carga: B47 não exporta quantidades/Volumes e ajustes da variante TR-v4; inventário agregado não certifica carga integral')
-    conferir_treinos(ficha,ref,ctx,r)
-    conferir_aptidoes(ficha,ref,ctx,r)
+    conferir_treinos(mecanica,ref,ctx,r)
+    conferir_aptidoes(mecanica,ref,ctx,r)
     for d in ctx.registros.values():
         if d.nome in identidades and (not d.aprovada or not d.valida):
             r.conferidos=[c for c in r.conferidos if d.nome not in c]
@@ -102,18 +118,21 @@ def conferir_origem(ficha,ctx,r):
     if propria:
         base=propria.campos.get('campo.base_do_livro','')
         pai=next((o for o in origens if o['menu']==base),None)
-    if pai is None:return True  # Nome/registro/base ausentes são diagnosticados nas outras etapas.
+    if pai is None and propria is None:return True  # Nome/registro ausente é diagnosticado nas outras etapas.
     antes=len(r.problemas)
     vistas=set()
     for campo,grupo in [('origem.marcante','marcantes'),('origem.menor_1','menores'),('origem.menor_2','menores')]:
         escolhido=valor(ficha,campo)
         if not escolhido:
             problema(r,campo,'escolher capacidade da Origem','vazio',pendente=True,regra='informação',ancora='origens--origens');continue
-        permitidas={c['nome'] for c in pai[grupo]}
+        permitidas={c['nome'] for c in pai[grupo]} if pai else set()
         registro=next((d for d in ctx.registros.values() if d.tipo==('Marcante' if grupo=='marcantes' else 'Menor') and d.nome==escolhido and d.valida),None)
-        if registro and registro.campos.get('campo.origem') in (nome,pai['menu']):
+        if registro and registro.campos.get('campo.origem') in (nome,pai['menu'] if pai else nome):
             if not registro.aprovada:
                 problema(r,campo,'aprovação da capacidade custom pelo mestre',escolhido,pendente=True,regra='aprovação')
+            exige=registro.campos.get('campo.exige_marcante','')
+            if grupo=='menores' and exige not in ('','—') and valor(ficha,'origem.marcante')!=exige:
+                problema(r,campo,'marcante exigida: '+exige,valor(ficha,'origem.marcante'),regra='custom',ancora='origens--origens')
         elif escolhido not in permitidas:
             if 'mestre' in str(escolhido).casefold():
                 problema(r,campo,'definição/aprovação verificável da capacidade criada',escolhido,pendente=True,regra='aprovação')
@@ -156,7 +175,14 @@ def conferir_familias(ficha,magia,raiz,problemas,r=None):
         erro(raiz+'.autonomia','Autônoma ou Não autônoma',autonomia)
         return None,None
     extra=ctx.regras['invocacao_familias_livres_nao_autonoma'] if autonomia=='Não autônoma' else 0
-    total=ctx.regras['invocacao_familias_abertas_'+perfil]+extra
+    trilha_total=ctx.aplicar('Invocações · famílias da trilha',ctx.regras['invocacao_familias_abertas_'+perfil])
+    if trilha_total is None:
+        erro(raiz+'.limite_familias','resolver conflito dos efeitos de famílias da trilha','conflito')
+        return None,None
+    if not numero(trilha_total) or trilha_total != int(trilha_total):
+        erro(raiz+'.limite_familias','total inteiro de Famílias abertas',trilha_total)
+        return None,None
+    total=int(trilha_total)+extra
     livres=ctx.regras['invocacao_familias_livres_'+perfil]+extra
     # As primeiras posições mantêm a prioridade; não se compactam espaços vazios.
     ordem=(1,2,6,7,8,9,3,4,5)
@@ -232,10 +258,19 @@ def conferir_contas_b47(ficha,ref,regras,certos,pendencias):
     else:r.nao_conferido.append('Vida: Caminho ou Buff inválido/não automatizado')
     if caminho and bpe is not None:
         pe=caminho['peNv']*n+bpe
-        if any(valor(ficha,f'passiva.{i}')=='Reserva Profunda' for i in range(1,13)):
-            pe+=3*ref.magia.classe_maxima(n)
-            if bpe:
-                r.nao_conferido.append('PE: confirmar que Reserva Profunda não está duplicada no Buff')
+        def talento_base(nome):
+            d=next((d for d in ctx.registros.values() if d.tipo=='talento' and d.nome==nome and d.valida and d.aprovada),None)
+            return d.efetivos.get('identidade',nome) if d else nome
+        if any(talento_base(valor(ficha,f'passiva.{i}'))=='Reserva Profunda' for i in range(1,13)):
+            extra=3*ref.magia.classe_maxima(n)
+            explicitos=[e for e in ctx.efeitos.get('PE máximo',[]) if talento_base(e.fonte)=='Reserva Profunda' and e.como=='somar']
+            if bpe or explicitos and sum(e.valor for e in explicitos)!=extra:
+                problema(r,'energia_max',f'identificar os {extra} PE de Reserva Profunda uma única vez entre Buff e efeitos',
+                         f'Buff {bpe}; efeitos identificados {sum(e.valor for e in explicitos)}',pendente=True,regra='aprovação',ancora='catalogo--cat-passivas-3')
+                r.nao_conferido.append('PE: Reserva Profunda com ajuste de origem ambígua; total não certificado para evitar contagem dupla')
+                pe=None
+            elif not explicitos:
+                pe+=extra
         comparar('energia_max',pe,'PE máximo')
     else:r.nao_conferido.append('PE: Caminho ou Buff inválido/não automatizado')
     if caps&set(SEM_INTEGRIDADE):
@@ -412,6 +447,8 @@ def conferir_competencias_entidade(ficha,ref,ctx,r,base):
     from .ficha_testes import atributo
     n=valor(ficha,'nivel')
     if not inteiro(n,1,30):return
+    from .ficha_derivados_b47 import conferir_tr_entidade
+    conferir_tr_entidade(ficha,ctx,r,base)
     escolhidas=[]
     nomes={nome:atr for nome,atr in ref.testes.pericias.values()}
     for d in ctx.registros.values():
