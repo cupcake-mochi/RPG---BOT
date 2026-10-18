@@ -1,0 +1,65 @@
+{
+  "data": "2026-10-18",
+  "base_produtor": "ccbd053c8f7e68f8b4ac223f721b309111d2dcc0",
+  "metodo": "Extração JSON estática dos GS e leitura dos fontes Python; sem executar gerador, Google ou LibreOffice.",
+  "contrato": {
+    "chaves": 8190,
+    "diferencas_identidade_parte": 0,
+    "partes": {
+      "cabeçalho": 4,
+      "entrada": 3347,
+      "resultado": 1419,
+      "aviso": 778,
+      "configuração": 2642
+    }
+  },
+  "hashes_sha256": {
+    "ficha-v01/configuracao.py": "5abf277ac65663aa92ab19e4c8a963d74355a97dc0ab134cca17a604ef9ee648",
+    "ficha-v01/custom_progressao.py": "3be660693d812efb9897919e600799485f4e7d03007d3d7ae02103632dd5c029",
+    "ficha-v01/custom_criacao.py": "ab95e75f8779db2376712ef249cf8c0594b588abd7d7de16949867ee651da5b4",
+    "ficha-v01/ficha_invocacoes.py": "3be5606d97240ca3e372904bddc3904182afa2511da1ea2d96c1c7976f750184",
+    "apps-script/Configuracao.gs": "46a2097a9be498f49f15ff8ca44b956c957aebf2acd9cd8907e0f61c5cda27d5",
+    "apps-script/Invocacoes.gs": "6658f567b536de0144f5e965c9d0d3c720c3afb92afba181fc4f9ccf78b18dc2"
+  },
+  "criterios_curingas": {
+    "estado": "Critérios não escapados ainda presentes no artefato entregue",
+    "formulas": {
+      "B54": "=SUMIFS('CONFIGURAÇÃO'!$F$11:$F$40,'CONFIGURAÇÃO'!$C$11:$C$40,TRUE,'CONFIGURAÇÃO'!$D$11:$D$40,A54,'CONFIGURAÇÃO'!$E$11:$E$40,\"somar\")",
+      "C54": "=COUNTIFS('CONFIGURAÇÃO'!$C$11:$C$40,TRUE,'CONFIGURAÇÃO'!$D$11:$D$40,A54,'CONFIGURAÇÃO'!$E$11:$E$40,\"trocar por\")",
+      "D54": "=SUMIFS('CONFIGURAÇÃO'!$F$11:$F$40,'CONFIGURAÇÃO'!$C$11:$C$40,TRUE,'CONFIGURAÇÃO'!$D$11:$D$40,A54,'CONFIGURAÇÃO'!$E$11:$E$40,\"trocar por\")",
+      "E54": "=IF(COUNTIFS('CONFIGURAÇÃO'!$C$11:$C$40,\"<>FALSE\",'CONFIGURAÇÃO'!$D$11:$D$40,A54,$L$2:$L$31,0)>0,\"Entrada inválida\",IF(C54>1,\"Conflito: mais de uma troca\",\"\"))"
+    },
+    "caso": {
+      "nomes": [
+        "Runa*",
+        "Runas"
+      ],
+      "atributo": 1,
+      "efeito_somar_somente_em_Runas": 7,
+      "esperado_identidade_literal": [
+        1,
+        8
+      ]
+    },
+    "limite": "Demonstração estática; efeito efetivo no Google não foi medido nesta continuação."
+  },
+  "controle": {
+    "estado": "Apresentação da CD usa diretamente a CD-base; +2 exclusivo não incorporado nesta expressão",
+    "formula_resolve_primeira_carta": "=IF(OR($ND2=0,$NJ2=0),\"\",IF(COUNTIF($RK2:$RN2,\"Inescapável\")>0,\"Automático\",IF($QC2=\"Ataque\",IF($NH2=\"\",\"Ataque\",\"Ataque \"&IF(($NH2+2*IF(COUNTIF($RK2:$RN2,\"Precisão\")>0,1,0))>=0,\"+\",\"−\")&ABS(($NH2+2*IF(COUNTIF($RK2:$RN2,\"Precisão\")>0,1,0))))&IF($OD2>0,\" · TR\"&IF($NI2=\"\",\"\",\" CD \"&$NI2),\"\"),IF(LEFT($QC2,2)=\"TR\",$QC2&IF($NI2=\"\",\"\",\" · CD \"&$NI2)&IF(COUNTIF($RK2:$RN2,\"Certeiro\")>0,\" · metade\",\"\"),\"Sem rolagem\"))))",
+    "caso": {
+      "nivel_dono": 2,
+      "maestria": 1,
+      "forca_entidade": 3,
+      "classe": 1,
+      "melhorias": [
+        "Prende",
+        "Precisão"
+      ],
+      "saldo_independente": 0,
+      "ataque_esperado": 6,
+      "cd_base": 12,
+      "cd_controle_esperada": 14
+    },
+    "limite": "Não é validação nativa nem correção do produtor; o consumidor mantém a pendência precisa."
+  }
+}

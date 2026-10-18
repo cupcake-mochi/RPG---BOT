@@ -80,6 +80,13 @@ class TrilhaHerdada(unittest.TestCase):
         conferir_repertorio_entidade(f,ref,'invocacao.1',2,[],(set(),set()),r)
         self.assertFalse(any('escolhas extras separadas' in s for s in r.conferidos))
 
+    def test_trilha_publicada_incompativel_nao_libera_extras(self):
+        f=trocar(trilha(caminho='Bastião'),nivel=8,trilha='Invocação Principal',
+                 invocacao__1__talento_extra__1='Talento Próprio (CE 1)')
+        c,r,ref=contexto(f,aprovar(f,'custom.trilha'))
+        conferir_repertorio_entidade(f,ref,'invocacao.1',8,[],(set(),set()),r)
+        self.assertIn('invocacao.1.talento_extra.1',[p.campo for p in r.problemas])
+
 
 class TrocaIndependente(unittest.TestCase):
     def test_valor_fixo_independe_de_base_ausente_mas_nao_de_conflitos(self):

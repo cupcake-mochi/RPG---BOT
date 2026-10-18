@@ -1,8 +1,17 @@
 # Integração B47 no bot · 18/10/2026
 
-Implementação offline no projeto `Closure/`. A ficha oficial não foi editada,
+Implementação determinística no projeto `Closure/`. A ficha oficial não foi editada,
 nenhum Apps Script foi publicado, nenhum XLSX foi importado no Google e nenhuma
 mensagem foi enviada ao Discord. Não há chamadas reais a modelos nestes testes.
+
+Continuação de 18/10: leitura pública CSV/XLSX da B47 oficial, 8.190 chaves em
+ambas e zero diferenças. Corrigido cabeçalho automático do gviz com `headers=1`;
+Trilha custom herda a base aprovada para Famílias/extras; troca fixa independe
+da conta-base; especialização inválida não certifica bônus. Evidências e limites
+em `pesquisa/validacao/2026-10-18-b47-cobertura/`. Os remotos continuam nas três
+bases abaixo. Nenhuma escrita nativa, mudança do produtor ou implantação.
+Suíte final: **797 executados, 796 aprovados e um opcional pulado**, em
+182,286 s; teste online de leitura executado separadamente e aprovado.
 
 ## Bases conferidas
 
@@ -57,6 +66,7 @@ daquela variante paralela. A integração não inventa esses dados ausentes.
 | `MESTRE VIU` | Só lembrete; excluído da assinatura de conteúdo | Não substitui autorização do mestre |
 | Famílias da técnica | Nove do livro + dez cadastros compartilhados; estados e contagens pelas regras autorizadas | Descrição não acrescenta números |
 | Famílias das entidades | Nove vagas de cada uma; perfil da Trilha, efeito de famílias da trilha antes da autonomia, limites próprios; Livre integra total aberto | Não herda estado Livre/Fechada da técnica nem de outra entidade; falta de escolhas é pendência; fração/conflito/teto acima de nove é erro |
+| Trilha custom com base | Valida BASE DO LIVRO e vincula o registro publicado à aprovação; usa o perfil herdado em Famílias/extras da Principal | Sem aprovação/base válida, conta dependente não certificada; Nenhuma/vazio não herda. Texto por nível não vira concessão; teto/ativas não exportados continuam parciais |
 | Perícia/Ofício custom | 10+10 cadastros; 23/11 posições de uso; atributo, treino, especialização, ajuste e resultado; efeitos por **nome** | Presença automática não concede treino. `bonus` é ajuste, `resultado` é o total. Tudo usa o orçamento anterior |
 | Perícias de entidade | Recalcula bônus por atributo e maestria, duplicatas e quantidade de treino | `buff.pericia.N` é resultado histórico, nunca somado como ajuste; TR completo não está exportado |
 | TR/perícias/Ofícios do livro | Mantém cálculos de TR-v4; B47 confere dois TR treinados e orçamentos compartilhados com custom; TR escolhido da entidade é independente | B47 não emite os ajustes/bônus pessoais nem os resultados de TR da entidade; não certifica resultados ausentes |
@@ -79,6 +89,8 @@ o campo relacionado e a âncora de regra quando disponível.
 
 Lacunas do contrato e possível defeito de critério com curingas no produtor têm
 reprodução e correção proposta em [LACUNAS-PRODUTOR-B47.md](LACUNAS-PRODUTOR-B47.md).
+Ampliação concreta de campos/semântica/testes separada em
+[PROPOSTA-CONTRATO-B47.md](PROPOSTA-CONTRATO-B47.md), ainda não implementada.
 Não foram corrigidas por permissividade no bot nem por edição da oficial.
 
 ## Aprovação e campanha
@@ -119,8 +131,10 @@ Comandos de dentro de `Closure/src/`:
 ../.venv/bin/python -m unittest discover -s testes
 ```
 
+O resultado vigente desta continuação fica no relatório de 18/10 indicado no
+início; os números deste parágrafo são checkpoints anteriores.
 **Primeiro fechamento na nuvem:** 694 testes, 693 aprovados e um online opcional
-pulado. **Revisão atual: 784 testes, 783 aprovados e um online opcional pulado**,
+pulado. **Checkpoint 7015c80: 784 testes, 783 aprovados e um online opcional pulado**,
 em 108,989 s. São 12 regressões adicionais nesta continuação; os casos anteriores
 de dependências, distribuição, Controle e contas/herança continuam na suíte.
 Estado de empacotamento em `docs/RETOMADA-B47.md`. Não houve recálculo Google/LibreOffice.
@@ -202,10 +216,12 @@ Falhas investigadas durante a implementação:
 
 ## Validação externa e publicação
 
-Google, Discord e LibreOffice não foram usados. Git/Python/Node/testes estavam
+Nesta continuação Google foi usado somente para leitura pública de CSV/XLSX;
+Discord e LibreOffice não foram usados. Git/Python/Node/testes estavam
 disponíveis; acesso Git foi verificado. A conta colaboradora passou a permitir
 push durante esta tarefa. A API GitHub depende da política de rede da nuvem.
 
+Roteiro detalhado: [ROTEIRO-EXTERNO-B47.md](ROTEIRO-EXTERNO-B47.md).
 Em servidor de teste, após revisão da PR e implantação **pelo operador**:
 
 1. Preservar banco/chave/cadastro de campanha e garantir uma única instância.

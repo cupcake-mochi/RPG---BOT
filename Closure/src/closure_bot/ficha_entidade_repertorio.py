@@ -70,7 +70,10 @@ def conferir_repertorio_entidade(ficha, ref, base, nivel, cartas, familias, r):
     if magia.contexto is not None:
         from .ficha_configuracao import trilha_mecanica
         trilha = trilha_mecanica(ficha, magia.contexto)
-        principal = trilha == "Invocação Principal" and inteiro(dono, 2)
+        custom = magia.contexto.registros.get('custom.trilha')
+        herdada = custom is not None and custom.nome == valor(ficha, "trilha") and custom.valida and custom.aprovada
+        principal = (trilha == "Invocação Principal" and inteiro(dono, 2)
+                     and (valor(ficha, "caminho") == "Evocador" or herdada))
         if trilha is None:
             r.nao_conferido.append(f"{nome}: escolhas extras dependem de Trilha válida e aprovação da definição exata")
     else:

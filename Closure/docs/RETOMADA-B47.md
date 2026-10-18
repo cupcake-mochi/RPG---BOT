@@ -14,16 +14,51 @@ Ficha: `ccbd053c8f7e68f8b4ac223f721b309111d2dcc0`.
 Sistema: `e593ba8cf24ce6bbd2f517f5431a73a96610e02b`.
 Bot inicial: `7e4dc35209ea840549d5ccf5a0b49834da21d117`.
 
+## Continuação atual · 18/10 · computador autorizado pelo usuário
+
+Remotos conferidos: os três projetos mantêm as bases indicadas acima. Retomada
+de `7015c80`, preservando a branch e a PR 64. Checkpoints de código publicados:
+`881e6da` (Trilha/troca/especialização) e `2da707f` (CSV/regressão portátil).
+
+- A BASE DO LIVRO da Trilha custom é validada, incluída na assinatura e usada
+  no perfil das Famílias e nas escolhas extras da Principal. Preserva o nome
+  literal e o Caminho associado; o produtor permite base de outro Caminho.
+  Sem aprovação/base válida, não presume o perfil padrão. A herança se limita
+  às automações publicadas; prosa não concede novos números. Nenhuma/vazio não herdam.
+- Trocar por fixa o resultado mesmo quando a conta-base está incompleta,
+  mantendo pendências das entradas e da aprovação. Conflitos/entrada inválida
+  continuam bloqueando a caixa. Especialização inválida não certifica bônus
+  nem seu orçamento de treinos.
+- Leitura real encontrou gviz inferindo milhares de registros como cabeçalho
+  (campo maior que 131.072 caracteres). A requisição usa `headers=1`, conforme
+  o contrato; limites de tamanho/parser preservados. Regressão com resposta
+  simulada e teste online opcional atualizado para a B47 atual.
+- Leitura pública real da oficial: CSV e XLSX com 8.190 chaves, zero diferenças
+  de Campo e mesmo Resultado. Foi somente GET; nenhuma escrita, alteração de
+  acesso, importação ou execução de Apps Script. Não é validação de campanha
+  real, casos preenchidos ou das fórmulas defeituosas do produtor.
+- Proposta de novos campos/semântica/testes em
+  `dados/ficha/PROPOSTA-CONTRATO-B47.md`; roteiro de operador em
+  `dados/ficha/ROTEIRO-EXTERNO-B47.md`. Nenhuma ampliação do produtor aplicada.
+
+Evidências desta continuação: `pesquisa/validacao/2026-10-18-b47-cobertura/`.
+Suíte final: **797 testes executados, 796 aprovados e um online opcional
+pulado**, em 182,286 s. Teste online executado separadamente e aprovado.
+Pacote final: 67 arquivos, 1.150.030 bytes, todos iguais aos fontes, sem dados
+operacionais; SHA256 `3ff568f2773bc631d2564919628ec7d67deb27c5cba62f6a14d4bbc193312a1d`.
+Esse resultado inclui a guarda final das Trilhas publicadas incompatíveis.
+Detalhes/reprodução em `relatorio.txt`, `verificacao.json` e `pacote.json`.
+
 ## Como continuar exatamente
 
-1. Usar o checkout existente em `/workspace/RPG---BOT`. Conferir `git status
+1. Usar o checkout da branch, sem depender do caminho do computador/nuvem. Conferir `git status
    --short --branch`, `git log -5 --oneline` e alterações remotas antes de editar.
    Preservar trabalho do usuário. Se a branch já existir, retomá-la sem recriar.
 2. Ler `INTEGRACAO-B47.md`, `CONTRATO-ABA-BOT.md` e a fila atual. A entrega da
    ficha está concluída: não retomar C/D, não repetir migrações e não usar
    endereços de documentos históricos como contrato.
 3. De `Closure/src/`, executar:
-   `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao`.
+   `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao testes.test_b47_cobertura`.
    Depois de uma mudança relevante, executar
    `../.venv/bin/python -m unittest discover -s testes` e registrar os resultados.
 4. Leitor/esquema: `ficha_leitor.py`, `ficha_esquema.py` e manifesto em recursos.
@@ -44,9 +79,9 @@ Bot inicial: `7e4dc35209ea840549d5ccf5a0b49834da21d117`.
    foi salva nas configurações, preservando os hosts anteriores. Verificar o
    resultado real de `gh pr list` antes de presumir bloqueio persistente.
 
-## Evidência já obtida
+## Evidência do checkpoint anterior · 7015c80
 
-Suíte completa final desta revisão: **784 testes executados, 783 aprovados
+Suíte completa registrada naquele checkpoint: **784 testes executados, 783 aprovados
 e um online opcional pulado**, em 108,989 s. Comando: de `Closure/src/`,
 `../.venv/bin/python -m unittest discover -s testes`. A suíte inclui legado,
 leitor, integração, campanha, custom, painel e demais funcionalidades do projeto.
@@ -63,7 +98,8 @@ mudanças posteriores, sem reutilizar um resultado anterior como validação fin
 Pacote local regenerado: `Closure/src/var/closure-lab.zip` (ignorado pelo Git),
 67 arquivos, cerca de 1122 KB. Os 59 fontes/recursos Python/JSON/TSV correspondem
 exatamente ao checkout final; sem `.env`, banco ou cadastro real da campanha.
-SHA256: `13eefb60a0922d53ae54a4260c15544de9419b018f77a80c585cf7a3f2bcdcf3`.
+SHA256 histórico: `13eefb60a0922d53ae54a4260c15544de9419b018f77a80c585cf7a3f2bcdcf3`.
+O pacote dessa continuação foi regenerado; consultar o relatório atual acima.
 O operador deve preservar o cadastro de campanha existente ao publicar; ele
 não faz parte do ZIP. Não houve envio à Discloud.
 
@@ -107,7 +143,8 @@ não faz parte do ZIP. Não houve envio à Discloud.
 
 ## O que permanece externo ou parcial
 
-Não houve Google/Discord/LibreOffice nem implantação. O roteiro externo está
+Houve leitura pública CSV/XLSX no Google, sem escrita. Não houve Discord,
+LibreOffice nem implantação nesta continuação. O roteiro externo está
 no fim de `INTEGRACAO-B47.md`. B47 não emite as 485 chaves exclusivas TR-v4;
 carga integral e vários bônus do livro continuam explicitamente não conferidos.
 Seletores pessoais de CD/ataques, ajustes/resultados de TR/perícias do livro,

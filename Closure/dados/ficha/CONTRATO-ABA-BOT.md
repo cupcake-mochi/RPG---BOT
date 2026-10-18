@@ -1,5 +1,15 @@
 # Contrato vigente · B47 formato 11 · 18/10/2026
 
+Requisição CSV informa `headers=1`: a ANALISE tem uma linha de cabeçalho e
+colunas de texto. Inferência automática pode absorver registros como rótulos;
+o limite do parser continua preservado. CSV/XLSX atuais foram relidos com
+8.190 chaves e zero diferenças, sem escrever na oficial. Trilha custom usa a
+BASE DO LIVRO válida/aprovada nas contas de Famílias e extras; Nenhuma não
+herda. Troca fixa preserva o valor mesmo com conta-base incompleta, sem apagar
+pendências; especialização inválida não certifica bônus/treinos dependentes.
+O parâmetro e o risco de inferência em colunas textuais estão descritos na
+[documentação do Google](https://developers.google.com/chart/interactive/docs/spreadsheets).
+
 Contas derivadas, efeitos e herança foram ampliados na continuação da integração.
 Não há novos campos exigidos além do contrato entregue. Seletores pessoais,
 inventário e resultados de TR ausentes estão discriminados em

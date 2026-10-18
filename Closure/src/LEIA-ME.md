@@ -1,5 +1,16 @@
 # src: código do bot
 
+**Continuação B47 em 18/10:** o link CSV declara `headers=1`; a leitura real da
+oficial e o XLSX exportado retornaram 8.190 chaves e Campos/Resultado iguais,
+sem escrita. Trilha custom usa a base aprovada em Famílias/extras; troca fixa
+não depende da conta-base incompleta; especialização inválida não certifica
+bônus/treinos. Testes finais, pacote e limitações em
+[`RETOMADA-B47.md`](../docs/RETOMADA-B47.md). Antes de concluir publicação,
+seguir [`ROTEIRO-EXTERNO-B47.md`](../dados/ficha/ROTEIRO-EXTERNO-B47.md).
+Cards, memória, mídia e rotas de modelos preservados.
+Suíte final: 797 testes, 796 aprovados e um online opcional pulado; teste
+online separado aprovado. Pacote final e roteiro ainda não foram implantados.
+
 **Integração B47 (18/10/2026):** ANALISE 11 por chave, leitor tipado, regras por servidor, efeitos e custom aprovados por definição exata. Cadastro local em `src/var/ficha-campanhas.json`; ferramenta do operador e comandos de teste em [`../dados/ficha/INTEGRACAO-B47.md`](../dados/ficha/INTEGRACAO-B47.md). Preserve esse arquivo na publicação junto do estado operacional. A B47 não emite as 485 adições exclusivas do TR-v4; os limites ficam visíveis no painel. Estados e formatos antigos abaixo são históricos. Não houve implantação nem validação Discord/Google nesta integração.
 
 Continuação: `ficha_derivados_b47.py` confere Iniciativa, progressão numérica,
@@ -17,7 +28,7 @@ painel; CSV malformado/excessivo recebe erro de leitura, sem alterar os limites.
 A revisão seguinte acrescenta dependências aprovadas de Restrições embutidas,
 limites por identidade/modalidade, bloqueio de contas de entidade com distribuição
 inválida e CD de Controle por saldo recalculado. O motor puro interno recebe
-contexto explícito de TR de Melhorias. Resultados atuais: 784 testes, 783
+contexto explícito de TR de Melhorias. Checkpoint anterior: 784 testes, 783
 aprovados e um opcional pulado; estado detalhado em [`RETOMADA-B47.md`](../docs/RETOMADA-B47.md).
 
 **Voz das reações v22 (15/10):** Mizuki esclareceu que o limite de conteúdo não deve neutralizar a personalidade. A orientação usa a voz/reações do card, inclusive humor, ironia, reserva ou crítica quando couberem, e retira a expressão parte neutra do pedido. Cards, comandos, ativação e limites preservados. Sem chamadas pagas; naturalidade depende do piloto. Relatório em `pesquisa/validacao/2026-10-15-voz-reacoes-v22/relatorio.txt`.

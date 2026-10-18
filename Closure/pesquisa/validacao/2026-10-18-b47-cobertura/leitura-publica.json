@@ -1,0 +1,50 @@
+{
+  "metodo": "Leitura HTTP pública, somente GET: CSV gviz com headers=1 e exportação XLSX da B47 oficial atual. Sem escrita.",
+  "data": "2026-10-18",
+  "leitura_inicial_sem_cabecalho_explicito": {
+    "metodo": "Leitura HTTP pública, somente GET: CSV gviz e exportação XLSX da B47 oficial atual. Sem escrita ou dados alterados.",
+    "data": "2026-10-18",
+    "limites": [
+      "Amostra atual da oficial; não valida casos preenchidos ou cenários específicos.",
+      "Sem Discord, campanha real, navegação remota ou avaliação nativa dos dois defeitos do produtor."
+    ],
+    "estado": "leitura interrompida",
+    "erro_tipo": "FichaIlegivel",
+    "erro": "o CSV da aba ANALISE está malformado ou contém um campo grande demais"
+  },
+  "diagnostico_inicial": {
+    "http": 200,
+    "bytes": 555710,
+    "linhas_fisicas": 1421,
+    "maior_linha_caracteres": 404379,
+    "erro": "field larger than field limit (131072)"
+  },
+  "limites": [
+    "Amostra atual da oficial; não valida casos preenchidos ou cenários específicos.",
+    "Sem Discord, campanha real, navegação remota ou avaliação nativa dos dois defeitos do produtor."
+  ],
+  "csv": {
+    "estado": "lido",
+    "chaves": 8190,
+    "formato": 11,
+    "faltantes_manifesto": 0
+  },
+  "xlsx_http": 200,
+  "xlsx": {
+    "estado": "lido",
+    "chaves": 8190,
+    "sha256_exportacao": "877f7c7509b5a9ffa71e5fb00b2f6d7f5f93bbd89207f54d73074b58167dd1ab"
+  },
+  "comparacao_csv_xlsx": {
+    "diferencas_campos": 0
+  },
+  "corretor": {
+    "igual_nas_duas_leituras": true,
+    "veredito": "reprovada",
+    "problemas": 7,
+    "pendencias": 11,
+    "nao_conferidos": 13,
+    "conferidos": 13
+  },
+  "estado": "leituras concluídas"
+}

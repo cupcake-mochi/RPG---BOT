@@ -1,0 +1,116 @@
+Continuação da integração B47 — 18/10/2026
+
+Estado remoto inicial
+RPG---BOT: PR 64 aberta/rascunho, codex/integracao-b47 em
+7015c801349ec76b14cb198f12882ab89f6c238f; main em 7e4dc35209ea840549d5ccf5a0b49834da21d117.
+Ficha: ccbd053c8f7e68f8b4ac223f721b309111d2dcc0.
+Sistema: e593ba8cf24ce6bbd2f517f5431a73a96610e02b.
+Não havia commits posteriores nas bases. PR existente preservada/atrelada ao
+chat; nenhum reset, force-push, merge ou implantação.
+
+Ambiente
+O usuário autorizou usar o computador depois de esclarecer que nuvem era uma
+alternativa. Checkout Git separado da antiga pasta sem .git; referências do
+produtor/sistema somente de leitura. Python 3.12, Git, Node, QuickJS,
+openpyxl e discord.py disponíveis. LibreOffice localizado, mas não utilizado.
+Dependências instaladas em .venv própria; nenhum .env ou banco de produção
+copiado. Modelos externos não foram chamados; logs de falhas de modelos na
+suíte são dublês dos testes. Google usado somente por HTTP GET público.
+
+Mudanças do consumidor
+1. BASE DO LIVRO da Trilha usava o campo errado e não alimentava Famílias/
+   extras. Campo validado e base vinculada à assinatura. Perfil herdado somente
+   com registro válido/aprovado e Caminho associado correspondente. Nenhuma ou
+   vazio não herdam; o nome literal permanece no relatório. O produtor permite
+   Trilha própria de outro Caminho herdar uma base publicada: isso foi mantido.
+   Uma Trilha publicada incompatível com o Caminho não recebe essa exceção.
+2. Contexto.aplicar descartava troca fixa quando base era None. A troca agora
+   independe da conta-base, mantendo pendências da entrada, aprovação e conflitos.
+   Vida rolada ausente com troca para zero confere zero e continua pendente.
+3. Especialização custom inválida podia aparecer entre bônus conferidos.
+   Não certifica bônus nem orçamento dependente sem treino/nível exigidos.
+4. GET real da oficial reproduziu gviz transformando muitos registros em
+   cabeçalho: HTTP 200, 555.710 bytes, 1.421 linhas físicas, maior linha com
+   404.379 caracteres. O parser corretamente rejeitou o campo acima de 131.072.
+   Requisição declara headers=1; limite não foi elevado. Após correção:
+   CSV e XLSX da exportação pública lidos com 8.190 Campos idênticos e mesmo
+   Resultado. Estatísticas completas em leitura-publica.json, sem conteúdo de
+   personagem ou identificadores nativos. Não é ensaio de fórmulas específicas
+   nem aprovação da ficha: a amostra foi reprovada igualmente nos dois caminhos.
+
+Provas e testes
+13 novos testes: 11 em test_b47_cobertura inicialmente, mais a guarda
+da Trilha publicada incompatível. Os 11 primeiros foram executados contra o
+7015c80 extraído em pasta temporária com a fixture corrigida: 15 falhas de
+asserção/subcasos. A fixture inicialmente usava uma Família inexistente e foi
+corrigida para Auxiliares, sem mudar a expectativa mecânica. Os defeitos foram
+reproduzidos novamente na base antiga depois da correção da fixture.
+Um teste novo de transporte simula o cabeçalho gigante do gviz e exige que
+formato/nome permaneçam dados. A regressão mantém o limite de campo anterior.
+
+Primeira suíte: 795 coletados, uma falha e 65 pulados. A falha vinha de teste
+histórico condicionado a arquivo de outro diretório do PC; cobrava a mensagem
+antiga do leitor para fórmula sem cache. Substituído por XLSX sintético em
+memória, executado em todo checkout e exigindo diagnóstico da célula B3; não
+se relaxou a recusa. O cache ignorado do prompt foi montado dos fontes salvos,
+sem modificar cards/livro, evitando 64 pulos por falta desse preparo.
+Suíte seguinte: 795 testes em 181,736 s, sem falhas, um online opcional pulado.
+Após a correção CSV: 796 em 180,471 s, sem falhas, um online opcional pulado.
+Essas rodadas não substituem a suíte final depois da última guarda de Trilha.
+
+Suíte final do código entregue: 797 testes executados em 182,286 s;
+796 aprovados e um online opcional pulado, sem falhas. Comando, de Closure/src/:
+../.venv/bin/python -m unittest discover -s testes
+O teste online foi executado separadamente e passou, conforme abaixo.
+
+Teste online opcional executado separadamente e aprovado:
+FICHA_ONLINE=1 ../.venv/bin/python -m unittest testes.test_ficha.PeloLink
+O teste antigo apontava à oficial atual mas esperava ANALISE 1/2.650. Foi
+atualizado para confrontar o manifesto B47 vigente; fixtures antigas continuam
+preservadas. A mudança acompanha a entrega comprovada, não oculta divergência.
+Focal final anterior ao fechamento: 24 testes (cobertura/leitor B47/leitor
+legado) em 5,947 s, todos aprovados. B47 anterior: 152 em 53,910 s, aprovados.
+Nenhuma dessas contagens é apresentada como validação integral nativa.
+
+Produtor, somente inspeção
+Reextraídos os sete fragmentos GS: 8.190 identidades/partes iguais ao manifesto.
+SUMIFS/COUNTIFS ainda usam A54 sem escapar nas contas de efeito; expressão
+de resolve ainda apresenta CD-base na CD do Controle. produtor-estatico.json
+contém fórmulas mínimas, casos e hashes dos fontes. Não se executou fórmula
+no Google/Calc nem se alterou o produtor. Os dois diagnósticos/tolerância exata
+do consumidor continuam nos testes; nenhum valor incorreto foi autorizado.
+
+Proposta concreta separada
+dados/ficha/PROPOSTA-CONTRATO-B47.md apresenta nomes de campos, partes, tipos,
+unidades, entradas/resultados, compatibilidade e testes de aceitação para
+seletores pessoais, competências, TR das entidades, inventário/carga, estado
+ativo/teto e CDs distintas do Controle. Não ativa novo formato nem exige
+entradas inexistentes da B47 atual. Revisão/implementação do produtor é outra
+tarefa; preservar as 485 adições históricas TR-v4 sem inventá-las na B47.
+
+Cobertura remanescente e responsabilidades
+BOT: manter análise parcial; revisão mecânica adicional de Alma combinada com
+adicionais/distribuição não foi implementada nesta etapa. Uma futura ampliação
+do contrato exige novos consumidores/regressões. Discord por link/XLSX,
+campanha/aprovações reais e navegação/timeout do painel ainda não exercitados.
+PRODUTOR: entradas/resultados da proposta ausentes; critérios literais e CD
+exclusiva de Controle ainda pendentes. Só leitura pública não valida esses casos.
+MESTRE: aprendizado, história dos marcos, autorizações, requisitos livres,
+efeitos narrativos, escolha/distribuição de alvos e permissões/interações de
+Alma continuam humanos. Aprovação exata não transforma prosa em benefício.
+
+Roteiro externo e retomada
+dados/ficha/ROTEIRO-EXTERNO-B47.md reúne casos, esperado, cadastro do operador,
+isolamento entre servidores e navegação/encerramento dos controles. Revisão,
+merge e implantação ainda pendentes. Ler docs/RETOMADA-B47.md, conferir HEAD e
+origin/codex/integracao-b47 antes de editar, preservar branch/PR 64, executar
+as regressões e suíte do checkout. Não retomar C/D nem construir/continuar.
+
+Pacote
+src/var/closure-lab.zip regenerado, ignorado pelo Git. 67 arquivos comparados
+byte a byte com os fontes; sem .env, banco, testes ou cadastro real de campanha.
+Estado/hash em pacote.json. Nenhuma alteração em cards, livro, ponte, modelos,
+memória, mídia ou manifestos históricos; produtor/sistema com árvores limpas.
+
+Referência primária para headers e inferência de colunas de texto:
+https://developers.google.com/chart/interactive/docs/spreadsheets

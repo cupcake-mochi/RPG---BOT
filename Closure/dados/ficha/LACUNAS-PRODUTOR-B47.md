@@ -4,6 +4,13 @@ Fonte examinada: `Ficha---RPG-JJK@ccbd053c8f7e68f8b4ac223f721b309111d2dcc0`.
 Nenhum arquivo desse repositório ou da ficha oficial foi alterado. Esta lista
 não autoriza publicação, migração ou uso de Google/LibreOffice.
 
+Reexame estático em 18/10: fragmentos entregues ainda contêm os critérios A54
+diretos e a apresentação de Controle com CD-base, conforme o relatório
+`pesquisa/validacao/2026-10-18-b47-cobertura/produtor-estatico.json` (hashes dos
+fontes/artefatos). A leitura pública CSV/XLSX da oficial não ensaiou esses dois
+cenários. Proposta separada de campos/semântica/testes em
+[PROPOSTA-CONTRATO-B47.md](PROPOSTA-CONTRATO-B47.md); nenhuma mudança do produtor.
+
 ## Entradas/resultados ausentes do contrato entregue
 
 O manifesto `src/closure_bot/recursos/b47-campos.tsv` enumera exatamente o
