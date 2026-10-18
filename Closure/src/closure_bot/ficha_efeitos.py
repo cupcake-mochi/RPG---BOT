@@ -9,6 +9,20 @@ import re
 from dataclasses import dataclass
 
 
+def limitar_dados(saldo, classe, pecas):
+    """Teto da montagem, antes de Alma e sem multiplicar por alvos.
+
+    Quebra Coisa vale para objetos e Remate para criaturas: não se multiplicam
+    entre si. Os dados secundários não reaplicam nenhum dos multiplicadores.
+    """
+    multiplicador = max(2 if 'Quebra Coisa' in pecas else 1,
+                        1.25 if 'Remate' in pecas else 1)
+    def cabe(d):
+        adicionais = sum(d // 2 for n in pecas if n in ('Salto', 'Queima', 'Estilhaço'))
+        return d * multiplicador + adicionais <= 4 * classe
+    return max(d for d in range(saldo + 1) if cabe(d))
+
+
 def _tabela(texto):
     return {p[0]: p[1:] for l in texto.splitlines() if l.startswith("| ")
             and (p := [v.strip() for v in l.strip("|").split("|")])}

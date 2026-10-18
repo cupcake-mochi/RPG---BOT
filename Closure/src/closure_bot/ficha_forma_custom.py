@@ -4,7 +4,7 @@ import re
 from .ficha_configuracao import valor
 from .ficha_magia import lista
 from .ficha_personagem_motor import forma as calcular_forma
-from .ficha_efeitos import melhoria_exige_tr, eh_condicao
+from .ficha_efeitos import melhoria_exige_tr, eh_condicao, limitar_dados
 
 
 def conferir(ficha,magia,base,nivel,problemas,certos,pulou,*,entidade=False,basica=False,liberacao=False,familias=None,pendencias=None):
@@ -104,10 +104,7 @@ def conferir(ficha,magia,base,nivel,problemas,certos,pulou,*,entidade=False,basi
     if classe and modo==1:saldo=min(saldo,orcamento-montada['custo'])
     if classe and liberacao:saldo+=classe
     if classe and modo==0:
-        def cabe(d):
-            adicionais=sum(d//2 for n in pecas_regras if n in ('Salto','Queima','Estilhaço'))
-            return d*(1.25 if 'Remate' in pecas_regras else 1)+adicionais<=4*classe
-        saldo=max(d for d in range(saldo+1) if cabe(d))
+        saldo=limitar_dados(saldo,classe,pecas_regras)
     alma='Toca a Alma' in pecas_regras
     mistura_alma=alma and any(n in ('Salto','Queima','Estilhaço','Rajada','Mais Um') for n in pecas_regras)
     descartado=modo==0 and saldo>0 and str(valor(ficha,base+'.dano'))=='Sem dano' and any(p.familia=='Controle' for p in usadas)

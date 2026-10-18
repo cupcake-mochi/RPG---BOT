@@ -12,7 +12,7 @@ import unicodedata
 from dataclasses import dataclass
 
 from .ficha_leitor import Campo
-from .ficha_efeitos import Medidas, conferir_medidas, conferir_resolucao, eh_condicao
+from .ficha_efeitos import Medidas, conferir_medidas, conferir_resolucao, eh_condicao, limitar_dados
 from .ficha_repertorio import Repertorio, zeros_adicionais
 
 ERROS_PLANILHA = {"#NAME?", "#VALUE!", "#REF!", "#DIV/0!", "#N/A", "#NUM!", "#ERROR!", "#SPILL!"}
@@ -394,11 +394,8 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
             danos = {min(d, teto) for d in danos}
         if liberacao:
             danos = {d + classe for d in danos}
-        def cabe(d):
-            extra = sum(d // 2 for n in pecas_regras if n in ("Salto", "Queima", "Estilhaço"))
-            return d * (1.25 if "Remate" in pecas_regras else 1) + extra <= 4 * classe
         if forma not in ("Cura", "Onda", "Apoio", "Efeito"):
-            danos = {max(d for d in range(inicial + 1) if cabe(d)) for inicial in danos}
+            danos = {limitar_dados(inicial, classe, pecas_regras) for inicial in danos}
         faces = 8
     controle = any(p.familia == "Controle" for p in conhecidas)
     if magia.contexto is not None:
@@ -502,44 +499,105 @@ def conferir_maxima(ficha, magia, resultado, familias=None):
         return
     classe = magia.classe_maxima(nivel)
     dados, pontos = (24, 8) if nivel < 21 else (28, 12) if nivel < 26 else (32, 16)
-    if valor(ficha, "maxima.pe") != 5 * classe:
+    if valor(ficha, "maxima.pe") != 5 * classe or isinstance(valor(ficha, "maxima.pe"), bool):
         erro("pe", str(5 * classe))
     else:
         resultado.conferidos.append(f"Técnica Máxima: PE {5 * classe}")
+    inicio = len(resultado.problemas)
     pecas, forma = lista(ficha, "maxima.pecas"), valor(ficha, "maxima.forma")
+    ctx = magia.contexto
+    definicao = None
+    if ctx:
+        registros = list(ctx.registros.values())
+        definicao = next((d for d in registros if d.tipo == 'forma' and d.nome == forma), None)
+        usadas = {magia.melhorias[n].familia for n in pecas if n in magia.melhorias}
+        if definicao:
+            usadas.add(definicao.efetivos.get('familia'))
+        selecionados = {forma, *pecas}
+        if definicao:
+            selecionados.add(definicao.efetivos.get('restricao_embutida'))
+        if any((d.nome in selecionados or d.tipo == 'familia' and d.nome in usadas)
+               and (not d.valida or not d.aprovada) for d in registros):
+            resultado.nao_conferido.append("Técnica Máxima: conteúdo sem aprovação/mecânica completa; montagem e dados não certificados")
+            return
     if forma not in magia.formas:
-        erro("forma", "Forma do livro")
+        erro("forma", "Forma do livro ou custom válida e aprovada")
         return
     if len(pecas) > 4:
         erro("pecas", "até quatro Melhorias")
     conhecidas = [magia.melhorias[n] for n in pecas if n in magia.melhorias]
     livres, abertas = familias if familias else (None, None)
-    if len(conhecidas) != len(pecas) or livres is None:
+    if len(conhecidas) != len(pecas) or livres is None or abertas is None:
         resultado.nao_conferido.append("Técnica Máxima: falta conferir peças próprias ou escolhas válidas de Famílias")
         return
-    gasto = magia.preco(magia.formas[forma], classe)
+    regras = [ctx.aliases.get('melhoria:' + n, n) if ctx else n for n in pecas]
+    identidade = definicao.efetivos.get('identidade', '') if definicao else forma
+    modo = definicao.efetivos['resultado'] if definicao else {'Cura': 1, 'Onda': 1, 'Apoio': 2, 'Efeito': 3}.get(forma, 0)
     for n in set(pecas):
         p = magia.melhorias[n]
-        if pecas.count(n) > p.repeticoes or classe < p.minima or p.familia and p.familia not in abertas:
+        identidade_peca = ctx.aliases.get('melhoria:' + n, n) if ctx else n
+        if regras.count(identidade_peca) > p.repeticoes or classe < p.minima or p.familia and p.familia not in abertas:
             erro("pecas", f"requisitos, repetição e Família aberta de {n}")
-    if "Inescapável" in pecas:
+    if "Inescapável" in regras:
         erro("pecas", "Inescapável não combina com Técnica Máxima")
-    exige = "Área" if forma in ("Explosão", "Aura", "Cone", "Linha") else "Amparo" if forma in ("Cura", "Apoio", "Onda") else None
+    exige = (definicao.efetivos.get('familia') if definicao else
+             "Área" if forma in ("Explosão", "Aura", "Cone", "Linha") else "Amparo" if forma in ("Cura", "Apoio", "Onda") else None)
     if exige and exige not in abertas:
         erro("forma", f"{forma} exige {exige} aberta")
+    if identidade in ('Toque', 'Aura', 'Onda') and any(n in regras for n in ('Longe', 'Muito Longe')):
+        erro('pecas', f'{identidade} não aceita aumento de distância')
+    if 'Junto' in regras and identidade not in ('Cura', 'Apoio'):
+        erro('pecas', 'Junto somente em Cura ou Apoio')
+    if 'Mais Um' in regras and identidade not in ('Projétil', 'Toque', 'Efeito'):
+        erro('pecas', 'Mais Um exige alvo individual; Cura e Apoio usam Junto')
+    if 'Rajada' in regras and (identidade not in ('Projétil', 'Toque') or 'Certeiro' in regras or
+                              definicao and definicao.efetivos.get('resolucao') != 'Acerto'):
+        erro('pecas', 'Rajada exige alvo individual e ataque')
+    if 'Terreno' in regras and identidade not in ('Explosão', 'Aura', 'Cone', 'Linha', 'Onda'):
+        erro('pecas', 'Terreno exige Forma de área')
+    if 'Corrói' in regras and 'Mira' not in livres:
+        erro('pecas', 'Corrói exige Mira Livre')
+    if 'Rápido' in regras and 'Reação' in regras:
+        erro('pecas', 'não combinar Rápido com Reação')
+    if sum(eh_condicao(magia, n) and magia.melhorias[n].peso == 'Pesada' for n in pecas) > 1:
+        erro('pecas', 'no máximo uma condição Pesada')
+    if 'Toca a Alma' in regras and modo != 0:
+        erro('pecas', 'Toca a Alma exige aplicação de dano')
+    # A Forma não recebe desconto na Máxima; seus dados nunca pagam as peças.
+    gasto = magia.preco(magia.formas[forma], classe)
     gasto += sum(max(1, magia.preco(p.peso, classe) - (math.ceil(classe / 2) if p.familia in livres else 0)) for p in conhecidas)
     if gasto > pontos:
         erro("pecas", f"montagem de até {pontos} pontos; gasto {gasto}")
+    if len(resultado.problemas) > inicio:
+        resultado.nao_conferido.append("Técnica Máxima: montagem inválida impede certificar montagem e dados")
+        return
+    esperado_montagem = f'{gasto} de {pontos}'
+    if valor(ficha, 'maxima.montagem') == '':
+        resultado.pendencias.append(Problema('informação', 'maxima.montagem', esperado_montagem, '', 'fundamento--maxima'))
+    elif valor(ficha, 'maxima.montagem') != esperado_montagem:
+        erro('montagem', esperado_montagem)
     else:
-        resultado.conferidos.append(f"Técnica Máxima: montagem {gasto} de {pontos}")
-    if forma in ("Efeito", "Apoio", "Onda") or any(n in pecas for n in ("Rajada", "Mais Um", "Junto", "Remate", "Toca a Alma", "Salto", "Queima", "Estilhaço")):
-        resultado.nao_conferido.append("Técnica Máxima: aplicação e distribuição dos dados precisam de conferência")
+        resultado.conferidos.append(f"Técnica Máxima: montagem {esperado_montagem}")
+    if definicao:
+        resultado.nao_conferido.append('Técnica Máxima: requisitos livres e aplicação da Forma custom exigem mestre')
+    if 'Rápido' in regras or 'Reação' in regras:
+        resultado.nao_conferido.append('Técnica Máxima: Rápido/Reação não reduzem a Ação Completa; conferir a aplicação escrita')
+    alma = 'Toca a Alma' in regras
+    if alma:
+        resultado.nao_conferido.append('Técnica Máxima: dano de Alma exige Regra que trate diretamente da alma; conferir permissão com o mestre')
+    if modo in (2, 3) or identidade == 'Onda' or any(n in regras for n in ('Rajada', 'Mais Um', 'Junto', 'Remate', 'Salto', 'Queima', 'Estilhaço')):
+        resultado.nao_conferido.append("Técnica Máxima: aplicação, interação e distribuição dos dados precisam de conferência")
     else:
         texto = str(valor(ficha, "maxima.dano"))
-        if not re.fullmatch(rf"(?:Cura\s*:?\s*)?{dados}d8(?:\s*=\s*{dados * 9 // 2})?", texto, re.I):
-            erro("dano", f"{dados}d8, separados dos pontos de montagem")
+        total = dados // 2 if alma else dados
+        prefixo = r'(?:Cura\s*:?\s*)?' if modo == 1 else ''
+        if re.fullmatch(rf"{prefixo}{total}d8(?:\s*=\s*{total * 9 // 2})?", texto, re.I):
+            resultado.conferidos.append(f"Técnica Máxima: {total}d8")
+        elif alma and re.fullmatch(rf'{dados}d8(?:\s*=\s*{dados * 9 // 2})?', texto):
+            # A fórmula entregue imprime a tabela fixa sem aplicar Toca a Alma.
+            resultado.pendencias.append(Problema('conta', 'maxima.dano', f'{total}d8 de Alma; a fórmula fixa do produtor não aplica a redução', texto, 'catalogo--cat-defesas'))
         else:
-            resultado.conferidos.append(f"Técnica Máxima: {dados}d8")
+            erro("dano", f"{total}d8, separados dos pontos de montagem")
     resultado.nao_conferido.append("Técnica Máxima: texto, requisitos e recarga precisam de conferência do mestre")
 
 
