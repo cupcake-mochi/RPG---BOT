@@ -174,7 +174,7 @@ def preparar_custom(ficha, ref, ctx, r):
                         falha('campo.rota','ROTA compatível com o pacote herdado da BASE DO LIVRO')
             if sum(x.chave.split('.')[1].isdigit() and str(x.nome).casefold()==str(d.nome).casefold() for x in registros)>1:
                 falha('nome','nome único entre os 25 cadastros compartilhados 3a')
-        campo_base = 'campo.base' if d.tipo=='Ferramenta amaldiçoada' else 'campo.base_do_livro' if d.tipo=='Origem' else 'base'
+        campo_base = 'campo.base' if d.tipo=='Ferramenta amaldiçoada' else 'campo.base_do_livro' if d.tipo in ('Origem','trilha') else 'base'
         base = d.campos.get(campo_base,'')
         tem_base = base not in ('','Nenhuma')
         heranca = tabelas.get(d.tipo,{}).get(base)

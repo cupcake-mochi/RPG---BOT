@@ -67,14 +67,23 @@ def conferir_repertorio_entidade(ficha, ref, base, nivel, cartas, familias, r):
             r.conferidos.append(f"{nome}: {k.removeprefix(base + '.')} {esperado}")
 
     dono = valor(ficha, "nivel")
-    principal = (valor(ficha, "caminho") == "Evocador" and valor(ficha, "trilha") == "Invocação Principal"
-                 and inteiro(dono, 2))
+    if magia.contexto is not None:
+        from .ficha_configuracao import trilha_mecanica
+        trilha = trilha_mecanica(ficha, magia.contexto)
+        principal = trilha == "Invocação Principal" and inteiro(dono, 2)
+        if trilha is None:
+            r.nao_conferido.append(f"{nome}: escolhas extras dependem de Trilha válida e aprovação da definição exata")
+    else:
+        trilha = valor(ficha, "trilha")
+        principal = valor(ficha, "caminho") == "Evocador" and trilha == "Invocação Principal" and inteiro(dono, 2)
     inicio = len(r.problemas)
     for k in ficha:
         m = re.fullmatch(re.escape(base) + r"\.(?:ext\.(\d+)\.nome|talento_extra\.(\d+))", k)
         if m and int(m[1] or m[2]) not in range(1, len(regras.extras) + 1) and valor(ficha, k):
             erro(k, "somente três escolhas extras da Principal", "evocador--ev-principal-especial")
     for i, abre in enumerate(regras.extras, 1):
+        if trilha is None:
+            continue
         habilidade = base + f".ext.{i}"
         talento = base + f".talento_extra.{i}"
         tem_carta, t = ativa(ficha, habilidade), valor(ficha, talento)
@@ -102,7 +111,7 @@ def conferir_repertorio_entidade(ficha, ref, base, nivel, cartas, familias, r):
                 r.nao_conferido.append(f"{nome}: Categoria do Talento extra próprio não aprova seu efeito; aguarda CONFIGURAÇÃO")
     if any(base + f".talento_extra.{i}" not in ficha or base + f".ext.{i}.nome" not in ficha for i in range(1, 4)):
         r.nao_conferido.append(f"{nome}: faltam posições para conferir todas as escolhas extras da Trilha")
-    elif len(r.problemas) == inicio:
+    elif trilha is not None and len(r.problemas) == inicio:
         r.conferidos.append(f"{nome}: escolhas extras separadas das vagas normais; benefícios da Principal dependem de uma única ativa")
 
     for k in (k for k in ficha if re.fullmatch(re.escape(base) + r"\.talento\.\d+", k)):

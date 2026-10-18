@@ -68,9 +68,28 @@ class ContextoB47:
             return None
         efeitos = self.efeitos.get(caixa, [])
         trocas = [e.valor for e in efeitos if e.como == 'trocar por']
-        if len(trocas) > 1 or base is None:
+        if len(trocas) > 1:
             return None
-        return trocas[0] if trocas else base + sum(e.valor for e in efeitos)
+        if trocas:
+            return trocas[0]
+        return None if base is None else base + sum(e.valor for e in efeitos)
+
+
+def trilha_mecanica(ficha, ctx):
+    """Base autorizada da Trilha; None impede presumir um perfil sem aprovação.
+
+    A entrega B47 usa a BASE DO LIVRO para suas automações, mesmo em Trilha
+    associada a outro Caminho. O nome literal continua na ficha e na aprovação.
+    Vazio/Nenhuma não herda benefício; a prosa por nível não define um perfil.
+    """
+    nome = valor(ficha, 'trilha')
+    d = ctx.registros.get('custom.trilha')
+    if d is None or d.nome != nome:
+        return nome
+    if not d.valida or not d.aprovada or d.campos.get('campo.caminho') != valor(ficha, 'caminho'):
+        return None
+    base = d.campos.get('campo.base_do_livro', '')
+    return '' if base in ('', 'Nenhuma') else base
 
 
 def problema(r, campo, esperado, encontrado, *, pendente=False, regra='configuração', ancora=''):

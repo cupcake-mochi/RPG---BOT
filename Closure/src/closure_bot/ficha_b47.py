@@ -175,7 +175,12 @@ def conferir_familias(ficha,magia,raiz,problemas,r=None):
             if valor(ficha,'regra.'+campo)!=esperado:
                 erro('regra.'+campo,f'{esperado}, recalculado do catálogo',valor(ficha,'regra.'+campo))
         return livres,nomes-fechadas
-    trilha=valor(ficha,'trilha')
+    from .ficha_configuracao import trilha_mecanica
+    trilha=trilha_mecanica(ficha,ctx)
+    if trilha is None:
+        if r is not None:
+            r.nao_conferido.append(raiz+': Famílias dependem de Trilha válida e aprovação da definição exata')
+        return None,None
     perfil='principal' if trilha=='Invocação Principal' else 'parceria' if trilha in ('Parceria','Múltiplas Invocações') else 'padrao'
     autonomia=valor(ficha,raiz+'.autonomia') or 'Autônoma'
     if autonomia not in ('Autônoma','Não autônoma'):
@@ -347,6 +352,7 @@ def conferir_treinos(ficha,ref,ctx,r):
             contagens[tipo]+=t;especializacoes+=e
             if e and (not t or n<10):
                 problema(r,f'{tipo}.{slug}.especialista','especialização exige treino e nível 10+',e,regra='treinos')
+                completo=False
     for tipo,limite in [('pericia',23),('oficio',11)]:
         vistos=set()
         for i in range(1,limite+1):
@@ -368,6 +374,8 @@ def conferir_treinos(ficha,ref,ctx,r):
             contagens[tipo]+=t;especializacoes+=e
             if e and (not t or n<10):
                 problema(r,base+'.especializacao','especialização exige treino e nível 10+',e,regra='treinos')
+                completo=False
+                continue
             a=atributo(valor(ficha,base+'.atributo'))
             padrao=atributo(d.campos.get('atributo',''))
             if a is None or tipo=='pericia' and a!=padrao:
