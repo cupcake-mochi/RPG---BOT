@@ -1,5 +1,6 @@
 # Origem: Ficha---RPG-JJK@ccbd053c8f7e68f8b4ac223f721b309111d2dcc0
-# Motor puro preservado; somente a importação de FAIXAS foi internalizada.
+# FAIXAS internalizadas; consumidor acrescenta contexto exige_tr_adicional para
+# TR imposto por Melhorias estruturadas, sem modificar o cadastro da Forma.
 """Catálogos e contas sem endereços, versão ANALISE ou rede.
 
 Interface proposta: compilar(livro, registros, capacidades, familias) retorna
@@ -250,7 +251,7 @@ def menu(cat, grupo, contexto=None, familias_abertas=None, classe=None):
 
 
 def forma(cat, nome, contexto, classe, *, longe=0, maior=0, livre=False,
-          familias_abertas=None, melhorias=0, restricoes=()):
+          familias_abertas=None, melhorias=0, restricoes=(), exige_tr_adicional=False):
     if contexto not in FAIXAS or not inteiro(classe, 0, 7):
         raise ValueError('Contexto/Classe inválido')
     f = cat.obter('forma', nome)
@@ -286,7 +287,9 @@ def forma(cat, nome, contexto, classe, *, longe=0, maior=0, livre=False,
         avisos.append('Restrição repetida, contando a embutida')
     if 'Corpo a Corpo' in ids and f['identidade'] in ('Cone', 'Linha'):
         avisos.append('Corpo a Corpo não entra em Cone/Linha')
-    exige_tr=f['exige_tr'] or f['resolucao']=='TR, metade'
+    # Adaptação do consumidor: Melhorias estruturadas podem acrescentar TR ao
+    # Acerto (Condição/Prende/Cerca), inclusive para exigir Tudo ou Nada.
+    exige_tr=f['exige_tr'] or f['resolucao']=='TR, metade' or exige_tr_adicional
     if 'Tudo ou Nada' in ids and not exige_tr:
         avisos.append('Tudo ou Nada exige TR')
     custo = 0 if classe == 0 or f['peso'] == 0 else math.ceil(classe * f['peso'] / 2)

@@ -131,20 +131,30 @@ def conferir_medidas(ficha, magia, base, classe, forma, pecas, problemas, certos
         problemas.append(p)
 
 
-def conferir_resolucao(ficha, magia, base, forma, pecas, problemas, certos, pulou, *, entidade=False, pendencias=None):
+def melhoria_exige_tr(magia, nome):
+    d=next((d for d in magia.contexto.registros.values() if d.tipo=='melhoria' and d.nome==nome and d.valida and d.aprovada),None) if magia.contexto else None
+    if d and d.efetivos.get('exige_tr') in ('Sim','Não'):
+        return d.efetivos['exige_tr']=='Sim'
+    return (nome in ('Prende','Cerca') or nome.startswith('Condição: ') or
+            nome in magia.melhorias and magia.melhorias[nome].familia=='Controle' and nome not in ('Terreno','Desarma o Feitiço'))
+
+
+def eh_condicao(magia,nome):
+    d=next((d for d in magia.contexto.registros.values() if d.tipo=='melhoria' and d.nome==nome),None) if magia.contexto else None
+    identidade=magia.contexto.aliases.get('melhoria:'+nome,nome) if magia.contexto else nome
+    return bool(d and d.efetivos.get('modalidade')=='Condição' or identidade.startswith('Condição: ') or 'Condição: '+identidade in magia.melhorias)
+
+
+def conferir_resolucao(ficha, magia, base, forma, pecas, problemas, certos, pulou, *, entidade=False, pendencias=None,saldo_controle=None):
     from .ficha_magia import rotulo, valor
     from .ficha_corretor import Problema
     nome = rotulo(base)
     if base + ".resolve" not in ficha:
         pulou.append(f"{nome}: resolução não exportada nesta ficha")
         return
-    def exige_tr(n):
-        d=next((d for d in magia.contexto.registros.values() if d.tipo=='melhoria' and d.nome==n and d.valida and d.aprovada),None) if magia.contexto else None
-        if d and d.efetivos.get('exige_tr') in ('Sim','Não'):
-            return d.efetivos['exige_tr']=='Sim'
-        return (n in ("Prende", "Cerca") or n.startswith("Condição: ") or
-                n in magia.melhorias and magia.melhorias[n].familia == "Controle" and n not in ("Terreno", "Desarma o Feitiço"))
-    controle = any(exige_tr(n) for n in pecas)
+    controle = any(melhoria_exige_tr(magia,n) for n in pecas)
+    bonus_controle=any(n in magia.melhorias and magia.melhorias[n].familia=='Controle' for n in pecas) if magia.contexto else None
+    pecas = [magia.contexto.aliases.get('melhoria:'+n,n) for n in pecas] if magia.contexto else pecas
     automatico = forma in ("Cura", "Apoio", "Onda", "Efeito") or "Inescapável" in pecas
     escolhido = valor(ficha, base + ".resolucao_escolha") if entidade else ""
     opcoes = ("", "Ataque", "TR Físico", "TR Vigor", "TR Intelecto", "TR Espírito")
@@ -168,7 +178,7 @@ def conferir_resolucao(ficha, magia, base, forma, pecas, problemas, certos, pulo
                       re.escape(esperado) + r"(?: · CD " + num + r")?" + (r" · metade" if "Certeiro" in pecas else ""))
             if re.fullmatch(padrao, texto):
                 if _conferir_bonus_entidade(ficha, magia, base, esperado, texto, ataque, controle, pecas,
-                                            problemas, certos, pulou, pendencias):
+                                            problemas, certos, pulou, pendencias,saldo_controle=saldo_controle,bonus_controle=bonus_controle):
                     return
                 pulou.append(f"{nome}: tipo de resolução compatível; valores numéricos não certificados")
                 return
@@ -187,7 +197,7 @@ def conferir_resolucao(ficha, magia, base, forma, pecas, problemas, certos, pulo
 
 
 def _conferir_bonus_entidade(ficha, magia, base, tipo, texto, ataque, controle, pecas,
-                            problemas, certos, pulou, pendencias):
+                            problemas, certos, pulou, pendencias,*,saldo_controle=None,bonus_controle=None):
     from .ficha_magia import inteiro, valor, rotulo
     from .ficha_equipamento import numero
     from .ficha_entidade import ATRIBUTOS, NOMES
@@ -211,9 +221,9 @@ def _conferir_bonus_entidade(ficha, magia, base, tipo, texto, ataque, controle, 
     comum = a + b + magia.maestria[dono]
     precisao = 2 if "Precisão" in pecas else 0
     at, cd = comum + ba + precisao, 8 + comum + bc + (0 if ataque else precisao)
-    # A carta não separa CD de dano e CD exclusiva do Controle. O bônus de saldo
-    # zero continua manual; não se usa a CD exportada para decidir o saldo.
-    cds = {cd, cd + 2} if controle else {cd}
+    # Sem saldo comprovado, a carta não distingue CD de dano/Controle. Na B47
+    # o chamador pode informar o saldo independente; nunca se deriva do texto.
+    cds = ({cd} if bonus_controle is False else {cd,cd+2} if saldo_controle is None else {cd+2} if saldo_controle==0 else {cd}) if controle else {cd}
     opcoes = ({f"Ataque {at:+g} · TR CD {n:g}" for n in cds} if ataque and controle else
               {f"Ataque {at:+g}"} if ataque else
               {f"{tipo} · CD {n:g}" + (" · metade" if "Certeiro" in pecas else "") for n in cds})
@@ -222,10 +232,19 @@ def _conferir_bonus_entidade(ficha, magia, base, tipo, texto, ataque, controle, 
         p = Problema("conta", base + ".resolve", " ou ".join(sorted(opcoes)), texto, "catalogo--cat-mira")
         legado = not ataque and precisao and normal in {f"{tipo} · CD {n - 2:g}" +
             (" · metade" if "Certeiro" in pecas else "") for n in cds}
+        if controle and saldo_controle==0:
+            antiga=(f'Ataque {at:+g} · TR CD {cd:g}' if ataque else f'{tipo} · CD {cd:g}'+(' · metade' if 'Certeiro' in pecas else ''))
+            legado=legado or normal==antiga
         (pendencias if legado and pendencias is not None else problemas).append(p)
     elif not controle:
         certos.append(f"{rotulo(base)}: bônus da resolução {texto}")
     if controle:
-        pulou.append(f"{rotulo(base)}: CD do Controle e bônus pelo saldo zero precisam de revisão manual; valores não certificados")
+        if saldo_controle is None and bonus_controle is not False:
+            pulou.append(f"{rotulo(base)}: CD do Controle e bônus pelo saldo zero precisam de revisão manual; valores não certificados")
+        elif normal in opcoes:
+            certos.append(f'{rotulo(base)}: CD exclusiva do Controle {next(iter(cds)):g}; saldo calculado {saldo_controle:g}' if bonus_controle is not False else
+                          f'{rotulo(base)}: CD do TR {cd:g}; exigência de TR não concede bônus de Controle')
+        else:
+            pulou.append(f'{rotulo(base)}: CD do TR {next(iter(cds)):g} pela montagem; resultado divergente não certificado')
     pulou.append(f"{rotulo(base)}: TR escolhido e efeito no sucesso precisam estar registrados; conferir o texto")
     return True

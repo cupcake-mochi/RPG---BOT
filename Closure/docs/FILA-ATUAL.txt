@@ -1,6 +1,7 @@
 Fila atual — Guias do Ciclo, 18/10/2026
 Integração B47 do bot implementada em codex/integracao-b47; contrato e limites em dados/ficha/INTEGRACAO-B47.md. Nenhuma edição da oficial, chamada paga ou implantação.
 Continuação: contas derivadas, efeitos de Famílias, herança de Origem/Formas/Ferramentas e contagem de PE ampliados; lacunas e reprodução de critério com curingas em dados/ficha/LACUNAS-PRODUTOR-B47.md. Testes finais e retomada em docs/RETOMADA-B47.md.
+Revisão seguinte: Restrição custom embutida vincula aprovações; frequência e Condições por identidade; distribuição inválida bloqueia contas da entidade; CD de Controle por saldo independente. Suíte completa: 772 testes, 771 aprovados e um online opcional pulado. Pacote atualizado, sem implantação.
 Este arquivo resume o estado vigente. Os registros de continuidade mais antigos são histórico e não reabrem itens já confirmados.
 
 CONCLUÍDO

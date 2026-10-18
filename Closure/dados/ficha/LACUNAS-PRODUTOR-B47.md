@@ -62,3 +62,34 @@ Regressão do consumidor: `test_nome_literal_com_curinga_nao_recebe_efeito_da_ou
 em `test_b47_derivados.py`. O bot compara os nomes literalmente e reprova a
 contagem cruzada. Não reproduz o possível defeito do produtor para aceitar um
 resultado incorreto. Esse teste não substitui o teste nativo da fórmula.
+
+## Apresentação da CD exclusiva do Controle da entidade
+
+Inspeção estática de `ficha-v01/ficha_invocacoes.py`, conta `resolve`:
+o ataque exibe seu bônus e acrescenta `TR CD` usando a CD-base da entidade.
+O texto de aviso reconhece saldo zero e +2 de Controle, mas essa apresentação
+não soma o +2 à CD exclusiva. A conta também não separa CD do dano e do Controle
+numa ficha que tenha ambos. Não se executou teste nativo nesta tarefa.
+
+Reprodução em futura cópia descartável autorizada:
+
+1. Dono no nível 2 (Maestria 1); entidade com Força 3 como atributo de acerto.
+2. Especial Classe 1, Projétil, Prende e Precisão, sem Restrição; Famílias com
+   preços normais. Dois pontos iniciais, um em cada Melhoria, saldo zero.
+3. Ataque: `3 + 1 + 2 = +6`. CD-base: `8 + 3 + 1 = 12`. Precisão vai para o
+   ataque. Saldo zero concede +2 somente à CD de Prende: **14**.
+4. A apresentação atual monta `Ataque +6 · TR CD 12`, embora o TR mencionado
+   depois do ataque seja o do Controle. Esperado: `Ataque +6 · TR CD 14`.
+5. Remover Precisão deixa saldo 1: ataque +4, Controle CD 12; descartar esse
+   dano escrevendo Sem dano não passa a conceder +2.
+
+Correção proposta no produtor: calcular o saldo de forma independente e
+apresentar a CD exclusiva do Controle com o acréscimo somente quando devido.
+Se dano e Controle usarem CDs diferentes, apresentá-las separadamente e
+exportar resultados distintos num contrato futuro. Não mudar a CD global da
+entidade nem a do dano para aplicar o bônus exclusivo.
+
+No bot, `test_formula_atual_sem_bonus_obrigatorio_fica_pendente` conserva
+uma pendência precisa para essa fórmula conhecida e recusa outros números
+incorretos. Saldo positivo não recebe a tolerância de +2. A montagem continua
+parcial quanto a permissões, escolha do TR e resultado no sucesso.

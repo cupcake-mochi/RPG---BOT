@@ -62,7 +62,10 @@ daquela variante paralela. A integração não inventa esses dados ausentes.
 | TR/perícias/Ofícios do livro | Mantém cálculos de TR-v4; B47 confere dois TR treinados e orçamentos compartilhados com custom; TR escolhido da entidade é independente | B47 não emite os ajustes/bônus pessoais nem os resultados de TR da entidade; não certifica resultados ausentes |
 | Equipamento/carga | Reutiliza requisitos, catálogo e verificações antigas; estende equipamento estruturado aprovado | Carga integral B47 não é certificada: faltam quantidades, Volumes e ajuste da variante TR-v4 |
 | Melhorias/Condições/Restrições | 30/30 compartilhadas, herança, peso/devolução, identidade, frequência, Família; Condição exige TR | Requisitos livres, aplicação contextual e interações não automatizadas ficam em revisão |
-| Formas custom | 10; motor puro, escadas, custos, desconto da Forma Livre pessoal, Liberação/Remate, adicionais, total de Rajada/Mais Um/Junto, Alma simples e bônus de resolução da entidade; renomeação pura reaproveita a base e identidade conserva incompatibilidades | Alma combinada com adicionais/distribuição, CD exclusiva do Controle, distribuição e permissões de uso ainda exigem revisão; efeito narrativo permanece manual |
+| Restrição custom embutida em Forma | Compila a dependência validada, exige aprovação própria e vincula a assinatura da Forma à definição da Restrição | Mudar a dependência invalida ambas as aprovações; MESTRE VIU continua irrelevante para autorização |
+| Consistência da entidade | Distribuição completa por entradas individuais, resumo correspondente e marcos; entidade inválida não certifica números/testes/habilidades dependentes | Pendência/erro fica restrito à entidade afetada; resultados da outra entidade continuam independentes |
+| Formas custom | 10; motor puro, escadas, custos, desconto da Forma Livre pessoal, Liberação/Remate, adicionais, total de Rajada/Mais Um/Junto, Alma simples e bônus de resolução da entidade; renomeação pura reaproveita a base e identidade conserva incompatibilidades | Alma combinada com adicionais/distribuição, distribuição e permissões de uso ainda exigem revisão; efeito narrativo permanece manual |
+| Controle na entidade | CD por saldo recalculado nas Formas publicadas/custom, bônus apenas quando há Melhoria da Família Controle; Precisão herdada preservada | Saldo desconhecido ou uma única apresentação que não separe as CDs continua parcial. Fórmula atual sem o +2 devido recebe pendência precisa, nunca certificação |
 | Aptidões/Bênçãos/Talentos | 10/10 cadastros; CE, rota, requisitos estruturados, bases/aliases e orçamentos existentes | Aprendizado/Origem não exportados são pendências; total no teto de Refino usa possibilidades, sem inventar ordem histórica |
 | Tipo/Talento de entidade | 10/20 cadastros, bases, CE; modos Vida/Talismã/Reserva independentes | Aquisição, alma e resultado de reserva sem campo estruturado completo ficam não conferidos |
 | Origem/Caminho/Trilha custom e 25 cartões 3a | Aprovação, campos, rota compatível e pacote da Origem herdada nas contas antigas; números de Caminho/equipamento; ligação da Trilha; menor exige marcante correspondente | Concessões novas de Origem sem base e habilidades livres não viram automação; não existe aprovação integral por cadastro |
@@ -112,13 +115,14 @@ ao Discord, não altera a planilha e não implanta nada.
 Comandos de dentro de `Closure/src/`:
 
 ```bash
-../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados
+../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao
 ../.venv/bin/python -m unittest discover -s testes
 ```
 
 **Primeiro fechamento na nuvem:** 694 testes, 693 aprovados e um online opcional
-pulado. **Continuação final: 742 testes, 741 aprovados e um online opcional pulado**,
-em 97,093 s. As 48 novas regressões de contas/herança passaram também isoladamente.
+pulado. **Revisão atual: 772 testes, 771 aprovados e um online opcional pulado**,
+em 106,725 s. As 30 novas regressões de `test_b47_revisao.py` passaram também
+isoladamente; as 48 de contas/herança da entrega anterior continuam na suíte.
 Estado de empacotamento em `docs/RETOMADA-B47.md`. Não houve recálculo Google/LibreOffice.
 
 As fixtures B47 são sintéticas e montadas em memória pelo manifesto. Não há
@@ -161,6 +165,23 @@ Falhas investigadas durante a implementação:
    publicado usa `Força`, como o contrato antigo e a conta compartilhada.
    Corrigiu-se a entrada da fixture e completaram-se seu dano/alcance; o teste
    exige aprovação das contas e detecta `Ataque +999`, preservando a regra.
+10. Revisão seguinte: a fixture da incompatibilidade de Inescapável usava
+    Classe 2 no nível 2. Com a interrupção correta após Classe inválida, esse
+    caso deixou de alcançar a regra que queria testar. Ajustou-se apenas o
+    nível sintético para 6; a mesma asserção de incompatibilidade permanece.
+11. As regressões novas reproduzem: frequência perdida ao herdar Condicional
+    com sufixo de peso; Restrição embutida não compilada nem vinculada à
+    aprovação; duas Condições Pesadas e Inescapável sem dano escapando do motor
+    custom; e números dependentes conferidos após distribuição inválida.
+    Corrigiu-se o código. Uma Melhoria pesada de Controle não é presumida
+    Condição: o limite usa modalidade e identidade da base.
+12. Tudo ou Nada agora considera TR acrescentado por Melhoria estruturada.
+    Essa é uma adaptação explícita do motor puro internalizado, documentada
+    no cabeçalho; o padrão do motor continua compatível e nenhuma prosa é
+    interpretada. O seletor/número exportado não determina o saldo de Controle.
+13. O helper `testar` da bateria nova foi renomeado para `analisar`, pois o
+    unittest coleta qualquer método iniciado por `test`. Não se alterou
+    nenhuma expectativa mecânica para corrigir esse erro de coleta.
 
 ## Validação externa e publicação
 

@@ -53,7 +53,8 @@ def catalogos(ref):
     tabelas = {
         'familia': {n:{} for n in m.familias},
         'melhoria': {n:{'peso':p.peso,'familia':p.familia,'repeticoes':p.repeticoes,'minima':p.minima,'identidade':n} for n,p in m.melhorias.items()},
-        'restricao': {n:{'devolucao':p,'identidade':n,'frequencia':'Sim' if n in ('Uma Vez','Condicional','Aquecer','Dívida') else 'Não'} for n,(p,_) in m.restricoes.items()},
+        'restricao': {n:{'devolucao':p,'identidade':re.sub(r' \((Leve|Média)\)$','',n),
+                         'frequencia':'Sim' if re.sub(r' \((Leve|Média)\)$','',n) in ('Uma Vez','Condicional','Aquecer','Dívida') else 'Não'} for n,(p,_) in m.restricoes.items()},
         'forma': {n:{'peso':p,'identidade':n, **livro['formas'].get(n,{})} for n,p in m.formas.items()},
         'talento': {n:{'categoria':p,'identidade':n} for n,(p,_) in m.repertorio.talentos.items()},
         'aptidao': {a['nome']:{**a,'identidade':a['nome']} for a in livro['aptidoes']},
@@ -106,7 +107,18 @@ def preparar_custom(ficha, ref, ctx, r):
     referencias = copy.deepcopy(ref)
     # dataclasses congeladas contêm catálogos próprios; não se modifica o catálogo global.
     m = referencias.magia
-    for d in registros:
+    motor_atualizado=False
+    for d in sorted(registros,key=lambda d:d.tipo in ('forma','aptidao','talento')):
+        if d.tipo in ('forma','aptidao','talento') and not motor_atualizado:
+            # O contrato permite Restrição custom embutida. Validar o cadastro
+            # antes de compilar Formas; aprovação é exigida separadamente no uso.
+            restricoes={x.nome:{'nome':x.efetivos.get('identidade',x.nome),
+                               'devolve':1 if x.efetivos['devolucao']=='Leve' else 2,
+                               'frequencia':int(x.efetivos.get('frequencia')=='Sim')}
+                        for x in ctx.registros.values() if x.tipo=='restricao' and x.valida}
+            ctx.catalogo_personagem=compilar(livro_personagem,crus,{'forma':10,'aptidao':10,'talento':10},
+                familias=[x.nome for x in registros if x.tipo=='familia'],restricoes=restricoes)
+            motor_atualizado=True
         def falha(campo, texto):
             d.valida = False
             problema(r,d.chave+'.'+campo,texto,d.campos.get(campo,''),regra='custom')
@@ -222,7 +234,13 @@ def preparar_custom(ficha, ref, ctx, r):
             efetivo=ctx.catalogo_personagem.obter(d.tipo,d.nome)
             if efetivo:
                 d.efetivos=efetivo
-        d.impressao=impressao_exata(d.tipo,d.nome,{'crus':{k:v for k,v in d.campos.items() if k not in ('mestre_viu','nome')},'base':_serializavel(heranca or {})})
+        assinatura={'crus':{k:v for k,v in d.campos.items() if k not in ('mestre_viu','nome')},'base':_serializavel(heranca or {})}
+        if d.tipo=='forma':
+            emb=d.efetivos.get('restricao_embutida')
+            dependencia=next((x for x in ctx.registros.values() if x.tipo=='restricao' and x.nome==emb),None)
+            if dependencia:
+                assinatura['dependencias']={'restricao_embutida':dependencia.impressao}
+        d.impressao=impressao_exata(d.tipo,d.nome,assinatura)
         d.aprovada = bool(ctx.aprovados and d.impressao in ctx.aprovados.impressoes)
         ctx.registros[d.chave]=d
         if not d.aprovada:

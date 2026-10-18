@@ -12,7 +12,7 @@ import unicodedata
 from dataclasses import dataclass
 
 from .ficha_leitor import Campo
-from .ficha_efeitos import Medidas, conferir_medidas, conferir_resolucao
+from .ficha_efeitos import Medidas, conferir_medidas, conferir_resolucao, eh_condicao
 from .ficha_repertorio import Repertorio, zeros_adicionais
 
 ERROS_PLANILHA = {"#NAME?", "#VALUE!", "#REF!", "#DIV/0!", "#N/A", "#NUM!", "#ERROR!", "#SPILL!"}
@@ -232,11 +232,16 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
         erro("classe", "Liberação só a partir do nível 10", ancora="fundamento--liberacao")
     comparar("pe", math.ceil(4.5 * classe) if liberacao else 3 * classe,
              "fundamento--liberacao" if liberacao else "construcao--entidades-especiais" if entidade else "fundamento--pontos")
+    if magia.contexto is not None and any(p.campo==base+'.classe' for p in problemas[inicio:]):
+        pulou.append(f'{nome}: Classe inválida impede certificar montagem e benefício')
+        return
     forma = str(valor(ficha, base + ".forma"))
     if magia.contexto is not None:
         registros = magia.contexto.registros.values()
         selecionados = [forma, *lista(ficha, base + ".pecas"), *lista(ficha, base + ".restricoes")]
+        selecionados += [d.efetivos.get('restricao_embutida') for d in registros if d.tipo=='forma' and d.nome==forma]
         familias_usadas={magia.melhorias[n].familia for n in lista(ficha,base+'.pecas') if n in magia.melhorias}
+        familias_usadas.update(d.efetivos.get('familia') for d in registros if d.tipo=='forma' and d.nome==forma)
         bloqueados = [d for d in registros if (d.nome in selecionados or d.tipo=='familia' and d.nome in familias_usadas) and (not d.valida or not d.aprovada)]
         formas_custom = [d for d in registros if d.tipo == 'forma' and d.nome == forma]
         if bloqueados:
@@ -328,7 +333,7 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
                               or str(valor(ficha, base + ".resolucao_escolha")).startswith("TR")):
         erro("pecas", "Rajada exige alvo individual e ataque", ancora="catalogo--cat-area")
     pesadas = [p for n, p in zip([n for n in pecas if n in magia.melhorias], conhecidas)
-               if p.familia == "Controle" and p.peso == "Pesada" and (n.startswith("Condição: ") or n not in ("Desarma o Feitiço",))]
+               if p.peso == "Pesada" and eh_condicao(magia,n)]
     if len(pesadas) > 1:
         erro("pecas", "no máximo uma condição Pesada", ancora="catalogo--cat-controle")
     if "Terreno" in pecas_regras and forma not in ("Explosão", "Aura", "Cone", "Linha", "Onda"):
@@ -344,8 +349,9 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
         pulou.append(f"{nome}: Remate não combina com Condicional de vida/duração; conferir o gatilho escrito")
     if not desconhecidas:
         conferir_medidas(ficha, magia, base, classe, forma, pecas, problemas, certos, pulou, pendencias, entidade=entidade)
-        conferir_resolucao(ficha, magia, base, forma, pecas, problemas, certos, pulou,
-                          entidade=entidade, pendencias=pendencias)
+        if magia.contexto is None:
+            conferir_resolucao(ficha, magia, base, forma, pecas, problemas, certos, pulou,
+                              entidade=entidade, pendencias=pendencias)
     pulou.append(f"{nome}: falta conferir {'Famílias, ' if abertas is None else ''}Selo e texto do efeito pela ficha completa")
     if any(p.campo.rsplit(".", 1)[-1] in ("classe", "forma", "pecas", "restricoes") for p in problemas[inicio:]):
         pulou.append(f"{nome}: dano/benefício não certificado com montagem inválida")
@@ -395,6 +401,10 @@ def conferir_montagem(ficha, magia, base, nivel, problemas, certos, pulou, *, en
             danos = {max(d for d in range(inicial + 1) if cabe(d)) for inicial in danos}
         faces = 8
     controle = any(p.familia == "Controle" for p in conhecidas)
+    if magia.contexto is not None:
+        saldo_controle=next(iter(danos)) if len(danos)==1 and classe and not liberacao and forma not in ('Efeito','Cura','Apoio','Onda') else None
+        conferir_resolucao(ficha,magia,base,forma,pecas,problemas,certos,pulou,
+                          entidade=entidade,pendencias=pendencias,saldo_controle=saldo_controle)
     if controle and classe and len(danos) == 1 and forma not in ("Efeito", "Cura", "Apoio", "Onda"):
         saldo = next(iter(danos))
         if saldo <= classe:
@@ -587,6 +597,10 @@ def conferir_invocacoes(ficha, magia, marcos, resultado, equipamento=None, refer
                 nivel = fixo
         else:
             nivel = dono
+        if magia.contexto is not None:
+            from .ficha_entidade import conferir_distribuicao_b47
+            if not conferir_distribuicao_b47(ficha,magia,base,nivel,marcos,resultado):
+                continue
         classe = magia.classe_maxima(nivel)
         usa_talisma = tipo_custom.efetivos.get("talisma")=="Usa" if tipo_custom else tipo=="Shikigami de criação"
         entrada = math.ceil(classe / 2) if usa_talisma and valor(ficha, base + ".talisma") == "Com carga" else classe

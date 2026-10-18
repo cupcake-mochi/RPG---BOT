@@ -82,7 +82,7 @@ def conferir_b47(ficha, ref, campanha, aprovados):
     conferir_familias(ficha,ref.magia,'tecnica',r.problemas,r)
     for i in range(1,13):
         base=f'invocacao.{i}'
-        if valor(ficha,base+'.nome'):
+        if valor(ficha,base+'.nome') and base not in ctx.entidades_invalidas:
             conferir_familias(ficha,ref.magia,base,r.problemas,r)
             conferir_competencias_entidade(ficha,ref,ctx,r,base)
     conferir_progressao(ficha,ref,ctx,r)

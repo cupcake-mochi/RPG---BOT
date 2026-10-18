@@ -7,6 +7,38 @@ ATRIBUTOS = ("forca", "destreza", "constituicao", "inteligencia", "essencia")
 NOMES = ("Força", "Destreza", "Constituição", "Inteligência", "Essência")
 
 
+def conferir_distribuicao_b47(ficha, magia, base, nivel, marcos, r):
+    """A distribuição incompleta/adulterada não sustenta contas da entidade."""
+    from .ficha_configuracao import inteiro as inteiro_ponto, problema
+    if magia.contexto is None:
+        return True
+    antes = len(r.problemas), len(r.pendencias)
+    pontos = [valor(ficha, base + f'.atributo.{a}.base') for a in ATRIBUTOS]
+    teto = 9 + sum(m <= nivel for m in marcos)
+    for a, v in zip(ATRIBUTOS, pontos):
+        if not inteiro_ponto(v, 0, 6):
+            problema(r, base + f'.atributo.{a}.base', 'atributo base inteiro de 0 a 6', v,
+                     pendente=v == '', regra='informação' if v == '' else 'conta', ancora='construcao--entidades-atributos')
+    if all(inteiro_ponto(v, 0, 6) for v in pontos):
+        total = sum(pontos)
+        if total != teto:
+            problema(r, base + '.pontos', f'distribuir {teto} pontos; há {total}', total,
+                     pendente=total < teto, regra='informação' if total < teto else 'conta', ancora='construcao--entidades-atributos')
+        if sum(max(0, v - 3) for v in pontos) > teto - 9:
+            problema(r, base + '.pontos', 'aumentos acima de 3 limitados aos marcos alcançados', pontos,
+                     regra='conta', ancora='construcao--entidades-atributos')
+        esperado = ' · '.join(map(str, pontos))
+        if valor(ficha, base + '.pontos') != esperado:
+            ausente = valor(ficha, base + '.pontos') == ''
+            problema(r, base + '.pontos', 'mesma distribuição das cinco entradas: ' + esperado,
+                     valor(ficha, base + '.pontos'),pendente=ausente,regra='informação' if ausente else 'conta', ancora='construcao--entidades-atributos')
+    if antes != (len(r.problemas), len(r.pendencias)):
+        magia.contexto.entidades_invalidas.add(base)
+        r.nao_conferido.append(base + ': atributos incompletos/incompatíveis impedem certificar números, testes e habilidades dependentes')
+        return False
+    return True
+
+
 def conferir_numeros(ficha, magia, base, nivel, r, equipamento=None, catalogo=None):
     from .ficha_corretor import Problema
     from .ficha_equipamento import conferir_uso, ataques_armados, numero, vazio

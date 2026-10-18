@@ -7,6 +7,15 @@ inventário e resultados de TR ausentes estão discriminados em
 substituem essas entradas. Formas apenas renomeadas conservam as regras da base;
 alterações estruturadas usam o motor custom e mantêm explícitas suas limitações.
 
+Restrição custom embutida é dependência da Forma: precisa de definição válida e
+aprovação própria, e sua assinatura entra na aprovação da Forma. A Família
+custom usada pela Forma também exige aprovação própria. Frequência,
+repetição e limite de Condições Pesadas não dependem de avisos exportados.
+Distribuição incompleta/incompatível da entidade bloqueia suas contas
+dependentes. CD de Controle usa saldo independente quando disponível;
+descartar dano não compra bônus. As reproduções do produtor permanecem no
+documento de lacunas, sem alteração da ficha oficial.
+
 O bot integra a ANALISE 11 entregue em `ccbd053c8f7e68f8b4ac223f721b309111d2dcc0`.
 Contrato, mapa de campos, colisão do formato 4, cobertura, limites e cadastro de
 aprovações estão em [INTEGRACAO-B47.md](INTEGRACAO-B47.md). O manifesto completo

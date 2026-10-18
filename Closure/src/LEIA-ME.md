@@ -6,8 +6,14 @@ Continuação: `ficha_derivados_b47.py` confere Iniciativa, progressão numéric
 Sequelas/janela de Morrendo e escolhas de TR. CD/ataques/deslocamento distinguem
 trocas conferíveis, contradições e entradas ausentes. Herança de Origem/Forma/
 Ferramenta reutiliza contas da base; aprovação não executa prosa. Regressões:
-`../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados`
+`../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao`
 (de `Closure/src/`); suíte completa: `../.venv/bin/python -m unittest discover -s testes`.
+
+A revisão seguinte acrescenta dependências aprovadas de Restrições embutidas,
+limites por identidade/modalidade, bloqueio de contas de entidade com distribuição
+inválida e CD de Controle por saldo recalculado. O motor puro interno recebe
+contexto explícito de TR de Melhorias. Resultados atuais: 772 testes, 771
+aprovados e um opcional pulado; estado detalhado em [`RETOMADA-B47.md`](../docs/RETOMADA-B47.md).
 
 **Voz das reações v22 (15/10):** Mizuki esclareceu que o limite de conteúdo não deve neutralizar a personalidade. A orientação usa a voz/reações do card, inclusive humor, ironia, reserva ou crítica quando couberem, e retira a expressão parte neutra do pedido. Cards, comandos, ativação e limites preservados. Sem chamadas pagas; naturalidade depende do piloto. Relatório em `pesquisa/validacao/2026-10-15-voz-reacoes-v22/relatorio.txt`.
 

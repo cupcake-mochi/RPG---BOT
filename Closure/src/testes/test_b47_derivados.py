@@ -211,7 +211,7 @@ class FormasHerdadas(unittest.TestCase):
                           familias=(set(REF.magia.familias),set(REF.magia.familias)),**kwargs)
 
     def test_herdada_nao_perde_proibicao_inescapavel(self):
-        f,c,r,ref=self.preparar('Toque',feitico__1__classe=2,feitico__1__nome='Teste',feitico__1__forma='Forma sintética',
+        f,c,r,ref=self.preparar('Toque',nivel=6,feitico__1__classe=2,feitico__1__nome='Teste',feitico__1__forma='Forma sintética',
                                feitico__1__pecas='Inescapável',feitico__1__pe='6 PE')
         self.montagem(f,c,r,ref)
         self.assertTrue(any('Inescapável: só Projétil' in p.esperado for p in r.problemas))

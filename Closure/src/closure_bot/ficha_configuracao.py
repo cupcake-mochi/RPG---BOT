@@ -61,6 +61,7 @@ class ContextoB47:
     aliases: dict = field(default_factory=dict)
     catalogo_personagem: object = None
     alvos_invalidos: set = field(default_factory=set)
+    entidades_invalidas: set = field(default_factory=set)
 
     def aplicar(self, caixa, base):
         if caixa in self.alvos_invalidos:

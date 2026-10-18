@@ -4,6 +4,7 @@ import re
 from .ficha_configuracao import valor
 from .ficha_magia import lista
 from .ficha_personagem_motor import forma as calcular_forma
+from .ficha_efeitos import melhoria_exige_tr, eh_condicao
 
 
 def conferir(ficha,magia,base,nivel,problemas,certos,pulou,*,entidade=False,basica=False,liberacao=False,familias=None,pendencias=None):
@@ -40,7 +41,7 @@ def conferir(ficha,magia,base,nivel,problemas,certos,pulou,*,entidade=False,basi
     cat=ctx.catalogo_personagem
     for d in ctx.registros.values():
         if d.tipo=='restricao' and d.valida and d.aprovada:
-            cat.livro['restricoes'][d.nome]={'nome':ctx.aliases.get('restricao:'+d.nome,d.nome),
+            cat.livro['restricoes'][d.nome]={'nome':d.efetivos.get('identidade',d.nome),
                 'devolve':1 if d.efetivos['devolucao']=='Leve' else 2,
                 'frequencia':int(d.efetivos.get('frequencia')=='Sim')}
     pecas_regras=[ctx.aliases.get('melhoria:'+n,n) for n in pecas]
@@ -71,12 +72,17 @@ def conferir(ficha,magia,base,nivel,problemas,certos,pulou,*,entidade=False,basi
         if 'Terreno' in pecas_regras and identidade not in ('Explosão','Aura','Cone','Linha','Onda'):
             erro('pecas','Terreno exige identidade de Forma de área')
         if 'Corrói' in pecas_regras and 'Mira' not in livres:erro('pecas','Corrói exige Mira Livre')
+        if 'Inescapável' in pecas_regras and definicao.get('resultado')!=0:
+            erro('pecas','Inescapável somente em Projétil de dano')
+        if sum(eh_condicao(magia,n) and magia.melhorias[n].peso=='Pesada' for n in pecas)>1:
+            erro('pecas','no máximo uma condição Pesada')
         if len(problemas)>inicio:
             pulou.append(base+': combinações inválidas impedem certificar a Forma custom')
             return
         montada=calcular_forma(cat,nome,'entidade' if entidade else 'personagem',classe,longe=longe,maior=maior,
                               livre=definicao.get('familia') in livres,
-                              familias_abertas=abertas,melhorias=gasto,restricoes=restricoes)
+                              familias_abertas=abertas,melhorias=gasto,restricoes=restricoes,
+                              exige_tr_adicional=any(melhoria_exige_tr(magia,n) for n in pecas))
     except ValueError as e:
         erro('forma',str(e));return
     for aviso in montada.get('avisos',[]):erro('forma',aviso)
@@ -94,6 +100,7 @@ def conferir(ficha,magia,base,nivel,problemas,certos,pulou,*,entidade=False,basi
         pulou.append(base+': Restrições inválidas impedem certificar benefício da Forma custom')
         return
     modo=montada['resultado']
+    saldo_controle=saldo if modo==0 and classe and not liberacao else None
     if classe and modo==1:saldo=min(saldo,orcamento-montada['custo'])
     if classe and liberacao:saldo+=classe
     if classe and modo==0:
@@ -103,9 +110,12 @@ def conferir(ficha,magia,base,nivel,problemas,certos,pulou,*,entidade=False,basi
         saldo=max(d for d in range(saldo+1) if cabe(d))
     alma='Toca a Alma' in pecas_regras
     mistura_alma=alma and any(n in ('Salto','Queima','Estilhaço','Rajada','Mais Um') for n in pecas_regras)
+    descartado=modo==0 and saldo>0 and str(valor(ficha,base+'.dano'))=='Sem dano' and any(p.familia=='Controle' for p in usadas)
     if alma:
         pulou.append(base+': Toca a Alma exige Regra autorizada que trate da alma; conta não concede permissão')
-    if mistura_alma:
+    if descartado:
+        pulou.append(base+f': dano descartado; bônus de Controle usam o saldo calculado {saldo_controle}, não zero')
+    elif mistura_alma:
         pulou.append(base+': interação de Alma com adicionais/distribuição exige revisão; dano não certificado')
     else:
         if alma:saldo//=2
@@ -139,12 +149,10 @@ def conferir(ficha,magia,base,nivel,problemas,certos,pulou,*,entidade=False,basi
     elif alcance.casefold()!=alcance_esperado.casefold():erro('alcance',alcance_esperado)
     else:certos.append(base+': alcance/área '+alcance)
     resolucao=montada['resolucao']
-    def exige_tr(n):
-        d=next((d for d in ctx.registros.values() if d.tipo=='melhoria' and d.nome==n and d.valida and d.aprovada),None)
-        if d and d.efetivos.get('exige_tr') in ('Sim','Não'):
-            return d.efetivos['exige_tr']=='Sim'
-        return n in ('Prende','Cerca') or n.startswith('Condição: ') or magia.melhorias[n].familia=='Controle' and n not in ('Terreno','Desarma o Feitiço')
-    controle=montada['exige_tr'] and resolucao=='Acerto' or any(exige_tr(n) for n in pecas)
+    controle=montada['exige_tr'] and resolucao=='Acerto' or any(melhoria_exige_tr(magia,n) for n in pecas)
+    bonus_controle=any(p.familia=='Controle' for p in usadas)
+    if bonus_controle and saldo_controle is not None and saldo_controle<=classe:
+        certos.append(base+': Controle com uma rodada adicional'+(' e +2 na CD apenas do Controle' if saldo_controle==0 else ''))
     if resolucao=='Acerto' and controle:resolucao='Acerto + TR'
     if 'Certeiro' in pecas_regras:resolucao='TR para metade'
     if 'Inescapável' in pecas_regras:resolucao='Automático'
@@ -161,7 +169,7 @@ def conferir(ficha,magia,base,nivel,problemas,certos,pulou,*,entidade=False,basi
             ataque=(escolha=='Ataque' or not escolha and montada['resolucao']=='Acerto') and 'Certeiro' not in pecas_regras
             tipo='Ataque' if ataque else escolha if escolha.startswith('TR') else 'TR'
             if not _conferir_bonus_entidade(ficha,magia,base,tipo,str(valor(ficha,base+'.resolve')),ataque,controle,
-                                          pecas_regras,problemas,certos,pulou,pendencias):
+                                          pecas_regras,problemas,certos,pulou,pendencias,saldo_controle=saldo_controle,bonus_controle=bonus_controle):
                 pulou.append(base+': faltam entradas para conferir bônus da resolução da entidade')
     elif valor(ficha,base+'.resolve')!=resolucao:erro('resolve',resolucao)
     else:certos.append(base+': resolução '+resolucao)

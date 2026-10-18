@@ -23,7 +23,7 @@ Bot inicial: `7e4dc35209ea840549d5ccf5a0b49834da21d117`.
    ficha está concluída: não retomar C/D, não repetir migrações e não usar
    endereços de documentos históricos como contrato.
 3. De `Closure/src/`, executar:
-   `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados`.
+   `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao`.
    Depois de uma mudança relevante, executar
    `../.venv/bin/python -m unittest discover -s testes` e registrar os resultados.
 4. Leitor/esquema: `ficha_leitor.py`, `ficha_esquema.py` e manifesto em recursos.
@@ -46,21 +46,22 @@ Bot inicial: `7e4dc35209ea840549d5ccf5a0b49834da21d117`.
 
 ## Evidência já obtida
 
-Suíte completa final desta continuação: **742 testes executados, 741 aprovados
-e um online opcional pulado**, em 97,093 s. Comando: de `Closure/src/`,
+Suíte completa final desta revisão: **772 testes executados, 771 aprovados
+e um online opcional pulado**, em 106,725 s. Comando: de `Closure/src/`,
 `../.venv/bin/python -m unittest discover -s testes`. A suíte inclui legado,
 leitor, integração, campanha, custom, painel e demais funcionalidades do projeto.
-As 48 novas regressões de contas/herança em `test_b47_derivados.py` passaram
-também isoladamente antes da suíte completa. Sem chamadas reais a modelos.
+As 30 novas regressões em `test_b47_revisao.py` passaram isoladamente antes
+da suíte completa. As 48 de `test_b47_derivados.py` permanecem incluídas.
+Sem chamadas reais a modelos. PR conferida sem comentários/revisões pendentes.
 
-Primeiro fechamento: 694 testes (693 + um opcional). A revisão intermediária
-passou com 733 e depois 737 testes; a entrega final acima inclui todas as
+Primeiro fechamento: 694 testes (693 + um opcional). As revisões anteriores
+passaram com 733, 737 e 742 testes; a entrega final acima inclui todas as
 mudanças posteriores, sem reutilizar um resultado anterior como validação final.
 
 Pacote local regenerado: `Closure/src/var/closure-lab.zip` (ignorado pelo Git),
-67 arquivos, cerca de 1120 KB. Os 52 fontes/recursos Python/JSON/TSV correspondem
+67 arquivos, cerca de 1122 KB. Os 52 fontes/recursos Python/JSON/TSV correspondem
 exatamente ao checkout final; sem `.env`, banco ou cadastro real da campanha.
-SHA256: `f2d81eba1d2fbbb3589b413160cb1593ad0a235c0b5806549318c754982e26ba`.
+SHA256: `85f7d575ea858008f60e8fb04b6a14e62e08620086a969f5c969ab624348ff49`.
 O operador deve preservar o cadastro de campanha existente ao publicar; ele
 não faz parte do ZIP. Não houve envio à Discloud.
 
@@ -81,6 +82,19 @@ não faz parte do ZIP. Não houve envio à Discloud.
   base (também item comum), herda Proteção/mãos e aceita Volume zero explícito.
 - Reserva Profunda herdada conserva ganho; efeito identificado não duplica esse
   ganho e Buff ambíguo permanece pendente.
+- Restrição custom embutida validada, aprovada separadamente e vinculada à
+  assinatura da Forma. Mudanças invalidam as aprovações dependentes.
+  A Forma também não substitui a aprovação da Família custom que utiliza.
+- Condicional preserva frequência herdada mesmo com sufixo de peso; Não
+  explícito continua sobrescrevendo. Restrição embutida conta em frequência e
+  repetição. Tudo ou Nada considera TR de Melhoria estruturada, sem ler prosa.
+- Condições Pesadas obedecem ao limite por modalidade/identidade, inclusive
+  aliases. Melhoria de Controle não vira Condição somente pelo seu peso.
+- Distribuição incompleta/contraditória da entidade bloqueia contas dependentes,
+  sem bloquear a entidade seguinte; Classe inválida bloqueia o motor custom.
+- CD exclusiva do Controle confere saldo independente quando disponível,
+  preserva Precisão herdada e não concede +2 só por exigir TR ou descartar dano.
+  A fórmula entregue sem o +2 obrigatório recebe pendência precisa.
 
 ## O que permanece externo ou parcial
 
@@ -90,9 +104,9 @@ carga integral e vários bônus do livro continuam explicitamente não conferido
 Seletores pessoais de CD/ataques, ajustes/resultados de TR/perícias do livro,
 inventário completo e teto/estado de entidades ativas não foram exportados.
 Aprendizado/autorizações, histórico de escolhas, aplicações livres, composição
-de Alma com adicionais/distribuição e CD exclusiva do Controle ainda exigem
-revisão. Essa limitação deve continuar visível, sem aprovação integral.
-Lacunas e reprodução estática de efeito com critério de curinga estão em
+de Alma com adicionais/distribuição e resoluções sem saldo comprovado ainda
+exigem revisão. Essa limitação deve continuar visível, sem aprovação integral.
+Lacunas e reproduções estáticas de critério de curinga e CD de Controle estão em
 `dados/ficha/LACUNAS-PRODUTOR-B47.md`; somente uma entrega futura do produtor
 poderá completar a exportação/corrigir sua fórmula. Não editar a oficial.
 
