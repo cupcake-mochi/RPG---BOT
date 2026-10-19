@@ -27,9 +27,14 @@ Implementado:
 
 Fontes/atualização/comandos: `dados/mundo/LEIA-ME.md`.
 Evidência final: `pesquisa/validacao/2026-10-18-mundo-era/`.
-Fechamento: 834 testes executados, 833 aprovados e um online opcional pulado;
-12 testes novos incluídos, 14 casos iguais nos motores e 12 pedidos conferidos
-no código do ZIP extraído. Nenhuma chamada paga ou publicação.
+Fechamento da implementação: 834 testes executados, 833 aprovados e um online
+opcional pulado; 12 testes novos incluídos, 14 casos iguais nos motores e 12
+pedidos conferidos no código do ZIP extraído. Posteriormente o usuário autorizou
+a implantação: 90 testes prévios passaram, publicação concluída às 22:44 de
+18/10 e bot online em cinco servidores. Conferência dos 67 arquivos e preservação
+de variáveis/bancos/campanha em `pesquisa/validacao/2026-10-18-mundo-publicacao/`.
+Mais 12 verificações de contexto passaram diretamente no QuickJS da Discloud,
+seis perguntas nas duas guias, sem modelo. Console desconectado ao final.
 ZIP de entrega fora do Git: `entregas/closure-lab-era-revolucao-2026-10-18.zip`
 na pasta de trabalho, ao lado do checkout. SHA256:
 `acc3e58d71f8410c144b0c70a5fed383f1adeb14e167a695c7d68adf8c5b180d`.
@@ -48,10 +53,11 @@ silenciosamente números da fonte ou alterar a ficha oficial.
 **Mestre:** autorizações reais, conhecimento de um PJ, limites de história,
 consequências de campanha e ambiguidades dos procedimentos permanecem humanos.
 
-**Publicação:** não houve merge, implantação, reinício de produção, mensagens
-ao Discord ou chamadas pagas nesta entrega. A autorização anterior de implantar
-o patch de cores B47 não foi reutilizada para publicar este corpus novo.
-Uma bateria de respostas pelo modelo precisa combinar quantidade/custo antes.
+**Publicação:** implantação e reinício concluídos após autorização específica
+do usuário neste chat. Não houve merge, mensagens ao Discord ou chamadas pagas.
+A sessão web do Discord estava desconectada, portanto não se certificou uma
+resposta de comando/conversa nesta rodada. Bateria de respostas pelo modelo
+continua exigindo combinar quantidade/custo antes. Não repetir a implantação.
 
 ## Instrução exata para continuar
 
@@ -59,6 +65,7 @@ Uma bateria de respostas pelo modelo precisa combinar quantidade/custo antes.
 > árvore antes de editar; leia dados/mundo/LEIA-ME.md, este arquivo e a evidência
 > em pesquisa/validacao/2026-10-18-mundo-era/. Preserve as três pastas excluídas,
 > as personalidades, a avaliação B47, memória e mídia. A importação e o pacote
-> estão preparados; confira o fechamento dos testes e trate revisão/merge,
-> autorização específica de implantação e eventual bateria paga como etapas
-> separadas. Não repita publicação ou ensaios já confirmados por rotina.
+> estão publicados e conferidos na Discloud; leia também a evidência em
+> pesquisa/validacao/2026-10-18-mundo-publicacao/. Revisão/merge das PRs continuam
+> separados; eventual bateria paga exige quantidade/custo autorizados. Não
+> repita publicação ou ensaios já confirmados por rotina.

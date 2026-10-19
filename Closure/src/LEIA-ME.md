@@ -1,13 +1,16 @@
 # src: código do bot
 
-**Nova consulta de mundo preparada · 18/10:** a ponte passa a incluir recortes
+**Nova consulta de mundo publicada · 18/10:** a ponte passa a incluir recortes
 dos 31 textos permitidos do consolidado da Era da Revolução nas duas guias.
 São até cinco trechos/14.000 caracteres por pergunta; sem rede ou modelo extra
 na recuperação. Regenerar `src/var/site/nucleo.js` antes de empacotar. As pastas
 04/05/06 não são lidas pelo importador nem embutidas no núcleo, inclusive para
 o dono. Não altera contas B47, campanha/aprovações ou personalidade. Detalhes
-e comandos: `dados/mundo/LEIA-ME.md`. Esta mudança ainda não foi implantada;
-os registros de publicação abaixo descrevem a versão anterior.
+e comandos: `dados/mundo/LEIA-ME.md`. Implantação autorizada concluída às
+22:44, online em cinco servidores. Passaram 90 testes antes de publicar;
+67 arquivos do backup posterior iguais ao ZIP e variáveis/bancos/campanha
+preservados. Evidência: `pesquisa/validacao/2026-10-18-mundo-publicacao/`.
+Os registros B47 abaixo descrevem a publicação anterior.
 
 **Publicação e checagem concluídas · 18/10:** o usuário autorizou aplicar na
 Discloud. O código `40d32a7` da PR 65 está instalado no app existente e online

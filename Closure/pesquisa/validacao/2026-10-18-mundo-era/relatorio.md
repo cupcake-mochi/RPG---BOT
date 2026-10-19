@@ -1,5 +1,8 @@
 # Consulta da Era da Revolução — 18/10/2026
 
+Registro da implementação antes da publicação. A implantação posterior,
+autorizada e concluída, está em `../2026-10-18-mundo-publicacao/relatorio.md`.
+
 Implementação: `4200281`, branch `codex/mundo-era-revolucao`, PR 66 em rascunho,
 com base na branch da PR 65. Sem merge ou implantação desta funcionalidade.
 

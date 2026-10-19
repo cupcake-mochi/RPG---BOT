@@ -1,0 +1,17 @@
+{
+  "arquivos_publicados": 67,
+  "diferencas_pacote": [],
+  "arquivos_protegidos_comparados": 4,
+  "arquivos_protegidos_alterados": [],
+  "bancos": [
+    {
+      "banco": "closure_lab.db",
+      "integridade": true
+    },
+    {
+      "banco": "src/var/bot.sqlite3",
+      "integridade": true
+    }
+  ],
+  "pastas_excluidas_nao_embutidas": true
+}
