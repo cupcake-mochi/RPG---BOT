@@ -1,7 +1,8 @@
 # Retomada — fontes da Era da Revolução
 
 Branch: `codex/mundo-era-revolucao`, criada de `0b7b10c` para separar esta
-funcionalidade da etapa B47 encerrada. Implementação: `4200281`.
+funcionalidade da etapa B47 encerrada. Implementação inicial: `4200281`.
+Correção v2 publicada: `4a531690e6cd24c9ecd7be03825faa47a303bc98`.
 PR: https://github.com/cupcake-mochi/RPG---BOT/pull/66 (rascunho).
 Base da PR: `codex/integracao-b47`, dependência da PR 65, ainda aberta.
 Depois do merge da 65, conferir o diff e mudar a base desta PR para `main`.
@@ -39,6 +40,24 @@ ZIP de entrega fora do Git: `entregas/closure-lab-era-revolucao-2026-10-18.zip`
 na pasta de trabalho, ao lado do checkout. SHA256:
 `acc3e58d71f8410c144b0c70a5fed383f1adeb14e167a695c7d68adf8c5b180d`.
 
+## Estado atual — correção v2 publicada
+
+A consulta **Shiki** sozinha funciona nas duas guias, assim como as variantes
+completas com/sem apóstrofo. Índice extrai nomes de títulos com cargo/dois-pontos,
+formas curtas pessoais sem homônimos e prioriza o trecho próprio. Não muda lore.
+31 textos/228 seções e hashes originais preservados; 04/05/06 continuam excluídas.
+
+**841 testes executados, 840 aprovados e um online opcional pulado**, incluindo
+19 testes de mundo; 341/341 consultas do índice regional; 24/24 no pacote e
+24/24 no QuickJS da Discloud. Publicação autorizada concluída, online em cinco
+servidores desde 23:20:25 de 18/10. 67 arquivos iguais ao ZIP; variáveis/campanha
+preservadas, bancos íntegros. Um banco recebeu tráfego real entre backups,
+conferido separadamente. Sem mensagens ou modelos disparados pelos testes.
+Evidência atual: `pesquisa/validacao/2026-10-18-mundo-nomes/`.
+ZIP atual: `entregas/closure-lab-era-revolucao-nomes-2026-10-18.zip`, SHA256
+`d43dbd27bc63770c57ff18af498d8873edc8cbbbd3d1327740c5623141906d9c`.
+Os números e o ZIP v1 acima são históricos. Não repetir publicação por rotina.
+
 ## O que continua separado
 
 **Código do bot:** busca lexical tem limite de cinco trechos/14.000 caracteres.
@@ -68,4 +87,6 @@ continua exigindo combinar quantidade/custo antes. Não repetir a implantação.
 > estão publicados e conferidos na Discloud; leia também a evidência em
 > pesquisa/validacao/2026-10-18-mundo-publicacao/. Revisão/merge das PRs continuam
 > separados; eventual bateria paga exige quantidade/custo autorizados. Não
-> repita publicação ou ensaios já confirmados por rotina.
+> repita publicação ou ensaios já confirmados por rotina. Leia o fechamento v2
+> em pesquisa/validacao/2026-10-18-mundo-nomes/; Shiki curto foi confirmado no
+> QuickJS publicado. Último código publicado: 4a53169; suíte atual 841/840/1.

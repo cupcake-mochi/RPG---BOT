@@ -1,0 +1,20 @@
+{
+  "arquivos_publicados": 67,
+  "diferencas_pacote": [],
+  "arquivos_protegidos_comparados": 4,
+  "arquivos_protegidos_alterados": [
+    "src/var/bot.sqlite3"
+  ],
+  "bancos": [
+    {
+      "banco": "closure_lab.db",
+      "integridade": true
+    },
+    {
+      "banco": "src/var/bot.sqlite3",
+      "integridade": true
+    }
+  ],
+  "pastas_excluidas_nao_embutidas": true,
+  "banco_alterado_explicacao": "Esquema idêntico e integridade ok. Mudanças restritas às tabelas de conversação, gatilhos, paciência e contabilização de chamadas, compatíveis com tráfego real após reinício. Demais tabelas idênticas. Nenhum teste enviou mensagens ou chamou modelo."
+}

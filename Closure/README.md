@@ -4,12 +4,13 @@
 autorizados do consolidado da Era da Revolução, com recortes e origem por assunto.
 Reservado Mizuki, Registros Complementares e Recursos Visuais não entram.
 [Fontes, limites e atualização](dados/mundo/LEIA-ME.md). Implantação autorizada
-concluída às 22:44, com 90 testes prévios aprovados e bot online em cinco
-servidores. Mais 12 verificações de contexto passaram no QuickJS da Discloud.
-Backup posterior: 67 arquivos iguais ao ZIP, variáveis/dois bancos/
-campanha idênticos e bancos íntegros. [Publicação](pesquisa/validacao/2026-10-18-mundo-publicacao/relatorio.md).
-PR 66 em rascunho; 834 testes executados, 833 aprovados e um online opcional
-pulado, com 12 testes novos. [Fechamento e retomada](docs/RETOMADA-MUNDO.md).
+atualizada com a correção de nomes v2 às 23:20 de 18/10, online em cinco
+servidores. **Shiki sozinho funciona**, além das variantes completas.
+841 testes executados, 840 aprovados e um online opcional pulado; 341 consultas
+do índice e 24 verificações na própria Discloud passaram sem modelo.
+67 arquivos iguais ao ZIP; variáveis/campanha preservadas e bancos íntegros,
+com tráfego real distinguido na comparação. [Publicação v2](pesquisa/validacao/2026-10-18-mundo-nomes/relatorio.md).
+PR 66 em rascunho. [Fechamento e retomada](docs/RETOMADA-MUNDO.md).
 
 **B47 · etapa publicada e conferida em 18/10/2026:** código `40d32a7` da
 branch `codex/integracao-b47` instalado na Discloud com autorização do usuário.

@@ -47,3 +47,33 @@ Os ensaios de recuperação/montagem de prompt não chamam modelo. Resposta fina
 de um modelo, estilo e interpretação não são certificados por estes ensaios.
 A busca continua lexical e limitada, sem prometer toda abreviação ou erro de
 grafia possível. As pastas 04/05/06 seguem excluídas até para o dono.
+
+## Publicação autorizada e conferência na hospedagem
+
+Código **4a531690e6cd24c9ecd7be03825faa47a303bc98**, branch
+`codex/mundo-era-revolucao`, PR 66 ainda em rascunho, sem merge.
+Commit aplicado no app existente **1773761486581**, conclusão confirmada na UI;
+startup às **23:20:25 de 18/10/2026 (Brasília)**, online em cinco servidores.
+Configuração de 1.000 MB preservada. Console desconectado ao terminar.
+
+- **24/24 verificações no ZIP extraído**: `testes-pacote.log`.
+- **24/24 no QuickJS da própria Discloud**, oito perguntas positivas e quatro
+  negativas em cada guia, com versão v2 e trecho prioritário correto.
+  Inclui **“Quem e Shiki?”**, nome completo e variantes de apóstrofo/grafia;
+  `console-v2.txt`, `console-v2.jpg` e script reproduzível neste diretório.
+- Backup antes/depois guardado fora do Git, privadamente. **67/67 arquivos do
+  pacote idênticos aos publicados**. `.env`, `closure_lab.db` e cadastro de
+  campanha idênticos; os dois bancos passaram no `quick_check`.
+- `bot.sqlite3` recebeu tráfego real entre backups: esquema idêntico, mudanças
+  apenas nas tabelas de conversa/contabilização/gatilhos/paciência; demais
+  tabelas idênticas. Não foi sobrescrito para forçar igualdade.
+  Resultado agregado em `conferencia-publicacao.json`, sem conteúdo privado.
+- Logs mostraram inicialização normal; avisos de bibliotecas de voz já
+  existentes. Durante tráfego real houve timeout de 12 s no Gemini e sucesso
+  na rota Vertex de reserva. Esse atendimento não foi provocado pelos testes
+  e não certifica a qualidade da resposta sobre Shiki.
+
+Não houve chamada paga ou mensagem ao Discord **por esta bateria**, alteração
+de permissões, cards, mídia ou B47. As verificações certificam recuperação e
+montagem do contexto publicado, não uma resposta generativa. Não repetir
+implantação ou testes por rotina; revisão/merge continuam separados.

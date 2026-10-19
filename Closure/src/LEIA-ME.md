@@ -6,10 +6,12 @@ São até cinco trechos/14.000 caracteres por pergunta; sem rede ou modelo extra
 na recuperação. Regenerar `src/var/site/nucleo.js` antes de empacotar. As pastas
 04/05/06 não são lidas pelo importador nem embutidas no núcleo, inclusive para
 o dono. Não altera contas B47, campanha/aprovações ou personalidade. Detalhes
-e comandos: `dados/mundo/LEIA-ME.md`. Implantação autorizada concluída às
-22:44, online em cinco servidores. Passaram 90 testes antes de publicar;
-67 arquivos do backup posterior iguais ao ZIP e variáveis/bancos/campanha
-preservados. Evidência: `pesquisa/validacao/2026-10-18-mundo-publicacao/`.
+e comandos: `dados/mundo/LEIA-ME.md`. Correção v2 publicada às 23:20 de 18/10,
+online em cinco servidores: Shiki curto e variantes completas confirmados nas
+duas guias. Suíte 841/840/1 opcional; 341 consultas de índice e 24 verificações
+no QuickJS publicado passaram. 67 arquivos iguais ao pacote, variáveis/campanha
+preservadas e bancos íntegros; tráfego real no SQLite conferido separadamente.
+Evidência: `pesquisa/validacao/2026-10-18-mundo-nomes/`.
 Os registros B47 abaixo descrevem a publicação anterior.
 
 **Publicação e checagem concluídas · 18/10:** o usuário autorizou aplicar na

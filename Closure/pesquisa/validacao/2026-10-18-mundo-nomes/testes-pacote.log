@@ -1,0 +1,25 @@
+PASS kal Quem e Shiki?
+PASS kal Quem e Shiki Zen'in?
+PASS kal Quem e Shiki Zen’in?
+PASS kal Quem e Shiki Zenin?
+PASS kal Fale sobre Cellinia
+PASS kal Fale sobre Volsinii
+PASS kal Fale sobre Londinium
+PASS kal Fale sobre Montelupe
+PASS negativo kal O que e Shikigami?
+PASS negativo kal Qual e a capital do Texas?
+PASS negativo kal Expansao urbana e tema da minha aula
+PASS negativo kal Comprei uma mesa de jantar
+PASS clo Quem e Shiki?
+PASS clo Quem e Shiki Zen'in?
+PASS clo Quem e Shiki Zen’in?
+PASS clo Quem e Shiki Zenin?
+PASS clo Fale sobre Cellinia
+PASS clo Fale sobre Volsinii
+PASS clo Fale sobre Londinium
+PASS clo Fale sobre Montelupe
+PASS negativo clo O que e Shikigami?
+PASS negativo clo Qual e a capital do Texas?
+PASS negativo clo Expansao urbana e tema da minha aula
+PASS negativo clo Comprei uma mesa de jantar
+RESULTADO: 24/24; mundo v2; QuickJS; nenhuma chamada de modelo

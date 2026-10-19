@@ -2,7 +2,7 @@
 
 Atualização de mundo publicada na Discloud em 18/10/2026, com autorização:
 [fontes da Era da Revolução](Closure/dados/mundo/LEIA-ME.md) para as duas guias,
-sem as três pastas excluídas. [Testes e conferência da publicação](Closure/pesquisa/validacao/2026-10-18-mundo-publicacao/relatorio.md).
+sem as três pastas excluídas. [Testes e conferência da publicação](Closure/pesquisa/validacao/2026-10-18-mundo-nomes/relatorio.md).
 
 Bot de Discord da guilda do **Ciclo Maldito**: tira dúvida de regra, corrige ficha e conversa
 na voz de uma personagem de Arknights (Kal'tsit de dia, Closure de noite).
