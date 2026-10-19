@@ -1,0 +1,12 @@
+{
+  "arquivos": 67,
+  "delta_desde_clima_bh": [
+    "src/closure_bot/clima.py",
+    "src/closure_bot/cogs/chat.py",
+    "src/closure_bot/cogs/clima.py"
+  ],
+  "bytes": 1206720,
+  "sha256": "b96294fde90171fb030c8adc5d2402fe265a311138f4987ed892d31d7a613339",
+  "iguais_aos_fontes": true,
+  "segredos_bancos_campanha_ausentes": true
+}

@@ -285,6 +285,15 @@ class LugarPorPartes(unittest.IsolatedAsyncioTestCase):
         self.assertIn("latitude=-19.9&longitude=-43.9", self.urls[1])
         self.assertNotIn("Tóquio", linha)
 
+    async def test_e_de_bh_so_depois_de_pergunta_meteorologica(self):
+        for frase in ("E de BH?", "E do Belo Horizonte?", "kal, e de bh?", "Closure, e em BH?"):
+            with self.subTest(frase=frase):
+                linha = await contexto_clima(self.s, frase, "Closure, qual o clima atual de SP?")
+                self.assertTrue(linha and linha.startswith("[Belo Horizonte, Minas Gerais, Brasil agora ("), linha)
+                self.assertIsNone(await contexto_clima(self.s, frase))
+                self.assertIsNone(await contexto_clima(self.s, frase, "quanto custa uma katana?"))
+        self.assertIsNone(await contexto_clima(self.s, "um amigo veio de SP e de BH veio outro", "qual o clima de SP?"))
+
     async def test_e_em_outro_lugar_so_depois_de_pergunta_de_clima(self):
         linha = await contexto_clima(self.s, "kal, e em belo horizonte?", "kal, como tá o clima em Tóquio?")
         self.assertIn("Belo Horizonte", linha)

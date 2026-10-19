@@ -11,7 +11,7 @@ from datetime import datetime, timedelta
 import discord
 from discord.ext import commands
 
-from ..clima import contexto_clima
+from ..clima import contexto_clima, pergunta_clima
 from ..conversa import Turno
 from ..modelo import Falhou
 from ..plantao import FUSO, MOTIVO_SEGUIMENTO, Decisao, de_plantao, decidir
@@ -202,7 +202,12 @@ class Chat(commands.Cog):
             turnos = [Turno(agora, fala_respondida[:LIMITE_DO_DISCORD])] + turnos
         estado = bot.vida.estado(persona=persona, canal_id=canal.id, autor_id=mensagem.author.id, nome=nome, agora=agora, texto=texto)
         para_a_ponte = estado.para_a_ponte()
-        anterior = next((t.texto for t in reversed(turnos) if t.nome is not None), None)  # o que a pessoa disse antes
+        # Reconstituir só a sequência meteorológica ainda presente no histórico.
+        # Uma fala de outro assunto encerra a sequência; não puxa clima antigo.
+        anterior = None
+        for turno in turnos:
+            if turno.nome is not None:
+                anterior = pergunta_clima(turno.texto, anterior)
         clima = await contexto_clima(bot.clima, texto, anterior)
         if leitura.apagados:
             return

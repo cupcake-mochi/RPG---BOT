@@ -15,7 +15,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands, tasks
 
-from ..clima import TOQUIO, Clima, acao_painel
+from ..clima import TOQUIO, Clima, acao_painel, lugar_para_consulta
 from ..plantao import FUSO
 from ..registro import PainelClima
 
@@ -73,6 +73,8 @@ class ComandoClima(commands.Cog):
     async def consultar(self, lugar: str | None) -> tuple[discord.Embed | None, str | None]:
         """O painel do lugar (Tóquio sem lugar), ou o aviso de por que não saiu."""
         onde = TOQUIO
+        if lugar:
+            lugar = lugar_para_consulta(lugar)
         if lugar:
             try:
                 onde = await self.bot.clima.procurar(lugar)

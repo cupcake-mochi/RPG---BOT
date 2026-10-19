@@ -825,6 +825,63 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
             webhook.send.assert_awaited_once()
         self.assertEqual(len(chamadas), 2)  # segunda consulta reaproveita o cache correto
 
+    def _servico_clima_tres_cidades(self):
+        import json
+        from urllib.parse import parse_qs, urlparse
+        from closure_bot.clima import ServicoClima
+        cidades = {
+            "São Paulo": ("São Paulo", "São Paulo", -23.55, -46.63),
+            "Belo Horizonte": ("Belo Horizonte", "Minas Gerais", -19.9, -43.9),
+            "Curitiba": ("Curitiba", "Paraná", -25.43, -49.27),
+        }
+        consultas = []
+        async def buscar(url):
+            if "geocoding" in url:
+                consulta = parse_qs(urlparse(url).query)["name"][0]
+                consultas.append(consulta)
+                if consulta not in cidades:
+                    return {}
+                nome, estado, lat, lon = cidades[consulta]
+                return {"results": [{"name": nome, "admin1": estado, "country": "Brasil",
+                                     "latitude": lat, "longitude": lon}]}
+            return json.loads((Path(__file__).parent / "dados/clima_open_meteo.json").read_text())
+        self.bot.clima = ServicoClima(buscar=buscar)
+        return consultas
+
+    async def test_trocas_de_cidade_em_sequencia_e_mudanca_de_assunto(self):
+        consultas = self._servico_clima_tres_cidades()
+        canal, _ = _canal()
+        chat = self.bot.get_cog("Chat")
+        for texto, cidade in (("Closure, qual o clima atual de SP?", "São Paulo"),
+                              ("E de BH?", "Belo Horizonte"), ("E em Curitiba?", "Curitiba")):
+            with self.subTest(texto=texto):
+                await chat.on_message(_mensagem(texto, canal))
+                bloco = self.montar.call_args.kwargs["estado"]["bloco"]
+                self.assertTrue(bloco.startswith("[" + cidade), bloco)
+        self.assertEqual(consultas, ["São Paulo", "Belo Horizonte", "Curitiba"])
+        for texto in ("Agora me explica Maestria", "E de BH?"):
+            await chat.on_message(_mensagem(texto, canal))
+            self.assertTrue(self.montar.call_args.kwargs["estado"]["bloco"].startswith("[Estado agora:"))
+        self.assertEqual(consultas, ["São Paulo", "Belo Horizonte", "Curitiba"])
+
+    async def test_gc_clima_aceita_pergunta_inteira_e_nome_simples_sem_modelo(self):
+        consultas = self._servico_clima_tres_cidades()
+        canal, _ = _canal()
+        canal.send = AsyncMock()
+        atalho = self.bot.get_cog("Atalho")
+        for texto in ("GC:clima E como tá o clima de Belo Horizonte?",
+                      "GC:clima qual o clima atual de BH?", "GC:clima E de BH?", "GC:clima BH"):
+            with self.subTest(texto=texto):
+                mensagem = _mensagem(texto, canal)
+                await atalho.on_message(mensagem)
+                await self.bot.get_cog("Chat").on_message(mensagem)
+                chamada = canal.send.call_args
+                self.assertIn("Belo Horizonte", chamada.kwargs.get("embed", MagicMock(title="")).title)
+        # Nome completo e apelido têm chaves de geocodificação distintas;
+        # os pedidos repetidos de BH reaproveitam a entrada já resolvida.
+        self.assertEqual(consultas, ["Belo Horizonte", "Belo Horizonte"])
+        self.bot.modelos.responder.assert_not_awaited()
+
     async def test_mensagens_do_canal_viram_movimento_e_atrito_gasta_paciencia(self):
         from datetime import datetime
 
