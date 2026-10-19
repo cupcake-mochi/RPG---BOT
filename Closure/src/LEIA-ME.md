@@ -1,5 +1,14 @@
 # src: código do bot
 
+**Clima atual de BH · publicado em 18/10 às 23:49:** o extrator aceita
+atual/hoje/agora antes de de/do/da no assunto do clima, evitando a cidade padrão
+indevida. 844/843/1 opcional na suíte; 35 testes no ZIP e 12 verificações na
+hospedagem passaram, incluindo a API real. Só `closure_bot/clima.py` mudou no
+pacote em relação à v2 de mundo. Fila e timeouts de modelos preservados; a API
+de clima e a geração da fala são etapas distintas. Ampliação: 150 combinações
+de cidades/frases, 8/8 cidades reais na hospedagem e 97 testes no ZIP passaram. Comandos `/clima`/`GC:clima`
+não usam modelo. Evidência: `pesquisa/validacao/2026-10-18-clima-bh/`.
+
 **Nova consulta de mundo publicada · 18/10:** a ponte passa a incluir recortes
 dos 31 textos permitidos do consolidado da Era da Revolução nas duas guias.
 São até cinco trechos/14.000 caracteres por pergunta; sem rede ou modelo extra

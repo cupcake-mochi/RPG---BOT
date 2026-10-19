@@ -1,0 +1,39 @@
+{
+  "arquivos_publicados": 67,
+  "diferencas_pacote": [],
+  "arquivos_protegidos_comparados": 4,
+  "arquivos_protegidos_alterados": [
+    "src/var/bot.sqlite3"
+  ],
+  "bancos": [
+    {
+      "banco": "closure_lab.db",
+      "integridade": true,
+      "esquema_identico": true,
+      "tabelas_alteradas": []
+    },
+    {
+      "banco": "src/var/bot.sqlite3",
+      "integridade": true,
+      "esquema_identico": true,
+      "tabelas_alteradas": [
+        {
+          "tabela": "conversas_recentes",
+          "linhas_antes": 1,
+          "linhas_depois": 0
+        },
+        {
+          "tabela": "paineis_clima",
+          "linhas_antes": 1,
+          "linhas_depois": 1
+        },
+        {
+          "tabela": "participantes_conversa",
+          "linhas_antes": 2,
+          "linhas_depois": 0
+        }
+      ]
+    }
+  ],
+  "alteracoes_do_banco": "Somente expiração da conversa recente/participantes e atualização da coluna estado do painel periódico. Esquemas íntegros e demais tabelas idênticas. Nenhuma mensagem ou chamada de modelo disparada pelos testes."
+}

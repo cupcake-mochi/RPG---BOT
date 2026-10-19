@@ -1,0 +1,14 @@
+  - generic: "PASS extração: qual o clima atual de bh?"
+  - generic: "PASS extração: qual o clima atual de Belo Horizonte?"
+  - generic: "PASS extração: Kal, qual a temperatura atual de BH?"
+  - generic: "PASS extração: como está o tempo atual de bh?"
+  - generic: "PASS extração: qual o clima agora de bh?"
+  - generic: "PASS extração: qual o clima hoje de bh?"
+  - generic: "PASS extração: qual o clima atual em bh?"
+  - generic: PASS contexto de BH e cache sem Tóquio
+  - generic: PASS cidade inexistente sem Tóquio
+  - generic: PASS falha de rede sem Tóquio
+  - generic: PASS conversa cotidiana sem consulta
+  - generic: "PASS rede real Open-Meteo: [Belo Horizonte, Minas Gerais, Brasil agora (23:45 de lá, noite): 20 °C, sensação de 21 °C, céu limpo, umidade 72%, vento 6 km/h; hoje"
+  - generic: "LATENCIA_REDE_S: 1.52"
+  - generic: "RESULTADO: 12/12; nenhum modelo; nenhuma mensagem ao Discord"

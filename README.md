@@ -1,5 +1,9 @@
 # RPG---BOT
 
+Correção de “clima atual de BH” publicada na Discloud em 18/10 às 23:49,
+com consulta real conferida e sem chamar IA nos testes.
+[Diagnóstico, testes e limites](Closure/pesquisa/validacao/2026-10-18-clima-bh/relatorio.md).
+
 Atualização de mundo publicada na Discloud em 18/10/2026, com autorização:
 [fontes da Era da Revolução](Closure/dados/mundo/LEIA-ME.md) para as duas guias,
 sem as três pastas excluídas. [Testes e conferência da publicação](Closure/pesquisa/validacao/2026-10-18-mundo-nomes/relatorio.md).

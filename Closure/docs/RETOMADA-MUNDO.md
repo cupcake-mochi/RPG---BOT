@@ -58,6 +58,19 @@ ZIP atual: `entregas/closure-lab-era-revolucao-nomes-2026-10-18.zip`, SHA256
 `d43dbd27bc63770c57ff18af498d8873edc8cbbbd3d1327740c5623141906d9c`.
 Os números e o ZIP v1 acima são históricos. Não repetir publicação por rotina.
 
+## Correção posterior de clima — publicada
+
+Código `9a00097` corrige “clima atual de bh”, que não extraía o lugar e usava
+Tóquio apesar do alias BH existente. Versão publicada às 23:49:31 de 18/10;
+12 verificações remotas passaram, incluindo a API real em 1,52 s. Suíte atual:
+844 executados, 843 aprovados e um online opcional pulado; 35 no ZIP.
+Ampliação posterior: 150 combinações de cidades/frases e 8/8 consultas reais
+na hospedagem passaram; 97 testes direcionados no ZIP, sem mudar runtime.
+Só `src/closure_bot/clima.py` mudou desde o ZIP v2 de mundo; Shiki e as fontes
+permanecem preservados. Última tentativa do usuário teve timeouts do Gemini
+(12 s) e Vertex (60 s), independentes da extração. Fila/prazos não mudaram.
+Evidência: `pesquisa/validacao/2026-10-18-clima-bh/`. Não repetir publicação.
+
 ## O que continua separado
 
 **Código do bot:** busca lexical tem limite de cinco trechos/14.000 caracteres.
@@ -89,4 +102,6 @@ continua exigindo combinar quantidade/custo antes. Não repetir a implantação.
 > separados; eventual bateria paga exige quantidade/custo autorizados. Não
 > repita publicação ou ensaios já confirmados por rotina. Leia o fechamento v2
 > em pesquisa/validacao/2026-10-18-mundo-nomes/; Shiki curto foi confirmado no
-> QuickJS publicado. Último código publicado: 4a53169; suíte atual 841/840/1.
+> QuickJS publicado. Leia também o fechamento de clima em
+> pesquisa/validacao/2026-10-18-clima-bh/: código posterior publicado 9a00097,
+> suíte atual 844/843/1, sem alterar o núcleo de mundo.
