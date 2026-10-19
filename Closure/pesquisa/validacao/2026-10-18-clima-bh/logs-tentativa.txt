@@ -1,0 +1,14 @@
+  - generic: Oct 18 23:39:43
+  - generic: "2026-10-18 23:39:43,612 INFO closure_bot.cogs.chat: gatilho: closure responde (resposta)"
+  - generic: Oct 18 23:39:56
+  - generic: "2026-10-18 23:39:56,342 INFO closure_bot.modelo: modelo=gemini:gemini-3.8-flash ok=False entrada=None resposta=None raciocinio=None cache=None fim=None ms=12004 custo_usd=0.0"
+  - generic: Oct 18 23:39:56
+  - generic: "2026-10-18 23:39:56,342 WARNING closure_bot.modelo: modelo: gemini:gemini-3.8-flash falhou (rede sem resposta em 12 s)"
+  - generic: Oct 18 23:40:56
+  - generic: "2026-10-18 23:40:56,354 INFO closure_bot.modelo: modelo=vertex:gemini-3.8-flash ok=False entrada=None resposta=None raciocinio=None cache=None fim=None ms=60003 custo_usd=None"
+  - generic: Oct 18 23:40:56
+  - generic: "2026-10-18 23:40:56,354 WARNING closure_bot.modelo: modelo=vertex:gemini-3.8-flash consumo incompleto; reserva cautelar_usd=0.056834 (não é cobrança confirmada)"
+  - generic: Oct 18 23:40:56
+  - generic: "2026-10-18 23:40:56,354 WARNING closure_bot.modelo: modelo: vertex:gemini-3.8-flash falhou (rede sem resposta em 60 s)"
+  - generic: Oct 18 23:40:56
+  - generic: "2026-10-18 23:40:56,354 WARNING closure_bot.cogs.chat: sem resposta pra mensagem 1561569509192761365: rede sem resposta em 60 s"

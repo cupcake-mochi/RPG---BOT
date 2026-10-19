@@ -1,0 +1,3 @@
+  - generic: "LOCAL_EXATO: None"
+  - generic: "CLIMA_REDE: [Belo Horizonte, Minas Gerais, Brasil agora (23:45 de lá, noite): 20 °C, sensação de 21 °C, céu limpo, umidade 72%, vento 6 km/h; hoje entre 18 °C e"
+  - generic: "SEGUNDOS: 1.048"

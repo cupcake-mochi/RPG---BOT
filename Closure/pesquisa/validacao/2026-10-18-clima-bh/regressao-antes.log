@@ -1,0 +1,98 @@
+FFFFFFFbanco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-6' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 1.034 seconds
+clima: falha ao ler Tóquio ('latitude=-19.9&longitude=-43.9' not found in 'https://api.open-meteo.com/v1/forecast?latitude=35.6895&longitude=139.6917&current=temperature_2m,apparent_temperature,relative_humidity_2m,weather_code,wind_speed_10m,is_day&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_probability_max&timezone=auto&forecast_days=1')
+F
+======================================================================
+FAIL: test_atual_entre_assunto_e_cidade_nao_perde_o_lugar (testes.test_clima.Gatilho.test_atual_entre_assunto_e_cidade_nao_perde_o_lugar) (texto='qual o clima atual de bh?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_clima.py", line 101, in test_atual_entre_assunto_e_cidade_nao_perde_o_lugar
+    self.assertEqual(lugar_citado(texto), esperado)
+AssertionError: None != 'bh'
+
+======================================================================
+FAIL: test_atual_entre_assunto_e_cidade_nao_perde_o_lugar (testes.test_clima.Gatilho.test_atual_entre_assunto_e_cidade_nao_perde_o_lugar) (texto='qual o clima atual de Belo Horizonte?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_clima.py", line 101, in test_atual_entre_assunto_e_cidade_nao_perde_o_lugar
+    self.assertEqual(lugar_citado(texto), esperado)
+AssertionError: None != 'Belo Horizonte'
+
+======================================================================
+FAIL: test_atual_entre_assunto_e_cidade_nao_perde_o_lugar (testes.test_clima.Gatilho.test_atual_entre_assunto_e_cidade_nao_perde_o_lugar) (texto='Kal, qual a temperatura atual de BH?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_clima.py", line 101, in test_atual_entre_assunto_e_cidade_nao_perde_o_lugar
+    self.assertEqual(lugar_citado(texto), esperado)
+AssertionError: None != 'BH'
+
+======================================================================
+FAIL: test_atual_entre_assunto_e_cidade_nao_perde_o_lugar (testes.test_clima.Gatilho.test_atual_entre_assunto_e_cidade_nao_perde_o_lugar) (texto='como está o tempo atual de bh?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_clima.py", line 101, in test_atual_entre_assunto_e_cidade_nao_perde_o_lugar
+    self.assertEqual(lugar_citado(texto), esperado)
+AssertionError: None != 'bh'
+
+======================================================================
+FAIL: test_atual_entre_assunto_e_cidade_nao_perde_o_lugar (testes.test_clima.Gatilho.test_atual_entre_assunto_e_cidade_nao_perde_o_lugar) (texto='qual o clima agora de bh?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_clima.py", line 101, in test_atual_entre_assunto_e_cidade_nao_perde_o_lugar
+    self.assertEqual(lugar_citado(texto), esperado)
+AssertionError: None != 'bh'
+
+======================================================================
+FAIL: test_atual_entre_assunto_e_cidade_nao_perde_o_lugar (testes.test_clima.Gatilho.test_atual_entre_assunto_e_cidade_nao_perde_o_lugar) (texto='qual o clima hoje de bh?')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_clima.py", line 101, in test_atual_entre_assunto_e_cidade_nao_perde_o_lugar
+    self.assertEqual(lugar_citado(texto), esperado)
+AssertionError: None != 'bh'
+
+======================================================================
+FAIL: test_pergunta_exata_de_bh_consulta_a_cidade_sem_recair_em_toquio (testes.test_clima.LugarPorPartes.test_pergunta_exata_de_bh_consulta_a_cidade_sem_recair_em_toquio)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/async_case.py", line 90, in _callTestMethod
+    if self._callMaybeAsync(method) is not None:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/async_case.py", line 112, in _callMaybeAsync
+    return self._asyncioRunner.run(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_clima.py", line 282, in test_pergunta_exata_de_bh_consulta_a_cidade_sem_recair_em_toquio
+    self.assertTrue(linha.startswith("[Belo Horizonte, Minas Gerais, Brasil agora ("), linha)
+AssertionError: False is not true : [Tóquio agora (02:00 de lá, noite): 18 °C, sensação de 20 °C, poucas nuvens, umidade 98%, vento 4 km/h; hoje entre 18 °C e 24 °C.]
+
+======================================================================
+FAIL: test_clima_atual_de_bh_chega_ao_contexto_das_duas_guias (testes.test_discord.CamadaDoDiscord.test_clima_atual_de_bh_chega_ao_contexto_das_duas_guias)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/usr/lib/python3.12/unittest/async_case.py", line 90, in _callTestMethod
+    if self._callMaybeAsync(method) is not None:
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/async_case.py", line 112, in _callMaybeAsync
+    return self._asyncioRunner.run(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/asyncio/base_events.py", line 687, in run_until_complete
+    return future.result()
+           ^^^^^^^^^^^^^^^
+  File "/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py", line 823, in test_clima_atual_de_bh_chega_ao_contexto_das_duas_guias
+    self.assertTrue(bloco.startswith("[Belo Horizonte, Minas Gerais, Brasil agora ("), bloco)
+AssertionError: False is not true : [Estado agora: fora do plantão; 23:43 em Brasília; canal quieto; carga 0.
+Quem fala: rafa (pronomes não informados). Como tratar: pessoa nova: seja formal e explique mais.
+Fatos sobre a pessoa: nenhum a lembrar agora; não suponha nada sobre a pessoa.]
+
+----------------------------------------------------------------------
+Ran 3 tests in 1.131s
+
+FAILED (failures=8)

@@ -1,0 +1,186 @@
+........................clima: falha ao procurar 'kyoto' (sem rede)
+clima: falha ao ler Tóquio (sem rede)
+....clima: falha ao ler Tóquio (sem rede)
+.clima: falha ao ler Tóquio (sem rede)
+clima: falha ao ler Tóquio (sem rede)
+....banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-76' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 1.877 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-81' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.320 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-86' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.373 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-91' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.315 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-96' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.299 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-101' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.308 seconds
+falha ao responder a mensagem 1004
+Traceback (most recent call last):
+  File "/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/closure_bot/cogs/chat.py", line 176, in on_message
+    await self._responder(mensagem, decisao, agora, texto,
+  File "/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/closure_bot/cogs/chat.py", line 191, in _responder
+    await self._responder_com_leitura(mensagem, decisao, agora, texto, fala_respondida, leitura)
+  File "/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/closure_bot/cogs/chat.py", line 224, in _responder_com_leitura
+    midia = await bot.midias.contexto(mensagem, texto, incluir_anexos=not (preparo.partes or preparo.silencio),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 2273, in _execute_mock_call
+    result = await effect(*args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: CamadaDoDiscord.test_apagar_durante_metadados_evitar_chamada_ao_modelo.<locals>.midia() got an unexpected keyword argument 'incluir_anexos'
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-106' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.275 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-111' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.345 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-116' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.263 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-121' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.317 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-126' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.370 seconds
+clima: canal 99 do CLIMA_CANAIS não encontrado (o bot está nesse servidor e vê o canal?)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-131' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.355 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-136' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.298 seconds
+Executing <Task finished name='Task-137' coro=<CamadaDoDiscord.test_clima_atual_de_bh_chega_ao_contexto_das_duas_guias() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:799> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.124 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-141' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.333 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-146' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.335 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-151' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.317 seconds
+Executing <Task finished name='Task-152' coro=<CamadaDoDiscord.test_clima_canal_usa_o_canal_atual_ou_o_escolhido() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:529> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.106 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-156' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.322 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-161' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.270 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-166' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.311 seconds
+clima: falha ao ler Tóquio (sem rede)
+/usr/lib/python3.12/unittest/mock.py:2188: ResourceWarning: unclosed file <_io.FileIO name='/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+clima: falha ao procurar 'kyoto' (sem rede)
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-171' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.266 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-176' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.432 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-181' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.327 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-186' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.371 seconds
+Executing <Task finished name='Task-187' coro=<CamadaDoDiscord.test_conversa_sem_chamar_para_quando_outra_pessoa_fala_ou_o_tempo_passa() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:656> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.141 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+/usr/lib/python3.12/re/__init__.py:177: ResourceWarning: unclosed file <_io.FileIO name='/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+  return _compile(pattern, flags).search(string)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task finished name='Task-191' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.381 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-196' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.275 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-201' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.303 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-206' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.288 seconds
+banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task pending name='Task-207' coro=<CamadaDoDiscord.test_fora_dos_canais_delas_so_marcando_ou_respondendo() running at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:355> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.12/asyncio/futures.py:387, Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/base_events.py:449> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.418 seconds
+sem resposta pra mensagem 1029: sem_chave nenhum provedor da fila tem chave no .env
+sem resposta pra mensagem 1030: sem_chave nenhum provedor da fila tem chave no .env
+sem resposta pra mensagem 1031: sem_chave nenhum provedor da fila tem chave no .env
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-211' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.408 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-216' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.316 seconds
+Executing <Task pending name='Task-217' coro=<CamadaDoDiscord.test_gc_ficha_com_anexo_com_link_e_sem_nada() running at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:963> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.12/asyncio/futures.py:387, Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/base_events.py:449> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.194 seconds
+Executing <Task pending name='Task-217' coro=<CamadaDoDiscord.test_gc_ficha_com_anexo_com_link_e_sem_nada() running at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:963> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.12/asyncio/futures.py:387, Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/base_events.py:449> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.149 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-221' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.330 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+<string>:0: ResourceWarning: unclosed file <_io.FileIO name='/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task finished name='Task-226' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.294 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-231' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.355 seconds
+Executing <Task pending name='Task-232' coro=<CamadaDoDiscord.test_gif_do_seletor_entra_no_chat_sem_metadado_contraditorio() running at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:147> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/base_events.py:449> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.481 seconds
+Executing <Task pending name='Task-232' coro=<CamadaDoDiscord.test_gif_do_seletor_entra_no_chat_sem_metadado_contraditorio() running at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:147> wait_for=<_GatheringFuture pending cb=[Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/tasks.py:712> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.119 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-240' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.292 seconds
+Executing <Task pending name='Task-241' coro=<CamadaDoDiscord.test_gif_por_link_discord_chega_sem_expor_url_nos_tempos() running at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:165> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/base_events.py:449> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.112 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-249' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.426 seconds
+Executing <Task finished name='Task-250' coro=<CamadaDoDiscord.test_livro_manda_o_link_com_quem_esta_de_plantao_pela_barra_e_pelo_gc() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:990> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.144 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-254' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.545 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-259' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.359 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-264' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.302 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-269' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.307 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-274' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.683 seconds
+Executing <Task finished name='Task-275' coro=<CamadaDoDiscord.test_meus_dados_pronomes_e_apagar() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:843> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.109 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-279' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.548 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-284' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.442 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-289' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.772 seconds
+Executing <Task finished name='Task-290' coro=<CamadaDoDiscord.test_modo_misto_so_no_canal_escolhido() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:315> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.171 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-294' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.568 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-299' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.809 seconds
+clima: canal do painel (71) não encontrado
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-304' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.465 seconds
+Executing <Task finished name='Task-305' coro=<CamadaDoDiscord.test_painel_diario_por_servidor() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:465> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.192 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-309' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.370 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-314' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.478 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-319' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.496 seconds
+Executing <Task finished name='Task-320' coro=<CamadaDoDiscord.test_preferencia_adulta_chega_ao_modelo_sem_mudar_rotas_ou_salvar_config_no_historico() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:296> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.144 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-324' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.544 seconds
+Executing <Task finished name='Task-325' coro=<CamadaDoDiscord.test_quem_chama_demais_num_minuto_fica_sem_resposta() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:687> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.478 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-329' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 1.312 seconds
+Executing <Task finished name='Task-330' coro=<CamadaDoDiscord.test_quem_chama_recebe_resposta_e_a_conversa_segue() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:567> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.103 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-334' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 1.204 seconds
+Executing <Task finished name='Task-335' coro=<CamadaDoDiscord.test_quem_ela_acabou_de_responder_continua_sem_chamar() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:644> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.124 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+/tmp/era-runtime/lib/python3.12/site-packages/discord/utils.py:686: ResourceWarning: unclosed file <_io.FileIO name='/media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+  async def maybe_coroutine(f: MaybeAwaitableFunc[P, T], *args: P.args, **kwargs: P.kwargs) -> T:
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task finished name='Task-339' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.559 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-344' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.627 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-349' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.294 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-354' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.561 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-359' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.459 seconds
+sem webhook no canal 10; enviando pela conta do bot
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-364' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.933 seconds
+sem resposta pra mensagem 1088: 500 fora do ar
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-369' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.366 seconds
+Executing <Task finished name='Task-370' coro=<CamadaDoDiscord.test_silencio_responde_sem_modelo_e_preserva_pergunta_mista() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:121> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.115 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-378' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.289 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-383' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.338 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-388' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.360 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-393' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.751 seconds
+.
+----------------------------------------------------------------------
+Ran 95 tests in 40.529s
+
+OK

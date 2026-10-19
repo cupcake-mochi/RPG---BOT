@@ -1,0 +1,16 @@
+........................clima: falha ao procurar 'kyoto' (sem rede)
+clima: falha ao ler Tóquio (sem rede)
+....clima: falha ao ler Tóquio (sem rede)
+.clima: falha ao ler Tóquio (sem rede)
+clima: falha ao ler Tóquio (sem rede)
+....banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-76' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.492 seconds
+Executing <Task finished name='Task-77' coro=<CamadaDoDiscord.test_clima_atual_de_bh_chega_ao_contexto_das_duas_guias() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:799> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.162 seconds
+.banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-81' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /media/mizuki/HD Externo II/Closure Lab/RPG---BOT-b47/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.236 seconds
+sem resposta pra mensagem 1002: 500 fora do ar
+.
+----------------------------------------------------------------------
+Ran 35 tests in 0.984s
+
+OK

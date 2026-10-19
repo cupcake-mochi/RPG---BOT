@@ -197,9 +197,12 @@ _GATILHOS = re.compile(
 # Depois do gatilho: "em são paulo hoje?" -> "são paulo". Para na pontuação ou numa destas palavras.
 _PARADAS = {"hoje", "agora", "amanha", "ai", "la", "pra", "para", "e", "ou", "que", "ne", "hein", "ta", "esta",
             "closure", "kal", "kaltsit", "kal'tsit", "por", "favor", "pfv", "pfvr", "vc", "voce"}
-# "em/no/na" valem em qualquer ponto da pergunta; "de/do/da" só colados em clima ou temperatura ("clima de Quioto"),
-# pra "preciso de ajuda" não virar lugar.
-_ANTES_DO_LUGAR = re.compile(r"(?<!\w)(?:em|no|na|nos|nas|(?:(?<=clima )|(?<=temperatura ))(?:de|do|da))\s+")
+# "de/do/da" precisa do assunto do clima antes, com marcador temporal opcional:
+# "clima atual de BH". Não captura "preciso de ajuda" nem "em" de outra frase.
+_ANTES_DO_LUGAR = re.compile(
+    r"(?<!\w)(?:(?:em|no|na|nos|nas)|"
+    r"(?:clima|temperatura|tempo)(?:\s+(?:atual|hoje|agora))?\s+(?:de|do|da))\s+"
+)
 _NAO_E_LUGAR = {"toquio", "tokyo", "o", "a", "tempo", "clima", "casa", "geral"}
 
 
@@ -326,6 +329,7 @@ async def contexto_clima(servico: ServicoClima, texto: str, anterior: str | None
             limpo = re.sub(r"[\[\]\"\n\r]", " ", citado).strip()
             return f'[Clima: o monitor não achou o lugar "{limpo}".]'
     leitura = await servico.agora(lugar)
+    log.info("clima: contexto para %s; leitura=%s", lugar.nome, "disponível" if leitura else "indisponível")
     return linha_bloco4(leitura) if leitura else None
 
 

@@ -796,6 +796,35 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
             await self.bot.get_cog("Chat").on_message(_mensagem("closure, tá chovendo aí?", canal))
         self.assertTrue(self.montar.call_args.kwargs["estado"]["bloco"].startswith("[Clima agora em Tóquio: chuva, 18 °C.]\n\n[Estado agora:"))
 
+    async def test_clima_atual_de_bh_chega_ao_contexto_das_duas_guias(self):
+        import json
+        from closure_bot.clima import ServicoClima
+        from testes.test_clima import LugarPorPartes
+
+        chamadas = []
+        async def buscar(url):
+            chamadas.append(url)
+            if "geocoding" in url:
+                self.assertIn("name=Belo%20Horizonte&", url)
+                return {"results": LugarPorPartes.CIDADES["belo horizonte"]}
+            self.assertIn("latitude=-19.9&longitude=-43.9", url)
+            return json.loads((Path(__file__).parent / "dados/clima_open_meteo.json").read_text())
+
+        self.bot.clima = ServicoClima(buscar=buscar)
+        for i, guia in enumerate(("kaltsit", "closure")):
+            canal, webhook = _canal(80 + i)
+            mensagem = _mensagem("qual o clima atual de bh?", canal)
+            mensagem.mentions = [self.bot.user]
+            # Responder a cada guia evita depender do horário de plantão.
+            from closure_bot.plantao import Decisao
+            with patch("closure_bot.cogs.chat.decidir", return_value=Decisao(guia, "mencao", False)):
+                await self.bot.get_cog("Chat").on_message(mensagem)
+            bloco = self.montar.call_args.kwargs["estado"]["bloco"]
+            self.assertTrue(bloco.startswith("[Belo Horizonte, Minas Gerais, Brasil agora ("), bloco)
+            self.assertNotIn("Tóquio", bloco)
+            webhook.send.assert_awaited_once()
+        self.assertEqual(len(chamadas), 2)  # segunda consulta reaproveita o cache correto
+
     async def test_mensagens_do_canal_viram_movimento_e_atrito_gasta_paciencia(self):
         from datetime import datetime
 

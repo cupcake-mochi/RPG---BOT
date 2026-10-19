@@ -90,6 +90,16 @@ class Gatilho(unittest.TestCase):
         for texto, esperado in casos.items():
             self.assertEqual(lugar_citado(texto), esperado, texto)
 
+    def test_atual_entre_assunto_e_cidade_nao_perde_o_lugar(self):
+        for texto in ("qual o clima atual de bh?", "qual o clima atual de Belo Horizonte?",
+                      "Kal, qual a temperatura atual de BH?", "como está o tempo atual de bh?",
+                      "qual o clima agora de bh?", "qual o clima hoje de bh?",
+                      "qual o clima atual em bh?"):
+            with self.subTest(texto=texto):
+                self.assertTrue(fala_de_clima(texto))
+                esperado = "Belo Horizonte" if "Belo Horizonte" in texto else ("BH" if "BH" in texto else "bh")
+                self.assertEqual(lugar_citado(texto), esperado)
+
     def test_sem_lugar_vale_toquio(self):
         for texto in ("kal, tá chovendo aí?", "como tá o clima em Tóquio?", "vai chover em tokyo hoje?",
                       "closure, previsão do tempo pra sessão", "tá chovendo aí? preciso de ajuda na ficha",
@@ -266,6 +276,14 @@ class LugarPorPartes(unittest.IsolatedAsyncioTestCase):
 
     async def test_apelido_de_capital(self):
         self.assertEqual((await self.s.procurar("bh")).nome, "Belo Horizonte, Minas Gerais, Brasil")
+
+    async def test_pergunta_exata_de_bh_consulta_a_cidade_sem_recair_em_toquio(self):
+        linha = await contexto_clima(self.s, "qual o clima atual de bh?")
+        self.assertTrue(linha.startswith("[Belo Horizonte, Minas Gerais, Brasil agora ("), linha)
+        self.assertEqual(len(self.urls), 2)
+        self.assertIn("name=Belo%20Horizonte&", self.urls[0])
+        self.assertIn("latitude=-19.9&longitude=-43.9", self.urls[1])
+        self.assertNotIn("Tóquio", linha)
 
     async def test_e_em_outro_lugar_so_depois_de_pergunta_de_clima(self):
         linha = await contexto_clima(self.s, "kal, e em belo horizonte?", "kal, como tá o clima em Tóquio?")
