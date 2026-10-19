@@ -1,0 +1,1564 @@
+{
+  "versao": "era-2026-10-18-v1",
+  "arquivo_sha256": "b0a2c4ab1995ca8c176000898a85cbc28029dae252987e6fc3c29b0aa04eaa07",
+  "pastas_permitidas": [
+    "01-Regioes-Extras",
+    "02-Canais-Publicos",
+    "03-Guia-de-Mestragem"
+  ],
+  "documentos": [
+    {
+      "fonte": "01-Regioes-Extras/00-Terra-Indice/Texto-para-Discord.txt",
+      "titulo": "Terra Indice",
+      "tipo": "regiao",
+      "sha256": "9bc05c2f6e17e5f22c8e04d251acdc4adb35181b3bcf050418f19cd5a19533f5",
+      "apelidos": [
+        "terra indice"
+      ],
+      "secoes": [
+        {
+          "titulo": "Terra Indice / Apresentação",
+          "texto": "Aqui estão reunidas informações resumidas sobre os principais conceitos, regiões e civilizações do mundo. Para informações aprofundadas, consulte os registros individuais, o canal de lore ou o **Rei das Maldições — Mizuki** e os **Arquivistas Jujutsu**.\n\nEste tópico funciona como um **índice e dicionário rápido**. Ele não substitui os registros individuais; serve para explicar brevemente o que cada termo significa e indicar onde procurar informações mais aprofundadas."
+        },
+        {
+          "titulo": "Terra Indice / Conceitos do Mundo",
+          "texto": "* **Origíneo:** Matéria cristalina extremamente energética utilizada como recurso industrial, tecnológico e científico em diversas partes do mundo. Apesar de seu enorme valor, a exposição ao Origíneo pode provocar **Oripatia**, tornando sua extração e manipulação atividades potencialmente perigosas.\n\n* **Oripatia:** Doença adquirida através da contaminação por Origíneo, responsável pelo crescimento progressivo de cristais dentro e sobre o corpo. Não possui cura conhecida e torna-se especialmente perigosa para pessoas com Energia Amaldiçoada, já que o cristal pode utilizar essa energia para acelerar sua própria expansão.\n\n* **Infectados:** Nome utilizado para pessoas que desenvolveram Oripatia. A condição não define um único povo ou cultura, e o tratamento dado aos Infectados varia drasticamente entre diferentes regiões: algumas oferecem abrigo e tratamento, enquanto outras adotam segregação, expulsão ou perseguição.\n\n* **Catástrofes:** Nome utilizado para grandes desastres capazes de alterar ou destruir regiões inteiras. Podem assumir formas naturais ou anômalas, como tempestades, terremotos, fenômenos envolvendo Origíneo ou concentrações excepcionais de Energia Amaldiçoada. Nem toda Catástrofe possui a mesma origem, mas sua escala faz com que prever, evitar ou sobreviver a elas seja uma preocupação constante em diversas partes do mundo.\n\n* **Cidades Móveis:** Enormes centros urbanos construídos sobre plataformas capazes de transportar população, infraestrutura e indústrias inteiras. Surgiram principalmente como resposta às Catástrofes, permitindo que uma cidade abandone regiões ameaçadas antes que sejam atingidas. Algumas também utilizam **sistemas de ocultação, rotas sigilosas ou outros métodos de camuflagem** para evitar serem identificadas pelo restante do mundo, especialmente quando pertencem a povos ou territórios que preferem permanecer isolados, como **Kazdel**.\n\n* **Viagem Espacial:** A exploração espacial existe e já permitiu que a humanidade realizasse viagens até a **Lua**, além de missões, pesquisas e programas voltados ao estudo do espaço. Entretanto, nenhuma expedição tripulada conhecida conseguiu realizar exploração significativa além dela, e não existe qualquer descoberta confirmada de vida extraterrestre. O assunto permanece como uma das grandes fronteiras científicas da atualidade."
+        },
+        {
+          "titulo": "Terra Indice / Geografia e Planos",
+          "texto": "* **Mundo Convencional:** É o plano onde se encontra a maior parte da sociedade moderna e dos países conhecidos. Algumas nações apresentadas neste índice existem fisicamente nesse mesmo mundo, ocupando territórios próprios sem substituir os países reais que já existem, como **Ursus, Columbia, Bolívar, Siracusa, Rim Billiton, Yan e Higashi**.\n* **Regiões de Segundo Plano:** Territórios que não ocupam fisicamente uma posição comum no mundo convencional, existindo em espaços separados que só podem ser alcançados através de métodos específicos. Entre as entradas conhecidas estão o trem de **Victoria**, os caminhos musicais de **Leithanien** e os portais religiosos de **Laterano**. **Kazimierz** é alcançada pela rede de portais, sem entrada própria diretamente pelo mundo convencional.\n* **Portais Permanentes:** Passagens encontradas próximas aos principais pontos de chegada das regiões de segundo plano. Diferentemente das entradas utilizadas para sair do mundo convencional, esses portais permanecem estáveis e permitem viajar diretamente entre diferentes regiões de segundo plano.\n* **Regiões Sobrepostas:** Lugares que possuem uma posição no mundo convencional, mas cujo verdadeiro território está separado por algum fenômeno anormal. **Sami** é o maior exemplo conhecido: sua localização corresponde ao Polo Norte, porém aqueles que atravessam a névoa de sua fronteira deixam o espaço convencional e entram em uma região da qual nenhuma expedição retornou com registros confiáveis.\n* **Territórios Subterrâneos:** Civilizações ou regiões que existem fisicamente abaixo do mundo convencional, sem depender de outro plano para serem alcançadas. As cidades dos **Durin** são o principal exemplo, construídas a grandes profundidades e conectadas por extensas redes subterrâneas.\n* **Territórios Submarinos:** Regiões construídas nas profundezas oceânicas e normalmente inacessíveis sem tecnologia ou rotas especializadas. **Ægir** é a principal civilização conhecida desse tipo, formada por cidades-estado instaladas no fundo do oceano associado a Iberia."
+        },
+        {
+          "titulo": "Terra Indice / Nações do Mundo Convencional",
+          "texto": "* **Ursus:** Vasto império localizado no extremo norte da Rússia, conhecido por sua tradição militar, indústria pesada e extensas reservas minerais. Grandes centros urbanos coexistem com regiões periféricas muito mais pobres e isoladas.\n* **Columbia:** Jovem potência da América do Norte marcada por ciência, industrialização, imigração e rápido desenvolvimento tecnológico. É também uma das principais regiões de atuação e influência da **Rhine Lab**.\n* **Bolívar:** Nação latino-americana extremamente rica em recursos naturais, mas dividida entre diferentes governos e forças políticas. Sua longa instabilidade contrasta com cidades prósperas como **Dossoles**, conhecida pelo turismo e por sua neutralidade.\n* **Siracusa:** Confederação de cidades-estado localizada no sul da Europa, próxima à Itália. Sua sociedade combina instituições civis modernas com a influência histórica das **famiglie**, antigas organizações familiares que ainda exercem grande poder político e econômico.\n* **Rim Billiton:** Confederação mineradora da Oceania formada por cidades, minas, guildas e prefeituras amplamente autônomas. Sua economia depende fortemente da extração de Origíneo e da indústria pesada, sem possuir um governo central tradicional.\n* **Yan:** Um dos mais antigos e poderosos impérios do Leste Asiático, conhecido por sua enorme burocracia, estabilidade política e diversidade cultural. **Lungmen**, uma de suas regiões autônomas, encontra-se diretamente na fronteira com a China e funciona como importante centro comercial.\n* **Higashi:** Nação insular localizada no Pacífico Noroeste, próxima ao Japão. Apesar de oficialmente unificada, é dividida entre as cortes do **Norte** e do **Sul**, que preservam governos, costumes e visões políticas bastante diferentes."
+        },
+        {
+          "titulo": "Terra Indice / Regiões de Segundo Plano",
+          "texto": "* **Victoria:** Grande império industrial e aristocrático conhecido por sua força econômica, militar e pela extensa divisão entre condados e domínios nobres. Sua entrada a partir do mundo convencional ocorre através de uma **ferrovia capaz de atravessar a fronteira entre os planos**.\n\n* **Leithanien:** Confederação aristocrática formada por nove Kreise, onde música, conhecimento e Artes ocupam posição central na sociedade. Pode ser alcançada quando uma **composição específica é executada corretamente** em determinados espaços dedicados à música.\n\n* **Kazimierz:** Nação conhecida como a **Terra dos Cavaleiros e do Comércio**, onde antigas tradições cavaleirescas coexistem com megacorporações e enormes competições transformadas em entretenimento. Não possui uma entrada própria pelo mundo convencional, sendo alcançada através da **rede de portais das regiões de segundo plano**.\n\n* **Sargon:** Um dos impérios mais antigos conhecidos, formado por desertos, oásis, savanas e extensas florestas tropicais. É administrado de forma bastante descentralizada por diferentes governantes regionais e pode ser alcançado através de **antigos arcos de pedra encontrados em determinadas rotas desérticas**.\n\n* **Minos:** Confederação de cidades-estado conhecida por suas tradições heroicas, filosofia, artes, esportes e forte identidade cívica. Sua entrada ocorre através de **templos e antigas ruínas do Mediterrâneo Oriental**, cujos pórticos podem funcionar como passagens entre os planos.\n\n* **Kjerag:** Pequena nação montanhosa profundamente ligada à fé em **Kjeragandr**, onde antigas tradições convivem com um processo recente de industrialização e abertura ao exterior. Sua entrada pode ser encontrada entre **trilhas de alta altitude e antigos marcos de pedra** nas grandes cadeias montanhosas.\n\n* **Laterano:** Cidade-estado teocrática governada pela Igreja Laterana e conhecida por sua fé, neutralidade diplomática e forte identidade Sankta. A passagem para seu território precisa ser aberta por uma **Santa reconhecida ou integrante do alto clero** dentro de uma igreja, capela ou outro espaço religioso apropriado.\n\n* **Iberia:** Antiga potência marítima cuja era de ouro terminou após o **Profound Silence**, desastre que devastou grande parte de sua costa e destruiu sua antiga capital. Sua entrada ocorre por determinadas rotas marítimas, onde **névoa e a luz de um farol impossível** conduzem embarcações até sua costa.\n\n* **Kazdel:** Terra ancestral dos **Sarkaz**, reconstruída diversas vezes ao longo da história após sucessivas guerras e destruições. Sua entrada pode surgir entre **ruínas de guerra e estruturas abandonadas**, onde antigos arcos Sarkaz conduzem ao Sorrow's Ground."
+        },
+        {
+          "titulo": "Terra Indice / Civilizações e Regiões Especiais",
+          "texto": "* **Ægir:** Civilização tecnocrática formada por cidades-estado construídas nas profundezas oceânicas. Seu desenvolvimento científico e tecnológico supera amplamente o da superfície, embora sua sociedade permaneça profundamente marcada pelo conflito constante contra os **Seaborn**. Foi situada no oceano do mesmo segundo plano de Iberia.\n* **Sami:** Região localizada no Polo Norte, mas separada do espaço convencional por uma **névoa anormal** que envolve aqueles que se aproximam de seu verdadeiro território. Sua existência é conhecida, porém nenhuma expedição retornou de seu interior com registros confiáveis, fazendo com que quase tudo além da fronteira permaneça desconhecido.\n* **Durin:** Civilização formada por diversas **cidades-estado subterrâneas** construídas a grandes profundidades abaixo do mundo convencional. Seus habitantes desenvolveram tecnologia avançada, enormes domos artificiais e uma extensa rede ferroviária subterrânea, enquanto cada cidade mantém ampla autonomia política."
+        },
+        {
+          "titulo": "Terra Indice / Nações Históricas",
+          "texto": "* **Gaul:** Antigo império que durante séculos esteve entre as maiores potências políticas, militares e culturais conhecidas. Sua expansão terminou em uma guerra contra Victoria, Leithanien e Ursus, resultando na destruição de sua capital e na divisão de seus territórios entre as nações vencedoras. Atualmente, Gaul sobrevive principalmente através de ruínas, antigas regiões e descendentes que preservam parte de sua identidade.\n* **Nightzmoran Khaganate:** Antigo império nômade criado quando diferentes tribos **Nightzmora** foram unificadas sob Kharanduu Khagan. Suas enormes hordas atravessaram e conquistaram territórios de diversas nações antes que o desaparecimento de seus principais líderes provocasse a rápida fragmentação do Khaganate. Hoje, os Nightzmora encontram-se dispersos e não possuem um Estado próprio."
+        },
+        {
+          "titulo": "Terra Indice / Como utilizar este índice",
+          "texto": "* **Consulta Rápida:** Este índice existe para apresentar de maneira resumida os principais conceitos, regiões e civilizações presentes no mundo. Ele serve como ponto de partida para jogadores que encontrarem um termo desconhecido e quiserem compreender rapidamente do que se trata.\n* **Registros Individuais:** Nações e assuntos de maior importância possuem seus próprios registros, onde sua história, sociedade, cidades e particularidades são apresentadas com mais detalhes. O conteúdo deste índice não substitui essas informações, apenas facilita sua localização e compreensão inicial.\n* **Conhecimento do Personagem:** Nem toda informação registrada no servidor necessariamente representa algo conhecido por todos dentro do universo. Certas regiões, acontecimentos ou fenômenos podem possuir informações restritas, desconhecidas ou acessíveis apenas através de pesquisa e Roleplay.\n* **Aprofundamento:** Caso uma cidade, região, organização, povo ou conceito citado não possua informações suficientes para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki** para aprofundamento. Temas que envolvam **viagens espaciais, exploração além da Lua ou os limites conhecidos do espaço** exigem consulta prévia obrigatória antes de serem utilizados em RP."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/01-Ursus/Texto-para-Discord.txt",
+      "titulo": "Ursus",
+      "tipo": "regiao",
+      "sha256": "c1716a950ae19317679ff7bbdae1b086c2bb742e2f514028684ae8a0bddf0550",
+      "apelidos": [
+        "bresk",
+        "breskenoy",
+        "central far north mining district",
+        "chernobog",
+        "deity grypherburg",
+        "gregorskaya guberniya",
+        "imperio dos hippogryphs",
+        "kras",
+        "nikolsk",
+        "olonets",
+        "onega",
+        "shiraziberg",
+        "simonch",
+        "ural",
+        "ursus",
+        "volgrad"
+      ],
+      "secoes": [
+        {
+          "titulo": "Ursus",
+          "texto": "**Localização:** Extremo norte da Rússia, em território próprio no mesmo plano."
+        },
+        {
+          "titulo": "Ursus / Apresentação",
+          "texto": "Ursus é um vasto império de **clima severo, grandes tundras e extensas reservas minerais**, conhecido por sua forte tradição militar e por uma indústria pesada profundamente ligada à mineração. Seus grandes centros urbanos contrastam com regiões periféricas muito menos desenvolvidas, enquanto o tamanho de seu território torna diferentes partes da nação bastante distintas entre si.\n\n**Acesso:** Ursus faz parte do mundo convencional e não exige qualquer meio sobrenatural para ser alcançada. É possível entrar em seu território normalmente através de fronteiras terrestres, ferrovias, aeroportos e demais meios de transporte disponíveis."
+        },
+        {
+          "titulo": "Ursus / Territórios e Localidades Conhecidas",
+          "texto": "* **Capital:** **Deity Grypherburg**, principal centro político e administrativo do império.\n* **Cidades e Assentamentos:** **Bresk**, **Chernobog**, **Shiraziberg**, **Simonch** e **Nikolsk**.\n* **Governoratos:** **Gregorskaya Guberniya** e **Breskenoy**.\n* **Distritos Mineiros:** **Central Far North Mining District**, **Volgrad**, **Ural**, **Kras**, **Olonets** e **Onega**."
+        },
+        {
+          "titulo": "Ursus / História e identidade",
+          "texto": "Ursus nasceu das ruínas do antigo **Império dos Hippogryphs**, uma monarquia que durante séculos manteve os Ursi em posição inferior. A revolução liderada por Igor, o Grande encerrou esse domínio e deu origem ao atual Império de Ursus, que cresceu através de sucessivas campanhas militares e, posteriormente, de uma rápida industrialização movida pelo Origíneo. Essa história transformou o país em uma potência fortemente militarizada, rica em recursos e marcada por grandes desigualdades entre seus centros urbanos e as regiões mais remotas. Entre todas as nações conhecidas, Ursus também mantém uma das políticas mais severas contra os Infectados."
+        },
+        {
+          "titulo": "Ursus / Capital",
+          "texto": "* **Deity Grypherburg:** Capital histórica e administrativa do império, localizada no centro de Ursus. Originalmente uma cidade convencional, foi transferida para uma enorme plataforma móvel durante o processo de industrialização do país, tornando-se o coração político e econômico da nação. É onde se concentram o Palácio Imperial, o Conselho de Estado e boa parte das principais instituições do governo, além de representar diretamente o poder e a tradição do Tsar."
+        },
+        {
+          "titulo": "Ursus / Regiões e Cidades de Importância",
+          "texto": "* **Chernobog:** Uma antiga cidade mineradora que se transformou em um dos maiores centros industriais de Ursus. Suas dezenas de placas urbanas concentram fábricas, infraestrutura pesada e uma grande população trabalhadora, tornando-a um dos símbolos da industrialização moderna do império. Apesar de sua prosperidade, a diferença de tratamento entre cidadãos comuns e Infectados sempre foi particularmente evidente na região.\n* **Gregorskaya Guberniya:** Governorato localizado próximo à capital e historicamente importante para a política interna de Ursus. A região ficou conhecida por conflitos entre autoridades civis, aristocracia e forças militares, tornando-se um dos maiores exemplos das tensões existentes entre o governo central e os diferentes braços do império.\n\nAs demais cidades, governoratos e regiões de Ursus citadas nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver alguma delas para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/02-Victoria/Texto-para-Discord.txt",
+      "titulo": "Victoria",
+      "tipo": "regiao",
+      "sha256": "257c33b241d7f8642a33050cb8c0a5b8fbf8e7a5dfabc0edae38cf4638bc2652",
+      "apelidos": [
+        "boschendal",
+        "brentwood",
+        "bristol",
+        "butchart",
+        "caladon",
+        "calais-blason",
+        "county ascarat",
+        "county barre",
+        "county castshire",
+        "county connor",
+        "county dawson",
+        "county firth",
+        "county hillock",
+        "county kevin",
+        "county lyndon",
+        "county march",
+        "county merkiseyde",
+        "county oak grove",
+        "county peninsula",
+        "county skyes",
+        "county toron",
+        "county trent",
+        "county york",
+        "draco",
+        "eastham",
+        "kingdom of lower gaul",
+        "lannington",
+        "londinium",
+        "lynncardine",
+        "mannington",
+        "muncaster",
+        "portsmouth",
+        "rockbrook",
+        "rydeel",
+        "sidmouth",
+        "stonebreak",
+        "tara",
+        "the shard",
+        "tonnerre",
+        "tradersmill",
+        "victoria"
+      ],
+      "secoes": [
+        {
+          "titulo": "Victoria",
+          "texto": "**Localização:** Região de segundo plano, sem correspondência geográfica direta no mundo convencional."
+        },
+        {
+          "titulo": "Victoria / Apresentação",
+          "texto": "Victoria é um extenso império de **vales férteis, grandes centros industriais e cidades extremamente desenvolvidas**, historicamente marcado pelo poder de sua aristocracia e por uma das maiores economias entre as nações conhecidas. Seu território é dividido entre numerosos condados e domínios nobres, enquanto Londinium ocupa o centro político e econômico da nação.\n\n**Acesso:** Victoria não pode ser alcançada diretamente por terra, mar ou ar a partir do mundo convencional. Sua entrada ocorre através de **uma ferrovia capaz de atravessar a fronteira entre os planos**, sendo necessário embarcar no trem correto para chegar ao terminal victoriano. Próximo ao ponto final da ferrovia existe um dos **portais permanentes** que conecta Victoria às demais regiões de segundo plano."
+        },
+        {
+          "titulo": "Victoria / Territórios e Localidades Conhecidas",
+          "texto": "* **Capital:** **Londinium**.\n* **Grandes Regiões Históricas:** **Tara** e o **Kingdom of Lower Gaul**, formado a partir das terras meridionais de Gaul incorporadas ao império.\n* **Condados:** **County Hillock**, **County Ascarat**, **County Castshire**, **County Connor**, **County Firth**, **County Oak Grove**, **County Peninsula**, **County Skyes**, **County Toron**, **County Trent**, **County York**, **County Lyndon**, **County March**, **County Dawson**, **County Barre**, **County Kevin** e **County Merkiseyde**.\n* **Cidades e Assentamentos:** **Calais-Blason**, **Caladon**, **Portsmouth**, **Tradersmill**, **Brentwood**, **Lynncardine**, **Boschendal**, **Stonebreak**, **Rockbrook**, **Bristol**, **Muncaster**, **Sidmouth**, **Rydeel**, **Eastham**, **Butchart**, **Mannington**, **Tonnerre** e **Lannington**."
+        },
+        {
+          "titulo": "Victoria / História e identidade",
+          "texto": "Victoria nasceu dos antigos reinos dos **Draco**, povos que acabariam divididos entre Victoria e Tara antes que ambos fossem novamente reunidos sob o poder imperial. Com o passar dos séculos, a ascensão dos Aslan, a incorporação de Tara e a anexação das férteis terras de Lower Gaul transformaram o império em uma das maiores potências conhecidas. Victoria também esteve entre as pioneiras da industrialização movida pelo Origíneo, construindo uma economia baseada em manufatura, comércio e poder militar, embora antigas rivalidades nobres e identidades regionais continuem profundamente presentes em sua sociedade."
+        },
+        {
+          "titulo": "Victoria / Capital",
+          "texto": "* **Londinium:** Capital e maior centro político, econômico e cultural de Victoria. A gigantesca cidade móvel é cercada por enormes muralhas de ferro e sistemas de artilharia, além de possuir extensas redes ferroviárias, portos terrestres e milhares de instalações industriais. No centro da cidade ergue-se **The Shard**, tradicional sede da realeza, enquanto estruturas muito mais antigas se estendem pelo subterrâneo da capital."
+        },
+        {
+          "titulo": "Victoria / Regiões e Cidades de Importância",
+          "texto": "* **Tara:** Antigo reino Draco que preserva idioma, costumes e identidade próprios mesmo após sua incorporação a Victoria. A própria origem dessa união permanece controversa: a versão tradicional victoriana fala em proteção e unificação diante da ameaça Nightzmoran, enquanto registros taranos descrevem conquista e submissão. Essa diferença histórica ainda molda profundamente a relação entre os dois povos.\n* **Kingdom of Lower Gaul:** Região formada pelas terras meridionais do antigo Império de Gaul após sua derrota e divisão entre as potências vencedoras. É uma das áreas mais férteis e economicamente valiosas de Victoria, mantendo forte herança gaulesa mesmo após gerações sob domínio victoriano.\n\nAs demais cidades, condados e regiões de Victoria citadas nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver alguma delas para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/03-Leithanien/Texto-para-Discord.txt",
+      "titulo": "Leithanien",
+      "tipo": "regiao",
+      "sha256": "cbe659132c45f1460b183fb7c9ffc9da202c8f6def41f239f0009ae1e10e0dad",
+      "apelidos": [
+        "afterglow",
+        "austenheim",
+        "caprania",
+        "einwald",
+        "erdenherre",
+        "fels",
+        "furtgang",
+        "graufield",
+        "grinden",
+        "guldenesgesatz",
+        "guttenberg",
+        "heldenschwert",
+        "leithanien",
+        "lupukarn",
+        "mount unna",
+        "sturmland",
+        "twin empresses",
+        "unna",
+        "urtica",
+        "vyseheim",
+        "wasserland",
+        "winterwisp mountains",
+        "witch king",
+        "wolumonde",
+        "zwillingsturme"
+      ],
+      "secoes": [
+        {
+          "titulo": "Leithanien",
+          "texto": "**Localização:** Região de segundo plano, sem correspondência geográfica direta no mundo convencional."
+        },
+        {
+          "titulo": "Leithanien / Apresentação",
+          "texto": "Leithanien é um antigo império de **florestas, lagos, montanhas e grandes cidades acadêmicas**, onde música e Artes ocupam uma posição central na cultura e na própria organização da sociedade. A nação funciona como uma confederação aristocrática formada por nove grandes Kreise, cada um possuindo ampla autonomia sob seu próprio Kurfürst.\n\n**Acesso:** Leithanien não pode ser alcançada através de uma viagem convencional. Sua passagem é aberta pela **execução correta de uma composição específica dentro de um grande espaço dedicado à música**, como uma ópera, teatro ou salão de concertos. Durante a apresentação, uma das saídas passa temporariamente a conduzir para Leithanien; próximo ao ponto de chegada existe um dos **portais permanentes** das regiões de segundo plano. Ao final da apresentação, a passagem musical desaparece e a porta volta a conduzir ao lugar de sempre."
+        },
+        {
+          "titulo": "Leithanien / Territórios e Localidades Conhecidas",
+          "texto": "* **Capital Atual:** **Zwillingstürme**, capital do Kreis Einwald e atual sede federal do império.\n* **Os Nove Kreise:** **Einwald**, **Erdenherre**, **Furtgang**, **Heldenschwert**, **Lupukarn**, **Sturmland**, **Wasserland**, **Austenheim** e **Caprania**.\n* **Cidades e Assentamentos:** **Wolumonde**, **Vyseheim**, **Urtica**, **Graufield**, **Guttenberg**, **Fels**, **Unna** e **Grinden**.\n* **Regiões Naturais:** **Winterwisp Mountains**, cadeia montanhosa do norte; e **Mount Unna**, vulcão localizado nas regiões setentrionais da nação."
+        },
+        {
+          "titulo": "Leithanien / História e identidade",
+          "texto": "Leithanien surgiu da união de antigos povos sob o **Güldenesgesatz**, pacto que se tornaria a base política, cultural e jurídica do império. Ao longo dos séculos, o domínio das Artes, da música e do conhecimento elevou sua aristocracia e seus grandes conjuradores, culminando no governo absoluto de Herkunftshorn, o temido **Witch King**. Sua queda pelas mãos das Twin Empresses e dos Kurfürsten iniciou a era atual: uma confederação de nove Kreise onde cada região conserva grande autonomia, mas todas permanecem ligadas por uma cultura que trata música, conhecimento e Artes como pilares da própria sociedade."
+        },
+        {
+          "titulo": "Leithanien / Capital",
+          "texto": "* **Zwillingstürme:** Atual capital de Leithanien e sede das **Twin Empresses**. Antigamente chamada Vedunien, a cidade foi o centro do poder do Witch King antes de tornar-se símbolo de sua queda. Suas duas enormes torres dominam a paisagem, enquanto bairros, teatros, academias e estruturas capazes de produzir música através das próprias Artes fazem da capital um dos maiores centros culturais e acadêmicos conhecidos."
+        },
+        {
+          "titulo": "Leithanien / Regiões e Cidades de Importância",
+          "texto": "* **Wolumonde:** Cidade nômade localizada próxima às **Winterwisp Mountains**, historicamente integrada a uma grande rede comercial do norte. Conhecida como a “Lua das Montanhas Winterwisp”, preserva forte influência dos povos locais e utiliza numerosas torres L-44, popularmente chamadas de Gramophones, como parte de sua infraestrutura e proteção.\n* **Vyseheim:** Cidade nômade que se tornou um dos grandes centros musicais de Leithanien graças ao investimento de sua aristocracia em músicos, ensino e fabricação de instrumentos. Seu coração é o **Afterglow**, distrito destinado à população Infectada, cuja presença teve papel fundamental no desenvolvimento econômico e cultural da cidade.\n* **Urtica:** Pequeno e antigo território conhecido principalmente como a terra natal do **Witch King**. Apesar de sua enorme importância histórica, nunca se tornou um grande centro urbano e acabou carregando por gerações o peso político e cultural de sua associação com Herkunftshorn.\n\nAs demais cidades, Kreise e regiões de Leithanien citadas nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver alguma delas para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/04-Kazimierz/Texto-para-Discord.txt",
+      "titulo": "Kazimierz",
+      "tipo": "regiao",
+      "sha256": "e32675b20b573272d2971668724212d4ff620d225830caf9461f6b1eb808bd85",
+      "apelidos": [
+        "campaign knights",
+        "dewville",
+        "dzwonek",
+        "grand knight territory",
+        "kawalerielki",
+        "kazimierz",
+        "last knight",
+        "mount terrat e mount mortica",
+        "ognisko",
+        "pegasi",
+        "strumykowo",
+        "terra dos cavaleiros e do comercio",
+        "twierdza",
+        "united knightly territory of kazimierz",
+        "wilobisk"
+      ],
+      "secoes": [
+        {
+          "titulo": "Kazimierz",
+          "texto": "**Localização:** Região de segundo plano, sem correspondência geográfica direta no mundo convencional."
+        },
+        {
+          "titulo": "Kazimierz / Apresentação",
+          "texto": "Kazimierz é conhecida como a **Terra dos Cavaleiros e do Comércio**, uma nação onde uma tradição secular de cavalaria passou a coexistir com megacorporações, publicidade e enormes torneios transformados em entretenimento. Suas grandes cidades são modernas e financeiramente poderosas, enquanto boa parte do interior ainda é formada por comunidades rurais que preservam costumes muito mais antigos.\n\n**Acesso:** Kazimierz pertence às **regiões de segundo plano**, mas não possui uma entrada própria diretamente pelo mundo convencional. Para alcançá-la é necessário primeiro entrar em alguma outra região de segundo plano e utilizar um dos **portais permanentes localizados próximos aos respectivos pontos de chegada**, atravessando então a rede até Kazimierz. Em Victoria, esse portal fica próximo ao terminal onde chega o trem."
+        },
+        {
+          "titulo": "Kazimierz / Territórios e Localidades Conhecidas",
+          "texto": "* **Capital e Grande Território Urbano:** **Kawalerielki**, também conhecida como **Grand Knight Territory**.\n* **Cidades:** **Dzwonek** e **Ognisko**.\n* **Vilas e Assentamentos Rurais:** **Dewville**, **Twierdza**, **Strumykowo** e **Wilobisk**."
+        },
+        {
+          "titulo": "Kazimierz / História e identidade",
+          "texto": "Kazimierz nasceu nas férteis pradarias dominadas pelos **Pegasi**, que organizaram as primeiras ordens de cavaleiros e estabeleceram o antigo Reino Pegasus. Após a derrota da monarquia diante das invasões Nightzmoran, diversas ordens recusaram a rendição da família real e acabaram derrubando-a, fundando o atual **United Knightly Territory of Kazimierz**. Séculos depois, a industrialização e a ascensão de uma poderosa classe mercantil alteraram novamente o país: antigos ideais de cavalaria foram transformados em esporte, espetáculo e negócio. Hoje, Kazimierz é conhecida como a **Terra dos Cavaleiros e do Comércio**, onde grandes cidades iluminadas por neon e megacorporações coexistem com cavaleiros tradicionais, vilas rurais e profundas desigualdades sociais."
+        },
+        {
+          "titulo": "Kazimierz / Capital",
+          "texto": "* **Kawalerielki:** Também chamada de **Grand Knight Territory**, é o centro político, econômico e cultural de Kazimierz. Durante o Kazimierz Major, sua cidade principal se conecta a outras três cidades móveis, formando a gigantesca Kawalerielki Alliance. Arenas, centros comerciais, publicidade e entretenimento dominam sua superfície, enquanto partes da população pobre e Infectada vivem em bairros subterrâneos praticamente esquecidos pelo restante da cidade."
+        },
+        {
+          "titulo": "Kazimierz / Regiões e Cidades de Importância",
+          "texto": "* **Dzwonek:** Cidade móvel fortificada do sul de Kazimierz e um dos principais centros históricos dos **Campaign Knights**. Suas fortalezas resistiram até mesmo às forças de Leithanien durante o período do Witch King. Atualmente, Dzwonek passa por rápida industrialização e mantém relações comerciais importantes com seus vizinhos, embora o crescimento das fábricas também tenha ampliado a exploração e segregação da população Infectada.\n* **Dewville:** Pequena vila rural localizada nos arredores de Kawalerielki, entre **Mount Terrat e Mount Mortica**. Muito menos desenvolvida que as grandes cidades móveis, representa bem o interior tradicional de Kazimierz. A região também possui grande importância histórica e folclórica por abrigar o túmulo do lendário **Last Knight** e estar ligada às histórias sobre o antigo Knights’ Treasure.\n\nAs demais cidades, vilas e territórios de Kazimierz citados nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver algum deles para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/05-Columbia/Texto-para-Discord.txt",
+      "titulo": "Columbia",
+      "tipo": "regiao",
+      "sha256": "8a7c527213c207e1d9af1f327f15c630248bc9c624a617b079db0d8cf6d5a814",
+      "apelidos": [
+        "bayswood",
+        "bunkerhill",
+        "city no. 9",
+        "columbia",
+        "davistown",
+        "deadhorse",
+        "district of columbia",
+        "givogia",
+        "guerra de independencia",
+        "ironforge",
+        "max d.c.",
+        "new manfist",
+        "new richmond",
+        "northville",
+        "obsidian festival",
+        "propeller paradise",
+        "siesta free state",
+        "steelham",
+        "tkaronto",
+        "trenton",
+        "trimounts",
+        "wrankwood",
+        "yorktown"
+      ],
+      "secoes": [
+        {
+          "titulo": "Columbia",
+          "texto": "**Localização:** América do Norte, em território próprio no mesmo plano, coexistindo com as demais nações do continente."
+        },
+        {
+          "titulo": "Columbia / Apresentação",
+          "texto": "Columbia é uma jovem potência construída sobre **industrialização, imigração, ciência e desenvolvimento tecnológico**. Seus maiores centros concentram universidades, corporações e algumas das instalações de pesquisa mais avançadas conhecidas, enquanto regiões de fronteira ainda preservam uma cultura ligada à exploração, mineração e expansão territorial. A nação também mantém uma forte relação com o desenvolvimento e as atividades da Rhine Lab.\n\n**Acesso:** Columbia faz parte do mundo convencional e pode ser alcançada normalmente por fronteiras terrestres, aeroportos, ferrovias ou rotas marítimas, sem necessidade de qualquer passagem sobrenatural."
+        },
+        {
+          "titulo": "Columbia / Territórios e Localidades Conhecidas",
+          "texto": "* **Distrito Federal e Capital:** **Max D.C.**, oficialmente localizado no **District of Columbia**.\n* **Estado Associado:** **Siesta Free State**, uma Commonwealth nominalmente vinculada a Columbia, mas dotada de ampla autonomia.\n* **Grandes Cidades e Centros Urbanos:** **Trimounts**, **Tkaronto**, **Davistown**, **Wrankwood**, **Bunkerhill**, **Ironforge**, **Yorktown**, **New Richmond** e **City No. 9**.\n* **Cidades e Assentamentos Menores:** **Northville**, **Steelham**, **New Manfist**, **Trenton** e **Givogia**.\n* **Assentamentos de Pioneiros:** **Bayswood** e **Deadhorse**.\n* **Localidade Especial:** **Propeller Paradise**, uma plataforma experimental flutuante dedicada principalmente ao estudo de tecnologias aeronáuticas e de levitação."
+        },
+        {
+          "titulo": "Columbia / História e identidade",
+          "texto": "Columbia começou como uma colônia de Victoria estabelecida após a descoberta de grandes reservas de Origíneo. Décadas de exploração, tributação e crescente descontentamento culminaram na **Guerra de Independência**, encerrada com a vitória das forças revolucionárias lideradas por Mark Max e a fundação da União Columbiana. Desde então, imigração, expansão territorial e investimentos agressivos em ciência e indústria transformaram a antiga colônia na mais jovem entre as grandes potências conhecidas. Atualmente, Columbia representa tanto a promessa de progresso e oportunidade quanto os excessos de uma sociedade onde avanço tecnológico, interesses corporativos e ambição política frequentemente caminham juntos."
+        },
+        {
+          "titulo": "Columbia / Capital",
+          "texto": "* **Max D.C.:** Capital federal de Columbia e sede de seu governo nacional, localizada no **District of Columbia** e frequentemente chamada apenas de Special District. É nela que se concentram a Presidência, o Congresso e as principais instituições responsáveis pela administração da União. Diferentemente das cidades subordinadas aos diferentes estados columbianos, Max D.C. possui importância nacional direta e funciona como o centro político de uma federação cujos estados mantêm considerável autonomia."
+        },
+        {
+          "titulo": "Columbia / Regiões e Cidades de Importância",
+          "texto": "* **Trimounts:** Uma jovem cidade móvel que, em poucas décadas, tornou-se um dos maiores centros científicos e tecnológicos de Columbia. Universidades, empresas de engenharia e extensas zonas destinadas à pesquisa dominam sua economia, sendo também nela que está localizada a **sede da Rhine Lab**. Apesar da imagem de prosperidade e inovação, seus arredores ainda abrigam pioneiros, trabalhadores e uma considerável população de Infectados.\n* **Siesta Free State:** Cidade-estado tropical originalmente fundada por pioneiros columbianos como um posto comercial destinado a estabelecer relações com Iberia. O isolamento provocado pelo Profound Silence levou Siesta a desenvolver governo e identidade próprios; posteriormente, diante de pressões estrangeiras, decidiu integrar-se nominalmente a Columbia como uma Commonwealth. Na prática, conserva ampla soberania e tornou-se famosa por suas praias, turismo, cultura musical e pelo **Obsidian Festival**.\n\nAs demais cidades, estados e territórios de Columbia citados nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver algum deles para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/06-Bolivar/Texto-para-Discord.txt",
+      "titulo": "Bolivar",
+      "tipo": "regiao",
+      "sha256": "6b0dbe77616220f9449f99d372ac5aa4b0263fab51a077ce4e55c05093e593ae",
+      "apelidos": [
+        "black flow",
+        "bolivar",
+        "bolivarian border plateau",
+        "bolivarian plain",
+        "dossoles",
+        "el sol",
+        "gran sinderacato",
+        "independent state of bolivar",
+        "kingdom of bolivar",
+        "la plata",
+        "la unidad",
+        "liberated zones",
+        "tecoma",
+        "toca",
+        "true bolivarians"
+      ],
+      "secoes": [
+        {
+          "titulo": "Bolivar",
+          "texto": "**Localização:** América Latina, em território próprio no mesmo plano, coexistindo com as demais nações da região."
+        },
+        {
+          "titulo": "Bolivar / Apresentação",
+          "texto": "Bolívar é uma nação de **grande riqueza natural, agricultura e mineração**, mas profundamente fragmentada por uma disputa política que divide seu território entre governos e forças rivais. A maior parte de sua população vive nas férteis planícies centrais, enquanto Dossoles funciona como uma cidade neutra e um dos grandes centros econômicos e turísticos da nação.\n\n**Acesso:** Bolívar faz parte do mundo convencional e pode ser alcançada normalmente através de rotas terrestres, aéreas ou marítimas, sem necessidade de portais ou outros métodos sobrenaturais."
+        },
+        {
+          "titulo": "Bolivar / Territórios e Localidades Conhecidas",
+          "texto": "* **Grandes Divisões Políticas:** **Kingdom of Bolívar**, **Independent State of Bolívar** e as **Liberated Zones** controladas pelos True Bolívarians.\n* **Capital Nacional e Território Neutro:** **Dossoles**, capital de jure de Bolívar e única grande cidade oficialmente neutra entre as forças da guerra civil.\n* **Capitais Regionais:** **Gran Sinderacato**, capital do Kingdom of Bolívar; e **La Unidad**, capital do Independent State of Bolívar.\n* **Cidades e Assentamentos:** **La Plata**, **Toca** e **Tecoma**.\n* **Região Setentrional:** **Bolívarian Border Plateau**, extensa região de planaltos áridos ao norte.\n* **Região Central:** **Bolívarian Plain**, grande planície fértil onde vive a maior parte da população e se concentra boa parte da mineração e agricultura da nação.\n* **Região Meridional:** **Black Flow**, extensa floresta tropical que domina parte do sul de Bolívar."
+        },
+        {
+          "titulo": "Bolivar / História e identidade",
+          "texto": "Bolívar surgiu como um **vice-reino colonial de Iberia**, estabelecido durante a antiga era das grandes explorações e enriquecido por agricultura, mineração e suas abundantes reservas de Origíneo. Pressões estrangeiras acabaram levando Iberia a abandonar sua colônia e reconhecer sua independência, mas o novo país rapidamente se tornou alvo das ambições de outras potências. A intervenção de Leithanien e, posteriormente, de Columbia dividiu Bolívar entre governos rivais e deu origem aos **True Bolívarians**, movimento que rejeita a influência de ambos. Atualmente, a nação permanece fragmentada por uma longa guerra civil, apesar de possuir algumas das terras mais férteis e reservas naturais mais valiosas da região."
+        },
+        {
+          "titulo": "Bolivar / Capital",
+          "texto": "* **Dossoles:** Capital de jure de Bolívar e rara zona neutra entre as forças que disputam o país. Antigamente chamada **El Sol**, foi transformada durante a administração de Candela Sanchez em um enorme centro de turismo, comércio e entretenimento. Seu mar artificial, praias, cassinos, hotéis e eventos atraem visitantes estrangeiros, enquanto sua neutralidade permite que a cidade negocie com os diferentes lados da guerra e permaneça como coração econômico de uma nação dividida."
+        },
+        {
+          "titulo": "Bolivar / Regiões e Cidades de Importância",
+          "texto": "* **Gran Sinderacato:** Capital do **Kingdom of Bolívar** e sede da dinastia Singas. O reino surgiu após a intervenção militar de Leithanien e permaneceu profundamente ligado à potência estrangeira, adotando parte de sua estrutura política e mantendo relações econômicas e culturais estreitas com ela. Apesar da aparência de prosperidade e estabilidade, sua história é marcada pela exploração da população local e pela dependência da influência leithaniana.\n* **La Unidad:** Cidade móvel e capital do **Independent State of Bolívar**, governo estabelecido com apoio de Columbia durante a disputa pela influência sobre o país. Seu governo apresenta-se como uma alternativa moderna ao domínio da dinastia Singas, embora sua proximidade política e militar com Columbia faça com que muitos bolivarianos o considerem apenas outra forma de interferência estrangeira.\n* **Black Flow:** Imensa floresta tropical situada no sul de Bolívar e estendendo-se em direção às terras de Sargon. Sua vegetação forma uma cobertura tão densa que pouca luz alcança o solo, enquanto chuvas constantes e grandes rios tornam sua exploração particularmente difícil. A região permanece pouco habitada e mal compreendida, e desaparecimentos recentes de expedições reforçaram sua reputação como um dos lugares mais perigosos da nação.\n\nAs demais cidades, territórios e regiões de Bolívar citados nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver algum deles para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/07-Siracusa/Texto-para-Discord.txt",
+      "titulo": "Siracusa",
+      "tipo": "regiao",
+      "sha256": "6ccb311cd1886e5f889e05a431b791caa106daae0344479c0ac69bb139f5aae5",
+      "apelidos": [
+        "brunello",
+        "capo dei capi de volsinii",
+        "cellinia texas",
+        "cittanova",
+        "famiglia sicilia",
+        "florentia",
+        "montelupe",
+        "nuova volsinii",
+        "palermo",
+        "sette colli",
+        "sicilia",
+        "signora sicilia",
+        "siracusa",
+        "siracusano ii",
+        "sorrento",
+        "terni",
+        "trapani",
+        "trieste",
+        "vermeil",
+        "vite",
+        "volsinii"
+      ],
+      "secoes": [
+        {
+          "titulo": "Siracusa",
+          "texto": "**Localização:** Sul da Europa, próxima à Itália, em território próprio no mesmo plano."
+        },
+        {
+          "titulo": "Siracusa / Apresentação",
+          "texto": "Siracusa é uma confederação de **vinte e duas cidades-estado autônomas**, conhecida por sua cultura urbana, gastronomia, ópera e pelas famiglie que historicamente concentraram grande parte do poder político e econômico da nação. Embora possua instituições civis próprias, antigas estruturas familiares continuam exercendo enorme influência sobre suas cidades e comunidades.\n\n**Acesso:** Siracusa faz parte do mundo convencional e pode ser alcançada normalmente através de rotas terrestres, ferroviárias, aéreas ou marítimas, sem necessidade de portais ou outros meios sobrenaturais."
+        },
+        {
+          "titulo": "Siracusa / Territórios e Localidades Conhecidas",
+          "texto": "* **Capital:** **Montelupe**, principal centro político da confederação.\n* **Cidades-Estado e Centros Históricos:** **Sicilia** e **Sette Colli**.\n* **Cidades e Assentamentos:** **Volsinii**, **Nuova Volsinii**, **Brunello**, **Locomotiva**, **Palermo**, **Vite**, **Sorrento**, **Vermeil**, **Florentia**, **Trapani**, **Terni** e **Trieste**.\n* **Expansão Urbana:** **Cittanova**, uma das grandes placas urbanas de Volsinii e núcleo sobre o qual foi desenvolvida Nuova Volsinii."
+        },
+        {
+          "titulo": "Siracusa / História e identidade",
+          "texto": "As origens de Siracusa remontam às antigas tribos que se organizaram nas primeiras **famiglie**, estruturas familiares que gradualmente se transformaram em verdadeiros poderes políticos. Durante quase um milênio, a região permaneceu ligada a Leithanien como seu décimo Kreis, até que movimentos separatistas culminaram no reconhecimento de sua independência pelo Witch King. A liberdade, porém, foi seguida por cerca de sete décadas de conflitos entre as famiglie, encerradas apenas quando **Signora Sicilia** reuniu as Doze Famílias sob uma nova ordem. Atualmente, Siracusa é uma confederação de vinte e duas cidades-estado onde governo civil, tribunais e leis coexistem com a enorme influência política e econômica das famiglie."
+        },
+        {
+          "titulo": "Siracusa / Capital",
+          "texto": "* **Montelupe:** Capital nacional de Siracusa e um dos centros históricos de sua formação como país independente. Foi em sua praça central que ocorreu uma das manifestações decisivas do movimento separatista contra Leithanien, tornando a cidade profundamente ligada à identidade política siracusana. Hoje, Montelupe permanece como o principal centro político da confederação e um importante ponto de encontro entre instituições civis, religião e as grandes famiglie."
+        },
+        {
+          "titulo": "Siracusa / Regiões e Cidades de Importância",
+          "texto": "* **Volsinii:** Uma das cidades móveis clássicas de Siracusa, conhecida especialmente por sua **forte tradição de ópera e teatro**, presentes tanto entre as elites quanto na vida cotidiana da população. Como boa parte das antigas cidades siracusanas, sua política e economia foram profundamente influenciadas pelas famiglie, em especial Bellone, Rossati e Saluzzo.\n* **Nuova Volsinii:** Cidade-irmã construída a partir da expansão de Volsinii e concebida deliberadamente como uma **“cidade sem famiglie”**. Formada por doze grandes placas móveis e equipada com um enorme porto terrestre, tornou-se um dos principais centros logísticos de Siracusa e uma experiência política para testar se uma cidade siracusana poderia funcionar sem o controle tradicional da máfia.\n* **Sicilia:** Antiga cidade-estado de enorme importância histórica, onde diversas pequenas famiglie acabaram reunidas sob a antiga **Famiglia Sicilia**. Foi uma das grandes potências das primeiras disputas entre cidades siracusanas e está diretamente ligada à origem de Signora Sicilia, embora sua influência tenha diminuído consideravelmente durante o longo período de anarquia."
+        },
+        {
+          "titulo": "Siracusa / Situação Atual — Siracusano II",
+          "texto": "* **Shiki Zen'in — Capo dei capi de Volsinii:** Durante os acontecimentos de **Siracusano II**, Shiki Zen'in e seu grupo enfrentaram **Cellinia Texas** enquanto ela se encontrava sob influência de uma entidade ligada aos Signori dei Lupi. A vitória do grupo encerrou o jogo que se desenrolava em Volsinii e colocou Shiki em uma posição excepcional dentro da estrutura tradicional das famiglie.\n\nComo consequência, Shiki recebeu o título de **Capo dei capi de Volsinii**, tornando-se uma das figuras de maior prestígio e autoridade entre as famílias atuantes na cidade. O título não representa domínio sobre toda Siracusa e nem substitui a autoridade nacional de **Signora Sicilia**, sendo reconhecido especificamente dentro da esfera política e mafiosa de Volsinii.\n\nSua relação com **Cellinia Texas**, sua namorada, também o mantém diretamente conectado a acontecimentos recentes envolvendo as famiglie e os Signori dei Lupi.\n\nAs demais cidades, territórios e regiões de Siracusa citadas nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver alguma delas para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/08-Sargon/Texto-para-Discord.txt",
+      "titulo": "Sargon",
+      "tipo": "regiao",
+      "sha256": "d4647c751d31411c0f1ee9b3ab55f66d3475a78f9f35a59b8057334cd204d568",
+      "apelidos": [
+        "acahualla",
+        "aslan",
+        "bayalir",
+        "ibut",
+        "kerthun valley",
+        "long spring",
+        "menat-ha'mait",
+        "phecon",
+        "redhorn",
+        "reefsteep",
+        "sargon",
+        "shahr-cheshmeh",
+        "shar-agade",
+        "szubat-arsalan",
+        "tiacauh",
+        "vouivre alliance"
+      ],
+      "secoes": [
+        {
+          "titulo": "Sargon",
+          "texto": "**Localização:** Região de segundo plano, sem correspondência geográfica direta no mundo convencional."
+        },
+        {
+          "titulo": "Sargon / Apresentação",
+          "texto": "Sargon é um dos impérios mais antigos conhecidos, uma enorme nação formada por **desertos, oásis, savanas e extensas florestas tropicais**. Seu território abriga inúmeros povos e culturas que reconhecem a autoridade do Shahanshah, mas são administrados localmente por Padishahs, Lords Ameer e lideranças tribais. O oeste concentra as antigas sociedades do deserto, enquanto o leste reúne povos das florestas que preservam grande autonomia e tradições próprias.\n\n**Acesso:** Sua entrada pelo mundo convencional pode ser encontrada em determinadas rotas dos grandes desertos do Norte da África e Oriente Médio: ao atravessar antigos **arcos de pedra parcialmente soterrados pela areia**, o caminho além deles deixa de pertencer ao mesmo plano e conduz às terras de Sargon. Próximo ao ponto de chegada existe um dos **portais permanentes** que conecta Sargon às demais regiões de segundo plano."
+        },
+        {
+          "titulo": "Sargon / Territórios e Localidades Conhecidas",
+          "texto": "* **Capital e Distrito Imperial:** **Shar-Agade**, a Cidade Dourada e sede tradicional do Shahanshah.\n* **Grandes Distritos e Regiões:** **Acahualla**, **Ibut**, **Szubat-Arsalan**, **Bayalir** e **Kerthun Valley**.\n* **Região Autônoma:** **Vouivre Alliance**.\n* **Cidades e Assentamentos:** **Long Spring**, **Menat-Ha'mait**, **Shahr-Cheshmeh**, **Reefsteep**, **Redhorn** e **Phecon**."
+        },
+        {
+          "titulo": "Sargon / História e identidade",
+          "texto": "Sargon é considerado um dos impérios mais antigos conhecidos, cuja origem remonta às primeiras conquistas dos **Aslan** sobre as diversas tribos que habitavam seus vastos territórios. A necessidade de proteger essas populações das ameaças vindas do extremo sul consolidou uma primeira aliança sob a autoridade Aslan, dando origem ao império e à lendária capital Shar-Agade. Com os séculos, Sargon expandiu-se sobre desertos, oásis, savanas e florestas tropicais, absorvendo inúmeros povos sem eliminar suas identidades locais. Hoje, continua nominalmente unido sob o Shahanshah, mas grande parte de seu território é administrada com enorme autonomia por Padishahs, Lords Ameer e lideranças tribais."
+        },
+        {
+          "titulo": "Sargon / Capital",
+          "texto": "* **Shar-Agade:** Conhecida como a **Cidade de Ouro**, é a capital imperial e residência do Shahanshah e da casa real Aslan. Sua localização é um dos segredos de Estado mais protegidos de Sargon: cercada por desertos e tempestades de areia, a cidade permanece isolada do restante do país e muitos cidadãos chegam a considerá-la apenas uma lenda. Padishahs escolhidos para governar as províncias precisam visitar Shar-Agade para receber oficialmente sua nomeação antes de assumirem seus territórios."
+        },
+        {
+          "titulo": "Sargon / Regiões e Cidades de Importância",
+          "texto": "* **Acahualla:** Distrito tropical do leste de Sargon, formado por uma enorme floresta separada dos desertos centrais por um grande cânion. Seus habitantes, conhecidos coletivamente como **Tiacauh**, preservam uma cultura e modo de vida muito diferentes dos encontrados no restante do império. Embora Sargon reivindique formalmente a região, tentativas de estabelecer controle administrativo efetivo fracassaram, fazendo de Acahualla um território praticamente autônomo.\n* **Vouivre Alliance:** Região autônoma no extremo noroeste de Sargon, próxima a Bolívar e habitada principalmente pelos Vouivre. Originalmente independente, foi conquistada pelos Aslan e recebeu autonomia em troca do serviço de seus guerreiros como guardas reais. Com o enfraquecimento da autoridade imperial, tornou-se progressivamente mais independente e hoje é uma região marcada por separatismo, mercenários e disputas constantes pelo controle local.\n* **Ibut:** Grande distrito do centro de Sargon cuja estrutura política se desenvolveu ao redor de **Reefsteep**, antiga cidade móvel e sede de um poderoso Padishah. A região representa bem a forma descentralizada de governo sargoniana: autoridades locais, nobres, mercenários e comerciantes podem exercer enorme influência sem que a administração imperial esteja diretamente presente em cada decisão.\n\nAs demais cidades, distritos e regiões de Sargon citadas nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver alguma delas para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/09-Minos/Texto-para-Discord.txt",
+      "titulo": "Minos",
+      "tipo": "regiao",
+      "sha256": "071545742be583bf312085646ae7a22c9d4be2ff22a4b29dd76696b7e14590dc",
+      "apelidos": [
+        "aegean plain",
+        "agamem pass",
+        "agnes river",
+        "akroti",
+        "arachne river",
+        "athenius",
+        "corinia",
+        "delphi river",
+        "doze herois",
+        "hall of the twelve heroes",
+        "ilion",
+        "kereseira",
+        "lachedamon",
+        "minoan massif",
+        "minos",
+        "mount athos",
+        "mount heria",
+        "mount hymnoi"
+      ],
+      "secoes": [
+        {
+          "titulo": "Minos",
+          "texto": "**Localização:** Região de segundo plano, sem correspondência geográfica direta no mundo convencional."
+        },
+        {
+          "titulo": "Minos / Apresentação",
+          "texto": "Minos é uma antiga confederação de cidades-estado construída entre **montanhas, vales férteis e grandes rios**, conhecida por sua filosofia, artes, esportes e forte tradição de veneração aos heróis. Apesar de possuir uma cultura guerreira e produzir soldados e armamentos respeitados, sua sociedade valoriza principalmente o desenvolvimento pessoal, a participação política e a ideia de que qualquer cidadão pode deixar para trás um legado digno de ser lembrado.\n\n**Acesso:** A entrada pelo mundo convencional ocorre através de determinados **templos e ruínas da região do Mediterrâneo Oriental**, onde antigos pórticos de pedra podem funcionar como passagens quando atravessados. Do outro lado, o viajante surge próximo ao **Agamem Pass**, onde também existe um dos portais permanentes que conecta Minos às demais regiões de segundo plano."
+        },
+        {
+          "titulo": "Minos / Territórios e Localidades Conhecidas",
+          "texto": "* **As Três Poleis:** **Athenius**, capital e centro cultural e religioso; **Corinia**, principal centro comercial e econômico; e **Lachedamon**, maior centro militar.\n* **Cidades, Vilas e Assentamentos:** **Akroti**, região e vila fronteiriça; e **Ilion**, antiga cidade fortificada de importância histórica.\n* **Grandes Regiões Geográficas:** **Minoan Massif**, **Aegean Plain** e **Agamem Pass**.\n* **Montanhas:** **Mount Heria**, **Mount Hymnoi** e **Mount Athos**.\n* **Rios:** **Agnes River**, **Delphi River** e **Arachne River**."
+        },
+        {
+          "titulo": "Minos / História e identidade",
+          "texto": "Segundo a tradição de Minos, sua história começou quando a poetisa **Kereseira** conduziu refugiados de diferentes povos até as terras férteis ao redor de Mount Hymnoi e fundou Athenius. A partir dali nasceram novas cidades e o culto aos heróis que até hoje define a identidade minoica. Séculos depois, Minos foi conquistada por Sargon e passou mais de um século sob domínio estrangeiro, período marcado por assimilação cultural e pela destruição de antigas cidades-estado. A independência só foi recuperada com a campanha dos **Doze Heróis**, que expulsaram as forças sargonianas. Atualmente, Minos é uma confederação das três grandes Poleis, conhecida por sua democracia, agricultura, artes, esportes e forte tradição heroica."
+        },
+        {
+          "titulo": "Minos / Capital",
+          "texto": "* **Athenius:** A mais antiga das três Poleis e atual capital de Minos, considerada o coração político e espiritual da nação. Foi fundada pela própria Kereseira segundo as tradições minoicas e permanece profundamente associada ao culto aos heróis, à filosofia, à poesia e à vida religiosa. Em seu território encontra-se o **Hall of the Twelve Heroes**, dedicado aos guerreiros que libertaram Minos do domínio de Sargon."
+        },
+        {
+          "titulo": "Minos / Regiões e Cidades de Importância",
+          "texto": "* **Corinia:** Uma das três grandes Poleis e o principal centro econômico de Minos. Sua identidade está tradicionalmente associada ao comércio, artesanato e prosperidade, funcionando como contraponto à vida religiosa de Athenius e à tradição militar de Lachedamon.\n* **Lachedamon:** A terceira das grandes Poleis, reconhecida principalmente por sua tradição militar e pela formação de guerreiros. Mesmo em uma nação que valoriza a paz, Lachedamon preserva uma cultura marcial muito forte e exerce papel importante na defesa de Minos.\n* **Akroti:** Região fronteiriça próxima a Sargon, formada por vilas rurais e terras agrícolas. Sua posição tornou a área particularmente vulnerável às tensões entre as duas nações, fazendo com que sua população tenha convivido historicamente com conflitos, guerrilhas e disputas de fronteira.\n* **Mount Hymnoi:** Uma das montanhas mais importantes de Minos e centro espiritual de sua tradição heroica. É considerada o local onde os Doze Heróis foram sepultados e onde ocorrem cerimônias e competições relacionadas ao culto nacional aos heróis.\n\nAs demais cidades, Poleis, vilas e regiões de Minos citadas nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver alguma delas para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/10-Kjerag/Texto-para-Discord.txt",
+      "titulo": "Kjerag",
+      "tipo": "regiao",
+      "sha256": "4bb08c1291c078e669214c5e5f2119fefe47938a3f7a36bc1aa0a56c6d98b7fb",
+      "apelidos": [
+        "hoff angrsaal",
+        "karlan square",
+        "karlan trade",
+        "kjerag",
+        "kjeragandr",
+        "lake silberneherze",
+        "mount filnona",
+        "mount fugen",
+        "mount jungfrau",
+        "mount karlan",
+        "mount matterhorn",
+        "reino da neve",
+        "turicum"
+      ],
+      "secoes": [
+        {
+          "titulo": "Kjerag",
+          "texto": "**Localização:** Região de segundo plano, sem correspondência geográfica direta no mundo convencional."
+        },
+        {
+          "titulo": "Kjerag / Apresentação",
+          "texto": "Kjerag é uma pequena nação montanhosa conhecida como o **Reino da Neve**, formada entre vales elevados, lagos e alguns dos picos mais altos conhecidos. Durante séculos permaneceu praticamente isolada, desenvolvendo uma sociedade profundamente religiosa em torno de **Kjeragandr**, sua divindade protetora. Atualmente atravessa um rápido processo de industrialização e abertura ao exterior, fazendo antigas tradições coexistirem com ferrovias, mineração e novas tecnologias.\n\n**Acesso:** Sua entrada pode ser encontrada em determinadas trilhas de alta altitude dos Alpes, onde antigos **marcos de pedra aparecem em meio às nevascas**. Ao atravessar o último deles, o caminho deixa silenciosamente o mundo convencional e continua pelas montanhas de Kjerag. Próximo ao ponto de chegada existe um dos **portais permanentes** que conecta a nação às demais regiões de segundo plano."
+        },
+        {
+          "titulo": "Kjerag / Territórios e Localidades Conhecidas",
+          "texto": "* **Território Silverash:** Vales e regiões montanhosas do sul, incluindo minas e áreas industriais. **Turicum** encontra-se nesse território.\n* **Território Browntail:** Regiões florestais do oeste e parte dos lagos, ligadas à madeira, peles e comércio.\n* **Território Paleroche:** Terras férteis, riachos e lagos do norte, com produção agrícola e forças militares tradicionais.\n* **Principal Centro Urbano:** **Turicum**.\n* **Centro Religioso e Político:** **Mount Karlan**, **Hoff Angrsaal** e **Karlan Square**.\n* **Lago:** **Lake Silberneherze**.\n* **Grandes Montanhas:** **Mount Karlan**, **Mount Jungfrau**, **Mount Matterhorn**, **Mount Filnona** e **Mount Fugen**."
+        },
+        {
+          "titulo": "Kjerag / História e identidade",
+          "texto": "Kjerag nasceu como refúgio para diferentes povos que buscaram abrigo entre suas montanhas, uma região excepcionalmente protegida das Catástrofes. Dessa sobrevivência surgiu uma sociedade profundamente ligada à fé em **Kjeragandr**, divindade considerada protetora da nação, e durante séculos três grandes clãs — Silverash, Browntail e Paleroche — dividiram entre si sua administração. O isolamento geográfico permitiu que Kjerag preservasse costumes extremamente antigos, mas também retardou seu desenvolvimento industrial. Nas últimas décadas, a abertura promovida pela família Silverash e pela **Karlan Trade** iniciou uma transformação acelerada, introduzindo ferrovias, mineração moderna, turismo e comércio estrangeiro sem eliminar a forte influência da religião sobre a vida cotidiana."
+        },
+        {
+          "titulo": "Kjerag / Centro Político e Religioso",
+          "texto": "* **Mount Karlan e Hoff Angrsaal:** Kjerag não possui uma capital nacional convencional confirmada nos textos utilizados. Seu principal centro religioso e tradicionalmente político encontra-se aos pés de **Mount Karlan**, a montanha mais sagrada da nação e considerada o repouso de Kjeragandr. Ali fica **Hoff Angrsaal**, templo principal da Vine-Bead Court, residência da Karlan Saintess e local onde historicamente ocorriam as reuniões entre os três grandes clãs."
+        },
+        {
+          "titulo": "Kjerag / Regiões e Cidades de Importância",
+          "texto": "* **Turicum:** Principal centro urbano do território Silverash e única grande área industrial tradicional de Kjerag. O crescimento de Turicum acompanhou a ascensão da Karlan Trade, transformando o antigo assentamento montanhês em porta de entrada para comércio, indústria e contato com o exterior.\n* **Território Silverash:** Abrange principalmente os vales e montanhas do sul de Kjerag. É a região mais industrializada do país, concentrando mineração, fábricas e boa parte das atividades da Karlan Trade.\n* **Território Browntail:** Ocupa grande parte das regiões ocidentais, ricas em florestas. Sua economia tradicional está ligada à madeira, peles e tecidos, e o clã Browntail historicamente adotou uma posição intermediária entre os reformistas Silverash e os conservadores Paleroche.\n* **Território Paleroche:** Formado principalmente pelas férteis terras e grandes lagos do norte. Concentra boa parte da produção de alimentos e das forças militares tradicionais de Kjerag, sendo historicamente o território mais conservador e religioso dos três.\n* **Lake Silberneherze:** Um dos maiores lagos de Kjerag e importante marco natural da região. Suas margens tornaram-se progressivamente mais acessíveis com a expansão ferroviária e do turismo, enquanto tradições locais associam sua origem às próprias lendas de Kjeragandr."
+        },
+        {
+          "titulo": "Kjerag / Infraestrutura citada",
+          "texto": "**Kjerag Staatbahn:** Sistema ferroviário que atravessa as montanhas e conecta os territórios dos três grandes clãs. Mantido como infraestrutura, não como divisão territorial.\n\nAs demais montanhas, assentamentos e territórios de Kjerag citados nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver algum deles para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/11-Laterano/Texto-para-Discord.txt",
+      "titulo": "Laterano",
+      "tipo": "regiao",
+      "sha256": "a5e318b817067936aa5e016031d1fa1468dc9edaa63645aa6f6b2d1cab09bd02",
+      "apelidos": [
+        "landen monastery",
+        "laterano",
+        "notarial hall",
+        "pagus ambrosius",
+        "pagus ecclesia",
+        "pagus faber",
+        "pagus griffin",
+        "pagus michaelion",
+        "pagus saint marcel",
+        "pagus stevonus",
+        "pagus theodosius",
+        "sanctilaminium ambrosii",
+        "sankta",
+        "shrine of nurtury",
+        "sunset chapel",
+        "the basilica",
+        "tower of revelations"
+      ],
+      "secoes": [
+        {
+          "titulo": "Laterano",
+          "texto": "**Localização:** Região de segundo plano, sem correspondência geográfica direta no mundo convencional."
+        },
+        {
+          "titulo": "Laterano / Apresentação",
+          "texto": "Laterano é uma pequena **cidade-estado teocrática** conhecida como a Cidade Sagrada, governada pela Igreja Laterana e pelo Papa. Apesar da forte influência religiosa, sua sociedade é surpreendentemente livre e festiva, marcada por uma combinação incomum de fé, doces, música, armas de fogo e uma cultura profundamente ligada aos Sankta. A nação também funciona como um importante centro diplomático e religioso, mantendo longa tradição de neutralidade entre outros países.\n\n**Acesso:** Laterano não possui uma entrada física permanente no mundo convencional. A passagem precisa ser aberta por uma **Santa reconhecida ou integrante do alto clero**, dentro de uma igreja, capela, mosteiro ou outro espaço religioso apropriado. Quando o ritual é realizado, uma das portas do local passa temporariamente a conduzir diretamente a Laterano; próximo ao ponto de chegada existe um dos **portais permanentes** que conecta a cidade às demais regiões de segundo plano."
+        },
+        {
+          "titulo": "Laterano / Territórios e Localidades Conhecidas",
+          "texto": "* **Distritos:** **Pagus Ambrosius**, **Pagus Faber**, **Pagus Theodosius**, **Pagus Ecclesia**, **Pagus Michaelion**, **Pagus Griffin**, **Pagus Saint Marcel** e **Pagus Stevonus**.\n* **Centro Religioso e Político:** **The Basilica**.\n* **Igrejas e Mosteiros:** **Sanctilaminium Ambrosii**, **Shrine of Nurtury**, **Landen Monastery** e **Sunset Chapel**.\n* **Marco Histórico:** **Tower of Revelations**."
+        },
+        {
+          "titulo": "Laterano / História e identidade",
+          "texto": "Laterano nasceu como um refúgio para os **Sankta**, reunidos pelos primeiros Santos ao redor da antiga Tower of Revelations. Dessa comunidade surgiu uma cidade fundada sobre a fé na **Lei**, que atravessou milênios praticamente intacta enquanto impérios ao redor surgiam e desapareciam. Com o tempo, Laterano tornou-se uma cidade-estado teocrática governada pelo Papa e pela Igreja Laterana, conhecida por sua neutralidade diplomática, prosperidade, produção de armas de fogo e uma cultura que mistura devoção religiosa com uma vida cotidiana surpreendentemente livre. Essa tolerância, contudo, possui limites claros: a entrada de Infectados é rigidamente restringida e os Sarkaz historicamente foram tratados como inimigos da fé."
+        },
+        {
+          "titulo": "Laterano / Capital",
+          "texto": "* **Lateran City:** Em Laterano, **a própria cidade constitui praticamente toda a nação**, não existindo uma capital separada de seu território. Governada pelo Papa e pela Curia, a Cidade Sagrada concentra instituições religiosas, administrativas e diplomáticas entre grandes praças, igrejas, bairros residenciais e uma arquitetura monumental de pedra clara. No centro de sua vida política está a **Basilica**, sede da Igreja Laterana e residência institucional do Papa."
+        },
+        {
+          "titulo": "Laterano / Distritos e Locais de Importância",
+          "texto": "* **The Basilica:** Principal igreja de Laterano e coração político e religioso da cidade. Além de funcionar como sede da Igreja e do Papa, abriga áreas restritas ligadas às fundações mais antigas da fé Sankta e recebe cerimônias, delegações estrangeiras e decisões que afetam toda a cidade-estado.\n* **Tower of Revelations:** Antigo campanário ao redor do qual, segundo as escrituras lateranas, os primeiros Sankta se reuniram e fundaram a cidade. Seu sino permaneceu em silêncio durante séculos, transformando a torre em um dos símbolos históricos mais antigos e reverenciados de Laterano.\n* **Pagus Michaelion:** Um dos distritos conhecidos de Laterano, marcado pela presença de instituições, oficinas e atividades ligadas à fabricação de armas. Também é associado ao **Notarial Hall**, uma das instituições mais importantes da administração e aplicação das leis da cidade.\n* **Sanctilaminium Ambrosii:** Mosteiro móvel construído originalmente como um projeto conjunto entre Laterano e Iberia, servindo como símbolo da aproximação religiosa e diplomática entre ambas. Após permanecer desaparecido por mais de seis décadas, voltou a estabelecer contato com Laterano e passou novamente a fazer parte de sua esfera religiosa.\n\nAs demais igrejas, Pagi, mosteiros e localidades de Laterano citadas nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver alguma delas para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/12-Iberia/Texto-para-Discord.txt",
+      "titulo": "Iberia",
+      "tipo": "regiao",
+      "sha256": "72dfdc43be54f41c5df0da21fa67d3e7b5fdac075e6daafb4e04dbf90ab69e1e",
+      "apelidos": [
+        "aaron",
+        "aegir",
+        "cerro del faro",
+        "ciudad de las olas doradas",
+        "eyes of iberia",
+        "gran faro",
+        "iberia",
+        "luarca",
+        "mar palido",
+        "orvieto",
+        "perdoni",
+        "perdonidora",
+        "primavera",
+        "profound silence",
+        "puerto orgullo",
+        "real-iberia",
+        "rocamarea",
+        "rocky coast",
+        "sal viento"
+      ],
+      "secoes": [
+        {
+          "titulo": "Iberia",
+          "texto": "**Localização:** Região de segundo plano, sem correspondência geográfica direta no mundo convencional."
+        },
+        {
+          "titulo": "Iberia / Apresentação",
+          "texto": "Iberia é uma antiga potência marítima que vive entre as ruínas de sua própria era de ouro. Séculos de navegação, exploração e avanços tecnológicos transformaram a nação em um dos maiores poderes dos mares, até que o **Profound Silence** devastou sua costa, afundou cidades inteiras e destruiu grande parte de sua frota. Hoje, boa parte do litoral permanece abandonada, enquanto a Inquisição mantém a ordem e tenta impedir que os perigos vindos do oceano avancem novamente.\n\n**Acesso:** Sua entrada surge em determinadas rotas marítimas próximas à Península Ibérica: durante a travessia, o som do mar desaparece, uma névoa densa cobre a embarcação e a luz de um **farol inexistente nos mapas** aparece ao longe. Seguir essa luz conduz à costa de Iberia. Próximo ao ponto de chegada existe um dos **portais permanentes** que conecta Iberia às demais regiões de segundo plano."
+        },
+        {
+          "titulo": "Iberia / Territórios e Localidades Conhecidas",
+          "texto": "* **Capital Atual:** **Perdoni**, também conhecida pelo nome completo **Perdonidora**.\n* **Antiga Capital:** **Real-Iberia**, atualmente submersa após o Profound Silence.\n* **Cidades e Centros Costeiros:** **Gran Faro**, **Sal Viento**, **Primavera** e **Rocamarea**.\n* **Cidades e Assentamentos do Interior:** **Rocky Coast**, **Aarón** e **Luarca**.\n* **Cidade-Estado Insular:** **Orvieto**, estabelecida sobre uma ilha desértica da costa iberiana.\n* **Localidades Históricas Costeiras:** **Cerro del Faro**, **Ciudad de las Olas Doradas** e **Puerto Orgullo**.\n* **Região Geográfica:** **Mar Pálido**."
+        },
+        {
+          "titulo": "Iberia / História e identidade",
+          "texto": "Iberia nasceu quando missionários Liberi ligados à fé de Laterano estabeleceram-se nas costas meridionais e começaram a construir sua própria sociedade. Com o passar dos séculos, a nação voltou-se para o oceano e tornou-se uma das maiores potências marítimas conhecidas, impulsionada por uma poderosa frota, avanços científicos e conhecimentos adquiridos através do contato com **Ægir**. Esse período de prosperidade terminou abruptamente com o **Profound Silence**, quando um enorme desastre destruiu grande parte da costa, afundou a antiga capital e praticamente eliminou sua marinha. Desde então, Iberia vive sob forte influência da Inquisição, marcada por isolamento, conservadorismo e uma luta constante contra ameaças vindas do mar."
+        },
+        {
+          "titulo": "Iberia / Capital",
+          "texto": "* **Perdoni:** Atual capital de Iberia, localizada no interior e distante das regiões costeiras mais devastadas. Antes uma cidade relativamente pequena, recebeu grande quantidade de refugiados após o Profound Silence e passou a ser conhecida como **Perdonidora**, expressão associada à sensação de abandono e perda que tomou conta da população. Com a consolidação da Inquisição, tornou-se o novo centro político e administrativo do país."
+        },
+        {
+          "titulo": "Iberia / Regiões e Cidades de Importância",
+          "texto": "* **Real-Iberia:** Antiga capital e principal porto do reino durante sua era de ouro. Conhecida como a **Cidade de Ouro**, concentrava o governo real, academias e parte das maiores conquistas tecnológicas de Iberia. Foi completamente atingida pelo Profound Silence, quando o tsunami afundou a cidade e matou o rei e grande parte da corte, deixando suas ruínas submersas no oceano.\n* **Gran Faro:** Cidade costeira do sudoeste de Iberia construída ao redor da sobrevivência de um dos **Eyes of Iberia**, a antiga rede de faróis que orientava a navegação do reino. O farol próximo à cidade é o último conhecido a permanecer funcional após o Profound Silence, fazendo de Gran Faro um dos poucos lugares onde ainda existe uma ligação direta com o passado marítimo da nação.\n* **Sal Viento:** Antiga cidade nômade oceânica localizada no nordeste de Iberia. Depois do Profound Silence, acabou presa à costa e entrou em um longo processo de decadência, isolamento e abandono. Sua arquitetura incomum e proximidade com o oceano tornaram Sal Viento um dos maiores exemplos de como antigas cidades prósperas foram transformadas pela catástrofe.\n* **Mar Pálido:** Região costeira profundamente afetada pelo Profound Silence, composta por áreas inundadas, ilhas, montanhas e antigos assentamentos que sobreviveram parcialmente à transformação da costa. Lugares como **Aarón** e **Luarca** estão associados à região e preservam comunidades que aprenderam a sobreviver em meio às consequências do desastre."
+        },
+        {
+          "titulo": "Iberia / Infraestrutura citada",
+          "texto": "**Eyes of Iberia:** Antigos faróis construídos ao longo da costa para navegação e comunicação marítima; praticamente todos foram destruídos ou desativados após o Profound Silence. São infraestrutura, não território administrativo.\n\nAs demais cidades, vilas e regiões de Iberia citadas nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver alguma delas para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/13-Aegir/Texto-para-Discord.txt",
+      "titulo": "Aegir",
+      "tipo": "regiao",
+      "sha256": "7174a4467ff796f096b981c40d89c7cc03c91443e6f7d8c1601194a3ea0e9899",
+      "apelidos": [
+        "aegir",
+        "gran faro",
+        "milliarium",
+        "senado de aegir",
+        "sophontheatrum"
+      ],
+      "secoes": [
+        {
+          "titulo": "Aegir",
+          "texto": "**Localização:** Profundezas oceânicas ao sul de Iberia, no mesmo segundo plano."
+        },
+        {
+          "titulo": "Aegir / Apresentação",
+          "texto": "Ægir é uma **confederação tecnocrática de cidades submarinas** cuja ciência e engenharia ultrapassam amplamente aquilo que existe na superfície. Suas cidades são administradas individualmente por cônsules e especialistas técnicos, enquanto máquinas assumem grande parte das funções cotidianas. Por séculos, a nação permaneceu praticamente desconhecida pelo mundo exterior, travando nas profundezas uma guerra constante contra os Seaborn.\n\n**Acesso:** Suas cidades ficam no fundo do oceano associado a Iberia. A forma apresentada para alcançá-las é partir da costa iberiana, especialmente das proximidades de **Gran Faro**, utilizando embarcações preparadas para a descida às cidades submarinas. Ægir também possui conexão com a rede de **portais permanentes das regiões de segundo plano**, cuja saída se encontra em uma área pressurizada apropriada para visitantes da superfície."
+        },
+        {
+          "titulo": "Aegir / Territórios e Localidades Conhecidas",
+          "texto": "* **Cidade-Estado:** **Milliarium**, metrópole submarina situada no fundo oceânico próximo à costa de Iberia."
+        },
+        {
+          "titulo": "Aegir / História e identidade",
+          "texto": "A história de Ægir começou muito antes de grande parte das civilizações da superfície. Segundo suas próprias tradições, seus ancestrais viviam originalmente em terra firme antes de migrarem para o oceano, onde encontraram antigas ruínas e tecnologias que impulsionaram um desenvolvimento científico sem paralelo. Durante séculos, suas cidades-estado também enfrentaram conflitos internos, até que uma nova filosofia baseada em conhecimento e cooperação encerrou essas guerras e deu origem à atual confederação tecnocrática. Hoje, Ægir permanece como uma civilização submarina extremamente avançada, organizada ao redor da ciência, das artes e de cidades autônomas, mas profundamente marcada por sua guerra contínua contra os Seaborn."
+        },
+        {
+          "titulo": "Aegir / Governo e Centro de Importância",
+          "texto": "* **Senado de Ægir:** Ægir não possui uma capital nacional conhecida ou um governante único. Suas cidades-estado mantêm ampla autonomia enquanto decisões que afetam toda a nação passam pelo **Senado de Ægir**, dividido entre a Academy of Science e a Academy of Technology e conduzido por diferentes Consuls. Ciência, planejamento e especialização técnica ocupam o espaço que monarquias ou aristocracias teriam em outras nações."
+        },
+        {
+          "titulo": "Aegir / Regiões e Cidades de Importância",
+          "texto": "* **Milliarium:** Uma cidade-estado submarina localizada nas profundezas próximas à costa de Iberia e o principal ponto conhecido de contato entre Ægir e as civilizações da superfície. Com cerca de dez mil habitantes, a cidade é protegida por estruturas capazes de suportar a pressão oceânica e reúne instituições científicas, militares e culturais extremamente avançadas. Entre seus marcos está o **Sophontheatrum**, uma arena pública dedicada a debates, apresentação de ideias e resolução coletiva de problemas.\n* **Territórios Centrais de Ægir:** A maior parte das cidades da confederação permanece nas profundezas oceânicas e ainda não possui nomes publicamente conhecidos. Esses territórios formam o núcleo da civilização ægiriana, onde estão concentradas suas grandes instituições científicas, Legiões e estruturas industriais. Esta é uma descrição coletiva, não o nome próprio de uma subdivisão.\n\nAs demais cidades e territórios de Ægir conhecidos ou descobertos futuramente podem receber um aprofundamento próprio conforme necessário. Para desenvolver algum deles para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/14-Sami/Texto-para-Discord.txt",
+      "titulo": "Sami",
+      "tipo": "regiao",
+      "sha256": "19f8d27f79aa8b5ab550b316b87f7f87431ad45ac9c4a2cd88fe4f78820133f8",
+      "apelidos": [
+        "polo norte",
+        "sami"
+      ],
+      "secoes": [
+        {
+          "titulo": "Sami",
+          "texto": "**Localização:** Polo Norte, em uma região sobreposta ao mundo convencional."
+        },
+        {
+          "titulo": "Sami / Apresentação e história conhecida",
+          "texto": "Pouco sobre Sami pode ser afirmado com segurança. Localizada no extremo norte do mundo, a região é cercada por histórias sobre povos tribais, florestas antigas e uma tradição espiritual profundamente ligada à natureza, mas nenhuma descrição moderna de seu interior pode ser considerada confiável. Expedições que se aproximam de suas fronteiras acabam envolvidas por uma **névoa anormal** e desaparecem após atravessá-la; até hoje, ninguém retornou trazendo registros verificáveis do que existe além dela. Por isso, Sami ocupa um lugar estranho no conhecimento moderno: sabe-se que existe, mas quase tudo que se conta sobre suas terras permanece entre relatos antigos, lendas e conjecturas.\n\n**Acesso:** Sami existe geograficamente no **Polo Norte**, porém aproximar-se de seu território não significa realmente alcançá-lo. Conforme uma expedição avança, uma **neblina anormal** cobre completamente a região e, ao atravessá-la, o grupo deixa o espaço convencional e entra no verdadeiro território de Sami. Nenhuma expedição retornou com registros confiáveis do interior."
+        },
+        {
+          "titulo": "Sami / Capital",
+          "texto": "* **Desconhecida:** Nenhuma capital ou sede de governo de Sami é conhecida pelo mundo exterior. Também não existe confirmação pública de que a região possua uma estrutura política comparável aos Estados modernos, já que nenhuma expedição conseguiu documentar seu interior e retornar."
+        },
+        {
+          "titulo": "Sami / Regiões e Localidades de Importância",
+          "texto": "* **Interior de Sami:** Não existem cidades, províncias ou regiões internas consideradas **publicamente documentadas**. Mapas modernos terminam nas proximidades da área onde a névoa começa, e qualquer nome atribuído ao território além desse limite provém de fontes antigas, tradições orais ou registros cuja autenticidade não pode ser verificada.\n\nAs localidades e regiões existentes dentro de Sami podem receber um aprofundamento próprio caso sejam descobertas durante uma história ou mesa. Para desenvolver alguma delas ou consultar informações reservadas sobre o território, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/15-Rim-Billiton/Texto-para-Discord.txt",
+      "titulo": "Rim Billiton",
+      "tipo": "regiao",
+      "sha256": "f9d2e5d38d9d26886b8f2bbff99ae7fa8958cdac2a707ab9e8426eb4bb945482",
+      "apelidos": [
+        "big pillar autonomous prefecture",
+        "cage incident",
+        "cautus",
+        "eureka autonomous prefecture",
+        "iron carrot",
+        "iron fist",
+        "rim billiton",
+        "rim billiton mining alliance",
+        "rustdreg",
+        "targangils prime vein",
+        "ultramassive"
+      ],
+      "secoes": [
+        {
+          "titulo": "Rim Billiton",
+          "texto": "**Localização:** Oceania, em território próprio associado ao interior australiano, coexistindo com a Austrália e as demais nações da região."
+        },
+        {
+          "titulo": "Rim Billiton / Apresentação",
+          "texto": "Rim Billiton é uma confederação formada principalmente por **comunidades mineradoras autônomas**, sem um governo central tradicional. Sua economia gira em torno da extração de Origíneo, indústria pesada e grandes redes de mineração, enquanto famílias e guildas locais administram boa parte das cidades e minas. Apesar da forte presença corporativa, sua população preserva uma cultura comunitária bastante marcada e historicamente resistente à interferência estrangeira.\n\n**Acesso:** Rim Billiton faz parte do mundo convencional e pode ser alcançada normalmente por rotas terrestres, aéreas ou marítimas através da Oceania, sem necessidade de portais ou outros métodos sobrenaturais."
+        },
+        {
+          "titulo": "Rim Billiton / Territórios e Localidades Conhecidas",
+          "texto": "* **Capital:** **Ultramassive**, principal centro administrativo reconhecido de Rim Billiton.\n* **Prefeituras Autônomas:** **Eureka Autonomous Prefecture**, enclave administrado por interesses victorianos; e **Big Pillar Autonomous Prefecture**.\n* **Cidades:** **Iron Carrot** e **Iron Fist**.\n* **Vilas e Assentamentos:** **Rustdreg**, dentro da Big Pillar Autonomous Prefecture.\n* **Assentamento sem Nome Registrado:** Cidade industrial nômade identificada apenas como cidade natal de Amiya; nenhum nome novo foi criado.\n* **Formação Mineral:** **Targangils Prime Vein**."
+        },
+        {
+          "titulo": "Rim Billiton / História e identidade",
+          "texto": "Muito antes de existir como uma nação, Rim Billiton era formada por comunidades **Cautus** organizadas ao redor de grandes famílias, minas e pequenos assentamentos autônomos. A descoberta de suas enormes reservas de Origíneo atraiu expedições e interesses estrangeiros, mas o abandono gradual dessas colônias fez com que seus habitantes se misturassem às comunidades locais e desenvolvessem uma identidade própria. Com o passar do tempo, diversos distritos mineradores começaram a formar prefeituras autônomas e, algumas décadas depois, a **Rim Billiton Mining Alliance** declarou-se uma entidade política independente. Mesmo atualmente, Rim Billiton se parece menos com um Estado tradicional e mais com uma enorme confederação de famílias, guildas, minas e cidades que cooperam quando necessário, mas administram a si mesmas."
+        },
+        {
+          "titulo": "Rim Billiton / Capital",
+          "texto": "* **Ultramassive:** Reconhecida como a capital de Rim Billiton, embora a própria estrutura política da nação torne essa posição bastante diferente da encontrada em outros países. Rim Billiton não possui um governo central ou chefe de Estado responsável por comandar todas as suas regiões; as comunidades e prefeituras mantêm ampla autonomia e governam a si mesmas. Por isso, Ultramassive funciona como capital de uma confederação cuja autoridade continua essencialmente descentralizada."
+        },
+        {
+          "titulo": "Rim Billiton / Regiões e Cidades de Importância",
+          "texto": "* **Iron Carrot:** Uma das cidades mineradoras mais importantes de Rim Billiton e tradicionalmente a maior produtora anual de minério entre seus centros urbanos. Grande parte da vida local gira ao redor das empresas, minas e trabalhadores que sustentam essa produção. A exposição constante ao Origíneo também torna acidentes e Oripatia problemas particularmente presentes na região.\n* **Eureka Autonomous Prefecture:** Prefeitura autônoma cuja história está diretamente ligada ao **Cage Incident**, conflito provocado quando interesses victorianos tentaram assumir o controle de cidades e minas pertencentes aos habitantes de Rim Billiton. A revolta dos trabalhadores expulsou os ocupantes, mas as negociações posteriores deixaram Eureka sob administração de empresas victorianas. Desde então, a região tornou-se um dos maiores símbolos das tensões entre a independência de Rim Billiton e a influência econômica estrangeira.\n* **Targangils Prime Vein:** A gigantesca formação subterrânea responsável por boa parte da riqueza mineral de Rim Billiton. Suas concentrações extraordinárias de Origíneo sustentam a economia nacional, mas também tornam o território sujeito a Catástrofes, contaminação e condições extremamente perigosas de mineração. A relação entre os Billitonianos e essa jazida resume boa parte da própria identidade do país: prosperidade e risco nascem literalmente da mesma terra.\n\nAs demais cidades, prefeituras, minas e comunidades de Rim Billiton citadas nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver alguma delas para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/16-Yan/Texto-para-Discord.txt",
+      "titulo": "Yan",
+      "tipo": "regiao",
+      "sha256": "a993ba7bd91cf496650352780bd4ae856168179bd7b8f28a133a15b2d1560854",
+      "apelidos": [
+        "baizao",
+        "chamber of heaven's designs",
+        "changji",
+        "cidade dos incontaveis fogoes",
+        "dahuang",
+        "danyan",
+        "dusk city",
+        "great hunt",
+        "hundred clans",
+        "jiangqi",
+        "k'u-t'an river",
+        "kou-wu",
+        "langyi",
+        "lungmen",
+        "mangshan",
+        "michu",
+        "mount hui-ch'i",
+        "mount t'ien",
+        "moushan",
+        "nanwu",
+        "ni-weng",
+        "p'o-shan",
+        "shangshu",
+        "three mounts and seventeen peaks",
+        "true lung",
+        "yan",
+        "yumen"
+      ],
+      "secoes": [
+        {
+          "titulo": "Yan",
+          "texto": "**Localização:** Leste da Ásia, em território próprio na fronteira com a China; **Lungmen** encontra-se diretamente na divisa entre as duas nações."
+        },
+        {
+          "titulo": "Yan / Apresentação",
+          "texto": "Yan é um dos impérios mais antigos e extensos conhecidos, governado pelo **True Lung** através de uma grande administração imperial dividida entre ministérios e autoridades regionais. A nação reúne inúmeros povos sob uma mesma identidade, combinando cidades extremamente modernas com regiões que preservam tradições, arquitetura e costumes milenares. Sua longa estabilidade, economia próspera e poder militar fazem de Yan uma das maiores potências do Leste Asiático.\n\n**Acesso:** Yan faz parte do mundo convencional e pode ser alcançada normalmente por vias terrestres, ferroviárias ou aéreas. A principal fronteira internacional com a China passa por **Lungmen**, uma região autônoma e importante zona econômica, tornando-a uma das entradas mais movimentadas para o território yanês."
+        },
+        {
+          "titulo": "Yan / Territórios e Localidades Conhecidas",
+          "texto": "* **Capital Imperial:** **Baizao**.\n* **Região Autônoma:** **Lungmen**.\n* **Grandes Distritos e Cidades:** **Dahuang**, **Mangshan**, **Shangshu** e **Yumen**.\n* **Vilas e Distritos Menores:** **Moushan** e **P'o-shan**.\n* **Outras Cidades:** **Michu**, **Dusk City**, **Jiangqi**, **Kou-wu**, **Danyan**, **Langyi**, **Changji** e **Nanwu**.\n* **Vilas e Assentamentos:** **Ni-Weng**, conhecida pela extração e comércio de jade.\n* **Grandes Regiões Naturais:** **Mount Hui-ch'i**, **Mount T'ien** e **K'u-t'an River**.\n* **Fortificações Setentrionais:** **Chamber of Heaven's Designs**."
+        },
+        {
+          "titulo": "Yan / História e identidade",
+          "texto": "A história de Yan remonta à união dos antigos **Hundred Clans**, reunidos sob a liderança de Yan, o primeiro True Lung, que distribuiu terras, estabeleceu uma estrutura política comum e iniciou a longa tradição imperial da nação. Após sua morte, disputas entre os clãs desencadearam uma grande guerra civil, encerrada somente quando uma nova autoridade imperial reuniu novamente o território sob um governo centralizado. Séculos depois, a vitória na **Great Hunt** contra os Feranmuts consolidou ainda mais a ideia de que o destino de Yan deveria permanecer nas mãos dos mortais. Desde então, o império tornou-se uma das civilizações mais antigas e estáveis conhecidas, combinando burocracia rígida, enorme diversidade cultural, grandes cidades modernas e tradições preservadas por milênios."
+        },
+        {
+          "titulo": "Yan / Capital",
+          "texto": "* **Baizao:** Conhecida como a **Cidade dos Incontáveis Fogões**, Baizao é a maior metrópole de Yan e o coração administrativo do império. Sua planta octogonal combina grandes muralhas, arranha-céus, academias e construções tradicionais, enquanto o Palácio Imperial ocupa seu centro. A cidade foi originalmente construída após a Great Hunt sobre uma região extremamente rica em Origíneo e, séculos mais tarde, transferida para uma gigantesca plataforma móvel, tornando-se um dos maiores exemplos da engenharia dos Tianshi."
+        },
+        {
+          "titulo": "Yan / Regiões e Cidades de Importância",
+          "texto": "* **Lungmen:** Cidade móvel e **região autônoma de Yan**, conhecida por seu comércio, abertura a estrangeiros e enorme independência econômica. Possui governo próprio, forças de segurança próprias e até uma moeda amplamente utilizada fora de suas fronteiras. Na **Era da Revolução**, Lungmen também se encontra diretamente na divisa com a China, funcionando como uma das principais portas comerciais e terrestres entre o território yanês e o restante do Leste Asiático.\n* **Shangshu:** Cidade móvel construída entre montanhas e vales, famosa por sua geografia aparentemente impossível. Para preservar sua terra natal diante das Catástrofes, seus habitantes e os Tumu Tianshi transferiram partes das próprias montanhas para enormes plataformas móveis. O resultado é uma cidade onde estradas, pontes, picos e construções coexistem verticalmente, formando a famosa paisagem das **Three Mounts and Seventeen Peaks**.\n* **Yumen:** Cidade-fortaleza localizada nas regiões desérticas do extremo norte de Yan. Construída originalmente durante a Great Hunt, tornou-se a principal guarnição responsável por proteger essa fronteira e preservou uma cultura profundamente ligada às artes marciais. Suas muralhas, forjas, tropas e oficinas também fazem de Yumen um dos maiores centros militares e de produção de armamentos do império.\n\nAs demais cidades, distritos e regiões de Yan citados nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver algum deles para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/17-Higashi/Texto-para-Discord.txt",
+      "titulo": "Higashi",
+      "tipo": "regiao",
+      "sha256": "08f7e41ea039ec99057b52febe4a33c4db274a6e6ea519ea250777e991da2e56",
+      "apelidos": [
+        "ashihara",
+        "gokawa",
+        "higashi",
+        "himedo",
+        "isazaki",
+        "kusarikawa",
+        "mitsukue",
+        "northern court",
+        "onkaminokannogi-no-miyako",
+        "roka",
+        "roka village",
+        "shin-aki",
+        "soubo",
+        "southern court",
+        "taisha",
+        "tokoyami"
+      ],
+      "secoes": [
+        {
+          "titulo": "Higashi",
+          "texto": "**Localização:** Pacífico Noroeste, em um arquipélago próprio próximo ao Japão e a nordeste de Yan, coexistindo com as demais nações do Leste Asiático."
+        },
+        {
+          "titulo": "Higashi / Apresentação",
+          "texto": "Higashi é uma nação insular dividida entre duas grandes cortes que mantêm uma paz delicada após séculos de guerra civil. O **Norte** preserva uma estrutura militar tradicional comandada por um xogunato, enquanto o **Sul** se modernizou como uma monarquia constitucional voltada ao comércio, tecnologia e cultura urbana. Apesar dessas diferenças, ambas reconhecem uma origem histórica comum e compartilham tradições religiosas, linhagens nobres e uma forte identidade nacional.\n\n**Acesso:** Higashi faz parte do mundo convencional e pode ser alcançada normalmente por rotas marítimas ou aéreas através do Pacífico Noroeste. Seu arquipélago mantém relações comerciais frequentes com Yan e com outras nações da região."
+        },
+        {
+          "titulo": "Higashi / Territórios e Localidades Conhecidas",
+          "texto": "* **Grandes Divisões Políticas:** **Northern Court** e **Southern Court**.\n* **Capitais:** **Kusarikawa**, da Northern Court; e **Mitsukue**, da Southern Court.\n* **Antiga Capital:** **Onkaminokannogi-no-Miyako**.\n* **Cidades e Assentamentos:** **Roka**, **Shin-Aki**, **Himedo**, **Gokawa** e **Isazaki**.\n* **Local Religioso:** **Taisha**.\n* **Região Montanhosa:** **Soubo**, onde se encontra Roka.\n* **Divisão Natural Central:** **Tokoyami**, fenda que atravessa o coração de Higashi e forma parte da separação física entre as cortes."
+        },
+        {
+          "titulo": "Higashi / História e identidade",
+          "texto": "Higashi, antigamente conhecida como **Ashihara**, possui uma história que mistura registros imperiais com antigas tradições religiosas sobre a origem de sua primeira dinastia. Durante séculos, o poder permaneceu ligado ao Sumeragimi e às grandes famílias nobres, até disputas sucessórias e militares fragmentarem a nação entre duas cortes rivais. Uma longa guerra civil consolidou essa divisão: ao norte surgiu um governo militar baseado no antigo xogunato, enquanto o sul gradualmente adotou uma monarquia constitucional mais moderna. Atualmente, Higashi permanece oficialmente uma única nação, mas funciona na prática como uma **diarquia**, sustentada por uma paz delicada entre duas sociedades que seguiram caminhos políticos bastante diferentes."
+        },
+        {
+          "titulo": "Higashi / Capitais",
+          "texto": "* **Kusarikawa:** Capital da **Northern Court** e sede de seu tradicional bakufu. Governada pelas famílias samurais ligadas ao clã Kougon, a cidade preserva uma estrutura política e cultural muito mais próxima do antigo Higashi, com forte presença militar e grande influência das tradições guerreiras. Mesmo com a modernização do restante da nação, Kusarikawa continua sendo o principal símbolo da autoridade do Norte.\n* **Mitsukue:** Capital da **Southern Court** e uma das cidades móveis mais importantes de Higashi. Administrada pela facção kugyō e pelos clãs associados à linhagem Mitsumoto, desenvolveu uma sociedade mais urbana, comercial e burocrática que sua contraparte do Norte. A cidade também possui forte vida religiosa e cultural, enquanto bairros modernos, meios de comunicação e uma economia de consumo demonstram o caminho de modernização adotado pelo Sul."
+        },
+        {
+          "titulo": "Higashi / Regiões e Cidades de Importância",
+          "texto": "* **Onkaminokannogi-no-Miyako:** Antiga capital da velha Ashihara e local de enorme importância religiosa para ambas as cortes. A cidade foi devastada durante a guerra que dividiu Higashi e deixou de funcionar como centro político, mas suas ruínas permaneceram como um dos poucos símbolos capazes de representar uma origem compartilhada entre Norte e Sul.\n* **Gokawa:** Pequena cidade móvel próxima à fronteira meridional e administrada pelo clã Kaneshiro. Durante muito tempo sua economia esteve ligada às indústrias química e de plásticos, mas o descarte inadequado de resíduos contaminou o abastecimento de água e provocou uma grave crise sanitária. A resposta insuficiente de suas autoridades tornou Gokawa um dos exemplos mais conhecidos dos custos sociais da rápida industrialização do sul de Higashi.\n* **Soubo:** Grande cadeia montanhosa onde se encontra **Roka Village**, região conhecida por suas paisagens naturais e por comunidades mais afastadas dos grandes centros urbanos. As montanhas também representam bem o interior de Higashi, onde antigos santuários, vilas e tradições continuam existindo longe das duas capitais.\n\nAs demais cidades, regiões e territórios de Higashi citados nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver algum deles para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/18-Kazdel/Texto-para-Discord.txt",
+      "titulo": "Kazdel",
+      "tipo": "regiao",
+      "sha256": "9d7c124e0ca5154edaf6132c311a35b76a0a43e152e3cb5879767789c67780f9",
+      "apelidos": [
+        "bleached wasteland",
+        "kazdel",
+        "sarkaz",
+        "sorrow's ground"
+      ],
+      "secoes": [
+        {
+          "titulo": "Kazdel",
+          "texto": "**Localização:** Região de segundo plano, sem correspondência geográfica direta no mundo convencional."
+        },
+        {
+          "titulo": "Kazdel / Apresentação",
+          "texto": "Kazdel é a terra ancestral dos **Sarkaz**, um povo espalhado por diversas partes do mundo após milênios de guerras, destruições e migrações. Mais do que um simples país, Kazdel representa para eles a ideia de **lar**, tendo sido destruída e reconstruída inúmeras vezes ao longo da história. Sua forma moderna é uma cidade móvel densamente industrializada, cercada por terras pouco povoadas e marcada por uma sociedade formada por diferentes povos e linhagens Sarkaz.\n\n**Acesso:** Sua entrada não está vinculada a um único ponto geográfico. Em antigas **ruínas de guerra e estruturas abandonadas**, ocasionalmente podem ser encontrados arcos de pedra escurecida cobertos por inscrições Sarkaz; atravessá-los quando ativos conduz ao **Sorrow's Ground**. Próximo ao ponto de chegada existe um dos **portais permanentes** que conecta Kazdel às demais regiões de segundo plano."
+        },
+        {
+          "titulo": "Kazdel / Territórios e Localidades Conhecidas",
+          "texto": "* **Cidade-Estado:** **Kazdel**.\n* **Território Atual:** **Sorrow's Ground**.\n* **Norte do Sorrow's Ground:** Planícies, rios, florestas de bétulas e áreas com maior disponibilidade de água.\n* **Sul do Sorrow's Ground:** Área árida e de relevo acidentado.\n* **Território Histórico:** **Bleached Wasteland**, separado do território moderno da cidade-estado."
+        },
+        {
+          "titulo": "Kazdel / História e identidade",
+          "texto": "Kazdel é mais antiga que praticamente todas as nações modernas e, para os **Sarkaz**, representa muito mais que um Estado: seu próprio nome significa aproximadamente “lar”. Seus ancestrais, os Teekaz, construíram ali uma das primeiras grandes civilizações conhecidas, mas sucessivas guerras contra outros povos destruíram a cidade e iniciaram uma diáspora que se repetiria incontáveis vezes ao longo da história. Cada reconstrução de Kazdel foi seguida por novas invasões, perseguições ou conflitos internos, fazendo com que gerações de Sarkaz crescessem sem conhecer uma pátria estável. Sua forma moderna nasceu desse ciclo: uma cidade nômade construída coletivamente pelas diferentes linhagens Sarkaz para finalmente oferecer ao povo um lar capaz de sobreviver em movimento."
+        },
+        {
+          "titulo": "Kazdel / Capital",
+          "texto": "* **Kazdel:** A própria cidade de Kazdel constitui o coração e praticamente todo o território urbano da moderna cidade-estado. Construída sobre uma gigantesca plataforma móvel, sua infraestrutura foi criada através da cooperação entre diferentes povos Sarkaz, com cada linhagem contribuindo conhecimentos, força de trabalho ou Artes próprias. Apesar de sua aparência industrial e austera, é um dos poucos lugares onde grandes populações Sarkaz vivem reunidas permanentemente, fazendo da cidade tanto um centro político quanto um símbolo de identidade para uma diáspora espalhada pelo mundo."
+        },
+        {
+          "titulo": "Kazdel / Regiões e Territórios de Importância",
+          "texto": "* **Sorrow's Ground:** Região onde a Kazdel moderna estabeleceu seu território. Suas terras apresentam um forte contraste geográfico: ao norte existem planícies, rios, florestas de bétulas e clima mais temperado, enquanto o sul é mais seco, irregular e hostil. Durante muito tempo o lugar foi considerado amaldiçoado e evitado por outros povos, característica que acabou tornando-o um possível refúgio para os Sarkaz.\n* **Bleached Wasteland:** Região desolada onde se encontrava uma das primeiras civilizações de Kazdel. Atualmente é formada por terras salinizadas, ruínas enterradas, fósseis gigantescos e enormes concentrações de Origíneo, permanecendo praticamente inabitável. Para os Sarkaz, entretanto, o local possui enorme importância histórica e espiritual por representar uma das terras mais antigas associadas ao nascimento de sua civilização."
+        },
+        {
+          "titulo": "Kazdel / Instituição de importância",
+          "texto": "* **Sarkaz Royal Court:** Embora não seja uma província, sua importância para Kazdel justifica destaque. A Corte reúne antigas linhagens Sarkaz como Banshees, Vampires, Nachzehrers, Liches e outras casas históricas que, ao longo de diferentes períodos, participaram da proteção, administração e reconstrução da nação. Suas disputas internas também fizeram com que a história política de Kazdel raramente fosse tão unificada quanto sua identidade cultural poderia sugerir."
+        },
+        {
+          "titulo": "Kazdel / Ocultação da cidade",
+          "texto": "Kazdel foi incluída por Mizuki entre as cidades móveis que utilizam meios de camuflagem ou ocultação para não serem vistas pelo restante do mundo. O mecanismo específico não foi definido na conversa.\n\nAs demais regiões, comunidades e territórios relacionados a Kazdel citados nos registros podem receber um aprofundamento próprio conforme necessário. Para desenvolver algum deles para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/19-Durin/Texto-para-Discord.txt",
+      "titulo": "Durin",
+      "tipo": "regiao",
+      "sha256": "254e9b92067c7dee33ec5f5ec66a50112609b06a4541639741665b06350eabd9",
+      "apelidos": [
+        "durin",
+        "great aquapit",
+        "ortzimuga",
+        "zeruertza"
+      ],
+      "secoes": [
+        {
+          "titulo": "Durin",
+          "texto": "**Localização:** Subsolo profundo do mundo convencional, sem correspondência com uma única região específica da superfície."
+        },
+        {
+          "titulo": "Durin / Apresentação",
+          "texto": "Durin é uma confederação de **cidades-estado subterrâneas** habitadas pelo povo de mesmo nome. Construídas normalmente a grandes profundidades, essas cidades ficam sob enormes domos artificiais capazes de reproduzir céu, iluminação e clima, formando ambientes que pouco lembram cavernas comuns. Apesar do isolamento, os Durin desenvolveram robótica, engenharia e infraestrutura extremamente avançadas, mantendo uma cultura comunitária, democrática e bastante receptiva a estrangeiros.\n\n**Acesso:** Durin existe fisicamente abaixo do mundo convencional e não pertence às regiões de segundo plano. Suas cidades podem ser alcançadas através de **rotas subterrâneas profundas, antigas minas e sistemas de cavernas**, embora a maior parte dessas entradas não seja conhecida pelo público. As cidades são conectadas entre si por uma extensa rede ferroviária subterrânea, usada para transporte de pessoas e recursos."
+        },
+        {
+          "titulo": "Durin / Territórios e Localidades Conhecidas",
+          "texto": "* **Cidades-Estado:** **Zeruertza** e **Ortzimuga**.\n* **Localidade de Zeruertza:** **Great Aquapit**, parque aquático construído no lago subterrâneo da cidade."
+        },
+        {
+          "titulo": "Durin / História e identidade",
+          "texto": "Durin não é uma nação convencional, mas uma extensa civilização formada por **diversas cidades-estado subterrâneas** construídas muito abaixo da superfície. Isolados durante gerações, os Durin desenvolveram uma sociedade pacífica e surpreendentemente avançada, com robótica, engenharia e sistemas capazes de reproduzir céu, temperatura e iluminação dentro de enormes domos artificiais. Cada cidade administra seus próprios assuntos e decisões importantes costumam ser resolvidas por votação popular, enquanto uma rede de ferrovias subterrâneas conecta diferentes comunidades. Mesmo com o crescente contato com a superfície, os Durin continuam profundamente ligados às cidades onde nasceram e preservam uma cultura marcada por exploração, criatividade e forte espírito comunitário."
+        },
+        {
+          "titulo": "Durin / Capital",
+          "texto": "* **Não possui uma capital nacional conhecida:** Durin não apresenta um governo central responsável por administrar todas as suas cidades. Cada cidade-estado possui autoridades próprias e ampla autonomia, com decisões importantes sendo frequentemente submetidas diretamente à população através de referendos. Por isso, nenhuma das localidades atualmente conhecidas pode ser tratada como capital de toda a civilização Durin."
+        },
+        {
+          "titulo": "Durin / Cidades e Localidades de Importância",
+          "texto": "* **Zeruertza:** Uma das cidades Durin mais bem documentadas, construída abaixo das florestas de Acahualla. Como outras cidades subterrâneas, encontra-se protegida por um gigantesco domo capaz de controlar temperatura e reproduzir condições semelhantes às da superfície. Zeruertza também possui avançados sistemas de detecção de Origíneo, autômatos utilizados em tarefas cotidianas e um enorme elevador construído para estabelecer ligação direta com a superfície.\n* **Great Aquapit:** Um enorme parque aquático construído dentro de Zeruertza após águas subterrâneas inundarem parte da cidade. Em vez de simplesmente tratar o acidente como uma tragédia, os moradores transformaram o novo lago em um complexo de lazer repleto de escorregadores, fontes, roda-gigante, festivais e estabelecimentos comerciais, fazendo do Aquapit um dos maiores símbolos da maneira peculiar como os Durin encaram adversidades.\n* **Ortzimuga:** Outra cidade subterrânea Durin confirmada pelos registros. Diferentemente de Zeruertza, poucas informações sobre sua organização interna e características urbanas são conhecidas publicamente, servindo principalmente como prova de que as cidades Durin se estendem por uma rede subterrânea muito maior do que aquilo que já foi explorado pela população da superfície.\n\nAs demais cidades, comunidades e regiões subterrâneas de Durin citadas ou ainda pouco documentadas podem receber um aprofundamento próprio conforme necessário. Para desenvolver alguma delas para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "01-Regioes-Extras/20-Gaul-e-Nightzmora/Texto-para-Discord.txt",
+      "titulo": "Gaul e Nightzmora",
+      "tipo": "regiao",
+      "sha256": "46cb36d5cd7f269b4e64f1933eb3f45d7600b1ab8d4de82205562db387afe490",
+      "apelidos": [
+        "calais",
+        "calais-blason",
+        "departements",
+        "gaul e nightzmora",
+        "khaganquest",
+        "kharanduu khagan, o grande khagan",
+        "kingdom of lower gaul",
+        "lingones",
+        "lower gaul",
+        "nightzmoran khaganate",
+        "upper gaul",
+        "victoria e leithanien"
+      ],
+      "secoes": [
+        {
+          "titulo": "Gaul e Nightzmora / Gaul — localização e acesso",
+          "texto": "**Localização:** Antiga região de segundo plano situada entre os territórios atualmente associados a Victoria e Leithanien.\n\n**Acesso:** Gaul **não existe mais como uma nação independente** e não possui uma entrada própria no mundo convencional. Seus antigos territórios no segundo plano foram incorporados principalmente às regiões atualmente controladas por **Victoria e Leithanien**, sendo necessário chegar a uma dessas nações para visitar o que restou das antigas terras gaulesas."
+        },
+        {
+          "titulo": "Gaul e Nightzmora / Gaul — apresentação e história",
+          "texto": "Gaul foi durante séculos uma das maiores potências do mundo conhecido, exercendo enorme influência sobre política, ciência, arquitetura, artes e até sobre o idioma utilizado entre as elites internacionais. Seu domínio cresceu através da incorporação de cidades e territórios vizinhos, culminando em um império rico, industrializado e militarmente poderoso. Essa expansão acabou se tornando sua ruína: uma grande guerra contra Victoria, Leithanien e Ursus terminou com a destruição de sua capital e a dissolução completa do império. Atualmente, Gaul existe apenas através de suas antigas terras, descendentes, ruínas e movimentos que ainda preservam ou desejam restaurar a identidade gaulesa."
+        },
+        {
+          "titulo": "Gaul e Nightzmora / Territórios e Localidades Conhecidas de Gaul",
+          "texto": "* **Grandes Regiões:** **Upper Gaul**, região setentrional de clima mais seco e relevo elevado; e **Lower Gaul**, região meridional mais fértil e historicamente mais rica.\n* **Antiga Capital:** **Lingones**.\n* **Cidades e Territórios:** **Calais** e **Calais-Blason**, este último posteriormente incorporado a Victoria.\n* **Divisões Administrativas:** **Départements**, sem nomes individuais apresentados na conversa."
+        },
+        {
+          "titulo": "Gaul e Nightzmora / Antiga Capital de Gaul",
+          "texto": "* **Lingones:** Conhecida em seu auge como a **“Capital do Mundo”**, Lingones foi o maior centro político e cultural de Gaul e uma das cidades mais influentes de sua época. Também esteve entre as pioneiras na transformação de grandes centros urbanos em cidades móveis, inaugurando um período de prosperidade conhecido posteriormente como a Belle Époque gaulesa. Grandes avenidas, arquitetura monumental, academias e casas de ópera simbolizavam sua riqueza, até que a cidade foi completamente bombardeada e destruída durante a guerra que encerrou o império."
+        },
+        {
+          "titulo": "Gaul e Nightzmora / Regiões e Cidades de Importância de Gaul",
+          "texto": "* **Lower Gaul:** Antiga região meridional do império, conhecida por suas terras férteis e grande valor econômico. Sobreviveu às primeiras grandes invasões sofridas por Gaul e, após a queda definitiva do império, passou para o domínio de Victoria, onde suas terras deram origem ao atual **Kingdom of Lower Gaul**.\n* **Upper Gaul:** Região setentrional das antigas terras gaulesas. Após a dissolução do império, seu território foi fragmentado entre as potências vencedoras, fazendo com que deixasse de existir como uma unidade política gaulesa independente.\n* **Calais:** Antiga cidade fronteiriça fortificada de Gaul. Mesmo depois de praticamente abandonada pelo governo imperial durante a guerra final, suas defesas e artilharia conseguiram resistir durante meses ao avanço das forças inimigas. Sua queda tornou-se um dos últimos episódios da resistência militar gaulesa antes do desaparecimento definitivo do império."
+        },
+        {
+          "titulo": "Gaul e Nightzmora / Nightzmoran Khaganate — localização e acesso",
+          "texto": "**Localização:** Antigas estepes orientais de Ursus, no mundo convencional.\n\n**Acesso:** O Nightzmoran Khaganate **não existe mais como território político**, mas sua antiga terra natal permanece acessível normalmente através das regiões orientais de Ursus. Não existe portal ou fronteira sobrenatural associada ao antigo império, e atualmente restam principalmente ruínas, tradições e comunidades descendentes dos povos que um dia o formaram."
+        },
+        {
+          "titulo": "Gaul e Nightzmora / Nightzmoran Khaganate — apresentação e história",
+          "texto": "O **Nightzmoran Khaganate** surgiu nas vastas estepes orientais quando Daladai, um jovem guerreiro Nightzmora, reuniu diferentes tribos nômades sob sua liderança e recebeu o título de **Kharanduu Khagan, o Grande Khagan**. O que começou como a versão extraordinariamente ambiciosa de um antigo rito de passagem tornou-se uma campanha de conquista que atravessou grande parte do mundo, derrubando reinos, enfraquecendo antigas linhagens e transformando para sempre o equilíbrio entre as nações. Sua expansão terminou somente quando o Khagan se aliou a Sargon para enfrentar uma ameaça desconhecida no extremo sul; o desaparecimento de seus maiores líderes durante essa campanha desfez rapidamente o império, espalhando os Nightzmora por diferentes terras."
+        },
+        {
+          "titulo": "Gaul e Nightzmora / Capital do Khaganate",
+          "texto": "* **Não possuía capital permanente:** O Khaganate era um **império essencialmente nômade**, formado por tribos e exércitos que se deslocavam constantemente pelas grandes pradarias. Seu poder acompanhava o próprio Khagan e suas hordas, não uma cidade ou palácio fixo, fazendo com que não exista uma capital histórica equivalente às encontradas em Gaul ou Victoria."
+        },
+        {
+          "titulo": "Gaul e Nightzmora / Territórios e Regiões de Importância do Khaganate",
+          "texto": "* **Ancestral Gaze:** Grande pradaria associada às origens dos Nightzmora e de sua cultura nômade. Foi nessas extensas terras que diferentes tribos desenvolveram tradições baseadas em cavalaria, independência e viagens de longa distância, incluindo o **Khaganquest**, ritual no qual jovens partiam sozinhos para provar coragem e capacidade antes de retornar às suas comunidades.\n* **Estepes Orientais de Ursus:** Região histórica onde as tribos Nightzmora viviam antes de sua unificação sob Kharanduu Khagan. Após a dissolução do Khaganate, muitos de seus sobreviventes permaneceram espalhados pelas terras que haviam atravessado durante as conquistas, fazendo com que os Nightzmora deixassem de possuir um território nacional próprio.\n\nAs demais localidades, antigas fronteiras, ruínas e territórios relacionados a Gaul ou ao Nightzmoran Khaganate podem receber um aprofundamento próprio conforme necessário. Para desenvolver algum deles para uma história, personagem ou mesa, entre em contato com o **Rei das Maldições — Mizuki**."
+        }
+      ]
+    },
+    {
+      "fonte": "02-Canais-Publicos/01-Lore-do-Mundo/Texto-para-Discord.txt",
+      "titulo": "Lore do Mundo",
+      "tipo": "publico",
+      "sha256": "9152efe6cbbc6bd4755928879d5131c85685a53426396ae7e83ed186b21c9ef3",
+      "apelidos": [
+        "lore do mundo"
+      ],
+      "secoes": [
+        {
+          "titulo": "Lore da Era da Revolução",
+          "texto": "A **Era da Revolução** é um mundo moderno onde Energia Amaldiçoada, Origíneo e tecnologia coexistem lado a lado.\n\nA maior parte da população vive sua vida normalmente, mas por trás da sociedade comum existem feiticeiros, Maldições, Infectados, organizações especializadas e fenômenos que podem alterar completamente o destino de uma região.\n\nEste canal reúne os acontecimentos e conceitos mais importantes da história geral do mundo. Informações sobre países e regiões específicas podem ser encontradas em seus respectivos registros."
+        },
+        {
+          "titulo": "Lore da Era da Revolução / O EQUILÍBRIO",
+          "texto": "A **Energia Amaldiçoada** nasce das emoções negativas produzidas pelos seres humanos. Ela faz parte do mundo e, até onde se sabe, não pode simplesmente ser aumentada ou eliminada sem consequências.\n\nA doutrina tradicional da Escola Jujutsu parte de uma ideia simples: a energia precisa permanecer dentro de uma faixa aceitável. Nem abundante demais, nem próxima demais de desaparecer.\n\nEsse princípio ficou conhecido como **Equilíbrio**. Para a Escola, vencer não significa eliminar completamente as Maldições ou a Energia Amaldiçoada. Significa impedir que qualquer um dos extremos seja alcançado."
+        },
+        {
+          "titulo": "Lore da Era da Revolução / DUAS VISÕES DO MESMO PROBLEMA",
+          "texto": "Nem todos acreditam que o Equilíbrio seja a resposta correta.\n\nA **Escola Jujutsu** afirma possuir registros de que reduzir a Energia Amaldiçoada a níveis extremos seria tão perigoso quanto permitir que ela crescesse descontroladamente.\n\nA **Rhine Lab** contesta essa conclusão. Para ela, uma instituição cuja função é administrar Maldições para sempre possui interesse demais em afirmar que o problema nunca poderá ser resolvido.\n\nNenhuma das duas posições é apresentada como mentira. Escola e Rhine acreditam sinceramente estar evitando uma catástrofe — apenas discordam sobre qual caminho realmente leva até ela."
+        },
+        {
+          "titulo": "Rhine Lab",
+          "texto": "A **Rhine Lab** é uma corporação tecno-mística dedicada a pesquisas envolvendo Origíneo, robótica, medicina, ecologia e outras áreas de tecnologia avançada. Sua principal representante pública é **Kristen Wright**.\n\nA Rhine nasceu como um centro de pesquisa aliado à Escola Jujutsu, mas em algum momento as duas instituições romperam relações. O acontecimento responsável por essa separação não é público e permanece entre os grandes buracos do registro histórico.\n\nHoje, a Rhine defende uma ideia radicalmente diferente da Escola: **Energia Amaldiçoada não deve ser administrada. Deve ser eliminada.**\n\nPara seus integrantes, aceitar que gerações futuras continuarão sofrendo com Maldições simplesmente porque o sistema atual consegue controlá-las não é uma solução. É desistência."
+        },
+        {
+          "titulo": "Rhine Lab / ABRINDO MÃO DA ENERGIA",
+          "texto": "Todo integrante da Rhine Lab passa por um procedimento para **remover sua própria Energia Amaldiçoada**, substituindo suas funções por implantes tecnológicos.\n\nIsso não é uma punição ou condição acidental. É uma escolha ideológica. Para a Rhine, não faria sentido combater a Energia Amaldiçoada enquanto o próprio corpo ainda dependesse dela.\n\nComo consequência, membros da Rhine **não utilizam Técnicas Amaldiçoadas**. Tudo que fazem depende de tecnologia, equipamentos, implantes e preparação."
+        },
+        {
+          "titulo": "Rhine Lab / UM MEMBRO DA RHINE",
+          "texto": "A ausência de Energia Amaldiçoada produz algumas características incomuns:\n* Não pode ser detectado por sensores que dependam de Energia Amaldiçoada.\n* Consegue operar normalmente dentro das **Zonas de Silêncio** produzidas pela própria Rhine.\n* Certos efeitos que exigem Energia Amaldiçoada no alvo simplesmente não conseguem interagir com ele.\n\nO procedimento também aproxima artificialmente seus membros de uma condição que algumas pessoas possuem desde o nascimento: a **Restrição Celestial completa**."
+        },
+        {
+          "titulo": "Oripatia",
+          "texto": "A **Oripatia** é uma doença causada pela contaminação por Origíneo.\n\nNinguém nasce Infectado. O Origíneo entra no organismo e começa a crescer dentro dele, formando cristais que lentamente consomem o corpo. Como o próprio Origíneo produz energia, qualquer pessoa pode desenvolver a doença, possua Energia Amaldiçoada ou não.\n\nEm feiticeiros, porém, a situação é ainda mais perigosa: o cristal consegue consumir Energia Amaldiçoada para acelerar o próprio crescimento. Quanto mais energia um Infectado utiliza, mais rapidamente a doença pode avançar.\n\nAtualmente, **não existe cura conhecida para a Oripatia**."
+        },
+        {
+          "titulo": "Oripatia / CRISTALIZAÇÃO",
+          "texto": "Conforme a doença progride, formações de Origíneo começam a tomar o corpo.\n\nNo estágio final, o organismo pode ser completamente cristalizado. Esses cristais continuam armazenando energia e podem espalhar partículas capazes de contaminar outras pessoas.\n\nPor isso, o tratamento de corpos de Infectados mortos segue procedimentos muito mais rigorosos do que o padrão."
+        },
+        {
+          "titulo": "Oripatia / ENERGIA REVERSA",
+          "texto": "**Energia Reversa não cura Oripatia.**\n\nEla pode regenerar os tecidos danificados ao redor da formação, inclusive fazendo pele crescer novamente sobre os cristais, mas o Origíneo permanece dentro do corpo.\n\nCurar o ferimento não significa remover a doença."
+        },
+        {
+          "titulo": "Oripatia / FORMAS DE CONTÁGIO",
+          "texto": "A contaminação pode ocorrer através do contato com:\n* Origíneo bruto;\n* Origíneo líquido;\n* cristais;\n* pó de cristal;\n* ou exposição prolongada a uma pessoa Infectada.\n\nO simples fato de alguém possuir Oripatia não significa que qualquer contato breve resultará automaticamente em infecção."
+        },
+        {
+          "titulo": "Eventos Conhecidos",
+          "texto": "Alguns acontecimentos deixaram marcas grandes demais para permanecerem restritos a arquivos ou organizações. São eventos que aparecem em notícias, conversas, documentários, teorias e discussões políticas.\n\nPersonagens que cresceram neste mundo provavelmente já ouviram falar deles, mesmo que conheçam apenas a versão pública dos fatos."
+        },
+        {
+          "titulo": "Eventos Conhecidos / A WINTER SCAR",
+          "texto": "A morte de **FrostNova em Tóquio** tornou-se um dos casos mais conhecidos envolvendo a Escola Jujutsu.\n\nFrostNova era vista por grande parte da população como uma salvadora, mas acabou sendo eliminada pela Escola para impedir uma catástrofe em escala urbana.\n\nO caso nunca foi escondido. A própria Escola assumiu a responsabilidade e afirma que não existia uma terceira opção.\n\nPara a Rhine, a Winter Scar tornou-se um dos maiores argumentos contra o Equilíbrio: se o sistema precisa matar aqueles que deveria proteger para continuar funcionando, talvez o próprio sistema seja o problema."
+        },
+        {
+          "titulo": "Eventos Conhecidos / O INCIDENTE DE COLUMBIA",
+          "texto": "Um incidente recente em uma instalação da **Rhine Lab** terminou com vítimas civis.\n\nOficialmente, foi um acidente industrial. O relatório público é curto, a área foi isolada e o assunto considerado encerrado. Pessoas que estiveram diretamente envolvidas raramente falam sobre o ocorrido."
+        },
+        {
+          "titulo": "Eventos Conhecidos / MANSFIELD BREAK",
+          "texto": "**Mansfield Break** é uma gigantesca prisão móvel administrada pela Rhine Lab e destinada à contenção de indivíduos considerados perigosos demais para permanecerem em circulação.\n\nSua existência é pública. O que acontece dentro dela, não."
+        },
+        {
+          "titulo": "Eventos Conhecidos / REUNION",
+          "texto": "A **Reunion** foi um movimento formado principalmente por Infectados e atualmente encontra-se fora de operação.\n\nMesmo sem atuar como antes, continua sendo uma referência histórica extremamente presente. Quase todo mundo possui alguma opinião sobre a Reunion — e dificilmente duas pessoas contam exatamente a mesma história sobre o que ela representou."
+        },
+        {
+          "titulo": "O Mundo Atualmente",
+          "texto": "A **Escola Jujutsu** e a **Rhine Lab** não estão em guerra. Também estão longe de serem aliadas.\n\nAs duas ainda cooperam quando uma ameaça exige, mas a relação é marcada por divergências e desconfiança.\n\nEnquanto isso, o número de Infectados e de mortes causadas pela Oripatia continua crescendo, e expedições enviadas para determinadas regiões do mundo desaparecem com frequência cada vez maior.\n\nEscola e Rhine continuam oferecendo respostas diferentes para os mesmos problemas — e nenhuma delas conseguiu provar definitivamente que possui a resposta correta."
+        }
+      ]
+    },
+    {
+      "fonte": "02-Canais-Publicos/02-Escola-Jujutsu-e-Aliados/Texto-para-Discord.txt",
+      "titulo": "Escola Jujutsu e Aliados",
+      "tipo": "publico",
+      "sha256": "dad6c6fb7be364fe42e2d04eb470d2fa8939f7264bb07ef46ffd931de9b485c0",
+      "apelidos": [
+        "escola jujutsu e aliados"
+      ],
+      "secoes": [
+        {
+          "titulo": "Escola Jujutsu",
+          "texto": "A **Escola Jujutsu** é uma das principais instituições responsáveis por lidar com a Energia Amaldiçoada no mundo moderno.\n\nSeu trabalho não se resume a ensinar feiticeiros: ela contém Maldições, classifica ameaças, registra ocorrências e administra o princípio conhecido como **Equilíbrio**.\n\nPara a Escola, o objetivo nunca foi acabar definitivamente com a Energia Amaldiçoada, mas impedir que ela alcance extremos capazes de colocar o mundo em risco."
+        },
+        {
+          "titulo": "Escola Jujutsu / DIREÇÃO",
+          "texto": "A Escola é atualmente dirigida por **Ozpin**, uma figura imortal que ocupa o cargo há tanto tempo que poucas pessoas sabem dizer quando exatamente assumiu a função.\n\nApesar de sua longevidade, Ozpin não criou o sistema atual. A estrutura da Escola e a doutrina do Equilíbrio já existiam antes dele; sua função foi herdá-las e mantê-las funcionando."
+        },
+        {
+          "titulo": "Escola Jujutsu / FORMAÇÃO E TUTORIA",
+          "texto": "A formação de um feiticeiro pode acontecer através de **tutoria direta**.\n\nCada aluno pode ter um tutor responsável por acompanhar seu desenvolvimento, mas essa relação é muito mais pessoal do que burocrática. Métodos, exigências e qualidade do treinamento variam bastante de tutor para tutor.\n\nIsso faz com que dois feiticeiros formados pela mesma instituição possam ter experiências completamente diferentes durante seus estudos."
+        },
+        {
+          "titulo": "Escola Jujutsu / CONTENÇÃO E AMEAÇAS",
+          "texto": "A Escola também é responsável por investigar ocorrências, conter Maldições e classificar ameaças.\n\nParte importante de seu trabalho consiste em decidir **quando alguma coisa pode ser salva, quando precisa ser contida e quando não existe uma solução segura disponível**.\n\nEssas decisões nem sempre são simples e fazem parte das principais críticas dirigidas à instituição."
+        },
+        {
+          "titulo": "Escola Jujutsu / INFECTADOS",
+          "texto": "A Escola realiza **triagem e resgate de Infectados** sempre que possui condições para isso.\n\nExistem pessoas com Oripatia vivendo atualmente sob sua proteção, embora os recursos disponíveis não permitam que todos os casos sejam acolhidos.\n\nComo a Oripatia não possui cura conhecida, a atuação da Escola costuma se concentrar em contenção, proteção e acompanhamento."
+        },
+        {
+          "titulo": "Escola Jujutsu / ARQUIVOS RESTRITOS",
+          "texto": "A Escola mantém um enorme registro de acontecimentos relacionados à Energia Amaldiçoada, Maldições e outros fenômenos sobrenaturais.\n\nParte desse arquivo, porém, é **deliberadamente censurada**. A existência das áreas restritas é pública. O conteúdo delas, não.\n\nSegundo a Escola, certas informações podem causar mortes, revoltas ou novos incidentes quando divulgadas sem contexto. Para seus críticos, isso também significa que ninguém fora da instituição consegue verificar se os arquivos escondem apenas conhecimento perigoso ou erros que a própria Escola prefere não tornar públicos."
+        },
+        {
+          "titulo": "Escola Jujutsu / COMO A ESCOLA É VISTA",
+          "texto": "A principal crítica contra a Escola raramente é a de que ela seja cruel. O que muitos questionam é sua **resignação**.\n\nAo defender o Equilíbrio, a instituição aceita que Maldições, sofrimento e Energia Amaldiçoada continuarão existindo indefinidamente, desde que permaneçam dentro de limites considerados administráveis.\n\nPara quem permanece dentro da Escola, aceitar essa responsabilidade significa também aceitar, em algum nível, que o problema talvez nunca tenha um fim definitivo."
+        },
+        {
+          "titulo": "Escola Jujutsu / RESTRIÇÃO CELESTIAL",
+          "texto": "Pessoas que nascem completamente sem Energia Amaldiçoada são classificadas pela tradição Jujutsu como portadoras de **Restrição Celestial**.\n\nHistoricamente, clãs e setores mais tradicionais da sociedade Jujutsu frequentemente enxergaram esses indivíduos como anomalias: corpos extremamente úteis, mas linhagens pouco valorizadas quando não podiam transmitir Técnicas ou Energia Amaldiçoada.\n\nEssa visão não é necessariamente compartilhada por todos os integrantes da Escola, mas faz parte da história e da cultura que a instituição herdou."
+        },
+        {
+          "titulo": "Escola Jujutsu / AFILIAÇÕES ASSOCIADAS",
+          "texto": "A Escola Jujutsu não atua sozinha. Ao redor dela existem diferentes **famílias, clãs, organizações e grupos aliados** que mantêm relações próprias com a instituição e com a sociedade Jujutsu.\n\nAlgumas dessas afiliações possuem tradições antigas e Técnicas transmitidas entre gerações, enquanto outras surgiram através de acordos, interesses em comum ou cooperação direta com a Escola.\n\nAs principais **famílias, clãs e organizações associadas** reconhecidas dentro do cenário estão apresentadas logo abaixo."
+        }
+      ]
+    },
+    {
+      "fonte": "03-Guia-de-Mestragem/01-Comece-Aqui/Texto-para-Discord.txt",
+      "titulo": "Comece Aqui",
+      "tipo": "mestragem",
+      "sha256": "a41d39b087cb5374ae947fc177a6c2537f5a2e60f077aee5c5756021379dc379",
+      "apelidos": [
+        "comece aqui"
+      ],
+      "secoes": [
+        {
+          "titulo": "Guia de Mestragem",
+          "texto": "Ser Mestre na **Era da Revolução** significa criar histórias dentro de um mundo compartilhado.\n\nOs tópicos deste fórum **não ensinam como narrar RPG**. Eles reúnem os procedimentos da Guilda, possibilidades de criação e limites necessários para que diferentes Mestres consigam desenvolver suas próprias histórias sem entrar em conflito com outras mesas.\n\nA Guilda incentiva Mestres a criar **novas cidades, facções, organizações, personagens e acontecimentos**. Nem toda história precisa girar ao redor da Escola Jujutsu ou da Rhine Lab.\n\nO importante é distinguir aquilo que pertence à **sua história** daquilo que altera a **lore compartilhada de todos**."
+        },
+        {
+          "titulo": "Guia de Mestragem / POR ONDE COMEÇAR",
+          "texto": "Consulte os demais tópicos deste fórum conforme necessário:\n* **Missões e Procedimentos:** criação, postagem, realização, aprovação e registro de mesas.\n* **Progressão:** Nível, Grau, promoções, XP, Honrado e bonificações de participação.\n* **Criando Histórias no Mundo:** liberdade criativa, facções próprias e utilização das regiões existentes.\n* **Escola Jujutsu e Rhine Lab:** como utilizar as duas principais organizações compartilhadas.\n* **Limites de Lore:** assuntos que não devem ser definidos individualmente por uma mesa.\n* **Oripatia em Mesa:** regras narrativas e cuidados ao utilizar a doença.\n* **Consulta:** espaço para dúvidas de mestragem, lore e criação de histórias."
+        }
+      ]
+    },
+    {
+      "fonte": "03-Guia-de-Mestragem/02-Missoes/Texto-para-Discord.txt",
+      "titulo": "Missoes",
+      "tipo": "mestragem",
+      "sha256": "2ee2c78f1f084ea03dd3b923959fcfb62f123962e8a1f801e9958ffcecf192a0",
+      "apelidos": [
+        "missoes"
+      ],
+      "secoes": [
+        {
+          "titulo": "Missões",
+          "texto": "Missões são a principal forma de transformar acontecimentos do mundo em histórias jogáveis dentro da Guilda.\n\nCabe ao Mestre definir a **proposta, nível, duração, quantidade de participantes e tipo da missão**, além de organizar a mesa e registrar seu resultado depois que ela terminar.\n\nAs informações abaixo reúnem os procedimentos necessários para preparar e conduzir uma missão dentro da **Era da Revolução**."
+        },
+        {
+          "titulo": "Missões / ORGANIZANDO UMA MISSÃO",
+          "texto": "Uma missão pode possuir entre **1 e 6 personagens**.\n\nMesas com apenas **1 ou 2 personagens** devem ser informadas previamente a um membro próximo da Staff. Caso isso não seja feito, a distribuição de XP será considerada como se a missão tivesse contado com 3 jogadores.\n\nPara facilitar a organização entre jogadores e Mestres, procure avisar sobre a participação na mesa com pelo menos **2 horas de antecedência**. Isso ajuda a evitar problemas e permite uma remarcação quando necessário. Situações excepcionais podem ser avaliadas de acordo com o caso.\n\nDepois que a missão começar, novos participantes ou substituições só podem ser aceitos durante a **primeira hora de mesa**."
+        },
+        {
+          "titulo": "Missões / NÍVEL DA MISSÃO",
+          "texto": "Toda missão possui um **Nível Mínimo** e um **Nível Máximo**, que indicam quais personagens podem solicitar participação.\n\nO Mestre também pode recusar personagens que estejam fora da patente ou nível adequado caso sua presença comprometa a proposta ou o equilíbrio da mesa.\n\nQuando um personagem participa de uma missão abaixo de seu nível atual, sua recompensa pode sofrer redução. A redação publicada registra que uma diferença de **2 níveis reduz o XP pela metade**, enquanto uma diferença de **4 níveis anula o XP recebido naquela missão**."
+        },
+        {
+          "titulo": "Missões / REALIZANDO A MISSÃO",
+          "texto": "As missões devem acontecer nos canais destinados às **Mesas**, utilizando o canal de voz correspondente ao chat de texto onde a aventura foi organizada.\n\nPara ser considerada válida, uma mesa precisa possuir pelo menos **90 minutos de duração**."
+        },
+        {
+          "titulo": "Missões / IDENTIFICANDO UMA MISSÃO",
+          "texto": "Ao publicar um chamado no canal [canal indicado no servidor], informe as principais características da mesa, incluindo o **nível da missão, quantidade de jogadores e tipo de missão**.\n\nCada formato possui sua própria proposta e recompensa."
+        },
+        {
+          "titulo": "Missões / MISSÃO CURTA — 50 XP",
+          "texto": "Missões Curtas são voltadas para situações simples que podem ser resolvidas em uma única cena.\n\nPodem envolver **interrogatórios, cenas de Roleplay, pequenos deslocamentos, investigações rápidas ou escoltas sem combate letal**.\n\nNormalmente possuem duração menor e baixo nível de periculosidade."
+        },
+        {
+          "titulo": "Missões / MISSÃO PADRÃO — 100 XP",
+          "texto": "A missão Padrão é o formato mais comum dentro da Guilda.\n\nOs personagens recebem um objetivo, realizam a operação proposta e retornam ao final da missão. Sua duração costuma ficar entre uma Curta e uma Longa, funcionando como o modelo tradicional para a maior parte das aventuras."
+        },
+        {
+          "titulo": "Missões / MISSÃO LONGA — 200 XP",
+          "texto": "Missões Longas são utilizadas quando a aventura precisa de mais espaço para desenvolvimento.\n\nPodem ocupar uma parte considerável do dia e são particularmente úteis para histórias importantes dentro da lore criada pelo Mestre.\n\nUma duração maior **não significa necessariamente maior perigo**. A diferença está principalmente na extensão e complexidade da história."
+        },
+        {
+          "titulo": "Missões / FINAL DE ARCO — 300 XP",
+          "texto": "Um Final de Arco é utilizado para concluir uma sequência narrativa construída ao longo de outras mesas.\n\nNormalmente envolve acontecimentos decisivos, personagens importantes, grandes revelações ou confrontos diretamente relacionados à história que vinha sendo desenvolvida.\n\nAssim como uma Missão Longa, sua importância narrativa não significa obrigatoriamente que ela precise possuir risco maior de morte."
+        },
+        {
+          "titulo": "Missões / APROVAÇÃO DAS MESAS",
+          "texto": "Toda missão precisa passar por algum nível de aprovação antes de ser realizada.\n\n**Missões Curtas** e **Padrão** utilizam um processo mais simples de avaliação e podem ser analisadas por Mestres de confiança, incluindo os [cargo indicado no servidor].\n\n**Missões Longas** e **Finais de Arco** precisam de uma análise prévia mais detalhada por normalmente envolverem histórias maiores, mais preparação e consequências potencialmente mais relevantes.\n\nQuanto maior o impacto da missão sobre o mundo compartilhado, maior deve ser o cuidado durante sua aprovação."
+        },
+        {
+          "titulo": "Missões / MESAS PARA POUCOS JOGADORES",
+          "texto": "Mesas voltadas para **um ou dois jogadores** possuem formatos próprios para permitir histórias mais pessoais sem transformar esse tipo de sessão em uma forma fácil de acelerar progressão.\n\nElas são divididas entre **Simples** e **Complexas**."
+        },
+        {
+          "titulo": "Missões / SOLO SIMPLES — 75 XP",
+          "texto": "É o formato mais comum para mesas envolvendo poucos participantes.\n\nSua estrutura deve ser relativamente direta, focada em desenvolver acontecimentos menores, personagens ou situações que não exigiriam uma missão de grande porte."
+        },
+        {
+          "titulo": "Missões / SOLO COMPLEXA — 150 XP",
+          "texto": "Mesas Complexas são destinadas a acontecimentos de maior relevância para o personagem, como **conclusões de arcos individuais ou situações especialmente importantes para sua história**.\n\nSua importância é comparável à de um Final de Arco e, por isso, devem ser utilizadas com menor frequência."
+        },
+        {
+          "titulo": "Missões / APROVAÇÃO DE MESAS SOLO",
+          "texto": "Mesas feitas para **um único jogador** precisam ser planejadas antecipadamente para permitir a avaliação da proposta e evitar que o formato seja utilizado repetidamente apenas para acelerar a obtenção de XP.\n\nPara uma **Mesa Complexa**, recomenda-se solicitar aprovação com pelo menos **uma semana de antecedência**.\n\nPara uma **Mesa Simples**, recomenda-se uma antecedência de aproximadamente **2 a 3 dias**.\n\nEsses períodos podem ser ampliados caso seja necessário analisar melhor a proposta ou a frequência com que esse tipo de mesa está sendo solicitado."
+        },
+        {
+          "titulo": "Missões / INTERRUPÇÕES E REMARCAÇÕES",
+          "texto": "Caso o Mestre precise sair antes do término ou uma missão precise ser interrompida, a mesa pode ser **remarcada e continuada posteriormente**.\n\nOutra possibilidade é encerrar a missão como **Fracasso**. Nesse caso, a seção de interrupções da Guia 2 prevê que a recompensa destinada ao Mestre corresponda a **metade da recompensa normal**."
+        },
+        {
+          "titulo": "Missões / REGISTRO DAS MISSÕES",
+          "texto": "Todas as missões da Guilda precisam ser registradas no canal [canal indicado no servidor].\n\nDepois da conclusão da mesa, o emissário responsável deve realizar a postagem em [canal indicado no servidor], seguindo o modelo fixado para os Mestres.\n\nUm **resumo curto** não é obrigatório, mas é recomendado. Além de registrar o que aconteceu, ele permite que outros Mestres utilizem consequências, rumores e acontecimentos daquela missão como contexto para histórias futuras."
+        }
+      ]
+    },
+    {
+      "fonte": "03-Guia-de-Mestragem/03-Progressao/Texto-para-Discord.txt",
+      "titulo": "Progressao",
+      "tipo": "mestragem",
+      "sha256": "15c00111de1bb9cb0c9b0bd9b51800e7e4c8ff3aa9f1967cb85e50ef7d4acda5",
+      "apelidos": [
+        "progressao"
+      ],
+      "secoes": [
+        {
+          "titulo": "Progressão",
+          "texto": "A evolução de um personagem na **Era da Revolução** acontece de duas formas diferentes: através de seu **Nível**, adquirido por experiência, e de seu **Grau**, conquistado através de reconhecimento e feitos dentro da Guilda.\n\nAs duas progressões funcionam de forma independente. Um personagem pode continuar ganhando níveis enquanto aguarda uma promoção de Grau, e possuir grande poder mecânico não garante automaticamente uma patente elevada.\n\nEste tópico reúne as principais informações relacionadas a **XP, Níveis, Graus, promoções e bonificações de participação**."
+        },
+        {
+          "titulo": "Progressão / NÍVEL E GRAU",
+          "texto": "**Nível** e **Grau** representam coisas diferentes.\n\nO **Nível** demonstra a progressão mecânica do personagem e aumenta conforme ele acumula XP.\n\nO **Grau**, por outro lado, representa sua posição e reconhecimento dentro da Era da Revolução, sendo influenciado principalmente pelos **feitos, decisões e contribuições realizadas ao longo de sua trajetória**.\n\nPor isso, personagens voltados para **suporte, investigação, liderança ou outras funções** também podem alcançar Graus elevados sem necessariamente possuir o mesmo potencial destrutivo de outros feiticeiros."
+        },
+        {
+          "titulo": "Progressão / PROMOÇÃO DE GRAU",
+          "texto": "Uma promoção normalmente começa quando o personagem recebe uma **recomendação de alguém acima de sua patente**, desde que essa recomendação venha de um personagem que **não seja PJ**.\n\nDepois disso, a promoção pode ser avaliada através de:\n* uma **mesa específica de promoção**, preparada junto de um Mestre;\n* uma **missão normal previamente aprovada** para funcionar também como avaliação;\n* ou um **feito relevante realizado durante a campanha**, que justifique uma nova análise de Grau.\n\nO personagem **não precisa parar de receber XP** enquanto espera sua promoção."
+        },
+        {
+          "titulo": "Progressão / RECEBENDO EXPERIÊNCIA",
+          "texto": "Os personagens recebem **Pontos de Experiência (XP)** principalmente através das missões das quais participam.\n\nA experiência não é concedida individualmente por derrotar uma Maldição, vencer um inimigo ou concluir uma ação específica. A principal unidade de progressão é a **missão como um todo**.\n\nA quantidade recebida pode variar conforme o **tipo, duração e modificadores da missão**, além de bonificações específicas.\n\nO XP deve ser registrado diretamente na ficha. Ao alcançar a quantidade necessária, o personagem avança para o próximo nível."
+        },
+        {
+          "titulo": "Progressão / XP NECESSÁRIO PARA SUBIR",
+          "texto": "A ficha calcula automaticamente o XP acumulado. Os valores abaixo representam quanto é necessário obter para avançar **do nível atual para o próximo**:\n* **Nível 2:** 200 XP.\n* **Níveis 3 e 4:** 300 XP por nível.\n* **Níveis 5 a 7:** 500 XP por nível.\n* **Níveis 8 a 10:** 800 XP por nível.\n* **Níveis 11 a 13:** 900 XP por nível.\n* **Níveis 14 a 16:** 1.100 XP por nível.\n* **Níveis 17 a 19:** 1.300 XP por nível.\n* **Níveis 20 a 22:** 1.500 XP por nível.\n* **Níveis 23 a 29:** 1.700 XP por nível.\n\nPor exemplo, um personagem no **nível 13** precisa de **900 XP** para alcançar o nível 14. Em missões Padrão de 100 XP, isso corresponde a nove mesas, antes de modificadores."
+        },
+        {
+          "titulo": "Progressão / HONRADO — NÍVEL 20",
+          "texto": "Ao alcançar o **nível 20**, o personagem recebe o título de **Honrado** e pode ser eternizado no canal [canal indicado no servidor].\n\nA partir desse momento, para continuar participando de missões ou recebendo novas recompensas, é necessário solicitar uma **revisão de ficha** no canal [canal indicado no servidor].\n\nEssa revisão permite que a Staff confira os gastos, recursos e escolhas acumuladas durante a progressão do personagem antes que ele continue avançando."
+        },
+        {
+          "titulo": "Progressão / BÔNUS POR INATIVIDADE",
+          "texto": "Caso um personagem fique mais de **7 dias sem participar de uma missão**, sem contar o próprio dia em que voltar a jogar, sua próxima missão poderá conceder um bônus de **50% de XP**.\n\nEsse bônus existe para compensar períodos maiores de inatividade."
+        },
+        {
+          "titulo": "Progressão / BONIFICAÇÃO POR PARTICIPAÇÃO",
+          "texto": "A cada **8 mesas jogadas**, o personagem recebe uma bonificação equivalente a **50% de XP adicional**.\n\nEsse benefício deve ser registrado na ficha pessoal e **não é acumulativo com outras bonificações do mesmo tipo**."
+        },
+        {
+          "titulo": "Progressão / DESTINANDO A RECOMPENSA",
+          "texto": "Um jogador não pode simplesmente recusar o XP recebido por uma missão.\n\nCaso prefira utilizar a recompensa em outro personagem, é possível transferir o XP para ele, mas o valor recebido sofre uma redução de **50%**."
+        },
+        {
+          "titulo": "Progressão / MISSÃO FRACASSADA",
+          "texto": "Caso uma missão termine em **Fracasso**, a recompensa do jogador pode ser **anulada ou reduzida pela metade**, de acordo com a avaliação do Mestre.\n\nA forma como a missão terminou e o que os personagens conseguiram realizar pode ser considerada nessa decisão."
+        }
+      ]
+    },
+    {
+      "fonte": "03-Guia-de-Mestragem/04-Criacao-de-Mundo/Texto-para-Discord.txt",
+      "titulo": "Criacao de Mundo",
+      "tipo": "mestragem",
+      "sha256": "9c4bd00a4813cd393af6bd5472c0e07b71317d3e07b48720169a05d8b5aa9821",
+      "apelidos": [
+        "criacao de mundo"
+      ],
+      "secoes": [
+        {
+          "titulo": "Criando Histórias no Mundo",
+          "texto": "A **Era da Revolução** é um cenário compartilhado, mas isso não significa que cada cidade, organização ou acontecimento já esteja escrito.\n\nMestres possuem liberdade para criar novas histórias e expandir partes do mundo que ainda não foram exploradas, desde que respeitem aquilo que já foi estabelecido pelo servidor.\n\nA intenção é permitir que cada Mestre deixe sua própria marca no cenário sem impedir que outros também façam o mesmo."
+        },
+        {
+          "titulo": "Criando Histórias no Mundo / O QUE VOCÊ PODE CRIAR",
+          "texto": "Mestres podem criar elementos próprios para suas histórias, incluindo:\n* **NPCs e famílias;**\n* **clãs e linhagens;**\n* **facções e organizações;**\n* **empresas e grupos locais;**\n* **cidades, vilas e pequenas regiões;**\n* **Maldições e outras ameaças;**\n* **acontecimentos históricos locais;**\n* e conflitos próprios para suas campanhas.\n\nEssas criações não precisam existir apenas durante uma única mesa. Caso funcionem bem dentro do mundo, podem continuar aparecendo e se tornar parte permanente da história da Guilda, respeitando os limites estabelecidos."
+        },
+        {
+          "titulo": "Criando Histórias no Mundo / EXPANDIR NÃO É SUBSTITUIR",
+          "texto": "Uma criação nova deve, normalmente, **acrescentar algo ao mundo**, e não substituir aquilo que já existe.\n\nVocê pode criar uma nova organização de feiticeiros sem precisar dizer que ela controla secretamente toda a sociedade Jujutsu.\n\nPode criar uma empresa influente sem torná-la responsável por todos os acontecimentos internacionais.\n\nTambém pode criar uma cidade importante para sua campanha sem transformá-la repentinamente na maior potência econômica do planeta.\n\n**Uma história pode ser extremamente importante para seus personagens sem precisar redefinir o mundo inteiro.**"
+        },
+        {
+          "titulo": "Criando Histórias no Mundo / CRIANDO SUAS PRÓPRIAS ORGANIZAÇÕES",
+          "texto": "A **Escola Jujutsu** e a **Rhine Lab** são as duas maiores instituições compartilhadas atualmente, mas estão longe de serem as únicas existentes.\n\nMestres podem criar **organizações próprias**, sejam elas grupos de feiticeiros, empresas, comunidades de Infectados, ordens religiosas, organizações criminosas, grupos de pesquisa ou qualquer outra estrutura que faça sentido para a história.\n\nEssas organizações podem possuir aliados, inimigos, recursos, bases e objetivos próprios, desde que coexistam de maneira coerente com aquilo que já está estabelecido."
+        },
+        {
+          "titulo": "Criando Histórias no Mundo / ESCOLA JUJUTSU E RHINE LAB",
+          "texto": "Por serem **instituições centrais da lore compartilhada**, entre em contato com o **Rei das Maldições — Mizuki** para trabalhar com a Escola Jujutsu ou a Rhine Lab.\n\nMudanças envolvendo sua **liderança, estrutura, grandes instalações, história, objetivos ou posição no mundo** não devem ser estabelecidas por uma única mesa.\n\nCaso sua história precise de uma organização com liberdade maior para sofrer mudanças profundas, considere criar **uma facção própria** em vez de alterar diretamente uma das duas."
+        },
+        {
+          "titulo": "Criando Histórias no Mundo / REGIÕES EXTRAS",
+          "texto": "O cenário possui diversas nações, civilizações e territórios além dos locais mais comuns da sociedade moderna.\n\nAntes de criar uma região completamente nova, vale consultar o fórum de **Regiões Extras**: [canal indicado no servidor].\n\nLá estão reunidas informações sobre lugares como **Victoria, Ursus, Yan, Kazimierz, Laterano, Sargon, Iberia, Sami, Ægir** e diversas outras regiões que podem servir como cenário para novas histórias.\n\nEsses lugares podem ser utilizados e aprofundados em mesa, desde que suas características já estabelecidas sejam respeitadas."
+        },
+        {
+          "titulo": "Criando Histórias no Mundo / APROFUNDANDO UMA REGIÃO",
+          "texto": "Nem toda cidade, província ou cultura possui informações completas.\n\nQuando uma região já existir, mas não tiver material suficiente para a história que você deseja contar, o Mestre pode desenvolver detalhes locais que não contradigam aquilo que já foi estabelecido.\n\nCaso a ideia envolva mudanças grandes na política, história ou funcionamento de uma região compartilhada, consulte previamente o **Rei das Maldições — Mizuki**."
+        },
+        {
+          "titulo": "Criando Histórias no Mundo / QUANDO UMA IDEIA DEIXA DE SER APENAS SUA",
+          "texto": "Uma regra simples ajuda a identificar quando uma criação precisa de consulta:\n\n**Se ela acrescenta algo ao mundo, normalmente pode ser criada, respeitando os limites do servidor.**\n\n**Se ela redefine algo que já pertence ao mundo inteiro, consulte antes.**"
+        },
+        {
+          "titulo": "Criando Histórias no Mundo / CONSULTE ANTES QUANDO...",
+          "texto": "Entre em contato com o **Rei das Maldições — Mizuki** quando uma história pretende:\n* alterar permanentemente uma grande organização já estabelecida;\n* trabalhar com a Escola Jujutsu ou a Rhine Lab;\n* criar acontecimentos com consequências internacionais ou que afetem várias mesas;\n* revelar respostas para mistérios globais;\n* definir partes da história que os registros mantêm propositalmente em aberto;\n* alterar de forma significativa uma região compartilhada;\n* ou utilizar algum elemento cuja liberdade de criação não esteja clara.\n\nPerguntar antes é sempre mais simples do que precisar corrigir uma história depois."
+        }
+      ]
+    },
+    {
+      "fonte": "03-Guia-de-Mestragem/05-Escola-e-Rhine/Texto-para-Discord.txt",
+      "titulo": "Escola e Rhine",
+      "tipo": "mestragem",
+      "sha256": "4d7b3e6aedf12b0fa37b851a5c15b092fa03286cc08f00a067de5e765ba844ee",
+      "apelidos": [
+        "escola e rhine"
+      ],
+      "secoes": [
+        {
+          "titulo": "Escola Jujutsu e Rhine Lab",
+          "texto": "A **Escola Jujutsu** e a **Rhine Lab** são as duas maiores instituições compartilhadas da Era da Revolução.\n\nAmbas tentam responder ao mesmo problema: **o que fazer com a Energia Amaldiçoada e o sofrimento causado por ela?**\n\nA diferença está na resposta. A Escola acredita que o mundo precisa manter essa energia em **Equilíbrio**. A Rhine considera que aceitar esse ciclo indefinidamente é uma falha e busca uma forma de **eliminá-lo por completo**.\n\nAo utilizá-las em mesa, evite transformar essa divergência em uma simples disputa de “heróis contra vilões”."
+        },
+        {
+          "titulo": "Escola Jujutsu e Rhine Lab / MESTRANDO A ESCOLA JUJUTSU",
+          "texto": "A Escola deve ser apresentada como uma instituição **necessária, pragmática e imperfeita**.\n\nEla treina feiticeiros, contém Maldições, classifica ameaças, mantém registros e tenta impedir que a Energia Amaldiçoada saia do controle.\n\nQuando a Escola toma uma decisão ruim, normalmente ela não nasce de crueldade. Surge de **triagem**: recursos limitados, informações incompletas ou a necessidade de escolher entre alternativas ruins.\n\nUma operação pode abandonar uma pessoa para salvar cinquenta. Um arquivo pode permanecer censurado porque alguém acredita sinceramente que sua divulgação causaria mais mortes.\n\nIsso não torna todas as decisões corretas. Apenas significa que o raciocínio por trás delas precisa fazer sentido."
+        },
+        {
+          "titulo": "Escola Jujutsu e Rhine Lab / COMO A ESCOLA FALA",
+          "texto": "NPCs institucionais da Escola costumam recorrer a **procedimento, precedente, protocolo e experiência acumulada**.\n\nEles não precisam soar indiferentes, mas frequentemente falam como pessoas que já enfrentaram situações semelhantes muitas vezes.\n\nExemplos de fala:\n* “É assim que o procedimento funciona.”\n* “Não temos recursos para atender todos.”\n* “Existe precedente para essa decisão.”\n* “A alternativa colocaria mais pessoas em risco.”\n\nEsses exemplos combinam mais com a instituição do que discursos abertamente cruéis."
+        },
+        {
+          "titulo": "Escola Jujutsu e Rhine Lab / MESTRANDO A RHINE LAB",
+          "texto": "A Rhine deve ser apresentada como uma instituição **fria, extremamente racional e movida por convicção**.\n\nSeus integrantes realmente acreditam que administrar Maldições e sofrimento para sempre não é uma solução aceitável.\n\nQuando a Rhine cruza uma linha, o problema não costuma ser sadismo ou corrupção. É a disposição de aceitar **meios cada vez mais extremos** porque acredita que o resultado final justificará o preço.\n\nUm pesquisador da Rhine não precisa rir enquanto alguém sofre. É muito mais adequado que ele reconheça exatamente o que está acontecendo e continue trabalhando porque considera aquilo necessário."
+        },
+        {
+          "titulo": "Escola Jujutsu e Rhine Lab / COMO A RHINE FALA",
+          "texto": "A linguagem da Rhine costuma ser **clínica, precisa e tecnicamente verdadeira**.\n\nSeus membros podem utilizar palavras como “procedimento”, “contenção”, “purificação”, “material”, “resultado” e “eficiência”.\n\nA instituição pode omitir contexto. A orientação da lore é que suas falas institucionais sejam tecnicamente verdadeiras, não mentiras usadas para encobrir o que fazem.\n\nMuitas vezes, aquilo que torna uma fala da Rhine desconfortável é justamente o fato de ela estar descrevendo algo terrível de maneira completamente objetiva."
+        },
+        {
+          "titulo": "Escola Jujutsu e Rhine Lab / NINGUÉM DA RHINE USA TÉCNICA",
+          "texto": "Esta é uma das regras mais importantes da organização.\n\nTodo integrante da Rhine Lab abre mão da própria **Energia Amaldiçoada** e substitui suas funções por tecnologia e implantes.\n\nPortanto, membros da Rhine **não utilizam Técnicas Amaldiçoadas**.\n\nEquipamentos, implantes, drones, armas, robótica e outras tecnologias podem reproduzir efeitos extraordinários, mas a origem continua sendo tecnológica.\n\nCriar um membro da Rhine utilizando uma Técnica contradiz diretamente a organização e poderá exigir **retcon**."
+        },
+        {
+          "titulo": "Escola Jujutsu e Rhine Lab / NÃO EXISTE UMA FACÇÃO “CERTA”",
+          "texto": "Escola e Rhine defendem respostas incompatíveis para uma pergunta legítima.\n\nA **Escola** acredita que alterar radicalmente o nível de Energia Amaldiçoada pode provocar consequências catastróficas e, por isso, prefere administrá-la.\n\nA **Rhine** considera essa posição uma forma de resignação: para ela, aceitar que o sofrimento continue indefinidamente apenas porque é administrável não deveria ser considerado uma vitória.\n\nAo criar um conflito entre as duas, tente fazer com que **ambas tenham argumentos compreensíveis**.\n\nSe uma delas sempre estiver obviamente certa e a outra parecer apenas incompetente ou maligna, o conflito perdeu parte do que o torna interessante."
+        },
+        {
+          "titulo": "Escola Jujutsu e Rhine Lab / UTILIZANDO AS ORGANIZAÇÕES",
+          "texto": "A orientação de Mizuki é **entrar em contato com ele para trabalhar com as duas instituições principais**.\n\nAgentes, pesquisadores, professores, instrutores, instalações, operações, projetos e NPCs próprios ligados a elas são possibilidades de história, desde que respeitem o uso discutido e a caracterização do cenário.\n\nCaso sua história precise de maior liberdade para mudar objetivos, liderança ou estrutura de uma organização, considere criar **uma facção própria**."
+        },
+        {
+          "titulo": "Escola Jujutsu e Rhine Lab / O QUE NÃO ESTABELECER POR CONTA PRÓPRIA",
+          "texto": "Converse com o **Rei das Maldições — Mizuki** antes de estabelecer mudanças relevantes envolvendo:\n* **Ozpin** ou a liderança central da Escola;\n* **Kristen Wright** ou a direção principal da Rhine;\n* a origem ou verdadeiro motivo da ruptura entre ambas;\n* alterações permanentes na doutrina de qualquer uma;\n* grandes instalações ou projetos capazes de afetar o cenário inteiro;\n* revelações sobre arquivos restritos;\n* ou acontecimentos que mudem significativamente a posição de uma das instituições no mundo."
+        }
+      ]
+    },
+    {
+      "fonte": "03-Guia-de-Mestragem/06-Limites-de-Lore/Texto-para-Discord.txt",
+      "titulo": "Limites de Lore",
+      "tipo": "mestragem",
+      "sha256": "b76cc01cb373b4e27acb61e71450ee08322344530cb2a313c6530f2a088f0e2b",
+      "apelidos": [
+        "limites de lore"
+      ],
+      "secoes": [
+        {
+          "titulo": "Limites de Lore",
+          "texto": "A Era da Revolução possui mistérios que foram deixados **propositalmente sem resposta**.\n\nEsses espaços existem para preservar histórias futuras e impedir que uma única mesa determine algo que afete todas as outras.\n\nMestres continuam tendo ampla liberdade para criar novas histórias, facções, cidades e acontecimentos. Os limites abaixo existem para assuntos que fazem parte da **lore compartilhada do servidor**.\n\nQuando uma informação estiver listada aqui, ela não deve ser definida como verdade através de NPCs, documentos encontrados, revelações ou detalhes de fundo sem consulta prévia."
+        },
+        {
+          "titulo": "Limites de Lore / CURA PARA ORIPATIA",
+          "texto": "Atualmente, **não existe cura conhecida para Oripatia**.\n\nUm Mestre não deve introduzir uma cura parcial, tratamento revolucionário ou pesquisador que esteja “quase chegando lá”.\n\nPesquisas podem existir. Tentativas também.\n\nSe um personagem investigar o assunto, encontrará pessoas procurando respostas há muito tempo, inclusive com recursos e tecnologias avançadas, mas **ninguém conseguiu solucionar a doença**."
+        },
+        {
+          "titulo": "Limites de Lore / ORIGEM DO ORIGÍNEO",
+          "texto": "A origem do Origíneo permanece desconhecida.\n\nNão estabeleça **de onde ele veio, quando apareceu pela primeira vez, se é natural ou se foi criado por alguém**.\n\nTeorias podem existir dentro do mundo, mas devem continuar sendo tratadas como teorias sem comprovação.\n\nUma mesa pode investigar o Origíneo sem necessariamente descobrir a resposta para sua existência."
+        },
+        {
+          "titulo": "Limites de Lore / ARQUIVOS RESTRITOS DA ESCOLA",
+          "texto": "A existência dos **arquivos censurados da Escola Jujutsu** é pública. O conteúdo deles, não.\n\nÉ permitido mencionar que determinada informação está restrita ou que um personagem tentou solicitar acesso.\n\nO que não deve acontecer é uma mesa estabelecer o conteúdo desses arquivos, criar um documento vazado ou revelar informações internas que ainda não foram definidas pela lore.\n\nCaso um personagem tente obter acesso pelos meios oficiais, a resposta mais comum é simples: **o pedido é negado**."
+        },
+        {
+          "titulo": "Limites de Lore / A RUPTURA ENTRE ESCOLA E RHINE",
+          "texto": "Sabe-se que a Rhine Lab já trabalhou ao lado da Escola Jujutsu e que algum acontecimento provocou a separação entre as duas.\n\n**O que aconteceu não é informação definida publicamente.**\n\nNão estabeleça sozinho o verdadeiro responsável, o conteúdo do incidente ou uma revelação definitiva sobre a ruptura."
+        },
+        {
+          "titulo": "Limites de Lore / VIAGEM ESPACIAL",
+          "texto": "A humanidade possui programas espaciais e já conseguiu realizar viagens até a **Lua**.\n\nMissões, satélites, pesquisas e tecnologias relacionadas ao espaço fazem parte do cenário. Entretanto, nenhuma exploração significativa conhecida foi realizada além desse limite e **nenhuma forma de vida extraterrestre foi confirmada**.\n\nHistórias que pretendam trabalhar diretamente com **viagens espaciais, exploração além da Lua ou os limites conhecidos do espaço** precisam ser discutidas previamente com o **Rei das Maldições — Mizuki**."
+        },
+        {
+          "titulo": "Limites de Lore / NÃO EXISTE UM “CHEFE ACIMA DO CHEFE”",
+          "texto": "Não crie uma autoridade secreta acima de **Ozpin** ou da liderança principal da **Rhine Lab**.\n\nNão existe um conselho mundial oculto, fundador secreto, organização internacional superior ou entidade administrativa que controle ambas por trás das cortinas.\n\nTeorias da conspiração podem existir entre personagens. Transformá-las em verdade, não."
+        },
+        {
+          "titulo": "Limites de Lore / ORGANIZAÇÕES NOVAS CONTINUAM PERMITIDAS",
+          "texto": "Essa regra **não impede a criação de novas organizações**.\n\nMestres continuam livres para criar facções, empresas, grupos religiosos, sociedades de feiticeiros e outras instituições próprias.\n\nO limite existe quando uma criação pretende se colocar retroativamente como **autoridade superior ou controladora das principais instituições do cenário**."
+        },
+        {
+          "titulo": "Limites de Lore / NPCS QUE VOCÊ NÃO CRIOU",
+          "texto": "Você pode utilizar, mencionar e até colocar em conflito um **NPC nomeado criado por outro Mestre**, respeitando também os limites específicos de uso das instituições centrais.\n\nO que não deve fazer sem autorização é encerrar permanentemente sua história.\n\nIsso inclui:\n* matar o personagem;\n* incapacitá-lo permanentemente;\n* converter sua lealdade de maneira definitiva;\n* remover poderes ou funções importantes;\n* ou provocar qualquer mudança irreversível que afete o uso futuro daquele NPC."
+        },
+        {
+          "titulo": "Limites de Lore / QUANDO UM CONFRONTO PRECISA TERMINAR",
+          "texto": "Nem todo encontro precisa terminar com a morte ou derrota definitiva de alguém.\n\nUm NPC pode alcançar o que precisava e recuar, ser interrompido por outro acontecimento ou abandonar o confronto.\n\nTambém pode participar de uma situação em que o verdadeiro objetivo dos jogadores era **chegar, impedir, atrasar ou sobreviver**, e não necessariamente derrotá-lo.\n\nCaso queira produzir uma consequência permanente em um personagem pertencente a outro Mestre, converse com ele antes."
+        },
+        {
+          "titulo": "Limites de Lore / RASTROS NÃO SÃO PROMESSAS",
+          "texto": "Algumas informações existem no cenário apenas como **rastros, rumores ou sinais de algo maior**.\n\nEncontrar uma pista não significa automaticamente que o Mestre tenha liberdade para transformar aquilo em uma nova organização, aliado permanente ou grande arco compartilhado."
+        },
+        {
+          "titulo": "Limites de Lore / RESGATE MÉDICO CLANDESTINO",
+          "texto": "Registros mencionam possíveis **organizações clandestinas de resgate médico**.\n\nSe os jogadores encontrarem um rastro relacionado a elas, trate-o inicialmente apenas como isso: um rastro. O contato pode ter desaparecido, o endereço pode não existir mais ou as pessoas envolvidas podem ter deixado a região.\n\nEsses rastros não devem virar contato, aliado ou arco por decisão isolada de uma mesa. Consulte o **Rei das Maldições — Mizuki** antes de aprofundar esse mistério."
+        },
+        {
+          "titulo": "Limites de Lore / NA DÚVIDA, CONSULTE",
+          "texto": "Nem todo detalhe precisa de autorização. Você não precisa perguntar antes de criar cada NPC, prédio, família, inimigo ou acontecimento local que respeite as regras do servidor.\n\nA consulta é necessária quando uma decisão começa a responder algo que estava **propositalmente em aberto** ou quando passa a produzir consequências permanentes para histórias que também pertencem a outros Mestres.\n\nSe não tiver certeza se uma ideia atravessa essa linha, pergunte antes. Um ajuste feito antes da mesa evita que um **retcon** depois dela prejudique a história de todos os envolvidos."
+        }
+      ]
+    },
+    {
+      "fonte": "03-Guia-de-Mestragem/07-Oripatia/Texto-para-Discord.txt",
+      "titulo": "Oripatia",
+      "tipo": "mestragem",
+      "sha256": "3112925071777875ea002972294d2c27f7852128aa4da7edd2f3e23b519065c4",
+      "apelidos": [
+        "oripatia"
+      ],
+      "secoes": [
+        {
+          "titulo": "Oripatia em Mesa",
+          "texto": "A **Oripatia** não deve funcionar apenas como detalhe estético de um personagem.\n\nTrata-se de uma doença progressiva, incurável e diretamente afetada pelo uso de Energia Amaldiçoada, podendo gerar consequências importantes durante uma história.\n\nEste tópico reúne aquilo que o Mestre precisa considerar ao utilizar **Origíneo, contaminação e personagens Infectados** em suas mesas."
+        },
+        {
+          "titulo": "Oripatia em Mesa / COMO A CONTAMINAÇÃO ACONTECE",
+          "texto": "A Oripatia é adquirida através da exposição ao **Origíneo**.\n\nEntre as formas conhecidas de contaminação estão:\n* contato com **Origíneo bruto**;\n* contato com **Origíneo líquido**;\n* contato com **cristais contaminados**;\n* exposição ao **pó liberado pelos cristais**;\n* ou proximidade prolongada com uma pessoa Infectada.\n\nA doença pode atingir qualquer pessoa, possua ela Energia Amaldiçoada ou não.\n\nO contexto da exposição deve ser levado em consideração pelo Mestre. Nem toda cena envolvendo um Infectado precisa automaticamente se transformar em contaminação."
+        },
+        {
+          "titulo": "Oripatia em Mesa / ENERGIA AMALDIÇOADA ACELERA A DOENÇA",
+          "texto": "O Origíneo possui energia própria, mas também consegue consumir a **Energia Amaldiçoada presente no organismo** para acelerar seu crescimento.\n\nIsso significa que um feiticeiro Infectado precisa lidar com uma escolha particularmente perigosa:\n\n**quanto mais Energia Amaldiçoada utiliza, mais rapidamente sua Oripatia pode avançar.**\n\nTécnicas poderosas, confrontos prolongados e situações que forcem grandes gastos de energia podem, portanto, possuir consequências muito maiores para um personagem Infectado.\n\nEsse risco deve ser informado ao jogador e utilizado como parte real da condição, não apenas como detalhe narrativo."
+        },
+        {
+          "titulo": "Oripatia em Mesa / ENERGIA REVERSA NÃO CURA ORIPATIA",
+          "texto": "**Energia Reversa não remove Origíneo do organismo.**\n\nEla pode regenerar os tecidos feridos ao redor das formações e até fazer a pele crescer novamente sobre os cristais, mas a causa da doença continua presente.\n\n**Curar o ferimento não significa curar a Oripatia.**\n\nTécnicas de cura podem ajudar o personagem a sobreviver às consequências físicas da doença, mas não devem ser utilizadas para apagar sua condição."
+        },
+        {
+          "titulo": "Oripatia em Mesa / ESTÁGIO FINAL E CRISTALIZAÇÃO",
+          "texto": "Conforme a Oripatia avança, o Origíneo ocupa progressivamente o organismo até que grandes áreas do corpo possam ser cristalizadas.\n\nEm estágios extremos, o próprio corpo se torna um risco de contaminação.\n\nOs cristais continuam armazenando energia e podem liberar **pó e fragmentos capazes de espalhar a doença**, razão pela qual corpos de Infectados cristalizados exigem procedimentos de contenção muito mais rigorosos do que o normal.\n\nUm corpo cristalizado não deve ser tratado como um cadáver comum."
+        },
+        {
+          "titulo": "Oripatia em Mesa / UTILIZANDO ORIPATIA EM UMA HISTÓRIA",
+          "texto": "Oripatia pode criar situações muito interessantes, mas também representa uma consequência duradoura para um personagem.\n\nCaso um jogador escolha começar como Infectado, ele deve saber que **gastar Energia Amaldiçoada pode acelerar sua condição**.\n\nDa mesma forma, se um personagem for contaminado durante uma mesa, o jogador precisa ser informado claramente sobre a consequência e sobre o funcionamento básico da doença.\n\nO objetivo não é utilizar Oripatia como uma punição surpresa, mas como uma condição com peso real dentro da história."
+        }
+      ]
+    },
+    {
+      "fonte": "03-Guia-de-Mestragem/08-Consulta/Texto-para-Discord.txt",
+      "titulo": "Consulta",
+      "tipo": "mestragem",
+      "sha256": "51d981d403b419bb7437e33e426d67565c544f37109ac4e15c8f20a63f0a4f40",
+      "apelidos": [
+        "consulta"
+      ],
+      "secoes": [
+        {
+          "titulo": "Consulta",
+          "texto": "Este tópico existe para dúvidas relacionadas à **mestragem, lore e criação de histórias** dentro da Era da Revolução.\n\nCaso você não tenha certeza se uma ideia pode ser utilizada, se determinado elemento pode ser alterado ou se uma história está começando a interferir na lore compartilhada, pergunte aqui antes de definir algo em mesa.\n\nNem toda dúvida precisa chegar diretamente ao **Rei das Maldições — Mizuki**. Outros Mestres, Arquivistas e membros responsáveis podem ajudar quando a resposta já estiver estabelecida nos registros do servidor."
+        },
+        {
+          "titulo": "Consulta / QUANDO UTILIZAR ESTE TÓPICO",
+          "texto": "Você pode utilizar este espaço para dúvidas como:\n* “Posso criar uma organização com esse objetivo?”\n* “Essa cidade já possui alguma informação estabelecida?”\n* “Posso utilizar esse NPC em uma mesa?”\n* “Essa ideia interfere na Escola Jujutsu ou na Rhine Lab?”\n* “Isso contradiz alguma informação existente?”\n* “Posso aprofundar essa região?”\n* “Esse acontecimento teria impacto grande demais para uma única mesa?”\n* “Essa informação é pública, restrita ou desconhecida dentro do universo?”\n\nTambém é possível apresentar uma ideia antes de começar a desenvolvê-la, para confirmar se existe algum limite importante que precisa ser considerado."
+        },
+        {
+          "titulo": "Consulta / ANTES DE PERGUNTAR",
+          "texto": "Sempre que possível, consulte primeiro os outros tópicos deste fórum e os registros de lore relacionados ao assunto.\n\nMuitas respostas já podem estar disponíveis em **Missões e Procedimentos**, **Progressão**, **Criando Histórias no Mundo**, **Escola Jujutsu e Rhine Lab**, **Limites de Lore**, **Oripatia em Mesa** ou no fórum de **Regiões Extras**: [canal indicado no servidor].\n\nCaso a dúvida continue depois disso, pode perguntar normalmente."
+        },
+        {
+          "titulo": "Consulta / QUANDO CHAMAR O REI DAS MALDIÇÕES",
+          "texto": "O **Rei das Maldições — Mizuki** deve ser consultado quando a dúvida envolver:\n* mudanças importantes na **lore geral**;\n* trabalho com a Escola Jujutsu ou a Rhine Lab;\n* mistérios propositalmente deixados em aberto;\n* acontecimentos com impacto sobre várias mesas;\n* grandes alterações em regiões já estabelecidas;\n* viagens espaciais, exploração além da Lua ou os limites conhecidos do espaço;\n* ou situações em que ainda não exista uma resposta oficial.\n\nA ideia não é limitar a criação dos Mestres, mas evitar que duas histórias estabeleçam respostas incompatíveis para a mesma parte do mundo."
+        }
+      ]
+    }
+  ]
+}

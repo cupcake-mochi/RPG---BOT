@@ -1,5 +1,9 @@
 # RPG---BOT
 
+Atualização de mundo preparada: [fontes autorizadas da Era da Revolução](Closure/dados/mundo/LEIA-ME.md)
+para Kal'tsit e Closure, sem as três pastas excluídas pelo criador. Publicação
+separada da integração B47 já instalada.
+
 Bot de Discord da guilda do **Ciclo Maldito**: tira dúvida de regra, corrige ficha e conversa
 na voz de uma personagem de Arknights (Kal'tsit de dia, Closure de noite).
 

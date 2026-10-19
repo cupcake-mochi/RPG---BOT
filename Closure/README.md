@@ -1,5 +1,11 @@
 # Closure
 
+**Conhecimento de mundo · preparado em 18/10:** as duas guias consultam 31 textos
+autorizados do consolidado da Era da Revolução, com recortes e origem por assunto.
+Reservado Mizuki, Registros Complementares e Recursos Visuais não entram.
+[Fontes, limites e atualização](dados/mundo/LEIA-ME.md). Esta alteração ainda
+não foi implantada; a publicação B47 registrada abaixo é anterior.
+
 **B47 · etapa publicada e conferida em 18/10/2026:** código `40d32a7` da
 branch `codex/integracao-b47` instalado na Discloud com autorização do usuário.
 Online em cinco servidores; backup final confirmou os 67 arquivos do pacote
