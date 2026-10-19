@@ -51,8 +51,12 @@ salva ou os espelhos não alcançaram o JSON. Nesse caso:
 - JSON quebrado não é transição: é erro de formato.
 
 O "último registro consistente" é a versão preparada que a própria ficha
-guarda. **Decisão a confirmar:** o bot não grava conteúdo de ficha entre
-análises, porque a `docs/PRIVACIDADE.md` não cobre esse armazenamento.
+guarda. **Decidido com o Mizuki em 19/10:** o bot não grava conteúdo de ficha
+entre análises (a ficha já guarda as versões, uma cópia ficaria velha e a
+`docs/PRIVACIDADE.md` não cobre esse armazenamento). Possível próximo passo, se
+fizer falta: guardar só um resumo por cartão (id, classe, hash da versão,
+veredito) numa tabela do `bot.sqlite3`, para mostrar o que mudou desde a última
+análise sem guardar conteúdo.
 
 ## Aprovações e migração
 
