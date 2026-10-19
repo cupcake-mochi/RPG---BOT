@@ -4,6 +4,19 @@ Fonte: `Era_da_Revolucao_Consolidado.zip`, enviado pelo Mizuki em 18/10/2026.
 O JSON registra o hash do arquivo e o caminho/hash de cada texto autorizado.
 São **31 documentos e 228 seções**, importados sem consulta a modelos.
 
+**Índice v2 — correção dos nomes:** títulos como
+`Shiki Zen'in — Capo dei capi de Volsinii:` geram o nome completo e a forma
+curta segura, sem perder a entrada por causa dos dois-pontos. Apóstrofos
+tipográficos e a escrita sem apóstrofo são normalizados. Formas curtas só são
+inferidas de cargo pessoal reconhecido ou parentesco publicado, e são
+descartadas quando outro nome completo cria ambiguidade. Rótulos como
+“Capital”/“Localização” não viram personagens ou localidades.
+
+Uma consulta a uma pessoa/localidade prioriza os trechos que realmente a
+mencionam. Não casa um nome pelo prefixo de outra palavra. Os testes conferem
+todos os nomes do índice regional (341 consultas nesta revisão) e comparam o
+JSON autorizado com os dados embutidos no núcleo, detectando pacote desatualizado.
+
 Lista positiva de importação:
 
 - `01-Regioes-Extras/*/Texto-para-Discord.txt`: índice e 20 registros regionais.
@@ -62,6 +75,12 @@ gerado embute os trechos e a busca; **regenerá-lo antes de empacotar**. O bot
 instalado consulta tudo localmente, sem instalar um banco novo ou fazer uma
 chamada adicional ao modelo para recuperar conhecimento. Os trechos aumentam
 o contexto somente nas perguntas que os ativam.
+
+Se somente o índice precisar de correção e o ZIP de origem não estiver
+disponível, `python3 ferramentas/importar_mundo.py --reindexar` usa os textos
+autorizados já salvos no JSON. Preserva conteúdo, caminhos e hashes das fontes;
+depois é obrigatório regenerar o núcleo e executar os mesmos testes/pacote.
+Esta opção não procura outros arquivos nem recupera pastas excluídas.
 
 Testes locais conferem importação/exclusão, consulta das duas guias, viagens,
 capitais, mistérios, procedimentos, continuação, mudança de assunto e igualdade

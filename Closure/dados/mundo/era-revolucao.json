@@ -1,5 +1,5 @@
 {
-  "versao": "era-2026-10-18-v1",
+  "versao": "era-2026-10-18-v2",
   "arquivo_sha256": "b0a2c4ab1995ca8c176000898a85cbc28029dae252987e6fc3c29b0aa04eaa07",
   "pastas_permitidas": [
     "01-Regioes-Extras",
@@ -397,6 +397,7 @@
       "apelidos": [
         "brunello",
         "capo dei capi de volsinii",
+        "cellinia",
         "cellinia texas",
         "cittanova",
         "famiglia sicilia",
@@ -405,6 +406,9 @@
         "nuova volsinii",
         "palermo",
         "sette colli",
+        "shiki",
+        "shiki zen'in",
+        "shiki zenin",
         "sicilia",
         "signora sicilia",
         "siracusa",
@@ -461,6 +465,7 @@
         "kerthun valley",
         "long spring",
         "menat-ha'mait",
+        "menat-hamait",
         "phecon",
         "redhorn",
         "reefsteep",
@@ -560,12 +565,14 @@
         "karlan square",
         "karlan trade",
         "kjerag",
+        "kjerag staatbahn",
         "kjeragandr",
         "lake silberneherze",
         "mount filnona",
         "mount fugen",
         "mount jungfrau",
         "mount karlan",
+        "mount karlan e hoff angrsaal",
         "mount matterhorn",
         "reino da neve",
         "turicum"
@@ -608,6 +615,7 @@
       "sha256": "a5e318b817067936aa5e016031d1fa1468dc9edaa63645aa6f6b2d1cab09bd02",
       "apelidos": [
         "landen monastery",
+        "lateran city",
         "laterano",
         "notarial hall",
         "pagus ambrosius",
@@ -670,7 +678,6 @@
         "orvieto",
         "perdoni",
         "perdonidora",
-        "primavera",
         "profound silence",
         "puerto orgullo",
         "real-iberia",
@@ -754,6 +761,7 @@
       "tipo": "regiao",
       "sha256": "19f8d27f79aa8b5ab550b316b87f7f87431ad45ac9c4a2cd88fe4f78820133f8",
       "apelidos": [
+        "interior de sami",
         "polo norte",
         "sami"
       ],
@@ -829,6 +837,7 @@
       "apelidos": [
         "baizao",
         "chamber of heaven's designs",
+        "chamber of heavens designs",
         "changji",
         "cidade dos incontaveis fogoes",
         "dahuang",
@@ -839,16 +848,20 @@
         "jiangqi",
         "k'u-t'an river",
         "kou-wu",
+        "ku-tan river",
         "langyi",
         "lungmen",
         "mangshan",
         "michu",
         "mount hui-ch'i",
+        "mount hui-chi",
         "mount t'ien",
+        "mount tien",
         "moushan",
         "nanwu",
         "ni-weng",
         "p'o-shan",
+        "po-shan",
         "shangshu",
         "three mounts and seventeen peaks",
         "true lung",
@@ -940,8 +953,14 @@
       "apelidos": [
         "bleached wasteland",
         "kazdel",
+        "norte do sorrow's ground",
+        "norte do sorrows ground",
         "sarkaz",
-        "sorrow's ground"
+        "sarkaz royal court",
+        "sorrow's ground",
+        "sorrows ground",
+        "sul do sorrow's ground",
+        "sul do sorrows ground"
       ],
       "secoes": [
         {
@@ -1022,9 +1041,11 @@
       "tipo": "regiao",
       "sha256": "46cb36d5cd7f269b4e64f1933eb3f45d7600b1ab8d4de82205562db387afe490",
       "apelidos": [
+        "ancestral gaze",
         "calais",
         "calais-blason",
         "departements",
+        "estepes orientais de ursus",
         "gaul e nightzmora",
         "khaganquest",
         "kharanduu khagan, o grande khagan",

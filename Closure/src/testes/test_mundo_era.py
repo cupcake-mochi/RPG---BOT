@@ -15,6 +15,26 @@ import site_prompt
 
 
 class ImportacaoSeletiva(unittest.TestCase):
+    def test_nomes_com_cargo_dois_pontos_e_apostrofo_nao_sao_descartados(self):
+        nomes, curtos = importar_mundo.nomes_publicados("**Localização:** exemplo\n* **Capital:** **Montelupe**.\n* **Capital — Atual:** exemplo.\n* **Expansão Urbana:** exemplo.\n* **Volsinii:** cidade.\n* **Shiki Zen’in — Capo dei capi de Volsinii:** personagem.\n**Cellinia Texas**, sua namorada.\n**Northern Court**.\n* **Porto Lungmen — Distrito comercial:** local fictício de teste.")
+        self.assertTrue({"montelupe", "volsinii", "shiki zen'in", "shiki zenin", "cellinia texas"} <= nomes)
+        self.assertEqual(curtos, {"shiki": {"shiki zen'in"}, "cellinia": {"cellinia texas"}})
+        self.assertFalse({"capital", "expansao urbana", "localizacao", "northern"} & nomes)
+
+    def test_reindexacao_preserva_fontes_e_nao_cria_abreviacao_ambigua(self):
+        dados = {"arquivo_sha256": "original", "documentos": [
+            {"fonte": f"01-Regioes-Extras/0{i}-Teste/Texto-para-Discord.txt", "tipo": "regiao", "titulo": f"Teste{i}", "sha256": "fonte", "secoes": [{"titulo": "Política", "texto": texto}]}
+            for i, texto in enumerate(("* **Shiki Zen'in — Conselheiro:** pessoa.", "* **Shiki Tanaka:** outra pessoa."), 1)]}
+        antes = json.loads(json.dumps(dados))
+        depois = importar_mundo.reindexar(dados)
+        self.assertEqual(dados, antes)
+        self.assertEqual(depois["arquivo_sha256"], "original")
+        for original, novo in zip(dados["documentos"], depois["documentos"]):
+            self.assertEqual(original["secoes"], novo["secoes"])
+            self.assertEqual(original["sha256"], novo["sha256"])
+            self.assertNotIn("shiki", novo["apelidos"])
+        self.assertEqual(importar_mundo.reindexar(depois), depois)
+
     def criar(self, pasta, extras=()):
         caminho = Path(pasta) / "fonte.zip"
         with zipfile.ZipFile(caminho, "w") as z:
@@ -152,11 +172,64 @@ class ConsultaEra(unittest.TestCase):
         _, ctx = self.consultar("Qual é a história de Londinium?")
         self.assertIn("The Shard", ctx)
 
+    def test_shiki_e_variantes_recuperam_situacao_atual_nas_duas_guias(self):
+        for pers in ("kal", "clo"):
+            for nome in ("Shiki", "Shiki Zen'in", "Shiki Zen’in", "Shiki Zenʼin", "Shiki Zenin", "SHÍKI ZEN'IN"):
+                with self.subTest(pers=pers, nome=nome):
+                    p, ctx = self.consultar("Quem é " + nome + "?", pers)
+                    era = [n for n in p["ativadas"] if n.startswith("Era:")]
+                    self.assertIn("Situação Atual — Siracusano II", era[0])
+                    for fato in ("Capo dei capi de Volsinii", "nem substitui a autoridade nacional", "Signora Sicilia", "Cellinia Texas", "sua namorada"):
+                        self.assertIn(fato, ctx)
+                    self.assertNotIn("Siracusa / Apresentação", "\n".join(era))
+
+    def test_nomes_de_pessoas_e_locais_priorizam_o_trecho_proprio(self):
+        casos = [("Cellinia", "Situação Atual"), ("Cellinia Texas", "Situação Atual"),
+                 ("Londinium", "Capital"), ("Montelupe", "Capital"), ("Max D.C.", "Capital"),
+                 ("Volsinii", "Regiões e Cidades de Importância"), ("Zeruertza", "Cidades e Localidades de Importância")]
+        for nome, secao in casos:
+            with self.subTest(nome=nome):
+                p, _ = self.consultar("Fale sobre " + nome)
+                era = [n for n in p["ativadas"] if n.startswith("Era:")]
+                self.assertIn(secao, era[0])
+                self.assertNotIn("/ Apresentação", era[0])
+
+    def test_nomes_nao_casam_por_prefixo_e_rotulos_nao_ativam_lore(self):
+        for q in ("O que é Shikigami?", "Qual é a capital do Texas?", "Qual a localização?", "O centro religioso da minha cidade", "Northern é uma palavra em inglês?", "Expansão urbana é tema da minha aula"):
+            with self.subTest(q=q):
+                p, ctx = self.consultar(q)
+                self.assertNotIn("Shiki Zen'in", ctx)
+                self.assertFalse(any(n.startswith("Era:") for n in p["ativadas"]))
+
+    def test_indice_embutido_corresponde_ao_json_atual(self):
+        dados_embutidos = json.loads(site_prompt.nucleo().read_text().split("const D = ", 1)[1].split(";\n", 1)[0])
+        self.assertEqual(dados_embutidos["mundo"], json.loads(importar_mundo.SAIDA.read_text()))
+
+    def test_todos_os_nomes_indexados_recuperam_a_fonte_correspondente(self):
+        import quickjs
+        contexto = quickjs.Context()
+        contexto.set_time_limit(30)
+        contexto.eval((site_prompt.AQUI / "antes.js").read_text() + site_prompt.nucleo().read_text())
+        auditoria = json.loads(contexto.eval('''JSON.stringify((() => {
+          const falhas = []; let casos = 0;
+          for (const d of D.mundo.documentos.filter(d => d.tipo === "regiao" && d.titulo !== "Terra Indice")) {
+            for (const nome of d.apelidos) {
+              casos++;
+              const resultado = consultarMundo("Fale sobre " + nome);
+              if (!resultado.nomes.some(n => n.startsWith("Era: " + d.titulo + " /")))
+                falhas.push({nome, fonte: d.titulo, recuperadas: resultado.nomes});
+            }
+          }
+          return {casos, falhas};
+        })())'''))
+        self.assertGreater(auditoria["casos"], 300)
+        self.assertEqual(auditoria["falhas"], [])
+
     def test_o_material_privado_nao_esta_no_nucleo_publicavel(self):
         nucleo = site_prompt.nucleo().read_text()
         for pasta in ("04-Reservado-Mizuki", "05-Registros-Complementares", "06-Recursos-Visuais"):
             self.assertNotIn(pasta, nucleo)
-        self.assertIn('"mundo": "era-2026-10-18-v1"', nucleo)
+        self.assertIn('"mundo": "era-2026-10-18-v2"', nucleo)
 
     def test_repeticao_de_fato_publicado_nao_vira_bordao_proibido(self):
         frase = "Não possui uma capital nacional conhecida."

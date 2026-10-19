@@ -1,5 +1,5 @@
 // Fontes autorizadas pelo Mizuki; consulta local, sem chamada a modelo ou rede.
-const mundoNorm = s => STRIP(s.toLowerCase().replace(/æ/g, "ae"));
+const mundoNorm = s => STRIP(s.toLowerCase().replace(/['’‘ʼ＇]/g, "").replace(/æ/g, "ae").replace(/ß/g, "ss"));
 const MUNDO_ROTAS = [
   ["Terra Indice", ["geografia do mundo", "regioes do mundo", "segundo plano", "portais permanentes", "mundo convencional", "cidades moveis", "catastrofe", "catastrofes", "lua", "espacial", "extraterrestre", "extraterrestres"]],
   ["Lore do Mundo", ["equilibrio", "rhine", "kristen", "oripatia", "origineo", "infectado", "infectados", "winter scar", "frostnova", "incidente de columbia", "mansfield", "reunion", "zona de silencio"]],
@@ -16,7 +16,7 @@ const MUNDO_ROTAS = [
 const MUNDO_PARADA = new Set(("a o os as de da do das dos em na no nas nos e ou um uma com sem por para pra que qual quais como onde quem quando quanto sobre voce ela ele isso esse essa meu minha sua seu esta este tem sao foi ser pode posso quero saber fale fala explica explique conte mais mundo regiao cidade capital historia acesso chegar existe fica funciona nivel energia amaldicoada mestre mestra mesa jogo livro" ).split(" "));
 const mundoPalavras = s => [...new Set(mundoNorm(s).match(/[a-z0-9]+/g) || [])].filter(w => w.length > 2 && !MUNDO_PARADA.has(w));
 const MUNDO_DOCS = D.mundo.documentos.map(d => ({ ...d, nome: mundoNorm(d.titulo),
-  apelidos: [...new Set((/^(Consulta|Comece Aqui)$/.test(d.titulo) ? [] : d.apelidos).filter(k => k !== "primavera").concat((MUNDO_ROTAS.find(r => r[0] === d.titulo) || [null, []])[1], d.titulo === "Gaul e Nightzmora" ? ["gaul", "nightzmora"] : []))].map(k => [k, BORDA(k)]),
+  apelidos: [...new Set((/^(Consulta|Comece Aqui)$/.test(d.titulo) ? [] : d.apelidos).filter(k => k !== "primavera").concat((MUNDO_ROTAS.find(r => r[0] === d.titulo) || [null, []])[1], d.titulo === "Gaul e Nightzmora" ? ["gaul", "nightzmora"] : []).map(mundoNorm))].map(k => [k, BORDA(k)]),
   secoes: d.secoes.map((s, i) => ({ ...s, i, palavras: mundoPalavras(s.titulo + " " + s.texto), tituloNorm: mundoNorm(s.titulo), textoNorm: mundoNorm(s.texto) }))
 }));
 
@@ -26,14 +26,23 @@ function consultarMundo(msg, anteriores = []) {
   if (/^(?:e |mas |como assim|por que|porque|entao |la\b)/.test(texto) && mundoPalavras(msg).length <= 3 && anteriores.length)
     texto = mundoNorm(semIdioma(anteriores[anteriores.length - 1])) + " " + texto;
   const palavras = mundoPalavras(texto);
-  const docs = MUNDO_DOCS.map(d => ({d, chaves: d.apelidos.filter(([k, re]) => re.test(texto)).map(([k]) => k)})).filter(x => x.chaves.length);
+  const docs = MUNDO_DOCS.map(d => {
+    const hits = d.apelidos.filter(([k, re]) => re.test(texto)).map(([k]) => k);
+    return {d, chaves: hits.filter(k => !hits.some(outro => outro.length > k.length && BORDA(k).test(outro)))};
+  }).filter(x => x.chaves.length);
   if (!docs.length) return { texto: "", nomes: [] };
   const candidatos = [];
   for (const {d, chaves} of docs) {
     const regiao = d.tipo === "regiao" && d.titulo !== "Terra Indice";
     const nomeExplicito = BORDA(d.nome).test(texto);
     for (const s of d.secoes) {
+      // Um nome de pessoa/localidade aponta para seu trecho, não para a introdução
+      // da região. O nome da própria região mantém a consulta geográfica ampla.
+      const nomesCitados = regiao ? chaves.filter(k => k !== d.nome) : [];
+      const mencao = nomesCitados.some(k => BORDA(k).test(s.textoNorm) || BORDA(k).test(s.tituloNorm));
+      if (regiao && !nomeExplicito && !mencao) continue;
       let pontos = d.tipo === "mestragem" && chaves.some(k => k.length > 10) ? 5 : 0;
+      if (mencao) pontos += 30;
       for (const p of palavras) {
         if (s.palavras.includes(p)) pontos += 2;
         if (BORDA(p).test(s.tituloNorm)) pontos += 5;

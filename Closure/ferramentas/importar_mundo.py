@@ -6,6 +6,7 @@ Uso: python3 ferramentas/importar_mundo.py CAMINHO.zip
 from __future__ import annotations
 
 import hashlib
+import copy
 import json
 import re
 import sys
@@ -17,10 +18,67 @@ RAIZ = Path(__file__).resolve().parents[1]
 SAIDA = RAIZ / "dados" / "mundo" / "era-revolucao.json"
 PASTAS = {"01-Regioes-Extras": "regiao", "02-Canais-Publicos": "publico", "03-Guia-de-Mestragem": "mestragem"}
 PREFIXO = "Era_da_Revolucao_Consolidado"
+VERSAO = "era-2026-10-18-v2"
 
 
 def normalizar(texto: str) -> str:
+    texto = texto.translate(str.maketrans("’‘ʼ＇", "''''"))
     return "".join(c for c in unicodedata.normalize("NFD", texto.casefold().replace("æ", "ae")) if unicodedata.category(c) != "Mn")
+
+
+def nomes_publicados(texto: str) -> tuple[set[str], dict[str, set[str]]]:
+    """Nomes em negrito e títulos nome — cargo; rótulos editoriais não são nomes."""
+    nomes, curtos = set(), {}
+    rotulo = re.compile(r"^(?:localizacao|acesso|capital|capitais|cidades?|vilas?|regiao|regioes|territorios?|distritos?|grandes|estado associado|antiga capital|centro religioso|principal centro|governoratos|condados|prefeituras|assentamentos|divisao|divisoes|fortificacoes|localidade|localidades|local religioso|igrejas|marco historico|formacao|montanhas|rios|lago|consulta|registros individuais|conhecimento do personagem|aprofundamento|nivel|niveis|os nove|as tres|outras cidades|expansao urbana)\b")
+    for m in re.finditer(r"\*\*([^*\n]+)\*\*", texto):
+        bruto = m[1].strip()
+        nome = bruto.rstrip(":").strip()
+        composto = re.split(r"\s+[—–]\s+", nome, maxsplit=1)
+        pessoa_com_cargo = len(composto) == 2 and bool(re.search(r"\b(?:capo|conselheir[oa]|diretor[a]?|governador[a]?|presidente|lider|comandante|chefe|rei|rainha|imperador|imperatriz|representante)\b", normalizar(composto[1])))
+        if len(composto) == 2:
+            nome = composto[0]
+        n = normalizar(nome)
+        if (not 4 <= len(nome) <= 60 or not nome[0].isupper() or ":" in nome
+                or n in {"norte", "sul", "desconhecida", "lago", "montanhas", "rios", "locomotiva", "cidade de ouro", "basilica", "era da revolucao", "primavera"}
+                or n.startswith(("rei das maldicoes", "nao possui", "assentamento sem nome", "santa reconhecida"))):
+            continue
+        if bruto.endswith(":") and rotulo.match(n):
+            continue
+        nomes.add(n)
+        if "'" in n:
+            nomes.add(n.replace("'", ""))
+        # Abrevia apenas pessoas identificadas pelo cargo ou parentesco publicado.
+        # Não transforma Northern Court em Northern, Max D.C. em Max ou uma
+        # localidade com descrição (Porto Lungmen — Distrito comercial) em Porto.
+        parentesco = re.match(r",\s+(?:sua|seu)\s+(?:namorad[oa]|mae|pai|irma[oa]?|tutor[a]?)\b", normalizar(texto[m.end():]))
+        partes = nome.split()
+        if (pessoa_com_cargo or parentesco) and len(partes) >= 2:
+            primeiro = normalizar(partes[0])
+            if len(primeiro) >= 4 and primeiro not in {"signora", "senhor", "senhora", "mount", "lake", "saint", "north", "northern", "south", "southern", "grand"}:
+                curtos.setdefault(primeiro, set()).add(n)
+    return nomes, curtos
+
+
+def reindexar(dados: dict) -> dict:
+    """Recria apenas o índice do corpus autorizado já salvo; não acessa o ZIP."""
+    saida = copy.deepcopy(dados)
+    abreviacoes, indices = {}, {}
+    for i, doc in enumerate(saida["documentos"]):
+        if doc["fonte"].split("/")[0] not in PASTAS:
+            raise ValueError("documento fora da lista permitida")
+        if doc["tipo"] == "regiao" and not doc["fonte"].split("/")[1].startswith("00-"):
+            nomes, curtos = nomes_publicados("\n\n".join(s["texto"] for s in doc["secoes"]))
+            indices[i] = (nomes, curtos)
+            # Considera também homônimos sem cargo/parentesco, não só os nomes
+            # que ganharam uma forma curta. Apóstrofos não criam outra pessoa.
+            for nome in nomes:
+                if " " in nome:
+                    abreviacoes.setdefault(nome.split()[0], set()).add(nome.replace("'", ""))
+    for i, doc in enumerate(saida["documentos"]):
+        nomes, curtos = indices.get(i, (set(), {}))
+        doc["apelidos"] = sorted(nomes | {normalizar(doc["titulo"])} | {c for c in curtos if len(abreviacoes[c]) == 1})
+    saida["versao"] = VERSAO
+    return saida
 
 
 def limpar(texto: str) -> str:
@@ -90,26 +148,17 @@ def importar(caminho: Path) -> dict:
             if not texto:
                 raise ValueError("fonte vazia: " + item.filename)
             titulo = re.sub(r"^\d+-", "", p.parts[2]).replace("-", " ")
-            apelidos = [titulo]
-            if PASTAS[p.parts[1]] == "regiao" and not p.parts[2].startswith("00-"):
-                # Nomes próprios publicados em negrito, inclusive cidades sem ficha própria.
-                for nome in re.findall(r"\*\*([^*\n]+)\*\*", texto):
-                    if (4 <= len(nome) <= 45 and nome[0].isupper() and ":" not in nome
-                            and normalizar(nome) not in {"norte", "sul", "desconhecida", "lago", "montanhas", "rios", "locomotiva", "cidade de ouro", "basilica", "era da revolucao"}
-                            and not normalizar(nome).startswith(("rei das maldicoes", "nao possui", "assentamento sem nome", "santa reconhecida"))):
-                        apelidos.append(nome)
             documentos.append({"fonte": "/".join(p.parts[1:]), "titulo": titulo,
                                "tipo": PASTAS[p.parts[1]], "sha256": hashlib.sha256(bruto).hexdigest(),
-                               "apelidos": sorted(set(normalizar(n) for n in apelidos)),
                                "secoes": dividir(texto, titulo)})
     if not documentos or set(d["tipo"] for d in documentos) != set(PASTAS.values()):
         raise ValueError("consolidado sem as três categorias públicas esperadas")
-    return {"versao": "era-2026-10-18-v1", "arquivo_sha256": hashlib.sha256(caminho.read_bytes()).hexdigest(),
-            "pastas_permitidas": list(PASTAS), "documentos": documentos}
+    return reindexar({"arquivo_sha256": hashlib.sha256(caminho.read_bytes()).hexdigest(),
+                     "pastas_permitidas": list(PASTAS), "documentos": documentos})
 
 
 if __name__ == "__main__":
-    dados = importar(Path(sys.argv[1]))
+    dados = reindexar(json.loads(SAIDA.read_text(encoding="utf-8"))) if sys.argv[1] == "--reindexar" else importar(Path(sys.argv[1]))
     SAIDA.parent.mkdir(parents=True, exist_ok=True)
     SAIDA.write_text(json.dumps(dados, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"{len(dados['documentos'])} documentos; {sum(len(d['secoes']) for d in dados['documentos'])} seções; {SAIDA}")
