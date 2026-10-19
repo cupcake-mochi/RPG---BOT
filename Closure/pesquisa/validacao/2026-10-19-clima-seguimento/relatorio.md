@@ -36,6 +36,34 @@ subcasos/asserções (`regressao-antes.log`).
   existente, sem tornar a leitura permissiva ou alterar cache.
 
 Passaram 100 testes direcionados de clima/Discord, também 100 no código
-extraído do ZIP, incluindo as três regressões. Suíte completa e publicação
-serão registradas após conclusão. Ensaios sem IA;
+extraído do ZIP, incluindo as três regressões. **Suíte completa: 849 executados, 848 aprovados e um online opcional pulado**,
+224,401 s, sem falhas/erros (`suite-completa.log`); fontes sincronizados no
+runtime local com as mesmas dependências. Publicação será registrada após
+conferência. Código checkpoint `a1f10ab`. Ensaios sem IA;
 não certificam a resposta generativa final nem disponibilidade futura das APIs.
+
+## Publicação autorizada e verificação na hospedagem
+
+Código `a1f10abacdde03939ea46af5acf09acf0bc1fe7b`, mesma branch/PR 66, sem merge.
+Pacote aplicado ao app existente 1773761486581; startup **19/10 às 00:08:04**,
+Brasília, online em cinco servidores. Sem Error/Fatal; avisos de bibliotecas de
+voz preexistentes. Mantidos 1.000 MB. Console desconectado ao terminar.
+
+**11/11 verificações passaram com APIs reais na Discloud**: SP → “E de BH?” →
+Curitiba, mudança de assunto, ausência de assunto, quatro comandos incluindo a
+frase exata da captura, mesma consulta usada pela barra e lugar inexistente.
+O handler real `Atalho.on_message`/`ComandoClima.consultar` foi executado com
+saída capturada localmente; nenhuma mensagem enviada ao Discord. As regressões
+de conversa exercitam `Chat.on_message` com modelo/rede simulados nos 100 testes;
+na hospedagem o contexto de continuação foi verificado com rede real.
+Isso não certifica a fala de um modelo. `console-publicado.txt/.jpg`.
+
+ZIP: 67 arquivos, somente clima.py/cogs/chat.py/cogs/clima.py diferentes do
+pacote anterior; sem credenciais, banco/campanha. SHA256
+`b96294fde90171fb030c8adc5d2402fe265a311138f4987ed892d31d7a613339`.
+Backups privados fora do Git e conferência agregada em
+`conferencia-publicacao.json`. Não repetir publicação por rotina.
+
+Conferência final: **67/67 arquivos iguais ao ZIP**; `.env`, os dois bancos e
+cadastro de campanha idênticos ao backup anterior. Esquemas iguais e
+`quick_check` ok nos dois bancos. Nenhum conteúdo privado no registro agregado.

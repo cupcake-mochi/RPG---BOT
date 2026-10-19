@@ -1,5 +1,14 @@
 # src: código do bot
 
+**Continuação do clima · publicada em 19/10 às 00:08:** “E de BH?” depois de
+SP e trocas sucessivas de cidade consultam os dados corretos. `GC:clima` aceita
+pergunta inteira, incluindo a frase da captura. Suíte: 849 executados, 848
+aprovados e um opcional pulado; 100 testes direcionados no ZIP; 11 verificações
+na Discloud com dados reais, comandos com saída capturada e sem IA/Discord.
+Esses fluxos não estavam cobertos na bateria anterior. Fala generativa e
+disponibilidade de modelos continuam separadas.
+Evidência: `pesquisa/validacao/2026-10-19-clima-seguimento/`.
+
 **Clima atual de BH · publicado em 18/10 às 23:49:** o extrator aceita
 atual/hoje/agora antes de de/do/da no assunto do clima, evitando a cidade padrão
 indevida. 844/843/1 opcional na suíte; 35 testes no ZIP e 12 verificações na

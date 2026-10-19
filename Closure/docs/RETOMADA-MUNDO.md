@@ -71,6 +71,21 @@ permanecem preservados. Última tentativa do usuário teve timeouts do Gemini
 (12 s) e Vertex (60 s), independentes da extração. Fila/prazos não mudaram.
 Evidência: `pesquisa/validacao/2026-10-18-clima-bh/`. Não repetir publicação.
 
+## Estado mais recente — continuação e comandos de clima
+
+Código publicado **a1f10ab**, startup 19/10 às **00:08:04** em cinco servidores.
+“E de BH?” depois de SP e cadeias de cidades recebem contexto; mudar de assunto
+encerra sequência. GC:clima e /clima aceitam a pergunta inteira. Sem banco novo,
+modelo para localizar cidade ou alteração de personalidade. Esses casos não
+estavam cobertos na bateria anterior; reprodução e regressões específicas salvas.
+**849 executados/848 aprovados/1 opcional**, 100 direcionados no ZIP e 11/11 na
+Discloud com APIs reais, comandos com saída local, sem mensagem ou IA.
+Evidência: `pesquisa/validacao/2026-10-19-clima-seguimento/`. ZIP atual:
+`entregas/closure-lab-clima-seguimento-2026-10-19.zip`, SHA256
+`b96294fde90171fb030c8adc5d2402fe265a311138f4987ed892d31d7a613339`.
+Não repetir publicação/testes já confirmados por rotina. Retomar pela PR 66,
+verificando remoto/árvore e este fechamento; o código do mundo/Shiki não mudou.
+
 ## O que continua separado
 
 **Código do bot:** busca lexical tem limite de cinco trechos/14.000 caracteres.

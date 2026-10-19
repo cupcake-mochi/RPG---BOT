@@ -1,5 +1,9 @@
 # RPG---BOT
 
+Continuações “E de BH?” e perguntas inteiras em `GC:clima` corrigidas e publicadas
+em 19/10, com regressões dos fluxos e dados reais conferidos.
+[Fechamento atual](Closure/pesquisa/validacao/2026-10-19-clima-seguimento/relatorio.md).
+
 Correção de “clima atual de BH” publicada na Discloud em 18/10 às 23:49,
 com consulta real conferida e sem chamar IA nos testes.
 [Diagnóstico, testes e limites](Closure/pesquisa/validacao/2026-10-18-clima-bh/relatorio.md).

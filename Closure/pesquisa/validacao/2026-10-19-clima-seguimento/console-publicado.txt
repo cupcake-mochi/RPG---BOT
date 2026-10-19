@@ -1,0 +1,23 @@
+  - generic: "PASS conversa: Closure, qual o clima atual de SP? -> [São Paulo, Brasil agora (00:00 de lá, noite): 15 °C, sensação de 15 °C, nublado, umidade 88%, vento 7 km/h;"
+  - generic: hoje entre 14 °C e 23 °C.]
+  - generic: "PASS conversa: E de BH? -> [Belo Horizonte, Minas Gerais, Brasil agora (00:00 de lá, noite): 20 °C, sensação de 21 °C, céu limpo, umidade 73%, vento 6 km/h; hoje"
+  - generic: entre 18 °C e 30 °C.]
+  - generic: "PASS conversa: E em Curitiba? -> [Curitiba, Paraná, Brasil agora (00:00 de lá, noite): 10 °C, sensação de 8 °C, céu limpo, umidade 89%, vento 8 km/h; hoje entre"
+  - generic: 10 °C e 21 °C.]
+  - generic: PASS troca de assunto encerra clima
+  - generic: PASS continuação sem assunto não dispara consulta
+  - generic: "PASS comando: GC:clima E como tá o clima de Belo Horizonte? ->"
+  - generic: 🌙
+  - generic: Clima em Belo Horizonte, Minas Gerais, Brasil
+  - generic: "PASS comando: GC:clima E de BH? ->"
+  - generic: 🌙
+  - generic: Clima em Belo Horizonte, Minas Gerais, Brasil
+  - generic: "PASS comando: GC:clima BH ->"
+  - generic: 🌙
+  - generic: Clima em Belo Horizonte, Minas Gerais, Brasil
+  - generic: "PASS comando: GC:clima qual o clima atual de SP? ->"
+  - generic: ☁️
+  - generic: Clima em São Paulo, Brasil
+  - generic: PASS mesmo argumento na consulta do comando de barra
+  - generic: PASS cidade inexistente não vira Tóquio
+  - generic: "RESULTADO: 11/11; dados reais; comandos com saída local; nenhum modelo ou envio ao Discord"
