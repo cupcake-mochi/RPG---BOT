@@ -52,9 +52,11 @@ def main():
         return 0
     if args.ficha is None:parser.error('inspecionar/aprovar exige --ficha')
     ficha=de_csv(args.ficha.read_text(encoding='utf-8')) if args.ficha.suffix.lower()=='.csv' else de_xlsx(args.ficha)
-    if valor(ficha,'formato.versao')!=11:parser.error('aprovação por esta ferramenta exige B47 formato 11')
+    formato=valor(ficha,'formato.versao')
+    if formato not in (11,12):parser.error('aprovação por esta ferramenta exige B47 formato 11 ou R53 formato 12')
     _,aprovados=carregar_campanha(args.cadastro,args.servidor)
-    ctx=ContextoB47(aprovados=aprovados);r=Resultado('aprovada')
+    # Formato 12: Melhorias/Restrições herdam do catálogo R53, então a impressão é a mesma que o bot confere.
+    ctx=ContextoB47(aprovados=aprovados,r53=formato==12);r=Resultado('aprovada')
     preparar_custom(ficha,Referencias.do_livro(RAIZ/'dados'),ctx,r)
     conferir_efeitos(ficha,ctx,r)
     candidatos={d.chave:(d.impressao,d.valida) for d in ctx.registros.values()}

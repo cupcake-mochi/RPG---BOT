@@ -1,0 +1,2705 @@
+{
+"origem": "cupcake-mochi/Ficha---RPG-JJK@4b22da5420263a8885e28a508cbc39938dd9d9da apps-script/R53Analise*.gs",
+"contextos": {
+"feitico.1": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.2": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.3": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.4": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.5": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.6": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.7": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.8": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.9": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.10": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.11": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.12": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.13": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.14": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.15": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.16": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.17": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.18": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.19": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.20": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.21": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.22": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.23": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.24": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.25": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.26": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.27": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.28": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.29": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.30": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.31": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.32": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.33": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.34": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.35": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"feitico.36": {
+"modalidade": "Comum",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"liberacao.1": {
+"modalidade": "Liberação Máxima",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"liberacao.2": {
+"modalidade": "Liberação Máxima",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"liberacao.3": {
+"modalidade": "Liberação Máxima",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"classe0.1": {
+"modalidade": "Classe 0",
+"classes": [
+0
+]
+},
+"classe0.2": {
+"modalidade": "Classe 0",
+"classes": [
+0
+]
+},
+"classe0.3": {
+"modalidade": "Classe 0",
+"classes": [
+0
+]
+},
+"classe0.4": {
+"modalidade": "Classe 0",
+"classes": [
+0
+]
+},
+"classe0.5": {
+"modalidade": "Classe 0",
+"classes": [
+0
+]
+},
+"maxima.1": {
+"modalidade": "Técnica Máxima",
+"classes": [
+null
+]
+},
+"entidade.1.bas.1": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.1.esp.1": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.esp.2": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.bas.2": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.1.esp.3": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.esp.4": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.esp.5": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.esp.6": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.esp.7": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.esp.8": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.ext.1": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.ext.2": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.ext.3": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.bas.1": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.2.esp.1": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.esp.2": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.bas.2": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.2.esp.3": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.esp.4": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.esp.5": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.esp.6": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.esp.7": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.esp.8": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.ext.1": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.ext.2": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.ext.3": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.bas.1": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.3.esp.1": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.esp.2": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.bas.2": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.3.esp.3": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.esp.4": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.esp.5": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.esp.6": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.esp.7": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.esp.8": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.ext.1": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.ext.2": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.ext.3": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.bas.1": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.4.esp.1": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.esp.2": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.bas.2": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.4.esp.3": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.esp.4": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.esp.5": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.esp.6": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.esp.7": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.esp.8": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.ext.1": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.ext.2": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.ext.3": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.bas.1": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.5.esp.1": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.esp.2": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.bas.2": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.5.esp.3": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.esp.4": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.esp.5": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.esp.6": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.esp.7": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.esp.8": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.ext.1": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.ext.2": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.ext.3": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.bas.1": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.6.esp.1": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.esp.2": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.bas.2": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.6.esp.3": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.esp.4": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.esp.5": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.esp.6": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.esp.7": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.esp.8": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.ext.1": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.ext.2": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.ext.3": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.bas.1": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.7.esp.1": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.esp.2": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.bas.2": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.7.esp.3": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.esp.4": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.esp.5": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.esp.6": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.esp.7": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.esp.8": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.ext.1": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.ext.2": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.ext.3": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.bas.1": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.8.esp.1": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.esp.2": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.bas.2": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.8.esp.3": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.esp.4": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.esp.5": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.esp.6": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.esp.7": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.esp.8": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.ext.1": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.ext.2": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.ext.3": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.bas.1": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.9.esp.1": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.esp.2": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.bas.2": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.9.esp.3": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.esp.4": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.esp.5": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.esp.6": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.esp.7": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.esp.8": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.ext.1": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.ext.2": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.ext.3": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.bas.1": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.10.esp.1": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.esp.2": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.bas.2": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.10.esp.3": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.esp.4": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.esp.5": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.esp.6": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.esp.7": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.esp.8": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.ext.1": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.ext.2": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.ext.3": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.bas.1": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.11.esp.1": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.esp.2": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.bas.2": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.11.esp.3": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.esp.4": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.esp.5": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.esp.6": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.esp.7": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.esp.8": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.ext.1": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.ext.2": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.ext.3": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.bas.1": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.12.esp.1": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.esp.2": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.bas.2": {
+"modalidade": "Básica",
+"classes": [
+0
+]
+},
+"entidade.12.esp.3": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.esp.4": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.esp.5": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.esp.6": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.esp.7": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.esp.8": {
+"modalidade": "Entidade",
+"classes": [
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.ext.1": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.ext.2": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.ext.3": {
+"modalidade": "Entidade",
+"classes": [
+0,
+1,
+2,
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.liberacao.1": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.liberacao.2": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.liberacao.3": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.1.maxima.1": {
+"modalidade": "Máxima de entidade",
+"classes": [
+null
+]
+},
+"entidade.2.liberacao.1": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.liberacao.2": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.liberacao.3": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.2.maxima.1": {
+"modalidade": "Máxima de entidade",
+"classes": [
+null
+]
+},
+"entidade.3.liberacao.1": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.liberacao.2": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.liberacao.3": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.3.maxima.1": {
+"modalidade": "Máxima de entidade",
+"classes": [
+null
+]
+},
+"entidade.4.liberacao.1": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.liberacao.2": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.liberacao.3": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.4.maxima.1": {
+"modalidade": "Máxima de entidade",
+"classes": [
+null
+]
+},
+"entidade.5.liberacao.1": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.liberacao.2": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.liberacao.3": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.5.maxima.1": {
+"modalidade": "Máxima de entidade",
+"classes": [
+null
+]
+},
+"entidade.6.liberacao.1": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.liberacao.2": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.liberacao.3": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.6.maxima.1": {
+"modalidade": "Máxima de entidade",
+"classes": [
+null
+]
+},
+"entidade.7.liberacao.1": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.liberacao.2": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.liberacao.3": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.7.maxima.1": {
+"modalidade": "Máxima de entidade",
+"classes": [
+null
+]
+},
+"entidade.8.liberacao.1": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.liberacao.2": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.liberacao.3": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.8.maxima.1": {
+"modalidade": "Máxima de entidade",
+"classes": [
+null
+]
+},
+"entidade.9.liberacao.1": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.liberacao.2": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.liberacao.3": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.9.maxima.1": {
+"modalidade": "Máxima de entidade",
+"classes": [
+null
+]
+},
+"entidade.10.liberacao.1": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.liberacao.2": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.liberacao.3": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.10.maxima.1": {
+"modalidade": "Máxima de entidade",
+"classes": [
+null
+]
+},
+"entidade.11.liberacao.1": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.liberacao.2": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.liberacao.3": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.11.maxima.1": {
+"modalidade": "Máxima de entidade",
+"classes": [
+null
+]
+},
+"entidade.12.liberacao.1": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.liberacao.2": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.liberacao.3": {
+"modalidade": "Liberação de entidade",
+"classes": [
+3,
+4,
+5,
+6,
+7
+]
+},
+"entidade.12.maxima.1": {
+"modalidade": "Máxima de entidade",
+"classes": [
+null
+]
+}
+}
+}

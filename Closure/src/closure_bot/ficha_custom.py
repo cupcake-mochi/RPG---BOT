@@ -48,13 +48,29 @@ def definicoes(ficha):
             defaults.update({'campo.troca_pericias_por_arma':'Não', 'campo.treino_de_arma':'Todas'})
         elif tipo == 'trilha':
             defaults['campo.base_do_livro'] = 'Nenhuma'
-        relevantes = {k:v for k,v in usados.items() if defaults.get(k) != v}
+        relevantes = {k:v for k,v in usados.items() if defaults.get(k) != v
+                      and not (k == 'controle_compat' and str(v).upper() in ('0','FALSE','FALSO'))}
         if nome or relevantes or campos.get('mestre_viu',0) not in ('',0):
             saida.append(Definicao(raiz,tipo,nome,campos))
     return saida
 
 
-def catalogos(ref):
+def catalogos_r53():
+    """Peças publicadas da R53 pelo rótulo que a ficha usa como BASE; pesos no vocabulário do cadastro."""
+    from .r53.modelo import CAT
+    pesos = {1: 'Leve', 2: 'Média', 3: 'Pesada'}
+    melhorias, restricoes = {}, {}
+    for o in CAT['opcoes']:
+        if o['tipo'] == 'melhorias':
+            melhorias[o['rotulo']] = {'peso': pesos[o['peso']], 'familia': o['familia'], 'repeticoes': o['repeticoes'],
+                                      'minima': o['classe_minima'], 'identidade': o['rotulo_base']}
+        else:
+            restricoes[o['rotulo']] = {'devolucao': pesos[o['peso']], 'identidade': o['rotulo_base'],
+                                       'frequencia': 'Sim' if o['frequencia'] else 'Não'}
+    return melhorias, restricoes
+
+
+def catalogos(ref, r53=False):
     livro = json.loads((Path(__file__).parent/'recursos/b47-livro.json').read_text(encoding='utf-8'))
     m = ref.magia
     tabelas = {
@@ -78,6 +94,8 @@ def catalogos(ref):
         'Marcante': {c['nome']:dict(c) for o in livro['origens'] for c in o['marcantes']},
         'Menor': {c['nome']:dict(c) for o in livro['origens'] for c in o.get('menores',[])},
     }
+    if r53:
+        tabelas['melhoria'], tabelas['restricao'] = catalogos_r53()
     for tipo in ('Arma','Escudo','Uniforme','Ferramenta amaldiçoada','Item comum'):
         tabelas[tipo] = {n:{'equipamento':p} for n,p in ref.equipamento.pecas.items()} if tipo!='Item comum' else {n:{'volume':float(p)} for n,p in ref.equipamento.itens.items()}
     tabelas['Ferramenta amaldiçoada'].update(tabelas['Item comum'])
@@ -88,7 +106,7 @@ def catalogos(ref):
 
 
 def preparar_custom(ficha, ref, ctx, r):
-    tabelas = catalogos(ref)
+    tabelas = catalogos(ref, ctx.r53)
     registros = definicoes(ficha)
     molde_3a=json.loads((Path(__file__).parent/'recursos/b47-3a.json').read_text(encoding='utf-8'))
     from .ficha_personagem_motor import compilar
@@ -216,7 +234,11 @@ def preparar_custom(ficha, ref, ctx, r):
             if d.tipo=='melhoria' and d.campos.get('modalidade','Melhoria') not in ('','Melhoria','Condição'):
                 falha('modalidade','Melhoria ou Condição')
             if d.tipo=='melhoria' and d.campos.get('modalidade')=='Condição':
-                if tem_base and not str(base).startswith('Condição: '):
+                if ctx.r53:
+                    # R53 nomeia cada Condição como rótulo próprio do catálogo ("Condição · Cego").
+                    if tem_base and not str(base).startswith('Condição · '):
+                        falha('base','Condição publicada como base')
+                elif tem_base and not str(base).startswith('Condição: '):
                     # O catálogo também possui aliases sem prefixo: reconhecidos pelo mesmo objeto do livro.
                     if base not in m.melhorias or 'Condição: '+base not in m.melhorias:
                         falha('base','Condição publicada como base')
@@ -241,7 +263,9 @@ def preparar_custom(ficha, ref, ctx, r):
             efetivo=ctx.catalogo_personagem.obter(d.tipo,d.nome)
             if efetivo:
                 d.efetivos=efetivo
-        assinatura={'crus':{k:v for k,v in d.campos.items() if k not in ('mestre_viu','nome')},'base':_serializavel(heranca or {})}
+        # controle_compat chegou na R53; desmarcado, não muda a identidade de um cadastro já aprovado.
+        proprios={k:v for k,v in d.campos.items() if k not in ('mestre_viu','nome') and not (k=='controle_compat' and str(v).upper() in ('','0','FALSE','FALSO'))}
+        assinatura={'crus':proprios,'base':_serializavel(heranca or {})}
         if d.tipo=='forma':
             emb=d.efetivos.get('restricao_embutida')
             dependencia=next((x for x in ctx.registros.values() if x.tipo=='restricao' and x.nome==emb),None)

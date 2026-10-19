@@ -27,12 +27,16 @@ from discord.ext import commands
 from ..ficha_corretor import LIVRO, Problema, Referencias, Resultado, conferir
 from ..ficha_leitor import Campo, FichaIlegivel, de_link, de_xlsx
 from ..ficha_paginacao import enviar_relatorio
+from ..ficha_r53 import escolher_leitura, rotulo_chave, transicoes
 from ..plantao import CLOSURE, FUSO, KALTSIT, de_plantao
 
 log = logging.getLogger(__name__)
 
 LIGADO = True  # ligado pelo Mizuki em 14/10/2026, depois do pente fino contra o livro e a ficha
 LIMITE_ANEXO = 10_000_000  # a ficha baixada tem uns 1,5 MB
+# R53: a troca de Classe salva de forma assíncrona. Releitura limitada do link antes de concluir;
+# o que continuar em transição fica pendente, sem aprovar nem reprovar o cartão.
+ESPERAS_TRANSICAO = (3, 6)
 
 
 # Frase fixa de abertura: uma por guia e por veredito, no jeito de cada uma (sem "!" em regra, como nos cards).
@@ -71,6 +75,9 @@ ROTULOS = {"aviso.escolhas_de_pericia": "Perícias e ofícios", "aviso.pontos_di
 def _rotulo(chave: str) -> str:
     if chave in ROTULOS:
         return ROTULOS[chave]
+    cartao = rotulo_chave(chave)
+    if cartao:
+        return cartao
     if chave.startswith("buff."):
         return "Buff/Debuff de " + chave[5:].replace("_", " ")
     partes = chave.split(".")
@@ -203,12 +210,12 @@ def _valor_legivel(texto: str) -> str:
     return _nome_do_valor(chave) + " " + valor
 
 
-GRUPO = re.compile(r"^((?:Feitiço|Liberação|Classe 0) \d+|Técnica Máxima|Invocação \d+(?: · (?:básica|especial|habilidade da Trilha) \d+)?): (.*)$")
+GRUPO = re.compile(r"^((?:Feitiço|Liberação|Classe 0) \d+|Técnica Máxima|Invocação \d+(?: · (?:(?:básica|especial|habilidade da Trilha|Liberação) \d+|Técnica Máxima))?): (.*)$")
 
 
 def _nome_grupo(grupo: str, ficha: dict[str, Campo]) -> str:
-    chave = grupo.replace("Técnica Máxima", "maxima").replace("Classe 0", "zero")
-    for de, para in (("Feitiço", "feitico"), ("Liberação", "liberacao"), ("Invocação", "invocacao"),
+    chave = grupo.replace(" · Técnica Máxima", " · tm").replace("Técnica Máxima", "maxima").replace("Classe 0", "zero")
+    for de, para in (("Feitiço", "feitico"), ("Liberação", "liberacao"), ("Invocação", "invocacao"), (" · tm", ".tm"),
                      ("habilidade da Trilha", "ext"), ("básica", "bas"), ("especial", "esp")):
         chave = chave.replace(de, para)
     chave = chave.replace(" · ", ".").replace(" ", ".") + ".nome"
@@ -365,13 +372,14 @@ class Ficha(commands.Cog):
 
     async def analisar_fonte(self, *, link: str | None = None, arquivo: discord.Attachment | None = None, servidor: int | None = None) -> list[discord.Embed] | str:
         """Lê e confere a ficha. Devolve as páginas, ou o erro de leitura. Serve à barra e ao GC:ficha."""
+        leituras = 1
         try:
             if arquivo is not None:
                 if not arquivo.filename.lower().endswith(".xlsx") or arquivo.size > LIMITE_ANEXO:
                     raise FichaIlegivel("o anexo precisa ser a ficha em .xlsx")
                 ficha = await asyncio.to_thread(de_xlsx, await arquivo.read())
             elif link:
-                ficha = await de_link(link)
+                ficha, leituras = await self._ler_estavel(link)
             else:
                 raise FichaIlegivel("mande o link da ficha aberta pra leitura ou o .xlsx anexo")
         except FichaIlegivel as erro:
@@ -383,9 +391,28 @@ class Ficha(commands.Cog):
         except (ValueError, OSError) as erro:
             log.error("cadastro de campanha indisponível: %s", type(erro).__name__)
             return "Não deu para carregar a configuração autorizada desta campanha. O operador precisa conferir o cadastro do bot."
+        if leituras > 1:
+            restantes = len(transicoes(ficha))
+            resultado.nao_conferido.append(f"Cartões R53: link lido {leituras} vezes porque havia cartão salvando"
+                                           + (f"; {restantes} ainda em transição na leitura usada" if restantes else "; a leitura usada já estava estável"))
         log.info("ficha analisada: %s, %d problema(s)", resultado.veredito, len(resultado.problemas))
         persona = self.bot.personas[de_plantao(datetime.now(FUSO))]
         return paginas(resultado, ficha, persona, getattr(self.bot, "manifesto", None))
+
+    async def _ler_estavel(self, link: str) -> tuple[dict[str, Campo], int]:
+        """Lê o link e, se algum cartão R53 estiver no meio de um salvamento, relê poucas vezes."""
+        from ..ficha_esquema import variante
+        leituras = [await de_link(link)]
+        for espera in ESPERAS_TRANSICAO:
+            atual = escolher_leitura(leituras)
+            if variante(atual) != "r53-v12" or not transicoes(atual):
+                return atual, len(leituras)
+            await asyncio.sleep(espera)
+            try:
+                leituras.append(await de_link(link))
+            except FichaIlegivel:
+                break  # a última leitura válida continua valendo
+        return escolher_leitura(leituras), len(leituras)
 
     @grupo.command(name="analisar", description="Confere a ficha pelo link da planilha ou pelo .xlsx anexo.")
     @app_commands.describe(link="Link da ficha no Google Planilhas, aberta pra leitura", arquivo="A ficha baixada em .xlsx")
