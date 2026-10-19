@@ -1,0 +1,13 @@
+{
+  "arquivos": 67,
+  "bytes": 1206024,
+  "sha256": "acc3e58d71f8410c144b0c70a5fed383f1adeb14e167a695c7d68adf8c5b180d",
+  "fontes": 31,
+  "secoes": 228,
+  "todos_arquivos_iguais_aos_fontes": true,
+  "somente_entrada_mudada_desde_cores": [
+    "src/var/site/nucleo.js"
+  ],
+  "sem_env_bancos_campanha": true,
+  "saida": "/media/mizuki/HD Externo II/Closure Lab/entregas/closure-lab-era-revolucao-2026-10-18.zip"
+}

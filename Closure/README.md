@@ -5,6 +5,8 @@ autorizados do consolidado da Era da Revolução, com recortes e origem por assu
 Reservado Mizuki, Registros Complementares e Recursos Visuais não entram.
 [Fontes, limites e atualização](dados/mundo/LEIA-ME.md). Esta alteração ainda
 não foi implantada; a publicação B47 registrada abaixo é anterior.
+PR 66 em rascunho; 834 testes executados, 833 aprovados e um online opcional
+pulado, com 12 testes novos. [Fechamento e retomada](docs/RETOMADA-MUNDO.md).
 
 **B47 · etapa publicada e conferida em 18/10/2026:** código `40d32a7` da
 branch `codex/integracao-b47` instalado na Discloud com autorização do usuário.

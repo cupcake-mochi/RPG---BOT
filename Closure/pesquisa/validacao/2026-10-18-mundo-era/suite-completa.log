@@ -1,0 +1,1097 @@
+test_argon_e_flash_fallback_global_no_mesmo_projeto (test_argon.Chamadas.test_argon_e_flash_fallback_global_no_mesmo_projeto) ... modelo: vertex:gemini-4-argon falhou (404 indisponível)
+ok
+test_cancelamento_devolve_reserva (test_argon.Chamadas.test_cancelamento_devolve_reserva) ... modelo=vertex:gemini-4-argon consumo incompleto; reserva cautelar_usd=0.041490 (não é cobrança confirmada)
+ok
+test_concorrencia_reserva_e_teto_compartilhado (test_argon.Chamadas.test_concorrencia_reserva_e_teto_compartilhado) ... modelo: teto do mês atingido (US$ 0.06); provedores pagos fora da fila
+ok
+test_fallback_reconstroi_corpo_e_conta_falha_com_uso (test_argon.Chamadas.test_fallback_reconstroi_corpo_e_conta_falha_com_uso) ... modelo: vertex:gemini-4-argon falhou (vazio MAX_TOKENS)
+ok
+test_reflexao_nunca_usa_argon_nem_gratuito (test_argon.Chamadas.test_reflexao_nunca_usa_argon_nem_gratuito) ... ok
+test_teto_zero_nao_envia (test_argon.Chamadas.test_teto_zero_nao_envia) ... modelo: teto do mês atingido (US$ 0.00); provedores pagos fora da fila
+ok
+test_migracao_reabre_banco_antigo_sem_perder_linhas (test_argon.Configuracao.test_migracao_reabre_banco_antigo_sem_perder_linhas) ... ok
+test_parametros_e_historico (test_argon.Configuracao.test_parametros_e_historico) ... ok
+test_precos_por_data_cache_sem_dupla_contagem (test_argon.Configuracao.test_precos_por_data_cache_sem_dupla_contagem) ... ok
+test_selecao_sem_mudar_fila_legada (test_argon.Configuracao.test_selecao_sem_mudar_fila_legada) ... ok
+test_bipes_originais_chegam_com_medidas_sem_mudar_os_bytes (test_audio_sinais.Integracao.test_bipes_originais_chegam_com_medidas_sem_mudar_os_bytes) ... ok
+test_fala_da_bateria_nao_recebe_classificacao_tonal (test_audio_sinais.Integracao.test_fala_da_bateria_nao_recebe_classificacao_tonal) ... ok
+test_imagens_e_texto_nao_recebem_instrucao_de_escuta (test_audio_sinais.Integracao.test_imagens_e_texto_nao_recebem_instrucao_de_escuta) ... ok
+test_contagens_frequencias_e_volumes_variados (test_audio_sinais.Medidas.test_contagens_frequencias_e_volumes_variados) ... ok
+test_medidas_nao_afirmam_origem_ou_ausencia_de_fala (test_audio_sinais.Medidas.test_medidas_nao_afirmam_origem_ou_ausencia_de_fala) ... ok
+test_ruido_acorde_estalos_e_sinal_constante_nao_viram_tons_puros (test_audio_sinais.Medidas.test_ruido_acorde_estalos_e_sinal_constante_nao_viram_tons_puros) ... ok
+test_tom_pequeno_em_audio_misto_nao_descreve_tudo (test_audio_sinais.Medidas.test_tom_pequeno_em_audio_misto_nao_descreve_tudo) ... ok
+test_adjetivo_de_objeto (test_avaliacao_c3.CriteriosC3.test_adjetivo_de_objeto) ... ok
+test_cuidado_exige_contato_util (test_avaliacao_c3.CriteriosC3.test_cuidado_exige_contato_util) ... ok
+test_explicacao_completa_precisa_cobrir_conteudo (test_avaliacao_c3.CriteriosC3.test_explicacao_completa_precisa_cobrir_conteudo) ... ok
+test_explicacao_parcial_nao_recebe_excecao_de_tamanho (test_avaliacao_c3.CriteriosC3.test_explicacao_parcial_nao_recebe_excecao_de_tamanho) ... ok
+test_feminino_da_personagem_e_interjeicao (test_avaliacao_c3.CriteriosC3.test_feminino_da_personagem_e_interjeicao) ... ok
+test_genero_da_pessoa_permanece_marcado (test_avaliacao_c3.CriteriosC3.test_genero_da_pessoa_permanece_marcado) ... ok
+test_masculino_generico_quando_nao_informado (test_avaliacao_c3.CriteriosC3.test_masculino_generico_quando_nao_informado) ... ok
+test_nomes_proibidos_tom_e_tamanho_continuam (test_avaliacao_c3.CriteriosC3.test_nomes_proibidos_tom_e_tamanho_continuam) ... ok
+test_outro_nome_de_habilidade_nao_vira_recusa (test_avaliacao_c3.CriteriosC3.test_outro_nome_de_habilidade_nao_vira_recusa) ... ok
+test_personagem_continua_no_feminino (test_avaliacao_c3.CriteriosC3.test_personagem_continua_no_feminino) ... ok
+test_pronomes_informados_vencem_padrao_masculino (test_avaliacao_c3.CriteriosC3.test_pronomes_informados_vencem_padrao_masculino) ... ok
+test_recusa_sem_numero_inventado (test_avaliacao_c3.CriteriosC3.test_recusa_sem_numero_inventado) ... ok
+test_referencia_neutra_nao_esconde_segunda_falha (test_avaliacao_c3.CriteriosC3.test_referencia_neutra_nao_esconde_segunda_falha) ... ok
+test_resultado_numerico_equivalente (test_avaliacao_c3.CriteriosC3.test_resultado_numerico_equivalente) ... ok
+test_singular_de_ataque (test_avaliacao_c3.CriteriosC3.test_singular_de_ataque) ... ok
+test_terra_so_no_sentido_fornecido_pelo_contexto (test_avaliacao_c3.CriteriosC3.test_terra_so_no_sentido_fornecido_pelo_contexto) ... ok
+test_defaults_continuam_na_assinatura_de_definicao_ativa (test_b47_cobertura.CartoesVaziosNativos.test_defaults_continuam_na_assinatura_de_definicao_ativa) ... ok
+test_defaults_sem_nome_nao_criam_definicao_nem_aprovacao (test_b47_cobertura.CartoesVaziosNativos.test_defaults_sem_nome_nao_criam_definicao_nem_aprovacao) ... ok
+test_nome_conteudo_ou_mestre_viu_continuam_ativando_cartao (test_b47_cobertura.CartoesVaziosNativos.test_nome_conteudo_ou_mestre_viu_continuam_ativando_cartao) ... ok
+test_especializacao_invalida_nao_certifica_bonus (test_b47_cobertura.EspecializacaoCustom.test_especializacao_invalida_nao_certifica_bonus) ... ok
+test_alterar_base_reabre_aprovacao (test_b47_cobertura.TrilhaHerdada.test_alterar_base_reabre_aprovacao) ... ok
+test_base_desconhecida_nao_e_tratada_como_nenhuma (test_b47_cobertura.TrilhaHerdada.test_base_desconhecida_nao_e_tratada_como_nenhuma) ... ok
+test_extras_da_principal_usam_base_aprovada (test_b47_cobertura.TrilhaHerdada.test_extras_da_principal_usam_base_aprovada) ... ok
+test_extras_sem_aprovacao_nao_sao_conferidos (test_b47_cobertura.TrilhaHerdada.test_extras_sem_aprovacao_nao_sao_conferidos) ... ok
+test_familias_da_principal_herdadas_sem_trocar_nome_literal (test_b47_cobertura.TrilhaHerdada.test_familias_da_principal_herdadas_sem_trocar_nome_literal) ... ok
+test_nenhuma_nao_concede_principal (test_b47_cobertura.TrilhaHerdada.test_nenhuma_nao_concede_principal) ... ok
+test_perfis_publicados_e_autonomia_herdam_separadamente (test_b47_cobertura.TrilhaHerdada.test_perfis_publicados_e_autonomia_herdam_separadamente) ... ok
+test_sem_aprovacao_nao_certifica_perfil_padrao_por_engano (test_b47_cobertura.TrilhaHerdada.test_sem_aprovacao_nao_certifica_perfil_padrao_por_engano) ... ok
+test_trilha_publicada_incompativel_nao_libera_extras (test_b47_cobertura.TrilhaHerdada.test_trilha_publicada_incompativel_nao_libera_extras) ... ok
+test_valor_fixo_independe_de_base_ausente_mas_nao_de_conflitos (test_b47_cobertura.TrocaIndependente.test_valor_fixo_independe_de_base_ausente_mas_nao_de_conflitos) ... ok
+test_vida_rolada_incompleta_preserva_troca_e_pendencia_da_rolagem (test_b47_cobertura.TrocaIndependente.test_vida_rolada_incompleta_preserva_troca_e_pendencia_da_rolagem) ... ok
+test_classe_zero_gratis_nao_e_quantidade_de_dados (test_b47_derivados.Derivados.test_classe_zero_gratis_nao_e_quantidade_de_dados) ... ok
+test_dois_tr_independem_de_avisos_exportados (test_b47_derivados.Derivados.test_dois_tr_independem_de_avisos_exportados) ... ok
+test_efeito_soma_iniciativa_uma_vez (test_b47_derivados.Derivados.test_efeito_soma_iniciativa_uma_vez) ... ok
+test_erro_em_ajuste_nao_vira_zero (test_b47_derivados.Derivados.test_erro_em_ajuste_nao_vira_zero) ... ok
+test_formatacao_restrita_nao_converte_texto_livre (test_b47_derivados.Derivados.test_formatacao_restrita_nao_converte_texto_livre) ... ok
+test_iniciativa_adulterada_sem_aviso (test_b47_derivados.Derivados.test_iniciativa_adulterada_sem_aviso) ... ok
+test_janela_sequelas_extras_e_derrota (test_b47_derivados.Derivados.test_janela_sequelas_extras_e_derrota) ... ok
+test_progressao_derivada_nao_depende_do_resultado (test_b47_derivados.Derivados.test_progressao_derivada_nao_depende_do_resultado) ... ok
+test_resultados_impossiveis_sao_divergencias_mesmo_sem_seletor (test_b47_derivados.Derivados.test_resultados_impossiveis_sao_divergencias_mesmo_sem_seletor) ... ok
+test_resultados_vazios_sao_informacao_insuficiente (test_b47_derivados.Derivados.test_resultados_vazios_sao_informacao_insuficiente) ... ok
+test_sequela_invalida_nao_certifica_janela (test_b47_derivados.Derivados.test_sequela_invalida_nao_certifica_janela) ... ok
+test_soma_na_cd_nao_escolhe_atributo_pelo_total (test_b47_derivados.Derivados.test_soma_na_cd_nao_escolhe_atributo_pelo_total) ... ok
+test_tr_entidades_independentes (test_b47_derivados.Derivados.test_tr_entidades_independentes) ... ok
+test_troca_zero_independe_do_atributo_omitido (test_b47_derivados.Derivados.test_troca_zero_independe_do_atributo_omitido) ... ok
+test_validos_separam_conta_e_seletor_ausente (test_b47_derivados.Derivados.test_validos_separam_conta_e_seletor_ausente) ... ok
+test_campanha_zero_e_entrada_nao_exportada (test_b47_derivados.Deslocamento.test_campanha_zero_e_entrada_nao_exportada) ... ok
+test_marcha_impossivel_e_exaustao (test_b47_derivados.Deslocamento.test_marcha_impossivel_e_exaustao) ... ok
+test_sem_inventario_nao_certifica_marcha (test_b47_derivados.Deslocamento.test_sem_inventario_nao_certifica_marcha) ... ok
+test_troca_apos_penalidades_sobrepoe_buff_e_soma (test_b47_derivados.Deslocamento.test_troca_apos_penalidades_sobrepoe_buff_e_soma) ... ok
+test_duas_linhas_identicas_aprovadas_nao_contam_duas_vezes (test_b47_derivados.EfeitosFamilias.test_duas_linhas_identicas_aprovadas_nao_contam_duas_vezes) ... ok
+test_efeito_altera_total_sem_alterar_livres_ou_tecnica (test_b47_derivados.EfeitosFamilias.test_efeito_altera_total_sem_alterar_livres_ou_tecnica) ... ok
+test_efeito_duplicado_na_cd_bloqueia_so_a_conta_dependente (test_b47_derivados.EfeitosFamilias.test_efeito_duplicado_na_cd_bloqueia_so_a_conta_dependente) ... ok
+test_efeito_invalido_nos_ataques_nao_interrompe_analise (test_b47_derivados.EfeitosFamilias.test_efeito_invalido_nos_ataques_nao_interrompe_analise) ... ok
+test_fracao_conflito_e_limite_nove (test_b47_derivados.EfeitosFamilias.test_fracao_conflito_e_limite_nove) ... ok
+test_invalido_nao_certifica_alvo_ignorando_a_linha (test_b47_derivados.EfeitosFamilias.test_invalido_nao_certifica_alvo_ignorando_a_linha) ... ok
+test_linha_invalida_nao_e_ignorada_ao_haver_troca_valida (test_b47_derivados.EfeitosFamilias.test_linha_invalida_nao_e_ignorada_ao_haver_troca_valida) ... ok
+test_nome_literal_com_curinga_nao_recebe_efeito_da_outra_pericia (test_b47_derivados.EfeitosFamilias.test_nome_literal_com_curinga_nao_recebe_efeito_da_outra_pericia) ... ok
+test_troca_total_antes_do_bonus_nao_autonoma (test_b47_derivados.EfeitosFamilias.test_troca_total_antes_do_bonus_nao_autonoma) ... ok
+test_adicionais_contam_no_teto_e_nao_alteram_media_base (test_b47_derivados.FormasHerdadas.test_adicionais_contam_no_teto_e_nao_alteram_media_base) ... ok
+test_alma_simples_conta_metade_sem_conceder_permissao (test_b47_derivados.FormasHerdadas.test_alma_simples_conta_metade_sem_conceder_permissao) ... ok
+test_desconto_forma_livre_personagem_usa_contrato_atual (test_b47_derivados.FormasHerdadas.test_desconto_forma_livre_personagem_usa_contrato_atual) ... ok
+test_forma_alterada_conserva_identidade_da_base (test_b47_derivados.FormasHerdadas.test_forma_alterada_conserva_identidade_da_base) ... ok
+test_forma_alterada_mantem_motor_estruturado (test_b47_derivados.FormasHerdadas.test_forma_alterada_mantem_motor_estruturado) ... ok
+test_forma_alterada_nao_perde_incompatibilidade_rapido_reacao (test_b47_derivados.FormasHerdadas.test_forma_alterada_nao_perde_incompatibilidade_rapido_reacao) ... ok
+test_herdada_confere_liberacao_pelas_regras_da_base (test_b47_derivados.FormasHerdadas.test_herdada_confere_liberacao_pelas_regras_da_base) ... ok
+test_herdada_nao_perde_proibicao_inescapavel (test_b47_derivados.FormasHerdadas.test_herdada_nao_perde_proibicao_inescapavel) ... ok
+test_liberacao_alterada_calcula_saldo_e_remate_no_teto (test_b47_derivados.FormasHerdadas.test_liberacao_alterada_calcula_saldo_e_remate_no_teto) ... ok
+test_montagem_invalida_nao_certifica_beneficio (test_b47_derivados.FormasHerdadas.test_montagem_invalida_nao_certifica_beneficio) ... ok
+test_rajada_confere_total_sem_multiplicar_por_tiros (test_b47_derivados.FormasHerdadas.test_rajada_confere_total_sem_multiplicar_por_tiros) ... ok
+test_resolucao_custom_da_entidade_confere_bonus_independente (test_b47_derivados.FormasHerdadas.test_resolucao_custom_da_entidade_confere_bonus_independente) ... ok
+test_ferramenta_base_item_comum (test_b47_derivados.HerancaOrigemEquipamento.test_ferramenta_base_item_comum) ... ok
+test_ferramenta_duas_maos_nao_concede_escudo_em_uso (test_b47_derivados.HerancaOrigemEquipamento.test_ferramenta_duas_maos_nao_concede_escudo_em_uso) ... ok
+test_ferramenta_herda_protecao_e_sobrescreve_volume_zero (test_b47_derivados.HerancaOrigemEquipamento.test_ferramenta_herda_protecao_e_sobrescreve_volume_zero) ... ok
+test_menor_custom_exige_marcante_vinculada (test_b47_derivados.HerancaOrigemEquipamento.test_menor_custom_exige_marcante_vinculada) ... ok
+test_mudar_base_custom_invalida_aprovacao_da_ferramenta (test_b47_derivados.HerancaOrigemEquipamento.test_mudar_base_custom_invalida_aprovacao_da_ferramenta) ... ok
+test_pacote_herdado_conserva_concessao_de_treino (test_b47_derivados.HerancaOrigemEquipamento.test_pacote_herdado_conserva_concessao_de_treino) ... ok
+test_rota_contraditoria_nao_herda_beneficios (test_b47_derivados.HerancaOrigemEquipamento.test_rota_contraditoria_nao_herda_beneficios) ... ok
+test_sem_base_nao_aceita_capacidade_de_outra_origem (test_b47_derivados.HerancaOrigemEquipamento.test_sem_base_nao_aceita_capacidade_de_outra_origem) ... ok
+test_buff_ambiguo_nao_recebe_certificacao_duplicada (test_b47_derivados.ReservaProfunda.test_buff_ambiguo_nao_recebe_certificacao_duplicada) ... ok
+test_efeito_identificado_nao_soma_duas_vezes (test_b47_derivados.ReservaProfunda.test_efeito_identificado_nao_soma_duas_vezes) ... ok
+test_herda_ganho_numerico_sem_executar_descricao (test_b47_derivados.ReservaProfunda.test_herda_ganho_numerico_sem_executar_descricao) ... ok
+test_cli_preserva_outros_servidores_e_aprova_hash (test_b47_integracao.CadastroConfiavel.test_cli_preserva_outros_servidores_e_aprova_hash) ... ok
+test_regra_invalida_nao_cai_silenciosamente_no_livro (test_b47_integracao.CadastroConfiavel.test_regra_invalida_nao_cai_silenciosamente_no_livro) ... ok
+test_servidores_nao_compartilham_autorizacao (test_b47_integracao.CadastroConfiavel.test_servidores_nao_compartilham_autorizacao) ... ok
+test_campanha_autorizada_e_usada (test_b47_integracao.CampanhaEfeitos.test_campanha_autorizada_e_usada) ... ok
+test_desligado_nao_soma_nem_exige_fonte (test_b47_integracao.CampanhaEfeitos.test_desligado_nao_soma_nem_exige_fonte) ... ok
+test_duas_trocas_impedem_certificacao (test_b47_integracao.CampanhaEfeitos.test_duas_trocas_impedem_certificacao) ... ok
+test_efeito_invalido_nao_vira_numero (test_b47_integracao.CampanhaEfeitos.test_efeito_invalido_nao_vira_numero) ... ok
+test_pe_da_origem_no_efeito_nao_pede_buff_duplicado (test_b47_integracao.CampanhaEfeitos.test_pe_da_origem_no_efeito_nao_pede_buff_duplicado) ... ok
+test_regra_declarada_divergente_nao_dirige_conta (test_b47_integracao.CampanhaEfeitos.test_regra_declarada_divergente_nao_dirige_conta) ... ok
+test_somar_uma_vez_e_fontes_nao_sao_autorizacao (test_b47_integracao.CampanhaEfeitos.test_somar_uma_vez_e_fontes_nao_sao_autorizacao) ... ok
+test_trocar_por_zero_sobrepoe_soma_e_buff (test_b47_integracao.CampanhaEfeitos.test_trocar_por_zero_sobrepoe_soma_e_buff) ... ok
+test_vida_rolada_por_dado_e_ausencia (test_b47_integracao.CampanhaEfeitos.test_vida_rolada_por_dado_e_ausencia) ... ok
+test_zero_de_campanha_e_explicito (test_b47_integracao.CampanhaEfeitos.test_zero_de_campanha_e_explicito) ... ok
+test_adulteracao_sem_avisos (test_b47_integracao.Contrato.test_adulteracao_sem_avisos) ... ok
+test_capacidade_de_outra_origem_nao_altera_as_contas (test_b47_integracao.Contrato.test_capacidade_de_outra_origem_nao_altera_as_contas) ... ok
+test_entrada_nao_numerica_nao_quebra_nem_vira_zero (test_b47_integracao.Contrato.test_entrada_nao_numerica_nao_quebra_nem_vira_zero) ... ok
+test_faltante_nao_e_vazio_nem_zero (test_b47_integracao.Contrato.test_faltante_nao_e_vazio_nem_zero) ... ok
+test_ficha_branca_nao_aprova_personagem (test_b47_integracao.Contrato.test_ficha_branca_nao_aprova_personagem) ... ok
+test_fixture_completa_executa_contas_sem_certificar_partes_ausentes (test_b47_integracao.Contrato.test_fixture_completa_executa_contas_sem_certificar_partes_ausentes) ... ok
+test_linha_extra_nao_muda_identidade_nem_certifica_variante (test_b47_integracao.Contrato.test_linha_extra_nao_muda_identidade_nem_certifica_variante) ... ok
+test_menores_repetidas_adulteradas_sem_aviso (test_b47_integracao.Contrato.test_menores_repetidas_adulteradas_sem_aviso) ... ok
+test_ordem_e_endereco_nao_sao_identidade (test_b47_integracao.Contrato.test_ordem_e_endereco_nao_sao_identidade) ... ok
+test_alteracao_invalida_aprovacao (test_b47_integracao.Custom.test_alteracao_invalida_aprovacao) ... ok
+test_aprovacao_e_heranca (test_b47_integracao.Custom.test_aprovacao_e_heranca) ... ok
+test_duplicata_casefold_e_colisao_livro (test_b47_integracao.Custom.test_duplicata_casefold_e_colisao_livro) ... ok
+test_forma_herdada_e_usada_na_montagem (test_b47_integracao.Custom.test_forma_herdada_e_usada_na_montagem) ... ok
+test_forma_zero_e_nao_sobrescrevem_base (test_b47_integracao.Custom.test_forma_zero_e_nao_sobrescrevem_base) ... ok
+test_heranca_nao_sobrescreve_nao_explicito (test_b47_integracao.Custom.test_heranca_nao_sobrescreve_nao_explicito) ... ok
+test_melhoria_exige_tr_sem_inferir_da_descricao (test_b47_integracao.Custom.test_melhoria_exige_tr_sem_inferir_da_descricao) ... ok
+test_mestre_viu_nao_aprova (test_b47_integracao.Custom.test_mestre_viu_nao_aprova) ... ok
+test_mudar_lembrete_nao_muda_conteudo (test_b47_integracao.Custom.test_mudar_lembrete_nao_muda_conteudo) ... ok
+test_nome_literal_nao_e_padrao (test_b47_integracao.Custom.test_nome_literal_nao_e_padrao) ... ok
+test_tipo_aprovado_altera_vida_sem_ligar_talisma (test_b47_integracao.Custom.test_tipo_aprovado_altera_vida_sem_ligar_talisma) ... ok
+test_tipo_de_entidade_tres_modos_independentes (test_b47_integracao.Custom.test_tipo_de_entidade_tres_modos_independentes) ... ok
+test_entidades_independentes (test_b47_integracao.Familias.test_entidades_independentes) ... ok
+test_nao_autonoma_livre_conta_no_total_e_na_prioridade (test_b47_integracao.Familias.test_nao_autonoma_livre_conta_no_total_e_na_prioridade) ... ok
+test_nao_herda_livre_da_tecnica (test_b47_integracao.Familias.test_nao_herda_livre_da_tecnica) ... ok
+test_nove_vagas_nao_concedem_nove_escolhas (test_b47_integracao.Familias.test_nove_vagas_nao_concedem_nove_escolhas) ... ok
+test_pendencias_e_limites_nao_pintam_aprovacao_integral (test_b47_integracao.Painel.test_pendencias_e_limites_nao_pintam_aprovacao_integral) ... ok
+test_bonus_e_ajuste_resultado_e_total (test_b47_integracao.TreinosCustom.test_bonus_e_ajuste_resultado_e_total) ... ok
+test_efeito_por_nome_nao_por_indice (test_b47_integracao.TreinosCustom.test_efeito_por_nome_nao_por_indice) ... ok
+test_especializacao_precoce_e_treino_ausente (test_b47_integracao.TreinosCustom.test_especializacao_precoce_e_treino_ausente) ... ok
+test_oficio_custom_sem_treino_nao_concede_beneficio (test_b47_integracao.TreinosCustom.test_oficio_custom_sem_treino_nao_concede_beneficio) ... ok
+test_resultado_adulterado (test_b47_integracao.TreinosCustom.test_resultado_adulterado) ... ok
+test_treino_custom_gasta_o_orcamento_existente (test_b47_integracao.TreinosCustom.test_treino_custom_gasta_o_orcamento_existente) ... ok
+test_link_preserva_dados_em_vez_de_inferir_cabecalho_gigante (test_b47_leitor.CabecalhoPeloLink.test_link_preserva_dados_em_vez_de_inferir_cabecalho_gigante) ... ok
+test_colisao_v4_nao_e_aceita_por_numero (test_b47_leitor.LeitorB47.test_colisao_v4_nao_e_aceita_por_numero) ... ok
+test_csv_com_aspas_e_quebras_preserva_texto_valido (test_b47_leitor.LeitorB47.test_csv_com_aspas_e_quebras_preserva_texto_valido) ... ok
+test_csv_truncado_ou_campo_excessivo_tem_erro_de_leitura (test_b47_leitor.LeitorB47.test_csv_truncado_ou_campo_excessivo_tem_erro_de_leitura) ... ok
+test_duplicada_e_erros_nao_desaparecem (test_b47_leitor.LeitorB47.test_duplicada_e_erros_nao_desaparecem) ... ok
+test_formula_sem_cache_parcial_tambem_rejeitada (test_b47_leitor.LeitorB47.test_formula_sem_cache_parcial_tambem_rejeitada) ... ok
+test_manifesto_entregue (test_b47_leitor.LeitorB47.test_manifesto_entregue) ... ok
+test_numeros_booleanos_vazio_zero_ausente (test_b47_leitor.LeitorB47.test_numeros_booleanos_vazio_zero_ausente) ... ok
+test_texto_literal_independe_da_aparencia (test_b47_leitor.LeitorB47.test_texto_literal_independe_da_aparencia) ... ok
+test_alias_aprovado_preserva_incompatibilidade_e_repeticao (test_b47_maxima.MaximaB47.test_alias_aprovado_preserva_incompatibilidade_e_repeticao) ... ok
+test_alma_simples_confere_metade_mas_nao_autoriza_regra (test_b47_maxima.MaximaB47.test_alma_simples_confere_metade_mas_nao_autoriza_regra) ... ok
+test_distribuicao_e_adicionais_de_alma_permanecem_explicitos (test_b47_maxima.MaximaB47.test_distribuicao_e_adicionais_de_alma_permanecem_explicitos) ... ok
+test_familia_fechada_e_excesso_de_orcamento_bloqueiam_dependentes (test_b47_maxima.MaximaB47.test_familia_fechada_e_excesso_de_orcamento_bloqueiam_dependentes) ... ok
+test_forma_custom_preserva_identidade_e_exige_aprovacao (test_b47_maxima.MaximaB47.test_forma_custom_preserva_identidade_e_exige_aprovacao) ... ok
+test_formula_fixa_do_produtor_nao_e_confundida_com_alma_conferida (test_b47_maxima.MaximaB47.test_formula_fixa_do_produtor_nao_e_confundida_com_alma_conferida) ... ok
+test_montagem_exportada_e_conferida_sem_confiar_no_aviso (test_b47_maxima.MaximaB47.test_montagem_exportada_e_conferida_sem_confiar_no_aviso) ... ok
+test_montagem_invalida_nao_certifica_dano_nem_montagem (test_b47_maxima.MaximaB47.test_montagem_invalida_nao_certifica_dano_nem_montagem) ... ok
+test_quantidade_generica_da_cura_nao_inventa_tipo_contraditorio (test_b47_maxima.MaximaB47.test_quantidade_generica_da_cura_nao_inventa_tipo_contraditorio) ... ok
+test_resultado_vazio_e_informacao_insuficiente_nao_zero (test_b47_maxima.MaximaB47.test_resultado_vazio_e_informacao_insuficiente_nao_zero) ... ok
+test_tabela_independente_dos_pontos_e_preco_de_forma_sem_desconto (test_b47_maxima.MaximaB47.test_tabela_independente_dos_pontos_e_preco_de_forma_sem_desconto) ... ok
+test_alias_de_precisao_conserva_bonus_estruturado (test_b47_revisao.ControleEntidade.test_alias_de_precisao_conserva_bonus_estruturado) ... ok
+test_descartar_saldo_nao_compra_bonus (test_b47_revisao.ControleEntidade.test_descartar_saldo_nao_compra_bonus) ... ok
+test_exigir_tr_sem_familia_controle_nao_concede_bonus (test_b47_revisao.ControleEntidade.test_exigir_tr_sem_familia_controle_nao_concede_bonus) ... ok
+test_forma_publicada_usa_mesmo_saldo_independente (test_b47_revisao.ControleEntidade.test_forma_publicada_usa_mesmo_saldo_independente) ... ok
+test_formula_atual_sem_bonus_obrigatorio_fica_pendente (test_b47_revisao.ControleEntidade.test_formula_atual_sem_bonus_obrigatorio_fica_pendente) ... ok
+test_saldo_positivo_nao_aceita_bonus_de_cd_zero (test_b47_revisao.ControleEntidade.test_saldo_positivo_nao_aceita_bonus_de_cd_zero) ... ok
+test_saldo_zero_confere_cd_exclusiva_sem_usar_dano_exportado (test_b47_revisao.ControleEntidade.test_saldo_zero_confere_cd_exclusiva_sem_usar_dano_exportado) ... ok
+test_atributo_vazio_nao_vira_zero (test_b47_revisao.DistribuicaoEntidade.test_atributo_vazio_nao_vira_zero) ... ok
+test_distribuicao_invalida_preserva_pendencia_no_painel (test_b47_revisao.DistribuicaoEntidade.test_distribuicao_invalida_preserva_pendencia_no_painel) ... ok
+test_distribuicao_valida_conserva_conferencias (test_b47_revisao.DistribuicaoEntidade.test_distribuicao_valida_conserva_conferencias) ... ok
+test_falta_ponto_nao_certifica_numeros_dependentes (test_b47_revisao.DistribuicaoEntidade.test_falta_ponto_nao_certifica_numeros_dependentes) ... ok
+test_resumo_adulterado_nao_certifica_contas_mesmo_com_numeros_corretos (test_b47_revisao.DistribuicaoEntidade.test_resumo_adulterado_nao_certifica_contas_mesmo_com_numeros_corretos) ... ok
+test_resumo_vazio_e_informacao_insuficiente (test_b47_revisao.DistribuicaoEntidade.test_resumo_vazio_e_informacao_insuficiente) ... ok
+test_uma_entidade_invalida_nao_bloqueia_outra (test_b47_revisao.DistribuicaoEntidade.test_uma_entidade_invalida_nao_bloqueia_outra) ... ok
+test_alias_de_condicao_pesada_conta_no_mesmo_limite (test_b47_revisao.LimitesMontagem.test_alias_de_condicao_pesada_conta_no_mesmo_limite) ... ok
+test_classe_acima_do_nivel_nao_certifica_motor_custom (test_b47_revisao.LimitesMontagem.test_classe_acima_do_nivel_nao_certifica_motor_custom) ... ok
+test_condicoes_custom_sem_base_respeitam_limite_pesado (test_b47_revisao.LimitesMontagem.test_condicoes_custom_sem_base_respeitam_limite_pesado) ... ok
+test_duas_condicoes_pesadas_nao_certificam_dano (test_b47_revisao.LimitesMontagem.test_duas_condicoes_pesadas_nao_certificam_dano) ... ok
+test_inescapavel_nao_transforma_cura_em_automatica (test_b47_revisao.LimitesMontagem.test_inescapavel_nao_transforma_cura_em_automatica) ... ok
+test_melhoria_de_controle_nao_e_condicao_por_supor_pelo_peso (test_b47_revisao.LimitesMontagem.test_melhoria_de_controle_nao_e_condicao_por_supor_pelo_peso) ... ok
+test_marcante_ausente_e_informacao_insuficiente (test_b47_revisao.RequisitosOrigem.test_marcante_ausente_e_informacao_insuficiente) ... ok
+test_menor_custom_com_marcante_ausente_fica_pendente (test_b47_revisao.RequisitosOrigem.test_menor_custom_com_marcante_ausente_fica_pendente) ... ok
+test_menores_publicadas_exigem_marcante_do_catalogo (test_b47_revisao.RequisitosOrigem.test_menores_publicadas_exigem_marcante_do_catalogo) ... ok
+test_origem_renomeada_preserva_requisitos_da_base (test_b47_revisao.RequisitosOrigem.test_origem_renomeada_preserva_requisitos_da_base) ... ok
+test_origem_sem_tecnica_preserva_requisito_de_cla (test_b47_revisao.RequisitosOrigem.test_origem_sem_tecnica_preserva_requisito_de_cla) ... ok
+test_segunda_menor_e_painel_explicam_requisito (test_b47_revisao.RequisitosOrigem.test_segunda_menor_e_painel_explicam_requisito) ... ok
+test_texto_do_jogador_nao_substitui_requisito_publicado (test_b47_revisao.RequisitosOrigem.test_texto_do_jogador_nao_substitui_requisito_publicado) ... ok
+test_aprovar_so_forma_nao_aprova_restricao_embutida (test_b47_revisao.RestricaoEmbutida.test_aprovar_so_forma_nao_aprova_restricao_embutida) ... ok
+test_condicional_herda_frequencia_mesmo_com_sufixo_de_peso (test_b47_revisao.RestricaoEmbutida.test_condicional_herda_frequencia_mesmo_com_sufixo_de_peso) ... ok
+test_embutida_e_explicita_nao_devolvem_duas_vezes_mesma_base (test_b47_revisao.RestricaoEmbutida.test_embutida_e_explicita_nao_devolvem_duas_vezes_mesma_base) ... ok
+test_forma_nao_autoriza_familia_custom_pendente (test_b47_revisao.RestricaoEmbutida.test_forma_nao_autoriza_familia_custom_pendente) ... ok
+test_frequencia_embutida_conta_com_restricao_selecionada (test_b47_revisao.RestricaoEmbutida.test_frequencia_embutida_conta_com_restricao_selecionada) ... ok
+test_heranca_de_frequencia_respeita_nao_explicito (test_b47_revisao.RestricaoEmbutida.test_heranca_de_frequencia_respeita_nao_explicito) ... ok
+test_mudar_lembrete_nao_invalida_aprovacao_da_dependencia (test_b47_revisao.RestricaoEmbutida.test_mudar_lembrete_nao_invalida_aprovacao_da_dependencia) ... ok
+test_mudar_restricao_invalida_aprovacao_da_forma_tambem (test_b47_revisao.RestricaoEmbutida.test_mudar_restricao_invalida_aprovacao_da_forma_tambem) ... ok
+test_restricao_custom_embutida_valida_e_paga_so_melhoria (test_b47_revisao.RestricaoEmbutida.test_restricao_custom_embutida_valida_e_paga_so_melhoria) ... ok
+test_tudo_ou_nada_considera_tr_da_condicao (test_b47_revisao.RestricaoEmbutida.test_tudo_ou_nada_considera_tr_da_condicao) ... ok
+test_adicional_nao_reaplica_multiplicador (test_b47_teto.TetoObjetos.test_adicional_nao_reaplica_multiplicador) ... ok
+test_alias_aprovado_tambem_reduz_teto (test_b47_teto.TetoObjetos.test_alias_aprovado_tambem_reduz_teto) ... ok
+test_entidade_com_adicionais_usa_mesmo_teto (test_b47_teto.TetoObjetos.test_entidade_com_adicionais_usa_mesmo_teto) ... ok
+test_liberacao_tambem_obedece_teto (test_b47_teto.TetoObjetos.test_liberacao_tambem_obedece_teto) ... ok
+test_remate_e_quebra_coisa_tem_alvos_distintos (test_b47_teto.TetoObjetos.test_remate_e_quebra_coisa_tem_alvos_distintos) ... ok
+test_teto_12_inclui_dano_dobrado_contra_objeto (test_b47_teto.TetoObjetos.test_teto_12_inclui_dano_dobrado_contra_objeto) ... ok
+test_com_a_chave_tudo_volta (test_base.BancoCifrado.test_com_a_chave_tudo_volta) ... ok
+test_o_texto_nao_aparece_no_arquivo (test_base.BancoCifrado.test_o_texto_nao_aparece_no_arquivo) ... ok
+test_sem_a_chave_ou_com_outra_ela_esquece_em_vez_de_mostrar_letra_embaralhada (test_base.BancoCifrado.test_sem_a_chave_ou_com_outra_ela_esquece_em_vez_de_mostrar_letra_embaralhada) ... ok
+test_texto_antigo_gravado_em_claro_continua_abrindo (test_base.BancoCifrado.test_texto_antigo_gravado_em_claro_continua_abrindo) ... ok
+test_ambiente_vence_o_arquivo (test_base.Configuracao.test_ambiente_vence_o_arquivo) ... ok
+test_canais_vazio_escuta_todos (test_base.Configuracao.test_canais_vazio_escuta_todos) ... ok
+test_le_o_arquivo (test_base.Configuracao.test_le_o_arquivo) ... ok
+test_sem_arquivo_nao_quebra (test_base.Configuracao.test_sem_arquivo_nao_quebra) ... ok
+test_cards (test_base.DadosDoProjeto.test_cards) ... ok
+test_manifesto (test_base.DadosDoProjeto.test_manifesto) ... ok
+test_apagar_pessoa_leva_tudo_dela_e_so_dela (test_base.RegistroSqlite.test_apagar_pessoa_leva_tudo_dela_e_so_dela) ... ok
+test_contagens (test_base.RegistroSqlite.test_contagens) ... ok
+test_cria_a_pasta_do_banco (test_base.RegistroSqlite.test_cria_a_pasta_do_banco) ... ok
+test_dias_de_conversa_contam_pelo_dia_de_brasilia (test_base.RegistroSqlite.test_dias_de_conversa_contam_pelo_dia_de_brasilia) ... ok
+test_fala_de_mais_de_um_turno_nao_conta (test_base.RegistroSqlite.test_fala_de_mais_de_um_turno_nao_conta) ... ok
+test_falas_antigas_sao_apagadas (test_base.RegistroSqlite.test_falas_antigas_sao_apagadas) ... ok
+test_mensagens_do_dia_e_limite_de_fatos (test_base.RegistroSqlite.test_mensagens_do_dia_e_limite_de_fatos) ... ok
+test_paciencia_e_ficha_vao_e_voltam (test_base.RegistroSqlite.test_paciencia_e_ficha_vao_e_voltam) ... ok
+test_painel_de_clima_por_servidor (test_base.RegistroSqlite.test_painel_de_clima_por_servidor) ... ok
+test_reconhece_mensagem_enviada (test_base.RegistroSqlite.test_reconhece_mensagem_enviada) ... ok
+test_respostas_desde (test_base.RegistroSqlite.test_respostas_desde) ... ok
+test_ultimas_falas_por_personagem_e_canal (test_base.RegistroSqlite.test_ultimas_falas_por_personagem_e_canal) ... ok
+test_comparacao_tem_identificacao_propria_sem_mudar_rota (test_bateria_midia.Bateria.test_comparacao_tem_identificacao_propria_sem_mudar_rota) ... 1/2 0: ok
+2/2 1: ok
+ok
+test_conta_apenas_faltantes_e_respeita_orcamento (test_bateria_midia.Bateria.test_conta_apenas_faltantes_e_respeita_orcamento) ... 1/2 0: ok
+2/2 1: ok
+ok
+test_interrupcao_preserva_intencao_e_impede_repetir (test_bateria_midia.Bateria.test_interrupcao_preserva_intencao_e_impede_repetir) ... ok
+test_corte_para_sem_proxima_chamada (test_bateria_mista.BateriaMista.test_corte_para_sem_proxima_chamada) ... 1/2 clo_armas: invalida, 3 ms; acumulado cheio US$ 0.000090
+ok
+test_dialogo_usa_a_resposta_anterior_e_assuntos_avulsos_nao (test_bateria_mista.BateriaMista.test_dialogo_usa_a_resposta_anterior_e_assuntos_avulsos_nao) ... ok
+test_distribuicao_48_sem_ids_repetidos (test_bateria_mista.BateriaMista.test_distribuicao_48_sem_ids_repetidos) ... ok
+test_mudanca_no_plano_recusa_retomada (test_bateria_mista.BateriaMista.test_mudanca_no_plano_recusa_retomada) ... 1/2 clo_armas: ok, 3 ms; acumulado cheio US$ 0.000090
+2/2 kal_armas: ok, 3 ms; acumulado cheio US$ 0.000180
+ok
+test_retomada_para_na_segunda_falha_sem_repetir (test_bateria_mista.BateriaMista.test_retomada_para_na_segunda_falha_sem_repetir) ... Parada após nova falha rede; sem repetição.
+ok
+test_retomada_so_envia_ineditas_e_preserva_timeout (test_bateria_mista.BateriaMista.test_retomada_so_envia_ineditas_e_preserva_timeout) ... 34/48 kal_musica: ok; acumulado cheio/reserva US$ 0.330090
+35/48 clo_defesa: ok; acumulado cheio/reserva US$ 0.330180
+ok
+test_salva_antes_de_enviar_e_retomada_nao_repete (test_bateria_mista.BateriaMista.test_salva_antes_de_enviar_e_retomada_nao_repete) ... 1/2 clo_armas: ok, 3 ms; acumulado cheio US$ 0.000090
+2/2 kal_armas: ok, 3 ms; acumulado cheio US$ 0.000180
+ok
+test_teto_considera_reserva_antes_da_chamada (test_bateria_mista.BateriaMista.test_teto_considera_reserva_antes_da_chamada) ... Parada preventiva pelo teto local da bateria.
+ok
+test_timeout_para_e_nao_repete_ao_retomar (test_bateria_mista.BateriaMista.test_timeout_para_e_nao_repete_ao_retomar) ... Parada após erro rede; sem repetir ou trocar de modelo.
+ok
+test_resposta_salva_antes_de_interrupcao_e_nao_repetida (test_bateria_modelo.RetomarBateria.test_resposta_salva_antes_de_interrupcao_e_nao_repetida) ... ok
+test_chance_de_chuva_e_opcional_na_leitura (test_clima.DesenhoDoTempo.test_chance_de_chuva_e_opcional_na_leitura) ... ok
+test_emoji_e_icone_saem_do_codigo_e_de_ser_dia_ou_noite (test_clima.DesenhoDoTempo.test_emoji_e_icone_saem_do_codigo_e_de_ser_dia_ou_noite) ... ok
+test_lugar_citado (test_clima.Gatilho.test_lugar_citado) ... ok
+test_mensagens_que_nao_puxam (test_clima.Gatilho.test_mensagens_que_nao_puxam) ... ok
+test_mensagens_que_puxam_o_clima (test_clima.Gatilho.test_mensagens_que_puxam_o_clima) ... ok
+test_sem_lugar_vale_toquio (test_clima.Gatilho.test_sem_lugar_vale_toquio) ... ok
+test_codigo_desconhecido_nao_inventa_descricao (test_clima.Leitura.test_codigo_desconhecido_nao_inventa_descricao) ... ok
+test_interpreta_a_resposta_real (test_clima.Leitura.test_interpreta_a_resposta_real) ... ok
+test_linha_do_bloco_4 (test_clima.Leitura.test_linha_do_bloco_4) ... ok
+test_resposta_fora_do_formato_levanta_erro (test_clima.Leitura.test_resposta_fora_do_formato_levanta_erro) ... ok
+test_apelido_de_capital (test_clima.LugarPorPartes.test_apelido_de_capital) ... ok
+test_cidade_com_estado_sem_virgula_traco_ou_barra (test_clima.LugarPorPartes.test_cidade_com_estado_sem_virgula_traco_ou_barra) ... ok
+test_e_em_outro_lugar_so_depois_de_pergunta_de_clima (test_clima.LugarPorPartes.test_e_em_outro_lugar_so_depois_de_pergunta_de_clima) ... ok
+test_o_que_foi_cortado_tem_que_ser_o_estado (test_clima.LugarPorPartes.test_o_que_foi_cortado_tem_que_ser_o_estado) ... ok
+test_fica_o_mais_populoso (test_clima.Lugares.test_fica_o_mais_populoso) ... ok
+test_nome_que_vai_pro_prompt_nao_leva_colchete (test_clima.Lugares.test_nome_que_vai_pro_prompt_nao_leva_colchete) ... ok
+test_resposta_real_de_quioto (test_clima.Lugares.test_resposta_real_de_quioto) ... ok
+test_sem_resultado (test_clima.Lugares.test_sem_resultado) ... ok
+test_de_madrugada_ainda_edita_o_de_ontem_nao (test_clima.PainelDiario.test_de_madrugada_ainda_edita_o_de_ontem_nao) ... ok
+test_edita_quando_o_tempo_muda (test_clima.PainelDiario.test_edita_quando_o_tempo_muda) ... ok
+test_posta_uma_vez_por_dia_depois_das_6h (test_clima.PainelDiario.test_posta_uma_vez_por_dia_depois_das_6h) ... ok
+test_cada_lugar_tem_a_sua_leitura (test_clima.Servico.test_cada_lugar_tem_a_sua_leitura) ... ok
+test_contexto_com_a_busca_fora_do_ar (test_clima.Servico.test_contexto_com_a_busca_fora_do_ar) ... clima: falha ao procurar 'kyoto' (sem rede)
+clima: falha ao ler Tóquio (sem rede)
+ok
+test_contexto_de_lugar_que_nao_existe (test_clima.Servico.test_contexto_de_lugar_que_nao_existe) ... ok
+test_contexto_de_outro_lugar (test_clima.Servico.test_contexto_de_outro_lugar) ... ok
+test_contexto_so_quando_a_mensagem_puxa (test_clima.Servico.test_contexto_so_quando_a_mensagem_puxa) ... ok
+test_falha_sem_leitura_anterior_devolve_none (test_clima.Servico.test_falha_sem_leitura_anterior_devolve_none) ... clima: falha ao ler Tóquio (sem rede)
+ok
+test_falha_usa_a_leitura_antiga_ate_o_limite (test_clima.Servico.test_falha_usa_a_leitura_antiga_ate_o_limite) ... clima: falha ao ler Tóquio (sem rede)
+clima: falha ao ler Tóquio (sem rede)
+ok
+test_nome_do_lugar_vai_escapado_na_url (test_clima.Servico.test_nome_do_lugar_vai_escapado_na_url) ... ok
+test_procurar_guarda_o_resultado_e_conhece_toquio (test_clima.Servico.test_procurar_guarda_o_resultado_e_conhece_toquio) ... ok
+test_reaproveita_a_leitura_por_15_minutos (test_clima.Servico.test_reaproveita_a_leitura_por_15_minutos) ... ok
+test_consumo_incompleto_interrompe_com_reserva (test_compacto_v2.Execucao.test_consumo_incompleto_interrompe_com_reserva) ... respostas.json: 2 de 2 respostas. Gasto estimado no mês: US$ 0.00
+1/1 a gemini-3.8-flash: None in, None resposta, None raciocínio, 10 ms, custo não informado
+ok
+test_retomada_usa_reserva_maior_que_custo_parcial (test_compacto_v2.Execucao.test_retomada_usa_reserva_maior_que_custo_parcial) ... ok
+test_runtime_v2_repete_prompt_aprovado_e_preserva_fallback_original (test_compacto_v2.Execucao.test_runtime_v2_repete_prompt_aprovado_e_preserva_fallback_original) ... modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+modelo: vertex:gemini-4-argon falhou (503 sobrecarga simulada)
+Executing <Task finished name='Task-206' coro=<Execucao.test_runtime_v2_repete_prompt_aprovado_e_preserva_fallback_original() done, defined at /tmp/era-validacao/Closure/src/testes/test_compacto_v2.py:62> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 4.167 seconds
+ok
+test_variantes_flash_nao_colidem_e_retomada_nao_repete (test_compacto_v2.Execucao.test_variantes_flash_nao_colidem_e_retomada_nao_repete) ... Resposta cortada, modelo diferente ou consumo incompleto; bateria interrompida.
+Parada por limite local da bateria: US$ 0.399000; próxima reserva 0.007879.
+1/3 flash-original gemini-3.8-flash: 10 in, 2 resposta, 0 raciocínio, 10 ms, US$ 0.000020
+2/3 flash-v2 gemini-3.8-flash: 10 in, 2 resposta, 0 raciocínio, 10 ms, US$ 0.000020
+3/3 argon-v2 gemini-4-argon: 10 in, 2 resposta, 0 raciocínio, 10 ms, US$ 0.000020
+ok
+test_contexto_dinamico_inteiro_e_v1_nao_muda (test_compacto_v2.Perfil.test_contexto_dinamico_inteiro_e_v1_nao_muda) ... ok
+test_mesmo_compacto_nos_dois_modelos_e_original_preservado (test_compacto_v2.Perfil.test_mesmo_compacto_nos_dois_modelos_e_original_preservado) ... ok
+test_v2_exige_configuracao_explicita_e_base_conhecida (test_compacto_v2.Perfil.test_v2_exige_configuracao_explicita_e_base_conhecida) ... ok
+test_card_incompativel_exige_revisao (test_compacto_v3.Proposta.test_card_incompativel_exige_revisao) ... ok
+test_ineditos_repeticoes_e_variantes_com_contexto_igual (test_compacto_v3.Proposta.test_ineditos_repeticoes_e_variantes_com_contexto_igual) ... ok
+test_nao_libera_perfil_sem_validacao_no_bot (test_compacto_v3.Proposta.test_nao_libera_perfil_sem_validacao_no_bot) ... ok
+test_preserva_contexto_e_nao_muda_entrada_ou_v2 (test_compacto_v3.Proposta.test_preserva_contexto_e_nao_muda_entrada_ou_v2) ... ok
+test_textos_exportados_correspondem_a_proposta (test_compacto_v3.Proposta.test_textos_exportados_correspondem_a_proposta) ... ok
+test_v2_aprovada_reproduz_hashes_das_bases_congeladas (test_compacto_v3.Proposta.test_v2_aprovada_reproduz_hashes_das_bases_congeladas) ... ok
+test_interrupcao_conta_como_tentativa_e_nao_repete (test_comparar_argon.Retomada.test_interrupcao_conta_como_tentativa_e_nao_repete) ... Bateria interrompida anteriormente. Revisar a falha antes de autorizar outra execução.
+2/2 a gemini-3.8-flash: 10 in, 2 resposta, 0 raciocínio, 10 ms, US$ 0.000020
+ok
+test_assunto_novo_explicito_nao_herda_permissao_da_origem (test_consulta_ampla.ConsultaAmpla.test_assunto_novo_explicito_nao_herda_permissao_da_origem) ... ok
+test_cafe_e_conversa_casual_nao_puxam_panorama (test_consulta_ampla.ConsultaAmpla.test_cafe_e_conversa_casual_nao_puxam_panorama) ... ok
+test_comparacao_de_nome_contido_preserva_ambas_quando_pedidas (test_consulta_ampla.ConsultaAmpla.test_comparacao_de_nome_contido_preserva_ambas_quando_pedidas) ... ok
+test_confirmacoes_repetidas_nao_perdem_regra_depois_de_dois_turnos (test_consulta_ampla.ConsultaAmpla.test_confirmacoes_repetidas_nao_perdem_regra_depois_de_dois_turnos) ... ok
+test_criacao_de_origem_inclui_permissao_e_escolha_padrao (test_consulta_ampla.ConsultaAmpla.test_criacao_de_origem_inclui_permissao_e_escolha_padrao) ... ok
+test_duvida_do_usuario_nao_substitui_a_fonte (test_consulta_ampla.ConsultaAmpla.test_duvida_do_usuario_nao_substitui_a_fonte) ... ok
+test_nome_de_trilha_prevalece_sobre_caminho_associado_errado (test_consulta_ampla.ConsultaAmpla.test_nome_de_trilha_prevalece_sobre_caminho_associado_errado) ... ok
+test_nomes_exatos_nao_se_confundem_com_radicais_ou_subsecoes (test_consulta_ampla.ConsultaAmpla.test_nomes_exatos_nao_se_confundem_com_radicais_ou_subsecoes) ... ok
+test_panorama_contem_os_seis_caminhos_e_as_dezoito_trilhas (test_consulta_ampla.ConsultaAmpla.test_panorama_contem_os_seis_caminhos_e_as_dezoito_trilhas) ... ok
+test_panorama_traz_recortes_literais_e_tem_limite (test_consulta_ampla.ConsultaAmpla.test_panorama_traz_recortes_literais_e_tem_limite) ... ok
+test_pergunta_da_imagem_conserva_assunto (test_consulta_ampla.ConsultaAmpla.test_pergunta_da_imagem_conserva_assunto) ... ok
+test_pergunta_de_um_caminho_nao_precisa_panorama_de_todos (test_consulta_ampla.ConsultaAmpla.test_pergunta_de_um_caminho_nao_precisa_panorama_de_todos) ... ok
+test_preco_pontual_nao_expande_panorama (test_consulta_ampla.ConsultaAmpla.test_preco_pontual_nao_expande_panorama) ... ok
+test_r52_conserva_fonte_nova_mesmo_com_resposta_antiga_no_historico (test_consulta_ampla.ConsultaAmpla.test_r52_conserva_fonte_nova_mesmo_com_resposta_antiga_no_historico) ... ok
+test_r52_familia_propria_e_excecao_corporal_com_fontes_inteiras (test_consulta_ampla.ConsultaAmpla.test_r52_familia_propria_e_excecao_corporal_com_fontes_inteiras) ... ok
+test_recomendacao_contestacao_e_nomes_exatos_iguais_nos_motores (test_consulta_ampla.ConsultaAmpla.test_recomendacao_contestacao_e_nomes_exatos_iguais_nos_motores) ... ok
+test_recomendacao_real_mostra_malabarista_condutor_e_permissao_da_parceria (test_consulta_ampla.ConsultaAmpla.test_recomendacao_real_mostra_malabarista_condutor_e_permissao_da_parceria) ... ok
+test_consulta_real_depois_de_conversa_recupera_livro (test_consulta_cotidiana.ConsultaCotidiana.test_consulta_real_depois_de_conversa_recupera_livro) ... ok
+test_contestacao_de_regra_mista_conserva_fonte (test_consulta_cotidiana.ConsultaCotidiana.test_contestacao_de_regra_mista_conserva_fonte) ... ok
+test_conversa_e_regra_na_mesma_mensagem (test_consulta_cotidiana.ConsultaCotidiana.test_conversa_e_regra_na_mesma_mensagem) ... ok
+test_conversa_nao_puxa_livro_ou_panorama_nas_duas_guias (test_consulta_cotidiana.ConsultaCotidiana.test_conversa_nao_puxa_livro_ou_panorama_nas_duas_guias) ... ok
+test_descanso_mecanico_e_forma_controle_em_contexto_misto (test_consulta_cotidiana.ConsultaCotidiana.test_descanso_mecanico_e_forma_controle_em_contexto_misto) ... ok
+test_filtro_igual_em_quickjs_e_node (test_consulta_cotidiana.ConsultaCotidiana.test_filtro_igual_em_quickjs_e_node) ... ok
+test_misto_de_musica_e_recomendacao_de_trilha (test_consulta_cotidiana.ConsultaCotidiana.test_misto_de_musica_e_recomendacao_de_trilha) ... ok
+test_nomes_de_trilha_em_mensagens_mistas_sem_rotulo (test_consulta_cotidiana.ConsultaCotidiana.test_nomes_de_trilha_em_mensagens_mistas_sem_rotulo) ... ok
+test_perguntas_reais_com_mesmas_palavras_conservam_fontes (test_consulta_cotidiana.ConsultaCotidiana.test_perguntas_reais_com_mesmas_palavras_conservam_fontes) ... ok
+test_preco_de_conversa_nao_e_preco_de_equipamento (test_consulta_cotidiana.ConsultaCotidiana.test_preco_de_conversa_nao_e_preco_de_equipamento) ... ok
+test_preco_de_item_nomeado_nao_exige_rotulo_livro_depois_de_papo (test_consulta_cotidiana.ConsultaCotidiana.test_preco_de_item_nomeado_nao_exige_rotulo_livro_depois_de_papo) ... ok
+test_precos_de_tabelas_curtas_e_nomes_curtos (test_consulta_cotidiana.ConsultaCotidiana.test_precos_de_tabelas_curtas_e_nomes_curtos) ... ok
+test_precos_em_relato_longo_priorizam_tabela_do_item (test_consulta_cotidiana.ConsultaCotidiana.test_precos_em_relato_longo_priorizam_tabela_do_item) ... ok
+test_troca_casual_encerra_regra_e_nao_a_ressuscita (test_consulta_cotidiana.ConsultaCotidiana.test_troca_casual_encerra_regra_e_nao_a_ressuscita) ... ok
+test_classe_zero_tem_proibicao_de_cura (test_consulta_livro.ConsultaDoLivro.test_classe_zero_tem_proibicao_de_cura) ... ok
+test_conta_de_dano_tem_orcamento_e_tetos (test_consulta_livro.ConsultaDoLivro.test_conta_de_dano_tem_orcamento_e_tetos) ... ok
+test_cruza_campos_de_tabela_por_nivel_sem_decorar_os_valores (test_consulta_livro.ConsultaDoLivro.test_cruza_campos_de_tabela_por_nivel_sem_decorar_os_valores) ... ok
+test_custo_pontual_nao_forca_complemento_da_explicacao (test_consulta_livro.ConsultaDoLivro.test_custo_pontual_nao_forca_complemento_da_explicacao) ... ok
+test_descanso_curto_nao_e_confundido_com_forma_cura (test_consulta_livro.ConsultaDoLivro.test_descanso_curto_nao_e_confundido_com_forma_cura) ... ok
+test_explicacoes_de_aptidoes_tem_complemento (test_consulta_livro.ConsultaDoLivro.test_explicacoes_de_aptidoes_tem_complemento) ... ok
+test_explicar_melhor_herda_assunto_e_fontes (test_consulta_livro.ConsultaDoLivro.test_explicar_melhor_herda_assunto_e_fontes) ... ok
+test_formas_nomeadas_tambem_trazem_sua_regra (test_consulta_livro.ConsultaDoLivro.test_formas_nomeadas_tambem_trazem_sua_regra) ... ok
+test_habilidade_especial_usa_orcamento_da_entidade (test_consulta_livro.ConsultaDoLivro.test_habilidade_especial_usa_orcamento_da_entidade) ... ok
+test_lista_de_aptidoes_traz_catalogo (test_consulta_livro.ConsultaDoLivro.test_lista_de_aptidoes_traz_catalogo) ... ok
+test_mudanca_de_assunto_nao_herda_regra (test_consulta_livro.ConsultaDoLivro.test_mudanca_de_assunto_nao_herda_regra) ... ok
+test_novas_fontes_e_seguimento_sao_iguais_nos_dois_motores (test_consulta_livro.ConsultaDoLivro.test_novas_fontes_e_seguimento_sao_iguais_nos_dois_motores) ... ok
+test_pecas_nomeadas_tem_definicao_e_preco_da_classe (test_consulta_livro.ConsultaDoLivro.test_pecas_nomeadas_tem_definicao_e_preco_da_classe) ... ok
+test_pergunta_real_cura_classe_cinco_tem_orcamento_e_limite (test_consulta_livro.ConsultaDoLivro.test_pergunta_real_cura_classe_cinco_tem_orcamento_e_limite) ... ok
+test_regra_com_carga_alta_preserva_explicacao_e_duvida_pontual (test_consulta_livro.ConsultaDoLivro.test_regra_com_carga_alta_preserva_explicacao_e_duvida_pontual) ... ok
+test_requisitos_reversa_incluem_origem_da_excecao (test_consulta_livro.ConsultaDoLivro.test_requisitos_reversa_incluem_origem_da_excecao) ... ok
+test_tecnica_maxima_tem_tabela_propria_e_excecao (test_consulta_livro.ConsultaDoLivro.test_tecnica_maxima_tem_tabela_propria_e_excecao) ... ok
+test_valores_e_definicoes_de_outros_capitulos (test_consulta_livro.ConsultaDoLivro.test_valores_e_definicoes_de_outros_capitulos) ... ok
+test_variacoes_de_cura_e_apoio_em_todas_as_classes (test_consulta_livro.ConsultaDoLivro.test_variacoes_de_cura_e_apoio_em_todas_as_classes) ... ok
+test_ativacao_global_destaca_inativo_se_canal_nao_marcado (test_conteudo_adulto.ComandosAdultos.test_ativacao_global_destaca_inativo_se_canal_nao_marcado) ... ok
+test_ativar_desativar_e_consultar_sem_mudar_outro_servidor (test_conteudo_adulto.ComandosAdultos.test_ativar_desativar_e_consultar_sem_mudar_outro_servidor) ... ok
+test_canal_comum_estrangeiro_e_opcoes_conflitantes_nao_alteram_estado (test_conteudo_adulto.ComandosAdultos.test_canal_comum_estrangeiro_e_opcoes_conflitantes_nao_alteram_estado) ... ok
+test_comandos_so_de_servidor_e_com_permissao_padrao (test_conteudo_adulto.ComandosAdultos.test_comandos_so_de_servidor_e_com_permissao_padrao) ... ok
+test_limitar_canal_nao_ativa_e_todos_remove_restricao (test_conteudo_adulto.ComandosAdultos.test_limitar_canal_nao_ativa_e_todos_remove_restricao) ... ok
+test_revalida_permissao_em_execucao_inclusive_dono_e_dm (test_conteudo_adulto.ComandosAdultos.test_revalida_permissao_em_execucao_inclusive_dono_e_dm) ... ok
+test_status_distingue_restricao_e_topico_sem_mudar_configuracao (test_conteudo_adulto.ComandosAdultos.test_status_distingue_restricao_e_topico_sem_mudar_configuracao) ... ok
+test_canal_especifico_inclui_topicos_sem_liberar_vizinhos (test_conteudo_adulto.PreferenciasAdultas.test_canal_especifico_inclui_topicos_sem_liberar_vizinhos) ... ok
+test_marcar_nsfw_ou_dizer_que_adm_liberou_nao_ativa_sozinho (test_conteudo_adulto.PreferenciasAdultas.test_marcar_nsfw_ou_dizer_que_adm_liberou_nao_ativa_sozinho) ... ok
+test_motivo_e_permissao_concordam_em_todos_os_estados (test_conteudo_adulto.PreferenciasAdultas.test_motivo_e_permissao_concordam_em_todos_os_estados) ... ok
+test_novo_servidor_nao_herda_ativacao (test_conteudo_adulto.PreferenciasAdultas.test_novo_servidor_nao_herda_ativacao) ... ok
+test_pedido_preserva_midia_texto_e_identidade_e_nao_vira_erp (test_conteudo_adulto.PreferenciasAdultas.test_pedido_preserva_midia_texto_e_identidade_e_nao_vira_erp) ... ok
+test_persiste_em_banco_anterior_sem_apagar_falas (test_conteudo_adulto.PreferenciasAdultas.test_persiste_em_banco_anterior_sem_apagar_falas) ... ok
+test_rejeita_ids_e_ativacoes_invalidos (test_conteudo_adulto.PreferenciasAdultas.test_rejeita_ids_e_ativacoes_invalidos) ... ok
+test_todos_so_libera_canais_nsfw_e_nunca_dm (test_conteudo_adulto.PreferenciasAdultas.test_todos_so_libera_canais_nsfw_e_nunca_dm) ... ok
+test_trocar_ativacao_preserva_canal_e_limpar_canal_preserva_ativacao (test_conteudo_adulto.PreferenciasAdultas.test_trocar_ativacao_preserva_canal_e_limpar_canal_preserva_ativacao) ... ok
+test_guarda_so_os_ultimos_turnos (test_conversa.ConversaEmAndamento.test_guarda_so_os_ultimos_turnos) ... ok
+test_meia_hora_parada_e_a_conversa_acaba (test_conversa.ConversaEmAndamento.test_meia_hora_parada_e_a_conversa_acaba) ... ok
+test_separa_por_canal_e_por_personagem (test_conversa.ConversaEmAndamento.test_separa_por_canal_e_por_personagem) ... ok
+test_a_linha_de_clima_entra_antes_do_estado (test_discord.CamadaDoDiscord.test_a_linha_de_clima_entra_antes_do_estado) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-262' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.163 seconds
+ok
+test_ajuda_lista_os_comandos_de_cada_um_e_os_links (test_discord.CamadaDoDiscord.test_ajuda_lista_os_comandos_de_cada_um_e_os_links) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-267' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.154 seconds
+ok
+test_anexo_no_seguimento_recebe_limite_de_midia (test_discord.CamadaDoDiscord.test_anexo_no_seguimento_recebe_limite_de_midia) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-272' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.154 seconds
+ok
+test_ao_subir_registra_os_comandos_em_geral_e_limpa_os_locais_do_servidor_principal (test_discord.CamadaDoDiscord.test_ao_subir_registra_os_comandos_em_geral_e_limpa_os_locais_do_servidor_principal) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-277' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.182 seconds
+ok
+test_apagar_durante_envio_nao_regrava_nem_envia_proximas_partes (test_discord.CamadaDoDiscord.test_apagar_durante_envio_nao_regrava_nem_envia_proximas_partes) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-282' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.148 seconds
+ok
+test_apagar_durante_metadados_evitar_chamada_ao_modelo (test_discord.CamadaDoDiscord.test_apagar_durante_metadados_evitar_chamada_ao_modelo) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-287' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.128 seconds
+falha ao responder a mensagem 1004
+Traceback (most recent call last):
+  File "/tmp/era-validacao/Closure/src/closure_bot/cogs/chat.py", line 176, in on_message
+    await self._responder(mensagem, decisao, agora, texto,
+  File "/tmp/era-validacao/Closure/src/closure_bot/cogs/chat.py", line 191, in _responder
+    await self._responder_com_leitura(mensagem, decisao, agora, texto, fala_respondida, leitura)
+  File "/tmp/era-validacao/Closure/src/closure_bot/cogs/chat.py", line 224, in _responder_com_leitura
+    midia = await bot.midias.contexto(mensagem, texto, incluir_anexos=not (preparo.partes or preparo.silencio),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 2273, in _execute_mock_call
+    result = await effect(*args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: CamadaDoDiscord.test_apagar_durante_metadados_evitar_chamada_ao_modelo.<locals>.midia() got an unexpected keyword argument 'incluir_anexos'
+ok
+test_apagar_durante_modelo_descarta_resposta_e_permite_nova_conversa (test_discord.CamadaDoDiscord.test_apagar_durante_modelo_descarta_resposta_e_permite_nova_conversa) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-292' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.138 seconds
+ok
+test_apagar_durante_preparo_de_midia_impede_envio (test_discord.CamadaDoDiscord.test_apagar_durante_preparo_de_midia_impede_envio) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-297' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.137 seconds
+ok
+test_apagar_participante_anterior_invalida_resposta_de_outro (test_discord.CamadaDoDiscord.test_apagar_participante_anterior_invalida_resposta_de_outro) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-302' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.147 seconds
+ok
+test_aviso_pra_todos_ou_pra_cargo_nao_e_conversa (test_discord.CamadaDoDiscord.test_aviso_pra_todos_ou_pra_cargo_nao_e_conversa) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-307' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.158 seconds
+ok
+test_canal_de_clima_do_env_liga_o_painel_sem_passar_por_cima_do_comando (test_discord.CamadaDoDiscord.test_canal_de_clima_do_env_liga_o_painel_sem_passar_por_cima_do_comando) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-312' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.162 seconds
+clima: canal 99 do CLIMA_CANAIS não encontrado (o bot está nesse servidor e vê o canal?)
+ok
+test_cargo_do_proprio_bot_chama_como_marcar_o_bot (test_discord.CamadaDoDiscord.test_cargo_do_proprio_bot_chama_como_marcar_o_bot) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-317' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.156 seconds
+ok
+test_clima_canal_desligar (test_discord.CamadaDoDiscord.test_clima_canal_desligar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-322' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.157 seconds
+ok
+test_clima_canal_recusa_onde_nao_pode_postar (test_discord.CamadaDoDiscord.test_clima_canal_recusa_onde_nao_pode_postar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-327' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.173 seconds
+ok
+test_clima_canal_usa_o_canal_atual_ou_o_escolhido (test_discord.CamadaDoDiscord.test_clima_canal_usa_o_canal_atual_ou_o_escolhido) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-332' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.156 seconds
+ok
+test_clima_de_lugar_que_nao_existe (test_discord.CamadaDoDiscord.test_clima_de_lugar_que_nao_existe) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-337' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.133 seconds
+ok
+test_clima_de_outro_lugar (test_discord.CamadaDoDiscord.test_clima_de_outro_lugar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-342' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.139 seconds
+ok
+test_clima_fora_do_ar_avisa_sem_quebrar (test_discord.CamadaDoDiscord.test_clima_fora_do_ar_avisa_sem_quebrar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-347' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.133 seconds
+clima: falha ao ler Tóquio (sem rede)
+clima: falha ao procurar 'kyoto' (sem rede)
+ok
+test_clima_manda_o_painel_de_toquio (test_discord.CamadaDoDiscord.test_clima_manda_o_painel_de_toquio) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-352' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.130 seconds
+ok
+test_comando_que_quebra_avisa_a_pessoa (test_discord.CamadaDoDiscord.test_comando_que_quebra_avisa_a_pessoa) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+/usr/lib/python3.12/unittest/mock.py:2188: ResourceWarning: unclosed file <_io.FileIO name='/tmp/era-validacao/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task finished name='Task-357' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.135 seconds
+ok
+test_comandos_registrados (test_discord.CamadaDoDiscord.test_comandos_registrados) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-362' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.146 seconds
+ok
+test_conversa_sem_chamar_para_quando_outra_pessoa_fala_ou_o_tempo_passa (test_discord.CamadaDoDiscord.test_conversa_sem_chamar_para_quando_outra_pessoa_fala_ou_o_tempo_passa) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-367' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.139 seconds
+Executing <Task finished name='Task-368' coro=<CamadaDoDiscord.test_conversa_sem_chamar_para_quando_outra_pessoa_fala_ou_o_tempo_passa() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:656> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.231 seconds
+ok
+test_conversa_sem_chamar_vale_fora_dos_canais_delas_depois_de_marcar (test_discord.CamadaDoDiscord.test_conversa_sem_chamar_vale_fora_dos_canais_delas_depois_de_marcar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-372' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.147 seconds
+ok
+test_em_topico_usa_o_webhook_do_canal_pai (test_discord.CamadaDoDiscord.test_em_topico_usa_o_webhook_do_canal_pai) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-377' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.159 seconds
+ok
+test_exclusao_de_pessoa_sem_relacao_nao_interrompe_resposta (test_discord.CamadaDoDiscord.test_exclusao_de_pessoa_sem_relacao_nao_interrompe_resposta) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-382' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.144 seconds
+ok
+test_fora_dos_canais_delas_so_marcando_ou_respondendo (test_discord.CamadaDoDiscord.test_fora_dos_canais_delas_so_marcando_ou_respondendo) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-387' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.167 seconds
+banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task pending name='Task-388' coro=<CamadaDoDiscord.test_fora_dos_canais_delas_so_marcando_ou_respondendo() running at /tmp/era-validacao/Closure/src/testes/test_discord.py:355> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.12/asyncio/futures.py:387, Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/base_events.py:449> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.134 seconds
+sem resposta pra mensagem 1027: sem_chave nenhum provedor da fila tem chave no .env
+sem resposta pra mensagem 1028: sem_chave nenhum provedor da fila tem chave no .env
+sem resposta pra mensagem 1029: sem_chave nenhum provedor da fila tem chave no .env
+ok
+test_gatilho_por_nome_e_registrado (test_discord.CamadaDoDiscord.test_gatilho_por_nome_e_registrado) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-392' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.139 seconds
+ok
+test_gc_ficha_com_anexo_com_link_e_sem_nada (test_discord.CamadaDoDiscord.test_gc_ficha_com_anexo_com_link_e_sem_nada) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-397' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.160 seconds
+ok
+test_gc_no_chat_faz_o_mesmo_que_a_barra_nos_comandos_publicos (test_discord.CamadaDoDiscord.test_gc_no_chat_faz_o_mesmo_que_a_barra_nos_comandos_publicos) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-402' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.153 seconds
+ok
+test_gc_ping_e_status (test_discord.CamadaDoDiscord.test_gc_ping_e_status) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-407' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.153 seconds
+/usr/lib/python3.12/unittest/mock.py:434: ResourceWarning: unclosed file <_io.FileIO name='/tmp/era-validacao/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+  new = type(cls.__name__, bases, {'__doc__': cls.__doc__})
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_gif_do_seletor_entra_no_chat_sem_metadado_contraditorio (test_discord.CamadaDoDiscord.test_gif_do_seletor_entra_no_chat_sem_metadado_contraditorio) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-412' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.147 seconds
+ok
+test_gif_por_link_discord_chega_sem_expor_url_nos_tempos (test_discord.CamadaDoDiscord.test_gif_por_link_discord_chega_sem_expor_url_nos_tempos) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-421' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.135 seconds
+ok
+test_livro_manda_o_link_com_quem_esta_de_plantao_pela_barra_e_pelo_gc (test_discord.CamadaDoDiscord.test_livro_manda_o_link_com_quem_esta_de_plantao_pela_barra_e_pelo_gc) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-430' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.174 seconds
+ok
+test_mencao_ao_bot_nao_vira_comando_de_prefixo (test_discord.CamadaDoDiscord.test_mencao_ao_bot_nao_vira_comando_de_prefixo) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-435' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.199 seconds
+ok
+test_mencao_e_id_nao_vao_no_texto (test_discord.CamadaDoDiscord.test_mencao_e_id_nao_vao_no_texto) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-440' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.230 seconds
+ok
+test_mensagem_comum_bot_e_webhook_nao_sao_gatilho (test_discord.CamadaDoDiscord.test_mensagem_comum_bot_e_webhook_nao_sao_gatilho) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-445' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.169 seconds
+ok
+test_mensagens_do_canal_viram_movimento_e_atrito_gasta_paciencia (test_discord.CamadaDoDiscord.test_mensagens_do_canal_viram_movimento_e_atrito_gasta_paciencia) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-450' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.176 seconds
+ok
+test_meus_dados_pronomes_e_apagar (test_discord.CamadaDoDiscord.test_meus_dados_pronomes_e_apagar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-455' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.233 seconds
+Executing <Task finished name='Task-456' coro=<CamadaDoDiscord.test_meus_dados_pronomes_e_apagar() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:814> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.125 seconds
+ok
+test_midia_vai_ao_pedido_e_historico_sem_virar_fato (test_discord.CamadaDoDiscord.test_midia_vai_ao_pedido_e_historico_sem_virar_fato) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-460' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.162 seconds
+/usr/lib/python3.12/unittest/mock.py:2188: ResourceWarning: unclosed file <_io.FileIO name='/tmp/era-validacao/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task finished name='Task-461' coro=<CamadaDoDiscord.test_midia_vai_ao_pedido_e_historico_sem_virar_fato() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:86> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.162 seconds
+ok
+test_midia_visual_so_no_turno_atual_sem_binario_no_banco (test_discord.CamadaDoDiscord.test_midia_visual_so_no_turno_atual_sem_binario_no_banco) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-465' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.168 seconds
+ok
+test_modo_misto_so_no_canal_escolhido (test_discord.CamadaDoDiscord.test_modo_misto_so_no_canal_escolhido) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-470' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.156 seconds
+Executing <Task finished name='Task-471' coro=<CamadaDoDiscord.test_modo_misto_so_no_canal_escolhido() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:315> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.102 seconds
+ok
+test_nome_de_exibicao_vai_sem_colchete_e_mensagem_longa_e_cortada (test_discord.CamadaDoDiscord.test_nome_de_exibicao_vai_sem_colchete_e_mensagem_longa_e_cortada) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-475' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.165 seconds
+ok
+test_painel_com_canal_apagado_nao_quebra (test_discord.CamadaDoDiscord.test_painel_com_canal_apagado_nao_quebra) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-480' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.163 seconds
+clima: canal do painel (71) não encontrado
+ok
+test_painel_diario_por_servidor (test_discord.CamadaDoDiscord.test_painel_diario_por_servidor) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-485' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.201 seconds
+ok
+test_participante_chegado_durante_digitacao_tambem_e_protegido (test_discord.CamadaDoDiscord.test_participante_chegado_durante_digitacao_tambem_e_protegido) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-490' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.174 seconds
+ok
+test_ping_mostra_o_manifesto (test_discord.CamadaDoDiscord.test_ping_mostra_o_manifesto) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-495' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.191 seconds
+ok
+test_preferencia_adulta_chega_ao_modelo_sem_mudar_rotas_ou_salvar_config_no_historico (test_discord.CamadaDoDiscord.test_preferencia_adulta_chega_ao_modelo_sem_mudar_rotas_ou_salvar_config_no_historico) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-500' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.180 seconds
+ok
+test_quem_chama_demais_num_minuto_fica_sem_resposta (test_discord.CamadaDoDiscord.test_quem_chama_demais_num_minuto_fica_sem_resposta) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-505' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.137 seconds
+Executing <Task finished name='Task-506' coro=<CamadaDoDiscord.test_quem_chama_demais_num_minuto_fica_sem_resposta() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:687> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.368 seconds
+ok
+test_quem_chama_recebe_resposta_e_a_conversa_segue (test_discord.CamadaDoDiscord.test_quem_chama_recebe_resposta_e_a_conversa_segue) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-510' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.154 seconds
+Executing <Task finished name='Task-511' coro=<CamadaDoDiscord.test_quem_chama_recebe_resposta_e_a_conversa_segue() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:567> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.104 seconds
+ok
+test_quem_ela_acabou_de_responder_continua_sem_chamar (test_discord.CamadaDoDiscord.test_quem_ela_acabou_de_responder_continua_sem_chamar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-515' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.147 seconds
+ok
+test_reflexao_atrasada_roda_ao_subir (test_discord.CamadaDoDiscord.test_reflexao_atrasada_roda_ao_subir) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-520' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.133 seconds
+ok
+test_resposta_a_mensagem_do_webhook_e_gatilho (test_discord.CamadaDoDiscord.test_resposta_a_mensagem_do_webhook_e_gatilho) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-525' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.154 seconds
+ok
+test_resposta_a_uma_fala_fica_com_quem_falou_e_leva_a_fala_junto (test_discord.CamadaDoDiscord.test_resposta_a_uma_fala_fica_com_quem_falou_e_leva_a_fala_junto) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-530' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.241 seconds
+ok
+test_resposta_longa_sai_em_varias_mensagens_e_entra_inteira_na_memoria (test_discord.CamadaDoDiscord.test_resposta_longa_sai_em_varias_mensagens_e_entra_inteira_na_memoria) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-535' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.185 seconds
+ok
+test_sem_permissao_de_webhook_envia_pela_conta_do_bot (test_discord.CamadaDoDiscord.test_sem_permissao_de_webhook_envia_pela_conta_do_bot) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-540' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.208 seconds
+sem webhook no canal 10; enviando pela conta do bot
+ok
+test_sem_resposta_do_modelo_ela_fica_calada (test_discord.CamadaDoDiscord.test_sem_resposta_do_modelo_ela_fica_calada) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-545' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.232 seconds
+sem resposta pra mensagem 1086: 500 fora do ar
+ok
+test_silencio_responde_sem_modelo_e_preserva_pergunta_mista (test_discord.CamadaDoDiscord.test_silencio_responde_sem_modelo_e_preserva_pergunta_mista) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-550' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.152 seconds
+/usr/lib/python3.12/unittest/mock.py:2188: ResourceWarning: unclosed file <_io.FileIO name='/tmp/era-validacao/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task finished name='Task-551' coro=<CamadaDoDiscord.test_silencio_responde_sem_modelo_e_preserva_pergunta_mista() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:121> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.185 seconds
+ok
+test_so_o_dono_pelo_id_vai_como_mizuki (test_discord.CamadaDoDiscord.test_so_o_dono_pelo_id_vai_como_mizuki) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-559' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.134 seconds
+ok
+test_teste_webhook_so_pro_dono (test_discord.CamadaDoDiscord.test_teste_webhook_so_pro_dono) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-564' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.193 seconds
+ok
+test_webhook_apagado_no_servidor_e_refeito (test_discord.CamadaDoDiscord.test_webhook_apagado_no_servidor_e_refeito) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-569' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.327 seconds
+ok
+test_webhook_leva_nome_e_avatar_e_guarda_o_id (test_discord.CamadaDoDiscord.test_webhook_leva_nome_e_avatar_e_guarda_o_id) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-574' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.156 seconds
+ok
+test_classificacao (test_ficha.Avisos.test_classificacao) ... ok
+test_ligado_registra_e_desligado_nao (test_ficha.Comando.test_ligado_registra_e_desligado_nao) ... ok
+test_painel_avisa_reserva_inexistente_sem_marcar_numero_como_certo (test_ficha.Comando.test_painel_avisa_reserva_inexistente_sem_marcar_numero_como_certo) ... ok
+test_painel_diz_o_que_falta_o_que_bateu_e_quem_fala (test_ficha.Comando.test_painel_diz_o_que_falta_o_que_bateu_e_quem_fala) ... ok
+test_painel_sem_nome_usa_caminho_e_nivel_so_quando_conhecidos (test_ficha.Comando.test_painel_sem_nome_usa_caminho_e_nivel_so_quando_conhecidos) ... ok
+test_impressao_digital_ignora_forma_e_pega_mudanca_de_texto (test_ficha.ConteudoCustom.test_impressao_digital_ignora_forma_e_pega_mudanca_de_texto) ... ok
+test_agrupamento_nao_apaga_excesso_sem_permissao_ou_contadores_diferentes (test_ficha.Corretor.test_agrupamento_nao_apaga_excesso_sem_permissao_ou_contadores_diferentes) ... ok
+test_buff_entra_na_conta_e_vai_pro_mestre_conferir (test_ficha.Corretor.test_buff_entra_na_conta_e_vai_pro_mestre_conferir) ... ok
+test_buff_nao_muda_defesa_fixada_e_formula_conhecida_ainda_avisa (test_ficha.Corretor.test_buff_nao_muda_defesa_fixada_e_formula_conhecida_ainda_avisa) ... ok
+test_defesa_trocada_a_mao_acende_o_problema_certo (test_ficha.Corretor.test_defesa_trocada_a_mao_acende_o_problema_certo) ... ok
+test_defesa_zero_continua_conferindo_protecao (test_ficha.Corretor.test_defesa_zero_continua_conferindo_protecao) ... ok
+test_defesa_zero_distingue_formula_normal_de_adulteracao (test_ficha.Corretor.test_defesa_zero_distingue_formula_normal_de_adulteracao) ... ok
+test_escudo_nao_conta_com_arma_de_duas_maos (test_ficha.Corretor.test_escudo_nao_conta_com_arma_de_duas_maos) ... ok
+test_ficha_em_branco_sai_reprovada_pelas_pericias_e_pelo_caminho_por_escolher (test_ficha.Corretor.test_ficha_em_branco_sai_reprovada_pelas_pericias_e_pelo_caminho_por_escolher) ... ok
+test_formato_desconhecido_avisa_sem_corrigir (test_ficha.Corretor.test_formato_desconhecido_avisa_sem_corrigir) ... ok
+test_kaori_bate_com_o_livro_e_com_a_ficha (test_ficha.Corretor.test_kaori_bate_com_o_livro_e_com_a_ficha) ... ok
+test_nomes_contra_o_catalogo_e_o_capitulo_de_origens (test_ficha.Corretor.test_nomes_contra_o_catalogo_e_o_capitulo_de_origens) ... ok
+test_nucleo_dependente_nao_confere_barra_de_integridade (test_ficha.Corretor.test_nucleo_dependente_nao_confere_barra_de_integridade) ... ok
+test_pe_da_origem_que_a_ficha_nao_soma_pede_o_buff (test_ficha.Corretor.test_pe_da_origem_que_a_ficha_nao_soma_pede_o_buff) ... ok
+test_referencias_saem_do_livro (test_ficha.Corretor.test_referencias_saem_do_livro) ... ok
+test_restricao_corporal_defesa_zero_e_vida_pela_metade (test_ficha.Corretor.test_restricao_corporal_defesa_zero_e_vida_pela_metade) ... ok
+test_rota_sem_energia_confere_a_defesa_pela_lapidacao (test_ficha.Corretor.test_rota_sem_energia_confere_a_defesa_pela_lapidacao) ... ok
+test_treino_extra_da_origem_nao_reprova_e_vai_pro_mestre (test_ficha.Corretor.test_treino_extra_da_origem_nao_reprova_e_vai_pro_mestre) ... ok
+test_tres_avisos_do_mesmo_treino_viram_uma_nota (test_ficha.Corretor.test_tres_avisos_do_mesmo_treino_viram_uma_nota) ... ok
+test_uniforme_escudo_marcos_e_buff_batem_com_a_ficha (test_ficha.Corretor.test_uniforme_escudo_marcos_e_buff_batem_com_a_ficha) ... ok
+test_vida_e_pe_trocados_a_mao_na_kaori (test_ficha.Corretor.test_vida_e_pe_trocados_a_mao_na_kaori) ... ok
+test_vida_rolada_na_campanha_nao_e_conferida (test_ficha.Corretor.test_vida_rolada_na_campanha_nao_e_conferida) ... ok
+test_contrato_tem_as_mesmas_chaves_da_ficha (test_ficha.Leitor.test_contrato_tem_as_mesmas_chaves_da_ficha) ... ok
+test_le_a_ficha_gerada_com_as_2650_chaves (test_ficha.Leitor.test_le_a_ficha_gerada_com_as_2650_chaves) ... ok
+test_sem_aba_ou_sem_valores_nao_e_lida (test_ficha.Leitor.test_sem_aba_ou_sem_valores_nao_e_lida) ... ok
+test_csv_e_pagina_de_login (test_ficha.Normalizacao.test_csv_e_pagina_de_login) ... ok
+test_id_da_planilha (test_ficha.Normalizacao.test_id_da_planilha) ... ok
+test_valores_da_planilha (test_ficha.Normalizacao.test_valores_da_planilha) ... ok
+test_ficha_oficial_pelo_link_corresponde_ao_manifesto_b47 (test_ficha.PeloLink.test_ficha_oficial_pelo_link_corresponde_ao_manifesto_b47) ... skipped 'precisa de internet: rode com FICHA_ONLINE=1'
+test_buff_invalido_nao_e_ignorado (test_ficha_analise_v2.AnaliseV2.test_buff_invalido_nao_e_ignorado) ... ok
+test_campo_ausente_nao_virou_ajuste_zero (test_ficha_analise_v2.AnaliseV2.test_campo_ausente_nao_virou_ajuste_zero) ... ok
+test_contrato_novo_preserva_antigo_e_origens_dos_campos_reais (test_ficha_analise_v2.AnaliseV2.test_contrato_novo_preserva_antigo_e_origens_dos_campos_reais) ... ok
+test_criada_para_no_fim_da_classe_e_talisma_nao_abate_retorno (test_ficha_analise_v2.AnaliseV2.test_criada_para_no_fim_da_classe_e_talisma_nao_abate_retorno) ... ok
+test_domada_usa_maestria_do_dono_e_constituicao_com_buff (test_ficha_analise_v2.AnaliseV2.test_domada_usa_maestria_do_dono_e_constituicao_com_buff) ... ok
+test_entradas_individuais_nao_burlam_orcamento_antigo (test_ficha_analise_v2.AnaliseV2.test_entradas_individuais_nao_burlam_orcamento_antigo) ... ok
+test_equipamento_proprio_nao_certifica_defesa (test_ficha_analise_v2.AnaliseV2.test_equipamento_proprio_nao_certifica_defesa) ... ok
+test_familia_fechada_reprova_peca_sem_erro_na_planilha (test_ficha_analise_v2.AnaliseV2.test_familia_fechada_reprova_peca_sem_erro_na_planilha) ... ok
+test_kaori_anterior_com_magia_passou_pela_conferencia_inteira (test_ficha_analise_v2.AnaliseV2.test_kaori_anterior_com_magia_passou_pela_conferencia_inteira) ... ok
+test_maxima_orcamento_e_dados_sao_independentes (test_ficha_analise_v2.AnaliseV2.test_maxima_orcamento_e_dados_sao_independentes) ... ok
+test_principal_tem_segunda_livre_com_desconto_exato (test_ficha_analise_v2.AnaliseV2.test_principal_tem_segunda_livre_com_desconto_exato) ... ok
+test_segunda_livre_sem_trilha_e_familia_repetida_reprovam (test_ficha_analise_v2.AnaliseV2.test_segunda_livre_sem_trilha_e_familia_repetida_reprovam) ... ok
+test_talento_respeita_ce_do_marco_e_nivel_da_entidade (test_ficha_analise_v2.AnaliseV2.test_talento_respeita_ce_do_marco_e_nivel_da_entidade) ... ok
+test_texto_preenchido_sem_nome_nao_e_ignorado (test_ficha_analise_v2.AnaliseV2.test_texto_preenchido_sem_nome_nao_e_ignorado) ... ok
+test_tres_montagens_calculadas_no_google (test_ficha_analise_v2.AnaliseV2.test_tres_montagens_calculadas_no_google) ... ok
+test_vida_defesa_ataque_e_cd_adulterados_sem_aviso (test_ficha_analise_v2.AnaliseV2.test_vida_defesa_ataque_e_cd_adulterados_sem_aviso) ... ok
+test_zero_hostil_nao_confia_no_resultado (test_ficha_analise_v2.AnaliseV2.test_zero_hostil_nao_confia_no_resultado) ... ok
+test_zero_vazio_com_dados_visiveis_nao_vira_habilidade (test_ficha_analise_v2.AnaliseV2.test_zero_vazio_com_dados_visiveis_nao_vira_habilidade) ... ok
+test_bonus_ficam_na_pagina_propria_sem_inchar_resumo (test_ficha_analise_v4.AnaliseV4.test_bonus_ficam_na_pagina_propria_sem_inchar_resumo) ... ok
+test_contrato_preserva_as_4896_chaves_e_origens (test_ficha_analise_v4.AnaliseV4.test_contrato_preserva_as_4896_chaves_e_origens) ... ok
+test_entrada_ausente_nao_certifica_conta_nem_inventa_zero (test_ficha_analise_v4.AnaliseV4.test_entrada_ausente_nao_certifica_conta_nem_inventa_zero) ... ok
+test_especialista_nativo_e_divergencia_de_volume_amarela (test_ficha_analise_v4.AnaliseV4.test_especialista_nativo_e_divergencia_de_volume_amarela) ... ok
+test_formato_de_configuracao_nao_e_aceito_sem_integracao (test_ficha_analise_v4.AnaliseV4.test_formato_de_configuracao_nao_e_aceito_sem_integracao) ... ok
+test_pessoal_e_domada_recalculadas_sem_erro_ou_pendencia (test_ficha_analise_v4.AnaliseV4.test_pessoal_e_domada_recalculadas_sem_erro_ou_pendencia) ... ok
+test_resultados_adulterados_reprovam_sem_precisar_de_aviso (test_ficha_analise_v4.AnaliseV4.test_resultados_adulterados_reprovam_sem_precisar_de_aviso) ... ok
+test_treino_faltante_e_pendente_sem_triplicar_aviso (test_ficha_analise_v4.AnaliseV4.test_treino_faltante_e_pendente_sem_triplicar_aviso) ... ok
+test_alias_da_arma_nao_cria_falta_falsa_no_inventario (test_ficha_carga.Carga.test_alias_da_arma_nao_cria_falta_falsa_no_inventario) ... ok
+test_apenas_peso_e_total_exatos_da_formula_antiga_sao_pendencia (test_ficha_carga.Carga.test_apenas_peso_e_total_exatos_da_formula_antiga_sao_pendencia) ... ok
+test_buff_do_limite_separado_do_peso (test_ficha_carga.Carga.test_buff_do_limite_separado_do_peso) ... ok
+test_carga_no_limite_dobro_e_acima (test_ficha_carga.Carga.test_carga_no_limite_dobro_e_acima) ... ok
+test_dado_ausente_e_item_sem_nome_nao_fecham_total (test_ficha_carga.Carga.test_dado_ausente_e_item_sem_nome_nao_fecham_total) ... ok
+test_entidade_soma_tres_pecas_sem_apagar_escudo_inativo (test_ficha_carga.Carga.test_entidade_soma_tres_pecas_sem_apagar_escudo_inativo) ... ok
+test_equipamento_em_uso_precisa_constar_do_inventario (test_ficha_carga.Carga.test_equipamento_em_uso_precisa_constar_do_inventario) ... ok
+test_escudo_guardado_arma_em_duas_maos_conta_ambos (test_ficha_carga.Carga.test_escudo_guardado_arma_em_duas_maos_conta_ambos) ... ok
+test_ferramenta_integrada_nao_e_cobrada_sem_identificar_conjunto (test_ficha_carga.Carga.test_ferramenta_integrada_nao_e_cobrada_sem_identificar_conjunto) ... ok
+test_formato_antigo_continua_parcial (test_ficha_carga.Carga.test_formato_antigo_continua_parcial) ... ok
+test_guardado_ausente_ou_equipamento_proprio_nao_certifica_total_entidade (test_ficha_carga.Carga.test_guardado_ausente_ou_equipamento_proprio_nao_certifica_total_entidade) ... ok
+test_guardado_entidade_e_declarado_nao_autoriza_armazenamento (test_ficha_carga.Carga.test_guardado_entidade_e_declarado_nao_autoriza_armazenamento) ... ok
+test_negativo_nao_finito_e_texto_na_quantidade_nao_viram_zero (test_ficha_carga.Carga.test_negativo_nao_finito_e_texto_na_quantidade_nao_viram_zero) ... ok
+test_nome_de_item_tabelado_vence_peso_generico (test_ficha_carga.Carga.test_nome_de_item_tabelado_vence_peso_generico) ... ok
+test_porte_incomum_nao_e_forca_nem_dobro_do_antigo (test_ficha_carga.Carga.test_porte_incomum_nao_e_forca_nem_dobro_do_antigo) ... ok
+test_quantidade_da_arma_multiplica_volume_sem_arredondar (test_ficha_carga.Carga.test_quantidade_da_arma_multiplica_volume_sem_arredondar) ... ok
+test_quantidade_vazia_e_um_zero_continua_zero (test_ficha_carga.Carga.test_quantidade_vazia_e_um_zero_continua_zero) ... ok
+test_total_substitui_alerta_do_subtotal_so_com_entradas_completas (test_ficha_carga.Carga.test_total_substitui_alerta_do_subtotal_so_com_entradas_completas) ... ok
+test_traje_vestido_entra_na_carga (test_ficha_carga.Carga.test_traje_vestido_entra_na_carga) ... ok
+test_volume_livre_e_total_declarado_sem_multiplicar_duas_vezes (test_ficha_carga.Carga.test_volume_livre_e_total_declarado_sem_multiplicar_duas_vezes) ... ok
+test_alcance_e_area_independentes_e_escadas (test_ficha_efeitos.Efeitos.test_alcance_e_area_independentes_e_escadas) ... ok
+test_alma_reduz_dados_sem_validar_permissao (test_ficha_efeitos.Efeitos.test_alma_reduz_dados_sem_validar_permissao) ... ok
+test_apoio_converte_saldo_sem_multiplicar_por_junto (test_ficha_efeitos.Efeitos.test_apoio_converte_saldo_sem_multiplicar_por_junto) ... ok
+test_apoio_zero_e_efeito_nao_concedem_saldo (test_ficha_efeitos.Efeitos.test_apoio_zero_e_efeito_nao_concedem_saldo) ... ok
+test_area_e_amparo_fechadas_bloqueiam_formas_pessoais (test_ficha_efeitos.Efeitos.test_area_e_amparo_fechadas_bloqueiam_formas_pessoais) ... ok
+test_campos_ausentes_nao_sao_zeros_certificados (test_ficha_efeitos.Efeitos.test_campos_ausentes_nao_sao_zeros_certificados) ... ok
+test_controle_saldo_zero_duracao_e_cd_so_controle (test_ficha_efeitos.Efeitos.test_controle_saldo_zero_duracao_e_cd_so_controle) ... ok
+test_cura_comum_classe_cinco_teto_e_media (test_ficha_efeitos.Efeitos.test_cura_comum_classe_cinco_teto_e_media) ... ok
+test_cura_da_entidade_tem_orcamento_proprio (test_ficha_efeitos.Efeitos.test_cura_da_entidade_tem_orcamento_proprio) ... ok
+test_descartar_dano_nao_compra_bonus_controle (test_ficha_efeitos.Efeitos.test_descartar_dano_nao_compra_bonus_controle) ... ok
+test_duas_compras_de_junto_e_limite (test_ficha_efeitos.Efeitos.test_duas_compras_de_junto_e_limite) ... ok
+test_formula_antiga_de_alma_gera_pendencia_precisa (test_ficha_efeitos.Efeitos.test_formula_antiga_de_alma_gera_pendencia_precisa) ... ok
+test_linha_formula_antiga_pendente_outros_valores_reprovam (test_ficha_efeitos.Efeitos.test_linha_formula_antiga_pendente_outros_valores_reprovam) ... ok
+test_maxima_respeita_familia_da_forma_e_inescapavel (test_ficha_efeitos.Efeitos.test_maxima_respeita_familia_da_forma_e_inescapavel) ... ok
+test_nao_confirma_numero_exportado_da_resolucao_entidade (test_ficha_efeitos.Efeitos.test_nao_confirma_numero_exportado_da_resolucao_entidade) ... ok
+test_onda_entidade_classe_um_saldo_zero (test_ficha_efeitos.Efeitos.test_onda_entidade_classe_um_saldo_zero) ... ok
+test_onda_nao_inventa_modo_a_partir_do_resultado (test_ficha_efeitos.Efeitos.test_onda_nao_inventa_modo_a_partir_do_resultado) ... ok
+test_pecas_exigem_forma_compativel (test_ficha_efeitos.Efeitos.test_pecas_exigem_forma_compativel) ... ok
+test_remate_e_adicionais_contam_no_teto (test_ficha_efeitos.Efeitos.test_remate_e_adicionais_contam_no_teto) ... ok
+test_requisito_invalido_nao_certifica_dano (test_ficha_efeitos.Efeitos.test_requisito_invalido_nao_certifica_dano) ... ok
+test_resolucao_alternativa_permitida_nao_e_reprovada_ou_certificada (test_ficha_efeitos.Efeitos.test_resolucao_alternativa_permitida_nao_e_reprovada_ou_certificada) ... ok
+test_restricao_paga_peca_nao_forma (test_ficha_efeitos.Efeitos.test_restricao_paga_peca_nao_forma) ... ok
+test_tipo_de_resolucao_com_e_sem_controle (test_ficha_efeitos.Efeitos.test_tipo_de_resolucao_com_e_sem_controle) ... ok
+test_acerto_informativo_nao_e_forcado_a_dano (test_ficha_entidade_repertorio.EntidadeRepertorio.test_acerto_informativo_nao_e_forcado_a_dano) ... ok
+test_ce_propria_explicita_tambem_respeita_o_ganho (test_ficha_entidade_repertorio.EntidadeRepertorio.test_ce_propria_explicita_tambem_respeita_o_ganho) ... ok
+test_dominio_aplica_livre_da_entidade (test_ficha_entidade_repertorio.EntidadeRepertorio.test_dominio_aplica_livre_da_entidade) ... ok
+test_dominio_divide_vagas_com_especiais (test_ficha_entidade_repertorio.EntidadeRepertorio.test_dominio_divide_vagas_com_especiais) ... ok
+test_dominio_exemplo_do_livro_sem_desconto (test_ficha_entidade_repertorio.EntidadeRepertorio.test_dominio_exemplo_do_livro_sem_desconto) ... ok
+test_dominio_exige_refino_do_dono (test_ficha_entidade_repertorio.EntidadeRepertorio.test_dominio_exige_refino_do_dono) ... ok
+test_dominio_nao_usa_nivel_do_dono_como_nivel_da_domada (test_ficha_entidade_repertorio.EntidadeRepertorio.test_dominio_nao_usa_nivel_do_dono_como_nivel_da_domada) ... ok
+test_dominio_sem_barreiras_custa_sete_e_exige_ocultismo_do_dono (test_ficha_entidade_repertorio.EntidadeRepertorio.test_dominio_sem_barreiras_custa_sete_e_exige_ocultismo_do_dono) ... ok
+test_escolha_de_24_nao_cabe_no_nivel_16 (test_ficha_entidade_repertorio.EntidadeRepertorio.test_escolha_de_24_nao_cabe_no_nivel_16) ... ok
+test_extra_exige_trilha_e_caminho (test_ficha_entidade_repertorio.EntidadeRepertorio.test_extra_exige_trilha_e_caminho) ... ok
+test_extra_mantem_ce1_nos_marcos_16_e_24 (test_ficha_entidade_repertorio.EntidadeRepertorio.test_extra_mantem_ce1_nos_marcos_16_e_24) ... ok
+test_extra_usa_nivel_da_entidade_nao_do_dono (test_ficha_entidade_repertorio.EntidadeRepertorio.test_extra_usa_nivel_da_entidade_nao_do_dono) ... ok
+test_formulas_vazias_nao_ativam_trunfos (test_ficha_entidade_repertorio.EntidadeRepertorio.test_formulas_vazias_nao_ativam_trunfos) ... ok
+test_liberacao_adulterada_em_pe_pontos_e_acao (test_ficha_entidade_repertorio.EntidadeRepertorio.test_liberacao_adulterada_em_pe_pontos_e_acao) ... ok
+test_liberacao_domada_tem_conta_propria (test_ficha_entidade_repertorio.EntidadeRepertorio.test_liberacao_domada_tem_conta_propria) ... ok
+test_liberacao_respeita_quantidade_fixa (test_ficha_entidade_repertorio.EntidadeRepertorio.test_liberacao_respeita_quantidade_fixa) ... ok
+test_maxima_antes_17_ou_resultado_ausente_nao_certifica (test_ficha_entidade_repertorio.EntidadeRepertorio.test_maxima_antes_17_ou_resultado_ausente_nao_certifica) ... ok
+test_maxima_usa_faixa_da_domada (test_ficha_entidade_repertorio.EntidadeRepertorio.test_maxima_usa_faixa_da_domada) ... ok
+test_nao_aceita_quarta_escolha_extra_inventada (test_ficha_entidade_repertorio.EntidadeRepertorio.test_nao_aceita_quarta_escolha_extra_inventada) ... ok
+test_outros_tipos_nao_tem_trunfos (test_ficha_entidade_repertorio.EntidadeRepertorio.test_outros_tipos_nao_tem_trunfos) ... ok
+test_posicao_ausente_nao_certifica_conjunto (test_ficha_entidade_repertorio.EntidadeRepertorio.test_posicao_ausente_nao_certifica_conjunto) ... ok
+test_proprio_extra_continua_sem_aprovacao_automatica (test_ficha_entidade_repertorio.EntidadeRepertorio.test_proprio_extra_continua_sem_aprovacao_automatica) ... ok
+test_tabelas_da_domada_nao_sao_as_pessoais (test_ficha_entidade_repertorio.EntidadeRepertorio.test_tabelas_da_domada_nao_sao_as_pessoais) ... ok
+test_talento_e_carta_nao_ocupam_mesmo_extra (test_ficha_entidade_repertorio.EntidadeRepertorio.test_talento_e_carta_nao_ocupam_mesmo_extra) ... ok
+test_talento_pessoal_nao_entra_no_catalogo_da_entidade (test_ficha_entidade_repertorio.EntidadeRepertorio.test_talento_pessoal_nao_entra_no_catalogo_da_entidade) ... ok
+test_trunfo_sem_nome_da_entidade_nao_e_ignorado_no_fluxo_completo (test_ficha_entidade_repertorio.EntidadeRepertorio.test_trunfo_sem_nome_da_entidade_nao_e_ignorado_no_fluxo_completo) ... ok
+test_ajuste_ausente_nao_virou_zero (test_ficha_entidade_repertorio.ResolucaoETalento.test_ajuste_ausente_nao_virou_zero) ... ok
+test_bonus_usa_atributos_nao_resultados_da_entidade (test_ficha_entidade_repertorio.ResolucaoETalento.test_bonus_usa_atributos_nao_resultados_da_entidade) ... ok
+test_buff_fracionario_e_negativo_nao_e_perdido_na_resolucao (test_ficha_entidade_repertorio.ResolucaoETalento.test_buff_fracionario_e_negativo_nao_e_perdido_na_resolucao) ... ok
+test_cd_sem_precisao_da_formula_antiga_vira_pendencia (test_ficha_entidade_repertorio.ResolucaoETalento.test_cd_sem_precisao_da_formula_antiga_vira_pendencia) ... ok
+test_controle_rejeita_bonus_impossivel_sem_certificar_saldo (test_ficha_entidade_repertorio.ResolucaoETalento.test_controle_rejeita_bonus_impossivel_sem_certificar_saldo) ... ok
+test_precisao_soma_dois_ao_ataque_ou_cd (test_ficha_entidade_repertorio.ResolucaoETalento.test_precisao_soma_dois_ao_ataque_ou_cd) ... ok
+test_reserva_buff_legado_nao_e_somada_duas_vezes (test_ficha_entidade_repertorio.ResolucaoETalento.test_reserva_buff_legado_nao_e_somada_duas_vezes) ... ok
+test_reserva_profunda_tem_acrescimo_por_classe_nao_por_quantidade (test_ficha_entidade_repertorio.ResolucaoETalento.test_reserva_profunda_tem_acrescimo_por_classe_nao_por_quantidade) ... ok
+test_arma_desconhecida_nao_certifica_defesa_ou_ataque (test_ficha_equipamento.Equipamento.test_arma_desconhecida_nao_certifica_defesa_ou_ataque) ... ok
+test_atributo_entidade_invalido_tem_erro_proprio (test_ficha_equipamento.Equipamento.test_atributo_entidade_invalido_tem_erro_proprio) ... ok
+test_carga_entidade_e_subtotal_incluindo_escudo_inativo (test_ficha_equipamento.Equipamento.test_carga_entidade_e_subtotal_incluindo_escudo_inativo) ... ok
+test_carga_pessoal_nunca_e_certificada_pelo_resultado (test_ficha_equipamento.Equipamento.test_carga_pessoal_nunca_e_certificada_pelo_resultado) ... ok
+test_catalogo_e_alias_saem_do_livro (test_ficha_equipamento.Equipamento.test_catalogo_e_alias_saem_do_livro) ... ok
+test_defesa_pessoal_nao_ignora_escudo_proprio (test_ficha_equipamento.Equipamento.test_defesa_pessoal_nao_ignora_escudo_proprio) ... ok
+test_entidade_arma_nao_usa_atributo_magico_por_engano (test_ficha_equipamento.Equipamento.test_entidade_arma_nao_usa_atributo_magico_por_engano) ... ok
+test_entidade_com_arma_de_uma_mao_tem_defesa_conferida (test_ficha_equipamento.Equipamento.test_entidade_com_arma_de_uma_mao_tem_defesa_conferida) ... ok
+test_equipamento_custom_e_entrada_ausente_nao_viram_zero (test_ficha_equipamento.Equipamento.test_equipamento_custom_e_entrada_ausente_nao_viram_zero) ... ok
+test_escudo_inativo_ainda_pesa_sem_impor_forca_de_uso (test_ficha_equipamento.Equipamento.test_escudo_inativo_ainda_pesa_sem_impor_forca_de_uso) ... ok
+test_fineza_e_disparo_respeitam_atributos_da_arma (test_ficha_equipamento.Equipamento.test_fineza_e_disparo_respeitam_atributos_da_arma) ... ok
+test_fogo_tem_excecao_de_autorizacao_nao_reprovacao_automatica (test_ficha_equipamento.Equipamento.test_fogo_tem_excecao_de_autorizacao_nao_reprovacao_automatica) ... ok
+test_forca_insuficiente_nao_reprova_ou_apaga_protecao (test_ficha_equipamento.Equipamento.test_forca_insuficiente_nao_reprova_ou_apaga_protecao) ... ok
+test_forca_nao_finita_ou_booleana_nao_confirma_requisitos (test_ficha_equipamento.Equipamento.test_forca_nao_finita_ou_booleana_nao_confirma_requisitos) ... ok
+test_patente_revestimento_sem_aviso_calculado (test_ficha_equipamento.Equipamento.test_patente_revestimento_sem_aviso_calculado) ... ok
+test_requisito_arma_independe_do_aviso_da_ficha (test_ficha_equipamento.Equipamento.test_requisito_arma_independe_do_aviso_da_ficha) ... ok
+test_atrasar_nao_paga_a_forma_da_liberacao (test_ficha_magia.Montagens.test_atrasar_nao_paga_a_forma_da_liberacao) ... ok
+test_atributos_adulterados_nao_dependem_do_aviso (test_ficha_magia.Montagens.test_atributos_adulterados_nao_dependem_do_aviso) ... ok
+test_basica_sem_pe_d6_e_leve (test_ficha_magia.Montagens.test_basica_sem_pe_d6_e_leve) ... ok
+test_cartas_vazias_com_valores_iniciais_nao_contam (test_ficha_magia.Montagens.test_cartas_vazias_com_valores_iniciais_nao_contam) ... ok
+test_classe_invalida_nao_derruba_comando (test_ficha_magia.Montagens.test_classe_invalida_nao_derruba_comando) ... ok
+test_criada_para_no_fim_da_classe (test_ficha_magia.Montagens.test_criada_para_no_fim_da_classe) ... ok
+test_domada_nao_sobe_com_invocador (test_ficha_magia.Montagens.test_domada_nao_sobe_com_invocador) ... ok
+test_erro_de_formula_nao_vira_peca_ou_dano_certificado (test_ficha_magia.Montagens.test_erro_de_formula_nao_vira_peca_ou_dano_certificado) ... ok
+test_especial_tem_orcamento_proprio (test_ficha_magia.Montagens.test_especial_tem_orcamento_proprio) ... ok
+test_familia_ausente_nao_certifica_numero_plausivel (test_ficha_magia.Montagens.test_familia_ausente_nao_certifica_numero_plausivel) ... ok
+test_fio_de_arrasto_do_livro (test_ficha_magia.Montagens.test_fio_de_arrasto_do_livro) ... ok
+test_formula_ou_media_escrita_errada (test_ficha_magia.Montagens.test_formula_ou_media_escrita_errada) ... ok
+test_frequencia_e_uso_incompativel (test_ficha_magia.Montagens.test_frequencia_e_uso_incompativel) ... ok
+test_liberacao_corte_de_ruptura (test_ficha_magia.Montagens.test_liberacao_corte_de_ruptura) ... ok
+test_liberacao_preco_acao_e_nivel (test_ficha_magia.Montagens.test_liberacao_preco_acao_e_nivel) ... ok
+test_liberacoes_respeitam_quantidade_recebida (test_ficha_magia.Montagens.test_liberacoes_respeitam_quantidade_recebida) ... ok
+test_limites_e_embutida_sem_confiar_no_aviso (test_ficha_magia.Montagens.test_limites_e_embutida_sem_confiar_no_aviso) ... ok
+test_livro_sem_referencia_falha_com_aviso_tratavel_pelo_bot (test_ficha_magia.Montagens.test_livro_sem_referencia_falha_com_aviso_tratavel_pelo_bot) ... ok
+test_mordida_precisa_da_entidade (test_ficha_magia.Montagens.test_mordida_precisa_da_entidade) ... ok
+test_pe_e_dano_adulterados_sem_aviso_da_ficha (test_ficha_magia.Montagens.test_pe_e_dano_adulterados_sem_aviso_da_ficha) ... ok
+test_peca_propria_e_controle_nao_certificam_dano (test_ficha_magia.Montagens.test_peca_propria_e_controle_nao_certificam_dano) ... ok
+test_restricao_nao_reembolsa_forma (test_ficha_magia.Montagens.test_restricao_nao_reembolsa_forma) ... ok
+test_salto_capado_pelo_total_do_livro (test_ficha_magia.Montagens.test_salto_capado_pelo_total_do_livro) ... ok
+test_toca_alma_nao_fura_requisito_classe (test_ficha_magia.Montagens.test_toca_alma_nao_fura_requisito_classe) ... ok
+test_aviso_de_dados_ausentes_e_so_do_formato_antigo (test_ficha_painel.Apresentacao.test_aviso_de_dados_ausentes_e_so_do_formato_antigo) ... ok
+test_cor_da_revisao_respeita_quebra_entre_erros_e_pendencias (test_ficha_painel.Apresentacao.test_cor_da_revisao_respeita_quebra_entre_erros_e_pendencias) ... ok
+test_cores_e_alertas_continuam_no_resumo (test_ficha_painel.Apresentacao.test_cores_e_alertas_continuam_no_resumo) ... ok
+test_cores_locais_preservam_identidade_das_duas_guias (test_ficha_painel.Apresentacao.test_cores_locais_preservam_identidade_das_duas_guias) ... ok
+test_domada_mostra_nome_do_buff_e_numeros_legiveis (test_ficha_painel.Apresentacao.test_domada_mostra_nome_do_buff_e_numeros_legiveis) ... ok
+test_erro_global_nao_contamina_valores_conferidos_ou_limites (test_ficha_painel.Apresentacao.test_erro_global_nao_contamina_valores_conferidos_ou_limites) ... ok
+test_limites_repetidos_agrupam_assuntos_sem_apagar_itens (test_ficha_painel.Apresentacao.test_limites_repetidos_agrupam_assuntos_sem_apagar_itens) ... ok
+test_pendencia_ou_revisao_do_mestre_nao_vira_erro (test_ficha_painel.Apresentacao.test_pendencia_ou_revisao_do_mestre_nao_vira_erro) ... ok
+test_quatro_fichas_preservam_resultado_e_dados_com_resumo_menor (test_ficha_painel.Apresentacao.test_quatro_fichas_preservam_resultado_e_dados_com_resumo_menor) ... ok
+test_relatorio_grande_preserva_todos_os_itens_e_texto_longo (test_ficha_painel.Apresentacao.test_relatorio_grande_preserva_todos_os_itens_e_texto_longo) ... ok
+test_barra_publica_envia_controles_e_folhear_nao_rele_a_ficha (test_ficha_painel.Navegacao.test_barra_publica_envia_controles_e_folhear_nao_rele_a_ficha) ... ok
+test_cliques_simultaneos_nao_perdem_passos (test_ficha_painel.Navegacao.test_cliques_simultaneos_nao_perdem_passos) ... ok
+test_envio_de_texto_painel_unico_e_paginado (test_ficha_painel.Navegacao.test_envio_de_texto_painel_unico_e_paginado) ... ok
+test_leitura_xlsx_e_contas_nao_bloqueiam_eventos_do_discord (test_ficha_painel.Navegacao.test_leitura_xlsx_e_contas_nao_bloqueiam_eventos_do_discord) ... ok
+test_quatro_botoes_e_seletor_trocam_a_mesma_mensagem (test_ficha_painel.Navegacao.test_quatro_botoes_e_seletor_trocam_a_mesma_mensagem) ... ok
+test_seletor_com_mais_de_25_paginas_e_limites (test_ficha_painel.Navegacao.test_seletor_com_mais_de_25_paginas_e_limites) ... ok
+test_timeout_sem_cliques_usa_mensagem_do_envio (test_ficha_painel.Navegacao.test_timeout_sem_cliques_usa_mensagem_do_envio) ... ok
+test_timeout_volta_ao_resumo_desativa_controles_e_nao_apaga_analise (test_ficha_painel.Navegacao.test_timeout_volta_ao_resumo_desativa_controles_e_nao_apaga_analise) ... ok
+test_apenas_entidades_por_espaco_consumem_vagas (test_ficha_repertorio.RepertorioDoLivro.test_apenas_entidades_por_espaco_consumem_vagas) ... ok
+test_campos_faltantes_nao_certificam_total_nem_recebem_zero (test_ficha_repertorio.RepertorioDoLivro.test_campos_faltantes_nao_certificam_total_nem_recebem_zero) ... ok
+test_categoria_faltante_vira_pendencia_sem_certificar_total (test_ficha_repertorio.RepertorioDoLivro.test_categoria_faltante_vira_pendencia_sem_certificar_total) ... ok
+test_ce4_fora_dos_pagos_exclusivo_da_origem (test_ficha_repertorio.RepertorioDoLivro.test_ce4_fora_dos_pagos_exclusivo_da_origem) ... ok
+test_cinco_ce_tres_custam_quinze_espacos (test_ficha_repertorio.RepertorioDoLivro.test_cinco_ce_tres_custam_quinze_espacos) ... ok
+test_coexistencia_da_duas_aplicacoes_sem_aumentar_vagas (test_ficha_repertorio.RepertorioDoLivro.test_coexistencia_da_duas_aplicacoes_sem_aumentar_vagas) ... ok
+test_dominio_soma_estagio_atual_sem_recomprar (test_ficha_repertorio.RepertorioDoLivro.test_dominio_soma_estagio_atual_sem_recomprar) ... ok
+test_dominio_tem_requisito_de_refino_recalculado (test_ficha_repertorio.RepertorioDoLivro.test_dominio_tem_requisito_de_refino_recalculado) ... ok
+test_gratuita_da_origem_nao_inventa_qual_foi (test_ficha_repertorio.RepertorioDoLivro.test_gratuita_da_origem_nao_inventa_qual_foi) ... ok
+test_gratuita_de_origem_respeita_origem_e_ce (test_ficha_repertorio.RepertorioDoLivro.test_gratuita_de_origem_respeita_origem_e_ce) ... ok
+test_leque_da_uma_aplicacao_e_um_talento (test_ficha_repertorio.RepertorioDoLivro.test_leque_da_uma_aplicacao_e_um_talento) ... ok
+test_leque_nao_paga_invocacao_ou_talento_pago (test_ficha_repertorio.RepertorioDoLivro.test_leque_nao_paga_invocacao_ou_talento_pago) ... ok
+test_marcos_invalidos_nao_viram_descontos (test_ficha_repertorio.RepertorioDoLivro.test_marcos_invalidos_nao_viram_descontos) ... ok
+test_nao_altera_entradas_e_integracao_de_ficha_completa (test_ficha_repertorio.RepertorioDoLivro.test_nao_altera_entradas_e_integracao_de_ficha_completa) ... ok
+test_outra_marcante_nao_recebe_coexistencia_por_texto (test_ficha_repertorio.RepertorioDoLivro.test_outra_marcante_nao_recebe_coexistencia_por_texto) ... ok
+test_pratica_cotidiana_amplia_quantidade_zero_sem_dar_espaco (test_ficha_repertorio.RepertorioDoLivro.test_pratica_cotidiana_amplia_quantidade_zero_sem_dar_espaco) ... ok
+test_regra_inicial_gratis_nao_come_vaga (test_ficha_repertorio.RepertorioDoLivro.test_regra_inicial_gratis_nao_come_vaga) ... ok
+test_regra_propria_cobra_so_dois_espacos_no_ce_tres (test_ficha_repertorio.RepertorioDoLivro.test_regra_propria_cobra_so_dois_espacos_no_ce_tres) ... ok
+test_rotas_sem_expansao_nao_usam_nome_calculado_para_burlar (test_ficha_repertorio.RepertorioDoLivro.test_rotas_sem_expansao_nao_usam_nome_calculado_para_burlar) ... ok
+test_sem_barreiras_conserva_requisitos_anteriores (test_ficha_repertorio.RepertorioDoLivro.test_sem_barreiras_conserva_requisitos_anteriores) ... ok
+test_sexto_nao_usa_slot_inventado_para_virar_gratuito (test_ficha_repertorio.RepertorioDoLivro.test_sexto_nao_usa_slot_inventado_para_virar_gratuito) ... ok
+test_tabela_de_espacos_sem_somar_marco_duas_vezes (test_ficha_repertorio.RepertorioDoLivro.test_tabela_de_espacos_sem_somar_marco_duas_vezes) ... ok
+test_talento_pago_tem_preco_e_nivel_do_catalogo (test_ficha_repertorio.RepertorioDoLivro.test_talento_pago_tem_preco_e_nivel_do_catalogo) ... ok
+test_talento_proprio_nao_vira_aprovacao_de_efeito (test_ficha_repertorio.RepertorioDoLivro.test_talento_proprio_nao_vira_aprovacao_de_efeito) ... ok
+test_tres_aplicacoes_nivel_dois_e_quarta_excedente (test_ficha_repertorio.RepertorioDoLivro.test_tres_aplicacoes_nivel_dois_e_quarta_excedente) ... ok
+test_ajuste_ausente_nao_virou_zero (test_ficha_testes.TestesDaFicha.test_ajuste_ausente_nao_virou_zero) ... ok
+test_ajuste_invalido_nao_e_ignorado (test_ficha_testes.TestesDaFicha.test_ajuste_invalido_nao_e_ignorado) ... ok
+test_atributos_nao_confiam_no_aviso_ou_no_total_exportado (test_ficha_testes.TestesDaFicha.test_atributos_nao_confiam_no_aviso_ou_no_total_exportado) ... ok
+test_bonus_adulterado_sem_aviso_reprova (test_ficha_testes.TestesDaFicha.test_bonus_adulterado_sem_aviso_reprova) ... ok
+test_bonus_entidade_adulterado_e_ajuste_ausente (test_ficha_testes.TestesDaFicha.test_bonus_entidade_adulterado_e_ajuste_ausente) ... ok
+test_buff_de_inteligencia_nao_prova_treino_permanente (test_ficha_testes.TestesDaFicha.test_buff_de_inteligencia_nao_prova_treino_permanente) ... ok
+test_buff_numerico_soma_e_e_nota_para_mestre (test_ficha_testes.TestesDaFicha.test_buff_numerico_soma_e_e_nota_para_mestre) ... ok
+test_domada_usa_maestria_dono_sem_somar_buff_pericia_legado (test_ficha_testes.TestesDaFicha.test_domada_usa_maestria_dono_sem_somar_buff_pericia_legado) ... ok
+test_duas_vidas_nao_soma_os_dois_destinos_do_treino (test_ficha_testes.TestesDaFicha.test_duas_vidas_nao_soma_os_dois_destinos_do_treino) ... ok
+test_escolha_de_treino_ausente_amarelo_excesso_vermelho (test_ficha_testes.TestesDaFicha.test_escolha_de_treino_ausente_amarelo_excesso_vermelho) ... ok
+test_especialidade_antiga_gratuita_sem_marco_corpo (test_ficha_testes.TestesDaFicha.test_especialidade_antiga_gratuita_sem_marco_corpo) ... ok
+test_especializacao_requer_treino_e_nivel10 (test_ficha_testes.TestesDaFicha.test_especializacao_requer_treino_e_nivel10) ... ok
+test_especializacao_soma_metade_da_maestria_para_baixo (test_ficha_testes.TestesDaFicha.test_especializacao_soma_metade_da_maestria_para_baixo) ... ok
+test_fisico_usa_escolha_fixa_nao_maior_atributo (test_ficha_testes.TestesDaFicha.test_fisico_usa_escolha_fixa_nao_maior_atributo) ... ok
+test_formato_antigo_preserva_cobertura_parcial (test_ficha_testes.TestesDaFicha.test_formato_antigo_preserva_cobertura_parcial) ... ok
+test_kaori_tr_e_pericias_basicos (test_ficha_testes.TestesDaFicha.test_kaori_tr_e_pericias_basicos) ... ok
+test_marcacao_invalida_nao_remove_aviso_antigo (test_ficha_testes.TestesDaFicha.test_marcacao_invalida_nao_remove_aviso_antigo) ... ok
+test_oficio_admite_outro_atributo_com_tarefa_revisada (test_ficha_testes.TestesDaFicha.test_oficio_admite_outro_atributo_com_tarefa_revisada) ... ok
+test_origem_nao_concede_duas_pericias_por_aprendizado (test_ficha_testes.TestesDaFicha.test_origem_nao_concede_duas_pericias_por_aprendizado) ... ok
+test_pericia_duplicada_e_excesso_da_entidade (test_ficha_testes.TestesDaFicha.test_pericia_duplicada_e_excesso_da_entidade) ... ok
+test_ponto_de_corpo_exige_marco_e_total_maximo_seis (test_ficha_testes.TestesDaFicha.test_ponto_de_corpo_exige_marco_e_total_maximo_seis) ... ok
+test_tr_a_menos_pendente_a_mais_erro (test_ficha_testes.TestesDaFicha.test_tr_a_menos_pendente_a_mais_erro) ... ok
+test_tr_e_pericia_nao_aceitam_atributo_trocado (test_ficha_testes.TestesDaFicha.test_tr_e_pericia_nao_aceitam_atributo_trocado) ... ok
+test_tr_faltando_e_pericias_a_menos_da_entidade_sao_pendencias (test_ficha_testes.TestesDaFicha.test_tr_faltando_e_pericias_a_menos_da_entidade_sao_pendencias) ... ok
+test_troca_oficios_por_pericia_e_armas_por_duas_pericias (test_ficha_testes.TestesDaFicha.test_troca_oficios_por_pericia_e_armas_por_duas_pericias) ... ok
+test_400_e_erro_do_pedido_e_nao_tira_o_modelo_dos_outros (test_gasto_e_prazo.Fila.test_400_e_erro_do_pedido_e_nao_tira_o_modelo_dos_outros) ... modelo: vertex:gemini-3.8-flash falhou (400 contents required)
+ok
+test_prazo_total_corta_a_fila_e_a_reflexao_nao_tem_prazo (test_gasto_e_prazo.Fila.test_prazo_total_corta_a_fila_e_a_reflexao_nao_tem_prazo) ... modelo: gemini:gemini-3.8-flash falhou (rede sem resposta em 0 s)
+ok
+test_reflexao_espera_o_pago_lento_que_o_chat_largaria (test_gasto_e_prazo.Fila.test_reflexao_espera_o_pago_lento_que_o_chat_largaria) ... modelo=vertex:gemini-3.8-flash consumo incompleto; reserva cautelar_usd=0.007879 (não é cobrança confirmada)
+modelo: vertex:gemini-3.8-flash falhou (rede sem resposta em 0 s)
+ok
+test_gasto_de_fora_entra_no_teto_global_e_nao_no_do_argon (test_gasto_e_prazo.Gasto.test_gasto_de_fora_entra_no_teto_global_e_nao_no_do_argon) ... ok
+test_gasto_de_fora_tira_o_pago_da_fila (test_gasto_e_prazo.Gasto.test_gasto_de_fora_tira_o_pago_da_fila) ... ok
+test_preco_cheio_dobra_o_flash_e_o_promocional_fica_como_antes (test_gasto_e_prazo.Gasto.test_preco_cheio_dobra_o_flash_e_o_promocional_fica_como_antes) ... ok
+test_reserva_por_consumo_incerto_continua_contando_no_preco_cheio (test_gasto_e_prazo.Gasto.test_reserva_por_consumo_incerto_continua_contando_no_preco_cheio) ... ok
+test_valores_invalidos (test_gasto_e_prazo.Gasto.test_valores_invalidos) ... ok
+test_falha_nao_inventa_e_cache_expira (test_memoria_midia.Metadados.test_falha_nao_inventa_e_cache_expira) ... ok
+test_gif_e_anexo_nao_sao_visao_e_link_arbitrario_nao_e_buscado (test_memoria_midia.Metadados.test_gif_e_anexo_nao_sao_visao_e_link_arbitrario_nao_e_buscado) ... ok
+test_maximo_dois_videos_e_limite_textual (test_memoria_midia.Metadados.test_maximo_dois_videos_e_limite_textual) ... ok
+test_metadados_historicos_fora_da_busca_e_id_fora_do_prompt (test_memoria_midia.Metadados.test_metadados_historicos_fora_da_busca_e_id_fora_do_prompt) ... ok
+test_previa_do_discord_identifica_quando_consulta_falha (test_memoria_midia.Metadados.test_previa_do_discord_identifica_quando_consulta_falha) ... ok
+test_reconhece_sem_embed_e_reutiliza_cache (test_memoria_midia.Metadados.test_reconhece_sem_embed_e_reutiliza_cache) ... ok
+test_url_so_aceita_youtube_e_id_validos (test_memoria_midia.Metadados.test_url_so_aceita_youtube_e_id_validos) ... ok
+test_apagar_pessoa_remove_fio_e_respostas_associadas (test_memoria_midia.Persistencia.test_apagar_pessoa_remove_fio_e_respostas_associadas) ... ok
+test_chave_errada_nao_manda_cifra_ao_modelo (test_memoria_midia.Persistencia.test_chave_errada_nao_manda_cifra_ao_modelo) ... ok
+test_corte_das_4h30_e_limite (test_memoria_midia.Persistencia.test_corte_das_4h30_e_limite) ... ok
+test_expira_sem_consulta_ao_canal (test_memoria_midia.Persistencia.test_expira_sem_consulta_ao_canal) ... ok
+test_protecao_em_andamento_e_liberada_mesmo_com_erro (test_memoria_midia.Persistencia.test_protecao_em_andamento_e_liberada_mesmo_com_erro) ... ok
+test_reabrir_recupera_cifrado_e_separado (test_memoria_midia.Persistencia.test_reabrir_recupera_cifrado_e_separado) ... ok
+test_audio_normalizado_e_duracao_maxima (test_midia_anexos.Decodificacao.test_audio_normalizado_e_duracao_maxima) ... ok
+test_excesso_de_bytes_recusado_antes_de_processar (test_midia_anexos.Decodificacao.test_excesso_de_bytes_recusado_antes_de_processar) ... ok
+test_foto_reduzida_sem_exif_e_reserva (test_midia_anexos.Decodificacao.test_foto_reduzida_sem_exif_e_reserva) ... ok
+test_gif_amostragem_temporal_e_quadro_final (test_midia_anexos.Decodificacao.test_gif_amostragem_temporal_e_quadro_final) ... ok
+test_imagem_grande_corrompida_e_animacao_longa_recusadas (test_midia_anexos.Decodificacao.test_imagem_grande_corrompida_e_animacao_longa_recusadas) ... Executing <Task pending name='Task-758' coro=<Decodificacao.test_imagem_grande_corrompida_e_animacao_longa_recusadas() running at /tmp/era-validacao/Closure/src/testes/test_midia_anexos.py:84> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/base_events.py:449> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.165 seconds
+ok
+test_ogg_mp3_flac_e_m4a (test_midia_anexos.Decodificacao.test_ogg_mp3_flac_e_m4a) ... ok
+test_orientacao_visual_so_quando_imagem_foi_enviada (test_midia_anexos.Decodificacao.test_orientacao_visual_so_quando_imagem_foi_enviada) ... ok
+test_silencio_exato_local_sem_descartar_sinal_fraco (test_midia_anexos.Decodificacao.test_silencio_exato_local_sem_descartar_sinal_fraco) ... ok
+test_config_desligada_e_validacao (test_midia_anexos.Entrada.test_config_desligada_e_validacao) ... ok
+test_desligado_canal_diferente_e_arquivo_grande_nao_baixam (test_midia_anexos.Entrada.test_desligado_canal_diferente_e_arquivo_grande_nao_baixam) ... ok
+test_ocupado_e_cancelamento_liberam_vaga (test_midia_anexos.Entrada.test_ocupado_e_cancelamento_liberam_vaga) ... ok
+test_primeiro_anexo_e_recusa_falha_sem_imaginar (test_midia_anexos.Entrada.test_primeiro_anexo_e_recusa_falha_sem_imaginar) ... ok
+test_url_exata_sem_usuario_porta_ou_redirecionamento (test_midia_anexos.Entrada.test_url_exata_sem_usuario_porta_ou_redirecionamento) ... ok
+test_apenas_vertex_flash_e_uma_tentativa (test_midia_anexos.Orcamento.test_apenas_vertex_flash_e_uma_tentativa) ... modelo: vertex:gemini-3.8-flash falhou (400 simulado)
+ok
+test_historico_tipo_e_midia_mista_nao_passam (test_midia_anexos.Orcamento.test_historico_tipo_e_midia_mista_nao_passam) ... ok
+test_reserva_visual_barra_chamada_e_timeout_conserva_custo (test_midia_anexos.Orcamento.test_reserva_visual_barra_chamada_e_timeout_conserva_custo) ... modelo: teto do mês atingido (US$ 0.01); provedores pagos fora da fila
+modelo=vertex:gemini-3.8-flash consumo incompleto; reserva cautelar_usd=0.012621 (não é cobrança confirmada)
+modelo: vertex:gemini-3.8-flash falhou (rede simulado)
+ok
+test_direto_nao_amplia_para_dominios_ou_formatos_arbitrarios (test_midia_gifs.Enderecos.test_direto_nao_amplia_para_dominios_ou_formatos_arbitrarios) ... ok
+test_dominios_credenciais_caminhos_e_troca_de_provedor (test_midia_gifs.Enderecos.test_dominios_credenciais_caminhos_e_troca_de_provedor) ... ok
+test_gif_direto_do_discord_com_assinatura_e_sem_previa (test_midia_gifs.Enderecos.test_gif_direto_do_discord_com_assinatura_e_sem_previa) ... ok
+test_link_real_e_proxy_correspondente (test_midia_gifs.Enderecos.test_link_real_e_proxy_correspondente) ... ok
+test_metadados_tenor_so_usam_urls_de_midia_permitidas (test_midia_gifs.Enderecos.test_metadados_tenor_so_usam_urls_de_midia_permitidas) ... ok
+test_nao_usa_embed_de_outro_link_nem_miniatura_estatica (test_midia_gifs.Enderecos.test_nao_usa_embed_de_outro_link_nem_miniatura_estatica) ... ok
+test_previa_discord_precisa_ser_do_mesmo_arquivo (test_midia_gifs.Enderecos.test_previa_discord_precisa_ser_do_mesmo_arquivo) ... ok
+test_tenor_giphy_e_query_preservada (test_midia_gifs.Enderecos.test_tenor_giphy_e_query_preservada) ... ok
+test_tenor_identidade_pelo_id_e_cdn_alternativo (test_midia_gifs.Enderecos.test_tenor_identidade_pelo_id_e_cdn_alternativo) ... ok
+test_404_do_discord_recupera_url_completa_da_previa (test_midia_gifs.Fluxo.test_404_do_discord_recupera_url_completa_da_previa) ... ok
+test_cancelamento_libera_processamento (test_midia_gifs.Fluxo.test_cancelamento_libera_processamento) ... ok
+test_desligado_ou_outro_canal_nao_resolve (test_midia_gifs.Fluxo.test_desligado_ou_outro_canal_nao_resolve) ... ok
+test_direto_baixa_url_intacta_sem_esperar_previa (test_midia_gifs.Fluxo.test_direto_baixa_url_intacta_sem_esperar_previa) ... ok
+test_falha_provedor_invalido_arquivo_ruim_e_youtube (test_midia_gifs.Fluxo.test_falha_provedor_invalido_arquivo_ruim_e_youtube) ... mídia GIF não analisada: etapa=resolver erro=ValueError status=n/a
+mídia GIF não analisada: etapa=download erro=ValueError status=n/a
+ok
+test_falha_sem_assinatura_tem_aviso_especifico_e_log_sem_url (test_midia_gifs.Fluxo.test_falha_sem_assinatura_tem_aviso_especifico_e_log_sem_url) ... ok
+test_gif_puro_primeiro_link_e_anexo_tem_prioridade (test_midia_gifs.Fluxo.test_gif_puro_primeiro_link_e_anexo_tem_prioridade) ... ok
+test_http_origem_invalida_recusada_antes_da_rede (test_midia_gifs.Fluxo.test_http_origem_invalida_recusada_antes_da_rede) ... ok
+test_http_sem_redirecionamento_e_limite_no_fluxo (test_midia_gifs.Fluxo.test_http_sem_redirecionamento_e_limite_no_fluxo) ... ok
+test_link_direto_expirado_ou_nao_gif_nao_chega_ao_modelo (test_midia_gifs.Fluxo.test_link_direto_expirado_ou_nao_gif_nao_chega_ao_modelo) ... mídia GIF não analisada: etapa=download erro=ValueError status=n/a
+mídia GIF não analisada: etapa=download erro=ValueError status=n/a
+ok
+test_links_diretos_respeitam_ativacao_canal_e_primeira_midia (test_midia_gifs.Fluxo.test_links_diretos_respeitam_ativacao_canal_e_primeira_midia) ... ok
+test_mp4_real_normalizado_ate_o_corpo_e_metadados_sem_conflito (test_midia_gifs.Fluxo.test_mp4_real_normalizado_ate_o_corpo_e_metadados_sem_conflito) ... ok
+test_nao_resgata_outro_arquivo_nem_refaz_download_grande_ou_500 (test_midia_gifs.Fluxo.test_nao_resgata_outro_arquivo_nem_refaz_download_grande_ou_500) ... mídia GIF não analisada: etapa=resolver_discord erro=ValueError status=404
+mídia GIF não analisada: etapa=download erro=ValueError status=n/a
+mídia GIF não analisada: etapa=download erro=Indisponivel status=500
+mídia GIF não analisada: etapa=download erro=TimeoutError status=n/a
+ok
+test_pagina_tenor_limites_e_sem_redirecionar (test_midia_gifs.Fluxo.test_pagina_tenor_limites_e_sem_redirecionar) ... ok
+test_previa_tardia_busca_uma_vez_e_mensagem_editada_recusa (test_midia_gifs.Fluxo.test_previa_tardia_busca_uma_vez_e_mensagem_editada_recusa) ... ok
+test_recuperacao_tardia_so_uma_releitura_da_mesma_mensagem (test_midia_gifs.Fluxo.test_recuperacao_tardia_so_uma_releitura_da_mesma_mensagem) ... ok
+test_sem_previa_nao_adivinha_url_nem_busca_site (test_midia_gifs.Fluxo.test_sem_previa_nao_adivinha_url_nem_busca_site) ... ok
+test_tenor_sem_previa_usa_apenas_sua_pagina_publica (test_midia_gifs.Fluxo.test_tenor_sem_previa_usa_apenas_sua_pagina_publica) ... ok
+test_video_longo_quadros_demais_e_playlist_recusados (test_midia_gifs.Fluxo.test_video_longo_quadros_demais_e_playlist_recusados) ... ok
+test_com_todos_de_molho_nao_repete_durante_intervalo (test_modelo.DeMolho.test_com_todos_de_molho_nao_repete_durante_intervalo) ... modelo: gemini:a falhou (503 sobrecarga)
+modelo: vertex:b falhou (503 sobrecarga)
+ok
+test_o_gratuito_que_demora_e_largado_e_o_pago_responde (test_modelo.DeMolho.test_o_gratuito_que_demora_e_largado_e_o_pago_responde) ... modelo: gemini:a falhou (rede sem resposta em 0 s)
+ok
+test_quem_estourou_a_cota_e_pulado_ate_o_prazo_passar (test_modelo.DeMolho.test_quem_estourou_a_cota_e_pulado_ate_o_prazo_passar) ... modelo: gemini:a falhou (429 cota)
+modelo: gemini:a falhou (429 cota)
+ok
+test_cai_pra_reserva_quando_o_primeiro_falha (test_modelo.Fila.test_cai_pra_reserva_quando_o_primeiro_falha) ... modelo: vertex:gemini-3.8-flash falhou (429 cota)
+ok
+test_gasto_do_mes_so_conta_o_pago_que_deu_certo (test_modelo.Fila.test_gasto_do_mes_so_conta_o_pago_que_deu_certo) ... ok
+test_gratuito_primeiro_so_gasta_quando_a_cota_acaba (test_modelo.Fila.test_gratuito_primeiro_so_gasta_quando_a_cota_acaba) ... modelo: gemini:gemini-3.8-flash falhou (429 cota do dia)
+ok
+test_no_teto_o_pago_sai_da_fila_e_o_gratuito_segue (test_modelo.Fila.test_no_teto_o_pago_sai_da_fila_e_o_gratuito_segue) ... ok
+test_no_teto_sem_gratuito_nao_chama_ninguem (test_modelo.Fila.test_no_teto_sem_gratuito_nao_chama_ninguem) ... modelo: teto do mês atingido (US$ 1.00); provedores pagos fora da fila
+ok
+test_primeiro_da_fila_responde_e_fica_registrado (test_modelo.Fila.test_primeiro_da_fila_responde_e_fica_registrado) ... ok
+test_provedor_sem_chave_sai_da_fila (test_modelo.Fila.test_provedor_sem_chave_sai_da_fila) ... ok
+test_sem_chave_nenhuma (test_modelo.Fila.test_sem_chave_nenhuma) ... ok
+test_todos_falham_levanta_o_ultimo_erro (test_modelo.Fila.test_todos_falham_levanta_o_ultimo_erro) ... modelo: vertex:a falhou (500 x)
+modelo: gemini:b falhou (bloqueado SAFETY)
+ok
+test_corpo_igual_ao_do_site (test_modelo.Formato.test_corpo_igual_ao_do_site) ... ok
+test_fila (test_modelo.Formato.test_fila) ... ok
+test_le_texto_sem_o_raciocinio_e_soma_os_tokens (test_modelo.Formato.test_le_texto_sem_o_raciocinio_e_soma_os_tokens) ... ok
+test_o_padrao_do_bot_e_raciocinio_reduzido (test_modelo.Formato.test_o_padrao_do_bot_e_raciocinio_reduzido) ... ok
+test_raciocinio_reduzido_entra_no_pedido_so_quando_pedido (test_modelo.Formato.test_raciocinio_reduzido_entra_no_pedido_so_quando_pedido) ... ok
+test_resposta_cortada (test_modelo.Formato.test_resposta_cortada) ... ok
+test_vazia_e_bloqueada (test_modelo.Formato.test_vazia_e_bloqueada) ... ok
+test_modelo_fora_da_tabela_conta_pelo_mais_caro (test_modelo.Preco.test_modelo_fora_da_tabela_conta_pelo_mais_caro) ... ok
+test_tabela (test_modelo.Preco.test_tabela) ... ok
+test_pedido_so_pago_pula_o_gratuito_mesmo_sendo_o_primeiro_da_fila (test_modelo.SoPagos.test_pedido_so_pago_pula_o_gratuito_mesmo_sendo_o_primeiro_da_fila) ... ok
+test_continuacao_retoma_regiao_mas_mudanca_de_assunto_nao (test_mundo_era.ConsultaEra.test_continuacao_retoma_regiao_mas_mudanca_de_assunto_nao) ... ok
+test_nome_da_cidade_recupera_o_registro_detalhado (test_mundo_era.ConsultaEra.test_nome_da_cidade_recupera_o_registro_detalhado) ... ok
+test_o_material_privado_nao_esta_no_nucleo_publicavel (test_mundo_era.ConsultaEra.test_o_material_privado_nao_esta_no_nucleo_publicavel) ... ok
+test_orcamento_e_mesmo_resultado_nos_motores (test_mundo_era.ConsultaEra.test_orcamento_e_mesmo_resultado_nos_motores) ... ok
+test_papo_e_regras_sem_assunto_de_lore_nao_puxam_corpus (test_mundo_era.ConsultaEra.test_papo_e_regras_sem_assunto_de_lore_nao_puxam_corpus) ... ok
+test_repeticao_de_fato_publicado_nao_vira_bordao_proibido (test_mundo_era.ConsultaEra.test_repeticao_de_fato_publicado_nao_vira_bordao_proibido) ... ok
+test_todas_as_regioes_possuem_consulta_propria (test_mundo_era.ConsultaEra.test_todas_as_regioes_possuem_consulta_propria) ... ok
+test_viagem_capitais_e_misterios_nas_duas_guias (test_mundo_era.ConsultaEra.test_viagem_capitais_e_misterios_nas_duas_guias) ... ok
+test_corpus_entregue_contem_somente_as_31_fontes_autorizadas (test_mundo_era.ImportacaoSeletiva.test_corpus_entregue_contem_somente_as_31_fontes_autorizadas) ... ok
+test_duplicata_e_tamanho_invalido_falham_sem_importacao_parcial (test_mundo_era.ImportacaoSeletiva.test_duplicata_e_tamanho_invalido_falham_sem_importacao_parcial) ... ok
+test_excluidos_metadados_e_duplicatas_editoriais_nem_sao_lidos (test_mundo_era.ImportacaoSeletiva.test_excluidos_metadados_e_duplicatas_editoriais_nem_sao_lidos) ... ok
+test_limpeza_remove_mencoes_e_links_mas_preserva_texto (test_mundo_era.ImportacaoSeletiva.test_limpeza_remove_mencoes_e_links_mas_preserva_texto) ... ok
+test_fila_respeita_fallback_personalizado (test_otimizacao_argon.Configuracao.test_fila_respeita_fallback_personalizado) ... ok
+test_misto_exige_canal_explicitamente_escolhido (test_otimizacao_argon.Configuracao.test_misto_exige_canal_explicitamente_escolhido) ... ok
+test_cancelamento_preserva_reserva_apos_reabrir_banco (test_otimizacao_argon.Orcamento.test_cancelamento_preserva_reserva_apos_reabrir_banco) ... modelo=vertex:gemini-4-argon consumo incompleto; reserva cautelar_usd=0.041490 (não é cobrança confirmada)
+modelo: teto do mês atingido (US$ 0.04); provedores pagos fora da fila
+Executing <Task finished name='Task-1072' coro=<Orcamento.test_cancelamento_preserva_reserva_apos_reabrir_banco() done, defined at /tmp/era-validacao/Closure/src/testes/test_otimizacao_argon.py:113> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.109 seconds
+ok
+test_card_incompativel_vai_ao_flash_sem_chamar_argon (test_otimizacao_argon.Orcamento.test_card_incompativel_vai_ao_flash_sem_chamar_argon) ... Argon compacto incompatível com o prompt; tentativa não enviada
+ok
+test_compacto_no_argon_e_original_no_fallback (test_otimizacao_argon.Orcamento.test_compacto_no_argon_e_original_no_fallback) ... modelo: vertex:gemini-4-argon falhou (503 sobrecarga)
+Executing <Task finished name='Task-1082' coro=<Orcamento.test_compacto_no_argon_e_original_no_fallback() done, defined at /tmp/era-validacao/Closure/src/testes/test_otimizacao_argon.py:173> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 1.559 seconds
+ok
+test_cooldown_nao_repete_404_e_recupera_depois (test_otimizacao_argon.Orcamento.test_cooldown_nao_repete_404_e_recupera_depois) ... modelo: vertex:gemini-4-argon falhou (404 modelo indisponível)
+modelo: vertex:gemini-4-argon falhou (404 modelo indisponível)
+ok
+test_flash_e_argon_usam_rota_global_explicita_quando_ha_projeto (test_otimizacao_argon.Orcamento.test_flash_e_argon_usam_rota_global_explicita_quando_ha_projeto) ... ok
+test_http_confirmado_nao_reserva_custo_e_200_bloqueado_sem_uso_reserva (test_otimizacao_argon.Orcamento.test_http_confirmado_nao_reserva_custo_e_200_bloqueado_sem_uso_reserva) ... modelo: vertex:gemini-4-argon falhou (400 status HTTP confirmado)
+modelo: vertex:gemini-4-argon falhou (403 status HTTP confirmado)
+modelo: vertex:gemini-4-argon falhou (429 status HTTP confirmado)
+modelo: vertex:gemini-4-argon falhou (500 status HTTP confirmado)
+modelo: vertex:gemini-4-argon falhou (503 status HTTP confirmado)
+modelo=vertex:gemini-4-argon consumo incompleto; reserva cautelar_usd=0.041490 (não é cobrança confirmada)
+modelo: vertex:gemini-4-argon falhou (bloqueado SAFETY)
+ok
+test_resposta_sem_uso_e_falha_com_uso_sao_diferentes (test_otimizacao_argon.Orcamento.test_resposta_sem_uso_e_falha_com_uso_sao_diferentes) ... modelo=vertex:gemini-4-argon consumo incompleto; reserva cautelar_usd=0.041490 (não é cobrança confirmada)
+modelo: vertex:gemini-4-argon falhou (vazio vazio)
+ok
+test_subteto_argon_reserva_concorrente (test_otimizacao_argon.Orcamento.test_subteto_argon_reserva_concorrente) ... ok
+test_teto_argon_nao_bloqueia_flash_nem_muda_reflexao (test_otimizacao_argon.Orcamento.test_teto_argon_nao_bloqueia_flash_nem_muda_reflexao) ... ok
+test_sistema_desconhecido_bloqueia_compactacao (test_otimizacao_argon.Perfil.test_sistema_desconhecido_bloqueia_compactacao) ... ok
+test_so_sistema_e_lembrete_mudam_sem_perder_estado_livro_historico (test_otimizacao_argon.Perfil.test_so_sistema_e_lembrete_mudam_sem_perder_estado_livro_historico) ... ok
+test_as_duas_citadas_sem_vocativo_vai_pra_quem_esta_de_plantao (test_plantao.Decisoes.test_as_duas_citadas_sem_vocativo_vai_pra_quem_esta_de_plantao) ... ok
+test_as_duas_citadas_vale_quem_abre_a_mensagem (test_plantao.Decisoes.test_as_duas_citadas_vale_quem_abre_a_mensagem) ... ok
+test_mencao_sem_nome_vai_pra_quem_esta_de_plantao (test_plantao.Decisoes.test_mencao_sem_nome_vai_pra_quem_esta_de_plantao) ... ok
+test_ninguem_chamado (test_plantao.Decisoes.test_ninguem_chamado) ... ok
+test_nome_fora_do_turno_responde_a_propria (test_plantao.Decisoes.test_nome_fora_do_turno_responde_a_propria) ... ok
+test_nome_no_turno (test_plantao.Decisoes.test_nome_no_turno) ... ok
+test_nome_vence_mencao_e_resposta (test_plantao.Decisoes.test_nome_vence_mencao_e_resposta) ... ok
+test_resposta_sem_nome_vai_pra_quem_esta_de_plantao (test_plantao.Decisoes.test_resposta_sem_nome_vai_pra_quem_esta_de_plantao) ... ok
+test_formas_do_nome (test_plantao.Nomes.test_formas_do_nome) ... ok
+test_nao_acha_dentro_de_outra_palavra (test_plantao.Nomes.test_nao_acha_dentro_de_outra_palavra) ... ok
+test_ordem_em_que_aparecem (test_plantao.Nomes.test_ordem_em_que_aparecem) ... ok
+test_resposta_a_fala_dela_fica_com_ela (test_plantao.RespostaAUmaFala.test_resposta_a_fala_dela_fica_com_ela) ... ok
+test_converte_de_outro_fuso (test_plantao.Turnos.test_converte_de_outro_fuso) ... ok
+test_viradas (test_plantao.Turnos.test_viradas) ... ok
+test_as_falas_anteriores_nao_entram_como_conversa (test_ponte_do_site.AvisoDeRepeticao.test_as_falas_anteriores_nao_entram_como_conversa) ... ok
+test_conversa_nova_sem_falas_nao_tem_aviso (test_ponte_do_site.AvisoDeRepeticao.test_conversa_nova_sem_falas_nao_tem_aviso) ... ok
+test_fala_que_nao_se_repete_nao_vira_aviso (test_ponte_do_site.AvisoDeRepeticao.test_fala_que_nao_se_repete_nao_vira_aviso) ... ok
+test_frase_repetida_em_conversas_anteriores_vira_aviso (test_ponte_do_site.AvisoDeRepeticao.test_frase_repetida_em_conversas_anteriores_vira_aviso) ... ok
+test_o_aviso_junta_a_conversa_atual_sem_duplicar (test_ponte_do_site.AvisoDeRepeticao.test_o_aviso_junta_a_conversa_atual_sem_duplicar) ... ok
+test_o_contexto_embutido_nao_carrega_nada_de_um_pedido_pro_outro (test_ponte_do_site.DoisMotores.test_o_contexto_embutido_nao_carrega_nada_de_um_pedido_pro_outro) ... ok
+test_o_embutido_monta_o_mesmo_pedido_que_o_node (test_ponte_do_site.DoisMotores.test_o_embutido_monta_o_mesmo_pedido_que_o_node) ... ok
+test_comparar_nao_descarta_a_outra_entrada (test_ponte_do_site.EcoExato.test_comparar_nao_descarta_a_outra_entrada) ... ok
+test_eco_de_som_e_eco_tecnico_nao_viram_talento (test_ponte_do_site.EcoExato.test_eco_de_som_e_eco_tecnico_nao_viram_talento) ... ok
+test_eco_inteiro_requisitos_e_seguimento (test_ponte_do_site.EcoExato.test_eco_inteiro_requisitos_e_seguimento) ... ok
+test_fora_do_plantao_a_linha_da_pagina_vem_antes_e_sobra_uma (test_ponte_do_site.EstadoDoBot.test_fora_do_plantao_a_linha_da_pagina_vem_antes_e_sobra_uma) ... ok
+test_no_plantao_entram_duas_linhas_no_fim_do_lembrete (test_ponte_do_site.EstadoDoBot.test_no_plantao_entram_duas_linhas_no_fim_do_lembrete) ... ok
+test_o_bloco_do_bot_entra_no_lugar_do_da_pagina (test_ponte_do_site.EstadoDoBot.test_o_bloco_do_bot_entra_no_lugar_do_da_pagina) ... ok
+test_sem_estado_fica_o_da_pagina (test_ponte_do_site.EstadoDoBot.test_sem_estado_fica_o_da_pagina) ... ok
+test_atualizar_monta_a_pagina_com_os_cards_desta_pasta (test_ponte_do_site.PaginaMontadaAqui.test_atualizar_monta_a_pagina_com_os_cards_desta_pasta) ... ok
+test_no_maximo_tres_por_pessoa_e_resposta_quebrada_nao_grava_nada (test_reflexao.Conferencia.test_no_maximo_tres_por_pessoa_e_resposta_quebrada_nao_grava_nada) ... ok
+test_o_pedido_leva_as_mensagens_e_os_fatos_que_a_pessoa_ja_tem (test_reflexao.Conferencia.test_o_pedido_leva_as_mensagens_e_os_fatos_que_a_pessoa_ja_tem) ... ok
+test_so_passa_fato_novo_permitido_e_de_mensagem_da_propria_pessoa (test_reflexao.Conferencia.test_so_passa_fato_novo_permitido_e_de_mensagem_da_propria_pessoa) ... ok
+test_dado_sensivel_nao_passa (test_reflexao.Peneira.test_dado_sensivel_nao_passa) ... ok
+test_fato_comum_e_termo_do_jogo_passam (test_reflexao.Peneira.test_fato_comum_e_termo_do_jogo_passam) ... ok
+test_a_ficha_nao_passa_do_limite_e_perde_os_mais_velhos (test_reflexao.Reflexao.test_a_ficha_nao_passa_do_limite_e_perde_os_mais_velhos) ... ok
+test_apagar_durante_reflexao_nao_recria_fatos_e_preserva_outros (test_reflexao.Reflexao.test_apagar_durante_reflexao_nao_recria_fatos_e_preserva_outros) ... ok
+test_grava_os_fatos_apaga_as_mensagens_e_so_usa_o_provedor_pago (test_reflexao.Reflexao.test_grava_os_fatos_apaga_as_mensagens_e_so_usa_o_provedor_pago) ... ok
+test_se_o_modelo_falha_as_mensagens_somem_do_mesmo_jeito (test_reflexao.Reflexao.test_se_o_modelo_falha_as_mensagens_somem_do_mesmo_jeito) ... modelo: vertex:gemini-3.8-flash falhou (500 fora do ar)
+modelo: vertex:gemini-3.1-flash-lite falhou (500 fora do ar)
+reflexão: o modelo falhou (500 fora do ar); as mensagens do dia foram apagadas sem virar fato
+ok
+test_sem_mensagem_nao_chama_o_modelo (test_reflexao.Reflexao.test_sem_mensagem_nao_chama_o_modelo) ... ok
+test_entrega_incompleta_nao_grava_nada (test_sincronizacao_entrega.EntregaAprovada.test_entrega_incompleta_nao_grava_nada) ... ok
+test_entrega_registra_hashes_sem_caminho_privado_ou_commit_falso (test_sincronizacao_entrega.EntregaAprovada.test_entrega_registra_hashes_sem_caminho_privado_ou_commit_falso) ... ok
+test_nao_regrede_para_repo_antigo_sem_autorizacao_explicita (test_sincronizacao_entrega.EntregaAprovada.test_nao_regrede_para_repo_antigo_sem_autorizacao_explicita) ... ok
+test_bloco_com_ficha_e_fora_do_plantao (test_vida.BlocoELembrete.test_bloco_com_ficha_e_fora_do_plantao) ... ok
+test_bloco_de_pessoa_nova (test_vida.BlocoELembrete.test_bloco_de_pessoa_nova) ... ok
+test_lembretes_por_personagem_em_ordem_de_prioridade (test_vida.BlocoELembrete.test_lembretes_por_personagem_em_ordem_de_prioridade) ... ok
+test_nome_pronome_e_fato_nao_abrem_bloco_falso (test_vida.BlocoELembrete.test_nome_pronome_e_fato_nao_abrem_bloco_falso) ... ok
+test_atrito (test_vida.Contas.test_atrito) ... ok
+test_carga_pelas_respostas_da_ultima_hora (test_vida.Contas.test_carga_pelas_respostas_da_ultima_hora) ... ok
+test_intimidade_pelos_dias_de_conversa (test_vida.Contas.test_intimidade_pelos_dias_de_conversa) ... ok
+test_movimento_do_canal (test_vida.Contas.test_movimento_do_canal) ... ok
+test_paciencia_volta_um_ponto_a_cada_duas_horas (test_vida.Contas.test_paciencia_volta_um_ponto_a_cada_duas_horas) ... ok
+test_resumo_ignora_nome_acento_e_pontuacao (test_vida.Contas.test_resumo_ignora_nome_acento_e_pontuacao) ... ok
+test_fato_ligado_a_mensagem_entra_ate_dois_o_mais_novo_primeiro (test_vida.EscolhaDeFatos.test_fato_ligado_a_mensagem_entra_ate_dois_o_mais_novo_primeiro) ... ok
+test_ficha_vazia (test_vida.EscolhaDeFatos.test_ficha_vazia) ... ok
+test_sem_ligacao_entra_um_fato_em_cerca_de_uma_a_cada_tres_respostas (test_vida.EscolhaDeFatos.test_sem_ligacao_entra_um_fato_em_cerca_de_uma_a_cada_tres_respostas) ... ok
+test_carga_e_intimidade_saem_do_registro (test_vida.VidaComRegistro.test_carga_e_intimidade_saem_do_registro) ... ok
+test_movimento_olha_so_os_ultimos_15_minutos_do_canal (test_vida.VidaComRegistro.test_movimento_olha_so_os_ultimos_15_minutos_do_canal) ... ok
+test_paciencia_nao_passa_de_zero_nem_de_tres (test_vida.VidaComRegistro.test_paciencia_nao_passa_de_zero_nem_de_tres) ... ok
+test_pergunta_repetida_gasta_paciencia_so_com_aquela_personagem (test_vida.VidaComRegistro.test_pergunta_repetida_gasta_paciencia_so_com_aquela_personagem) ... ok
+test_pessoa_nova_em_canal_quieto (test_vida.VidaComRegistro.test_pessoa_nova_em_canal_quieto) ... ok
+
+----------------------------------------------------------------------
+Ran 834 tests in 296.489s
+
+OK (skipped=1)
