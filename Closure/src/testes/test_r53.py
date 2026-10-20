@@ -256,6 +256,55 @@ def trocar_nivel(f, n):
     f['nivel'] = Campo(n, f['nivel'].celula, f['nivel'].parte)
 
 
+class Entidades(unittest.TestCase):
+    def ficha(self):
+        from test_b47_integracao import trocar
+        return trocar(completa_r53(), nivel=17,
+                      invocacao__1__familia__1='Mira', invocacao__1__familia__2='Amparo',
+                      invocacao__1__familia__3='Área', invocacao__1__limite_familias=3,
+                      invocacao__1__limite_livres=1, invocacao__1__autonomia='Autônoma')
+
+    def test_familias_r53_usam_limites_e_prioridade_do_contrato_compartilhado(self):
+        from test_b47_integracao import contexto
+        from closure_bot.ficha_magia import escolhas_familias
+        f = self.ficha()
+        _, r, ref = contexto(f)
+        livres, abertas = escolhas_familias(f, ref.magia, 'invocacao.1', r.problemas)
+        self.assertEqual((livres, abertas), ({'Mira'}, {'Mira', 'Amparo', 'Área'}))
+        self.assertEqual(r.problemas, [])
+
+    def test_familias_r53_rejeitam_repeticao_e_excesso(self):
+        from test_b47_integracao import contexto, trocar
+        from closure_bot.ficha_magia import escolhas_familias
+        for mudanca in ({'invocacao__1__familia__3': 'Mira'}, {'invocacao__1__familia__4': 'Tempo'}):
+            with self.subTest(mudanca=mudanca):
+                f = trocar(self.ficha(), **mudanca)
+                _, r, ref = contexto(f)
+                self.assertEqual(escolhas_familias(f, ref.magia, 'invocacao.1', r.problemas), (None, None))
+                self.assertTrue(any(p.campo == 'invocacao.1.familias' for p in r.problemas))
+
+    def test_pericias_exportadas_com_sinal_preservam_conta_e_detectam_adulteracao(self):
+        from test_b47_integracao import contexto, trocar
+        from closure_bot.ficha_b47 import conferir_competencias_entidade
+        # Nível 17: maestria 2. Cinco treinos pelo atributo base Inteligência 2.
+        esperados = [('Percepção', 3), ('Investigação', 4), ('Furtividade', 5),
+                     ('Sentir Energia', 3), ('Ocultismo', 4)]
+        for adulterar in (False, True):
+            with self.subTest(adulterar=adulterar):
+                f = self.ficha()
+                for a, n in zip(('forca', 'destreza', 'constituicao', 'inteligencia', 'essencia'), (3, 3, 3, 2, 1)):
+                    trocar(f, **{f'invocacao.1.atributo.{a}.base': n, f'invocacao.1.atributo.{a}.buff': 0})
+                for i, (nome, n) in enumerate(esperados, 1):
+                    trocar(f, **{f'invocacao.1.pericia.{i}': nome,
+                                 f'invocacao.1.buff.pericia.{i}': f'+{99 if adulterar and i == 1 else n}'})
+                f = de_csv(csvfile_texto(f))
+                c, r, ref = contexto(f)
+                conferir_competencias_entidade(f, ref, c, r, 'invocacao.1')
+                self.assertEqual([p.campo for p in r.problemas],
+                                 ['invocacao.1.buff.pericia.1'] if adulterar else [])
+                self.assertEqual(sum('bônus +' in s for s in r.conferidos), 4 if adulterar else 5)
+
+
 class Transicao(unittest.TestCase):
     def test_classe_trocada_sem_versao_salva_nao_aprova_nem_reprova(self):
         f = completa_r53()

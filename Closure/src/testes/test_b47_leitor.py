@@ -26,6 +26,17 @@ class LeitorB47(unittest.TestCase):
         self.assertEqual([f[k].valor for k in f], [11,1.5,0,'',0])
         self.assertNotIn('vida.rolagem.4', f)
 
+    def test_sinal_positivo_so_converte_em_campo_numerico(self):
+        for texto, esperado in (('+3', 3), ('-3', -3), ('+0', 0), ('+1,5', 1.5), ('+1.5', 1.5)):
+            with self.subTest(texto=texto):
+                chave = 'invocacao.1.buff.pericia.1'
+                self.assertEqual(de_linhas([[chave, texto]])[chave].valor, esperado)
+                self.assertEqual(de_linhas([['nome', texto]])['nome'].valor, texto)
+        for texto in ('++3', '+ 3', '+3 + 2', '+inf', '+NaN'):
+            with self.subTest(invalido=texto):
+                chave = 'invocacao.1.buff.pericia.1'
+                self.assertEqual(de_linhas([[chave, texto]])[chave].valor, texto)
+
     def test_duplicada_e_erros_nao_desaparecem(self):
         with self.assertRaisesRegex(FichaIlegivel, 'duplicada'):
             de_linhas([['nome','a'],['nome','b']])

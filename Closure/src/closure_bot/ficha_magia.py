@@ -161,7 +161,7 @@ def escolhas_familias(ficha, magia, raiz, problemas):
     São as posições do gerador, não a ordem da lista compactada da v1.
     """
     from .ficha_corretor import Problema
-    if valor(ficha, "formato.versao") == 11 and magia.contexto is not None:
+    if valor(ficha, "formato.versao") in (11, 12) and magia.contexto is not None:
         from .ficha_b47 import conferir_familias
         return conferir_familias(ficha, magia, raiz, problemas)
     entidade = raiz.startswith("invocacao.")

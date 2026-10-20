@@ -32,6 +32,16 @@ class Apresentacao(unittest.TestCase):
     def ficha(self, numero):
         return de_linhas(json.loads((RAIZ / f"src/testes/dados/ficha_v2_montagem_{numero}.json").read_text()))
 
+    def test_abertura_parcial_sem_pendencias_nao_afirma_que_existem_pendencias(self):
+        for guia in ('closure', 'kaltsit'):
+            with self.subTest(guia=guia):
+                r = Resultado('pendente', nao_conferido=['Histórico exige revisão do mestre'])
+                persona = SimpleNamespace(chave=guia, nome=guia, avatar_url=None)
+                ps = paginas(r, {}, persona)
+                self.assertNotIn('pendências', ps[0].description.lower())
+                self.assertIn('0 pendência(s)', texto(ps[:1]))
+                self.assertEqual(r.veredito, 'pendente')
+
     def resultado(self, ficha, numero):
         if numero == 4:
             return conferir(ficha, self.ref)
@@ -287,6 +297,25 @@ class Navegacao(unittest.IsolatedAsyncioTestCase):
         await view.on_timeout()
         view.mensagem.edit.assert_awaited_once()
         self.assertTrue(view.is_finished())
+
+    async def test_participantes_distintos_folheiam_painel_publico_e_timeout_usa_ultimo_clique(self):
+        view = PaginasFicha(self.paginas())
+        view.mensagem = SimpleNamespace(edit=AsyncMock())
+        autora, participante = self.interacao(), self.interacao()
+        autora.user = SimpleNamespace(id=101)
+        participante.user = SimpleNamespace(id=202)
+        self.assertTrue(await view.interaction_check(autora))
+        self.assertTrue(await view.interaction_check(participante))
+        await view.proxima.callback(autora)
+        await view.proxima.callback(participante)
+        self.assertEqual(view.indice, 2)
+        await view.on_timeout()
+        participante.edit_original_response.assert_awaited_once()
+        autora.edit_original_response.assert_not_called()
+        self.assertTrue(all(item.disabled for item in view.children))
+        await view.proxima.callback(autora)
+        autora.response.send_message.assert_awaited_once()
+        self.assertEqual(autora.response.edit_message.await_count, 1)
 
     async def test_envio_de_texto_painel_unico_e_paginado(self):
         enviar = AsyncMock(return_value=SimpleNamespace(edit=AsyncMock()))

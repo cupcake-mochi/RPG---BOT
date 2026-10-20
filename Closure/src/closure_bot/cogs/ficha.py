@@ -48,8 +48,8 @@ FALA = {
               "reprovada": "Passei o pente fino na ficha e achei umas coisas pra arrumar.",
               "formato desconhecido": "Esse formato de ficha eu não conheço. Pega a versão nova da ficha?"},
 }
-FALA[KALTSIT]["pendente"] = "A conferência é parcial. Há pendências que precisam ser resolvidas antes de aprovar a ficha."
-FALA[CLOSURE]["pendente"] = "O pente fino ficou parcial. Separei as pendências e o que ainda precisa de conferência."
+FALA[KALTSIT]["pendente"] = "A conferência é parcial. Os pontos que precisam de revisão estão separados no painel."
+FALA[CLOSURE]["pendente"] = "O pente fino ficou parcial. Separei os pontos de atenção e o que ainda precisa de conferência."
 COR = {"aprovada": 0x2E8B57, "pendente": 0xD4A017, "reprovada": 0xCC0102, "formato desconhecido": 0xD4A017}
 # Nome legível de cada aviso da ficha; o que não estiver aqui aparece pela chave.
 ROTULOS = {"aviso.escolhas_de_pericia": "Perícias e ofícios", "aviso.pontos_disponiveis": "Pontos de atributo",
