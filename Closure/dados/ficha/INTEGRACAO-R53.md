@@ -1,15 +1,21 @@
 # Integração R53 no bot · 19/10/2026
 
-**Estado:** código na branch `claude/project-thread-zzfh12` (derivada de
-`codex/mundo-era-revolucao`, PR 66), em PR rascunho. **Não implantado.** A
-oficial `1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro` foi só lida (ANALISE,
-poucas linhas: cabeçalho, esquemas, feitiço 1 vazio e `controle_compat`);
-nenhuma célula, fórmula, código, permissão ou aparência foi tocada, e nada de
-`construir()`/`continuar()`, migração ou importação de Office.
+**Estado em 19/10, após a bateria:** código `c1724f0` na branch
+`claude/project-thread-zzfh12`, [PR 67](https://github.com/cupcake-mochi/RPG---BOT/pull/67)
+em rascunho. Mizuki informou que atualizou a Discloud; 13 análises reais no
+Discord confirmaram o funcionamento da leitura R53 publicada. Não houve nova
+implantação nem conferência dos hashes do runtime nesta rodada.
+[Bateria nativa e limites](BATERIA-NATIVA-R53.md).
+
+A oficial `1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro` foi somente lida;
+nenhuma célula, fórmula, código, permissão ou aparência foi tocada. As edições
+e o compartilhamento autorizado ocorreram apenas em três cópias sintéticas.
+Nada de `construir()`/`continuar()`, migração ou importação de Office.
 
 Fonte do contrato: `cupcake-mochi/Ficha---RPG-JJK@4b22da5` (PR 4,
 `codex/publicacao-r53`). O manifesto foi derivado dos `.gs` gerados nesse
-commit, porque o `docs.google.com` está bloqueado no contêiner.
+commit. A preparação inicial ocorreu sem acesso ao Google; a bateria posterior
+confirmou o contrato na oficial e nos exports nativos por conexão local.
 
 ## O que muda na leitura
 
@@ -79,9 +85,11 @@ bot, então nada mudou nisso.
 ## Fora deste trabalho
 
 - Perguntas sobre o livro continuam no índice R51/R52.
-- Leitura completa de uma ficha R53 preenchida de verdade pelo bot (o link
-  depende do `docs.google.com`, bloqueado aqui) e bateria no Discord.
-- Implantação na Discloud: só com pedido do Mizuki.
+- Auditoria integral de todas as mudanças do livro R53: a base geral continua
+  R51/R52; o núcleo novo cobre os cartões R53.
+- Novos ensaios nativos de nível alto, Liberação, Máxima e entidades completas.
+- Implantação já informada pelo usuário e validada funcionalmente. Não repetir
+  publicação por rotina; uma nova implantação continua exigindo escopo autorizado.
 
 ## Testes
 
