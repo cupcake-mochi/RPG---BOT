@@ -113,6 +113,30 @@ class Apresentacao(unittest.TestCase):
         self.assertTrue(all("Veredito geral: reprovada" in p.footer.text for p in ps))
         self.assertEqual(r, antes)  # apresentação não altera a avaliação
 
+    def test_resumo_distingue_pendencias_ajustes_e_partes_nao_conferidas(self):
+        p = Problema('informação', 'tr', 'revisão', 'pendente')
+        casos = [
+            ({'nao_conferido': ['Aprendizado e autorização ficam com o mestre']}, 'há partes não conferidas'),
+            ({'notas': [p], 'nao_conferido': ['Limite humano']}, 'ajustes para o mestre'),
+            ({'pendencias': [p], 'nao_conferido': ['Limite humano']}, 'pendências abertas'),
+        ]
+        for veredito in ('aprovada', 'pendente'):
+            for campos, esperado in casos:
+                with self.subTest(veredito=veredito, campos=campos):
+                    r = Resultado(veredito, **campos)
+                    antes = copy.deepcopy(r)
+                    ps = paginas(r, {}, PERSONA)
+                    resumo = texto(ps[:1])
+                    self.assertIn('Conferência parcial; ' + esperado, resumo)
+                    if not r.pendencias:
+                        self.assertIn('0 pendência(s)', resumo)
+                        self.assertNotIn('pendências abertas', resumo)
+                    self.assertEqual(r, antes)
+                    self.assertEqual(ps[0].colour.value, 0xD4A017)
+                    self.assertIn('Veredito geral: pendente', ps[0].footer.text)
+                    for limite in r.nao_conferido:
+                        self.assertIn(limite, texto(ps))
+
     def test_cor_da_revisao_respeita_quebra_entre_erros_e_pendencias(self):
         erros = [Problema("conta", f"erro.{i}", "E" * 300, "A" * 100) for i in range(25)]
         pendencias = [Problema("informação", f"falta.{i}", "P" * 300, "vazio") for i in range(35)]

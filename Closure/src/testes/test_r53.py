@@ -307,6 +307,18 @@ class Transicao(unittest.TestCase):
         r = conferir(f, REF)
         self.assertTrue(any(p.campo == 'r53.feitico.1.versao.1' and p.regra == 'formato' for p in r.problemas))
 
+    def test_valor_de_formato_truncado_tem_reticencias_so_quando_necessario(self):
+        for tamanho in (119, 120, 121, 300):
+            with self.subTest(tamanho=tamanho):
+                f = completa_r53()
+                gravar(f, 'feitico.1', 1, p_dano=3)
+                original = 'x' * tamanho
+                f['r53.feitico.1.entrada'] = Campo(original, '', 'entrada')
+                r = conferir(f, REF)
+                p = next(p for p in r.problemas if p.campo == 'r53.feitico.1.entrada' and p.regra == 'formato')
+                self.assertEqual(p.encontrado, original if tamanho <= 120 else original[:119] + '…')
+                self.assertEqual(r.veredito, 'reprovada')
+
     def test_versoes_sem_nome_nao_somem_nem_reprovam(self):
         f = completa_r53()
         f['r53.feitico.2.versao.1'] = Campo(json.dumps([versao(1)[k] for k in VERSAO_CAMPOS]), '', 'entrada')

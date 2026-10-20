@@ -245,7 +245,14 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
             atual.add_field(name=nome[:256], value=valor, inline=False)
 
     resumo = _base(resultado, ficha, persona)
-    estado = "Conferência parcial; pendências abertas" if resultado.veredito in ("aprovada", "pendente") and (resultado.pendencias or resultado.nao_conferido or resultado.notas) else resultado.veredito.capitalize()
+    estado = resultado.veredito.capitalize()
+    if resultado.veredito in ("aprovada", "pendente"):
+        if resultado.pendencias:
+            estado = "Conferência parcial; pendências abertas"
+        elif resultado.notas:
+            estado = "Conferência parcial; ajustes para o mestre"
+        elif resultado.nao_conferido:
+            estado = "Conferência parcial; há partes não conferidas"
     titulo_estado = f"{estado} nas verificações feitas" if resultado.veredito != "formato desconhecido" else "Formato desconhecido — análise não realizada"
     resumo.add_field(name="Resultado", value=f"**{titulo_estado}**\n"
                      f"{len(resultado.problemas)} erro(s) · {len(resultado.pendencias)} pendência(s) · {len(resultado.notas)} ajuste(s) para o mestre", inline=False)

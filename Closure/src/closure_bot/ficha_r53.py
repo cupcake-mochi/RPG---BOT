@@ -387,7 +387,10 @@ def conferir_cartoes(ficha, ctx, r):
         # JSON quebrado ou fora do esquema não é estado transitório: aparece mesmo com o cartão em espera.
         if tipo == 'transicao':
             continue
-        problema(r, chave, esperado, _texto(valor(ficha, chave))[:120] or 'vazio', regra='formato')
+        encontrado = _texto(valor(ficha, chave))
+        if len(encontrado) > 120:
+            encontrado = encontrado[:119] + '…'
+        problema(r, chave, esperado, encontrado or 'vazio', regra='formato')
     if any(t == 'formato' and k in ('r53.montagem.esquema', 'r53.versao.campos', 'r53.entrada.campos') for k, _, t in erros):
         r.nao_conferido.append('Cartões R53: esquema exportado ausente ou desconhecido; nenhum cartão foi certificado')
         return
