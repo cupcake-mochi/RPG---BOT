@@ -1,0 +1,10 @@
+{
+  "arquivos": 67,
+  "delta_desde_v2": [
+    "src/closure_bot/clima.py"
+  ],
+  "bytes": 1206402,
+  "sha256": "c984d01ee65f1c5fc741145f05b4368a6d4cbf35389efb8101b8a6117140bf46",
+  "iguais_aos_fontes": true,
+  "segredos_bancos_campanha_ausentes": true
+}

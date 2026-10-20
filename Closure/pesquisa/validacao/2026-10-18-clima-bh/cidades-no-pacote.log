@@ -1,0 +1,45 @@
+test_chance_de_chuva_e_opcional_na_leitura (testes.test_clima.DesenhoDoTempo.test_chance_de_chuva_e_opcional_na_leitura) ... ok
+test_emoji_e_icone_saem_do_codigo_e_de_ser_dia_ou_noite (testes.test_clima.DesenhoDoTempo.test_emoji_e_icone_saem_do_codigo_e_de_ser_dia_ou_noite) ... ok
+test_atual_entre_assunto_e_cidade_nao_perde_o_lugar (testes.test_clima.Gatilho.test_atual_entre_assunto_e_cidade_nao_perde_o_lugar) ... ok
+test_lugar_citado (testes.test_clima.Gatilho.test_lugar_citado) ... ok
+test_mensagens_que_nao_puxam (testes.test_clima.Gatilho.test_mensagens_que_nao_puxam) ... ok
+test_mensagens_que_puxam_o_clima (testes.test_clima.Gatilho.test_mensagens_que_puxam_o_clima) ... ok
+test_sem_lugar_vale_toquio (testes.test_clima.Gatilho.test_sem_lugar_vale_toquio) ... ok
+test_codigo_desconhecido_nao_inventa_descricao (testes.test_clima.Leitura.test_codigo_desconhecido_nao_inventa_descricao) ... ok
+test_interpreta_a_resposta_real (testes.test_clima.Leitura.test_interpreta_a_resposta_real) ... ok
+test_linha_do_bloco_4 (testes.test_clima.Leitura.test_linha_do_bloco_4) ... ok
+test_resposta_fora_do_formato_levanta_erro (testes.test_clima.Leitura.test_resposta_fora_do_formato_levanta_erro) ... ok
+test_apelido_de_capital (testes.test_clima.LugarPorPartes.test_apelido_de_capital) ... ok
+test_cidade_com_estado_sem_virgula_traco_ou_barra (testes.test_clima.LugarPorPartes.test_cidade_com_estado_sem_virgula_traco_ou_barra) ... ok
+test_e_em_outro_lugar_so_depois_de_pergunta_de_clima (testes.test_clima.LugarPorPartes.test_e_em_outro_lugar_so_depois_de_pergunta_de_clima) ... ok
+test_o_que_foi_cortado_tem_que_ser_o_estado (testes.test_clima.LugarPorPartes.test_o_que_foi_cortado_tem_que_ser_o_estado) ... ok
+test_pergunta_exata_de_bh_consulta_a_cidade_sem_recair_em_toquio (testes.test_clima.LugarPorPartes.test_pergunta_exata_de_bh_consulta_a_cidade_sem_recair_em_toquio) ... ok
+test_fica_o_mais_populoso (testes.test_clima.Lugares.test_fica_o_mais_populoso) ... ok
+test_nome_que_vai_pro_prompt_nao_leva_colchete (testes.test_clima.Lugares.test_nome_que_vai_pro_prompt_nao_leva_colchete) ... ok
+test_resposta_real_de_quioto (testes.test_clima.Lugares.test_resposta_real_de_quioto) ... ok
+test_sem_resultado (testes.test_clima.Lugares.test_sem_resultado) ... ok
+test_nomes_completos_e_apelidos_em_seis_construcoes (testes.test_clima.OutrasCidades.test_nomes_completos_e_apelidos_em_seis_construcoes) ... ok
+test_outra_frase_e_papo_cotidiano_nao_escolhem_cidade (testes.test_clima.OutrasCidades.test_outra_frase_e_papo_cotidiano_nao_escolhem_cidade) ... ok
+test_de_madrugada_ainda_edita_o_de_ontem_nao (testes.test_clima.PainelDiario.test_de_madrugada_ainda_edita_o_de_ontem_nao) ... ok
+test_edita_quando_o_tempo_muda (testes.test_clima.PainelDiario.test_edita_quando_o_tempo_muda) ... ok
+test_posta_uma_vez_por_dia_depois_das_6h (testes.test_clima.PainelDiario.test_posta_uma_vez_por_dia_depois_das_6h) ... ok
+test_cada_lugar_tem_a_sua_leitura (testes.test_clima.Servico.test_cada_lugar_tem_a_sua_leitura) ... ok
+test_contexto_com_a_busca_fora_do_ar (testes.test_clima.Servico.test_contexto_com_a_busca_fora_do_ar) ... clima: falha ao procurar 'kyoto' (sem rede)
+clima: falha ao ler Tóquio (sem rede)
+ok
+test_contexto_de_lugar_que_nao_existe (testes.test_clima.Servico.test_contexto_de_lugar_que_nao_existe) ... ok
+test_contexto_de_outro_lugar (testes.test_clima.Servico.test_contexto_de_outro_lugar) ... ok
+test_contexto_so_quando_a_mensagem_puxa (testes.test_clima.Servico.test_contexto_so_quando_a_mensagem_puxa) ... ok
+test_falha_sem_leitura_anterior_devolve_none (testes.test_clima.Servico.test_falha_sem_leitura_anterior_devolve_none) ... clima: falha ao ler Tóquio (sem rede)
+ok
+test_falha_usa_a_leitura_antiga_ate_o_limite (testes.test_clima.Servico.test_falha_usa_a_leitura_antiga_ate_o_limite) ... clima: falha ao ler Tóquio (sem rede)
+clima: falha ao ler Tóquio (sem rede)
+ok
+test_nome_do_lugar_vai_escapado_na_url (testes.test_clima.Servico.test_nome_do_lugar_vai_escapado_na_url) ... ok
+test_procurar_guarda_o_resultado_e_conhece_toquio (testes.test_clima.Servico.test_procurar_guarda_o_resultado_e_conhece_toquio) ... ok
+test_reaproveita_a_leitura_por_15_minutos (testes.test_clima.Servico.test_reaproveita_a_leitura_por_15_minutos) ... ok
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.086s
+
+OK

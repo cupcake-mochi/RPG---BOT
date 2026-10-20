@@ -197,9 +197,12 @@ _GATILHOS = re.compile(
 # Depois do gatilho: "em são paulo hoje?" -> "são paulo". Para na pontuação ou numa destas palavras.
 _PARADAS = {"hoje", "agora", "amanha", "ai", "la", "pra", "para", "e", "ou", "que", "ne", "hein", "ta", "esta",
             "closure", "kal", "kaltsit", "kal'tsit", "por", "favor", "pfv", "pfvr", "vc", "voce"}
-# "em/no/na" valem em qualquer ponto da pergunta; "de/do/da" só colados em clima ou temperatura ("clima de Quioto"),
-# pra "preciso de ajuda" não virar lugar.
-_ANTES_DO_LUGAR = re.compile(r"(?<!\w)(?:em|no|na|nos|nas|(?:(?<=clima )|(?<=temperatura ))(?:de|do|da))\s+")
+# "de/do/da" precisa do assunto do clima antes, com marcador temporal opcional:
+# "clima atual de BH". Não captura "preciso de ajuda" nem "em" de outra frase.
+_ANTES_DO_LUGAR = re.compile(
+    r"(?<!\w)(?:(?:em|no|na|nos|nas)|"
+    r"(?:clima|temperatura|tempo)(?:\s+(?:atual|hoje|agora))?\s+(?:de|do|da))\s+"
+)
 _NAO_E_LUGAR = {"toquio", "tokyo", "o", "a", "tempo", "clima", "casa", "geral"}
 
 
@@ -302,18 +305,39 @@ class ServicoClima:
         return None
 
 
-# "e em Belo Horizonte?" logo depois de uma pergunta de clima continua a pergunta
-_SEGUE_CLIMA = re.compile(r"(?<!\w)e (?=(em|no|na|nos|nas) )")
+# Continuação curta, ancorada na fala (não no meio de outra frase).
+_SEGUE_CLIMA = re.compile(
+    r"^\s*(?:(?:closure|kal(?:['’]?tsit)?)\s*[,!:]?\s*)?e\s+"
+    r"(?=(?:em|no|na|nos|nas|de|do|da)\s+)"
+)
+
+
+def pergunta_clima(texto: str, anterior: str | None = None) -> str | None:
+    """Resolve a pergunta explícita ou a troca de cidade após assunto meteorológico.
+
+    A forma resolvida pode ser encadeada na memória existente; texto de outro
+    assunto devolve None e encerra a continuidade, sem guardar estado novo.
+    """
+    original = unicodedata.normalize("NFC", texto)
+    if fala_de_clima(original):
+        return original
+    segue = _SEGUE_CLIMA.search(_sem_acento(original)) if anterior and fala_de_clima(anterior) and len(texto) <= 80 else None
+    if segue:
+        return "como está o clima " + original[segue.end():]
+    return None
+
+
+def lugar_para_consulta(texto: str) -> str | None:
+    """Comando já declara clima: aceita a cidade ou uma pergunta inteira sobre ela."""
+    pergunta = pergunta_clima(texto, "qual o clima?")
+    return lugar_citado(pergunta) if pergunta else texto.strip()
 
 
 async def contexto_clima(servico: ServicoClima, texto: str, anterior: str | None = None) -> str | None:
-    """A linha do bloco 4 pra esta mensagem: None se ela não puxa o clima ou se não deu pra ler. `anterior` é a
-    mensagem anterior da pessoa na conversa: se ela perguntou do clima, "e em X?" vira a mesma pergunta pra X."""
-    if not fala_de_clima(texto):
-        segue = _SEGUE_CLIMA.search(_sem_acento(texto)) if anterior and fala_de_clima(anterior) and len(texto) <= 80 else None
-        if not segue:
-            return None
-        texto = "como tá o clima " + unicodedata.normalize("NFC", texto)[segue.end():]
+    """Dado meteorológico para a pergunta; `anterior` pode ser a continuação resolvida."""
+    texto = pergunta_clima(texto, anterior)
+    if texto is None:
+        return None
     citado = lugar_citado(texto)
     lugar = TOQUIO
     if citado:
@@ -326,6 +350,7 @@ async def contexto_clima(servico: ServicoClima, texto: str, anterior: str | None
             limpo = re.sub(r"[\[\]\"\n\r]", " ", citado).strip()
             return f'[Clima: o monitor não achou o lugar "{limpo}".]'
     leitura = await servico.agora(lugar)
+    log.info("clima: contexto para %s; leitura=%s", lugar.nome, "disponível" if leitura else "indisponível")
     return linha_bloco4(leitura) if leitura else None
 
 

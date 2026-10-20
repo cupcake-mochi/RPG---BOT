@@ -1,0 +1,17 @@
+test_continuacao_retoma_regiao_mas_mudanca_de_assunto_nao (testes.test_mundo_era.ConsultaEra.test_continuacao_retoma_regiao_mas_mudanca_de_assunto_nao) ... ok
+test_nome_da_cidade_recupera_o_registro_detalhado (testes.test_mundo_era.ConsultaEra.test_nome_da_cidade_recupera_o_registro_detalhado) ... ok
+test_o_material_privado_nao_esta_no_nucleo_publicavel (testes.test_mundo_era.ConsultaEra.test_o_material_privado_nao_esta_no_nucleo_publicavel) ... ok
+test_orcamento_e_mesmo_resultado_nos_motores (testes.test_mundo_era.ConsultaEra.test_orcamento_e_mesmo_resultado_nos_motores) ... ok
+test_papo_e_regras_sem_assunto_de_lore_nao_puxam_corpus (testes.test_mundo_era.ConsultaEra.test_papo_e_regras_sem_assunto_de_lore_nao_puxam_corpus) ... ok
+test_repeticao_de_fato_publicado_nao_vira_bordao_proibido (testes.test_mundo_era.ConsultaEra.test_repeticao_de_fato_publicado_nao_vira_bordao_proibido) ... ok
+test_todas_as_regioes_possuem_consulta_propria (testes.test_mundo_era.ConsultaEra.test_todas_as_regioes_possuem_consulta_propria) ... ok
+test_viagem_capitais_e_misterios_nas_duas_guias (testes.test_mundo_era.ConsultaEra.test_viagem_capitais_e_misterios_nas_duas_guias) ... ok
+test_corpus_entregue_contem_somente_as_31_fontes_autorizadas (testes.test_mundo_era.ImportacaoSeletiva.test_corpus_entregue_contem_somente_as_31_fontes_autorizadas) ... ok
+test_duplicata_e_tamanho_invalido_falham_sem_importacao_parcial (testes.test_mundo_era.ImportacaoSeletiva.test_duplicata_e_tamanho_invalido_falham_sem_importacao_parcial) ... ok
+test_excluidos_metadados_e_duplicatas_editoriais_nem_sao_lidos (testes.test_mundo_era.ImportacaoSeletiva.test_excluidos_metadados_e_duplicatas_editoriais_nem_sao_lidos) ... ok
+test_limpeza_remove_mencoes_e_links_mas_preserva_texto (testes.test_mundo_era.ImportacaoSeletiva.test_limpeza_remove_mencoes_e_links_mas_preserva_texto) ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 19.134s
+
+OK

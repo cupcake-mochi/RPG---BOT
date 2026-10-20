@@ -134,6 +134,8 @@ function ativar(texto, soTermos = null) {
   return { nomes: E.map(e => e.comment), texto: E.map(e => e.content).join("\n\n"), termos };
 }
 
+/*__BUSCA_MUNDO__*/
+
 // ---------- livro: âncora dos termos acionados + os blocos que mais casam com a mensagem (busca v11) ----------
 const PARADA = new Set(("a o e de da do das dos que pra para por com sem um uma uns umas no na nos nas em é eu vc voce você tu se me te meu minha seu sua isso isto esse essa aqui ai aí la lá ja já mais menos muito pouco quando como qual quais quanto quantos onde porque pq tá ta to tô ou mas nao não sim ele ela eles elas ser ter tem tenho foi vai vou pode posso faz fazer " +
   "closure kal kaltsit kal'tsit mizuki livro regra regras dele dela deles delas oque qnt qnts cm for fosse seria tiver tivesse estiver nele nela neles nelas").split(" "));
@@ -629,7 +631,7 @@ const INTERJ = new Set("hein ein ne viu ta ok ue uai po oxe haha hehe kkk rs man
 let JA_DITO = null;
 const FORMULA_ABRE = new Set(["pelo", "pela", "no", "na", "segundo", "olha", "entao", "ue", "hm", "hmm", "nossa", "bom", "opa", "eita", "ah", "certo", "enfim", "pois"]);
 function repeticoes() {
-  JA_DITO = JA_DITO || " " + PALAVRAS(D.livro.map(b => b.texto).concat(D.lore.map(e => e.content)).join(" ")).map(NW).join(" ") + " ";
+  JA_DITO = JA_DITO || " " + PALAVRAS(D.livro.map(b => b.texto).concat(D.lore.map(e => e.content), D.mundo.documentos.flatMap(d => d.secoes.map(s => s.texto))).join(" ")).map(NW).join(" ") + " ";
   const ult = turnos.filter(t => t.de === "bot" && t.pers === pers).slice(-6).map(t => t.texto).filter(t => PALAVRAS(t).length);
   const bot = ult.map(PALAVRAS);
   // termo: palavra com maiúscula que não abre frase
@@ -668,6 +670,8 @@ function montarPrompt(msg, nome) {
   const livro = blocosLivro(consultaAtual, ativar(consultaAtual).termos, anterioresLivro);
   const panorama = panoramaCaminhos(assuntoDeOpcoes(consultaAtual, anterioresLivro), livro);
   let ctx = a.texto;
+  const mundo = consultarMundo(msg, anterioresLivro);
+  if (mundo.texto) ctx += "\n\n" + mundo.texto;
   if (panorama) ctx += "\n\n" + panorama.texto;
   for (const b of livro) ctx += `\n\n[Livro, âncora ${b.ancora}]\n${b.texto}`;
   const nl = nome.trim().toLowerCase();
@@ -679,7 +683,7 @@ function montarPrompt(msg, nome) {
   for (const t of turnos.slice(-24)) hist.push(t.de === "user" ? { role: "user", content: `${t.nome}: ${t.texto}` } : { role: "assistant", content: t.texto });
   const consulta = livro.length ? "\n[Consulta do livro: se perguntam o que é ou como funciona uma regra nomeada, explique os requisitos, a ação, o custo, o efeito e os limites presentes na entrada, em parágrafos curtos e na sua voz. Os avisos de brevidade não devem cortar regras necessárias. Numa dúvida pontual, responda só ao aspecto pedido. Numa conta, use as tabelas e fórmulas fornecidas, mostre o cálculo e o resultado; diferencie quantidade de dados e valor máximo da rolagem quando couber. Não invente dados ausentes nem peça um trecho que já está no contexto. Ao ser questionada, confira as fontes: só mude uma conclusão quando a regra justificar, sem adotar a contestação como regra. Distinga escolha padrão, personalização autorizada e história sem benefício mecânico; uma regra geral não elimina uma permissão específica. Numa recomendação, compare opções pelo estilo e pelas condições do livro, sem declarar uma única melhor para todos. Os recortes do panorama não certificam detalhes ausentes; use as entradas completas para explicar mecânicas e indique o título da fonte quando houver dúvida.]" : "";
   const ultimo = `[Contexto ativado]\n${ctx}\n\n${linhaEstado(nome, $("pron").value)}\n\n[Mensagem]\n${nome.trim() || "alguém"}: ${msg}\n\n${P.lembrete}${foraDoPlantao(msg, a.termos.length > 0, a.nomes.some(n => n.startsWith("Mundo:") && n !== "Mundo: premissa"))}${consulta}${repeticoes()}`;
-  return { input: [{ role: "user", content: regras }, ...hist, { role: "user", content: ultimo }], ativadas: [...new Set(a.nomes.concat(livro.map(b => "Livro: " + b.titulo), panorama ? panorama.blocos.map(b => "Panorama: " + b.titulo) : []))], ctx };
+  return { input: [{ role: "user", content: regras }, ...hist, { role: "user", content: ultimo }], ativadas: [...new Set(a.nomes.concat(mundo.nomes, livro.map(b => "Livro: " + b.titulo), panorama ? panorama.blocos.map(b => "Panorama: " + b.titulo) : []))], ctx };
 }
 
 // ---------- tela ----------

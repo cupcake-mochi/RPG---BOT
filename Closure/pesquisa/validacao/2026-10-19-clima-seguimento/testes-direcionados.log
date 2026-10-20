@@ -1,0 +1,276 @@
+test_chance_de_chuva_e_opcional_na_leitura (testes.test_clima.DesenhoDoTempo.test_chance_de_chuva_e_opcional_na_leitura) ... ok
+test_emoji_e_icone_saem_do_codigo_e_de_ser_dia_ou_noite (testes.test_clima.DesenhoDoTempo.test_emoji_e_icone_saem_do_codigo_e_de_ser_dia_ou_noite) ... ok
+test_atual_entre_assunto_e_cidade_nao_perde_o_lugar (testes.test_clima.Gatilho.test_atual_entre_assunto_e_cidade_nao_perde_o_lugar) ... ok
+test_lugar_citado (testes.test_clima.Gatilho.test_lugar_citado) ... ok
+test_mensagens_que_nao_puxam (testes.test_clima.Gatilho.test_mensagens_que_nao_puxam) ... ok
+test_mensagens_que_puxam_o_clima (testes.test_clima.Gatilho.test_mensagens_que_puxam_o_clima) ... ok
+test_sem_lugar_vale_toquio (testes.test_clima.Gatilho.test_sem_lugar_vale_toquio) ... ok
+test_codigo_desconhecido_nao_inventa_descricao (testes.test_clima.Leitura.test_codigo_desconhecido_nao_inventa_descricao) ... ok
+test_interpreta_a_resposta_real (testes.test_clima.Leitura.test_interpreta_a_resposta_real) ... ok
+test_linha_do_bloco_4 (testes.test_clima.Leitura.test_linha_do_bloco_4) ... ok
+test_resposta_fora_do_formato_levanta_erro (testes.test_clima.Leitura.test_resposta_fora_do_formato_levanta_erro) ... ok
+test_apelido_de_capital (testes.test_clima.LugarPorPartes.test_apelido_de_capital) ... ok
+test_cidade_com_estado_sem_virgula_traco_ou_barra (testes.test_clima.LugarPorPartes.test_cidade_com_estado_sem_virgula_traco_ou_barra) ... ok
+test_e_de_bh_so_depois_de_pergunta_meteorologica (testes.test_clima.LugarPorPartes.test_e_de_bh_so_depois_de_pergunta_meteorologica) ... ok
+test_e_em_outro_lugar_so_depois_de_pergunta_de_clima (testes.test_clima.LugarPorPartes.test_e_em_outro_lugar_so_depois_de_pergunta_de_clima) ... ok
+test_o_que_foi_cortado_tem_que_ser_o_estado (testes.test_clima.LugarPorPartes.test_o_que_foi_cortado_tem_que_ser_o_estado) ... ok
+test_pergunta_exata_de_bh_consulta_a_cidade_sem_recair_em_toquio (testes.test_clima.LugarPorPartes.test_pergunta_exata_de_bh_consulta_a_cidade_sem_recair_em_toquio) ... ok
+test_fica_o_mais_populoso (testes.test_clima.Lugares.test_fica_o_mais_populoso) ... ok
+test_nome_que_vai_pro_prompt_nao_leva_colchete (testes.test_clima.Lugares.test_nome_que_vai_pro_prompt_nao_leva_colchete) ... ok
+test_resposta_real_de_quioto (testes.test_clima.Lugares.test_resposta_real_de_quioto) ... ok
+test_sem_resultado (testes.test_clima.Lugares.test_sem_resultado) ... ok
+test_nomes_completos_e_apelidos_em_seis_construcoes (testes.test_clima.OutrasCidades.test_nomes_completos_e_apelidos_em_seis_construcoes) ... ok
+test_outra_frase_e_papo_cotidiano_nao_escolhem_cidade (testes.test_clima.OutrasCidades.test_outra_frase_e_papo_cotidiano_nao_escolhem_cidade) ... ok
+test_de_madrugada_ainda_edita_o_de_ontem_nao (testes.test_clima.PainelDiario.test_de_madrugada_ainda_edita_o_de_ontem_nao) ... ok
+test_edita_quando_o_tempo_muda (testes.test_clima.PainelDiario.test_edita_quando_o_tempo_muda) ... ok
+test_posta_uma_vez_por_dia_depois_das_6h (testes.test_clima.PainelDiario.test_posta_uma_vez_por_dia_depois_das_6h) ... ok
+test_cada_lugar_tem_a_sua_leitura (testes.test_clima.Servico.test_cada_lugar_tem_a_sua_leitura) ... ok
+test_contexto_com_a_busca_fora_do_ar (testes.test_clima.Servico.test_contexto_com_a_busca_fora_do_ar) ... clima: falha ao procurar 'kyoto' (sem rede)
+clima: falha ao ler Tóquio (sem rede)
+ok
+test_contexto_de_lugar_que_nao_existe (testes.test_clima.Servico.test_contexto_de_lugar_que_nao_existe) ... ok
+test_contexto_de_outro_lugar (testes.test_clima.Servico.test_contexto_de_outro_lugar) ... ok
+test_contexto_so_quando_a_mensagem_puxa (testes.test_clima.Servico.test_contexto_so_quando_a_mensagem_puxa) ... ok
+test_falha_sem_leitura_anterior_devolve_none (testes.test_clima.Servico.test_falha_sem_leitura_anterior_devolve_none) ... clima: falha ao ler Tóquio (sem rede)
+ok
+test_falha_usa_a_leitura_antiga_ate_o_limite (testes.test_clima.Servico.test_falha_usa_a_leitura_antiga_ate_o_limite) ... clima: falha ao ler Tóquio (sem rede)
+clima: falha ao ler Tóquio (sem rede)
+ok
+test_nome_do_lugar_vai_escapado_na_url (testes.test_clima.Servico.test_nome_do_lugar_vai_escapado_na_url) ... ok
+test_procurar_guarda_o_resultado_e_conhece_toquio (testes.test_clima.Servico.test_procurar_guarda_o_resultado_e_conhece_toquio) ... ok
+test_reaproveita_a_leitura_por_15_minutos (testes.test_clima.Servico.test_reaproveita_a_leitura_por_15_minutos) ... ok
+test_a_linha_de_clima_entra_antes_do_estado (testes.test_discord.CamadaDoDiscord.test_a_linha_de_clima_entra_antes_do_estado) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-91' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.196 seconds
+ok
+test_ajuda_lista_os_comandos_de_cada_um_e_os_links (testes.test_discord.CamadaDoDiscord.test_ajuda_lista_os_comandos_de_cada_um_e_os_links) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-96' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.137 seconds
+ok
+test_anexo_no_seguimento_recebe_limite_de_midia (testes.test_discord.CamadaDoDiscord.test_anexo_no_seguimento_recebe_limite_de_midia) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-101' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.127 seconds
+ok
+test_ao_subir_registra_os_comandos_em_geral_e_limpa_os_locais_do_servidor_principal (testes.test_discord.CamadaDoDiscord.test_ao_subir_registra_os_comandos_em_geral_e_limpa_os_locais_do_servidor_principal) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-106' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.140 seconds
+ok
+test_apagar_durante_envio_nao_regrava_nem_envia_proximas_partes (testes.test_discord.CamadaDoDiscord.test_apagar_durante_envio_nao_regrava_nem_envia_proximas_partes) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-111' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.176 seconds
+ok
+test_apagar_durante_metadados_evitar_chamada_ao_modelo (testes.test_discord.CamadaDoDiscord.test_apagar_durante_metadados_evitar_chamada_ao_modelo) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-116' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.158 seconds
+falha ao responder a mensagem 1004
+Traceback (most recent call last):
+  File "/tmp/era-validacao/Closure/src/closure_bot/cogs/chat.py", line 176, in on_message
+    await self._responder(mensagem, decisao, agora, texto,
+  File "/tmp/era-validacao/Closure/src/closure_bot/cogs/chat.py", line 191, in _responder
+    await self._responder_com_leitura(mensagem, decisao, agora, texto, fala_respondida, leitura)
+  File "/tmp/era-validacao/Closure/src/closure_bot/cogs/chat.py", line 229, in _responder_com_leitura
+    midia = await bot.midias.contexto(mensagem, texto, incluir_anexos=not (preparo.partes or preparo.silencio),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 2273, in _execute_mock_call
+    result = await effect(*args, **kwargs)
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: CamadaDoDiscord.test_apagar_durante_metadados_evitar_chamada_ao_modelo.<locals>.midia() got an unexpected keyword argument 'incluir_anexos'
+ok
+test_apagar_durante_modelo_descarta_resposta_e_permite_nova_conversa (testes.test_discord.CamadaDoDiscord.test_apagar_durante_modelo_descarta_resposta_e_permite_nova_conversa) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-121' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.154 seconds
+ok
+test_apagar_durante_preparo_de_midia_impede_envio (testes.test_discord.CamadaDoDiscord.test_apagar_durante_preparo_de_midia_impede_envio) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-126' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.152 seconds
+ok
+test_apagar_participante_anterior_invalida_resposta_de_outro (testes.test_discord.CamadaDoDiscord.test_apagar_participante_anterior_invalida_resposta_de_outro) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-131' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.152 seconds
+ok
+test_aviso_pra_todos_ou_pra_cargo_nao_e_conversa (testes.test_discord.CamadaDoDiscord.test_aviso_pra_todos_ou_pra_cargo_nao_e_conversa) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-136' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.142 seconds
+ok
+test_canal_de_clima_do_env_liga_o_painel_sem_passar_por_cima_do_comando (testes.test_discord.CamadaDoDiscord.test_canal_de_clima_do_env_liga_o_painel_sem_passar_por_cima_do_comando) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-141' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.128 seconds
+clima: canal 99 do CLIMA_CANAIS não encontrado (o bot está nesse servidor e vê o canal?)
+ok
+test_cargo_do_proprio_bot_chama_como_marcar_o_bot (testes.test_discord.CamadaDoDiscord.test_cargo_do_proprio_bot_chama_como_marcar_o_bot) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-146' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.137 seconds
+ok
+test_clima_atual_de_bh_chega_ao_contexto_das_duas_guias (testes.test_discord.CamadaDoDiscord.test_clima_atual_de_bh_chega_ao_contexto_das_duas_guias) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-151' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.137 seconds
+ok
+test_clima_canal_desligar (testes.test_discord.CamadaDoDiscord.test_clima_canal_desligar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-156' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.130 seconds
+ok
+test_clima_canal_recusa_onde_nao_pode_postar (testes.test_discord.CamadaDoDiscord.test_clima_canal_recusa_onde_nao_pode_postar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-161' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.126 seconds
+ok
+test_clima_canal_usa_o_canal_atual_ou_o_escolhido (testes.test_discord.CamadaDoDiscord.test_clima_canal_usa_o_canal_atual_ou_o_escolhido) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-166' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.159 seconds
+ok
+test_clima_de_lugar_que_nao_existe (testes.test_discord.CamadaDoDiscord.test_clima_de_lugar_que_nao_existe) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-171' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.145 seconds
+ok
+test_clima_de_outro_lugar (testes.test_discord.CamadaDoDiscord.test_clima_de_outro_lugar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-176' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.147 seconds
+ok
+test_clima_fora_do_ar_avisa_sem_quebrar (testes.test_discord.CamadaDoDiscord.test_clima_fora_do_ar_avisa_sem_quebrar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-181' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.151 seconds
+clima: falha ao ler Tóquio (sem rede)
+clima: falha ao procurar 'kyoto' (sem rede)
+ok
+test_clima_manda_o_painel_de_toquio (testes.test_discord.CamadaDoDiscord.test_clima_manda_o_painel_de_toquio) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-186' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.145 seconds
+/usr/lib/python3.12/unittest/mock.py:2188: ResourceWarning: unclosed file <_io.FileIO name='/tmp/era-validacao/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_comando_que_quebra_avisa_a_pessoa (testes.test_discord.CamadaDoDiscord.test_comando_que_quebra_avisa_a_pessoa) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-191' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.150 seconds
+ok
+test_comandos_registrados (testes.test_discord.CamadaDoDiscord.test_comandos_registrados) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-196' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.151 seconds
+ok
+test_conversa_sem_chamar_para_quando_outra_pessoa_fala_ou_o_tempo_passa (testes.test_discord.CamadaDoDiscord.test_conversa_sem_chamar_para_quando_outra_pessoa_fala_ou_o_tempo_passa) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-201' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.131 seconds
+Executing <Task finished name='Task-202' coro=<CamadaDoDiscord.test_conversa_sem_chamar_para_quando_outra_pessoa_fala_ou_o_tempo_passa() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:656> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.110 seconds
+ok
+test_conversa_sem_chamar_vale_fora_dos_canais_delas_depois_de_marcar (testes.test_discord.CamadaDoDiscord.test_conversa_sem_chamar_vale_fora_dos_canais_delas_depois_de_marcar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-206' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.143 seconds
+/usr/lib/python3.12/unittest/mock.py:478: ResourceWarning: unclosed file <_io.FileIO name='/tmp/era-validacao/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+  _safe_super(NonCallableMock, self).__init__(
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task finished name='Task-207' coro=<CamadaDoDiscord.test_conversa_sem_chamar_vale_fora_dos_canais_delas_depois_de_marcar() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:676> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.112 seconds
+ok
+test_em_topico_usa_o_webhook_do_canal_pai (testes.test_discord.CamadaDoDiscord.test_em_topico_usa_o_webhook_do_canal_pai) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-211' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.125 seconds
+ok
+test_exclusao_de_pessoa_sem_relacao_nao_interrompe_resposta (testes.test_discord.CamadaDoDiscord.test_exclusao_de_pessoa_sem_relacao_nao_interrompe_resposta) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-216' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.135 seconds
+ok
+test_fora_dos_canais_delas_so_marcando_ou_respondendo (testes.test_discord.CamadaDoDiscord.test_fora_dos_canais_delas_so_marcando_ou_respondendo) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-221' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.136 seconds
+banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task pending name='Task-222' coro=<CamadaDoDiscord.test_fora_dos_canais_delas_so_marcando_ou_respondendo() running at /tmp/era-validacao/Closure/src/testes/test_discord.py:355> wait_for=<Future pending cb=[_chain_future.<locals>._call_check_cancel() at /usr/lib/python3.12/asyncio/futures.py:387, Task.task_wakeup()] created at /usr/lib/python3.12/asyncio/base_events.py:449> cb=[_run_until_complete_cb() at /usr/lib/python3.12/asyncio/base_events.py:182] created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.195 seconds
+sem resposta pra mensagem 1029: sem_chave nenhum provedor da fila tem chave no .env
+sem resposta pra mensagem 1030: sem_chave nenhum provedor da fila tem chave no .env
+sem resposta pra mensagem 1031: sem_chave nenhum provedor da fila tem chave no .env
+ok
+test_gatilho_por_nome_e_registrado (testes.test_discord.CamadaDoDiscord.test_gatilho_por_nome_e_registrado) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-226' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.142 seconds
+ok
+test_gc_clima_aceita_pergunta_inteira_e_nome_simples_sem_modelo (testes.test_discord.CamadaDoDiscord.test_gc_clima_aceita_pergunta_inteira_e_nome_simples_sem_modelo) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-231' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.130 seconds
+ok
+test_gc_ficha_com_anexo_com_link_e_sem_nada (testes.test_discord.CamadaDoDiscord.test_gc_ficha_com_anexo_com_link_e_sem_nada) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-236' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.125 seconds
+ok
+test_gc_no_chat_faz_o_mesmo_que_a_barra_nos_comandos_publicos (testes.test_discord.CamadaDoDiscord.test_gc_no_chat_faz_o_mesmo_que_a_barra_nos_comandos_publicos) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-241' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.160 seconds
+ok
+test_gc_ping_e_status (testes.test_discord.CamadaDoDiscord.test_gc_ping_e_status) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-246' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.150 seconds
+ok
+test_gif_do_seletor_entra_no_chat_sem_metadado_contraditorio (testes.test_discord.CamadaDoDiscord.test_gif_do_seletor_entra_no_chat_sem_metadado_contraditorio) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-251' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.145 seconds
+ok
+test_gif_por_link_discord_chega_sem_expor_url_nos_tempos (testes.test_discord.CamadaDoDiscord.test_gif_por_link_discord_chega_sem_expor_url_nos_tempos) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-260' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.158 seconds
+ok
+test_livro_manda_o_link_com_quem_esta_de_plantao_pela_barra_e_pelo_gc (testes.test_discord.CamadaDoDiscord.test_livro_manda_o_link_com_quem_esta_de_plantao_pela_barra_e_pelo_gc) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+/usr/lib/python3.12/unittest/mock.py:2188: ResourceWarning: unclosed file <_io.FileIO name='/tmp/era-validacao/Closure/src/closure_bot/recursos/painel_clima.webp' mode='rb' closefd=True>
+  def __init__(self, name, parent):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+Executing <Task finished name='Task-269' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.173 seconds
+ok
+test_mencao_ao_bot_nao_vira_comando_de_prefixo (testes.test_discord.CamadaDoDiscord.test_mencao_ao_bot_nao_vira_comando_de_prefixo) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-274' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.130 seconds
+ok
+test_mencao_e_id_nao_vao_no_texto (testes.test_discord.CamadaDoDiscord.test_mencao_e_id_nao_vao_no_texto) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-279' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.129 seconds
+ok
+test_mensagem_comum_bot_e_webhook_nao_sao_gatilho (testes.test_discord.CamadaDoDiscord.test_mensagem_comum_bot_e_webhook_nao_sao_gatilho) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-284' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.134 seconds
+ok
+test_mensagens_do_canal_viram_movimento_e_atrito_gasta_paciencia (testes.test_discord.CamadaDoDiscord.test_mensagens_do_canal_viram_movimento_e_atrito_gasta_paciencia) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-289' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.133 seconds
+ok
+test_meus_dados_pronomes_e_apagar (testes.test_discord.CamadaDoDiscord.test_meus_dados_pronomes_e_apagar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-294' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.130 seconds
+ok
+test_midia_vai_ao_pedido_e_historico_sem_virar_fato (testes.test_discord.CamadaDoDiscord.test_midia_vai_ao_pedido_e_historico_sem_virar_fato) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-299' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.158 seconds
+ok
+test_midia_visual_so_no_turno_atual_sem_binario_no_banco (testes.test_discord.CamadaDoDiscord.test_midia_visual_so_no_turno_atual_sem_binario_no_banco) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-304' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.151 seconds
+ok
+test_modo_misto_so_no_canal_escolhido (testes.test_discord.CamadaDoDiscord.test_modo_misto_so_no_canal_escolhido) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-309' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.152 seconds
+ok
+test_nome_de_exibicao_vai_sem_colchete_e_mensagem_longa_e_cortada (testes.test_discord.CamadaDoDiscord.test_nome_de_exibicao_vai_sem_colchete_e_mensagem_longa_e_cortada) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-314' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.150 seconds
+ok
+test_painel_com_canal_apagado_nao_quebra (testes.test_discord.CamadaDoDiscord.test_painel_com_canal_apagado_nao_quebra) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-319' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.151 seconds
+clima: canal do painel (71) não encontrado
+ok
+test_painel_diario_por_servidor (testes.test_discord.CamadaDoDiscord.test_painel_diario_por_servidor) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-324' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.131 seconds
+ok
+test_participante_chegado_durante_digitacao_tambem_e_protegido (testes.test_discord.CamadaDoDiscord.test_participante_chegado_durante_digitacao_tambem_e_protegido) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-329' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.139 seconds
+ok
+test_ping_mostra_o_manifesto (testes.test_discord.CamadaDoDiscord.test_ping_mostra_o_manifesto) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-334' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.123 seconds
+ok
+test_preferencia_adulta_chega_ao_modelo_sem_mudar_rotas_ou_salvar_config_no_historico (testes.test_discord.CamadaDoDiscord.test_preferencia_adulta_chega_ao_modelo_sem_mudar_rotas_ou_salvar_config_no_historico) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-339' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.152 seconds
+ok
+test_quem_chama_demais_num_minuto_fica_sem_resposta (testes.test_discord.CamadaDoDiscord.test_quem_chama_demais_num_minuto_fica_sem_resposta) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-344' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.138 seconds
+Executing <Task finished name='Task-345' coro=<CamadaDoDiscord.test_quem_chama_demais_num_minuto_fica_sem_resposta() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:687> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.351 seconds
+ok
+test_quem_chama_recebe_resposta_e_a_conversa_segue (testes.test_discord.CamadaDoDiscord.test_quem_chama_recebe_resposta_e_a_conversa_segue) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-349' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.130 seconds
+ok
+test_quem_ela_acabou_de_responder_continua_sem_chamar (testes.test_discord.CamadaDoDiscord.test_quem_ela_acabou_de_responder_continua_sem_chamar) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-354' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.136 seconds
+Executing <Task finished name='Task-355' coro=<CamadaDoDiscord.test_quem_ela_acabou_de_responder_continua_sem_chamar() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:644> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.123 seconds
+ok
+test_reflexao_atrasada_roda_ao_subir (testes.test_discord.CamadaDoDiscord.test_reflexao_atrasada_roda_ao_subir) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-359' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.135 seconds
+ok
+test_resposta_a_mensagem_do_webhook_e_gatilho (testes.test_discord.CamadaDoDiscord.test_resposta_a_mensagem_do_webhook_e_gatilho) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-364' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.127 seconds
+ok
+test_resposta_a_uma_fala_fica_com_quem_falou_e_leva_a_fala_junto (testes.test_discord.CamadaDoDiscord.test_resposta_a_uma_fala_fica_com_quem_falou_e_leva_a_fala_junto) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-369' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.142 seconds
+ok
+test_resposta_longa_sai_em_varias_mensagens_e_entra_inteira_na_memoria (testes.test_discord.CamadaDoDiscord.test_resposta_longa_sai_em_varias_mensagens_e_entra_inteira_na_memoria) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-374' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.138 seconds
+ok
+test_sem_permissao_de_webhook_envia_pela_conta_do_bot (testes.test_discord.CamadaDoDiscord.test_sem_permissao_de_webhook_envia_pela_conta_do_bot) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-379' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.115 seconds
+sem webhook no canal 10; enviando pela conta do bot
+ok
+test_sem_resposta_do_modelo_ela_fica_calada (testes.test_discord.CamadaDoDiscord.test_sem_resposta_do_modelo_ela_fica_calada) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-384' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.138 seconds
+sem resposta pra mensagem 1092: 500 fora do ar
+ok
+test_silencio_responde_sem_modelo_e_preserva_pergunta_mista (testes.test_discord.CamadaDoDiscord.test_silencio_responde_sem_modelo_e_preserva_pergunta_mista) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-389' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.131 seconds
+ok
+test_so_o_dono_pelo_id_vai_como_mizuki (testes.test_discord.CamadaDoDiscord.test_so_o_dono_pelo_id_vai_como_mizuki) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-398' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.136 seconds
+ok
+test_teste_webhook_so_pro_dono (testes.test_discord.CamadaDoDiscord.test_teste_webhook_so_pro_dono) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-403' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.138 seconds
+ok
+test_trocas_de_cidade_em_sequencia_e_mudanca_de_assunto (testes.test_discord.CamadaDoDiscord.test_trocas_de_cidade_em_sequencia_e_mudanca_de_assunto) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-408' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.127 seconds
+Executing <Task finished name='Task-409' coro=<CamadaDoDiscord.test_trocas_de_cidade_em_sequencia_e_mudanca_de_assunto() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:851> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.181 seconds
+ok
+test_webhook_apagado_no_servidor_e_refeito (testes.test_discord.CamadaDoDiscord.test_webhook_apagado_no_servidor_e_refeito) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-413' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.109 seconds
+ok
+test_webhook_leva_nome_e_avatar_e_guarda_o_id (testes.test_discord.CamadaDoDiscord.test_webhook_leva_nome_e_avatar_e_guarda_o_id) ... banco sem cifra: falta a CHAVE_DO_BANCO no .env (python3 -m closure_bot --gerar-chave)
+Executing <Task finished name='Task-418' coro=<CamadaDoDiscord.asyncSetUp() done, defined at /tmp/era-validacao/Closure/src/testes/test_discord.py:59> result=None created at /usr/lib/python3.12/asyncio/runners.py:100> took 0.139 seconds
+ok
+
+----------------------------------------------------------------------
+Ran 100 tests in 15.770s
+
+OK

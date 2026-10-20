@@ -1,0 +1,86 @@
+[
+  {
+    "pergunta": "Quem e Shiki?",
+    "antes": {
+      "fontes": [],
+      "inclui_capo_de_volsinii": false
+    },
+    "depois": {
+      "fontes": [
+        "Era: Siracusa / Siracusa / Situação Atual — Siracusano II"
+      ],
+      "inclui_capo_de_volsinii": true
+    }
+  },
+  {
+    "pergunta": "Quem e Shiki Zen'in?",
+    "antes": {
+      "fontes": [],
+      "inclui_capo_de_volsinii": false
+    },
+    "depois": {
+      "fontes": [
+        "Era: Siracusa / Siracusa / Situação Atual — Siracusano II"
+      ],
+      "inclui_capo_de_volsinii": true
+    }
+  },
+  {
+    "pergunta": "Quem e Shiki Zen’in?",
+    "antes": {
+      "fontes": [],
+      "inclui_capo_de_volsinii": false
+    },
+    "depois": {
+      "fontes": [
+        "Era: Siracusa / Siracusa / Situação Atual — Siracusano II"
+      ],
+      "inclui_capo_de_volsinii": true
+    }
+  },
+  {
+    "pergunta": "Quem e Shiki Zenin?",
+    "antes": {
+      "fontes": [],
+      "inclui_capo_de_volsinii": false
+    },
+    "depois": {
+      "fontes": [
+        "Era: Siracusa / Siracusa / Situação Atual — Siracusano II"
+      ],
+      "inclui_capo_de_volsinii": true
+    }
+  },
+  {
+    "pergunta": "Fale sobre Cellinia",
+    "antes": {
+      "fontes": [],
+      "inclui_capo_de_volsinii": false
+    },
+    "depois": {
+      "fontes": [
+        "Era: Siracusa / Siracusa / Situação Atual — Siracusano II"
+      ],
+      "inclui_capo_de_volsinii": true
+    }
+  },
+  {
+    "pergunta": "Fale sobre Volsinii",
+    "antes": {
+      "fontes": [
+        "Era: Siracusa / Siracusa / Regiões e Cidades de Importância",
+        "Era: Siracusa / Siracusa",
+        "Era: Siracusa / Siracusa / Apresentação"
+      ],
+      "inclui_capo_de_volsinii": false
+    },
+    "depois": {
+      "fontes": [
+        "Era: Siracusa / Siracusa / Regiões e Cidades de Importância",
+        "Era: Siracusa / Siracusa / Territórios e Localidades Conhecidas",
+        "Era: Siracusa / Siracusa / Situação Atual — Siracusano II"
+      ],
+      "inclui_capo_de_volsinii": true
+    }
+  }
+]

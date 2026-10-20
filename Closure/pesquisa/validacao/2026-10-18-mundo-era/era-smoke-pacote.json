@@ -1,0 +1,130 @@
+[
+  {
+    "guia": "kal",
+    "pergunta": "Como chego em Victoria?",
+    "fontes": [
+      "Era: Victoria / Victoria / Apresentação",
+      "Era: Victoria / Victoria",
+      "Era: Victoria / Victoria / História e identidade"
+    ],
+    "passou": true
+  },
+  {
+    "guia": "kal",
+    "pergunta": "Como acesso Ægir?",
+    "fontes": [
+      "Era: Aegir / Aegir / Apresentação",
+      "Era: Aegir / Aegir",
+      "Era: Iberia / Iberia / Apresentação",
+      "Era: Aegir / Aegir / História e identidade",
+      "Era: Iberia / Iberia"
+    ],
+    "passou": true
+  },
+  {
+    "guia": "kal",
+    "pergunta": "Qual é a capital de Columbia?",
+    "fontes": [
+      "Era: Columbia / Columbia / Capital",
+      "Era: Columbia / Columbia / Apresentação",
+      "Era: Columbia / Columbia"
+    ],
+    "passou": true
+  },
+  {
+    "guia": "kal",
+    "pergunta": "Já chegaram na Lua?",
+    "fontes": [
+      "Era: Terra Indice / Terra Indice / Conceitos do Mundo",
+      "Era: Terra Indice / Terra Indice / Como utilizar este índice",
+      "Era: Limites de Lore / Limites de Lore / VIAGEM ESPACIAL"
+    ],
+    "passou": true
+  },
+  {
+    "guia": "kal",
+    "pergunta": "Como funciona a promoção de Grau?",
+    "fontes": [
+      "Era: Progressao / Progressão / PROMOÇÃO DE GRAU",
+      "Era: Progressao / Progressão / NÍVEL E GRAU",
+      "Era: Progressao / Progressão"
+    ],
+    "passou": true
+  },
+  {
+    "guia": "kal",
+    "pergunta": "Qual é a cura da Oripatia?",
+    "fontes": [
+      "Era: Limites de Lore / Limites de Lore / CURA PARA ORIPATIA",
+      "Era: Oripatia / Oripatia em Mesa / ENERGIA REVERSA NÃO CURA ORIPATIA",
+      "Era: Lore do Mundo / Oripatia",
+      "Era: Lore do Mundo / Oripatia / ENERGIA REVERSA",
+      "Era: Lore do Mundo / Oripatia / FORMAS DE CONTÁGIO"
+    ],
+    "passou": true
+  },
+  {
+    "guia": "clo",
+    "pergunta": "Como chego em Victoria?",
+    "fontes": [
+      "Era: Victoria / Victoria / Apresentação",
+      "Era: Victoria / Victoria",
+      "Era: Victoria / Victoria / História e identidade"
+    ],
+    "passou": true
+  },
+  {
+    "guia": "clo",
+    "pergunta": "Como acesso Ægir?",
+    "fontes": [
+      "Era: Aegir / Aegir / Apresentação",
+      "Era: Aegir / Aegir",
+      "Era: Iberia / Iberia / Apresentação",
+      "Era: Aegir / Aegir / História e identidade",
+      "Era: Iberia / Iberia"
+    ],
+    "passou": true
+  },
+  {
+    "guia": "clo",
+    "pergunta": "Qual é a capital de Columbia?",
+    "fontes": [
+      "Era: Columbia / Columbia / Capital",
+      "Era: Columbia / Columbia / Apresentação",
+      "Era: Columbia / Columbia"
+    ],
+    "passou": true
+  },
+  {
+    "guia": "clo",
+    "pergunta": "Já chegaram na Lua?",
+    "fontes": [
+      "Era: Terra Indice / Terra Indice / Conceitos do Mundo",
+      "Era: Terra Indice / Terra Indice / Como utilizar este índice",
+      "Era: Limites de Lore / Limites de Lore / VIAGEM ESPACIAL"
+    ],
+    "passou": true
+  },
+  {
+    "guia": "clo",
+    "pergunta": "Como funciona a promoção de Grau?",
+    "fontes": [
+      "Era: Progressao / Progressão / PROMOÇÃO DE GRAU",
+      "Era: Progressao / Progressão / NÍVEL E GRAU",
+      "Era: Progressao / Progressão"
+    ],
+    "passou": true
+  },
+  {
+    "guia": "clo",
+    "pergunta": "Qual é a cura da Oripatia?",
+    "fontes": [
+      "Era: Limites de Lore / Limites de Lore / CURA PARA ORIPATIA",
+      "Era: Oripatia / Oripatia em Mesa / ENERGIA REVERSA NÃO CURA ORIPATIA",
+      "Era: Lore do Mundo / Oripatia",
+      "Era: Lore do Mundo / Oripatia / ENERGIA REVERSA",
+      "Era: Lore do Mundo / Oripatia / FORMAS DE CONTÁGIO"
+    ],
+    "passou": true
+  }
+]

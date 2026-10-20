@@ -1,0 +1,13 @@
+{
+  "arquivos": 67,
+  "bytes": 1206340,
+  "sha256": "d43dbd27bc63770c57ff18af498d8873edc8cbbbd3d1327740c5623141906d9c",
+  "delta_desde_v1": [
+    "src/var/site/nucleo.js"
+  ],
+  "corpus_fontes_textos_preservados": true,
+  "fontes": 31,
+  "consultas_indice_regional": 341,
+  "saida": "/media/mizuki/HD Externo II/Closure Lab/entregas/closure-lab-era-revolucao-nomes-2026-10-18.zip",
+  "versao": "era-2026-10-18-v2"
+}

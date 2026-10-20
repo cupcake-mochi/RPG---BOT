@@ -1,0 +1,1712 @@
+{
+  "total": 341,
+  "falhas": [],
+  "casos": [
+    {
+      "nome": "bresk",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "breskenoy",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "central far north mining district",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "chernobog",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "deity grypherburg",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "gregorskaya guberniya",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "imperio dos hippogryphs",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "kras",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "nikolsk",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "olonets",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "onega",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "shiraziberg",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "simonch",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "ural",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "ursus",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "volgrad",
+      "fonte": "Ursus",
+      "passou": true
+    },
+    {
+      "nome": "boschendal",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "brentwood",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "bristol",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "butchart",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "caladon",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "calais-blason",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county ascarat",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county barre",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county castshire",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county connor",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county dawson",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county firth",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county hillock",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county kevin",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county lyndon",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county march",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county merkiseyde",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county oak grove",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county peninsula",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county skyes",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county toron",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county trent",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "county york",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "draco",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "eastham",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "kingdom of lower gaul",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "lannington",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "londinium",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "lynncardine",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "mannington",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "muncaster",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "portsmouth",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "rockbrook",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "rydeel",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "sidmouth",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "stonebreak",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "tara",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "the shard",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "tonnerre",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "tradersmill",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "victoria",
+      "fonte": "Victoria",
+      "passou": true
+    },
+    {
+      "nome": "afterglow",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "austenheim",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "caprania",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "einwald",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "erdenherre",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "fels",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "furtgang",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "graufield",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "grinden",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "guldenesgesatz",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "guttenberg",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "heldenschwert",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "leithanien",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "lupukarn",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "mount unna",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "sturmland",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "twin empresses",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "unna",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "urtica",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "vyseheim",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "wasserland",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "winterwisp mountains",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "witch king",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "wolumonde",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "zwillingsturme",
+      "fonte": "Leithanien",
+      "passou": true
+    },
+    {
+      "nome": "campaign knights",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "dewville",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "dzwonek",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "grand knight territory",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "kawalerielki",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "kazimierz",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "last knight",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "mount terrat e mount mortica",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "ognisko",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "pegasi",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "strumykowo",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "terra dos cavaleiros e do comercio",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "twierdza",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "united knightly territory of kazimierz",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "wilobisk",
+      "fonte": "Kazimierz",
+      "passou": true
+    },
+    {
+      "nome": "bayswood",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "bunkerhill",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "city no. 9",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "columbia",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "davistown",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "deadhorse",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "district of columbia",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "givogia",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "guerra de independencia",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "ironforge",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "max d.c.",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "new manfist",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "new richmond",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "northville",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "obsidian festival",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "propeller paradise",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "siesta free state",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "steelham",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "tkaronto",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "trenton",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "trimounts",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "wrankwood",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "yorktown",
+      "fonte": "Columbia",
+      "passou": true
+    },
+    {
+      "nome": "black flow",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "bolivar",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "bolivarian border plateau",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "bolivarian plain",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "dossoles",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "el sol",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "gran sinderacato",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "independent state of bolivar",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "kingdom of bolivar",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "la plata",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "la unidad",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "liberated zones",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "tecoma",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "toca",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "true bolivarians",
+      "fonte": "Bolivar",
+      "passou": true
+    },
+    {
+      "nome": "brunello",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "capo dei capi de volsinii",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "cellinia",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "cellinia texas",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "cittanova",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "famiglia sicilia",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "florentia",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "montelupe",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "nuova volsinii",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "palermo",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "sette colli",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "shiki",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "shiki zen'in",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "shiki zenin",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "sicilia",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "signora sicilia",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "siracusa",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "siracusano ii",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "sorrento",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "terni",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "trapani",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "trieste",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "vermeil",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "vite",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "volsinii",
+      "fonte": "Siracusa",
+      "passou": true
+    },
+    {
+      "nome": "acahualla",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "aslan",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "bayalir",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "ibut",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "kerthun valley",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "long spring",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "menat-ha'mait",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "menat-hamait",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "phecon",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "redhorn",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "reefsteep",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "sargon",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "shahr-cheshmeh",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "shar-agade",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "szubat-arsalan",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "tiacauh",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "vouivre alliance",
+      "fonte": "Sargon",
+      "passou": true
+    },
+    {
+      "nome": "aegean plain",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "agamem pass",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "agnes river",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "akroti",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "arachne river",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "athenius",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "corinia",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "delphi river",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "doze herois",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "hall of the twelve heroes",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "ilion",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "kereseira",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "lachedamon",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "minoan massif",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "minos",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "mount athos",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "mount heria",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "mount hymnoi",
+      "fonte": "Minos",
+      "passou": true
+    },
+    {
+      "nome": "hoff angrsaal",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "karlan square",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "karlan trade",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "kjerag",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "kjerag staatbahn",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "kjeragandr",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "lake silberneherze",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "mount filnona",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "mount fugen",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "mount jungfrau",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "mount karlan",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "mount karlan e hoff angrsaal",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "mount matterhorn",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "reino da neve",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "turicum",
+      "fonte": "Kjerag",
+      "passou": true
+    },
+    {
+      "nome": "landen monastery",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "lateran city",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "laterano",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "notarial hall",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "pagus ambrosius",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "pagus ecclesia",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "pagus faber",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "pagus griffin",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "pagus michaelion",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "pagus saint marcel",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "pagus stevonus",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "pagus theodosius",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "sanctilaminium ambrosii",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "sankta",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "shrine of nurtury",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "sunset chapel",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "the basilica",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "tower of revelations",
+      "fonte": "Laterano",
+      "passou": true
+    },
+    {
+      "nome": "aaron",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "aegir",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "cerro del faro",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "ciudad de las olas doradas",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "eyes of iberia",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "gran faro",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "iberia",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "luarca",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "mar palido",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "orvieto",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "perdoni",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "perdonidora",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "profound silence",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "puerto orgullo",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "real-iberia",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "rocamarea",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "rocky coast",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "sal viento",
+      "fonte": "Iberia",
+      "passou": true
+    },
+    {
+      "nome": "aegir",
+      "fonte": "Aegir",
+      "passou": true
+    },
+    {
+      "nome": "gran faro",
+      "fonte": "Aegir",
+      "passou": true
+    },
+    {
+      "nome": "milliarium",
+      "fonte": "Aegir",
+      "passou": true
+    },
+    {
+      "nome": "senado de aegir",
+      "fonte": "Aegir",
+      "passou": true
+    },
+    {
+      "nome": "sophontheatrum",
+      "fonte": "Aegir",
+      "passou": true
+    },
+    {
+      "nome": "interior de sami",
+      "fonte": "Sami",
+      "passou": true
+    },
+    {
+      "nome": "polo norte",
+      "fonte": "Sami",
+      "passou": true
+    },
+    {
+      "nome": "sami",
+      "fonte": "Sami",
+      "passou": true
+    },
+    {
+      "nome": "big pillar autonomous prefecture",
+      "fonte": "Rim Billiton",
+      "passou": true
+    },
+    {
+      "nome": "cage incident",
+      "fonte": "Rim Billiton",
+      "passou": true
+    },
+    {
+      "nome": "cautus",
+      "fonte": "Rim Billiton",
+      "passou": true
+    },
+    {
+      "nome": "eureka autonomous prefecture",
+      "fonte": "Rim Billiton",
+      "passou": true
+    },
+    {
+      "nome": "iron carrot",
+      "fonte": "Rim Billiton",
+      "passou": true
+    },
+    {
+      "nome": "iron fist",
+      "fonte": "Rim Billiton",
+      "passou": true
+    },
+    {
+      "nome": "rim billiton",
+      "fonte": "Rim Billiton",
+      "passou": true
+    },
+    {
+      "nome": "rim billiton mining alliance",
+      "fonte": "Rim Billiton",
+      "passou": true
+    },
+    {
+      "nome": "rustdreg",
+      "fonte": "Rim Billiton",
+      "passou": true
+    },
+    {
+      "nome": "targangils prime vein",
+      "fonte": "Rim Billiton",
+      "passou": true
+    },
+    {
+      "nome": "ultramassive",
+      "fonte": "Rim Billiton",
+      "passou": true
+    },
+    {
+      "nome": "baizao",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "chamber of heaven's designs",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "chamber of heavens designs",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "changji",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "cidade dos incontaveis fogoes",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "dahuang",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "danyan",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "dusk city",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "great hunt",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "hundred clans",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "jiangqi",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "k'u-t'an river",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "kou-wu",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "ku-tan river",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "langyi",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "lungmen",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "mangshan",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "michu",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "mount hui-ch'i",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "mount hui-chi",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "mount t'ien",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "mount tien",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "moushan",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "nanwu",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "ni-weng",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "p'o-shan",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "po-shan",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "shangshu",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "three mounts and seventeen peaks",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "true lung",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "yan",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "yumen",
+      "fonte": "Yan",
+      "passou": true
+    },
+    {
+      "nome": "ashihara",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "gokawa",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "higashi",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "himedo",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "isazaki",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "kusarikawa",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "mitsukue",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "northern court",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "onkaminokannogi-no-miyako",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "roka",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "roka village",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "shin-aki",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "soubo",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "southern court",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "taisha",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "tokoyami",
+      "fonte": "Higashi",
+      "passou": true
+    },
+    {
+      "nome": "bleached wasteland",
+      "fonte": "Kazdel",
+      "passou": true
+    },
+    {
+      "nome": "kazdel",
+      "fonte": "Kazdel",
+      "passou": true
+    },
+    {
+      "nome": "norte do sorrow's ground",
+      "fonte": "Kazdel",
+      "passou": true
+    },
+    {
+      "nome": "norte do sorrows ground",
+      "fonte": "Kazdel",
+      "passou": true
+    },
+    {
+      "nome": "sarkaz",
+      "fonte": "Kazdel",
+      "passou": true
+    },
+    {
+      "nome": "sarkaz royal court",
+      "fonte": "Kazdel",
+      "passou": true
+    },
+    {
+      "nome": "sorrow's ground",
+      "fonte": "Kazdel",
+      "passou": true
+    },
+    {
+      "nome": "sorrows ground",
+      "fonte": "Kazdel",
+      "passou": true
+    },
+    {
+      "nome": "sul do sorrow's ground",
+      "fonte": "Kazdel",
+      "passou": true
+    },
+    {
+      "nome": "sul do sorrows ground",
+      "fonte": "Kazdel",
+      "passou": true
+    },
+    {
+      "nome": "durin",
+      "fonte": "Durin",
+      "passou": true
+    },
+    {
+      "nome": "great aquapit",
+      "fonte": "Durin",
+      "passou": true
+    },
+    {
+      "nome": "ortzimuga",
+      "fonte": "Durin",
+      "passou": true
+    },
+    {
+      "nome": "zeruertza",
+      "fonte": "Durin",
+      "passou": true
+    },
+    {
+      "nome": "ancestral gaze",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "calais",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "calais-blason",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "departements",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "estepes orientais de ursus",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "gaul e nightzmora",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "khaganquest",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "kharanduu khagan, o grande khagan",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "kingdom of lower gaul",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "lingones",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "lower gaul",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "nightzmoran khaganate",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "upper gaul",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    },
+    {
+      "nome": "victoria e leithanien",
+      "fonte": "Gaul e Nightzmora",
+      "passou": true
+    }
+  ],
+  "textos_e_hashes_de_31_fontes_preservados": true
+}

@@ -1,5 +1,17 @@
 # RPG---BOT
 
+Continuações “E de BH?” e perguntas inteiras em `GC:clima` corrigidas e publicadas
+em 19/10, com regressões dos fluxos e dados reais conferidos.
+[Fechamento atual](Closure/pesquisa/validacao/2026-10-19-clima-seguimento/relatorio.md).
+
+Correção de “clima atual de BH” publicada na Discloud em 18/10 às 23:49,
+com consulta real conferida e sem chamar IA nos testes.
+[Diagnóstico, testes e limites](Closure/pesquisa/validacao/2026-10-18-clima-bh/relatorio.md).
+
+Atualização de mundo publicada na Discloud em 18/10/2026, com autorização:
+[fontes da Era da Revolução](Closure/dados/mundo/LEIA-ME.md) para as duas guias,
+sem as três pastas excluídas. [Testes e conferência da publicação](Closure/pesquisa/validacao/2026-10-18-mundo-nomes/relatorio.md).
+
 Bot de Discord da guilda do **Ciclo Maldito**: tira dúvida de regra, corrige ficha e conversa
 na voz de uma personagem de Arknights (Kal'tsit de dia, Closure de noite).
 

@@ -1,0 +1,139 @@
+{
+  "fonte_zip_sha256": "b0a2c4ab1995ca8c176000898a85cbc28029dae252987e6fc3c29b0aa04eaa07",
+  "corpus_sha256": "1e9fe3919740d6399c74154b7c1ee45847bd40f4a9fa13bef92e57c2f8ad0f2e",
+  "reimportacao_identica": true,
+  "documentos": 31,
+  "secoes": 228,
+  "documentos_por_categoria": {
+    "regiao": 21,
+    "publico": 2,
+    "mestragem": 8
+  },
+  "origem": "31 entradas Texto-para-Discord.txt; nenhuma entrada das pastas excluídas aberta pelo importador",
+  "fontes": [
+    {
+      "caminho": "01-Regioes-Extras/00-Terra-Indice/Texto-para-Discord.txt",
+      "sha256": "9bc05c2f6e17e5f22c8e04d251acdc4adb35181b3bcf050418f19cd5a19533f5"
+    },
+    {
+      "caminho": "01-Regioes-Extras/01-Ursus/Texto-para-Discord.txt",
+      "sha256": "c1716a950ae19317679ff7bbdae1b086c2bb742e2f514028684ae8a0bddf0550"
+    },
+    {
+      "caminho": "01-Regioes-Extras/02-Victoria/Texto-para-Discord.txt",
+      "sha256": "257c33b241d7f8642a33050cb8c0a5b8fbf8e7a5dfabc0edae38cf4638bc2652"
+    },
+    {
+      "caminho": "01-Regioes-Extras/03-Leithanien/Texto-para-Discord.txt",
+      "sha256": "cbe659132c45f1460b183fb7c9ffc9da202c8f6def41f239f0009ae1e10e0dad"
+    },
+    {
+      "caminho": "01-Regioes-Extras/04-Kazimierz/Texto-para-Discord.txt",
+      "sha256": "e32675b20b573272d2971668724212d4ff620d225830caf9461f6b1eb808bd85"
+    },
+    {
+      "caminho": "01-Regioes-Extras/05-Columbia/Texto-para-Discord.txt",
+      "sha256": "8a7c527213c207e1d9af1f327f15c630248bc9c624a617b079db0d8cf6d5a814"
+    },
+    {
+      "caminho": "01-Regioes-Extras/06-Bolivar/Texto-para-Discord.txt",
+      "sha256": "6b0dbe77616220f9449f99d372ac5aa4b0263fab51a077ce4e55c05093e593ae"
+    },
+    {
+      "caminho": "01-Regioes-Extras/07-Siracusa/Texto-para-Discord.txt",
+      "sha256": "6ccb311cd1886e5f889e05a431b791caa106daae0344479c0ac69bb139f5aae5"
+    },
+    {
+      "caminho": "01-Regioes-Extras/08-Sargon/Texto-para-Discord.txt",
+      "sha256": "d4647c751d31411c0f1ee9b3ab55f66d3475a78f9f35a59b8057334cd204d568"
+    },
+    {
+      "caminho": "01-Regioes-Extras/09-Minos/Texto-para-Discord.txt",
+      "sha256": "071545742be583bf312085646ae7a22c9d4be2ff22a4b29dd76696b7e14590dc"
+    },
+    {
+      "caminho": "01-Regioes-Extras/10-Kjerag/Texto-para-Discord.txt",
+      "sha256": "4bb08c1291c078e669214c5e5f2119fefe47938a3f7a36bc1aa0a56c6d98b7fb"
+    },
+    {
+      "caminho": "01-Regioes-Extras/11-Laterano/Texto-para-Discord.txt",
+      "sha256": "a5e318b817067936aa5e016031d1fa1468dc9edaa63645aa6f6b2d1cab09bd02"
+    },
+    {
+      "caminho": "01-Regioes-Extras/12-Iberia/Texto-para-Discord.txt",
+      "sha256": "72dfdc43be54f41c5df0da21fa67d3e7b5fdac075e6daafb4e04dbf90ab69e1e"
+    },
+    {
+      "caminho": "01-Regioes-Extras/13-Aegir/Texto-para-Discord.txt",
+      "sha256": "7174a4467ff796f096b981c40d89c7cc03c91443e6f7d8c1601194a3ea0e9899"
+    },
+    {
+      "caminho": "01-Regioes-Extras/14-Sami/Texto-para-Discord.txt",
+      "sha256": "19f8d27f79aa8b5ab550b316b87f7f87431ad45ac9c4a2cd88fe4f78820133f8"
+    },
+    {
+      "caminho": "01-Regioes-Extras/15-Rim-Billiton/Texto-para-Discord.txt",
+      "sha256": "f9d2e5d38d9d26886b8f2bbff99ae7fa8958cdac2a707ab9e8426eb4bb945482"
+    },
+    {
+      "caminho": "01-Regioes-Extras/16-Yan/Texto-para-Discord.txt",
+      "sha256": "a993ba7bd91cf496650352780bd4ae856168179bd7b8f28a133a15b2d1560854"
+    },
+    {
+      "caminho": "01-Regioes-Extras/17-Higashi/Texto-para-Discord.txt",
+      "sha256": "08f7e41ea039ec99057b52febe4a33c4db274a6e6ea519ea250777e991da2e56"
+    },
+    {
+      "caminho": "01-Regioes-Extras/18-Kazdel/Texto-para-Discord.txt",
+      "sha256": "9d7c124e0ca5154edaf6132c311a35b76a0a43e152e3cb5879767789c67780f9"
+    },
+    {
+      "caminho": "01-Regioes-Extras/19-Durin/Texto-para-Discord.txt",
+      "sha256": "254e9b92067c7dee33ec5f5ec66a50112609b06a4541639741665b06350eabd9"
+    },
+    {
+      "caminho": "01-Regioes-Extras/20-Gaul-e-Nightzmora/Texto-para-Discord.txt",
+      "sha256": "46cb36d5cd7f269b4e64f1933eb3f45d7600b1ab8d4de82205562db387afe490"
+    },
+    {
+      "caminho": "02-Canais-Publicos/01-Lore-do-Mundo/Texto-para-Discord.txt",
+      "sha256": "9152efe6cbbc6bd4755928879d5131c85685a53426396ae7e83ed186b21c9ef3"
+    },
+    {
+      "caminho": "02-Canais-Publicos/02-Escola-Jujutsu-e-Aliados/Texto-para-Discord.txt",
+      "sha256": "dad6c6fb7be364fe42e2d04eb470d2fa8939f7264bb07ef46ffd931de9b485c0"
+    },
+    {
+      "caminho": "03-Guia-de-Mestragem/01-Comece-Aqui/Texto-para-Discord.txt",
+      "sha256": "a41d39b087cb5374ae947fc177a6c2537f5a2e60f077aee5c5756021379dc379"
+    },
+    {
+      "caminho": "03-Guia-de-Mestragem/02-Missoes/Texto-para-Discord.txt",
+      "sha256": "2ee2c78f1f084ea03dd3b923959fcfb62f123962e8a1f801e9958ffcecf192a0"
+    },
+    {
+      "caminho": "03-Guia-de-Mestragem/03-Progressao/Texto-para-Discord.txt",
+      "sha256": "15c00111de1bb9cb0c9b0bd9b51800e7e4c8ff3aa9f1967cb85e50ef7d4acda5"
+    },
+    {
+      "caminho": "03-Guia-de-Mestragem/04-Criacao-de-Mundo/Texto-para-Discord.txt",
+      "sha256": "9c4bd00a4813cd393af6bd5472c0e07b71317d3e07b48720169a05d8b5aa9821"
+    },
+    {
+      "caminho": "03-Guia-de-Mestragem/05-Escola-e-Rhine/Texto-para-Discord.txt",
+      "sha256": "4d7b3e6aedf12b0fa37b851a5c15b092fa03286cc08f00a067de5e765ba844ee"
+    },
+    {
+      "caminho": "03-Guia-de-Mestragem/06-Limites-de-Lore/Texto-para-Discord.txt",
+      "sha256": "b76cc01cb373b4e27acb61e71450ee08322344530cb2a313c6530f2a088f0e2b"
+    },
+    {
+      "caminho": "03-Guia-de-Mestragem/07-Oripatia/Texto-para-Discord.txt",
+      "sha256": "3112925071777875ea002972294d2c27f7852128aa4da7edd2f3e23b519065c4"
+    },
+    {
+      "caminho": "03-Guia-de-Mestragem/08-Consulta/Texto-para-Discord.txt",
+      "sha256": "51d981d403b419bb7437e33e426d67565c544f37109ac4e15c8f20a63f0a4f40"
+    }
+  ]
+}

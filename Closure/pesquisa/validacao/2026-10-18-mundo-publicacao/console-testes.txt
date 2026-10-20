@@ -1,0 +1,13 @@
+  - generic: PASS kal Como chego em Victoria?
+  - generic: PASS kal Como acesso Aegir?
+  - generic: PASS kal Qual a capital de Columbia?
+  - generic: PASS kal Ja chegaram na Lua?
+  - generic: PASS kal Como funciona a promocao de Grau?
+  - generic: PASS kal Qual e a cura da Oripatia?
+  - generic: PASS clo Como chego em Victoria?
+  - generic: PASS clo Como acesso Aegir?
+  - generic: PASS clo Qual a capital de Columbia?
+  - generic: PASS clo Ja chegaram na Lua?
+  - generic: PASS clo Como funciona a promocao de Grau?
+  - generic: PASS clo Qual e a cura da Oripatia?
+  - generic: "RESULTADO: 12/12; motor QuickJS da hospedagem; nenhuma chamada de modelo"

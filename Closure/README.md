@@ -1,5 +1,36 @@
 # Closure
 
+**Continuação do clima · publicada em 19/10 às 00:08:** “E de BH?” depois de
+SP e trocas sucessivas de cidade consultam os dados corretos. `GC:clima` aceita
+pergunta inteira, incluindo a frase da captura. Suíte: 849 executados, 848
+aprovados e um opcional pulado; 100 testes direcionados no ZIP; 11 verificações
+na Discloud com dados reais, comandos com saída capturada e sem IA/Discord.
+Esses fluxos não estavam cobertos na bateria anterior. Fala generativa e
+disponibilidade de modelos continuam separadas.
+[Evidência](pesquisa/validacao/2026-10-19-clima-seguimento/relatorio.md).
+
+**Clima de BH · correção publicada em 18/10 às 23:49:** “qual o clima atual de bh?”
+agora fornece Belo Horizonte às duas guias; o marcador “atual” antes de “de”
+fazia a consulta usar Tóquio. Suíte: 844 executados, 843 aprovados e um opcional
+pulado; 12 verificações no servidor passaram, com consulta real em 1,52 s.
+Ampliação: 150 combinações de cidades/frases, 8/8 cidades na API real da
+hospedagem e 97 testes direcionados no ZIP passaram. Os timeouts dos modelos
+que causaram o silêncio são independentes desta falha.
+`/clima lugar:BH` ou `GC:clima BH` consultam sem IA.
+[Evidência e limites](pesquisa/validacao/2026-10-18-clima-bh/relatorio.md).
+
+**Conhecimento de mundo · publicado em 18/10:** as duas guias consultam 31 textos
+autorizados do consolidado da Era da Revolução, com recortes e origem por assunto.
+Reservado Mizuki, Registros Complementares e Recursos Visuais não entram.
+[Fontes, limites e atualização](dados/mundo/LEIA-ME.md). Implantação autorizada
+atualizada com a correção de nomes v2 às 23:20 de 18/10, online em cinco
+servidores. **Shiki sozinho funciona**, além das variantes completas.
+841 testes executados, 840 aprovados e um online opcional pulado; 341 consultas
+do índice e 24 verificações na própria Discloud passaram sem modelo.
+67 arquivos iguais ao ZIP; variáveis/campanha preservadas e bancos íntegros,
+com tráfego real distinguido na comparação. [Publicação v2](pesquisa/validacao/2026-10-18-mundo-nomes/relatorio.md).
+PR 66 em rascunho. [Fechamento e retomada](docs/RETOMADA-MUNDO.md).
+
 **B47 · etapa publicada e conferida em 18/10/2026:** código `40d32a7` da
 branch `codex/integracao-b47` instalado na Discloud com autorização do usuário.
 Online em cinco servidores; backup final confirmou os 67 arquivos do pacote

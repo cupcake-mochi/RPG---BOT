@@ -1,5 +1,37 @@
 # src: código do bot
 
+**Continuação do clima · publicada em 19/10 às 00:08:** “E de BH?” depois de
+SP e trocas sucessivas de cidade consultam os dados corretos. `GC:clima` aceita
+pergunta inteira, incluindo a frase da captura. Suíte: 849 executados, 848
+aprovados e um opcional pulado; 100 testes direcionados no ZIP; 11 verificações
+na Discloud com dados reais, comandos com saída capturada e sem IA/Discord.
+Esses fluxos não estavam cobertos na bateria anterior. Fala generativa e
+disponibilidade de modelos continuam separadas.
+Evidência: `pesquisa/validacao/2026-10-19-clima-seguimento/`.
+
+**Clima atual de BH · publicado em 18/10 às 23:49:** o extrator aceita
+atual/hoje/agora antes de de/do/da no assunto do clima, evitando a cidade padrão
+indevida. 844/843/1 opcional na suíte; 35 testes no ZIP e 12 verificações na
+hospedagem passaram, incluindo a API real. Só `closure_bot/clima.py` mudou no
+pacote em relação à v2 de mundo. Fila e timeouts de modelos preservados; a API
+de clima e a geração da fala são etapas distintas. Ampliação: 150 combinações
+de cidades/frases, 8/8 cidades reais na hospedagem e 97 testes no ZIP passaram. Comandos `/clima`/`GC:clima`
+não usam modelo. Evidência: `pesquisa/validacao/2026-10-18-clima-bh/`.
+
+**Nova consulta de mundo publicada · 18/10:** a ponte passa a incluir recortes
+dos 31 textos permitidos do consolidado da Era da Revolução nas duas guias.
+São até cinco trechos/14.000 caracteres por pergunta; sem rede ou modelo extra
+na recuperação. Regenerar `src/var/site/nucleo.js` antes de empacotar. As pastas
+04/05/06 não são lidas pelo importador nem embutidas no núcleo, inclusive para
+o dono. Não altera contas B47, campanha/aprovações ou personalidade. Detalhes
+e comandos: `dados/mundo/LEIA-ME.md`. Correção v2 publicada às 23:20 de 18/10,
+online em cinco servidores: Shiki curto e variantes completas confirmados nas
+duas guias. Suíte 841/840/1 opcional; 341 consultas de índice e 24 verificações
+no QuickJS publicado passaram. 67 arquivos iguais ao pacote, variáveis/campanha
+preservadas e bancos íntegros; tráfego real no SQLite conferido separadamente.
+Evidência: `pesquisa/validacao/2026-10-18-mundo-nomes/`.
+Os registros B47 abaixo descrevem a publicação anterior.
+
 **Publicação e checagem concluídas · 18/10:** o usuário autorizou aplicar na
 Discloud. O código `40d32a7` da PR 65 está instalado no app existente e online
 em cinco servidores desde 15:23:32 (Brasília), com 1.000 MB mantidos. Backup

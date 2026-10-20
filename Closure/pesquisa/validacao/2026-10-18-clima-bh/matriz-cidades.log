@@ -1,0 +1,7 @@
+test_nomes_completos_e_apelidos_em_seis_construcoes (testes.test_clima.OutrasCidades.test_nomes_completos_e_apelidos_em_seis_construcoes) ... ok
+test_outra_frase_e_papo_cotidiano_nao_escolhem_cidade (testes.test_clima.OutrasCidades.test_outra_frase_e_papo_cotidiano_nao_escolhem_cidade) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.052s
+
+OK

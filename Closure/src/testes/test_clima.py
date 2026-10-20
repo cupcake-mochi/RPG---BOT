@@ -90,6 +90,16 @@ class Gatilho(unittest.TestCase):
         for texto, esperado in casos.items():
             self.assertEqual(lugar_citado(texto), esperado, texto)
 
+    def test_atual_entre_assunto_e_cidade_nao_perde_o_lugar(self):
+        for texto in ("qual o clima atual de bh?", "qual o clima atual de Belo Horizonte?",
+                      "Kal, qual a temperatura atual de BH?", "como está o tempo atual de bh?",
+                      "qual o clima agora de bh?", "qual o clima hoje de bh?",
+                      "qual o clima atual em bh?"):
+            with self.subTest(texto=texto):
+                self.assertTrue(fala_de_clima(texto))
+                esperado = "Belo Horizonte" if "Belo Horizonte" in texto else ("BH" if "BH" in texto else "bh")
+                self.assertEqual(lugar_citado(texto), esperado)
+
     def test_sem_lugar_vale_toquio(self):
         for texto in ("kal, tá chovendo aí?", "como tá o clima em Tóquio?", "vai chover em tokyo hoje?",
                       "closure, previsão do tempo pra sessão", "tá chovendo aí? preciso de ajuda na ficha",
@@ -267,8 +277,100 @@ class LugarPorPartes(unittest.IsolatedAsyncioTestCase):
     async def test_apelido_de_capital(self):
         self.assertEqual((await self.s.procurar("bh")).nome, "Belo Horizonte, Minas Gerais, Brasil")
 
+    async def test_pergunta_exata_de_bh_consulta_a_cidade_sem_recair_em_toquio(self):
+        linha = await contexto_clima(self.s, "qual o clima atual de bh?")
+        self.assertTrue(linha.startswith("[Belo Horizonte, Minas Gerais, Brasil agora ("), linha)
+        self.assertEqual(len(self.urls), 2)
+        self.assertIn("name=Belo%20Horizonte&", self.urls[0])
+        self.assertIn("latitude=-19.9&longitude=-43.9", self.urls[1])
+        self.assertNotIn("Tóquio", linha)
+
+    async def test_e_de_bh_so_depois_de_pergunta_meteorologica(self):
+        for frase in ("E de BH?", "E do Belo Horizonte?", "kal, e de bh?", "Closure, e em BH?"):
+            with self.subTest(frase=frase):
+                linha = await contexto_clima(self.s, frase, "Closure, qual o clima atual de SP?")
+                self.assertTrue(linha and linha.startswith("[Belo Horizonte, Minas Gerais, Brasil agora ("), linha)
+                self.assertIsNone(await contexto_clima(self.s, frase))
+                self.assertIsNone(await contexto_clima(self.s, frase, "quanto custa uma katana?"))
+        self.assertIsNone(await contexto_clima(self.s, "um amigo veio de SP e de BH veio outro", "qual o clima de SP?"))
+
     async def test_e_em_outro_lugar_so_depois_de_pergunta_de_clima(self):
         linha = await contexto_clima(self.s, "kal, e em belo horizonte?", "kal, como tá o clima em Tóquio?")
         self.assertIn("Belo Horizonte", linha)
         self.assertIsNone(await contexto_clima(self.s, "kal, e em belo horizonte?", "kal, o que é Integridade?"))
         self.assertIsNone(await contexto_clima(self.s, "kal, e em belo horizonte?"))
+
+
+class OutrasCidades(unittest.IsolatedAsyncioTestCase):
+    # Dados independentes do mapa de apelidos da implementação.
+    CIDADES = [
+        ("São Paulo", "São Paulo", "São Paulo", -23.55, -46.63),
+        ("Rio de Janeiro", "Rio de Janeiro", "Rio de Janeiro", -22.91, -43.17),
+        ("Curitiba", "Curitiba", "Paraná", -25.43, -49.27),
+        ("Porto Alegre", "Porto Alegre", "Rio Grande do Sul", -30.03, -51.23),
+        ("Brasília", "Brasília", "Distrito Federal", -15.78, -47.93),
+        ("Florianópolis", "Florianópolis", "Santa Catarina", -27.59, -48.55),
+        ("Manaus", "Manaus", "Amazonas", -3.10, -60.02),
+        ("Recife", "Recife", "Pernambuco", -8.05, -34.88),
+        ("Salvador", "Salvador", "Bahia", -12.97, -38.50),
+        ("Natal", "Natal", "Rio Grande do Norte", -5.79, -35.21),
+        ("Fortaleza", "Fortaleza", "Ceará", -3.72, -38.54),
+        ("Goiânia", "Goiânia", "Goiás", -16.68, -49.26),
+        ("Vitória", "Vitória", "Espírito Santo", -20.32, -40.34),
+        ("Lisboa", "Lisboa", "Lisboa", 38.72, -9.14),
+        ("Londres", "Londres", "Inglaterra", 51.51, -0.13),
+        ("Paris", "Paris", "Ilha de França", 48.85, 2.35),
+        ("Nova York", "Nova Iorque", "Nova Iorque", 40.71, -74.01),
+        ("Saint-Étienne", "Saint-Étienne", "Auvérnia-Ródano-Alpes", 45.43, 4.39),
+        ("sampa", "São Paulo", "São Paulo", -23.55, -46.63),
+        ("sp", "São Paulo", "São Paulo", -23.55, -46.63),
+        ("rj", "Rio de Janeiro", "Rio de Janeiro", -22.91, -43.17),
+        ("cwb", "Curitiba", "Paraná", -25.43, -49.27),
+        ("poa", "Porto Alegre", "Rio Grande do Sul", -30.03, -51.23),
+        ("bsb", "Brasília", "Distrito Federal", -15.78, -47.93),
+        ("floripa", "Florianópolis", "Santa Catarina", -27.59, -48.55),
+    ]
+    FRASES = (
+        "qual o clima atual de {}?", "qual o clima atual em {}?",
+        "qual a temperatura atual de {}?", "como está o tempo atual de {}?",
+        "qual o clima de {} agora?", "qual o clima hoje de {}?",
+    )
+
+    async def test_nomes_completos_e_apelidos_em_seis_construcoes(self):
+        from urllib.parse import parse_qs, urlparse
+        resultados = {
+            consulta: {"results": [{"name": nome, "admin1": regiao, "country": "Teste",
+                                    "latitude": lat, "longitude": lon}]}
+            for _, nome, regiao, lat, lon in self.CIDADES
+            for consulta in [nome]
+        }
+        urls = []
+        async def buscar(url):
+            urls.append(url)
+            if "geocoding" in url:
+                consulta = parse_qs(urlparse(url).query)["name"][0]
+                self.assertIn(consulta, resultados, "geocodificação recebeu cidade incorreta")
+                return resultados[consulta]
+            return EXEMPLO
+        servico = ServicoClima(buscar=buscar)
+        for escrito, cidade, _, lat, lon in self.CIDADES:
+            for frase in self.FRASES:
+                pergunta = frase.format(escrito)
+                with self.subTest(pergunta=pergunta):
+                    self.assertTrue(fala_de_clima(pergunta))
+                    self.assertEqual(lugar_citado(pergunta), escrito)
+                    linha = await contexto_clima(servico, pergunta)
+                    self.assertTrue(linha.startswith("[" + cidade), linha)
+                    self.assertNotIn("Tóquio", linha)
+                    self.assertTrue(any(f"latitude={lat}&longitude={lon}" in u for u in urls))
+        self.assertEqual(len(self.CIDADES) * len(self.FRASES), 150)
+
+    async def test_outra_frase_e_papo_cotidiano_nao_escolhem_cidade(self):
+        from unittest.mock import AsyncMock
+        servico = ServicoClima(buscar=AsyncMock())
+        for texto in ("o clima da mesa ficou pesado", "dano de frio em Curitiba ignora proteção?",
+                      "faz tempo que não vou a Paris", "o clima pesou na sessão em São Paulo"):
+            with self.subTest(texto=texto):
+                self.assertIsNone(await contexto_clima(servico, texto))
+        servico._buscar.assert_not_awaited()
+        self.assertIsNone(lugar_citado("como está o clima aí? preciso de ajuda em São Paulo"))

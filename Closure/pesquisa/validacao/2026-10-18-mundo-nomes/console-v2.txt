@@ -1,0 +1,25 @@
+  - generic: PASS kal Quem e Shiki?
+  - generic: PASS kal Quem e Shiki Zen'in?
+  - generic: PASS kal Quem e Shiki Zen’in?
+  - generic: PASS kal Quem e Shiki Zenin?
+  - generic: PASS kal Fale sobre Cellinia
+  - generic: PASS kal Fale sobre Volsinii
+  - generic: PASS kal Fale sobre Londinium
+  - generic: PASS kal Fale sobre Montelupe
+  - generic: PASS negativo kal O que e Shikigami?
+  - generic: PASS negativo kal Qual e a capital do Texas?
+  - generic: PASS negativo kal Expansao urbana e tema da minha aula
+  - generic: PASS negativo kal Comprei uma mesa de jantar
+  - generic: PASS clo Quem e Shiki?
+  - generic: PASS clo Quem e Shiki Zen'in?
+  - generic: PASS clo Quem e Shiki Zen’in?
+  - generic: PASS clo Quem e Shiki Zenin?
+  - generic: PASS clo Fale sobre Cellinia
+  - generic: PASS clo Fale sobre Volsinii
+  - generic: PASS clo Fale sobre Londinium
+  - generic: PASS clo Fale sobre Montelupe
+  - generic: PASS negativo clo O que e Shikigami?
+  - generic: PASS negativo clo Qual e a capital do Texas?
+  - generic: PASS negativo clo Expansao urbana e tema da minha aula
+  - generic: PASS negativo clo Comprei uma mesa de jantar
+  - generic: "RESULTADO: 24/24; mundo v2; QuickJS; nenhuma chamada de modelo"
