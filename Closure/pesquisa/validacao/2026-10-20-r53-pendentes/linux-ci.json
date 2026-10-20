@@ -1,0 +1,13 @@
+{
+  "commit": "6250466b7fca4dd28bc02646bdb5755ec6bfe7b7",
+  "runtime_commit": "11cdc9fc6417ff33eb03f38864c6912968081a00",
+  "run_id": 39427442467,
+  "job_id": 118643444175,
+  "url": "https://github.com/cupcake-mochi/RPG---BOT/actions/runs/39427442467",
+  "executados": 890,
+  "aprovados": 889,
+  "pulados": 1,
+  "resultado": "success",
+  "duracao_testes_segundos": 121.359,
+  "ambiente": "GitHub Actions ubuntu-latest / Python 3.12; núcleo local preparado; sem segredos ou chamadas a modelo"
+}

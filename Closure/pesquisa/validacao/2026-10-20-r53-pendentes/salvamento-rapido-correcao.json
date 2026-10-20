@@ -1,0 +1,408 @@
+{
+  "25": [
+    {
+      "worker": 0,
+      "n": 0,
+      "inicio_utc": "2026-10-20T12:59:37.674659+00:00",
+      "fim_utc": "2026-10-20T12:59:45.552796+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 0,
+      "n": 1,
+      "inicio_utc": "2026-10-20T12:59:45.856491+00:00",
+      "fim_utc": "2026-10-20T13:00:00.543570+00:00",
+      "classe_ativa": 1,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {
+        "feitico.1": "o cartão visível difere da versão salva (dano)"
+      },
+      "falha": null
+    },
+    {
+      "worker": 0,
+      "n": 2,
+      "inicio_utc": "2026-10-20T13:00:00.848491+00:00",
+      "fim_utc": "2026-10-20T13:00:06.537374+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 0,
+      "n": 3,
+      "inicio_utc": "2026-10-20T13:00:06.841634+00:00",
+      "fim_utc": "2026-10-20T13:00:10.695173+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 0,
+      "n": 4,
+      "inicio_utc": "2026-10-20T13:00:11.010829+00:00",
+      "fim_utc": "2026-10-20T13:00:14.381778+00:00",
+      "classe_ativa": 1,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {
+        "feitico.1": "o cartão visível difere da versão salva (dano)"
+      },
+      "falha": null
+    },
+    {
+      "worker": 0,
+      "n": 5,
+      "inicio_utc": "2026-10-20T13:00:14.686240+00:00",
+      "fim_utc": "2026-10-20T13:00:18.822642+00:00",
+      "classe_ativa": 1,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 6,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 1,
+      "n": 0,
+      "inicio_utc": "2026-10-20T12:59:37.675657+00:00",
+      "fim_utc": "2026-10-20T12:59:45.213217+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 1,
+      "n": 1,
+      "inicio_utc": "2026-10-20T12:59:45.535105+00:00",
+      "fim_utc": "2026-10-20T12:59:59.283935+00:00",
+      "classe_ativa": 1,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {
+        "feitico.1": "o cartão visível difere da versão salva (dano)"
+      },
+      "falha": null
+    },
+    {
+      "worker": 1,
+      "n": 2,
+      "inicio_utc": "2026-10-20T12:59:59.588454+00:00",
+      "fim_utc": "2026-10-20T13:00:07.552470+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 1,
+      "n": 3,
+      "inicio_utc": "2026-10-20T13:00:07.886026+00:00",
+      "fim_utc": "2026-10-20T13:00:11.171121+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 1,
+      "n": 4,
+      "inicio_utc": "2026-10-20T13:00:11.474586+00:00",
+      "fim_utc": "2026-10-20T13:00:14.057956+00:00",
+      "classe_ativa": 1,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {
+        "feitico.1": "o cartão visível difere da versão salva (dano)"
+      },
+      "falha": null
+    },
+    {
+      "worker": 1,
+      "n": 5,
+      "inicio_utc": "2026-10-20T13:00:14.377782+00:00",
+      "fim_utc": "2026-10-20T13:00:19.205231+00:00",
+      "classe_ativa": 1,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 6,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    }
+  ],
+  "27": [
+    {
+      "worker": 0,
+      "n": 0,
+      "inicio_utc": "2026-10-20T13:07:54.709414+00:00",
+      "fim_utc": "2026-10-20T13:07:58.688458+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 0,
+      "n": 1,
+      "inicio_utc": "2026-10-20T13:07:58.992169+00:00",
+      "fim_utc": "2026-10-20T13:08:03.563686+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 0,
+      "n": 2,
+      "inicio_utc": "2026-10-20T13:08:03.882830+00:00",
+      "fim_utc": "2026-10-20T13:08:10.023324+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 0,
+      "n": 3,
+      "inicio_utc": "2026-10-20T13:08:10.332907+00:00",
+      "fim_utc": "2026-10-20T13:08:22.106444+00:00",
+      "classe_ativa": 1,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {
+        "feitico.1": "o cartão visível difere da versão salva (dano)"
+      },
+      "falha": null
+    },
+    {
+      "worker": 0,
+      "n": 4,
+      "inicio_utc": "2026-10-20T13:08:22.410219+00:00",
+      "fim_utc": "2026-10-20T13:08:28.083041+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 0,
+      "n": 5,
+      "inicio_utc": "2026-10-20T13:08:28.391733+00:00",
+      "fim_utc": "2026-10-20T13:08:32.854435+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 3,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {
+        "feitico.1": "o cartão visível difere da versão salva (dano)"
+      },
+      "falha": null
+    },
+    {
+      "worker": 1,
+      "n": 0,
+      "inicio_utc": "2026-10-20T13:07:54.709414+00:00",
+      "fim_utc": "2026-10-20T13:07:58.980666+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 1,
+      "n": 1,
+      "inicio_utc": "2026-10-20T13:07:59.285131+00:00",
+      "fim_utc": "2026-10-20T13:08:03.234847+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 1,
+      "n": 2,
+      "inicio_utc": "2026-10-20T13:08:03.559682+00:00",
+      "fim_utc": "2026-10-20T13:08:10.342430+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 1,
+      "n": 3,
+      "inicio_utc": "2026-10-20T13:08:10.647543+00:00",
+      "fim_utc": "2026-10-20T13:08:18.431013+00:00",
+      "classe_ativa": 1,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {
+        "feitico.1": "o cartão visível difere da versão salva (dano)"
+      },
+      "falha": null
+    },
+    {
+      "worker": 1,
+      "n": 4,
+      "inicio_utc": "2026-10-20T13:08:18.749125+00:00",
+      "fim_utc": "2026-10-20T13:08:24.275449+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    },
+    {
+      "worker": 1,
+      "n": 5,
+      "inicio_utc": "2026-10-20T13:08:24.592708+00:00",
+      "fim_utc": "2026-10-20T13:08:28.935735+00:00",
+      "classe_ativa": 2,
+      "dano_visivel": 6,
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      },
+      "transicoes": {},
+      "falha": null
+    }
+  ],
+  "29": [
+    {
+      "rodada": 0,
+      "leituras": 1,
+      "transicoes_finais": {},
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      }
+    },
+    {
+      "rodada": 1,
+      "leituras": 1,
+      "transicoes_finais": {},
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      }
+    }
+  ],
+  "30": [
+    {
+      "rodada": 0,
+      "leituras": 2,
+      "transicoes_finais": {},
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      }
+    },
+    {
+      "rodada": 1,
+      "leituras": 1,
+      "transicoes_finais": {},
+      "versoes_pontos": {
+        "1": 3,
+        "2": 6
+      }
+    }
+  ],
+  "patch_nativo": {
+    "copia": "1VjBPOoDwrlODzAPoSINOjtLv7AOmdWXUiWHBBk4M1Es",
+    "projeto_apps_script": "1Z7LLTlLJFabZsTrTiUg360g8X-jIK0Vkqg04NTTUsXIhk0oOvZoCjb_s",
+    "unica_alteracao": "finally {lock.releaseLock();} → finally {try {SpreadsheetApp.flush();} finally {lock.releaseLock();}}",
+    "rodadas_nativas_depois": 3,
+    "edicoes_de_classe_por_rodada": 12,
+    "oficial_alterada": true,
+    "sha256_texto_lf_antes": "ba69ad619b7dfe47275218e16cae5f8e936dfcc1010b15f7f1d31472434cc44c",
+    "sha256_texto_lf_depois": "c0e10c50ca33f551819f3e3004726cba98bd633d23f359c368099480e06f403f",
+    "produtor_commit": "5441801",
+    "oficial_prova": "oficial-salvamento-corrigido.json"
+  }
+}

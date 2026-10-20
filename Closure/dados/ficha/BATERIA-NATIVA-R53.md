@@ -1,5 +1,10 @@
 # Continuação em 20/10/2026
 
+**Encerramento:** entidade corrigida/publicada e negativos revalidados; suíte
+Linux com 890 testes, 889 aprovados e um opcional pulado. Salvamento rápido
+corrigido também no produtor/oficial após autorização específica.
+[Registro final](../../pesquisa/validacao/2026-10-20-r53-pendentes/CORRECOES.md).
+
 **Atualização posterior:** os dois ajustes foram publicados em 20/10, 09h49,
 com autorização explícita. Bot online e mensagem nova confirmados no Discord.
 [Publicação e pendências](../../pesquisa/validacao/2026-10-20-r53-pendentes/PUBLICACAO.md).

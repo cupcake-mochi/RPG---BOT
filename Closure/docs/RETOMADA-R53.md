@@ -1,5 +1,14 @@
 # Retomada R53 · atualizada em 20/10/2026
 
+**Encerramento posterior:** defeitos da entidade corrigidos e publicados
+(`11cdc9f`), negativos preservados, suíte Linux 890/889/1 opcional pulado.
+Troca rápida revelou um defeito do produtor: corrigido, ensaiado em cópia,
+aplicado à oficial com autorização e registrado em `Ficha---RPG-JJK@5441801`.
+Painel público conferido com duas identidades simuladas; ensaio manual com
+outra pessoa permanece complementar. Merge da PR 67 autorizado pelo usuário.
+[Estado final, evidências e limites](../pesquisa/validacao/2026-10-20-r53-pendentes/CORRECOES.md).
+Os estados pendentes nas seções abaixo são históricos.
+
 **Publicado em 20/10, 09h49, por pedido posterior do usuário:** pacote do
 commit testado `939d2ed`, operação concluída, bot online em cinco servidores
 e nova redação confirmada no tópico de testes. Recursos permaneceram 700 MB/
