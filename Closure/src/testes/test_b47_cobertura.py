@@ -10,6 +10,38 @@ from testes.test_b47_derivados import efeito
 from testes.test_b47_revisao import entidade
 
 
+class CartoesVaziosNativos(unittest.TestCase):
+    def nativa(self):
+        return trocar(completa(), custom__caminho__campo__troca_pericias_por_arma='Não',
+                      custom__caminho__campo__treino_de_arma='Todas',
+                      custom__trilha__campo__base_do_livro='Nenhuma')
+
+    def test_defaults_sem_nome_nao_criam_definicao_nem_aprovacao(self):
+        c,r,ref=contexto(self.nativa())
+        self.assertEqual(c.registros,{})
+        self.assertEqual(r.problemas,[])
+        self.assertEqual(r.pendencias,[])
+
+    def test_nome_conteudo_ou_mestre_viu_continuam_ativando_cartao(self):
+        for raiz,campo,v in [('caminho','nome','Caminho teste'),
+                             ('caminho','campo.vida_inicial',0),
+                             ('caminho','mestre_viu',1),
+                             ('trilha','nome','Trilha teste'),
+                             ('trilha','campo.base_do_livro','Muro'),
+                             ('trilha','mestre_viu',1)]:
+            with self.subTest(raiz=raiz,campo=campo):
+                c,r,ref=contexto(trocar(self.nativa(),**{f'custom.{raiz}.{campo}':v}))
+                self.assertIn('custom.'+raiz,c.registros)
+                self.assertTrue(any(p.regra=='aprovação' for p in r.pendencias))
+
+    def test_defaults_continuam_na_assinatura_de_definicao_ativa(self):
+        f=trocar(self.nativa(),custom__trilha__nome='Trilha teste',
+                 custom__trilha__campo__caminho='Bastião')
+        a=aprovar(f,'custom.trilha')
+        c,r,ref=contexto(trocar(f,custom__trilha__campo__base_do_livro='Muro'),a)
+        self.assertFalse(c.registros['custom.trilha'].aprovada)
+
+
 def trilha(base='Invocação Principal', *, caminho='Evocador'):
     f=trocar(completa(), caminho=caminho, trilha='Trilha sintética',
              custom__trilha__nome='Trilha sintética', custom__trilha__mestre_viu=0,

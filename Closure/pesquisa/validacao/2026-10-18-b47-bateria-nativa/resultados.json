@@ -1,0 +1,350 @@
+[
+  {
+    "caso": "01-base",
+    "chaves": 8190,
+    "resultado": {
+      "veredito": "pendente",
+      "problemas": [],
+      "pendencias": [],
+      "notas": [],
+      "nao_conferido": [
+        "TR/perícias/Ofícios: resultados e ajustes completos exigem a ANALISE 4",
+        "Carga pessoal: a ANALISE não exporta quantidade dos equipáveis, Volume dos itens livres nem Buff do limite; total não certificado",
+        "XP: nível manual, origem dos ganhos, Limiar e histórico de missões exigem registro do mestre",
+        "cd_de_feitico: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "conjuracao: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "corpo_a_corpo: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "a_distancia: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "deslocamento: carga/ajuste de limite não exportados impedem escolher a penalidade efetiva",
+        "Carga: B47 não exporta quantidades/Volumes e ajustes da variante TR-v4; inventário agregado não certifica carga integral",
+        "Treinos: totais compatíveis não provam origem de cada escolha nem quando uma especialização foi adquirida",
+        "TR/perícias/Ofícios do livro: B47 não exporta os ajustes e bônus exclusivos da variante TR-v4; não se inventam resultados"
+      ],
+      "conferidos": [
+        "Campanha de referência: livro; regras obtidas do bot",
+        "Caminho Bastião",
+        "Trilha Muro",
+        "Origem Latente",
+        "Vida 23",
+        "PE 8",
+        "Integridade 26",
+        "Proteção 1",
+        "Defesa 13",
+        "Repertório: capacidade 3 espaços",
+        "Repertório: 0 de 3 espaços comuns ocupados; 0 aplicações gratuitas disponíveis",
+        "maestria: 1",
+        "classe_maxima: 1",
+        "refino_de_graca: 1",
+        "classe_0_gratis: 2",
+        "iniciativa: 2",
+        "morrendo_prazo: 3 rodadas",
+        "TR: dois treinos diferentes; bônus não exportados permanecem não conferidos",
+        "Treinos: 9 perícias, 2 Ofícios e 0 especializações compatíveis com as concessões"
+      ]
+    }
+  },
+  {
+    "caso": "02-custom-aprovada",
+    "chaves": 8190,
+    "resultado": {
+      "veredito": "pendente",
+      "problemas": [],
+      "pendencias": [],
+      "notas": [],
+      "nao_conferido": [
+        "custom.pericia.1: texto/requisitos e concessões livres não viram benefícios numéricos automaticamente",
+        "Feitiço 1: requisitos livres e aplicação da Forma custom exigem mestre",
+        "Feitiço 1: falta conferir Selo e texto do efeito pela ficha completa",
+        "TR/perícias/Ofícios: resultados e ajustes completos exigem a ANALISE 4",
+        "Carga pessoal: a ANALISE não exporta quantidade dos equipáveis, Volume dos itens livres nem Buff do limite; total não certificado",
+        "XP: nível manual, origem dos ganhos, Limiar e histórico de missões exigem registro do mestre",
+        "cd_de_feitico: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "conjuracao: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "corpo_a_corpo: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "a_distancia: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "deslocamento: carga/ajuste de limite não exportados impedem escolher a penalidade efetiva",
+        "Carga: B47 não exporta quantidades/Volumes e ajustes da variante TR-v4; inventário agregado não certifica carga integral",
+        "Treinos: totais compatíveis não provam origem de cada escolha nem quando uma especialização foi adquirida",
+        "TR/perícias/Ofícios do livro: B47 não exporta os ajustes e bônus exclusivos da variante TR-v4; não se inventam resultados"
+      ],
+      "conferidos": [
+        "Campanha de referência: livro; regras obtidas do bot",
+        "Caminho Bastião",
+        "Trilha Muro",
+        "Origem Latente",
+        "Vida 25",
+        "PE 8",
+        "Integridade 26",
+        "Proteção 1",
+        "Defesa 13",
+        "Feitiço 1: PE 3",
+        "Feitiço 1: alcance 18 m, um alvo",
+        "Feitiço 1: resolução Acerto",
+        "Feitiço 1: dano-base 2d8",
+        "Repertório: capacidade 3 espaços",
+        "Repertório: 1 de 3 espaços comuns ocupados; 0 aplicações gratuitas disponíveis",
+        "maestria: 1",
+        "classe_maxima: 1",
+        "refino_de_graca: 1",
+        "classe_0_gratis: 2",
+        "iniciativa: 2",
+        "morrendo_prazo: 3 rodadas",
+        "TR: dois treinos diferentes; bônus não exportados permanecem não conferidos",
+        "Runologia Coruja B47: bônus +1",
+        "Treinos: 9 perícias, 2 Ofícios e 0 especializações compatíveis com as concessões"
+      ]
+    }
+  },
+  {
+    "caso": "03-sem-autorizacao",
+    "chaves": 8190,
+    "resultado": {
+      "veredito": "pendente",
+      "problemas": [],
+      "pendencias": [
+        {
+          "regra": "aprovação",
+          "campo": "custom.melhoria.1.nome",
+          "esperado": "aprovação do mestre para esta definição exata; MESTRE VIU não é autorização",
+          "encontrado": "Foco Pendente B47",
+          "ancora": ""
+        },
+        {
+          "regra": "aprovação",
+          "campo": "custom.pericia.1.nome",
+          "esperado": "aprovação do mestre para esta definição exata; MESTRE VIU não é autorização",
+          "encontrado": "Runologia Pendente B47",
+          "ancora": ""
+        },
+        {
+          "regra": "aprovação",
+          "campo": "custom.forma.1.nome",
+          "esperado": "aprovação do mestre para esta definição exata; MESTRE VIU não é autorização",
+          "encontrado": "Agulha Pendente B47",
+          "ancora": ""
+        },
+        {
+          "regra": "aprovação",
+          "campo": "efeito.1",
+          "esperado": "aprovação da fonte e aplicação desta definição exata pelo mestre",
+          "encontrado": "Bateria sintética B47 · Coruja Pendente · +2 Vida",
+          "ancora": ""
+        }
+      ],
+      "notas": [],
+      "nao_conferido": [
+        "Feitiço 1: conteúdo sem aprovação/mecânica completa; montagem não certificada",
+        "TR/perícias/Ofícios: resultados e ajustes completos exigem a ANALISE 4",
+        "Carga pessoal: a ANALISE não exporta quantidade dos equipáveis, Volume dos itens livres nem Buff do limite; total não certificado",
+        "XP: nível manual, origem dos ganhos, Limiar e histórico de missões exigem registro do mestre",
+        "cd_de_feitico: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "conjuracao: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "corpo_a_corpo: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "a_distancia: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "deslocamento: carga/ajuste de limite não exportados impedem escolher a penalidade efetiva",
+        "Carga: B47 não exporta quantidades/Volumes e ajustes da variante TR-v4; inventário agregado não certifica carga integral",
+        "Treinos: totais compatíveis não provam origem de cada escolha nem quando uma especialização foi adquirida",
+        "TR/perícias/Ofícios do livro: B47 não exporta os ajustes e bônus exclusivos da variante TR-v4; não se inventam resultados"
+      ],
+      "conferidos": [
+        "Campanha de referência: livro; regras obtidas do bot",
+        "Caminho Bastião",
+        "Trilha Muro",
+        "Origem Latente",
+        "Vida 25",
+        "PE 8",
+        "Integridade 26",
+        "Proteção 1",
+        "Defesa 13",
+        "Feitiço 1: PE 3",
+        "Repertório: capacidade 3 espaços",
+        "Repertório: 1 de 3 espaços comuns ocupados; 0 aplicações gratuitas disponíveis",
+        "maestria: 1",
+        "classe_maxima: 1",
+        "refino_de_graca: 1",
+        "classe_0_gratis: 2",
+        "iniciativa: 2",
+        "morrendo_prazo: 3 rodadas",
+        "TR: dois treinos diferentes; bônus não exportados permanecem não conferidos",
+        "Treinos: 9 perícias, 2 Ofícios e 0 especializações compatíveis com as concessões"
+      ]
+    }
+  },
+  {
+    "caso": "04-alterada",
+    "chaves": 8190,
+    "resultado": {
+      "veredito": "pendente",
+      "problemas": [],
+      "pendencias": [
+        {
+          "regra": "aprovação",
+          "campo": "efeito.1",
+          "esperado": "aprovação da fonte e aplicação desta definição exata pelo mestre",
+          "encontrado": "Bateria sintética B47 · Coruja · +2 Vida",
+          "ancora": ""
+        }
+      ],
+      "notas": [],
+      "nao_conferido": [
+        "custom.pericia.1: texto/requisitos e concessões livres não viram benefícios numéricos automaticamente",
+        "Feitiço 1: requisitos livres e aplicação da Forma custom exigem mestre",
+        "Feitiço 1: falta conferir Selo e texto do efeito pela ficha completa",
+        "TR/perícias/Ofícios: resultados e ajustes completos exigem a ANALISE 4",
+        "Carga pessoal: a ANALISE não exporta quantidade dos equipáveis, Volume dos itens livres nem Buff do limite; total não certificado",
+        "XP: nível manual, origem dos ganhos, Limiar e histórico de missões exigem registro do mestre",
+        "cd_de_feitico: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "conjuracao: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "corpo_a_corpo: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "a_distancia: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "deslocamento: carga/ajuste de limite não exportados impedem escolher a penalidade efetiva",
+        "Carga: B47 não exporta quantidades/Volumes e ajustes da variante TR-v4; inventário agregado não certifica carga integral",
+        "Treinos: totais compatíveis não provam origem de cada escolha nem quando uma especialização foi adquirida",
+        "TR/perícias/Ofícios do livro: B47 não exporta os ajustes e bônus exclusivos da variante TR-v4; não se inventam resultados"
+      ],
+      "conferidos": [
+        "Campanha de referência: livro; regras obtidas do bot",
+        "Caminho Bastião",
+        "Trilha Muro",
+        "Origem Latente",
+        "Vida 26",
+        "PE 8",
+        "Integridade 26",
+        "Proteção 1",
+        "Defesa 13",
+        "Feitiço 1: PE 3",
+        "Feitiço 1: alcance 18 m, um alvo",
+        "Feitiço 1: resolução Acerto",
+        "Feitiço 1: dano-base 2d8",
+        "Repertório: capacidade 3 espaços",
+        "Repertório: 1 de 3 espaços comuns ocupados; 0 aplicações gratuitas disponíveis",
+        "maestria: 1",
+        "classe_maxima: 1",
+        "refino_de_graca: 1",
+        "classe_0_gratis: 2",
+        "iniciativa: 2",
+        "morrendo_prazo: 3 rodadas",
+        "TR: dois treinos diferentes; bônus não exportados permanecem não conferidos",
+        "Runologia Coruja B47: bônus +1",
+        "Treinos: 9 perícias, 2 Ofícios e 0 especializações compatíveis com as concessões"
+      ]
+    }
+  },
+  {
+    "caso": "05-divergencia",
+    "chaves": 8190,
+    "resultado": {
+      "veredito": "reprovada",
+      "problemas": [
+        {
+          "regra": "conta",
+          "campo": "vida_max",
+          "esperado": "23",
+          "encontrado": "999",
+          "ancora": ""
+        }
+      ],
+      "pendencias": [],
+      "notas": [],
+      "nao_conferido": [
+        "TR/perícias/Ofícios: resultados e ajustes completos exigem a ANALISE 4",
+        "Carga pessoal: a ANALISE não exporta quantidade dos equipáveis, Volume dos itens livres nem Buff do limite; total não certificado",
+        "XP: nível manual, origem dos ganhos, Limiar e histórico de missões exigem registro do mestre",
+        "cd_de_feitico: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "conjuracao: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "corpo_a_corpo: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "a_distancia: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "deslocamento: carga/ajuste de limite não exportados impedem escolher a penalidade efetiva",
+        "Carga: B47 não exporta quantidades/Volumes e ajustes da variante TR-v4; inventário agregado não certifica carga integral",
+        "Treinos: totais compatíveis não provam origem de cada escolha nem quando uma especialização foi adquirida",
+        "TR/perícias/Ofícios do livro: B47 não exporta os ajustes e bônus exclusivos da variante TR-v4; não se inventam resultados"
+      ],
+      "conferidos": [
+        "Campanha de referência: livro; regras obtidas do bot",
+        "Caminho Bastião",
+        "Trilha Muro",
+        "Origem Latente",
+        "PE 8",
+        "Integridade 26",
+        "Proteção 1",
+        "Defesa 13",
+        "Repertório: capacidade 3 espaços",
+        "Repertório: 0 de 3 espaços comuns ocupados; 0 aplicações gratuitas disponíveis",
+        "maestria: 1",
+        "classe_maxima: 1",
+        "refino_de_graca: 1",
+        "classe_0_gratis: 2",
+        "iniciativa: 2",
+        "morrendo_prazo: 3 rodadas",
+        "TR: dois treinos diferentes; bônus não exportados permanecem não conferidos",
+        "Treinos: 9 perícias, 2 Ofícios e 0 especializações compatíveis com as concessões"
+      ]
+    }
+  },
+  {
+    "caso": "06-regra-nao-autorizada",
+    "chaves": 8190,
+    "resultado": {
+      "veredito": "reprovada",
+      "problemas": [
+        {
+          "regra": "campanha",
+          "campo": "regra.atributos_pontos",
+          "esperado": "9 conforme campanha livro",
+          "encontrado": "10",
+          "ancora": ""
+        },
+        {
+          "regra": "campanha",
+          "campo": "regra.atributos_pontos.campanha",
+          "esperado": "9 autorizado pelo bot; vazio usa o livro",
+          "encontrado": "10",
+          "ancora": ""
+        },
+        {
+          "regra": "progressão",
+          "campo": "atributos.base",
+          "esperado": "distribuir 9 pontos; há 10",
+          "encontrado": "10",
+          "ancora": "progressao--prog-marcos"
+        }
+      ],
+      "pendencias": [],
+      "notas": [],
+      "nao_conferido": [
+        "TR/perícias/Ofícios: resultados e ajustes completos exigem a ANALISE 4",
+        "Carga pessoal: a ANALISE não exporta quantidade dos equipáveis, Volume dos itens livres nem Buff do limite; total não certificado",
+        "XP: nível manual, origem dos ganhos, Limiar e histórico de missões exigem registro do mestre",
+        "cd_de_feitico: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "conjuracao: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "corpo_a_corpo: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "a_distancia: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+        "deslocamento: carga/ajuste de limite não exportados impedem escolher a penalidade efetiva",
+        "Carga: B47 não exporta quantidades/Volumes e ajustes da variante TR-v4; inventário agregado não certifica carga integral",
+        "Treinos: totais compatíveis não provam origem de cada escolha nem quando uma especialização foi adquirida",
+        "TR/perícias/Ofícios do livro: B47 não exporta os ajustes e bônus exclusivos da variante TR-v4; não se inventam resultados"
+      ],
+      "conferidos": [
+        "Campanha de referência: livro; regras obtidas do bot",
+        "Caminho Bastião",
+        "Trilha Muro",
+        "Origem Latente",
+        "Vida 23",
+        "PE 8",
+        "Integridade 26",
+        "Proteção 1",
+        "Defesa 14",
+        "Repertório: capacidade 3 espaços",
+        "Repertório: 0 de 3 espaços comuns ocupados; 0 aplicações gratuitas disponíveis",
+        "maestria: 1",
+        "classe_maxima: 1",
+        "refino_de_graca: 1",
+        "classe_0_gratis: 2",
+        "iniciativa: 3",
+        "morrendo_prazo: 3 rodadas",
+        "TR: dois treinos diferentes; bônus não exportados permanecem não conferidos",
+        "Treinos: 9 perícias, 2 Ofícios e 0 especializações compatíveis com as concessões"
+      ]
+    }
+  }
+]

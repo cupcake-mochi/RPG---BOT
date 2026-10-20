@@ -1,25 +1,27 @@
-**Publicação autorizada em 18/10:** PR 64 mesclada em
-`1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.
-Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados
-idênticos ao ZIP; `.env` e dois bancos preservados byte a byte, integridade ok.
-Memória de 1.000 MB mantida. Cadastro B47 de campanha ainda não existe na
-produção; nenhuma aprovação real foi presumida. Testes reais por link/XLSX,
-campanha e navegação do painel continuam pendentes. Evidências em
-`pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
-
-**Revisão vigente de 18/10:** Máxima confere montagem, combinações e
-herança/aprovação; montagem inválida não certifica dano. Toca a Alma simples
-confere metade sem conceder permissão; a fórmula fixa do produtor fica pendente.
-Quebra Coisa entra no teto, sem multiplicar dano secundário. **814 testes,
-813 aprovados e um online opcional pulado**; 17 regressões passaram no ZIP.
-[Retomada](docs/RETOMADA-B47.md). No checkpoint de testes, ainda sem merge/implantação; oficial preservada.
-
-**Atualização de 18/10/2026 — integração B47 do bot:** implementação, contrato auditado, aprovações por servidor e testes offline em [`dados/ficha/INTEGRACAO-B47.md`](dados/ficha/INTEGRACAO-B47.md). A entrega da ficha está concluída; não retomar C/D. O bot apresenta análise parcial onde faltam dados/automação. Publicação e teste externo permanecem separados.
-
-Continuação: corrigidos cabeçalho CSV do Google, herança de Trilha e duas certificações dependentes. CSV/XLSX reais da B47 atual: 8.190 chaves, zero diferenças, somente leitura. [Retomada](docs/RETOMADA-B47.md) · [Proposta separada do produtor](dados/ficha/PROPOSTA-CONTRATO-B47.md) · [Roteiro externo](dados/ficha/ROTEIRO-EXTERNO-B47.md). PR 64 continua rascunho; sem merge/implantação.
-Checkpoint anterior: 797 testes, 796 aprovados e um online opcional pulado; teste online separado aprovado.
-
 # Closure
+
+**B47 · etapa publicada e conferida em 18/10/2026:** código `40d32a7` da
+branch `codex/integracao-b47` instalado na Discloud com autorização do usuário.
+Online em cinco servidores; backup final confirmou os 67 arquivos do pacote
+iguais aos fontes, variáveis/dois bancos/campanha idênticos e quatro aprovações
+preservadas. A PR 65 permanece aberta, sem novo merge; main contém a PR 64.
+
+Passaram três testes após implantação, com dez páginas conferidas: erro por
+link, custom aprovada por XLSX e arquivo sem cache recusado. Cores locais
+confirmadas no Discord, quatro setas e seletor exercitados. São 44 análises
+reais somando as baterias anteriores. Suíte do mesmo código: **822 executados,
+821 aprovados e um opcional pulado**; **26/26 testes no ZIP**. Não houve nova
+chamada paga, alteração da oficial ou concessão de aprovação de personagem real.
+
+Esta etapa está encerrada. Revisão/merge da PR 65, segunda pessoa no painel,
+recálculos nativos ampliados, dados/defeitos do produtor e decisões humanas
+do mestre continuam separados. A ficha B47 foi entregue; não retomar C/D.
+
+[Contrato e cobertura](dados/ficha/INTEGRACAO-B47.md) ·
+[Retomada exata](docs/RETOMADA-B47.md) ·
+[Roteiro externo](dados/ficha/ROTEIRO-EXTERNO-B47.md) ·
+[Evidência da publicação](pesquisa/validacao/2026-10-18-b47-cores-publicacao/relatorio.txt).
+Os registros datados abaixo são históricos.
 
 **Voz das reações v22 (15/10):** Mizuki esclareceu que o limite de conteúdo não deve neutralizar a personalidade. A orientação usa a voz/reações do card, inclusive humor, ironia, reserva ou crítica quando couberem, e retira a expressão parte neutra do pedido. Cards, comandos, ativação e limites preservados. Sem chamadas pagas; naturalidade depende do piloto. Relatório em `pesquisa/validacao/2026-10-15-voz-reacoes-v22/relatorio.txt`.
 

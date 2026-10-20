@@ -1,15 +1,68 @@
 # src: código do bot
 
+**Publicação e checagem concluídas · 18/10:** o usuário autorizou aplicar na
+Discloud. O código `40d32a7` da PR 65 está instalado no app existente e online
+em cinco servidores desde 15:23:32 (Brasília), com 1.000 MB mantidos. Backup
+antes/depois: 67 arquivos iguais ao ZIP; variáveis, dois bancos e cadastro de
+campanha idênticos, integridade dos bancos ok e quatro aprovações preservadas.
+PR 65 permanece aberta, sem novo merge; `main` ainda contém a PR 64.
+
+**Três testes após implantação passaram, com dez páginas conferidas:** ficha
+com Vida 999/23 por link, custom aprovada por XLSX e recusa de fórmula sem
+cache. Vermelho na página de erro, verde nos valores corretos e amarelo nos
+limites; resumo e rodapé conservam o veredito geral. Quatro setas e seletor
+funcionaram. Evidência: `pesquisa/validacao/2026-10-18-b47-cores-publicacao/`.
+Somadas às rodadas anteriores, são 44 análises reais (13 + 28 + 3), sem
+chamadas pagas nestes ensaios. A rodada avançada anterior conferiu 143
+páginas de casos técnicos do consumidor, sem novo recálculo nativo; evidências
+em `pesquisa/validacao/2026-10-18-b47-avancados/`. A suíte continua **822
+executados, 821 aprovados e um opcional pulado**, além de **26/26 no ZIP**;
+não foi repetida sem mudança de código. SHA256 do pacote instalado:
+`8a210c5aa82bf54a5b8af56486123e0b0199d1d09314b71cf2067b20aab54e40`.
+
+**Fechamento desta etapa:** publicação autorizada e smoke test concluídos.
+Para novo trabalho, retomar `origin/codex/integracao-b47` e conferir árvore,
+remoto e PR 65 antes de editar; não refazer deploy/baterias por rotina. Ficam
+separados revisão/merge no Git, segunda pessoa no painel, recálculos nativos
+ampliados e os limites do produtor/mestre. A oficial foi preservada. Os
+registros seguintes são históricos; não indicam o runtime atual.
+
+**Bateria nativa preparada em 18/10:** seis cópias sintéticas calculadas no
+Sheets, 8.190 chaves por XLSX e resultados locais conferidos. Roteiro em
+`../dados/ficha/BATERIA-NATIVA-B47.md`. Inclui aprovação exata, MESTRE VIU sem autorização,
+efeito alterado, resultado adulterado e campanha não autorizada. Encontrado
+e corrigido no código o falso cadastro de Caminho/Trilha pelos menus default
+de cartões vazios; **817 testes: 816 aprovados e um opcional pulado**. Esse
+patch ainda não foi implantado. As cópias limpam esses menus não usados para
+permitir o teste também no runtime anterior. Com autorização posterior do
+Mizuki, seis cópias receberam leitura por link e quatro hashes sintéticos
+foram instalados somente no servidor escolhido. Cadastro ativo relido e
+conferido; sem mudar regras gerais, reiniciar ou implantar código. Os seis
+links anônimos coincidem com os XLSX nas 8.190 chaves.
+
+**Discord executado com autorização em 18/10:** 13 análises reais na versão
+já publicada: seis links, seis XLSX e uma reanálise. Os seis pares devolveram
+resumos idênticos: casos 01/02 sem divergências nem aprovação pendente; 03 com
+quatro aprovações pendentes apesar de MESTRE VIU; 04 reabriu somente o efeito
+alterado; 05 reprovou Vida 999/23; 06 reprovou a regra/total não autorizados.
+As seis páginas da 02, quatro setas e seletor foram exercitados. Encerramento
+após dez minutos e reabertura por nova análise foram observados. Sem chamadas
+pagas, reinício, implantação do patch 65 ou alteração da oficial nesta rodada.
+Evidências da primeira rodada: `pesquisa/validacao/2026-10-18-b47-discord/`.
+A continuação avançada está registrada acima; segunda pessoa e validação
+nativa ampliada continuam pendentes. Produtor e mestre limitam a aprovação integral.
+
 **Publicação autorizada em 18/10:** PR 64 mesclada em
 `1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.
 Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados
 idênticos ao ZIP; `.env` e dois bancos preservados byte a byte, integridade ok.
-Memória de 1.000 MB mantida. Cadastro B47 de campanha ainda não existe na
-produção; nenhuma aprovação real foi presumida. Testes reais por link/XLSX,
-campanha e navegação do painel continuam pendentes. Evidências em
+Memória de 1.000 MB mantida. Nessa publicação inicial o cadastro B47 de campanha
+ainda não existia; posteriormente foram instaladas apenas as aprovações
+sintéticas autorizadas. A bateria real por link/XLSX e navegação descrita
+acima passou nessa versão; não publica o patch 65. Evidências da implantação em
 `pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
 
-**Revisão vigente de 18/10:** Máxima confere montagem, combinações e
+**Checkpoint anterior de código em 18/10:** Máxima confere montagem, combinações e
 herança/aprovação; montagem inválida não certifica dano. Toca a Alma simples
 confere metade sem conceder permissão; a fórmula fixa do produtor fica pendente.
 Quebra Coisa entra no teto, sem multiplicar dano secundário. **814 testes,
@@ -27,7 +80,7 @@ Cards, memória, mídia e rotas de modelos preservados.
 Checkpoint anterior: 797 testes, 796 aprovados e um online opcional pulado; teste
 online separado aprovado. Pacote final e roteiro ainda não foram implantados.
 
-**Integração B47 (18/10/2026):** ANALISE 11 por chave, leitor tipado, regras por servidor, efeitos e custom aprovados por definição exata. Cadastro local em `src/var/ficha-campanhas.json`; ferramenta do operador e comandos de teste em [`../dados/ficha/INTEGRACAO-B47.md`](../dados/ficha/INTEGRACAO-B47.md). Preserve esse arquivo na publicação junto do estado operacional. A B47 não emite as 485 adições exclusivas do TR-v4; os limites ficam visíveis no painel. Estados e formatos antigos abaixo são históricos. Não houve implantação nem validação Discord/Google nesta integração.
+**Integração B47 (18/10/2026):** ANALISE 11 por chave, leitor tipado, regras por servidor, efeitos e custom aprovados por definição exata. Cadastro local em `src/var/ficha-campanhas.json`; ferramenta do operador e comandos de teste em [`../dados/ficha/INTEGRACAO-B47.md`](../dados/ficha/INTEGRACAO-B47.md). Preserve esse arquivo na publicação junto do estado operacional. A B47 não emite as 485 adições exclusivas do TR-v4; os limites ficam visíveis no painel. Estados e formatos antigos abaixo são históricos. No checkpoint inicial ainda não havia implantação ou validação Discord/Google; os registros atuais acima prevalecem.
 
 Continuação: `ficha_derivados_b47.py` confere Iniciativa, progressão numérica,
 Sequelas/janela de Morrendo e escolhas de TR. CD/ataques/deslocamento distinguem

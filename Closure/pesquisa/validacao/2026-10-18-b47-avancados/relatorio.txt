@@ -1,0 +1,105 @@
+B47 — testes avançados e cores do painel — 18/10/2026
+
+RESULTADO E ESCOPO
+28 análises reais no tópico de teste autorizado, todas com os diagnósticos
+esperados; 143 páginas tiveram os valores esperados conferidos. São ensaios
+do consumidor com arquivos técnicos de uma aba ANALISE, derivados dos dados
+sintéticos nativos anteriores. Não são novas fichas completas recalculadas
+pelo Google e não validam as fórmulas do produtor. Três recusas de leitura
+são sucessos do ensaio, não fichas aprovadas. Nos casos parciais, pendências
+intencionais continuam visíveis. Total das duas rodadas: 41 análises reais
+(13 anteriores + 28), sem chamadas pagas a modelos.
+
+O runtime real continua sendo a publicação da PR 64. A PR 65 não foi mesclada,
+implantada nem reiniciou o bot. A oficial e os seis Sheets nativos anteriores
+não foram alterados. Somente uma aprovação sintética adicional de Trilha foi
+instalada temporariamente no servidor autorizado para A07–A09. O registro
+original de quatro aprovações foi restaurado, salvo, recarregado e relido
+byte a byte antes de A10. Nenhuma regra geral foi alterada.
+
+CASOS EXERCITADOS
+A01–A04: exportação incompleta; fórmula sem cache; #REF!; chave duplicada.
+A05: Conselho Interior incompatível com Conflito; Vida dependente não certificada.
+A06–A09: Trilha sem aprovação, aprovação exata/base Principal (5/2), base
+alterada reabrindo aprovação e Não autônoma (6/3).
+A10–A15: especialização prematura, efeito inválido com conta independente,
+troca fixa por zero, trocas conflitantes e nomes literais Runa*/Runas (1/8).
+A16–A17: duas entidades, distribuição inválida isolada na primeira sem
+impedir a conferência da segunda.
+A18–A21: Controle exclusivo com Precisão; ataque +6/CD14 com saldo zero,
+CD12 conhecida do produtor como pendência, CD999 como erro e +2 indevido
+com saldo positivo rejeitado.
+A22–A25: Máxima 25 PE/1 de 8/24d8; Toque+Longe incompatível; Toca a Alma
+3 de 8/12d8; resultado fixo de 24d8 conhecido do produtor como pendência.
+A26–A28: Quebra Coisa Classe 3; 6d8 dentro do teto, 7d8 excede depois de
+dobrar contra objeto, e mesmo teto na Liberação de 14 PE.
+
+Os casos de níveis altos deixam resultados/seletores ausentes e distribuição
+adicional incompleta de propósito: 11 pendências de contexto persistem.
+Somente as contas-alvo independentes são certificadas. Aprovar uma definição
+não concede efeito numérico descrito apenas em prosa nem permissão de Alma.
+Contagens exatas por caso em verificacao.json e casos-alvo.json.
+
+CORREÇÃO SOLICITADA NO PAINEL
+O resumo conserva a cor do veredito geral. Nas páginas internas, vermelho
+requer um campo de erro efetivamente exibido nessa página; pendências,
+revisão do mestre e limites ficam amarelos; valores conferidos ficam verdes.
+A prioridade é reiniciada em cada quebra física de página, inclusive na
+continuação de Correções e revisão. O rodapé diz Veredito geral, para não
+confundir verde local com aprovação integral. Não altera Resultado/contas,
+identidade das guias ou interações existentes.
+
+Também foram retiradas do loop de eventos a leitura síncrona do XLSX e a
+conferência determinística, com asyncio.to_thread. Motivo comprovado: aviso
+anterior do runtime de heartbeat bloqueado por mais de dez segundos, às
+13:22:23 de 18/10, com pilha em GC:ficha/conferir/conferir_aptidoes. Isso não
+prova relação causal com os tempos de espera da automação do navegador.
+Algumas esperas de navegação da automação expiraram; a leitura seguinte
+mostrou a página já atualizada ou permitiu novo clique no controle observado.
+Todas as páginas-alvo foram finalmente conferidas. Não foi constatado erro
+de conteúdo ou de interação do bot a partir desses timeouts de automação.
+
+VALIDAÇÃO DO PATCH
+Cinco testes novos, contra c78aee6, produziram sete falhas de asserção/subcasos
+e zero erro de execução. No código atual: painel 18/18; suíte completa
+822 executados, 821 aprovados e um online opcional pulado, em 217,436 s.
+Os 26 testes de painel e compatibilidade v4 passaram contra o ZIP extraído
+(em 22,892 s). Antes deste registro documental, o snapshot de teste coincidiu com 711
+fontes/recursos do checkout. O código não mudou depois; as 67 entradas do ZIP
+foram reconferidas idênticas ao checkout final.
+
+As primeiras execuções no disco externo tiveram timeouts de subprocessos de
+mídia existentes. A rodada na árvore local com dependências no disco externo
+ainda terminou com 5 falhas/3 erros de mídia. Foram copiadas para disco local
+as mesmas versões já instaladas de PIL/pillow.libs/imageio_ffmpeg, sem alterar
+código, timeout ou expectativa; o reteste dos 28 casos afetados passou em
+7,504 s, seguido da suíte completa acima. Não houve instalação de pacote ou
+chamada real a modelo. Uma tentativa inicial incorreta da prova de regressão
+(imports a partir de diretório sem Git) não conta como evidência; foi corrigida
+e os resultados de asserção acima vêm da execução válida.
+
+PACOTE
+67 arquivos, 1.151.503 bytes, cada entrada igual aos fontes previstos.
+SHA256: 8a210c5aa82bf54a5b8af56486123e0b0199d1d09314b71cf2067b20aab54e40
+Sem .env, bancos, cadastro operacional ou fichas de teste. Pacote regenerado
+localmente, ainda não implantado. A prévia de cores usa Embeds reais gerados
+pelo código extraído do pacote e HTML local; não é captura do Discord atualizado.
+
+LIMITES E RETOMADA
+Código do bot: revisão/publicação da PR 65 e observação das novas cores e da
+responsividade depois de implantação autorizada. Segunda pessoa no painel
+continua sem ensaio real. Não repetir as 28 análises nem a PR 64 por rotina.
+Produtor: continuam faltando seletores pessoais, ajustes/resultados de
+competências/TR, TR final das entidades, inventário/Volumes e estado/teto de
+entidades ativas. Os quatro defeitos documentados (curingas, Controle saldo
+zero, Máxima/Alma e teto Quebra Coisa) não foram corrigidos ou recalculados
+nativamente nesta rodada. A tabela do roteiro continua proposta para ensaios
+nativos por link/XLSX, inclusive Vida rolada com troca zero (A12 usou CD).
+Mestre: aprendizado, marcos históricos, autorização real, requisitos livres,
+efeitos narrativos, distribuição entre alvos e demais interações de Alma.
+
+Retomar pela branch codex/integracao-b47 e PR 65, conferindo remoto/árvore.
+Ler docs/RETOMADA-B47.md e dados/ficha/ROTEIRO-EXTERNO-B47.md. Não editar a
+oficial; não presumir autorização de novo merge ou implantação a partir dos
+testes. Cadastros, links de mensagens e capturas operacionais ficam somente
+na entrega privada do usuário, fora do Git.

@@ -1,0 +1,61 @@
+{
+  "casos": [
+    {
+      "caso": 1,
+      "chaves": 8190,
+      "diferencas": 0,
+      "veredito": "pendente",
+      "problemas": 0,
+      "pendencias": 0
+    },
+    {
+      "caso": 2,
+      "chaves": 8190,
+      "diferencas": 0,
+      "veredito": "pendente",
+      "problemas": 0,
+      "pendencias": 0
+    },
+    {
+      "caso": 3,
+      "chaves": 8190,
+      "diferencas": 0,
+      "veredito": "pendente",
+      "problemas": 0,
+      "pendencias": 4
+    },
+    {
+      "caso": 4,
+      "chaves": 8190,
+      "diferencas": 0,
+      "veredito": "pendente",
+      "problemas": 0,
+      "pendencias": 1
+    },
+    {
+      "caso": 5,
+      "chaves": 8190,
+      "diferencas": 0,
+      "veredito": "reprovada",
+      "problemas": 1,
+      "pendencias": 0
+    },
+    {
+      "caso": 6,
+      "chaves": 8190,
+      "diferencas": 0,
+      "veredito": "reprovada",
+      "problemas": 3,
+      "pendencias": 0
+    }
+  ],
+  "servidores_com_cadastro": 1,
+  "aprovacoes_exatas": 4,
+  "regras_globais_alteradas": false,
+  "outro_servidor_aprovacoes_pendentes": 4,
+  "cadastro_ativo_sha256": "3434c65b506b4b1d22ff3e08e934dec0ba73841b7e48c47b85f18c92df3c9236",
+  "reinicio": false,
+  "nova_implantacao_de_codigo": false,
+  "mensagens_discord": false,
+  "chamadas_pagas": 0
+}

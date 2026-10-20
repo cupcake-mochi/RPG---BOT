@@ -1,10 +1,42 @@
 # Validação externa e publicação B47
 
+**Publicação posterior concluída em 18/10:** código 40d32a7 da PR 65 instalado
+com autorização, sem merge novo. Três análises após publicação e dez páginas
+conferidas: Vida 999/23 por link, custom aprovada por XLSX e arquivo sem cache
+recusado. Cores locais, quatro setas e seletor confirmados. Backup antes/depois
+preservou variáveis, bancos e as quatro aprovações. Ver
+`pesquisa/validacao/2026-10-18-b47-cores-publicacao/`. Esta etapa está encerrada;
+as rodadas abaixo são histórico e os recálculos nativos ampliados continuam
+propostos. Segunda pessoa no painel permanece sem teste real.
+
+
 Estado em 18/10/2026: PR 64 mesclada e implantação autorizada concluída.
 Startup, backups e igualdade dos arquivos instalados foram conferidos.
-Este roteiro funcional **ainda não registra execução real no Discord/Sheets**.
-Não repetir publicação. Campanha/aprovações reais e envio de mensagens exigem
-suas autorizações específicas; a conta matemática não usa modelo.
+A bateria nativa de seis fichas passou depois, com autorização do usuário:
+13 comandos reais no Discord (seis links, seis XLSX e uma reanálise), seis
+pares com resumos idênticos. Cobertos base, custom aprovada, MESTRE VIU sem
+permissão, efeito alterado após aprovação, Vida adulterada e campanha divergente.
+Setas, seletor, dez minutos de inatividade e reabertura também passaram.
+Evidências: `pesquisa/validacao/2026-10-18-b47-discord/` e
+[BATERIA-NATIVA-B47.md](BATERIA-NATIVA-B47.md).
+
+**Continuação avançada concluída:** mais 28 análises por XLSX e 143 páginas
+conferidas no Discord, com todos os diagnósticos-alvo esperados. Foram casos
+sintéticos de uma aba ANALISE, incluindo recusas de leitura, Origem, Trilha,
+efeitos, curingas, entidades, Controle, Máxima/Alma e teto de objeto/Liberação.
+A aprovação extra de Trilha foi temporária; o cadastro original de quatro
+aprovações foi restaurado e relido idêntico. Relatório e casos em
+`pesquisa/validacao/2026-10-18-b47-avancados/`.
+
+**Ainda externos:** segunda pessoa no painel e recálculo nativo dos cenários
+ampliados por link/XLSX. A troca independente avançada usou CD por zero;
+Vida rolada com rolagem ausente permanece no roteiro abaixo. As 28 análises
+comprovam o consumidor, não as fórmulas nativas. Cores locais por página e
+trabalho fora do loop foram depois publicados; os três testes finais e as
+cores no runtime real estão registrados no início deste documento. A PR 65
+permanece aberta, sem merge.
+Não repetir publicação. Nova campanha de jogo, aprovações ou mensagens fora
+do tópico/bateria autorizados exigem escopo específico; a conta não usa modelo.
 
 ## Preparação do operador
 
@@ -45,6 +77,11 @@ pendências e páginas; diferenças de horário/guia não mudam as contas.
 
 ## Campanha e aprovação reais
 
+As quatro aprovações sintéticas desta bateria foram instaladas e lidas pelo
+runtime; 02/03/04 confirmaram aprovação exata, MESTRE VIU sem poder de autorização
+e reabertura do efeito alterado. Não representam aprovação de personagem real.
+Outro servidor foi simulado localmente, não exercitado no Discord nesta rodada.
+
 No computador do operador, em `Closure/`, cadastro privado e servidor corretos:
 
 ```bash
@@ -61,6 +98,14 @@ com base agora vinculam também o registro publicado da base; aprovações de
 rascunhos anteriores precisam ser refeitas quando o hash mudar.
 
 ## Painel e comandos
+
+Executados: ambos os comandos, link/XLSX, as seis páginas da 02, revisões da
+03/05, quatro setas, seletor, encerramento e reabertura. A rodada avançada
+acrescentou entidades e conferiu as 143 páginas dos 28 ensaios. Houve esperas
+expiradas na automação, resolvidas conferindo o estado visível e retargetando
+controles; não se comprovou falha de conteúdo por isso. Falta navegação por
+uma segunda pessoa no Discord. A nova semântica de cores da PR 65 foi
+observada na publicação posterior, sem repetir toda a bateria mecânica.
 
 Exercitar `/ficha analisar` e `GC:ficha`: link e anexo XLSX. Verificar resumo,
 revisão, TR/perícias, habilidades, entidades e limites; primeira/anterior/

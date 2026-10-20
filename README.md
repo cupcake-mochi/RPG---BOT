@@ -25,4 +25,4 @@ na voz de uma personagem de Arknights (Kal'tsit de dia, Closure de noite).
 
 ## Análise B47
 
-O projeto `Closure/` integra o contrato ANALISE 11 da ficha atual. Revisão vigente: 814 testes (813 aprovados, um opcional pulado), Máxima e teto de Quebra Coisa corrigidos no bot; PR 64 mesclada e implantação concluída; validação funcional externa pendente. [Contrato, cobertura e execução](Closure/dados/ficha/INTEGRACAO-B47.md) · [Retomada da integração](Closure/docs/RETOMADA-B47.md).
+O projeto `Closure/` integra o contrato ANALISE 11 da ficha atual. Revisão vigente: 822 testes (821 aprovados, um opcional pulado). Código 40d32a7 da PR 65 implantado com autorização, sem novo merge; 44 análises reais no Discord (13 básicas, 28 avançadas do consumidor e três após implantação). Cartões vazios, cores por página e responsividade validados. PR 65 aberta, segunda pessoa no painel, recálculos nativos ampliados e limites do produtor/mestre continuam separados. [Contrato, cobertura e execução](Closure/dados/ficha/INTEGRACAO-B47.md) · [Retomada da integração](Closure/docs/RETOMADA-B47.md).

@@ -1,0 +1,71 @@
+Publicação autorizada das cores B47 — 18/10/2026
+
+Mizuki autorizou aplicar o ZIP validado na Discloud e realizar os testes
+necessários para fechar esta etapa. Publicado o código 40d32a7 da branch
+codex/integracao-b47, PR 65. A PR permanece aberta, sem novo merge; main
+continua com a publicação anterior da PR 64. Nenhum código foi alterado para
+implantar. O registro documental posterior não muda os arquivos do pacote.
+
+Backup manual anterior baixado, testado e guardado fora do Git. Conferência
+prévia mostrou somente os dois arquivos esperados diferentes da produção:
+cogs/ficha.py e ficha_custom.py. Commit do ZIP aplicado ao app existente,
+operação Concluído. Startup às 15:23:32 de Brasília, no ar em cinco servidores.
+Limite de 1.000 MB preservado. Nenhuma variável, configuração de conta ou
+permissão do servidor foi modificada. Não foi criada outra instância do bot.
+
+Pacote: 67 arquivos; SHA256
+8a210c5aa82bf54a5b8af56486123e0b0199d1d09314b71cf2067b20aab54e40
+Backup pós implantação baixado e comparado: todas as 67 entradas iguais ao
+ZIP, sem ausências ou diferenças de bytes. .env, dois bancos e cadastro de
+campanha idênticos aos do backup anterior. quick_check ok nos dois bancos.
+As quatro aprovações sintéticas anteriores continuam presentes; nenhuma
+aprovação nova foi adicionada. Credenciais, registros e backups não vão ao Git.
+
+TESTES REAIS APÓS IMPLANTAÇÃO
+1. Ficha nativa 05 por link: Vida 999/23 reprovada, 1 erro e 0 pendências.
+   Quatro páginas conferidas: resumo vermelho, correção vermelha, Personagem
+   verde, Limites amarelo. Todas mantêm Veredito geral: reprovada no rodapé.
+2. Ficha nativa 02 por XLSX: 0 erros/0 pendências de aprovação, Vida 25,
+   perícia Runologia Coruja B47 +1 e feitiço de 3 PE/2d8/18 m. Seis páginas
+   conferidas: resumo amarelo pela cobertura parcial, valores conferidos
+   verdes e limites amarelos. Primeira/anterior/próxima/última e seletor
+   exercitados. Aprovação não converte prosa em novo benefício numérico.
+3. XLSX técnico sem cache: recusado com diagnóstico em ANALISE!B2614,
+   sem painel de aprovação nem interpretação de fórmula como número.
+
+Total desta publicação: três análises, dez páginas, zero chamadas pagas.
+Somadas às 13 análises básicas e 28 avançadas anteriores: 44 análises reais.
+O teste do XLSX sem cache é corrupção sintética do contrato, não exportação
+nativa do Sheets. Os outros dois usam as cópias nativas anteriores, intactas.
+
+Cores foram conferidas no CSS exibido pelo Discord e em capturas, além dos
+Embeds testados offline. A automação espera o rodapé da página, pois a opção
+do seletor muda antes de chegar a edição do Embed; isso não foi contado como
+página nova conferida. Capturas e links reais estão na entrega privada.
+O acompanhamento da inicialização e dos três testes não mostrou novo erro
+ou heartbeat bloqueado nos logs inspecionados. Os avisos existentes sobre
+bibliotecas de voz ausentes não foram tratados como defeito desta alteração.
+
+A mesma revisão já passou pela suíte completa (822 executados, 821 aprovados,
+um online opcional pulado) e por 26 testes no ZIP. Não se repetiu a suíte sem
+mudança de código nem se chamou modelo para aprovar mecânica determinística.
+
+A primeira tentativa de capturar o evento de download esgotou a espera da
+automação, embora o ZIP tivesse sido baixado pelo navegador; a integridade
+foi confirmada no arquivo real em Downloads. A aba antiga perdeu o controle;
+a publicação foi concluída em uma nova aba da mesma sessão autenticada, sem
+pedir credencial, alterar conta ou usar API não documentada da Discloud.
+
+FECHAMENTO E RETOMADA
+Esta etapa de publicação e checagem está concluída. PR 65 continua aberta;
+merge/revisão no Git não foram executados por esta autorização de Discloud.
+Se houver novo trabalho, conferir origin/codex/integracao-b47, git status,
+git log e estado da PR 65 antes de editar. Não repetir o deploy ou as baterias
+concluídas por rotina. O pacote instalado corresponde ao código 40d32a7.
+
+Continuam separados: segunda pessoa no painel; recálculos nativos ampliados;
+seletores/competências/TR/inventário e entidades ativas ausentes no produtor;
+quatro defeitos estáticos registrados no produtor. A oficial não foi editada.
+Aprendizado, histórico, permissões reais, requisitos livres, narrativa,
+distribuição entre alvos e interações de Alma ainda humanas ficam com o mestre.
+Esses limites não impedem encerrar esta etapa nem viram aprovação integral.

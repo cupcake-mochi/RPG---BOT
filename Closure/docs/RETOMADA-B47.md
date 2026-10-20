@@ -1,7 +1,60 @@
 # Retomada da integração do bot com B47 · 18/10/2026
 
+**Publicação e checagem concluídas · 18/10:** o usuário autorizou aplicar na
+Discloud. O código `40d32a7` da PR 65 está instalado no app existente e online
+em cinco servidores desde 15:23:32 (Brasília), com 1.000 MB mantidos. Backup
+antes/depois: 67 arquivos iguais ao ZIP; variáveis, dois bancos e cadastro de
+campanha idênticos, integridade dos bancos ok e quatro aprovações preservadas.
+PR 65 permanece aberta, sem novo merge; `main` ainda contém a PR 64.
+
+**Três testes após implantação passaram, com dez páginas conferidas:** ficha
+com Vida 999/23 por link, custom aprovada por XLSX e recusa de fórmula sem
+cache. Vermelho na página de erro, verde nos valores corretos e amarelo nos
+limites; resumo e rodapé conservam o veredito geral. Quatro setas e seletor
+funcionaram. Evidência: `pesquisa/validacao/2026-10-18-b47-cores-publicacao/`.
+Somadas às rodadas anteriores, são 44 análises reais (13 + 28 + 3), sem
+chamadas pagas nestes ensaios. A rodada avançada anterior conferiu 143
+páginas de casos técnicos do consumidor, sem novo recálculo nativo; evidências
+em `pesquisa/validacao/2026-10-18-b47-avancados/`. A suíte continua **822
+executados, 821 aprovados e um opcional pulado**, além de **26/26 no ZIP**;
+não foi repetida sem mudança de código. SHA256 do pacote instalado:
+`8a210c5aa82bf54a5b8af56486123e0b0199d1d09314b71cf2067b20aab54e40`.
+
+**Fechamento desta etapa:** publicação autorizada e smoke test concluídos.
+Para novo trabalho, retomar `origin/codex/integracao-b47` e conferir árvore,
+remoto e PR 65 antes de editar; não refazer deploy/baterias por rotina. Ficam
+separados revisão/merge no Git, segunda pessoa no painel, recálculos nativos
+ampliados e os limites do produtor/mestre. A oficial foi preservada. Os
+registros seguintes são históricos; não indicam o runtime atual.
+
+**Bateria nativa preparada em 18/10:** seis cópias sintéticas calculadas no
+Sheets, 8.190 chaves por XLSX e resultados locais conferidos. Roteiro em
+`../dados/ficha/BATERIA-NATIVA-B47.md`. Inclui aprovação exata, MESTRE VIU sem autorização,
+efeito alterado, resultado adulterado e campanha não autorizada. Encontrado
+e corrigido no código o falso cadastro de Caminho/Trilha pelos menus default
+de cartões vazios; **817 testes: 816 aprovados e um opcional pulado**. Esse
+patch ainda não foi implantado. As cópias limpam esses menus não usados para
+permitir o teste também no runtime anterior. Com autorização posterior do
+Mizuki, seis cópias receberam leitura por link e quatro hashes sintéticos
+foram instalados somente no servidor escolhido. Cadastro ativo relido e
+conferido; sem mudar regras gerais, reiniciar ou implantar código. Os seis
+links anônimos coincidem com os XLSX nas 8.190 chaves.
+
+**Discord executado com autorização em 18/10:** 13 análises reais na versão
+já publicada: seis links, seis XLSX e uma reanálise. Os seis pares devolveram
+resumos idênticos: casos 01/02 sem divergências nem aprovação pendente; 03 com
+quatro aprovações pendentes apesar de MESTRE VIU; 04 reabriu somente o efeito
+alterado; 05 reprovou Vida 999/23; 06 reprovou a regra/total não autorizados.
+As seis páginas da 02, quatro setas e seletor foram exercitados. Encerramento
+após dez minutos e reabertura por nova análise foram observados. Sem chamadas
+pagas, reinício, implantação do patch 65 ou alteração da oficial nesta rodada.
+Evidências da primeira rodada: `pesquisa/validacao/2026-10-18-b47-discord/`.
+A continuação avançada está registrada acima; segunda pessoa e validação
+nativa ampliada continuam pendentes. Produtor e mestre limitam a aprovação integral.
+
 Branch: `codex/integracao-b47`, em `cupcake-mochi/RPG---BOT`.
-PR para revisão: https://github.com/cupcake-mochi/RPG---BOT/pull/64 (mesclada; publicação autorizada concluída).
+PR de correção: https://github.com/cupcake-mochi/RPG---BOT/pull/65 (aberta; código 40d32a7 implantado, merge pendente).
+PR 64: mesclada; publicação autorizada concluída.
 Primeiro checkpoint publicado: `cfec482` (contrato/leitor). Continuação do
 usuário: completar conferências possíveis e testar tudo ao final. Os checkpoints
 seguintes desta branch contêm implementação, regressões e documentação.
@@ -14,21 +67,28 @@ Ficha: `ccbd053c8f7e68f8b4ac223f721b309111d2dcc0`.
 Sistema: `e593ba8cf24ce6bbd2f517f5431a73a96610e02b`.
 Bot inicial: `7e4dc35209ea840549d5ccf5a0b49834da21d117`.
 
-## Publicação vigente · 18/10
+## Publicação anterior · PR 64 · 18/10
 
 **Publicação autorizada em 18/10:** PR 64 mesclada em
 `1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.
 Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados
 idênticos ao ZIP; `.env` e dois bancos preservados byte a byte, integridade ok.
-Memória de 1.000 MB mantida. Cadastro B47 de campanha ainda não existe na
-produção; nenhuma aprovação real foi presumida. Testes reais por link/XLSX,
-campanha e navegação do painel continuam pendentes. Evidências em
+Memória de 1.000 MB mantida. Nessa publicação inicial o cadastro B47 de campanha
+ainda não existia; posteriormente foram instaladas apenas as aprovações
+sintéticas autorizadas. A bateria real por link/XLSX e navegação descrita
+acima passou nessa versão; não publica o patch 65. Evidências da implantação em
 `pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
 
-Retomar de `origin/main`, após conferir remotos e árvore local. O merge
-contém exatamente o runtime testado; o registro posterior muda somente docs.
-Não refazer merge/deploy. Próximo passo é o roteiro funcional no Discord,
-sem chamadas a modelos e com campanha real somente após decisão do mestre.
+Retomar de `origin/codex/integracao-b47`, após conferir remotos e árvore local.
+`main` contém a publicação da PR 64; a PR 65 acrescenta correção dos cartões
+vazios, cores locais por página, responsividade e registro dos testes. Não refazer merge/deploy da PR 64 nem presumir
+publicação do patch 65. Próximo passo: revisão da PR 65; merge/implantação
+continuam separados desta bateria. Para ampliar o piloto, usar o roteiro externo:
+segunda pessoa e os recálculos nativos ainda não executados, sem modelos pagos. Campanha de
+jogo e novas aprovações dependem de decisão real do mestre. Retomada exata:
+conferir `git status --short --branch`, `git fetch origin` e a PR 65; ler esta
+retomada e `dados/ficha/ROTEIRO-EXTERNO-B47.md`. Preservar os seis casos aprovados
+como evidência, sem repetir a bateria ou a publicação por rotina.
 Backups privados ficam fora do Git; não anexar seus arquivos à PR.
 
 ## Checkpoint de código · Máxima e teto de dano · 18/10
@@ -41,7 +101,7 @@ A fórmula fixa conhecida do produtor recebe pendência, nunca aprovação.
 Quebra Coisa entra no teto de dano comum/custom/Liberação/entidade, sem
 multiplicar dados secundários ou aplicar Remate ao mesmo objeto.
 
-Suíte vigente: **814 executados, 813 aprovados e um online opcional pulado**,
+Suíte desse checkpoint: **814 executados, 813 aprovados e um online opcional pulado**,
 em 208,229 s. Dezessete regressões novas passaram também no ZIP; contra
 `89d56db`, produziram 26 falhas de asserção/subcasos e nenhum erro de execução.
 Evidências: `pesquisa/validacao/2026-10-18-b47-maxima/`.
@@ -102,7 +162,7 @@ Detalhes/reprodução em `relatorio.txt`, `verificacao.json` e `pacote.json`.
    ficha está concluída: não retomar C/D, não repetir migrações e não usar
    endereços de documentos históricos como contrato.
 3. De `Closure/src/`, executar:
-   `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao testes.test_b47_cobertura testes.test_b47_maxima testes.test_b47_teto`.
+   `../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao testes.test_b47_cobertura testes.test_b47_maxima testes.test_b47_teto testes.test_ficha_painel testes.test_ficha_analise_v4`.
    Depois de uma mudança relevante, executar
    `../.venv/bin/python -m unittest discover -s testes` e registrar os resultados.
 4. Leitor/esquema: `ficha_leitor.py`, `ficha_esquema.py` e manifesto em recursos.
@@ -187,8 +247,9 @@ não faz parte do ZIP. Não houve envio à Discloud.
 
 ## O que permanece externo ou parcial
 
-Houve leitura pública CSV/XLSX no Google, sem escrita. Não houve Discord,
-LibreOffice nem implantação nesta continuação. O roteiro externo está
+No checkpoint histórico acima houve leitura pública CSV/XLSX no Google, sem
+escrita, e não houve Discord, LibreOffice ou implantação. As baterias reais
+posteriores e a publicação vigente estão descritas no início deste documento. O roteiro externo está
 no fim de `INTEGRACAO-B47.md`. B47 não emite as 485 chaves exclusivas TR-v4;
 carga integral e vários bônus do livro continuam explicitamente não conferidos.
 Seletores pessoais de CD/ataques, ajustes/resultados de TR/perícias do livro,

@@ -2,6 +2,7 @@
 import asyncio
 import copy
 import json
+import threading
 from pathlib import Path
 from types import SimpleNamespace
 import unittest
@@ -62,7 +63,9 @@ class Apresentacao(unittest.TestCase):
                 self.assertIn("Conferência parcial", texto(ps[:1]))
                 for i, p in enumerate(ps):
                     self.assertTrue(p.footer.text.startswith(f"Página {i+1} de {len(ps)} · "))
-                    self.assertEqual((p.author.name, p.colour.value), ("Closure", 0xD4A017))
+                    self.assertEqual(p.author.name, "Closure")
+                    self.assertNotEqual(p.colour.value, 0xCC0102)  # nenhum erro nessas fichas
+                    self.assertIn("Veredito geral: pendente", p.footer.text)
                     self.assertLessEqual(len(p), 6000)
                     self.assertLessEqual(len(p.fields), 25)
                     self.assertTrue(all(0 < len(c.value) <= 1024 and len(c.name) <= 256 for c in p.fields))
@@ -87,11 +90,59 @@ class Apresentacao(unittest.TestCase):
                        (Resultado("aprovada", pendencias=[pendencia]), 0xD4A017),
                        (Resultado("aprovada"), 0x2E8B57)):
             ps = paginas(r, {}, PERSONA)
-            self.assertTrue(all(p.colour.value == cor for p in ps))
+            self.assertEqual(ps[0].colour.value, cor)
             if r.problemas:
                 self.assertIn("está 19, o certo é 13", texto(ps[:1]))
             if r.pendencias:
                 self.assertIn("faltam escolher 1 de 2", texto(ps[:1]))
+
+    def test_erro_global_nao_contamina_valores_conferidos_ou_limites(self):
+        r = Resultado("reprovada", problemas=[Problema("conta", "defesa", "13", "19")],
+                      pendencias=[Problema("informação", "tr", "escolher dois TR", "um")],
+                      conferidos=["Repertório: capacidade 3 espaços", "Atletismo: bônus +4",
+                                  "Feitiço 1: dano-base 2d8", "Invocação 2: vida.max 12"],
+                      nao_conferido=["Carga: faltam quantidades"])
+        antes = copy.deepcopy(r)
+        ps = paginas(r, {}, PERSONA)
+        cores = {p.description.strip("*"): p.colour.value for p in ps[1:]}
+        self.assertEqual(ps[0].colour.value, 0xCC0102)
+        self.assertEqual(cores["Correções e revisão"], 0xCC0102)
+        self.assertEqual(cores["Limites da análise"], 0xD4A017)
+        for categoria in ("Personagem", "TR e perícias", "Feitiços e técnicas", "Invocação 2"):
+            self.assertEqual(cores[categoria], 0x2E8B57, categoria)
+        self.assertTrue(all("Veredito geral: reprovada" in p.footer.text for p in ps))
+        self.assertEqual(r, antes)  # apresentação não altera a avaliação
+
+    def test_cor_da_revisao_respeita_quebra_entre_erros_e_pendencias(self):
+        erros = [Problema("conta", f"erro.{i}", "E" * 300, "A" * 100) for i in range(25)]
+        pendencias = [Problema("informação", f"falta.{i}", "P" * 300, "vazio") for i in range(35)]
+        r = Resultado("reprovada", problemas=erros, pendencias=pendencias)
+        ps = [p for p in paginas(r, {}, PERSONA) if p.description == "**Correções e revisão**"]
+        vermelhas = [p for p in ps if any(c.name == "❌ Precisa corrigir" for c in p.fields)]
+        amarelas = [p for p in ps if all(c.name != "❌ Precisa corrigir" for c in p.fields)]
+        self.assertTrue(vermelhas and amarelas)
+        self.assertTrue(all(p.colour.value == 0xCC0102 for p in vermelhas))
+        self.assertTrue(all(p.colour.value == 0xD4A017 for p in amarelas))
+
+    def test_pendencia_ou_revisao_do_mestre_nao_vira_erro(self):
+        for campo in ("pendencias", "notas"):
+            with self.subTest(campo=campo):
+                r = Resultado("pendente", conferidos=["Repertório: capacidade 3 espaços"],
+                              **{campo: [Problema("aviso", "tr", "revisão", "pendente")]})
+                ps = paginas(r, {}, PERSONA)
+                self.assertEqual(ps[0].colour.value, 0xD4A017)
+                self.assertEqual(next(p for p in ps if p.description == "**Correções e revisão**").colour.value, 0xD4A017)
+                self.assertEqual(next(p for p in ps if p.description == "**Personagem**").colour.value, 0x2E8B57)
+
+    def test_cores_locais_preservam_identidade_das_duas_guias(self):
+        r = Resultado("reprovada", problemas=[Problema("conta", "defesa", "13", "19")],
+                      conferidos=["Repertório: capacidade 3 espaços"])
+        for chave, nome in (("kaltsit", "Kal'tsit"), ("closure", "Closure")):
+            with self.subTest(guia=chave):
+                ps = paginas(r, {}, SimpleNamespace(chave=chave, nome=nome, avatar_url=None))
+                self.assertTrue(all(p.author.name == nome for p in ps))
+                self.assertEqual(ps[0].colour.value, 0xCC0102)
+                self.assertEqual(ps[-1].colour.value, 0x2E8B57)
 
     def test_aviso_de_dados_ausentes_e_so_do_formato_antigo(self):
         ficha = self.ficha(4)
@@ -250,6 +301,30 @@ class Navegacao(unittest.IsolatedAsyncioTestCase):
             ler.assert_awaited_once_with("https://exemplo.invalid/ficha")
             self.assertIs(view.mensagem, mensagem)
             view.stop()
+
+    async def test_leitura_xlsx_e_contas_nao_bloqueiam_eventos_do_discord(self):
+        from closure_bot.cogs.ficha import Ficha
+        bot = SimpleNamespace(config=SimpleNamespace(dados=RAIZ / "dados"),
+                              personas={"closure": PERSONA, "kaltsit": PERSONA}, manifesto={})
+        cog = Ficha(bot)
+        arquivo = SimpleNamespace(filename="teste.xlsx", size=100, read=AsyncMock(return_value=b"xlsx"))
+        ficha = {"nome": Campo("Ensaio de responsividade", "", "entrada")}
+        loop = asyncio.get_running_loop()
+        progressos = []
+
+        def trabalho_sincrono(retorno):
+            evento = threading.Event()
+            # Simula o processamento pesado aguardando outro evento do loop.
+            # Executado no loop principal, esse evento não progride a tempo.
+            loop.call_soon_threadsafe(evento.set)
+            progressos.append(evento.wait(1))
+            return retorno
+
+        with patch("closure_bot.cogs.ficha.de_xlsx", side_effect=lambda _: trabalho_sincrono(ficha)), \
+             patch("closure_bot.cogs.ficha.conferir", side_effect=lambda *args: trabalho_sincrono(Resultado("aprovada"))):
+            paineis = await cog.analisar_fonte(arquivo=arquivo, servidor=123)
+        self.assertEqual(progressos, [True, True])
+        self.assertEqual(paineis[0].title, "Ficha de Ensaio de responsividade")
 
 
 if __name__ == "__main__":
