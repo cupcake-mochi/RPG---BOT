@@ -161,7 +161,7 @@ def escolhas_familias(ficha, magia, raiz, problemas):
     São as posições do gerador, não a ordem da lista compactada da v1.
     """
     from .ficha_corretor import Problema
-    if valor(ficha, "formato.versao") == 11 and magia.contexto is not None:
+    if valor(ficha, "formato.versao") in (11, 12) and magia.contexto is not None:
         from .ficha_b47 import conferir_familias
         return conferir_familias(ficha, magia, raiz, problemas)
     entidade = raiz.startswith("invocacao.")
@@ -606,7 +606,8 @@ def conferir_feiticos(ficha, magia, resultado):
     nivel = valor(ficha, "nivel")
     cartas = [b for b in bases(ficha, r"(?:feitico|liberacao|zero)\.\d+") if ativa(ficha, b)]
     familias = escolhas_familias(ficha, magia, "tecnica", resultado.problemas) if cartas or valor(ficha, "maxima.nome") or lista(ficha, "maxima.pecas") or valor(ficha, "maxima.texto") else None
-    for base in cartas:
+    r53 = bool(magia.contexto is not None and magia.contexto.r53)
+    for base in [] if r53 else cartas:
         conferir_montagem(ficha, magia, base, nivel, resultado.problemas, resultado.conferidos, resultado.nao_conferido,
                           liberacao=base.startswith("liberacao."), basica=base.startswith("zero."), familias=familias, pendencias=resultado.pendencias)
     liberacoes = [b for b in bases(ficha, r"liberacao\.\d+") if ativa(ficha, b)]
@@ -616,7 +617,8 @@ def conferir_feiticos(ficha, magia, resultado):
     zeros = [b for b in cartas if b.startswith("zero.")]
     if inteiro(nivel, 1) and len(zeros) > (2 if nivel < 5 else 3 if nivel < 11 else 4 if nivel < 17 else 5) + zeros_adicionais(ficha):
         resultado.problemas.append(Problema("conta", zeros[-1] + ".nome", "quantidade de Classe 0 da progressão", str(len(zeros)), "fundamento--classezero"))
-    conferir_maxima(ficha, magia, resultado, familias)
+    if not r53:
+        conferir_maxima(ficha, magia, resultado, familias)
 
 
 def conferir_invocacoes(ficha, magia, marcos, resultado, equipamento=None, referencias=None):
@@ -690,7 +692,7 @@ def conferir_invocacoes(ficha, magia, marcos, resultado, equipamento=None, refer
                 resultado.nao_conferido.append(f"{rotulo(base)}: Talento próprio ou desconhecido ({talento}); aprovação aguardará CONFIGURAÇÃO")
             elif magia.talentos_entidade[talento] > teto:
                 erro(campo, f"até CE {teto} na escolha do nível {abre}", "construcao--entidades-passivas")
-        for b in cartas:
+        for b in [] if magia.contexto is not None and magia.contexto.r53 else cartas:
             conferir_montagem(ficha, magia, b, nivel, resultado.problemas, resultado.conferidos, resultado.nao_conferido,
                               entidade=True, basica=".bas." in b or (".ext." in b and valor(ficha, b + ".classe") == 0), familias=familias, pendencias=resultado.pendencias)
         if referencias and referencias.entidades:

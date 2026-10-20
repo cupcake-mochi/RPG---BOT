@@ -1,0 +1,5 @@
+Bateria autorizada no tópico de testes, 19/10/2026.
+Relatório: dados/ficha/BATERIA-NATIVA-R53.md
+JSONs contêm somente fichas sintéticas, respostas do bot e identificadores de mensagens do ensaio.
+Snapshots integrais, exports e capturas ficaram em src/var/testes-r53-2026-10-19/ (ignorado); nenhum banco/segredo publicado.
+O JSON de custom usa as aprovações sintéticas anteriores; sem elas a pendência é esperada.

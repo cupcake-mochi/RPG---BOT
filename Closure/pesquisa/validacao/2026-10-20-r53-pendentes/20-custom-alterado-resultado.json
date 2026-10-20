@@ -1,0 +1,66 @@
+{
+  "etapa": "20-custom-alterado",
+  "chaves": 18393,
+  "sha256_csv": "7b645b0e4963a9d985f5be6b2dfdfaf407937d0362ae84fec5ad573b13643195",
+  "nivel": 2,
+  "xp": 0,
+  "classe_maxima": 1,
+  "transicoes": {},
+  "veredito": "pendente",
+  "problemas": [],
+  "pendencias": [
+    {
+      "regra": "aprovação",
+      "campo": "custom.forma.1.nome",
+      "esperado": "aprovação do mestre para esta definição exata; MESTRE VIU não é autorização",
+      "encontrado": "Agulha Coruja B47",
+      "ancora": ""
+    },
+    {
+      "regra": "aprovação",
+      "campo": "r53.feitico.1.entrada",
+      "esperado": "aprovação do mestre do cadastro Agulha Coruja B47 antes do uso no cartão",
+      "encontrado": "Agulha Coruja B47",
+      "ancora": ""
+    }
+  ],
+  "notas": [],
+  "nao_conferido": [
+    "Talento gratuito da Origem: falta vinculação estruturada da escolha; conta por possibilidades, sem certificar a aquisição",
+    "repertório: conta parcial por possibilidades; concessões/custos incompletos não certificam o total",
+    "TR/perícias/Ofícios: resultados e ajustes completos exigem a ANALISE 4",
+    "Carga pessoal: a ANALISE não exporta quantidade dos equipáveis, Volume dos itens livres nem Buff do limite; total não certificado",
+    "XP: nível manual, origem dos ganhos, Limiar e histórico de missões exigem registro do mestre",
+    "cd_de_feitico: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+    "conjuracao: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+    "corpo_a_corpo: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+    "a_distancia: seletor do atributo pessoal não exportado pela B47; não se deduz a escolha do resultado",
+    "deslocamento: carga/ajuste de limite não exportados impedem escolher a penalidade efetiva",
+    "Carga: B47 não exporta quantidades/Volumes e ajustes da variante TR-v4; inventário agregado não certifica carga integral",
+    "Treinos: totais compatíveis não provam origem de cada escolha nem quando uma especialização foi adquirida",
+    "TR/perícias/Ofícios do livro: B47 não exporta os ajustes e bônus exclusivos da variante TR-v4; não se inventam resultados",
+    "Feitiço 1: COMO É (alvos, resolução, TR, duração, autorização da Regra e detalhes das Melhorias/Restrições) fica com o mestre; campos padrão não reprovam nem autorizam",
+    "Feitiço 1: usa cadastro próprio; contas mostradas pela ficha, sem recálculo do bot",
+    "Cartões R53: VÁLIDO/REVISAR é o estado mecânico da ficha, não aprovação do mestre nem do bot"
+  ],
+  "conferidos": [
+    "Campanha de referência: livro; regras obtidas do bot",
+    "Caminho Bastião",
+    "Trilha Muro",
+    "Origem Latente",
+    "Vida 23",
+    "PE 8",
+    "Integridade 26",
+    "Proteção 1",
+    "Defesa 13",
+    "Repertório: capacidade 3 espaços",
+    "maestria: 1",
+    "classe_maxima: 1",
+    "refino_de_graca: 1",
+    "classe_0_gratis: 2",
+    "iniciativa: 2",
+    "morrendo_prazo: 3 rodadas",
+    "TR: dois treinos diferentes; bônus não exportados permanecem não conferidos",
+    "Treinos: 10 perícias, 0 Ofícios e 0 especializações compatíveis com as concessões"
+  ]
+}

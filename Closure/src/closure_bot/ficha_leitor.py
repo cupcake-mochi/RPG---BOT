@@ -64,9 +64,9 @@ def normaliza(valor, chave: str | None = None) -> object:
         return 1
     if texto.upper() in ("FALSO", "FALSE") and (chave is None or tipo(chave) == 'booleano'):
         return 0
-    if re.fullmatch(r"-?\d+", texto):
+    if re.fullmatch(r"[+-]?\d+", texto):
         return int(texto)
-    if re.fullmatch(r"-?\d+[,.]\d+", texto):
+    if re.fullmatch(r"[+-]?\d+[,.]\d+", texto):
         return float(texto.replace(",", "."))
     return texto
 

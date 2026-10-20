@@ -1,0 +1,38 @@
+name: Closure tests
+
+on:
+  pull_request:
+    paths:
+      - 'Closure/**'
+      - '.github/workflows/closure-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: closure-tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  linux:
+    name: Python 3.12 / Linux
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies in the project virtualenv
+        run: |
+          python -m venv Closure/.venv
+          Closure/.venv/bin/python -m pip install -r Closure/src/requirements.txt
+      - name: Prepare the local site core for integration tests
+        working-directory: Closure
+        run: .venv/bin/python ferramentas/empacotar.py
+      - name: Run the complete offline suite
+        working-directory: Closure/src
+        env:
+          PYTHONUTF8: '1'
+        run: ../.venv/bin/python -m unittest discover -s testes

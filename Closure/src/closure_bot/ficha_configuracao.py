@@ -62,6 +62,7 @@ class ContextoB47:
     catalogo_personagem: object = None
     alvos_invalidos: set = field(default_factory=set)
     entidades_invalidas: set = field(default_factory=set)
+    r53: bool = False  # ANALISE 12: cartões conferidos por ficha_r53, não pelas montagens B47
 
     def aplicar(self, caixa, base):
         if caixa in self.alvos_invalidos:

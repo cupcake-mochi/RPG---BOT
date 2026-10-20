@@ -1,5 +1,12 @@
 # Closure
 
+**Ficha R53 · bateria em 19/10:** 13 análises no Discord por link/XLSX, três
+cópias sintéticas, custom pendente/aprovado/alterado e arquivos inválidos.
+882 testes executados, 881 aprovados, 1 opcional pulado. Atualização da
+Discloud informada pelo usuário e validada funcionalmente; sem nova implantação.
+O núcleo novo cobre cartões R53; a base geral permanece R51/R52.
+[Resultados, links e cobertura restante](dados/ficha/BATERIA-NATIVA-R53.md).
+
 **Continuação do clima · publicada em 19/10 às 00:08:** “E de BH?” depois de
 SP e trocas sucessivas de cidade consultam os dados corretos. `GC:clima` aceita
 pergunta inteira, incluindo a frase da captura. Suíte: 849 executados, 848

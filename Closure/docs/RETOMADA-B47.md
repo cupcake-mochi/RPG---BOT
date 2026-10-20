@@ -1,5 +1,15 @@
 # Retomada da integração do bot com B47 · 18/10/2026
 
+> Atualização posterior · 19/10/2026: o consumidor R53 está na PR 67, branch
+> `claude/project-thread-zzfh12`, código c1724f0. O usuário informou a publicação
+> e a bateria local confirmou 13 respostas reais por link/XLSX no Discord.
+> As PRs 65/66 já foram mescladas em main. Ler primeiro
+> [RETOMADA-R53.md](RETOMADA-R53.md), com a fila de testes ainda não executados,
+> [BATERIA-NATIVA-R53.md](../dados/ficha/BATERIA-NATIVA-R53.md) e
+> [INTEGRACAO-R53.md](../dados/ficha/INTEGRACAO-R53.md). Os estados de PR e
+> publicação abaixo são históricos. Não repetir deploy nem supor auditoria
+> integral do livro R53: o núcleo novo cobre cartões; a base geral é R51/R52.
+
 **Publicação e checagem concluídas · 18/10:** o usuário autorizou aplicar na
 Discloud. O código `40d32a7` da PR 65 está instalado no app existente e online
 em cinco servidores desde 15:23:32 (Brasília), com 1.000 MB mantidos. Backup

@@ -1,0 +1,54 @@
+[
+  {
+    "arquivo": "04-resultado-adulterado.xlsx",
+    "modo": "conta",
+    "erros": [
+      {
+        "regra": "conta",
+        "campo": "r53.feitico.1.dano_d8",
+        "esperado": "3",
+        "encontrado": "99",
+        "ancora": "fundamento--pontos"
+      }
+    ],
+    "pendencias": []
+  },
+  {
+    "arquivo": "05-json-tipo-invalido.xlsx",
+    "modo": "tipo",
+    "erros": [
+      {
+        "regra": "formato",
+        "campo": "r53.feitico.1.entrada",
+        "esperado": "array JSON tipado conforme o esquema exportado (dano precisa ser booleano)",
+        "encontrado": "[\"feitico.1\", \"Proj\\u00e9til Coruja R53\", 1, \"Comum\", 2, true, \"Proj\\u00e9til\", \"true\", false, false, 3, 0, 0, false, \"S",
+        "ancora": ""
+      }
+    ],
+    "pendencias": []
+  },
+  {
+    "arquivo": "06-versao-em-transicao.xlsx",
+    "modo": "transicao",
+    "erros": [],
+    "pendencias": [
+      {
+        "regra": "informação",
+        "campo": "r53.feitico.1.entrada",
+        "esperado": "leitura estável: espere a ficha terminar de salvar e analise de novo; nada foi aprovado ou reprovado neste cartão",
+        "encontrado": "a Classe ativa ainda não tem versão salva.",
+        "ancora": ""
+      }
+    ]
+  },
+  {
+    "arquivo": "07-chave-duplicada.xlsx",
+    "modo": "duplicata",
+    "rejeitado": "chave duplicada na ANALISE: nome"
+  },
+  {
+    "arquivo": "08-formula-sem-cache.xlsx",
+    "modo": "cache",
+    "rejeitado": "o arquivo tem fórmula sem resultado calculado em ANALISE!B6"
+  }
+]

@@ -11,6 +11,13 @@ def campos_b47():
         return {r['chave']: r for r in csv.DictReader(f, delimiter='\t')}
 
 
+@lru_cache(maxsize=1)
+def campos_r53():
+    """ANALISE 12: as chaves B47 sem mudança de parte, mais as novas da R53 (Ficha---RPG-JJK@4b22da5)."""
+    with (Path(__file__).parent / 'recursos/r53-campos-novos.tsv').open(encoding='utf-8') as f:
+        return {**campos_b47(), **{r['chave']: r for r in csv.DictReader(f, delimiter='\t')}}
+
+
 def tipo(chave):
     if chave == 'dominio.degrau':
         return 'texto'
@@ -52,6 +59,8 @@ def variante(ficha):
     configuracao = any(k.startswith(('regra.', 'efeito.', 'custom.')) for k in ficha)
     if formato == 11:
         return 'b47-v11'
+    if formato == 12:
+        return 'r53-v12'
     if formato in (1, 2) and not configuracao:
         return f'legado-v{formato}'
     if formato == 4 and not configuracao and any(k.startswith(('carga.', 'pericia.', 'oficio.', 'tr.')) and k.endswith(('.bonus', '.total')) for k in ficha):

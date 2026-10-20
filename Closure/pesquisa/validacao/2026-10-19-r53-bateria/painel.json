@@ -1,0 +1,18 @@
+{
+  "mensagem": "1561931342659195003",
+  "navegacao": [
+    "seletor: Personagem (3)",
+    "Próxima: Feitiços (4)",
+    "Última: Limites (6)",
+    "Primeira: Resumo (1)",
+    "Próxima: Revisão (2)",
+    "Anterior: Resumo (1)"
+  ],
+  "cores": {
+    "Personagem": "rgb(46,139,86)",
+    "Correções e revisão": "rgb(204,1,1)",
+    "Limites da análise": "rgb(212,159,23)"
+  },
+  "veredito_geral": "reprovada — excesso proposital no Feitiço 3",
+  "releituras_reais": 2
+}

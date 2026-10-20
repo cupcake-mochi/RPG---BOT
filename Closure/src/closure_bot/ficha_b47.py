@@ -4,16 +4,17 @@ import re
 from dataclasses import replace
 
 from .ficha_leitor import Campo
-from .ficha_esquema import campos_b47
+from .ficha_esquema import campos_b47, campos_r53
 from .ficha_configuracao import (ContextoB47, conferir_regras, conferir_efeitos, valor,
                                 numero, inteiro, problema)
 
 
-def conferir_b47(ficha, ref, campanha, aprovados):
+def conferir_b47(ficha, ref, campanha, aprovados, *, r53=False):
+    """Contrato 11; com `r53`, o contrato 12 reaproveita as mesmas chaves e confere os cartões em ficha_r53."""
     from .ficha_corretor import Resultado, _conferir_legado
     from .ficha_custom import preparar_custom
     r = Resultado('aprovada')
-    esquema = campos_b47()
+    esquema = campos_r53() if r53 else campos_b47()
     faltantes = set(esquema)-set(ficha)
     if faltantes:
         # Identidade por chave; nem ordem, quantidade de linhas ou coordenada física são validadas.
@@ -32,6 +33,9 @@ def conferir_b47(ficha, ref, campanha, aprovados):
             r.nao_conferido.append(f'{k}: chave adicional de variante não reconhecida; significado não certificado')
         elif campo.parte != esquema[k]['parte']:
             problema(r,k,'parte '+esquema[k]['parte'],campo.parte,regra='formato')
+        # Cartão R53 com erro/recálculo em curso é tratado como transição em ficha_r53.
+        if r53 and k.startswith('r53.'):
+            continue
         if str(campo.valor).strip().upper() in {'#REF!','#N/A','#NAME?','#VALUE!','#DIV/0!','#NUM!','#ERROR!','#SPILL!','#CALC!'}:
             problema(r,k,'resultado calculado sem erro de fórmula',campo.valor,regra='formato')
     if valor(ficha,'ficha.sistema')!='Ciclo Maldito':
@@ -47,7 +51,7 @@ def conferir_b47(ficha, ref, campanha, aprovados):
         r.nao_conferido.append('Formato/entradas inválidos: contas dependentes não executadas')
         r.veredito='reprovada'
         return r
-    ctx=ContextoB47(aprovados=aprovados)
+    ctx=ContextoB47(aprovados=aprovados,r53=r53)
     ctx.regras=conferir_regras(ficha,campanha,r)
     ref=preparar_custom(ficha,ref,ctx,r)
     ref=replace(ref,magia=replace(ref.magia,contexto=ctx))
@@ -91,6 +95,9 @@ def conferir_b47(ficha, ref, campanha, aprovados):
     r.nao_conferido.append('Carga: B47 não exporta quantidades/Volumes e ajustes da variante TR-v4; inventário agregado não certifica carga integral')
     conferir_treinos(mecanica,ref,ctx,r)
     conferir_aptidoes(mecanica,ref,ctx,r)
+    if r53:
+        from .ficha_r53 import conferir_cartoes
+        conferir_cartoes(ficha,ctx,r)
     for d in ctx.registros.values():
         if d.nome in identidades and (not d.aprovada or not d.valida):
             r.conferidos=[c for c in r.conferidos if d.nome not in c]

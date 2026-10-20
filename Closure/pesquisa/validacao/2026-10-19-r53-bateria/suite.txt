@@ -1,0 +1,6 @@
+Código: c1724f0effad9d14fd4bd02525fcf93395e1d93f
+Comando direcionado: python -m unittest discover -s testes -p test_r53.py
+33 testes em 25,706 s: OK
+Comando completo: python -m unittest discover -s testes
+882 testes em 249,838 s: OK (skipped=1)
+Paridade CSV/XLSX nativo: 18.393 chaves, zero valores diferentes.

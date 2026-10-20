@@ -139,12 +139,14 @@ def conferir_repertorio_entidade(ficha, ref, base, nivel, cartas, familias, r):
         erro(base + ".tipo", "somente maldição domada com técnica própria pode ter trunfos", "campo--inv-liberacao")
         return
     r.nao_conferido.append(f"{nome}: técnica própria da domada, peças e escolhas dos trunfos em texto precisam de conferência; custos não aprovam a montagem")
+    # R53: Liberação e Técnica Máxima da entidade viraram cartões completos (ficha_r53); só o Domínio segue aqui.
+    r53 = magia.contexto is not None and magia.contexto.r53
     for b in liberacoes + ([base + ".tm"] if maxima else []) + ([base + ".exp"] if dominio else []):
         if not valor(ficha, b + ".nome"):
             r.pendencias.append(Problema("escolha", b + ".nome", "nome do trunfo", ""))
     if len(liberacoes) > nivel // 10:
         erro(base + ".liberacao", f"até {nivel // 10} Liberação(ões) pelo nível fixo da domada", "campo--inv-liberacao")
-    for b in liberacoes:
+    for b in [] if r53 else liberacoes:
         c = valor(ficha, b + ".classe")
         if not inteiro(c, 3, magia.classe_maxima(nivel)):
             erro(b + ".classe", f"Classe 3 até {magia.classe_maxima(nivel)}", "campo--inv-liberacao")
@@ -152,7 +154,7 @@ def conferir_repertorio_entidade(ficha, ref, base, nivel, cartas, familias, r):
         comparar(b + ".pe", math.ceil(4.5 * c), "campo--inv-liberacao", pe=True)
         comparar(b + ".pontos", f"{magia.especiais[c]} pontos + {c}d8", "campo--inv-liberacao")
         comparar(b + ".acao", "Sua Ação Completa + a básica dela", "campo--inv-liberacao")
-    if maxima:
+    if maxima and not r53:
         b = base + ".tm"
         if nivel not in regras.maximas:
             erro(b + ".nome", "Técnica Máxima a partir do nível 17 da domada", "campo--inv-maxima")

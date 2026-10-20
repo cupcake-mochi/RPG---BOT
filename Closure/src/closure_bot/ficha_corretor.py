@@ -30,7 +30,7 @@ from .ficha_equipamento import CatalogoEquipamento
 from .ficha_entidade_repertorio import RegrasEntidade
 from .ficha_testes import RegrasTestes
 
-FORMATOS_CONHECIDOS = {1, 2, 4, 11}
+FORMATOS_CONHECIDOS = {1, 2, 4, 11, 12}
 # O que a ficha mostra quando a pessoa ainda não escolheu: vale como vazio.
 NAO_ESCOLHIDO = {"", "—", "-", "escolha seu caminho", "escolha sua trilha", "escolha sua origem"}
 
@@ -243,6 +243,7 @@ def classificar_aviso(chave: str, valor) -> str | None:
     return "nota"
 
 
+_AVISO_CARTAO_B47 = re.compile(r"(?:feitico|liberacao)\.\d+\.(?:erros|avisos)|invocacao\.\d+\.(?:bas|esp|ext)\.\d+\.(?:erros|avisos)")
 # "N de M" nestes é o que ainda falta distribuir; as perícias e ofícios em falta já acendem aviso.escolhas_de_pericia.
 _SOBRA_E_PENDENCIA = {"aviso.pontos_disponiveis", "aviso.testes_disponiveis"}
 # Os três avisos podem vir do mesmo contador. O resumo é a melhor representação.
@@ -503,6 +504,9 @@ def _conferir_legado(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDa
             resultado.notas.append(Problema("buff", chave, "", _fmt(campo.valor), ""))
         if campo.parte != "aviso":
             continue
+        # R53: os avisos das montagens B47 descrevem cartões que a interface final substituiu.
+        if formato == 12 and (chave.startswith("r53.") or _AVISO_CARTAO_B47.fullmatch(chave)):
+            continue
         if chave in avisos_substituidos:
             continue
         tipo = classificar_aviso(chave, campo.valor)
@@ -520,7 +524,7 @@ def _conferir_legado(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDa
     resultado.notas.extend(notas_de_treino.values())
     buff_pe = _bonus(ficha, "buff.energia")
     for nome, extra in pe_da_origem(ficha, ref):
-        if formato == 11 and extra:
+        if formato in (11, 12) and extra:
             efeitos = ref.magia.contexto.efeitos.get("PE máximo", [])
             explicitos = [e for e in efeitos if e.tipo_de_fonte in ("Origem", "Origem custom") and e.fonte == nome]
             ganho = sum(e.valor for e in explicitos if e.como == "somar")
@@ -542,10 +546,10 @@ def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha
     if identificada is None:
         formato = ficha.get("formato.versao", Campo("", "", "")).valor
         return Resultado("formato desconhecido", [Problema("formato", "formato.versao",
-            "1, 2, variante TR-v4 comprovada ou B47-v11; formato 4 de campanha é outra variante", str(formato))])
-    if identificada == "b47-v11":
+            "1, 2, variante TR-v4 comprovada, B47-v11 ou R53-v12; formato 4 de campanha é outra variante", str(formato))])
+    if identificada in ("b47-v11", "r53-v12"):
         from .ficha_b47 import conferir_b47
-        return conferir_b47(ficha, ref, regras, aprovados or Aprovados())
+        return conferir_b47(ficha, ref, regras, aprovados or Aprovados(), r53=identificada == "r53-v12")
     r = _conferir_legado(ficha, ref, regras)
     for k, c in ficha.items():
         if str(c.valor).strip().upper() in {"#NAME?", "#REF!", "#VALUE!", "#DIV/0!", "#N/A", "#NUM!", "#ERROR!"}:
