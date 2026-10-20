@@ -1,5 +1,9 @@
 # Bateria nativa R53 · 20/10/2026
 
+**Atualização posterior ao encerramento:** o usuário autorizou a publicação,
+concluída às 09h49 de 20/10. [Registro da publicação](PUBLICACAO.md).
+O estado “não publicado” deste relatório é histórico, anterior a esse pedido.
+
 ## Código, escopo e origem
 
 Branch `claude/project-thread-zzfh12`, PR 67. Base lida `9f52a57`.

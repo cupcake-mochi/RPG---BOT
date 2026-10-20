@@ -1,5 +1,11 @@
 # Retomada R53 · atualizada em 20/10/2026
 
+**Publicado em 20/10, 09h49, por pedido posterior do usuário:** pacote do
+commit testado `939d2ed`, operação concluída, bot online em cinco servidores
+e nova redação confirmada no tópico de testes. Recursos permaneceram 700 MB/
+0,68 vCPU. [Registro da publicação e pendências atuais](../pesquisa/validacao/2026-10-20-r53-pendentes/PUBLICACAO.md).
+O estado “não publicado” abaixo descreve o encerramento anterior da bateria.
+
 ## Execução de 20/10/2026
 
 Registro completo, expectativas, mensagens Discord, defeitos e limites:

@@ -1,5 +1,9 @@
 # Continuação em 20/10/2026
 
+**Atualização posterior:** os dois ajustes foram publicados em 20/10, 09h49,
+com autorização explícita. Bot online e mensagem nova confirmados no Discord.
+[Publicação e pendências](../../pesquisa/validacao/2026-10-20-r53-pendentes/PUBLICACAO.md).
+
 Os resultados abaixo desta seção são históricos, da bateria de 19/10.
 A nova rodada executou ampliação, entidade completa/excesso, Liberações,
 Máximas e Forma custom em cartão. Ampliação e custom passaram; cartões dos
