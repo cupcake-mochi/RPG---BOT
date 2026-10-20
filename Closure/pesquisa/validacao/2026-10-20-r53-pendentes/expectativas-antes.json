@@ -1,0 +1,116 @@
+{
+  "data": "2026-10-20",
+  "registrado_antes_dos_envios": true,
+  "bot_publicado_referencia": "c1724f0effad9d14fd4bd02525fcf93395e1d93f",
+  "base_git": "9f52a57cfe21190c4497fb6169f4dad4ab8af4a9",
+  "produtor": "4b22da5420263a8885e28a508cbc39938dd9d9da",
+  "copia": "1lujjGigxC8bvYJ3DLRziIeUvLU_AeqjiCmcnt6iyqcE",
+  "fonte_regras": "Ficha---RPG-JJK/referencias-r53/LIVRO-COMPLETO.md",
+  "progressao": {
+    "nivel_inicial": 2,
+    "alterar_campanha": false,
+    "nivel_5": {
+      "xp": 800,
+      "missoes_longas_sinteticas": 4
+    },
+    "nivel_10": {
+      "xp": 3700
+    },
+    "nivel_17": {
+      "xp": 10400,
+      "missoes_longas_sinteticas": 52
+    },
+    "limites": "Histórico inventado exclusivamente para ensaio. Sem Limiar (níveis até 17). Máximo um nível por missão; no máximo uma missão de 200 XP por semana. Nível editável nativo será ajustado à soma das missões, sem mudar CONFIGURAÇÃO."
+  },
+  "casos": [
+    {
+      "id": "ampliacao",
+      "nivel": 5,
+      "classe_1": "Projétil, Dano 3 pontos, 3d8, 3 PE, saldo 3",
+      "classe_2": "mesma Forma/função/peças, Dano 6 pontos, 6d8, 6 PE, saldo 6",
+      "recuperacao": "retornar à Classe 1 conserva 3 pontos; Classe 2 conserva 6",
+      "negativo": "acrescentar Precisão somente na Classe 2 deve apontar Ampliação altera funções ou peças; restauração deve retirar esse erro"
+    },
+    {
+      "id": "entidade",
+      "tipo": "Maldição domada com técnica própria",
+      "nivel": 17,
+      "atributos": [
+        3,
+        3,
+        3,
+        2,
+        1
+      ],
+      "familias": "uma Livre, duas Neutras, seis Fechadas; usar famílias da entidade",
+      "basica": "3d6, 0 PE, Projétil, sem peças",
+      "especial_C1": "2 pontos, 2d8, 3 PE; 3 pontos excedem o saldo 2"
+    },
+    {
+      "id": "liberacao",
+      "nivel": 10,
+      "classe": 3,
+      "personagem": "Projétil, 9 pontos Dano + 3d8 = 12d8, 14 PE",
+      "entidade": "domada 10, Projétil, 6 pontos Dano + 3d8 = 9d8, 14 PE",
+      "negativo": "nível 9 não tem acesso à Liberação; entidade de outro tipo não tem trunfo"
+    },
+    {
+      "id": "maxima",
+      "nivel": 17,
+      "personagem": "Projétil, função Dano fixa, 24d8, 8 pontos de montagem, 25 PE",
+      "entidade": "domada 17 com técnica, Projétil, Dano fixa, 19d8, 8 pontos de montagem, 25 PE",
+      "limites": "sobra não compra dados; versão maxima exportada; aquisição/COMO É permanece com o mestre"
+    }
+  ],
+  "pendentes_prioridade_2": [
+    "custom em cartão sem nova aprovação real",
+    "troca rápida entre Classes",
+    "segunda pessoa real (não simular)"
+  ],
+  "adendo_antes_da_entidade": {
+    "especial_1": "Classe 1, Projétil, Precisão (Mira Livre da entidade, Fechada no personagem): orçamento 2, preço 1, Dano 1d8, 3 PE. Negativo com Dano 2 deve exceder saldo 1.",
+    "especial_2": "Classe 1, Projétil sem peças, Dano 2d8, 3 PE.",
+    "atributos_personagem_17": [
+      3,
+      3,
+      3,
+      2,
+      1
+    ],
+    "marcos_personagem": "6,10,14; três Refino, sem marcos Corpo; 12 pontos de atributos base.",
+    "tipo_entidade": "Domada nível 17 com técnica própria sintética declarada na definição.",
+    "limites": "Origem, treinos e aquisições são sintéticos; nenhum registro real de mestre foi alterado."
+  },
+  "negativos_de_acesso_antes_do_envio": {
+    "nivel_personagem": 9,
+    "nivel_domada": 9,
+    "xp": 3000,
+    "missoes": "15 longas sintéticas de 200 XP, uma por semana; apagar demais registros da cópia e restaurar depois",
+    "atributos_personagem_e_entidade": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "marcos_refino": 1,
+    "classes": "Classe máxima 3; Liberações de Classe 3 permanecem acessíveis quanto à Classe, mas proibidas por nível < 10. Máximas proibidas por nível < 17.",
+    "esperado": "avisos de acesso às duas Liberações e duas Máximas; somam-se aos seis falsos erros independentes da entidade. Não mudar cadastro de campanha."
+  },
+  "custom_antes_do_ensaio": {
+    "fonte_exata": "snapshot nativo B47 sintético 02-custom-aprovada.xlsx da rodada 18/10, lido apenas para recuperar o cadastro existente",
+    "registro": "custom.forma.1: tipo Forma, nome Agulha Coruja B47, base Projétil, mestre_viu=1, demais campos vazios",
+    "pendente": "nome Agulha Coruja Pendente R53 com mesma base e MESTRE VIU deve pedir aprovação exata",
+    "aprovado": "usar definição literal já cadastrada no servidor deve reconhecer aprovação anterior, sem escrita no cadastro",
+    "alterado": "efeito com texto novo deve reabrir aprovação; restaurar vazio ao final",
+    "cartao": "Classe 1, Forma baseada em Projétil, 3 pontos Dano, 3d8 e 3 PE esperados pelo livro/base; bot tem de mostrar explicitamente sem recálculo independente. Aprovação não concede bônus por prosa."
+  },
+  "troca_rapida_antes": {
+    "copia": "1VjBPOoDwrlODzAPoSINOjtLv7AOmdWXUiWHBBk4M1Es",
+    "sequencia": "2 → 1 → 2 em edições nativas consecutivas, sem esperar estabilizar entre elas",
+    "captura": "oito exports CSV reais em processo local paralelo, depois export estável e análise no Discord",
+    "expectativa": "versão 1 continua Dano 3 e versão 2 Dano 6. Leituras transitórias devem ser identificadas; nunca misturar os números nem perder versões. Os 12 erros de acesso/entidade do estado de nível 9 são independentes.",
+    "limite": "se nenhuma captura pegar a janela de transição, não afirmar que a releitura real foi exercitada neste cenário.",
+    "correcao_do_operador": "Primeira tentativa descartada: helper capturava o handle antigo e operou a cópia 04 enquanto o processo lia a 05. Repetir com handle explícito 360597675; nenhuma dessas capturas prova transição na 05. Ambas são sintéticas."
+  }
+}

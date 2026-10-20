@@ -1,3 +1,17 @@
+# Continuação em 20/10/2026
+
+Os resultados abaixo desta seção são históricos, da bateria de 19/10.
+A nova rodada executou ampliação, entidade completa/excesso, Liberações,
+Máximas e Forma custom em cartão. Ampliação e custom passaram; cartões dos
+trunfos e negativos de acesso foram conferidos, mas a entidade válida revelou
+dois defeitos do bot que produzem seis falsos erros (Famílias da versão 12 e
+resultados de perícia com sinal `+`). Troca rápida ficou parcial, sem captura
+da janela; segunda pessoa não foi executada. Dois ajustes de exibição foram
+implementados e testados no commit `939d2ed`, sem publicação na Discloud.
+
+[Relatório de 20/10 com evidências e mensagens Discord](../../pesquisa/validacao/2026-10-20-r53-pendentes/RELATORIO.md).
+[Status atualizado da retomada](../../docs/RETOMADA-R53.md).
+
 # Bateria R53 · Sheets, XLSX e Discord · 19/10/2026
 
 Código conferido: `c1724f0effad9d14fd4bd02525fcf93395e1d93f`, branch

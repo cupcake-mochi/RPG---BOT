@@ -1,4 +1,32 @@
-# Retomada R53 · após a bateria de 19/10/2026
+# Retomada R53 · atualizada em 20/10/2026
+
+## Execução de 20/10/2026
+
+Registro completo, expectativas, mensagens Discord, defeitos e limites:
+[bateria dos casos pendentes](../pesquisa/validacao/2026-10-20-r53-pendentes/RELATORIO.md).
+Código local testado `939d2ed`; publicado permanece a referência `c1724f0`
+fornecida pelo usuário, sem nova implantação ou auditoria do hash instalado.
+
+| Caso | Situação em 20/10 |
+|---|---|
+| Ampliação entre Classes permitidas | Executado; preservação/recuperação e negativo passaram; link/XLSX nativo concordaram. |
+| Entidade completa | Executado válido/excesso; excesso detectado, porém o válido sofre seis falsos erros: Famílias R53 e cinco resultados de perícias com sinal `+`. Correção funcional pendente. |
+| Liberação do personagem/entidade | Válidos e sem acesso executados; cartões e rejeição de acesso passaram. Veredito global tem os seis falsos erros da entidade. |
+| Técnica Máxima do personagem/entidade | Válidas e sem acesso executadas, mesmo limite global da entidade. |
+| Forma custom em cartão | Pendente, aprovação sintética exata anterior e alteração posterior executados; 0/2 → 0/0 → 0/2. Limite sem recálculo explícito; definição restaurada, sem gravar aprovação. |
+| Troca rápida | Parcial: versões preservadas em oito capturas, todas estáveis; janela transitória/releitura real ainda não capturada. Primeira tentativa com aba errada descartada. |
+| Segunda pessoa | Não executado; depende de outra pessoa/sessão real autorizada. |
+| Dois ajustes de texto | Implementados com regressões no `939d2ed`, sem alterar veredito/limites. Não publicados. |
+
+34 testes R53 e 246 da ficha passaram (um online opcional pulado).
+Suíte completa no Windows: 874 executados, 29 erros, uma falha, 65 pulados;
+limitações de plataforma/mídia documentadas, sem declarar suíte verde.
+Pacote regenerado e auditado, não publicado. Próxima execução: corrigir os
+dois defeitos funcionais da entidade, repetir os casos afetados, capturar a
+transição rápida, testar outra pessoa e verificar a suíte em Linux compatível.
+
+As seções seguintes conservam o roteiro e o ponto de partida de 19/10;
+o status atual é a tabela acima.
 
 ## Ponto de partida
 
@@ -22,7 +50,7 @@ Não usar reset destrutivo ou force-push. Ler
 [BATERIA-NATIVA-R53.md](../dados/ficha/BATERIA-NATIVA-R53.md), que contém os
 links das três cópias sintéticas, resultados, evidências e limites.
 
-## Próxima bateria nativa — ainda não executada
+## Roteiro original da bateria nativa de 19/10
 
 Cada caso deve partir de uma cópia sintética, ter expectativa anotada antes
 do envio e passar por Sheets → exportação → Discord. Testar pelo link e

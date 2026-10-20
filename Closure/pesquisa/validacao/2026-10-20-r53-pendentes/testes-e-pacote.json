@@ -1,0 +1,46 @@
+{
+  "testes_r53": {
+    "executados": 34,
+    "resultado": "OK"
+  },
+  "painel": {
+    "executados": 19,
+    "resultado": "OK",
+    "incluidos_em_testes_ficha": true
+  },
+  "testes_ficha": {
+    "executados": 246,
+    "pulados": 1,
+    "resultado": "OK"
+  },
+  "b47": {
+    "executados": 174,
+    "erro_de_ambiente": 1,
+    "causa": "teste chama .venv/bin/python, caminho Linux ausente no Windows",
+    "reteste_caso": {
+      "executados": 1,
+      "resultado": "OK",
+      "ajuste_local": "launcher Python em .venv/bin/python.exe; nenhum fonte alterado"
+    }
+  },
+  "suite_completa_windows": {
+    "executados": 874,
+    "erros": 29,
+    "falhas": 1,
+    "pulados": 65,
+    "resultado": "FAILED",
+    "limite": "Não equivale ao resultado 882 da rodada Linux. Mídia usa os.killpg e resource; teste CLI pressupõe .venv/bin/python. Falha do GIF dependente do caminho de mídia. Sem WSL disponível; não se corrigiu runtime de mídia fora do escopo."
+  },
+  "ambiente": {
+    "python": "3.12.14 Windows",
+    "utf8": true,
+    "finais_de_linha": "LF para preservar os hashes do núcleo; core.autocrlf=false só neste clone"
+  },
+  "pacote": {
+    "arquivos": 75,
+    "sha256": "31b39b284b140b4db70b2eaf09428745441fcdfe8bf8dfc595a323e46e76a2ed",
+    "sem_segredos_bancos_campanha_ensaios": true,
+    "fontes_alteradas_identicas": true,
+    "publicado": false
+  }
+}
