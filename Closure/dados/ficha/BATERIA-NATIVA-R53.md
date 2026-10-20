@@ -125,3 +125,7 @@ quatro cartões, com VÁLIDO/REVISAR por cartão e os dados/PE esperados.
 
 Não houve defeito funcional novo comprovado nos casos executados. Não mudar
 expectativas nem repetir implantação apenas para registrar a bateria.
+
+Próximos casos, critérios esperados e separação entre bot, produtor e mestre:
+[RETOMADA-R53.md](../../docs/RETOMADA-R53.md). Os itens desse roteiro permanecem
+pendentes; não foram contabilizados nas 13 análises desta rodada.
