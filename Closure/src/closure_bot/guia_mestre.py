@@ -4,12 +4,12 @@ MESTRE = ("Revisar uma ficha como mestre", (
     ("1. Combine o que será revisado",
      "Este roteiro ajuda o mestre a revisar a ficha inteira, usando o painel do bot como apoio. "
      "Abra por **GC:guia mestre** ou **/ficha mestre**. Ele não analisa um arquivo nem concede aprovações.\n\n"
-     "Peça ao jogador o link ou o arquivo XLSX da ficha atual. Confirme campanha, edição do livro, nível inicial, Grau, recursos e opções permitidas. "
+     "Peça ao jogador o link ou o arquivo Excel (.xlsx) da ficha atual. Confirme campanha, edição do livro, nível inicial, Grau, recursos e opções permitidas. "
      "Se houver regras próprias, compare **CONFIGURAÇÃO → REGRAS DE CAMPANHA** com o que a mesa autorizou.\n\n"
      "Use `GC:guia criar` para acompanhar o preenchimento e `GC:guia planilha` para localizar abas e configurações. "
      "Faça a revisão pela versão atual: um painel antigo não acompanha as edições do jogador."),
     ("2. Rode a análise e separe os resultados",
-     "Use **/ficha analisar** com o link ou XLSX. Pelo chat, escreva `GC:ficha LINK_DA_FICHA` "
+     "Use **/ficha analisar** com o link ou arquivo Excel (.xlsx). Pelo chat, escreva `GC:ficha LINK_DA_FICHA` "
      "ou anexe o XLSX à mensagem de `GC:ficha`. "
      "Envie uma fonte por análise. Por link, o bot precisa ter acesso de leitura; o painel aparece no canal.\n\n"
      "Leia **Resumo**, **Correções e revisão** e **Limites da análise**. Vermelho indica erro naquela página; "
@@ -22,9 +22,9 @@ MESTRE = ("Revisar uma ficha como mestre", (
     ("3. Confira criação, treinos e progressão",
      "Compare os atributos base e seus limites com a criação acordada. Confira Origem, traço, marcante e menores elegíveis, "
      "Caminho e Trilha compatíveis. Legados de história não concedem bônus nem substituem capacidades.\n\n"
-     "Confira de onde veio cada perícia, ofício, treino em arma e TR. Verifique trocas, escolhas repetidas e o atributo fixo "
+     "Confira de onde veio cada perícia, ofício, treino em arma e Teste de Resistência (TR). Verifique trocas, escolhas repetidas e o atributo fixo "
      "do TR Físico. Não cobre de novo uma escolha recebida gratuitamente, nem conte duas vezes o mesmo treino.\n\n"
-     "Para progressão, peça os registros de missões, XP, marcos de Corpo/Refino/Leque, rolagens de vida autorizadas, "
+     "Para progressão, peça os registros de missões, pontos de experiência (XP), marcos de Corpo/Refino/Leque, rolagens de vida autorizadas, "
      "trocas e aprendizados. Confira ordem de aquisição, requisitos de nível e eventuais feitos de Limiar.\n\n"
      "Um total que fecha hoje não comprova esse histórico. "
      "Se faltar evidência, registre a dúvida e combine como resolvê-la antes de liberar a parte afetada."),

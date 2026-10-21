@@ -31,7 +31,7 @@ ASSUNTOS = {
          "Escolha um assunto no menu abaixo. Use as setas para continuar dentro dele."),
         ("Comandos para começar",
          "`/ajuda` ou `GC:ajuda` mostra a lista de comandos. Este guia explica como usá-los.\n\n"
-         "A página **Abreviações** da ajuda reúne os nomes curtos. `GC:ab` abre essa página diretamente; "
+         "**GC:** é o prefixo dos comandos das **Guias do Ciclo**. A página **Abreviações** da ajuda reúne os nomes curtos. `GC:ab` abre essa página diretamente; "
          "os comandos completos continuam funcionando.\n\n"
          "`GC:guia ficha` abre o passo a passo da análise. Você também pode usar `/ficha guia` "
          "ou `/guia` e escolher **Analisar uma ficha** no campo **assunto**.\n\n"
@@ -53,7 +53,7 @@ ASSUNTOS = {
          "espere os campos e as contas terminarem de atualizar.\n\n"
          "**Pelo link:** use `/ficha analisar` com o campo **link**, ou escreva `GC:ficha` seguido do endereço da planilha. "
          "O bot precisa conseguir abrir esse link para leitura.\n\n"
-         "**Pelo arquivo:** no Google Planilhas, vá a **Arquivo → Fazer download → Microsoft Excel (.xlsx)**. "
+         "**Pelo arquivo Excel (.xlsx):** no Google Planilhas, vá a **Arquivo → Fazer download → Microsoft Excel (.xlsx)**. "
          "Envie o arquivo em `/ficha analisar`, no campo **arquivo**, ou anexe à mesma mensagem de `GC:ficha`.\n\n"
          "Envie uma fonte por vez. Se preferir não abrir o acesso à planilha, use o XLSX. "
          "O resultado da análise aparece no canal para você e o mestre consultarem."),
@@ -116,6 +116,7 @@ ASSUNTOS = {
         ("Consultar e conferir a regra",
          "`/livro` ou `GC:livro` oferece os PDFs nos temas **normal** e **escuro**. Você também pode pedir diretamente: "
          "`kal, pode me mandar o link do livro?`. Ela entrega os links conhecidos, sem exigir outro comando.\n\n"
+         "Consulte a **versão atual do livro de regras** e confira se é a edição usada pela sua mesa.\n\n"
          "Para uma dúvida, chame uma das guias: `kal, como funciona Integridade?` "
          "ou `closure, quais são os limites dessa Melhoria?`. Diga a habilidade, Classe e as escolhas relevantes "
          "quando elas fizerem diferença na resposta.\n\n"
@@ -161,8 +162,8 @@ ASSUNTOS = {
          "e o nome da regra no chat. Isso ajuda a buscar a fonte certa do livro.\n\n"
          "As guias podem comentar arte e reconhecer representações das personagens quando houver elementos suficientes. "
          "Uma imagem não comprova que elas viveram a cena.\n\n"
-         "Reações adultas não gráficas dependem da configuração do servidor e da marcação NSFW do canal. "
-         "Elas não incluem ERP ou encenação sexual, e os limites do provedor continuam valendo. "
+         "Reações adultas não gráficas dependem da configuração do servidor e da marcação NSFW do canal (conteúdo adulto, 18+). "
+         "Elas não incluem interpretação de cenas sexuais (ERP), e os limites do provedor continuam valendo. "
          "Quem administra o servidor encontra o passo a passo no assunto **Servidor**."),
     )),
     "memoria": ("Memória e seus dados", (
@@ -211,10 +212,10 @@ ASSUNTOS = {
          "`ativar:Não` desliga. Sem opção, o comando mostra o estado atual.\n\n"
          "`/nsfw_canal canal:#chat` limita o recurso a esse canal e seus tópicos. "
          "`/nsfw_canal todos:Sim` retira essa restrição. Sem opções, mostra a configuração.\n\n"
-         "**Sem um canal escolhido, o modo vale em todos os canais marcados como NSFW onde o bot já atende.** "
+         "**Sem um canal escolhido, o modo vale em todos os canais marcados como NSFW (conteúdo adulto, 18+) onde o bot já atende.** "
          "Ele ainda precisa estar ligado por `/responder_nsfw`. O canal em que você usa o comando não é "
          "escolhido automaticamente.\n\n"
-         "A opção permite reações e opiniões no jeito das personagens, sem ERP ou encenação sexual. "
+         "A opção permite reações e opiniões no jeito das personagens, sem interpretação de cenas sexuais (ERP). "
          "Ela não remove os limites do provedor."),
     )),
 }

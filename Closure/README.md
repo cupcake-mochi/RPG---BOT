@@ -1,6 +1,6 @@
 # Guias do Ciclo · projeto atual
 
-**Versão estável 1.0.2 · publicada em 21/10/2026.**
+**Versão estável 1.0.3 · publicada em 21/10/2026.**
 
 Um bot, duas personagens: Kal’tsit atende das 9h às 21h e Closure das 21h às 9h,
 no horário de Brasília. Elas conversam, consultam o livro do Ciclo Maldito,
@@ -30,7 +30,7 @@ somente essas duas configurações. Arquivista e Guias têm configurações sepa
 
 ## Regras, ficha e limites
 
-A consulta atual usa **R53/v0.366**, com 576 blocos. Os cartões ANALISE 12 usam
+A consulta usa a versão do livro **v0.366 (revisão 53)**, com 576 trechos de referência. Os cartões ANALISE 12 usam
 o motor R53; formatos antigos mantêm sua referência histórica separada.
 A análise não usa um modelo de linguagem para decidir contas ou aprovações.
 
@@ -42,6 +42,7 @@ continuam com o mestre. Aprovação de texto não cria benefício numérico.
 - [Contrato e cobertura da ficha](dados/ficha/INTEGRACAO-B47.md)
 - [Auditoria R53, testes e publicação](pesquisa/validacao/2026-10-21-r53/FECHAMENTO.md)
 - [Idioma e lore por servidor](docs/RETOMADA-PUBLICO.md)
+- [Clareza de siglas e entrega atual](docs/CLAREZA-SIGLAS.md)
 - [Revisão final de clareza e apresentação](docs/REVISAO-FINAL-APRESENTACAO.md)
 
 ## Executar e manter

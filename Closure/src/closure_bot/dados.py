@@ -23,9 +23,13 @@ def ler_manifesto(dados: Path) -> dict:
     return json.loads((dados / "sistema" / "MANIFESTO.json").read_text(encoding="utf-8"))
 
 
-def resumo_manifesto(manifesto: dict) -> str:
-    return (f"{manifesto['sistema']} {manifesto['versao_sistema']}, livro {manifesto['edicao_livro']}, "
-            f"{manifesto['blocos']} blocos")
+def resumo_manifesto(manifesto: dict, idioma="pt-BR") -> str:
+    edicao = manifesto['edicao_livro']
+    if idioma == "en":
+        return (f"{manifesto['sistema']} {manifesto['versao_sistema']}, rulebook version: {edicao}, "
+                f"{manifesto['blocos']} reference excerpts")
+    return (f"{manifesto['sistema']} {manifesto['versao_sistema']}, versão do livro: {edicao}, "
+            f"{manifesto['blocos']} trechos de referência")
 
 
 def carregar_personas(dados: Path, avatares: dict[str, str | None]) -> dict[str, Persona]:

@@ -113,7 +113,7 @@ class Admin(commands.Cog):
         e.add_field(name="» Type commands in chat",inline=False,value=(
             "`GC:guide create` walks through character creation; `GC:guide spreadsheet` explains tabs and settings.\n"
             "`GC:guide sheet` explains analysis; `GC:guide gm` covers the GM review. `GC:guide` opens all topics.\n"
-            "`GC:help`, `GC:book`, `GC:sheet LINK` (or attach XLSX), `GC:weather CITY`, `GC:ping` and `GC:status` also work in chat.\n"
+            "`GC:help`, `GC:book`, `GC:sheet LINK` (or attach an Excel .xlsx file), `GC:weather CITY`, `GC:ping` and `GC:status` also work in chat.\n"
             "Choose **Abbreviations** below for short names. Native slash-menu names follow your Discord client's language; "
             "Portuguese commands and English prefix aliases remain accepted."))
         links=[f"[{nome}]({url})" for nome,url in (("Privacy",self.bot.config.politica_url),("Terms of use",self.bot.config.termos_url)) if url]
@@ -127,7 +127,7 @@ class Admin(commands.Cog):
             e = discord.Embed(title="Abbreviations",color=COR,description=(
                 "Short forms of the same commands. **Full names still work.**\n\n"+
                 "\n".join(f"`GC:{n}` → `GC:{d}`" for n,d in CURTOS.items())+
-                "\n\nArguments still apply: `GC:f SHEET_LINK`, `GC:c BH` or `GC:g gm`. Attach XLSX to the same `GC:f` message."))
+                "\n\nArguments still apply: `GC:f SHEET_LINK`, `GC:c BH` or `GC:g gm`. Attach the Excel (.xlsx) file to the same `GC:f` message."))
             e.add_field(name="Other accepted names",value="\n".join(f"`GC:{n}` → `GC:{d}`" for n,d in OUTROS_NOMES.items()),inline=False)
             extras=self.bot.registro.atalhos_servidor(servidor) if servidor else {}
             linhas=[f"`GC:{n}` → `GC:{d}`" for n,d in extras.items()]
@@ -145,7 +145,7 @@ class Admin(commands.Cog):
             "São formas curtas dos mesmos comandos. **Os nomes completos continuam funcionando.**\n\n"
             + "\n".join(f"`GC:{nome}` → `GC:{alvo}`" for nome, alvo in CURTOS.items())
             + "\n\nO que você escreve depois continua valendo: `GC:f LINK_DA_FICHA`, `GC:c BH` ou `GC:g mestre`. "
-            "O XLSX também pode ser anexado à mensagem de `GC:f`."))
+            "O arquivo Excel (.xlsx) também pode ser anexado à mensagem de `GC:f`."))
         e.add_field(name="Outros nomes aceitos", value="\n".join(f"`GC:{n}` → `GC:{d}`" for n, d in OUTROS_NOMES.items()), inline=False)
         extras = self.bot.registro.atalhos_servidor(servidor) if servidor else {}
         linhas = [f"`GC:{n}` → `GC:{d}`" for n, d in extras.items()]
@@ -187,7 +187,7 @@ class Admin(commands.Cog):
                                permissoes=interacao.permissions, abreviacoes=pagina == "abreviacoes")
 
     def texto_ping(self) -> str:
-        return tr('No ar ({0} ms). Regras: {1}.').format(round(self.bot.latency * 1000), resumo_manifesto(self.bot.manifesto))
+        return tr('No ar ({0} ms). Regras: {1}.').format(round(self.bot.latency * 1000), resumo_manifesto(self.bot.manifesto, atual()))
 
     async def texto_status(self, servidor: int | None = None) -> str:
         agora = datetime.now(FUSO)
@@ -230,14 +230,14 @@ class Admin(commands.Cog):
         local = {
             None: '**Neste canal: ativo.**',
             'desativado': '**Neste canal: inativo — a opção está desligada no servidor.**',
-            'sem_marcacao': '**Neste canal: inativo — falta marcar o canal como NSFW no Discord.**',
+            'sem_marcacao': '**Neste canal: inativo — marque o canal como NSFW (conteúdo adulto, 18+) no Discord.**',
             'outro_canal': '**Neste canal: inativo — este canal não é o escolhido em /nsfw_canal.**',
         }.get(motivo, '**Neste canal: não foi possível conferir o canal atual.**')
         local = tr(local)
         estado = tr('ativadas') if p.responder_nsfw else tr('desativadas')
         onde = (tr('somente em <#{0}> e seus tópicos').format(p.canal_nsfw_id) if p.canal_nsfw_id is not None
-                else tr('em todos os canais marcados como NSFW onde o bot já atende'))
-        return (tr('{0}\n\nRespostas adultas não gráficas **{1}** neste servidor; {2}. O canal precisa estar marcado como NSFW no Discord. Permite reação e opinião, sem ERP ou encenação sexual; os bloqueios do Google continuam.').format(local, estado, onde))
+                else tr('em todos os canais marcados como NSFW (conteúdo adulto, 18+) onde o bot já atende'))
+        return (tr('{0}\n\nRespostas adultas não gráficas **{1}** neste servidor; {2}. O canal precisa estar marcado como NSFW (conteúdo adulto, 18+) no Discord. Permite reação e opinião, sem interpretação de cenas sexuais (ERP); os bloqueios do Google continuam.').format(local, estado, onde))
 
     @app_commands.command(name="responder_nsfw", description="Ativa ou desativa reações adultas não gráficas neste servidor.")
     @app_commands.describe(ativar="Sim para ativar, Não para desativar. Em branco, consulta a configuração.")
@@ -251,7 +251,7 @@ class Admin(commands.Cog):
         await interacao.response.send_message(self._status_nsfw(interacao.guild_id, interacao.channel), ephemeral=True)
 
     @app_commands.command(name="nsfw_canal", description="Limita as reações adultas a um canal ou remove essa restrição.")
-    @app_commands.describe(canal="Canal de texto marcado como NSFW; inclui seus tópicos.",
+    @app_commands.describe(canal="Canal de texto marcado como NSFW (conteúdo adulto, 18+); inclui seus tópicos.",
                            todos="Sim para remover a restrição de canal. Sem opções, consulta a configuração.")
     @app_commands.guild_only()
     @app_commands.default_permissions(manage_guild=True)
@@ -267,7 +267,7 @@ class Admin(commands.Cog):
                 await interacao.response.send_message(tr('Escolha um canal de texto deste servidor.'), ephemeral=True)
                 return
             if not canal.is_nsfw():
-                await interacao.response.send_message(tr('Marque o canal como NSFW nas configurações do Discord antes de escolhê-lo.'), ephemeral=True)
+                await interacao.response.send_message(tr('Marque o canal como NSFW (conteúdo adulto, 18+) nas configurações do Discord antes de escolhê-lo.'), ephemeral=True)
                 return
             self.bot.registro.definir_canal_nsfw(interacao.guild_id, canal.id)
         elif todos:

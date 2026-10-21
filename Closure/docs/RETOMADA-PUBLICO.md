@@ -1,3 +1,5 @@
+**Fechamento mais recente:** Guias 1.0.3 e Arquivista 1.1.2 publicadas em 21/10/2026; linguagem comum para a versão do livro e siglas explicadas no contexto. [Estado, auditoria e retomada](CLAREZA-SIGLAS.md). Registros seguintes preservam rodadas anteriores.
+
 **Fechamento vigente:** Guias 1.0.2 e Arquivista 1.1.1 publicadas após revisão
 final de clareza/organização/visual. [Entrega e retomada](REVISAO-FINAL-APRESENTACAO.md).
 Os testes de idioma/lore, fichas nativas e piloto pago abaixo permanecem como

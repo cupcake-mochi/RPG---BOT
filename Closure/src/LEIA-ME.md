@@ -3,7 +3,7 @@
 Este documento reúne os arquivos, a preparação do ambiente e a hospedagem.
 Para aprender os comandos, consulte [os guias de uso](../docs/GUIAS-DE-USO.md).
 O estado atual e a última revisão ficam em
-[REVISAO-FINAL-APRESENTACAO.md](../docs/REVISAO-FINAL-APRESENTACAO.md).
+[CLAREZA-SIGLAS.md](../docs/CLAREZA-SIGLAS.md).
 
 A base corrente é R53/v0.366. Registros antigos de implantação e números de
 suíte foram preservados em [LEIA-ME-HISTORICO.md](LEIA-ME-HISTORICO.md).

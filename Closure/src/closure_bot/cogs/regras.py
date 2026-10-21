@@ -37,10 +37,8 @@ class Regras(commands.Cog):
         embed.set_author(name=persona.nome,icon_url=persona.avatar_url or None)
         manifesto = getattr(self.bot,"manifesto",None) or {}
         if manifesto.get("edicao_livro"):
-            edicao=manifesto['edicao_livro']
-            versao=manifesto.get('versao_sistema','?')
-            embed.set_footer(text=(f"General lookup reference: {edicao} ({versao}). The PDFs may be newer; check your table's edition." if ingles else
-                                   f"Base geral de consulta: {edicao} ({versao}). Os PDFs podem ser mais recentes; confira a edição da mesa."))
+            embed.set_footer(text=("Reference: the rulebook version installed in the bot. The PDFs may be newer; check your table's edition." if ingles else
+                                   "Referência: versão do livro instalada no bot. Os PDFs podem ser mais recentes; confira a edição da mesa."))
         botao = discord.ui.View()
         botao.add_item(discord.ui.Button(label="Standard theme" if ingles else "Tema normal",url=url))
         botao.add_item(discord.ui.Button(label="Dark theme" if ingles else "Tema escuro",url=self.bot.config.livro_noturno_url))

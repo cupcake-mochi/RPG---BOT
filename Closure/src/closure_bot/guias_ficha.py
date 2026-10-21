@@ -19,7 +19,7 @@ CRIAR = ("Criar uma ficha", (
      "Em **CONFIGURAÇÃO**, confira **REGRAS DE CAMPANHA** com o mestre. CAMPANHA em branco mantém o valor do livro; "
      "preencha apenas mudanças combinadas e registre o motivo. Não altere uma regra para esconder um aviso.\n\n"
      "Preencha a identificação na **CARTEIRA** e os dados de história na **FICHA PESSOAL**. "
-     "Deixe a emissão para o fim. Se houver progressão além do início combinado, registrem o XP e os ganhos correspondentes; "
+     "Deixe a emissão para o fim. Se houver progressão além do início combinado, registrem os pontos de experiência (XP) e os ganhos correspondentes; "
      "não escreva por cima do nível calculado."),
     ("3. Distribua os atributos",
      "Na **FICHA**, distribua os pontos entre **Força, Destreza, Constituição, Inteligência e Essência** nos campos de atributo base.\n\n"
@@ -71,7 +71,7 @@ CRIAR = ("Criar uma ficha", (
     ("8. Monte uma capacidade por vez",
      "Na **FICHA AMALDIÇOADA**, abra um cartão da modalidade permitida e escolha uma **Classe disponível**. "
      "Preencha o nome e **COMO É**: quem afeta, como resolve, alcance, duração e quando o efeito termina.\n\n"
-     "Escolha a **Forma** e distribua pontos inteiros em **DANO, CURA e PV TEMP.** conforme a função pretendida. "
+     "Escolha a **Forma** e distribua pontos inteiros em **DANO, CURA e PV TEMP.** (pontos de vida temporários) conforme a função pretendida. "
      "Selecione Melhorias e Restrições; confira custo, devolução, saldo e PE, os pontos de energia. "
      "Nas modalidades de dados fixos, escolha a função no campo próprio.\n\n"
      "Leia os avisos e compare o texto com as peças. **SÓ EM SI** significa afetar exclusivamente quem executa; "
@@ -110,7 +110,7 @@ CRIAR = ("Criar uma ficha", (
      "Não copie esses créditos para o saldo manual, pois seriam contados duas vezes."),
     ("12. Revise os valores e o estado inicial",
      "Volte à **FICHA** e confira Vida, PE ou recurso da rota, Integridade, Defesa, Proteção, "
-     "deslocamento, acerto, CD, Maestria e treinos. **CD** é a dificuldade contra a qual o alvo faz uma resistência; "
+     "deslocamento, acerto, CD, Maestria e treinos. **CD (Classe de Dificuldade)** é a dificuldade contra a qual o alvo faz uma resistência; "
      "ela não é o bônus de ataque.\n\n"
      "Compare os totais com Caminho, Origem, nível e equipamento. Se algo estiver errado, corrija a entrada que o gerou, "
      "sem substituir a fórmula pelo número desejado. Vida rolada só entra quando combinada com o mestre.\n\n"
@@ -162,12 +162,12 @@ PLANILHA = ("Conhecer a planilha", (
      "Use ao concluir a criação ou quando houver uma reemissão combinada, não a cada abertura da ficha. "
      "Os detalhes do ciclo ficam na página **Como emitir a carteira e acompanhar salários** deste guia."),
     ("FICHA · atributos, recursos e combate",
-     "A FICHA reúne atributos, perícias, ofícios, TR, Caminho, Trilha, Origem e os principais valores de combate. "
+     "A FICHA reúne atributos, perícias, ofícios, Testes de Resistência (TR), Caminho, Trilha, Origem e os principais valores de combate. "
      "Aqui você acompanha recursos e estados como Vida, energia, Integridade, Sequelas e Exaustão.\n\n"
      "Separe **base**, **Buff/Debuff**, **total**, **atual** e **máximo**. Distribua pontos na base; "
      "registre ajustes nos campos próprios; acompanhe o gasto no atual. O total e o máximo são resultados das contas.\n\n"
      "Os menus de atributo de conjuração, acerto e TR Físico, quando aplicáveis, precisam corresponder às escolhas da criação. "
-     "Equipamento e XP vêm de registros da FICHA PESSOAL: corrija a origem do dado.\n\n"
+     "Equipamento e pontos de experiência (XP) vêm de registros da FICHA PESSOAL: corrija a origem do dado.\n\n"
      "O menu de descanso aplica as recuperações previstas. Escolha o descanso realmente realizado e confira o aviso do que mudou. "
      "Não o use para ajustar livremente os máximos."),
     ("FICHA AMALDIÇOADA · poderes e habilidades",
@@ -200,7 +200,7 @@ PLANILHA = ("Conhecer a planilha", (
      "Confira esse estado e os limites de uso com o mestre. Sem entidades no personagem, esta aba pode ficar sem preenchimento."),
     ("FICHA PESSOAL · história, itens e missões",
      "Aqui ficam o dossiê, traço, capacidades da Origem, Legados de história, equipamento, treinos em armas, "
-     "inventário, carga, dinheiro e o painel de missões/XP.\n\n"
+     "inventário, carga, dinheiro e o painel de missões e pontos de experiência (XP).\n\n"
      "Registre quantidades e Volume e selecione o que está vestido ou nas mãos. "
      "Ter uma arma no inventário não significa estar com ela equipada ou ter treino. "
      "Confira os avisos de Força, acesso e excesso de carga.\n\n"
@@ -213,9 +213,8 @@ PLANILHA = ("Conhecer a planilha", (
      "Ele serve como consulta rápida enquanto você preenche ou joga.\n\n"
      "Para um procedimento completo, consulte o capítulo do livro: criação, equipamento, Fundamento, "
      "Caminho, Origem ou progressão, conforme a dúvida. `/livro` abre o PDF configurado no bot.\n\n"
-     "Confira a edição usada pela mesa. A consulta geral e os cartões atuais do bot usam **R53**; "
-     "formatos antigos mantêm sua compatibilidade separada. "
-     "Se a mesa usa outra edição, compare o trecho correspondente com o mestre."),
+     "Consulte a **versão atual do livro de regras** e confira a edição usada pela mesa. "
+     "Se houver diferença entre o livro, a ficha e a resposta do bot, compare o trecho correspondente com o mestre."),
     ("CONFIGURAÇÃO · regras da campanha",
      "CONFIGURAÇÃO reúne regras da mesa, bônus e mudanças e cadastros próprios. "
      "Não é necessário preencher tudo para criar um personagem com as regras padrão.\n\n"
@@ -227,7 +226,7 @@ PLANILHA = ("Conhecer a planilha", (
      "Uma alteração na cópia não muda a campanha cadastrada no bot. "
      "Se houver divergência, o mestre e o responsável pelo bot precisam conferir os dois registros."),
     ("Progressão · XP, marcos e novas escolhas",
-     "O nível acompanha o XP registrado na FICHA PESSOAL e o início definido para a campanha. "
+     "O nível acompanha os pontos de experiência (XP) registrados na FICHA PESSOAL e o início definido para a campanha. "
      "Preencha as recompensas reais das missões; não edite a fórmula do nível para avançar o personagem.\n\n"
      "Ao subir, confira vida, energia, Maestria, maior Classe, espaços e habilidades de Caminho e Trilha. "
      "Nos marcos, registre a escolha recebida: **Corpo, Refino ou Leque**, conforme as regras e os requisitos da rota. "

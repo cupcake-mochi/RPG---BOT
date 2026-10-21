@@ -1,6 +1,6 @@
 # Guias do Ciclo
 
-**Versão estável 1.0.2 · publicada em 21/10/2026.**
+**Versão estável 1.0.3 · publicada em 21/10/2026.**
 
 Kal’tsit e Closure conversam, explicam regras do **Ciclo Maldito** e conferem
 partes da ficha. O projeto atual fica em [`Closure/`](Closure/). A Arquivista
@@ -21,7 +21,7 @@ e a lore Nova Terra são opções separadas do idioma. A análise da ficha é pa
 
 ## Estado e documentação
 
-O corpus atual e os cartões da ficha usam **R53/v0.366**. Formatos antigos
+A consulta e os cartões da ficha usam a versão do livro **v0.366 (revisão 53)**. Formatos antigos
 conservam sua compatibilidade documentada. As versões estáveis e seus pacotes
 ficam em [Releases](https://github.com/cupcake-mochi/RPG---BOT/releases).
 
@@ -30,7 +30,7 @@ ficam em [Releases](https://github.com/cupcake-mochi/RPG---BOT/releases).
 | Visão do projeto e organização | [Closure/README.md](Closure/README.md) |
 | Instalação e execução | [Closure/src/LEIA-ME.md](Closure/src/LEIA-ME.md) |
 | Guias oferecidos no Discord | [Guias de uso](Closure/docs/GUIAS-DE-USO.md) |
-| Última revisão e entrega | [Revisão final](Closure/docs/REVISAO-FINAL-APRESENTACAO.md) |
+| Última revisão e entrega | [Clareza de termos](Closure/docs/CLAREZA-SIGLAS.md) |
 | Testes e limites R53 | [Fechamento R53](Closure/pesquisa/validacao/2026-10-21-r53/FECHAMENTO.md) |
 | Contrato da ficha | [Contrato e cobertura](Closure/dados/ficha/INTEGRACAO-B47.md) |
 | Estado para continuar o trabalho | [Fila atual](Closure/docs/FILA-ATUAL.txt) |
