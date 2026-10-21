@@ -1,4 +1,6 @@
 Fila atual — Guias do Ciclo, 21/10/2026
+EM DESENVOLVIMENTO: idioma PT-BR/inglês e lore por servidor; branch codex/guias-de-comandos, PR 68. Fonte e testes novos em revisão. Ainda NÃO implantado nesta etapa. Retomada: docs/RETOMADA-PUBLICO.md. O registro de publicação abaixo continua descrevendo a versão anterior.
+
 Publicado em 21/10 às 10:28:26: runtime 162b39c, revisão do mestre em GC:gm e /ficha mestre; ajuda com página Abreviações; padrões curtos e /atalho definir/remover/listar por servidor (Gerenciar servidor). As duas guias recebem documentação operacional e atalhos válidos do servidor no contexto. Suíte 912/911/1 online opcional, CI aprovada, 107 testes no ZIP. Ensaio real: oito páginas do mestre, ajuda, cadastro/uso/exibição/remoção de atalho temporário, GC:f com XLSX e guia privado. 80 arquivos instalados conferidos; ambiente/campanha/núcleo/legado e tabelas existentes preservados; nova tabela de atalhos vazia após limpar o ensaio. Política pública atualizada, URL preservada. Registro e retomada: pesquisa/validacao/2026-10-21-mestre-atalhos/RELATORIO.md. PR 68 aberta em rascunho, sem merge. Não repetir deploy por documentação.
 
 REGISTRO ANTERIOR DA CRIAÇÃO DOS GUIAS

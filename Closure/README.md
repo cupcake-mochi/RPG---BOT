@@ -1,5 +1,7 @@
 # Closure
 
+**Em preparação · 21/10:** idioma PT-BR/inglês, lore por servidor e links públicos por conversa. Implementação e testes em [retomada pública](docs/RETOMADA-PUBLICO.md); esta nota ainda não confirma implantação.
+
 **Mestre e atalhos · 21/10:** `GC:gm` ou `/ficha mestre` orienta a revisão
 completa. A ajuda tem uma página **Abreviações** (`GC:ab`); `/atalho` permite
 a administradores configurar até 20 nomes próprios por servidor. As duas

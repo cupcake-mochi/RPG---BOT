@@ -187,3 +187,15 @@ não se confundem com configurações compartilhadas do servidor.
 
 Validação, publicação e ensaios externos desta rodada:
 `pesquisa/validacao/2026-10-21-mestre-atalhos/RELATORIO.md`.
+
+## Idioma e mundo por servidor · em preparação em 21/10
+
+Os 57 painéis dos doze assuntos têm versão em inglês. `/idioma` ou `/language` muda as respostas novas do servidor; os nomes no menu de comandos seguem a preferência do cliente Discord. Com `GC:`, os aliases `guide`, `sheet`, `book`, `weather` e `help` também são aceitos. A ficha oficial continua com seus rótulos portugueses: a tradução preserva nomes de opções e chaves para que o jogador localize os campos.
+
+`/lnt` consulta; `ativar:Sim` seleciona Nova Terra e `ativar:Não` seleciona a referência original de Arknights. Idioma e mundo são independentes. Os três servidores indicados pelo mantenedor começam em Nova Terra; outros começam em Arknights. Quem tem Gerenciar servidor pode delegar apenas essas duas opções por `/cargo_admin`; isso não autoriza outros comandos administrativos, fichas ou criações próprias.
+
+Histórico de conversa é reiniciado na troca. Fatos duradouros ficam separados por servidor e mundo. Fatos antigos sem origem conhecida não são reinjetados: `/meus_dados legado:Sim` permite consultá-los, `/esquecer_fato legado:Sim` os remove, e `/meus_dados todos:Sim` entrega uma exportação privada dos fatos de todos os contextos. Exclusão pessoal continua abrangendo todos.
+
+A ajuda descreve canais de forma genérica, sem IDs da hospedagem. O livro oferece normal e escuro. Pedidos simples de links públicos conhecidos, como “pode me mandar o link do livro?”, são atendidos na conversa sem IA; não executam análise, configuração ou aprovação.
+
+Conferência mecânica continua determinística. Inglês é uma camada de apresentação; contas, aprovações por definição exata, campos e dados do jogador não mudam. Base original é uma referência curada limitada, com conhecimento canônico do jogo quando há confiança, e não um corpus integral de todos os eventos. As pastas reservadas 04/05/06 continuam excluídas.

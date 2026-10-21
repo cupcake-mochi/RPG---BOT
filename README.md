@@ -1,5 +1,7 @@
 # RPG---BOT
 
+**Em preparação · 21/10:** idioma PT-BR/inglês, lore por servidor e links públicos por conversa. Implementação e testes em [retomada pública](Closure/docs/RETOMADA-PUBLICO.md); esta nota ainda não confirma implantação.
+
 **Guias de criação · 21/10:** `GC:guia criar` orienta da cópia à emissão;
 `GC:guia planilha` explica abas e configurações; `GC:guia ficha` explica a
 análise. [Conteúdo e fontes](Closure/docs/GUIAS-DE-USO.md).
