@@ -203,6 +203,7 @@ def paginas(tema: str) -> list[discord.Embed]:
     for i, (nome, texto) in enumerate(textos, 1):
         embed = discord.Embed(title=f"Como usar · {titulo}", description=texto, color=0x2E8B57)
         embed.set_author(name=nome)
-        embed.set_footer(text=f"Página {i} de {len(textos)} · {nome} · GC:guia {tema} · só orientação; não executa ações")
+        rotulo = re.sub(r"^\d+\.\s+", "", nome)
+        embed.set_footer(text=f"Página {i} de {len(textos)} · {rotulo} · GC:guia {tema} · só orientação; não executa ações")
         saida.append(embed)
     return saida
