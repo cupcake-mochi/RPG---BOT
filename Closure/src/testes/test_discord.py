@@ -292,6 +292,7 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
 
     async def test_comandos_registrados(self):
         self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ajuda", "atalho", "guia", "ficha", "livro", "ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
+                          "idioma", "language", "lnt", "cargo_admin",
                           "meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados", "responder_nsfw", "nsfw_canal"})
 
     async def test_guias_publicos_e_alias_ficha_nao_executam_analise_ou_modelo(self):
@@ -664,6 +665,9 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.bot.registro.registrar_mensagem(message_id=777, canal_id=10, persona=fora)
         original = MagicMock(spec=discord.Message)
         original.content, original.author.id = "Descanso curto devolve um quarto.", 999
+        from datetime import timedelta
+        original.created_at = datetime.now(FUSO)
+        self.bot.registro.preparar_contexto(10,77,original.created_at - timedelta(seconds=1))
         await self.bot.get_cog("Chat").on_message(_mensagem("mas e no descanso longo?", canal, referencia=MagicMock(message_id=777, resolved=original)))
         self.assertEqual(self.montar.call_args.args[0], fora)
         self.assertEqual(webhook.send.call_args.kwargs["username"], self.bot.personas[fora].nome)
@@ -964,6 +968,7 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         async def usar(comando, *args):
             interacao = MagicMock()
             interacao.user.id = 42
+            interacao.guild_id = 77
             interacao.response.send_message = AsyncMock()
             await comando.callback(pessoa, interacao, *args)
             self.assertTrue(interacao.response.send_message.call_args.kwargs["ephemeral"])
@@ -984,7 +989,8 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertIn("1. jogo com um Bastião chamado Ren\n2. prefiro resposta curta", await usar(pessoa.meus_dados))
         self.assertIn("Não achei", await usar(pessoa.esquecer_fato, 5))
         self.assertIn("Esquecido: jogo com um Bastião chamado Ren.", await usar(pessoa.esquecer_fato, 1))
-        self.assertEqual(self.bot.registro.ficha(42).fatos, ("prefiro resposta curta",))
+        self.assertEqual(self.bot.registro.ficha_contexto(42,"77:original").fatos, ("prefiro resposta curta",))
+        self.assertEqual(self.bot.registro.ficha(42).fatos, ())
         self.assertIn("Apagado", await usar(pessoa.apagar_meus_dados))
         self.assertEqual(self.bot.registro.mensagens_do_dia(), [])
         self.assertIn("Fatos: nenhum.", await usar(pessoa.meus_dados))
@@ -1017,7 +1023,9 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
 
         comum = await pedir(2, False)
         campos = {c.name: c.value for c in comum.fields}
-        self.assertIn("Chame pelo nome em <#55>", comum.description)
+        self.assertIn("Nos canais onde o bot atende", comum.description)
+        self.assertNotIn("<#55>", comum.description)
+        self.assertNotIn("<#", comum.description)
         self.assertEqual(list(campos), ["» Guias de uso", "» Regras", "» Ficha", "» Clima", "» Seus dados", "» Do bot", "» Sem a barra", "» Links"])
         self.assertIn("/ficha analisar · Confere a ficha", campos["» Ficha"])
         self.assertIn("/livro · Link do livro de regras", campos["» Regras"])

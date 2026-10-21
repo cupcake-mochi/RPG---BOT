@@ -202,10 +202,10 @@ class Vida:
                                         pergunta=resumo(texto), pergunta_quando=agora)
         return motivo
 
-    def estado(self, *, persona: str, canal_id: int, autor_id: int, nome: str, agora: datetime, texto: str = "") -> Estado:
+    def estado(self, *, persona: str, canal_id: int, autor_id: int, nome: str, agora: datetime, texto: str = "", contexto: str = "") -> Estado:
         """`texto` é a mensagem que ela vai responder: decide quais fatos da ficha entram (escolher_fatos)."""
         guardada = self._registro.paciencia(autor_id=autor_id, persona=persona)
-        ficha = self._registro.ficha(autor_id)
+        ficha = self._registro.ficha_contexto(autor_id, contexto) if contexto else self._registro.ficha(autor_id)
         dias = self._registro.dias_de_conversa(autor_id=autor_id, persona=persona)
         return Estado(
             persona=persona, agora=agora, movimento=self.movimento(canal_id, agora),

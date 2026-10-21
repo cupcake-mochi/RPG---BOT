@@ -1,13 +1,14 @@
 """Atalhos públicos: nomes fixos e destinos permitidos para cada servidor."""
 from __future__ import annotations
+from .idiomas import tr
 
 import re
 import unicodedata
 
 PUBLICOS = {"ajuda", "guia", "ficha", "livro", "clima", "ping", "status"}
 SO_NA_BARRA = {"meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados",
-               "clima_canal", "clima_canal_desligar", "teste_webhook", "responder_nsfw", "nsfw_canal", "atalho"}
-OUTROS_NOMES = {"help": "ajuda", "comandos": "ajuda", "tempo": "clima", "sistema": "livro", "pdf": "livro",
+               "clima_canal", "clima_canal_desligar", "teste_webhook", "responder_nsfw", "nsfw_canal", "atalho", "idioma", "language", "lnt", "lore_nova_terra", "cargo_admin"}
+OUTROS_NOMES = {"guide": "guia", "sheet": "ficha", "character": "ficha", "analyze": "ficha", "analyse": "ficha", "book": "livro", "rules": "livro", "weather": "clima","help": "ajuda", "comandos": "ajuda", "tempo": "clima", "sistema": "livro", "pdf": "livro",
                 "analisar": "ficha", "analise": "ficha"}
 CURTOS = {"a": "ajuda", "g": "guia", "f": "ficha", "l": "livro", "c": "clima", "p": "ping", "s": "status",
           "gc": "guia criar", "gp": "guia planilha", "gf": "guia ficha", "gm": "guia mestre",
@@ -30,16 +31,16 @@ def destinos() -> dict[str, str]:
 def nome_proprio(nome: str) -> str:
     nome = limpo(nome)
     if not re.fullmatch(r"[a-z][a-z0-9_]{0,23}", nome):
-        raise ValueError("Use um nome de até 24 caracteres: letras, números ou _, começando por uma letra.")
+        raise ValueError(tr('Use um nome de até 24 caracteres: letras, números ou _, começando por uma letra.'))
     if nome in PUBLICOS | SO_NA_BARRA | OUTROS_NOMES.keys() | CURTOS.keys() | {"atalhos"}:
-        raise ValueError("Esse nome já pertence a um comando ou atalho do bot. Escolha outro.")
+        raise ValueError(tr('Esse nome já pertence a um comando ou atalho do bot. Escolha outro.'))
     return nome
 
 
 def validar(nome: str, destino: str) -> tuple[str, str]:
     nome = nome_proprio(nome)
     if destino not in destinos():
-        raise ValueError("Escolha um destino da lista. Atalhos só abrem comandos públicos do bot.")
+        raise ValueError(tr('Escolha um destino da lista. Atalhos só abrem comandos públicos do bot.'))
     return nome, destino
 
 
@@ -75,6 +76,11 @@ def orientacao(personalizados: dict[str, str] | None = None) -> str:
         "Atalhos públicos: " + "; ".join(f"GC:{nome} = GC:{alvo}" for nome, alvo in CURTOS.items()) + ". "
         "Os nomes completos continuam funcionando. /atalho definir, remover e listar configuram atalhos do servidor "
         "e exigem Gerenciar servidor. Esses comandos não aprovam customizações. "
+        "O livro tem tema normal e tema escuro em /livro ou GC:book. "
+        "/idioma ou /language escolhe português ou inglês por servidor; /lnt liga ou desliga a lore Nova Terra. "
+        "Essas duas configurações exigem Gerenciar servidor ou cargo delegado por /cargo_admin; só a gerência delega cargos. "
+        "A Arquivista tem idioma próprio, configurado separadamente. "
+        "GC:guide, GC:sheet, GC:book e GC:weather também são nomes aceitos. "
         "Oriente o usuário a executar o comando; uma fala sua não o executa nem registra aprovação."
     )
     extras = validos(personalizados)

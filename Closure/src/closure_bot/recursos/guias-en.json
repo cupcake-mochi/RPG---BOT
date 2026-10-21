@@ -1,0 +1,246 @@
+{
+  "topics": {
+    "geral": "Start here",
+    "criar": "Create a character",
+    "planilha": "Understand the spreadsheet",
+    "mestre": "Review a character as the GM",
+    "ficha": "Analyze a character sheet",
+    "custom": "Custom rules and GM approval",
+    "livro": "Rulebook",
+    "clima": "Weather",
+    "conversa": "Conversation",
+    "midia": "Media",
+    "memoria": "Your data and memories",
+    "servidor": "Server settings"
+  },
+  "pages": {
+    "criar.1": {
+      "title": "1. Make your own copy",
+      "text": "Open the [official character sheet](https://docs.google.com/spreadsheets/d/1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro/edit), sign in to Google, and choose **File → Make a copy**. Name it after your character and fill in your copy.\n\nThis walkthrough takes you from a blank sheet to issuance in **CARTEIRA**. The spreadsheet itself keeps its Portuguese labels; this guide preserves them so you can find each field. Tabs are at the bottom. Open collapsed rows or columns with the **+** beside or above them.\n\nUse input fields and dropdowns. Keep formulas and hidden tabs intact: calculations and ability cards depend on them. `GC:guide spreadsheet` explains each tab."
+    },
+    "criar.2": {
+      "title": "2. Agree on the campaign starting point",
+      "text": "Ask the GM for the **starting level, Grau (rank), resources and available options** before allocating points. Choose a name, a character concept and a reason to join the group.\n\nThe book default is **level 2 and Grau 4**. Level measures advancement; Grau is rank. A higher starting level does not automatically grant a higher rank.\n\nReview **CONFIGURAÇÃO → REGRAS DE CAMPANHA** with the GM. An empty CAMPANHA field keeps the book value. Enter only agreed changes and their reasons; do not change a rule to hide a warning.\n\nFill in identification in **CARTEIRA** and background in **FICHA PESSOAL**. Leave issuance until the end. Record XP and the corresponding gains for advancement beyond the agreed starting point; do not overwrite the calculated level."
+    },
+    "criar.3": {
+      "title": "3. Allocate attributes",
+      "text": "In **FICHA**, allocate base points among **Força, Destreza, Constituição, Inteligência and Essência** (Strength, Dexterity, Constitution, Intelligence and Essence).\n\nStandard creation grants **9 points**, with each attribute between **0 and 3**. For example, 3 + 2 + 2 + 1 + 1 totals 9. This is one possible distribution, not a required build.\n\nCheck the available total and the prerequisites of your intended choices. You can redistribute while building. Use the agreed campaign values if these limits changed.\n\n**Buff/Debuff** is for an adjustment granted by a rule or effect. Do not use it to fill missing creation points."
+    },
+    "criar.4": {
+      "title": "4. Choose an Origem and its abilities",
+      "text": "Choose **Origem** in the **FICHA** dropdown and read its book entry. It determines abilities, training and the power routes you can follow.\n\nIn **FICHA PESSOAL**, fill in the trait and choose **one eligible marcante and two eligible menores**. Read their full prerequisites, frequency and effects. Being listed in a dropdown does not waive prerequisites.\n\nRecord **Legados de história** when relevant. These describe connections and events; they grant no numerical bonus and do not replace those abilities.\n\n**Sem Técnica** is an option only for Origens that allow it. For homebrew, agree on the complete definition with the GM and read `GC:guide custom` before using it."
+    },
+    "criar.5": {
+      "title": "5. Choose a Caminho and Trilha",
+      "text": "In **FICHA**, choose your **Caminho** and a **Trilha belonging to it**, when your level allows. Read both Characteristics and Advancement sections in the book.\n\nBastião focuses on protection; Vanguarda on offense; Guia on support; Emanador on casting; Evocador on entities; Incursor on mobility and precision. Use these descriptions to choose a play style.\n\nRecord the choices, training and resources granted at your level. An ability with options still needs those choices even if its description already appears.\n\nAt the standard starting level of 2, you receive your first Trilha. At level 1, it and level-2 abilities wait until you reach that level."
+    },
+    "criar.6": {
+      "title": "6. Select skills, trades and resistance training",
+      "text": "In **FICHA**, mark the skill, trade and **Teste de Resistência (TR)** training granted by your choices.\n\nAt standard creation, Origem grants one listed skill, one freely chosen skill and two trades. You may exchange **both trades for one freely chosen skill**; record the exchange. Caminho adds two specified skills and five freely chosen skills.\n\nBefore other benefits or exchanges, this totals **9 skills and 2 trades**, or **10 skills and no trades**. If your Caminho allows exchanging skills for weapon training, remove them from this count and record the weapon in **FICHA PESSOAL**.\n\nChoose one trained TR from Origem and a different one from Caminho. Choose **Força or Destreza for TR Físico** at creation; that choice stays fixed. Repeated training does not add Maestria twice. Check permitted substitutions in the book."
+    },
+    "criar.7": {
+      "title": "7. Set up your technique, Manejos or Katas",
+      "text": "Open **FICHA AMALDIÇOADA**. Its route follows the Origem selected in FICHA. Fill in the initial block for that route.\n\n**Innate technique:** describe the concept and **Fundamento**, the rule defining what the power does. Select **ATRIBUTO DE CONJURAÇÃO** in FICHA and check its mirrored value. Set damage types, Selo, Expressão and Family states. The standard Fundamento has two Livres and three Fechadas; the others remain Neutras.\n\n**Sem Técnica:** choose a seed and prepare Manejos under that route's rules. **Técnica Marcial:** define the style's equipment and prepare Katas. Use the substitutions and resources in those chapters.\n\nYour concept must support the applications you intend to build. Agree on that interpretation with the GM."
+    },
+    "criar.8": {
+      "title": "8. Build one ability at a time",
+      "text": "In **FICHA AMALDIÇOADA**, open a card for an allowed ability type and choose an **available Classe**. Fill in its name and **COMO É**: targets, resolution, range, duration and ending conditions.\n\nChoose the **Forma** and allocate whole points to **DANO, CURA and PV TEMP.** for the intended function. Select Melhorias and Restrições; check costs, refunds, remaining points and PE (energy points). Fixed-dice types have their own function selector.\n\nRead warnings and compare the description with the selected pieces. **SÓ EM SI** means affecting only the performer; for Forma Toque it refunds no points. **VÁLIDO** reports the card's mechanical state, not GM permission.\n\nAfter changing Classe, wait for loading to finish before editing. Versions are saved per Classe; do not overwrite calculated results. Repeat for your other available abilities."
+    },
+    "criar.9": {
+      "title": "9. Check slots and granted abilities",
+      "text": "Check the **ESPAÇOS** budget in FICHA AMALDIÇOADA. A level-2 innate technique has **three known slots**, plus **two Classe 0 spells** counted separately. Specific routes and benefits may change these choices.\n\nSpells, paid Talentos, Domínio and entities may share this budget under their rules. Empty cards do not grant enough slots to use every card. Put free benefits in their designated positions so they are neither charged nor granted twice.\n\nReview **APTIDÕES E REFINO** and granted Talentos. Use Refino or Lapidação as appropriate, recording choices and prerequisites. Liberação, Técnica Máxima and Domínio become available only when you qualify.\n\nFor a pact, record its actual effect, cost and condition with the GM. Leave pact fields empty when none exists."
+    },
+    "criar.10": {
+      "title": "10. Fill in entities, if you have any",
+      "text": "If your character has an entity, open **INVOCAÇÕES** and fill in its sheet. Otherwise continue to equipment; you do not need an entity to fill an empty tab.\n\nChoose its type and record name, acquisition, level and Classe under its rules. Allocate its own attributes, Families, training and Talentos. Do not copy the character's values automatically: a tamed entity, for example, has its own progression.\n\nBuild its basic and available special abilities in its own cards and check its slot budget. Record manifestation, command and upkeep conditions. Known repertoire and currently active entities are different things.\n\nConfirm acquisition permissions and simultaneous-use limits with the GM. The bot does not prove that history or certify every interaction between entities."
+    },
+    "criar.11": {
+      "title": "11. Buy and equip items",
+      "text": "In **FICHA PESSOAL**, record equipment, items, quantities and storage. Then select what is in use: hands, armor and shield must match the inventory.\n\nStandard Grau 4 creation grants **one Traje 1 and ¥150,000** for other items. Choose its situation, TR and skills under the book rules. Deduct purchases and record ammunition and supplies. Firearms have special creation prices and may need permission.\n\nCheck training, Força, hands, access and Volume, including worn clothing. The normal carrying limit is **5 + Força** before granted changes.\n\nThe manual yen field records your balance and spending. **TOTAL DISPONÍVEL** also adds credited salaries. Do not copy salary credits into the manual balance: that counts them twice."
+    },
+    "criar.12": {
+      "title": "12. Review values and initial state",
+      "text": "Return to **FICHA** and check Vida, PE or your route's resource, Integridade, Defesa, Proteção, movement, attack bonus, CD, Maestria and training. **CD** is the difficulty of a target's resistance roll, not the attack bonus.\n\nCompare totals against Caminho, Origem, level and equipment. Correct the input causing an error instead of replacing a formula with the desired result. Rolled health requires agreement with the GM.\n\nSet current resources to match the story's starting state. If fully recovered, check that current values match maximums. Exaustão and Sequelas must reflect the actual situation.\n\nReview descriptions and warnings throughout completed sections. Fields for abilities not yet acquired may remain empty."
+    },
+    "criar.13": {
+      "title": "13. Analyze and finish the GM review",
+      "text": "Wait for calculations to finish. Send **GC:sheet followed by the link**, or use `/ficha analisar`. For a file, choose **File → Download → Microsoft Excel (.xlsx)** and attach it to the command. The result appears in the channel; the bot needs read access when using a link.\n\nRead Summary, Corrections and review, and Analysis limits. Correct inputs and **run a new analysis after editing**. Arrows only browse the previous result. `GC:guide sheet` explains the panel.\n\nWith the GM, settle prerequisites, learning, advancement, COMO É, targets, narrative effects, pacts and homebrew. **Zero errors is not approval. MESTRE VIU is a reminder** and grants no permission in the bot. A registered custom approval must match the exact definition and server.\n\nContinue to issuance once the review is resolved and the GM clears the sheet."
+    },
+    "criar.14": {
+      "title": "14. Finish in CARTEIRA: Emitida",
+      "text": "Open **CARTEIRA** in your copy and check identification and Grau. After the GM review, click the **checkbox to the right of “Emitida”** at the top of the document.\n\nThe sheet saves today's date in Brasília time. **The checkbox clears itself after saving**: check the displayed date rather than trying to keep it checked. If the date does not update, wait for processing and check **CONFIGURAÇÃO → Emissão e salários**.\n\nIssuance records a date; it neither submits the sheet to the bot nor registers GM approval. It also starts or adjusts the salary cycle. Do not click it every session: reissuing may restart the open cycle.\n\nIf using automatic salaries, read **Issuance and salary tracking** in `GC:guide spreadsheet` to enable the routine in your copy. With the date checked and GM clearance granted, the character is ready. Keep resources, spending and missions up to date."
+    },
+    "planilha.1": {
+      "title": "Where to start and how to open sections",
+      "text": "This is the sheet reference guide. Use **GC:guide create** for the full creation walkthrough and **GC:guide sheet** to understand the bot's evaluation.\n\nThe seven working tabs are **CARTEIRA, FICHA, FICHA AMALDIÇOADA, INVOCAÇÕES, FICHA PESSOAL, GLOSSÁRIO and CONFIGURAÇÃO**. Find them at the bottom; use tab navigation if they do not all fit.\n\nThe **+ and −** signs open and collapse row or column groups. Collapsing hides a section without deleting choices. Several CONFIGURAÇÃO panels sit side by side to the right.\n\nDropdowns and checkboxes accept input; calculated results and mirrored fields come from elsewhere. Read field notes and check the formula bar before typing when unsure. Preserve hidden technical tabs: they hold catalogs, calculations and records."
+    },
+    "planilha.2": {
+      "title": "CARTEIRA: identification and issuance",
+      "text": "CARTEIRA is the character's document: identification, picture, rank and issue date. It does not replace mechanical records in other tabs.\n\nFill in identification and check mirrored data. Place the image in its reserved area without covering document details. Grau is the GM-agreed rank, not advancement level.\n\nThe palette dropdown changes the appearance. Wait for other tabs to update. CONFIGURAÇÃO keeps its fixed palette; that is expected.\n\nThe checkbox beside **Emitida** records the current date and clears itself after saving. Use it after creation or an agreed reissue, not whenever you open the sheet. See **Issuance and salary tracking** for cycle details."
+    },
+    "planilha.3": {
+      "title": "FICHA: attributes, resources and combat",
+      "text": "FICHA brings together attributes, skills, trades, TR, Caminho, Trilha, Origem and key combat values. Track Vida, energy, Integridade, Sequelas and Exaustão here.\n\nDistinguish **base**, **Buff/Debuff**, **total**, **atual** (current) and **máximo** (maximum). Allocate base points, enter adjustments in their fields and track spending in current values. Totals and maximums are calculated.\n\nCasting, attack and physical-TR attribute selectors must match creation choices where applicable. Equipment and XP come from FICHA PESSOAL: correct the original record.\n\nThe rest dropdown applies the specified recovery. Select the rest actually taken and check its notice. Do not use rest to freely change maximums."
+    },
+    "planilha.4": {
+      "title": "FICHA AMALDIÇOADA: powers and abilities",
+      "text": "This tab holds Fundamento and spells, Manejos or Katas according to Origem. Its initial block contains concept, attribute, damage types, Selo, Expressão and Families where applicable.\n\nThe budget shows available and occupied slots. Paid Talentos, Regra Própria, Domínio and summons may consume slots under their rules. Classe 0 and free benefits have separate counts or positions.\n\nOther sections contain Talentos, Aptidões and Refino, pacts and advanced abilities. Enter only what was acquired and keep the source. A field's existence does not grant access.\n\nFamilies determine access and piece costs. Use the appropriate chapter's substitutions for special routes. Changing only the description does not automatically change the build's mechanics."
+    },
+    "planilha.5": {
+      "title": "Build and edit an ability",
+      "text": "Edit cards **in place**. Open the ability group, select an available Classe and wait for loading. Then fill in name, COMO É, Forma, functions, points, Melhorias and Restrições.\n\n**COMO É** explains targets, resolution, range, duration and use conditions. DANO, CURA and PV TEMP. allocate points; results show dice, cost and warnings. Fixed-dice types have their own function selector.\n\nVersions are kept per Classe. Wait before editing after a switch. A pending edit may require repeating the switch. Never paste a result over a formula to force a version.\n\n**VÁLIDO/REVISAR** describes the mechanical build. Prerequisites, narrative and permission remain with the GM. Liberação and Técnica Máxima have their own cards and requirements."
+    },
+    "planilha.6": {
+      "title": "INVOCAÇÕES: entity sheets",
+      "text": "Each entity has its own type, level, Classe, attributes, Families, training, Talentos, resources and ability cards. Expand its row groups to see the rest.\n\nAcquisition and type determine progression. An entity does not automatically inherit its owner's attributes, Families or current level. Check its own distribution and limits.\n\nRecord its basic ability, specials and benefits actually received. Note manifestation, command and upkeep requirements and shared resources.\n\nA list of known entities does not identify which are active in a scene. Confirm that state and use limits with the GM. Leave this tab unfilled when the character has no entities."
+    },
+    "planilha.7": {
+      "title": "FICHA PESSOAL: history, items and missions",
+      "text": "This tab holds the dossier, trait, Origem abilities, Legados de história, equipment, weapon training, inventory, carrying load, money and missions/XP.\n\nRecord quantities and Volume; select what is worn or held. Owning a weapon does not mean it is equipped or that you are trained. Check Força, access and excess-load warnings.\n\nThe mission panel is to the right in collapsed columns. Open the **+** above them and record the mission, type and granted adjustments. XP feeds advancement; do not invent missions to reach a desired level.\n\nThe manual yen balance holds money and spending. **TOTAL DISPONÍVEL** also includes credited salaries; do not enter the same salary twice. Mission salary dates are explained later."
+    },
+    "planilha.8": {
+      "title": "GLOSSÁRIO: understand terms",
+      "text": "Open GLOSSÁRIO when an attribute, skill, trade or sheet term is unfamiliar. It is a quick reference while building or playing.\n\nFor a full procedure, read the relevant creation, equipment, Fundamento, Caminho, Origem or advancement chapter. `/livro` opens the configured PDF; `GC:book` does the same.\n\nCheck the table's edition. Parts of the guides' general reference predate R53, while analyzed ability cards have specific R53 handling. Compare differences against the current book with the GM."
+    },
+    "planilha.9": {
+      "title": "CONFIGURAÇÃO: campaign rules",
+      "text": "CONFIGURAÇÃO contains table rules, bonuses, changes and custom definitions. Standard characters do not need every field filled in.\n\nIn **REGRAS DE CAMPANHA**, compare **LIVRO, CAMPANHA, EM USO and MOTIVO**. Empty CAMPANHA keeps the book value; **zero is an entered value**, not an empty field. Record only authorized changes and their reasons.\n\nControls cover starting level, attribute limits, training, movement, Morrendo, the XP curve and rolled health. Record authorized health rolls in their fields rather than replacing calculated maximum health.\n\nChanging your copy does not change the campaign registered in the bot. The GM and bot maintainer must reconcile conflicting records."
+    },
+    "planilha.10": {
+      "title": "Advancement: XP, milestones and new choices",
+      "text": "Level follows XP recorded in FICHA PESSOAL and the campaign starting point. Enter actual mission rewards; do not edit the level formula to advance.\n\nAt each level, check health, energy, Maestria, maximum Classe, slots and Caminho/Trilha abilities. At milestones record **Corpo, Refino or Leque**, following route rules and prerequisites. Updated arithmetic does not choose for you.\n\nCorpo, training, Leque and specialization choices belong in their corresponding records. Put a free ability in its designated position instead of charging it again as a paid choice.\n\nThe GM checks acquisition order, per-mission advancement limits and possible Limiar requirements. The bot cannot reconstruct that history from final level. Analyze again after making new choices."
+    },
+    "planilha.11": {
+      "title": "CONFIGURAÇÃO: bonuses and changes",
+      "text": "Use **BÔNUS E MUDANÇAS** for an effect that actually changes a sheet value. Select **CAIXA, COMO, VALOR, TIPO DE FONTE and FONTE**. Keep **LIGADO** checked while the effect applies; unchecking preserves it without applying it.\n\n**Somar** adds to the calculation and existing Buff/Debuff. **Trocar por** sets the final result, including zero. Two enabled replacements for the same box conflict.\n\nExample: an authorized +2 Defesa effect uses Somar 2; an effect setting Defesa to 15 uses Trocar por 15. These are input examples, not granted benefits.\n\nName the ability, pact, item or decision supporting the change. Do not apply the same source again in Buff/Debuff. Uncheck LIGADO when the effect ends and verify the total."
+    },
+    "planilha.12": {
+      "title": "CONFIGURAÇÃO: define custom rules and options",
+      "text": "Custom panels extend to the right: general definitions, Caminho/Trilha, skills, trades, Families, Melhorias, Restrições, damage types, Formas, Aptidões/Bênçãos, Talentos and entity types/Talentos. Use the index and column groups to find a panel.\n\nChoose a type and unique name. With **BASE DO LIVRO**, empty fields may inherit base values. Enter differences in structured fields and write the complete rule in the description. Without a base, complete all required fields.\n\nRead warnings before selecting custom content in sheet dropdowns. **MESTRE VIU is a reminder**, not approval registered in the bot. Free text creates neither automation nor numerical bonuses.\n\n`GC:guide custom` explains review and exact-definition approval. Even an approved card may still lack independent recalculation."
+    },
+    "planilha.13": {
+      "title": "Issuance and salary tracking",
+      "text": "In **CONFIGURAÇÃO → Emissão e salários**, check issue date, activation, interval, participation, amounts per Grau, mission weights, forecast and recent history. Change rules only with the GM.\n\n**Emitida** in CARTEIRA and **emitir hoje** in settings save today's Brasília date and clear themselves after saving. The date stays fixed. A reissue may restart the open cycle; it neither removes previous credits nor approves the character.\n\n**In your own copy**, enable automation through **Salários → Ativar conferência diária**. Automatic triggers do not come with a copied file. **Conferir salários agora** runs the check when needed; opening the sheet alone does not guarantee period closure.\n\nCheck history and TOTAL DISPONÍVEL in FICHA PESSOAL. The bot does not certify mission dates or salary history."
+    },
+    "planilha.14": {
+      "title": "Record missions and maintain the sheet",
+      "text": "For a mission to count toward salary tracking, enter a **name and valid type** in FICHA PESSOAL. The sheet records its date and identity. Editing its text preserves the date; to replace it with another mission, clear the old name first.\n\nFor an old mission or incorrect date, select it and use **Salários → Data da missão selecionada**. Pre-installation missions are not assigned a guessed date. This does not change closed payments.\n\nBefore play, check current resources, equipment, ammunition and enabled effects. Afterward record spending, recovery, missions and authorized gains. Submit the link or a new XLSX for a new analysis; the old panel does not track edits.\n\nIf a calculation stalls, wait and read warnings. Tell the maintainer which tab and action failed. Do not delete hidden records or rebuild the filled sheet as a repair attempt."
+    },
+    "mestre.1": {
+      "title": "1. Agree on the review scope",
+      "text": "Use this walkthrough to review the whole character, with the bot panel as supporting evidence. Open **GC:guide gm** or **/ficha mestre**. The guide itself neither analyzes files nor grants approval.\n\nAsk the player for a link or XLSX file of their current character sheet. Confirm the campaign, book edition, starting level, Grau, resources and allowed options. Compare **CONFIGURAÇÃO → REGRAS DE CAMPANHA** with authorized table rules.\n\n`GC:guide create` follows creation; `GC:guide spreadsheet` locates tabs and settings. Review the current version: an old panel does not track the player's edits."
+    },
+    "mestre.2": {
+      "title": "2. Run the analysis and sort findings",
+      "text": "Use **/ficha analisar** with a link or XLSX, or **GC:sheet followed by the link**; attach the XLSX when using a file. Submit one source per analysis. A link needs read access; the panel appears in the channel.\n\nRead **Summary, Corrections and review, and Analysis limits**. Red means an error on that page; yellow means a pending item, review or limit; green covers only displayed checks. The footer keeps the overall result.\n\nDistinguish correcting an input, providing information, proving a source and making a GM decision. Request a new analysis after corrections. Arrows only browse the existing calculation.\n\n**Zero errors is not full approval.** VÁLIDO describes spreadsheet arithmetic and does not prove acquisition or permission to use the ability."
+    },
+    "mestre.3": {
+      "title": "3. Check creation, training and advancement",
+      "text": "Compare base attributes and limits against agreed creation rules. Check Origem, trait, eligible marcante/menores, and compatible Caminho/Trilha. Legados de história neither grant bonuses nor replace abilities.\n\nTrace each skill, trade, weapon training and TR to its source. Check exchanges, repeated choices and the fixed physical-TR attribute. Do not charge a free benefit again or count training twice.\n\nFor advancement, request missions, XP, Corpo/Refino/Leque milestones, authorized health rolls, exchanges and learning records. Check acquisition order, level prerequisites and possible Limiar feats.\n\nA correct final total does not prove that history. Record missing evidence and agree on a resolution before allowing the affected part."
+    },
+    "mestre.4": {
+      "title": "4. Compare each description with its build",
+      "text": "In **FICHA AMALDIÇOADA**, compare Fundamento, Manejos or Katas with the route allowed by Origem. Check attribute, Families, damage types, Selo, Expressão and piece prerequisites.\n\nRead **COMO É** beside every build. Establish targets, attack/resistance resolution, range, duration, frequency, ending conditions and conditions that must remain true. A Restrição must actually restrict use in the scene.\n\nCheck function, Classe, points, dice, PE, Melhorias, Restrições and dependencies. Approving one version does not approve every expanded version or future interpretation. Wait for a Classe switch to finish before reviewing fields.\n\nSeparately review narrative effects, distribution among targets and unchecked Soul interactions. Do not infer a missing input from the result being validated."
+    },
+    "mestre.5": {
+      "title": "5. Check slots, entities and active effects",
+      "text": "Review slot budgets and every acquisition source. Spells, paid Talentos, free benefits, Classe 0, Domínio and entities have specific counts and positions. Also verify access to Aptidões, Refino/Lapidação, Liberação and Técnica Máxima.\n\nIn **INVOCAÇÕES**, check type, acquisition, level, Classe, attributes, Families, training, Talentos and cards. The character's current level does not replace a tamed entity's progression.\n\nAgree which entities are actually active, simultaneous limits, commands, upkeep and shared resources. Known entities do not prove the active scene state.\n\nFor pacts and temporary effects, verify condition, cost, duration and source. In BÔNUS E MUDANÇAS, check Somar/Trocar por, conflicts and duplicate application through Buff/Debuff."
+    },
+    "mestre.6": {
+      "title": "6. Review homebrew definitions",
+      "text": "Request the full name, book base, changed fields, prerequisites, effect, frequency and limits. Check every dependency, including a Forma's custom Família or Restrição.\n\n**MESTRE VIU is the player's reminder**, not registered approval. The bot maintainer records the GM-agreed decision for the **exact definition and correct server**. Players have no self-approval command.\n\nChanging a base, attribute, cost or behavior may require new approval. An old approval with the same name is not enough. `GC:guide custom` explains the process.\n\nApproval does not turn prose into bonuses. Use structured numerical fields and prove the source. Even an approved custom piece may lack **independent recalculation**; its arithmetic and behavior still need the human review specified in the panel."
+    },
+    "mestre.7": {
+      "title": "7. Check equipment, resources and records",
+      "text": "In **FICHA PESSOAL**, compare inventory, quantities, ammunition, Volume and equipped items. Check training, Força, hands, access and purchase funds. Ownership does not waive prerequisites.\n\nIn **FICHA**, check maximum/current resources, Defesa, Proteção, movement and conditions. Starting injuries or Sequelas must match the agreed situation. Do not overwrite formulas to hide an error.\n\nCheck mission dates, participation and salary agreements when used. Manual balances and salary credits must not contain the same income twice. The bot does not certify mission dates or salary history.\n\nUse **Analysis limits** as another checklist: missing or unchecked information is not assumed valid."
+    },
+    "mestre.8": {
+      "title": "8. Record the decision and finish",
+      "text": "For each question, record **what was checked, the source or decision, use conditions and what remains unresolved**. Distinguish calculation errors, missing information and table decisions. Do not grant a bonus just to turn the panel green.\n\nAfter corrections, analyze the same version again and check for new issues. Parts without automated checks still require your review even with zero errors or pending items.\n\nTell the player what is allowed, what needs changes and which limits apply during play. Once ready, finish creation by checking **Emitida** in CARTEIRA. It saves the date and clears itself; it does not register your decision in the bot.\n\nReissuing may restart the open salary cycle. Do not do it at every review or session. Keep agreements outside the temporary panel and revisit approval when a definition changes."
+    },
+    "geral.1": {
+      "title": "What would you like to do?",
+      "text": "The guides discuss the selected setting, explain Ciclo Maldito rules and check parts of character sheets. Server language and world are separate settings.\n\n**Create a character:** fill in the sheet through issuance in CARTEIRA.\n**Understand the spreadsheet:** find tabs, settings and salaries.\n**Analyze a character sheet:** submit it and read the result.\n**Review as the GM:** combine the panel with human review.\n**Custom rules:** present a definition and understand exact approval.\n**Rulebook:** find rules and check the source.\n**Conversation, media and memories:** talk with the characters and manage your data.\n**Weather:** look up a city. **Server settings:** configure administrative features.\n\nChoose a topic below, then use the arrows to continue within it. The character spreadsheet keeps Portuguese field labels; these guides retain them where needed."
+    },
+    "geral.2": {
+      "title": "Commands to get started",
+      "text": "`GC:help` or `/ajuda` opens the command list. This guide explains how to use it. English names in native slash menus follow your Discord client's language; server settings control the replies. Portuguese commands still work.\n\nThe help **Abbreviations** page lists short names. `GC:ab` opens it directly; full commands remain available.\n\n`GC:guide sheet` explains analysis. You can also open `/ficha guia` or choose **Analyze a character sheet** in `/guia`.\n\nUse `GC:guide create` to build a character and `GC:guide spreadsheet` to understand tabs and settings. These topics are also in the guide menu.\n\nOther examples: `GC:guide weather`, `GC:guide media`, `GC:guide memory` and `GC:guide server`.\n\nSlash guides are private; `GC:` guides appear in the channel. Opening a guide changes no settings."
+    },
+    "ficha.1": {
+      "title": "1. Prepare and submit the sheet",
+      "text": "This topic explains the bot analysis. Use `GC:guide create` to build from scratch or `GC:guide spreadsheet` to understand tabs.\n\nFill in your copy of the current sheet in Google Sheets. Wait for fields and calculations to finish after switching a card's Classe.\n\n**Link:** use `/ficha analisar` with **link**, or write `GC:sheet` followed by the spreadsheet address. The bot needs read access.\n\n**File:** choose **File → Download → Microsoft Excel (.xlsx)** in Google Sheets. Submit it in `/ficha analisar` using **arquivo**, or attach it to the same `GC:sheet` message.\n\nSubmit one source at a time. XLSX avoids changing link access. The analysis appears in the channel for you and the GM."
+    },
+    "ficha.2": {
+      "title": "2. Read the result",
+      "text": "Start with **Summary** and open **Corrections and review** when something needs attention.\n\n**Red:** an identified error on this page.\n**Yellow:** a pending item, GM review or something the bot cannot verify.\n**Green:** displayed values passed the checks performed.\n\nColor applies to the open page. The footer keeps the overall sheet result. Use the selector or arrows for Character, Spells, Summons and **Analysis limits**, when present.\n\n**Zero errors is not character approval.** VÁLIDO/REVISAR reports spreadsheet arithmetic; the GM still decides whether an ability may be used."
+    },
+    "ficha.3": {
+      "title": "3. Correct inputs and analyze again",
+      "text": "If a finding says **found 4, expected 3**, check the choice and points in that card. Correct the input rather than replacing a formula to hide the warning.\n\nProvide missing information or discuss required approval with the GM. **Analysis limits** explains unchecked parts.\n\nAfter saving, resubmit the link or a new XLSX. Arrows browse the result already calculated; they do not refresh the analysis.\n\nControls expire after ten minutes without use. Repeat the command to open another panel."
+    },
+    "ficha.4": {
+      "title": "4. What to review with the GM",
+      "text": "For the full walkthrough, use **GC:guide gm** or **/ficha mestre**. Treat **Analysis limits** as a checklist and compare choices with the table's book.\n\n**Learning and advancement:** when an ability was acquired, which milestones and training granted it, and whether free-form prerequisites were met. A compatible total does not prove that history.\n\n**COMO É:** eligible targets, resolution, range, duration, frequency, dependencies among effect portions and ending conditions. The description must match the selected pieces.\n\n**Special cases:** distribution among targets, narrative effects, Soul interactions, active entity states and anything labeled unchecked. Do not derive a missing input from the result you want to validate."
+    },
+    "ficha.5": {
+      "title": "5. When reading cannot finish",
+      "text": "**No link access:** check read permission or submit XLSX.\n\n**Formula without a calculated result:** wait for Google to finish and download a new XLSX directly from Google Sheets. Another editor may save formulas without the cached results the bot needs.\n\n**Card still saving:** wait for the Classe switch and try again. The bot may reread a link; if still incomplete, the card remains pending.\n\n**Old format or incomplete export:** use a current copy and preserve the ANALISE export tab. If the issue persists, send the error to the bot maintainer and say whether you used a link or XLSX."
+    },
+    "custom.1": {
+      "title": "From an idea to approval",
+      "text": "Agree on your creation with the GM and record its definition in the sheet's designated fields. Include a book base when applicable, prerequisites, behavior and limits.\n\n**MESTRE VIU is a reminder.** Checking it neither submits nor grants approval in the bot. The maintainer records the GM-agreed approval for that definition and server.\n\nIf analysis requests approval, provide the complete definition to the GM and maintainer. Analyze again after registration. There is no player command for self-approval."
+    },
+    "custom.2": {
+      "title": "What approval allows the bot to check",
+      "text": "Approval applies to the **exact definition**. Changing a base, attribute, effect or another relevant part may require new approval even under the same name.\n\nApproving prose does not turn it into numerical bonuses. Record a numerical adjustment in its structured field and confirm its source.\n\nCards with a custom Melhoria, Restrição or Forma may still lack **independent recalculation**. Read the warning and check arithmetic and behavior with the GM.\n\nFor example, approval for an Inteligência-based skill does not automatically cover Essência. For the rest of the sheet, choose **Analyze a character sheet**."
+    },
+    "livro.1": {
+      "title": "Find and verify a rule",
+      "text": "`/livro` or `GC:book` opens the configured PDF.\n\nAsk a guide a specific question, such as `kal, how does Integridade work?` or `closure, what are this Melhoria's limits?`. Include the ability, Classe and relevant choices when they affect the answer. Portuguese option names help locate the exact rule.\n\nCheck the table's source and edition. The PDF may be newer than parts of the lookup base or automated checks. Bring conflicting passages to the GM.\n\nChat helps explain rules. It neither registers homebrew approval nor replaces deterministic sheet analysis."
+    },
+    "clima.1": {
+      "title": "Look up a city",
+      "text": "Use `/clima lugar:Belo Horizonte` or `GC:weather BH`. With no place, the command looks up Tokyo.\n\nOther examples: `GC:weather São Paulo` and `GC:weather Curitiba`. Include state or country when a name is ambiguous.\n\nIn conversation, ask `closure, what's the weather in BH?`. A follow-up such as `and in SP?` should name the next city; the direct command is available when conversation cannot resolve a follow-up.\n\nThe direct command fetches weather without generating an AI reply. If chat is slow or fails, use `GC:weather`. **Server settings** explains the daily panel."
+    },
+    "conversa.1": {
+      "title": "Start and continue a conversation",
+      "text": "Call `kal` or `closure` in a channel where the bot listens. Replying to their messages also works. Shortly after a response, you can continue without repeating the name.\n\nKal'tsit is on duty from 09:00 to 21:00; Closure from 21:00 to 09:00, Brasília time. `/status` shows the current shift and service information.\n\nUse the analysis command for character-sheet checks. Asking a character a question does not register GM approval.\n\nIf no reply arrives, check the channel, try `/ping`, then retry the request. Being online does not guarantee the AI service is available."
+    },
+    "midia.1": {
+      "title": "Send media with your question",
+      "text": "Send the image, GIF or audio with your request: `closure, what does this say?` or `kal, how many times does this sound repeat?`. The bot maintainer must enable media reading.\n\nSelector GIFs and some links use Discord's preview. Attach the file if a link fails. Old attachment links may expire.\n\nAudio interpretation can be uncertain: noise, music and similar sounds can confuse it. A GIF is sampled through a few frames, not every moment.\n\n**A YouTube link does not provide the video's audio.** Recognizing a title does not mean hearing that recording. Send an old attachment again when a detail needs rechecking."
+    },
+    "midia.2": {
+      "title": "Rules in media and adult content",
+      "text": "For a rule shown in an image or spoken in audio, also type the question and rule name. That helps retrieve the correct book source.\n\nThe guides can comment on art and recognize character depictions when identifiable. A picture does not prove that they experienced the scene.\n\nAdult non-graphic reactions depend on server settings and the channel's NSFW marking. They include no ERP or sexual enactment, and provider limits still apply. Administrators can read **Server settings** for setup."
+    },
+    "memoria.1": {
+      "title": "View, add and correct memories",
+      "text": "`/meus_dados` privately shows your stored pronouns, facts and conversation-memory information.\n\n`/meus_pronomes` sets how the characters address you. With no text it restores neutral treatment.\n\n`/meu_fato` saves a short permitted fact, such as your character or a conversation preference. Do not submit sensitive information; the bot does not save it as a fact.\n\n`/esquecer_fato numero:2` removes item 2 from `/meus_dados`. Personal commands use slash interactions so your data is not posted publicly.\n\nNew facts belong to this server and its selected world. Switching worlds does not copy them. Pronouns remain personal across servers. The **legado** option in `/meus_dados` shows preserved old facts without injecting them into new conversations."
+    },
+    "memoria.2": {
+      "title": "Delete data and distinguish memories",
+      "text": "`/apagar_meus_dados` deletes personal data stored by the bot, including facts in every server/world and preserved old facts. **Deletion is irreversible.** Use `/esquecer_fato` to remove only one current-context fact.\n\nRecent conversation and durable facts serve different purposes. Something can leave the recent context without having been selected as a fact. Check `/meus_dados` to see what was saved.\n\nConversation memory is separate from sheet approvals. Saying the GM approved something does not register it for analysis. Read **Custom rules and GM approval** for that process.\n\nHelp also provides privacy and terms links when configured."
+    },
+    "servidor.1": {
+      "title": "Create and remove server shortcuts",
+      "text": "Standard shortcuts already work, including **GC:g** for guides and **GC:f** for analysis. `GC:ab` lists abbreviations and this server's custom shortcuts.\n\nWith **Manage Server**, use **/atalho definir**. Enter only the short name, without GC:, in **nome**; choose an allowed command or guide in **destino**. For example, name `review`, destination **Guia: Revisar uma ficha como mestre**; then use `GC:review`.\n\n`/atalho listar` lists server shortcuts; `/atalho remover` removes one. Full names and standard shortcuts remain available. Up to 20 custom names are allowed, without replacing reserved names.\n\nShortcuts apply only here and keep the destination's arguments, such as a sheet link. They store no free-form phrase and execute no administrative actions. Reopen help after changing a shortcut."
+    },
+    "servidor.2": {
+      "title": "Daily weather panel and diagnostics",
+      "text": "Weather configuration requires **Manage Server**. This guide only explains commands; it changes nothing.\n\n`/clima_canal canal:#weather` selects where the daily Tokyo panel appears. Without a channel option, it uses the channel where you run it.\n\n`/clima_canal_desligar` disables that panel for the server without blocking individual weather queries.\n\n`/ping` checks whether the bot responds. `/status` shows service and shift details. If the panel cannot be posted, check Send Messages and Embed Links permissions in that channel."
+    },
+    "servidor.3": {
+      "title": "Configure adult reactions",
+      "text": "`/responder_nsfw ativar:True` enables adult non-graphic reactions; `False` disables them. With no option it shows the current state.\n\n`/nsfw_canal canal:#chat` restricts the feature to that channel and its threads. `/nsfw_canal todos:True` removes the restriction. Without options it shows the setting.\n\n**With no selected channel, it applies in all NSFW-marked channels where the bot already listens.** It must still be enabled with `/responder_nsfw`. Running a command in a channel does not select that channel automatically.\n\nReactions and opinions keep each character's personality, with no ERP or sexual enactment. The setting does not remove provider limits."
+    },
+    "servidor.4": {
+      "title": "Choose a language and authorize roles",
+      "text": "`/language` or `/idioma` shows the server language. Select **English** or **Português do Brasil** to change it. The choice applies to new bot replies; language and world are independent. Names in native slash menus follow your Discord client's language. Portuguese commands and English prefix aliases remain accepted.\n\nMembers with **Manage Server** or an authorized role may change language and lore. Only Manage Server can authorize roles through `/cargo_admin cargo:@team`; `remover:True` removes one. With no role it lists them. Delegation grants no access to other administrative commands.\n\nSet the Archivist's language separately with `/language` or `/idioma`. Its configured staff roles may also change it. Changing the Guides does not change the other bot or the official character spreadsheet."
+    },
+    "servidor.5": {
+      "title": "Choose Nova Terra or original Arknights",
+      "text": "`/lnt` shows the current world. `/lnt ativar:True` enables **Nova Terra lore**; `False` restores the **original Arknights** base, keeping Jujutsu/Ciclo Maldito tabletop rules separate. Nova Terra starts enabled only in the creator's three designated servers. Any server may opt in or turn it off.\n\nChanging worlds starts a new conversation context. New facts are separated by server and world and are not copied when switching. Pronouns remain personal. Old facts without an identified origin stay preserved and can be viewed with `/meus_dados legado:True`, but are not injected into new conversations.\n\nThe original base contains selected references, not the complete game script. Nova Terra never unlocks Reservado Mizuki, Registros Complementares or Recursos Visuais. Choosing a world approves no character, homebrew rule or numerical benefit."
+    }
+  }
+}

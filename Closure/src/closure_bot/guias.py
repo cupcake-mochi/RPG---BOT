@@ -8,13 +8,17 @@ import discord
 
 from .guias_ficha import CRIAR, PLANILHA
 from .guia_mestre import MESTRE
+from .idiomas import atual
+from functools import lru_cache
+from pathlib import Path
+import json
 
 
 # (título da página, texto). Cada página trata de uma tarefa, com exemplos copiáveis.
 ASSUNTOS = {
     "geral": ("Comece por aqui", (
         ("O que você quer fazer?",
-         "As guias conversam sobre o mundo do Ciclo Maldito, tiram dúvidas de regra e conferem partes da ficha.\n\n"
+         "As guias conversam sobre o mundo escolhido pelo servidor, tiram dúvidas das regras do Ciclo Maldito e conferem partes da ficha.\n\n"
          "**Criar uma ficha:** preencher do começo até a emissão na Carteira.\n"
          "**Conhecer a planilha:** consultar abas, configurações e salários.\n"
          "**Analisar uma ficha:** enviar a planilha e entender a análise.\n"
@@ -212,7 +216,29 @@ ASSUNTOS = {
     )),
 }
 
-APELIDOS = {"inicio": "geral", "ajuda": "geral", "analise": "ficha", "fichas": "ficha",
+ASSUNTOS["servidor"] = (ASSUNTOS["servidor"][0], ASSUNTOS["servidor"][1] + (
+    ("Escolher idioma e autorizar cargos",
+     "`/idioma` ou `/language` consulta o idioma do servidor. Escolha **Português do Brasil** ou **English** para mudar. "
+     "A escolha vale para as respostas novas do bot; idioma e mundo são configurações separadas. "
+     "O idioma dos nomes no menu nativo depende do seu aplicativo Discord. Os nomes portugueses e os atalhos em inglês continuam aceitos.\n\n"
+     "Quem tem **Gerenciar servidor** ou um cargo autorizado pode mudar idioma e lore. "
+     "Só quem tem Gerenciar servidor cadastra esses cargos com `/cargo_admin cargo:@equipe`; use `remover:Sim` para retirar. "
+     "Sem cargo informado, o comando mostra a lista. Ele não concede permissão para outros comandos administrativos.\n\n"
+     "Na Arquivista, configure o idioma separadamente com `/language` ou `/idioma`. Os cargos de staff já configurados lá também podem fazê-lo. "
+     "Mudar uma configuração nas Guias não altera o outro bot nem a ficha oficial do personagem."),
+    ("Escolher entre Nova Terra e Arknights",
+     "`/lnt` mostra o mundo em uso. `/lnt ativar:Sim` liga **Lore Nova Terra**; `ativar:Não` volta à base original de **Arknights**, "
+     "com as regras de Jujutsu/Ciclo Maldito tratadas como uma referência de mesa separada. "
+     "Nova Terra começa ligada apenas nos três servidores definidos pelo criador; qualquer servidor pode optar por ela e também desligá-la.\n\n"
+     "Trocar o mundo começa um contexto novo. Os fatos novos ficam separados por servidor e mundo, "
+     "e não são transferidos ao mudar a opção. Pronomes continuam pessoais. "
+     "Memórias antigas sem origem identificada ficam preservadas e podem ser vistas em `/meus_dados legado:Sim`, mas não entram nas novas conversas.\n\n"
+     "A base original tem referências selecionadas, não o roteiro completo do jogo. "
+     "Nova Terra não libera as pastas Reservado Mizuki, Registros Complementares ou Recursos Visuais. "
+     "Nenhuma escolha de mundo aprova ficha, personalização ou benefício numérico."),
+))
+
+APELIDOS = {"start": "geral", "help": "geral", "create": "criar", "creation": "criar", "spreadsheet": "planilha", "gm": "mestre", "review": "mestre", "sheet": "ficha", "character": "ficha", "book": "livro", "rules": "livro", "weather": "clima", "chat": "conversa", "media": "midia", "memory": "memoria", "server": "servidor","inicio": "geral", "ajuda": "geral", "analise": "ficha", "fichas": "ficha",
             "criacao": "criar", "criar ficha": "criar", "ficha criar": "criar",
             "manual": "planilha", "abas": "planilha", "ficha aprofundada": "planilha",
             "configuracao ficha": "planilha", "configuracoes da ficha": "planilha",
@@ -227,15 +253,30 @@ def assunto(texto: str | None) -> str | None:
     return APELIDOS.get(limpo, limpo) if APELIDOS.get(limpo, limpo) in ASSUNTOS else None
 
 
-def paginas(tema: str) -> list[discord.Embed]:
-    titulo, textos = ASSUNTOS[tema]
+@lru_cache(maxsize=1)
+def _ingles():
+    return json.loads((Path(__file__).parent / "recursos/guias-en.json").read_text(encoding="utf-8"))
+
+
+def titulos(idioma=None):
+    return _ingles()["topics"] if (idioma or atual()) == "en" else {k: v[0] for k,v in ASSUNTOS.items()}
+
+
+def paginas(tema: str, idioma: str | None = None) -> list[discord.Embed]:
+    ingles = (idioma or atual()) == "en"
+    titulo = titulos(idioma)[tema]
+    textos = ASSUNTOS[tema][1]
     saida = []
     for i, (nome, texto) in enumerate(textos, 1):
-        embed = discord.Embed(title=f"Como usar · {titulo}", description=texto, color=0x2E8B57)
+        if ingles:
+            pagina = _ingles()["pages"][f"{tema}.{i}"]
+            nome, texto = pagina["title"], pagina["text"]
+        embed = discord.Embed(title=("How to use" if ingles else "Como usar") + " · " + titulo,
+                              description=texto, color=0x2E8B57)
         embed.set_author(name=nome)
-        # O paginador separa o rodapé por “ · ”. Preserve o subtítulo no mesmo
-        # segmento para distinguir, por exemplo, os três painéis CONFIGURAÇÃO.
         rotulo = re.sub(r"^\d+\.\s+", "", nome).replace(" · ", ": ")
-        embed.set_footer(text=f"Página {i} de {len(textos)} · {rotulo} · GC:guia {tema} · só orientação; não executa ações")
+        rodape = (f"Page {i} of {len(textos)} · {rotulo} · GC:guide {tema} · guidance only; does not perform actions" if ingles else
+                  f"Página {i} de {len(textos)} · {rotulo} · GC:guia {tema} · só orientação; não executa ações")
+        embed.set_footer(text=rodape)
         saida.append(embed)
     return saida

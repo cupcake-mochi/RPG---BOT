@@ -33,6 +33,21 @@ class Pessoa(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
+    def _contexto(self, interacao):
+        gid = getattr(interacao, "guild_id", None)
+        return self.bot.registro.opcoes_servidor(gid).contexto(gid) if gid else ""
+
+    def _ficha(self, interacao):
+        contexto = self._contexto(interacao)
+        return self.bot.registro.ficha_contexto(interacao.user.id, contexto) if contexto else self.bot.registro.ficha(interacao.user.id)
+
+    def _gravar(self, interacao, ficha):
+        contexto = self._contexto(interacao)
+        if contexto:
+            self.bot.registro.gravar_ficha_contexto(interacao.user.id, contexto, ficha)
+        else:
+            self.bot.registro.gravar_ficha(interacao.user.id, ficha)
+
     async def cog_load(self) -> None:
         self.reflexao_diaria.start()
         self.limpeza_conversas.start()
@@ -71,61 +86,61 @@ class Pessoa(commands.Cog):
         return True
 
     @app_commands.command(name="meus_dados", description="Mostra o que a Kal'tsit e a Closure guardam sobre você.")
-    async def meus_dados(self, interacao: discord.Interaction) -> None:
+    async def meus_dados(self, interacao: discord.Interaction, legado: bool = False) -> None:
         eu = interacao.user.id
-        ficha = self.bot.registro.ficha(eu)
-        linhas = [f"Pronomes: {ficha.pronomes or 'não informados (elas usam forma neutra)'}."]
-        linhas.append("Fatos:" if ficha.fatos else "Fatos: nenhum.")
+        ficha = self.bot.registro.ficha(eu) if legado else self._ficha(interacao)
+        escopo = tr('Memória antiga, sem servidor identificado; não entra nas novas conversas.') if legado else tr('Fatos deste servidor e do mundo atualmente escolhido. Pronomes são pessoais.')
+        linhas = [escopo, tr('Pronomes: {0}.').format(ficha.pronomes or 'não informados (elas usam forma neutra)')]
+        linhas.append(tr('Fatos:') if ficha.fatos else tr('Fatos: nenhum.'))
         linhas += [f"{n}. {fato}" for n, fato in enumerate(ficha.fatos, 1)]
         for persona in self.bot.personas.values():
             dias = self.bot.registro.dias_de_conversa(autor_id=eu, persona=persona.chave)
-            periodo = "1 dia" if dias == 1 else f"{dias} dias"
-            linhas.append(f"{persona.nome}: você falou com ela em {periodo} "
-                          f"(intimidade {intimidade(dias)} de {len(DIAS_POR_NIVEL)}).")
-        linhas.append("A conversa recente guarda até 12 falas, por até 30 minutos sem conversa ou até as 4h30, "
-                      "mesmo após reiniciar. Quando você chama uma delas, o texto da mensagem fica guardado até as 4h30, pode dar origem a alguns "
-                      "fatos como os de cima e depois é apagado. /meu_fato acrescenta um, /esquecer_fato tira um, "
-                      "/apagar_meus_dados apaga tudo.")
+            periodo = tr('1 dia') if dias == 1 else tr('{0} dias').format(dias)
+            linhas.append(tr('{0}: você falou com ela em {1} (intimidade {2} de {3}).').format(persona.nome, periodo, intimidade(dias), len(DIAS_POR_NIVEL)))
+        linhas.append(tr('A conversa recente guarda até 12 falas, por até 30 minutos sem conversa ou até as 4h30, mesmo após reiniciar. Quando você chama uma delas, o texto da mensagem fica guardado até as 4h30, pode dar origem a alguns fatos como os de cima e depois é apagado. /meu_fato acrescenta um, /esquecer_fato tira um, /apagar_meus_dados apaga tudo.'))
         if self.bot.config.politica_url:
-            linhas.append(f"Política de privacidade: {self.bot.config.politica_url}")
-        await interacao.response.send_message("\n".join(linhas), ephemeral=True)
+            linhas.append(tr('Política de privacidade: {0}').format(self.bot.config.politica_url))
+        from .chat import em_partes
+        partes=em_partes("\n".join(linhas))
+        await interacao.response.send_message(partes[0],ephemeral=True,allowed_mentions=discord.AllowedMentions.none())
+        for parte in partes[1:]:
+            await interacao.followup.send(parte,ephemeral=True,allowed_mentions=discord.AllowedMentions.none())
 
     @app_commands.command(name="meus_pronomes", description="Diz às personagens como tratar você. Sem texto, volta pra forma neutra.")
     @app_commands.describe(pronomes='Por exemplo "ele/dele", "ela/dela", "elu/delu".')
     async def meus_pronomes(self, interacao: discord.Interaction, pronomes: str | None = None) -> None:
         limpo = " ".join((pronomes or "").split())[:PRONOMES_MAX] or None
         self.bot.registro.gravar_ficha(interacao.user.id, replace(self.bot.registro.ficha(interacao.user.id), pronomes=limpo))
-        await interacao.response.send_message(_pontuar(f"Anotado: {limpo}") if limpo else "Voltei pra forma neutra.", ephemeral=True)
+        await interacao.response.send_message(_pontuar(tr('Anotado: {0}').format(limpo)) if limpo else tr('Voltei pra forma neutra.'), ephemeral=True)
 
     @app_commands.command(name="meu_fato", description="Conta uma coisa sobre você pra elas lembrarem (personagem, mesa, gosto).")
     @app_commands.describe(fato='Uma frase curta, por exemplo "jogo com um Bastião chamado Ren na mesa do Tiago".')
     async def meu_fato(self, interacao: discord.Interaction, fato: str) -> None:
         limpo = " ".join(fato.split())
-        ficha = self.bot.registro.ficha(interacao.user.id)
+        ficha = self._ficha(interacao)
         if not fato_permitido(limpo):
-            aviso = (f"Não guardei. O fato precisa ter até {FATO_MAX} caracteres, e elas não guardam saúde, dinheiro, religião, "
-                     "política, relacionamento, idade, endereço nem contato.")
+            aviso = (tr('Não guardei. O fato precisa ter até {0} caracteres, e elas não guardam saúde, dinheiro, religião, política, relacionamento, idade, endereço nem contato.').format(FATO_MAX))
         elif limpo in ficha.fatos:
-            aviso = "Esse elas já sabem."
+            aviso = tr('Esse elas já sabem.')
         else:
-            self.bot.registro.gravar_ficha(interacao.user.id, replace(ficha, fatos=ficha.fatos + (limpo,)))
-            saiu = f" Como o limite é {FATOS_MAX}, o mais antigo saiu." if len(ficha.fatos) >= FATOS_MAX else ""
-            aviso = _pontuar(f"Anotado: {limpo}") + saiu
+            self._gravar(interacao, replace(ficha, fatos=ficha.fatos + (limpo,)))
+            saiu = tr(' Como o limite é {0}, o mais antigo saiu.').format(FATOS_MAX) if len(ficha.fatos) >= FATOS_MAX else ""
+            aviso = _pontuar(tr('Anotado: {0}').format(limpo)) + saiu
         await interacao.response.send_message(aviso, ephemeral=True)
 
     @app_commands.command(name="esquecer_fato", description="Tira um fato da sua lista. O número é o que aparece em /meus_dados.")
     async def esquecer_fato(self, interacao: discord.Interaction, numero: int) -> None:
-        ficha = self.bot.registro.ficha(interacao.user.id)
+        ficha = self._ficha(interacao)
         if not 1 <= numero <= len(ficha.fatos):
-            await interacao.response.send_message("Não achei esse número. Veja a lista em /meus_dados.", ephemeral=True)
+            await interacao.response.send_message(tr('Não achei esse número. Veja a lista em /meus_dados.'), ephemeral=True)
             return
-        self.bot.registro.gravar_ficha(interacao.user.id, replace(ficha, fatos=ficha.fatos[:numero - 1] + ficha.fatos[numero:]))
-        await interacao.response.send_message(_pontuar(f"Esquecido: {ficha.fatos[numero - 1]}"), ephemeral=True)
+        self._gravar(interacao, replace(ficha, fatos=ficha.fatos[:numero - 1] + ficha.fatos[numero:]))
+        await interacao.response.send_message(_pontuar(tr('Esquecido: {0}').format(ficha.fatos[numero - 1])), ephemeral=True)
 
     @app_commands.command(name="apagar_meus_dados", description="Apaga tudo o que as personagens guardam sobre você. Não tem volta.")
     async def apagar_meus_dados(self, interacao: discord.Interaction) -> None:
         self.bot.registro.apagar_pessoa(interacao.user.id)
-        await interacao.response.send_message("Apagado: pronomes, fatos, mensagens de hoje e o histórico de quando você chamou cada uma.", ephemeral=True)
+        await interacao.response.send_message(tr('Apagado: pronomes, fatos, mensagens de hoje e o histórico de quando você chamou cada uma.'), ephemeral=True)
 
 
 async def setup(bot: commands.Bot) -> None:

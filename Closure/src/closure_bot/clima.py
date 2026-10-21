@@ -185,6 +185,7 @@ def linha_bloco4(clima: Clima) -> str:
 _LOCAL = r"(em|no|na|nos|nas|ai|la)(?!\w)"
 _GATILHOS = re.compile(
     r"(?<!\w)("
+    r"weather\b|forecast (?:in|for|today|now)\b|temperature (?:in|of|for|today|now)\b|is it (?:raining|snowing)\b|"
     r"clima (em|no|na|nos|nas|ai|la|hoje|agora|por ai)(?!\w)|(qual|como) (e |ta |esta |anda )?o (clima|tempo)|"
     r"previsao do tempo|tempo (em|de) toquio|tempo (ai|la)(?!\w)|"
     r"temperatura (em|no|na|nos|nas|ai|la|hoje|agora)(?!\w)|qual (e )?a temperatura|quantos graus|"
@@ -196,11 +197,11 @@ _GATILHOS = re.compile(
 
 # Depois do gatilho: "em são paulo hoje?" -> "são paulo". Para na pontuação ou numa destas palavras.
 _PARADAS = {"hoje", "agora", "amanha", "ai", "la", "pra", "para", "e", "ou", "que", "ne", "hein", "ta", "esta",
-            "closure", "kal", "kaltsit", "kal'tsit", "por", "favor", "pfv", "pfvr", "vc", "voce"}
+            "closure", "kal", "kaltsit", "kal'tsit", "por", "favor", "pfv", "pfvr", "vc", "voce", "today", "now", "tomorrow", "please", "and"}
 # "de/do/da" precisa do assunto do clima antes, com marcador temporal opcional:
 # "clima atual de BH". Não captura "preciso de ajuda" nem "em" de outra frase.
 _ANTES_DO_LUGAR = re.compile(
-    r"(?<!\w)(?:(?:em|no|na|nos|nas)|"
+    r"(?<!\w)(?:(?:em|no|na|nos|nas|in|for)|"
     r"(?:clima|temperatura|tempo)(?:\s+(?:atual|hoje|agora))?\s+(?:de|do|da))\s+"
 )
 _NAO_E_LUGAR = {"toquio", "tokyo", "o", "a", "tempo", "clima", "casa", "geral"}
@@ -307,8 +308,8 @@ class ServicoClima:
 
 # Continuação curta, ancorada na fala (não no meio de outra frase).
 _SEGUE_CLIMA = re.compile(
-    r"^\s*(?:(?:closure|kal(?:['’]?tsit)?)\s*[,!:]?\s*)?e\s+"
-    r"(?=(?:em|no|na|nos|nas|de|do|da)\s+)"
+    r"^\s*(?:(?:closure|kal(?:['’]?tsit)?)\s*[,!:]?\s*)?(?:e|and)\s+"
+    r"(?=(?:em|no|na|nos|nas|de|do|da|in|for)\s+)"
 )
 
 

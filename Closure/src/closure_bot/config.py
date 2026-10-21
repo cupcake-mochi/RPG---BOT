@@ -74,6 +74,7 @@ def _decimal(valor: str | None) -> float | None:
 
 
 LIVRO_PADRAO = "https://ciclo-maldito.vercel.app/livro/Ciclo-Maldito-Livro-de-Regras.pdf"
+LIVRO_NOTURNO_PADRAO = "https://ciclo-maldito.vercel.app/noturno"
 
 
 @dataclass(frozen=True)
@@ -101,6 +102,7 @@ class Config:
     argon_perfil: str = "original"
     teto_preco: str = "cheio"
     livro_url: str = LIVRO_PADRAO
+    livro_noturno_url: str = LIVRO_NOTURNO_PADRAO
     gasto_externo_usd: float = 0.0
     midia_ativa: bool = False
     midia_canais: frozenset[int] = frozenset()
@@ -165,6 +167,7 @@ def carregar(arquivo: Path | None = None, ambiente: dict[str, str] | None = None
         argon_perfil=perfil,
         teto_preco=teto_preco,
         livro_url=valores.get("LIVRO_URL", "").strip() or LIVRO_PADRAO,
+        livro_noturno_url=valores.get("LIVRO_NOTURNO_URL", "").strip() or LIVRO_NOTURNO_PADRAO,
         gasto_externo_usd=_decimal(valores.get("GASTO_EXTERNO_USD")) or 0.0,
         midia_ativa=midia in ('1', 'true'),
         midia_canais=frozenset(int(c) for c in canais_midia.split(',') if c),

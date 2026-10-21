@@ -12,6 +12,7 @@ from discord import app_commands
 from discord.ext import commands
 
 from ..plantao import CLOSURE, FUSO, de_plantao
+from ..idiomas import atual
 
 COR = 0xCC0102
 # Uma frase por guia, no jeito de cada uma; quem aparece é quem está de plantão.
@@ -26,16 +27,22 @@ class Regras(commands.Cog):
     def painel_do_livro(self) -> tuple[discord.Embed, discord.ui.View]:
         url = self.bot.config.livro_url
         persona = self.bot.personas[de_plantao(datetime.now(FUSO))]
-        embed = discord.Embed(title="Livro de regras do Ciclo Maldito", url=url, color=COR,
-                              description=f"{FALA.get(persona.chave, FALA['kaltsit'])}\n"
-                                          "O arquivo passa de 50 MB; no celular pode demorar pra abrir.")
-        embed.set_author(name=persona.nome, icon_url=persona.avatar_url or None)
-        manifesto = getattr(self.bot, "manifesto", None) or {}
+        ingles = atual() == "en"
+        descricao = ("Choose **standard theme** or **dark theme** below. The official editions have the same text; only the appearance changes. "
+                     "Large PDFs may take a while to open on mobile." if ingles else
+                     "Escolha **tema normal** ou **tema escuro** nos botões abaixo. As duas edições oficiais têm o mesmo texto; muda a aparência. "
+                     "Os PDFs são grandes e podem demorar para abrir no celular.")
+        embed = discord.Embed(title="Ciclo Maldito rulebook" if ingles else "Livro de regras do Ciclo Maldito",url=url,color=COR,description=descricao)
+        embed.set_author(name=persona.nome,icon_url=persona.avatar_url or None)
+        manifesto = getattr(self.bot,"manifesto",None) or {}
         if manifesto.get("edicao_livro"):
-            embed.set_footer(text=f"As respostas das guias seguem a edição {manifesto['edicao_livro']} "
-                                  f"({manifesto.get('versao_sistema', '?')}).")
+            edicao=manifesto['edicao_livro']
+            versao=manifesto.get('versao_sistema','?')
+            embed.set_footer(text=(f"General lookup reference: {edicao} ({versao}). The PDFs may be newer; check your table's edition." if ingles else
+                                   f"Base geral de consulta: {edicao} ({versao}). Os PDFs podem ser mais recentes; confira a edição da mesa."))
         botao = discord.ui.View()
-        botao.add_item(discord.ui.Button(label="Abrir o livro", url=url))
+        botao.add_item(discord.ui.Button(label="Standard theme" if ingles else "Tema normal",url=url))
+        botao.add_item(discord.ui.Button(label="Dark theme" if ingles else "Tema escuro",url=self.bot.config.livro_noturno_url))
         return embed, botao
 
     @app_commands.command(name="livro", description="Link do livro de regras do Ciclo Maldito, em PDF.")

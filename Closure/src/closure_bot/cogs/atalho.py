@@ -15,6 +15,7 @@ from discord.ext import commands
 
 from .clima import _com_arte
 from ..ficha_paginacao import enviar_relatorio
+from ..idiomas import preparar, tr
 from ..atalhos import OUTROS_NOMES, SO_NA_BARRA, destinos, limpo, resolver
 from discord import app_commands
 
@@ -47,6 +48,7 @@ class Atalho(commands.Cog):
         if pedido is None:
             return
         pedido = separar(mensagem.content, self.bot.registro.atalhos_servidor(mensagem.guild.id))
+        preparar(self.bot, mensagem.guild.id)
         nome, resto = pedido
         try:
             await self._atender(mensagem, nome, resto)
@@ -58,6 +60,10 @@ class Atalho(commands.Cog):
             return await mensagem.channel.send(texto, reference=mensagem, mention_author=False,
                                         allowed_mentions=discord.AllowedMentions.none(), **extras)
 
+        if nome == "ficha" and limpo(resto) in ("guide", "help", "gm"):
+            resto = "mestre" if limpo(resto) == "gm" else "guia"
+        if nome == "ajuda" and limpo(resto) in ("abbreviations", "shortcuts"):
+            resto = "abreviacoes"
         admin = self.bot.get_cog("Admin")
         if nome == "ajuda" and limpo(resto) in ("abreviacoes", "atalhos"):
             await admin.enviar_ajuda(responder, usuario=mensagem.author, servidor=mensagem.guild.id, abreviacoes=True)
@@ -72,7 +78,7 @@ class Atalho(commands.Cog):
         elif nome == "ficha":
             ficha = self.bot.get_cog("Ficha")
             if ficha is None:
-                await responder("A correção de ficha está fora do ar agora.")
+                await responder(tr('A correção de ficha está fora do ar agora.'))
                 return
             anexo = next((a for a in mensagem.attachments if a.filename.lower().endswith(".xlsx")), None)
             link = resto.split()[0] if resto else None
@@ -90,9 +96,9 @@ class Atalho(commands.Cog):
         elif nome == "status":
             await responder(await admin.texto_status())
         elif nome in SO_NA_BARRA:
-            await responder(f"Esse é só pela barra, porque a resposta aparece só pra você: {self.bot.mencoes.get(nome, '/' + nome)}")
+            await responder(tr('Esse é só pela barra, porque a resposta aparece só pra você: {0}').format(self.bot.mencoes.get(nome, '/' + nome)))
         else:
-            await responder("Não conheço esse comando. `GC:ajuda` mostra a lista; `GC:guia` explica como usar.")
+            await responder(tr('Não conheço esse comando. `GC:ajuda` mostra a lista; `GC:guia` explica como usar.'))
 
     async def _administrador(self, interacao):
         return await self.bot.get_cog("Admin")._administrador(interacao)
@@ -108,8 +114,7 @@ class Atalho(commands.Cog):
         except ValueError as erro:
             await interacao.response.send_message(str(erro), ephemeral=True)
             return
-        await interacao.response.send_message(f"Atalho deste servidor: `GC:{nome}` faz o mesmo que `GC:{destino}`. "
-                                              "Ele já aparece na página Abreviações de /ajuda.", ephemeral=True,
+        await interacao.response.send_message(tr('Atalho deste servidor: `GC:{0}` faz o mesmo que `GC:{1}`. Ele já aparece na página Abreviações de /ajuda.').format(nome, destino), ephemeral=True,
                                               allowed_mentions=discord.AllowedMentions.none())
 
     @grupo.command(name="remover", description="Remove um atalho próprio deste servidor.")
@@ -122,15 +127,15 @@ class Atalho(commands.Cog):
         except ValueError as erro:
             await interacao.response.send_message(str(erro), ephemeral=True)
             return
-        await interacao.response.send_message("Atalho removido deste servidor." if apagado else "Não há um atalho próprio com esse nome neste servidor.", ephemeral=True)
+        await interacao.response.send_message(tr('Atalho removido deste servidor.') if apagado else tr('Não há um atalho próprio com esse nome neste servidor.'), ephemeral=True)
 
     @grupo.command(name="listar", description="Mostra os atalhos próprios deste servidor.")
     async def listar(self, interacao: discord.Interaction):
         if not await self._administrador(interacao):
             return
         extras = self.bot.registro.atalhos_servidor(interacao.guild_id)
-        texto = "\n".join(f"`GC:{n}` → `GC:{d}`" for n, d in extras.items()) or "Este servidor ainda não tem atalhos próprios."
-        await interacao.response.send_message(texto + "\nPara ver também os padrões, abra a página Abreviações de /ajuda.",
+        texto = "\n".join(f"`GC:{n}` → `GC:{d}`" for n, d in extras.items()) or tr('Este servidor ainda não tem atalhos próprios.')
+        await interacao.response.send_message(texto + tr('\nPara ver também os padrões, abra a página Abreviações de /ajuda.'),
                                               ephemeral=True, allowed_mentions=discord.AllowedMentions.none())
 
 

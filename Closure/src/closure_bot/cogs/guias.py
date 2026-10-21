@@ -6,13 +6,15 @@ from discord import app_commands
 from discord.ext import commands
 
 from .. import guias
+from ..idiomas import atual, tr
 from ..ficha_paginacao import PaginasFicha
 
 
 class GuiaNavegavel(PaginasFicha):
     def __init__(self, tema: str):
+        self.idioma = atual()
         self.tema = tema
-        super().__init__(guias.paginas(tema), aviso_encerrado="Abra /guia ou GC:guia novamente para continuar")
+        super().__init__(guias.paginas(tema, self.idioma), idioma=self.idioma, aviso_encerrado=tr("Abra /guia ou GC:guia novamente para continuar", self.idioma))
 
     @discord.ui.select(placeholder="Ir para uma página", row=1)
     async def seletor(self, interacao: discord.Interaction, seletor: discord.ui.Select):
@@ -40,20 +42,21 @@ class GuiaNavegavel(PaginasFicha):
 
     def _atualizar(self):
         super()._atualizar()
+        self.assuntos.placeholder = tr("Escolha um assunto", self.idioma)
         self.assuntos.options = [discord.SelectOption(label=titulo, value=tema, default=tema == self.tema)
-                                 for tema, (titulo, _) in guias.ASSUNTOS.items()]
+                                 for tema, titulo in guias.titulos(self.idioma).items()]
 
     @discord.ui.select(placeholder="Escolha um assunto", row=0)
     async def assuntos(self, interacao: discord.Interaction, seletor: discord.ui.Select):
         async with self._troca:
             if self.is_finished():
-                await interacao.response.send_message(f"Os controles encerraram. {self.aviso_encerrado}.", ephemeral=True)
+                await interacao.response.send_message(tr("Os controles encerraram. {0}.", self.idioma).format(self.aviso_encerrado), ephemeral=True)
                 return
             tema = seletor.values[0] if seletor.values else self.tema
             if tema not in guias.ASSUNTOS:
                 tema = self.tema
             self.tema = tema
-            self.paginas = guias.paginas(tema)
+            self.paginas = guias.paginas(tema, self.idioma)
             self.indice = 0
             self._atualizar()
             await interacao.response.edit_message(embed=self.paginas[0], view=self,
@@ -68,7 +71,7 @@ class Guias(commands.Cog):
     async def enviar(self, enviar, tema: str | None = None):
         tema = guias.assunto(tema)
         if tema is None:
-            await enviar("Não achei esse assunto. Use `GC:guia` ou `/guia` para escolher no menu.")
+            await enviar(tr('Não achei esse assunto. Use `GC:guia` ou `/guia` para escolher no menu.'))
             return
         view = GuiaNavegavel(tema)
         view.mensagem = await enviar(embed=view.paginas[0], view=view)

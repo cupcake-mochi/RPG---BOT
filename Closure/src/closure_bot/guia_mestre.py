@@ -4,7 +4,7 @@ MESTRE = ("Revisar uma ficha como mestre", (
     ("1. Combine o que será revisado",
      "Este roteiro ajuda o mestre a revisar a ficha inteira, usando o painel do bot como apoio. "
      "Abra por **GC:guia mestre** ou **/ficha mestre**. Ele não analisa um arquivo nem concede aprovações.\n\n"
-     "Peça a cópia atual do jogador e confirme campanha, edição do livro, nível inicial, Grau, recursos e opções permitidas. "
+     "Peça ao jogador o link ou o arquivo XLSX da ficha atual. Confirme campanha, edição do livro, nível inicial, Grau, recursos e opções permitidas. "
      "Se houver regras próprias, compare **CONFIGURAÇÃO → REGRAS DE CAMPANHA** com o que a mesa autorizou.\n\n"
      "Use `GC:guia criar` para acompanhar o preenchimento e `GC:guia planilha` para localizar abas e configurações. "
      "Faça a revisão pela versão atual: um painel antigo não acompanha as edições do jogador."),

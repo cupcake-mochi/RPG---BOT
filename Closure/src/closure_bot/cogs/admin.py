@@ -9,6 +9,7 @@ from discord import app_commands
 from discord.ext import commands
 
 from ..dados import resumo_manifesto
+from ..idiomas import atual, tr, catalogo
 from ..conteudo_adulto import motivo_inativo
 from ..plantao import FUSO, de_plantao
 from ..prompt import versoes as versoes_do_site
@@ -20,6 +21,19 @@ COR = 0xCC0102
 # Título de cada grupo no /ajuda, pelo módulo que tem o comando. A lista sai dos próprios comandos, então não envelhece.
 GRUPOS = {"Guias": "Guias de uso", "Regras": "Regras", "Ficha": "Ficha", "ComandoClima": "Clima", "Pessoa": "Seus dados", "Admin": "Do bot"}
 SO_DO_DONO = {"teste_webhook"}
+SO_DA_GERENCIA = {"idioma", "language", "lnt", "cargo_admin"}
+
+
+def _campos_grupo(embed, grupo, linhas):
+    partes=[]
+    for linha in linhas:
+        if partes and len(partes[-1])+len(linha)+1 <= 1024:
+            partes[-1]+="\n"+linha
+        else:
+            partes.append(linha)
+    for i,parte in enumerate(partes):
+        nome="» "+grupo+(" · continued" if atual()=="en" else " · continuação")*(i>0)
+        embed.add_field(name=nome,value=parte,inline=False)
 
 
 class Admin(commands.Cog):
@@ -27,18 +41,19 @@ class Admin(commands.Cog):
         self.bot = bot
 
     def painel_de_ajuda(self, *, cuida_do_servidor: bool, dono: bool) -> discord.Embed:
+        if atual() == "en":
+            return self._ajuda_ingles(cuida_do_servidor=cuida_do_servidor,dono=dono)
         agora = datetime.now(FUSO)
-        canais = " ou ".join(f"<#{c}>" for c in sorted(self.bot.config.canais))
-        onde = f"em {canais}" if canais else "no canal"
         embed = discord.Embed(title="Guias do Ciclo", color=COR, description=(
             "**» Como falar com elas**\n"
-            f"Chame pelo nome {onde}, como `kal, o que é Integridade?` ou `closure, tá chovendo aí?`. "
+            "Nos canais onde o bot atende, chame pelo nome: `kal, o que é Integridade?` ou `closure, tá chovendo aí?`. "
+            "Em outro canal, mencione o bot diretamente, se você puder usá-lo ali. "
             "Responder a uma mensagem delas também vale, e logo depois de ela responder você pode continuar sem chamar de novo.\n"
             "A Kal'tsit atende das 9h às 21h e a Closure das 21h às 9h, no horário de Brasília. "
             f"Agora quem atende é a {self.bot.personas[de_plantao(agora)].nome}."))
         grupos: dict[str, list[str]] = {}
         for comando in sorted(self.bot.tree.get_commands(), key=lambda c: c.name):
-            do_servidor = getattr(comando, "default_permissions", None) is not None
+            do_servidor = getattr(comando, "default_permissions", None) is not None or comando.name in SO_DA_GERENCIA
             if (do_servidor and not cuida_do_servidor) or (comando.name in SO_DO_DONO and not dono):
                 continue
             # grupo de comandos (/ficha analisar): cada subcomando numa linha, com a menção clicável dele
@@ -53,7 +68,7 @@ class Admin(commands.Cog):
                 grupos.setdefault(grupo, []).append(f"{mencao} · {item.description}")
         ordem = [*GRUPOS.values(), "Outros", "Para quem cuida do servidor"]
         for grupo in sorted(grupos, key=ordem.index):
-            embed.add_field(name=f"» {grupo}", value="\n".join(grupos[grupo]), inline=False)
+            _campos_grupo(embed,grupo,grupos[grupo])
         embed.add_field(name="» Sem a barra", inline=False,
                         value="`GC:guia criar` ensina a montar a ficha; `GC:guia planilha` explica abas e configurações.\n"
                               "`GC:guia ficha` explica a análise; `GC:guia` abre todos os assuntos.\n"
@@ -68,7 +83,61 @@ class Admin(commands.Cog):
         embed.set_footer(text="Página 1 de 2 · Comandos disponíveis · Bot de fã, sem ligação oficial com nenhum jogo")
         return embed
 
+    def _ajuda_ingles(self, *, cuida_do_servidor, dono):
+        agora = datetime.now(FUSO)
+        e = discord.Embed(title="Guides of the Cycle",color=COR,description=(
+            "**» Talk to the guides**\n"
+            "In channels where the bot listens, call a guide by name: `kal, how does Integridade work?` or "
+            "`closure, what is the weather in Tokyo?`. In another channel, mention the bot directly if you can use it there. "
+            "You can also reply to a guide's message or continue shortly after her reply without repeating the name.\n"
+            "Kal'tsit covers 09:00–21:00 and Closure 21:00–09:00, Brasília time. "
+            f"Currently on duty: {self.bot.personas[de_plantao(agora)].nome}."))
+        grupos = {}
+        nomes = {"Guias":"Usage guides","Regras":"Rulebook","Ficha":"Character sheets","ComandoClima":"Weather","Pessoa":"Your data","Admin":"Bot information"}
+        for comando in sorted(self.bot.tree.get_commands(),key=lambda c:c.name):
+            admin = getattr(comando,"default_permissions",None) is not None or comando.name in SO_DA_GERENCIA
+            if (admin and not cuida_do_servidor) or (comando.name in SO_DO_DONO and not dono):
+                continue
+            for item in (list(comando.commands) if isinstance(comando,app_commands.Group) else [comando]):
+                nome = comando.name if item is comando else f"{comando.name} {item.name}"
+                mencao = self.bot.mencoes.get(comando.name,"/"+comando.name)
+                if item is not comando:
+                    mencao = mencao.replace(f"</{comando.name}:",f"</{nome}:") if mencao.startswith("</") else "/"+nome
+                grupo = "Server administration" if admin or comando.name in SO_DO_DONO else nomes.get(type(getattr(item,"binding",None)).__name__,"Other commands")
+                grupos.setdefault(grupo,[]).append(f"{mencao} · {tr(item.description,'en')}")
+        for grupo,linhas in grupos.items():
+            _campos_grupo(e,grupo,linhas)
+        e.add_field(name="» Type commands in chat",inline=False,value=(
+            "`GC:guide create` walks through character creation; `GC:guide spreadsheet` explains tabs and settings.\n"
+            "`GC:guide sheet` explains analysis; `GC:guide gm` covers the GM review. `GC:guide` opens all topics.\n"
+            "`GC:help`, `GC:book`, `GC:sheet LINK` (or attach XLSX), `GC:weather CITY`, `GC:ping` and `GC:status` also work in chat.\n"
+            "Choose **Abbreviations** below for short names. Native slash-menu names follow your Discord client's language; "
+            "Portuguese commands and English prefix aliases remain accepted."))
+        links=[f"[{nome}]({url})" for nome,url in (("Privacy",self.bot.config.politica_url),("Terms of use",self.bot.config.termos_url)) if url]
+        if links:e.add_field(name="» Links",value=" | ".join(links),inline=False)
+        if self.bot.user and self.bot.user.display_avatar:e.set_thumbnail(url=self.bot.user.display_avatar.url)
+        e.set_footer(text="Page 1 of 2 · Available commands · Fan-made bot; not affiliated with any game")
+        return e
+
     def painel_abreviacoes(self, servidor: int | None) -> discord.Embed:
+        if atual() == "en":
+            e = discord.Embed(title="Abbreviations",color=COR,description=(
+                "Short forms of the same commands. **Full names still work.**\n\n"+
+                "\n".join(f"`GC:{n}` → `GC:{d}`" for n,d in CURTOS.items())+
+                "\n\nArguments still apply: `GC:f SHEET_LINK`, `GC:c BH` or `GC:g gm`. Attach XLSX to the same `GC:f` message."))
+            e.add_field(name="Other accepted names",value="\n".join(f"`GC:{n}` → `GC:{d}`" for n,d in OUTROS_NOMES.items()),inline=False)
+            extras=self.bot.registro.atalhos_servidor(servidor) if servidor else {}
+            linhas=[f"`GC:{n}` → `GC:{d}`" for n,d in extras.items()]
+            for i in range(0,len(linhas),10):
+                e.add_field(name="Server shortcuts" if i==0 else "Server shortcuts · continued",value="\n".join(linhas[i:i+10]),inline=False)
+            if not extras:e.add_field(name="Server shortcuts",value="None configured." if servidor else "Open help in a server to see its shortcuts.",inline=False)
+            e.add_field(name="Configure a shortcut",inline=False,value=(
+                "With **Manage Server**, use `/atalho definir` to choose a name and allowed destination. "
+                "Example: name `review`, destination **Guia: Revisar uma ficha como mestre**. Then `GC:review` opens that guide. "
+                "`/atalho remover` removes one; `/atalho listar` lists them. Up to 20 per server; reserved commands and shortcuts cannot be replaced.\n"
+                "This is a snapshot. Reopen help after changing a shortcut."))
+            e.set_footer(text="Page 2 of 2 · Abbreviations · GC:help abbreviations opens this page directly")
+            return e
         e = discord.Embed(title="Abreviações", color=COR, description=(
             "São formas curtas dos mesmos comandos. **Os nomes completos continuam funcionando.**\n\n"
             + "\n".join(f"`GC:{nome}` → `GC:{alvo}`" for nome, alvo in CURTOS.items())
@@ -94,9 +163,11 @@ class Admin(commands.Cog):
     async def enviar_ajuda(self, enviar, *, usuario, servidor: int | None, permissoes=None, abreviacoes=False):
         dono = usuario.id == self.bot.config.dono_id
         permissoes = permissoes if permissoes is not None else getattr(usuario, "guild_permissions", None)
-        paginas = [self.painel_de_ajuda(cuida_do_servidor=dono or bool(permissoes and permissoes.manage_guild), dono=dono),
+        from ..servidor import autorizado
+        pode = bool(servidor and autorizado(usuario, self.bot.registro.opcoes_servidor(servidor), permissoes))
+        paginas = [self.painel_de_ajuda(cuida_do_servidor=dono or pode, dono=dono),
                    self.painel_abreviacoes(servidor)]
-        v = PaginasFicha(paginas, aviso_encerrado="Abra /ajuda ou GC:ajuda novamente para continuar")
+        v = PaginasFicha(paginas, aviso_encerrado=tr('Abra /ajuda ou GC:ajuda novamente para continuar'))
         if abreviacoes:
             v.indice = 1
             v._atualizar()
@@ -113,7 +184,7 @@ class Admin(commands.Cog):
                                permissoes=interacao.permissions, abreviacoes=pagina == "abreviacoes")
 
     def texto_ping(self) -> str:
-        return f"No ar ({round(self.bot.latency * 1000)} ms). Regras: {resumo_manifesto(self.bot.manifesto)}."
+        return tr('No ar ({0} ms). Regras: {1}.').format(round(self.bot.latency * 1000), resumo_manifesto(self.bot.manifesto))
 
     async def texto_status(self) -> str:
         agora = datetime.now(FUSO)
@@ -121,16 +192,11 @@ class Admin(commands.Cog):
         try:  # o que vale é o que está na página de onde sai o prompt; os card.json da pasta podem estar atrás
             cards = ", ".join(f"{nome} {versao}" for nome, versao in (await versoes_do_site()).items())
         except Exception as erro:
-            cards = f"não deu pra ler a página ({str(erro)[:80]})"
+            cards = tr('não deu pra ler a página ({0})').format(str(erro)[:80])
         contagens = self.bot.registro.contagens()
-        return (f"Agora ({agora:%H:%M}, Brasília) o plantão é de {plantao.nome}.\n"
-                f"Prompt: {cards}.\n"
-                f"Registro: {contagens['gatilhos']} gatilhos, {contagens['chamadas_api']} chamadas de API, "
-                f"{contagens['mensagens_bot']} mensagens enviadas.\n"
-                f"Orçamento usado no mês: US$ {self.bot.modelos.gasto_do_mes():.2f} de US$ {self.bot.modelos.teto_usd:.2f} "
-                f"(preço {self.bot.modelos.teto_preco}, com reservas por consumo incerto"
-                + (f" e US$ {self.bot.modelos.gasto_externo_usd:.2f} gastos fora do bot" if self.bot.modelos.gasto_externo_usd else "")
-                + f"; pelo preço promocional, US$ {self.bot.modelos.gasto_do_mes(preco='promocional', externo=False):.2f} do bot).")
+        return (tr('Agora ({0:%H:%M}, Brasília) o plantão é de {1}.\nPrompt: {2}.\nRegistro: {3} gatilhos, {4} chamadas de API, {5} mensagens enviadas.\nOrçamento usado no mês: US$ {6:.2f} de US$ {7:.2f} (preço {8}, com reservas por consumo incerto').format(agora, plantao.nome, cards, contagens['gatilhos'], contagens['chamadas_api'], contagens['mensagens_bot'], self.bot.modelos.gasto_do_mes(), self.bot.modelos.teto_usd, self.bot.modelos.teto_preco)
+                + (tr(' e US$ {0:.2f} gastos fora do bot').format(self.bot.modelos.gasto_externo_usd) if self.bot.modelos.gasto_externo_usd else "")
+                + tr('; pelo preço promocional, US$ {0:.2f} do bot).').format(self.bot.modelos.gasto_do_mes(preco='promocional', externo=False)))
 
     @app_commands.command(name="ping", description="Confere se o bot está no ar e qual versão das regras ele leu.")
     async def ping(self, interacao: discord.Interaction) -> None:
@@ -142,11 +208,11 @@ class Admin(commands.Cog):
 
     async def _administrador(self, interacao: discord.Interaction) -> bool:
         if not interacao.guild_id:
-            await interacao.response.send_message("Use este comando dentro de um servidor.", ephemeral=True)
+            await interacao.response.send_message(tr('Use este comando dentro de um servidor.'), ephemeral=True)
             return False
         permissoes = interacao.permissions
         if not (permissoes.manage_guild or permissoes.administrator):
-            await interacao.response.send_message("É preciso ter a permissão Gerenciar servidor.", ephemeral=True)
+            await interacao.response.send_message(tr('É preciso ter a permissão Gerenciar servidor.'), ephemeral=True)
             return False
         return True
 
@@ -159,12 +225,11 @@ class Admin(commands.Cog):
             'sem_marcacao': '**Neste canal: inativo — falta marcar o canal como NSFW no Discord.**',
             'outro_canal': '**Neste canal: inativo — este canal não é o escolhido em /nsfw_canal.**',
         }.get(motivo, '**Neste canal: não foi possível conferir o canal atual.**')
-        estado = "ativadas" if p.responder_nsfw else "desativadas"
-        onde = (f"somente em <#{p.canal_nsfw_id}> e seus tópicos" if p.canal_nsfw_id is not None
-                else "em todos os canais marcados como NSFW onde o bot já atende")
-        return (f"{local}\n\nRespostas adultas não gráficas **{estado}** neste servidor; {onde}. "
-                "O canal precisa estar marcado como NSFW no Discord. "
-                "Permite reação e opinião, sem ERP ou encenação sexual; os bloqueios do Google continuam.")
+        local = tr(local)
+        estado = tr('ativadas') if p.responder_nsfw else tr('desativadas')
+        onde = (tr('somente em <#{0}> e seus tópicos').format(p.canal_nsfw_id) if p.canal_nsfw_id is not None
+                else tr('em todos os canais marcados como NSFW onde o bot já atende'))
+        return (tr('{0}\n\nRespostas adultas não gráficas **{1}** neste servidor; {2}. O canal precisa estar marcado como NSFW no Discord. Permite reação e opinião, sem ERP ou encenação sexual; os bloqueios do Google continuam.').format(local, estado, onde))
 
     @app_commands.command(name="responder_nsfw", description="Ativa ou desativa reações adultas não gráficas neste servidor.")
     @app_commands.describe(ativar="Sim para ativar, Não para desativar. Em branco, consulta a configuração.")
@@ -187,14 +252,14 @@ class Admin(commands.Cog):
         if not await self._administrador(interacao):
             return
         if canal is not None and todos:
-            await interacao.response.send_message("Escolha um canal ou `todos:Sim`, sem combinar os dois.", ephemeral=True)
+            await interacao.response.send_message(tr('Escolha um canal ou `todos:Sim`, sem combinar os dois.'), ephemeral=True)
             return
         if canal is not None:
             if not isinstance(canal, discord.TextChannel) or canal.guild.id != interacao.guild_id:
-                await interacao.response.send_message("Escolha um canal de texto deste servidor.", ephemeral=True)
+                await interacao.response.send_message(tr('Escolha um canal de texto deste servidor.'), ephemeral=True)
                 return
             if not canal.is_nsfw():
-                await interacao.response.send_message("Marque o canal como NSFW nas configurações do Discord antes de escolhê-lo.", ephemeral=True)
+                await interacao.response.send_message(tr('Marque o canal como NSFW nas configurações do Discord antes de escolhê-lo.'), ephemeral=True)
                 return
             self.bot.registro.definir_canal_nsfw(interacao.guild_id, canal.id)
         elif todos:
@@ -204,12 +269,12 @@ class Admin(commands.Cog):
     @app_commands.command(name="teste_webhook", description="Manda uma mensagem de teste com o nome e o avatar de quem está de plantão.")
     async def teste_webhook(self, interacao: discord.Interaction) -> None:
         if interacao.user.id != self.bot.config.dono_id:
-            await interacao.response.send_message("Esse comando é só do dono do bot.", ephemeral=True)
+            await interacao.response.send_message(tr('Esse comando é só do dono do bot.'), ephemeral=True)
             return
         persona = self.bot.personas[de_plantao(datetime.now(FUSO))]
         await interacao.response.defer(ephemeral=True)
         await self.bot.carteiro.enviar(interacao.channel, persona, "[teste de webhook]", lembrar=False)
-        await interacao.followup.send(f"Enviado como {persona.nome}.", ephemeral=True)
+        await interacao.followup.send(tr('Enviado como {0}.').format(persona.nome), ephemeral=True)
 
 
 async def setup(bot: commands.Bot) -> None:

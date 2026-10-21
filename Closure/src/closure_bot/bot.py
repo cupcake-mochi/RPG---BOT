@@ -16,17 +16,20 @@ from .dados import carregar_personas, ler_manifesto
 from .modelo import RACIOCINIO_PADRAO, TETO_PADRAO_USD, Modelos, fila_do_chat
 from .registro import Registro
 from .vida import Vida
+from .idiomas import arvore_e_tradutor, tr
+
+ArvoreLocalizada, Tradutor = arvore_e_tradutor()
 
 log = logging.getLogger(__name__)
 
-MODULOS = ("admin", "guias", "atalho", "chat", "clima", "pessoa", "regras", "ficha")
+MODULOS = ("admin", "servidor", "guias", "atalho", "chat", "clima", "pessoa", "regras", "ficha")
 
 
 class ClosureBot(commands.Bot):
     def __init__(self, config: Config):
         intents = discord.Intents.default()
         intents.message_content = True  # sem isso o bot não lê o nome chamado na mensagem
-        super().__init__(command_prefix=commands.when_mentioned, intents=intents, help_command=None)
+        super().__init__(command_prefix=commands.when_mentioned, intents=intents, help_command=None, tree_cls=ArvoreLocalizada)
         self.config = config
         self.registro = Registro(config.banco, config.chave_do_banco)
         if not self.registro.cofre.ligado:
@@ -51,7 +54,7 @@ class ClosureBot(commands.Bot):
     async def _erro_de_comando(self, interacao: discord.Interaction, erro: Exception) -> None:
         """Sem isto, um comando que quebra deixa a pessoa olhando pra "o aplicativo não respondeu"."""
         log.error("comando /%s falhou", getattr(interacao.command, "name", "?"), exc_info=erro)
-        aviso = "Deu um erro aqui do meu lado. Tenta de novo daqui a pouco."
+        aviso = tr("Deu um erro aqui do meu lado. Tenta de novo daqui a pouco.")
         try:
             if interacao.response.is_done():
                 await interacao.followup.send(aviso, ephemeral=True)
@@ -64,6 +67,7 @@ class ClosureBot(commands.Bot):
         for modulo in MODULOS:
             await self.load_extension(f"closure_bot.cogs.{modulo}")
         # O registro geral troca, em todo servidor, a lista de comandos que o bot antigo deixou no mesmo aplicativo.
+        await self.tree.set_translator(Tradutor())
         self.mencoes = {comando.name: comando.mention for comando in await self.tree.sync()}
         if self.config.guild_id:
             # Comando registrado só num servidor não sai com o registro geral e apareceria em dobro: limpa os desse.
