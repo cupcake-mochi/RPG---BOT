@@ -1,3 +1,5 @@
+Fechamento posterior em andamento: a consulta geral foi migrada integralmente para R53; 24 respostas reais e a criação inglesa com editor externo já foram testadas. Evidências e limites em REVISAO-R53-POS-1.0.md, PR 69 e Arquivista PR 11. As lacunas citadas abaixo sobre ausência desses ensaios descrevem a rodada inicial, não o estado desta continuação.
+
 # Idioma e lore por servidor · publicado em 21/10/2026
 
 Guias publicadas às 13:25:45 de Brasília, runtime `a2baf89`, PR 68 como revisão da entrega; estado atual no GitHub. Arquivista 1.1.0 publicada às 13:25:33, runtime `932df0e`, PR 10 como revisão da entrega. Preferências independentes; arquivos existentes não são convertidos.

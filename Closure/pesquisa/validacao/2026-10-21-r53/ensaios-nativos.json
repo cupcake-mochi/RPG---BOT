@@ -1,0 +1,72 @@
+{
+  "data": "2026-10-21",
+  "tipo": "cópia nativa nova; fórmulas calculadas pelo Google; não importada de XLSX",
+  "planilha_id": "1rK5qHDSfj5RYze2BUKvmMfYJKYEuxMQ9pd_qeELVUYE",
+  "escopo": "cartões e protocolo de leitura; personagem propositalmente incompleto",
+  "casos": [
+    {
+      "caso": "simples",
+      "campos": 18393,
+      "veredito": "reprovada",
+      "erros": 6,
+      "pendencias": 9,
+      "cartoes_conferidos": [
+        "Feitiço 1: R53 Classe 1 · Dano 3d8 · 3 PE · saldo 3 · ficha VÁLIDO"
+      ],
+      "cartoes_revisao": [],
+      "nao_conferido_cartoes": [
+        "Cartões R53: VÁLIDO/REVISAR é o estado mecânico da ficha, não aprovação do mestre nem do bot"
+      ],
+      "xlsx_bytes": 6243944,
+      "campos_xlsx": 18393,
+      "paridade_valores": true,
+      "paridade_resultados": true
+    },
+    {
+      "caso": "excesso-c1",
+      "campos": 18393,
+      "veredito": "reprovada",
+      "erros": 6,
+      "pendencias": 9,
+      "cartoes_conferidos": [
+        "Feitiço 1: R53 Classe 1 · Dano 3d8 · 3 PE · saldo 3 · ficha VÁLIDO",
+        "Feitiço 2: R53 Classe 1 · Dano 4d8; Cura 2d8 · 3 PE · saldo 2 · ficha REVISAR"
+      ],
+      "cartoes_revisao": [
+        {
+          "regra": "aviso",
+          "campo": "r53.feitico.2.avisos",
+          "esperado": "cartão sem este aviso mecânico",
+          "encontrado": "Distribuição excede o saldo",
+          "ancora": "fundamento--pontos"
+        }
+      ],
+      "nao_conferido_cartoes": [
+        "Cartões R53: VÁLIDO/REVISAR é o estado mecânico da ficha, não aprovação do mestre nem do bot"
+      ],
+      "xlsx_bytes": 6245894,
+      "campos_xlsx": 18393,
+      "paridade_valores": true,
+      "paridade_resultados": true
+    },
+    {
+      "caso": "mescla-c5",
+      "campos": 18393,
+      "veredito": "reprovada",
+      "erros": 5,
+      "pendencias": 9,
+      "cartoes_conferidos": [
+        "Feitiço 1: R53 Classe 1 · Dano 3d8 · 3 PE · saldo 3 · ficha VÁLIDO",
+        "Feitiço 2: R53 Classe 5 · Dano 6d8; Cura 4d8 · 15 PE · saldo 10 · ficha VÁLIDO"
+      ],
+      "cartoes_revisao": [],
+      "nao_conferido_cartoes": [
+        "Cartões R53: VÁLIDO/REVISAR é o estado mecânico da ficha, não aprovação do mestre nem do bot"
+      ],
+      "xlsx_bytes": 6246036,
+      "campos_xlsx": 18393,
+      "paridade_valores": true,
+      "paridade_resultados": true
+    }
+  ]
+}
