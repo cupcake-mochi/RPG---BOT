@@ -1,5 +1,11 @@
 # Retomada R53 · atualizada em 21/10/2026
 
+**Criação e consulta · 21/10:** guias até Emitida e das abas/configurações
+publicados, runtime `268d326`, nomes revisados pelo pedido adicional do usuário.
+900/899/1 opcional local, CI final aprovada; instalação e bancos conferidos.
+[Fechamento e retomada](../pesquisa/validacao/2026-10-21-guias-criacao/RELATORIO.md).
+PR 68 aberta; commits posteriores de documentação não pedem novo deploy.
+
 **Guias e limpeza · 21/10:** `/guia`, `/ficha guia` e `GC:guia ficha`
 publicados, com nove assuntos e orientação de revisão humana. Suíte final:
 896/895/1 online opcional. As cópias sintéticas B47/R53 foram levadas à

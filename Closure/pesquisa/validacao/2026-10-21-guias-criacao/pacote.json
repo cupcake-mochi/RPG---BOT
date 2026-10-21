@@ -1,0 +1,28 @@
+{
+  "sha256": "3bf04136ad05f92591df2bd7cef300709cca8a7a9ce928dd9993de4f27de7697",
+  "arquivos": 78,
+  "mudancas_desde_primeira_publicacao": [
+    "src/closure_bot/guias.py",
+    "src/closure_bot/guias_ficha.py"
+  ],
+  "todos_iguais_aos_fontes": true,
+  "sem_segredos_ou_bancos": true,
+  "instalados_iguais_ao_pacote": 78,
+  "ambiente_campanha_nucleo_preservados": {
+    ".env": true,
+    "src/var/ficha-campanhas.json": true,
+    "src/var/site/nucleo.js": true
+  },
+  "bancos": {
+    "closure_lab.db": {
+      "integridade": "ok",
+      "identico_ao_backup_anterior": true
+    },
+    "src/var/bot.sqlite3": {
+      "integridade": "ok",
+      "identico_ao_backup_anterior": true
+    }
+  },
+  "inicio_brasilia": "2026-10-21 09:59:35",
+  "commit_runtime": "268d3260898959b4652436ddeeb79be5d8b96739"
+}
