@@ -1,221 +1,14 @@
-# src: código do bot
+# Executar e manter as Guias do Ciclo
 
-**Publicado · 21/10 às 13:25 (Brasília):** idioma PT-BR/inglês, lore original/Nova Terra por servidor e links públicos na conversa. Dois bots auditados após implantação; 944 testes das Guias e 149 da Arquivista, além de 36 JS. [Estado atual e limites](../docs/RETOMADA-PUBLICO.md).
+Este documento reúne os arquivos, a preparação do ambiente e a hospedagem.
+Para aprender os comandos, consulte [os guias de uso](../docs/GUIAS-DE-USO.md).
+O estado atual e a última revisão ficam em
+[REVISAO-FINAL-APRESENTACAO.md](../docs/REVISAO-FINAL-APRESENTACAO.md).
 
-**Mestre e atalhos · 21/10:** `GC:gm` ou `/ficha mestre` orienta a revisão
-completa. A ajuda tem uma página **Abreviações** (`GC:ab`); `/atalho` permite
-a administradores configurar até 20 nomes próprios por servidor. As duas
-guias recebem informação operacional sobre esses comandos no contexto.
-
-**Criação da ficha · 21/10:** `GC:guia criar` vai da cópia até marcar
-**Emitida** na CARTEIRA. `GC:guia planilha` explica abas, configurações,
-progressão e salários em separado. `/guia` também oferece esses assuntos.
-
-**Guias de uso · 21/10:** `/guia`, `/ficha guia` e `GC:guia ficha`
-orientam envio, leitura do painel e revisão humana. Doze assuntos com
-menu e páginas, sem modelo nem alteração de dados. Veja
-[GUIAS-DE-USO.md](../docs/GUIAS-DE-USO.md) para rotas, limites e validação.
-
-**Continuação do clima · publicada em 19/10 às 00:08:** “E de BH?” depois de
-SP e trocas sucessivas de cidade consultam os dados corretos. `GC:clima` aceita
-pergunta inteira, incluindo a frase da captura. Suíte: 849 executados, 848
-aprovados e um opcional pulado; 100 testes direcionados no ZIP; 11 verificações
-na Discloud com dados reais, comandos com saída capturada e sem IA/Discord.
-Esses fluxos não estavam cobertos na bateria anterior. Fala generativa e
-disponibilidade de modelos continuam separadas.
-Evidência: `pesquisa/validacao/2026-10-19-clima-seguimento/`.
-
-**Clima atual de BH · publicado em 18/10 às 23:49:** o extrator aceita
-atual/hoje/agora antes de de/do/da no assunto do clima, evitando a cidade padrão
-indevida. 844/843/1 opcional na suíte; 35 testes no ZIP e 12 verificações na
-hospedagem passaram, incluindo a API real. Só `closure_bot/clima.py` mudou no
-pacote em relação à v2 de mundo. Fila e timeouts de modelos preservados; a API
-de clima e a geração da fala são etapas distintas. Ampliação: 150 combinações
-de cidades/frases, 8/8 cidades reais na hospedagem e 97 testes no ZIP passaram. Comandos `/clima`/`GC:clima`
-não usam modelo. Evidência: `pesquisa/validacao/2026-10-18-clima-bh/`.
-
-**Nova consulta de mundo publicada · 18/10:** a ponte passa a incluir recortes
-dos 31 textos permitidos do consolidado da Era da Revolução nas duas guias.
-São até cinco trechos/14.000 caracteres por pergunta; sem rede ou modelo extra
-na recuperação. Regenerar `src/var/site/nucleo.js` antes de empacotar. As pastas
-04/05/06 não são lidas pelo importador nem embutidas no núcleo, inclusive para
-o dono. Não altera contas B47, campanha/aprovações ou personalidade. Detalhes
-e comandos: `dados/mundo/LEIA-ME.md`. Correção v2 publicada às 23:20 de 18/10,
-online em cinco servidores: Shiki curto e variantes completas confirmados nas
-duas guias. Suíte 841/840/1 opcional; 341 consultas de índice e 24 verificações
-no QuickJS publicado passaram. 67 arquivos iguais ao pacote, variáveis/campanha
-preservadas e bancos íntegros; tráfego real no SQLite conferido separadamente.
-Evidência: `pesquisa/validacao/2026-10-18-mundo-nomes/`.
-Os registros B47 abaixo descrevem a publicação anterior.
-
-**Publicação e checagem concluídas · 18/10:** o usuário autorizou aplicar na
-Discloud. O código `40d32a7` da PR 65 está instalado no app existente e online
-em cinco servidores desde 15:23:32 (Brasília), com 1.000 MB mantidos. Backup
-antes/depois: 67 arquivos iguais ao ZIP; variáveis, dois bancos e cadastro de
-campanha idênticos, integridade dos bancos ok e quatro aprovações preservadas.
-PR 65 permanece aberta, sem novo merge; `main` ainda contém a PR 64.
-
-**Três testes após implantação passaram, com dez páginas conferidas:** ficha
-com Vida 999/23 por link, custom aprovada por XLSX e recusa de fórmula sem
-cache. Vermelho na página de erro, verde nos valores corretos e amarelo nos
-limites; resumo e rodapé conservam o veredito geral. Quatro setas e seletor
-funcionaram. Evidência: `pesquisa/validacao/2026-10-18-b47-cores-publicacao/`.
-Somadas às rodadas anteriores, são 44 análises reais (13 + 28 + 3), sem
-chamadas pagas nestes ensaios. A rodada avançada anterior conferiu 143
-páginas de casos técnicos do consumidor, sem novo recálculo nativo; evidências
-em `pesquisa/validacao/2026-10-18-b47-avancados/`. A suíte continua **822
-executados, 821 aprovados e um opcional pulado**, além de **26/26 no ZIP**;
-não foi repetida sem mudança de código. SHA256 do pacote instalado:
-`8a210c5aa82bf54a5b8af56486123e0b0199d1d09314b71cf2067b20aab54e40`.
-
-**Fechamento desta etapa:** publicação autorizada e smoke test concluídos.
-Para novo trabalho, retomar `origin/codex/integracao-b47` e conferir árvore,
-remoto e PR 65 antes de editar; não refazer deploy/baterias por rotina. Ficam
-separados revisão/merge no Git, segunda pessoa no painel, recálculos nativos
-ampliados e os limites do produtor/mestre. A oficial foi preservada. Os
-registros seguintes são históricos; não indicam o runtime atual.
-
-**Bateria nativa preparada em 18/10:** seis cópias sintéticas calculadas no
-Sheets, 8.190 chaves por XLSX e resultados locais conferidos. Roteiro em
-`../dados/ficha/BATERIA-NATIVA-B47.md`. Inclui aprovação exata, MESTRE VIU sem autorização,
-efeito alterado, resultado adulterado e campanha não autorizada. Encontrado
-e corrigido no código o falso cadastro de Caminho/Trilha pelos menus default
-de cartões vazios; **817 testes: 816 aprovados e um opcional pulado**. Esse
-patch ainda não foi implantado. As cópias limpam esses menus não usados para
-permitir o teste também no runtime anterior. Com autorização posterior do
-Mizuki, seis cópias receberam leitura por link e quatro hashes sintéticos
-foram instalados somente no servidor escolhido. Cadastro ativo relido e
-conferido; sem mudar regras gerais, reiniciar ou implantar código. Os seis
-links anônimos coincidem com os XLSX nas 8.190 chaves.
-
-**Discord executado com autorização em 18/10:** 13 análises reais na versão
-já publicada: seis links, seis XLSX e uma reanálise. Os seis pares devolveram
-resumos idênticos: casos 01/02 sem divergências nem aprovação pendente; 03 com
-quatro aprovações pendentes apesar de MESTRE VIU; 04 reabriu somente o efeito
-alterado; 05 reprovou Vida 999/23; 06 reprovou a regra/total não autorizados.
-As seis páginas da 02, quatro setas e seletor foram exercitados. Encerramento
-após dez minutos e reabertura por nova análise foram observados. Sem chamadas
-pagas, reinício, implantação do patch 65 ou alteração da oficial nesta rodada.
-Evidências da primeira rodada: `pesquisa/validacao/2026-10-18-b47-discord/`.
-A continuação avançada está registrada acima; segunda pessoa e validação
-nativa ampliada continuam pendentes. Produtor e mestre limitam a aprovação integral.
-
-**Publicação autorizada em 18/10:** PR 64 mesclada em
-`1997f25fe990eb307204365cda172aeec831969f` e ZIP implantado na Discloud.
-Bot online em cinco servidores. Backup antes/depois: 67 arquivos instalados
-idênticos ao ZIP; `.env` e dois bancos preservados byte a byte, integridade ok.
-Memória de 1.000 MB mantida. Nessa publicação inicial o cadastro B47 de campanha
-ainda não existia; posteriormente foram instaladas apenas as aprovações
-sintéticas autorizadas. A bateria real por link/XLSX e navegação descrita
-acima passou nessa versão; não publica o patch 65. Evidências da implantação em
-`pesquisa/validacao/2026-10-18-b47-publicacao/`. A ficha oficial foi preservada.
-
-**Checkpoint anterior de código em 18/10:** Máxima confere montagem, combinações e
-herança/aprovação; montagem inválida não certifica dano. Toca a Alma simples
-confere metade sem conceder permissão; a fórmula fixa do produtor fica pendente.
-Quebra Coisa entra no teto, sem multiplicar dano secundário. **814 testes,
-813 aprovados e um online opcional pulado**; 17 regressões passaram no ZIP.
-[Retomada](../docs/RETOMADA-B47.md). No checkpoint de testes, ainda sem merge/implantação; oficial preservada.
-
-**Continuação B47 em 18/10:** o link CSV declara `headers=1`; a leitura real da
-oficial e o XLSX exportado retornaram 8.190 chaves e Campos/Resultado iguais,
-sem escrita. Trilha custom usa a base aprovada em Famílias/extras; troca fixa
-não depende da conta-base incompleta; especialização inválida não certifica
-bônus/treinos. Testes finais, pacote e limitações em
-[`RETOMADA-B47.md`](../docs/RETOMADA-B47.md). Antes de concluir publicação,
-seguir [`ROTEIRO-EXTERNO-B47.md`](../dados/ficha/ROTEIRO-EXTERNO-B47.md).
-Cards, memória, mídia e rotas de modelos preservados.
-Checkpoint anterior: 797 testes, 796 aprovados e um online opcional pulado; teste
-online separado aprovado. Pacote final e roteiro ainda não foram implantados.
-
-**Integração B47 (18/10/2026):** ANALISE 11 por chave, leitor tipado, regras por servidor, efeitos e custom aprovados por definição exata. Cadastro local em `src/var/ficha-campanhas.json`; ferramenta do operador e comandos de teste em [`../dados/ficha/INTEGRACAO-B47.md`](../dados/ficha/INTEGRACAO-B47.md). Preserve esse arquivo na publicação junto do estado operacional. A B47 não emite as 485 adições exclusivas do TR-v4; os limites ficam visíveis no painel. Estados e formatos antigos abaixo são históricos. No checkpoint inicial ainda não havia implantação ou validação Discord/Google; os registros atuais acima prevalecem.
-
-Continuação: `ficha_derivados_b47.py` confere Iniciativa, progressão numérica,
-Sequelas/janela de Morrendo e escolhas de TR. CD/ataques/deslocamento distinguem
-trocas conferíveis, contradições e entradas ausentes. Herança de Origem/Forma/
-Ferramenta reutiliza contas da base; aprovação não executa prosa. Regressões:
-`../.venv/bin/python -m unittest testes.test_b47_leitor testes.test_b47_integracao testes.test_b47_derivados testes.test_b47_revisao`
-(de `Closure/src/`); suíte completa: `../.venv/bin/python -m unittest discover -s testes`.
-
-Menores publicadas agora conferem também a marcante exigida pelo catálogo,
-incluindo clã/modalidade, Sem Técnica e Origem custom herdada. Marcante vazia
-é pendência. Efeitos inválidos em CD/ataques preservam as outras contas e o
-painel; CSV malformado/excessivo recebe erro de leitura, sem alterar os limites.
-
-A revisão seguinte acrescenta dependências aprovadas de Restrições embutidas,
-limites por identidade/modalidade, bloqueio de contas de entidade com distribuição
-inválida e CD de Controle por saldo recalculado. O motor puro interno recebe
-contexto explícito de TR de Melhorias. Checkpoint anterior: 784 testes, 783
-aprovados e um opcional pulado; estado detalhado em [`RETOMADA-B47.md`](../docs/RETOMADA-B47.md).
-
-**Voz das reações v22 (15/10):** Mizuki esclareceu que o limite de conteúdo não deve neutralizar a personalidade. A orientação usa a voz/reações do card, inclusive humor, ironia, reserva ou crítica quando couberem, e retira a expressão parte neutra do pedido. Cards, comandos, ativação e limites preservados. Sem chamadas pagas; naturalidade depende do piloto. Relatório em `pesquisa/validacao/2026-10-15-voz-reacoes-v22/relatorio.txt`.
-
-**Estado local do modo adulto v21 (15/10):** os comandos agora destacam se o modo está ativo no canal atual e explicam opção desligada, falta de marcação NSFW ou restrição a outro canal. Mesma decisão usada na conversa. A marcação 18+ continua necessária para o modo adulto; reconhecer personagem e comentar arte de forma neutra não exige entrar em interação sexual. Orientação evita desvio automático para RPG. 642 testes passaram e um online opcional foi pulado; 16 passaram no código do ZIP. Sem chamadas pagas, mudança de card ou marcação automática de canais. Relatório em `pesquisa/validacao/2026-10-15-nsfw-status-v21/relatorio.txt`.
-
-**Reações adultas na v20 (15/10):** `/responder_nsfw ativar:Sim/Não` controla por servidor; `/nsfw_canal canal:#chat` restringe a um canal e seus tópicos, e `todos:Sim` remove essa restrição. Sem opção, ambos consultam o estado. Exige Gerenciar servidor, começa desligado, persiste no SQLite existente e só vale em canais marcados NSFW pelo Discord. O canal onde o comando foi usado não define a restrição. Permite reação/opinião adulta não gráfica, sem ERP, encenação sexual ou submissão; não muda os filtros do Google. Orientação geral evita inventar regras do servidor, dar broncas ou mandar apagar arquivos por suposição. Cards e rotas preservados. Validação final: 638 testes passaram, um online opcional pulado; 41 testes no código do ZIP passaram. Zero chamadas pagas; naturalidade depende do piloto. Relatório em `pesquisa/validacao/2026-10-15-gif-previas-v20/relatorio.txt`.
-
-**Prévias e reconhecimento v20 (15/10):** links curtos/expirados de anexo do Discord que dão 403/404 podem usar outro endereço da prévia, validado como o mesmo arquivo. Tenor reconhece media1.tenor.com, prioriza GIF, identifica aliases pelo ID e pode ler metadados da página pública quando falta prévia. As duas mensagens reais fornecidas passaram na preparação, sem Gemini; causa temporal da falha original do Tenor não foi demonstrada. Falhas agora registram etapa/status sem conteúdo. A orientação visual também reconhece representações de si/da outra guia quando identificáveis, sem exigir fotografia, trocar de identidade ou inventar experiências. Cards preservados; acerto/naturalidade ainda precisam de piloto. Relatório em `pesquisa/validacao/2026-10-15-gif-previas-v20/relatorio.txt`.
-
-**GIFs e conversa v19 (15/10):** links diretos de GIF em anexos do Discord entram na mesma análise do seletor, preservando a URL assinada e sem esperar uma prévia. O exemplo enviado pelo Mizuki foi baixado e preparado localmente em dois quadros; nenhuma chamada ao modelo. A orientação visual agora acompanha a intenção da mensagem: reação/comentário recebe conversa; descrição continua disponível quando pedida. Cards preservados; o efeito nas falas ainda exige piloto. Tempos de prompt, preparo e modelo entram nos logs sem conteúdo/URL. Mizuki confirmou GIFs do seletor na v18. Relatório em `pesquisa/validacao/2026-10-15-gif-conversa-v19/relatorio.txt`.
-
-**GIFs do seletor v18 (15/10):** suporte às prévias de Klipy/Tenor/Giphy entregues pelo Discord, incluindo GIF em MP4, com até três quadros e sem áudio. Uma releitura limitada aguarda a prévia quando ela chega depois da mensagem. Usa a mesma ativação `MIDIA_ATIVA=1`, limites e rota paga da mídia; não exige chave nova. Validação local e limites em `pesquisa/validacao/2026-10-15-gif-seletor-v18/relatorio.txt`. O GIF real do Klipy ainda precisa de reteste na Discloud; não houve chamada paga.
-
-**Áudio v17 e política (15/10):** medição local de tons estáveis e instrução de escuta preparadas, sem alterar o áudio enviado ou os cards. Três bipes reconhecidos pelo analisador local; ganho nas respostas ainda não medido. Comparação v16/v17 de 24 chamadas preparada, aguardando aprovação de custo; zero chamadas nesta preparação. 593 testes locais passaram, um online opcional pulado. Política publicada e relida no gist existente. Mídia continua desligada por padrão; sem implantação. Relatório em `pesquisa/validacao/2026-10-15-audio-v17/relatorio.txt`.
-
-**Silêncio v16 (15/10):** áudio convertido totalmente zerado é identificado localmente. Pedidos simples de escuta/transcrição recebem aviso sem Gemini; perguntas adicionais em texto mantêm o fluxo normal com a nota factual, sem enviar áudio. Sinal baixo não nulo não é descartado. 75 testes direcionados passaram, zero chamadas reais. Bipes continuam falhando na amostra anterior; a nota 14/18 da v15 não mudou. Pacote `src/var/closure-lab-midia-v16.zip`, desligado por padrão, sem implantação. Fila atual em `docs/FILA-ATUAL.txt`; detalhes em `pesquisa/validacao/2026-10-15-silencio-v16/relatorio.txt`.
-
-**Mídia v1 experimental (15/10):** imagens/GIFs anexados e áudios de até 30 s implementados; desligados por padrão (`MIDIA_ATIVA=0`, canais opcionais em `MIDIA_CANAIS`). Bateria aprovada e encerrada: 18 respostas completas, 14 critérios atendidos; imagens/GIFs 10/10, áudio 4/8. Bipes e silêncio falharam nas duas guias, portanto áudio permanece experimental. Custo cheio estimado US$ 0,1800225, sem uso incerto ou repetição; não há autorização residual. 584 testes locais passaram e um online opcional foi pulado. Relatório e roteiro em `pesquisa/validacao/2026-10-15-midia/relatorio.txt` e `teste-no-discord.txt`. Arquivos só no pedido atual, pela Vertex Flash, sem análise de vídeos/GIFs por link. .env, cards, CONFIGURAÇÃO e Discloud preservados; política local atualizada, gist público pendente. Mizuki confirmou a memória da v14 após novo Commit.
-
-**Exclusão durante respostas (15/10):** apagar dados agora invalida conversas e fatos antigos ainda em processamento; oito testes novos e regressão reproduzida em cinco cenários no código anterior. Marcadores temporários, sem migração do banco. Resposta já em trânsito pode chegar ao Discord, mas não repõe texto no banco. Imagens/GIFs/vídeos continuam sem análise visual; proposta em `pesquisa/propostas/midia-visual/proposta.txt`. Relatório em `pesquisa/validacao/2026-10-15-exclusao-em-andamento/relatorio.txt`. Sem consumo pago ou implantação.
-
-**R52 e revisão de preços (15/10):** entrega local aprovada pelo Mizuki integrada pelo sincronizador com `--entrega-livro`. O repositório do sistema ainda está em R51/v0.364: o manifesto registra hashes do texto/PDF R52, commit do catálogo e ausência de commit do livro novo. Apenas `origens--legado-criar` mudou, mantendo 511 blocos. Menores e Legados podem ser criados; marcantes seguem as opções publicadas, com a exceção da Restrição corporal; família própria do Descendente usa modalidade publicada. Busca de preço considera a coluna Preço, incluindo tabelas de itens/proteções e nomes curtos; “Pé de cabra” é preservado pelo filtro. Relatório: `pesquisa/validacao/2026-10-15-precos-origens/relatorio.txt`. Memória/mídia v12 continuam incluídas. Sem chamadas ao modelo, alteração de cards, CONFIGURAÇÃO ou implantação.
-
-**Revisão de memória, mídia e preços (15/10):** conversa recente agora usa o SQLite e a cifra existentes, mantendo 12 turnos por canal/personagem, 30 minutos sem conversa e corte às 4h30; limpeza periódica e remoção do fio pelo comando de apagar dados. Reinício não recupera conversas já perdidas nem dispensa preservar banco/chave na hospedagem. Identificação textual de até dois links YouTube por mensagem via oEmbed, com cache, timeout e prévia do Discord como reserva; sem áudio/vídeo/imagem, sem API de modelo extra. Metadados acompanham o histórico sem entrar na busca do livro ou na reflexão. Preço de item nomeado prioriza a tabela; reproduzida/corrigida a mensagem longa sobre música e katana. Livro R51 e cards preservados. Mizuki vai corrigir a regra de Origem no repositório do sistema; aguardar essa alteração antes de sincronizar. Sem CONFIGURAÇÃO ou implantação. Detalhes em `pesquisa/validacao/2026-10-15-memoria-midia-precos/relatorio.txt`.
-
-Esqueleto da fase 1 do `docs/PLANEJAMENTO.md`, escrito em 13/10/2026. O bot antigo em
-`../../Closure Legado/` serve só de consulta.
-
-**O que já faz:** sobe, responde `/ping` lendo o `MANIFESTO.json`, decide quem responde a cada mensagem
-(por horário e pelo nome chamado), monta o pedido com card, lorebook, livro, estado e ficha da pessoa, chama o
-modelo e envia a fala com o nome e o avatar de cada personagem. Roda na Discloud desde 13/10.
-Em 14/10, Mizuki confirmou os testes de ficha depois de Commit e Rebuild, incluindo as quatro novas cópias
-ANALISE 2, e cinco testes de consulta no chat. Mizuki também confirmou o painel por páginas às 23h05.
-
-**Confirmação e filtro, 15/10:** Mizuki confirmou por captura os cinco resumos das cópias nativas de TR/perícias/carga: verde, vermelho para Vigor 999, amarelo para treino faltante, domada verde e Corda/carga amarelas. A busca v11 filtra usos cotidianos explícitos sem alterar a mensagem original entregue à guia. A auditoria offline dos 48 pedidos antigos remove as fontes dos 12 ambíguos e mantém idênticos 16 pedidos de regra e seis turnos de Origem. 537 testes executados: 536 passaram, um online opcional pulado; QuickJS/Node 14/14, fontes de títulos 425/425. Não houve novas chamadas ao modelo. Relatório `../pesquisa/validacao/2026-10-15-consulta-livro-v11/relatorio.txt`; pacote `var/closure-lab-consulta-v11.zip`, sem `.env`. CONFIGURAÇÃO segue separada.
-
-**Ficha:** formatos 1, 2 e 4 aceitos. ANALISE 4 tem 5.381 chaves, com as 4.896 anteriores preservadas. O formato 3 pertence à implementação paralela de CONFIGURAÇÃO e não é aceito sem integrar suas regras. `ficha_entidade.py` refaz atributos, vida com
-Buff, Defesa reconhecida, acerto desarmado, CD e deslocamento-base. `ficha_magia.py` lê Famílias exatas,
-Classe 0 e Máxima; confere entrada carregada/retorno e CE dos Talentos por ganho. Quatro cópias preenchidas
-foram calculadas no Google e relidas localmente. Não é correção integral de todo efeito, Domínio ou custom;
-limites em `../dados/ficha/ENTRADAS-FALTANTES-ANALISE.txt`. Sem Gemini pago nesta rodada.
-
-**Continuação de 15/10:** equipamento tabelado tem requisitos refeitos sem depender dos avisos da ficha.
-Entidades com arma conhecida recebem Defesa e acerto conferidos; falta de treino/Força é pendência,
-sem retirar proteção. Extras da Principal não acumulam carta e Talento; CE própria explícita respeita
-o ganho. Trunfos da domada usam seu nível fixo, tabelas próprias e vagas de especiais para Domínio.
-Ataque/CD das habilidades vêm das entradas, incluindo Precisão, sem usar os resultados calculados.
-Reserva Profunda prevê o acréscimo por Classe; o Buff legado exige revisão para não contar duas vezes.
-Essa etapa foi seguida pela conferência de TR/perícias e carga descrita abaixo. Texto/custom e efeitos
-condicionais continuam parciais. CONFIGURAÇÃO está no outro chat; não foi integrada nesta entrega.
-
-**TR/perícias e carga, 15/10:** `ficha_testes.py` refaz Maestria pelo nível, bônus dos quatro TR,
-23 perícias e 11 Ofícios, especialização, pontos de atributo e quantidades de treino. Nas entidades, usa
-atributos próprios e Maestria do dono. O antigo `buff.pericia.N` não é ajuste: permanece preservado no
-contrato e os novos resultados são `pericia.N.bonus`. `ficha_carga.py` soma posições/quantidades do
-inventário, uniforme vestido e armazenamento das entidades. Volume tabelado prevalece; livre é declarado
-e vai ao mestre. Faltas geram pendência amarela; valores adulterados reprovam. Fórmulas legadas exatas
-(Corda/Porte Incomum) recebem pendência. Origem temporal dos treinos, autorizações, anatomia e custom
-continuam manuais. Três fichas geradas/recalculadas no LibreOffice cobrem os fluxos pessoais e domada.
-A validação local soma 502 casos: 501 aprovados, um online opcional não executado.
-A ampliação do gerador está separada da CONFIGURAÇÃO; antes de juntar, preservar os dois conjuntos de
-chaves, escolher uma única versão final e regenerar os contratos/testes. Detalhes no relatório
-`../pesquisa/validacao/2026-10-15-ficha-tr-pericias/relatorio.txt`.
-
-**Painel de ficha:** resumo, revisão, TR/perícias, habilidades, invocações e limites em páginas do mesmo embed.
-`ficha_paginacao.py` controla o seletor e as quatro setas; qualquer pessoa no canal pode folhear sem nova
-leitura ou cálculo. Dez minutos sem interação encerram os controles e devolvem o resumo à mensagem.
-Depois disso, rode a análise novamente para abrir. Não persiste a ficha ou as páginas em banco; após reinício
-do bot, os controles antigos também precisam de nova análise. Funciona em `/ficha analisar` e `GC:ficha`.
+A base corrente é R53/v0.366. Registros antigos de implantação e números de
+suíte foram preservados em [LEIA-ME-HISTORICO.md](LEIA-ME-HISTORICO.md).
+As seções datadas sobre modelos documentam decisões anteriores; confirme a
+configuração em uso antes de alterar fornecedor, orçamento ou perfil.
 
 ## Arquivos
 
@@ -489,7 +282,7 @@ consumiu suas 40 tentativas: retomá-la não deve disparar novas chamadas.
 
 ## Páginas públicas
 
-O repositório é privado, então a política de privacidade e os termos de uso moram em duas páginas avulsas (Gist),
+A política de privacidade e os termos de uso têm páginas públicas próprias (Gist),
 que são os links postos no portal do Discord. O texto de origem fica em `docs/`; a página não atualiza sozinha.
 
 | Página | Origem | Atualizar com |
@@ -504,12 +297,14 @@ que são os links postos no portal do Discord. O texto de origem fica em `docs/`
 Com `--com-env` o `.env` vai dentro; esse arquivo carrega segredo e não sai do computador a não ser pra
 hospedagem.
 
-- **Atualizar o app que já existe:** Commit com o `.zip`, depois Rebuild (reinstala as bibliotecas), depois Logs.
-  O Commit não troca o arquivo principal do app: a Discloud continua chamando `closure_lab.py`, o do bot antigo
-  (visto em 13/10/2026: o app caiu com `ModuleNotFoundError` do bot antigo). Por isso existe um `closure_lab.py` na
-  raiz que só repassa pro `iniciar.py`.
-- **Memória:** o processo chegou a 98 MB só de carregar e montar pedidos, sem conexão com o Discord. O
-  `discloud.config` pede 256 MB; o plano do Mizuki vai até 1 GB, e os 100 MB do bot antigo não bastariam.
+- **Atualizar o app existente:** faça e baixe um backup; envie o ZIP pelo Commit,
+  acompanhe a compilação e confira os Logs e a resposta do bot. O Commit atual
+  já reconstrói o ambiente. Use Rebuild separadamente apenas se precisar refazer
+  a instalação, não como reinício obrigatório depois de toda atualização.
+  O arquivo `closure_lab.py` na raiz mantém a compatibilidade com o ponto de
+  entrada configurado nas hospedagens antigas.
+- **Recursos:** `discloud.config` contém o padrão do pacote. Preserve os recursos
+  do aplicativo existente; consulte o painel para o consumo atual.
 - **Banco:** fica em `src/var/bot.sqlite3` dentro da hospedagem. A Discloud preserva o arquivo entre as
   atualizações desde que ninguém o apague por lá (Mizuki, 13/10/2026). O pacote não leva banco nenhum, então
   subir pacote novo não passa por cima dele.
@@ -535,68 +330,15 @@ próxima volta, sem esperar o tempo virar.
 - Conversa privada com o bot é ignorada por enquanto: não existe webhook em DM, então lá não dá pra trocar
   nome e avatar. Fica em aberto.
 
-## Clima (pedido do Mizuki em 13/10/2026)
+## Clima e retomada
 
-Vem do bot antigo, que tinha painel de clima de Tóquio. Decisões do Mizuki: o painel automático volta; quando
-perguntam, a personagem responde; vale pra outros lugares além de Tóquio; e **as duas monitoram de longe, sem
-estar no lugar**.
+O clima usa Open-Meteo, sem chave própria. `/clima` e `GC:clima` consultam sem
+modelo; o guia do Discord explica cidades e o painel diário. A API climática e
+a geração de fala são etapas distintas, com falhas possíveis independentes.
 
-- **Fonte:** Open-Meteo no lugar da OpenWeatherMap. Não pede chave nem conta, então não há segredo pra
-  guardar. A chave antiga está escrita no código do legado; se aquele arquivo já foi compartilhado, vale
-  revogar a chave no site da OpenWeatherMap.
-- **`/clima [lugar]`** mostra o painel na hora (temperatura, sensação, umidade, vento, mínima e máxima, sol).
-  Sem lugar, Tóquio.
-- **Painel diário, um por servidor:** quem tem a permissão Gerenciar servidor usa `/clima_canal` no canal
-  desejado, ou escolhe o canal no campo do comando (colar o ID do canal funciona). O painel de hoje sai na
-  hora; nos outros dias, na primeira leitura depois das 6h de Brasília, e a mesma mensagem é editada quando a
-  condição ou a temperatura mudam (confere de 15 em 15 min). `/clima_canal_desligar` desliga. É mensagem do
-  bot, sem nome de personagem. Canal, dia e ID da mensagem ficam no SQLite, pra um reinício não postar de
-  novo. Diferença pro legado: se o bot estiver fora do ar às 6h, o painel sai quando ele voltar.
-- **Na conversa:** quando a mensagem puxa o assunto, `contexto_clima()` devolve a linha de dado pro bloco 4.
-  Sem lugar na pergunta vale Tóquio ("tá chovendo aí?"); com lugar, o de lá ("como tá o clima em São Paulo?"):
-  `[São Paulo, Brasil agora (14:15 de lá, dia): 28 °C, sensação de 30 °C, trovoada, ...]`. Lugar que a busca
-  não acha vira `[Clima: o monitor não achou o lugar "X".]`. Sem a mensagem puxar, nada entra: é a mesma
-  regra do sono da Closure, pra o clima não virar bordão. A ligação com o prompt entra junto com a resposta
-  no chat (fases 2 e 4).
-- **Como a busca escolhe o lugar:** entre os resultados com aquele nome, fica o mais populoso ("Paris" é a
-  da França). A linha traz estado e país, pra quem perguntou ver se era esse. "Nova York" tem apelido no
-  código, porque a busca em português só achava uma cidade do Maranhão.
-- **Falta no card (texto de personagem, vai pelos geradores, com teste):** dizer que as duas acompanham o
-  clima pelo computador e contam como está, sem dizer que estão lá. Elas respondem de outra estação, então
-  não falam "aqui tá chovendo".
+[Diagnóstico e correção das continuações de cidade](../pesquisa/validacao/2026-10-19-clima-seguimento/relatorio.md).
+O histórico de 13/10 e os planos antigos ficaram no arquivo histórico.
 
-## Revisão de 13/10/2026 (pente fino antes de hospedar)
-
-O que a revisão do código achou e corrigiu, cada item com teste:
-
-- **Responder a uma fala fica com quem falou.** Antes, responder a uma mensagem da Kal'tsit de noite fazia a
-  Closure atender. A fala respondida também entra no pedido quando já saiu da conversa em andamento.
-- **Menção e ID não vão no texto.** A menção ao bot sai, e a de outra pessoa vira `@nome`, no que vai pro modelo
-  e no que fica guardado até a reflexão. É o que a política de privacidade promete.
-- **Nome, pronomes e fatos entram no bloco de estado sem colchete nem quebra de linha**, pra ninguém montar um
-  bloco falso com o próprio apelido.
-- **Limite de 8 chamadas por minuto por pessoa** e de 1500 caracteres por mensagem, porque cada resposta custa.
-- **Reflexão atrasada roda ao subir**: se o bot estava fora do ar às 4h30, o texto guardado não fica parado.
-- **Webhook apagado no servidor é refeito**, e comando que quebra avisa a pessoa em vez de ficar mudo.
-
-Depois, no primeiro uso na Discloud (14/10/2026):
-
-- **Mensagem com `@everyone`, `@here` ou menção a cargo não é conversa**, mesmo citando o nome delas. E elas
-  nunca marcam ninguém: as menções saem desligadas em toda fala.
-- **Marcar o bot ou responder a uma mensagem dele vale em qualquer canal.** `CANAIS` passou a limitar só o
-  chamado pelo nome ("closure, ..."), que fora do canal delas apareceria em conversa dos outros. Um jogador marcou
-  o bot no chat geral e ficou sem resposta; era isso, não o `GC:`.
-- **O cargo do bot chama como marcar o bot (14/10).** O cargo que o Discord cria pro bot ao entrar no servidor
-  ("Guias do Ciclo") vale como menção, e sai do texto mandado ao modelo. Qualquer outro cargo continua sem chamar,
-  e o cargo dela junto de outro cargo também é aviso, não conversa.
-- **Conversa sem chamar de novo (14/10).** Depois que ela responde alguém, a mensagem seguinte dessa pessoa no
-  mesmo canal vai pra ela, sem nome, por até 3 minutos (`SEGUIMENTO` em `cogs/chat.py`). Para quando outra pessoa
-  fala no canal, quando a mensagem responde ou marca outra pessoa e quando é só reação ("kkk", "valeu", emoji),
-  que fecha a conversa. Vale também fora de `CANAIS`, pra quem começou marcando o bot. Fica na memória do programa.
-- **Mencionar o bot não vira mais "comando"** no log (`CommandNotFound`): o tratamento de prefixo do discord.py
-  foi desligado, porque quem lê mensagem são os módulos.
-
-## O que falta
-
-- Consulta de regra por comando (`cogs/regras.py` só tem o `/livro`). A análise de ficha já existe em `/ficha analisar` e `GC:ficha`, com cobertura parcial declarada.
-- Calendário de sessões e aniversários, do desenho da vida.
+A cobertura restante fica na [fila atual](../docs/FILA-ATUAL.txt) e nos contratos
+da ficha. Calendário e outros recursos futuros não são requisitos da versão
+estável. Não repetir publicação ou piloto pago sem conferir o fechamento.

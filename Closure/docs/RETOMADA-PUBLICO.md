@@ -1,3 +1,9 @@
+**Fechamento vigente:** Guias 1.0.2 e Arquivista 1.1.1 publicadas após revisão
+final de clareza/organização/visual. [Entrega e retomada](REVISAO-FINAL-APRESENTACAO.md).
+Os testes de idioma/lore, fichas nativas e piloto pago abaixo permanecem como
+suas evidências próprias. Não repetir deploy por documentação ou chamadas de
+modelo usando autorização já consumida.
+
 Estado corrente · 21/10/2026: os três acompanhamentos foram executados. Guias 1.0.1/R53 publicadas às 14:58:14, PR 69 mesclada em `2b90655`; Arquivista 1.1.0 preservada, PR 11 documental mesclada em `2fb772f`. CI 953/952/1. Piloto 24/24 encerrado, US$ 0,156294 contabilizados sem ampliar teto. Criação inglesa com editor e ida/volta real concluída; duas cópias sintéticas na lixeira. [Fechamento, cobertura e retomada atual](../pesquisa/validacao/2026-10-21-r53/FECHAMENTO.md). Os limites de ausência de ensaios nas seções abaixo descrevem a rodada inicial. Não repetir deploy por documentação nem reutilizar a autorização paga.
 
 # Idioma e lore por servidor · publicado em 21/10/2026

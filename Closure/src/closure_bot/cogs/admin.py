@@ -9,6 +9,7 @@ from discord import app_commands
 from discord.ext import commands
 
 from ..dados import resumo_manifesto
+from ..apresentacao import COR_INFORMATIVA
 from ..idiomas import atual, tr, catalogo
 from ..conteudo_adulto import motivo_inativo
 from ..plantao import FUSO, de_plantao
@@ -17,7 +18,7 @@ from ..ficha_paginacao import PaginasFicha
 from ..atalhos import CURTOS, OUTROS_NOMES
 
 
-COR = 0xCC0102
+COR = COR_INFORMATIVA
 # Título de cada grupo no /ajuda, pelo módulo que tem o comando. A lista sai dos próprios comandos, então não envelhece.
 GRUPOS = {"Guias": "Guias de uso", "Regras": "Regras", "Ficha": "Ficha", "ComandoClima": "Clima", "Pessoa": "Seus dados", "Admin": "Do bot"}
 SO_DO_DONO = {"teste_webhook"}
@@ -158,7 +159,7 @@ class Admin(commands.Cog):
             "Exemplo: nome `revisar`, destino **Guia: Revisar uma ficha como mestre**. "
             "Depois, `GC:revisar` abre esse guia. `/atalho remover` retira; `/atalho listar` consulta. "
             "Até 20 por servidor; comandos e atalhos padrão não podem ser substituídos.\n"
-            "Esta lista é uma foto do momento. Reabra `/ajuda` depois de mudar um atalho."), inline=False)
+            "Esta lista mostra a configuração atual. Reabra `/ajuda` depois de mudar um atalho."), inline=False)
         e.set_footer(text="Página 2 de 2 · Abreviações · GC:ajuda abreviações abre esta página diretamente")
         return e
 

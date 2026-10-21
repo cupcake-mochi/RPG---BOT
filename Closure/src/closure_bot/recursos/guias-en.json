@@ -100,7 +100,7 @@
     },
     "planilha.8": {
       "title": "GLOSSÁRIO: understand terms",
-      "text": "Open GLOSSÁRIO when an attribute, skill, trade or sheet term is unfamiliar. It is a quick reference while building or playing.\n\nFor a full procedure, read the relevant creation, equipment, Fundamento, Caminho, Origem or advancement chapter. `/livro` opens the configured PDF; `GC:book` does the same.\n\nCheck the table's edition. Parts of the guides' general reference predate R53, while analyzed ability cards have specific R53 handling. Compare differences against the current book with the GM."
+      "text": "Open GLOSSÁRIO when an attribute, skill, trade or sheet term is unfamiliar. It is a quick reference while building or playing.\n\nFor a full procedure, read the relevant creation, equipment, Fundamento, Caminho, Origem or advancement chapter. `/livro` opens the configured PDF; `GC:book` does the same.\n\nCheck your table's edition. General lookup and current ability cards use **R53**; older formats keep their separate compatibility. If your table uses another edition, compare the relevant passage with the GM."
     },
     "planilha.9": {
       "title": "CONFIGURAÇÃO: campaign rules",
@@ -132,7 +132,7 @@
     },
     "mestre.2": {
       "title": "2. Run the analysis and sort findings",
-      "text": "Use **/ficha analisar** with a link or XLSX, or **GC:sheet followed by the link**; attach the XLSX when using a file. Submit one source per analysis. A link needs read access; the panel appears in the channel.\n\nRead **Summary, Corrections and review, and Analysis limits**. Red means an error on that page; yellow means a pending item, review or limit; green covers only displayed checks. The footer keeps the overall result.\n\nDistinguish correcting an input, providing information, proving a source and making a GM decision. Request a new analysis after corrections. Arrows only browse the existing calculation.\n\n**Zero errors is not full approval.** VÁLIDO describes spreadsheet arithmetic and does not prove acquisition or permission to use the ability."
+      "text": "Use **/ficha analisar** with a link or XLSX. In chat, type `GC:sheet SHEET_LINK` or attach the XLSX to a `GC:sheet` message. Submit one source per analysis. A link needs read access; the panel appears in the channel.\n\nRead **Summary, Corrections and review, and Analysis limits**. Red means an error on that page; yellow means a pending item, review or limit; green covers only displayed checks. The footer keeps the overall result.\n\nDistinguish correcting an input, providing information, proving a source and making a GM decision. Request a new analysis after corrections. Arrows only browse the existing calculation.\n\n**Zero errors is not full approval.** VÁLIDO describes spreadsheet arithmetic and does not prove acquisition or permission to use the ability."
     },
     "mestre.3": {
       "title": "3. Check creation, training and advancement",

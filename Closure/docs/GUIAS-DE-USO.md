@@ -99,8 +99,9 @@ Não se usaram os cabeçalhos B47 históricos como estado vigente.
 O roteiro dá os valores padrão e manda conferir exceções com o mestre.
 Não concede acesso a capacidades por haver um cartão, não converte texto
 em bônus e não certifica aprendizado, história ou salários pela análise.
-A base geral do chat permanece R51/R52; este guia estático foi conferido nas
-fontes R53 atuais, sem alterar o corpus nem os cálculos do bot.
+Na entrega original deste guia, a base geral ainda era R51/R52. A migração
+posterior para R53 já foi concluída; consulte o fechamento R53 para a fonte
+e a cobertura atuais.
 
 ### Revisões de texto
 
@@ -188,7 +189,7 @@ não se confundem com configurações compartilhadas do servidor.
 Validação, publicação e ensaios externos desta rodada:
 `pesquisa/validacao/2026-10-21-mestre-atalhos/RELATORIO.md`.
 
-## Idioma e mundo por servidor · em preparação em 21/10
+## Idioma e mundo por servidor · publicado em 21/10
 
 Os 57 painéis dos doze assuntos têm versão em inglês. `/idioma` ou `/language` muda as respostas novas do servidor; os nomes no menu de comandos seguem a preferência do cliente Discord. Com `GC:`, os aliases `guide`, `sheet`, `book`, `weather` e `help` também são aceitos. A ficha oficial continua com seus rótulos portugueses: a tradução preserva nomes de opções e chaves para que o jogador localize os campos.
 
