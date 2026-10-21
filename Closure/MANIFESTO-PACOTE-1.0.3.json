@@ -1,7 +1,7 @@
 {
   "versao": "1.0.3",
   "escopo": "pacote de runtime sem ambiente, banco ou campanha",
-  "sha256": "537da09d0b4c10ed2a97af440773a374499090be4cf8536b55a9e8d05ad33701",
+  "sha256": "690efa5ee372670d94bb02cd454a47e9b0dbc35bf4d9922ba21ed9b7e8616757",
   "bytes": 1799551,
   "arquivos": {
     "discloud.config": "ea4d0474f28e3c782fffb94330a519875c6932c399953bb4f5c8b0ac8774b23f",
@@ -73,7 +73,7 @@
     "src/closure_bot/recursos/b47-campos.tsv": "da346e6c6bf3c1e93a4f43828a8af809a4585d09d07f26e28a81bab84c9ea00c",
     "src/closure_bot/recursos/b47-livro.json": "d30c664e88f61e71419fec3c1aab859c56ae38198505d0daafec08691a980098",
     "src/closure_bot/recursos/b47-personagem-livro.json": "525e12baf2f71d3fe3f21f1b4b5cb55065ee0240d3bdacb65caf65f12e1f7e1a",
-    "src/closure_bot/recursos/ficha-en.json": "8ed720d80c5ebf3563da63dae7d1b89b67dfd10f63a790c18add531cddb8b348",
+    "src/closure_bot/recursos/ficha-en.json": "4e4567f90f719c4529eab8c2ad812272a6fae2002925c79252ef0dbc7d1505f4",
     "src/closure_bot/recursos/guias-en.json": "6de6f66df1b87dc9c48439448a07d1f7e30f29080a3ff264cf50747a3a7b032a",
     "src/closure_bot/recursos/ingles.json": "d4ac939333f658b00768c3eb298e536dad22f1032cc75f2b308eae9a3702e497",
     "src/closure_bot/recursos/painel_clima.webp": "a27108e99acf12e094aae658a27da05b64f777002fbf50ae5ebe06a101d3a766",

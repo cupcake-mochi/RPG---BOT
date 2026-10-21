@@ -44,7 +44,7 @@ as mesmas tabelas e registros. Contagem de chamadas de modelo preservada.
 Nenhuma planilha foi editada e nenhuma chamada paga foi feita nesta rodada.
 
 Pacote identificado por MANIFESTO-PACOTE-1.0.3.json; SHA-256
-`537da09d0b4c10ed2a97af440773a374499090be4cf8536b55a9e8d05ad33701`.
+`690efa5ee372670d94bb02cd454a47e9b0dbc35bf4d9922ba21ed9b7e8616757`.
 Arquivista 1.1.2 também publicada, com auditoria e retomada no seu repositório.
 
 ## Retomada
@@ -55,3 +55,5 @@ A análise continua parcial: entradas ausentes do produtor e decisões humanas
 seguem nos relatórios de contrato e na validação da integração. Não foi
 concedida nova autorização para modelos pagos. As evidências históricas de
 fichas, lore e idiomas permanecem válidas dentro do escopo que documentam.
+
+A revisão dos resumos de cartões também atualiza a tradução inglesa e a expectativa de apresentação do Feitiço 1: o nome e as contas permanecem, mas o prefixo de revisão deixa de ser exigido. Identificadores de formato e chaves exportadas não mudam.
