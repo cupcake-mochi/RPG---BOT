@@ -12,6 +12,7 @@ from pathlib import Path
 from .conversa import Turno
 from .midia import AVISO
 from .plantao import CLOSURE, KALTSIT
+from .atalhos import orientacao
 
 PONTE = Path(__file__).resolve().parents[2] / "ferramentas" / "prompt_do_site"
 SIGLA = {KALTSIT: "kal", CLOSURE: "clo"}
@@ -45,6 +46,7 @@ async def montar(persona: str, mensagem: str, *, nome: str, pronomes: str | None
         if turno.midia:
             pedido["content"] += "\n\n" + turno.midia
     entrada[0]["content"] += "\n\n" + AVISO
+    entrada[0]["content"] += "\n\n" + orientacao(estado.get("atalhos_servidor"))
     if not turnos:
         entrada[0]["content"] += ("\n[Sem histórico recente disponível neste pedido. Se perguntarem onde a conversa parou, "
                                   "diga que não tem esse trecho disponível e peça uma lembrança; "

@@ -6,8 +6,8 @@ O bot oferece `/guia`, com o campo opcional **assunto**, e `GC:guia assunto`.
 
 ## Conteúdo e navegação
 
-São onze assuntos: início, criar uma ficha, conhecer a planilha, análise da
-ficha, customizações e mestre, livro, clima, conversa, mídia, memória e
+São doze assuntos: início, criar uma ficha, conhecer a planilha, análise da
+ficha, revisão do mestre, customizações, livro, clima, conversa, mídia, memória e
 configuração do servidor. O menu de assuntos
 permanece disponível mesmo quando o assunto tem uma página só. Outro menu
 escolhe a página; as setas percorrem o assunto. Trocar de assunto volta à
@@ -125,3 +125,65 @@ em `pesquisa/validacao/2026-10-21-guias-criacao/RELATORIO.md`.
    a tarefa: **Como montar e editar uma habilidade** e **Como registrar
    missões e atualizar a ficha**. Nomes de abas permanecem nos títulos que
    precisam orientar a localização, com subtítulos que explicam sua função.
+
+## Revisão do mestre e abreviações · 21/10
+
+`GC:guia mestre`, `GC:gm` e `/ficha mestre` abrem um roteiro de oito páginas
+para cruzar a análise com a conferência humana da criação, progressão,
+habilidades, espaços, entidades, efeitos, customizações, inventário,
+salários e decisão final. `mestre` passou a ser esse assunto próprio;
+`custom`/`aprovação` permanecem dedicados ao cadastro exato. O Resumo da
+análise aponta para o roteiro. Nenhuma conta, cor ou aprovação muda.
+
+A ajuda tem duas páginas: **Comandos disponíveis** e **Abreviações**.
+`/ajuda pagina:Abreviações`, `GC:ajuda abreviações`, `GC:atalhos` e `GC:ab`
+abrem a segunda diretamente. O menu e as setas trocam de página; a barra
+continua privada e o prefixo público. Reabrir atualiza a lista do servidor.
+
+| Atalho padrão | Comando completo |
+|---|---|
+| GC:a / GC:g / GC:f | GC:ajuda / GC:guia / GC:ficha |
+| GC:l / GC:c | GC:livro / GC:clima |
+| GC:p / GC:s | GC:ping / GC:status |
+| GC:gc / GC:gp | GC:guia criar / GC:guia planilha |
+| GC:gf / GC:gm | GC:guia ficha / GC:guia mestre |
+| GC:ab | GC:ajuda abreviações |
+
+Os argumentos e anexos continuam com o comando de destino: por exemplo,
+`GC:f LINK` ou XLSX anexo, `GC:c BH`, `GC:g mestre`. Os nomes completos e
+os aliases antigos permanecem. A lista de padrões e destinos permitidos
+vem de `src/closure_bot/atalhos.py`, usada também na ajuda e no contexto.
+
+### Atalhos por servidor
+
+Quem tem **Gerenciar servidor** usa `/atalho definir nome destino`,
+`/atalho remover nome` e `/atalho listar`. O nome tem até 24 caracteres,
+começa por letra e aceita letras, números e sublinhado. Até 20 por servidor;
+é possível alterar o destino de um próprio existente mesmo no limite.
+
+Só destinos públicos da lista são aceitos. Não há frases/macros livres,
+URLs fixas, encadeamento de aliases, comando pessoal/administrativo ou
+substituição de nomes canônicos, aliases antigos e padrões. Permissão e
+servidor são conferidos na execução, além da configuração do comando Discord.
+
+O SQLite existente ganha somente `atalhos_servidor(guild_id,nome,destino)`.
+Os dados persistem após reiniciar e ficam separados por servidor. A ajuda
+expõe apenas os daquele servidor. Nenhuma preferência existente é removida.
+O conteúdo cadastrado também passa por validação na leitura.
+
+### Conhecimento das duas guias
+
+As duas personagens recebem uma orientação operacional do produto em
+`prompt.py`: existência dos guias, análise determinística, abreviações,
+configuração e seus limites, mais os atalhos válidos do servidor atual.
+Isso não grava fatos sobre pessoas nem muda os cards ou o núcleo do site.
+A personagem deve orientar o usuário a executar o comando, sem fingir que
+o executou ou registrou autorização do mestre. O contexto das duas foi
+conferido com montagem simulada, sem chamada paga ao modelo.
+
+A política de privacidade registra o armazenamento desses nomes/destinos,
+exibição na ajuda, envio no contexto e remoção administrativa. Dados pessoais
+não se confundem com configurações compartilhadas do servidor.
+
+Validação, publicação e ensaios externos desta rodada:
+`pesquisa/validacao/2026-10-21-mestre-atalhos/RELATORIO.md`.

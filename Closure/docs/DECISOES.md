@@ -1,5 +1,13 @@
 # Decisões
 
+Revisão humana e abreviações (21/10): pedido do usuário para revisar a
+orientação do mestre após fechar o roteiro de criação; assunto próprio e
+/ficha mestre, sem aprovação automática. Atalhos públicos padrão e até
+20 próprios por servidor, só por Gerenciar servidor, sem sobrescrever os
+nomes existentes nem criar macros. Ajuda com página Abreviações. O contexto
+operacional das duas guias conhece os comandos; fatos pessoais e cards
+permanecem separados. Ver GUIAS-DE-USO.md e relatório da rodada.
+
 Criação e consulta da ficha (21/10): usuário aprovou um roteiro completo
 até Emitida e um assunto aprofundado separado. Implementados `criar` e
 `planilha`, 14 páginas cada, com fontes R53 e extensão salarial vigente.

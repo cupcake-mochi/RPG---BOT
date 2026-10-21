@@ -32,6 +32,12 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ESQUEMA = """
+CREATE TABLE IF NOT EXISTS atalhos_servidor (
+    guild_id INTEGER NOT NULL,
+    nome TEXT NOT NULL,
+    destino TEXT NOT NULL,
+    PRIMARY KEY (guild_id, nome)
+);
 CREATE TABLE IF NOT EXISTS preferencias_servidor (
     guild_id INTEGER PRIMARY KEY,
     responder_nsfw INTEGER NOT NULL DEFAULT 0 CHECK (responder_nsfw IN (0, 1)),
@@ -247,6 +253,31 @@ class Registro:
             (guild_id,),
         ).fetchone()
         return PreferenciasServidor(bool(linha[0]), linha[1]) if linha else PreferenciasServidor()
+
+    def atalhos_servidor(self, guild_id: int) -> dict[str, str]:
+        from .atalhos import validos
+        self._id_servidor(guild_id)
+        return validos(dict(self._db.execute("SELECT nome, destino FROM atalhos_servidor WHERE guild_id = ?", (guild_id,))))
+
+    def definir_atalho(self, guild_id: int, nome: str, destino: str) -> str:
+        from .atalhos import MAX_ATALHOS, validar
+        self._id_servidor(guild_id)
+        nome, destino = validar(nome, destino)
+        with self._db:
+            existe = self._db.execute("SELECT 1 FROM atalhos_servidor WHERE guild_id = ? AND nome = ?", (guild_id, nome)).fetchone()
+            total = self._db.execute("SELECT COUNT(*) FROM atalhos_servidor WHERE guild_id = ?", (guild_id,)).fetchone()[0]
+            if not existe and total >= MAX_ATALHOS:
+                raise ValueError(f"Este servidor já tem {MAX_ATALHOS} atalhos próprios. Remova um antes de criar outro.")
+            self._db.execute("INSERT INTO atalhos_servidor (guild_id, nome, destino) VALUES (?, ?, ?) "
+                             "ON CONFLICT(guild_id, nome) DO UPDATE SET destino = excluded.destino", (guild_id, nome, destino))
+        return nome
+
+    def remover_atalho(self, guild_id: int, nome: str) -> bool:
+        from .atalhos import nome_proprio
+        self._id_servidor(guild_id)
+        nome = nome_proprio(nome)
+        with self._db:
+            return self._db.execute("DELETE FROM atalhos_servidor WHERE guild_id = ? AND nome = ?", (guild_id, nome)).rowcount > 0
 
     def definir_responder_nsfw(self, guild_id: int, ativar: bool) -> None:
         self._id_servidor(guild_id)

@@ -317,6 +317,8 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
         resumo.add_field(name="TR e perícias", value=f"{sum(map(len, testes.values()))} bônus conferidos. Veja a página TR e perícias.", inline=False)
     if resultado.nao_conferido:
         resumo.add_field(name="⏳ Ainda não conferido", value="Conferência parcial: há itens para revisão manual. Veja a página Limites da análise.", inline=False)
+    resumo.add_field(name="Revisão do mestre", value="Use `GC:guia mestre` ou `/ficha mestre` para cruzar este painel com a revisão completa. "
+                     "O guia orienta; a decisão continua com o mestre.", inline=False)
     saida.append(("Resumo", resumo))
     campos_revisao = []
     for nome, problemas in revisao:
@@ -437,6 +439,10 @@ class Ficha(commands.Cog):
     @grupo.command(name="guia", description="Como enviar a ficha, entender o painel e revisar o restante com o mestre.")
     async def guia(self, interacao: discord.Interaction) -> None:
         await self.bot.get_cog("Guias").pela_barra(interacao, "ficha")
+
+    @grupo.command(name="mestre", description="Roteiro do mestre para revisar a ficha junto da análise do bot.")
+    async def mestre(self, interacao: discord.Interaction) -> None:
+        await self.bot.get_cog("Guias").pela_barra(interacao, "mestre")
 
     @grupo.command(name="analisar", description="Confere a ficha pelo link da planilha ou pelo .xlsx anexo.")
     @app_commands.describe(link="Link da ficha no Google Planilhas, aberta pra leitura", arquivo="A ficha baixada em .xlsx")

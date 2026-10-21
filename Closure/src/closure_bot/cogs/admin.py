@@ -12,6 +12,8 @@ from ..dados import resumo_manifesto
 from ..conteudo_adulto import motivo_inativo
 from ..plantao import FUSO, de_plantao
 from ..prompt import versoes as versoes_do_site
+from ..ficha_paginacao import PaginasFicha
+from ..atalhos import CURTOS, OUTROS_NOMES
 
 
 COR = 0xCC0102
@@ -56,21 +58,59 @@ class Admin(commands.Cog):
                         value="`GC:guia criar` ensina a montar a ficha; `GC:guia planilha` explica abas e configurações.\n"
                               "`GC:guia ficha` explica a análise; `GC:guia` abre todos os assuntos.\n"
                               "`GC:ajuda`, `GC:livro`, `GC:ficha` (com o link ou o .xlsx anexo), `GC:clima` (ou `GC:clima Quioto`), "
-                              "`GC:ping` e `GC:status` fazem o mesmo, escritos no chat.")
+                              "`GC:ping` e `GC:status` fazem o mesmo, escritos no chat.\n"
+                              "Escolha **Abreviações** no menu abaixo para ver só os atalhos.")
         links = [f"[{nome}]({url})" for nome, url in (("Privacidade", self.bot.config.politica_url), ("Termos de uso", self.bot.config.termos_url)) if url]
         if links:
             embed.add_field(name="» Links", value=" | ".join(links), inline=False)
         if self.bot.user and self.bot.user.display_avatar:
             embed.set_thumbnail(url=self.bot.user.display_avatar.url)
-        embed.set_footer(text="Bot de fã, sem ligação oficial com nenhum jogo")
+        embed.set_footer(text="Página 1 de 2 · Comandos disponíveis · Bot de fã, sem ligação oficial com nenhum jogo")
         return embed
 
+    def painel_abreviacoes(self, servidor: int | None) -> discord.Embed:
+        e = discord.Embed(title="Abreviações", color=COR, description=(
+            "São formas curtas dos mesmos comandos. **Os nomes completos continuam funcionando.**\n\n"
+            + "\n".join(f"`GC:{nome}` → `GC:{alvo}`" for nome, alvo in CURTOS.items())
+            + "\n\nO que você escreve depois continua valendo: `GC:f LINK_DA_FICHA`, `GC:c BH` ou `GC:g mestre`. "
+            "O XLSX também pode ser anexado à mensagem de `GC:f`."))
+        e.add_field(name="Outros nomes aceitos", value="\n".join(f"`GC:{n}` → `GC:{d}`" for n, d in OUTROS_NOMES.items()), inline=False)
+        extras = self.bot.registro.atalhos_servidor(servidor) if servidor else {}
+        linhas = [f"`GC:{n}` → `GC:{d}`" for n, d in extras.items()]
+        for i in range(0, len(linhas), 10):
+            e.add_field(name="Atalhos deste servidor" if i == 0 else "Atalhos deste servidor · continuação",
+                        value="\n".join(linhas[i:i+10]), inline=False)
+        if not extras:
+            e.add_field(name="Atalhos deste servidor", value="Nenhum cadastrado." if servidor else "Abra a ajuda dentro de um servidor para consultar seus atalhos.", inline=False)
+        e.add_field(name="Criar um atalho para o servidor", value=(
+            "Quem tem **Gerenciar servidor** usa `/atalho definir`, escolhe um nome e o destino. "
+            "Exemplo: nome `revisar`, destino **Guia: Revisar uma ficha como mestre**. "
+            "Depois, `GC:revisar` abre esse guia. `/atalho remover` retira; `/atalho listar` consulta. "
+            "Até 20 por servidor; comandos e atalhos padrão não podem ser substituídos.\n"
+            "Esta lista é uma foto do momento. Reabra `/ajuda` depois de mudar um atalho."), inline=False)
+        e.set_footer(text="Página 2 de 2 · Abreviações · GC:ajuda abreviações abre esta página diretamente")
+        return e
+
+    async def enviar_ajuda(self, enviar, *, usuario, servidor: int | None, permissoes=None, abreviacoes=False):
+        dono = usuario.id == self.bot.config.dono_id
+        permissoes = permissoes if permissoes is not None else getattr(usuario, "guild_permissions", None)
+        paginas = [self.painel_de_ajuda(cuida_do_servidor=dono or bool(permissoes and permissoes.manage_guild), dono=dono),
+                   self.painel_abreviacoes(servidor)]
+        v = PaginasFicha(paginas, aviso_encerrado="Abra /ajuda ou GC:ajuda novamente para continuar")
+        if abreviacoes:
+            v.indice = 1
+            v._atualizar()
+        v.mensagem = await enviar(embed=paginas[v.indice], view=v)
+
     @app_commands.command(name="ajuda", description="Como falar com as guias e a lista de comandos.")
-    async def ajuda(self, interacao: discord.Interaction) -> None:
-        permissoes = getattr(interacao, "permissions", None)
-        dono = interacao.user.id == self.bot.config.dono_id
-        await interacao.response.send_message(
-            embed=self.painel_de_ajuda(cuida_do_servidor=dono or bool(permissoes and permissoes.manage_guild), dono=dono), ephemeral=True)
+    @app_commands.choices(pagina=[app_commands.Choice(name="Comandos disponíveis", value="comandos"),
+                                app_commands.Choice(name="Abreviações", value="abreviacoes")])
+    async def ajuda(self, interacao: discord.Interaction, pagina: str = "comandos") -> None:
+        async def enviar(**extras):
+            await interacao.response.send_message(**extras, ephemeral=True, allowed_mentions=discord.AllowedMentions.none())
+            return await interacao.original_response()
+        await self.enviar_ajuda(enviar, usuario=interacao.user, servidor=interacao.guild_id,
+                               permissoes=interacao.permissions, abreviacoes=pagina == "abreviacoes")
 
     def texto_ping(self) -> str:
         return f"No ar ({round(self.bot.latency * 1000)} ms). Regras: {resumo_manifesto(self.bot.manifesto)}."

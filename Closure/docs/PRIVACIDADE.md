@@ -1,6 +1,6 @@
 # Política de privacidade do Guias do Ciclo
 
-Atualizada em 15/10/2026.
+Atualizada em 21/10/2026.
 
 Eu sou o Mizuki e mantenho o Guias do Ciclo, o bot da Kal'tsit e da Closure. Aqui está o que ele faz com os dados de quem conversa com elas. Qualquer pedido sobre isso, me chame no servidor da guilda ou comente nesta página.
 
@@ -25,6 +25,8 @@ Depois disso fica guardado:
 As últimas respostas delas em cada canal também ficam guardadas, para não repetirem a mesma frase.
 
 Quem administra o servidor pode habilitar reações e opiniões adultas não gráficas com /responder_nsfw e limitar a um canal com /nsfw_canal. A opção começa desativada e só vale nos canais marcados como NSFW no Discord. Essa preferência e o canal escolhido ficam no banco por servidor, inclusive após reiniciar, até serem alterados por quem administra. Ela não muda a leitura de mensagens, o tratamento de mídia nem os prazos de conversa descritos acima. Não autoriza encenação sexual e não desativa as restrições do Google.
+
+Quem tem Gerenciar servidor também pode cadastrar até 20 atalhos de comandos com /atalho. O bot guarda o ID do servidor, o nome curto e o comando ou guia de destino, até o atalho ser alterado ou removido. Os nomes só aceitam letras, números e sublinhado; os destinos vêm de uma lista de comandos públicos. Os atalhos aparecem na página Abreviações da ajuda daquele servidor e podem acompanhar o contexto enviado ao Google para as guias explicarem como usar os comandos. Eles são configurações do servidor, não fatos pessoais nem aprovações de ficha. /apagar_meus_dados não remove configurações compartilhadas do servidor; quem administra pode retirar um atalho por /atalho remover.
 
 O bot não guarda fato sobre saúde, dinheiro, religião, política, relacionamento, idade, endereço, contato ou outro dado sensível, nem fato sobre outra pessoa. Tem um filtro para isso e ele pode errar. Se aparecer na sua lista algo que não devia, apague com /esquecer_fato e me avise.
 

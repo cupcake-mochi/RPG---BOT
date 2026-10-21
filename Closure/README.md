@@ -1,5 +1,10 @@
 # Closure
 
+**Mestre e atalhos · 21/10:** `GC:gm` ou `/ficha mestre` orienta a revisão
+completa. A ajuda tem uma página **Abreviações** (`GC:ab`); `/atalho` permite
+a administradores configurar até 20 nomes próprios por servidor. As duas
+guias recebem informação operacional sobre esses comandos no contexto.
+
 **Criação da ficha · 21/10:** `GC:guia criar` vai da cópia até marcar
 **Emitida** na CARTEIRA. `GC:guia planilha` explica abas, configurações,
 progressão e salários em separado. `/guia` também oferece esses assuntos.

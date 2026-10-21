@@ -7,6 +7,7 @@ import unicodedata
 import discord
 
 from .guias_ficha import CRIAR, PLANILHA
+from .guia_mestre import MESTRE
 
 
 # (título da página, texto). Cada página trata de uma tarefa, com exemplos copiáveis.
@@ -17,6 +18,7 @@ ASSUNTOS = {
          "**Criar uma ficha:** preencher do começo até a emissão na Carteira.\n"
          "**Conhecer a planilha:** consultar abas, configurações e salários.\n"
          "**Analisar uma ficha:** enviar a planilha e entender a análise.\n"
+         "**Revisar uma ficha como mestre:** cruzar o painel com a revisão humana.\n"
          "**Customizações:** levar uma criação ao mestre e entender a aprovação.\n"
          "**Livro:** consultar as regras e conferir a fonte.\n"
          "**Conversa, mídia e memória:** falar com elas e cuidar dos seus dados.\n"
@@ -24,6 +26,8 @@ ASSUNTOS = {
          "Escolha um assunto no menu abaixo. Use as setas para continuar dentro dele."),
         ("Comandos para começar",
          "`/ajuda` ou `GC:ajuda` mostra a lista de comandos. Este guia explica como usá-los.\n\n"
+         "A página **Abreviações** da ajuda reúne os nomes curtos. `GC:ab` abre essa página diretamente; "
+         "os comandos completos continuam funcionando.\n\n"
          "`GC:guia ficha` abre o passo a passo da análise. Você também pode usar `/ficha guia` "
          "ou `/guia` e escolher **Analisar uma ficha** no campo **assunto**.\n\n"
          "Para montar o personagem, use `GC:guia criar`. Para consultar abas e configurações da ficha, "
@@ -35,6 +39,7 @@ ASSUNTOS = {
     )),
     "criar": CRIAR,
     "planilha": PLANILHA,
+    "mestre": MESTRE,
     "ficha": ("Analisar uma ficha", (
         ("1. Prepare e envie a ficha",
          "Este assunto explica a análise do bot. Para montar a ficha do zero, abra `GC:guia criar`; "
@@ -65,6 +70,7 @@ ASSUNTOS = {
          "As setas navegam pelo resultado que já foi calculado; elas não atualizam a análise.\n\n"
          "Os controles encerram após dez minutos sem uso. Para abrir outro painel, repita o comando."),
         ("4. O que revisar com o mestre",
+         "Para o roteiro completo, use **GC:guia mestre** ou **/ficha mestre**. "
          "Use **Limites da análise** como lista de revisão e compare as escolhas com o livro da mesa.\n\n"
          "**Aprendizado e progressão:** quando a habilidade foi adquirida, quais marcos e treinos a concederam "
          "e se os requisitos livres foram atendidos. Um total compatível não comprova esse histórico.\n\n"
@@ -174,6 +180,17 @@ ASSUNTOS = {
          "`/ajuda` também traz os links de privacidade e termos quando estiverem configurados."),
     )),
     "servidor": ("Configuração do servidor", (
+        ("Criar e remover atalhos do servidor",
+         "Os atalhos padrão já funcionam, como **GC:g** para guia e **GC:f** para analisar ficha. "
+         "`GC:ab` abre a lista de abreviações na ajuda, incluindo as deste servidor.\n\n"
+         "Para cadastrar outro, quem tem **Gerenciar servidor** usa **/atalho definir**. "
+         "Em **nome**, escreva só o nome curto, sem GC:. Em **destino**, escolha um comando ou guia da lista. "
+         "Exemplo: nome `revisar`, destino **Guia: Revisar uma ficha como mestre**; depois, use `GC:revisar`.\n\n"
+         "`/atalho listar` consulta os próprios do servidor; `/atalho remover` retira o nome informado. "
+         "Os nomes completos e os atalhos padrão permanecem. São até 20 próprios, sem substituir um nome existente.\n\n"
+         "O atalho vale somente neste servidor e aceita os argumentos do destino, como um link depois de um atalho de ficha. "
+         "Ele não guarda uma frase livre nem executa ações administrativas. "
+         "Reabra a ajuda depois de mudar um atalho para atualizar a lista."),
         ("Painel diário e diagnóstico",
          "Os comandos de configuração exigem a permissão **Gerenciar servidor**. "
          "Este guia só explica o uso; não modifica o servidor.\n\n"
@@ -199,7 +216,7 @@ APELIDOS = {"inicio": "geral", "ajuda": "geral", "analise": "ficha", "fichas": "
             "criacao": "criar", "criar ficha": "criar", "ficha criar": "criar",
             "manual": "planilha", "abas": "planilha", "ficha aprofundada": "planilha",
             "configuracao ficha": "planilha", "configuracoes da ficha": "planilha",
-            "customizacoes": "custom", "aprovacao": "custom", "mestre": "custom", "regras": "livro",
+            "customizacoes": "custom", "aprovacao": "custom", "revisao": "mestre", "revisao do mestre": "mestre", "regras": "livro",
             "tempo": "clima", "chat": "conversa", "imagens": "midia", "gif": "midia", "audio": "midia",
             "dados": "memoria", "meus_dados": "memoria", "configuracao": "servidor", "nsfw": "servidor"}
 

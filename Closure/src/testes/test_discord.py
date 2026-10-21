@@ -47,6 +47,7 @@ def _mensagem(texto, canal, *, bot=False, webhook_id=None, referencia=None):
     m.author.display_name = "rafa"
     m.webhook_id = webhook_id
     m.channel = canal
+    m.guild.id = 77
     m.mentions = []
     m.mention_everyone = False
     m.role_mentions = []
@@ -290,7 +291,7 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.bot.tree.get_commands(guild=discord.Object(id=77)), [])
 
     async def test_comandos_registrados(self):
-        self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ajuda", "guia", "ficha", "livro", "ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
+        self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ajuda", "atalho", "guia", "ficha", "livro", "ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
                           "meus_dados", "meus_pronomes", "meu_fato", "esquecer_fato", "apagar_meus_dados", "responder_nsfw", "nsfw_canal"})
 
     async def test_guias_publicos_e_alias_ficha_nao_executam_analise_ou_modelo(self):
@@ -299,6 +300,7 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         for pedido, tema in (("GC:guia", "geral"), ("GC:guia MÍDIA", "midia"),
                              ("GC:guia custom", "custom"), ("GC:guia criar", "criar"),
                              ("GC:guia planilha", "planilha"), ("GC:guia criar ficha", "criar"),
+                             ("GC:gm", "mestre"), ("GC:ficha mestre", "mestre"),
                              ("GC:ficha guia", "ficha"),
                              ("GC:ficha ajuda", "ficha"), ("GC:ajuda ficha", "ficha")):
             canal, _ = _canal()
@@ -318,6 +320,39 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(i.response.send_message.call_args.kwargs["ephemeral"])
         self.assertEqual(i.response.send_message.call_args.kwargs["view"].tema, "ficha")
         self.addCleanup(i.response.send_message.call_args.kwargs["view"].stop)
+
+    async def test_atalho_curto_de_ficha_preserva_link_e_anexo_sem_chamar_modelo(self):
+        ficha = self.bot.get_cog("Ficha")
+        ficha.analisar_fonte = AsyncMock(return_value="resultado de ensaio")
+        canal, _ = _canal(); canal.send = AsyncMock()
+        m = _mensagem("GC:f https://exemplo/ficha", canal); m.attachments = []
+        await self.bot.get_cog("Atalho").on_message(m)
+        await self.bot.get_cog("Chat").on_message(m)
+        ficha.analisar_fonte.assert_awaited_with(link="https://exemplo/ficha", arquivo=None, servidor=77)
+        anexo = MagicMock(filename="personagem.xlsx")
+        m = _mensagem("GC:f", canal); m.attachments = [anexo]
+        await self.bot.get_cog("Atalho").on_message(m)
+        ficha.analisar_fonte.assert_awaited_with(link=None, arquivo=anexo, servidor=77)
+        self.bot.modelos.responder.assert_not_awaited()
+
+    async def test_atalho_de_servidor_so_abre_o_guia_no_servidor_certo(self):
+        self.bot.registro.definir_atalho(77, "revisar", "guia mestre")
+        canal, _ = _canal(); canal.send = AsyncMock()
+        m = _mensagem("GC:revisar", canal)
+        await self.bot.get_cog("Atalho").on_message(m)
+        self.assertEqual(canal.send.call_args.kwargs["view"].tema, "mestre")
+        self.addCleanup(canal.send.call_args.kwargs["view"].stop)
+        canal.send.reset_mock();m.guild.id = 88
+        await self.bot.get_cog("Atalho").on_message(m)
+        self.assertIn("Não conheço",canal.send.call_args.args[0])
+        self.bot.modelos.responder.assert_not_awaited()
+
+    async def test_contexto_das_guias_recebe_apenas_atalhos_do_servidor_atual(self):
+        self.bot.registro.definir_atalho(77, "revisar", "guia mestre")
+        self.bot.registro.definir_atalho(88, "outro", "ficha")
+        canal, _ = _canal()
+        await self.bot.get_cog("Chat").on_message(_mensagem("Closure, como analiso a ficha?",canal))
+        self.assertEqual(self.montar.call_args.kwargs["estado"]["atalhos_servidor"], {"revisar":"guia mestre"})
 
     async def test_preferencia_adulta_chega_ao_modelo_sem_mudar_rotas_ou_salvar_config_no_historico(self):
         from closure_bot.conteudo_adulto import ATIVO, CONDUTA, INATIVO
@@ -973,7 +1008,10 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
             interacao.user.id = usuario
             interacao.permissions.manage_guild = cuida
             interacao.response.send_message = AsyncMock()
+            interacao.original_response = AsyncMock()
+            interacao.guild_id = 77
             await admin.ajuda.callback(admin, interacao)
+            self.addCleanup(interacao.response.send_message.call_args.kwargs["view"].stop)
             self.assertTrue(interacao.response.send_message.call_args.kwargs["ephemeral"])
             return interacao.response.send_message.call_args.kwargs["embed"]
 

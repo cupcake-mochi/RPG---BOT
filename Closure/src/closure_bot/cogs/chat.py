@@ -202,6 +202,7 @@ class Chat(commands.Cog):
             turnos = [Turno(agora, fala_respondida[:LIMITE_DO_DISCORD])] + turnos
         estado = bot.vida.estado(persona=persona, canal_id=canal.id, autor_id=mensagem.author.id, nome=nome, agora=agora, texto=texto)
         para_a_ponte = estado.para_a_ponte()
+        para_a_ponte["atalhos_servidor"] = bot.registro.atalhos_servidor(mensagem.guild.id)
         # Reconstituir só a sequência meteorológica ainda presente no histórico.
         # Uma fala de outro assunto encerra a sequência; não puxa clima antigo.
         anterior = None
