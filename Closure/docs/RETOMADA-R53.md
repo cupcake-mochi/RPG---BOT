@@ -1,5 +1,11 @@
 # Retomada R53 · atualizada em 21/10/2026
 
+**Fechamento vigente:** Guias 1.0.1/R53 publicadas, PR 69 mesclada; 953/952/1
+testes. Consulta geral integral auditada, três estados nativos adicionais, duas
+contas reais no mesmo painel e piloto de conversa concluídos.
+[Estado atual, limites e instrução de retomada](../pesquisa/validacao/2026-10-21-r53/FECHAMENTO.md).
+As seções abaixo conservam as rodadas anteriores; não reabrem pendências encerradas.
+
 **Mestre e abreviações · 21/10:** runtime `162b39c` publicado pelo navegador
 do aplicativo. Revisão humana própria, ajuda em duas páginas, abreviações e
 atalhos administrativos por servidor. 912/911/1 opcional, CI aprovada e 107

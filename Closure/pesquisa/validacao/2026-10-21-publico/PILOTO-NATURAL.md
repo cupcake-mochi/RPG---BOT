@@ -5,7 +5,10 @@ usuário: até 24 chamadas e US$ 1,50. Foram feitas **24 tentativas, 24 resposta
 completas**, sem repetição ou troca de modelo. O orçamento de chamadas acabou.
 
 Modelo real: Vertex `gemini-3.8-flash`, raciocínio low, mesma montagem de prompt
-do produto. Banco de produção e teto mensal não foram alterados. Somente o nome
+do produto. Banco de produção e teto mensal não foram alterados durante o piloto.
+Após o ensaio, o gasto foi contabilizado na Discloud por
+`GASTO_EXTERNO_USD=0.156294`; valor efetivo conferido depois do deploy.
+O teto mensal continua US$ 9,00, sem inserir registros artificiais de API no banco. Somente o nome
 fictício Alex e perguntas sintéticas foram enviados. Não houve mídia, comandos
 de alteração ou reflexão diária. O diário grava a tentativa antes do HTTP.
 
