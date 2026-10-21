@@ -1,5 +1,22 @@
 # Closure
 
+**Guias do Ciclo 1.0.0 · versão estável.** Kal’tsit e Closure usam a mesma versão do bot. Veja o histórico de versões e os limites da análise antes de aprovar uma ficha.
+
+**Publicado · 21/10 às 13:25 (Brasília):** idioma PT-BR/inglês, lore original/Nova Terra por servidor e links públicos na conversa. Dois bots auditados após implantação; 944 testes das Guias e 149 da Arquivista, além de 36 JS. [Estado atual e limites](docs/RETOMADA-PUBLICO.md).
+
+**Mestre e atalhos · 21/10:** `GC:gm` ou `/ficha mestre` orienta a revisão
+completa. A ajuda tem uma página **Abreviações** (`GC:ab`); `/atalho` permite
+a administradores configurar até 20 nomes próprios por servidor. As duas
+guias recebem informação operacional sobre esses comandos no contexto.
+
+**Criação da ficha · 21/10:** `GC:guia criar` vai da cópia até marcar
+**Emitida** na CARTEIRA. `GC:guia planilha` explica abas, configurações,
+progressão e salários em separado. `/guia` também oferece esses assuntos.
+
+**Guias de uso · 21/10:** `/guia` e `GC:guia` explicam os recursos por assunto.
+Use `/ficha guia` ou `GC:guia ficha` para envio, leitura do painel e revisão
+com o mestre. Veja [GUIAS-DE-USO.md](docs/GUIAS-DE-USO.md).
+
 **Ficha R53 · bateria em 19/10:** 13 análises no Discord por link/XLSX, três
 cópias sintéticas, custom pendente/aprovado/alterado e arquivos inválidos.
 882 testes executados, 881 aprovados, 1 opcional pulado. Atualização da

@@ -117,17 +117,19 @@ const horaBR = () => { const d = new Date(Date.now() - 3 * 3600e3); return { h: 
 const deTurno = h => (h >= 9 && h < 21) ? "kal" : "clo";
 const NOME = { kal: "Kal'tsit", clo: "Closure" };
 
+let perfilOriginal = true;
+
 // ---------- lorebook (igual ao ferramentas/ativar_lorebook.py) ----------
 const KEYRE = D.lore.map(e => e.key.map(k => BORDA(k)));
 function ativar(texto, soTermos = null) {
   const t = norm(texto), hit = [], tt = soTermos === null ? t : norm(soTermos);
   D.lore.forEach((e, i) => {
-    if (e.constant) return;
+    if (e.constant || (perfilOriginal && e.group !== "sistema")) return;
     let n = 0; e.key.forEach((k, j) => { if (KEYRE[i][j].test(e.group === "sistema" ? tt : t)) n = Math.max(n, k.length); });
     if (n) hit.push([n, e]);
   });
   hit.sort((a, b) => b[0] - a[0]);
-  const sempre = D.lore.filter(e => e.constant);
+  const sempre = D.lore.filter(e => e.constant && (!perfilOriginal || e.group === "sistema"));
   const mundo = hit.filter(x => x[1].group === "mundo").slice(0, 5).map(x => x[1]);
   const termos = hit.filter(x => x[1].group === "sistema").slice(0, 3).map(x => x[1]);
   const E = sempre.concat(mundo, termos);
@@ -628,10 +630,14 @@ function foraDoPlantao(msg, termos, mundo) {
 const PALAVRAS = s => s.match(/[\p{L}\p{N}]+/gu) || [];
 const NW = w => STRIP(w.toLowerCase());
 const INTERJ = new Set("hein ein ne viu ta ok ue uai po oxe haha hehe kkk rs mano cara".split(" "));
-let JA_DITO = null;
+let JA_DITO = null, JA_DITO_PERFIL = null;
 const FORMULA_ABRE = new Set(["pelo", "pela", "no", "na", "segundo", "olha", "entao", "ue", "hm", "hmm", "nossa", "bom", "opa", "eita", "ah", "certo", "enfim", "pois"]);
 function repeticoes() {
-  JA_DITO = JA_DITO || " " + PALAVRAS(D.livro.map(b => b.texto).concat(D.lore.map(e => e.content), D.mundo.documentos.flatMap(d => d.secoes.map(s => s.texto))).join(" ")).map(NW).join(" ") + " ";
+  if (JA_DITO_PERFIL !== perfilOriginal) {
+    JA_DITO_PERFIL = perfilOriginal;
+    JA_DITO = null;
+  }
+  JA_DITO = JA_DITO || " " + PALAVRAS(D.livro.map(b => b.texto).concat(D.lore.filter(e => !perfilOriginal || e.group === "sistema").map(e => e.content), perfilOriginal ? [] : D.mundo.documentos.flatMap(d => d.secoes.map(s => s.texto))).join(" ")).map(NW).join(" ") + " ";
   const ult = turnos.filter(t => t.de === "bot" && t.pers === pers).slice(-6).map(t => t.texto).filter(t => PALAVRAS(t).length);
   const bot = ult.map(PALAVRAS);
   // termo: palavra com maiúscula que não abre frase
@@ -659,24 +665,45 @@ function repeticoes() {
   else if (form) { const com = ab3.filter(w => NW(w[0]) === form), seg = com.map(w => NW(w[1] || "")); const w = com[com.length - 1]; out.push(`começar com "${seg.every(x => x && x === seg[0]) ? w[0] + " " + w[1] : w[0]}"`); }
   return out.length ? `\n[Você já usou nesta conversa: ${out.join("; ")}. Diga de outro jeito ou não diga.]` : "";
 }
+// Consulta bilíngue: só amplia os termos de busca, sem traduzir a fala ou alterar regras.
+function consultaBilingue(texto) {
+  const termos = [
+    [/\btemporary hit points?\b/gi,"Vida temporária"], [/\bhit points?\b/gi,"PV"],
+    [/\bsaving throws?\b/gi,"Testes de Resistência"], [/\bdifficulty class\b/gi,"CD"],
+    [/\bcursed energy\b/gi,"energia amaldiçoada"], [/\breverse cursed technique\b/gi,"Energia Reversa"],
+    [/\benergy points?\b/gi,"PE"], [/\bintegrity\b/gi,"Integridade"], [/\bexhaustion\b/gi,"Exaustão"],
+    [/\bmastery\b/gi,"Maestria"], [/\brefinement\b/gi,"Refino"],
+    [/\bcharacter creation\b/gi,"criar um personagem"], [/\bcreate (?:a |my |the )?character\b/gi,"criar um personagem"],
+    [/\bcharacter origin\b/gi,"Origem"], [/\bcharacter path\b/gi,"Caminho"],
+    [/\bspell slots?\b/gi,"espaços de feitiço"], [/\bspells?\b/gi,"feitiços"],
+    [/\bbinding vows?\b/gi,"pactos"], [/\bcursed tools?\b/gi,"ferramentas amaldiçoadas"],
+    [/\bdomain expansion\b/gi,"Domínio"], [/\bmaximum technique\b/gi,"Técnica Máxima"],
+    [/\boripathy\b/gi,"oripatia"], [/\boriginium\b/gi,"Origíneo"],
+    [/\bcost\b/gi,"custo"], [/\brequirements?\b/gi,"requisitos"],
+    [/^\s*(?:and|what about)\b/i,"e"],
+  ];
+  for (const [origem,destino] of termos) texto = texto.replace(origem,destino);
+  return texto;
+}
+
 function montarPrompt(msg, nome) {
-  const P = D.pers[pers];
+  const P = (perfilOriginal ? D.original.pers : D.pers)[pers];
   const recentes = turnos.filter(t => t.de === "user").slice(-2).map(t => t.texto).join(" ");
   // mundo olha as duas mensagens anteriores, pra conversa não perder o assunto; termo do livro só vale na mensagem em que aparece, a não ser num seguimento ("e o custo?")
-  const anterioresLivro = turnos.filter(t => t.de === "user").slice(-6).map(t => t.texto);
-  const consultaAtual = textoDeConsulta(msg);
-  const a = ativar(recentes + " " + msg, /^(e|mas|entao|tipo|como assim)\b/.test(t0(consultaAtual)) ? consultaAnterior(anterioresLivro) + " " + consultaAtual : consultaAtual);
+  const anterioresLivro = turnos.filter(t => t.de === "user").slice(-6).map(t => consultaBilingue(t.texto));
+  const consultaAtual = textoDeConsulta(consultaBilingue(msg));
+  const a = ativar(consultaBilingue(recentes + " " + msg), /^(e|mas|entao|tipo|como assim)\b/.test(t0(consultaAtual)) ? consultaAnterior(anterioresLivro) + " " + consultaAtual : consultaAtual);
   // A busca recebe a consulta filtrada; fala, histórico e contexto de mundo preservam o texto original.
   const livro = blocosLivro(consultaAtual, ativar(consultaAtual).termos, anterioresLivro);
   const panorama = panoramaCaminhos(assuntoDeOpcoes(consultaAtual, anterioresLivro), livro);
   let ctx = a.texto;
-  const mundo = consultarMundo(msg, anterioresLivro);
+  const mundo = perfilOriginal ? {texto: D.original.contexto, nomes: ["Original: Arknights"]} : consultarMundo(consultaBilingue(msg), anterioresLivro);
   if (mundo.texto) ctx += "\n\n" + mundo.texto;
   if (panorama) ctx += "\n\n" + panorama.texto;
   for (const b of livro) ctx += `\n\n[Livro, âncora ${b.ancora}]\n${b.texto}`;
   const nl = nome.trim().toLowerCase();
-  if (nl === "mizuki") ctx += "\n\n[Servidor: quem fala é o Mizuki, ID 459030926928904230, que criou o mundo do Ciclo Maldito e o sistema.]";
-  else if (/mizuki/i.test(msg)) ctx += "\n\n[Servidor: o Mizuki criou o mundo do Ciclo Maldito e o sistema. Quem fala agora não é ele.]";
+  if (!perfilOriginal && nl === "mizuki") ctx += "\n\n[Servidor: quem fala é o Mizuki, ID 459030926928904230, que criou o mundo do Ciclo Maldito e o sistema.]";
+  else if (!perfilOriginal && /mizuki/i.test(msg)) ctx += "\n\n[Servidor: o Mizuki criou o mundo do Ciclo Maldito e o sistema. Quem fala agora não é ele.]";
   if (/anivers[aá]rio/i.test(msg)) ctx += "\n\n" + P.aniversario;
   const regras = "Você está num teste de personagem de um bot de Discord. Siga o prompt de sistema abaixo à risca. Cada mensagem minha traz o contexto ativado, o estado do momento, a mensagem nova e um lembrete no fim. Responda só com a fala da personagem, sem prefixo de nome, sem aspas e sem comentário.\n\n=== PROMPT DE SISTEMA ===\n" + P.sistema;
   const hist = [];

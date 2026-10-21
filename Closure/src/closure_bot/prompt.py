@@ -12,6 +12,8 @@ from pathlib import Path
 from .conversa import Turno
 from .midia import AVISO
 from .plantao import CLOSURE, KALTSIT
+from .atalhos import orientacao
+from .recursos_publicos import orientacao as orientacao_links
 
 PONTE = Path(__file__).resolve().parents[2] / "ferramentas" / "prompt_do_site"
 SIGLA = {KALTSIT: "kal", CLOSURE: "clo"}
@@ -39,12 +41,22 @@ async def montar(persona: str, mensagem: str, *, nome: str, pronomes: str | None
     # fora do laço principal: a primeira chamada carrega a página (meio segundo) e as seguintes levam uns 40 ms
     montado = await asyncio.to_thread(site_prompt.montar, sigla, mensagem, nome=nome, pronomes=pronomes or "", turnos=conversa,
                                       falas_anteriores=falas_anteriores, estado=estado)
+    esperado = "nova-terra" if estado.get("nova_terra") is True else "original"
+    if montado.get("perfil") != esperado:
+        raise RuntimeError("A ponte não confirmou o perfil de lore solicitado")
     entrada = montado["input"]
     # Metadados antigos acompanham o turno, mas ficam fora da busca do livro.
     for pedido, turno in zip(entrada[1:-1], turnos[-24:]):
         if turno.midia:
             pedido["content"] += "\n\n" + turno.midia
     entrada[0]["content"] += "\n\n" + AVISO
+    entrada[0]["content"] += "\n\n" + orientacao(estado.get("atalhos_servidor"))
+    entrada[0]["content"] += "\n\n" + orientacao_links(estado.get("links_publicos"))
+    idioma = estado.get("idioma", "pt-BR")
+    orientacao_idioma = ("[Server language: English. Reply naturally in English, including reactions, media comments and weather. Keep proper names and Portuguese sheet/book identifiers unchanged when needed to find them. This language setting overrides Portuguese style examples or reminders.]" if idioma == "en" else
+                        "[Idioma do servidor: português do Brasil. Responda com naturalidade em português, preservando nomes próprios e identificadores.]")
+    entrada[0]["content"] += "\n\n" + orientacao_idioma
+    entrada[-1]["content"] += "\n\n" + orientacao_idioma
     if not turnos:
         entrada[0]["content"] += ("\n[Sem histórico recente disponível neste pedido. Se perguntarem onde a conversa parou, "
                                   "diga que não tem esse trecho disponível e peça uma lembrança; "

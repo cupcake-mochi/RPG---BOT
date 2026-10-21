@@ -144,7 +144,7 @@ class Metadados(unittest.IsolatedAsyncioTestCase):
     async def test_metadados_historicos_fora_da_busca_e_id_fora_do_prompt(self):
         from closure_bot.prompt import montar
         from closure_bot.conversa import Turno
-        ponte = SimpleNamespace(montar=lambda *a, **kw: {'input': [
+        ponte = SimpleNamespace(montar=lambda *a, **kw: {'perfil':'original','input': [
             {'role': 'user', 'content': 'sistema'}, {'role': 'user', 'content': kw['turnos'][0]['texto']},
             {'role': 'user', 'content': 'atual'}]})
         t = Turno(AGORA, 'ouvi uma música', 'Alex', 987654321, 'Adele - Skyfall')

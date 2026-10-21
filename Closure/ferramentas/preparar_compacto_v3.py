@@ -38,6 +38,7 @@ def hash_entrada(entrada):
 
 
 def preparar():
+    # Esta bateria histórica avalia o card da campanha, não o perfil público original.
     casos = []
     bases = []
     for pers, persona, hora in (("clo", "closure", 22), ("kal", "kaltsit", 14)):
@@ -45,7 +46,7 @@ def preparar():
             estado = Estado(persona, datetime(2026, 10, 14, hora, 10, tzinfo=FUSO),
                             "quieto", 0, "Alex", pronomes or None, 0, 0, 3, ())
             montado = site_prompt.montar(pers, mensagem, nome="Alex", pronomes=pronomes,
-                                         hora=(hora, 10), turnos=[], estado=estado.para_a_ponte())
+                                         hora=(hora, 10), turnos=[], estado={**estado.para_a_ponte(), "nova_terra": True})
             entrada = montado["input"]
             bases.append({"id": f"{persona}_{categoria}", "persona": persona, "categoria": categoria,
                           "mensagem": mensagem, "pronomes": pronomes, "criterio": criterio,

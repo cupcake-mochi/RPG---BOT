@@ -1,6 +1,22 @@
 # Decisões
 
+Revisão humana e abreviações (21/10): pedido do usuário para revisar a
+orientação do mestre após fechar o roteiro de criação; assunto próprio e
+/ficha mestre, sem aprovação automática. Atalhos públicos padrão e até
+20 próprios por servidor, só por Gerenciar servidor, sem sobrescrever os
+nomes existentes nem criar macros. Ajuda com página Abreviações. O contexto
+operacional das duas guias conhece os comandos; fatos pessoais e cards
+permanecem separados. Ver GUIAS-DE-USO.md e relatório da rodada.
+
+Criação e consulta da ficha (21/10): usuário aprovou um roteiro completo
+até Emitida e um assunto aprofundado separado. Implementados `criar` e
+`planilha`, 14 páginas cada, com fontes R53 e extensão salarial vigente.
+A emissão grava data, não aprovação; contas e personalidade preservadas.
+Fontes e revisão editorial em [GUIAS-DE-USO.md](GUIAS-DE-USO.md).
+
 Uma linha por decisão, a mais nova em cima. O detalhe fica no arquivo citado.
+
+- 21/10/2026 — Guia estático por assunto em `/guia`, `/ficha guia` e `GC:guia ficha`, com navegação semelhante à Arquivista. Explicação de limites humanos e aprovação exata; não cria autoaprovação nem chama modelo. Revisão das saídas fixas preserva cards, cálculos e núcleo instalado. Ver `GUIAS-DE-USO.md`.
 
 | Data | Decisão | Por quê | Onde |
 | ---- | ------- | ------- | ---- |

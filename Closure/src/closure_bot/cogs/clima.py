@@ -6,6 +6,7 @@ cada servidor escolhe o seu canal com /clima_canal (no próprio canal ou passand
 ID da mensagem e o último estado ficam no registro, pra um reinício não postar de novo.
 """
 from __future__ import annotations
+from ..idiomas import tr
 
 import logging
 from datetime import datetime
@@ -17,6 +18,7 @@ from discord.ext import commands, tasks
 
 from ..clima import TOQUIO, Clima, acao_painel, lugar_para_consulta
 from ..plantao import FUSO
+from ..idiomas import preparar
 from ..registro import PainelClima
 
 log = logging.getLogger(__name__)
@@ -33,23 +35,23 @@ def arte() -> discord.File | None:
 
 
 def painel(clima: Clima, atualizado: str | None = None) -> discord.Embed:
-    embed = discord.Embed(title=f"{clima.emoji} Clima em {clima.lugar}", description=f"**{clima.condicao.capitalize()}**", color=COR)
+    embed = discord.Embed(title=tr('{0} Clima em {1}').format(clima.emoji, clima.lugar), description=f"**{tr(clima.condicao).capitalize()}**", color=COR)
     embed.set_thumbnail(url=clima.icone)
-    embed.add_field(name="🌡️ Temperatura", value=f"{clima.temperatura} °C")
-    embed.add_field(name="🧠 Sensação", value=f"{clima.sensacao} °C")
-    embed.add_field(name="💧 Umidade", value=f"{clima.umidade}%")
-    embed.add_field(name="🍃 Vento", value=f"{clima.vento_kmh} km/h")
-    embed.add_field(name="📊 Mín. e máx.", value=f"{clima.minima} °C a {clima.maxima} °C")
-    embed.add_field(name="☔ Chuva hoje", value="sem previsão" if clima.chuva_hoje is None else f"{clima.chuva_hoje}% de chance")
-    embed.add_field(name="🌅 Nascer do sol", value=clima.nascer)
-    embed.add_field(name="🌇 Pôr do sol", value=clima.por_do_sol)
+    embed.add_field(name=tr('🌡️ Temperatura'), value=f"{clima.temperatura} °C")
+    embed.add_field(name=tr('🧠 Sensação'), value=f"{clima.sensacao} °C")
+    embed.add_field(name=tr('💧 Umidade'), value=f"{clima.umidade}%")
+    embed.add_field(name=tr('🍃 Vento'), value=f"{clima.vento_kmh} km/h")
+    embed.add_field(name=tr('📊 Mín. e máx.'), value=tr("{0} °C a {1} °C").format(clima.minima,clima.maxima))
+    embed.add_field(name=tr('☔ Chuva hoje'), value=tr('sem previsão') if clima.chuva_hoje is None else tr('{0}% de chance').format(clima.chuva_hoje))
+    embed.add_field(name=tr('🌅 Nascer do sol'), value=clima.nascer)
+    embed.add_field(name=tr('🌇 Pôr do sol'), value=clima.por_do_sol)
     rodape = []
     if ARTE.exists():
         embed.set_image(url=f"attachment://{ARTE.name}")
-        rodape.append(f"Arte: {ARTE_DE}")
-    rodape += ["Dados: Open-Meteo", f"Leitura das {clima.hora_local} de {'Tóquio' if clima.lugar == TOQUIO.nome else 'lá'}"]
+        rodape.append(tr('Arte: {0}').format(ARTE_DE))
+    rodape += [tr('Dados: Open-Meteo'), tr('Leitura das {0} de {1}').format(clima.hora_local, tr('Tóquio') if clima.lugar == TOQUIO.nome else tr('lá'))]
     if atualizado:
-        rodape.append(f"Atualizado às {atualizado} de Brasília")
+        rodape.append(tr('Atualizado às {0} de Brasília').format(atualizado))
     embed.set_footer(text=" • ".join(rodape))
     return embed
 
@@ -80,12 +82,12 @@ class ComandoClima(commands.Cog):
                 onde = await self.bot.clima.procurar(lugar)
             except Exception as erro:
                 log.warning("clima: falha ao procurar %r (%s)", lugar, erro)
-                return None, "Não consegui procurar esse lugar agora. Tente de novo daqui a pouco."
+                return None, tr('Não consegui procurar esse lugar agora. Tente de novo daqui a pouco.')
             if onde is None:
-                return None, "Não achei esse lugar. Tente o nome da cidade."
+                return None, tr('Não achei esse lugar. Tente o nome completo da cidade e acrescente o estado ou país. Exemplo: `GC:clima Belo Horizonte, Brasil`.')
         leitura = await self.bot.clima.agora(onde)
         if leitura is None:
-            return None, "Não consegui ler o clima agora. Tente de novo daqui a pouco."
+            return None, tr('Não consegui ler o clima agora. Tente de novo daqui a pouco.')
         return painel(leitura), None
 
     @app_commands.command(name="clima", description="Mostra como está o tempo agora em Tóquio ou em outro lugar.")
@@ -105,18 +107,18 @@ class ComandoClima(commands.Cog):
     async def clima_canal(self, interacao: discord.Interaction, canal: discord.TextChannel | None = None) -> None:
         destino = canal or interacao.channel
         if not isinstance(destino, discord.TextChannel):
-            await interacao.response.send_message("Use num canal de texto, ou escolha um no campo `canal`.", ephemeral=True)
+            await interacao.response.send_message(tr('Use num canal de texto, ou escolha um no campo `canal`.'), ephemeral=True)
             return
         permissoes = destino.permissions_for(interacao.guild.me)
         if not (permissoes.send_messages and permissoes.embed_links):
             await interacao.response.send_message(
-                f"Não tenho permissão de enviar mensagens e inserir links em {destino.mention}.", ephemeral=True)
+                tr('Não tenho permissão de enviar mensagens e inserir links em {0}.').format(destino.mention), ephemeral=True)
             return
         self.bot.registro.definir_painel(guild_id=interacao.guild_id, canal_id=destino.id)
         await interacao.response.defer(ephemeral=True)
         feito = await self.atualizar_painel(self.bot.registro.painel(interacao.guild_id), datetime.now(FUSO))
-        quando = "O de hoje já está lá." if feito else "O próximo sai depois das 6h de Brasília."
-        await interacao.followup.send(f"Painel diário de clima ligado em {destino.mention}. {quando}", ephemeral=True)
+        quando = tr('O de hoje já está lá.') if feito else tr('O próximo sai depois das 6h de Brasília.')
+        await interacao.followup.send(tr('Painel diário de clima ligado em {0}. {1}').format(destino.mention, quando), ephemeral=True)
 
     @app_commands.command(name="clima_canal_desligar", description="Desliga o painel diário de clima deste servidor.")
     @app_commands.guild_only()
@@ -124,7 +126,7 @@ class ComandoClima(commands.Cog):
     async def clima_canal_desligar(self, interacao: discord.Interaction) -> None:
         tinha = self.bot.registro.remover_painel(interacao.guild_id)
         await interacao.response.send_message(
-            "Painel diário de clima desligado." if tinha else "Este servidor não tinha painel diário de clima.",
+            tr('Painel diário de clima desligado.') if tinha else tr('Este servidor não tinha painel diário de clima.'),
             ephemeral=True)
 
     async def atualizar_painel(self, config: PainelClima, agora: datetime) -> str | None:
@@ -159,6 +161,7 @@ class ComandoClima(commands.Cog):
     async def painel_diario(self) -> None:
         agora = datetime.now(FUSO)
         for config in self.bot.registro.paineis():
+            preparar(self.bot,config.guild_id)
             try:
                 await self.atualizar_painel(config, agora)
             except Exception:  # um servidor com erro não pode parar os outros nem as próximas voltas

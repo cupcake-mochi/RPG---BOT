@@ -39,7 +39,7 @@ class Apresentacao(unittest.TestCase):
                 persona = SimpleNamespace(chave=guia, nome=guia, avatar_url=None)
                 ps = paginas(r, {}, persona)
                 self.assertNotIn('pendências', ps[0].description.lower())
-                self.assertIn('0 pendência(s)', texto(ps[:1]))
+                self.assertIn('0 pendências', texto(ps[:1]))
                 self.assertEqual(r.veredito, 'pendente')
 
     def resultado(self, ficha, numero):
@@ -139,7 +139,7 @@ class Apresentacao(unittest.TestCase):
                     resumo = texto(ps[:1])
                     self.assertIn('Conferência parcial; ' + esperado, resumo)
                     if not r.pendencias:
-                        self.assertIn('0 pendência(s)', resumo)
+                        self.assertIn('0 pendências', resumo)
                         self.assertNotIn('pendências abertas', resumo)
                     self.assertEqual(r, antes)
                     self.assertEqual(ps[0].colour.value, 0xD4A017)

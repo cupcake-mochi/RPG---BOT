@@ -1,0 +1,43 @@
+{
+  "arquivos": 80,
+  "sha256": "f1e716c20e9dab3d05116a132813a4fac6b15832462e45ac712f7698766195e5",
+  "fontes_iguais_ao_pacote": true,
+  "sem_ambiente_bancos_campanha": true,
+  "mudancas": [
+    "src/closure_bot/atalhos.py",
+    "src/closure_bot/cogs/admin.py",
+    "src/closure_bot/cogs/atalho.py",
+    "src/closure_bot/cogs/chat.py",
+    "src/closure_bot/cogs/ficha.py",
+    "src/closure_bot/guia_mestre.py",
+    "src/closure_bot/guias.py",
+    "src/closure_bot/prompt.py",
+    "src/closure_bot/registro.py"
+  ],
+  "tabelas_preexistentes_iguais": {
+    "chamadas_api": true,
+    "gatilhos": true,
+    "paineis_clima": true,
+    "falas": true,
+    "mensagens_bot": true,
+    "paciencia": true,
+    "mensagens_do_dia": true,
+    "fichas": true,
+    "conversas_recentes": true,
+    "participantes_conversa": true,
+    "preferencias_servidor": true
+  },
+  "tabela_nova": "atalhos_servidor",
+  "atalhos_de_teste_removidos": true,
+  "sqlite_quick_check": "ok",
+  "instalados_iguais_ao_pacote": 80,
+  "preservados": {
+    ".env": true,
+    "src/var/ficha-campanhas.json": true,
+    "src/var/site/nucleo.js": true,
+    "closure_lab.db": true
+  },
+  "runtime": "162b39c6a5849cd1707aaaec7af5daf3cf5fcb3e",
+  "inicio_brasilia": "2026-10-21 10:28:26",
+  "politica_publica_conferida": true
+}

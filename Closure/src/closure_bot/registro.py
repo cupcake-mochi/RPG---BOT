@@ -23,6 +23,7 @@ Com a CHAVE_DO_BANCO no .env, o texto que fala de gente vai cifrado pro disco: f
 fatos. IDs, horas e contagens ficam em claro, porque as consultas dependem deles.
 """
 from __future__ import annotations
+from .idiomas import tr
 
 import json
 import sqlite3
@@ -32,6 +33,30 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 ESQUEMA = """
+CREATE TABLE IF NOT EXISTS configuracao_publica (
+    guild_id INTEGER PRIMARY KEY,
+    idioma TEXT NOT NULL DEFAULT 'pt-BR' CHECK (idioma IN ('pt-BR','en')),
+    nova_terra INTEGER CHECK (nova_terra IN (0,1)),
+    cargos TEXT NOT NULL DEFAULT '[]',
+    revisao INTEGER NOT NULL DEFAULT 0
+);
+CREATE TABLE IF NOT EXISTS contexto_canais (
+    canal_id INTEGER PRIMARY KEY, guild_id INTEGER NOT NULL,
+    revisao INTEGER NOT NULL, desde TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS fatos_contexto (
+    autor_id INTEGER NOT NULL, contexto TEXT NOT NULL, fatos TEXT NOT NULL,
+    PRIMARY KEY (autor_id, contexto)
+);
+CREATE TABLE IF NOT EXISTS origem_mensagens (
+    message_id INTEGER PRIMARY KEY, contexto TEXT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS atalhos_servidor (
+    guild_id INTEGER NOT NULL,
+    nome TEXT NOT NULL,
+    destino TEXT NOT NULL,
+    PRIMARY KEY (guild_id, nome)
+);
 CREATE TABLE IF NOT EXISTS preferencias_servidor (
     guild_id INTEGER PRIMARY KEY,
     responder_nsfw INTEGER NOT NULL DEFAULT 0 CHECK (responder_nsfw IN (0, 1)),
@@ -150,6 +175,7 @@ class MensagemDoDia:
     autor_id: int
     persona: str
     texto: str
+    contexto: str = ""
 
 
 FATOS_MAX = 15  # por pessoa; passando disso sai o mais velho
@@ -235,6 +261,70 @@ class Registro:
     def fechar(self) -> None:
         self._db.close()
 
+    def opcoes_servidor(self, guild_id: int):
+        from .servidor import NOVA_TERRA_PADRAO, OpcoesServidor
+        self._id_servidor(guild_id)
+        r = self._db.execute("SELECT idioma,nova_terra,cargos,revisao FROM configuracao_publica WHERE guild_id=?", (guild_id,)).fetchone()
+        if not r:
+            return OpcoesServidor(nova_terra=guild_id in NOVA_TERRA_PADRAO)
+        return OpcoesServidor(r[0], guild_id in NOVA_TERRA_PADRAO if r[1] is None else bool(r[1]),
+                              tuple(json.loads(r[2])), r[3])
+
+    def configurar_publico(self, guild_id: int, *, idioma=None, nova_terra=None, cargos=None):
+        from .servidor import IDIOMAS
+        self._id_servidor(guild_id)
+        if idioma is not None and idioma not in IDIOMAS:
+            raise ValueError("Idioma inválido")
+        if nova_terra is not None and type(nova_terra) is not bool:
+            raise ValueError("Ativação inválida")
+        if cargos is not None:
+            cargos = tuple(sorted(set(cargos)))
+            if len(cargos) > 20:
+                raise ValueError("Até 20 cargos administrativos")
+            for cargo in cargos:
+                self._id_servidor(cargo)
+        antes = self.opcoes_servidor(guild_id)
+        with self._db:
+            self._db.execute("INSERT OR IGNORE INTO configuracao_publica(guild_id) VALUES(?)", (guild_id,))
+            for campo, valor in (("idioma", idioma), ("nova_terra", nova_terra), ("cargos", json.dumps(cargos) if cargos is not None else None)):
+                if valor is not None:
+                    self._db.execute(f"UPDATE configuracao_publica SET {campo}=? WHERE guild_id=?", (valor, guild_id))
+            depois = self.opcoes_servidor(guild_id)
+            if (antes.idioma, antes.nova_terra) != (depois.idioma, depois.nova_terra):
+                self._db.execute("UPDATE configuracao_publica SET revisao=revisao+1 WHERE guild_id=?", (guild_id,))
+        return self.opcoes_servidor(guild_id)
+
+    def preparar_contexto(self, canal_id: int, guild_id: int, agora: datetime) -> tuple[bool, datetime]:
+        """Barreira por canal: histórico sem origem conhecida não atravessa a migração/troca."""
+        opcoes = self.opcoes_servidor(guild_id)
+        r = self._db.execute("SELECT guild_id,revisao,desde FROM contexto_canais WHERE canal_id=?", (canal_id,)).fetchone()
+        mudou = not r or r[:2] != (guild_id, opcoes.revisao)
+        if mudou:
+            with self._db:
+                for tabela in ("conversas_recentes", "participantes_conversa", "falas"):
+                    self._db.execute(f"DELETE FROM {tabela} WHERE canal_id=?", (canal_id,))
+                self._db.execute("INSERT OR REPLACE INTO contexto_canais VALUES(?,?,?,?)", (canal_id, guild_id, opcoes.revisao, _iso(agora)))
+            return True, agora
+        return False, datetime.fromisoformat(r[2])
+
+    def ficha_contexto(self, autor_id: int, contexto: str) -> Ficha:
+        ficha = self.ficha(autor_id)
+        r = self._db.execute("SELECT fatos FROM fatos_contexto WHERE autor_id=? AND contexto=?", (autor_id, contexto)).fetchone()
+        return Ficha(ficha.pronomes, tuple(json.loads(self.cofre.abrir(r[0]) or '[]')) if r else ())
+
+    def exportar_fatos(self, autor_id: int) -> dict:
+        """Somente a própria pessoa chama esta leitura pela interface privada."""
+        antiga = self.ficha(autor_id)
+        contextos = {}
+        for contexto, fatos in self._db.execute("SELECT contexto,fatos FROM fatos_contexto WHERE autor_id=? ORDER BY contexto", (autor_id,)):
+            contextos[contexto] = json.loads(self.cofre.abrir(fatos) or '[]')
+        return {"pronomes": antiga.pronomes, "legado": list(antiga.fatos), "contextos": contextos}
+
+    def gravar_ficha_contexto(self, autor_id: int, contexto: str, ficha: Ficha) -> None:
+        with self._db:
+            self._db.execute("INSERT OR REPLACE INTO fatos_contexto VALUES(?,?,?)", (autor_id, contexto,
+                self.cofre.fechar(json.dumps(list(ficha.fatos)[-FATOS_MAX:], ensure_ascii=False))))
+
     @staticmethod
     def _id_servidor(valor: int) -> None:
         if type(valor) is not int or not 0 < valor < 2**63:
@@ -247,6 +337,31 @@ class Registro:
             (guild_id,),
         ).fetchone()
         return PreferenciasServidor(bool(linha[0]), linha[1]) if linha else PreferenciasServidor()
+
+    def atalhos_servidor(self, guild_id: int) -> dict[str, str]:
+        from .atalhos import validos
+        self._id_servidor(guild_id)
+        return validos(dict(self._db.execute("SELECT nome, destino FROM atalhos_servidor WHERE guild_id = ?", (guild_id,))))
+
+    def definir_atalho(self, guild_id: int, nome: str, destino: str) -> str:
+        from .atalhos import MAX_ATALHOS, validar
+        self._id_servidor(guild_id)
+        nome, destino = validar(nome, destino)
+        with self._db:
+            existe = self._db.execute("SELECT 1 FROM atalhos_servidor WHERE guild_id = ? AND nome = ?", (guild_id, nome)).fetchone()
+            total = self._db.execute("SELECT COUNT(*) FROM atalhos_servidor WHERE guild_id = ?", (guild_id,)).fetchone()[0]
+            if not existe and total >= MAX_ATALHOS:
+                raise ValueError(tr('Este servidor já tem {0} atalhos próprios. Remova um antes de criar outro.').format(MAX_ATALHOS))
+            self._db.execute("INSERT INTO atalhos_servidor (guild_id, nome, destino) VALUES (?, ?, ?) "
+                             "ON CONFLICT(guild_id, nome) DO UPDATE SET destino = excluded.destino", (guild_id, nome, destino))
+        return nome
+
+    def remover_atalho(self, guild_id: int, nome: str) -> bool:
+        from .atalhos import nome_proprio
+        self._id_servidor(guild_id)
+        nome = nome_proprio(nome)
+        with self._db:
+            return self._db.execute("DELETE FROM atalhos_servidor WHERE guild_id = ? AND nome = ?", (guild_id, nome)).rowcount > 0
 
     def definir_responder_nsfw(self, guild_id: int, ativar: bool) -> None:
         self._id_servidor(guild_id)
@@ -386,14 +501,15 @@ class Registro:
         self._db.commit()
 
     def guardar_mensagem_do_dia(self, *, message_id: int, autor_id: int, persona: str, texto: str,
-                                quando: datetime | None = None) -> None:
+                                quando: datetime | None = None, contexto: str = "") -> None:
         self._db.execute("INSERT OR REPLACE INTO mensagens_do_dia (message_id, quando, autor_id, persona, texto) VALUES (?, ?, ?, ?, ?)",
                          (message_id, _iso(quando) if quando else _agora(), autor_id, persona, self.cofre.fechar(texto)))
+        self._db.execute("INSERT OR REPLACE INTO origem_mensagens VALUES(?,?)", (message_id, contexto))
         self._db.commit()
 
     def mensagens_do_dia(self) -> list[MensagemDoDia]:
-        linhas = self._db.execute("SELECT message_id, autor_id, persona, texto FROM mensagens_do_dia ORDER BY message_id")
-        abertas = [MensagemDoDia(m, autor, persona, self.cofre.abrir(texto)) for m, autor, persona, texto in linhas]
+        linhas = self._db.execute("SELECT m.message_id, autor_id, persona, texto, COALESCE(o.contexto,'') FROM mensagens_do_dia m LEFT JOIN origem_mensagens o ON o.message_id=m.message_id ORDER BY m.message_id")
+        abertas = [MensagemDoDia(m, autor, persona, self.cofre.abrir(texto), contexto) for m, autor, persona, texto, contexto in linhas]
         return [m for m in abertas if m.texto is not None]
 
     def mensagem_do_dia_mais_antiga(self) -> datetime | None:
@@ -403,8 +519,10 @@ class Registro:
     def apagar_mensagens_do_dia(self, ids: list[int] | None = None) -> None:
         """Sem `ids`, apaga todas. Com eles, só as que entraram na reflexão (as que chegaram durante ela ficam pra próxima)."""
         if ids is None:
+            self._db.execute("DELETE FROM origem_mensagens")
             self._db.execute("DELETE FROM mensagens_do_dia")
         else:
+            self._db.executemany("DELETE FROM origem_mensagens WHERE message_id = ?", [(i,) for i in ids])
             self._db.executemany("DELETE FROM mensagens_do_dia WHERE message_id = ?", [(i,) for i in ids])
         self._db.commit()
 
@@ -430,7 +548,8 @@ class Registro:
             self._db.execute("DELETE FROM conversas_recentes WHERE canal_id = ? AND persona = ?", (canal, persona))
             self._db.execute("DELETE FROM participantes_conversa WHERE canal_id = ? AND persona = ?", (canal, persona))
             self._db.execute("DELETE FROM falas WHERE canal_id = ? AND persona = ?", (canal, persona))
-        for tabela in ("fichas", "paciencia", "gatilhos", "mensagens_do_dia"):
+        self._db.execute("DELETE FROM origem_mensagens WHERE message_id IN (SELECT message_id FROM mensagens_do_dia WHERE autor_id=?)", (autor_id,))
+        for tabela in ("fichas", "fatos_contexto", "paciencia", "gatilhos", "mensagens_do_dia"):
             self._db.execute(f"DELETE FROM {tabela} WHERE autor_id = ?", (autor_id,))
         self._db.commit()
         # Uma chamada já enviada pode terminar depois da exclusão. A resposta

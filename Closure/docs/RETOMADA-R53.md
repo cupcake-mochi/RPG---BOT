@@ -1,4 +1,23 @@
-# Retomada R53 · atualizada em 20/10/2026
+# Retomada R53 · atualizada em 21/10/2026
+
+**Mestre e abreviações · 21/10:** runtime `162b39c` publicado pelo navegador
+do aplicativo. Revisão humana própria, ajuda em duas páginas, abreviações e
+atalhos administrativos por servidor. 912/911/1 opcional, CI aprovada e 107
+no ZIP; ensaios nativos e preservação do banco conferidos.
+[Fechamento](../pesquisa/validacao/2026-10-21-mestre-atalhos/RELATORIO.md).
+
+**Criação e consulta · 21/10:** guias até Emitida e das abas/configurações
+publicados, runtime `268d326`, nomes revisados pelo pedido adicional do usuário.
+900/899/1 opcional local, CI final aprovada; instalação e bancos conferidos.
+[Fechamento e retomada](../pesquisa/validacao/2026-10-21-guias-criacao/RELATORIO.md).
+PR 68 aberta; commits posteriores de documentação não pedem novo deploy.
+
+**Guias e limpeza · 21/10:** `/guia`, `/ficha guia` e `GC:guia ficha`
+publicados, com nove assuntos e orientação de revisão humana. Suíte final:
+896/895/1 online opcional. As cópias sintéticas B47/R53 foram levadas à
+lixeira a pedido do usuário; os links dos ensaios abaixo são históricos.
+Estado publicado, verificações e limpeza em
+[relatório das guias](../pesquisa/validacao/2026-10-21-guias/RELATORIO.md).
 
 **Encerramento posterior:** defeitos da entidade corrigidos e publicados
 (`11cdc9f`), negativos preservados, suíte Linux 890/889/1 opcional pulado.

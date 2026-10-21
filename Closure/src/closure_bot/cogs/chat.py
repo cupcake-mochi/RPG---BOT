@@ -12,6 +12,7 @@ import discord
 from discord.ext import commands
 
 from ..clima import contexto_clima, pergunta_clima
+from ..recursos_publicos import resposta as resposta_de_link, links as links_publicos
 from ..conversa import Turno
 from ..modelo import Falhou
 from ..plantao import FUSO, MOTIVO_SEGUIMENTO, Decisao, de_plantao, decidir
@@ -158,6 +159,17 @@ class Chat(commands.Cog):
         ) or seguimento
         if decisao is None:
             return
+        # Não registra contexto para mensagens ignoradas. Uma continuação antiga
+        # também não reabre o contexto depois de uma troca administrativa.
+        mudou, desde = self.bot.registro.preparar_contexto(mensagem.channel.id, mensagem.guild.id, agora)
+        if mudou:
+            self._fios.pop(mensagem.channel.id, None)
+        citada = getattr(getattr(mensagem, "reference", None), "resolved", None)
+        criada = getattr(citada, "created_at", None)
+        if not isinstance(criada, datetime) or criada < desde:
+            fala_respondida = None
+        if mudou and decisao.motivo == MOTIVO_SEGUIMENTO:
+            return
         if self._passou_do_limite(mensagem.author.id, agora):
             log.info("pessoa %s passou de %d chamadas em um minuto; sem resposta", mensagem.author.id, CHAMADAS_POR_MINUTO)
             return
@@ -167,8 +179,11 @@ class Chat(commands.Cog):
                                             persona=decisao.persona, motivo=decisao.motivo,
                                             fora_do_plantao=decisao.fora_do_plantao)
         # o texto de quem chamou fica guardado só até a reflexão das 4h30, que tira os fatos e apaga (reflexao.py)
-        self.bot.registro.guardar_mensagem_do_dia(message_id=mensagem.id, autor_id=mensagem.author.id,
-                                                  persona=decisao.persona, texto=texto)
+        opcoes = self.bot.registro.opcoes_servidor(mensagem.guild.id)
+        if resposta_de_link(texto, self.bot.config, decisao.persona, opcoes.idioma) is None:
+            self.bot.registro.guardar_mensagem_do_dia(message_id=mensagem.id, autor_id=mensagem.author.id,
+                                                      persona=decisao.persona, texto=texto,
+                                                      contexto=opcoes.contexto(mensagem.guild.id))
         atrito = self.bot.vida.chamada(autor_id=mensagem.author.id, persona=decisao.persona, texto=texto, agora=agora)
         log.info("gatilho: %s responde (%s%s%s)", decisao.persona, decisao.motivo,
                  ", fora do plantão" if decisao.fora_do_plantao else "", f", atrito: {atrito}" if atrito else "")
@@ -193,6 +208,19 @@ class Chat(commands.Cog):
     async def _responder_com_leitura(self, mensagem, decisao, agora, texto, fala_respondida, leitura):
         bot, persona, canal = self.bot, decisao.persona, mensagem.channel
         nome = self._nome(mensagem.author)
+        opcoes = bot.registro.opcoes_servidor(mensagem.guild.id)
+        from ..idiomas import definir, tr
+        definir(opcoes.idioma)
+        pronta = resposta_de_link(texto, bot.config, persona, opcoes.idioma)
+        if pronta is not None:
+            await bot.carteiro.enviar(canal, bot.personas[persona], pronta, lembrar=False)
+            if leitura.apagados or bot.registro.opcoes_servidor(mensagem.guild.id).revisao != opcoes.revisao:
+                return
+            self._fios[canal.id] = Fio(persona, mensagem.author.id, datetime.now(FUSO))
+            bot.registro.guardar_fala(canal_id=canal.id, persona=persona, texto=pronta)
+            bot.conversas.anotar(canal.id, persona, agora, texto, nome=nome, autor_id=mensagem.author.id)
+            bot.conversas.anotar(canal.id, persona, agora, pronta, autor_id=mensagem.author.id)
+            return
         # Outra conversa pode ter terminado enquanto o indicador de digitação
         # era enviado. Inclua os autores exatamente antes de ler seus dados.
         leitura.autores |= bot.registro.autores_conversa(canal.id, persona)
@@ -200,8 +228,10 @@ class Chat(commands.Cog):
         if fala_respondida and all(t.texto != fala_respondida for t in turnos):
             # respondeu a uma fala antiga dela, de fora da conversa em andamento: a fala entra na frente, só neste pedido
             turnos = [Turno(agora, fala_respondida[:LIMITE_DO_DISCORD])] + turnos
-        estado = bot.vida.estado(persona=persona, canal_id=canal.id, autor_id=mensagem.author.id, nome=nome, agora=agora, texto=texto)
+        estado = bot.vida.estado(persona=persona, canal_id=canal.id, autor_id=mensagem.author.id, nome=nome, agora=agora, texto=texto, contexto=opcoes.contexto(mensagem.guild.id))
         para_a_ponte = estado.para_a_ponte()
+        para_a_ponte.update(nova_terra=opcoes.nova_terra, idioma=opcoes.idioma, links_publicos=links_publicos(bot.config))
+        para_a_ponte["atalhos_servidor"] = bot.registro.atalhos_servidor(mensagem.guild.id)
         # Reconstituir só a sequência meteorológica ainda presente no histórico.
         # Uma fala de outro assunto encerra a sequência; não puxa clima antigo.
         anterior = None
@@ -238,6 +268,8 @@ class Chat(commands.Cog):
         if bot.config.usa_argon(canal.id):
             rota["usar_argon"] = True
         fala = preparo.resposta_local(texto)
+        if fala is not None:
+            fala = tr(fala)
         inicio_modelo = time.monotonic()
         if fala is None:
             resposta = await bot.modelos.responder(entrada, persona=persona, gatilho=decisao.motivo, **rota)
@@ -249,14 +281,19 @@ class Chat(commands.Cog):
             log.info('mídia: prompt_ms=%d preparo_ms=%d modelo_ms=%d total_ms=%d',
                      (inicio_preparo - inicio_prompt) * 1000, (inicio_modelo - inicio_preparo) * 1000,
                      (fim - inicio_modelo) * 1000, (fim - inicio_prompt) * 1000)
+        # Uma administração pode trocar a fonte enquanto a consulta está em trânsito.
+        if bot.registro.opcoes_servidor(mensagem.guild.id).revisao != opcoes.revisao:
+            return
         partes = em_partes(fala)
         if not partes:
             return
         for parte in partes:
+            if bot.registro.opcoes_servidor(mensagem.guild.id).revisao != opcoes.revisao:
+                return
             # Grave só depois de confirmar que ninguém apagou os dados durante
             # o envio. Uma mensagem já em trânsito não pode ser desfeita aqui.
             await bot.carteiro.enviar(canal, bot.personas[persona], parte, lembrar=False)
-            if leitura.apagados:
+            if leitura.apagados or bot.registro.opcoes_servidor(mensagem.guild.id).revisao != opcoes.revisao:
                 return
         # a hora conta do fim da resposta: a pessoa ainda pode estar lendo enquanto ela escrevia
         self._fios[canal.id] = Fio(persona, mensagem.author.id, datetime.now(FUSO))

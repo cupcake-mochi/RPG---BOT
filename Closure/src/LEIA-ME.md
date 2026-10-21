@@ -1,5 +1,21 @@
 # src: código do bot
 
+**Publicado · 21/10 às 13:25 (Brasília):** idioma PT-BR/inglês, lore original/Nova Terra por servidor e links públicos na conversa. Dois bots auditados após implantação; 944 testes das Guias e 149 da Arquivista, além de 36 JS. [Estado atual e limites](../docs/RETOMADA-PUBLICO.md).
+
+**Mestre e atalhos · 21/10:** `GC:gm` ou `/ficha mestre` orienta a revisão
+completa. A ajuda tem uma página **Abreviações** (`GC:ab`); `/atalho` permite
+a administradores configurar até 20 nomes próprios por servidor. As duas
+guias recebem informação operacional sobre esses comandos no contexto.
+
+**Criação da ficha · 21/10:** `GC:guia criar` vai da cópia até marcar
+**Emitida** na CARTEIRA. `GC:guia planilha` explica abas, configurações,
+progressão e salários em separado. `/guia` também oferece esses assuntos.
+
+**Guias de uso · 21/10:** `/guia`, `/ficha guia` e `GC:guia ficha`
+orientam envio, leitura do painel e revisão humana. Doze assuntos com
+menu e páginas, sem modelo nem alteração de dados. Veja
+[GUIAS-DE-USO.md](../docs/GUIAS-DE-USO.md) para rotas, limites e validação.
+
 **Continuação do clima · publicada em 19/10 às 00:08:** “E de BH?” depois de
 SP e trocas sucessivas de cidade consultam os dados corretos. `GC:clima` aceita
 pergunta inteira, incluindo a frase da captura. Suíte: 849 executados, 848

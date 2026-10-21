@@ -19,9 +19,11 @@ D = {
              for e in json.load(open(f"{R}/dados/personagem/kaltsit/lorebook.json", encoding="utf-8"))["entries"].values() if not e["disable"]],
     "livro": [{k: b.get(k) for k in ("ancora", "titulo", "titulos", "texto")} for b in map(json.loads, open(f"{R}/dados/sistema/livro.jsonl", encoding="utf-8"))],
     "versoes": VERSOES,
+    "original": json.loads(ler(f"{R}/dados/personagem/base-original.json")),
     "mundo": json.loads(ler(f"{R}/dados/mundo/era-revolucao.json")),
 }
 D["versoes"]["mundo"] = D["mundo"]["versao"]
+D["versoes"]["original"] = D["original"]["versao"]
 html = ler(os.path.join(os.path.dirname(os.path.abspath(__file__)), "modelo.html"))
 assert html.count("/*__DATADOS__*/null") == 1
 dados = json.dumps(D, ensure_ascii=False).replace("</", "<\\/")

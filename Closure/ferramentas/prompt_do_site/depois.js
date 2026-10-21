@@ -10,7 +10,9 @@
     __pronomes = p.pronomes || "";
     if (p.agora) Date.now = () => p.agora;
     try {
+      if (!D.original || !D.original.pers || typeof perfilOriginal === "undefined") throw new Error("Núcleo antigo: regenere a base com suporte ao isolamento de lore.");
       pers = p.pers;
+      perfilOriginal = !(p.estado && p.estado.nova_terra === true);
       const reais = p.turnos || [];
       // Falas de conversas anteriores: a página só olha a conversa atual pra avisar de repetição. Aqui o mesmo
       // detector dela (repeticoes) roda com as últimas falas da personagem no canal na frente das desta conversa.
@@ -22,7 +24,7 @@
       turnos = reais;
       // Estado do bot: a página escreve "canal normal; carga 0" fixo. Com o estado calculado, o bloco dele entra no lugar
       // e o lembrete ganha as linhas dele, no máximo duas contando a de fora do plantão (que é da página e tem prioridade).
-      if (p.estado) {
+      if (p.estado && typeof p.estado.bloco === "string") {
         linhaEstado = () => p.estado.bloco;
         foraDoPlantao = (...a) => { const f = foraDaPagina(...a); return f + (p.estado.lembretes || []).slice(0, f ? 1 : 2).map(l => "\n[" + l + "]").join(""); };
       }
@@ -32,9 +34,9 @@
         if (so_desta && ultimo.content.endsWith(so_desta)) ultimo.content = ultimo.content.slice(0, -so_desta.length);
         ultimo.content += aviso.replace("Você já usou nesta conversa:", "Você já usou nas suas últimas respostas:");
       }
-      return { input: r.input, ativadas: r.ativadas, versoes: D.versoes };
+      return { input: r.input, ativadas: r.ativadas, versoes: D.versoes, perfil: perfilOriginal ? "original" : "nova-terra" };
     } finally {
-      linhaEstado = estadoDaPagina; foraDoPlantao = foraDaPagina; Date.now = relogio; turnos = [];
+      linhaEstado = estadoDaPagina; foraDoPlantao = foraDaPagina; Date.now = relogio; turnos = []; perfilOriginal = true;
     }
   };
   globalThis.__montarJSON = texto => JSON.stringify(__montar(JSON.parse(texto)));

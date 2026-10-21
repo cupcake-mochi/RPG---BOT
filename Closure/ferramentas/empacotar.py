@@ -40,7 +40,11 @@ def arquivos(com_env: bool) -> list[tuple[Path, str]]:
 def empacotar(com_env: bool = False, saida: Path = SAIDA) -> Path:
     import site_prompt
 
-    site_prompt.nucleo()  # baixa a página se ainda não tiver
+    site_prompt.atualizar()  # o pacote sempre leva dados e lógica dos fontes atuais
+    for ativo, perfil in ((False,"original"),(True,"nova-terra")):
+        prova=site_prompt.montar("clo","oi",estado={"nova_terra":ativo})
+        if prova.get("perfil") != perfil:
+            raise SystemExit("Regenere o núcleo antes de empacotar: perfil de lore incorreto")
     lista = arquivos(com_env)
     faltando = [str(a) for a, _ in lista if not a.exists()]
     if faltando:

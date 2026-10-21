@@ -11,6 +11,7 @@ Com LIGADO = False o setup não registra o comando. As regras de cada campanha e
 estrutura (ficha_corretor.RegrasDaCampanha e Aprovados): por enquanto toda ficha é conferida pelo livro.
 """
 from __future__ import annotations
+from ..idiomas import atual, tr
 
 import asyncio
 import logging
@@ -106,6 +107,13 @@ VALORES = {"vida": "Vida", "vida.max": "Vida", "vida_max": "Vida", "energia_max"
 
 def _nome_do_valor(chave: str) -> str:
     partes = chave.split(".")
+    if len(partes) >= 3 and partes[0] == "custom":
+        tipo = {"pericia": "Perícia própria", "oficio": "Ofício próprio", "origem": "Origem própria",
+                "melhoria": "Melhoria própria", "restricao": "Restrição própria", "forma": "Forma própria"}.get(partes[1])
+        if tipo:
+            if partes[2].isdigit():
+                return tipo + " " + partes[2] + (" · " + _nome_do_valor(".".join(partes[3:])) if len(partes) > 3 else "")
+            return tipo + " · " + _nome_do_valor(".".join(partes[2:]))
     if partes[0] in ("pericia", "oficio", "tr", "equipavel", "item") and len(partes) >= 2:
         tipo = {"pericia": "Perícia", "oficio": "Ofício", "tr": "TR", "equipavel": "Equipável", "item": "Item"}[partes[0]]
         nomes_tr = {"fisico": "Físico", "vigor": "Vigor", "intelecto": "Intelecto", "espirito": "Espírito"}
@@ -119,6 +127,10 @@ def _nome_do_valor(chave: str) -> str:
     if partes[0] == "buff":
         return "Buff/Debuff de " + VALORES.get(".".join(partes[1:]), " ".join(partes[1:]))
     return VALORES.get(chave, chave.replace("_", " ").replace(".", " · "))
+
+
+def _quantidade(numero: int, singular: str, plural: str | None = None) -> str:
+    return f"{numero} " + (singular if numero == 1 else plural or singular + "s")
 
 
 def _linha(p: Problema) -> str:
@@ -226,6 +238,9 @@ def _nome_grupo(grupo: str, ficha: dict[str, Campo]) -> str:
 
 def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: dict | None = None) -> list[discord.Embed]:
     """Resumo e páginas por assunto. Só apresenta o Resultado; não refaz nem altera contas."""
+    if atual() == "en":
+        from ..ficha_ingles import paginas as english_pages
+        return english_pages(resultado, ficha, persona, manifesto)
     saida: list[tuple[str, discord.Embed]] = []
 
     def adicionar(categoria, campos, *, estado="aprovada", estados_por_campo=None):
@@ -255,7 +270,8 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
             estado = "Conferência parcial; há partes não conferidas"
     titulo_estado = f"{estado} nas verificações feitas" if resultado.veredito != "formato desconhecido" else "Formato desconhecido — análise não realizada"
     resumo.add_field(name="Resultado", value=f"**{titulo_estado}**\n"
-                     f"{len(resultado.problemas)} erro(s) · {len(resultado.pendencias)} pendência(s) · {len(resultado.notas)} ajuste(s) para o mestre", inline=False)
+                     + " · ".join((_quantidade(len(resultado.problemas), "erro"), _quantidade(len(resultado.pendencias), "pendência"),
+                                    _quantidade(len(resultado.notas), "ajuste") + " para o mestre")), inline=False)
     revisao = [("❌ Precisa corrigir", resultado.problemas), ("⚠️ Falta ou pede atenção", resultado.pendencias),
                ("👀 Pro mestre conferir", resultado.notas)]
     for nome, problemas in revisao:
@@ -299,11 +315,14 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
     if grupos:
         inv = {re.match(r"Invocação \d+", g)[0] for g in grupos if g.startswith("Invocação ")}
         habilidades = sum(not re.fullmatch(r"Invocação \d+", g) for g in grupos)
-        resumo.add_field(name="Detalhes conferidos", value=f"{habilidades} habilidade(s) · {len(inv)} invocação(ões). Use o seletor ou as setas para consultar.", inline=False)
+        resumo.add_field(name="Detalhes conferidos", value=_quantidade(habilidades, "habilidade") + " · "
+                         + _quantidade(len(inv), "invocação", "invocações") + ". Use o seletor ou as setas para consultar.", inline=False)
     if testes:
         resumo.add_field(name="TR e perícias", value=f"{sum(map(len, testes.values()))} bônus conferidos. Veja a página TR e perícias.", inline=False)
     if resultado.nao_conferido:
         resumo.add_field(name="⏳ Ainda não conferido", value="Conferência parcial: há itens para revisão manual. Veja a página Limites da análise.", inline=False)
+    resumo.add_field(name="Revisão do mestre", value="Use `GC:guia mestre` ou `/ficha mestre` para cruzar este painel com a revisão completa. "
+                     "O guia orienta; a decisão continua com o mestre.", inline=False)
     saida.append(("Resumo", resumo))
     campos_revisao = []
     for nome, problemas in revisao:
@@ -390,14 +409,15 @@ class Ficha(commands.Cog):
             else:
                 raise FichaIlegivel("mande o link da ficha aberta pra leitura ou o .xlsx anexo")
         except FichaIlegivel as erro:
-            return f"Não deu pra ler a ficha: {erro}."
+            from ..ficha_ingles import detail
+            return tr("Não deu pra ler a ficha: {0}.").format(detail(str(erro)) if atual()=="en" else erro)
         from ..ficha_configuracao import carregar_campanha
         try:
             regras, aprovados = carregar_campanha(self.campanhas, servidor)
             resultado = await asyncio.to_thread(conferir, ficha, self.referencias, regras, aprovados)
         except (ValueError, OSError) as erro:
             log.error("cadastro de campanha indisponível: %s", type(erro).__name__)
-            return "Não deu para carregar a configuração autorizada desta campanha. O operador precisa conferir o cadastro do bot."
+            return tr("Não deu para carregar a configuração autorizada desta campanha. O operador precisa conferir o cadastro do bot.")
         if leituras > 1:
             restantes = len(transicoes(ficha))
             resultado.nao_conferido.append(f"Cartões R53: link lido {leituras} vezes porque havia cartão salvando"
@@ -421,12 +441,20 @@ class Ficha(commands.Cog):
                 break  # a última leitura válida continua valendo
         return escolher_leitura(leituras), len(leituras)
 
+    @grupo.command(name="guia", description="Como enviar a ficha, entender o painel e revisar o restante com o mestre.")
+    async def guia(self, interacao: discord.Interaction) -> None:
+        await self.bot.get_cog("Guias").pela_barra(interacao, "ficha")
+
+    @grupo.command(name="mestre", description="Roteiro do mestre para revisar a ficha junto da análise do bot.")
+    async def mestre(self, interacao: discord.Interaction) -> None:
+        await self.bot.get_cog("Guias").pela_barra(interacao, "mestre")
+
     @grupo.command(name="analisar", description="Confere a ficha pelo link da planilha ou pelo .xlsx anexo.")
     @app_commands.describe(link="Link da ficha no Google Planilhas, aberta pra leitura", arquivo="A ficha baixada em .xlsx")
     async def analisar(self, interacao: discord.Interaction, link: str | None = None,
                        arquivo: discord.Attachment | None = None) -> None:
         if (link is None) == (arquivo is None):
-            await interacao.response.send_message("Mande o link da ficha ou o .xlsx, um dos dois.", ephemeral=True)
+            await interacao.response.send_message(tr("Mande o link da ficha ou o .xlsx, um dos dois."), ephemeral=True)
             return
         await interacao.response.defer(thinking=True)  # o painel fica no canal, pra o mestre ver
         resposta = await self.analisar_fonte(link=link, arquivo=arquivo, servidor=interacao.guild_id)

@@ -101,7 +101,7 @@ class ConsultaEra(unittest.TestCase):
             raise RuntimeError("teste da consulta requer o motor usado pelo bot")
 
     def consultar(self, q, pers="kal", **kw):
-        p = site_prompt.montar(pers, q, hora=(14, 0), **kw)
+        p = site_prompt.montar(pers, q, hora=(14, 0), estado={"nova_terra": True, **kw.pop("estado", {})}, **kw)
         ultimo = p["input"][-1]["content"]
         ctx = ultimo.split("[Contexto ativado]\n", 1)[1].split("\n\n[Estado agora:", 1)[0]
         return p, ctx

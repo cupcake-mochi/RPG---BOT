@@ -27,6 +27,11 @@ MENSAGENS_POR_LOTE = 400
 
 # Assunto que não entra na ficha, por regra do Discord ou por ser dado sensível na LGPD. Radicais, sem acento.
 PROIBIDO = re.compile(
+    r"\b(?:diagnos|disease|medicat|depress|anxiety|therap|psych|hospital|suicid|pregnan|disabil|"
+    r"salary|debt|loan|credit card|bank account|religio|christian|muslim|atheist|politic|"
+    r"republican|democrat|sexual|lesbian|bisexual|transgender|dating|married|single|"
+    r"ethnic|race is|black person|white person|indigenous|address|lives in|phone|email|e-mail|"
+    r"years old|underage)\w*\b|\b\d{1,3}\s*(?:years?\s*old|yo)\b|"
     # começo de palavra
     r"\b(?:doenc|doente|diagnos|remedio|medicament|depress|ansiedade|terapi|psicolog|psiquiatr|hospital|cirurgi|"
     r"autis|sindrome|transtorno|cancer|diabet|gravid|deficien|suicid|"
@@ -46,7 +51,7 @@ Sua tarefa: tirar fatos duradouros sobre QUEM ESCREVEU, que valha a pena a guia 
 Entra: o que a pessoa disse de si mesma. Personagem que joga, mesa, mestre, gostos, hobbies, jogos, o que estuda ou faz em linhas gerais, jeito que prefere ser respondida, dúvida que ela repete.
 Não entra, nunca: saúde física ou mental, dinheiro, religião, política, orientação sexual, relacionamento, cor ou etnia, idade, endereço, contato, documento. Nada sobre outra pessoa. Nada que ela não tenha dito com as próprias palavras. Humor do momento, pergunta de regra avulsa, cumprimento e piada não são fato.
 
-Cada fato é uma frase curta em português, sem o nome da pessoa, começando pelo verbo ("joga com um Bastião chamado Ren", "prefere resposta curta"). No máximo 3 fatos por pessoa. Não repita fato que ela já tem. Se não houver nada que valha, devolva a lista vazia: é o caso mais comum.
+Cada fato é uma frase curta no idioma em que a pessoa escreveu, sem o nome da pessoa, começando pelo verbo ("joga com um Bastião chamado Ren", "prefere resposta curta"). No máximo 3 fatos por pessoa. Não repita fato que ela já tem. Cada autor numerado é um contexto independente: nunca transfira fatos entre autores, mesmo que pareçam a mesma pessoa. Se não houver nada que valha, devolva a lista vazia: é o caso mais comum.
 
 Responda só com JSON, sem texto em volta: [{"autor": <número do autor>, "mensagem": <número da mensagem de onde saiu>, "fato": "<frase>"}]"""
 
@@ -107,17 +112,30 @@ async def refletir(registro: Registro, modelos: Modelos) -> dict[int, list[str]]
     mensagens = registro.mensagens_do_dia()[:MENSAGENS_POR_LOTE]
     if not mensagens:
         return {}
-    autores = sorted({m.autor_id for m in mensagens})
-    fatos_atuais = {autor: registro.ficha(autor).fatos for autor in autores}
-    novos: dict[int, list[str]] = {}
+    # Mesmo autor em dois servidores/mundos vira dois pseudônimos no ÚNICO pedido.
+    # A origem não é exposta; o custo não cresce com a quantidade de contextos.
+    chaves = tuple(dict.fromkeys((m.autor_id, m.contexto) for m in mensagens))
+    codigos = {chave: n for n, chave in enumerate(chaves, 1)}
+    inverso = {n: chave for chave, n in codigos.items()}
+    lote = [replace(m, autor_id=codigos[m.autor_id, m.contexto]) for m in mensagens]
+    ler = lambda autor, contexto: registro.ficha_contexto(autor, contexto) if contexto else registro.ficha(autor)
+    atuais = {n: ler(*chave).fatos for n, chave in inverso.items()}
+    autores = {m.autor_id for m in mensagens}
+    novos = {}
     with registro.proteger_dados(autores) as leitura:
         try:
-            resposta = await modelos.responder(montar_pedido(mensagens, fatos_atuais), gatilho="reflexao", so_pagos=True)
-            novos = {autor: fatos for autor, fatos in conferir(resposta.texto, mensagens, fatos_atuais).items()
-                     if autor not in leitura.apagados}
-            for autor, fatos in novos.items():
-                ficha = registro.ficha(autor)
-                registro.gravar_ficha(autor, replace(ficha, fatos=(ficha.fatos + tuple(fatos))[-FATOS_MAX:]))
+            resposta = await modelos.responder(montar_pedido(lote, atuais), gatilho="reflexao", so_pagos=True)
+            for codigo, fatos in conferir(resposta.texto, lote, atuais).items():
+                autor, contexto = inverso[codigo]
+                if autor in leitura.apagados:
+                    continue
+                ficha = ler(autor, contexto)
+                atualizada = replace(ficha, fatos=(ficha.fatos + tuple(fatos))[-FATOS_MAX:])
+                if contexto:
+                    registro.gravar_ficha_contexto(autor, contexto, atualizada)
+                else:
+                    registro.gravar_ficha(autor, atualizada)
+                novos.setdefault(autor, []).extend(fatos)
         except Falhou as erro:
             log.warning("reflexão: o modelo falhou (%s); as mensagens do dia foram apagadas sem virar fato", str(erro)[:200])
         finally:

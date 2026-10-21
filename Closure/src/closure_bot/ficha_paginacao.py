@@ -5,17 +5,20 @@ import asyncio
 import logging
 
 import discord
+from .idiomas import atual, tr
 
 log = logging.getLogger(__name__)
 TEMPO_CONTROLES = 600
 
 
 class PaginasFicha(discord.ui.View):
-    def __init__(self, paginas: list[discord.Embed]):
+    def __init__(self, paginas: list[discord.Embed], *, aviso_encerrado="Rode a análise novamente para abrir", idioma=None):
         super().__init__(timeout=TEMPO_CONTROLES)
         if not paginas:
             raise ValueError("a análise precisa de uma página")
+        self.idioma = idioma or atual()
         self.paginas = paginas
+        self.aviso_encerrado = tr(aviso_encerrado, self.idioma)
         self.indice = 0
         self.mensagem = None
         self._ultima_interacao = None
@@ -23,6 +26,8 @@ class PaginasFicha(discord.ui.View):
         self._atualizar()
 
     def _atualizar(self):
+        for item, nome in ((self.primeira,"Primeira"),(self.anterior,"Anterior"),(self.proxima,"Próxima"),(self.ultima,"Última")):
+            item.label = tr(nome,self.idioma)
         ultima = len(self.paginas) - 1
         self.primeira.disabled = self.anterior.disabled = self.indice == 0
         self.proxima.disabled = self.ultima.disabled = self.indice == ultima
@@ -32,13 +37,13 @@ class PaginasFicha(discord.ui.View):
             label=f"{i + 1}. {self.paginas[i].footer.text.split(' · ')[1]}"[:100],
             value=str(i), default=i == self.indice,
         ) for i in range(inicio, min(inicio + 25, len(self.paginas)))]
-        self.seletor.placeholder = f"Página {self.indice + 1} de {len(self.paginas)} — ir para…"
+        self.seletor.placeholder = tr("Página {0} de {1} — ir para…", self.idioma).format(self.indice + 1, len(self.paginas))
         self.seletor.disabled = len(self.paginas) == 1
 
     async def mostrar(self, interacao: discord.Interaction, indice: int | None = None, *, deslocamento=0):
         async with self._troca:
             if self.is_finished():
-                await interacao.response.send_message("Os controles encerraram. Rode a análise novamente para abrir.", ephemeral=True)
+                await interacao.response.send_message(tr("Os controles encerraram. {0}.", self.idioma).format(self.aviso_encerrado), ephemeral=True)
                 return
             if indice is None:
                 indice = self.indice + deslocamento
@@ -82,7 +87,7 @@ class PaginasFicha(discord.ui.View):
                 item.disabled = True
             if self.mensagem is not None:
                 resumo = self.paginas[0].copy()
-                resumo.set_footer(text=resumo.footer.text + " · Controles encerrados; rode a análise novamente para abrir")
+                resumo.set_footer(text=resumo.footer.text + (" · Controls expired; " if self.idioma == "en" else " · Controles encerrados; ") + self.aviso_encerrado[0].lower() + self.aviso_encerrado[1:])
                 try:
                     # A navegação pode durar mais que o token do comando inicial.
                     # O último clique tem token novo e o timeout é menor que sua validade.
