@@ -429,7 +429,7 @@ class Comando(unittest.IsolatedAsyncioTestCase):
         bot.add_cog.assert_not_called()
         await modulo.setup(bot)
         cog = bot.add_cog.call_args.args[0]
-        self.assertEqual([c.name for c in cog.grupo.commands], ["analisar"])
+        self.assertEqual({c.name for c in cog.grupo.commands}, {"guia", "analisar"})
         # sem o livro no pacote, a correção não sobe e o resto do bot segue
         quebrado = MagicMock()
         quebrado.add_cog = AsyncMock()
