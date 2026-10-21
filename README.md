@@ -1,53 +1,38 @@
-# RPG---BOT
+# Guias do Ciclo
 
-**Guias do Ciclo 1.0.0 · versão estável.** Kal’tsit e Closure usam a mesma versão do bot. Veja o histórico de versões e os limites da análise antes de aprovar uma ficha.
+Kal’tsit e Closure conversam, explicam regras do **Ciclo Maldito** e conferem
+partes da ficha. O projeto atual fica em [`Closure/`](Closure/). A Arquivista
+é um [bot independente](https://github.com/cupcake-mochi/Arquivista-do-Ciclo),
+responsável pelo arquivo de aparências.
 
-**Publicado · 21/10 às 13:25 (Brasília):** idioma PT-BR/inglês, lore original/Nova Terra por servidor e links públicos na conversa. Dois bots auditados após implantação; 944 testes das Guias e 149 da Arquivista, além de 36 JS. [Estado atual e limites](Closure/docs/RETOMADA-PUBLICO.md).
+## Comece por aqui
 
-**Guias de criação · 21/10:** `GC:guia criar` orienta da cópia à emissão;
-`GC:guia planilha` explica abas e configurações; `GC:guia ficha` explica a
-análise. [Conteúdo e fontes](Closure/docs/GUIAS-DE-USO.md).
+- **Usar o bot:** `/ajuda` lista comandos; `/guia` explica cada recurso.
+- **Criar uma ficha:** `GC:guia criar`, da cópia até a emissão na Carteira.
+- **Conhecer a planilha:** `GC:guia planilha`, com abas e configurações.
+- **Analisar:** `GC:f LINK_DA_FICHA` ou XLSX anexado à mensagem de `GC:f`.
+- **Revisar como mestre:** `GC:gm`, junto do painel e do livro da mesa.
 
-**Ficha R53 · 19/10:** consumidor ANALISE 12 na PR 67; 13 análises reais no
-Discord, cópias nativas e XLSX conferidos. Suíte: 882 executados, 881 aprovados,
-1 opcional pulado. Cartões R53 não equivalem à auditoria integral do livro.
-[Bateria, fichas de teste e limites](Closure/dados/ficha/BATERIA-NATIVA-R53.md).
+Português e inglês são configuráveis por servidor. A lore original de Arknights
+e a lore Nova Terra são opções separadas do idioma. A análise da ficha é parcial:
+**zero erros não equivale à aprovação do mestre**.
 
-Continuações “E de BH?” e perguntas inteiras em `GC:clima` corrigidas e publicadas
-em 19/10, com regressões dos fluxos e dados reais conferidos.
-[Fechamento atual](Closure/pesquisa/validacao/2026-10-19-clima-seguimento/relatorio.md).
+## Estado e documentação
 
-Correção de “clima atual de BH” publicada na Discloud em 18/10 às 23:49,
-com consulta real conferida e sem chamar IA nos testes.
-[Diagnóstico, testes e limites](Closure/pesquisa/validacao/2026-10-18-clima-bh/relatorio.md).
+O corpus atual e os cartões da ficha usam **R53/v0.366**. Formatos antigos
+conservam sua compatibilidade documentada. As versões estáveis e seus pacotes
+ficam em [Releases](https://github.com/cupcake-mochi/RPG---BOT/releases).
 
-Atualização de mundo publicada na Discloud em 18/10/2026, com autorização:
-[fontes da Era da Revolução](Closure/dados/mundo/LEIA-ME.md) para as duas guias,
-sem as três pastas excluídas. [Testes e conferência da publicação](Closure/pesquisa/validacao/2026-10-18-mundo-nomes/relatorio.md).
-
-Bot de Discord da guilda do **Ciclo Maldito**: tira dúvida de regra, corrige ficha e conversa
-na voz de uma personagem de Arknights (Kal'tsit de dia, Closure de noite).
-
-## Estrutura
-
-| Pasta | O que é |
+| Preciso de… | Onde encontrar |
 |---|---|
-| [`Closure/`](Closure/) | Projeto atual. Comece pelo [`Closure/README.md`](Closure/README.md). |
-| `Closure/dados/personagem/` | Cards, voz, exemplos e avaliações da Kal'tsit e da Closure. |
-| `Closure/dados/sistema/` | Texto do Ciclo Maldito usado como base de consulta. |
-| [`Closure/src/`](Closure/src/LEIA-ME.md) | Código do bot novo: plantão das duas personagens, webhook, registro e clima. |
-| `Closure/ferramentas/` | Scripts (extração de corpus, geração de card, bateria no Gemini, página de teste). |
-| `Closure/docs/`, `Closure/pesquisa/` | Decisões, planejamento e pesquisas. |
-| [`Closure Legado/`](Closure%20Legado/) | Bot antigo (`closure_lab.py`, discord.py + Gemini), guardado como referência. |
+| Visão do projeto e organização | [Closure/README.md](Closure/README.md) |
+| Instalação e execução | [Closure/src/LEIA-ME.md](Closure/src/LEIA-ME.md) |
+| Guias oferecidos no Discord | [Guias de uso](Closure/docs/GUIAS-DE-USO.md) |
+| Última revisão e entrega | [Revisão final](Closure/docs/REVISAO-FINAL-APRESENTACAO.md) |
+| Testes e limites R53 | [Fechamento R53](Closure/pesquisa/validacao/2026-10-21-r53/FECHAMENTO.md) |
+| Contrato da ficha | [Contrato e cobertura](Closure/dados/ficha/INTEGRACAO-B47.md) |
+| Estado para continuar o trabalho | [Fila atual](Closure/docs/FILA-ATUAL.txt) |
 
-## O que não está no repositório
-
-- `.env` e qualquer chave: use o [`.env.exemplo`](.env.exemplo) como modelo.
-- PDFs (livro do Ciclo Maldito, livro de F&M): ficam na pasta local.
-- `closure_lab.db`: dados de execução do bot antigo.
-- A chave de clima (OpenWeatherMap) do bot antigo: fica só na cópia local de `Closure Legado/closure_lab.py`, no PC. Aqui o código lê `WEATHER_API_KEY` do `.env`.
-- `Closure/dados/corpus_*`: falas extraídas do jogo, regeneráveis com `Closure/ferramentas/extrair_corpus.py`.
-
-## Análise B47
-
-O projeto `Closure/` consome o contrato ANALISE 12/R53 e preserva compatibilidade comprovada com formatos anteriores. A suíte atual tem 944 testes (943 aprovados, um opcional pulado). A análise é parcial; a auditoria integral do corpus R53, dados ausentes do produtor e decisões do mestre continuam separados. [Contrato e cobertura](Closure/dados/ficha/INTEGRACAO-B47.md) · [Retomada R53](Closure/docs/RETOMADA-R53.md).
+Credenciais, bancos e cadastros reais ficam fora do Git e dos pacotes públicos.
+`Closure Legado/` e os [registros anteriores](README-HISTORICO.md) são referências
+históricas; não substituem o estado atual.

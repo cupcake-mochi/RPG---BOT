@@ -8,6 +8,7 @@ import discord
 
 from .guias_ficha import CRIAR, PLANILHA
 from .guia_mestre import MESTRE
+from .apresentacao import COR_INFORMATIVA
 from .idiomas import atual
 from functools import lru_cache
 from pathlib import Path
@@ -264,6 +265,14 @@ def titulos(idioma=None):
     return _ingles()["topics"] if (idioma or atual()) == "en" else {k: v[0] for k,v in ASSUNTOS.items()}
 
 
+# Nomes aceitos pelo mesmo roteador; o rodapé inglês também precisa ser copiável.
+ASSUNTOS_INGLES = {
+    "geral": "start", "criar": "create", "planilha": "spreadsheet", "mestre": "gm",
+    "ficha": "sheet", "custom": "custom", "livro": "book", "clima": "weather",
+    "conversa": "chat", "midia": "media", "memoria": "memory", "servidor": "server",
+}
+
+
 def paginas(tema: str, idioma: str | None = None) -> list[discord.Embed]:
     ingles = (idioma or atual()) == "en"
     titulo = titulos(idioma)[tema]
@@ -274,10 +283,10 @@ def paginas(tema: str, idioma: str | None = None) -> list[discord.Embed]:
             pagina = _ingles()["pages"][f"{tema}.{i}"]
             nome, texto = pagina["title"], pagina["text"]
         embed = discord.Embed(title=("How to use" if ingles else "Como usar") + " · " + titulo,
-                              description=texto, color=0x2E8B57)
+                              description=texto, color=COR_INFORMATIVA)
         embed.set_author(name=nome)
         rotulo = re.sub(r"^\d+\.\s+", "", nome).replace(" · ", ": ")
-        rodape = (f"Page {i} of {len(textos)} · {rotulo} · GC:guide {tema} · guidance only; does not perform actions" if ingles else
+        rodape = (f"Page {i} of {len(textos)} · {rotulo} · GC:guide {ASSUNTOS_INGLES[tema]} · guidance only; does not perform actions" if ingles else
                   f"Página {i} de {len(textos)} · {rotulo} · GC:guia {tema} · só orientação; não executa ações")
         embed.set_footer(text=rodape)
         saida.append(embed)

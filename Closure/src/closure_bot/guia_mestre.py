@@ -9,7 +9,8 @@ MESTRE = ("Revisar uma ficha como mestre", (
      "Use `GC:guia criar` para acompanhar o preenchimento e `GC:guia planilha` para localizar abas e configurações. "
      "Faça a revisão pela versão atual: um painel antigo não acompanha as edições do jogador."),
     ("2. Rode a análise e separe os resultados",
-     "Use **/ficha analisar** com o link ou XLSX, ou **GC:ficha seguido do link**, com o XLSX anexado quando preferir arquivo. "
+     "Use **/ficha analisar** com o link ou XLSX. Pelo chat, escreva `GC:ficha LINK_DA_FICHA` "
+     "ou anexe o XLSX à mensagem de `GC:ficha`. "
      "Envie uma fonte por análise. Por link, o bot precisa ter acesso de leitura; o painel aparece no canal.\n\n"
      "Leia **Resumo**, **Correções e revisão** e **Limites da análise**. Vermelho indica erro naquela página; "
      "amarelo indica pendência, revisão ou limite; verde vale apenas para as verificações mostradas. "

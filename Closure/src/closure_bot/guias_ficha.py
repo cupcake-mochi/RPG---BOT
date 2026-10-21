@@ -213,9 +213,9 @@ PLANILHA = ("Conhecer a planilha", (
      "Ele serve como consulta rápida enquanto você preenche ou joga.\n\n"
      "Para um procedimento completo, consulte o capítulo do livro: criação, equipamento, Fundamento, "
      "Caminho, Origem ou progressão, conforme a dúvida. `/livro` abre o PDF configurado no bot.\n\n"
-     "Confira a edição usada pela mesa. Parte da base geral das guias ainda é anterior à R53; "
-     "os cartões analisados pelo bot já têm tratamento próprio para R53. "
-     "Em caso de diferença, compare o trecho do livro atual com o mestre."),
+     "Confira a edição usada pela mesa. A consulta geral e os cartões atuais do bot usam **R53**; "
+     "formatos antigos mantêm sua compatibilidade separada. "
+     "Se a mesa usa outra edição, compare o trecho correspondente com o mestre."),
     ("CONFIGURAÇÃO · regras da campanha",
      "CONFIGURAÇÃO reúne regras da mesa, bônus e mudanças e cadastros próprios. "
      "Não é necessário preencher tudo para criar um personagem com as regras padrão.\n\n"

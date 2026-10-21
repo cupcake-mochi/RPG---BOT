@@ -12,9 +12,10 @@ from discord import app_commands
 from discord.ext import commands
 
 from ..plantao import CLOSURE, FUSO, de_plantao
+from ..apresentacao import COR_INFORMATIVA
 from ..idiomas import atual
 
-COR = 0xCC0102
+COR = COR_INFORMATIVA
 # Uma frase por guia, no jeito de cada uma; quem aparece é quem está de plantão.
 FALA = {CLOSURE: "Tá aqui o livro de regras inteiro, em PDF.",
         "kaltsit": "O livro de regras inteiro está aqui, em PDF."}
