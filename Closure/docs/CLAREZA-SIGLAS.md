@@ -20,7 +20,7 @@ chaves exportadas permanecem estáveis.
 
 Validação preparada: 153 testes direcionados aprovados; 57 páginas em inglês
 com até 1.052 caracteres de texto e 90 chamadas estáticas de tradução sem
-entradas ausentes. Suíte completa final: 953 testes executados, 952 aprovados e um online opcional pulado (CI 39661722937). Mais 50 regressões: 49 aprovadas e uma opcional pulada. Publicação conferida abaixo.
+entradas ausentes. Suíte completa final: 953 testes executados, 952 aprovados e um online opcional pulado (CI final do runtime 39663249101). Mais 50 regressões: 49 aprovadas e uma opcional pulada. O complemento dos cartões passou 63 testes direcionados. Publicação conferida abaixo.
 Não houve chamadas a modelos nem alteração de ficha, regras ou aprovação.
 
 A primeira suíte completa executou 953 testes e encontrou três expectativas de
@@ -33,7 +33,7 @@ resultado mecânico para ocultar falha.
 
 ## Fechamento publicado
 
-Guias 1.0.3 publicadas em uma primeira instalação às 16:30:48 de Brasília; complemento dos resumos de cartões em validação. O ensaio
+Guias 1.0.3 publicadas inicialmente às 16:30:48 de Brasília; pacote definitivo com os resumos simplificados online às **16:42:16**. O ensaio
 no Discord confirmou `GC:guia livro`, `GC:livro` com os dois temas e `GC:ping`
 com o identificador técnico rotulado. Guia aberto por membro; livro e ping
 conferidos pela conta administrativa. A redação comum não exige decifrar R53. Os resumos de cartões também retiram esse prefixo; nomes de formatos e chaves técnicas de compatibilidade permanecem identificáveis.
@@ -57,3 +57,5 @@ concedida nova autorização para modelos pagos. As evidências históricas de
 fichas, lore e idiomas permanecem válidas dentro do escopo que documentam.
 
 A revisão dos resumos de cartões também atualiza a tradução inglesa e a expectativa de apresentação do Feitiço 1: o nome e as contas permanecem, mas o prefixo de revisão deixa de ser exigido. Identificadores de formato e chaves exportadas não mudam.
+
+Auditoria definitiva repetida após o complemento: 90/90 arquivos conferidos contra o manifesto, ambiente/campanha e dois bancos preservados sem diferenças de estado. Runtime validado em `42f6392`; nova abertura do guia confirmada no Discord às 16:42. O pacote definitivo é o único anexado à release.
