@@ -202,7 +202,7 @@ _PARADAS = {"hoje", "agora", "amanha", "ai", "la", "pra", "para", "e", "ou", "qu
 # "clima atual de BH". Não captura "preciso de ajuda" nem "em" de outra frase.
 _ANTES_DO_LUGAR = re.compile(
     r"(?<!\w)(?:(?:em|no|na|nos|nas|in|for)|"
-    r"(?:clima|temperatura|tempo)(?:\s+(?:atual|hoje|agora))?\s+(?:de|do|da))\s+"
+    r"(?:clima|temperatura|tempo|weather|temperature|forecast)(?:\s+(?:atual|hoje|agora))?\s+(?:de|do|da|of))\s+"
 )
 _NAO_E_LUGAR = {"toquio", "tokyo", "o", "a", "tempo", "clima", "casa", "geral"}
 

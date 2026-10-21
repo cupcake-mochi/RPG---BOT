@@ -196,7 +196,7 @@
     },
     "livro.1": {
       "title": "Find and verify a rule",
-      "text": "`/livro` or `GC:book` opens the configured PDF.\n\nAsk a guide a specific question, such as `kal, how does Integridade work?` or `closure, what are this Melhoria's limits?`. Include the ability, Classe and relevant choices when they affect the answer. Portuguese option names help locate the exact rule.\n\nCheck the table's source and edition. The PDF may be newer than parts of the lookup base or automated checks. Bring conflicting passages to the GM.\n\nChat helps explain rules. It neither registers homebrew approval nor replaces deterministic sheet analysis."
+      "text": "Use `/livro` or `GC:book` for the **standard** and **dark** PDFs. You can also ask directly: `closure, send me the rulebook link please`. Known public links are sent without requiring another command.\n\n`/livro` or `GC:book` opens the configured PDF.\n\nAsk a guide a specific question, such as `kal, how does Integridade work?` or `closure, what are this Melhoria's limits?`. Include the ability, Classe and relevant choices when they affect the answer. Portuguese option names help locate the exact rule.\n\nCheck the table's source and edition. The PDF may be newer than parts of the lookup base or automated checks. Bring conflicting passages to the GM.\n\nChat helps explain rules. It neither registers homebrew approval nor replaces deterministic sheet analysis."
     },
     "clima.1": {
       "title": "Look up a city",
@@ -216,7 +216,7 @@
     },
     "memoria.1": {
       "title": "View, add and correct memories",
-      "text": "`/meus_dados` privately shows your stored pronouns, facts and conversation-memory information.\n\n`/meus_pronomes` sets how the characters address you. With no text it restores neutral treatment.\n\n`/meu_fato` saves a short permitted fact, such as your character or a conversation preference. Do not submit sensitive information; the bot does not save it as a fact.\n\n`/esquecer_fato numero:2` removes item 2 from `/meus_dados`. Personal commands use slash interactions so your data is not posted publicly.\n\nNew facts belong to this server and its selected world. Switching worlds does not copy them. Pronouns remain personal across servers. The **legado** option in `/meus_dados` shows preserved old facts without injecting them into new conversations."
+      "text": "`/meus_dados` privately shows your stored pronouns, facts and conversation-memory information.\n\n`/meus_pronomes` sets how the characters address you. With no text it restores neutral treatment.\n\n`/meu_fato` saves a short permitted fact, such as your character or a conversation preference. Do not submit sensitive information; the bot does not save it as a fact.\n\n`/esquecer_fato numero:2` removes item 2 from `/meus_dados`. Personal commands use slash interactions so your data is not posted publicly.\n\nNew facts belong to this server and its selected world. Switching worlds does not copy them. Pronouns remain personal across servers. The **legado** option in `/meus_dados` shows preserved old facts without injecting them into new conversations.\n\nUse `/meus_dados todos:True` to download your saved facts from all servers and worlds in a private JSON file. Use `legado:True` to view older facts without an identified server; they are not loaded into new conversations. To remove one, use `/esquecer_fato` with the same legacy option."
     },
     "memoria.2": {
       "title": "Delete data and distinguish memories",

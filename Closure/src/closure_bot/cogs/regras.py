@@ -28,9 +28,9 @@ class Regras(commands.Cog):
         url = self.bot.config.livro_url
         persona = self.bot.personas[de_plantao(datetime.now(FUSO))]
         ingles = atual() == "en"
-        descricao = ("Choose **standard theme** or **dark theme** below. The official editions have the same text; only the appearance changes. "
+        descricao = ("Choose **standard theme** or **dark theme** below. Check which edition your table uses. "
                      "Large PDFs may take a while to open on mobile." if ingles else
-                     "Escolha **tema normal** ou **tema escuro** nos botões abaixo. As duas edições oficiais têm o mesmo texto; muda a aparência. "
+                     "Escolha **tema normal** ou **tema escuro** nos botões abaixo. Confira qual edição sua mesa usa. "
                      "Os PDFs são grandes e podem demorar para abrir no celular.")
         embed = discord.Embed(title="Ciclo Maldito rulebook" if ingles else "Livro de regras do Ciclo Maldito",url=url,color=COR,description=descricao)
         embed.set_author(name=persona.nome,icon_url=persona.avatar_url or None)

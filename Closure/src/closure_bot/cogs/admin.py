@@ -40,9 +40,9 @@ class Admin(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
 
-    def painel_de_ajuda(self, *, cuida_do_servidor: bool, dono: bool) -> discord.Embed:
+    def painel_de_ajuda(self, *, cuida_do_servidor: bool, dono: bool, configura_mundo: bool = False) -> discord.Embed:
         if atual() == "en":
-            return self._ajuda_ingles(cuida_do_servidor=cuida_do_servidor,dono=dono)
+            return self._ajuda_ingles(cuida_do_servidor=cuida_do_servidor,dono=dono,configura_mundo=configura_mundo)
         agora = datetime.now(FUSO)
         embed = discord.Embed(title="Guias do Ciclo", color=COR, description=(
             "**» Como falar com elas**\n"
@@ -54,7 +54,8 @@ class Admin(commands.Cog):
         grupos: dict[str, list[str]] = {}
         for comando in sorted(self.bot.tree.get_commands(), key=lambda c: c.name):
             do_servidor = getattr(comando, "default_permissions", None) is not None or comando.name in SO_DA_GERENCIA
-            if (do_servidor and not cuida_do_servidor) or (comando.name in SO_DO_DONO and not dono):
+            delegado = configura_mundo and comando.name in {"idioma", "language", "lnt"}
+            if (do_servidor and not (cuida_do_servidor or delegado)) or (comando.name in SO_DO_DONO and not dono):
                 continue
             # grupo de comandos (/ficha analisar): cada subcomando numa linha, com a menção clicável dele
             itens = list(comando.commands) if isinstance(comando, app_commands.Group) else [comando]
@@ -83,7 +84,7 @@ class Admin(commands.Cog):
         embed.set_footer(text="Página 1 de 2 · Comandos disponíveis · Bot de fã, sem ligação oficial com nenhum jogo")
         return embed
 
-    def _ajuda_ingles(self, *, cuida_do_servidor, dono):
+    def _ajuda_ingles(self, *, cuida_do_servidor, dono, configura_mundo=False):
         agora = datetime.now(FUSO)
         e = discord.Embed(title="Guides of the Cycle",color=COR,description=(
             "**» Talk to the guides**\n"
@@ -96,7 +97,8 @@ class Admin(commands.Cog):
         nomes = {"Guias":"Usage guides","Regras":"Rulebook","Ficha":"Character sheets","ComandoClima":"Weather","Pessoa":"Your data","Admin":"Bot information"}
         for comando in sorted(self.bot.tree.get_commands(),key=lambda c:c.name):
             admin = getattr(comando,"default_permissions",None) is not None or comando.name in SO_DA_GERENCIA
-            if (admin and not cuida_do_servidor) or (comando.name in SO_DO_DONO and not dono):
+            delegado = configura_mundo and comando.name in {"idioma", "language", "lnt"}
+            if (admin and not (cuida_do_servidor or delegado)) or (comando.name in SO_DO_DONO and not dono):
                 continue
             for item in (list(comando.commands) if isinstance(comando,app_commands.Group) else [comando]):
                 nome = comando.name if item is comando else f"{comando.name} {item.name}"
@@ -163,9 +165,9 @@ class Admin(commands.Cog):
     async def enviar_ajuda(self, enviar, *, usuario, servidor: int | None, permissoes=None, abreviacoes=False):
         dono = usuario.id == self.bot.config.dono_id
         permissoes = permissoes if permissoes is not None else getattr(usuario, "guild_permissions", None)
-        from ..servidor import autorizado
+        from ..servidor import autorizado, administrador
         pode = bool(servidor and autorizado(usuario, self.bot.registro.opcoes_servidor(servidor), permissoes))
-        paginas = [self.painel_de_ajuda(cuida_do_servidor=dono or pode, dono=dono),
+        paginas = [self.painel_de_ajuda(cuida_do_servidor=dono or administrador(usuario, permissoes), dono=dono, configura_mundo=pode),
                    self.painel_abreviacoes(servidor)]
         v = PaginasFicha(paginas, aviso_encerrado=tr('Abra /ajuda ou GC:ajuda novamente para continuar'))
         if abreviacoes:
@@ -186,7 +188,7 @@ class Admin(commands.Cog):
     def texto_ping(self) -> str:
         return tr('No ar ({0} ms). Regras: {1}.').format(round(self.bot.latency * 1000), resumo_manifesto(self.bot.manifesto))
 
-    async def texto_status(self) -> str:
+    async def texto_status(self, servidor: int | None = None) -> str:
         agora = datetime.now(FUSO)
         plantao = self.bot.personas[de_plantao(agora)]
         try:  # o que vale é o que está na página de onde sai o prompt; os card.json da pasta podem estar atrás
@@ -194,7 +196,12 @@ class Admin(commands.Cog):
         except Exception as erro:
             cards = tr('não deu pra ler a página ({0})').format(str(erro)[:80])
         contagens = self.bot.registro.contagens()
-        return (tr('Agora ({0:%H:%M}, Brasília) o plantão é de {1}.\nPrompt: {2}.\nRegistro: {3} gatilhos, {4} chamadas de API, {5} mensagens enviadas.\nOrçamento usado no mês: US$ {6:.2f} de US$ {7:.2f} (preço {8}, com reservas por consumo incerto').format(agora, plantao.nome, cards, contagens['gatilhos'], contagens['chamadas_api'], contagens['mensagens_bot'], self.bot.modelos.gasto_do_mes(), self.bot.modelos.teto_usd, self.bot.modelos.teto_preco)
+        configuracao = ""
+        if servidor:
+            opcoes = self.bot.registro.opcoes_servidor(servidor)
+            mundo = "Nova Terra" if opcoes.nova_terra else "Arknights"
+            configuracao = tr("Neste servidor: idioma {0}; mundo {1}.\n").format(opcoes.idioma, mundo)
+        return configuracao + (tr('Agora ({0:%H:%M}, Brasília) o plantão é de {1}.\nPrompt: {2}.\nRegistro: {3} gatilhos, {4} chamadas de API, {5} mensagens enviadas.\nOrçamento usado no mês: US$ {6:.2f} de US$ {7:.2f} (preço {8}, com reservas por consumo incerto').format(agora, plantao.nome, cards, contagens['gatilhos'], contagens['chamadas_api'], contagens['mensagens_bot'], self.bot.modelos.gasto_do_mes(), self.bot.modelos.teto_usd, self.bot.modelos.teto_preco)
                 + (tr(' e US$ {0:.2f} gastos fora do bot').format(self.bot.modelos.gasto_externo_usd) if self.bot.modelos.gasto_externo_usd else "")
                 + tr('; pelo preço promocional, US$ {0:.2f} do bot).').format(self.bot.modelos.gasto_do_mes(preco='promocional', externo=False)))
 
@@ -204,7 +211,7 @@ class Admin(commands.Cog):
 
     @app_commands.command(name="status", description="Quem está de plantão, versões dos cards e contagens do registro.")
     async def status(self, interacao: discord.Interaction) -> None:
-        await interacao.response.send_message(await self.texto_status(), ephemeral=True)
+        await interacao.response.send_message(await self.texto_status(interacao.guild_id), ephemeral=True)
 
     async def _administrador(self, interacao: discord.Interaction) -> bool:
         if not interacao.guild_id:

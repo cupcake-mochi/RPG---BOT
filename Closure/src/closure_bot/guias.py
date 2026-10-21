@@ -113,7 +113,8 @@ ASSUNTOS = {
     )),
     "livro": ("Livro e regras", (
         ("Consultar e conferir a regra",
-         "`/livro` ou `GC:livro` abre o PDF configurado no bot.\n\n"
+         "`/livro` ou `GC:livro` oferece os PDFs nos temas **normal** e **escuro**. Você também pode pedir diretamente: "
+         "`kal, pode me mandar o link do livro?`. Ela entrega os links conhecidos, sem exigir outro comando.\n\n"
          "Para uma dúvida, chame uma das guias: `kal, como funciona Integridade?` "
          "ou `closure, quais são os limites dessa Melhoria?`. Diga a habilidade, Classe e as escolhas relevantes "
          "quando elas fizerem diferença na resposta.\n\n"
@@ -165,12 +166,13 @@ ASSUNTOS = {
     )),
     "memoria": ("Memória e seus dados", (
         ("Ver, acrescentar e corrigir lembranças",
-         "`/meus_dados` mostra os pronomes e fatos guardados sobre você, além dos detalhes da memória de conversa. "
-         "A resposta aparece só para você.\n\n"
+         "`/meus_dados` mostra seus pronomes, os fatos deste servidor e do mundo escolhido, além dos detalhes da memória de conversa. "
+         "A resposta aparece só para você. Use `legado:Sim` para consultar os fatos antigos, sem servidor identificado, ou `todos:Sim` para baixar seus fatos de todos os contextos.\n\n"
          "`/meus_pronomes` define como as personagens tratam você. Sem texto, volta à forma neutra.\n\n"
          "`/meu_fato` guarda uma informação curta e permitida, como seu personagem ou uma preferência de conversa. "
          "Evite informações sensíveis: o bot não registra esse tipo de dado como fato.\n\n"
          "`/esquecer_fato numero:2` remove o fato de número 2 da lista mostrada em `/meus_dados`. "
+         "Para retirar um fato antigo, use também `legado:Sim` em `/esquecer_fato`. Os fatos antigos não entram nas novas conversas. "
          "Esses comandos pessoais são usados pela barra, para não publicar seus dados no canal."),
         ("Apagar dados e separar as duas memórias",
          "`/apagar_meus_dados` apaga os dados pessoais guardados pelo bot. **A exclusão não tem volta.** "

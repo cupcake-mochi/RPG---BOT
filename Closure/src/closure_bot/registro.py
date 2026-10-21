@@ -312,6 +312,14 @@ class Registro:
         r = self._db.execute("SELECT fatos FROM fatos_contexto WHERE autor_id=? AND contexto=?", (autor_id, contexto)).fetchone()
         return Ficha(ficha.pronomes, tuple(json.loads(self.cofre.abrir(r[0]) or '[]')) if r else ())
 
+    def exportar_fatos(self, autor_id: int) -> dict:
+        """Somente a própria pessoa chama esta leitura pela interface privada."""
+        antiga = self.ficha(autor_id)
+        contextos = {}
+        for contexto, fatos in self._db.execute("SELECT contexto,fatos FROM fatos_contexto WHERE autor_id=? ORDER BY contexto", (autor_id,)):
+            contextos[contexto] = json.loads(self.cofre.abrir(fatos) or '[]')
+        return {"pronomes": antiga.pronomes, "legado": list(antiga.fatos), "contextos": contextos}
+
     def gravar_ficha_contexto(self, autor_id: int, contexto: str, ficha: Ficha) -> None:
         with self._db:
             self._db.execute("INSERT OR REPLACE INTO fatos_contexto VALUES(?,?,?)", (autor_id, contexto,

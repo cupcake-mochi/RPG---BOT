@@ -81,7 +81,7 @@ def nucleo() -> Path:
     return caminho if caminho.exists() else atualizar()
 
 
-_funcao = None  # (mtime do núcleo, quickjs.Function)
+_funcao = None  # (identidade e datas das três fontes, quickjs.Function)
 _trava = threading.Lock()
 
 
@@ -138,12 +138,14 @@ def _pelo_quickjs(pedido: str) -> str:
 
     caminho = nucleo()
     with _trava:
-        if _funcao is None or _funcao[0] != caminho.stat().st_mtime:
+        fontes = (AQUI / "antes.js", caminho, AQUI / "depois.js")
+        chave = tuple((str(p.resolve()), p.stat().st_mtime_ns, p.stat().st_size) for p in fontes)
+        if _funcao is None or _funcao[0] != chave:
             codigo = "".join((AQUI / "antes.js").read_text(encoding="utf-8") + caminho.read_text(encoding="utf-8") + "\n"
                              + (AQUI / "depois.js").read_text(encoding="utf-8"))
             funcao = quickjs.Function("__montarJSON", codigo)  # roda numa linha de execução só dela; pode ser chamada de qualquer uma
             funcao.set_time_limit(20)
-            _funcao = (caminho.stat().st_mtime, funcao)
+            _funcao = (chave, funcao)
         return _funcao[1](pedido)
 
 

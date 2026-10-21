@@ -11,6 +11,7 @@ Com LIGADO = False o setup não registra o comando. As regras de cada campanha e
 estrutura (ficha_corretor.RegrasDaCampanha e Aprovados): por enquanto toda ficha é conferida pelo livro.
 """
 from __future__ import annotations
+from ..idiomas import atual, tr
 
 import asyncio
 import logging
@@ -237,6 +238,9 @@ def _nome_grupo(grupo: str, ficha: dict[str, Campo]) -> str:
 
 def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: dict | None = None) -> list[discord.Embed]:
     """Resumo e páginas por assunto. Só apresenta o Resultado; não refaz nem altera contas."""
+    if atual() == "en":
+        from ..ficha_ingles import paginas as english_pages
+        return english_pages(resultado, ficha, persona, manifesto)
     saida: list[tuple[str, discord.Embed]] = []
 
     def adicionar(categoria, campos, *, estado="aprovada", estados_por_campo=None):
@@ -405,14 +409,15 @@ class Ficha(commands.Cog):
             else:
                 raise FichaIlegivel("mande o link da ficha aberta pra leitura ou o .xlsx anexo")
         except FichaIlegivel as erro:
-            return f"Não deu pra ler a ficha: {erro}."
+            from ..ficha_ingles import detail
+            return tr("Não deu pra ler a ficha: {0}.").format(detail(str(erro)) if atual()=="en" else erro)
         from ..ficha_configuracao import carregar_campanha
         try:
             regras, aprovados = carregar_campanha(self.campanhas, servidor)
             resultado = await asyncio.to_thread(conferir, ficha, self.referencias, regras, aprovados)
         except (ValueError, OSError) as erro:
             log.error("cadastro de campanha indisponível: %s", type(erro).__name__)
-            return "Não deu para carregar a configuração autorizada desta campanha. O operador precisa conferir o cadastro do bot."
+            return tr("Não deu para carregar a configuração autorizada desta campanha. O operador precisa conferir o cadastro do bot.")
         if leituras > 1:
             restantes = len(transicoes(ficha))
             resultado.nao_conferido.append(f"Cartões R53: link lido {leituras} vezes porque havia cartão salvando"
@@ -449,7 +454,7 @@ class Ficha(commands.Cog):
     async def analisar(self, interacao: discord.Interaction, link: str | None = None,
                        arquivo: discord.Attachment | None = None) -> None:
         if (link is None) == (arquivo is None):
-            await interacao.response.send_message("Mande o link da ficha ou o .xlsx, um dos dois.", ephemeral=True)
+            await interacao.response.send_message(tr("Mande o link da ficha ou o .xlsx, um dos dois."), ephemeral=True)
             return
         await interacao.response.defer(thinking=True)  # o painel fica no canal, pra o mestre ver
         resposta = await self.analisar_fonte(link=link, arquivo=arquivo, servidor=interacao.guild_id)

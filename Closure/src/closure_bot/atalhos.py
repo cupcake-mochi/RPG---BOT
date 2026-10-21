@@ -81,7 +81,7 @@ def orientacao(personalizados: dict[str, str] | None = None) -> str:
         "Essas duas configurações exigem Gerenciar servidor ou cargo delegado por /cargo_admin; só a gerência delega cargos. "
         "A Arquivista tem idioma próprio, configurado separadamente. "
         "GC:guide, GC:sheet, GC:book e GC:weather também são nomes aceitos. "
-        "Oriente o usuário a executar o comando; uma fala sua não o executa nem registra aprovação."
+        "Quando receber URLs de recursos públicos neste pedido, pode enviá-las diretamente: não precisa mandar o usuário digitar um comando para obter um link. Falar de um comando não o executa nem registra aprovação."
     )
     extras = validos(personalizados)
     if extras:

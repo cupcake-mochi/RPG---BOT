@@ -47,6 +47,7 @@ def gravar(p: Path, dados):
 
 
 def preparar():
+    # Esta bateria histórica avalia o card da campanha, não o perfil público original.
     casos = []
     for pers, persona, nome, hora in [("clo", "closure", "Closure", 22), ("kal", "kaltsit", "Kal'tsit", 14)]:
         for cat, mensagem, criterio in CENARIOS:
@@ -59,7 +60,7 @@ def preparar():
                 turnos = [{"de": "user", "nome": "Alex", "texto": "Com Eco ativo, quanto custa meu feitiço de 9 PE?"},
                           {"de": "bot", "pers": pers, "texto": "Custa 5 PE. Eco reduz à metade, arredondando para cima."}]
             montado = site_prompt.montar(pers, msg, nome="Alex", pronomes=pron, hora=(hora, 10),
-                                         turnos=turnos, estado=estado.para_a_ponte())
+                                         turnos=turnos, estado={**estado.para_a_ponte(), "nova_terra": True})
             entrada = montado["input"]
             casos.append({"id": f"{persona}_{cat}", "persona": persona, "categoria": cat,
                           "mensagem": msg, "criterio": criterio, "input": entrada,

@@ -40,17 +40,20 @@ class Servidor(commands.Cog):
     @app_commands.command(name="idioma", description="Consultar ou escolher o idioma do servidor: português ou inglês.")
     @app_commands.guild_only()
     @app_commands.choices(idioma=[app_commands.Choice(name="Português do Brasil", value="pt-BR"), app_commands.Choice(name="English", value="en")])
+    @app_commands.describe(idioma="Escolha português ou inglês; sem opção, apenas consulta.")
     async def idioma(self, interacao: discord.Interaction, idioma: str | None = None):
         await self.mudar_idioma(interacao, idioma)
 
     @app_commands.command(name="language", description="View or set the server language: English or Brazilian Portuguese.")
     @app_commands.guild_only()
     @app_commands.choices(language=[app_commands.Choice(name="English", value="en"), app_commands.Choice(name="Português do Brasil", value="pt-BR")])
+    @app_commands.describe(language="Choose English or Brazilian Portuguese; omit to view the current setting.")
     async def language(self, interaction: discord.Interaction, language: str | None = None):
         await self.mudar_idioma(interaction, language)
 
     @app_commands.command(name="lnt", description="Consultar, ativar ou desativar a lore Nova Terra neste servidor.")
     @app_commands.guild_only()
+    @app_commands.describe(ativar="Sim usa Nova Terra; Não usa Arknights original. Sem opção, apenas consulta.")
     async def lnt(self, interacao: discord.Interaction, ativar: bool | None = None):
         if not await self.permitir(interacao):
             return
@@ -70,6 +73,7 @@ class Servidor(commands.Cog):
     @app_commands.command(name="cargo_admin", description="Autorizar ou retirar um cargo para configurar idioma e lore.")
     @app_commands.guild_only()
     @app_commands.default_permissions(manage_guild=True)
+    @app_commands.describe(cargo="Cargo autorizado a mudar idioma e lore; sem cargo, apenas lista.", remover="Retirar a autorização desse cargo em vez de conceder.")
     async def cargo_admin(self, interacao: discord.Interaction, cargo: discord.Role | None = None, remover: bool = False):
         if not await self.permitir(interacao, somente_admin=True):
             return

@@ -94,7 +94,7 @@ class Atalho(commands.Cog):
         elif nome == "ping":
             await responder(admin.texto_ping())
         elif nome == "status":
-            await responder(await admin.texto_status())
+            await responder(await admin.texto_status(mensagem.guild.id))
         elif nome in SO_NA_BARRA:
             await responder(tr('Esse é só pela barra, porque a resposta aparece só pra você: {0}').format(self.bot.mencoes.get(nome, '/' + nome)))
         else:

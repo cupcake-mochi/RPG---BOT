@@ -8,6 +8,8 @@ from __future__ import annotations
 from ..idiomas import tr
 
 import logging
+import io
+import json
 from dataclasses import replace
 from datetime import datetime, time, timedelta
 
@@ -87,11 +89,18 @@ class Pessoa(commands.Cog):
         return True
 
     @app_commands.command(name="meus_dados", description="Mostra o que a Kal'tsit e a Closure guardam sobre você.")
-    async def meus_dados(self, interacao: discord.Interaction, legado: bool = False) -> None:
+    @app_commands.describe(legado="Ver os fatos antigos, sem servidor identificado.", todos="Baixar seus fatos de todos os servidores e mundos em um JSON privado.")
+    async def meus_dados(self, interacao: discord.Interaction, legado: bool = False, todos: bool = False) -> None:
         eu = interacao.user.id
+        if todos:
+            dados = json.dumps(self.bot.registro.exportar_fatos(eu), ensure_ascii=False, indent=2).encode()
+            await interacao.response.send_message(tr("Seus fatos salvos, de todos os contextos. O arquivo usa chaves técnicas fixas; os textos mantêm o idioma original."),
+                file=discord.File(io.BytesIO(dados), filename="my-saved-facts.json"), ephemeral=True,
+                allowed_mentions=discord.AllowedMentions.none())
+            return
         ficha = self.bot.registro.ficha(eu) if legado else self._ficha(interacao)
         escopo = tr('Memória antiga, sem servidor identificado; não entra nas novas conversas.') if legado else tr('Fatos deste servidor e do mundo atualmente escolhido. Pronomes são pessoais.')
-        linhas = [escopo, tr('Pronomes: {0}.').format(ficha.pronomes or 'não informados (elas usam forma neutra)')]
+        linhas = [escopo, tr('Pronomes: {0}.').format(ficha.pronomes or tr('não informados (elas usam forma neutra)'))]
         linhas.append(tr('Fatos:') if ficha.fatos else tr('Fatos: nenhum.'))
         linhas += [f"{n}. {fato}" for n, fato in enumerate(ficha.fatos, 1)]
         for persona in self.bot.personas.values():
@@ -130,12 +139,17 @@ class Pessoa(commands.Cog):
         await interacao.response.send_message(aviso, ephemeral=True)
 
     @app_commands.command(name="esquecer_fato", description="Tira um fato da sua lista. O número é o que aparece em /meus_dados.")
-    async def esquecer_fato(self, interacao: discord.Interaction, numero: int) -> None:
-        ficha = self._ficha(interacao)
+    @app_commands.describe(legado="Remover da lista antiga, mostrada em /meus_dados legado:Sim.")
+    async def esquecer_fato(self, interacao: discord.Interaction, numero: int, legado: bool = False) -> None:
+        ficha = self.bot.registro.ficha(interacao.user.id) if legado else self._ficha(interacao)
         if not 1 <= numero <= len(ficha.fatos):
             await interacao.response.send_message(tr('Não achei esse número. Veja a lista em /meus_dados.'), ephemeral=True)
             return
-        self._gravar(interacao, replace(ficha, fatos=ficha.fatos[:numero - 1] + ficha.fatos[numero:]))
+        nova = replace(ficha, fatos=ficha.fatos[:numero - 1] + ficha.fatos[numero:])
+        if legado:
+            self.bot.registro.gravar_ficha(interacao.user.id, nova)
+        else:
+            self._gravar(interacao, nova)
         await interacao.response.send_message(_pontuar(tr('Esquecido: {0}').format(ficha.fatos[numero - 1])), ephemeral=True)
 
     @app_commands.command(name="apagar_meus_dados", description="Apaga tudo o que as personagens guardam sobre você. Não tem volta.")
