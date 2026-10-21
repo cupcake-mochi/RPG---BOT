@@ -5,6 +5,7 @@ a palavra "ficha" porque num servidor de RPG ela quer dizer a ficha do personage
 Cada pessoa só vê e só apaga o que é dela; as respostas são sempre só pra ela.
 """
 from __future__ import annotations
+from ..idiomas import tr
 
 import logging
 from dataclasses import replace

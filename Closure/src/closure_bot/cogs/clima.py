@@ -6,6 +6,7 @@ cada servidor escolhe o seu canal com /clima_canal (no próprio canal ou passand
 ID da mensagem e o último estado ficam no registro, pra um reinício não postar de novo.
 """
 from __future__ import annotations
+from ..idiomas import tr
 
 import logging
 from datetime import datetime

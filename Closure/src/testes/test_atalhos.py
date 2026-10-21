@@ -112,7 +112,7 @@ class InterfaceDosAtalhos(unittest.IsolatedAsyncioTestCase):
 
     async def test_nomes_livres_nao_vazam_na_orientacao_do_modelo(self):
         from closure_bot.prompt import montar
-        ponte=NS(montar=lambda *a,**k:{'input':[{'role':'system','content':'BASE'},{'role':'user','content':'oi'}]})
+        ponte=NS(montar=lambda *a,**k:{'perfil':'original','input':[{'role':'system','content':'BASE'},{'role':'user','content':'oi'}]})
         for persona in ('closure','kaltsit'):
             with patch('closure_bot.prompt._ponte',return_value=ponte):
                 p=await montar(persona,'como analiso?',nome='Teste',pronomes=None,turnos=[],falas_anteriores=[],
