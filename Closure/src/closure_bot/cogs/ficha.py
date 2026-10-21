@@ -321,6 +321,8 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
         resumo.add_field(name="TR e perícias", value=f"{sum(map(len, testes.values()))} bônus conferidos. Veja a página TR e perícias.", inline=False)
     if resultado.nao_conferido:
         resumo.add_field(name="⏳ Ainda não conferido", value="Conferência parcial: há itens para revisão manual. Veja a página Limites da análise.", inline=False)
+    resumo.add_field(name="Siglas da ficha", value="TR: Teste de Resistência · CD: Classe de Dificuldade · "
+                     "PE: pontos de energia · PV: pontos de vida · XP: pontos de experiência.", inline=False)
     resumo.add_field(name="Revisão do mestre", value="Use `GC:guia mestre` ou `/ficha mestre` para cruzar este painel com a revisão completa. "
                      "O guia orienta; a decisão continua com o mestre.", inline=False)
     saida.append(("Resumo", resumo))
@@ -375,10 +377,9 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
         campos_limites += _campos(nome if len(nome) <= 220 else "Vários itens", linhas)
     adicionar("Limites da análise", campos_limites, estado="pendente")
     visual = "pendente" if resultado.veredito=="aprovada" and (resultado.pendencias or resultado.nao_conferido or resultado.notas) else resultado.veredito
-    livro = (manifesto or {}).get("edicao_livro")
     for i, (categoria, embed) in enumerate(saida):
-        embed.set_footer(text=f"Página {i + 1} de {len(saida)} · {categoria} · Veredito geral: {visual} · livro"
-                         + (f" {livro}" if livro else "") + (" · controles por 10 min" if len(saida) > 1 else "")
+        embed.set_footer(text=f"Página {i + 1} de {len(saida)} · {categoria} · Veredito geral: {visual} · regras do livro"
+                         + (" · controles por 10 min" if len(saida) > 1 else "")
                          + " · o mestre pode recusar mesmo com tudo certo")
     return [embed for _, embed in saida]
 

@@ -30,7 +30,7 @@ somente essas duas configurações. Arquivista e Guias têm configurações sepa
 
 ## Regras, ficha e limites
 
-A consulta atual usa **R53/v0.366**, com 576 blocos. Os cartões ANALISE 12 usam
+A consulta usa a versão do livro **v0.366 (revisão 53)**, com 576 trechos de referência. Os cartões ANALISE 12 usam
 o motor R53; formatos antigos mantêm sua referência histórica separada.
 A análise não usa um modelo de linguagem para decidir contas ou aprovações.
 

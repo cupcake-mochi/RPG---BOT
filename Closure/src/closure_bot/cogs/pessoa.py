@@ -89,7 +89,7 @@ class Pessoa(commands.Cog):
         return True
 
     @app_commands.command(name="meus_dados", description="Mostra o que a Kal'tsit e a Closure guardam sobre você.")
-    @app_commands.describe(legado="Ver os fatos antigos, sem servidor identificado.", todos="Baixar seus fatos de todos os servidores e mundos em um JSON privado.")
+    @app_commands.describe(legado="Ver os fatos antigos, sem servidor identificado.", todos="Baixar seus fatos de todos os servidores e mundos em um arquivo de dados (.json) privado.")
     async def meus_dados(self, interacao: discord.Interaction, legado: bool = False, todos: bool = False) -> None:
         eu = interacao.user.id
         if todos:

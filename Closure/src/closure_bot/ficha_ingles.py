@@ -164,6 +164,7 @@ def paginas(result,sheet,persona,manifest=None):
         summary.add_field(name='Checked details',value=f'{abilities} '+('ability' if abilities==1 else 'abilities')+f' · {len(summons)} '+('summon' if len(summons)==1 else 'summons')+'. Use the menu or arrows to browse.',inline=False)
     if tests:summary.add_field(name='Saving throws and skills',value=f'{sum(map(len,tests.values()))} checked bonuses. See the Saving throws and skills pages.',inline=False)
     if result.nao_conferido:summary.add_field(name='⏳ Still unchecked',value='Some items need manual review. See the Analysis limits pages.',inline=False)
+    summary.add_field(name='Abbreviations',value='HP: health points · EP: energy points · DC: difficulty class · TR: saving throw (Teste de Resistência on the sheet) · XP: experience points · GM: game master.',inline=False)
     summary.add_field(name='GM review',value='Use `GC:guide gm` or `/ficha mestre` to review the whole sheet alongside this panel. The guide explains the process; the GM makes the decision.',inline=False)
     summary.add_field(name='Sheet and rule names',value='Official sheet labels, option names, exported keys and player-written text keep their original spelling so you can find them in the sheet.',inline=False)
     pages.append(('Summary',summary))
@@ -184,7 +185,6 @@ def paginas(result,sheet,persona,manifest=None):
     add('Spells and techniques',spells)
     for category,fields in entities.items():add(category,fields)
     add('Analysis limits',_campos('Manual review and missing inputs',[detail(t) for t in result.nao_conferido]),'pendente')
-    book=(manifest or {}).get('edicao_livro','')
     for i,(category,e) in enumerate(pages):
-        e.set_footer(text=f'Page {i+1} of {len(pages)} · {category} · Overall result: {verdict} · rules {book}'+(' · controls for 10 min' if len(pages)>1 else '')+' · the GM can decline even when all checked values match')
+        e.set_footer(text=f'Page {i+1} of {len(pages)} · {category} · Overall result: {verdict} · rulebook rules'+(' · controls for 10 min' if len(pages)>1 else '')+' · the GM can decline even when all checked values match')
     return [e for _,e in pages]
