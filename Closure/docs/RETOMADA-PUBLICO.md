@@ -1,4 +1,4 @@
-Fechamento posterior em andamento: a consulta geral foi migrada integralmente para R53; 24 respostas reais e a criação inglesa com editor externo já foram testadas. Evidências e limites em REVISAO-R53-POS-1.0.md, PR 69 e Arquivista PR 11. As lacunas citadas abaixo sobre ausência desses ensaios descrevem a rodada inicial, não o estado desta continuação.
+Estado corrente · 21/10/2026: os três acompanhamentos foram executados. Guias 1.0.1/R53 publicadas às 14:58:14, PR 69 mesclada em `2b90655`; Arquivista 1.1.0 preservada, PR 11 documental mesclada em `2fb772f`. CI 953/952/1. Piloto 24/24 encerrado, US$ 0,156294 contabilizados sem ampliar teto. Criação inglesa com editor e ida/volta real concluída; duas cópias sintéticas na lixeira. [Fechamento, cobertura e retomada atual](../pesquisa/validacao/2026-10-21-r53/FECHAMENTO.md). Os limites de ausência de ensaios nas seções abaixo descrevem a rodada inicial. Não repetir deploy por documentação nem reutilizar a autorização paga.
 
 # Idioma e lore por servidor · publicado em 21/10/2026
 

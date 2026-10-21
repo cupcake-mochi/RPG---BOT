@@ -1,5 +1,9 @@
 # Conferência posterior à versão 1.0 · 21/10/2026
 
+**Publicado:** Guias 1.0.1, PR 69 mesclada em `2b90655`, online às 14:58:14.
+CI final: 953 executados, 952 aprovados, um online opcional pulado.
+[Fechamento da publicação e cobertura restante](../pesquisa/validacao/2026-10-21-r53/FECHAMENTO.md).
+
 ## Consulta geral do R53
 
 Fonte corrente: `cupcake-mochi/JJK---Project@1432c477f812aaaf1e0e8fdff8ed54d1709a663d`,

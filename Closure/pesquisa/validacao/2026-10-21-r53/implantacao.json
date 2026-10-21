@@ -1,0 +1,48 @@
+{
+  "arquivos_pacote": 89,
+  "ausentes": [],
+  "diferentes": [],
+  "estado_preservado": {
+    "src/var/ficha-campanhas.json": true,
+    ".env": true
+  },
+  "sqlite_integridade": "ok",
+  "variacao_contagens": {
+    "chamadas_api": 0,
+    "gatilhos": 0,
+    "paineis_clima": 0,
+    "falas": 0,
+    "mensagens_bot": 0,
+    "paciencia": 0,
+    "mensagens_do_dia": 0,
+    "fichas": 0,
+    "conversas_recentes": 0,
+    "participantes_conversa": 0,
+    "preferencias_servidor": 0,
+    "atalhos_servidor": 0,
+    "configuracao_publica": 0,
+    "contexto_canais": 0,
+    "fatos_contexto": 0,
+    "origem_mensagens": 0
+  },
+  "conteudo_tabelas_preservado": {
+    "chamadas_api": true,
+    "gatilhos": true,
+    "paineis_clima": false,
+    "falas": true,
+    "mensagens_bot": true,
+    "paciencia": true,
+    "mensagens_do_dia": true,
+    "fichas": true,
+    "conversas_recentes": true,
+    "participantes_conversa": true,
+    "preferencias_servidor": true,
+    "atalhos_servidor": true,
+    "configuracao_publica": true,
+    "contexto_canais": true,
+    "fatos_contexto": true,
+    "origem_mensagens": true
+  },
+  "closure_lab_db_bytes_preservados": true,
+  "variacao_painel_clima": "Atualização normal: parcialmente nublado → poucas nuvens; demais campos preservados."
+}
