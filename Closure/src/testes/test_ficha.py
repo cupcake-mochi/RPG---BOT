@@ -452,7 +452,10 @@ class Comando(unittest.IsolatedAsyncioTestCase):
         self.assertIn("**Defesa**: está 15, o certo é 13", campos["❌ Precisa corrigir"])
         self.assertIn("Vida 23", campos["✅ Conferido e certo"])
         self.assertIn("Conferência parcial", campos["⏳ Ainda não conferido"])
-        self.assertIn("R51", embed.footer.text)
+        # A edição técnica continua no ping/manifesto; o painel usa linguagem comum.
+        self.assertNotIn("R51", embed.footer.text)
+        self.assertIn("regras do livro", embed.footer.text)
+        self.assertIn("TR: Teste de Resistência", campos["Siglas da ficha"])
         limpa = _com_campos("kaori", aviso__escolhas_de_pericia="Tudo escolhido", aviso__testes_disponiveis="0 de 2")
         self.assertTrue(conferir(limpa, ref).nao_conferido)  # partes ausentes e erros históricos não são aprovação integral
         self.assertEqual(painel(conferir(limpa, ref), limpa, closure).colour.value, 0xD4A017)

@@ -22,3 +22,11 @@ Validação preparada: 153 testes direcionados aprovados; 57 páginas em inglês
 com até 1.052 caracteres de texto e 90 chamadas estáticas de tradução sem
 entradas ausentes. Suíte completa e implantação serão registradas no fechamento.
 Não houve chamadas a modelos nem alteração de ficha, regras ou aprovação.
+
+A primeira suíte completa executou 953 testes e encontrou três expectativas de
+texto antigas: a frase literal “sem ERP”, a orientação anterior de marcação
+NSFW e a exigência do código R51 no rodapé. Foram atualizadas para a redação
+aprovada pelo usuário e para a legenda da ficha; as verificações de permissões,
+isolamento por servidor, restrições e cálculos permanecem intactas. A edição
+continua conferida no diagnóstico pelo teste do manifesto. Não foi alterado
+resultado mecânico para ocultar falha.

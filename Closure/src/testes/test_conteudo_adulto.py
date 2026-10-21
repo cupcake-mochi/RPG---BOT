@@ -168,7 +168,7 @@ class ComandosAdultos(unittest.IsolatedAsyncioTestCase):
     async def test_ativar_desativar_e_consultar_sem_mudar_outro_servidor(self):
         t = await self.chamar('responder_nsfw', self.interacao(), ativar=True)
         self.assertIn('todos os canais marcados como NSFW', t)
-        self.assertIn('sem ERP', t)
+        self.assertIn('sem interpretação de cenas sexuais (ERP)', t)
         self.assertEqual(self.registro.preferencias_servidor(1), PreferenciasServidor(True))
         self.assertEqual(self.registro.preferencias_servidor(2), PreferenciasServidor())
         await self.chamar('responder_nsfw', self.interacao())
@@ -198,7 +198,7 @@ class ComandosAdultos(unittest.IsolatedAsyncioTestCase):
         i.channel.is_nsfw = lambda: False
         texto = await self.chamar('responder_nsfw', i, ativar=True)
         self.assertTrue(texto.startswith('**Neste canal: inativo'))
-        self.assertIn('falta marcar o canal como NSFW', texto)
+        self.assertIn('marque o canal como NSFW (conteúdo adulto, 18+)', texto)
         self.assertTrue(self.registro.preferencias_servidor(1).responder_nsfw)
         texto = await self.chamar('responder_nsfw', self.interacao())
         self.assertTrue(texto.startswith('**Neste canal: ativo.**'))
