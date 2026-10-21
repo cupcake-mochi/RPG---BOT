@@ -20,7 +20,7 @@ chaves exportadas permanecem estáveis.
 
 Validação preparada: 153 testes direcionados aprovados; 57 páginas em inglês
 com até 1.052 caracteres de texto e 90 chamadas estáticas de tradução sem
-entradas ausentes. Suíte completa e implantação serão registradas no fechamento.
+entradas ausentes. Suíte completa final: 953 testes executados, 952 aprovados e um online opcional pulado (CI 39661722937). Mais 50 regressões: 49 aprovadas e uma opcional pulada. Publicação conferida abaixo.
 Não houve chamadas a modelos nem alteração de ficha, regras ou aprovação.
 
 A primeira suíte completa executou 953 testes e encontrou três expectativas de
@@ -30,3 +30,28 @@ aprovada pelo usuário e para a legenda da ficha; as verificações de permissõ
 isolamento por servidor, restrições e cálculos permanecem intactas. A edição
 continua conferida no diagnóstico pelo teste do manifesto. Não foi alterado
 resultado mecânico para ocultar falha.
+
+## Fechamento publicado
+
+Guias 1.0.3 instaladas na Discloud; online às 16:30:48 de Brasília. O ensaio
+no Discord confirmou `GC:guia livro`, `GC:livro` com os dois temas e `GC:ping`
+com o identificador técnico rotulado. Guia aberto por membro; livro e ping
+conferidos pela conta administrativa. A redação comum não exige decifrar R53.
+
+Auditoria dos backups: 90/90 arquivos instalados iguais ao pacote e aos fontes.
+Ambiente e cadastro de campanha iguais; os dois bancos estão íntegros, com
+as mesmas tabelas e registros. Contagem de chamadas de modelo preservada.
+Nenhuma planilha foi editada e nenhuma chamada paga foi feita nesta rodada.
+
+Pacote identificado por MANIFESTO-PACOTE-1.0.3.json; SHA-256
+`25b45ec097301c4865d81644b15936e89e91573b9d54f9e2e029b3dbe50985e8`.
+Arquivista 1.1.2 também publicada, com auditoria e retomada no seu repositório.
+
+## Retomada
+
+Conferir o remoto e o manifesto do pacote antes de editar. Esta manutenção
+está concluída; não repetir implantação por mudança exclusivamente documental.
+A análise continua parcial: entradas ausentes do produtor e decisões humanas
+seguem nos relatórios de contrato e na validação da integração. Não foi
+concedida nova autorização para modelos pagos. As evidências históricas de
+fichas, lore e idiomas permanecem válidas dentro do escopo que documentam.

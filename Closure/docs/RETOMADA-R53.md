@@ -1,3 +1,5 @@
+**Fechamento mais recente:** Guias 1.0.3 e Arquivista 1.1.2 publicadas em 21/10/2026; linguagem comum para a versão do livro e siglas explicadas no contexto. [Estado, auditoria e retomada](CLAREZA-SIGLAS.md). Registros seguintes preservam rodadas anteriores.
+
 # Retomada R53 · atualizada em 21/10/2026
 
 **Fechamento vigente:** Guias 1.0.1/R53 publicadas, PR 69 mesclada; 953/952/1
