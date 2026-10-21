@@ -13,10 +13,22 @@ import sincronizar as s
 
 
 class EntregaAprovada(unittest.TestCase):
+    def test_fechamento_corrente_prevalece_sobre_cabecalho_historico(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            leia = Path(tmp) / s.LIVRO_LEIA
+            leia.parent.mkdir(parents=True)
+            leia.write_text('# Fonte corrente R53\n\nO texto atual é R53.\n\n'
+                            '# Ciclo Maldito R41, hoje na edição R52\n', encoding='utf-8')
+            self.assertEqual(s.edicao_do_livro(tmp), 'R53')
+
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.addCleanup(self.tmp.cleanup)
         self.raiz = Path(self.tmp.name)
+        self.repo = str(self.raiz / 'repo')
+        fonte = Path(self.repo) / s.LIVRO
+        fonte.parent.mkdir(parents=True)
+        fonte.write_text('livro de teste', encoding='utf-8')
         self.entrega = self.raiz / 'livro-diagramado-r52'
         self.entrega.mkdir()
         (self.entrega/'LEIA-ME-R52.md').write_text('# Ciclo Maldito — R52\n')
@@ -28,7 +40,7 @@ class EntregaAprovada(unittest.TestCase):
         self.saida.mkdir()
 
     def rodar(self, *args):
-        with patch.object(s, 'SAIDA', str(self.saida)), patch.object(s, 'achar_repo', return_value=('repo', 'v0.364')), \
+        with patch.object(s, 'SAIDA', str(self.saida)), patch.object(s, 'achar_repo', return_value=(self.repo, 'v0.364')), \
              patch.object(s, 'edicao_do_livro', return_value='R51'), \
              patch.object(s, 'blocos_do_livro', return_value=[{'capitulo': 5, 'capitulo_titulo': 'Origens'}]) as blocos, \
              patch.object(s, 'catalogos', return_value={'teste': 1}), patch.object(s, 'commit', return_value=('abc', 'data')), \
@@ -47,7 +59,7 @@ class EntregaAprovada(unittest.TestCase):
         self.assertEqual(m['commit_catalogos'], 'abc')
         self.assertEqual(len(m['fonte_livro']['texto_sha256']), 64)
         self.assertNotIn(str(self.raiz), json.dumps(m))
-        blocos.assert_called_once_with('repo', self.entrega/'LIVRO-COMPLETO.md')
+        blocos.assert_called_once_with(self.repo, self.entrega/'LIVRO-COMPLETO.md')
 
     def test_entrega_incompleta_nao_grava_nada(self):
         (self.entrega/'LEIA-ME-R52.md').unlink()

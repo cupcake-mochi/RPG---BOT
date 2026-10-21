@@ -1,4 +1,4 @@
-"""Regressões de contexto: entradas completas e fontes conjuntas para contas do R51.
+"""Regressões de contexto: entradas completas e fontes conjuntas para contas do R53.
 
 Monta pedidos localmente, sem chamar um modelo. Não certifica a resposta gerada no Discord.
 """
@@ -17,6 +17,12 @@ PRONTO = bool(site_prompt.motores()) and (site_prompt.CACHE / "nucleo.js").exist
 
 @unittest.skipUnless(PRONTO, "sem motor ou página montada")
 class ConsultaDoLivro(unittest.TestCase):
+    def test_mais_um_nome_com_palavras_de_parada_tem_fonte_propria(self):
+        texto, _ = self.fontes('No livro, como funciona Mais Um?', ['catalogo--melhoria-mais-um'])
+        self.assertIn('Não copie os totais nem converta uma função em outra', texto)
+        _, fontes = self.montar('Você conta mais um caso engraçado?')
+        self.assertNotIn('catalogo--melhoria-mais-um', fontes)
+
     @classmethod
     def setUpClass(cls):
         cls.livro = {b["ancora"]: b for b in map(json.loads, (RAIZ / "dados/sistema/livro.jsonl").read_text().splitlines())}
@@ -45,10 +51,11 @@ class ConsultaDoLivro(unittest.TestCase):
 
     def test_pergunta_real_cura_classe_cinco_tem_orcamento_e_limite(self):
         texto, ancoras = self.fontes("Qual é o máximo que um feitiço de classe 5 pode fornecer de cura?",
-                                    ["fundamento--pontos", "fundamento--amparoformas"])
+                                    ["fundamento--pontos", "fundamento--funcoes"])
         self.assertIn("| 5 | 17 | 15 | 3 | 5 | 8 |", texto)
-        self.assertIn("até 2 × Classe em d8", texto)
-        self.assertIn("| Cura: máximo de d8 | 2 | 4 | 6 | 8 | 10 | 12 | 14 |", texto)
+        self.assertIn("2 × Classe em d8", texto)
+        self.assertIn("| 5 | 10 | 7 |", texto)
+        self.assertIn("Cada ponto pode ser usado uma vez nessa distribuição", texto)
         self.assertNotIn("rotas--rota-cura", ancoras)
         self.assertFalse(any(a.startswith("aptidoes--") for a in ancoras))
 
@@ -57,14 +64,14 @@ class ConsultaDoLivro(unittest.TestCase):
             for forma in ("cura", "vida temporária"):
                 with self.subTest(classe=classe, forma=forma):
                     self.fontes(f"quanto de {forma} um feitiço de classe {classe} fornece?",
-                                ["fundamento--pontos", "fundamento--amparoformas"])
+                                ["fundamento--pontos", "fundamento--funcoes"])
 
     def test_conta_de_dano_tem_orcamento_e_tetos(self):
         self.fontes("quanto dano faz um feitiço de classe 5?",
                     ["fundamento--pontos", "fundamento--danolimites"])
 
     def test_pecas_nomeadas_tem_definicao_e_preco_da_classe(self):
-        for nome, ancora in (("Longe", "catalogo--cat-alcance"), ("Fura", "catalogo--cat-defesas")):
+        for nome, ancora in (("Longe", "catalogo--melhoria-longe"), ("Fura", "catalogo--melhoria-fura")):
             with self.subTest(nome=nome):
                 _, ancoras = self.fontes(f"quanto custa a Melhoria {nome} na classe 5?", [ancora, "fundamento--pontos"])
                 self.assertFalse(any(a.startswith("construcao--") for a in ancoras))
@@ -72,24 +79,24 @@ class ConsultaDoLivro(unittest.TestCase):
     def test_formas_nomeadas_tambem_trazem_sua_regra(self):
         for forma in ("Cura", "Apoio"):
             with self.subTest(forma=forma):
-                self.fontes(f"como funciona a Forma {forma}?", ["fundamento--pontos", "fundamento--amparoformas"])
+                self.fontes(f"como funciona a Forma {forma}?", ["fundamento--pontos", "fundamento--funcoes"])
 
     def test_habilidade_especial_usa_orcamento_da_entidade(self):
         texto, ancoras = self.fontes("quanto cura a especial da minha invocação de classe 5?",
                                     ["construcao--entidades-especiais", "construcao--entidades-saldo"])
         self.assertNotIn("fundamento--pontos", ancoras)
         self.assertFalse(any(a.startswith("aptidoes--") for a in ancoras))
-        self.assertIn("| Cura: d8 máximos | 1 | 2 | 3 | 5 | 6 | 7 | 9 |", texto)
+        self.assertIn("| 5 | 6 | 3 |", texto)
 
     def test_tecnica_maxima_tem_tabela_propria_e_excecao(self):
         texto, _ = self.fontes("qual a cura máxima da Técnica Máxima?",
-                              ["fundamento--maxima", "fundamento--maximadano"])
-        self.assertIn("sem o teto da Forma comum", texto)
+                              ["fundamento--maxima"])
+        self.assertIn("A quantidade de dados permanece igual ao valor indicado na tabela", texto)
 
     def test_classe_zero_tem_proibicao_de_cura(self):
         texto, _ = self.fontes("pode usar Forma Cura num feitiço de classe 0?",
-                              ["fundamento--classezero", "fundamento--amparoformas"])
-        self.assertIn("Cura e Onda não estão disponíveis na Classe 0", texto)
+                              ["fundamento--classezero", "fundamento--funcoes"])
+        self.assertIn("Cura e aplicação coletiva de benefícios não estão disponíveis", texto)
 
     def test_explicacoes_de_aptidoes_tem_complemento(self):
         for msg, esperadas in [
@@ -108,7 +115,7 @@ class ConsultaDoLivro(unittest.TestCase):
     def test_descanso_curto_nao_e_confundido_com_forma_cura(self):
         _, ancoras = self.montar("quanto PE um feitiço me deixa recuperar no descanso curto?")
         self.assertIn("dano--descansos", ancoras)
-        self.assertNotIn("fundamento--amparoformas", ancoras)
+        self.assertNotIn("fundamento--funcoes", ancoras)
 
     def test_valores_e_definicoes_de_outros_capitulos(self):
         casos = [
@@ -152,7 +159,7 @@ class ConsultaDoLivro(unittest.TestCase):
     def test_explicar_melhor_herda_assunto_e_fontes(self):
         for msg in ("me explica melhor", "pode aprofundar?", "quanto custa?"):
             with self.subTest(msg=msg):
-                self.fontes(msg, ["fundamento--pontos", "fundamento--amparoformas"],
+                self.fontes(msg, ["fundamento--pontos", "fundamento--funcoes"],
                             anterior="quanto cura um feitiço de classe 5?")
         self.fontes("me explica melhor", ["aptidoes--apt-reversa", "aptidoes--apt-energia-positiva"],
                     anterior="como funciona energia reversa?")

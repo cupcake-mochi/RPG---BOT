@@ -21,7 +21,7 @@ com o mestre. Veja [GUIAS-DE-USO.md](docs/GUIAS-DE-USO.md).
 cópias sintéticas, custom pendente/aprovado/alterado e arquivos inválidos.
 882 testes executados, 881 aprovados, 1 opcional pulado. Atualização da
 Discloud informada pelo usuário e validada funcionalmente; sem nova implantação.
-O núcleo novo cobre cartões R53; a base geral permanece R51/R52.
+Os cartões e a consulta geral usam R53/v0.366. A comparação integral do corpus e os limites da conferência estão em `docs/REVISAO-R53-POS-1.0.md`. Os formatos antigos conservam uma referência R52 separada, fora da busca das guias.
 [Resultados, links e cobertura restante](dados/ficha/BATERIA-NATIVA-R53.md).
 
 **Continuação do clima · publicada em 19/10 às 00:08:** “E de BH?” depois de

@@ -2,3 +2,4 @@
 src/var/
 __pycache__/
 pesquisa/privado/
+pesquisa/validacao/**/.lock

@@ -1,11 +1,12 @@
 {
   "sistema": "Ciclo Maldito",
-  "versao_sistema": "v0.364",
-  "edicao_livro": "R52",
-  "commit": null,
-  "data_commit": null,
-  "sincronizado_em": "2026-10-15T12:40:21-03:00",
-  "blocos": 511,
+  "versao_sistema": "v0.366",
+  "edicao_livro": "R53",
+  "commit": "1432c477f812aaaf1e0e8fdff8ed54d1709a663d",
+  "data_commit": "2026-10-19T00:13:32-03:00",
+  "texto_sha256": "7311979bdfc61bda1d2fd5113106f072edc7dd5b8a801a02779ada53fd13a81d",
+  "sincronizado_em": "2026-10-21T14:16:04-03:00",
+  "blocos": 576,
   "capitulos": [
     {
       "numero": 1,
@@ -60,7 +61,7 @@
     {
       "numero": 11,
       "titulo": "Catálogo de criação",
-      "blocos": 30
+      "blocos": 95
     },
     {
       "numero": 12,
@@ -114,17 +115,13 @@
     }
   ],
   "arquivos": {
-    "livro.jsonl": "livro-diagramado-r52/LIVRO-COMPLETO.md",
+    "livro.jsonl": "sistema/05-material/livro/ciclo-maldito-r41/LIVRO-COMPLETO.md",
     "catalogos.json": "sistema/05-material/gerador-ficha/dados.js"
   },
-  "commit_catalogos": "82878e607fb4b31e253eeb85659ddb62122637ce",
-  "data_commit_catalogos": "2026-10-14T00:23:47-03:00",
-  "commit_livro": null,
-  "fonte_livro": {
-    "tipo": "entrega_local_aprovada",
-    "pasta": "livro-diagramado-r52",
+  "compatibilidade": {
+    "arquivo": "legado-r52.jsonl",
     "edicao": "R52",
-    "texto_sha256": "c29d49befd671a1d654476b807a196548c0bc94ced134b2dfe6be5b556172ba8",
-    "pdf_sha256": "c04d86e11ac867d9dc60b398528cd0eac8626455ab5c125e6191a26b1e03e026"
+    "sha256": "aae5f32e6879ba9f401915b8f3446a0fc8cbdf88eca5c4c500f778828faa5094",
+    "uso": "contas históricas dos formatos anteriores ao R53; fora da busca do livro atual"
   }
 }

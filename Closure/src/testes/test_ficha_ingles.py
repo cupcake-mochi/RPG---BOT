@@ -46,6 +46,11 @@ class EnglishAnalysis(unittest.TestCase):
             expected=re.sub(r'\{(\d+)(?::[^}]+)?\}',val,en)
             self.assertEqual(detail(original),expected,pt)
         self.assertEqual(detail('texto arbitrário CANARIO_USUARIO'),'texto arbitrário CANARIO_USUARIO')
+    def test_articles_in_known_instructions_are_english_but_reported_values_stay_raw(self):
+        self.assertEqual(detail('escolha um Caminho'), 'choose a Path')
+        self.assertEqual(detail('escolha uma Trilha'), 'choose a Branch')
+        self.assertIn('escolha um Caminho', line(Problema('escolha', 'caminho', 'escolha um Caminho', 'escolha um Caminho')))
+
     def test_long_reports_keep_every_issue(self):
         problems=[Problema('custom',f'custom.forma.{i}.nome','cadastro próprio completo e aprovado pelo mestre',f'CUSTOM_{i:03d}') for i in range(70)]
         with usar('en'):pages=paginas(Resultado('reprovada',problemas=problems),{},PERSONA)

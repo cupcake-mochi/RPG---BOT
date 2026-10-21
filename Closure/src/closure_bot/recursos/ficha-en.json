@@ -373,5 +373,7 @@
   "{0} rodadas": "{0} rounds",
   "Cartões R53: link lido {0} vezes porque havia cartão salvando; a leitura usada já estava estável": "R53 cards: the link was read {0} times because a card was being saved; the selected read was stable",
   "Cartões R53: link lido {0} vezes porque havia cartão salvando; {1} ainda em transição na leitura usada": "R53 cards: the link was read {0} times because a card was being saved; {1} were still in transition in the selected read",
-  "o Google respondeu {0}": "Google returned HTTP {0}"
+  "o Google respondeu {0}": "Google returned HTTP {0}",
+  "escolha um Caminho": "choose a Path",
+  "escolha uma Trilha": "choose a Branch"
 }

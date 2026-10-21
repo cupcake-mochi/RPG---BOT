@@ -392,15 +392,19 @@ function consultaAnterior(anteriores) {
 // As fontes conservam as tabelas do livro; não há números de regra copiados no código.
 function fontesDaMontagem(texto) {
   const t = nrm(texto);
+  // O nome desta peça contém só palavras de parada da busca lexical.
+  // A frase comum "mais um" continua livre fora de uma pergunta de regra.
+  if (/\bmais um\b/.test(t) && /\b(melhoria|peca|feitico|funcion\w*|compra\w*|ponto\w*|custo|custa|livro)\b/.test(t))
+    return ["catalogo--melhoria-mais-um", ...(/\b(classe|custo|custa|ponto\w*)\b/.test(t) ? ["fundamento--pontos"] : [])];
   const amparo = /\b(cura\w*|curo|cure\w*|apoio|onda|vida temporaria)\b/.test(t);
   const conta = /\b(classe|ponto\w*|orcamento|montagem|montar|maxim\w*|teto|limite\w*|dado\w*|custo|custa|pe)\b/.test(t);
   const especial = /\b(especial|especiais|habilidade\w*)\b/.test(t) && /\b(invoc\w*|entidade\w*|shikigami\w*)\b/.test(t);
   const feitico = /\b(feitic\w*|manejo\w*|forma|formas)\b/.test(t);
   if ((!feitico && !especial && !/\btecnica maxima\b/.test(t)) || (!conta && !(amparo && /\bformas?\b/.test(t)))) return [];
-  if (/\btecnica maxima\b/.test(t)) return ["fundamento--maxima", "fundamento--maximadano"];
+  if (/\btecnica maxima\b/.test(t)) return ["fundamento--maxima"];
   if (especial) return ["construcao--entidades-especiais", "construcao--entidades-saldo"];
-  if (/\bclasse classe0\b/.test(t)) return ["fundamento--classezero", ...(amparo ? ["fundamento--amparoformas"] : [])];
-  if (amparo) return ["fundamento--pontos", "fundamento--amparoformas"];
+  if (/\bclasse classe0\b/.test(t)) return ["fundamento--classezero", ...(amparo ? ["fundamento--funcoes"] : [])];
+  if (amparo) return ["fundamento--pontos", "fundamento--funcoes", "fundamento--formas"];
   if (/\bdano\b/.test(t)) return ["fundamento--pontos", "fundamento--danolimites"];
   if (/\b(ponto\w*|orcamento|montagem|montar|custo|custa)\b/.test(t)) return ["fundamento--pontos"];
   return [];
@@ -471,7 +475,8 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
       if (comparacao(texto) || /\b(fluxo|recomposicao|segunda natureza|tecnica maxima)\b/.test(nrm(texto))) {
         ecoComplemento = fonte;  // comparação mantém as outras entradas e a busca normal
       } else {
-        return [{...fonte, texto: fonte.texto.split(/^#### /m)[0].trim() + "\n\n" + resto.split(/\n(?=#{1,4} )/)[0].trim()}];
+        const cabecalho = fonte.texto.slice(0, fonte.texto.indexOf('\n#### ', 1)).trim();
+        return [{...fonte, texto: cabecalho + "\n\n" + resto.split(/\n(?=#{1,4} )/)[0].trim()}];
       }
     }
   }
@@ -599,7 +604,7 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
     if (fontes.length && fontes.some(a => a.startsWith("fundamento--") || a.startsWith("construcao--entidades")) && b.ancora.startsWith("rotas--") && !/\b(rota\w*|semente\w*|manejo\w*|sem tecnica)\b/.test(nrm(assunto))) continue;
     if (fontes.includes("fundamento--pontos") && b.ancora.startsWith("construcao--") && !/\b(invoc\w*|entidade\w*|shikigami\w*)\b/.test(nrm(assunto))) continue;
     // Não misture o teto da autocura de uma aptidão com o da Forma Cura ou da especial.
-    if (fontes.some(a => a === "fundamento--amparoformas" || a === "construcao--entidades-saldo") && b.ancora.startsWith("aptidoes--") && !definidas.includes(POS.get(b.ancora)) && !aptidoes.includes(POS.get(b.ancora))) continue;
+    if (fontes.some(a => a === "fundamento--funcoes" || a === "construcao--entidades-saldo") && b.ancora.startsWith("aptidoes--") && !definidas.includes(POS.get(b.ancora)) && !aptidoes.includes(POS.get(b.ancora))) continue;
     if (!out.includes(b)) out.push(b);
   }
   return out.slice(0, 3);

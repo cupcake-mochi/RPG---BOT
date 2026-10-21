@@ -1,3 +1,6 @@
+Rodada posterior à 1.0 — R53 integral e validação pública, 21/10/2026
+Consulta R53/v0.366 em PR 69: 202 alterações conferidas, 497/497 fontes de títulos, CI 953/952/1. Piloto real encerrado em 24 chamadas, US$ 0,156294 ao preço cheio. Três estados nativos da ficha com paridade link/XLSX; personagem incompleto não recebeu aprovação. Arquivista: criação inglesa pelo Discord, editor real e sincronização nos dois sentidos concluídos, PR 11 documental. Publicação das Guias em preparação; ver docs/REVISAO-R53-POS-1.0.md e o fechamento da rodada antes de repetir ações. Os registros abaixo são históricos.
+
 Fila atual — Guias do Ciclo 1.0.0 estável, 21/10/2026
 PUBLICADO: PT-BR/inglês e lore por servidor; runtime a2baf89, PR 68 (merge autorizado; estado no GitHub). Guias online às 13:25:45; Arquivista 1.1.0/932df0e online às 13:25:33, PR 10 (merge autorizado; estado no GitHub). 944/943/1 testes Guias; 149 Python + 36 JS Arquivista. Discord com duas contas, Google sintético privado e auditoria dos dois apps concluídos. Zero chamadas de modelo; configs de teste restauradas. Fechamento: pesquisa/validacao/2026-10-21-publico/RELATORIO.md. Registros abaixo são históricos; não repetir deploy por documentação.
 
