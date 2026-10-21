@@ -421,7 +421,7 @@ class Ficha(commands.Cog):
             return tr("Não deu para carregar a configuração autorizada desta campanha. O operador precisa conferir o cadastro do bot.")
         if leituras > 1:
             restantes = len(transicoes(ficha))
-            resultado.nao_conferido.append(f"Cartões R53: link lido {leituras} vezes porque havia cartão salvando"
+            resultado.nao_conferido.append(f"Cartões da ficha: link lido {leituras} vezes porque havia cartão salvando"
                                            + (f"; {restantes} ainda em transição na leitura usada" if restantes else "; a leitura usada já estava estável"))
         log.info("ficha analisada: %s, %d problema(s)", resultado.veredito, len(resultado.problemas))
         persona = self.bot.personas[de_plantao(datetime.now(FUSO))]

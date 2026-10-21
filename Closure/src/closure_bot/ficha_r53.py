@@ -392,7 +392,7 @@ def conferir_cartoes(ficha, ctx, r):
             encontrado = encontrado[:119] + '…'
         problema(r, chave, esperado, encontrado or 'vazio', regra='formato')
     if any(t == 'formato' and k in ('r53.montagem.esquema', 'r53.versao.campos', 'r53.entrada.campos') for k, _, t in erros):
-        r.nao_conferido.append('Cartões R53: esquema exportado ausente ou desconhecido; nenhum cartão foi certificado')
+        r.nao_conferido.append('Cartões da ficha: esquema exportado ausente ou desconhecido; nenhum cartão foi certificado')
         return
     vistos = set()
     narrativos, sem_recalculo = [], []
@@ -452,7 +452,7 @@ def conferir_cartoes(ficha, ctx, r):
                 r.notas.append(_problema('conta', f'r53.{id_}.funcao', _texto(env['funcao']), _texto(valor(ficha, f'r53.{id_}.funcao'))))
             avisos = _mensagens(esperado)
             resumo = _juntar(_texto(env['funcao']), f"{_fmt(env['pe'])} PE", f"saldo {_fmt(env['saldo'])}")
-            r.conferidos.append(f"{nome}: R53 Classe {ativa['classe']} · {resumo} · ficha {estado_ficha}")
+            r.conferidos.append(f"{nome}: Classe {ativa['classe']} · {resumo} · ficha {estado_ficha}")
         for m in avisos:
             tipo = _classificar(m)
             if tipo == 'mecanico':
@@ -480,7 +480,7 @@ def conferir_cartoes(ficha, ctx, r):
     if any(rotulo(i).startswith('Invocação') for i in vistos):
         r.nao_conferido.append('Cartões de invocação: CD e estados de Família vêm da ficha; o bot confere as Famílias da entidade à parte')
     if vistos:
-        r.nao_conferido.append('Cartões R53: VÁLIDO/REVISAR é o estado mecânico da ficha, não aprovação do mestre nem do bot')
+        r.nao_conferido.append('Cartões da ficha: VÁLIDO/REVISAR é o estado mecânico da ficha, não aprovação do mestre nem do bot')
 
 
 def _fmt(v):

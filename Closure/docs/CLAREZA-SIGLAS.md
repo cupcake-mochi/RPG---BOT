@@ -33,10 +33,10 @@ resultado mecânico para ocultar falha.
 
 ## Fechamento publicado
 
-Guias 1.0.3 instaladas na Discloud; online às 16:30:48 de Brasília. O ensaio
+Guias 1.0.3 publicadas em uma primeira instalação às 16:30:48 de Brasília; complemento dos resumos de cartões em validação. O ensaio
 no Discord confirmou `GC:guia livro`, `GC:livro` com os dois temas e `GC:ping`
 com o identificador técnico rotulado. Guia aberto por membro; livro e ping
-conferidos pela conta administrativa. A redação comum não exige decifrar R53.
+conferidos pela conta administrativa. A redação comum não exige decifrar R53. Os resumos de cartões também retiram esse prefixo; nomes de formatos e chaves técnicas de compatibilidade permanecem identificáveis.
 
 Auditoria dos backups: 90/90 arquivos instalados iguais ao pacote e aos fontes.
 Ambiente e cadastro de campanha iguais; os dois bancos estão íntegros, com
@@ -44,7 +44,7 @@ as mesmas tabelas e registros. Contagem de chamadas de modelo preservada.
 Nenhuma planilha foi editada e nenhuma chamada paga foi feita nesta rodada.
 
 Pacote identificado por MANIFESTO-PACOTE-1.0.3.json; SHA-256
-`25b45ec097301c4865d81644b15936e89e91573b9d54f9e2e029b3dbe50985e8`.
+`537da09d0b4c10ed2a97af440773a374499090be4cf8536b55a9e8d05ad33701`.
 Arquivista 1.1.2 também publicada, com auditoria e retomada no seu repositório.
 
 ## Retomada

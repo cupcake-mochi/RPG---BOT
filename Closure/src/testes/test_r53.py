@@ -179,7 +179,7 @@ class Cartoes(unittest.TestCase):
         gravar(f, 'feitico.1', 1, p_dano=3)
         r = conferir(f, REF)
         self.assertEqual(r.problemas, [], textos(r))
-        self.assertTrue(any(c.startswith('Feitiço 1: R53 Classe 1 · Dano 3d8') and 'ficha VÁLIDO' in c for c in r.conferidos), r.conferidos)
+        self.assertTrue(any(c.startswith('Feitiço 1: Classe 1 · Dano 3d8') and 'ficha VÁLIDO' in c for c in r.conferidos), r.conferidos)
         self.assertTrue(any('COMO É' in s for s in r.nao_conferido))
         self.assertTrue(any('não aprovação' in s for s in r.nao_conferido))
 

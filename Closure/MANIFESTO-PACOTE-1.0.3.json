@@ -1,8 +1,8 @@
 {
   "versao": "1.0.3",
   "escopo": "pacote de runtime sem ambiente, banco ou campanha",
-  "sha256": "25b45ec097301c4865d81644b15936e89e91573b9d54f9e2e029b3dbe50985e8",
-  "bytes": 1799548,
+  "sha256": "537da09d0b4c10ed2a97af440773a374499090be4cf8536b55a9e8d05ad33701",
+  "bytes": 1799551,
   "arquivos": {
     "discloud.config": "ea4d0474f28e3c782fffb94330a519875c6932c399953bb4f5c8b0ac8774b23f",
     "iniciar.py": "cc785d1ff15f40e89ef473a302a7053eaf59824b1b62d307e74da332c593e2d5",
@@ -21,7 +21,7 @@
     "src/closure_bot/cogs/atalho.py": "eee20fba7a19c32ea8b5a884fc2d242af111917d66cebab5f65aae349e816892",
     "src/closure_bot/cogs/chat.py": "f4a00fdc40eca8d1fa400dc96e846c5ff89e18b4b7cad39aba7761f5855146a7",
     "src/closure_bot/cogs/clima.py": "9ddfb66ebc5de624b7de65ae8d141ff86f83b53778fd4d75fca5b9769a06953c",
-    "src/closure_bot/cogs/ficha.py": "b35df67f3ad287d8da90c279d62fdfe45ecf8735246dc4f404951088ffa73e44",
+    "src/closure_bot/cogs/ficha.py": "db7987e5d8338fd911178274608833845baad395c07c578dd2a1cac7da7eb2a6",
     "src/closure_bot/cogs/guias.py": "953314b5e2a6edf8757e9094b783c5f317f940f4b5e26d027507236ce6510786",
     "src/closure_bot/cogs/pessoa.py": "bc19960411202286fc6c5b28f9e207f204e2e8852fe9b5fd6329c7283634f42c",
     "src/closure_bot/cogs/regras.py": "8a9dfa7ecd07e31929abcb438b5a5d285cb31f7e72576f5b442d3e70fffdfcd2",
@@ -47,7 +47,7 @@
     "src/closure_bot/ficha_magia.py": "39f5bc317ef40be334430d775bdb73515123d0ec58e7ddf822e3b6fb148b8900",
     "src/closure_bot/ficha_paginacao.py": "77da5e6c755c7d1977c48133727236b30b927178c70142e34146b5eb993fcd13",
     "src/closure_bot/ficha_personagem_motor.py": "0979cd8de501d4798156b1443262c39d384a019744354e60f0a3bbb5a91a9384",
-    "src/closure_bot/ficha_r53.py": "ba8d1b1fa3291264af5504400c841cf8616f0f7ef65e7a7ea5ebffc4acfd5b9e",
+    "src/closure_bot/ficha_r53.py": "7ffe38bb14bebdb3931af39157e50c44a85716a886bfd7dc55e1238a14f24d94",
     "src/closure_bot/ficha_repertorio.py": "90d27cb33048fc8274ca594e84f62fa8f07a582302b9d3afa180d6db89f65cad",
     "src/closure_bot/ficha_testes.py": "da871bf38be7d2692ee1eb3b3f59e477f6c05afb605946b308d0c92ae5c746a5",
     "src/closure_bot/guia_mestre.py": "ff52d5ade9cc3df5b69f1ddd95e53792bf0b6983bb97cb8dd53ada09c401884d",
