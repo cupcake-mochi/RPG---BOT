@@ -1,6 +1,6 @@
 # src: código do bot
 
-**Em preparação · 21/10:** idioma PT-BR/inglês, lore por servidor e links públicos por conversa. Implementação e testes em [retomada pública](../docs/RETOMADA-PUBLICO.md); esta nota ainda não confirma implantação.
+**Publicado · 21/10 às 13:25 (Brasília):** idioma PT-BR/inglês, lore original/Nova Terra por servidor e links públicos na conversa. Dois bots auditados após implantação; 944 testes das Guias e 149 da Arquivista, além de 36 JS. [Estado atual e limites](../docs/RETOMADA-PUBLICO.md).
 
 **Mestre e atalhos · 21/10:** `GC:gm` ou `/ficha mestre` orienta a revisão
 completa. A ajuda tem uma página **Abreviações** (`GC:ab`); `/atalho` permite

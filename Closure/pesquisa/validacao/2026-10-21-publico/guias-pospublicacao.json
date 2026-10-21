@@ -1,0 +1,13 @@
+{
+  "projeto": "guias",
+  "fontes_instalados_iguais_ao_pacote": 88,
+  "arquivos_de_ambiente_preservados": 1,
+  "banco_integro_com_wal": true,
+  "backup_pos_sha256": "50519d9078ef0ee181d385ea99a79cd940a92c9389b5e1faefb897d35bd8c967",
+  "servidor_de_teste_restaurado": "pt-BR / Nova Terra / sem cargos delegados",
+  "novas_chamadas_de_modelo_na_bateria": 0,
+  "campanha_e_banco_legado_preservados": true,
+  "fatos_legados_e_configuracoes_anteriores_preservados": true,
+  "estado_transitorio_painel_clima_alterado": true,
+  "destinos_dias_e_mensagens_dos_paineis_preservados": true
+}

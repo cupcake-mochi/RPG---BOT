@@ -1,6 +1,6 @@
 # RPG---BOT
 
-**Em preparação · 21/10:** idioma PT-BR/inglês, lore por servidor e links públicos por conversa. Implementação e testes em [retomada pública](Closure/docs/RETOMADA-PUBLICO.md); esta nota ainda não confirma implantação.
+**Publicado · 21/10 às 13:25 (Brasília):** idioma PT-BR/inglês, lore original/Nova Terra por servidor e links públicos na conversa. Dois bots auditados após implantação; 944 testes das Guias e 149 da Arquivista, além de 36 JS. [Estado atual e limites](Closure/docs/RETOMADA-PUBLICO.md).
 
 **Guias de criação · 21/10:** `GC:guia criar` orienta da cópia à emissão;
 `GC:guia planilha` explica abas e configurações; `GC:guia ficha` explica a
@@ -48,4 +48,4 @@ na voz de uma personagem de Arknights (Kal'tsit de dia, Closure de noite).
 
 ## Análise B47
 
-O projeto `Closure/` integra o contrato ANALISE 11 da ficha atual. Revisão vigente: 822 testes (821 aprovados, um opcional pulado). Código 40d32a7 da PR 65 implantado com autorização, sem novo merge; 44 análises reais no Discord (13 básicas, 28 avançadas do consumidor e três após implantação). Cartões vazios, cores por página e responsividade validados. PR 65 aberta, segunda pessoa no painel, recálculos nativos ampliados e limites do produtor/mestre continuam separados. [Contrato, cobertura e execução](Closure/dados/ficha/INTEGRACAO-B47.md) · [Retomada da integração](Closure/docs/RETOMADA-B47.md).
+O projeto `Closure/` consome o contrato ANALISE 12/R53 e preserva compatibilidade comprovada com formatos anteriores. A suíte atual tem 944 testes (943 aprovados, um opcional pulado). A análise é parcial; a auditoria integral do corpus R53, dados ausentes do produtor e decisões do mestre continuam separados. [Contrato e cobertura](Closure/dados/ficha/INTEGRACAO-B47.md) · [Retomada R53](Closure/docs/RETOMADA-R53.md).
