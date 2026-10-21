@@ -85,7 +85,7 @@ class NavegacaoDosGuias(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(any("CONFIGURAÇÃO: bônus e mudanças" in r for r in rotulos))
         self.assertTrue(all(len(r) <= 100 for r in rotulos))
         await v.ultima.callback(i)
-        self.assertIn("Missões", v.paginas[v.indice].author.name)
+        self.assertIn("registrar missões", v.paginas[v.indice].author.name)
 
     async def test_troca_assunto_reinicia_pagina_e_atualiza_botoes(self):
         v = GuiaNavegavel("ficha")

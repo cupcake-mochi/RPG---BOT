@@ -58,7 +58,7 @@ Resultados completos, pacote e ensaio externo são registrados em
 `pesquisa/validacao/2026-10-21-guias/RELATORIO.md` ao encerrar a publicação.
 
 Para retomar: conferir o relatório e o remoto; testar `/guia`,
-`/guia assunto:Ficha`, `/ficha guia`, `GC:guia ficha` e o seletor de assuntos.
+`/guia assunto:Analisar uma ficha`, `/ficha guia`, `GC:guia ficha` e o seletor de assuntos.
 Não refazer a bateria mecânica R53 só por uma alteração de texto.
 
 ## Criar e conhecer a ficha · ampliação de 21/10
@@ -118,3 +118,10 @@ fontes R53 atuais, sem alterar o corpus nem os cálculos do bot.
 Isso registra revisão editorial e testes de interface; não é um estudo de
 usabilidade com jogadores novos. As provas e o estado da publicação ficam
 em `pesquisa/validacao/2026-10-21-guias-criacao/RELATORIO.md`.
+
+5. Após o pedido adicional do usuário, nova revisão dos nomes: o assunto de
+   análise passa a se chamar **Analisar uma ficha**. Títulos como “Cartões:
+   Classe, peças e versões” e “Missões, datas e manutenção” passam a explicar
+   a tarefa: **Como montar e editar uma habilidade** e **Como registrar
+   missões e atualizar a ficha**. Nomes de abas permanecem nos títulos que
+   precisam orientar a localização, com subtítulos que explicam sua função.

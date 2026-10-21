@@ -57,7 +57,7 @@ CRIAR = ("Criar uma ficha", (
      "Escolha um TR treinado pela Origem e outro pelo Caminho, diferentes entre si. "
      "Defina **Força ou Destreza para o TR Físico** na criação; essa escolha permanece fixa. "
      "Repetir treino não soma Maestria duas vezes. Confira as substituições permitidas pelo livro."),
-    ("7. Defina sua rota de poder",
+    ("7. Prepare sua técnica, Manejos ou Katas",
      "Abra a **FICHA AMALDIÇOADA**. A rota acompanha a Origem escolhida na FICHA. "
      "Preencha o bloco inicial de acordo com o que aparece para sua rota.\n\n"
      "**Técnica inata:** escreva o conceito e o **Fundamento**, a regra que explica o que seu poder faz. "
@@ -78,7 +78,7 @@ CRIAR = ("Criar uma ficha", (
      "na Forma Toque, isso não devolve pontos. **VÁLIDO** indica o estado mecânico do cartão, não a autorização do mestre.\n\n"
      "Ao mudar a Classe, espere a atualização terminar antes de editar. As versões ficam guardadas por Classe; "
      "não sobrescreva resultados calculados. Repita o processo para as demais capacidades disponíveis."),
-    ("9. Confira repertório e aptidões",
+    ("9. Confira os espaços e as habilidades recebidas",
      "Confira o orçamento de **ESPAÇOS** na FICHA AMALDIÇOADA. "
      "Na técnica inata de nível 2, são **três espaços conhecidos**, além de **dois feitiços de Classe 0** contados à parte. "
      "Rotas e benefícios específicos podem mudar suas escolhas.\n\n"
@@ -135,12 +135,12 @@ CRIAR = ("Criar uma ficha", (
      "Se a data não atualizar, espere o processamento e confira **CONFIGURAÇÃO → Emissão e salários**.\n\n"
      "A emissão registra uma data; não envia a ficha ao bot nem registra aprovação do mestre. "
      "Ela também inicia ou ajusta o ciclo salarial. Evite clicar de novo a cada sessão: reemitir pode reiniciar o ciclo aberto.\n\n"
-     "Se a mesa usar salários automáticos, veja `GC:guia planilha`, página **Emissão e salários**, para ativar a rotina na sua cópia. "
+     "Se a mesa usar salários automáticos, veja `GC:guia planilha`, página **Como emitir a carteira e acompanhar salários**, para ativar a rotina na sua cópia. "
      "Com a data conferida e a ficha liberada, ela está pronta para a mesa. Depois, mantenha recursos, gastos e missões atualizados."),
 ))
 
 PLANILHA = ("Conhecer a planilha", (
-    ("Abas, campos e seções recolhidas",
+    ("Por onde começar e como abrir as seções",
      "Este é o guia de consulta da ficha. Para preencher do começo ao fim, use **GC:guia criar**. "
      "Para interpretar a avaliação do bot, use **GC:guia ficha**.\n\n"
      "As sete abas de uso são **CARTEIRA, FICHA, FICHA AMALDIÇOADA, INVOCAÇÕES, FICHA PESSOAL, GLOSSÁRIO e CONFIGURAÇÃO**. "
@@ -160,8 +160,8 @@ PLANILHA = ("Conhecer a planilha", (
      "CONFIGURAÇÃO mantém a paleta fixa; isso é esperado.\n\n"
      "O checkbox ao lado de **Emitida** grava a data atual e se desmarca depois de salvar. "
      "Use ao concluir a criação ou quando houver uma reemissão combinada, não a cada abertura da ficha. "
-     "Os detalhes do ciclo ficam na página **Emissão e salários** deste guia."),
-    ("FICHA · consulta durante a sessão",
+     "Os detalhes do ciclo ficam na página **Como emitir a carteira e acompanhar salários** deste guia."),
+    ("FICHA · atributos, recursos e combate",
      "A FICHA reúne atributos, perícias, ofícios, TR, Caminho, Trilha, Origem e os principais valores de combate. "
      "Aqui você acompanha recursos e estados como Vida, energia, Integridade, Sequelas e Exaustão.\n\n"
      "Separe **base**, **Buff/Debuff**, **total**, **atual** e **máximo**. Distribua pontos na base; "
@@ -170,7 +170,7 @@ PLANILHA = ("Conhecer a planilha", (
      "Equipamento e XP vêm de registros da FICHA PESSOAL: corrija a origem do dado.\n\n"
      "O menu de descanso aplica as recuperações previstas. Escolha o descanso realmente realizado e confira o aviso do que mudou. "
      "Não o use para ajustar livremente os máximos."),
-    ("FICHA AMALDIÇOADA · técnica e repertório",
+    ("FICHA AMALDIÇOADA · poderes e habilidades",
      "Esta aba guarda a rota de capacidades: Fundamento e feitiços, Manejos ou Katas, conforme a Origem. "
      "O bloco inicial reúne conceito, atributo, tipos de dano, Selo, Expressão e Famílias, quando aplicáveis.\n\n"
      "O orçamento mostra espaços disponíveis e ocupados. Talentos pagos, Regra Própria, Domínio e invocações "
@@ -179,7 +179,7 @@ PLANILHA = ("Conhecer a planilha", (
      "Preencha apenas o que recebeu e guarde a fonte de aquisição. A existência do campo não libera seu uso.\n\n"
      "As Famílias indicam acesso e custos das peças. Nas rotas especiais, use as substituições do capítulo correspondente. "
      "Mudar só a descrição não altera automaticamente a mecânica da montagem."),
-    ("Cartões · Classe, peças e versões",
+    ("Como montar e editar uma habilidade",
      "Os cartões são editados **no próprio local**. Abra o grupo da capacidade, escolha uma Classe disponível e espere carregar. "
      "Depois preencha nome, COMO É, Forma, funções, pontos, Melhorias e Restrições.\n\n"
      "**COMO É** explica alvos, resolução, alcance, duração e condições de uso. "
@@ -247,7 +247,7 @@ PLANILHA = ("Conhecer a planilha", (
      "um efeito que define Defesa 15 usa Trocar por 15. Esses números são exemplos de preenchimento, não benefícios concedidos.\n\n"
      "Escreva qual habilidade, pacto, item ou decisão justifica a mudança. "
      "Não aplique a mesma fonte de novo no Buff/Debuff. Ao terminar o efeito, desmarque LIGADO e confira o total."),
-    ("CONFIGURAÇÃO · conteúdo próprio",
+    ("CONFIGURAÇÃO · cadastrar regras e opções próprias",
      "Os cadastros se distribuem em painéis à direita: gerais, Caminho/Trilha, Perícias, Ofícios, Famílias, "
      "Melhorias, Restrições, Tipos de dano, Formas, Aptidões/Bênçãos, Talentos, Tipos e Talentos de entidade. "
      "Use o índice e os grupos de colunas para abrir o painel desejado.\n\n"
@@ -258,7 +258,7 @@ PLANILHA = ("Conhecer a planilha", (
      "Descrição livre não cria automação nem bônus numérico.\n\n"
      "Abra `GC:guia custom` para a revisão e o cadastro da aprovação exata. "
      "Mesmo aprovado, um cartão com peça própria pode continuar sem recálculo independente."),
-    ("Emissão e salários",
+    ("Como emitir a carteira e acompanhar salários",
      "Em **CONFIGURAÇÃO → Emissão e salários**, confira data de emissão, ativação, intervalo, "
      "participações, valores por Grau, pesos das missões, previsão e histórico recente. Mude regras apenas com o mestre.\n\n"
      "A caixa ao lado de **Emitida**, na CARTEIRA, e **emitir hoje**, nas configurações, gravam o dia atual de Brasília "
@@ -270,7 +270,7 @@ PLANILHA = ("Conhecer a planilha", (
      "Só abrir a planilha não garante o fechamento de um período.\n\n"
      "Confira o histórico e o TOTAL DISPONÍVEL na FICHA PESSOAL. "
      "O bot não certifica datas de missão nem o histórico salarial."),
-    ("Missões, datas e manutenção",
+    ("Como registrar missões e atualizar a ficha",
      "Para uma missão contar no acompanhamento salarial, preencha **nome e tipo válido** no painel da FICHA PESSOAL. "
      "A ficha registra sua data e identidade. Corrigir o texto conserva a data; "
      "para substituir por outra missão, limpe primeiro o nome antigo.\n\n"

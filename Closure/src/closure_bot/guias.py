@@ -16,7 +16,7 @@ ASSUNTOS = {
          "As guias conversam sobre o mundo do Ciclo Maldito, tiram dúvidas de regra e conferem partes da ficha.\n\n"
          "**Criar uma ficha:** preencher do começo até a emissão na Carteira.\n"
          "**Conhecer a planilha:** consultar abas, configurações e salários.\n"
-         "**Ficha:** enviar a planilha e entender a análise.\n"
+         "**Analisar uma ficha:** enviar a planilha e entender a análise.\n"
          "**Customizações:** levar uma criação ao mestre e entender a aprovação.\n"
          "**Livro:** consultar as regras e conferir a fonte.\n"
          "**Conversa, mídia e memória:** falar com elas e cuidar dos seus dados.\n"
@@ -25,7 +25,7 @@ ASSUNTOS = {
         ("Comandos para começar",
          "`/ajuda` ou `GC:ajuda` mostra a lista de comandos. Este guia explica como usá-los.\n\n"
          "`GC:guia ficha` abre o passo a passo da análise. Você também pode usar `/ficha guia` "
-         "ou `/guia` e escolher **Ficha** no campo **assunto**.\n\n"
+         "ou `/guia` e escolher **Analisar uma ficha** no campo **assunto**.\n\n"
          "Para montar o personagem, use `GC:guia criar`. Para consultar abas e configurações da ficha, "
          "use `GC:guia planilha`. Esses assuntos também aparecem no menu de `/guia`.\n\n"
          "Para outros temas, troque a última palavra: `GC:guia clima`, `GC:guia mídia`, "
@@ -35,7 +35,7 @@ ASSUNTOS = {
     )),
     "criar": CRIAR,
     "planilha": PLANILHA,
-    "ficha": ("Ficha", (
+    "ficha": ("Analisar uma ficha", (
         ("1. Prepare e envie a ficha",
          "Este assunto explica a análise do bot. Para montar a ficha do zero, abra `GC:guia criar`; "
          "para conhecer suas abas, abra `GC:guia planilha`.\n\n"
@@ -99,7 +99,7 @@ ASSUNTOS = {
          "Cartões que usam Melhoria, Restrição ou Forma própria podem continuar **sem recálculo independente do bot**. "
          "Leia esse aviso e confira a conta e o efeito com o mestre.\n\n"
          "Exemplo: uma perícia aprovada para Inteligência não fica automaticamente aprovada para Essência. "
-         "Para revisar o restante da ficha, abra o assunto **Ficha** neste menu."),
+         "Para revisar o restante da ficha, abra o assunto **Analisar uma ficha** neste menu."),
     )),
     "livro": ("Livro e regras", (
         ("Consultar e conferir a regra",
