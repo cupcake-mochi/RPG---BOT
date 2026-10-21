@@ -80,7 +80,7 @@ class Guias(commands.Cog):
             return await interacao.original_response()
         await self.enviar(enviar, tema)
 
-    @app_commands.command(name="guia", description="Como usar o bot, conferir fichas e revisar o que fica com o mestre.")
+    @app_commands.command(name="guia", description="Como criar sua ficha, conhecer a planilha e usar o bot.")
     @app_commands.describe(assunto="Escolha o assunto ou deixe em branco para começar.")
     @app_commands.choices(assunto=[app_commands.Choice(name=titulo, value=tema)
                                   for tema, (titulo, _) in guias.ASSUNTOS.items()])

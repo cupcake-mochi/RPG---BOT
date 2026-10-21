@@ -1,5 +1,9 @@
 # RPG---BOT
 
+**Guias de criação · 21/10:** `GC:guia criar` orienta da cópia à emissão;
+`GC:guia planilha` explica abas e configurações; `GC:guia ficha` explica a
+análise. [Conteúdo e fontes](Closure/docs/GUIAS-DE-USO.md).
+
 **Ficha R53 · 19/10:** consumidor ANALISE 12 na PR 67; 13 análises reais no
 Discord, cópias nativas e XLSX conferidos. Suíte: 882 executados, 881 aprovados,
 1 opcional pulado. Cartões R53 não equivalem à auditoria integral do livro.

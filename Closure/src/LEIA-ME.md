@@ -1,7 +1,11 @@
 # src: código do bot
 
+**Criação da ficha · 21/10:** `GC:guia criar` vai da cópia até marcar
+**Emitida** na CARTEIRA. `GC:guia planilha` explica abas, configurações,
+progressão e salários em separado. `/guia` também oferece esses assuntos.
+
 **Guias de uso · 21/10:** `/guia`, `/ficha guia` e `GC:guia ficha`
-orientam envio, leitura do painel e revisão humana. Nove assuntos com
+orientam envio, leitura do painel e revisão humana. Onze assuntos com
 menu e páginas, sem modelo nem alteração de dados. Veja
 [GUIAS-DE-USO.md](../docs/GUIAS-DE-USO.md) para rotas, limites e validação.
 

@@ -1,5 +1,9 @@
 # Closure
 
+**Criação da ficha · 21/10:** `GC:guia criar` vai da cópia até marcar
+**Emitida** na CARTEIRA. `GC:guia planilha` explica abas, configurações,
+progressão e salários em separado. `/guia` também oferece esses assuntos.
+
 **Guias de uso · 21/10:** `/guia` e `GC:guia` explicam os recursos por assunto.
 Use `/ficha guia` ou `GC:guia ficha` para envio, leitura do painel e revisão
 com o mestre. Veja [GUIAS-DE-USO.md](docs/GUIAS-DE-USO.md).

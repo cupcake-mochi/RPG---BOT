@@ -6,12 +6,16 @@ import unicodedata
 
 import discord
 
+from .guias_ficha import CRIAR, PLANILHA
+
 
 # (título da página, texto). Cada página trata de uma tarefa, com exemplos copiáveis.
 ASSUNTOS = {
     "geral": ("Comece por aqui", (
         ("O que você quer fazer?",
          "As guias conversam sobre o mundo do Ciclo Maldito, tiram dúvidas de regra e conferem partes da ficha.\n\n"
+         "**Criar uma ficha:** preencher do começo até a emissão na Carteira.\n"
+         "**Conhecer a planilha:** consultar abas, configurações e salários.\n"
          "**Ficha:** enviar a planilha e entender a análise.\n"
          "**Customizações:** levar uma criação ao mestre e entender a aprovação.\n"
          "**Livro:** consultar as regras e conferir a fonte.\n"
@@ -22,13 +26,19 @@ ASSUNTOS = {
          "`/ajuda` ou `GC:ajuda` mostra a lista de comandos. Este guia explica como usá-los.\n\n"
          "`GC:guia ficha` abre o passo a passo da análise. Você também pode usar `/ficha guia` "
          "ou `/guia` e escolher **Ficha** no campo **assunto**.\n\n"
+         "Para montar o personagem, use `GC:guia criar`. Para consultar abas e configurações da ficha, "
+         "use `GC:guia planilha`. Esses assuntos também aparecem no menu de `/guia`.\n\n"
          "Para outros temas, troque a última palavra: `GC:guia clima`, `GC:guia mídia`, "
          "`GC:guia memória` ou `GC:guia servidor`.\n\n"
          "Pela barra, só você vê o guia. Com `GC:`, ele aparece no canal. "
          "Abrir um guia não altera nenhuma configuração."),
     )),
+    "criar": CRIAR,
+    "planilha": PLANILHA,
     "ficha": ("Ficha", (
         ("1. Prepare e envie a ficha",
+         "Este assunto explica a análise do bot. Para montar a ficha do zero, abra `GC:guia criar`; "
+         "para conhecer suas abas, abra `GC:guia planilha`.\n\n"
          "Preencha sua cópia da ficha atual no Google Planilhas. Depois de trocar a Classe de um cartão, "
          "espere os campos e as contas terminarem de atualizar.\n\n"
          "**Pelo link:** use `/ficha analisar` com o campo **link**, ou escreva `GC:ficha` seguido do endereço da planilha. "
@@ -186,6 +196,9 @@ ASSUNTOS = {
 }
 
 APELIDOS = {"inicio": "geral", "ajuda": "geral", "analise": "ficha", "fichas": "ficha",
+            "criacao": "criar", "criar ficha": "criar", "ficha criar": "criar",
+            "manual": "planilha", "abas": "planilha", "ficha aprofundada": "planilha",
+            "configuracao ficha": "planilha", "configuracoes da ficha": "planilha",
             "customizacoes": "custom", "aprovacao": "custom", "mestre": "custom", "regras": "livro",
             "tempo": "clima", "chat": "conversa", "imagens": "midia", "gif": "midia", "audio": "midia",
             "dados": "memoria", "meus_dados": "memoria", "configuracao": "servidor", "nsfw": "servidor"}
@@ -203,7 +216,9 @@ def paginas(tema: str) -> list[discord.Embed]:
     for i, (nome, texto) in enumerate(textos, 1):
         embed = discord.Embed(title=f"Como usar · {titulo}", description=texto, color=0x2E8B57)
         embed.set_author(name=nome)
-        rotulo = re.sub(r"^\d+\.\s+", "", nome)
+        # O paginador separa o rodapé por “ · ”. Preserve o subtítulo no mesmo
+        # segmento para distinguir, por exemplo, os três painéis CONFIGURAÇÃO.
+        rotulo = re.sub(r"^\d+\.\s+", "", nome).replace(" · ", ": ")
         embed.set_footer(text=f"Página {i} de {len(textos)} · {rotulo} · GC:guia {tema} · só orientação; não executa ações")
         saida.append(embed)
     return saida

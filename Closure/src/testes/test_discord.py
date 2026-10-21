@@ -297,7 +297,9 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         ficha = self.bot.get_cog("Ficha")
         ficha.analisar_fonte = AsyncMock()
         for pedido, tema in (("GC:guia", "geral"), ("GC:guia MÍDIA", "midia"),
-                             ("GC:guia custom", "custom"), ("GC:ficha guia", "ficha"),
+                             ("GC:guia custom", "custom"), ("GC:guia criar", "criar"),
+                             ("GC:guia planilha", "planilha"), ("GC:guia criar ficha", "criar"),
+                             ("GC:ficha guia", "ficha"),
                              ("GC:ficha ajuda", "ficha"), ("GC:ajuda ficha", "ficha")):
             canal, _ = _canal()
             canal.send = AsyncMock()
