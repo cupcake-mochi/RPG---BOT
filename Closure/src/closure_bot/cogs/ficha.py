@@ -110,7 +110,9 @@ def _nome_do_valor(chave: str) -> str:
         tipo = {"pericia": "Perícia própria", "oficio": "Ofício próprio", "origem": "Origem própria",
                 "melhoria": "Melhoria própria", "restricao": "Restrição própria", "forma": "Forma própria"}.get(partes[1])
         if tipo:
-            return tipo + " " + partes[2] + (" · " + _nome_do_valor(".".join(partes[3:])) if len(partes) > 3 else "")
+            if partes[2].isdigit():
+                return tipo + " " + partes[2] + (" · " + _nome_do_valor(".".join(partes[3:])) if len(partes) > 3 else "")
+            return tipo + " · " + _nome_do_valor(".".join(partes[2:]))
     if partes[0] in ("pericia", "oficio", "tr", "equipavel", "item") and len(partes) >= 2:
         tipo = {"pericia": "Perícia", "oficio": "Ofício", "tr": "TR", "equipavel": "Equipável", "item": "Item"}[partes[0]]
         nomes_tr = {"fisico": "Físico", "vigor": "Vigor", "intelecto": "Intelecto", "espirito": "Espírito"}
@@ -124,6 +126,10 @@ def _nome_do_valor(chave: str) -> str:
     if partes[0] == "buff":
         return "Buff/Debuff de " + VALORES.get(".".join(partes[1:]), " ".join(partes[1:]))
     return VALORES.get(chave, chave.replace("_", " ").replace(".", " · "))
+
+
+def _quantidade(numero: int, singular: str, plural: str | None = None) -> str:
+    return f"{numero} " + (singular if numero == 1 else plural or singular + "s")
 
 
 def _linha(p: Problema) -> str:
@@ -259,10 +265,9 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
         elif resultado.nao_conferido:
             estado = "Conferência parcial; há partes não conferidas"
     titulo_estado = f"{estado} nas verificações feitas" if resultado.veredito != "formato desconhecido" else "Formato desconhecido — análise não realizada"
-    contagem = lambda itens, palavra: f"{len(itens)} {palavra}" + ("s" if len(itens) != 1 else "")
     resumo.add_field(name="Resultado", value=f"**{titulo_estado}**\n"
-                     + " · ".join((contagem(resultado.problemas, "erro"), contagem(resultado.pendencias, "pendência"),
-                                    contagem(resultado.notas, "ajuste") + " para o mestre")), inline=False)
+                     + " · ".join((_quantidade(len(resultado.problemas), "erro"), _quantidade(len(resultado.pendencias), "pendência"),
+                                    _quantidade(len(resultado.notas), "ajuste") + " para o mestre")), inline=False)
     revisao = [("❌ Precisa corrigir", resultado.problemas), ("⚠️ Falta ou pede atenção", resultado.pendencias),
                ("👀 Pro mestre conferir", resultado.notas)]
     for nome, problemas in revisao:
@@ -306,7 +311,8 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
     if grupos:
         inv = {re.match(r"Invocação \d+", g)[0] for g in grupos if g.startswith("Invocação ")}
         habilidades = sum(not re.fullmatch(r"Invocação \d+", g) for g in grupos)
-        resumo.add_field(name="Detalhes conferidos", value=f"{habilidades} habilidade(s) · {len(inv)} invocação(ões). Use o seletor ou as setas para consultar.", inline=False)
+        resumo.add_field(name="Detalhes conferidos", value=_quantidade(habilidades, "habilidade") + " · "
+                         + _quantidade(len(inv), "invocação", "invocações") + ". Use o seletor ou as setas para consultar.", inline=False)
     if testes:
         resumo.add_field(name="TR e perícias", value=f"{sum(map(len, testes.values()))} bônus conferidos. Veja a página TR e perícias.", inline=False)
     if resultado.nao_conferido:

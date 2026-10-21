@@ -25,6 +25,10 @@ PRONOMES_MAX = 30
 HORA_DA_REFLEXAO = time(4, 30, tzinfo=FUSO)
 
 
+def _pontuar(texto: str) -> str:
+    return texto if texto.endswith((".", "!", "?", "…")) else texto + "."
+
+
 class Pessoa(commands.Cog):
     def __init__(self, bot: commands.Bot):
         self.bot = bot
@@ -91,7 +95,7 @@ class Pessoa(commands.Cog):
     async def meus_pronomes(self, interacao: discord.Interaction, pronomes: str | None = None) -> None:
         limpo = " ".join((pronomes or "").split())[:PRONOMES_MAX] or None
         self.bot.registro.gravar_ficha(interacao.user.id, replace(self.bot.registro.ficha(interacao.user.id), pronomes=limpo))
-        await interacao.response.send_message(f"Anotado: {limpo}." if limpo else "Voltei pra forma neutra.", ephemeral=True)
+        await interacao.response.send_message(_pontuar(f"Anotado: {limpo}") if limpo else "Voltei pra forma neutra.", ephemeral=True)
 
     @app_commands.command(name="meu_fato", description="Conta uma coisa sobre você pra elas lembrarem (personagem, mesa, gosto).")
     @app_commands.describe(fato='Uma frase curta, por exemplo "jogo com um Bastião chamado Ren na mesa do Tiago".')
@@ -106,7 +110,7 @@ class Pessoa(commands.Cog):
         else:
             self.bot.registro.gravar_ficha(interacao.user.id, replace(ficha, fatos=ficha.fatos + (limpo,)))
             saiu = f" Como o limite é {FATOS_MAX}, o mais antigo saiu." if len(ficha.fatos) >= FATOS_MAX else ""
-            aviso = f"Anotado: {limpo}.{saiu}"
+            aviso = _pontuar(f"Anotado: {limpo}") + saiu
         await interacao.response.send_message(aviso, ephemeral=True)
 
     @app_commands.command(name="esquecer_fato", description="Tira um fato da sua lista. O número é o que aparece em /meus_dados.")
@@ -116,7 +120,7 @@ class Pessoa(commands.Cog):
             await interacao.response.send_message("Não achei esse número. Veja a lista em /meus_dados.", ephemeral=True)
             return
         self.bot.registro.gravar_ficha(interacao.user.id, replace(ficha, fatos=ficha.fatos[:numero - 1] + ficha.fatos[numero:]))
-        await interacao.response.send_message(f"Esquecido: {ficha.fatos[numero - 1]}.", ephemeral=True)
+        await interacao.response.send_message(_pontuar(f"Esquecido: {ficha.fatos[numero - 1]}"), ephemeral=True)
 
     @app_commands.command(name="apagar_meus_dados", description="Apaga tudo o que as personagens guardam sobre você. Não tem volta.")
     async def apagar_meus_dados(self, interacao: discord.Interaction) -> None:
