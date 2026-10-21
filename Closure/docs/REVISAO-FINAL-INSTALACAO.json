@@ -1,0 +1,30 @@
+{
+  "arquivos_pacote": 90,
+  "divergencias_runtime": [],
+  "estado_preservado": {
+    "closure_lab.db": true,
+    "src/var/bot.sqlite3": true,
+    "src/var/ficha-campanhas.json": true,
+    ".env": true
+  },
+  "integridade": "ok",
+  "tabelas_iguais": {
+    "chamadas_api": true,
+    "gatilhos": true,
+    "paineis_clima": true,
+    "falas": true,
+    "mensagens_bot": true,
+    "paciencia": true,
+    "mensagens_do_dia": true,
+    "fichas": true,
+    "conversas_recentes": true,
+    "participantes_conversa": true,
+    "preferencias_servidor": true,
+    "atalhos_servidor": true,
+    "configuracao_publica": true,
+    "contexto_canais": true,
+    "fatos_contexto": true,
+    "origem_mensagens": true
+  },
+  "campos_alterados": {}
+}

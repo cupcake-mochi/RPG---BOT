@@ -52,9 +52,35 @@ explícitos, sem mudar planilhas, imagens dos membros ou fórmulas.
   de permissões/dados de membro faz parte desta revisão.
 
 O pacote das Guias tem 90 arquivos; hashes em `MANIFESTO-PACOTE-1.0.2.json`.
-O pacote da Arquivista tem 27 arquivos. Compilação remota, publicação e ensaio
-visual final são registrados abaixo após a conferência. Antes disso, este
-registro descreve a revisão e o pacote preparado, não uma nova implantação.
+O pacote da Arquivista tem 27 arquivos.
+
+## Publicação e fechamento
+
+- Guias 1.0.2: código `d383b22`, [PR 71](https://github.com/cupcake-mochi/RPG---BOT/pull/71).
+  Online em cinco servidores às **16:00:46 de Brasília**, em 21/10/2026.
+  [CI da revisão](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/39657114114):
+  953 executados, 952 aprovados e um online opcional pulado.
+- Arquivista 1.1.1: código `39fdead`, [PR 12 mesclada](https://github.com/cupcake-mochi/Arquivista-do-Ciclo/pull/12),
+  merge `b298a3a`. Online em seis servidores às **15:57:26 de Brasília**.
+  [Fechamento próprio](https://github.com/cupcake-mochi/Arquivista-do-Ciclo/blob/main/docs/REVISAO-FINAL-APRESENTACAO.md).
+- Instalação auditada por backup posterior: 90/90 e 27/27 arquivos iguais aos
+  respectivos manifestos. Ambientes idênticos, sem alterar variáveis ou recursos.
+  Bancos íntegros; nas Guias, os dois bancos e a campanha permaneceram idênticos
+  byte a byte. Na Arquivista, cadastros, histórico e configurações preservados;
+  só duas mensagens de teste e o timestamp de atualização mudaram.
+- Discord real: guia de membro da Arquivista navegou 1→2→3 com os novos títulos
+  e instrução de imagem; ajuda administrativa mostrou Comandos da Arquivista.
+  Nas Guias, guia da planilha abriu e navegou até GLOSSÁRIO, agora com R53;
+  livro mostrou os dois temas. Azul informativo confirmado nos painéis reais.
+- Inglês: 57 páginas e aliases das Guias, ajuda/guia/traduções da Arquivista e
+  limites de listas exercitados offline. O servidor de teste foi mantido em
+  pt-BR/Nova Terra; não houve troca de idioma/lore nem nova criação Google.
+- Backups e screenshots ficaram locais. Nenhum backup de produção ou dado
+  pessoal acompanha o pacote público.
+
+As versões estáveis ficam em [Guias 1.0.2](https://github.com/cupcake-mochi/RPG---BOT/releases/tag/v1.0.2)
+e [Arquivista 1.1.1](https://github.com/cupcake-mochi/Arquivista-do-Ciclo/releases/tag/v1.1.1).
+Commits posteriores apenas documentais não exigem outro deploy.
 
 ## Continuidade
 

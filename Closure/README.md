@@ -1,5 +1,7 @@
 # Guias do Ciclo · projeto atual
 
+**Versão estável 1.0.2 · publicada em 21/10/2026.**
+
 Um bot, duas personagens: Kal’tsit atende das 9h às 21h e Closure das 21h às 9h,
 no horário de Brasília. Elas conversam, consultam o livro do Ciclo Maldito,
 recebem mídia e oferecem análise determinística de partes da ficha.

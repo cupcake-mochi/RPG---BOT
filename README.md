@@ -1,5 +1,7 @@
 # Guias do Ciclo
 
+**Versão estável 1.0.2 · publicada em 21/10/2026.**
+
 Kal’tsit e Closure conversam, explicam regras do **Ciclo Maldito** e conferem
 partes da ficha. O projeto atual fica em [`Closure/`](Closure/). A Arquivista
 é um [bot independente](https://github.com/cupcake-mochi/Arquivista-do-Ciclo),
