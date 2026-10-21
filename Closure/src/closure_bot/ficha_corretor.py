@@ -183,9 +183,15 @@ class Referencias:
             if trecho not in bloco(ancora) or nome not in bloco(ancora):
                 raise ValueError(f"o livro mudou a capacidade {nome} ({ancora}): revise o corretor")
         try:
-            magia = Magia.do_livro(livro)
+            # Formatos anteriores ao R53 conservam as contas em que foram
+            # publicados. Os cartões ANALISE 12 usam ficha_r53/r53, separados.
+            # Esta fonte não entra na busca conversacional do livro atual.
+            legado = sistema / 'legado-r52.jsonl'
+            livro_legado = ({b['ancora']: b['texto'] for b in map(json.loads, legado.read_text(encoding='utf-8').splitlines())}
+                            if legado.exists() else livro)
+            magia = Magia.do_livro(livro_legado)
             equipamento = CatalogoEquipamento.do_livro(livro)
-            entidades = RegrasEntidade.do_livro(livro)
+            entidades = RegrasEntidade.do_livro(livro_legado)
             testes = RegrasTestes.do_livro(livro, catalogo)
         except KeyError as erro:
             raise ValueError(f"o livro mudou: referência de magia ausente ({erro})") from erro

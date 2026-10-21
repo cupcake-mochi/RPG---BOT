@@ -82,7 +82,8 @@ def edicao_do_livro(repo):
         texto = fh.read()
     # Desde a v0.364 o título diz a edição ("# Ciclo Maldito R41, hoje na edição R51");
     # o corpo guarda o histórico, e a primeira frase "texto desta pasta é o" pode ser velha.
-    m = (re.search(r'^#.*hoje na edição (R\d+)', texto, re.M)
+    m = (re.search(r'^# Fonte corrente (R\d+)\b', texto, re.M)
+         or re.search(r'^#.*hoje na edição (R\d+)', texto, re.M)
          or re.search(r'texto desta pasta é o (R\d+)', texto))
     if not m:
         raise Falha('não achei a edição do livro no LEIA-ME do ciclo-maldito-r41')
@@ -233,6 +234,7 @@ def main():
         'edicao_livro': edicao,
         'commit': sha,
         'data_commit': data_commit,
+        'texto_sha256': hashlib.sha256(Path(repo, LIVRO).read_bytes()).hexdigest() if not entrega else entrega['texto_sha256'],
         'sincronizado_em': datetime.datetime.now().astimezone().isoformat(timespec='seconds'),
         'blocos': len(blocos),
         'capitulos': [{'numero': n, 'titulo': t,
@@ -242,6 +244,11 @@ def main():
             'catalogos.json': DADOS_JS.replace(os.sep, '/'),
         },
     }
+    legado = Path(SAIDA) / 'legado-r52.jsonl'
+    if legado.exists():
+        manifesto['compatibilidade'] = {'arquivo': legado.name, 'edicao': 'R52',
+            'sha256': hashlib.sha256(legado.read_bytes()).hexdigest(),
+            'uso': 'contas históricas dos formatos anteriores ao R53; fora da busca do livro atual'}
     if entrega:
         # Não atribua ao commit do catálogo um livro ainda não publicado nele.
         manifesto['commit_catalogos'] = sha

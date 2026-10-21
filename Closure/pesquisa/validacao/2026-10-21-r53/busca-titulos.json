@@ -1,0 +1,4576 @@
+{
+  "escopo": "fontes de títulos únicos; sem modelo, não mede respostas",
+  "total": 497,
+  "depois": [
+    {
+      "pergunta": "No livro, como funciona Ciclo Maldito?",
+      "esperada": "ab--ab-apresentacao",
+      "fontes": [
+        "ab--ab-apresentacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5246
+    },
+    {
+      "pergunta": "No livro, como funciona Primeira sessão?",
+      "esperada": "ab--ab-primeira-sessao",
+      "fontes": [
+        "ab--ab-primeira-sessao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4849
+    },
+    {
+      "pergunta": "No livro, como funciona Mundo jujutsu?",
+      "esperada": "ab--ab-mundo",
+      "fontes": [
+        "ab--ab-mundo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4951
+    },
+    {
+      "pergunta": "No livro, como funciona Sociedade jujutsu?",
+      "esperada": "ab--ab-sociedade",
+      "fontes": [
+        "ab--ab-sociedade"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5060
+    },
+    {
+      "pergunta": "No livro, como funciona Atributos?",
+      "esperada": "geral--atributos",
+      "fontes": [
+        "geral--atributos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4922
+    },
+    {
+      "pergunta": "No livro, como funciona Testes?",
+      "esperada": "geral--testes",
+      "fontes": [
+        "geral--testes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5454
+    },
+    {
+      "pergunta": "No livro, como funciona Treino e modificadores?",
+      "esperada": "geral--pericias",
+      "fontes": [
+        "geral--pericias"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5179
+    },
+    {
+      "pergunta": "No livro, como funciona Testes de Resistência?",
+      "esperada": "geral--resistencia",
+      "fontes": [
+        "geral--resistencia"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5330
+    },
+    {
+      "pergunta": "No livro, como funciona Turnos?",
+      "esperada": "geral--turnos",
+      "fontes": [
+        "geral--turnos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5288
+    },
+    {
+      "pergunta": "No livro, como funciona Ações?",
+      "esperada": "geral--acoes",
+      "fontes": [
+        "geral--acoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5219
+    },
+    {
+      "pergunta": "No livro, como funciona Ajudar?",
+      "esperada": "geral--ajudar",
+      "fontes": [
+        "geral--ajudar",
+        "geral--acoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7098
+    },
+    {
+      "pergunta": "No livro, como funciona Interação durante o combate?",
+      "esperada": "geral--interacao",
+      "fontes": [
+        "geral--interacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4944
+    },
+    {
+      "pergunta": "No livro, como funciona Preparar?",
+      "esperada": "geral--preparar",
+      "fontes": [
+        "geral--preparar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5371
+    },
+    {
+      "pergunta": "No livro, como funciona Reações e ataques de oportunidade?",
+      "esperada": "geral--oportunidade",
+      "fontes": [
+        "geral--oportunidade"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4908
+    },
+    {
+      "pergunta": "No livro, como funciona Concentração?",
+      "esperada": "geral--concentracao",
+      "fontes": [
+        "geral--concentracao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4877
+    },
+    {
+      "pergunta": "No livro, como funciona Ataques?",
+      "esperada": "geral--ataques",
+      "fontes": [
+        "geral--ataques"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5478
+    },
+    {
+      "pergunta": "No livro, como funciona Alcance?",
+      "esperada": "geral--alcance",
+      "fontes": [
+        "geral--alcance"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5190
+    },
+    {
+      "pergunta": "No livro, como funciona Dano e crítico?",
+      "esperada": "geral--critico",
+      "fontes": [
+        "geral--critico"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5093
+    },
+    {
+      "pergunta": "No livro, como funciona Defesa e cobertura?",
+      "esperada": "geral--defesa",
+      "fontes": [
+        "geral--defesa"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5401
+    },
+    {
+      "pergunta": "No livro, como funciona Bloquear?",
+      "esperada": "geral--bloquear",
+      "fontes": [
+        "geral--bloquear"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5333
+    },
+    {
+      "pergunta": "No livro, como funciona Aparar e Brecha?",
+      "esperada": "geral--aparar",
+      "fontes": [
+        "geral--aparar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5437
+    },
+    {
+      "pergunta": "No livro, como funciona Agarrar, derrubar e empurrar?",
+      "esperada": "geral--manobras",
+      "fontes": [
+        "geral--manobras"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5466
+    },
+    {
+      "pergunta": "No livro, como funciona Escapar de uma contenção?",
+      "esperada": "geral--contencoes",
+      "fontes": [
+        "geral--contencoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4654
+    },
+    {
+      "pergunta": "No livro, como funciona Movimento e terreno?",
+      "esperada": "geral--movimento",
+      "fontes": [
+        "geral--movimento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5418
+    },
+    {
+      "pergunta": "No livro, como funciona Espaço e posição?",
+      "esperada": "geral--espacos",
+      "fontes": [
+        "geral--espacos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5001
+    },
+    {
+      "pergunta": "No livro, como funciona Distâncias e altura?",
+      "esperada": "geral--distancias",
+      "fontes": [
+        "geral--distancias"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4768
+    },
+    {
+      "pergunta": "No livro, como funciona Saltos?",
+      "esperada": "geral--saltos",
+      "fontes": [
+        "geral--saltos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5401
+    },
+    {
+      "pergunta": "No livro, como funciona Quedas e movimento imposto?",
+      "esperada": "geral--quedas",
+      "fontes": [
+        "geral--quedas",
+        "geral--distancias"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7178
+    },
+    {
+      "pergunta": "No livro, como funciona Quedas sobre criaturas?",
+      "esperada": "geral--queda-criatura",
+      "fontes": [
+        "geral--queda-criatura"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5114
+    },
+    {
+      "pergunta": "No livro, como funciona Rastejar e passagens estreitas?",
+      "esperada": "geral--rastejar",
+      "fontes": [
+        "geral--rastejar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5191
+    },
+    {
+      "pergunta": "No livro, como funciona Voo?",
+      "esperada": "geral--voo",
+      "fontes": [
+        "geral--voo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5389
+    },
+    {
+      "pergunta": "No livro, como funciona Carga?",
+      "esperada": "geral--carga",
+      "fontes": [
+        "geral--carga"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5663
+    },
+    {
+      "pergunta": "No livro, como funciona Arrastar e transportar?",
+      "esperada": "geral--arrasto",
+      "fontes": [
+        "geral--arrasto"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5049
+    },
+    {
+      "pergunta": "No livro, como funciona Combate montado?",
+      "esperada": "geral--montaria",
+      "fontes": [
+        "geral--montaria"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4964
+    },
+    {
+      "pergunta": "No livro, como funciona Percepção e visibilidade?",
+      "esperada": "geral--perceber",
+      "fontes": [
+        "geral--perceber"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5247
+    },
+    {
+      "pergunta": "No livro, como funciona Esconder?",
+      "esperada": "geral--esconder",
+      "fontes": [
+        "geral--esconder",
+        "geral--acoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 8163
+    },
+    {
+      "pergunta": "No livro, como funciona Vasculhar?",
+      "esperada": "geral--procurar",
+      "fontes": [
+        "geral--procurar",
+        "geral--acoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7489
+    },
+    {
+      "pergunta": "No livro, como funciona Ataques e ocultação?",
+      "esperada": "geral--ocultacao-ataque",
+      "fontes": [
+        "geral--ocultacao-ataque"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5862
+    },
+    {
+      "pergunta": "No livro, como funciona Estudar?",
+      "esperada": "geral--estudar",
+      "fontes": [
+        "geral--estudar",
+        "geral--acoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7946
+    },
+    {
+      "pergunta": "No livro, como funciona Percepção de energia?",
+      "esperada": "geral--mundo",
+      "fontes": [
+        "geral--mundo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4513
+    },
+    {
+      "pergunta": "No livro, como funciona Vasculhar com Sentir Energia?",
+      "esperada": "geral--buscar",
+      "fontes": [
+        "geral--buscar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5823
+    },
+    {
+      "pergunta": "No livro, como funciona Sinais de energia no ambiente?",
+      "esperada": "geral--pressao",
+      "fontes": [
+        "geral--pressao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5438
+    },
+    {
+      "pergunta": "No livro, como funciona Examinar energia e vestígios?",
+      "esperada": "geral--ler",
+      "fontes": [
+        "geral--ler"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4951
+    },
+    {
+      "pergunta": "No livro, como funciona Busca numa sala escura?",
+      "esperada": "geral--energia-exemplo",
+      "fontes": [
+        "geral--energia-exemplo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4752
+    },
+    {
+      "pergunta": "No livro, como funciona Dano?",
+      "esperada": "dano--dano",
+      "fontes": [
+        "dano--dano"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5548
+    },
+    {
+      "pergunta": "No livro, como funciona Tipos de dano?",
+      "esperada": "dano--tipos",
+      "fontes": [
+        "dano--tipos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5729
+    },
+    {
+      "pergunta": "No livro, como funciona Redução de Dano?",
+      "esperada": "dano--reducao",
+      "fontes": [
+        "dano--reducao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4374
+    },
+    {
+      "pergunta": "No livro, como funciona Dano na alma?",
+      "esperada": "dano--alma",
+      "fontes": [
+        "dano--alma"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4203
+    },
+    {
+      "pergunta": "No livro, como funciona Estágios de Integridade?",
+      "esperada": "dano--integridade",
+      "fontes": [
+        "dano--integridade"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4866
+    },
+    {
+      "pergunta": "No livro, como funciona Condições?",
+      "esperada": "dano--condicoes",
+      "fontes": [
+        "dano--condicoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5817
+    },
+    {
+      "pergunta": "No livro, como funciona Condições leves?",
+      "esperada": "dano--leves",
+      "fontes": [
+        "dano--leves"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5634
+    },
+    {
+      "pergunta": "No livro, como funciona Condições médias?",
+      "esperada": "dano--medias",
+      "fontes": [
+        "dano--medias"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5142
+    },
+    {
+      "pergunta": "No livro, como funciona Condições pesadas?",
+      "esperada": "dano--pesadas",
+      "fontes": [
+        "dano--pesadas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5497
+    },
+    {
+      "pergunta": "No livro, como funciona Vida e energia temporárias?",
+      "esperada": "dano--temporarios",
+      "fontes": [
+        "dano--temporarios"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4727
+    },
+    {
+      "pergunta": "No livro, como funciona Vida a zero?",
+      "esperada": "dano--zero",
+      "fontes": [
+        "dano--zero"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6656
+    },
+    {
+      "pergunta": "No livro, como funciona Insistir?",
+      "esperada": "dano--insistir",
+      "fontes": [
+        "dano--insistir"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5016
+    },
+    {
+      "pergunta": "No livro, como funciona Socorro?",
+      "esperada": "dano--socorro",
+      "fontes": [
+        "dano--socorro"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6520
+    },
+    {
+      "pergunta": "No livro, como funciona Sequelas e Cicatrizes?",
+      "esperada": "dano--sequelas",
+      "fontes": [
+        "dano--sequelas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4474
+    },
+    {
+      "pergunta": "No livro, como funciona Derrota e morte?",
+      "esperada": "dano--derrota",
+      "fontes": [
+        "dano--derrota"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5854
+    },
+    {
+      "pergunta": "No livro, como funciona Inconsciente?",
+      "esperada": "dano--inconsciente",
+      "fontes": [
+        "dano--inconsciente"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3967
+    },
+    {
+      "pergunta": "No livro, como funciona Descansos?",
+      "esperada": "dano--descansos",
+      "fontes": [
+        "dano--descansos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5662
+    },
+    {
+      "pergunta": "No livro, como funciona Exaustão?",
+      "esperada": "dano--exaustao",
+      "fontes": [
+        "dano--exaustao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5437
+    },
+    {
+      "pergunta": "No livro, como funciona Cena e usos de habilidades?",
+      "esperada": "dano--usos",
+      "fontes": [
+        "dano--usos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5381
+    },
+    {
+      "pergunta": "No livro, como funciona Criar um personagem?",
+      "esperada": "ab--ab-criacao",
+      "fontes": [
+        "ab--ab-criacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5372
+    },
+    {
+      "pergunta": "No livro, como funciona Origem e treinos?",
+      "esperada": "ab--ab-origem",
+      "fontes": [
+        "ab--ab-origem"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5084
+    },
+    {
+      "pergunta": "No livro, como funciona Caminho e Trilha?",
+      "esperada": "ab--ab-caminho",
+      "fontes": [
+        "ab--ab-caminho"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5011
+    },
+    {
+      "pergunta": "No livro, como funciona Capacidades iniciais?",
+      "esperada": "ab--ab-capacidades",
+      "fontes": [
+        "ab--ab-capacidades"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4968
+    },
+    {
+      "pergunta": "No livro, como funciona Equipamento e valores?",
+      "esperada": "ab--ab-equipamento",
+      "fontes": [
+        "ab--ab-equipamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5162
+    },
+    {
+      "pergunta": "No livro, como funciona Ficha pronta?",
+      "esperada": "ab--ab-conferencia",
+      "fontes": [
+        "ab--ab-conferencia"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4781
+    },
+    {
+      "pergunta": "No livro, como funciona Origens?",
+      "esperada": "origens--origens",
+      "fontes": [
+        "origens--origens"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4825
+    },
+    {
+      "pergunta": "No livro, como funciona Escolhas da Origem?",
+      "esperada": "origens--origem-escolhas",
+      "fontes": [
+        "origens--origem-escolhas",
+        "origens--origens"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7176
+    },
+    {
+      "pergunta": "No livro, como funciona Legados de história?",
+      "esperada": "origens--legados",
+      "fontes": [
+        "origens--legados"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5371
+    },
+    {
+      "pergunta": "No livro, como funciona Latente?",
+      "esperada": "origens--origem-latente",
+      "fontes": [
+        "origens--origem-latente"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5305
+    },
+    {
+      "pergunta": "No livro, como funciona Menores do Latente?",
+      "esperada": "origens--latente-beneficios",
+      "fontes": [
+        "origens--latente-beneficios"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5823
+    },
+    {
+      "pergunta": "No livro, como funciona Receptáculo?",
+      "esperada": "origens--origem-receptaculo",
+      "fontes": [
+        "origens--origem-receptaculo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5050
+    },
+    {
+      "pergunta": "No livro, como funciona Conflito?",
+      "esperada": "origens--receptaculo-acordos",
+      "fontes": [
+        "origens--receptaculo-acordos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5033
+    },
+    {
+      "pergunta": "No livro, como funciona Menores do Receptáculo?",
+      "esperada": "origens--receptaculo-excecoes",
+      "fontes": [
+        "origens--receptaculo-excecoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5813
+    },
+    {
+      "pergunta": "No livro, como funciona Descendente?",
+      "esperada": "origens--origem-descendente",
+      "fontes": [
+        "origens--origem-descendente"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3955
+    },
+    {
+      "pergunta": "No livro, como funciona Zenin?",
+      "esperada": "origens--descendente-zenin",
+      "fontes": [
+        "origens--descendente-zenin"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4408
+    },
+    {
+      "pergunta": "No livro, como funciona Kamo?",
+      "esperada": "origens--descendente-kamo",
+      "fontes": [
+        "origens--descendente-kamo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5634
+    },
+    {
+      "pergunta": "No livro, como funciona Gojo?",
+      "esperada": "origens--descendente-gojo",
+      "fontes": [
+        "origens--descendente-gojo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5276
+    },
+    {
+      "pergunta": "No livro, como funciona Inumaki?",
+      "esperada": "origens--descendente-inumaki",
+      "fontes": [
+        "origens--descendente-inumaki"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6091
+    },
+    {
+      "pergunta": "No livro, como funciona Menores do Descendente?",
+      "esperada": "origens--descendente-beneficios",
+      "fontes": [
+        "origens--descendente-beneficios"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7350
+    },
+    {
+      "pergunta": "No livro, como funciona Encarnado?",
+      "esperada": "origens--origem-encarnado",
+      "fontes": [
+        "origens--origem-encarnado"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4844
+    },
+    {
+      "pergunta": "No livro, como funciona Menores do Encarnado?",
+      "esperada": "origens--encarnado-beneficios",
+      "fontes": [
+        "origens--encarnado-beneficios"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6251
+    },
+    {
+      "pergunta": "No livro, como funciona Híbrido?",
+      "esperada": "origens--origem-feto",
+      "fontes": [
+        "origens--origem-feto"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5347
+    },
+    {
+      "pergunta": "No livro, como funciona Menores do Híbrido?",
+      "esperada": "origens--feto-beneficios",
+      "fontes": [
+        "origens--feto-beneficios"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6789
+    },
+    {
+      "pergunta": "No livro, como funciona Corpo Amaldiçoado?",
+      "esperada": "origens--origem-corpo",
+      "fontes": [
+        "origens--origem-corpo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3957
+    },
+    {
+      "pergunta": "No livro, como funciona Histórias do corpo?",
+      "esperada": "origens--corpo-configuracoes",
+      "fontes": [
+        "origens--corpo-configuracoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3990
+    },
+    {
+      "pergunta": "No livro, como funciona Existência Artificial?",
+      "esperada": "origens--corpo-existencia",
+      "fontes": [
+        "origens--corpo-existencia"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5266
+    },
+    {
+      "pergunta": "No livro, como funciona Reparo do corpo?",
+      "esperada": "origens--origem-reparo",
+      "fontes": [
+        "origens--origem-reparo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4321
+    },
+    {
+      "pergunta": "No livro, como funciona Menores do Corpo Amaldiçoado?",
+      "esperada": "origens--corpo-ninhada-gemeos",
+      "fontes": [
+        "origens--corpo-ninhada-gemeos",
+        "origens--origem-corpo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 8160
+    },
+    {
+      "pergunta": "No livro, como funciona Menores de Manutenção?",
+      "esperada": "origens--corpo-inteiro-manutencao",
+      "fontes": [
+        "origens--corpo-inteiro-manutencao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6307
+    },
+    {
+      "pergunta": "No livro, como funciona Restrição Celestial?",
+      "esperada": "origens--origem-restricao",
+      "fontes": [
+        "origens--origem-restricao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3445
+    },
+    {
+      "pergunta": "No livro, como funciona Sem Energia?",
+      "esperada": "origens--restricao-sem-energia",
+      "fontes": [
+        "origens--restricao-sem-energia"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4150
+    },
+    {
+      "pergunta": "No livro, como funciona Ataque sem Prenúncio?",
+      "esperada": "origens--restricao-prenuncio",
+      "fontes": [
+        "origens--restricao-prenuncio"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7705
+    },
+    {
+      "pergunta": "No livro, como funciona Menores de Sem Energia?",
+      "esperada": "origens--restricao-beneficios",
+      "fontes": [
+        "origens--restricao-beneficios"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6864
+    },
+    {
+      "pergunta": "No livro, como funciona Restrição corporal?",
+      "esperada": "origens--restricao-corpo",
+      "fontes": [
+        "origens--restricao-corpo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4829
+    },
+    {
+      "pergunta": "No livro, como funciona Talento de Categoria de Efeito 4?",
+      "esperada": "origens--restricao-ce4",
+      "fontes": [
+        "origens--restricao-ce4"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5841
+    },
+    {
+      "pergunta": "No livro, como funciona Saída Elevada?",
+      "esperada": "origens--restricao-saida",
+      "fontes": [
+        "origens--restricao-saida"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3746
+    },
+    {
+      "pergunta": "No livro, como funciona Corpo Debilitado?",
+      "esperada": "origens--restricao-debilitado",
+      "fontes": [
+        "origens--restricao-debilitado"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4914
+    },
+    {
+      "pergunta": "No livro, como funciona Corpo Quebradiço?",
+      "esperada": "origens--restricao-quebradico",
+      "fontes": [
+        "origens--restricao-quebradico"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5015
+    },
+    {
+      "pergunta": "No livro, como funciona Corpo Exaurido?",
+      "esperada": "origens--restricao-exaurido",
+      "fontes": [
+        "origens--restricao-exaurido"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5380
+    },
+    {
+      "pergunta": "No livro, como funciona Menores da Restrição corporal?",
+      "esperada": "origens--restricao-menores-corporais",
+      "fontes": [
+        "origens--restricao-menores-corporais",
+        "origens--restricao-corpo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7867
+    },
+    {
+      "pergunta": "No livro, como funciona Personalizar sua Origem?",
+      "esperada": "origens--legado-criar",
+      "fontes": [
+        "origens--legado-criar",
+        "origens--origem-escolhas",
+        "origens--origens"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 9044
+    },
+    {
+      "pergunta": "No livro, como funciona Bastião?",
+      "esperada": "bastiao--bas-bastiao",
+      "fontes": [
+        "bastiao--bas-bastiao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4611
+    },
+    {
+      "pergunta": "No livro, como funciona Olhos Em Mim?",
+      "esperada": "bastiao--bas-olhos",
+      "fontes": [
+        "bastiao--bas-olhos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4776
+    },
+    {
+      "pergunta": "No livro, como funciona Muro?",
+      "esperada": "bastiao--bas-muro",
+      "fontes": [
+        "bastiao--bas-muro",
+        "bastiao--bas-bastiao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6370
+    },
+    {
+      "pergunta": "No livro, como funciona Punho?",
+      "esperada": "bastiao--bas-punho",
+      "fontes": [
+        "bastiao--bas-punho",
+        "bastiao--bas-bastiao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6042
+    },
+    {
+      "pergunta": "No livro, como funciona Arrastão?",
+      "esperada": "bastiao--bas-arrastao",
+      "fontes": [
+        "bastiao--bas-arrastao",
+        "bastiao--bas-bastiao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6302
+    },
+    {
+      "pergunta": "No livro, como funciona Combatente Amaldiçoado?",
+      "esperada": "bastiao--bas-combatente",
+      "fontes": [
+        "bastiao--bas-combatente"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4655
+    },
+    {
+      "pergunta": "No livro, como funciona Vanguarda?",
+      "esperada": "vanguarda--van-base",
+      "fontes": [
+        "vanguarda--van-base"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4163
+    },
+    {
+      "pergunta": "No livro, como funciona Sequência de Condução?",
+      "esperada": "vanguarda--van-sequencia",
+      "fontes": [
+        "vanguarda--van-sequencia"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5068
+    },
+    {
+      "pergunta": "No livro, como funciona Estocada?",
+      "esperada": "vanguarda--van-estocada",
+      "fontes": [
+        "vanguarda--van-estocada",
+        "vanguarda--van-base"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5349
+    },
+    {
+      "pergunta": "No livro, como funciona Conclusões de feitiço?",
+      "esperada": "vanguarda--van-feiticos",
+      "fontes": [
+        "vanguarda--van-feiticos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5581
+    },
+    {
+      "pergunta": "No livro, como funciona Batedor?",
+      "esperada": "vanguarda--van-yumi",
+      "fontes": [
+        "vanguarda--van-yumi",
+        "vanguarda--van-base"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6890
+    },
+    {
+      "pergunta": "No livro, como funciona Batedor: Besta?",
+      "esperada": "vanguarda--van-besta",
+      "fontes": [
+        "vanguarda--van-besta"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4519
+    },
+    {
+      "pergunta": "No livro, como funciona Conclusões da Besta?",
+      "esperada": "vanguarda--van-besta-conclusoes",
+      "fontes": [
+        "vanguarda--van-besta-conclusoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4239
+    },
+    {
+      "pergunta": "No livro, como funciona Batedor: Arma de Fogo?",
+      "esperada": "vanguarda--van-fogo",
+      "fontes": [
+        "vanguarda--van-fogo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5027
+    },
+    {
+      "pergunta": "No livro, como funciona Executor?",
+      "esperada": "vanguarda--van-executor",
+      "fontes": [
+        "vanguarda--van-executor",
+        "vanguarda--van-base"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6876
+    },
+    {
+      "pergunta": "No livro, como funciona Guia?",
+      "esperada": "guia--guia",
+      "fontes": [
+        "guia--guia",
+        "guia--guia-progressao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5830
+    },
+    {
+      "pergunta": "No livro, como funciona Progressão do Caminho?",
+      "esperada": "guia--guia-progressao",
+      "fontes": [
+        "guia--guia-progressao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4405
+    },
+    {
+      "pergunta": "No livro, como funciona Resposta Coordenada?",
+      "esperada": "guia--guia-resposta",
+      "fontes": [
+        "guia--guia-resposta"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5063
+    },
+    {
+      "pergunta": "No livro, como funciona Todos no Mesmo Plano?",
+      "esperada": "guia--guia-plano-conjunto",
+      "fontes": [
+        "guia--guia-plano-conjunto"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4991
+    },
+    {
+      "pergunta": "No livro, como funciona Arquiteto?",
+      "esperada": "guia--guia-arquiteto",
+      "fontes": [
+        "guia--guia-arquiteto",
+        "guia--guia-progressao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5782
+    },
+    {
+      "pergunta": "No livro, como funciona Obra em Uso?",
+      "esperada": "guia--guia-obra-uso",
+      "fontes": [
+        "guia--guia-obra-uso"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3752
+    },
+    {
+      "pergunta": "No livro, como funciona Analista?",
+      "esperada": "guia--guia-analista",
+      "fontes": [
+        "guia--guia-analista",
+        "guia--guia-progressao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6382
+    },
+    {
+      "pergunta": "No livro, como funciona Apontar a Brecha?",
+      "esperada": "guia--guia-brecha",
+      "fontes": [
+        "guia--guia-brecha"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4531
+    },
+    {
+      "pergunta": "No livro, como funciona Padrão Decifrado?",
+      "esperada": "guia--guia-padrao",
+      "fontes": [
+        "guia--guia-padrao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3883
+    },
+    {
+      "pergunta": "No livro, como funciona Socorrista?",
+      "esperada": "guia--guia-socorrista",
+      "fontes": [
+        "guia--guia-socorrista",
+        "guia--guia-progressao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6626
+    },
+    {
+      "pergunta": "No livro, como funciona Tratar e Retomar?",
+      "esperada": "guia--guia-tratamento",
+      "fontes": [
+        "guia--guia-tratamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4665
+    },
+    {
+      "pergunta": "No livro, como funciona Emanador?",
+      "esperada": "emanador--ema-base",
+      "fontes": [
+        "emanador--ema-base"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4578
+    },
+    {
+      "pergunta": "No livro, como funciona Desdobramento Técnico?",
+      "esperada": "emanador--ema-desdobramento",
+      "fontes": [
+        "emanador--ema-desdobramento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4478
+    },
+    {
+      "pergunta": "No livro, como funciona Remodelar?",
+      "esperada": "emanador--ema-remodelar",
+      "fontes": [
+        "emanador--ema-remodelar",
+        "emanador--ema-base"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6326
+    },
+    {
+      "pergunta": "No livro, como funciona Expressões Familiares?",
+      "esperada": "emanador--ema-familiares",
+      "fontes": [
+        "emanador--ema-familiares"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4598
+    },
+    {
+      "pergunta": "No livro, como funciona Expressão Instintiva?",
+      "esperada": "emanador--ema-instintiva",
+      "fontes": [
+        "emanador--ema-instintiva"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5175
+    },
+    {
+      "pergunta": "No livro, como funciona Condutor Armado?",
+      "esperada": "emanador--ema-condutor",
+      "fontes": [
+        "emanador--ema-condutor"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4563
+    },
+    {
+      "pergunta": "No livro, como funciona Artes do Vínculo?",
+      "esperada": "emanador--ema-artes",
+      "fontes": [
+        "emanador--ema-artes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4412
+    },
+    {
+      "pergunta": "No livro, como funciona Ressonante?",
+      "esperada": "emanador--ema-eco",
+      "fontes": [
+        "emanador--ema-eco",
+        "emanador--ema-base"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6275
+    },
+    {
+      "pergunta": "No livro, como funciona Acorde Ressonante?",
+      "esperada": "emanador--ema-acorde",
+      "fontes": [
+        "emanador--ema-acorde"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4460
+    },
+    {
+      "pergunta": "No livro, como funciona Catalisador?",
+      "esperada": "emanador--ema-impulso",
+      "fontes": [
+        "emanador--ema-impulso",
+        "emanador--ema-base"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6199
+    },
+    {
+      "pergunta": "No livro, como funciona Correção de Fluxo?",
+      "esperada": "emanador--ema-correcao",
+      "fontes": [
+        "emanador--ema-correcao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4493
+    },
+    {
+      "pergunta": "No livro, como funciona Evocador?",
+      "esperada": "evocador--evocador",
+      "fontes": [
+        "evocador--evocador",
+        "evocador--ev-principal"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6787
+    },
+    {
+      "pergunta": "No livro, como funciona Vínculo?",
+      "esperada": "evocador--ev-vinculo",
+      "fontes": [
+        "evocador--ev-vinculo",
+        "evocador--evocador"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6898
+    },
+    {
+      "pergunta": "No livro, como funciona Dificultar a Resistência?",
+      "esperada": "evocador--ev-preparacao",
+      "fontes": [
+        "evocador--ev-preparacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4914
+    },
+    {
+      "pergunta": "No livro, como funciona Atuação Complementar?",
+      "esperada": "evocador--ev-complementar",
+      "fontes": [
+        "evocador--ev-complementar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4486
+    },
+    {
+      "pergunta": "No livro, como funciona Combinar Aprimoramentos?",
+      "esperada": "evocador--ev-combinar",
+      "fontes": [
+        "evocador--ev-combinar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4776
+    },
+    {
+      "pergunta": "No livro, como funciona Especial Combinada?",
+      "esperada": "evocador--ev-combinada",
+      "fontes": [
+        "evocador--ev-combinada"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5078
+    },
+    {
+      "pergunta": "No livro, como funciona Invocação Principal?",
+      "esperada": "evocador--ev-principal",
+      "fontes": [
+        "evocador--ev-principal"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5102
+    },
+    {
+      "pergunta": "No livro, como funciona Substituir a principal?",
+      "esperada": "evocador--ev-principal-troca",
+      "fontes": [
+        "evocador--ev-principal-troca",
+        "evocador--ev-principal"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6640
+    },
+    {
+      "pergunta": "No livro, como funciona Intervenções da Invocação Principal?",
+      "esperada": "evocador--ev-principal-protecao",
+      "fontes": [
+        "evocador--ev-principal-protecao",
+        "evocador--ev-principal"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7360
+    },
+    {
+      "pergunta": "No livro, como funciona Preservar o Aprimoramento?",
+      "esperada": "evocador--ev-principal-continuidade",
+      "fontes": [
+        "evocador--ev-principal-continuidade"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4859
+    },
+    {
+      "pergunta": "No livro, como funciona Intervenção Reflexa?",
+      "esperada": "evocador--ev-principal-reflexa",
+      "fontes": [
+        "evocador--ev-principal-reflexa"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4712
+    },
+    {
+      "pergunta": "No livro, como funciona Parceria?",
+      "esperada": "evocador--ev-parceria",
+      "fontes": [
+        "evocador--ev-parceria",
+        "evocador--evocador",
+        "evocador--ev-turnos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 8126
+    },
+    {
+      "pergunta": "No livro, como funciona Intervenções de Parceria?",
+      "esperada": "evocador--ev-parceria-intervencoes",
+      "fontes": [
+        "evocador--ev-parceria-intervencoes",
+        "evocador--ev-parceria"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6685
+    },
+    {
+      "pergunta": "No livro, como funciona Cobrir o Parceiro?",
+      "esperada": "evocador--ev-parceria-cobrir",
+      "fontes": [
+        "evocador--ev-parceria-cobrir"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4453
+    },
+    {
+      "pergunta": "No livro, como funciona Técnicas em Conjunto?",
+      "esperada": "evocador--ev-parceria-tecnicas",
+      "fontes": [
+        "evocador--ev-parceria-tecnicas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4381
+    },
+    {
+      "pergunta": "No livro, como funciona Resposta Técnica da Dupla?",
+      "esperada": "evocador--ev-parceria-resposta",
+      "fontes": [
+        "evocador--ev-parceria-resposta"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5441
+    },
+    {
+      "pergunta": "No livro, como funciona Múltiplas Invocações?",
+      "esperada": "evocador--ev-multiplas",
+      "fontes": [
+        "evocador--ev-multiplas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5357
+    },
+    {
+      "pergunta": "No livro, como funciona Manifestação em Grupo?",
+      "esperada": "evocador--ev-multiplas-entrada",
+      "fontes": [
+        "evocador--ev-multiplas-entrada"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4632
+    },
+    {
+      "pergunta": "No livro, como funciona Aquisição em Duplas?",
+      "esperada": "evocador--ev-multiplas-duplas",
+      "fontes": [
+        "evocador--ev-multiplas-duplas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4635
+    },
+    {
+      "pergunta": "No livro, como funciona Intervenções do Conjunto?",
+      "esperada": "evocador--ev-multiplas-protecao",
+      "fontes": [
+        "evocador--ev-multiplas-protecao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4715
+    },
+    {
+      "pergunta": "No livro, como funciona Conduzir a Especial?",
+      "esperada": "evocador--ev-multiplas-conduzir",
+      "fontes": [
+        "evocador--ev-multiplas-conduzir"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4811
+    },
+    {
+      "pergunta": "No livro, como funciona Retirada em Conjunto?",
+      "esperada": "evocador--ev-multiplas-retirada",
+      "fontes": [
+        "evocador--ev-multiplas-retirada"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4130
+    },
+    {
+      "pergunta": "No livro, como funciona Aprimoramentos Distribuídos?",
+      "esperada": "evocador--ev-multiplas-aprimoramentos",
+      "fontes": [
+        "evocador--ev-multiplas-aprimoramentos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5391
+    },
+    {
+      "pergunta": "No livro, como funciona Formação Renovada?",
+      "esperada": "evocador--ev-multiplas-formacao",
+      "fontes": [
+        "evocador--ev-multiplas-formacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5069
+    },
+    {
+      "pergunta": "No livro, como funciona Repertório do Conjunto?",
+      "esperada": "evocador--ev-multiplas-repertorio",
+      "fontes": [
+        "evocador--ev-multiplas-repertorio"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4774
+    },
+    {
+      "pergunta": "No livro, como funciona Incursor?",
+      "esperada": "incursor--inc-caminho",
+      "fontes": [
+        "incursor--inc-caminho"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4514
+    },
+    {
+      "pergunta": "No livro, como funciona Movimento Acrobático?",
+      "esperada": "incursor--inc-movimento",
+      "fontes": [
+        "incursor--inc-movimento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4487
+    },
+    {
+      "pergunta": "No livro, como funciona Fluidez?",
+      "esperada": "incursor--inc-fluidez",
+      "fontes": [
+        "incursor--inc-fluidez",
+        "incursor--inc-caminho"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6293
+    },
+    {
+      "pergunta": "No livro, como funciona Retomar o Ritmo?",
+      "esperada": "incursor--inc-ritmo",
+      "fontes": [
+        "incursor--inc-ritmo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4347
+    },
+    {
+      "pergunta": "No livro, como funciona Assassino?",
+      "esperada": "incursor--inc-assassino",
+      "fontes": [
+        "incursor--inc-assassino",
+        "incursor--inc-caminho"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5959
+    },
+    {
+      "pergunta": "No livro, como funciona Estudar a Guarda?",
+      "esperada": "incursor--inc-guarda",
+      "fontes": [
+        "incursor--inc-guarda"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4162
+    },
+    {
+      "pergunta": "No livro, como funciona Golpe Cirúrgico?",
+      "esperada": "incursor--inc-cirurgico",
+      "fontes": [
+        "incursor--inc-cirurgico"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4958
+    },
+    {
+      "pergunta": "No livro, como funciona Cortar a Fuga?",
+      "esperada": "incursor--inc-cortar",
+      "fontes": [
+        "incursor--inc-cortar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4332
+    },
+    {
+      "pergunta": "No livro, como funciona Parkour?",
+      "esperada": "incursor--inc-parkour",
+      "fontes": [
+        "incursor--inc-parkour",
+        "incursor--inc-caminho"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 8004
+    },
+    {
+      "pergunta": "No livro, como funciona Brecha Fatal?",
+      "esperada": "incursor--inc-brecha",
+      "fontes": [
+        "incursor--inc-brecha"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4752
+    },
+    {
+      "pergunta": "No livro, como funciona Pugilista?",
+      "esperada": "incursor--inc-pugilista",
+      "fontes": [
+        "incursor--inc-pugilista",
+        "incursor--inc-caminho"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6024
+    },
+    {
+      "pergunta": "No livro, como funciona Corpo Treinado?",
+      "esperada": "incursor--inc-corpo",
+      "fontes": [
+        "incursor--inc-corpo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3843
+    },
+    {
+      "pergunta": "No livro, como funciona Recuperar a Base?",
+      "esperada": "incursor--inc-base",
+      "fontes": [
+        "incursor--inc-base"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5526
+    },
+    {
+      "pergunta": "No livro, como funciona Interceptar e Prender?",
+      "esperada": "incursor--inc-interceptar",
+      "fontes": [
+        "incursor--inc-interceptar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5086
+    },
+    {
+      "pergunta": "No livro, como funciona Projeção Marcial?",
+      "esperada": "incursor--inc-projecao",
+      "fontes": [
+        "incursor--inc-projecao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4802
+    },
+    {
+      "pergunta": "No livro, como funciona Corpo em Harmonia?",
+      "esperada": "incursor--inc-redirecionar",
+      "fontes": [
+        "incursor--inc-redirecionar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4682
+    },
+    {
+      "pergunta": "No livro, como funciona Redirecionar a Força?",
+      "esperada": "incursor--inc-redirecionar-resolucao",
+      "fontes": [
+        "incursor--inc-redirecionar-resolucao",
+        "incursor--inc-redirecionar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6116
+    },
+    {
+      "pergunta": "No livro, como funciona Malabarista?",
+      "esperada": "incursor--inc-malabarista",
+      "fontes": [
+        "incursor--inc-malabarista",
+        "incursor--inc-caminho"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6459
+    },
+    {
+      "pergunta": "No livro, como funciona Ricochete?",
+      "esperada": "incursor--inc-ricochete",
+      "fontes": [
+        "incursor--inc-ricochete",
+        "incursor--inc-caminho"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6988
+    },
+    {
+      "pergunta": "No livro, como funciona Mudar o Destino?",
+      "esperada": "incursor--inc-destino",
+      "fontes": [
+        "incursor--inc-destino"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4712
+    },
+    {
+      "pergunta": "No livro, como funciona Trajetória de Retorno?",
+      "esperada": "incursor--inc-retorno",
+      "fontes": [
+        "incursor--inc-retorno"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4761
+    },
+    {
+      "pergunta": "No livro, como funciona Finta de Retorno?",
+      "esperada": "incursor--inc-finta",
+      "fontes": [
+        "incursor--inc-finta"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5325
+    },
+    {
+      "pergunta": "No livro, como funciona Trajetória Perfeita?",
+      "esperada": "incursor--inc-perfeita",
+      "fontes": [
+        "incursor--inc-perfeita"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5368
+    },
+    {
+      "pergunta": "No livro, como funciona Perícias e Ofícios?",
+      "esperada": "pericias--pericias",
+      "fontes": [
+        "pericias--pericias"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5494
+    },
+    {
+      "pergunta": "No livro, como funciona Tarefas e testes?",
+      "esperada": "pericias--tarefas",
+      "fontes": [
+        "pericias--tarefas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5883
+    },
+    {
+      "pergunta": "No livro, como funciona Perícias físicas?",
+      "esperada": "pericias--fisicas",
+      "fontes": [
+        "pericias--fisicas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5554
+    },
+    {
+      "pergunta": "No livro, como funciona Investigação e conhecimento?",
+      "esperada": "pericias--conhecimento",
+      "fontes": [
+        "pericias--conhecimento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5451
+    },
+    {
+      "pergunta": "No livro, como funciona Ambiente e saúde?",
+      "esperada": "pericias--ambiente",
+      "fontes": [
+        "pericias--ambiente"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5678
+    },
+    {
+      "pergunta": "No livro, como funciona Percepção e influência?",
+      "esperada": "pericias--essencia",
+      "fontes": [
+        "pericias--essencia"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5433
+    },
+    {
+      "pergunta": "No livro, como funciona Ofícios?",
+      "esperada": "pericias--oficios",
+      "fontes": [
+        "pericias--oficios",
+        "pericias--pericias"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 8160
+    },
+    {
+      "pergunta": "No livro, como funciona Fabricação?",
+      "esperada": "pericias--fabricacao",
+      "fontes": [
+        "pericias--fabricacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5449
+    },
+    {
+      "pergunta": "No livro, como funciona Reparos?",
+      "esperada": "pericias--reparos",
+      "fontes": [
+        "pericias--reparos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5217
+    },
+    {
+      "pergunta": "No livro, como funciona Equipamento?",
+      "esperada": "equip--eq-equipamento",
+      "fontes": [
+        "equip--eq-equipamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5109
+    },
+    {
+      "pergunta": "No livro, como funciona Sacar e guardar?",
+      "esperada": "equip--eq-manipular",
+      "fontes": [
+        "equip--eq-manipular"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5234
+    },
+    {
+      "pergunta": "No livro, como funciona Usar objetos?",
+      "esperada": "equip--eq-objetos",
+      "fontes": [
+        "equip--eq-objetos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5600
+    },
+    {
+      "pergunta": "No livro, como funciona Propriedades?",
+      "esperada": "equip--eq-propriedades",
+      "fontes": [
+        "equip--eq-propriedades"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5580
+    },
+    {
+      "pergunta": "No livro, como funciona Armas escondidas?",
+      "esperada": "equip--eq-oculta",
+      "fontes": [
+        "equip--eq-oculta"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6171
+    },
+    {
+      "pergunta": "No livro, como funciona Proteção?",
+      "esperada": "equip--eqp-protecao",
+      "fontes": [
+        "equip--eqp-protecao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5733
+    },
+    {
+      "pergunta": "No livro, como funciona Trajes?",
+      "esperada": "equip--eqp-traje",
+      "fontes": [
+        "equip--eqp-traje",
+        "equip--eqf-equipamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7371
+    },
+    {
+      "pergunta": "No livro, como funciona Revestimentos e escudos?",
+      "esperada": "equip--eqp-escudo",
+      "fontes": [
+        "equip--eqp-escudo",
+        "equip--eqf-equipamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6886
+    },
+    {
+      "pergunta": "No livro, como funciona Vestir e retirar equipamento?",
+      "esperada": "equip--eqp-vestir",
+      "fontes": [
+        "equip--eqp-vestir"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5808
+    },
+    {
+      "pergunta": "No livro, como funciona Munição?",
+      "esperada": "equip--eqm-municao",
+      "fontes": [
+        "equip--eqm-municao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4861
+    },
+    {
+      "pergunta": "No livro, como funciona Recarregar?",
+      "esperada": "equip--eqm-recarga",
+      "fontes": [
+        "equip--eqm-recarga"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5486
+    },
+    {
+      "pergunta": "No livro, como funciona Reservas e reposição?",
+      "esperada": "equip--eqm-reserva",
+      "fontes": [
+        "equip--eqm-reserva"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6037
+    },
+    {
+      "pergunta": "No livro, como funciona Lâminas?",
+      "esperada": "equip--eqa-laminas",
+      "fontes": [
+        "equip--eqa-laminas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4288
+    },
+    {
+      "pergunta": "No livro, como funciona Armas de impacto?",
+      "esperada": "equip--eqa-impacto",
+      "fontes": [
+        "equip--eqa-impacto"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4483
+    },
+    {
+      "pergunta": "No livro, como funciona Machados, foices e hastes?",
+      "esperada": "equip--eqa-hastes",
+      "fontes": [
+        "equip--eqa-hastes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4182
+    },
+    {
+      "pergunta": "No livro, como funciona Armas flexíveis e de arremesso?",
+      "esperada": "equip--eqa-flexiveis",
+      "fontes": [
+        "equip--eqa-flexiveis"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4114
+    },
+    {
+      "pergunta": "No livro, como funciona Armas de disparo?",
+      "esperada": "equip--eqa-tiro",
+      "fontes": [
+        "equip--eqa-tiro"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4714
+    },
+    {
+      "pergunta": "No livro, como funciona Itens comuns?",
+      "esperada": "equip--eqi-itens",
+      "fontes": [
+        "equip--eqi-itens"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5009
+    },
+    {
+      "pergunta": "No livro, como funciona Exploração e ferramentas?",
+      "esperada": "equip--eqi-exploracao",
+      "fontes": [
+        "equip--eqi-exploracao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5587
+    },
+    {
+      "pergunta": "No livro, como funciona Fechaduras e contenção?",
+      "esperada": "equip--eqi-fechaduras",
+      "fontes": [
+        "equip--eqi-fechaduras"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5781
+    },
+    {
+      "pergunta": "No livro, como funciona Danificar objetos?",
+      "esperada": "equip--eqi-objetos",
+      "fontes": [
+        "equip--eqi-objetos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4452
+    },
+    {
+      "pergunta": "No livro, como funciona Objetos e efeitos?",
+      "esperada": "equip--eqi-efeitos",
+      "fontes": [
+        "equip--eqi-efeitos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4175
+    },
+    {
+      "pergunta": "No livro, como funciona Armas improvisadas?",
+      "esperada": "equip--eqi-improvisadas",
+      "fontes": [
+        "equip--eqi-improvisadas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5421
+    },
+    {
+      "pergunta": "No livro, como funciona Dinheiro e acesso?",
+      "esperada": "equip--eqc-dinheiro",
+      "fontes": [
+        "equip--eqc-dinheiro"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5306
+    },
+    {
+      "pergunta": "No livro, como funciona Preços de proteção?",
+      "esperada": "equip--eqc-precos",
+      "fontes": [
+        "equip--eqc-precos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4700
+    },
+    {
+      "pergunta": "No livro, como funciona Equipamento inicial?",
+      "esperada": "equip--eqc-inicial",
+      "fontes": [
+        "equip--eqc-inicial"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5177
+    },
+    {
+      "pergunta": "No livro, como funciona Compras e reposição?",
+      "esperada": "equip--eqc-compras",
+      "fontes": [
+        "equip--eqc-compras"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5110
+    },
+    {
+      "pergunta": "No livro, como funciona Equipamento amaldiçoado?",
+      "esperada": "equip--eqf-equipamento",
+      "fontes": [
+        "equip--eqf-equipamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5179
+    },
+    {
+      "pergunta": "No livro, como funciona Graus das ferramentas?",
+      "esperada": "equip--eqf-graus",
+      "fontes": [
+        "equip--eqf-graus"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5405
+    },
+    {
+      "pergunta": "No livro, como funciona Itens em uso?",
+      "esperada": "equip--eqf-uso",
+      "fontes": [
+        "equip--eqf-uso"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5305
+    },
+    {
+      "pergunta": "No livro, como funciona Aquisição e criação?",
+      "esperada": "equip--eqf-aquisicao",
+      "fontes": [
+        "equip--eqf-aquisicao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5453
+    },
+    {
+      "pergunta": "No livro, como funciona Armas amaldiçoadas?",
+      "esperada": "equip--eqf-armas",
+      "fontes": [
+        "equip--eqf-armas",
+        "equip--eqf-equipamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7746
+    },
+    {
+      "pergunta": "No livro, como funciona Roupas e trajes?",
+      "esperada": "equip--eqf-roupas",
+      "fontes": [
+        "equip--eqf-roupas",
+        "equip--eqf-equipamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7531
+    },
+    {
+      "pergunta": "No livro, como funciona Proteções amaldiçoadas?",
+      "esperada": "equip--eqf-protecao",
+      "fontes": [
+        "equip--eqf-protecao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5463
+    },
+    {
+      "pergunta": "No livro, como funciona Acessórios e outros efeitos?",
+      "esperada": "equip--eqf-acessorios",
+      "fontes": [
+        "equip--eqf-acessorios"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5069
+    },
+    {
+      "pergunta": "No livro, como funciona Armas de grau elevado?",
+      "esperada": "equip--eqf-reliquias",
+      "fontes": [
+        "equip--eqf-reliquias",
+        "equip--eqf-graus"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7861
+    },
+    {
+      "pergunta": "No livro, como funciona Desgaste?",
+      "esperada": "equip--eqf-desgaste",
+      "fontes": [
+        "equip--eqf-desgaste"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4833
+    },
+    {
+      "pergunta": "No livro, como funciona Objetos amaldiçoados?",
+      "esperada": "equip--eqf-objetos",
+      "fontes": [
+        "equip--eqf-objetos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5519
+    },
+    {
+      "pergunta": "No livro, como funciona Experiência e Progressão?",
+      "esperada": "progressao--prog-inicio",
+      "fontes": [
+        "progressao--prog-inicio"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4672
+    },
+    {
+      "pergunta": "No livro, como funciona Recompensas e custos?",
+      "esperada": "progressao--prog-xp",
+      "fontes": [
+        "progressao--prog-xp"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4168
+    },
+    {
+      "pergunta": "No livro, como funciona Experiência semanal?",
+      "esperada": "progressao--prog-semana",
+      "fontes": [
+        "progressao--prog-semana",
+        "progressao--prog-inicio"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6206
+    },
+    {
+      "pergunta": "No livro, como funciona Limiar do nível 20?",
+      "esperada": "progressao--prog-limiar",
+      "fontes": [
+        "progressao--prog-limiar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4847
+    },
+    {
+      "pergunta": "No livro, como funciona Progressão dos níveis 1 a 15?",
+      "esperada": "progressao--prog-tabela-inicial",
+      "fontes": [
+        "progressao--prog-tabela-inicial",
+        "progressao--prog-tabela-avancada"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6149
+    },
+    {
+      "pergunta": "No livro, como funciona Progressão dos níveis 16 a 30?",
+      "esperada": "progressao--prog-tabela-avancada",
+      "fontes": [
+        "progressao--prog-tabela-avancada",
+        "progressao--prog-tabela-inicial"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6150
+    },
+    {
+      "pergunta": "No livro, como funciona Marcos?",
+      "esperada": "progressao--prog-marcos",
+      "fontes": [
+        "progressao--prog-marcos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4691
+    },
+    {
+      "pergunta": "No livro, como funciona Repertório e novas escolhas?",
+      "esperada": "progressao--prog-repertorio",
+      "fontes": [
+        "progressao--prog-repertorio"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4612
+    },
+    {
+      "pergunta": "No livro, como funciona Atualizar a ficha?",
+      "esperada": "progressao--prog-atualizar",
+      "fontes": [
+        "progressao--prog-atualizar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5831
+    },
+    {
+      "pergunta": "No livro, como funciona Trocar de Trilha?",
+      "esperada": "progressao--prog-trilhas",
+      "fontes": [
+        "progressao--prog-trilhas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4761
+    },
+    {
+      "pergunta": "No livro, como funciona Mudanças de capacidade?",
+      "esperada": "progressao--prog-capacidades",
+      "fontes": [
+        "progressao--prog-capacidades"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5158
+    },
+    {
+      "pergunta": "No livro, como funciona Recompensas da guilda?",
+      "esperada": "progressao--prog-guilda",
+      "fontes": [
+        "progressao--prog-guilda"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4490
+    },
+    {
+      "pergunta": "No livro, como funciona Patentes?",
+      "esperada": "progressao--prog-patentes",
+      "fontes": [
+        "progressao--prog-patentes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4286
+    },
+    {
+      "pergunta": "No livro, como funciona Fundamento?",
+      "esperada": "fundamento--fundamento",
+      "fontes": [
+        "fundamento--fundamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 10352
+    },
+    {
+      "pergunta": "No livro, como funciona Sua técnica?",
+      "esperada": "fundamento--tecnica",
+      "fontes": [
+        "fundamento--tecnica",
+        "fundamento--fundamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 13378
+    },
+    {
+      "pergunta": "No livro, como funciona Seu primeiro feitiço?",
+      "esperada": "fundamento--primeiro",
+      "fontes": [
+        "fundamento--primeiro"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5071
+    },
+    {
+      "pergunta": "No livro, como funciona Famílias?",
+      "esperada": "fundamento--familias",
+      "fontes": [
+        "fundamento--familias",
+        "fundamento--fundamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 13019
+    },
+    {
+      "pergunta": "No livro, como funciona Selo e Talentos?",
+      "esperada": "fundamento--selo",
+      "fontes": [
+        "fundamento--selo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5917
+    },
+    {
+      "pergunta": "No livro, como funciona Feitiços conhecidos?",
+      "esperada": "fundamento--repertorio",
+      "fontes": [
+        "fundamento--repertorio",
+        "fundamento--primeiro"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7775
+    },
+    {
+      "pergunta": "No livro, como funciona Pontos e preços?",
+      "esperada": "fundamento--pontos",
+      "fontes": [
+        "fundamento--pontos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5420
+    },
+    {
+      "pergunta": "No livro, como funciona Funções e saldo?",
+      "esperada": "fundamento--funcoes",
+      "fontes": [
+        "fundamento--funcoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6983
+    },
+    {
+      "pergunta": "No livro, como funciona Formas?",
+      "esperada": "fundamento--formas",
+      "fontes": [
+        "fundamento--formas",
+        "fundamento--fundamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 15281
+    },
+    {
+      "pergunta": "No livro, como funciona Conjurar?",
+      "esperada": "fundamento--conjurar",
+      "fontes": [
+        "fundamento--conjurar",
+        "fundamento--fundamento"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 13272
+    },
+    {
+      "pergunta": "No livro, como funciona Restrições?",
+      "esperada": "fundamento--restricoes",
+      "fontes": [
+        "fundamento--restricoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5020
+    },
+    {
+      "pergunta": "No livro, como funciona Combinar peças?",
+      "esperada": "fundamento--combinacoes",
+      "fontes": [
+        "fundamento--combinacoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6378
+    },
+    {
+      "pergunta": "No livro, como funciona Três mesclas prontas?",
+      "esperada": "fundamento--mesclas",
+      "fontes": [
+        "fundamento--mesclas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5780
+    },
+    {
+      "pergunta": "No livro, como funciona Controle?",
+      "esperada": "fundamento--controle",
+      "fontes": [
+        "fundamento--controle"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 8173
+    },
+    {
+      "pergunta": "No livro, como funciona Outras aplicações?",
+      "esperada": "fundamento--aplicacoes",
+      "fontes": [
+        "fundamento--aplicacoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5568
+    },
+    {
+      "pergunta": "No livro, como funciona Dano e repetições?",
+      "esperada": "fundamento--danolimites",
+      "fontes": [
+        "fundamento--danolimites"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5927
+    },
+    {
+      "pergunta": "No livro, como funciona Áreas persistentes?",
+      "esperada": "fundamento--persistente",
+      "fontes": [
+        "fundamento--persistente"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4329
+    },
+    {
+      "pergunta": "No livro, como funciona Uso Livre?",
+      "esperada": "fundamento--livre",
+      "fontes": [
+        "fundamento--livre"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4946
+    },
+    {
+      "pergunta": "No livro, como funciona Efeitos fora de combate?",
+      "esperada": "fundamento--efeito",
+      "fontes": [
+        "fundamento--efeito",
+        "fundamento--formas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 10603
+    },
+    {
+      "pergunta": "No livro, como funciona Ampliar um feitiço?",
+      "esperada": "fundamento--ampliar",
+      "fontes": [
+        "fundamento--ampliar",
+        "fundamento--primeiro"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 9320
+    },
+    {
+      "pergunta": "No livro, como funciona Feitiços de Classe 0?",
+      "esperada": "fundamento--classezero",
+      "fontes": [
+        "fundamento--classezero",
+        "fundamento--primeiro",
+        "fundamento--pontos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 10457
+    },
+    {
+      "pergunta": "No livro, como funciona Efeitos próprios?",
+      "esperada": "fundamento--proprio",
+      "fontes": [
+        "fundamento--proprio"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5776
+    },
+    {
+      "pergunta": "No livro, como funciona Liberação Máxima?",
+      "esperada": "fundamento--liberacao",
+      "fontes": [
+        "fundamento--liberacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5117
+    },
+    {
+      "pergunta": "No livro, como funciona Técnica Máxima?",
+      "esperada": "fundamento--maxima",
+      "fontes": [
+        "fundamento--maxima"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 10470
+    },
+    {
+      "pergunta": "No livro, como funciona Ficha de feitiço?",
+      "esperada": "fundamento--ficha",
+      "fontes": [
+        "fundamento--ficha",
+        "fundamento--primeiro"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7076
+    },
+    {
+      "pergunta": "No livro, como funciona Caminhos e usos especiais?",
+      "esperada": "fundamento--interfaces",
+      "fontes": [
+        "fundamento--interfaces"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4505
+    },
+    {
+      "pergunta": "No livro, como funciona Catálogo de criação?",
+      "esperada": "catalogo--cat-catalogo",
+      "fontes": [
+        "catalogo--cat-catalogo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5920
+    },
+    {
+      "pergunta": "No livro, como funciona Efeitos: acrescentar uma função?",
+      "esperada": "catalogo--cat-efeitos",
+      "fontes": [
+        "catalogo--cat-efeitos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3165
+    },
+    {
+      "pergunta": "No livro, como funciona Passo?",
+      "esperada": "catalogo--melhoria-passo",
+      "fontes": [
+        "catalogo--melhoria-passo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3314
+    },
+    {
+      "pergunta": "No livro, como funciona Empurrão?",
+      "esperada": "catalogo--melhoria-empurrao",
+      "fontes": [
+        "catalogo--melhoria-empurrao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3787
+    },
+    {
+      "pergunta": "No livro, como funciona Condição?",
+      "esperada": "catalogo--melhoria-condicao",
+      "fontes": [
+        "catalogo--melhoria-condicao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3595
+    },
+    {
+      "pergunta": "No livro, como funciona Terreno?",
+      "esperada": "catalogo--melhoria-terreno",
+      "fontes": [
+        "catalogo--melhoria-terreno"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3301
+    },
+    {
+      "pergunta": "No livro, como funciona Cerca?",
+      "esperada": "catalogo--melhoria-cerca",
+      "fontes": [
+        "catalogo--melhoria-cerca"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3244
+    },
+    {
+      "pergunta": "No livro, como funciona Desarma o Feitiço?",
+      "esperada": "catalogo--melhoria-desarma-o-feitico",
+      "fontes": [
+        "catalogo--melhoria-desarma-o-feitico"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3939
+    },
+    {
+      "pergunta": "No livro, como funciona Anteparo?",
+      "esperada": "catalogo--melhoria-anteparo",
+      "fontes": [
+        "catalogo--melhoria-anteparo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3717
+    },
+    {
+      "pergunta": "No livro, como funciona Prende?",
+      "esperada": "catalogo--melhoria-prende",
+      "fontes": [
+        "catalogo--melhoria-prende"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3566
+    },
+    {
+      "pergunta": "No livro, como funciona Impulso?",
+      "esperada": "catalogo--melhoria-impulso",
+      "fontes": [
+        "catalogo--melhoria-impulso"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3207
+    },
+    {
+      "pergunta": "No livro, como funciona Trava?",
+      "esperada": "catalogo--melhoria-trava",
+      "fontes": [
+        "catalogo--melhoria-trava"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3091
+    },
+    {
+      "pergunta": "No livro, como funciona Abre Ferida?",
+      "esperada": "catalogo--melhoria-abre-ferida",
+      "fontes": [
+        "catalogo--melhoria-abre-ferida"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3408
+    },
+    {
+      "pergunta": "No livro, como funciona Sobrecarga?",
+      "esperada": "catalogo--melhoria-sobrecarga",
+      "fontes": [
+        "catalogo--melhoria-sobrecarga",
+        "catalogo--restricao-sobrecusto"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4036
+    },
+    {
+      "pergunta": "No livro, como funciona Firmeza?",
+      "esperada": "catalogo--melhoria-firmeza",
+      "fontes": [
+        "catalogo--melhoria-firmeza"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4015
+    },
+    {
+      "pergunta": "No livro, como funciona Guarda?",
+      "esperada": "catalogo--melhoria-guarda",
+      "fontes": [
+        "catalogo--melhoria-guarda"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3100
+    },
+    {
+      "pergunta": "No livro, como funciona Pressa?",
+      "esperada": "catalogo--melhoria-pressa",
+      "fontes": [
+        "catalogo--melhoria-pressa"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3193
+    },
+    {
+      "pergunta": "No livro, como funciona Enfraquece?",
+      "esperada": "catalogo--melhoria-enfraquece",
+      "fontes": [
+        "catalogo--melhoria-enfraquece"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3438
+    },
+    {
+      "pergunta": "No livro, como funciona Ecoa?",
+      "esperada": "catalogo--melhoria-ecoa",
+      "fontes": [
+        "catalogo--melhoria-ecoa"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3473
+    },
+    {
+      "pergunta": "No livro, como funciona Sem Cura?",
+      "esperada": "catalogo--melhoria-sem-cura",
+      "fontes": [
+        "catalogo--melhoria-sem-cura"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3209
+    },
+    {
+      "pergunta": "No livro, como funciona Marca?",
+      "esperada": "catalogo--melhoria-marca",
+      "fontes": [
+        "catalogo--melhoria-marca"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3152
+    },
+    {
+      "pergunta": "No livro, como funciona Alvo de Caça?",
+      "esperada": "catalogo--melhoria-alvo-de-caca",
+      "fontes": [
+        "catalogo--melhoria-alvo-de-caca"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3522
+    },
+    {
+      "pergunta": "No livro, como funciona Rastro?",
+      "esperada": "catalogo--melhoria-rastro",
+      "fontes": [
+        "catalogo--melhoria-rastro"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3237
+    },
+    {
+      "pergunta": "No livro, como funciona Isca?",
+      "esperada": "catalogo--melhoria-isca",
+      "fontes": [
+        "catalogo--melhoria-isca"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3475
+    },
+    {
+      "pergunta": "No livro, como funciona Sugar?",
+      "esperada": "catalogo--melhoria-sugar",
+      "fontes": [
+        "catalogo--melhoria-sugar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3772
+    },
+    {
+      "pergunta": "No livro, como funciona Cobrança?",
+      "esperada": "catalogo--melhoria-cobranca",
+      "fontes": [
+        "catalogo--melhoria-cobranca"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3930
+    },
+    {
+      "pergunta": "No livro, como funciona Identificar Feitiço?",
+      "esperada": "catalogo--melhoria-identificar-feitico",
+      "fontes": [
+        "catalogo--melhoria-identificar-feitico"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3535
+    },
+    {
+      "pergunta": "No livro, como funciona Limpa?",
+      "esperada": "catalogo--melhoria-limpa",
+      "fontes": [
+        "catalogo--melhoria-limpa",
+        "catalogo--melhoria-limpa-fundo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3539
+    },
+    {
+      "pergunta": "No livro, como funciona Limpa Fundo?",
+      "esperada": "catalogo--melhoria-limpa-fundo",
+      "fontes": [
+        "catalogo--melhoria-limpa-fundo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3246
+    },
+    {
+      "pergunta": "No livro, como funciona Levanta?",
+      "esperada": "catalogo--melhoria-levanta",
+      "fontes": [
+        "catalogo--melhoria-levanta"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3559
+    },
+    {
+      "pergunta": "No livro, como funciona Remenda?",
+      "esperada": "catalogo--melhoria-remenda",
+      "fontes": [
+        "catalogo--melhoria-remenda"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3334
+    },
+    {
+      "pergunta": "No livro, como funciona Divide?",
+      "esperada": "catalogo--melhoria-divide",
+      "fontes": [
+        "catalogo--melhoria-divide"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3550
+    },
+    {
+      "pergunta": "No livro, como funciona Modificadores: ajustar a aplicação?",
+      "esperada": "catalogo--cat-modificadores",
+      "fontes": [
+        "catalogo--cat-modificadores"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3239
+    },
+    {
+      "pergunta": "No livro, como funciona Longe?",
+      "esperada": "catalogo--melhoria-longe",
+      "fontes": [
+        "catalogo--melhoria-longe"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3851
+    },
+    {
+      "pergunta": "No livro, como funciona Sem Ver?",
+      "esperada": "catalogo--melhoria-sem-ver",
+      "fontes": [
+        "catalogo--melhoria-sem-ver"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3244
+    },
+    {
+      "pergunta": "No livro, como funciona Perseguir?",
+      "esperada": "catalogo--melhoria-perseguir",
+      "fontes": [
+        "catalogo--melhoria-perseguir"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3670
+    },
+    {
+      "pergunta": "No livro, como funciona Maior?",
+      "esperada": "catalogo--melhoria-maior",
+      "fontes": [
+        "catalogo--melhoria-maior"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3843
+    },
+    {
+      "pergunta": "No livro, como funciona Escolher?",
+      "esperada": "catalogo--melhoria-escolher",
+      "fontes": [
+        "catalogo--melhoria-escolher"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3563
+    },
+    {
+      "pergunta": "No livro, como funciona Mais Um?",
+      "esperada": "catalogo--melhoria-mais-um",
+      "fontes": [
+        "catalogo--melhoria-mais-um",
+        "evocador--ev-principal"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6990
+    },
+    {
+      "pergunta": "No livro, como funciona Rajada?",
+      "esperada": "catalogo--melhoria-rajada",
+      "fontes": [
+        "catalogo--melhoria-rajada"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3572
+    },
+    {
+      "pergunta": "No livro, como funciona Fica?",
+      "esperada": "catalogo--melhoria-fica",
+      "fontes": [
+        "catalogo--melhoria-fica"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3175
+    },
+    {
+      "pergunta": "No livro, como funciona Salto?",
+      "esperada": "catalogo--melhoria-salto",
+      "fontes": [
+        "catalogo--melhoria-salto"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3761
+    },
+    {
+      "pergunta": "No livro, como funciona Contorno?",
+      "esperada": "catalogo--melhoria-contorno",
+      "fontes": [
+        "catalogo--melhoria-contorno"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3485
+    },
+    {
+      "pergunta": "No livro, como funciona Precisão?",
+      "esperada": "catalogo--melhoria-precisao",
+      "fontes": [
+        "catalogo--melhoria-precisao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3192
+    },
+    {
+      "pergunta": "No livro, como funciona Inescapável?",
+      "esperada": "catalogo--melhoria-inescapavel",
+      "fontes": [
+        "catalogo--melhoria-inescapavel"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3302
+    },
+    {
+      "pergunta": "No livro, como funciona De Novo?",
+      "esperada": "catalogo--melhoria-de-novo",
+      "fontes": [
+        "catalogo--melhoria-de-novo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3277
+    },
+    {
+      "pergunta": "No livro, como funciona Fura?",
+      "esperada": "catalogo--melhoria-fura",
+      "fontes": [
+        "catalogo--melhoria-fura"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3156
+    },
+    {
+      "pergunta": "No livro, como funciona Corrói?",
+      "esperada": "catalogo--melhoria-corroi",
+      "fontes": [
+        "catalogo--melhoria-corroi"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3172
+    },
+    {
+      "pergunta": "No livro, como funciona Sem Cobertura?",
+      "esperada": "catalogo--melhoria-sem-cobertura",
+      "fontes": [
+        "catalogo--melhoria-sem-cobertura"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3168
+    },
+    {
+      "pergunta": "No livro, como funciona Toca a Alma?",
+      "esperada": "catalogo--melhoria-toca-a-alma",
+      "fontes": [
+        "catalogo--melhoria-toca-a-alma"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3293
+    },
+    {
+      "pergunta": "No livro, como funciona Queima?",
+      "esperada": "catalogo--melhoria-queima",
+      "fontes": [
+        "catalogo--melhoria-queima"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3558
+    },
+    {
+      "pergunta": "No livro, como funciona Acúmulo?",
+      "esperada": "catalogo--melhoria-acumulo",
+      "fontes": [
+        "catalogo--melhoria-acumulo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4369
+    },
+    {
+      "pergunta": "No livro, como funciona Remate?",
+      "esperada": "catalogo--melhoria-remate",
+      "fontes": [
+        "catalogo--melhoria-remate"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3502
+    },
+    {
+      "pergunta": "No livro, como funciona Estilhaço?",
+      "esperada": "catalogo--melhoria-estilhaco",
+      "fontes": [
+        "catalogo--melhoria-estilhaco"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3692
+    },
+    {
+      "pergunta": "No livro, como funciona Quebra Coisa?",
+      "esperada": "catalogo--melhoria-quebra-coisa",
+      "fontes": [
+        "catalogo--melhoria-quebra-coisa"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3298
+    },
+    {
+      "pergunta": "No livro, como funciona Rasga Escudo?",
+      "esperada": "catalogo--melhoria-rasga-escudo",
+      "fontes": [
+        "catalogo--melhoria-rasga-escudo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3185
+    },
+    {
+      "pergunta": "No livro, como funciona Rápido?",
+      "esperada": "catalogo--melhoria-rapido",
+      "fontes": [
+        "catalogo--melhoria-rapido"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3128
+    },
+    {
+      "pergunta": "No livro, como funciona Reação?",
+      "esperada": "catalogo--melhoria-reacao",
+      "fontes": [
+        "catalogo--melhoria-reacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3349
+    },
+    {
+      "pergunta": "No livro, como funciona Armado?",
+      "esperada": "catalogo--melhoria-armado",
+      "fontes": [
+        "catalogo--melhoria-armado"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3387
+    },
+    {
+      "pergunta": "No livro, como funciona Silencioso?",
+      "esperada": "catalogo--melhoria-silencioso",
+      "fontes": [
+        "catalogo--melhoria-silencioso"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3425
+    },
+    {
+      "pergunta": "No livro, como funciona Segura?",
+      "esperada": "catalogo--melhoria-segura",
+      "fontes": [
+        "catalogo--melhoria-segura"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3081
+    },
+    {
+      "pergunta": "No livro, como funciona Concentrada / Duradoura?",
+      "esperada": "catalogo--melhoria-concentrada-duradoura",
+      "fontes": [
+        "catalogo--melhoria-concentrada-duradoura"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5219
+    },
+    {
+      "pergunta": "No livro, como funciona Reserva?",
+      "esperada": "catalogo--melhoria-reserva",
+      "fontes": [
+        "catalogo--melhoria-reserva"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3843
+    },
+    {
+      "pergunta": "No livro, como funciona Criação própria?",
+      "esperada": "catalogo--cat-proprio",
+      "fontes": [
+        "catalogo--cat-proprio"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 2911
+    },
+    {
+      "pergunta": "No livro, como funciona Efeito Próprio?",
+      "esperada": "catalogo--melhoria-efeito-proprio",
+      "fontes": [
+        "catalogo--melhoria-efeito-proprio"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5656
+    },
+    {
+      "pergunta": "No livro, como funciona Catálogo de Restrições?",
+      "esperada": "catalogo--cat-restricoes",
+      "fontes": [
+        "catalogo--cat-restricoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3068
+    },
+    {
+      "pergunta": "No livro, como funciona Restrições de conjuração?",
+      "esperada": "catalogo--grupo-restricoes-de-conjuracao",
+      "fontes": [
+        "catalogo--grupo-restricoes-de-conjuracao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3218
+    },
+    {
+      "pergunta": "No livro, como funciona Queima-Roupa?",
+      "esperada": "catalogo--restricao-queima-roupa",
+      "fontes": [
+        "catalogo--restricao-queima-roupa"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4552
+    },
+    {
+      "pergunta": "No livro, como funciona Atrasar?",
+      "esperada": "catalogo--restricao-atrasar",
+      "fontes": [
+        "catalogo--restricao-atrasar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3338
+    },
+    {
+      "pergunta": "No livro, como funciona Parado?",
+      "esperada": "catalogo--restricao-parado",
+      "fontes": [
+        "catalogo--restricao-parado"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3426
+    },
+    {
+      "pergunta": "No livro, como funciona Gesto?",
+      "esperada": "catalogo--restricao-gesto",
+      "fontes": [
+        "catalogo--restricao-gesto"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3273
+    },
+    {
+      "pergunta": "No livro, como funciona Carregar?",
+      "esperada": "catalogo--restricao-carregar",
+      "fontes": [
+        "catalogo--restricao-carregar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3612
+    },
+    {
+      "pergunta": "No livro, como funciona Custos e consequências?",
+      "esperada": "catalogo--grupo-custos-e-consequencias",
+      "fontes": [
+        "catalogo--grupo-custos-e-consequencias"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 2943
+    },
+    {
+      "pergunta": "No livro, como funciona Sangra?",
+      "esperada": "catalogo--restricao-sangra",
+      "fontes": [
+        "catalogo--restricao-sangra"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3082
+    },
+    {
+      "pergunta": "No livro, como funciona Sobrecusto?",
+      "esperada": "catalogo--restricao-sobrecusto",
+      "fontes": [
+        "catalogo--restricao-sobrecusto",
+        "catalogo--melhoria-sobrecarga"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4036
+    },
+    {
+      "pergunta": "No livro, como funciona Recuo?",
+      "esperada": "catalogo--restricao-recuo",
+      "fontes": [
+        "catalogo--restricao-recuo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3404
+    },
+    {
+      "pergunta": "No livro, como funciona Fraqueza?",
+      "esperada": "catalogo--restricao-fraqueza",
+      "fontes": [
+        "catalogo--restricao-fraqueza"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3319
+    },
+    {
+      "pergunta": "No livro, como funciona Peso Morto?",
+      "esperada": "catalogo--restricao-peso-morto",
+      "fontes": [
+        "catalogo--restricao-peso-morto"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3173
+    },
+    {
+      "pergunta": "No livro, como funciona Frágil?",
+      "esperada": "catalogo--restricao-fragil",
+      "fontes": [
+        "catalogo--restricao-fragil"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4181
+    },
+    {
+      "pergunta": "No livro, como funciona Sem Volta?",
+      "esperada": "catalogo--restricao-sem-volta",
+      "fontes": [
+        "catalogo--restricao-sem-volta"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3557
+    },
+    {
+      "pergunta": "No livro, como funciona Condições de uso?",
+      "esperada": "catalogo--grupo-condicoes-de-uso",
+      "fontes": [
+        "catalogo--grupo-condicoes-de-uso"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3081
+    },
+    {
+      "pergunta": "No livro, como funciona Uma Vez?",
+      "esperada": "catalogo--restricao-uma-vez",
+      "fontes": [
+        "catalogo--restricao-uma-vez"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3098
+    },
+    {
+      "pergunta": "No livro, como funciona Condicional?",
+      "esperada": "catalogo--restricao-condicional",
+      "fontes": [
+        "catalogo--restricao-condicional"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4041
+    },
+    {
+      "pergunta": "No livro, como funciona Aquecer?",
+      "esperada": "catalogo--restricao-aquecer",
+      "fontes": [
+        "catalogo--restricao-aquecer"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3210
+    },
+    {
+      "pergunta": "No livro, como funciona Tudo ou Nada?",
+      "esperada": "catalogo--restricao-tudo-ou-nada",
+      "fontes": [
+        "catalogo--restricao-tudo-ou-nada"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3253
+    },
+    {
+      "pergunta": "No livro, como funciona Exposição e novas Restrições?",
+      "esperada": "catalogo--grupo-exposicao-e-novas-restricoes",
+      "fontes": [
+        "catalogo--grupo-exposicao-e-novas-restricoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 2961
+    },
+    {
+      "pergunta": "No livro, como funciona Barulho?",
+      "esperada": "catalogo--restricao-barulho",
+      "fontes": [
+        "catalogo--restricao-barulho"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3443
+    },
+    {
+      "pergunta": "No livro, como funciona Assinatura?",
+      "esperada": "catalogo--restricao-assinatura",
+      "fontes": [
+        "catalogo--restricao-assinatura"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3306
+    },
+    {
+      "pergunta": "No livro, como funciona Restrição Própria?",
+      "esperada": "catalogo--restricao-restricao-propria",
+      "fontes": [
+        "catalogo--restricao-restricao-propria"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4708
+    },
+    {
+      "pergunta": "No livro, como funciona Talentos e Regra Própria?",
+      "esperada": "catalogo--cat-talentos",
+      "fontes": [
+        "catalogo--cat-talentos",
+        "catalogo--cat-passiva-propria"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5549
+    },
+    {
+      "pergunta": "No livro, como funciona Talentos de Categoria 1?",
+      "esperada": "catalogo--cat-passivas-1",
+      "fontes": [
+        "catalogo--cat-passivas-1"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5531
+    },
+    {
+      "pergunta": "No livro, como funciona Talentos de Categoria 2?",
+      "esperada": "catalogo--cat-passivas-2-recursos",
+      "fontes": [
+        "catalogo--cat-passivas-2-recursos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6994
+    },
+    {
+      "pergunta": "No livro, como funciona Talentos de Categoria 3?",
+      "esperada": "catalogo--cat-passivas-3",
+      "fontes": [
+        "catalogo--cat-passivas-3"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4295
+    },
+    {
+      "pergunta": "No livro, como funciona Regra Própria?",
+      "esperada": "catalogo--cat-regra-propria",
+      "fontes": [
+        "catalogo--cat-regra-propria"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5323
+    },
+    {
+      "pergunta": "No livro, como funciona Talento Próprio?",
+      "esperada": "catalogo--cat-passiva-propria",
+      "fontes": [
+        "catalogo--cat-passiva-propria",
+        "catalogo--cat-talentos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5540
+    },
+    {
+      "pergunta": "No livro, como funciona Aptidões e Refino?",
+      "esperada": "aptidoes--apt-refino",
+      "fontes": [
+        "aptidoes--apt-refino"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4869
+    },
+    {
+      "pergunta": "No livro, como funciona Progressão de Refino?",
+      "esperada": "aptidoes--apt-marcos",
+      "fontes": [
+        "aptidoes--apt-marcos",
+        "aptidoes--apt-refino"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5872
+    },
+    {
+      "pergunta": "No livro, como funciona Catálogo de aptidões?",
+      "esperada": "aptidoes--apt-catalogo",
+      "fontes": [
+        "aptidoes--apt-catalogo",
+        "aptidoes--apt-refino"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6515
+    },
+    {
+      "pergunta": "No livro, como funciona Cobrir-se de Energia?",
+      "esperada": "aptidoes--apt-cobrir",
+      "fontes": [
+        "aptidoes--apt-cobrir"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4392
+    },
+    {
+      "pergunta": "No livro, como funciona Canalizar Energia?",
+      "esperada": "aptidoes--apt-canalizar",
+      "fontes": [
+        "aptidoes--apt-canalizar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4455
+    },
+    {
+      "pergunta": "No livro, como funciona Projetar Energia?",
+      "esperada": "aptidoes--apt-projetar",
+      "fontes": [
+        "aptidoes--apt-projetar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4396
+    },
+    {
+      "pergunta": "No livro, como funciona Energia Reversa?",
+      "esperada": "aptidoes--apt-reversa",
+      "fontes": [
+        "aptidoes--apt-reversa",
+        "aptidoes--apt-energia-positiva"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6104
+    },
+    {
+      "pergunta": "No livro, como funciona Ferir maldições?",
+      "esperada": "aptidoes--apt-energia-positiva",
+      "fontes": [
+        "aptidoes--apt-energia-positiva"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4571
+    },
+    {
+      "pergunta": "No livro, como funciona Circulação?",
+      "esperada": "aptidoes--apt-circulacao",
+      "fontes": [
+        "aptidoes--apt-circulacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4257
+    },
+    {
+      "pergunta": "No livro, como funciona Regravação?",
+      "esperada": "aptidoes--apt-regravacao",
+      "fontes": [
+        "aptidoes--apt-regravacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4286
+    },
+    {
+      "pergunta": "No livro, como funciona Kokusen?",
+      "esperada": "aptidoes--apt-kokusen",
+      "fontes": [
+        "aptidoes--apt-kokusen"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4570
+    },
+    {
+      "pergunta": "No livro, como funciona Cesta Oca de Vime?",
+      "esperada": "aptidoes--apt-cesta",
+      "fontes": [
+        "aptidoes--apt-cesta"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4795
+    },
+    {
+      "pergunta": "No livro, como funciona Domínio Simples?",
+      "esperada": "aptidoes--apt-simples",
+      "fontes": [
+        "aptidoes--apt-simples",
+        "aptidoes--apt-simples-duracao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6897
+    },
+    {
+      "pergunta": "No livro, como funciona Duração do Domínio Simples?",
+      "esperada": "aptidoes--apt-simples-duracao",
+      "fontes": [
+        "aptidoes--apt-simples-duracao",
+        "aptidoes--apt-simples"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6908
+    },
+    {
+      "pergunta": "No livro, como funciona Pétala?",
+      "esperada": "aptidoes--apt-petala",
+      "fontes": [
+        "aptidoes--apt-petala"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4917
+    },
+    {
+      "pergunta": "No livro, como funciona Extensão de Domínio?",
+      "esperada": "aptidoes--apt-extensao",
+      "fontes": [
+        "aptidoes--apt-extensao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4774
+    },
+    {
+      "pergunta": "No livro, como funciona Barreira Simples?",
+      "esperada": "aptidoes--apt-barreira",
+      "fontes": [
+        "aptidoes--apt-barreira"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5103
+    },
+    {
+      "pergunta": "No livro, como funciona Cortina?",
+      "esperada": "aptidoes--apt-cortina",
+      "fontes": [
+        "aptidoes--apt-cortina"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5240
+    },
+    {
+      "pergunta": "No livro, como funciona Aptidão Própria?",
+      "esperada": "aptidoes--apt-propria",
+      "fontes": [
+        "aptidoes--apt-propria",
+        "aptidoes--apt-refino"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6926
+    },
+    {
+      "pergunta": "No livro, como funciona Rotas de criação?",
+      "esperada": "rotas--rotas",
+      "fontes": [
+        "rotas--rotas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6833
+    },
+    {
+      "pergunta": "No livro, como funciona Técnica Marcial?",
+      "esperada": "rotas--rota-marcial",
+      "fontes": [
+        "rotas--rota-marcial"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5223
+    },
+    {
+      "pergunta": "No livro, como funciona Ferramenta?",
+      "esperada": "rotas--rota-ferramenta",
+      "fontes": [
+        "rotas--rota-ferramenta"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4859
+    },
+    {
+      "pergunta": "No livro, como funciona Talentos marciais?",
+      "esperada": "rotas--rota-passivas-marciais",
+      "fontes": [
+        "rotas--rota-passivas-marciais"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4730
+    },
+    {
+      "pergunta": "No livro, como funciona Talentos de resposta?",
+      "esperada": "rotas--rota-passivas-resposta",
+      "fontes": [
+        "rotas--rota-passivas-resposta"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5068
+    },
+    {
+      "pergunta": "No livro, como funciona Invocações nas rotas?",
+      "esperada": "rotas--rota-invocacoes",
+      "fontes": [
+        "rotas--rota-invocacoes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4883
+    },
+    {
+      "pergunta": "No livro, como funciona Sementes?",
+      "esperada": "rotas--rota-sementes",
+      "fontes": [
+        "rotas--rota-sementes",
+        "rotas--rota-sem-tecnica"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7273
+    },
+    {
+      "pergunta": "No livro, como funciona Lapidação?",
+      "esperada": "rotas--rota-lapidacao",
+      "fontes": [
+        "rotas--rota-lapidacao",
+        "rotas--rota-estimulo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6895
+    },
+    {
+      "pergunta": "No livro, como funciona Bênçãos?",
+      "esperada": "rotas--rota-bencaos",
+      "fontes": [
+        "rotas--rota-bencaos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4832
+    },
+    {
+      "pergunta": "No livro, como funciona Defesa sem Armadura?",
+      "esperada": "rotas--rota-defesa",
+      "fontes": [
+        "rotas--rota-defesa"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5122
+    },
+    {
+      "pergunta": "No livro, como funciona Estímulo Muscular?",
+      "esperada": "rotas--rota-estimulo",
+      "fontes": [
+        "rotas--rota-estimulo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4628
+    },
+    {
+      "pergunta": "No livro, como funciona Bênçãos de corpo?",
+      "esperada": "rotas--rota-corpo",
+      "fontes": [
+        "rotas--rota-corpo",
+        "rotas--rota-bencaos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6933
+    },
+    {
+      "pergunta": "No livro, como funciona Bênçãos de perseguição?",
+      "esperada": "rotas--rota-perseguicao",
+      "fontes": [
+        "rotas--rota-perseguicao",
+        "rotas--rota-bencaos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6808
+    },
+    {
+      "pergunta": "No livro, como funciona Bênçãos de combate?",
+      "esperada": "rotas--rota-combate",
+      "fontes": [
+        "rotas--rota-combate",
+        "rotas--rota-bencaos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 8544
+    },
+    {
+      "pergunta": "No livro, como funciona Bênção Própria?",
+      "esperada": "rotas--rota-propria",
+      "fontes": [
+        "rotas--rota-propria",
+        "rotas--rota-bencaos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6877
+    },
+    {
+      "pergunta": "No livro, como funciona Expansão de Domínio?",
+      "esperada": "poderes--degraus",
+      "fontes": [
+        "poderes--degraus"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5243
+    },
+    {
+      "pergunta": "No livro, como funciona Criar um domínio?",
+      "esperada": "poderes--criardominio",
+      "fontes": [
+        "poderes--criardominio"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4834
+    },
+    {
+      "pergunta": "No livro, como funciona Acerto do domínio?",
+      "esperada": "poderes--acerto",
+      "fontes": [
+        "poderes--acerto"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4810
+    },
+    {
+      "pergunta": "No livro, como funciona Abrir e manter?",
+      "esperada": "poderes--abertura",
+      "fontes": [
+        "poderes--abertura"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4661
+    },
+    {
+      "pergunta": "No livro, como funciona Barreira e movimento?",
+      "esperada": "poderes--barreira",
+      "fontes": [
+        "poderes--barreira"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4880
+    },
+    {
+      "pergunta": "No livro, como funciona Encerramento e Rescaldo?",
+      "esperada": "poderes--rescaldo",
+      "fontes": [
+        "poderes--rescaldo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4498
+    },
+    {
+      "pergunta": "No livro, como funciona Expansão sem Barreiras?",
+      "esperada": "poderes--sembarreiras",
+      "fontes": [
+        "poderes--sembarreiras",
+        "poderes--barreira"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6944
+    },
+    {
+      "pergunta": "No livro, como funciona Disputa de domínios?",
+      "esperada": "poderes--disputa",
+      "fontes": [
+        "poderes--disputa"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4695
+    },
+    {
+      "pergunta": "No livro, como funciona Manter uma disputa?",
+      "esperada": "poderes--manterdisputa",
+      "fontes": [
+        "poderes--manterdisputa"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4437
+    },
+    {
+      "pergunta": "No livro, como funciona Áreas sobrepostas?",
+      "esperada": "poderes--sobreposicao",
+      "fontes": [
+        "poderes--sobreposicao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4773
+    },
+    {
+      "pergunta": "No livro, como funciona Vários domínios?",
+      "esperada": "poderes--multiplos",
+      "fontes": [
+        "poderes--multiplos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5363
+    },
+    {
+      "pergunta": "No livro, como funciona Ritual?",
+      "esperada": "ritual--ritual",
+      "fontes": [
+        "ritual--ritual",
+        "ritual--rit-melhorias"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6653
+    },
+    {
+      "pergunta": "No livro, como funciona Teste de Ritual?",
+      "esperada": "ritual--rit-teste",
+      "fontes": [
+        "ritual--rit-teste",
+        "ritual--ritual"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6378
+    },
+    {
+      "pergunta": "No livro, como funciona Recitação Prolongada?",
+      "esperada": "ritual--rit-recitar",
+      "fontes": [
+        "ritual--rit-recitar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4936
+    },
+    {
+      "pergunta": "No livro, como funciona Melhorias de Ritual?",
+      "esperada": "ritual--rit-melhorias",
+      "fontes": [
+        "ritual--rit-melhorias",
+        "ritual--ritual"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6816
+    },
+    {
+      "pergunta": "No livro, como funciona Alvos e efeitos do Ritual?",
+      "esperada": "ritual--rit-beneficios",
+      "fontes": [
+        "ritual--rit-beneficios",
+        "ritual--ritual"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6620
+    },
+    {
+      "pergunta": "No livro, como funciona Parcelas adicionais?",
+      "esperada": "ritual--rit-parcelas",
+      "fontes": [
+        "ritual--rit-parcelas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5047
+    },
+    {
+      "pergunta": "No livro, como funciona Combinações de Ritual?",
+      "esperada": "ritual--rit-limites",
+      "fontes": [
+        "ritual--rit-limites",
+        "ritual--ritual"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7344
+    },
+    {
+      "pergunta": "No livro, como funciona Ritual em conjunto?",
+      "esperada": "ritual--rit-ajuda",
+      "fontes": [
+        "ritual--rit-ajuda",
+        "ritual--ritual"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7045
+    },
+    {
+      "pergunta": "No livro, como funciona Pactos?",
+      "esperada": "ritual--pactos",
+      "fontes": [
+        "ritual--pactos",
+        "ritual--pacto-permanente"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7703
+    },
+    {
+      "pergunta": "No livro, como funciona Pacto permanente?",
+      "esperada": "ritual--pacto-permanente",
+      "fontes": [
+        "ritual--pacto-permanente",
+        "ritual--pactos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7713
+    },
+    {
+      "pergunta": "No livro, como funciona Pacto temporário?",
+      "esperada": "ritual--pacto-temporario",
+      "fontes": [
+        "ritual--pacto-temporario",
+        "ritual--pactos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 8028
+    },
+    {
+      "pergunta": "No livro, como funciona Promessa?",
+      "esperada": "ritual--promessa",
+      "fontes": [
+        "ritual--promessa",
+        "ritual--pactos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7138
+    },
+    {
+      "pergunta": "No livro, como funciona Pactos na criação?",
+      "esperada": "ritual--pacto-restricao",
+      "fontes": [
+        "ritual--pacto-restricao",
+        "ritual--pactos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7315
+    },
+    {
+      "pergunta": "No livro, como funciona Invocações em campo?",
+      "esperada": "campo--inv-campo",
+      "fontes": [
+        "campo--inv-campo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4564
+    },
+    {
+      "pergunta": "No livro, como funciona Turnos das entidades?",
+      "esperada": "campo--inv-ciclo",
+      "fontes": [
+        "campo--inv-ciclo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4710
+    },
+    {
+      "pergunta": "No livro, como funciona Manifestar e recolher?",
+      "esperada": "campo--inv-entrada",
+      "fontes": [
+        "campo--inv-entrada"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4502
+    },
+    {
+      "pergunta": "No livro, como funciona Trocar de entidade?",
+      "esperada": "campo--inv-troca",
+      "fontes": [
+        "campo--inv-troca"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4645
+    },
+    {
+      "pergunta": "No livro, como funciona Dar uma tarefa?",
+      "esperada": "campo--inv-intencao",
+      "fontes": [
+        "campo--inv-intencao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4595
+    },
+    {
+      "pergunta": "No livro, como funciona Comunicação?",
+      "esperada": "campo--inv-comunicacao",
+      "fontes": [
+        "campo--inv-comunicacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4514
+    },
+    {
+      "pergunta": "No livro, como funciona Atuação básica?",
+      "esperada": "campo--inv-basica",
+      "fontes": [
+        "campo--inv-basica"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5163
+    },
+    {
+      "pergunta": "No livro, como funciona Comandar uma especial?",
+      "esperada": "campo--inv-especial",
+      "fontes": [
+        "campo--inv-especial"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4412
+    },
+    {
+      "pergunta": "No livro, como funciona Energia das entidades?",
+      "esperada": "campo--inv-energia",
+      "fontes": [
+        "campo--inv-energia"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4993
+    },
+    {
+      "pergunta": "No livro, como funciona Ordem antecipada?",
+      "esperada": "campo--inv-antecipada",
+      "fontes": [
+        "campo--inv-antecipada"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4535
+    },
+    {
+      "pergunta": "No livro, como funciona Ordens pendentes?",
+      "esperada": "campo--inv-pendentes",
+      "fontes": [
+        "campo--inv-pendentes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4691
+    },
+    {
+      "pergunta": "No livro, como funciona Preparar uma ação?",
+      "esperada": "campo--inv-preparar",
+      "fontes": [
+        "campo--inv-preparar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4714
+    },
+    {
+      "pergunta": "No livro, como funciona Gatilhos e ajustes?",
+      "esperada": "campo--inv-gatilhos",
+      "fontes": [
+        "campo--inv-gatilhos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4574
+    },
+    {
+      "pergunta": "No livro, como funciona Especiais de execução rápida?",
+      "esperada": "campo--inv-tempo",
+      "fontes": [
+        "campo--inv-tempo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4357
+    },
+    {
+      "pergunta": "No livro, como funciona Especiais com preparação prolongada?",
+      "esperada": "campo--inv-restricoes-tempo",
+      "fontes": [
+        "campo--inv-restricoes-tempo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5285
+    },
+    {
+      "pergunta": "No livro, como funciona Especiais armadas?",
+      "esperada": "campo--inv-armado",
+      "fontes": [
+        "campo--inv-armado"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4476
+    },
+    {
+      "pergunta": "No livro, como funciona Movimento e defesa?",
+      "esperada": "campo--inv-defesa",
+      "fontes": [
+        "campo--inv-defesa"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4594
+    },
+    {
+      "pergunta": "No livro, como funciona Ações concedidas por aliados?",
+      "esperada": "campo--inv-respostas",
+      "fontes": [
+        "campo--inv-respostas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4763
+    },
+    {
+      "pergunta": "No livro, como funciona Talismãs?",
+      "esperada": "campo--inv-talisma",
+      "fontes": [
+        "campo--inv-talisma"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3883
+    },
+    {
+      "pergunta": "No livro, como funciona Corpos amaldiçoados?",
+      "esperada": "campo--inv-corpos",
+      "fontes": [
+        "campo--inv-corpos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5145
+    },
+    {
+      "pergunta": "No livro, como funciona Cura e reparo?",
+      "esperada": "campo--inv-reparo",
+      "fontes": [
+        "campo--inv-reparo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5630
+    },
+    {
+      "pergunta": "No livro, como funciona Trunfos das domadas?",
+      "esperada": "campo--inv-liberacao",
+      "fontes": [
+        "campo--inv-liberacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4826
+    },
+    {
+      "pergunta": "No livro, como funciona Técnica Máxima da domada?",
+      "esperada": "campo--inv-maxima",
+      "fontes": [
+        "fundamento--maxima",
+        "campo--inv-maxima"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 12135
+    },
+    {
+      "pergunta": "No livro, como funciona Expansão da domada?",
+      "esperada": "campo--inv-dominio",
+      "fontes": [
+        "campo--inv-dominio"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4934
+    },
+    {
+      "pergunta": "No livro, como funciona Queda e destruição?",
+      "esperada": "campo--inv-queda",
+      "fontes": [
+        "campo--inv-queda"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4899
+    },
+    {
+      "pergunta": "No livro, como funciona Retorno e corpos caídos?",
+      "esperada": "campo--inv-retorno",
+      "fontes": [
+        "campo--inv-retorno"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4603
+    },
+    {
+      "pergunta": "No livro, como funciona Efeitos fora de campo?",
+      "esperada": "campo--inv-fora",
+      "fontes": [
+        "campo--inv-fora"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4532
+    },
+    {
+      "pergunta": "No livro, como funciona Invocador inconsciente?",
+      "esperada": "campo--inv-inconsciente",
+      "fontes": [
+        "campo--inv-inconsciente",
+        "campo--inv-campo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6299
+    },
+    {
+      "pergunta": "No livro, como funciona Manutenção?",
+      "esperada": "campo--inv-manutencao",
+      "fontes": [
+        "campo--inv-manutencao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4463
+    },
+    {
+      "pergunta": "No livro, como funciona Morte do invocador?",
+      "esperada": "campo--inv-morte",
+      "fontes": [
+        "campo--inv-morte",
+        "campo--inv-campo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6295
+    },
+    {
+      "pergunta": "No livro, como funciona Carga e equipamento?",
+      "esperada": "campo--inv-carga",
+      "fontes": [
+        "campo--inv-carga"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4874
+    },
+    {
+      "pergunta": "No livro, como funciona Criar uma invocação?",
+      "esperada": "construcao--entidades-criar",
+      "fontes": [
+        "construcao--entidades-criar",
+        "construcao--entidades-aquisicao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7051
+    },
+    {
+      "pergunta": "No livro, como funciona Adquirir entidades?",
+      "esperada": "construcao--entidades-aquisicao",
+      "fontes": [
+        "construcao--entidades-aquisicao",
+        "construcao--entidades-criar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7031
+    },
+    {
+      "pergunta": "No livro, como funciona Habilidades do cão?",
+      "esperada": "construcao--entidade-cao-habilidades",
+      "fontes": [
+        "construcao--entidade-cao-habilidades"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4624
+    },
+    {
+      "pergunta": "No livro, como funciona Lista de ritual e criação?",
+      "esperada": "construcao--entidades-lista-criacao",
+      "fontes": [
+        "construcao--entidades-lista-criacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4903
+    },
+    {
+      "pergunta": "No livro, como funciona Domar uma maldição?",
+      "esperada": "construcao--entidades-domar",
+      "fontes": [
+        "construcao--entidades-domar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4683
+    },
+    {
+      "pergunta": "No livro, como funciona Tipos de entidade?",
+      "esperada": "construcao--entidades-tipos",
+      "fontes": [
+        "construcao--entidades-tipos",
+        "construcao--entidades-criar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7040
+    },
+    {
+      "pergunta": "No livro, como funciona Definição e corpo?",
+      "esperada": "construcao--entidades-definicao",
+      "fontes": [
+        "construcao--entidades-definicao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4768
+    },
+    {
+      "pergunta": "No livro, como funciona Atributos e testes?",
+      "esperada": "construcao--entidades-atributos",
+      "fontes": [
+        "construcao--entidades-atributos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4819
+    },
+    {
+      "pergunta": "No livro, como funciona Vida e Defesa?",
+      "esperada": "construcao--entidades-vida-defesa",
+      "fontes": [
+        "construcao--entidades-vida-defesa"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4682
+    },
+    {
+      "pergunta": "No livro, como funciona Progressão da entidade?",
+      "esperada": "construcao--entidades-progressao",
+      "fontes": [
+        "construcao--entidades-progressao",
+        "construcao--entidades-criar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6921
+    },
+    {
+      "pergunta": "No livro, como funciona Famílias da entidade?",
+      "esperada": "construcao--entidades-familias",
+      "fontes": [
+        "construcao--entidades-familias",
+        "construcao--entidades-criar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7218
+    },
+    {
+      "pergunta": "No livro, como funciona Habilidades básicas?",
+      "esperada": "construcao--entidades-basicas",
+      "fontes": [
+        "construcao--entidades-basicas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5009
+    },
+    {
+      "pergunta": "No livro, como funciona Habilidades especiais?",
+      "esperada": "construcao--entidades-especiais",
+      "fontes": [
+        "construcao--entidades-especiais"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4758
+    },
+    {
+      "pergunta": "No livro, como funciona Funções e Formas da entidade?",
+      "esperada": "construcao--entidades-formas",
+      "fontes": [
+        "construcao--entidades-formas",
+        "construcao--entidades-criar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 6577
+    },
+    {
+      "pergunta": "No livro, como funciona Efeitos reduzidos?",
+      "esperada": "construcao--entidades-efeitos-reduzidos",
+      "fontes": [
+        "construcao--entidades-efeitos-reduzidos"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4407
+    },
+    {
+      "pergunta": "No livro, como funciona Saldo e limites?",
+      "esperada": "construcao--entidades-saldo",
+      "fontes": [
+        "construcao--entidades-saldo"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5421
+    },
+    {
+      "pergunta": "No livro, como funciona Controle e utilidade?",
+      "esperada": "construcao--entidades-controle",
+      "fontes": [
+        "construcao--entidades-controle"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4980
+    },
+    {
+      "pergunta": "No livro, como funciona Restrições da entidade?",
+      "esperada": "construcao--entidades-restricoes",
+      "fontes": [
+        "construcao--entidades-restricoes",
+        "construcao--entidades-criar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7175
+    },
+    {
+      "pergunta": "No livro, como funciona Talentos da entidade?",
+      "esperada": "construcao--entidades-passivas",
+      "fontes": [
+        "construcao--entidades-passivas",
+        "construcao--entidades-criar"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 7230
+    },
+    {
+      "pergunta": "No livro, como funciona Talentos de Categorias 2 e 3?",
+      "esperada": "construcao--entidades-passivas-avancadas",
+      "fontes": [
+        "construcao--entidades-passivas-avancadas"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4996
+    },
+    {
+      "pergunta": "No livro, como funciona Características próprias?",
+      "esperada": "construcao--entidades-passiva-propria",
+      "fontes": [
+        "construcao--entidades-passiva-propria"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4786
+    },
+    {
+      "pergunta": "No livro, como funciona Ampliar uma especial?",
+      "esperada": "construcao--entidades-ampliacao",
+      "fontes": [
+        "construcao--entidades-ampliacao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4720
+    },
+    {
+      "pergunta": "No livro, como funciona Habilidades do vigia?",
+      "esperada": "construcao--entidade-vigia-habilidades",
+      "fontes": [
+        "construcao--entidade-vigia-habilidades"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5052
+    },
+    {
+      "pergunta": "No livro, como funciona Conferência da ficha?",
+      "esperada": "construcao--entidades-conferencia",
+      "fontes": [
+        "construcao--entidades-conferencia"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4892
+    },
+    {
+      "pergunta": "No livro, como funciona Criação de entidades?",
+      "esperada": "fabricacao--fab-entidades",
+      "fontes": [
+        "fabricacao--fab-entidades"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 3846
+    },
+    {
+      "pergunta": "No livro, como funciona Teste de criação?",
+      "esperada": "fabricacao--fab-teste",
+      "fontes": [
+        "fabricacao--fab-teste"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4781
+    },
+    {
+      "pergunta": "No livro, como funciona Conclusão, evolução e transferência?",
+      "esperada": "fabricacao--fab-conclusao",
+      "fontes": [
+        "fabricacao--fab-conclusao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5058
+    },
+    {
+      "pergunta": "No livro, como funciona Preparar uma missão?",
+      "esperada": "consulta--consulta-missao",
+      "fontes": [
+        "consulta--consulta-missao"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5012
+    },
+    {
+      "pergunta": "No livro, como funciona Mestrar uma sessão?",
+      "esperada": "consulta--consulta-conduzir",
+      "fontes": [
+        "consulta--consulta-conduzir"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5203
+    },
+    {
+      "pergunta": "No livro, como funciona Glossário: Ação a Carga?",
+      "esperada": "consulta--consulta-glossario-1",
+      "fontes": [
+        "consulta--consulta-glossario-1"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4580
+    },
+    {
+      "pergunta": "No livro, como funciona Glossário: Categoria a Espaço?",
+      "esperada": "consulta--consulta-glossario-2",
+      "fontes": [
+        "consulta--consulta-glossario-2"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4708
+    },
+    {
+      "pergunta": "No livro, como funciona Glossário: Especial a Invocação?",
+      "esperada": "consulta--consulta-glossario-3",
+      "fontes": [
+        "consulta--consulta-glossario-3"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5172
+    },
+    {
+      "pergunta": "No livro, como funciona Glossário: Invocador a Pacto?",
+      "esperada": "consulta--consulta-glossario-4",
+      "fontes": [
+        "consulta--consulta-glossario-4"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 5280
+    },
+    {
+      "pergunta": "No livro, como funciona Glossário: Patente a Selo?",
+      "esperada": "consulta--consulta-glossario-5",
+      "fontes": [
+        "consulta--consulta-glossario-5"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4982
+    },
+    {
+      "pergunta": "No livro, como funciona Glossário: Sem a Volume?",
+      "esperada": "consulta--consulta-glossario-6",
+      "fontes": [
+        "consulta--consulta-glossario-6"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4532
+    },
+    {
+      "pergunta": "No livro, como funciona Testes na mesa?",
+      "esperada": "consulta--consulta-testes",
+      "fontes": [
+        "consulta--consulta-testes"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4438
+    },
+    {
+      "pergunta": "No livro, como funciona Ataques e efeitos?",
+      "esperada": "consulta--consulta-ataques",
+      "fontes": [
+        "consulta--consulta-ataques"
+      ],
+      "achou": true,
+      "caracteres_ultima_mensagem": 4569
+    }
+  ]
+}

@@ -1,0 +1,2049 @@
+{
+  "blocos_antes": 511,
+  "blocos_depois": 576,
+  "alteracoes": 202,
+  "registro_oficial_confere": true,
+  "sem_alteracoes_fora_do_registro": true,
+  "sem_duplicatas": true,
+  "por_capitulo": {
+    "Criar um personagem": 1,
+    "Aptidões e Refino": 2,
+    "Invocações em campo": 3,
+    "Catálogo de criação": 118,
+    "Construir invocações": 12,
+    "Glossário": 1,
+    "Índice": 11,
+    "Caminhos e Trilhas": 6,
+    "Fundamento": 32,
+    "Origens": 1,
+    "Ritual e Pactos": 3,
+    "Rotas de criação": 12
+  },
+  "blocos": [
+    {
+      "id": "R53-001",
+      "ancora": "ab--ab-kaori",
+      "capitulo": "Criar um personagem",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "97947293f802ebf789e9b02dca54012ee5aa3a90c5e174a51344ba872ad8d6ca",
+      "depois_sha256": "c6df9362e42985c7c750d5181703b68b42c94666b0f0cddb158cdaca8f6573cb"
+    },
+    {
+      "id": "R53-002",
+      "ancora": "aptidoes--apt-energia-positiva",
+      "capitulo": "Aptidões e Refino",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "a23648211a4486a63ceee85ab6b3695f34309a443175ee734f4404c26b800bab",
+      "depois_sha256": "a545b826599aac8aee1a43bbba2b74867c823cbe5e57197abfad4c428c0bfd72"
+    },
+    {
+      "id": "R53-003",
+      "ancora": "aptidoes--apt-reversa",
+      "capitulo": "Aptidões e Refino",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "c3228dfebc4e5e78793b9a8ca14437dd2598072827303bc1999a30faea2acc10",
+      "depois_sha256": "6844e0ea7c8468bb1289f05c1db61c5397e9fc2d9670bc8d76cfe21268f8e49a"
+    },
+    {
+      "id": "R53-004",
+      "ancora": "campo--inv-basica",
+      "capitulo": "Invocações em campo",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "5293361264c11d84a9f1027cfe20129a3cbc3dc6c79b95717414dcd8d3f27b31",
+      "depois_sha256": "0f86f7378d51845a169a5f1998c5f96e968cd4438035bb30b5fa0e224a1eacab"
+    },
+    {
+      "id": "R53-005",
+      "ancora": "campo--inv-restricoes-tempo",
+      "capitulo": "Invocações em campo",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "c037c2d02a4c29e4166e1f80b5bdbdb4c7eec3bca17641e4e7c4cd4cba09d7a2",
+      "depois_sha256": "95be357259fa8d4d0b3617ba5fbce4d0740d9f8b2f4d104cfaee7f076b97eef6"
+    },
+    {
+      "id": "R53-006",
+      "ancora": "campo--inv-tempo",
+      "capitulo": "Invocações em campo",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "349d43685851d46005ab5c69ac8f8b378d6be09be581cd180bb5ea82f5e9633f",
+      "depois_sha256": "797392ac826f2ef89d6354f5721526c0b0e0c681f4b60521be0b0a31f47d23e3"
+    },
+    {
+      "id": "R53-007",
+      "ancora": "catalogo--cat-alcance",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "f63b88853970ecc1c05bcc954805de3db2704460ef61506326c90152bb5e51f1",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-008",
+      "ancora": "catalogo--cat-amparo",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "ebd58d9ab113b66e774440bc5200a180134d37e7b4e468a9a7f89764f5c190f4",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-009",
+      "ancora": "catalogo--cat-amparo-protecao",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "140cf08423ac5746655b6686d3b840e7676135dce0ba3699e48506dc40f6d616",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-010",
+      "ancora": "catalogo--cat-area",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "b7b27be437af5742b9e728c6154c1d77ee8e6840fcee3e5cf15859e6a6e608f6",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-011",
+      "ancora": "catalogo--cat-area-continua",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "614d298eb4c8f4ae7ad1468a432d5b882872704eb8b1c66225af671f3d9d7ea2",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-012",
+      "ancora": "catalogo--cat-auxiliares",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "98539e397586ca90a9eba0872dce4e5876510c944b208333572e9cd1dba73d2d",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-013",
+      "ancora": "catalogo--cat-auxiliares-apoio",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "28376e0554756badf595a424a62909d65505e0199abe897646f673d1fb46065e",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-014",
+      "ancora": "catalogo--cat-castigo",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "52deebc427618b65fe9e4c9f9027ca08987fa3a894456a467e39766e7151c1c1",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-015",
+      "ancora": "catalogo--cat-castigo-dano",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "cdae7f10eb65b0a630e40f468d2b2888bf7cff2778eecdacefccf2e9bb078d14",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-016",
+      "ancora": "catalogo--cat-catalogo",
+      "capitulo": "Catálogo de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "13a03b6268e3c478203fca0046b5ab1abc168b5796b6ca4f81d9672ffefcb617",
+      "depois_sha256": "99f967b41ee138ef1bcd77f4ef4c8e1b083850671c706319c29d91a558975bd8"
+    },
+    {
+      "id": "R53-017",
+      "ancora": "catalogo--cat-controle",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "bb5841d6836c020adcb9f94781c6b2c41615549eb62ee291646be9012df43b9f",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-018",
+      "ancora": "catalogo--cat-defesas",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "48662a95cd5bca7d05505bf17b241ff10a7e636d36e7db2edbad92f7b333ae8a",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-019",
+      "ancora": "catalogo--cat-efeitos",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "b345f6393f16625d951abf12bc2a1b7a31b282907b60584d8db108962b230ba4"
+    },
+    {
+      "id": "R53-020",
+      "ancora": "catalogo--cat-marca",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "2f550be62fb237ea6f80150c8d95d22040c90efe175fd65ead2bd8617a25b815",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-021",
+      "ancora": "catalogo--cat-marca-recursos",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "f0cd365f021027b1b3d0000be5ceb80a897a0874a7486d34712482cc1ea75d9f",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-022",
+      "ancora": "catalogo--cat-mira",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "257425cfeb66fc53d8f782ff401efa27138e9b8591436d5def93be1fe9330f6f",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-023",
+      "ancora": "catalogo--cat-modificadores",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "dc6d4569f43f93435ac3f5f3186323b562fecf1a4b73be19da6faa7c4ea1ee65"
+    },
+    {
+      "id": "R53-024",
+      "ancora": "catalogo--cat-movimento",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "eb3a6ba90c939034b73bc862a49a8125f1ef30945556d510a6610e0662cdfc68",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-025",
+      "ancora": "catalogo--cat-obstaculos",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "abe4d2349aad3169f7951ae5bb5c7bd31183315e9ff4afc29bcaa7a05f9be21d",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-026",
+      "ancora": "catalogo--cat-passiva-propria",
+      "capitulo": "Catálogo de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "9588db9005fe06806fc7d8523a7b280d9cbca69295380789b87817e88dcde1c2",
+      "depois_sha256": "924dfe07b6bcf42fbbf091729c13527fd312c97ede276b4d56a9ffb0ada2ddbe"
+    },
+    {
+      "id": "R53-027",
+      "ancora": "catalogo--cat-passivas-1",
+      "capitulo": "Catálogo de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "68832d385797409ee748871c6362868ade802c80c89ba531fd05ef525d2593ea",
+      "depois_sha256": "75ee8b8f164fa51f0cb9be74b56f6e2babe80188eb9bae4685f3d15db8cf8cbe"
+    },
+    {
+      "id": "R53-028",
+      "ancora": "catalogo--cat-passivas-2-protecao",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "6b0f4e347233a460f512cafe560d20c55d6aadcc31392842f25ff6170f0455bd",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-029",
+      "ancora": "catalogo--cat-passivas-2-recursos",
+      "capitulo": "Catálogo de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b90a80a49cbae39c3e0f73475db5721ebf6c7f82067a4ea794ff4b79585652",
+      "depois_sha256": "6d87b8771d25879a42827ab3beb49ec087ea2513a46da5feaa9c7ed5eb03534c"
+    },
+    {
+      "id": "R53-030",
+      "ancora": "catalogo--cat-passivas-3",
+      "capitulo": "Catálogo de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "0727cdfaf90b12e9ea3cd445a6d109d337154e50a083ece099593753bf610581",
+      "depois_sha256": "fbffd86c42bb7934305460a366c34c3ac2e450de10a50e0f1bc6bdfb83a0ebca"
+    },
+    {
+      "id": "R53-031",
+      "ancora": "catalogo--cat-proprio",
+      "capitulo": "Catálogo de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "7e72b56e43fd2ec1bb75a76fc39dad0180fc16b4529440b5511d84e96b10acc1",
+      "depois_sha256": "d918364cdce331648a0f2963195219f14616cd698e669b95e56f71f7e39f2337"
+    },
+    {
+      "id": "R53-032",
+      "ancora": "catalogo--cat-regra-propria",
+      "capitulo": "Catálogo de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "fc02b3d12eb91df8314d613eff05c50d8f9ff0b071d42c8401232dd3c2d8b63c",
+      "depois_sha256": "64775130853218596023acf795507d75c6a5b5634a4a7b3a774511ab0a8a84be"
+    },
+    {
+      "id": "R53-033",
+      "ancora": "catalogo--cat-restricoes",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "917ea55d260e6e57e82ad62377298580720457224d551e1d2a08cc956fc1a97c"
+    },
+    {
+      "id": "R53-034",
+      "ancora": "catalogo--cat-restricoes-conjuracao",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "764dcfecb15722f1599479a828508c86ca549eaeb0a624b1f1147ca5f74c9797",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-035",
+      "ancora": "catalogo--cat-restricoes-consequencias",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "6847690ad175f3a853242882320513e935d6f3d64d32190f5fcc330a956a3514",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-036",
+      "ancora": "catalogo--cat-restricoes-proprias",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "7451736ea01adc01b9bec9709190d83ff1c43fbb6c1821b455045a050e7ac3c6",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-037",
+      "ancora": "catalogo--cat-restricoes-uso",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "7a133917e0276d4df685a1c1e7c5c205cac93c31a6c294aaf1072aff1b9afd34",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-038",
+      "ancora": "catalogo--cat-talentos",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "b19240de1b3f505b3633c064f9ae760aabf9c102ecf63a89d5f0a1999a52c501"
+    },
+    {
+      "id": "R53-039",
+      "ancora": "catalogo--cat-tempo",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "2850c4f9e08decf9c9625bec5ccfb7a304e81d78a8b74be32c42e1feebb1e943",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-040",
+      "ancora": "catalogo--cat-tempo-duracao",
+      "capitulo": "Catálogo de criação",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "797b24a0dbe57054078800e2b01c694472b8a384b2ae852d4f4e9ccc20fd8c4b",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-041",
+      "ancora": "catalogo--grupo-condicoes-de-uso",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "f7473eadc45084739c2445e700a3be801a9c2316a98e6638278346164e239de7"
+    },
+    {
+      "id": "R53-042",
+      "ancora": "catalogo--grupo-custos-e-consequencias",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "89f39dca5a0aa4e3c5ec5bb3c35b054bc75965f6ab1b5e42581720df252bd5e5"
+    },
+    {
+      "id": "R53-043",
+      "ancora": "catalogo--grupo-exposicao-e-novas-restricoes",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "c03fab950048112f5cf07cdeb29813a197205880afee1408a608519be1287b1c"
+    },
+    {
+      "id": "R53-044",
+      "ancora": "catalogo--grupo-restricoes-de-conjuracao",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "2c69e04f699ee5eb725998a2531325ec84d1fe5d93bc3744ac7b729a4dd78383"
+    },
+    {
+      "id": "R53-045",
+      "ancora": "catalogo--melhoria-abre-ferida",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "d9d3665be5e21bffa3c296cd517b92db1e1cd8d6f1076949667936f42b70bf90"
+    },
+    {
+      "id": "R53-046",
+      "ancora": "catalogo--melhoria-acumulo",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "5646c9d80eaefa8a60b9547385652915bf816b1f0d4ba09c576b5e2c48da23f0"
+    },
+    {
+      "id": "R53-047",
+      "ancora": "catalogo--melhoria-alvo-de-caca",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "d0a3cd5fb0d412955a82c97652245d90e710020836c20cb927670eb8b58677f6"
+    },
+    {
+      "id": "R53-048",
+      "ancora": "catalogo--melhoria-anteparo",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "d6c5e799980c6b9fb30b5e4cac230839f5df21265aceedbe941171295d5e6772"
+    },
+    {
+      "id": "R53-049",
+      "ancora": "catalogo--melhoria-armado",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "a7bb495a1f55a6f575d03ab2890e70342b33b5bbab09be01a76f1b4d5edfbe02"
+    },
+    {
+      "id": "R53-050",
+      "ancora": "catalogo--melhoria-cerca",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "3fb699e3daff62b825800354c91b09b97c9fe7e498ecaac479f779cc5bdf3f5a"
+    },
+    {
+      "id": "R53-051",
+      "ancora": "catalogo--melhoria-cobranca",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "f7a746f194220778896e6a3e17da4653726ffefa01df10ae72f3f6583c288601"
+    },
+    {
+      "id": "R53-052",
+      "ancora": "catalogo--melhoria-concentrada-duradoura",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "df879c50c5fee73ed3664f9759fb3afd8680a645808d0198fca13d15b71f9b69"
+    },
+    {
+      "id": "R53-053",
+      "ancora": "catalogo--melhoria-condicao",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "f013bf424ca6bad8d78b5672e47184aecc90222aae89310f96619424abc65138"
+    },
+    {
+      "id": "R53-054",
+      "ancora": "catalogo--melhoria-contorno",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "c2a77705f6f570a9a16bc0fe483cb4e428293d8f3b06d5d82f5ff204dd91864d"
+    },
+    {
+      "id": "R53-055",
+      "ancora": "catalogo--melhoria-corroi",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "d1a722556ee0c8dc9917e035fe6ac1cb275af2f7b544695d729078d7faaa00e2"
+    },
+    {
+      "id": "R53-056",
+      "ancora": "catalogo--melhoria-de-novo",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "a2678386de605d9cb445a80fe91174b0013acddfd7f440c8308252a7bf9d4fed"
+    },
+    {
+      "id": "R53-057",
+      "ancora": "catalogo--melhoria-desarma-o-feitico",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "4e416596c84ab6de16c5f57b26efc8d45dd93187d426d65e82391cb3563d6d0f"
+    },
+    {
+      "id": "R53-058",
+      "ancora": "catalogo--melhoria-divide",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "4e2dac9b0424329a0a7af112e205b71dc63eaf95349a42fb6c05fe3217e44b16"
+    },
+    {
+      "id": "R53-059",
+      "ancora": "catalogo--melhoria-ecoa",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "c2de55173155db0ac952524ed55f2dde5e337b75894b99f5ee3935d2b8b359fa"
+    },
+    {
+      "id": "R53-060",
+      "ancora": "catalogo--melhoria-efeito-proprio",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "dc2ec61a55ac8cfb584fc848fd0c3e46efb15c8e3c3183141ee39bb4bfd0b78e"
+    },
+    {
+      "id": "R53-061",
+      "ancora": "catalogo--melhoria-empurrao",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "5183e93b28d02ba6d2ad76d2ad7cd3dd72395eb7cfeeba2ccdfb9554c4e4d411"
+    },
+    {
+      "id": "R53-062",
+      "ancora": "catalogo--melhoria-enfraquece",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "a115ca15ce996ede5ad6f1f162541aaa3b896689d0547a851523b603004b8a31"
+    },
+    {
+      "id": "R53-063",
+      "ancora": "catalogo--melhoria-escolher",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "95142cdb40cdc6502ac0d60b848006d89c758ec84a5e0739e853131822d8b0b0"
+    },
+    {
+      "id": "R53-064",
+      "ancora": "catalogo--melhoria-estilhaco",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "fa8421b3b9e0cbf32418eb690a8a33fccf37a6a0e66d7ebd8c6aeef7254ed8d4"
+    },
+    {
+      "id": "R53-065",
+      "ancora": "catalogo--melhoria-fica",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "7585159105f355e9f3ae3b8c6459f492336cb82e309f2e3b84537c7fdca10f2b"
+    },
+    {
+      "id": "R53-066",
+      "ancora": "catalogo--melhoria-firmeza",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "3f68dd64b4059fcba56f7658007d2a343a7785bb454ba01d8064027eb3743365"
+    },
+    {
+      "id": "R53-067",
+      "ancora": "catalogo--melhoria-fura",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "9423ea88ca1c9b11dbd498b77bfc1c3c0c0396ab83497601928ac18c190f2d3c"
+    },
+    {
+      "id": "R53-068",
+      "ancora": "catalogo--melhoria-guarda",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "fd328c23d5a621638519696df5fe722f51c8912f0027f7f6004e0b657d549b90"
+    },
+    {
+      "id": "R53-069",
+      "ancora": "catalogo--melhoria-identificar-feitico",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "d77ff39e4a4b5f675366b6e22b77aa8eb3daa8d8f1ef2b9348628f847c2084f6"
+    },
+    {
+      "id": "R53-070",
+      "ancora": "catalogo--melhoria-impulso",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "6e5f6643aacce7914b662c448102113d2cf8be19fb31b72f50b14f0f63494080"
+    },
+    {
+      "id": "R53-071",
+      "ancora": "catalogo--melhoria-inescapavel",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "828725b13f2c15a33d6adf88289920a5dbadf10bb141b34c23f1cb5f1a121434"
+    },
+    {
+      "id": "R53-072",
+      "ancora": "catalogo--melhoria-isca",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "87bad961cead2e89055e8490971e72e04a1e7b6e07559973dd13f64c8a389bdd"
+    },
+    {
+      "id": "R53-073",
+      "ancora": "catalogo--melhoria-levanta",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "f877096a1d9fad5a257d3652ca43767070828bf51ea0cf2403939595c0866068"
+    },
+    {
+      "id": "R53-074",
+      "ancora": "catalogo--melhoria-limpa",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "5440064db1bd36dc22c856956fce669a9607d823819705f4b6b6a4aea28fab7d"
+    },
+    {
+      "id": "R53-075",
+      "ancora": "catalogo--melhoria-limpa-fundo",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "f392e219d2ece9407fd1cf53f27f2e58b0b00b74e44e570845dd9c6b1e8f6adc"
+    },
+    {
+      "id": "R53-076",
+      "ancora": "catalogo--melhoria-longe",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "9c38b3c6e1737702a50ee39b083cef257cd74858d5f5571978e855b0a372a8ba"
+    },
+    {
+      "id": "R53-077",
+      "ancora": "catalogo--melhoria-maior",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "8b5896153cd21ede60d12931105c85f738f1a3ba9387135c082a5cf28b3037ea"
+    },
+    {
+      "id": "R53-078",
+      "ancora": "catalogo--melhoria-mais-um",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "8cd72b7174b79a69a3ac6724e31086648fbf0716f63002ca2f68e33403003ac2"
+    },
+    {
+      "id": "R53-079",
+      "ancora": "catalogo--melhoria-marca",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "21c69e6872fec7879c7fe013fda73f9080212b6b341f629d34233380f0e3d10b"
+    },
+    {
+      "id": "R53-080",
+      "ancora": "catalogo--melhoria-passo",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "e970ec8a1574593333c86afc78e7777423bc16becdb19befa2071e177833003c"
+    },
+    {
+      "id": "R53-081",
+      "ancora": "catalogo--melhoria-perseguir",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "789223ace76d5dc55f78502a9b8e06fb201c5968e578a61e20030dd75aa54a68"
+    },
+    {
+      "id": "R53-082",
+      "ancora": "catalogo--melhoria-precisao",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "d36afa037852245cba4e5b9257fb3136125199a8855f60a8154c8ef8cc36bf4e"
+    },
+    {
+      "id": "R53-083",
+      "ancora": "catalogo--melhoria-prende",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "11daa96e7a3d1e1703a64684e5df7db4392ffd5b3cfe968ca23cdcc52bf44be6"
+    },
+    {
+      "id": "R53-084",
+      "ancora": "catalogo--melhoria-pressa",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "c34c72c5528854ec5701cae4292901b96011d0115a7fa82e7eea0cd43adf84df"
+    },
+    {
+      "id": "R53-085",
+      "ancora": "catalogo--melhoria-quebra-coisa",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "c04918c8f5441eb3a82e3342197b8ebf64e0ace1e59ab710ba6e0fb917fd2867"
+    },
+    {
+      "id": "R53-086",
+      "ancora": "catalogo--melhoria-queima",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "6ef3b54cef2a694710724f21204580a902f1a3fca4fea3f3ddd1a92e6d3b17ed"
+    },
+    {
+      "id": "R53-087",
+      "ancora": "catalogo--melhoria-rajada",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "c9cc1db392c975ea837a692868204e88e5604d042f18971198e3375802765367"
+    },
+    {
+      "id": "R53-088",
+      "ancora": "catalogo--melhoria-rapido",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "bda3d0448bb7aafacb30e499ffac1a03998f06d28085975a097171089a688b29"
+    },
+    {
+      "id": "R53-089",
+      "ancora": "catalogo--melhoria-rasga-escudo",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "0709ca5c1664e44165f0081e17f6af6905e8ee25b85f7b6d78248e6945d723fd"
+    },
+    {
+      "id": "R53-090",
+      "ancora": "catalogo--melhoria-rastro",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "5f0ce2f5f6cfb71c059bc7b58151b11178e4b20ab405ca51a15a42753ed9b957"
+    },
+    {
+      "id": "R53-091",
+      "ancora": "catalogo--melhoria-reacao",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "39372ae95901133caa88924b78b43df905500428484327340672975d1c8d6dac"
+    },
+    {
+      "id": "R53-092",
+      "ancora": "catalogo--melhoria-remate",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "2b9d35c8f71d2f0b09522146323e7f17ba29f80f787e39f6c8037cb20809d813"
+    },
+    {
+      "id": "R53-093",
+      "ancora": "catalogo--melhoria-remenda",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "a974bcb88bb5a4aeab3311d83d85af36441ea22c60a2677f3ebe797e97ce7839"
+    },
+    {
+      "id": "R53-094",
+      "ancora": "catalogo--melhoria-reserva",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "7b0c62192057ca2983e710904752850a6941fa4b101104dee5555d8b36ef9e2f"
+    },
+    {
+      "id": "R53-095",
+      "ancora": "catalogo--melhoria-salto",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "f0c53ec1817c26558de0ae2bc15627f89faf2f37cb513ebd7575b6236c6aafde"
+    },
+    {
+      "id": "R53-096",
+      "ancora": "catalogo--melhoria-segura",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "e82e215a4a5f865c7f87ba992315684320e1cdeb091dc95dac6d7a71ac800aa9"
+    },
+    {
+      "id": "R53-097",
+      "ancora": "catalogo--melhoria-sem-cobertura",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "411784f743b961fdeb9fc47e3147a79e94a2c86b58f3d9341aa0a6569043ec68"
+    },
+    {
+      "id": "R53-098",
+      "ancora": "catalogo--melhoria-sem-cura",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "67f3c21a4647512d7e5bd014a04ac711050e0a6513483b4bac73fac7c556b548"
+    },
+    {
+      "id": "R53-099",
+      "ancora": "catalogo--melhoria-sem-ver",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "d046fb8a057dd2e84dab260557b7b52563e070beb3322207ce431da2d8f79ba5"
+    },
+    {
+      "id": "R53-100",
+      "ancora": "catalogo--melhoria-silencioso",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "fabb330100fd315ed3069f1d70ee66e9194d99cf1ee7c64b273784037dd996cb"
+    },
+    {
+      "id": "R53-101",
+      "ancora": "catalogo--melhoria-sobrecarga",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "2e13c45a1d42f3819138e0b350329d3413717e71923e9a42e01ffc71e3da61c1"
+    },
+    {
+      "id": "R53-102",
+      "ancora": "catalogo--melhoria-sugar",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "70424a5ef049a40fba50e29cb6e4943fc54c0d0ee661f777af2ef423b5ed1e9a"
+    },
+    {
+      "id": "R53-103",
+      "ancora": "catalogo--melhoria-terreno",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "1be8cadb90b11c5ce408c864ed9e2eabc2565840570730406bbad9983f376ef9"
+    },
+    {
+      "id": "R53-104",
+      "ancora": "catalogo--melhoria-toca-a-alma",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "b598fefb92d5333bb96a71869d987290cd9e21b46cc7c85840921361b645ca3b"
+    },
+    {
+      "id": "R53-105",
+      "ancora": "catalogo--melhoria-trava",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "76d5cd3a340400a92361f7b6fba6b029c2326e46d9ceb0623fd1af48bf123312"
+    },
+    {
+      "id": "R53-106",
+      "ancora": "catalogo--restricao-aquecer",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "3e4b7b5da3de9b090367dc0f073dbc651e87c1e6b9b023491db592bb7276366a"
+    },
+    {
+      "id": "R53-107",
+      "ancora": "catalogo--restricao-assinatura",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "7b05d79dc6c4478341c7a66fe37130839504d1c834a076f39f110474ea838318"
+    },
+    {
+      "id": "R53-108",
+      "ancora": "catalogo--restricao-atrasar",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "b8cf12b438fc3cbcc4cf7d49c3ced995514a51d37a376d051893d28adac06ba0"
+    },
+    {
+      "id": "R53-109",
+      "ancora": "catalogo--restricao-barulho",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "45396207ea7395335add7e8d6f511c576e67f14e0bec87ef26db15a1e284fce4"
+    },
+    {
+      "id": "R53-110",
+      "ancora": "catalogo--restricao-carregar",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "ffb48af16ac42b6e0a5582ef42295c84cfeefd3f24f4cf1e78d488d90c823d31"
+    },
+    {
+      "id": "R53-111",
+      "ancora": "catalogo--restricao-condicional",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "e0c4f0f970f0efcda42299eccfbe2ab9f4f1dab015500d31be7e71e77ce8e5a8"
+    },
+    {
+      "id": "R53-112",
+      "ancora": "catalogo--restricao-fragil",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "dc2b69e51493af25bd032f7444760f6cfd3402033afbc02a53ae14021a7eb9e1"
+    },
+    {
+      "id": "R53-113",
+      "ancora": "catalogo--restricao-fraqueza",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "5dc831a63bef8e01ba0979b7a797d655f127c93f47d03601621a56105dbe31a5"
+    },
+    {
+      "id": "R53-114",
+      "ancora": "catalogo--restricao-gesto",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "1a87e44005f0d6538389890216bf4ed588bb6475f7eab5ab15b3c0aad8bdfe32"
+    },
+    {
+      "id": "R53-115",
+      "ancora": "catalogo--restricao-parado",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "d1b3facf4b3270b719f633e0cd772e1df7159180f89b2d195f60434fb94ce09f"
+    },
+    {
+      "id": "R53-116",
+      "ancora": "catalogo--restricao-peso-morto",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "fc1e974ba8e8e4f916876091145413f52e04e0f87aab04321ac382d5e1f40b9b"
+    },
+    {
+      "id": "R53-117",
+      "ancora": "catalogo--restricao-queima-roupa",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "1ab6adb84154ca0fb1eebeb798921a31103027af71416def731c0f4723a1d7df"
+    },
+    {
+      "id": "R53-118",
+      "ancora": "catalogo--restricao-recuo",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "36153118a85937e5d3313326f685984e4bedd69955bbec787570d07bbfa4a2cb"
+    },
+    {
+      "id": "R53-119",
+      "ancora": "catalogo--restricao-restricao-propria",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "67e9672be703a053dc379722bdffab6d8e6c454ee2c1bd7f396a95fe300299ce"
+    },
+    {
+      "id": "R53-120",
+      "ancora": "catalogo--restricao-sangra",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "c2499e5e6197a59f99df0c22723d3eecba207040cd329b725c6b387a207cf256"
+    },
+    {
+      "id": "R53-121",
+      "ancora": "catalogo--restricao-sem-volta",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "16cf6780b385e61eb4945f7ae7b37fb7c69d84205aae2b6210ab9d17cc979a41"
+    },
+    {
+      "id": "R53-122",
+      "ancora": "catalogo--restricao-sobrecusto",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "f60b0eddafae6df5d7e6c4e6f34072782dca13dc2371430e459b6b521342aaa4"
+    },
+    {
+      "id": "R53-123",
+      "ancora": "catalogo--restricao-tudo-ou-nada",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "8198e293983a4c3660a6d81cf90d20b7d63fc9c5510af7029b72311ba7a6c21b"
+    },
+    {
+      "id": "R53-124",
+      "ancora": "catalogo--restricao-uma-vez",
+      "capitulo": "Catálogo de criação",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "6b5ee74dddf4c12a60f6da1987ccae261737380a021189925d66254ef5d76011"
+    },
+    {
+      "id": "R53-125",
+      "ancora": "construcao--entidade-cao-habilidades",
+      "capitulo": "Construir invocações",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "53b5435392b2f4f7e64ff887f1f5e9b7989b083467ebbf59a28cc9aa3052ef40",
+      "depois_sha256": "dd179e714c9687b378d8f44c6eb85fbbcb72685f2b11a6305c624a8d09ecc7f0"
+    },
+    {
+      "id": "R53-126",
+      "ancora": "construcao--entidade-vigia-habilidades",
+      "capitulo": "Construir invocações",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "6cd01bbb5a267a76cfbddf29f0e2c814af2d4c138c2b5b2d4f0d1ca60e817ad9",
+      "depois_sha256": "f05dde3a3b4b0d3bbafa8768de88847458468f7d7d1125c512108e3a2e695b0a"
+    },
+    {
+      "id": "R53-127",
+      "ancora": "construcao--entidades-ampliacao",
+      "capitulo": "Construir invocações",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "06d6dea77fd785d0b556eb97327b562db42d994715dcc74d07fbf4e1bc94e31e",
+      "depois_sha256": "7e94ee2443a9094130aa9d2b5c5c25c0d72381a91fb35d9858edf60127d76800"
+    },
+    {
+      "id": "R53-128",
+      "ancora": "construcao--entidades-basicas",
+      "capitulo": "Construir invocações",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "44266b415e611e6970b41b7591d665d4f560e40cbdc6e52289277003ccda6813",
+      "depois_sha256": "004ac3ff8a37525beb3b7a31213044862966548ff9d6de877ba95688221934e8"
+    },
+    {
+      "id": "R53-129",
+      "ancora": "construcao--entidades-controle",
+      "capitulo": "Construir invocações",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "77311ab9fc59a7931187a05b77e835ebc9d40a23c39bd212a924d8cc3df328a2",
+      "depois_sha256": "ddf9744fc3ab7d7dd9bfe00edae4294ddf560401c14ad86353cbb99b86a292f2"
+    },
+    {
+      "id": "R53-130",
+      "ancora": "construcao--entidades-efeitos-reduzidos",
+      "capitulo": "Construir invocações",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "82cc5b4b818c2af4c808eb6a9cf7a85f5de6d55bc9ba33cb847022a1d5af5f1a",
+      "depois_sha256": "cdaed82ac49340521ae84659cafe4342741078bb0375c906a062f80bbff25300"
+    },
+    {
+      "id": "R53-131",
+      "ancora": "construcao--entidades-especiais",
+      "capitulo": "Construir invocações",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "3cfe8bb026b0259187340652c5169ec7120696a3680f2f74bbc490e622dd5a62",
+      "depois_sha256": "f32159bde937b61a09cbc94c0837a2f4cfde7beaee2831cdd508591d1452f088"
+    },
+    {
+      "id": "R53-132",
+      "ancora": "construcao--entidades-familias",
+      "capitulo": "Construir invocações",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e54a59ead013bb13a1073639b5445c72a634ff0f4300f66934ed4ff7092148cb",
+      "depois_sha256": "d30d44f6b25beebfa541338cf9838005d368a5f770c5d1be7fd0e05c1089d0d6"
+    },
+    {
+      "id": "R53-133",
+      "ancora": "construcao--entidades-formas",
+      "capitulo": "Construir invocações",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "29c7285af3c3df8bd352d00a78e1b441c0990db85fbe879e9d29e363544236da",
+      "depois_sha256": "bdeecf8e02592458b21e7e080b39320504d423ff0a75b7ec5308f184fb050cb6"
+    },
+    {
+      "id": "R53-134",
+      "ancora": "construcao--entidades-medidas",
+      "capitulo": "Construir invocações",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "6511ef5dfca94ca6700c284968551bd292c93a63ed755c97e2d8c16981d7329e",
+      "depois_sha256": "3cd40d47b850bd38391ca87dc46c30666936c88e70bb3b9932364290b64d714d"
+    },
+    {
+      "id": "R53-135",
+      "ancora": "construcao--entidades-restricoes",
+      "capitulo": "Construir invocações",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "2f4fcc46b300eefc5fa3951c0593e79795e1014710cc25b23a7b7b9d11761c64",
+      "depois_sha256": "8bbe409ea25a72152d8b8019901967b46ec1ad6d2f9776c966d693dedb7f6d7b"
+    },
+    {
+      "id": "R53-136",
+      "ancora": "construcao--entidades-saldo",
+      "capitulo": "Construir invocações",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "0ba47a2349fb27b1ae05d6667a35ef36a5abbf1012200e6492d22f37b6d85449",
+      "depois_sha256": "e5c434d1bc4a32bf560641e6286e0a788021bbe502bb3466eaecba1e02b2191e"
+    },
+    {
+      "id": "R53-137",
+      "ancora": "consulta--consulta-glossario-3",
+      "capitulo": "Glossário",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "640927723afecf642fca4572d1c3935233f0988d053dd3707a2517e05aa64a01",
+      "depois_sha256": "9a0f0e20ed4c4291083aa817479c177dbf5fe5d3d43eb8c509dfab4a1d67ca50"
+    },
+    {
+      "id": "R53-138",
+      "ancora": "consulta--consulta-indice-1",
+      "capitulo": "Índice",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "dfc6c946f1fd14a09475c68632240b622f1484bd768b1681cbf88e0899a040af",
+      "depois_sha256": "58282d1068f125f62546bd44fbbf92ace378a9f34b6ee16b04a7633b4377c7aa"
+    },
+    {
+      "id": "R53-139",
+      "ancora": "consulta--consulta-indice-10",
+      "capitulo": "Índice",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "7ca797859a7d45624a97f670dd56312ad1b16b23d62a262ceb990609d0441694",
+      "depois_sha256": "8dc41f284450fd6ece6c8b8ca9a841c6794648ec2f243423f9a466d2848230e7"
+    },
+    {
+      "id": "R53-140",
+      "ancora": "consulta--consulta-indice-11",
+      "capitulo": "Índice",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "76aba45e72a3c74cee3291ff3b0a94afbf5da66f68d05ed8ab233ccbbfd17d80",
+      "depois_sha256": "30bb1c7c0066783995ec905ad6010f272ddd4cf0e5e51dfa7143321164fe2119"
+    },
+    {
+      "id": "R53-141",
+      "ancora": "consulta--consulta-indice-2",
+      "capitulo": "Índice",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "59248f28d82ddb31d2a96b9344c3b861d24b82ca438b1cca6d054b9e12b78d19",
+      "depois_sha256": "c26937e39e73e1d4105e9f8ba53c5c4d8b4ca3bdbd1a3a41dc563f089e08d18c"
+    },
+    {
+      "id": "R53-142",
+      "ancora": "consulta--consulta-indice-3",
+      "capitulo": "Índice",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "038b9822ecbb3aca5b48ef186f6c8fc66b3e0e479102622ae4cc2cd7eb1138b3",
+      "depois_sha256": "571d92a00ad841641fe5d122e297cb47628ff91103f8d5d716e60e26bb66a21f"
+    },
+    {
+      "id": "R53-143",
+      "ancora": "consulta--consulta-indice-4",
+      "capitulo": "Índice",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "65d884adc20ef0d632fb15a2053d802c8bcb25e5d0375ad72101f2d7fc8506e7",
+      "depois_sha256": "9943b897f1dc8aa66554d627cf645ed9626bdb1dfe43b0957f9ab1ab8332e27c"
+    },
+    {
+      "id": "R53-144",
+      "ancora": "consulta--consulta-indice-5",
+      "capitulo": "Índice",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "8d550446898f3b12ee3914f3b3e73c636df9359e03189b4e8e86a86f8b32a374",
+      "depois_sha256": "205a7fcfe66f4770828832fe997387e3e1521bc3582780c916010e4c36777b16"
+    },
+    {
+      "id": "R53-145",
+      "ancora": "consulta--consulta-indice-6",
+      "capitulo": "Índice",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "fffa52731f4436c7a17a98d24893e371a79af2c98a0267ccd6c15fac56985674",
+      "depois_sha256": "e4362708cd6a6ccea45f1bb96229282e855298ee7d67e15dda3e3e264d1af345"
+    },
+    {
+      "id": "R53-146",
+      "ancora": "consulta--consulta-indice-7",
+      "capitulo": "Índice",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "13c0fe6c243ac8dd3e7146430e3c0be9d209b40130e2f72f204e3f512814fa1e",
+      "depois_sha256": "135d3a45c9eb8d773bc1d5f41211929256ee885bc8acabe3b90a262551a0efaa"
+    },
+    {
+      "id": "R53-147",
+      "ancora": "consulta--consulta-indice-8",
+      "capitulo": "Índice",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "cdbee44c5af5bc155ce901ca291402d5f713f4448cb9d3ad52a1cc0e230e30eb",
+      "depois_sha256": "6faacfa69889ca2abbf99bfe2307a07c664bad771b63bab963a61ab568e2d73b"
+    },
+    {
+      "id": "R53-148",
+      "ancora": "consulta--consulta-indice-9",
+      "capitulo": "Índice",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e58a9c8f81b4664be11c7b758672992d50390bade536a1e471fe7cf322cb5800",
+      "depois_sha256": "a8472bff0eed4787252f36c58481a149fb28f09afe3f3752276790a9b4e7e55d"
+    },
+    {
+      "id": "R53-149",
+      "ancora": "emanador--ema-forma",
+      "capitulo": "Caminhos e Trilhas",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "7d4ca5b7f01ae3fb4d54988d01a348bfd53ad4593fecc5a1644c3515d8c7de66",
+      "depois_sha256": "e8c0fa0e6152381186dfdb5b2618166acc6cab7b007fb5db337e7242e733c1b8"
+    },
+    {
+      "id": "R53-150",
+      "ancora": "emanador--ema-instintiva",
+      "capitulo": "Caminhos e Trilhas",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "382baf93cd40fdef1a2d7ae1d3d7182ff720a85f11777bb472d1ffb9b27b97d9",
+      "depois_sha256": "8bf3c3ab88af0b91cd39f0243f5c2ad4891a0d3053a8bf587a65e42b687dff7f"
+    },
+    {
+      "id": "R53-151",
+      "ancora": "emanador--ema-manifestacao",
+      "capitulo": "Caminhos e Trilhas",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "68bc217ac7f81c60e52f5991b3e54362cb725897c14493a4d5a1cc31723fff55",
+      "depois_sha256": "91be0f776eecaeb59170cf5ff264f4308f282aa3c6eaaed4f992fe7a51f8d7e7"
+    },
+    {
+      "id": "R53-152",
+      "ancora": "emanador--ema-modulacoes",
+      "capitulo": "Caminhos e Trilhas",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "7c0f31c52a539f94245994fd41462fae96838e454b2c33dcc66f7f42d866a1ee",
+      "depois_sha256": "aa8416368f753fd9178887d56e704ddbdb42733cc5c6d38f7076e21915ca6bf2"
+    },
+    {
+      "id": "R53-153",
+      "ancora": "emanador--ema-remodelar",
+      "capitulo": "Caminhos e Trilhas",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "2289f3cfb4777fcb6718a8ab63012c3f24370f463336df162bc56e927e7cf3d2",
+      "depois_sha256": "878c34fe57cdffa25b01e5e1561745a62d1a7dba2351491d2b5057dd16667897"
+    },
+    {
+      "id": "R53-154",
+      "ancora": "evocador--ev-multiplas-conduzir",
+      "capitulo": "Caminhos e Trilhas",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "40500f075fbfb1314f4dcb1c44472ffb91c1fd49d1028382107294266c8df8dd",
+      "depois_sha256": "fdd5128378e071e1d7a6d9d3465be62c2bd50eb97a999be796f2c8aaffe80ad8"
+    },
+    {
+      "id": "R53-155",
+      "ancora": "fundamento--alcance",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "14b1f29c3a5b2c89a7825288f0380600642ff9225ffd1fc3c34ae95384f61a94",
+      "depois_sha256": "8598e2ecbbf9cbc84d916c5432630bed515e00e7753cad8bb434331ccdcf222d"
+    },
+    {
+      "id": "R53-156",
+      "ancora": "fundamento--amparoformas",
+      "capitulo": "Fundamento",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "0efaca646f79af489c0c50fb238aa50e645c151bd0efc8706e9fd8381917637a",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-157",
+      "ancora": "fundamento--ampliar",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "51cbae46051ab6eacea61b2dce829536f1ad711e0413a496f083a4b28b61d0d0",
+      "depois_sha256": "c332dd2e583b73d9066df7378c6e7dc17dcc8c9184e86623baff484b9c8a3951"
+    },
+    {
+      "id": "R53-158",
+      "ancora": "fundamento--aplicacoes",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "8b9ffc3fa709eda8e67e46759190e1890c88b013ab5371a209ef8563855d1e1a",
+      "depois_sha256": "bdf14d9f49bf10347944d77e7c2178e6adbc11a71b2dd1661d3dc24fd643b57d"
+    },
+    {
+      "id": "R53-159",
+      "ancora": "fundamento--classezero",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "558b4d245dd1e3afde69ba2d8a9b4fd56e2a321b17c86b4d483594227574454d",
+      "depois_sha256": "406fad02289da2df7a211954790615ade81e9504a269546bb3fb6b7f5815cbbe"
+    },
+    {
+      "id": "R53-160",
+      "ancora": "fundamento--combinacoes",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "3e41f4f23c8c40bace93d792e5cf8ace88413f798d842ede47205146e1c92bb1",
+      "depois_sha256": "bf03e877194bb7328b3cd387fdc22e9c3fd411a6cbd602f2a5ca06bec300c74e"
+    },
+    {
+      "id": "R53-161",
+      "ancora": "fundamento--conjurar",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "48e9c223a2b2ecdff84c8b7e27b4c1a1912d9973be9dce67e4b69b0dd0fa1c4a",
+      "depois_sha256": "882b86233599d6fd566079c0c804548d3a57fb0d4f6f38d35341a88980d05d8d"
+    },
+    {
+      "id": "R53-162",
+      "ancora": "fundamento--controle",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "69f5c09184c48757251fa8e3b04cfa87173b7e345236fc08742c61074f11db6c",
+      "depois_sha256": "e20f2759221f8cb7918d18bbf603404c923f22353e0c0a4159f41496bd50b417"
+    },
+    {
+      "id": "R53-163",
+      "ancora": "fundamento--danolimites",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "a174a543126a93596f17ed5c11a99641d93cc323d4ab90ce922e3bda30608112",
+      "depois_sha256": "4ef8a34446d4a0f27165bf73669fa0fec2d631d79ef6a06b76d6ec8a4673aa4e"
+    },
+    {
+      "id": "R53-164",
+      "ancora": "fundamento--efeito",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "6982960f38389755aaaca5517c12edc7e3f082cc5c714a490f184f0cdc3025a1",
+      "depois_sha256": "f5cb56de4a5a8f7540c5b3242e198843fdf82126bd957ac8512427d229e7ef48"
+    },
+    {
+      "id": "R53-165",
+      "ancora": "fundamento--familias",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "70370b780e6f0bab3bfe913821c4e491276360a76e486e9411b1abe9dda0aecc",
+      "depois_sha256": "784bc0ecce60dba3e9c2a27afde38bcaf3783f238a546c2d431a07f0ce1ca64f"
+    },
+    {
+      "id": "R53-166",
+      "ancora": "fundamento--ficha",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "25a85a934ed36529abc2c1084d4f0b694efbbb6c2574950087c9608b4c406d70",
+      "depois_sha256": "f4f91d3cff5c9fc803c2f809238f3405ad695cbf8b2604390d7beecb8ce89cf9"
+    },
+    {
+      "id": "R53-167",
+      "ancora": "fundamento--formas",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "9be5241a9f127fd6dd54dea31f1cb6fe583ed62992d695958f3db507db234fc6",
+      "depois_sha256": "722bc698df59eaabe5ad70232f896c19e193a7c2853b111eee725cb442fb1aaa"
+    },
+    {
+      "id": "R53-168",
+      "ancora": "fundamento--funcoes",
+      "capitulo": "Fundamento",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "f9f0975efc361e8e3ae1021c6e77a1d22740c73b899301f6571b1c7168f15c6a"
+    },
+    {
+      "id": "R53-169",
+      "ancora": "fundamento--fundamento",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "864fe251b165d7ac2bb1dc6c357262a2ab610bb0cab99d0fcb1142b35d5b8447",
+      "depois_sha256": "941b4b0290c03f65f2c184b8b938adbf5a98bbbdd0122fb7c4da10db2fb42187"
+    },
+    {
+      "id": "R53-170",
+      "ancora": "fundamento--interfaces",
+      "capitulo": "Fundamento",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "05a0eaf556d66d8be54f4c2a92df8033cb6a225f8e7729402c147637f0d03d6d"
+    },
+    {
+      "id": "R53-171",
+      "ancora": "fundamento--liberacao",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "5e5f5a9d07fc9729cb71c22e948c20a844f4e4f88f185e2d1928ac5bafa137fd",
+      "depois_sha256": "8058f5dc362961c06e4099ebcf658e28415e5ce6b82ee3058a73b41ac3e5af4a"
+    },
+    {
+      "id": "R53-172",
+      "ancora": "fundamento--limitesmaxima",
+      "capitulo": "Fundamento",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "afd5e6940cc2cd7db49257ae9a9b99f3b63853a80acd1cffd0d405d56722e553",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-173",
+      "ancora": "fundamento--livre",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "f9bb919d6c9ccd4f788e70aec1ad9051601968d5810359568cd95ebb5e6cbddd",
+      "depois_sha256": "f23d7980c0f8bbaed8c92527ef393d4f612aca964c17ea7a687acbe3dabbd759"
+    },
+    {
+      "id": "R53-174",
+      "ancora": "fundamento--maxima",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "702fa0efe7e7d415bf5b75e1aca587b522f9da3b83175be2fdbfc4cf8ffafb80",
+      "depois_sha256": "ec30f7b744134b2022b5a3525628d2acd0f49e42e4fec5a12cadb710dbc36150"
+    },
+    {
+      "id": "R53-175",
+      "ancora": "fundamento--maximadano",
+      "capitulo": "Fundamento",
+      "tipo": "removido",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "44046bc6b0b922aaaa3165c2badac4f8e04796a398677175513826dcc4cbccdc",
+      "depois_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "id": "R53-176",
+      "ancora": "fundamento--mesclas",
+      "capitulo": "Fundamento",
+      "tipo": "adicionado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "depois_sha256": "3838a866fd5305f182f1fef0d8e0c6a481ed80724f5ae2d1240225fb3f7d8928"
+    },
+    {
+      "id": "R53-177",
+      "ancora": "fundamento--passagem",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "4194965ff2e1ecf073591a0f6cdd1e41143ddcf77615f9aedf60d1938fbd1150",
+      "depois_sha256": "b5dba55738b8f1d8a37620a213b2dde46c8537b91ae65739d32a89016479db26"
+    },
+    {
+      "id": "R53-178",
+      "ancora": "fundamento--persistente",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "058b6cc82b47f30c5d440a02e66c60dfab62c8ebf98f3d6b17f628a2b58d40f9",
+      "depois_sha256": "9773930c72051cc8a1a79410ab7e9f5b381626d320654f96b79ad6c259cae2fd"
+    },
+    {
+      "id": "R53-179",
+      "ancora": "fundamento--pontos",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "1653dc9d5cec980b3ec2bb8a338def66cd000f238662b45a77c55b16f27df7a4",
+      "depois_sha256": "bde973662d0eb24b557010fe96cb6d70c4757a2d163261c15a53c4aebd9cbbfb"
+    },
+    {
+      "id": "R53-180",
+      "ancora": "fundamento--primeiro",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "b0db0bb047b524df163dee9f75a91e7e2641306ffd6f24d75d5782ab5d5c0ddb",
+      "depois_sha256": "02ef30e44292f3f13367ca2040352a3d23224e8fd46bbebc8b696019bf446a42"
+    },
+    {
+      "id": "R53-181",
+      "ancora": "fundamento--proprio",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "e167599ce37ce60fb431c3126704f1fb0bab8afe5ece55cc87e4d6a79305ab2c",
+      "depois_sha256": "c8c174c76e3c5be3a759ba72a2038e1ad0406e8a2a97d5c44becca92ac62b239"
+    },
+    {
+      "id": "R53-182",
+      "ancora": "fundamento--repertorio",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "9353b6c12c393525b72fe55038910de4224704391d24e1f455b2cbf529d190e2",
+      "depois_sha256": "0b8ad24f381ebfe43032ad8a4c11f2118a08258071832bb964c0f854960d4533"
+    },
+    {
+      "id": "R53-183",
+      "ancora": "fundamento--restricoes",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "79864e60f93c6ba15a1783378a51def585eb1593666dddf6f8d3ff46c77709c1",
+      "depois_sha256": "c26912f62b862bae725ed98297aff2eac82a51dbd4e6db832fc431341605bea6"
+    },
+    {
+      "id": "R53-184",
+      "ancora": "fundamento--retirada",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "9739bd3445030f5477eb4e000e070f4279c0b40af0930f2dd76d421ed8c72e87",
+      "depois_sha256": "8f883d0ee81e3e01ca220762b080895f26868d4838285a65008b3ed5df271646"
+    },
+    {
+      "id": "R53-185",
+      "ancora": "fundamento--selo",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "ecc2ca298c39db43b04108af7ea512e3ea4eb35412eb534c53844c9bcf8a4161",
+      "depois_sha256": "71f52c9bac0a7e4b6087a9eb54e9c10227a6554dd5a404fed23d9404c2e38ea5"
+    },
+    {
+      "id": "R53-186",
+      "ancora": "fundamento--tecnica",
+      "capitulo": "Fundamento",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "50f1c749a35f8e0757cc7b0d679174e988b487d1d26bba490243162678c3960b",
+      "depois_sha256": "7710ba2b38bbaee066ac605d2cdc7854bc08ad64f9ac45995c52d3a35c581c98"
+    },
+    {
+      "id": "R53-187",
+      "ancora": "origens--restricao-menores-corporais",
+      "capitulo": "Origens",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "696e04b27888207a6ccce12e88fe56463a7961af6cf57522696020efb6a455df",
+      "depois_sha256": "422eb0bd529e94917b9aa66084a4a69681dc61f8626806a59b20243fc89b0024"
+    },
+    {
+      "id": "R53-188",
+      "ancora": "ritual--rit-beneficios",
+      "capitulo": "Ritual e Pactos",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "55565361a182df0a488f92885de38df9c29fc5e37c9df7f5363038d66562f056",
+      "depois_sha256": "6d8f08e5813a69f794af2de6f07713dbed6abf6a9d03cb4d0da1b0e5a3114040"
+    },
+    {
+      "id": "R53-189",
+      "ancora": "ritual--rit-limites",
+      "capitulo": "Ritual e Pactos",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "548c70f349566db708afdf3f20b7457ec9466018870d031dd406c076e389edf0",
+      "depois_sha256": "109c8fdd2680e07212bcd955faa03ddd23954c379e154eb3d28c5dcb0de852c8"
+    },
+    {
+      "id": "R53-190",
+      "ancora": "ritual--rit-parcelas",
+      "capitulo": "Ritual e Pactos",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "d4afdf2eccc9dcdf587211f5d9e04b77463280b514da9035cba5a111084f610b",
+      "depois_sha256": "fd10e048e7ddbcd135b31b1039faa34a9a06dde8667b63e469c0ecbaef751c27"
+    },
+    {
+      "id": "R53-191",
+      "ancora": "rotas--rota-armas",
+      "capitulo": "Rotas de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "cb2c0c3bdce67f048df5355ddd58986761517b03178248ab2f4a3319d8ef3c37",
+      "depois_sha256": "6c064a29e0beb59c33580798cdcba6c64dfefab67cb418fe1d70eb8d8c036ff0"
+    },
+    {
+      "id": "R53-192",
+      "ancora": "rotas--rota-bancada",
+      "capitulo": "Rotas de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "8dfe7ea79f0a67e120d9f9cf339d8dd5b9496df32874d1370d4cc1116b702315",
+      "depois_sha256": "f41740b7169320d6a8e4bb157133e587f270efb7654afdd2675d707267437e50"
+    },
+    {
+      "id": "R53-193",
+      "ancora": "rotas--rota-cura",
+      "capitulo": "Rotas de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "fa9a20ca662bfde41143aaa4bc77cbbfe4535675ff4fc5654f4908bb1d2e2c31",
+      "depois_sha256": "bf84885e602bfea1513b92505c0cf6d9f6fd2a081c1aee8ffa1406dfba9780d3"
+    },
+    {
+      "id": "R53-194",
+      "ancora": "rotas--rota-espinho",
+      "capitulo": "Rotas de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "793b6ea0fc4362c01d09854e0262e2241556c7fd1a424f5f69e38828af2b226c",
+      "depois_sha256": "2b1738d0ea344c1ea5c86a5e174f699f229d2ac412692659c5328319cda3b71a"
+    },
+    {
+      "id": "R53-195",
+      "ancora": "rotas--rota-ferramenta",
+      "capitulo": "Rotas de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "723862bd74440fea1afcdbd01b399636ef723219b89edfec3a738a339bc5a7d3",
+      "depois_sha256": "ece8b23014fa631a822205c523e5b87a869a76f38298a1f10d8efe7df477cdf6"
+    },
+    {
+      "id": "R53-196",
+      "ancora": "rotas--rota-fisga",
+      "capitulo": "Rotas de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "fc427933d82897db25cd02697f86df856ab856a53a8b6b3546481d11190df2de",
+      "depois_sha256": "857c72ab9096a7d42a013a2a04e2e9e1d04572de6d2272650f267d70c31f7e71"
+    },
+    {
+      "id": "R53-197",
+      "ancora": "rotas--rota-marcial",
+      "capitulo": "Rotas de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "4ad98204dfcffe402967c7b040bb1ca0f778447636f204563fe4bd4986e2379d",
+      "depois_sha256": "7a29256a29444323a2d579ea30c766d1da11b73673d4de693b122675f039abd7"
+    },
+    {
+      "id": "R53-198",
+      "ancora": "rotas--rota-redoma",
+      "capitulo": "Rotas de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "512e1a9bcdeae77ff73f937bd5d8f13dbf8428869661b4ffc9d91f119b7d56e5",
+      "depois_sha256": "4a4d71e443593fef86b0297467a4bfc8af74597013c5947bf71cfc4282d65efc"
+    },
+    {
+      "id": "R53-199",
+      "ancora": "rotas--rota-sem-tecnica",
+      "capitulo": "Rotas de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "5edb1b01403e3cc240c8cc1a5f16c9032c0b30f4895ad37f08893aa66aed52f7",
+      "depois_sha256": "783236106a36ca7a2456af56ac73ab76f28349dbaa23e324b6b0ffa5f3e538da"
+    },
+    {
+      "id": "R53-200",
+      "ancora": "rotas--rota-sementes",
+      "capitulo": "Rotas de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "97a7f4313943aebac990f1391782e0c9f96c29b56aec6b1ea1558ec60ddd7902",
+      "depois_sha256": "a0b12456fec0096242f8bc9ce0fd54d46d6ed19610ca91b664f6e1bf9a2511a5"
+    },
+    {
+      "id": "R53-201",
+      "ancora": "rotas--rota-sutura",
+      "capitulo": "Rotas de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "91d5f954e5e4690a672dbb30eabb5e14b145842a9f72df984f934309fd542222",
+      "depois_sha256": "042e3b2d07f8d89d1f55c3136cd632a6ee01e86931c82d2673c4b838538ab7d4"
+    },
+    {
+      "id": "R53-202",
+      "ancora": "rotas--rotas",
+      "capitulo": "Rotas de criação",
+      "tipo": "modificado",
+      "antes_confere": true,
+      "depois_confere": true,
+      "antes_sha256": "1ade5fb62c87f0b64b58ba1bc26cc03d3b2d63253b8cfd51da298e0588f0b53d",
+      "depois_sha256": "68fce90b43dc468c1ad54b7d25a57440b9d6da26d0e205303cc7645c1ef40c9c"
+    }
+  ],
+  "fonte": "cupcake-mochi/JJK---Project@1432c477f812aaaf1e0e8fdff8ed54d1709a663d",
+  "edicao": "R53",
+  "livro_completo_sha256": "7311979bdfc61bda1d2fd5113106f072edc7dd5b8a801a02779ada53fd13a81d",
+  "escopo": "Texto por âncora; somente cabeçalhos relativos, títulos de capítulo e comentários HTML normalizados. Não certifica respostas do modelo.",
+  "fonte_integral_confere": true
+}

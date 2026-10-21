@@ -1,0 +1,248 @@
+{
+  "modelo": "gemini-3.8-flash",
+  "raciocinio": "low",
+  "max_chamadas": 24,
+  "teto_cheio_usd": 1.5,
+  "casos": [
+    {
+      "id": "kaltsit_pt-BR_original_conversa",
+      "persona": "kaltsit",
+      "idioma": "pt-BR",
+      "mundo": "original",
+      "caso": "conversa",
+      "mensagem": "Finalmente terminei um projeto que vinha adiando. Como você comemora uma coisa assim?",
+      "pedido_sha256": "2cc290529e3b2f08e403f0843a74367f4cf4402949cd0f28bb6c0d76e5a28f05",
+      "reserva_usd": 0.030072
+    },
+    {
+      "id": "kaltsit_pt-BR_original_vinculo",
+      "persona": "kaltsit",
+      "idioma": "pt-BR",
+      "mundo": "original",
+      "caso": "vinculo",
+      "mensagem": "Você trabalha em Rhodes Island? Como é sua relação com a outra guia?",
+      "pedido_sha256": "45f0e0e64ea9a98a972d3a997f94eab10893bd11521f6e23d56492920368bbf4",
+      "reserva_usd": 0.030051
+    },
+    {
+      "id": "kaltsit_pt-BR_original_shiki",
+      "persona": "kaltsit",
+      "idioma": "pt-BR",
+      "mundo": "original",
+      "caso": "shiki",
+      "mensagem": "Quem é Shiki em Siracusa? Ele substitui a Signora Sicilia e manda na região inteira?",
+      "pedido_sha256": "1d1cf5104f5febd6d70c8f4b9095447d7a15e840a89839ae61d535d99a552cc7",
+      "reserva_usd": 0.030072
+    },
+    {
+      "id": "closure_pt-BR_original_conversa",
+      "persona": "closure",
+      "idioma": "pt-BR",
+      "mundo": "original",
+      "caso": "conversa",
+      "mensagem": "Finalmente terminei um projeto que vinha adiando. Como você comemora uma coisa assim?",
+      "pedido_sha256": "e18dafe28fe89ae3ef170d672a5bd0a7968e7957dd433fb9c0cb5f52b695996a",
+      "reserva_usd": 0.030174
+    },
+    {
+      "id": "closure_pt-BR_original_vinculo",
+      "persona": "closure",
+      "idioma": "pt-BR",
+      "mundo": "original",
+      "caso": "vinculo",
+      "mensagem": "Você trabalha em Rhodes Island? Como é sua relação com a outra guia?",
+      "pedido_sha256": "3865fad37a1b6187baf5691c0428f77306e17745120d7446ebeaa284eb7c8c18",
+      "reserva_usd": 0.030153
+    },
+    {
+      "id": "closure_pt-BR_original_shiki",
+      "persona": "closure",
+      "idioma": "pt-BR",
+      "mundo": "original",
+      "caso": "shiki",
+      "mensagem": "Quem é Shiki em Siracusa? Ele substitui a Signora Sicilia e manda na região inteira?",
+      "pedido_sha256": "b0aa4523dcf92351a2eda0e9363be1f3c828e58803250ceee765db1bc6bbcd96",
+      "reserva_usd": 0.030174
+    },
+    {
+      "id": "kaltsit_en_original_conversa",
+      "persona": "kaltsit",
+      "idioma": "en",
+      "mundo": "original",
+      "caso": "conversa",
+      "mensagem": "I finally finished a project I had been putting off. How would you celebrate something like that?",
+      "pedido_sha256": "76f19d80b6ce3fc92e992de76ad273834698b7f83b622c0279f85bef24023a85",
+      "reserva_usd": 0.0304995
+    },
+    {
+      "id": "kaltsit_en_original_vinculo",
+      "persona": "kaltsit",
+      "idioma": "en",
+      "mundo": "original",
+      "caso": "vinculo",
+      "mensagem": "Do you work at Rhodes Island? What is your relationship with the other guide?",
+      "pedido_sha256": "e85209a111933a54b5da1b37e2fb55cceaf3d39f906a8b7c4381dbcd2e81474a",
+      "reserva_usd": 0.0304695
+    },
+    {
+      "id": "kaltsit_en_original_shiki",
+      "persona": "kaltsit",
+      "idioma": "en",
+      "mundo": "original",
+      "caso": "shiki",
+      "mensagem": "Who is Shiki in Siracusa? Has he replaced Signora Sicilia and taken over the entire region?",
+      "pedido_sha256": "9cf85dfbb8688ea722a158ce5961d3f5717403b7e5192ca4e46b32adf4ef67a4",
+      "reserva_usd": 0.0304905
+    },
+    {
+      "id": "closure_en_original_conversa",
+      "persona": "closure",
+      "idioma": "en",
+      "mundo": "original",
+      "caso": "conversa",
+      "mensagem": "I finally finished a project I had been putting off. How would you celebrate something like that?",
+      "pedido_sha256": "a06838cd9f96d8bf44c97bdfe3a1e4b4be8ba92daf430b26e06d305538da08e0",
+      "reserva_usd": 0.0306015
+    },
+    {
+      "id": "closure_en_original_vinculo",
+      "persona": "closure",
+      "idioma": "en",
+      "mundo": "original",
+      "caso": "vinculo",
+      "mensagem": "Do you work at Rhodes Island? What is your relationship with the other guide?",
+      "pedido_sha256": "aa989baad8adadd3c9db64b5ceafcf01cb9b1e4a58cccfc699af64ad2a1efc74",
+      "reserva_usd": 0.0305715
+    },
+    {
+      "id": "closure_en_original_shiki",
+      "persona": "closure",
+      "idioma": "en",
+      "mundo": "original",
+      "caso": "shiki",
+      "mensagem": "Who is Shiki in Siracusa? Has he replaced Signora Sicilia and taken over the entire region?",
+      "pedido_sha256": "f22f4395f8a7836649533bce58aca7223ee893c76eaa16999002eff53c5af291",
+      "reserva_usd": 0.0305925
+    },
+    {
+      "id": "kaltsit_pt-BR_nova-terra_conversa",
+      "persona": "kaltsit",
+      "idioma": "pt-BR",
+      "mundo": "nova-terra",
+      "caso": "conversa",
+      "mensagem": "Finalmente terminei um projeto que vinha adiando. Como você comemora uma coisa assim?",
+      "pedido_sha256": "f70ea6ac1db9840f4284ebc87a52db4a291ce8eaa062e49b840b0f8540d82ddf",
+      "reserva_usd": 0.047436
+    },
+    {
+      "id": "kaltsit_pt-BR_nova-terra_vinculo",
+      "persona": "kaltsit",
+      "idioma": "pt-BR",
+      "mundo": "nova-terra",
+      "caso": "vinculo",
+      "mensagem": "Você trabalha em Rhodes Island? Como é sua relação com a outra guia?",
+      "pedido_sha256": "6274f32dfafc38d2e5a40281d0edcc53a9617c04c11832be99ab159cb57b8bb7",
+      "reserva_usd": 0.047415
+    },
+    {
+      "id": "kaltsit_pt-BR_nova-terra_shiki",
+      "persona": "kaltsit",
+      "idioma": "pt-BR",
+      "mundo": "nova-terra",
+      "caso": "shiki",
+      "mensagem": "Quem é Shiki em Siracusa? Ele substitui a Signora Sicilia e manda na região inteira?",
+      "pedido_sha256": "083d1892e0c074a4a08106eedd4e33a269957fa56a7d77c3e3558bb6d97cb5b1",
+      "reserva_usd": 0.053901
+    },
+    {
+      "id": "closure_pt-BR_nova-terra_conversa",
+      "persona": "closure",
+      "idioma": "pt-BR",
+      "mundo": "nova-terra",
+      "caso": "conversa",
+      "mensagem": "Finalmente terminei um projeto que vinha adiando. Como você comemora uma coisa assim?",
+      "pedido_sha256": "8f48870eef927d400e89064288f88f7414da9fce7e00694895e70a25ec4bb7f5",
+      "reserva_usd": 0.05295
+    },
+    {
+      "id": "closure_pt-BR_nova-terra_vinculo",
+      "persona": "closure",
+      "idioma": "pt-BR",
+      "mundo": "nova-terra",
+      "caso": "vinculo",
+      "mensagem": "Você trabalha em Rhodes Island? Como é sua relação com a outra guia?",
+      "pedido_sha256": "40462ce63087925840d2376d574823af6a61684e047e41086e2e5eb24eae4862",
+      "reserva_usd": 0.052929
+    },
+    {
+      "id": "closure_pt-BR_nova-terra_shiki",
+      "persona": "closure",
+      "idioma": "pt-BR",
+      "mundo": "nova-terra",
+      "caso": "shiki",
+      "mensagem": "Quem é Shiki em Siracusa? Ele substitui a Signora Sicilia e manda na região inteira?",
+      "pedido_sha256": "5512a6db9bc498d464edb1f0b6caa466c2fd758b48863fba36d6b2f357eb679d",
+      "reserva_usd": 0.059415
+    },
+    {
+      "id": "kaltsit_en_nova-terra_conversa",
+      "persona": "kaltsit",
+      "idioma": "en",
+      "mundo": "nova-terra",
+      "caso": "conversa",
+      "mensagem": "I finally finished a project I had been putting off. How would you celebrate something like that?",
+      "pedido_sha256": "4fea509094dab5f0918d91cd83160984a94e7cc591c8e1ab32c09a0791a7cae1",
+      "reserva_usd": 0.0478635
+    },
+    {
+      "id": "kaltsit_en_nova-terra_vinculo",
+      "persona": "kaltsit",
+      "idioma": "en",
+      "mundo": "nova-terra",
+      "caso": "vinculo",
+      "mensagem": "Do you work at Rhodes Island? What is your relationship with the other guide?",
+      "pedido_sha256": "6098171d212f32652b5d10daa5cbb3f904e267b703d813bd3221ce3b2f3f76d8",
+      "reserva_usd": 0.0478335
+    },
+    {
+      "id": "kaltsit_en_nova-terra_shiki",
+      "persona": "kaltsit",
+      "idioma": "en",
+      "mundo": "nova-terra",
+      "caso": "shiki",
+      "mensagem": "Who is Shiki in Siracusa? Has he replaced Signora Sicilia and taken over the entire region?",
+      "pedido_sha256": "105fc9b77fcc96061f147cb488f168242d42aa918ef93bc6b0eec1cb9559a6a6",
+      "reserva_usd": 0.0543195
+    },
+    {
+      "id": "closure_en_nova-terra_conversa",
+      "persona": "closure",
+      "idioma": "en",
+      "mundo": "nova-terra",
+      "caso": "conversa",
+      "mensagem": "I finally finished a project I had been putting off. How would you celebrate something like that?",
+      "pedido_sha256": "0f21ad2473ae3c06e4276be77effc9b24fa89028280a812fe4401120c0a96613",
+      "reserva_usd": 0.0533775
+    },
+    {
+      "id": "closure_en_nova-terra_vinculo",
+      "persona": "closure",
+      "idioma": "en",
+      "mundo": "nova-terra",
+      "caso": "vinculo",
+      "mensagem": "Do you work at Rhodes Island? What is your relationship with the other guide?",
+      "pedido_sha256": "72cfc9af9ab8ce50d3775d48f441f5b6ffddbaf91cf92b1f8ba91bc632255578",
+      "reserva_usd": 0.0533475
+    },
+    {
+      "id": "closure_en_nova-terra_shiki",
+      "persona": "closure",
+      "idioma": "en",
+      "mundo": "nova-terra",
+      "caso": "shiki",
+      "mensagem": "Who is Shiki in Siracusa? Has he replaced Signora Sicilia and taken over the entire region?",
+      "pedido_sha256": "a19f6178768773b5ee01d60437842df746ea92fa7ca7ecdb741afa7048a6d6c1",
+      "reserva_usd": 0.0598335
+    }
+  ]
+}

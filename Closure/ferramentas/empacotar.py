@@ -29,7 +29,7 @@ def arquivos(com_env: bool) -> list[tuple[Path, str]]:
     lista.append((RAIZ / "src" / "var" / "site" / "nucleo.js", "src/var/site/nucleo.js"))
     lista.append((RAIZ / "dados" / "sistema" / "MANIFESTO.json", "dados/sistema/MANIFESTO.json"))
     # a correção de ficha (cogs/ficha.py) lê o catálogo e o livro: Caminhos, Origens, uniformes, escudos e marcos
-    for nome in ("catalogos.json", "livro.jsonl"):
+    for nome in ("catalogos.json", "livro.jsonl", "legado-r52.jsonl"):
         lista.append((RAIZ / "dados" / "sistema" / nome, f"dados/sistema/{nome}"))
     lista += [(c, str(c.relative_to(RAIZ))) for c in sorted((RAIZ / "dados" / "personagem").glob("*/card.json"))]
     if com_env:
