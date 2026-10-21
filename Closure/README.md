@@ -1,5 +1,7 @@
 # Closure
 
+**Guias do Ciclo 1.0.0 · versão estável.** Kal’tsit e Closure usam a mesma versão do bot. Veja o histórico de versões e os limites da análise antes de aprovar uma ficha.
+
 **Publicado · 21/10 às 13:25 (Brasília):** idioma PT-BR/inglês, lore original/Nova Terra por servidor e links públicos na conversa. Dois bots auditados após implantação; 944 testes das Guias e 149 da Arquivista, além de 36 JS. [Estado atual e limites](docs/RETOMADA-PUBLICO.md).
 
 **Mestre e atalhos · 21/10:** `GC:gm` ou `/ficha mestre` orienta a revisão
