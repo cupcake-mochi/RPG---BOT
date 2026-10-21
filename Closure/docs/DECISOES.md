@@ -2,6 +2,8 @@
 
 Uma linha por decisão, a mais nova em cima. O detalhe fica no arquivo citado.
 
+- 21/10/2026 — Guia estático por assunto em `/guia`, `/ficha guia` e `GC:guia ficha`, com navegação semelhante à Arquivista. Explicação de limites humanos e aprovação exata; não cria autoaprovação nem chama modelo. Revisão das saídas fixas preserva cards, cálculos e núcleo instalado. Ver `GUIAS-DE-USO.md`.
+
 | Data | Decisão | Por quê | Onde |
 | ---- | ------- | ------- | ---- |
 | 19/10/2026 | Reconstruir sequência meteorológica dos turnos existentes para “E de BH?” e trocas sucessivas; comandos extraem a cidade de pergunta inteira. Publicado às 00:08:04, 11 verificações remotas e 100 no ZIP passaram | Captura demonstrou lacunas de continuação e argumento do comando, que a bateria anterior de cidades não cobria. Mudança de assunto encerra sequência; sem estado novo ou chamada paga | `pesquisa/validacao/2026-10-19-clima-seguimento/` |

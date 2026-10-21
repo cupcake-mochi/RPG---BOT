@@ -1,5 +1,9 @@
 # Closure
 
+**Guias de uso · 21/10:** `/guia` e `GC:guia` explicam os recursos por assunto.
+Use `/ficha guia` ou `GC:guia ficha` para envio, leitura do painel e revisão
+com o mestre. Veja [GUIAS-DE-USO.md](docs/GUIAS-DE-USO.md).
+
 **Ficha R53 · bateria em 19/10:** 13 análises no Discord por link/XLSX, três
 cópias sintéticas, custom pendente/aprovado/alterado e arquivos inválidos.
 882 testes executados, 881 aprovados, 1 opcional pulado. Atualização da

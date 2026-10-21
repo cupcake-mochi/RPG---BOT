@@ -75,11 +75,12 @@ class Pessoa(commands.Cog):
         linhas += [f"{n}. {fato}" for n, fato in enumerate(ficha.fatos, 1)]
         for persona in self.bot.personas.values():
             dias = self.bot.registro.dias_de_conversa(autor_id=eu, persona=persona.chave)
-            linhas.append(f"{persona.nome}: você falou com ela em {dias} dia(s) diferente(s) "
+            periodo = "1 dia" if dias == 1 else f"{dias} dias"
+            linhas.append(f"{persona.nome}: você falou com ela em {periodo} "
                           f"(intimidade {intimidade(dias)} de {len(DIAS_POR_NIVEL)}).")
         linhas.append("A conversa recente guarda até 12 falas, por até 30 minutos sem conversa ou até as 4h30, "
-                      "mesmo após reiniciar. Quando você chama uma delas, o texto da mensagem fica guardado até as 4h30, vira no máximo alguns "
-                      "fatos como os de cima e é apagado. /meu_fato acrescenta um, /esquecer_fato tira um, "
+                      "mesmo após reiniciar. Quando você chama uma delas, o texto da mensagem fica guardado até as 4h30, pode dar origem a alguns "
+                      "fatos como os de cima e depois é apagado. /meu_fato acrescenta um, /esquecer_fato tira um, "
                       "/apagar_meus_dados apaga tudo.")
         if self.bot.config.politica_url:
             linhas.append(f"Política de privacidade: {self.bot.config.politica_url}")
@@ -98,7 +99,7 @@ class Pessoa(commands.Cog):
         limpo = " ".join(fato.split())
         ficha = self.bot.registro.ficha(interacao.user.id)
         if not fato_permitido(limpo):
-            aviso = (f"Não guardei. O fato tem que ter até {FATO_MAX} letras, e elas não guardam saúde, dinheiro, religião, "
+            aviso = (f"Não guardei. O fato precisa ter até {FATO_MAX} caracteres, e elas não guardam saúde, dinheiro, religião, "
                      "política, relacionamento, idade, endereço nem contato.")
         elif limpo in ficha.fatos:
             aviso = "Esse elas já sabem."

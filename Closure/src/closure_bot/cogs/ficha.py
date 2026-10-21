@@ -106,6 +106,11 @@ VALORES = {"vida": "Vida", "vida.max": "Vida", "vida_max": "Vida", "energia_max"
 
 def _nome_do_valor(chave: str) -> str:
     partes = chave.split(".")
+    if len(partes) >= 3 and partes[0] == "custom":
+        tipo = {"pericia": "Perícia própria", "oficio": "Ofício próprio", "origem": "Origem própria",
+                "melhoria": "Melhoria própria", "restricao": "Restrição própria", "forma": "Forma própria"}.get(partes[1])
+        if tipo:
+            return tipo + " " + partes[2] + (" · " + _nome_do_valor(".".join(partes[3:])) if len(partes) > 3 else "")
     if partes[0] in ("pericia", "oficio", "tr", "equipavel", "item") and len(partes) >= 2:
         tipo = {"pericia": "Perícia", "oficio": "Ofício", "tr": "TR", "equipavel": "Equipável", "item": "Item"}[partes[0]]
         nomes_tr = {"fisico": "Físico", "vigor": "Vigor", "intelecto": "Intelecto", "espirito": "Espírito"}
@@ -254,8 +259,10 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
         elif resultado.nao_conferido:
             estado = "Conferência parcial; há partes não conferidas"
     titulo_estado = f"{estado} nas verificações feitas" if resultado.veredito != "formato desconhecido" else "Formato desconhecido — análise não realizada"
+    contagem = lambda itens, palavra: f"{len(itens)} {palavra}" + ("s" if len(itens) != 1 else "")
     resumo.add_field(name="Resultado", value=f"**{titulo_estado}**\n"
-                     f"{len(resultado.problemas)} erro(s) · {len(resultado.pendencias)} pendência(s) · {len(resultado.notas)} ajuste(s) para o mestre", inline=False)
+                     + " · ".join((contagem(resultado.problemas, "erro"), contagem(resultado.pendencias, "pendência"),
+                                    contagem(resultado.notas, "ajuste") + " para o mestre")), inline=False)
     revisao = [("❌ Precisa corrigir", resultado.problemas), ("⚠️ Falta ou pede atenção", resultado.pendencias),
                ("👀 Pro mestre conferir", resultado.notas)]
     for nome, problemas in revisao:
@@ -420,6 +427,10 @@ class Ficha(commands.Cog):
             except FichaIlegivel:
                 break  # a última leitura válida continua valendo
         return escolher_leitura(leituras), len(leituras)
+
+    @grupo.command(name="guia", description="Como enviar a ficha, entender o painel e revisar o restante com o mestre.")
+    async def guia(self, interacao: discord.Interaction) -> None:
+        await self.bot.get_cog("Guias").pela_barra(interacao, "ficha")
 
     @grupo.command(name="analisar", description="Confere a ficha pelo link da planilha ou pelo .xlsx anexo.")
     @app_commands.describe(link="Link da ficha no Google Planilhas, aberta pra leitura", arquivo="A ficha baixada em .xlsx")

@@ -1,5 +1,10 @@
 # src: código do bot
 
+**Guias de uso · 21/10:** `/guia`, `/ficha guia` e `GC:guia ficha`
+orientam envio, leitura do painel e revisão humana. Nove assuntos com
+menu e páginas, sem modelo nem alteração de dados. Veja
+[GUIAS-DE-USO.md](../docs/GUIAS-DE-USO.md) para rotas, limites e validação.
+
 **Continuação do clima · publicada em 19/10 às 00:08:** “E de BH?” depois de
 SP e trocas sucessivas de cidade consultam os dados corretos. `GC:clima` aceita
 pergunta inteira, incluindo a frase da captura. Suíte: 849 executados, 848

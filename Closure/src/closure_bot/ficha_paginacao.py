@@ -11,11 +11,12 @@ TEMPO_CONTROLES = 600
 
 
 class PaginasFicha(discord.ui.View):
-    def __init__(self, paginas: list[discord.Embed]):
+    def __init__(self, paginas: list[discord.Embed], *, aviso_encerrado="Rode a análise novamente para abrir"):
         super().__init__(timeout=TEMPO_CONTROLES)
         if not paginas:
             raise ValueError("a análise precisa de uma página")
         self.paginas = paginas
+        self.aviso_encerrado = aviso_encerrado
         self.indice = 0
         self.mensagem = None
         self._ultima_interacao = None
@@ -38,7 +39,7 @@ class PaginasFicha(discord.ui.View):
     async def mostrar(self, interacao: discord.Interaction, indice: int | None = None, *, deslocamento=0):
         async with self._troca:
             if self.is_finished():
-                await interacao.response.send_message("Os controles encerraram. Rode a análise novamente para abrir.", ephemeral=True)
+                await interacao.response.send_message(f"Os controles encerraram. {self.aviso_encerrado}.", ephemeral=True)
                 return
             if indice is None:
                 indice = self.indice + deslocamento
@@ -82,7 +83,7 @@ class PaginasFicha(discord.ui.View):
                 item.disabled = True
             if self.mensagem is not None:
                 resumo = self.paginas[0].copy()
-                resumo.set_footer(text=resumo.footer.text + " · Controles encerrados; rode a análise novamente para abrir")
+                resumo.set_footer(text=resumo.footer.text + " · Controles encerrados; " + self.aviso_encerrado[0].lower() + self.aviso_encerrado[1:])
                 try:
                     # A navegação pode durar mais que o token do comando inicial.
                     # O último clique tem token novo e o timeout é menor que sua validade.

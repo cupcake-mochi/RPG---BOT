@@ -82,7 +82,7 @@ class ComandoClima(commands.Cog):
                 log.warning("clima: falha ao procurar %r (%s)", lugar, erro)
                 return None, "Não consegui procurar esse lugar agora. Tente de novo daqui a pouco."
             if onde is None:
-                return None, "Não achei esse lugar. Tente o nome da cidade."
+                return None, "Não achei esse lugar. Tente o nome completo da cidade e acrescente o estado ou país. Exemplo: `GC:clima Belo Horizonte, Brasil`."
         leitura = await self.bot.clima.agora(onde)
         if leitura is None:
             return None, "Não consegui ler o clima agora. Tente de novo daqui a pouco."

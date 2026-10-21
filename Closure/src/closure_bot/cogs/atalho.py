@@ -57,7 +57,10 @@ class Atalho(commands.Cog):
                                         allowed_mentions=discord.AllowedMentions.none(), **extras)
 
         admin = self.bot.get_cog("Admin")
-        if nome in ("", "ajuda"):
+        if nome == "guia" or (nome == "ajuda" and resto) or (nome == "ficha" and resto.lower() in ("guia", "ajuda")):
+            tema = "ficha" if nome == "ficha" else resto
+            await self.bot.get_cog("Guias").enviar(responder, tema)
+        elif nome in ("", "ajuda"):
             dono = mensagem.author.id == self.bot.config.dono_id
             permissoes = getattr(mensagem.author, "guild_permissions", None)
             await responder(embed=admin.painel_de_ajuda(cuida_do_servidor=dono or bool(permissoes and permissoes.manage_guild), dono=dono))
@@ -87,7 +90,7 @@ class Atalho(commands.Cog):
         elif nome in SO_NA_BARRA:
             await responder(f"Esse é só pela barra, porque a resposta aparece só pra você: {self.bot.mencoes.get(nome, '/' + nome)}")
         else:
-            await responder("Não conheço esse. `GC:ajuda` mostra a lista.")
+            await responder("Não conheço esse comando. `GC:ajuda` mostra a lista; `GC:guia` explica como usar.")
 
 
 async def setup(bot: commands.Bot) -> None:

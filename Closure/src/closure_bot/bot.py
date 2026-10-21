@@ -19,7 +19,7 @@ from .vida import Vida
 
 log = logging.getLogger(__name__)
 
-MODULOS = ("admin", "atalho", "chat", "clima", "pessoa", "regras", "ficha")
+MODULOS = ("admin", "guias", "atalho", "chat", "clima", "pessoa", "regras", "ficha")
 
 
 class ClosureBot(commands.Bot):

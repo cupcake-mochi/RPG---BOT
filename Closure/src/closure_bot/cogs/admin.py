@@ -16,7 +16,7 @@ from ..prompt import versoes as versoes_do_site
 
 COR = 0xCC0102
 # Título de cada grupo no /ajuda, pelo módulo que tem o comando. A lista sai dos próprios comandos, então não envelhece.
-GRUPOS = {"Regras": "Regras", "Ficha": "Ficha", "ComandoClima": "Clima", "Pessoa": "Seus dados", "Admin": "Do bot"}
+GRUPOS = {"Guias": "Guias de uso", "Regras": "Regras", "Ficha": "Ficha", "ComandoClima": "Clima", "Pessoa": "Seus dados", "Admin": "Do bot"}
 SO_DO_DONO = {"teste_webhook"}
 
 
@@ -53,7 +53,8 @@ class Admin(commands.Cog):
         for grupo in sorted(grupos, key=ordem.index):
             embed.add_field(name=f"» {grupo}", value="\n".join(grupos[grupo]), inline=False)
         embed.add_field(name="» Sem a barra", inline=False,
-                        value="`GC:ajuda`, `GC:livro`, `GC:ficha` (com o link ou o .xlsx anexo), `GC:clima` (ou `GC:clima Quioto`), "
+                        value="`GC:guia` explica como usar; `GC:guia ficha` aprofunda a análise de fichas.\n"
+                              "`GC:ajuda`, `GC:livro`, `GC:ficha` (com o link ou o .xlsx anexo), `GC:clima` (ou `GC:clima Quioto`), "
                               "`GC:ping` e `GC:status` fazem o mesmo, escritos no chat.")
         links = [f"[{nome}]({url})" for nome, url in (("Privacidade", self.bot.config.politica_url), ("Termos de uso", self.bot.config.termos_url)) if url]
         if links:
