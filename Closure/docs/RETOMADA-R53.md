@@ -1,4 +1,11 @@
-# Retomada R53 · atualizada em 20/10/2026
+# Retomada R53 · atualizada em 21/10/2026
+
+**Guias e limpeza · 21/10:** `/guia`, `/ficha guia` e `GC:guia ficha`
+publicados, com nove assuntos e orientação de revisão humana. Suíte final:
+896/895/1 online opcional. As cópias sintéticas B47/R53 foram levadas à
+lixeira a pedido do usuário; os links dos ensaios abaixo são históricos.
+Estado publicado, verificações e limpeza em
+[relatório das guias](../pesquisa/validacao/2026-10-21-guias/RELATORIO.md).
 
 **Encerramento posterior:** defeitos da entidade corrigidos e publicados
 (`11cdc9f`), negativos preservados, suíte Linux 890/889/1 opcional pulado.

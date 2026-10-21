@@ -1,0 +1,122 @@
+{
+  "data": "2026-10-21",
+  "operacao": "lixeira recuperável; sem exclusão permanente",
+  "removidas": [
+    {
+      "id": "11XYpi_yJT5Nf7mBIp0VeOBDFb1O5ZtoBL_b_zEMl4L0",
+      "title": "Arquivista · Ensaio de expansão 2026-10-20"
+    },
+    {
+      "id": "1VjBPOoDwrlODzAPoSINOjtLv7AOmdWXUiWHBBk4M1Es",
+      "title": "Teste R53 · 05 Negativos e troca rápida · 20-10-2026"
+    },
+    {
+      "id": "1GfxTJcN3G8SrEwA8KTqIKzafAGhfaeFtV3IjmlTeBWY",
+      "title": "Teste R53 · 06 Forma custom em cartão · 20-10-2026"
+    },
+    {
+      "id": "1lujjGigxC8bvYJ3DLRziIeUvLU_AeqjiCmcnt6iyqcE",
+      "title": "Teste R53 · 04 Casos nativos pendentes · 20-10-2026"
+    },
+    {
+      "id": "1zfkcXIhkZOG18NlH23Llg3qtAl8GlI_snekwWgk2LK0",
+      "title": "Arquivista teste do modelo (pode apagar)"
+    },
+    {
+      "id": "14Y1xqOruOz6Wb_TI0I2WZj6HZdW9dVl08yyGDCXU3Co",
+      "title": "Teste R53 · 03 Custom mestre · 19-10-2026"
+    },
+    {
+      "id": "1k47ugyDaY_GvZz5ErpwGA0MbPMmRY_1DlsV8QEcVXBY",
+      "title": "Teste R53 · 02 Avançada · 19-10-2026"
+    },
+    {
+      "id": "13eWPuFzudrZ8obONgF1bvBl8EiG_aR0o83PkVLtCAaw",
+      "title": "Teste R53 · 01 Base simples · 19-10-2026"
+    },
+    {
+      "id": "1NbTe7tqetdh6m-IT7RLQGpykLClmmwDc1ztvhXlV74w",
+      "title": "B47 · 06 · Regra de campanha não autorizada — 18-10-2026"
+    },
+    {
+      "id": "1bMDERdpSl4WkwB90wy_koBxiiom-rsvcGW_22yRSVyU",
+      "title": "B47 · 05 · Divergência intencional — 18-10-2026"
+    },
+    {
+      "id": "1-VzABf2CZuAglaI5yHxRHqnQ4SaDoRl6rF5mMwVrRs4",
+      "title": "B47 · 04 · Alterada após aprovação — 18-10-2026"
+    },
+    {
+      "id": "1yGMTe3Gi02Zb5SPHJ0NprXgbaDBIGqF8yGTPb0R-D0I",
+      "title": "B47 · 03 · MESTRE VIU sem autorização — 18-10-2026"
+    },
+    {
+      "id": "1-SZ_8KMXeHxlZbMn-qo0VPInJ9wTqFNG9rvFYjKWb2E",
+      "title": "B47 · 01 · Base de teste — 18-10-2026"
+    },
+    {
+      "id": "1z88bE5CZxN02ZdxiRGKhbAQ2fAEXPbkQgMZfXSE5-18",
+      "title": "B47 · 02 · Custom com aprovação — 18-10-2026"
+    },
+    {
+      "id": "1ZFH6bbV6lRQLjGjYC_hACHS5wwbYGf65P5b7G7DD6vc",
+      "title": "Teste nativo TR 5 — Corda e carga — 15-10"
+    },
+    {
+      "id": "1BpFJoliur-T486t2NIzbXOaKEnbdu8e_oxX3lEE1sPE",
+      "title": "Teste nativo TR 4 — Domada — 15-10"
+    },
+    {
+      "id": "1xPZe9f1bhm_xb30xmed_80h00QwqjXvwcRmLyM1x5Qk",
+      "title": "Teste nativo TR 3 — Treino faltante — 15-10"
+    },
+    {
+      "id": "1qkMbWkI6U8oMDUyoCwTiXEn4jXL447Lki72ywvAr7To",
+      "title": "Teste nativo TR 2 — Vigor adulterado — 15-10"
+    },
+    {
+      "id": "1DEABGLZ69rYU1Mto8bg4b_LZcHL4Q_Aw66isJqR29SA",
+      "title": "Teste nativo TR 1 — Kaori — 15-10"
+    },
+    {
+      "id": "1k-aNNCeG6GuqEGgLIh-Q8X9Nx6PfeGdVXXeN9XhLGWo",
+      "title": "Validação do bot — Criação e Principal — 14-10"
+    },
+    {
+      "id": "1ybxw6Fo2qEgSHLDJ2wmUQ3-2wH796gu2bpUCsrewa2Y",
+      "title": "Validação do bot — Domada com Buff — 14-10"
+    },
+    {
+      "id": "1fb47fXiQO4nm238XlnCEKwIhCQUzOD28RiLYPdNfLkc",
+      "title": "Validação do bot — Fundamento e Classe 0 — 14-10"
+    },
+    {
+      "id": "1ysWodUzSlb_GlUH-2hJdmwoxDFXbdA5yzMjU_aHoyHo",
+      "title": "Validação do bot — Kaori com feitiços — 14-10"
+    }
+  ],
+  "bloqueadas": [
+    {
+      "id": "1gIO1tRVlBg9vZDFWBk8Zk-68KSuSRFxuIVLi9m1hGX8",
+      "title": "Teste 3 - Incursor com erros"
+    },
+    {
+      "id": "1mLj7vncGyfCMYI73FpRN4SOJf_dYjCoJz574vAEvOv0",
+      "title": "Teste 4 - Corpo Amaldiçoado"
+    },
+    {
+      "id": "11ZyCmguoQYSJuCiR4-0HzWlyLbrW7nHkeRgS_dfO2cE",
+      "title": "Teste 2 - Vanguarda com pendências"
+    },
+    {
+      "id": "1kbZq9RRGJGtRliun8_uBRYK0fRTzKGsDKbaG4T3E6dc",
+      "title": "Teste 1 - Kaori"
+    }
+  ],
+  "protegidas": [
+    "1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro",
+    "1MC3VlrvWGlO8cN30P2-EjxlAy8E23wV9xpRwLcCmwU8",
+    "1lBWTmgjMi62Cltug0CJsm8f5SxOJWpjdCYB2ggRq7Kw"
+  ],
+  "conferidas_na_lixeira": 23
+}
