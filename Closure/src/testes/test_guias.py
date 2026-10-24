@@ -49,17 +49,19 @@ class ConteudoDosGuias(unittest.TestCase):
         inicio, fim = paginas[0].description, paginas[-1].description
         self.assertIn("Arquivo → Fazer uma cópia", inicio)
         self.assertIn("CARTEIRA", fim)
-        self.assertIn("direita de “Emitida”", fim)
+        self.assertIn("marque EMITIR, ao lado de 'Não emitida'", fim)
         self.assertIn("se desmarca sozinha", fim)
         self.assertIn("não envia a ficha ao bot nem registra aprovação", fim)
-        self.assertIn("reiniciar o ciclo aberto", fim)
+        self.assertIn("o ciclo aberto recomeçar na data nova", fim)
+        self.assertIn("Marcar EMITIR de novo não muda a data", fim)
+        self.assertIn("Sem emissão, só vale hoje", fim)
         self.assertIn("Depois da revisão com o mestre", fim)
 
     def test_consulta_distingue_automacao_de_copia_e_ajustes(self):
         texto = "\n".join(p.description for p in guias.paginas("planilha"))
         for trecho in ("CARTEIRA", "FICHA AMALDIÇOADA", "FICHA PESSOAL", "INVOCAÇÕES", "GLOSSÁRIO",
                        "CONFIGURAÇÃO", "Somar", "Trocar por", "zero é um valor informado",
-                       "Duas trocas", "Os acionadores automáticos não acompanham a cópia",
+                       "Duas trocas", "não exige ativar conferência diária",
                        "não certifica datas de missão", "sem recálculo independente"):
             self.assertIn(trecho, texto)
 

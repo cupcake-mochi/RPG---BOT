@@ -61,23 +61,29 @@ MESTRE = ("Revisar uma ficha como mestre", (
      "Uma peça própria pode continuar **sem recálculo independente**, mesmo aprovada; "
      "nesse caso, a conta e o funcionamento ainda precisam da conferência humana indicada no painel."),
     ("7. Confira equipamento, recursos e registros",
-     "Na **FICHA PESSOAL**, compare inventário, quantidades, munição, Volume e o que está em uso. "
-     "Confira treino, Força, mãos, acesso e dinheiro das compras. Ter o item não dispensa seus requisitos.\n\n"
-     "Na **FICHA**, confira recursos máximos e atuais, Defesa, Proteção, deslocamento e estados. "
-     "Uma ficha que começa ferida ou com Sequelas precisa refletir a situação combinada. "
-     "Evite substituir fórmulas por valores que só escondam o problema.\n\n"
+     "Na **FICHA PESSOAL**, compare inventário, quantidades, munição, Volume e o que está em uso. Confira "
+     "treino, Força, mãos, acesso e dinheiro das compras. Ter o item não dispensa seus requisitos.\n\n"
+     "Na **FICHA**, confira recursos máximos e atuais, Defesa, Proteção, deslocamento e estados. Uma ficha que "
+     "começa ferida ou com Sequelas precisa refletir a situação combinada. Evite substituir fórmulas por "
+     "valores que só escondam o problema.\n\n"
      "Confira datas e participações das missões e os acordos salariais quando a mesa usar esse controle. "
-     "Saldo manual e salários creditados não devem conter a mesma renda duas vezes. "
-     "A análise do bot não certifica datas de missão nem o histórico salarial.\n\n"
-     "Use **Limites da análise** como lista adicional: o que está ausente ou não conferido não vira válido por suposição."),
+     "Confira o saldo em **TOTAL DISPONÍVEL (W86)** e os lançamentos no EXTRATO. **O86 é ± GASTO / GANHO**, não "
+     "saldo manual; não lance salários de novo. Os últimos 10 créditos estão em CONFIGURAÇÃO!K81:P90. A análise "
+     "do bot não certifica datas de missão nem o histórico salarial.\n\n"
+     "Use **Limites da análise** como lista adicional: o que está ausente ou não conferido não vira válido por "
+     "suposição."),
     ("8. Registre a decisão e finalize a revisão",
-     "Para cada dúvida, anote **o que foi conferido, a fonte ou decisão, a condição de uso e o que ainda falta**. "
-     "Separe erro de conta, informação faltante e decisão de mesa. Não conceda um bônus só para fazer o painel ficar verde.\n\n"
-     "Depois das correções, analise novamente a mesma versão e confira se a mudança resolveu o problema sem criar outro. "
-     "As partes sem conferência automática continuam exigindo sua revisão, mesmo com zero erros e pendências.\n\n"
-     "Diga ao jogador o que está liberado, o que depende de ajuste e quais limites valem durante a sessão. "
-     "Se a ficha estiver pronta para a mesa, conclua a criação marcando **Emitida** na CARTEIRA. "
-     "O campo grava a data e se desmarca ao salvar; ele não registra sua decisão no bot.\n\n"
-     "Uma reemissão pode reiniciar o ciclo salarial aberto. Não a use a cada revisão ou sessão. "
-     "Guarde os acordos de mesa fora do painel temporário e reveja a autorização quando a definição mudar."),
+     "Para cada dúvida, anote **o que foi conferido, a fonte ou decisão, a condição de uso e o que ainda "
+     "falta**. Separe erro de conta, informação faltante e decisão de mesa. Não conceda um bônus só para fazer "
+     "o painel ficar verde.\n\n"
+     "Depois das correções, analise novamente a mesma versão e confira se a mudança resolveu o problema sem "
+     "criar outro. As partes sem conferência automática continuam exigindo sua revisão, mesmo com zero erros e "
+     "pendências.\n\n"
+     "Diga ao jogador o que está liberado, o que depende de ajuste e quais limites valem durante a sessão. Se a "
+     "ficha estiver pronta para a mesa, conclua a criação marcando **EMITIR**, ao lado de Não emitida, na "
+     "CARTEIRA. O campo grava a data e se desmarca ao salvar; ele não registra sua decisão no bot.\n\n"
+     "O salário só conta depois de emitir. Marcar EMITIR de novo não muda a data. A correção em "
+     "CONFIGURAÇÃO!O38 só aceita da emissão atual até hoje (sem emissão, só hoje), preserva salários vencidos e "
+     "reinicia o ciclo aberto. Guarde os acordos de mesa fora do painel temporário e reveja a autorização "
+     "quando a definição mudar."),
 ))

@@ -1,0 +1,49 @@
+{
+  "data": "2026-10-24",
+  "produtor_commit": "53cb869c52d4f9d1063ef7a053ab7eb9b69e36ab",
+  "base_bot": "8752c82",
+  "copia_descartavel": "https://docs.google.com/spreadsheets/d/17INKENHpxKhYUYkBRiIh-G833Uz4DwztlMpAzYyNAQM/edit",
+  "origem_somente_leitura": "1MQqhHbIzzyoMQY5zLKOciiT5k9Y6AMI4MCSrPhu8V_k",
+  "formato": 12,
+  "chaves": 18393,
+  "chaves_r53": 10173,
+  "paridade_csv_api_xlsx": true,
+  "chaves_faltando": [],
+  "chaves_extras": [],
+  "csv_api_sha256": "8c6b5cca05f22cca9c0948c769cb3ba6010b99ff7f6437339ce4f5bb717aa68f",
+  "xlsx_nativo_sha256": "dc33fc1e560ac4077ad4565b0d9c7cd4318a98bd163c9fb313e6cbbf0113f2fc",
+  "personagem_sintetico": {
+    "nome": "Teste Closure R53 — sintético",
+    "caminho": "Bastião",
+    "trilha": "Muro",
+    "nivel": 2
+  },
+  "conferencia": {
+    "veredito": "reprovada",
+    "problemas": [
+      {
+        "campo": "aviso.escolhas_de_pericia",
+        "esperado": "",
+        "encontrado": "Falta: 9 perícias e 2 ofícios, ou 10 perícias sem ofício"
+      },
+      {
+        "campo": "regra.familias_livres",
+        "esperado": "2 conforme campanha autorizada",
+        "encontrado": "0"
+      },
+      {
+        "campo": "regra.familias_fechadas",
+        "esperado": "3 conforme campanha autorizada",
+        "encontrado": "0"
+      }
+    ],
+    "pendencias": 6,
+    "limites": 11
+  },
+  "limitacoes": [
+    "personagem parcialmente preenchido; não é aprovação de ficha",
+    "CSV montado da API autenticada; gviz anônimo não exercitado",
+    "edições por API não disparam onEdit; sem teste de scripts ou do app Android",
+    "sem mensagens Discord, chamadas pagas ou deploy"
+  ]
+}

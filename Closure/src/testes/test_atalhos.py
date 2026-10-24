@@ -125,7 +125,7 @@ class InterfaceDosAtalhos(unittest.IsolatedAsyncioTestCase):
     async def test_guia_mestre_cobre_revisao_e_nao_analisa_ou_aprova(self):
         texto='\n'.join(p.description for p in guias.paginas('mestre'))
         for parte in ('/ficha analisar','Zero erros','MESTRE VIU','definição exata','sem recálculo independente',
-                      'Alma','histórico','salaria','Emitida','BÔNUS E MUDANÇAS','Limites da análise'):
+                      'Alma','histórico','salaria','EMITIR','BÔNUS E MUDANÇAS','Limites da análise'):
             self.assertIn(parte,texto)
         self.assertEqual(guias.assunto('mestre'),'mestre')
         self.assertEqual(guias.assunto('aprovação'),'custom')

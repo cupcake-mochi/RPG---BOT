@@ -164,7 +164,8 @@ class GuiasEmIngles(unittest.IsolatedAsyncioTestCase):
                     self.assertTrue(pagina.footer.text.startswith('Page '))
                     self.assertLessEqual(len(pagina.description),4096)
                     self.assertLessEqual(len(pagina),6000)
-        self.assertIn('Emitida',guias.paginas('criar','en')[-1].description)
+        for identificador in ('EMITIR', 'Não emitida'):
+            self.assertIn(identificador, guias.paginas('criar', 'en')[-1].description)
         self.assertIn('CARTEIRA',guias.paginas('criar','en')[-1].description)
         self.assertIn('¥150,000',guias.paginas('criar','en')[10].description)
         self.assertIn('9 points',guias.paginas('criar','en')[2].description)

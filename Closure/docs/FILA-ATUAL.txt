@@ -1,3 +1,6 @@
+R53 definitiva — atualização preparada em 24/10/2026
+Branch codex/closure-r53-definitiva, sem deploy ou merge. Guias PT/EN e contexto de conversa atualizados para emissão obrigatória, salário por fórmula, gasto/ganho, correção de datas, paleta e invocações; link de cópia aponta à definitiva. Leitor já aceitava ANALISE 12: preservado. Cópia sintética confirmou 18.393 chaves e paridade CSV(API)/XLSX, sem alterar base/Original/jogadores. Inventário e limites: docs/R53-DEFINITIVA.md; evidência: pesquisa/validacao/2026-10-24-r53-definitiva/. O estado de produção abaixo continua sendo a 1.0.3.
+
 Manutenção de clareza — Guias 1.0.3 / Arquivista 1.1.2, 21/10/2026
 Publicado e conferido: Guias definitivas online às 16:42:16, Arquivista às 16:24:12 (Brasília). “Versão atual do livro” no guia; código de edição nos detalhes técnicos de diagnóstico/compatibilidade; sem prefixo nos resumos comuns dos cartões. Siglas da ficha e termos administrativos explicados em PT/EN. Guias: CI 953/952/1 opcional, 153 direcionados e 50 regressões (1 opcional), mais 63 dos cartões; 90/90 arquivos instalados, ambiente/campanha/bancos iguais. Arquivista: 149 Python + 36 JS, 27/27 arquivos, cadastros/configurações preservados. Sem modelos pagos ou edição de planilha. Estado e retomada: docs/CLAREZA-SIGLAS.md. Rodadas abaixo históricas; não repetir deploy por documentação.
 

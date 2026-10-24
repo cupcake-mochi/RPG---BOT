@@ -1,4 +1,9 @@
-# Guias de uso · 21/10/2026
+# Guias de uso · atualização de 24/10/2026
+
+A ficha definitiva atualiza emissão, salário por fórmula, gasto/ganho, datas,
+paleta e invocações nos guias PT/EN e no contexto de conversa das duas guias.
+Inventário, fontes e limites do teste nativo: [R53 definitiva](R53-DEFINITIVA.md).
+Esta atualização está preparada para revisão, ainda sem publicação no bot.
 
 O bot oferece `/guia`, com o campo opcional **assunto**, e `GC:guia assunto`.
 `/ficha guia`, `GC:ficha guia` e `GC:ajuda ficha` abrem a orientação de ficha.
@@ -74,11 +79,12 @@ Não refazer a bateria mecânica R53 só por uma alteração de texto.
 - `GC:guia ficha` e `/ficha guia` continuam dedicados à análise. O início e
   a ajuda indicam os três caminhos para evitar misturar criação e avaliação.
 
-A última etapa explica que marcar **Emitida** grava a data de Brasília e
-se desmarca ao salvar; não envia análise ou aprovação. Reemitir pode
-reiniciar o ciclo aberto. A automação salarial precisa ser ativada na cópia,
-pois os acionadores não são copiados. Não houve emissão nem mudança salarial
-em uma ficha real durante este trabalho.
+A última etapa agora explica que **EMITIR** grava a data de Brasília uma vez
+e se desmarca; não envia análise ou aprovação. Repetir a marcação não altera
+a data. A correção em O38 só permite avançar até hoje, preservando salários
+vencidos e reiniciando o ciclo aberto. Na definitiva, o salário é por fórmula
+e não exige ativar uma rotina diária. Abaixo ficam as fontes históricas da
+criação dos guias; as fontes vigentes estão em R53-DEFINITIVA.md.
 
 ### Fontes verificadas
 
