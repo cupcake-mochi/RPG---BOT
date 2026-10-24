@@ -4,7 +4,7 @@ import re
 import unicodedata
 from urllib.parse import urlsplit
 
-FICHA_OFICIAL = 'https://docs.google.com/spreadsheets/d/1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro/edit'
+FICHA_OFICIAL = 'https://docs.google.com/spreadsheets/d/1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw/edit'
 
 def links(config):
     candidatos={

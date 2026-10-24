@@ -70,7 +70,7 @@ def orientacao(personalizados: dict[str, str] | None = None) -> str:
     """Informação do produto para as duas personagens; não é um fato pessoal."""
     texto = (
         "[Recursos reais deste bot: /ajuda ou GC:ajuda lista os comandos e tem a página Abreviações. "
-        "GC:guia criar ensina a criação até Emitida; GC:guia planilha explica abas/configurações; "
+        "GC:guia criar ensina a criação até EMITIR; GC:guia planilha explica abas/configurações; "
         "GC:guia ficha ou /ficha guia explica a análise; GC:guia mestre ou /ficha mestre orienta a revisão humana. "
         "GC:ficha LINK ou /ficha analisar confere a ficha sem IA; também aceita XLSX anexo. "
         "Atalhos públicos: " + "; ".join(f"GC:{nome} = GC:{alvo}" for nome, alvo in CURTOS.items()) + ". "

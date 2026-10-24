@@ -1,0 +1,17 @@
+{
+  "arquivo": "closure-lab.zip",
+  "sha256": "132dfa2e8eafbae60902a4a527bf617bf1603a3c5995d7006e06bb3149881711",
+  "bytes": 1802384,
+  "arquivos": 90,
+  "fontes_alterados_conferidos": [
+    "src/closure_bot/guias_ficha.py",
+    "src/closure_bot/guia_mestre.py",
+    "src/closure_bot/prompt.py",
+    "src/closure_bot/atalhos.py",
+    "src/closure_bot/recursos/guias-en.json",
+    "src/closure_bot/recursos_publicos.py"
+  ],
+  "publicado": false,
+  "arquivos_conferidos": 90,
+  "arquivo_entrega": "closure-r53-nivel2-discloud.zip"
+}

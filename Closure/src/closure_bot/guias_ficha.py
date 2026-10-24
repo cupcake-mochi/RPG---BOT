@@ -1,16 +1,45 @@
-"""Criação e consulta da ficha R53 com emissão/salários de 20/10/2026.
+"""Criação e consulta da ficha R53 com emissão/salários de 24/10/2026.
 
 Fontes e revisões: docs/GUIAS-DE-USO.md. Conteúdo estático, sem ler ou editar planilhas.
 """
+import re
+import unicodedata
+
+
+def orientacao_ficha(mensagem: str, historico=()) -> str:
+    """Recupera os próprios guias para a conversa, inclusive perguntas de continuação.
+
+    Só texto editorial entra no contexto de referência; a pergunta seleciona
+    páginas, nunca é interpolada como instrução. Não lê fichas nem chama IA.
+    """
+    consulta = unicodedata.normalize("NFKD", " ".join((*historico, mensagem)))
+    consulta = consulta.encode("ascii", "ignore").decode().lower()
+    temas = (
+        (r"\b(emiti\w*|emiss\w*|carteira|issu\w*)\b", CRIAR[1][13]),
+        (r"\b(salari\w*|salary|salaries|credit\w*|fechamento\w*|participa\w*|pay\w*)\b", PLANILHA[1][12]),
+        (r"\b(dinheiro|iene\w*|gasto\w*|ganho\w*|extrato|saldo|o86|w86|money|yen|spend\w*|income|balance)\b", PLANILHA[1][6]),
+        (r"\b(miss\w*|corrigi\w*|correc\w*|data\w*|date\w*|mission\w*|android|celular|mobile)\b", PLANILHA[1][13]),
+        (r"\b(paleta\w*|palette\w*|cores|colors?|colours?|recarreg\w*)\b", PLANILHA[1][1]),
+        (r"\b(invoca\w*|recolhid\w*|pontinho|summon\w*|collaps\w*)\b", PLANILHA[1][5]),
+    )
+    paginas = [(titulo, texto) for padrao, (titulo, texto) in temas if re.search(padrao, consulta)]
+    if not paginas:
+        return ""
+    return ("[Referência de uso da ficha R53 definitiva, 24/10/2026. "
+            "Use somente os trechos pertinentes à dúvida; isto não executa ações nem certifica saldo, emissão ou salário. "
+            "As instruções atuais substituem as antigas sobre saldo manual, emissão e rotina diária.\n\n" +
+            "\n\n".join(titulo + "\n" + texto for titulo, texto in paginas) + "]")
 
 CRIAR = ("Criar uma ficha", (
     ("1. Faça sua própria cópia",
-     "Abra a [ficha oficial](https://docs.google.com/spreadsheets/d/1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro/edit). "
-     "Entre na sua conta Google e use **Arquivo → Fazer uma cópia**. Dê um nome que identifique seu personagem e preencha essa cópia.\n\n"
-     "Este roteiro vai da ficha vazia até a emissão na **CARTEIRA**. As abas ficam na parte de baixo da planilha. "
-     "Se uma seção estiver recolhida, abra pelo **+** ao lado das linhas ou acima das colunas.\n\n"
-     "Use os campos de preenchimento e os menus. Preserve as fórmulas e as abas ocultas. "
-     "As contas e os cartões dependem delas. Para consultar a função de cada aba, abra `GC:guia planilha`."),
+     "Abra a [ficha "
+     "oficial](https://docs.google.com/spreadsheets/d/1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw/edit). Entre "
+     "na sua conta Google e use **Arquivo → Fazer uma cópia**. Dê um nome que identifique seu personagem e "
+     "preencha essa cópia.\n\n"
+     "Este roteiro vai da ficha vazia até a emissão na **CARTEIRA**. As abas ficam na parte de baixo da "
+     "planilha. Se uma seção estiver recolhida, abra pelo **+** ao lado das linhas ou acima das colunas.\n\n"
+     "Use os campos de preenchimento e os menus. Preserve as fórmulas e as abas ocultas. As contas e os cartões "
+     "dependem delas. Para consultar a função de cada aba, abra `GC:guia planilha`."),
     ("2. Combine o início da campanha",
      "Antes de distribuir pontos, pergunte ao mestre o **nível inicial**, o **Grau**, os recursos e quais opções estão disponíveis. "
      "Pense também no nome, na ideia do personagem e no motivo para estar com o grupo.\n\n"
@@ -89,25 +118,31 @@ CRIAR = ("Criar uma ficha", (
      "e requisitos. Liberação, Técnica Máxima e Domínio só entram quando você tiver acesso.\n\n"
      "Se houver pacto, registre efeito, custo e condição reais com o mestre; deixe os campos de pacto vazios quando não houver um."),
     ("10. Preencha entidades, se houver",
-     "Se seu personagem tem uma entidade, abra **INVOCAÇÕES** e preencha uma ficha para ela. "
-     "Se não tem, siga para o equipamento; não é preciso inventar uma só para ocupar a aba.\n\n"
-     "Escolha o tipo, registre nome, aquisição, nível e Classe conforme as regras dessa entidade. "
-     "Distribua atributos, Famílias, treinos e Talentos próprios dela. "
-     "Não copie automaticamente os valores do personagem: uma domada, por exemplo, tem progressão própria.\n\n"
+     "Se seu personagem tem uma entidade, abra **INVOCAÇÕES** e preencha uma ficha para ela. Se não tem, siga "
+     "para o equipamento; não é preciso inventar uma só para ocupar a aba.\n\n"
+     "Escolha o tipo, registre nome, aquisição, nível e Classe conforme as regras dessa entidade. Distribua "
+     "atributos, Famílias, treinos e Talentos próprios dela. Não copie automaticamente os valores do "
+     "personagem: uma domada, por exemplo, tem progressão própria.\n\n"
      "Monte a básica e as especiais disponíveis nos cartões da entidade e confira seu orçamento de espaços. "
-     "Anote condições de manifestação, comando e manutenção. Repertório conhecido e entidades ativas são coisas diferentes.\n\n"
-     "Leve ao mestre as permissões de aquisição e os limites de uso conjunto. O bot não comprova "
-     "esse histórico nem certifica toda interação entre entidades."),
+     "Anote condições de manifestação, comando e manutenção. Repertório conhecido e entidades ativas são coisas "
+     "diferentes.\n\n"
+     "Leve ao mestre as permissões de aquisição e os limites de uso conjunto. O bot não comprova esse histórico "
+     "nem certifica toda interação entre entidades.\n\n"
+     "As invocações **2 a 6 e 8 a 12** ficam recolhidas. Abra pelo **+ da lateral esquerda**. No celular, se o "
+     "+ parecer um pontinho, toque no **« do canto** para abrir a lateral. A caixa de ajuda fica no topo de "
+     "INVOCAÇÕES (AB2:AR4)."),
     ("11. Compre e equipe seus itens",
-     "Na **FICHA PESSOAL**, registre os equipáveis, itens, quantidades e onde ficam guardados. "
-     "Depois selecione o que está em uso: mãos, proteção e escudo devem corresponder ao inventário.\n\n"
-     "Na criação padrão de Grau 4, você recebe **um Traje 1 e ¥150.000** para os demais itens. "
-     "Escolha situação, TR e perícias do Traje conforme o livro. Desconte as compras do dinheiro e registre munição e suprimentos. "
-     "Armas de fogo têm preço de criação próprio e podem exigir autorização.\n\n"
-     "Confira treino, Força, mãos, acesso e Volume, inclusive do traje vestido. "
-     "O limite normal de carga é **5 + Força**, antes de alterações concedidas.\n\n"
-     "O campo manual de ienes registra seu saldo e gastos; **TOTAL DISPONÍVEL** também soma os salários creditados. "
-     "Não copie esses créditos para o saldo manual, pois seriam contados duas vezes."),
+     "Na **FICHA PESSOAL**, registre os equipáveis, itens, quantidades e onde ficam guardados. Depois selecione "
+     "o que está em uso: mãos, proteção e escudo devem corresponder ao inventário.\n\n"
+     "Na criação padrão de Grau 4, você recebe **um Traje 1 e ¥150.000** para os demais itens. Escolha "
+     "situação, TR e perícias do Traje conforme o livro. Desconte as compras do dinheiro e registre munição e "
+     "suprimentos. Armas de fogo têm preço de criação próprio e podem exigir autorização.\n\n"
+     "Confira treino, Força, mãos, acesso e Volume, inclusive do traje vestido. O limite normal de carga é **5 "
+     "+ Força**, antes de alterações concedidas.\n\n"
+     "A ficha começa com **¥150.000 no EXTRATO**, como Saldo inicial. Na caixa **± GASTO / GANHO** da FICHA "
+     "PESSOAL (O86), digite **-500** para gastar ou **2000** para ganhar. Espere a caixa limpar antes do "
+     "próximo lançamento. Veja o saldo em **TOTAL DISPONÍVEL (W86)**: ele inclui extrato, salários e o "
+     "lançamento ainda na caixa. Não lance o mesmo salário de novo."),
     ("12. Revise os valores e o estado inicial",
      "Volte à **FICHA** e confira Vida, PE ou recurso da rota, Integridade, Defesa, Proteção, "
      "deslocamento, acerto, CD, Maestria e treinos. **CD (Classe de Dificuldade)** é a dificuldade contra a qual o alvo faz uma resistência; "
@@ -127,40 +162,47 @@ CRIAR = ("Criar uma ficha", (
      "**Zero erros não é aprovação. MESTRE VIU é um lembrete**, sem conceder autorização no bot. "
      "Se houver conteúdo próprio, a aprovação cadastrada precisa corresponder à definição exata e ao servidor.\n\n"
      "Quando a revisão estiver resolvida e o mestre liberar a ficha, siga para a emissão."),
-    ("14. Finalize na Carteira: Emitida",
-     "Abra a **CARTEIRA** da sua cópia e confira identificação e Grau. "
-     "Depois da revisão com o mestre, clique na **caixa de seleção à direita de “Emitida”**, no topo da carteira.\n\n"
-     "A ficha grava a data de hoje no horário de Brasília. **A caixa se desmarca sozinha depois de salvar**: "
-     "confira a data mostrada, em vez de tentar mantê-la marcada. "
-     "Se a data não atualizar, espere o processamento e confira **CONFIGURAÇÃO → Emissão e salários**.\n\n"
-     "A emissão registra uma data; não envia a ficha ao bot nem registra aprovação do mestre. "
-     "Ela também inicia ou ajusta o ciclo salarial. Evite clicar de novo a cada sessão: reemitir pode reiniciar o ciclo aberto.\n\n"
-     "Se a mesa usar salários automáticos, veja `GC:guia planilha`, página **Como emitir a carteira e acompanhar salários**, para ativar a rotina na sua cópia. "
-     "Com a data conferida e a ficha liberada, ela está pronta para a mesa. Depois, mantenha recursos, gastos e missões atualizados."),
+    ("14. Finalize na Carteira: EMITIR",
+     "Terminou a ficha? Escreva o nome do personagem na CARTEIRA e marque EMITIR, ao lado de 'Não emitida'. O "
+     "salário só começa a contar a partir desse dia. Se marcar no dia errado, corrija a data de emissão em "
+     "CONFIGURAÇÃO (só dá para adiantar).\n\n"
+     "Depois da revisão com o mestre, use **CARTEIRA!AT3** ou **CONFIGURAÇÃO!O39**. A data é a de hoje em "
+     "Brasília; a caixa se desmarca sozinha depois de salvar. Aguarde de 5 a 15 segundos e confira a data. "
+     "Marcar EMITIR de novo não muda a data.\n\n"
+     "Para corrigir, escreva **dd/mm/aaaa em CONFIGURAÇÃO!O38**, entre a emissão atual e hoje. Sem emissão, só "
+     "vale hoje. Datas para trás, futuras ou inválidas são recusadas com aviso em O46. Os salários vencidos "
+     "ficam pagos; a correção faz o ciclo aberto recomeçar na data nova.\n\n"
+     "A emissão não envia a ficha ao bot nem registra aprovação do mestre. O salário é calculado por fórmula, "
+     "sem ativar rotina diária. Veja os detalhes em `GC:guia planilha` e mantenha recursos, gastos e missões "
+     "atualizados."),
 ))
 
 PLANILHA = ("Conhecer a planilha", (
     ("Por onde começar e como abrir as seções",
-     "Este é o guia de consulta da ficha. Para preencher do começo ao fim, use **GC:guia criar**. "
-     "Para interpretar a avaliação do bot, use **GC:guia ficha**.\n\n"
-     "As sete abas de uso são **CARTEIRA, FICHA, FICHA AMALDIÇOADA, INVOCAÇÕES, FICHA PESSOAL, GLOSSÁRIO e CONFIGURAÇÃO**. "
-     "Elas aparecem na parte de baixo; use a navegação de abas se não couberem na tela.\n\n"
-     "Os sinais **+ e −** na margem abrem e recolhem grupos de linhas ou colunas. "
-     "Recolher só esconde a seção; não apaga suas escolhas. Em CONFIGURAÇÃO, vários painéis ficam lado a lado, à direita.\n\n"
-     "Menus e caixas de seleção recebem escolhas; resultados e espelhos vêm de outras partes. "
-     "Se tiver dúvida, leia a nota do campo e confira a barra de fórmulas antes de escrever. "
-     "As abas técnicas ocultas guardam catálogos, contas e registros; preserve-as."),
+     "Este é o guia de consulta da ficha. Para preencher do começo ao fim, use **GC:guia criar**. Para "
+     "interpretar a avaliação do bot, use **GC:guia ficha**.\n\n"
+     "As sete abas de uso são **CARTEIRA, FICHA, FICHA AMALDIÇOADA, INVOCAÇÕES, FICHA PESSOAL, GLOSSÁRIO e "
+     "CONFIGURAÇÃO**. Elas aparecem na parte de baixo; use a navegação de abas se não couberem na tela.\n\n"
+     "Os sinais **+ e −** na margem abrem e recolhem grupos de linhas ou colunas. Recolher só esconde a seção; "
+     "não apaga suas escolhas. Em CONFIGURAÇÃO, vários painéis ficam lado a lado, à direita.\n\n"
+     "Menus e caixas de seleção recebem escolhas; resultados e espelhos vêm de outras partes. Se tiver dúvida, "
+     "leia a nota do campo e confira a barra de fórmulas antes de escrever. As abas técnicas ocultas guardam "
+     "catálogos, contas e registros; preserve-as.\n\n"
+     "No Android, os menus personalizados e a rotina de abertura não rodam. Use os campos de edição; uma edição "
+     "pode levar de 5 a 15 segundos para responder."),
     ("CARTEIRA · identificação e emissão",
-     "A CARTEIRA apresenta o documento do personagem: identificação, imagem, patente e data de emissão. "
-     "Ela não substitui os registros mecânicos das outras abas.\n\n"
-     "Preencha a identificação nos campos próprios e confira os dados espelhados. "
-     "Use a imagem do personagem na área reservada sem cobrir as informações do documento. "
-     "O Grau deve ser o combinado com o mestre; ele não é o nível de progressão.\n\n"
-     "O menu de paleta da CARTEIRA muda a aparência. Espere a troca terminar nas outras abas. "
-     "CONFIGURAÇÃO mantém a paleta fixa; isso é esperado.\n\n"
-     "O checkbox ao lado de **Emitida** grava a data atual e se desmarca depois de salvar. "
-     "Use ao concluir a criação ou quando houver uma reemissão combinada, não a cada abertura da ficha. "
-     "Os detalhes do ciclo ficam na página **Como emitir a carteira e acompanhar salários** deste guia."),
+     "A CARTEIRA apresenta o documento do personagem: identificação, imagem, patente e data de emissão. Ela não "
+     "substitui os registros mecânicos das outras abas.\n\n"
+     "Preencha a identificação nos campos próprios e confira os dados espelhados. Use a imagem do personagem na "
+     "área reservada sem cobrir as informações do documento. O Grau deve ser o combinado com o mestre; ele não "
+     "é o nível de progressão.\n\n"
+     "Escolha **PALETA em C27**. A troca em lote leva uns **20 segundos** e muda a ficha inteira de uma vez. "
+     "Até as cores mudarem, **não feche nem recarregue a página**, como avisa C29. CONFIGURAÇÃO mantém sua "
+     "paleta fixa.\n\n"
+     "Com a ficha pronta, marque **EMITIR**, ao lado de **Não emitida**, em AT3. O salário só conta a partir "
+     "desse dia. A caixa se desmarca ao salvar; marcar novamente não muda a data. Para corrigir, use "
+     "CONFIGURAÇÃO!O38, somente para frente e até hoje. Veja os detalhes em **Como emitir a carteira e "
+     "acompanhar salários**."),
     ("FICHA · atributos, recursos e combate",
      "A FICHA reúne atributos, perícias, ofícios, Testes de Resistência (TR), Caminho, Trilha, Origem e os principais valores de combate. "
      "Aqui você acompanha recursos e estados como Vida, energia, Integridade, Sequelas e Exaustão.\n\n"
@@ -192,22 +234,30 @@ PLANILHA = ("Conhecer a planilha", (
     ("INVOCAÇÕES · fichas das entidades",
      "Cada entidade tem sua própria ficha, com tipo, nível, Classe, atributos, Famílias, treinos, Talentos, "
      "recursos e cartões de capacidades. Abra seus grupos de linhas para consultar o restante.\n\n"
-     "A aquisição e o tipo determinam a progressão. Uma entidade não herda automaticamente os atributos, "
-     "as Famílias ou o nível atual do personagem. Confira a distribuição e os limites próprios.\n\n"
-     "Registre a básica, as especiais e outros benefícios efetivamente recebidos. "
-     "Anote o que exige manifestação, comando ou manutenção e quais recursos são compartilhados.\n\n"
-     "A lista de entidades conhecidas não informa, por si só, quais estão ativas numa cena. "
-     "Confira esse estado e os limites de uso com o mestre. Sem entidades no personagem, esta aba pode ficar sem preenchimento."),
+     "A aquisição e o tipo determinam a progressão. Uma entidade não herda automaticamente os atributos, as "
+     "Famílias ou o nível atual do personagem. Confira a distribuição e os limites próprios.\n\n"
+     "Registre a básica, as especiais e outros benefícios efetivamente recebidos. Anote o que exige "
+     "manifestação, comando ou manutenção e quais recursos são compartilhados.\n\n"
+     "A lista de entidades conhecidas não informa, por si só, quais estão ativas numa cena. Confira esse estado "
+     "e os limites de uso com o mestre. Sem entidades no personagem, esta aba pode ficar sem preenchimento.\n\n"
+     "As invocações **2 a 6 e 8 a 12** ficam recolhidas. Abra pelo **+ da lateral esquerda**. No celular, se o "
+     "+ parecer um pontinho, toque no **« do canto** para abrir a lateral. A caixa de ajuda fica no topo de "
+     "INVOCAÇÕES (AB2:AR4)."),
     ("FICHA PESSOAL · história, itens e missões",
      "Aqui ficam o dossiê, traço, capacidades da Origem, Legados de história, equipamento, treinos em armas, "
      "inventário, carga, dinheiro e o painel de missões e pontos de experiência (XP).\n\n"
-     "Registre quantidades e Volume e selecione o que está vestido ou nas mãos. "
-     "Ter uma arma no inventário não significa estar com ela equipada ou ter treino. "
-     "Confira os avisos de Força, acesso e excesso de carga.\n\n"
-     "O painel de missões fica à direita, em colunas recolhidas. Abra o **+** acima delas para registrar missão, "
-     "tipo e os ajustes concedidos. O XP alimenta a progressão; não invente missões para alcançar o nível desejado.\n\n"
-     "O saldo manual de ienes conserva dinheiro e gastos. **TOTAL DISPONÍVEL** soma também os salários já creditados. "
-     "Não lance o mesmo salário nos dois lugares. As datas salariais das missões são explicadas mais adiante neste guia."),
+     "Registre quantidades e Volume e selecione o que está vestido ou nas mãos. Ter uma arma no inventário não "
+     "significa estar com ela equipada ou ter treino. Confira os avisos de Força, acesso e excesso de carga.\n\n"
+     "O painel de missões fica à direita, em colunas recolhidas. Abra o **+** acima delas para registrar "
+     "missão, tipo e os ajustes concedidos. O XP alimenta a progressão; não invente missões para alcançar o "
+     "nível desejado.\n\n"
+     "Em **± GASTO / GANHO (O86)**, digite **-500** para gastar ou **2000** para ganhar. O lançamento vai para "
+     "**EXTRATO** (Data, Valor, Origem), e a caixa limpa; aguarde isso antes do próximo. A ficha começa com "
+     "**¥150.000**, registrados como Saldo inicial.\n\n"
+     "O dinheiro está em **TOTAL DISPONÍVEL (W86)**: soma o lançamento ainda na caixa, o extrato e os salários "
+     "do livro e pendentes. O86 não é o saldo. Não lance salário de novo. Para ver EXTRATO no PC, use **Ver → "
+     "Mostrar → EXTRATO**; a aba é oculta. Preserve os registros. Os **últimos 10 créditos salariais** ficam em "
+     "CONFIGURAÇÃO, seção 14, K81:P90, mais recentes primeiro."),
     ("GLOSSÁRIO · entender os termos",
      "Abra o GLOSSÁRIO quando não souber o que um atributo, perícia, ofício ou termo da ficha significa. "
      "Ele serve como consulta rápida enquanto você preenche ou joga.\n\n"
@@ -258,26 +308,35 @@ PLANILHA = ("Conhecer a planilha", (
      "Abra `GC:guia custom` para a revisão e o cadastro da aprovação exata. "
      "Mesmo aprovado, um cartão com peça própria pode continuar sem recálculo independente."),
     ("Como emitir a carteira e acompanhar salários",
-     "Em **CONFIGURAÇÃO → Emissão e salários**, confira data de emissão, ativação, intervalo, "
-     "participações, valores por Grau, pesos das missões, previsão e histórico recente. Mude regras apenas com o mestre.\n\n"
-     "A caixa ao lado de **Emitida**, na CARTEIRA, e **emitir hoje**, nas configurações, gravam o dia atual de Brasília "
-     "e se desmarcam ao salvar. A data permanece fixa. Uma reemissão pode reiniciar o ciclo aberto; "
-     "não apaga os créditos anteriores nem aprova a ficha.\n\n"
-     "**Na sua cópia**, se forem usar a automação, abra **Salários → Ativar conferência diária**. "
-     "Os acionadores automáticos não acompanham a cópia. "
-     "**Conferir salários agora**, no mesmo menu, executa a apuração quando necessário. "
-     "Só abrir a planilha não garante o fechamento de um período.\n\n"
-     "Confira o histórico e o TOTAL DISPONÍVEL na FICHA PESSOAL. "
-     "O bot não certifica datas de missão nem o histórico salarial."),
+     "Em **CONFIGURAÇÃO → Emissão e salários** (seção 14), confira a situação em **O46**, próximo fechamento em "
+     "**O48**, créditos em **O49**, referência do Grau em **O50**, início do ciclo em **O69**, participações em "
+     "**O70**, previsão em **O71** e último fechamento em **O72**.\n\n"
+     "**O salário só conta depois de EMITIR** na CARTEIRA (AT3) ou CONFIGURAÇÃO (O39). A caixa se desmarca ao "
+     "salvar; marcar de novo não muda a data. Para corrigir, digite dd/mm/aaaa em **O38**, da emissão atual até "
+     "hoje; sem emissão, só hoje. A correção preserva salários vencidos e reinicia o ciclo aberto. Datas "
+     "recusadas aparecem em O46.\n\n"
+     "O padrão é um período de **30 dias**, pelo **Grau no fechamento**, mínimo de **25%** e **100% com 3 "
+     "participações**. Pesos: Curta 1, Padrão 1, Longa 2, Final de arco 3, Solo simples 1 e Solo complexa 1. "
+     "Mude regras apenas com o mestre.\n\n"
+     "O cálculo é **na hora, por fórmula**, inclusive no Android: não exige ativar conferência diária nem abrir "
+     "menu. O pendente já entra no TOTAL DISPONÍVEL. **Últimos 10 créditos**, em K81:P90, reúne livro e "
+     "pendente, mais recente primeiro. Para consultar o livro, no PC use **Ver → Mostrar → SALÁRIOS**, uma aba "
+     "oculta; preserve os registros.\n\n"
+     "O bot não certifica datas de missão nem o histórico salarial, emissão ou saldo: esses dados não são "
+     "exportados pela ANALISE atual."),
     ("Como registrar missões e atualizar a ficha",
-     "Para uma missão contar no acompanhamento salarial, preencha **nome e tipo válido** no painel da FICHA PESSOAL. "
-     "A ficha registra sua data e identidade. Corrigir o texto conserva a data; "
-     "para substituir por outra missão, limpe primeiro o nome antigo.\n\n"
-     "Para uma missão antiga ou uma data incorreta, selecione a missão e use **Salários → Data da missão selecionada**. "
-     "Missões anteriores à instalação não recebem uma data presumida. Essa operação não altera pagamentos já fechados.\n\n"
-     "Antes da sessão, confira recursos atuais, equipamento, munição e efeitos ligados. "
-     "Depois, registre gastos, recuperação, missões e ganhos autorizados. "
-     "Uma nova análise exige enviar o link ou um XLSX novo; o painel antigo não acompanha suas edições.\n\n"
-     "Se uma conta parar, espere o processamento e confira os avisos. "
-     "Informe ao responsável qual aba e ação falharam. Não apague registros ocultos nem reconstrua a ficha preenchida para tentar corrigir."),
+     "Para uma missão contar no acompanhamento salarial, preencha **nome e tipo válido** no painel da FICHA "
+     "PESSOAL. A ficha registra data e identidade. Corrigir o texto conserva a data; para substituir por outra "
+     "missão, limpe primeiro o nome antigo.\n\n"
+     "**No celular ou PC**, use a caixa **CORRIGIR DATA**, acima de MAIS MISSÕES: nome da missão em **BI11** e "
+     "data real em **BO11**, como dd/mm/aaaa. Aguarde de 5 a 15 segundos. A própria caixa mostra **✓ nome: "
+     "data** ou **⚠ motivo**. Nome inexistente ou repetido, data inválida, futura ou de período já pago exigem "
+     "correção; não invente outra data para contornar o aviso. O pendente recalcula, sem alterar pagamentos já "
+     "fechados.\n\n"
+     "O app do Android não executa os menus personalizados nem a rotina de abertura. Use os campos de edição "
+     "para emissão, gasto/ganho, correção de data e paleta.\n\n"
+     "Antes da sessão, confira recursos, equipamento, munição e efeitos ligados. Depois, registre gastos, "
+     "recuperação, missões e ganhos autorizados. Para uma nova análise, envie o link ou XLSX atualizado; o "
+     "painel antigo não acompanha edições. Se algo falhar, confira os avisos e informe a aba e a ação ao "
+     "responsável. Preserve fórmulas e registros ocultos."),
 ))
