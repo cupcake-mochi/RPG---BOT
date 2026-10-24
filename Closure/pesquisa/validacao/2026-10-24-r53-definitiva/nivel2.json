@@ -1,0 +1,100 @@
+{
+  "modelo_publico": "https://docs.google.com/spreadsheets/d/1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw/edit",
+  "copia_descartavel": "https://docs.google.com/spreadsheets/d/1irYpSOJpjrLMvEbRhrDabiJvFhv_bVZSUpYPMk0oafQ/edit",
+  "metodo": "closure_bot.cogs.ficha.Ficha.analisar_fonte",
+  "entradas": "XLSX nativo Google Drive; adaptador de anexo em memória; sem mensagens no Discord",
+  "resultado": {
+    "base": {
+      "sha256": "a85c5c4250e582320c00951ba217c97f1fa155f4b54cb79b5e2333b911336516",
+      "bytes": 5815823,
+      "chaves": 18393,
+      "r53": 10173,
+      "nivel": 2,
+      "vida": 23,
+      "defesa": 13,
+      "veredito": "reprovada",
+      "problemas": [
+        {
+          "regra": "aviso",
+          "campo": "aviso.escolhas_de_pericia",
+          "esperado": "",
+          "encontrado": "Falta: 9 perícias e 2 ofícios, ou 10 perícias sem ofício",
+          "ancora": ""
+        },
+        {
+          "regra": "famílias",
+          "campo": "regra.familias_livres",
+          "esperado": "2 conforme campanha autorizada",
+          "encontrado": "0",
+          "ancora": "fundamento--familias"
+        },
+        {
+          "regra": "famílias",
+          "campo": "regra.familias_fechadas",
+          "esperado": "3 conforme campanha autorizada",
+          "encontrado": "0",
+          "ancora": "fundamento--familias"
+        }
+      ],
+      "pendencias": 6,
+      "limites": 11,
+      "paginas": 4
+    },
+    "erros": {
+      "sha256": "72ef85d927ea70a534fa306147cc586b484b650b0381ab18eb8c3f4649bb9b4b",
+      "bytes": 5815588,
+      "chaves": 18393,
+      "r53": 10173,
+      "nivel": 2,
+      "vida": 999,
+      "defesa": 999,
+      "veredito": "reprovada",
+      "problemas": [
+        {
+          "regra": "conta",
+          "campo": "vida_max",
+          "esperado": "23",
+          "encontrado": "999",
+          "ancora": "progressao--prog-atualizar"
+        },
+        {
+          "regra": "conta",
+          "campo": "defesa",
+          "esperado": "13",
+          "encontrado": "999",
+          "ancora": "equip--eqp-protecao"
+        },
+        {
+          "regra": "aviso",
+          "campo": "aviso.escolhas_de_pericia",
+          "esperado": "",
+          "encontrado": "Falta: 9 perícias e 2 ofícios, ou 10 perícias sem ofício",
+          "ancora": ""
+        },
+        {
+          "regra": "famílias",
+          "campo": "regra.familias_livres",
+          "esperado": "2 conforme campanha autorizada",
+          "encontrado": "0",
+          "ancora": "fundamento--familias"
+        },
+        {
+          "regra": "famílias",
+          "campo": "regra.familias_fechadas",
+          "esperado": "3 conforme campanha autorizada",
+          "encontrado": "0",
+          "ancora": "fundamento--familias"
+        }
+      ],
+      "pendencias": 6,
+      "limites": 11,
+      "paginas": 4
+    }
+  },
+  "repetido_no_zip": true,
+  "restauracao_api": {
+    "FICHA!J26": 23,
+    "FICHA!D59": 13
+  },
+  "familias": "Os zeros nos diagnósticos representam escolhas Livre/Fechada ainda ausentes. Os valores da regra são 2/3, iguais na API e no XLSX."
+}

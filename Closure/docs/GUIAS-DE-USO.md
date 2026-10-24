@@ -3,7 +3,8 @@
 A ficha definitiva atualiza emissão, salário por fórmula, gasto/ganho, datas,
 paleta e invocações nos guias PT/EN e no contexto de conversa das duas guias.
 Inventário, fontes e limites do teste nativo: [R53 definitiva](R53-DEFINITIVA.md).
-Esta atualização está preparada para revisão, ainda sem publicação no bot.
+A atualização e o modelo público nível 2 estão na PR 73, com merge autorizado;
+o ZIP de entrega aguarda aplicação na Discloud pelo operador.
 
 O bot oferece `/guia`, com o campo opcional **assunto**, e `GC:guia assunto`.
 `/ficha guia`, `GC:ficha guia` e `GC:ajuda ficha` abrem a orientação de ficha.

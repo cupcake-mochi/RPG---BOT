@@ -16,7 +16,7 @@
   "pages": {
     "criar.1": {
       "title": "1. Make your own copy",
-      "text": "Open the [official character sheet](https://docs.google.com/spreadsheets/d/1MQqhHbIzzyoMQY5zLKOciiT5k9Y6AMI4MCSrPhu8V_k/edit), sign in to Google, and choose **File → Make a copy**. Name it after your character and fill in your copy.\n\nThis walkthrough takes you from a blank sheet to issuance in **CARTEIRA**. The spreadsheet itself keeps its Portuguese labels; this guide preserves them so you can find each field. Tabs are at the bottom. Open collapsed rows or columns with the **+** beside or above them.\n\nUse input fields and dropdowns. Keep formulas and hidden tabs intact: calculations and ability cards depend on them. `GC:guide spreadsheet` explains each tab."
+      "text": "Open the [official character sheet](https://docs.google.com/spreadsheets/d/1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw/edit), sign in to Google, and choose **File → Make a copy**. Name it after your character and fill in your copy.\n\nThis walkthrough takes you from a blank sheet to issuance in **CARTEIRA**. The spreadsheet itself keeps its Portuguese labels; this guide preserves them so you can find each field. Tabs are at the bottom. Open collapsed rows or columns with the **+** beside or above them.\n\nUse input fields and dropdowns. Keep formulas and hidden tabs intact: calculations and ability cards depend on them. `GC:guide spreadsheet` explains each tab."
     },
     "criar.2": {
       "title": "2. Agree on the campaign starting point",

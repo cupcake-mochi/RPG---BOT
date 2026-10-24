@@ -11,6 +11,7 @@ responsável pelo arquivo de aparências.
 
 - **Usar o bot:** `/ajuda` lista comandos; `/guia` explica cada recurso.
 - **Criar uma ficha:** `GC:guia criar`, da cópia até a emissão na Carteira.
+- **Modelo público nível 2:** [ficha para copiar](https://docs.google.com/spreadsheets/d/1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw/edit?usp=drivesdk).
 - **Conhecer a planilha:** `GC:guia planilha`, com abas e configurações.
 - **Analisar:** `GC:f LINK_DA_FICHA` ou XLSX anexado à mensagem de `GC:f`.
 - **Revisar como mestre:** `GC:gm`, junto do painel e do livro da mesa.

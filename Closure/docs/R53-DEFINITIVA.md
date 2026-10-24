@@ -1,7 +1,8 @@
 # Closure e a ficha R53 definitiva · 24/10/2026
 
-Atualização preparada em `codex/closure-r53-definitiva`, a partir do bot
-`8752c82`. Sem publicação na Discloud, merge ou alteração de acesso.
+Atualização da [PR 73](https://github.com/cupcake-mochi/RPG---BOT/pull/73),
+a partir do bot `8752c82`, com merge autorizado pelo Mizuki. O ZIP é entregue
+para atualização manual na Discloud; não houve deploy nem alteração de acesso.
 Modelo recomendado: GPT-6.1, esforço alto para integração; médio para revisão textual.
 
 ## Inventário e compatibilidade
@@ -50,8 +51,10 @@ Closure e Kal'tsit; a configuração de idioma continua prevalecendo. Perguntas
 selecionam as páginas, sem serem interpoladas nas instruções de referência.
 Não há segunda cópia das regras no prompt nem chamada paga para essa seleção.
 
-O link de modelo oficial nos guias e nas respostas de recursos públicos agora
-aponta para a definitiva informada pelo Mizuki.
+O link de modelo oficial nos guias e nas respostas de recursos públicos aponta
+para a [ficha pública nível 2](../dados/ficha/MODELOS.md), indicada posteriormente
+pelo Mizuki. A definitiva do servidor permanece somente como referência
+histórica do ensaio abaixo, sem ser oferecida pelo bot.
 
 ## Fontes
 
@@ -83,8 +86,9 @@ do bot. **18.393/18.393 campos coincidiram**, incluindo valor, célula e parte;
 nenhuma chave faltou ou sobrou em relação ao manifesto do bot.
 
 A conferência terminou normalmente, com três diagnósticos do preenchimento:
-treinos ainda incompletos e duas configurações de Famílias divergentes do
-cadastro padrão. Também retornou seis pendências e onze limites. Esse ensaio
+treinos ainda incompletos e nenhuma Família escolhida como Livre/Fechada,
+quando a campanha exige duas/três. O zero do diagnóstico é a contagem de
+escolhas, não o valor configurado da regra. Também retornou seis pendências e onze limites. Esse ensaio
 comprova leitura e diagnóstico da cópia, não aprovação integral do personagem.
 
 O painel nativo permaneceu “Não emitida”, O38 vazio e W86 em ¥150.000.
@@ -95,6 +99,25 @@ CSV usou valores autenticados da API, sem mudar compartilhamento.
 
 Snapshots integrais e XLSX sintético ficaram fora do Git. Evidência agregada
 e resultados da suíte ficam no relatório de validação desta rodada.
+
+## Modelo público nível 2 e prova de correção
+
+Na segunda rodada, a cópia descartável do modelo público indicado pelo Mizuki
+foi preenchida com o mesmo personagem sintético. O método real
+`Ficha.analisar_fonte`, usado pelos comandos de análise, recebeu os XLSX nativos
+como anexos e gerou quatro páginas de painel. Leitor, corretor e renderizador
+foram executados sem substituições; somente o transporte Discord foi simulado.
+
+Com Vida 23 e Defesa 13, nenhuma dessas duas contas foi apontada como erro.
+Após trocar temporariamente ambas para 999 **somente na cópia**, o painel exibiu
+“Vida: está 999, o certo é 23” e “Defesa: está 999, o certo é 13”. As fórmulas
+originais foram restauradas e a API confirmou novamente 23 e 13.
+A mesma prova passou com o código extraído do ZIP de entrega.
+
+O personagem segue parcial (treinos e Famílias por escolher); o ensaio comprova
+essas contas e a integração do anexo, sem certificar toda possível ficha.
+O bot aponta correções, mas nunca escreve na planilha. O modelo público está
+registrado no Git em `dados/ficha/MODELOS.md`, com o link nativo para cópia.
 
 ## Reproduzir
 

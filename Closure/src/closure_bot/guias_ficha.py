@@ -33,7 +33,7 @@ def orientacao_ficha(mensagem: str, historico=()) -> str:
 CRIAR = ("Criar uma ficha", (
     ("1. Faça sua própria cópia",
      "Abra a [ficha "
-     "oficial](https://docs.google.com/spreadsheets/d/1MQqhHbIzzyoMQY5zLKOciiT5k9Y6AMI4MCSrPhu8V_k/edit). Entre "
+     "oficial](https://docs.google.com/spreadsheets/d/1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw/edit). Entre "
      "na sua conta Google e use **Arquivo → Fazer uma cópia**. Dê um nome que identifique seu personagem e "
      "preencha essa cópia.\n\n"
      "Este roteiro vai da ficha vazia até a emissão na **CARTEIRA**. As abas ficam na parte de baixo da "

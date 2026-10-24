@@ -51,6 +51,21 @@ class ContratoDefinitivo(unittest.TestCase):
 
 
 class ExplicacoesNaConversa(unittest.IsolatedAsyncioTestCase):
+    def test_link_publico_nivel_2_em_todas_as_respostas(self):
+        from closure_bot import guias
+        from closure_bot.recursos_publicos import FICHA_OFICIAL, resposta
+        modelo = '1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw'
+        servidor = '1MQqhHbIzzyoMQY5zLKOciiT5k9Y6AMI4MCSrPhu8V_k'
+        self.assertIn(modelo, FICHA_OFICIAL)
+        for idioma in ('pt-BR', 'en'):
+            guia = guias.paginas('criar', idioma)[0].description
+            self.assertIn(modelo, guia)
+            self.assertNotIn(servidor, guia)
+            for persona in ('closure', 'kaltsit'):
+                texto = resposta('manda o link da ficha oficial', NS(), persona, idioma)
+                self.assertIn(modelo, texto)
+                self.assertNotIn(servidor, texto)
+
     async def test_duas_personagens_recebem_fonte_atual_sem_executar_acoes(self):
         from closure_bot.prompt import montar
         def montar_ponte(*args, **kwargs):
