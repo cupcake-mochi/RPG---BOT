@@ -332,7 +332,8 @@ class PublicLinks(unittest.TestCase):
             self.assertIn('https://example.com/book.pdf',result)
             self.assertIn('https://example.com/dark.pdf',result)
             self.assertIn('Check the edition',result)
-        self.assertIn('Faça uma cópia',resposta('manda o link da ficha oficial',self.cfg,'kaltsit'))
+        modelos=resposta('manda o link da ficha oficial',self.cfg,'kaltsit')
+        for trecho in ('Era da Revolução','Ciclo Maldito','faça uma cópia sua'):self.assertIn(trecho,modelos)
         self.assertIn('Privacy policy',resposta('send the privacy link',self.cfg,'closure','en'))
         for text in ('kal, como funciona Defesa?','analise esta ficha','ative a lore por favor','não me mande o livro','manda o livro de Pathfinder','manda o arquivo reservado','manda https://bad.example o livro'):
             self.assertIsNone(resposta(text,self.cfg,'closure'),text)
