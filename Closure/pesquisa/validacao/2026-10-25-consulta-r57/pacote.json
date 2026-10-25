@@ -1,0 +1,15 @@
+{
+  "fonte": "353d7728fa4f505f830dc6c0421929a0ab2668c1",
+  "consulta": "R57/v0.367",
+  "mecanica": "R53; referencias carregadas iguais à base R53",
+  "catalogos_iguais": true,
+  "arquivos_zip": 90,
+  "arquivos_identicos_aos_fontes": 90,
+  "bytes_zip": 1813869,
+  "sha256_zip": "0d6cdc940db92849bdd93d640b9b7ab749278257fc3456798e7ad33966c35462",
+  "sha256_nucleo": "d890c6f8a97eb052666fec3023ae3546af30bd3864129a2688b722dbf6c6e66a",
+  "sem_env_bancos_campanha": true,
+  "publicado": false,
+  "pedidos_r57_no_zip": 4,
+  "paridade_personas_motores": true
+}

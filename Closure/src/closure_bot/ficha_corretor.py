@@ -180,7 +180,12 @@ class Referencias:
                           **{k: (0, a, "vida máxima é metade da normal") for k, a in VIDA_METADE.items()}}
         validacoes = list(conferir_texto.items()) + [(nome, (0, *v)) for nome, v in SEM_INTEGRIDADE.items()]
         for nome, (*_, ancora, trecho) in validacoes:
-            if trecho not in bloco(ancora) or nome not in bloco(ancora):
+            texto = bloco(ancora)
+            if nome == "Especialidade Antiga":
+                # R57 destaca Corpo; o link de Marco vem depois do trecho conferido.
+                # Aceita só esse destaque, mantendo a frase, a âncora e as demais guardas.
+                texto = texto.replace("**Corpo**", "Corpo")
+            if trecho not in texto or nome not in texto:
                 raise ValueError(f"o livro mudou a capacidade {nome} ({ancora}): revise o corretor")
         try:
             # Formatos anteriores ao R53 conservam as contas em que foram
