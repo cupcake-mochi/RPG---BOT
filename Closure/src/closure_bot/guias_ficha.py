@@ -1,4 +1,6 @@
-"""Criação e consulta da ficha R53 com emissão/salários de 24/10/2026.
+"""Criação e consulta das fichas oficiais (versão pública 1.0; contrato técnico R53, ANALISE 12).
+
+Os dois modelos oficiais e a diferença entre versão da ficha, do bot e do livro: dados/ficha/MODELOS.md.
 
 Fontes e revisões: docs/GUIAS-DE-USO.md. Conteúdo estático, sem ler ou editar planilhas.
 """
@@ -25,17 +27,21 @@ def orientacao_ficha(mensagem: str, historico=()) -> str:
     paginas = [(titulo, texto) for padrao, (titulo, texto) in temas if re.search(padrao, consulta)]
     if not paginas:
         return ""
-    return ("[Referência de uso da ficha R53 definitiva, 24/10/2026. "
+    return ("[Referência de uso das fichas oficiais Era da Revolução e Ciclo Maldito, versão pública 1.0 "
+            "(contrato técnico R53; 1.0 não é a revisão do livro nem a versão do bot). "
             "Use somente os trechos pertinentes à dúvida; isto não executa ações nem certifica saldo, emissão ou salário. "
             "As instruções atuais substituem as antigas sobre saldo manual, emissão e rotina diária.\n\n" +
             "\n\n".join(titulo + "\n" + texto for titulo, texto in paginas) + "]")
 
 CRIAR = ("Criar uma ficha", (
     ("1. Faça sua própria cópia",
-     "Abra a [ficha "
-     "oficial](https://docs.google.com/spreadsheets/d/1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw/edit). Entre "
-     "na sua conta Google e use **Arquivo → Fazer uma cópia**. Dê um nome que identifique seu personagem e "
-     "preencha essa cópia.\n\n"
+     "Há dois modelos oficiais: a [Ficha · Era da "
+     "Revolução](https://docs.google.com/spreadsheets/d/1MQqhHbIzzyoMQY5zLKOciiT5k9Y6AMI4MCSrPhu8V_k/edit) e a "
+     "[Ficha · Ciclo Maldito](https://docs.google.com/spreadsheets/d/1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw/edit). "
+     "Abra o que a sua mesa indicar, entre na sua conta Google e use **Arquivo → Fazer uma cópia**. "
+     "Dê um nome que identifique seu personagem e preencha essa cópia.\n\n"
+     "O **1.0** no cabeçalho e no número da carteira é a versão pública da ficha. Ele não indica a revisão do livro "
+     "nem a versão do bot.\n\n"
      "Este roteiro vai da ficha vazia até a emissão na **CARTEIRA**. As abas ficam na parte de baixo da "
      "planilha. Se uma seção estiver recolhida, abra pelo **+** ao lado das linhas ou acima das colunas.\n\n"
      "Use os campos de preenchimento e os menus. Preserve as fórmulas e as abas ocultas. As contas e os cartões "

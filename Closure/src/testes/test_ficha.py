@@ -24,7 +24,8 @@ from closure_bot.ficha_leitor import Campo, FichaIlegivel, de_csv, de_link, de_x
 
 DADOS = Path(__file__).parent / "dados"
 RAIZ = Path(__file__).resolve().parents[2]
-FICHA_OFICIAL = "https://docs.google.com/spreadsheets/d/1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro/edit"
+# Antiga oficial (B47), hoje histórica: só exemplo de formato. Modelos atuais em dados/ficha/MODELOS.md.
+FICHA_HISTORICA_B47 = "https://docs.google.com/spreadsheets/d/1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro/edit"
 
 
 def _ficha(nome):
@@ -72,7 +73,7 @@ class Normalizacao(unittest.TestCase):
             de_csv('"a","b"\n"c","d"\n')
 
     def test_id_da_planilha(self):
-        self.assertEqual(id_da_planilha(FICHA_OFICIAL), "1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro")
+        self.assertEqual(id_da_planilha(FICHA_HISTORICA_B47), "1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro")
         for ruim in ("https://exemplo.com/planilha", "abc", "https://docs.google.com/spreadsheets/d/x/edit"):
             with self.assertRaises(FichaIlegivel):
                 id_da_planilha(ruim)
@@ -472,9 +473,9 @@ class Comando(unittest.IsolatedAsyncioTestCase):
 
 @unittest.skipUnless(os.environ.get("FICHA_ONLINE") == "1", "precisa de internet: rode com FICHA_ONLINE=1")
 class PeloLink(unittest.TestCase):
-    def test_ficha_oficial_pelo_link_corresponde_ao_manifesto_b47(self):
+    def test_ficha_historica_pelo_link_corresponde_ao_manifesto_b47(self):
         from closure_bot.ficha_esquema import campos_b47, variante
-        ficha = asyncio.run(de_link(FICHA_OFICIAL))
+        ficha = asyncio.run(de_link(FICHA_HISTORICA_B47))
         self.assertEqual(set(ficha),set(campos_b47()))
         self.assertEqual(variante(ficha),'b47-v11')
         self.assertNotEqual(conferir(ficha, Referencias.do_livro(RAIZ / "dados")).veredito,'formato desconhecido')

@@ -51,20 +51,47 @@ class ContratoDefinitivo(unittest.TestCase):
 
 
 class ExplicacoesNaConversa(unittest.IsolatedAsyncioTestCase):
-    def test_link_publico_nivel_2_em_todas_as_respostas(self):
+    def test_dois_modelos_oficiais_em_todas_as_respostas(self):
+        # 25/10/2026: Era da Revolução e Ciclo Maldito são oficiais; a 1u0z… é histórica.
         from closure_bot import guias
-        from closure_bot.recursos_publicos import FICHA_OFICIAL, resposta
-        modelo = '1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw'
-        servidor = '1MQqhHbIzzyoMQY5zLKOciiT5k9Y6AMI4MCSrPhu8V_k'
-        self.assertIn(modelo, FICHA_OFICIAL)
+        from closure_bot.recursos_publicos import FICHA_CICLO_MALDITO, FICHA_ERA_REVOLUCAO, FICHA_OFICIAL, resposta
+        era = '1MQqhHbIzzyoMQY5zLKOciiT5k9Y6AMI4MCSrPhu8V_k'
+        ciclo = '1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw'
+        historica = '1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro'
+        self.assertIn(era, FICHA_ERA_REVOLUCAO)
+        self.assertIn(ciclo, FICHA_CICLO_MALDITO)
+        self.assertEqual(FICHA_OFICIAL, FICHA_CICLO_MALDITO)
         for idioma in ('pt-BR', 'en'):
             guia = guias.paginas('criar', idioma)[0].description
-            self.assertIn(modelo, guia)
-            self.assertNotIn(servidor, guia)
+            for trecho in (era, ciclo, 'Era da Revolução', 'Ciclo Maldito', '1.0'):
+                self.assertIn(trecho, guia)
+            self.assertNotIn(historica, guia)
             for persona in ('closure', 'kaltsit'):
                 texto = resposta('manda o link da ficha oficial', NS(), persona, idioma)
-                self.assertIn(modelo, texto)
-                self.assertNotIn(servidor, texto)
+                for trecho in (era, ciclo, 'Era da Revolução', 'Ciclo Maldito'):
+                    self.assertIn(trecho, texto)
+                self.assertNotIn(historica, texto)
+
+    def test_modelo_citado_pelo_nome_vai_sozinho(self):
+        from closure_bot.recursos_publicos import resposta
+        era = '1MQqhHbIzzyoMQY5zLKOciiT5k9Y6AMI4MCSrPhu8V_k'
+        ciclo = '1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw'
+        so_era = resposta('manda o link da ficha oficial da Era da Revolução', NS(), 'closure')
+        self.assertIn(era, so_era); self.assertNotIn(ciclo, so_era)
+        so_ciclo = resposta('send the official sheet template for Ciclo Maldito', NS(), 'kaltsit', 'en')
+        self.assertIn(ciclo, so_ciclo); self.assertNotIn(era, so_ciclo)
+        # "era" como verbo não escolhe modelo.
+        ambos = resposta('qual era o link da ficha oficial?', NS(), 'kaltsit')
+        self.assertIn(era, ambos); self.assertIn(ciclo, ambos)
+        self.assertIn('versão pública da ficha', ambos)
+        self.assertIn("sheet's public version", resposta('send the official sheet link', NS(), 'closure', 'en'))
+
+    def test_contexto_publico_nomeia_os_dois_modelos(self):
+        from closure_bot.recursos_publicos import links, orientacao
+        texto = orientacao(links(NS()))
+        self.assertIn('character_template_era_revolucao: https://docs.google.com/spreadsheets/d/1MQqh', texto)
+        self.assertIn('character_template_ciclo_maldito: https://docs.google.com/spreadsheets/d/1pgLD', texto)
+        self.assertNotIn('1u0zWQ', texto)
 
     async def test_duas_personagens_recebem_fonte_atual_sem_executar_acoes(self):
         from closure_bot.prompt import montar

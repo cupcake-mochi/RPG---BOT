@@ -30,7 +30,11 @@ somente essas duas configurações. Arquivista e Guias têm configurações sepa
 
 ## Regras, ficha e limites
 
-A consulta usa a versão do livro **v0.366 (revisão 53)**, com 576 trechos de referência. Os cartões ANALISE 12 usam
+A consulta usa a versão do livro **v0.366 (revisão 53)**, com 576 trechos de referência.
+O livro publicado já está na R57 (25/10), revisão de texto sem mudança de regras segundo o autor; a consulta
+passa a usar esse texto só depois da sincronização auditada ([pendência](docs/FICHAS-OFICIAIS-1.0.md#3-livro)).
+As duas fichas oficiais, Era da Revolução e Ciclo Maldito, mostram a versão pública **1.0**, que não é a
+revisão do livro nem a versão do bot ([modelos](dados/ficha/MODELOS.md)). Os cartões ANALISE 12 usam
 o motor R53; formatos antigos mantêm sua referência histórica separada.
 A análise não usa um modelo de linguagem para decidir contas ou aprovações.
 

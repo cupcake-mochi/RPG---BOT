@@ -413,6 +413,29 @@ def conferir_treinos(ficha,ref,ctx,r):
     r.nao_conferido.append('TR/perícias/Ofícios do livro: B47 não exporta os ajustes e bônus exclusivos da variante TR-v4; não se inventam resultados')
 
 
+# Rota da Origem como a ficha R53 resolve em DADOS_AM!A2: 1 Fundamento (com Técnica Inata),
+# 2 Sem Técnica/Manejos, 3 Técnica Marcial com energia, 4 Técnica Marcial sem energia.
+ROTAS_CUSTOM={'Fundamento':1,'Manejos':2,'Técnica Marcial com energia':3,'Técnica Marcial sem energia':4}
+
+
+def _rota_estruturada(origem,ctx):
+    """Rota da Origem só a partir de dado estruturado: menu do livro ou cadastro custom aprovado.
+
+    Recebe a visão mecânica, em que a Origem custom com BASE DO LIVRO já foi trocada pela base
+    (com "· Sem Técnica" quando a ROTA é Manejos). Devolve None quando nada confirma a rota.
+    """
+    import json
+    from pathlib import Path
+    origem=str(origem or '')
+    livro={o['menu'] for o in json.loads((Path(__file__).parent/'recursos/b47-livro.json').read_text(encoding='utf-8'))['origens']}
+    if origem=='Restrição Celestial · Sem Energia':return 4
+    if origem=='Corpo Amaldiçoado':return 3
+    if origem.endswith(' · Sem Técnica') and origem.split(' · ')[0] in livro:return 2
+    if origem in livro:return 1
+    propria=next((d for d in ctx.registros.values() if d.tipo=='Origem' and d.nome==origem and d.valida and d.aprovada),None)
+    return ROTAS_CUSTOM.get(propria.campos.get('campo.rota')) if propria else None
+
+
 def conferir_aptidoes(ficha,ref,ctx,r):
     import itertools
     from .ficha_personagem_motor import Contexto, aptidoes
@@ -437,16 +460,23 @@ def conferir_aptidoes(ficha,ref,ctx,r):
     orcamentos={v+int(sem_tecnica) for v in orcamentos}
     rota=4 if origem=='Restrição Celestial · Sem Energia' else 3 if origem=='Corpo Amaldiçoado' else 2 if sem_tecnica else 1
     atributos={nome:(valor(ficha,f'atributo.{a}.base') or 0)+(valor(ficha,f'atributo.{a}.corpo') or 0) for a,nome in ATRIBUTOS.items()}
+    rota_confirmada=_rota_estruturada(origem,ctx)
     contexto=Contexto(rota=rota,nivel=n,refino=refino(n,escolhidos,ref),escolhas=max(orcamentos),
                      atributos=atributos,origem=str(origem).split(' · ')[0],
-                     historia_treinada=valor(ficha,'pericia.historia.treino')==1)
+                     historia_treinada=valor(ficha,'pericia.historia.treino')==1,
+                     tecnica_inata=rota_confirmada==1)
     nomes=[valor(ficha,f'aptidao.{i}') for i in range(1,13)]
     if any(d.nome in nomes and (not d.aprovada or not d.valida) for d in ctx.registros.values() if d.tipo=='aptidao'):
         r.nao_conferido.append('Aptidões/Bênçãos: definição selecionada sem aprovação válida; aquisição não certificada')
     else:
         resultado=aptidoes(ctx.catalogo_personagem,nomes,contexto)
         for mensagem in resultado['avisos']:
-            sem_informacao=any(x in mensagem for x in ('aprendizado não registrado','Técnica Inata','aprendizado de clã'))
+            if 'Técnica Inata' in mensagem and rota_confirmada is None:
+                # Sem rota estruturada (Origem custom sem aprovação válida, por exemplo) não há como
+                # afirmar nem negar a Técnica: fica pendência informativa, nunca aprovação presumida.
+                mensagem=mensagem.replace('exige Técnica Inata','exige Técnica Inata; a rota da Origem não está confirmada por cadastro aprovado')
+            sem_informacao=any(x in mensagem for x in ('aprendizado não registrado','aprendizado de clã')) or (
+                'Técnica Inata' in mensagem and rota_confirmada is None)
             problema(r,'aptidoes',mensagem,'seleções do personagem',pendente=sem_informacao,
                      regra='informação' if sem_informacao else 'aptidão',ancora='aptidoes--apt-marcos')
         if len(orcamentos)>1:

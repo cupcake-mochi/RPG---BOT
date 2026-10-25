@@ -1,24 +1,43 @@
 # Modelos de ficha
 
-## Modelo público · nível 2
+## Modelos oficiais atuais · 25/10/2026
 
-[Ficha — Ciclo Maldito (CM)](https://docs.google.com/spreadsheets/d/1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw/edit?usp=drivesdk)
+O Mizuki confirmou em 25/10/2026 que os **dois** modelos abaixo são oficiais.
+A Closure e a Kal'tsit oferecem os dois, com estes nomes, quando alguém pede a
+ficha; se a pessoa citar um deles pelo nome, só esse vai. O jogador usa
+**Arquivo → Fazer uma cópia** no modelo que a mesa indicar.
 
-Este é o modelo indicado pelo Mizuki em 24/10/2026 para a Closure oferecer
-a quem pedir uma ficha. O jogador deve usar **Arquivo → Fazer uma cópia**.
-O link também aparece nos guias de criação em português e inglês e no contexto
-de recursos públicos das duas personagens.
+| Nome mostrado | Planilha |
+|---|---|
+| Ficha · Era da Revolução | [1MQqhHbIzzyoMQY5zLKOciiT5k9Y6AMI4MCSrPhu8V_k](https://docs.google.com/spreadsheets/d/1MQqhHbIzzyoMQY5zLKOciiT5k9Y6AMI4MCSrPhu8V_k/edit) |
+| Ficha · Ciclo Maldito | [1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw](https://docs.google.com/spreadsheets/d/1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw/edit) |
 
-A ficha usa a R53 definitiva e ANALISE 12. O modelo nativo fica no Google;
-este registro no Git identifica o endereço oficial de distribuição e sua
-finalidade, sem substituir a planilha por uma exportação Excel.
+Fonte: `r53/OFICIAIS.md` do repositório da ficha (main após o PR #17). Os links
+aparecem nos guias de criação PT/EN (`guias_ficha.py`, `recursos/guias-en.json`),
+nas respostas diretas de link (`recursos_publicos.py`) e no contexto de recursos
+públicos das duas personagens.
 
-## Referência do servidor
+A antiga `1u0zWQFVaRTTc_VlrAJsabgAiJ1D4rTYhzG7QQWof1ro` é **histórica**: aparece
+só em relatórios antigos e em testes que usam o link como exemplo de formato.
+Não deve voltar a ser oferecida como modelo.
 
-A ficha `1MQqhHbIzzyoMQY5zLKOciiT5k9Y6AMI4MCSrPhu8V_k` é a base do servidor
-do Mizuki, usada como referência técnica na primeira validação da definitiva.
-Não deve ser oferecida como modelo público pela Closure. As referências em
-relatórios anteriores registram o teste daquela rodada, não o link vigente.
+## Versões que não se confundem
 
-Os dois modelos são somente leitura para manutenção do bot. Ensaios de
-preenchimento devem usar cópias descartáveis; nunca fichas de jogadores.
+| O que | Valor em 25/10/2026 | Onde aparece |
+|---|---|---|
+| Versão pública da ficha | **1.0** | `FICHA!H4` e número da carteira (`CARTEIRA!AH2`) |
+| Contrato técnico da ficha | R53, ANALISE 12 / montagem esquema 2 | metadados de DADOS e ANALISE, lidos pelo bot |
+| Versão do bot (Guias do Ciclo) | 1.0.3 publicada; código do Git à frente | `README.md`, `CHANGELOG.md`, `docs/FILA-ATUAL.txt` |
+| Revisão do livro | Publicada: R57 (v0.367, 25/10). Lida pelo bot: R53 (v0.366) | `dados/sistema/MANIFESTO.json`, `/ping`; pendência em `docs/FICHAS-OFICIAIS-1.0.md` |
+
+O rótulo 1.0 é só apresentação e não acompanha as revisões do livro. Ele não
+significa que regras de uma edição nova entraram na ficha ou no bot. O leitor do
+bot continua conferindo `formato.versao` 12 e os metadados R53; nenhum endereço
+ou tipo do contrato mudou com o PR #17 da ficha.
+
+## Manutenção
+
+Os modelos são somente leitura para a manutenção do bot. Ensaios de
+preenchimento usam cópias descartáveis, nunca fichas de jogadores. Em 24/10 a
+`1MQqh…` tinha sido registrada só como base técnica do servidor; esse registro
+foi substituído pela confirmação de 25/10 acima.
