@@ -109,3 +109,48 @@ corpos, cabeçalhos ou links de conexão em relatórios.
 Authlib 1.9.1 está fixada; o adaptador httpx 0.28.1 foi testado. A biblioteca
 avisa que esse adaptador será substituído por httpx2 em versão futura. Rever a
 migração antes de atualizar Authlib; não ignorar o aviso em uma atualização.
+
+## Leitura completa e análise privada (etapa 4)
+
+Além das variáveis de conexão, fornecer **as duas** para habilitar o motor:
+
+- `CARTEIRA_BOOK_DATA`: diretório `Closure/dados`, com o livro/catálogos compatíveis.
+- `CARTEIRA_CAMPAIGNS_PATH`: arquivo local confiável no formato do cadastro de
+  campanhas das Guias. Para piloto isolado sem exceções, usar arquivo fictício
+  com `{}`. Ausência/erro no arquivo configurado interrompe a análise.
+
+Não criar um cadastro novo a partir de dados enviados pelo jogador. Para
+campanha real, o operador precisa fornecer a fonte confiável atual e definir
+como ela será atualizada no serviço separado. O formato e o motor existentes
+são reaproveitados; não há sincronização automática entre hosts nesta etapa.
+
+Rotas **internas**, chamadas somente pela ponte autenticada do bot:
+
+| POST | Efeito |
+|---|---|
+| `/interno/personagens/{id}/atualizar` | Consulta sob demanda; cache fresco de até 60 s; devolve metadados |
+| `/interno/personagens/{id}/analisar` | Leitura atual + motor + campanha confiável; resultado privado |
+| `/interno/personagens/{id}/analise` | Abre resultado salvo após conferir novamente permissões e revisões |
+
+Cabeçalho `Authorization: Bearer <segredo de serviço>` e corpo somente
+`{"servidor":"ID do servidor","usuario":"ID do ator da interação"}`. O serviço
+revalida o membro pelo Discord; a ponte precisa obter esse ator da interação,
+nunca de um campo preenchido pelo usuário. Nenhuma dessas rotas deve ficar
+acessível no frontend com o segredo de serviço. Há lista fechada de operações;
+não existe método de banco escolhido pelo cliente.
+
+Todos os retornos são privados e sem cache HTTP. Campos completos da ficha
+não saem na atualização; a análise expõe somente resultado e proveniência a
+quem tem capacidade. Erro de leitura retorna 422, conflito de revisão 409,
+acesso recusado 403 e fila/cota local excedida 429. Falhas de provedor devolvem
+código genérico, sem URL/corpo/token do Google. O cliente deve explicar a falha,
+sem tentar exportação pública como atalho para autorização ausente.
+
+O CLI usa `handler_cancellation=True`. Outro runner aiohttp precisa manter
+essa opção para cancelar consultas quando o último cliente desconectar.
+As ações SQL já enviadas continuam protegidas por transação/revisões; não
+prometer cancelamento de gravação já confirmada.
+
+Resultados e limites; piloto nativo básico passou, avançados pendentes: [ETAPA-4.md](ETAPA-4.md).
+Os novos comandos/botões serão integrados na etapa 5. Não publicar o serviço
+no app de bot nem gerar um ZIP de produção por causa desta etapa isolada.

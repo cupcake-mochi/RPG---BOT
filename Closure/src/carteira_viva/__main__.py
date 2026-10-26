@@ -24,7 +24,7 @@ def main():
         cfg = ConfigWeb.do_ambiente()
         app = criar_app(cfg)
         host = urlsplit(cfg.origem).hostname if cfg.desenvolvimento else "0.0.0.0"
-    web.run_app(app, host=host, port=args.porta, access_log=None)
+    web.run_app(app, host=host, port=args.porta, access_log=None, handler_cancellation=True)
 
 
 if __name__ == "__main__":

@@ -22,6 +22,8 @@ class ConfigWeb:
     picker_key: str = field(repr=False)
     servidores: frozenset[str]
     desenvolvimento: bool = False
+    dados_livro: Path | None = None
+    campanhas: Path | None = None
 
     def __post_init__(self):
         u = urlsplit(self.origem)
@@ -36,6 +38,8 @@ class ConfigWeb:
             if not isinstance(valor, str) or not valor.strip():
                 raise ErroCarteira("Falta configuração de login/Picker.")
         Cifra(self.chaves)
+        if (self.dados_livro is None) != (self.campanhas is None):
+            raise ErroCarteira("Configure juntos o livro e o cadastro confiável de campanhas.")
 
     @property
     def segura(self):
@@ -55,4 +59,6 @@ class ConfigWeb:
                    google_id=env("GOOGLE_CLIENT_ID"), google_secret=env("GOOGLE_CLIENT_SECRET"),
                    projeto_google=env("GOOGLE_PROJECT_NUMBER"), picker_key=env("PICKER_API_KEY"),
                    servidores=frozenset(x.strip() for x in env("GUILDS").split(",") if x.strip()),
-                   desenvolvimento=os.getenv("CARTEIRA_DEV") == "1")
+                   desenvolvimento=os.getenv("CARTEIRA_DEV") == "1",
+                   dados_livro=Path(os.environ["CARTEIRA_BOOK_DATA"]) if os.getenv("CARTEIRA_BOOK_DATA") else None,
+                   campanhas=Path(os.environ["CARTEIRA_CAMPAIGNS_PATH"]) if os.getenv("CARTEIRA_CAMPAIGNS_PATH") else None)

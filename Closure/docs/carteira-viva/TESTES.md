@@ -155,3 +155,38 @@ Ao fim, mandar cópias descartáveis à lixeira, remover concessões de teste
 e apagar dados sintéticos conforme o roteiro. Preservar as oficiais, fichas
 de jogadores e credenciais de produção. Exclusão permanente de servidor
 não é necessária para validar a funcionalidade.
+
+## Acréscimos da etapa 4
+
+Os testes `test_carteira_leitura`, `test_carteira_consultas`,
+`test_carteira_consultas_web` e `test_carteira_fila` cobrem leitura autenticada
+simulada, paridade de normalização CSV/XLSX, paridade com o motor, fontes e
+autorizações substituídas durante o pedido, campanha/motor alterados, fila,
+cache, limites, cancelamento, renovação e rotas internas privadas. Banco e
+motor são reais; respostas Google/Discord são fictícias.
+
+Executar com as dependências do bot e da Carteira e núcleo preparado:
+
+```sh
+# Em Closure/src
+../.venv/bin/python -m unittest testes.test_carteira_leitura testes.test_carteira_consultas testes.test_carteira_consultas_web testes.test_carteira_fila
+```
+
+Para HTTP/threading, usar ambiente que permita loopback e o mecanismo interno
+de despertar o event loop. A execução restrita no computador não entregou o
+retorno da thread no setup; essa tentativa foi encerrada e a suíte executada
+com essas permissões locais, sem rede externa. Isso não é defeito do Google.
+
+O piloto nativo básico da etapa 4 passou: leitura completa e paridade integral
+com XLSX, cache, análise e abertura salva, seguidos de limpeza/revogação.
+Ritual e entidade também passaram na paridade offline; a matriz nativa avançada
+e a interação privada no Discord continuam pendentes.
+O arquivo da etapa 3 está na lixeira e seu grant foi revogado; não reutilizar
+esse registro antigo como se a autorização ainda estivesse ativa.
+
+O piloto mostrou que fórmulas completas excediam a resposta de 16 MiB. A API
+agora fornece só valores/erros efetivos, sem ampliar esse teto. Vazio calculado
+omitido no Google é preservado como vazio; a recusa de XLSX sem cache ganhou
+regressão explícita. O teste de saúde proíbe adquirir o semáforo, em vez de
+depender de um segundo de agendamento da máquina. Resultados detalhados e
+ressalvas locais: NATIVO-ETAPA-4.md.

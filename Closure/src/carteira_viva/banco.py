@@ -396,6 +396,32 @@ class Cadastro:
             return ReferenciaLeitura(membro.servidor, personagem, membro.usuario,
                                     f["revisao"], f["geracao"] + 1, f["arquivo"], f["conexao"])
 
+    def contexto_leitura(self, membro: Membro, personagem: str) -> tuple:
+        """Chave interna de coalescência. Nunca enviar autorização ao navegador."""
+        self._personagem(membro, personagem, Acao.VER_DETALHES)
+        f = self._fonte(membro.servidor, personagem)
+        if f["estado"] != "ativa":
+            raise ErroCarteira("Reconecte a conta Google para atualizar a ficha.")
+        a = self.db.execute("SELECT autorizacao FROM conexoes WHERE id=?", (f["conexao"],)).fetchone()[0]
+        return (membro.servidor, personagem, f["revisao"], f["arquivo"], f["conexao"], a)
+
+    def renovar_credencial(self, membro: Membro, ref: ReferenciaLeitura, *, autorizacao: str, refresh: str):
+        with self._transacao():
+            cred = self._credencial(membro, ref)
+            if cred.autorizacao != autorizacao:
+                raise Conflito("A autorização mudou durante a leitura.")
+            texto(refresh, "Renovação", 8192)
+            envelope = self.cifra.cifrar(["conexao", ref.conexao, self._fonte(ref.servidor, ref.personagem)["usuario"], autorizacao],
+                                       {"conta": cred.conta, "cliente": cred.cliente, "refresh": refresh})
+            self.db.execute("UPDATE conexoes SET segredo=? WHERE id=?", (envelope, ref.conexao))
+
+    def invalidar_leitura(self, membro: Membro, ref: ReferenciaLeitura):
+        """Falha na atualização não deixa um resultado anterior parecer atual."""
+        with self._transacao():
+            self._referencia(membro, ref)
+            self.db.execute("DELETE FROM leituras WHERE servidor=? AND personagem=?", (ref.servidor, ref.personagem))
+            self.db.execute("DELETE FROM analises WHERE servidor=? AND personagem=?", (ref.servidor, ref.personagem))
+
     def _referencia(self, membro: Membro, ref: ReferenciaLeitura):
         if (membro.servidor, membro.usuario) != (ref.servidor, ref.ator):
             raise AcessoNegado("Leitura pertence a outro contexto.")
