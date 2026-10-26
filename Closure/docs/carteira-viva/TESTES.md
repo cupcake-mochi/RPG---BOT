@@ -211,3 +211,9 @@ Fechamento: busca de nomes corrigida retestada no Discord e anexo WebP exibido.
 Upload/confirmação da imagem foram pela API interna; o formulário de anexo do
 comando ainda é pendência nativa. Piloto encerrado e dados fictícios removidos;
 produção retomada. Os detalhes operacionais estão em ETAPA-5.md.
+
+CI final do código `ced4d52`: 1.242 executados, 1.241 aprovados, um opcional,
+zero falhas (run 40395109029). Reteste local de cota/HTTP: 33/34; um upload
+válido retornou 400. Caso isolado repetido passou, sem mudar expectativa ou
+limite; worker levou 19,153 s de 20 s disponíveis. Causa provável de I/O, não
+comprovada pelo erro anterior. Essa ocorrência está detalhada em ETAPA-5.md.

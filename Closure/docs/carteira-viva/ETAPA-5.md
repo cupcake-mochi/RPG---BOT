@@ -172,3 +172,26 @@ orçamento em disco para não remover um item durante sua contagem.
 O botão de edição orienta a **ocultar** a imagem, que é o que a máscara faz;
 não promete apagar o arquivo só por retirar sua exibição do cartão.
 Produção respondeu ao GC:ping após a retomada: consulta R57/v0.367, 576 trechos.
+
+## Resultado final e ocorrência local
+
+Código `ced4d524a9d52f936e87440d1f097aa2a483fbc1`: **1.242 testes,
+1.241 aprovados e um opcional pulado, zero falhas**, em 256,997 s no
+[CI completo](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40395109029).
+Instalação de dependências e preparação do núcleo também passaram. Os commits
+posteriores a esse código podem ser apenas registro documental; conferir SHA
+antes de repetir uma suíte ou sugerir publicação.
+
+No reteste local final do banco/HTTP, 33 de 34 passaram; o upload de um PNG
+válido retornou 400. Não foi capturado o corpo desse erro na primeira execução.
+Repetido **somente esse caso**, com medição e sem alterar a expectativa, passou:
+worker em 19,153 s, teste inteiro em 50,396 s. A demora ficou perto do limite
+inalterado de 20 s. I/O lento é a causa provável, não uma confirmação obtida do
+corpo do erro anterior. CI final e piloto Discord aceitaram a imagem válida.
+Não afrouxar formato/tamanho/tempo nem aceitar 400 como sucesso para esconder
+essa ocorrência. Medir inicialização do worker e armazenamento na hospedagem
+real na etapa 9, antes de prometer desempenho público.
+
+A versão hospedada permaneceu a anterior: Online e GC:ping confirmou consulta
+R57/v0.367 após o piloto. A Carteira, os novos comandos e este código não foram
+instalados em produção. PR 82 segue em rascunho e sem merge.

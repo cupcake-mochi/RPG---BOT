@@ -12,7 +12,8 @@ Discord. Etapas 6–10 pendentes.** Nenhuma Carteira publicada na Discloud.
 - Galeria `/personagens [jogador]`, comandos PT/EN, consultas privadas,
   apresentação com prévia e imagem cifrada. Detalhes: ETAPA-5.md.
 - Suíte local 1.237, zero falhas, um opcional; 25 testes finais da interface/ponte
-  passaram. Coleta final esperada: 1.242 (64 novos nesta etapa). Registrar CI do head final.
+  passaram. CI do código `ced4d52`: 1.242 testes, zero falhas, um opcional (64 novos).
+  Commits posteriores de documentação não alteram esse código.
 - Piloto Discord com duas contas reais e Google fictício passou na galeria,
   apresentação e análise privada. Busca corrigida e anexo WebP retestados.
   23 cadastros removidos, zero conexões/comandos temporários, piloto parado;
@@ -21,6 +22,11 @@ Discord. Etapas 6–10 pendentes.** Nenhuma Carteira publicada na Discloud.
   nem cópias na lixeira dos pilotos anteriores; não redefinir tokens.
 - Nova ponte continua opcional e excluída do ZIP do bot. Produção exige host
   HTTPS persistente e campanha sincronizada de forma autoritativa.
+
+Ocorrência local: um upload retornou 400 no reteste de 34 casos; repetido
+isoladamente passou, worker em 19,153 s perto do teto de 20 s. Causa provável:
+I/O lento, sem corpo do erro inicial para comprovação. Limites/expectativa
+preservados. Ver ETAPA-5.md e medir o host na etapa 9.
 
 ## Próxima etapa
 
