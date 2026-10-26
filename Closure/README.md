@@ -30,9 +30,11 @@ somente essas duas configurações. Arquivista e Guias têm configurações sepa
 
 ## Regras, ficha e limites
 
-A consulta usa a versão do livro **v0.366 (revisão 53)**, com 576 trechos de referência.
-O livro publicado já está na R57 (25/10), revisão de texto sem mudança de regras segundo o autor; a consulta
-passa a usar esse texto só depois da sincronização auditada ([pendência](docs/FICHAS-OFICIAIS-1.0.md#3-livro)).
+A consulta desta atualização usa o texto **v0.367 (revisão 57)**, com 576 trechos
+de referência. As revisões editoriais R54–R57 foram registradas pelo autor sem
+mudança de regras. A mecânica da análise continua R53.
+A consulta R57 ainda não foi publicada na Discloud: a produção segue
+R53/v0.366 ([validação e estado](docs/CONSULTA-R57.md)).
 As duas fichas oficiais, Era da Revolução e Ciclo Maldito, mostram a versão pública **1.0**, que não é a
 revisão do livro nem a versão do bot ([modelos](dados/ficha/MODELOS.md)). Os cartões ANALISE 12 usam
 o motor R53; formatos antigos mantêm sua referência histórica separada.

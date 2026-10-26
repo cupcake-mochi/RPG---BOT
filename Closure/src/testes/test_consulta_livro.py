@@ -17,6 +17,12 @@ PRONTO = bool(site_prompt.motores()) and (site_prompt.CACHE / "nucleo.js").exist
 
 @unittest.skipUnless(PRONTO, "sem motor ou página montada")
 class ConsultaDoLivro(unittest.TestCase):
+    def test_especialidade_antiga_traz_texto_editorial_r57_completo(self):
+        texto, _ = self.fontes('No livro, como funciona Especialidade Antiga?',
+                              ['origens--encarnado-beneficios'])
+        self.assertIn('sem precisar escolher **Corpo** naquele **[Marco](#progressao--prog-marcos)**', texto)
+        self.assertIn('um nível de progressão que concede ganhos comuns e uma escolha adicional', texto)
+
     def test_mais_um_nome_com_palavras_de_parada_tem_fonte_propria(self):
         texto, _ = self.fontes('No livro, como funciona Mais Um?', ['catalogo--melhoria-mais-um'])
         self.assertIn('Não copie os totais nem converta uma função em outra', texto)
