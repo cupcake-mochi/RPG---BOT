@@ -84,3 +84,11 @@ class SessoesTeste(Fixtures,unittest.TestCase):
     def test_limite_de_tentativas_de_login(self):
         for _ in range(10):self.s.login(self.cookie,self.csrf,'111',None)
         with self.assertRaises(ErroCarteira):self.s.login(self.cookie,self.csrf,'111',None)
+
+    def test_apagar_usuario_encerra_suas_sessoes_sem_afetar_outro(self):
+        self.login();outro='x'*43;ativo='z'*43
+        self.s.abrir(None,outro);o=self.s.login(outro,self.s.estado(outro)['csrf'],'111',None)
+        self.s.consumir(outro,o['estado']);self.s.finalizar(outro,o['estado'],ativo,'999')
+        self.c.apagar_usuario('222')
+        with self.assertRaises(SessaoEncerrada):self.s.identidade(self.novo)
+        self.assertEqual(self.s.identidade(ativo),'999')

@@ -604,6 +604,7 @@ class Cadastro(Cartoes):
                 self._bloquear_autorizacao(row["id"])
             self.db.execute("DELETE FROM pedidos WHERE usuario=?", (usuario,))
             self.db.execute("DELETE FROM web_fluxos WHERE usuario=?", (usuario,))
+            self.db.execute("DELETE FROM web_sessoes WHERE usuario=?", (usuario,))
             self.db.execute("DELETE FROM conexoes WHERE usuario=?", (usuario,))
 
     def limpar(self) -> dict[str, int]:
