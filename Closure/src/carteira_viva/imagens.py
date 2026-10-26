@@ -80,8 +80,9 @@ class Imagens:
         except (ValueError,KeyError): raise ErroCarteira('Imagem indisponível.') from None
 
     def limpar(self,ativos):
-        for p in self.pasta.glob('*.cvi'):
-            try:
-                if (not p.is_symlink() and ID.fullmatch(p.stem) and p.stem not in ativos and
-                        self.agora()-p.stat().st_mtime>=86400): p.unlink()
-            except FileNotFoundError: pass
+        with self.disco:
+            for p in self.pasta.glob('*.cvi'):
+                try:
+                    if (not p.is_symlink() and ID.fullmatch(p.stem) and p.stem not in ativos and
+                            self.agora()-p.stat().st_mtime>=86400): p.unlink()
+                except FileNotFoundError: pass

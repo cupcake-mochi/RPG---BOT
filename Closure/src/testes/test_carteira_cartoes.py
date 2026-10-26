@@ -79,6 +79,17 @@ class CartoesTeste(Fixtures,unittest.TestCase):
     def test_imagem_de_outro_personagem_nao_pode_ser_usada(self):
         outro=self.criar();self.c.registrar_imagem(self.m,outro['id'],'a'*32)
         with self.assertRaises(ErroCarteira):self.previa(imagem='a'*32)
+    def test_cota_de_imagem_nao_reinicia_ao_excluir_personagem(self):
+        for n in range(10):self.c.registrar_imagem(self.m,self.pid,format(n,'032x'))
+        self.c.excluir(self.m,self.pid,pedido=self.pedido())
+        novo=self.criar()['id']
+        with self.assertRaises(ErroCarteira):self.c.registrar_imagem(self.m,novo,'b'*32)
+        self.clock[0]+=86401
+        self.c.registrar_imagem(self.m,novo,'b'*32)
+    def test_registro_de_imagem_e_cota_sao_atomicos(self):
+        with patch.object(self.c,'_auditar',side_effect=RuntimeError('ficticio')):
+            with self.assertRaises(RuntimeError):self.c.registrar_imagem(self.m,self.pid,'a'*32)
+        self.assertEqual(self.c.db.execute('SELECT count(*) FROM imagens').fetchone()[0],0)
     def test_revisores_nao_editam_e_idioma_nao_delega(self):
         self.c.configurar(self.admin,revisores={'rev'})
         m=replace(self.outro,cargos=frozenset({'rev'}))

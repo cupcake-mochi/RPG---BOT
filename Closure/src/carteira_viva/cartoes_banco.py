@@ -108,14 +108,17 @@ class Cartoes:
             self.db.execute('DELETE FROM previas_cartao WHERE id=?',(previa,))
 
     def registrar_imagem(self,membro,personagem,imagem):
-        self.pode_enviar_imagem(membro,personagem)
-        self.db.execute('INSERT INTO imagens VALUES (?,?,?,?)',(imagem,membro.servidor,personagem,self.agora()))
+        with self._transacao():
+            self.pode_enviar_imagem(membro,personagem)
+            self.db.execute('INSERT INTO imagens VALUES (?,?,?,?)',(imagem,membro.servidor,personagem,self.agora()))
+            self._auditar(membro.servidor,membro.usuario,personagem,'imagem')
 
     def pode_enviar_imagem(self,membro,personagem):
         self._personagem(membro,personagem,Acao.PERSONALIZAR)
         config=self.db.execute('SELECT campos_publicos FROM servidores WHERE id=?',(membro.servidor,)).fetchone()
         if 'imagem_id' not in json.loads(config[0]): raise ErroCarteira('Imagens não estão permitidas neste servidor.')
-        if self.db.execute('SELECT count(*) FROM imagens i JOIN personagens p ON p.servidor=i.servidor AND p.id=i.personagem WHERE p.dono=? AND i.criado>?',
+        # Excluir um personagem não libera novas dez imagens no mesmo dia.
+        if self.db.execute("SELECT count(*) FROM auditoria WHERE ator=? AND acao='imagem' AND criado>?",
                            (membro.usuario,self.agora()-86400)).fetchone()[0]>=10:
             raise ErroCarteira('Limite de dez imagens por dia atingido. Tente amanhã.')
 

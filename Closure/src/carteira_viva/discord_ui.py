@@ -29,7 +29,7 @@ TEXTOS={
  'cor':('Cor (#RRGGBB; vazio usa o padrão)','Colour (#RRGGBB; empty uses default)'),
  'extras':('Extras visíveis (lista abaixo)','Visible extras (list below)'),
  'exemplos':('idade, clã, origem, caminho, imagem','age, clan, origin, path, image'),
- 'limparfoto':('Para remover a imagem, apague “imagem” da lista de extras visíveis.','To hide the image, remove “image” from the visible extras list.'),
+ 'limparfoto':('Para ocultar a imagem, retire “imagem” da lista de extras visíveis.','To hide the image, remove “image” from the visible extras list.'),
  'ficha':('Abrir planilha · Google verifica seu acesso','Open sheet · Google checks access'),
  'privado':('Somente você pode ver esta consulta. Cadastro e análise não aprovam a ficha.','Only you can see this view. Registration and analysis do not approve the sheet.'),
  'revisao':('Revisão do arquivo vinculado','Linked file revision'),'fonte':('Fonte e horário da análise','Analysis source and time'),

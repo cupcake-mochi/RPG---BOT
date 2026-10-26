@@ -8,11 +8,11 @@ Discord. Etapas 6–10 pendentes.** Nenhuma Carteira publicada na Discloud.
 
 - Main conferida: `de42447`. PRs 77–81 são dependentes e continuam sem merge.
 - Base da etapa 5: `df703ec`, PR 81, CI verde. Branch atual:
-  `codex/carteira-viva-etapa-5`; PR 82 em rascunho, base etapa 4, nunca main; código final `3a59741`.
+  `codex/carteira-viva-etapa-5`; PR 82 em rascunho, base etapa 4, nunca main; código da PR 82.
 - Galeria `/personagens [jogador]`, comandos PT/EN, consultas privadas,
   apresentação com prévia e imagem cifrada. Detalhes: ETAPA-5.md.
 - Suíte local 1.237, zero falhas, um opcional; 25 testes finais da interface/ponte
-  passaram. Coleta final esperada: 1.240 (62 novos nesta etapa). Registrar CI do head final.
+  passaram. Coleta final esperada: 1.242 (64 novos nesta etapa). Registrar CI do head final.
 - Piloto Discord com duas contas reais e Google fictício passou na galeria,
   apresentação e análise privada. Busca corrigida e anexo WebP retestados.
   23 cadastros removidos, zero conexões/comandos temporários, piloto parado;

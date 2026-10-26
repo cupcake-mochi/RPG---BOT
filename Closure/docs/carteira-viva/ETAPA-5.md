@@ -101,9 +101,9 @@ tabelas v4 antes de simular um banco antigo. Nenhuma expectativa mecânica foi
 alterada para deixar os testes verdes.
 
 Suíte completa local: **1.237 executados, 1.236 aprovados, um opcional pulado,
-zero falhas**, 744,951 s. Reteste final da interface: **19/19**; inclui uma
-regressão acrescentada depois da coleta completa. Portanto são **1.240 testes
-distintos** no código final, 62 novos nesta etapa. O CI final deve confirmar
+zero falhas**, 744,951 s. Reteste da interface/ponte: **25/25**. Regressões de menu, busca e cota
+foram acrescentadas depois da coleta completa. Portanto são **1.242 testes
+distintos** no código final, 64 novos nesta etapa. O CI final deve confirmar
 a coleta completa antes de apresentar esse total como execução única.
 
 Piloto Discord: duas contas reais, 23 personagens sintéticos e Google fictício.
@@ -140,7 +140,7 @@ Dois testes cobrem ausência de rede, dono/servidor, prazo e teto do cache.
 
 ## Fechamento do piloto
 
-- PR 82 em rascunho, base PR 81; código final `3a59741`.
+- PR 82 em rascunho, base PR 81; código da PR 82.
 - Busca corrigida retestada no Discord após reinício do piloto: 20 nomes
   sugeridos imediatamente e nenhum novo `Unknown interaction` no log final.
 - Imagem sintética: upload e confirmação pela API interna retornaram 200;
@@ -159,3 +159,16 @@ foi retirada da rede por ter prazo rígido no Discord; esse piloto não estabele
 SLA nem capacidade de produção. A etapa 9 precisa medir latência/fila com carga
 representativa. Limites de perda de acesso, eventos gerais de saída e mídia já
 enviada ao Discord permanecem explícitos; não prometer recolher cópias antigas.
+
+## Conferência final do limite de imagens
+
+A contagem diária passou a usar o registro mínimo de auditoria, que permanece
+após excluir um personagem. Assim, excluir/cadastrar outra vez não reinicia o
+limite. Registro da imagem e da contagem são uma transação; falha não consome
+cota nem deixa registro parcial. Dois testes novos cobrem a exclusão, a volta
+do limite após 24 h e rollback. A limpeza de arquivos usa a mesma trava do
+orçamento em disco para não remover um item durante sua contagem.
+
+O botão de edição orienta a **ocultar** a imagem, que é o que a máscara faz;
+não promete apagar o arquivo só por retirar sua exibição do cartão.
+Produção respondeu ao GC:ping após a retomada: consulta R57/v0.367, 576 trechos.

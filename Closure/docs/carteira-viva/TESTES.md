@@ -195,8 +195,8 @@ ressalvas locais: NATIVO-ETAPA-4.md.
 
 [ETAPA-5.md](ETAPA-5.md) registra 62 testes novos e a distinção entre suíte e
 piloto. Suíte local de 1.237 passou com um opcional pulado; 25 testes finais
-da interface/ponte passaram, incluindo as três regressões novas que aumentam a coleta para
-1.240. Conferir o CI final para a execução única do total. Não repetir a suíte
+da interface/ponte passaram, incluindo as cinco regressões novas que aumentam a coleta para
+1.242. Conferir o CI final para a execução única do total. Não repetir a suíte
 extensa apenas por documentação.
 
 Discord real, duas contas e fichas fictícias: galeria própria/alheia/vazia,
