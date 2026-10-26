@@ -21,6 +21,7 @@ DADOS = web.AppKey("dados", DadosAsync)
 PROVEDORES = web.AppKey("provedores", Provedores)
 LIMITE = web.AppKey("limite", asyncio.Semaphore)
 DEMO = web.AppKey("demo", bool)
+CONSULTAS = web.AppKey("consultas", object)
 STATIC = Path(__file__).with_name("static")
 RequestKey = getattr(web, "RequestKey", web.AppKey)
 TICKET = RequestKey("ticket", str)
@@ -45,8 +46,11 @@ async def guardas(request, handler):
                 raise web.HTTPForbidden(text='{"erro":"origem"}', content_type="application/json")
         if request.path != "/saude" and request.app[LIMITE].locked():
             raise web.HTTPTooManyRequests(text='{"erro":"ocupado"}', content_type="application/json")
-        async with request.app[LIMITE]:
+        if request.path == "/saude":
             resposta = await handler(request)
+        else:
+            async with request.app[LIMITE]:
+                resposta = await handler(request)
     except (ErroCarteira, ValueError, TypeError, KeyError) as exc:
         codigo = getattr(exc, "codigo", None) or ("acesso" if isinstance(exc, AcessoNegado) else
                                                    "conflito" if isinstance(exc, Conflito) else "solicitacao")
@@ -119,6 +123,31 @@ async def iniciar(request):
     m = await request.app[PROVEDORES].membro(data.get("servidor", ""), data.get("usuario", ""))
     ticket = await request.app[DADOS].chamar("criar", m, data.get("acao", "cadastro"), data.get("personagem"))
     return resposta_json({"url": request.app[CFG].origem + "/conectar?" + urlencode({"ticket": ticket}), "expira_em": 600})
+
+
+async def consultar(request):
+    # Só a ponte autenticada do bot fornece o ator da interação. Nunca uma
+    # identidade enviada diretamente pelo navegador e nunca despacho arbitrário.
+    token = request.headers.get("Authorization", "")
+    if not hmac.compare_digest(token, "Bearer " + request.app[CFG].servico_token):
+        raise AcessoNegado("Acesso de serviço inválido.")
+    data = await corpo(request)
+    if set(data) != {"servidor", "usuario"}:
+        raise ErroCarteira("Informe apenas o contexto da interação.")
+    acoes = {"atualizar": "atualizar", "analisar": "analisar", "analise": "analise_salva"}
+    metodo = acoes.get(request.match_info["acao"])
+    if metodo is None:
+        raise web.HTTPNotFound()
+    from closure_bot.ficha_leitor import FichaIlegivel
+    try:
+        resultado = await getattr(request.app[CONSULTAS], metodo)(
+            data["servidor"], data["usuario"], request.match_info["personagem"])
+    except FichaIlegivel:
+        # O diagnóstico detalhado pode conter dados escolhidos pelo jogador.
+        return resposta_json({"erro": "leitura", "mensagem": "A ficha está incompleta ou recalculando. Confira a aba ANALISE e tente novamente."}, 422)
+    except TimeoutError:
+        return resposta_json({"erro": "temporario"}, 504)
+    return resposta_json(resultado)
 
 
 async def pagina(request):
@@ -269,7 +298,7 @@ async def erro(request):
                         content_type="text/html")
 
 
-def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False):
+def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, motor=None):
     if demonstracao and (cfg.segura or not cfg.desenvolvimento):
         raise ErroCarteira("A demonstração só pode rodar no loopback de desenvolvimento.")
     app = web.Application(middlewares=[guardas], client_max_size=16 * 1024)
@@ -280,6 +309,16 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False):
     async def ciclo(app):
         try:
             await dados.iniciar()
+        except BaseException:
+            await dados.fechar()
+            raise
+        from .consultas import Consultas
+        analisador = motor
+        try:
+            if analisador is None and cfg.dados_livro is not None:
+                from .motor import Motor
+                analisador = await asyncio.to_thread(Motor, cfg.dados_livro, cfg.campanhas)
+            app[CONSULTAS] = Consultas(dados, app[PROVEDORES], analisador, agora=agora)
         except BaseException:
             await dados.fechar()
             raise
@@ -294,9 +333,11 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False):
             task.cancel()
             with suppress(asyncio.CancelledError):
                 await task
+            await app[CONSULTAS].fechar()
             await dados.fechar()
     app.cleanup_ctx.append(ciclo)
     app.router.add_post("/interno/conexoes", iniciar)
+    app.router.add_post("/interno/personagens/{personagem}/{acao}", consultar)
     app.router.add_get("/conectar", pagina)
     app.router.add_get("/api/fluxo", status)
     app.router.add_post("/api/login/{provedor}", login)

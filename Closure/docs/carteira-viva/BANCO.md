@@ -186,3 +186,18 @@ backups feitos com ela; a restauração aceita um conjunto de chaves.
   sem copiar um arquivo ativo por fora do SQLite.
 - [Fernet e rotação de chave](https://cryptography.io/en/latest/fernet/):
   envelopes autenticados e leitura com múltiplas chaves.
+
+## Complemento da etapa 4
+
+Schema permanece 3; não houve nova tabela ou migração. `contexto_leitura`
+fornece somente ao serviço a chave de deduplicação com revisão e autorização;
+`renovar_credencial` guarda refresh rotacionado após conferir a referência;
+`invalidar_leitura` remove snapshot/análise da fonte atual quando a atualização
+falha. Resultado atrasado não invalida a fonte substituta. Esses métodos são
+internos e nunca constituem uma API de despacho livre.
+
+Snapshots `carteira-analise-1` guardam campos tipados e metadados de leitura,
+sempre cifrados. Resultados carregam revisão do motor e campanha. A camada
+`Consultas` confere essas revisões antes de abrir uma análise salva; chamar
+`Cadastro.detalhes` sozinho continua insuficiente para certificar campanha.
+Interface e testes: [ETAPA-4.md](ETAPA-4.md).
