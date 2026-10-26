@@ -19,7 +19,7 @@ def orientacao_ficha(mensagem: str, historico=()) -> str:
     temas = (
         (r"\b(emiti\w*|emiss\w*|carteira|issu\w*)\b", CRIAR[1][13]),
         (r"\b(salari\w*|salary|salaries|credit\w*|fechamento\w*|participa\w*|pay\w*)\b", PLANILHA[1][12]),
-        (r"\b(dinheiro|iene\w*|gasto\w*|ganho\w*|extrato|saldo|o86|w86|money|yen|spend\w*|income|balance)\b", PLANILHA[1][6]),
+        (r"\b(dinheiro|iene\w*|gasto\w*|ganho\w*|extrato|saldo|o86|w86|money|yen|spend\w*|income|balance|inventario|equipaveis guardados|itens guardados|inventory|stored equipment|stored items)\b", PLANILHA[1][6]),
         (r"\b(miss\w*|corrigi\w*|correc\w*|data\w*|date\w*|mission\w*|android|celular|mobile)\b", PLANILHA[1][13]),
         (r"\b(paleta\w*|palette\w*|cores|colors?|colours?|recarreg\w*)\b", PLANILHA[1][1]),
         (r"\b(invoca\w*|recolhid\w*|pontinho|summon\w*|collaps\w*)\b", PLANILHA[1][5]),
@@ -140,6 +140,9 @@ CRIAR = ("Criar uma ficha", (
     ("11. Compre e equipe seus itens",
      "Na **FICHA PESSOAL**, registre os equipáveis, itens, quantidades e onde ficam guardados. Depois selecione "
      "o que está em uso: mãos, proteção e escudo devem corresponder ao inventário.\n\n"
+     "Em **EQUIPÁVEIS GUARDADOS**, as seis primeiras linhas usam menu; as duas últimas aceitam nomes livres. "
+     "Em **ITENS GUARDADOS**, digite o nome do item. Preencha também a quantidade e o Volume. "
+     "Digitar um nome não concede benefícios nem substitui a aprovação do mestre quando ela for necessária.\n\n"
      "Na criação padrão de Grau 4, você recebe **um Traje 1 e ¥150.000** para os demais itens. Escolha "
      "situação, TR e perícias do Traje conforme o livro. Desconte as compras do dinheiro e registre munição e "
      "suprimentos. Armas de fogo têm preço de criação próprio e podem exigir autorização.\n\n"
@@ -254,6 +257,9 @@ PLANILHA = ("Conhecer a planilha", (
      "inventário, carga, dinheiro e o painel de missões e pontos de experiência (XP).\n\n"
      "Registre quantidades e Volume e selecione o que está vestido ou nas mãos. Ter uma arma no inventário não "
      "significa estar com ela equipada ou ter treino. Confira os avisos de Força, acesso e excesso de carga.\n\n"
+     "Em **EQUIPÁVEIS GUARDADOS**, as seis primeiras linhas usam menu; as duas últimas aceitam nomes livres. "
+     "Em **ITENS GUARDADOS**, digite o nome do item. Preencha também a quantidade e o Volume. "
+     "Digitar um nome não concede benefícios nem substitui a aprovação do mestre quando ela for necessária.\n\n"
      "O painel de missões fica à direita, em colunas recolhidas. Abra o **+** acima delas para registrar "
      "missão, tipo e os ajustes concedidos. O XP alimenta a progressão; não invente missões para alcançar o "
      "nível desejado.\n\n"

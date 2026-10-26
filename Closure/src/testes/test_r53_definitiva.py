@@ -51,6 +51,18 @@ class ContratoDefinitivo(unittest.TestCase):
 
 
 class ExplicacoesNaConversa(unittest.IsolatedAsyncioTestCase):
+    def test_duvida_de_inventario_recebe_orientacao_sem_confundir_com_aprovacao(self):
+        for pergunta in ('Como preencho o inventário?', 'Posso digitar nos itens guardados?',
+                         'E os equipáveis guardados?', 'How do I fill in stored items?',
+                         'Where is the inventory?'):
+            with self.subTest(pergunta=pergunta):
+                texto = orientacao_ficha(pergunta)
+                self.assertIn('EQUIPÁVEIS GUARDADOS', texto)
+                self.assertIn('ITENS GUARDADOS', texto)
+                self.assertIn('quantidade e o Volume', texto)
+                self.assertIn('não concede benefícios', texto)
+        self.assertEqual(orientacao_ficha('Estou guardando um segredo.'), '')
+
     def test_dois_modelos_oficiais_em_todas_as_respostas(self):
         # 25/10/2026: Era da Revolução e Ciclo Maldito são oficiais; a 1u0z… é histórica.
         from closure_bot import guias
