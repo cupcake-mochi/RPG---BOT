@@ -138,6 +138,9 @@ class Cadastro:
                 if ledger_uid != uid:
                     raise ErroCarteira("Registro de remoções pertence a outro cadastro.")
                 self._reaplicar_remocoes()
+                # Retornos OAuth de antes de um reinício/restore não reativam
+                # concessões antigas. Os vínculos confirmados são preservados.
+                self.db.execute("DELETE FROM web_fluxos")
         except Exception:
             self.db.close()
             if novo:
@@ -157,12 +160,17 @@ class Cadastro:
 
     @contextmanager
     def _transacao(self):
-        self.db.execute("BEGIN IMMEDIATE")
+        savepoint = "cv_" + secrets.token_hex(8) if self.db.in_transaction else None
+        self.db.execute(f"SAVEPOINT {savepoint}" if savepoint else "BEGIN IMMEDIATE")
         try:
             yield
-            self.db.execute("COMMIT")
-        except Exception:
-            self.db.execute("ROLLBACK")
+            self.db.execute(f"RELEASE {savepoint}" if savepoint else "COMMIT")
+        except BaseException:
+            if savepoint:
+                self.db.execute(f"ROLLBACK TO {savepoint}")
+                self.db.execute(f"RELEASE {savepoint}")
+            else:
+                self.db.execute("ROLLBACK")
             raise
 
     def _membro(self, membro: Membro):
@@ -476,6 +484,7 @@ class Cadastro:
             self.db.execute("UPDATE conexoes SET estado='desconectada',segredo=NULL,atualizado=? WHERE id=?",
                             (self.agora(), conexao))
             self.db.execute("UPDATE fontes SET geracao=geracao+1 WHERE conexao=?", (conexao,))
+            self.db.execute("DELETE FROM web_fluxos WHERE conexao=?", (conexao,))
             self.db.execute("DELETE FROM leituras WHERE (servidor,personagem) IN (SELECT servidor,personagem FROM fontes WHERE conexao=?)",
                             (conexao,))
             self._auditar(membro.servidor, membro.usuario, None, "desconectar")
@@ -483,13 +492,14 @@ class Cadastro:
     def marcar_revogada(self, conexao: str, *, autorizacao: str) -> bool:
         """Operação interna após o adaptador Google confirmar revogação."""
         with self._transacao():
-            atual = self.db.execute("SELECT autorizacao FROM conexoes WHERE id=?", (conexao,)).fetchone()
-            if not atual or atual[0] != autorizacao:
+            atual = self.db.execute("SELECT autorizacao,estado FROM conexoes WHERE id=?", (conexao,)).fetchone()
+            if not atual or atual[0] != autorizacao or atual[1] != "ativa":
                 return False  # Resposta de uma autorização substituída não revoga a nova.
             self._bloquear_autorizacao(conexao)
             self.db.execute("UPDATE conexoes SET estado='revogada',segredo=NULL,atualizado=? WHERE id=?",
                             (self.agora(), conexao))
             self.db.execute("UPDATE fontes SET geracao=geracao+1 WHERE conexao=?", (conexao,))
+            self.db.execute("DELETE FROM web_fluxos WHERE conexao=?", (conexao,))
             self.db.execute("DELETE FROM leituras WHERE (servidor,personagem) IN (SELECT servidor,personagem FROM fontes WHERE conexao=?)",
                             (conexao,))
             return True
@@ -562,6 +572,7 @@ class Cadastro:
             for row in self.db.execute("SELECT id FROM conexoes WHERE usuario=?", (usuario,)).fetchall():
                 self._bloquear_autorizacao(row["id"])
             self.db.execute("DELETE FROM pedidos WHERE usuario=?", (usuario,))
+            self.db.execute("DELETE FROM web_fluxos WHERE usuario=?", (usuario,))
             self.db.execute("DELETE FROM conexoes WHERE usuario=?", (usuario,))
 
     def limpar(self) -> dict[str, int]:
@@ -574,6 +585,7 @@ class Cadastro:
                 self._remover(row["servidor"], row["id"])
             contagens["personagens"] = len(ausentes)
             for tabela, campo, prazo in (("leituras", "expira", 0), ("analises", "expira", 0),
+                                         ("web_fluxos", "expira", 0),
                                          ("pedidos", "criado", 7 * DIA), ("auditoria", "criado", 90 * DIA)):
                 contagens[tabela] = self.db.execute(f"DELETE FROM {tabela} WHERE {campo}<=?",
                                                     (self.agora() - prazo,)).rowcount

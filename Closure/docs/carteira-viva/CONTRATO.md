@@ -132,8 +132,11 @@ Mudança de conta Google é uma reconexão explícita, diferente de trocar arqui
 
 Não colocar código OAuth ou token nos logs de acesso de callbacks. Remover
 parâmetros sensíveis da URL ao redirecionar. Página de conexão sem publicidade
-ou analytics; `Referrer-Policy: no-referrer`. Access token necessário ao Picker
-vive só na memória da página, nunca em armazenamento local ou endereço.
+ou analytics; `Referrer-Policy: strict-origin` envia só a origem, sem caminho
+ou parâmetros, e permite validar a chave restrita do Picker. O aplicativo
+não grava access token em armazenamento local ou URLs próprias. O SDK do
+Google passa esse token ao iframe oficial por URL interna; não registrar,
+exportar ou publicar URLs desse iframe. Renovação e segredo ficam no servidor.
 
 ## Troca, atualização e edições
 

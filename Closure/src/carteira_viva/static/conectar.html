@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="pt-BR">
+<head><meta charset="utf-8"><meta name="referrer" content="strict-origin"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conectar ficha · Guias do Ciclo</title><link rel="stylesheet" href="/static/conectar.css">
+<script src="/static/conectar.js" defer></script></head>
+<body><main>
+<p class="marca">GUIAS DO CICLO</p><h1 id="titulo">Conectar sua ficha</h1>
+<p id="demo" class="aviso" hidden>Demonstração local — contas e arquivos fictícios.</p>
+<p id="introducao">Escolha a ficha que já usa. O cadastro fica neste servidor e não aprova o personagem automaticamente.</p>
+<ol class="etapas"><li id="passo1">Sua conta Discord</li><li id="passo2">Sua planilha Google</li><li id="passo3">Conferir e confirmar</li></ol>
+<section aria-live="polite" aria-atomic="true"><p id="mensagem">Abrindo sua solicitação…</p></section>
+<div id="erro" class="aviso" role="alert" hidden></div>
+<section id="discord" hidden><button id="entrar-discord">Entrar pelo Discord</button></section>
+<section id="google" hidden>
+<p id="permissao">A autorização Google permite acesso aos arquivos escolhidos para o aplicativo. Esta etapa só lê a ficha; não altera células.</p>
+<button id="entrar-google">Conectar Google</button>
+<div id="conectadas" hidden><label for="conta" id="conta-label">Ou use uma conexão existente</label><select id="conta"></select>
+<button id="usar">Usar esta conexão</button></div></section>
+<section id="picker" hidden><button id="escolher">Escolher minha ficha</button></section>
+<section id="revisar" hidden>
+<h2 id="conferir">Confira a ficha escolhida</h2><p id="arquivo"></p><p id="parcial">O formato foi identificado. A análise completa da ficha é feita separadamente.</p>
+<label for="nome" id="nome-label">Nome do personagem</label><input id="nome" maxlength="100" autocomplete="off">
+<label class="checkbox"><input id="responsabilidade" type="checkbox"><span id="responsabilidade-label">Confirmo que esta é minha ficha e posso cadastrá-la neste servidor. Administradores e revisores autorizados poderão consultar os detalhes.</span></label>
+<p id="troca-aviso" class="aviso" hidden>A troca conserva o personagem e o cartão, mas pede uma nova análise do arquivo. O arquivo anterior fica intacto.</p>
+<button id="confirmar">Confirmar</button></section>
+<section id="concluido" hidden><h2 id="pronto">Tudo certo</h2><p id="resultado"></p><p id="voltar">Pode fechar esta janela e voltar ao Discord.</p></section>
+<button id="cancelar" class="secundario" hidden>Cancelar solicitação</button>
+<p id="rodape" class="rodape">O acesso vale enquanto a autorização Google continuar válida. Você pode desconectar ou trocar o arquivo depois.</p>
+</main></body></html>

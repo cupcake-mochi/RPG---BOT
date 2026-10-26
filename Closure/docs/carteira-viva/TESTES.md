@@ -2,9 +2,16 @@
 
 Matriz de testes futuros. A [etapa 1](ETAPA-1.md) executou 39 cenários locais
 do contrato/protótipo; a [etapa 2](ETAPA-2.md) acrescentou 62 testes do banco,
-retenção e recuperação. Os ensaios nativos desta nova funcionalidade continuam
-pendentes. As colunas abaixo indicam exigências de validação, não resultados.
+retenção e recuperação. O piloto nativo da etapa 3 está descrito em NATIVO-ETAPA-3.md; os demais
+ensaios desta funcionalidade continuam pendentes. As colunas abaixo indicam exigências de validação, não resultados.
 A suíte histórica do bot não comprova funções ainda não implementadas.
+
+A [etapa 3](ETAPA-3.md) acrescenta testes HTTP em loopback, OAuth com
+Authlib e transporte simulado, retornos atrasados, renovação, troca/reconexão,
+ponte privada e backup sem tentativas abertas. Demonstração fictícia e piloto local com provedores reais foram executados
+separadamente. Cadastro, reinício, refresh, revogação e reconexão passaram no
+piloto; [resultados e limites](NATIVO-ETAPA-3.md). As demais linhas da matriz
+não se tornam nativas por esse ensaio. Execução: [SERVICO.md](SERVICO.md).
 
 ## Preparação
 

@@ -1,66 +1,69 @@
 # Continuar a Carteira viva
 
-Atualizado em 26/10/2026. **Etapas 1 local e 2 concluídas; OAuth nativo pendente.
-Etapas 3–10 não iniciadas.**
+Atualizado em 26/10/2026. **Etapas 1–3 implementadas localmente;
+piloto local com OAuth/Picker reais concluído nos fluxos básicos.
+Etapas 4–10 ainda não implementadas; não há publicação da Carteira.**
 
 ## Situação
 
-- Base remota consultada nesta etapa: `main de42447`. Esse commit documental
-  já está na main; runtime registrado da publicação anterior continua `a7afebb`.
-- PR 77: planejamento, branch `codex/plano-carteira-viva`, ainda aberta.
-- Branch da etapa 1: `codex/carteira-viva-etapa-1`, sobre `3ac230b` do plano.
-- CI da PR 78 passou. Branch da etapa 2: `codex/carteira-viva-etapa-2`, sobre
-  `daa5627`. PR 79 tem a 78 como dependência, sem merge. Conferir o CI do SHA atual.
-- Produção: último estado documentado é R57 de consulta, mecânica R53,
-  runtime `a7afebb`. Nenhum deploy ou alteração de conta neste planejamento.
-- Entrega atual: [banco e recuperação](BANCO.md), [relatório da etapa 2](ETAPA-2.md).
-  62 testes novos e os 39 anteriores: 101 direcionados aprovados.
-  Suíte local no checkpoint 3b18330: 1.076/1.075/1 opcional; correção posterior
-  de inicialização validada nos 101 e no CI do novo SHA (conferir resultado).
-- Próxima tarefa: **etapa 3** de [PLANO.md](PLANO.md), conexão e serviço web.
-- Modelo recomendado: **GPT-6.1 Sol, esforço Alto (`high`)**.
-- Pendência da etapa 1: [OAuth/hospedagem](ACESSO-GOOGLE.md) e prova nativa.
-  Rhodes Bot ainda sem Auth configurado; conta Discloud Gold, sem site listado.
-- Matriz: [TESTES.md](TESTES.md). Nenhum comando novo testado no Discord.
+- Main remota conferida: `de42447`. Produção registrada: `a7afebb`, consulta
+  R57 e mecânica R53. Nenhuma Carteira publicada.
+- PRs dependentes: 77 (plano), 78 (etapa 1), 79 (etapa 2). Sem merge.
+- Etapa 3: branch `codex/carteira-viva-etapa-3`, sobre `b491409` da etapa 2.
+  PR 80 em rascunho. Serviço/fluxos e ponte opcional implementados, sem
+  carregar no bot atual. Suíte final após piloto: 1.128 executados, 1.127
+  aprovados e um opcional, zero falhas; 152 testes da Carteira.
+- Resultados e limites: [ETAPA-3.md](ETAPA-3.md). Execução: [SERVICO.md](SERVICO.md).
+- Piloto real: [NATIVO-ETAPA-3.md](NATIVO-ETAPA-3.md). Cadastro, reinício,
+  renovação, revogação/bloqueio e reconexão passaram com uma cópia privada,
+  depois enviada à lixeira. Cadastro fictício removido e grant de teste revogado.
+- Google dedicado configurado, duas contas em teste, drive.file, chave Picker
+  restrita e cliente local prontos. Discord usa as Guias oficiais por escolha
+  do usuário; retorno local e segredo OAuth preparados pelo próprio usuário.
+  Não foi criado outro app/bot nem reiniciada a Discloud.
+- Credenciais fora do Git, em `~/.local/share/guias-ciclo/carteira-piloto`.
+  Não exibir valores. A demo é fictícia; o relatório nativo identifica os
+  fluxos realmente executados e as lacunas que permanecem.
+- Próxima implementação: **etapa 4**, leitura sob demanda e análise privada.
+- Modelo recomendado: **GPT-6.1 Sol · Alto (`high`)**; pode continuar nele.
 
 ## Prompt para a próxima tarefa
 
 ```text
-Continue a Carteira viva das Guias do Ciclo. Responda em português informal.
-Leia Closure/docs/carteira-viva/PLANO.md, TESTES.md, RETOMADA.md e o topo de
-Closure/docs/FILA-ATUAL.txt. Confira AGENTS.md, remoto, PRs, branch e árvore
-local antes de editar. Não presuma que este plano já está na main.
+Continue a Carteira viva das Guias do Ciclo, em português informal.
+Leia o topo de Closure/docs/FILA-ATUAL.txt e carteira-viva/PLANO.md, TESTES.md,
+RETOMADA.md, ETAPA-3.md, SERVICO.md, BANCO.md e CONTRATO.md. Confira AGENTS,
+remoto, branch, árvore e PRs antes de editar. PRs 77–79 são dependentes;
+confira também a PR da branch codex/carteira-viva-etapa-3. Não dê merge.
 
-Leia também CONTRATO.md, BANCO.md, ETAPA-2.md e ACESSO-GOOGLE.md. Execute a
-etapa 3: serviço web e adaptadores OAuth Google/Discord, seleção pelo Picker,
-reconexão e troca de arquivo. Reaproveite src/carteira_viva; não exponha os
-métodos diretamente como endpoints ou aceite identidades fornecidas pelo
-navegador. O laboratório da etapa 1 continua sendo uma simulação.
+Implemente a etapa 4 sobre o serviço existente: leitura autenticada de
+ANALISE sob demanda e análise privada com os módulos determinísticos atuais.
+Use a campanha/aprovações exatas do servidor; não transforme cadastro em
+aprovação. A prova pequena A1:D32 da etapa 3 identifica formato, não confere
+exportação completa. Preserve limites, fórmulas sem cache e inconsistências.
 
-Use uma biblioteca OAuth mantida, estado/sessão e proteção contra repetição,
-conta errada e retornos antigos. Grave somente autorização verificada e use
-a versão da credencial para processar falhas de renovação. Ligue manutenção
-local e confirme membros/cargos no Discord. Não compartilhe o SQLite por rede.
+Implemente cache curto, deduplicação, fila justa, limite de resposta,
+cancelamento e descarte de leitura antiga após troca de fonte/autorização.
+Atualize só na consulta. Mostre origem/revisão/horário/campanha da análise;
+isole cartão público de snapshot privado. Confirme membros e cargos atuais,
+sem herdar permissão privada de cargos administrativos de idioma/lore.
 
-A prova OAuth nativa continua pendente: faltam configuração Google/Discord e
-origem web. Google Auth ainda não está configurado no projeto Rhodes Bot e
-nos outros dois projetos visíveis. A Discloud está em Gold e a documentação
-exige Platinum para site. Avance localmente; prepare configuração concreta
-antes de pedir a ação sensível necessária. Não contrate hospedagem nem
-reutilize tokens da Arquivista. Use somente planilhas descartáveis no ensaio.
+Leia também NATIVO-ETAPA-3.md e ACESSO-GOOGLE.md. O piloto local de OAuth,
+Picker, cadastro, reinício, refresh, revogação e reconexão passou. Corrigidos
+client_id na URL Authlib, escopo Discord herdado, referrer da chave e layout
+do Picker sob CSP. A cópia foi para a lixeira e a autorização de teste foi
+revogada; novo ensaio precisa de outra cópia descartável e consentimento.
+Credenciais de aplicativo estão em diretório privado do usuário, fora do Git;
+não exibir valores. O demo continua fictício, distinto do piloto real. Avance offline e prepare ensaio real em
+ambiente separado; não anuncie essa prova como feita. Use só cópias de teste,
+nunca edite oficiais/jogadores nem reaproveite tokens da Arquivista. Não
+contrate hospedagem, faça chamadas pagas ou publique integração incompleta.
+O usuário permite testar pelo painel e atualizar Discloud quando necessário,
+mas o app atual de bot não substitui a hospedagem web ainda inexistente.
 
-Preserve cadastro livre dos próprios personagens, múltiplos personagens por
-jogador, isolamento por servidor, cartão público básico, detalhes privados,
-edição separada e atualização somente na consulta. Não herde leitura privada
-dos cargos de idioma/lore. Não altere fichas oficiais ou de jogadores.
-Não implemente edição de ficha nem use tokens da Arquivista nesta etapa.
-Não faça chamadas pagas ao modelo nem merge/deploy sem autorização específica.
-
-Use o navegador lateral para os ensaios autorizados, verificando conta e
-servidor antes. Não peça senha/código no chat. Salve decisões, testes reais,
-limites e o prompt da próxima etapa no Git. Ao finalizar, diga a próxima
-tarefa e recomende GPT-6.1 Sol com esforço Alto para a etapa 4, destacando
-quais configurações externas ainda faltam.
+Teste, documente, faça commit/push e PR dependente. Separe resultados locais,
+nativos, Git e produção. Salve prompt e recomende GPT-6.1 Sol · Alto para a
+etapa 5. Não inicie bot duplicado com token de produção.
 ```
 
 ## O que entregar ao fim de cada etapa

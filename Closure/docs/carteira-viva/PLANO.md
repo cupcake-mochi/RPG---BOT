@@ -1,10 +1,12 @@
 # Carteira viva e personagens
 
-Planejamento de 26/10/2026. **Ainda não implementado nem publicado.**
+Planejamento de 26/10/2026. **Implementação em andamento; não publicada.**
 Este documento reúne as decisões da conversa; não é uma lista de comandos
 já disponíveis. Atualização: a [etapa 1](ETAPA-1.md) tem contrato/prova local
 e a [etapa 2](ETAPA-2.md) tem banco/cadastro implementados localmente.
-OAuth nativo segue pendente de configuração; a próxima tarefa é a etapa 3.
+A [etapa 3](ETAPA-3.md) implementa o serviço e a conexão localmente.
+O [piloto local com OAuth real](NATIVO-ETAPA-3.md) passou nos fluxos de
+cadastro, renovação e reconexão. Próxima implementação: etapa 4.
 Não há funcionalidade nova em produção.
 
 - [Testes e critérios de entrega](TESTES.md)
