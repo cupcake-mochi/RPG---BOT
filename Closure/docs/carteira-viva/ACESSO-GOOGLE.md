@@ -1,6 +1,8 @@
 # Preparar o acesso Google
 
-Etapa 1 · inspeção de 26/10/2026. Nenhuma configuração externa foi alterada.
+Inspeção e piloto de 26/10/2026. A seção abaixo registra a inspeção inicial;
+a configuração dedicada da etapa 3 foi criada depois, com autorizações
+específicas do usuário. Não usar o projeto pessoal Rhodes Bot para o piloto.
 
 ## O que foi encontrado
 
@@ -44,17 +46,17 @@ atuais nem transformar o app publicado em site para testar.
 
 | Item | Proposta | Situação |
 |---|---|---|
-| Projeto Google | Rhodes Bot, depois de confirmar que não conflita com o uso atual | Existe; Auth não configurado |
-| Nome do aplicativo | Guias do Ciclo — Fichas | Não cadastrado |
-| Público | Externo; inicialmente usuários de teste | Não configurado |
-| APIs | Drive, Sheets e Picker | Ativação não foi conferida nesta rodada |
-| Cliente Google | Aplicativo web, exclusivo das Guias | Não criado |
-| Escopo | `https://www.googleapis.com/auth/drive.file` | Não concedido |
-| Retorno Google | `/oauth/google/retorno` na origem escolhida | Domínio/cliente pendentes |
-| Retorno Discord | `/oauth/discord/retorno` na mesma origem | Configuração não conferida no portal Discord |
-| Picker web | Chave restrita à API/origem e número do projeto correto | Não criado/configurado |
+| Projeto Google | Guias do Ciclo - Fichas (`guias-ciclo-fichas`) | Criado na conta dedicada, sem ativar faturamento; número `1015676492327` |
+| Nome do aplicativo | Guias do Ciclo — Fichas | Cadastrado |
+| Público | Externo/Testando | Só conta dedicada das Guias e conta pessoal do mantenedor autorizadas |
+| APIs | Drive, Sheets e Picker | Três ativações conferidas no painel |
+| Cliente Google | Carteira de personagens — Piloto local | Criado; credencial em diretório privado do usuário, fora do Git |
+| Escopo | `https://www.googleapis.com/auth/drive.file` | Único escopo configurado; consentimento nativo separado |
+| Retorno Google | `http://127.0.0.1:8876/oauth/google/retorno` | Salvo no cliente local; origem JavaScript `http://127.0.0.1:8876` |
+| Retorno Discord | `http://127.0.0.1:8876/oauth/discord/retorno` | Salvo nas Guias oficiais por escolha do usuário; segredo OAuth redefinido pelo próprio usuário |
+| Picker web | Google Picker — Piloto local | Chave criada com uma API (Picker), referenciadores `http://127.0.0.1:8876/*` e `https://docs.google.com/*`; ainda não comprova seleção nativa |
 | Documentos públicos | Página de apresentação, privacidade e termos atualizados | Preparar antes de público geral |
-| Segredos | Cofre do serviço; chave de cifra separada do banco | Definir na implantação do ambiente de teste |
+| Segredos | Diretório privado do usuário no disco do sistema | Arquivos 600, pasta 700; disco externo ignora permissões e não deve guardar as credenciais em texto |
 
 Não registrar domínio de exemplo como retorno real. Preparar a origem exata
 antes de criar o cliente. Não colocar token/segredo em documentos ou pedir que
@@ -101,8 +103,10 @@ pode ser derivada do token Discord nem renovada sem migração dos envelopes.
 7. Repetir em celular. Confirmar a necessidade de navegador externo; não
    contornar restrições Google a navegadores embutidos.
 
-Esse ensaio não aconteceu nesta etapa. Não iniciar bot duplicado com token
-de produção para criar o comando de teste. Preparar aplicação/ambiente de
+O piloto real começou pela entrada controlada; participação foi conferida
+na API Discord, mas autorizações/seleção ainda precisam de confirmação e
+resultado nativo. Não iniciar bot duplicado com token de produção para criar
+o comando de teste. Preparar aplicação/ambiente de
 teste ou outra entrada controlada e documentar suas diferenças do fluxo final.
 
 ## Referências
@@ -116,3 +120,17 @@ teste ou outra entrada controlada e documentar suas diferenças do fluxo final.
 Consentimento em modo de teste pode ter renovação com validade limitada.
 Validar os requisitos de publicação/verificação antes de oferecer acesso
 durável a qualquer jogador. Não prometer autorização “permanente”.
+
+## Credenciais locais do piloto
+
+Ficam em `~/.local/share/guias-ciclo/carteira-piloto`, fora do repositório.
+Não copiar os conteúdos para ferramentas de registro, commits ou ZIPs.
+`google-client.json`, `discord-client.json`, `discord-bot.json`, `picker.json`
+e `ambiente.json` têm permissão 600; diretório 700. O token das Guias é usado
+somente em REST para conferir membros/cargos no servidor permitido. Não há
+segundo processo de bot/Gateway. O usuário cancelou a proposta de um app
+Discord separado e escolheu o oficial; nenhum app de teste foi criado.
+
+O download do JSON pelo painel falhou; a credencial Google foi preservada
+da tela de criação, sem expor seu valor, e conferida localmente. Apenas
+metadados não secretos entram no Git. O serviço continua sem domínio público.

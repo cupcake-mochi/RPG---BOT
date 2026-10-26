@@ -67,16 +67,27 @@ Smoke de isolamento também passou: importar/criar o serviço não carrega
 PR: [80](https://github.com/cupcake-mochi/RPG---BOT/pull/80), em rascunho,
 base `codex/carteira-viva-etapa-2`. Conferir a validação automática do SHA atual.
 O formulário inicial Google foi aberto apenas para inspeção: Rhodes Bot ainda
-sem Auth configurado. E-mail público de suporte aguardando escolha do usuário;
-nenhuma configuração ou permissão foi salva.
+sem Auth configurado. Depois, o usuário criou/escolheu uma conta dedicada
+às Guias para suporte público; identidade conferida no navegador. O primeiro
+acesso ao Cloud foi aceito diretamente pelo usuário. Com autorização
+específica, foi criado o projeto próprio `guias-ciclo-fichas` (Guias do
+Ciclo - Fichas), sem ativar faturamento. O usuário também concluiu o aceite
+da política de dados das APIs. O cadastro OAuth básico foi criado em modo
+Externo/Testando. Cliente web, Drive/Sheets/Picker, escopo único drive.file e chave Picker
+restrita configurados. O usuário optou por usar o app Discord oficial;
+retorno local salvo e segredo OAuth redefinido pelo próprio usuário, sem
+trocar o token do bot ou reiniciar a Discloud. Nenhuma leitura de ficha
+real executada até este checkpoint. O formulário do
+projeto pessoal não foi salvo.
 
 ## Pendências reais
 
-**Etapa 3 local implementada; prova nativa aberta.** Não foi feita autorização
-Google/Discord real, nem selecionado arquivo no Picker real, nem concedido
-acesso a dados reais. Ainda faltam clientes/callbacks próprios, consentimento,
-chave restrita do Picker, entrada de teste no Discord e origem pública para
-jogadores. A demonstração não comprova CSP/SDK do Picker, renovação nativa,
+**Etapa 3 local implementada; prova nativa aberta.** O piloto começou pela entrada controlada, com participação real conferida
+na API Discord. Clientes/callbacks locais, consentimento básico Google e
+chave restrita do Picker estão preparados. Ainda falta confirmar os
+consentimentos de conta, selecionar a cópia no Picker real, validar
+renovação/revogação e integrar a entrada por comando. Origem pública continua
+pendente para jogadores. A demonstração não comprova CSP/SDK do Picker, renovação nativa,
 revogação real ou comportamento em celular real. Seguir o roteiro de
 [ACESSO-GOOGLE.md](ACESSO-GOOGLE.md); não anunciar a etapa como validada em
 produção antes desses ensaios.
@@ -90,3 +101,18 @@ migração futura do adaptador httpx; dependência fixada e aviso documentado.
 
 Próxima implementação: **etapa 4, GPT-6.1 Sol · Alto**. Pode manter a mesma
 configuração. Retomada exata em [RETOMADA.md](RETOMADA.md).
+
+## Ajuste encontrado no começo do piloto
+
+A primeira URL nativa mostrou `client_id=None`: o construtor do núcleo
+Authlib recebe `session` antes de `client_id`; o argumento posicional tinha
+sido interpretado como sessão. Reproduzido com teste que confere o ID na URL
+de cada provedor: falha antes, passa depois de usar `OAuth2Client(None,
+client_id=...)`. 49 testes de provedores/web/ponte passaram depois da
+correção. O piloto foi reiniciado e a tela Discord abriu o app oficial e
+somente identify. Consentimentos/seleção ainda em andamento neste checkpoint.
+
+Cópia nativa privada de teste criada via integração Drive, denominada
+QA Carteira — OAuth e Picker — DESCARTÁVEL — 26-10-2026; oficial preservada.
+Mover somente essa cópia para a lixeira ao encerrar, após desconectar o piloto.
+Não salvar identificadores de conta, tokens ou conteúdos privados no relatório.

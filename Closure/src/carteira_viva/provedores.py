@@ -60,7 +60,7 @@ class Provedores:
         # real; aqui usamos o núcleo OAuth sem abrir um pool HTTP.
         from authlib.oauth2.client import OAuth2Client
         google = provedor == "google"
-        client = OAuth2Client(self.cfg.google_id if google else self.cfg.discord_id,
+        client = OAuth2Client(None, client_id=self.cfg.google_id if google else self.cfg.discord_id,
                               scope=DRIVE_FILE if google else "identify",
                               redirect_uri=self.cfg.origem + f"/oauth/{provedor}/retorno",
                               code_challenge_method="S256")

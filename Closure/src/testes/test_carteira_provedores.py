@@ -78,6 +78,7 @@ class ProvedoresTeste(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(query["code_challenge"], [challenge])
             self.assertEqual(query["code_challenge_method"], ["S256"])
             self.assertEqual(query["state"], [state])
+            self.assertEqual(query["client_id"], [self.cfg.google_id if provider == "google" else self.cfg.discord_id])
             self.assertNotIn(self.cfg.google_secret, url)
             self.assertNotIn(self.cfg.discord_secret, url)
             self.assertNotIn(verifier, url)

@@ -14,8 +14,15 @@ prova OAuth/Picker nativa pendente. Etapas 4–10 ainda não implementadas.**
 - Resultados e limites: [ETAPA-3.md](ETAPA-3.md). Execução: [SERVICO.md](SERVICO.md).
 - Prova nativa aberta: [ACESSO-GOOGLE.md](ACESSO-GOOGLE.md). Configuração
   externa não alterada; demo no navegador usa somente provedores fictícios.
-  E-mail de suporte público aguardando escolha; formulário Google aberto,
-  sem salvar configuração.
+  Conta dedicada das Guias escolhida para suporte público e confirmada.
+  O usuário aceitou os termos Cloud e política das APIs. Projeto próprio
+  `guias-ciclo-fichas` criado com autorização específica; OAuth em Externo/Testando, duas contas autorizadas, drive.file e Picker
+  restrito configurados. Cliente local Google pronto; retorno e segredo OAuth
+  das Guias oficiais preparados pelo usuário. Não foi criado app Discord de
+  teste. URL client_id=None encontrada/corrigida no piloto; 49 regressões
+  passam, tela Discord abriu corretamente. Consentimentos/Picker real ainda
+  em andamento; conferir resultado antes de anunciar prova nativa. Continuar nessa
+  conta, sem reutilizar o projeto pessoal ou a Arquivista automaticamente.
 - Próxima implementação: **etapa 4**, leitura sob demanda e análise privada.
 - Modelo recomendado: **GPT-6.1 Sol · Alto (`high`)**; pode continuar nele.
 
@@ -40,8 +47,10 @@ Atualize só na consulta. Mostre origem/revisão/horário/campanha da análise;
 isole cartão público de snapshot privado. Confirme membros e cargos atuais,
 sem herdar permissão privada de cargos administrativos de idioma/lore.
 
-OAuth/Picker nativos continuam pendentes de clientes/callbacks e configuração
-Google/Discord. O demo é fictício. Avance offline e prepare ensaio real em
+OAuth/Picker nativos continuam pendentes de conclusão do piloto. Configuração
+local Google/Discord já preparada na conta dedicada e no app oficial, com
+autorização. Leia ACESSO-GOOGLE.md e confira as credenciais privadas locais,
+sem exibir valores. O demo continua fictício; não confundir os dois. Avance offline e prepare ensaio real em
 ambiente separado; não anuncie essa prova como feita. Use só cópias de teste,
 nunca edite oficiais/jogadores nem reaproveite tokens da Arquivista. Não
 contrate hospedagem, faça chamadas pagas ou publique integração incompleta.
