@@ -70,6 +70,13 @@ class NavegadorTeste(unittest.IsolatedAsyncioTestCase):
         cookie=self.client.session.cookie_jar.filter_cookies(self.client.make_url('/'))[nome_cookie(False)].value
         self.assertEqual((await self.logout()).status,200)
         r=await self.client.get('/api/carteira/111/galeria',headers={'Cookie':nome_cookie(False)+'='+cookie});self.assertEqual(r.status,401)
+    async def test_idioma_da_pagina_sobrevive_ao_login_sem_mudar_servidor(self):
+        await self.client.get('/carteira/111');self.state=await (await self.get('sessao')).json()
+        r=await self.post('entrar',{'idioma':'xx'});self.assertEqual(r.status,400)
+        r=await self.post('entrar',{'idioma':'en'});state=parse_qs(urlsplit((await r.json())['url']).query)['state'][0]
+        r=await self.client.get('/oauth/discord/retorno',params={'state':state,'code':'ficticio'},allow_redirects=False)
+        self.assertEqual(r.headers['Location'],'/carteira/111?idioma=en')
+        self.assertEqual((await (await self.get('sessao')).json())['idioma'],'pt-BR')
     async def test_csrf_e_origem_errados_nao_executam_acao(self):
         await self.login()
         for kw in ({'csrf':'errado'},{'origin':'https://terceiro.invalid'}):self.assertEqual((await self.post('personagens/'+self.pid+'/analisar',**kw)).status,403)
@@ -93,6 +100,7 @@ class NavegadorTeste(unittest.IsolatedAsyncioTestCase):
         await self.login();r=await self.post('personagens/'+self.pid+'/detalhes');d=await r.json();self.assertEqual(r.status,200,await r.text());self.assertIn(F1,d['arquivo']);self.assertNotIn('ficha',d);self.assertNotIn('leitura',d)
         r=await self.post('personagens/'+self.pid+'/analisar',{'idioma':'en'});self.assertEqual(r.status,200,await r.text());a=await r.json();self.assertGreater(a['total'],0)
         self.assertNotIn('access_token',str(a));self.assertNotIn('csrf',a);self.assertNotIn('resultado',a)
+        self.assertNotIn('controls for 10 min',a['rodape'])
     async def test_navegar_na_analise_revalida_cargo_sem_google(self):
         await self.b('configurar',self.prov.pessoas['555'],revisores={'888'});await self.login('777')
         self.assertEqual((await self.post('personagens/'+self.pid+'/analisar')).status,200);n=self.prov.leituras

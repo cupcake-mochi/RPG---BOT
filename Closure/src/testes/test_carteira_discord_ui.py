@@ -31,6 +31,11 @@ class DiscordUITeste(unittest.IsolatedAsyncioTestCase):
         c=card();c['perfil']|={'nome':'@everyone **Teste** <@999>','frase':'[clique](https://example.invalid)'}
         e=cartao_embed(c,'pt-BR');s=json.dumps(e.to_dict())
         self.assertNotIn('@everyone',s);self.assertNotIn('<@999>',s);self.assertIsNone(e.url);self.assertNotIn('docs.google',s)
+    async def test_titulo_do_cartao_abre_carteira_sem_link_google(self):
+        v=GaleriaView(self.cog,111,222,222,self.dados())
+        kw=await v.conteudo();e=kw['embeds'][0]
+        self.assertEqual(e.url,'https://carteira.example/carteira/111/'+v.card['id'])
+        self.assertNotIn('docs.google',json.dumps(e.to_dict()))
     async def test_mensagens_e_labels_en_sem_mudar_conteudo_do_jogador(self):
         e=cartao_embed(card(),'en');self.assertIn('Player',[f.name for f in e.fields]);self.assertEqual(e.title,'Personagem QA')
         self.assertIn('No current',txt('nenhuma','en'))

@@ -85,10 +85,10 @@ async def estado(request):
 async def entrar(request):
     from .web import PROVEDORES,corpo,csrf,resposta_json
     gid,_=contexto(request);d=await corpo(request)
-    if set(d)-{'personagem'}:raise ErroCarteira('Campos inesperados.')
+    if set(d)-{'personagem','idioma'} or d.get('idioma','pt-BR') not in ('pt-BR','en'):raise ErroCarteira('Campos inesperados.')
     pid=d.get('personagem')
     if pid is not None and (not isinstance(pid,str) or not PID.fullmatch(pid)):raise ErroCarteira('Personagem inválido.')
-    o=await banco(request,'login',sid(request),csrf(request),gid,pid)
+    o=await banco(request,'login',sid(request),csrf(request),gid,pid,idioma=d.get('idioma'))
     return resposta_json({'url':request.app[PROVEDORES].autorizar('discord',o['estado'],o['verificador'])})
 
 
@@ -98,6 +98,7 @@ async def retorno(request,state):
     try:
         o=await banco(request,'consumir',sid(request),state);consumido=True
         destino='/carteira/'+o['servidor']+('/'+o['personagem'] if o['personagem'] else '')
+        if o.get('idioma'):destino+='?'+urlencode({'idioma':o['idioma']})
         if 'error' in request.query or not request.query.get('code'):raise AcessoNegado('Login cancelado.')
         retorno=request.app[CFG].origem+request.path+'?'+urlencode(list(request.query.items()))
         token=await request.app[PROVEDORES].trocar_codigo('discord',estado=state,verificador=o['verificador'],retorno=retorno)
@@ -109,7 +110,7 @@ async def retorno(request,state):
     except ErroCarteira:
         # Um state de outra pessoa não pode causar logout da sessão atual.
         if consumido:await banco(request,'invalidar',sid(request))
-        return web.HTTPFound(destino+'?erro=conexao')
+        return web.HTTPFound(destino+('&' if '?' in destino else '?')+'erro=conexao')
 
 
 async def sair(request):
@@ -143,7 +144,7 @@ def apresentar(bundle,idioma,pagina,analisar):
     p=ps[pagina]
     return {'pagina':pagina,'total':len(ps),'titulo':p.title,'descricao':p.description or '',
             'campos':[{'nome':f.name,'valor':f.value} for f in p.fields],
-            'rodape':p.footer.text,'cor':p.colour.value if p.colour else 0,
+            'rodape':(p.footer.text or '').replace(' · controles por 10 min','').replace(' · controls for 10 min',''),'cor':p.colour.value if p.colour else 0,
             'arquivo':'https://docs.google.com/spreadsheets/d/'+bundle['arquivo']+'/edit',
             'lido_em':bundle['leitura']['lido_em']}
 
