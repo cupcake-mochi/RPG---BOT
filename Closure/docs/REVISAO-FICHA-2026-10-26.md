@@ -1,5 +1,7 @@
 # Revisão das fichas oficiais — 26/10/2026
 
+**Publicado em 26/10/2026**, runtime `a7afebb17fc4ff0297699de13861d56d81825612`, incluindo PRs 75 e 76. [Resultado e validações](PUBLICACAO-R57-2026-10-26.md). As referências a pendência de merge/publicação abaixo descrevem a preparação anterior.
+
 ## Resultado
 
 As atualizações conferidas não exigem mudar o leitor nem as contas das Guias. O ajuste desta rodada esclarece o inventário nos guias de criação e de abas, em português e inglês, e inclui essas orientações no contexto de perguntas sobre inventário. Digitar um nome não concede benefícios nem dispensa autorização do mestre.

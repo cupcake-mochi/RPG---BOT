@@ -45,3 +45,5 @@ foi substituído pela confirmação de 25/10 acima.
 ## Conferência de 26/10/2026
 
 As duas oficiais mantêm as 18.393 chaves, referências e partes do contrato conferido em 25/10. A atualização de inventário libera os dois últimos nomes de equipáveis guardados e os nomes de itens guardados; os guias PT/EN acompanham essa orientação. Cópias antigas não recebem a mudança automaticamente. Fontes, validações nativas e limites da conferência: [relatório](../../docs/REVISAO-FICHA-2026-10-26.md). Não houve publicação do bot nesta rodada; a consulta R57 segue no PR 75 separado.
+
+Atualização de publicação (26/10): PRs 75 e 76 publicados em `a7afebb`; consulta R57/v0.367 e mecânica R53. O registro anterior de PR pendente foi superado. Veja [publicação](../../docs/PUBLICACAO-R57-2026-10-26.md).

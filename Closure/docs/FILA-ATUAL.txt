@@ -1,3 +1,6 @@
+Publicação R57 + inventário concluída — 26/10/2026, 09:03:19 (Brasília)
+PUBLICADO no app existente da Discloud: main a7afebb17fc4ff0297699de13861d56d81825612, PRs 75 e 76. Consulta R57/v0.367; mecânica e ANALISE 12 seguem R53. Backup baixado e validado antes; Commit concluído, sem Rebuild separado. ZIP 90 arquivos, 1.814.160 bytes, SHA-256 4b2cd94a24be4a11bb79e16d508165d3dc56410c1f49cf1fd99892c03774fddf; 90/90 instalados idênticos. Ambiente efetivo (27 chaves), .env, campanha e todas as tabelas dos dois bancos iguais antes/depois; bancos íntegros. CI integrada verde antes do envio; suíte local concluída: 976 executados, 975 aprovados, 1 online opcional pulado; fontes 497/497. Discord: GC:ping R57/v0.367, guia criar páginas 1/11 e guia planilha página 7 conferidos. Sem chamada paga ou edição de oficial/jogador. Registro: docs/PUBLICACAO-R57-2026-10-26.md. PRs 75/76 não estão mais pendentes. Limites humanos/dados ausentes e custom sem base permanecem. Não republicar pelo commit documental. Entradas abaixo são históricas.
+
 Integração para publicação — 26/10/2026
 PR 75 mesclado em main 368abb4; orientação de inventário integrada nesta branch. Publicação autorizada pelo usuário, em preparação com backup e testes do conjunto. Registros de preparação abaixo são históricos; ainda não confirmam deploy.
 

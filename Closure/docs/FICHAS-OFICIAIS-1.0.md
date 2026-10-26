@@ -4,15 +4,15 @@ Manutenção das Guias do Ciclo depois do PR #17 da ficha
 (`cupcake-mochi/Ficha---RPG-JJK`, merge `9d932c5`). Base do bot: `main`
 `6f28e67` (PR #73). Branch: `claude/project-thread-e9mxlm`.
 
-## Atualização posterior: consulta R57 preparada, ainda não publicada
+## Publicação posterior — 26/10/2026
 
-A sincronização de consulta foi retomada com autorização na branch
-`codex/consulta-r57`, separada desta publicação. A guarda editorial foi ajustada,
-o núcleo regenerado e a recuperação de fontes auditada. A mecânica continua
-R53. Resultados e retomada: [Consulta R57](CONSULTA-R57.md).
-O registro abaixo descreve a Discloud: ela continua em `2077385`, com consulta
-R53/v0.366, até uma nova publicação autorizada. A pendência de sincronização
-listada naquele registro foi tratada no código da nova branch.
+Os PRs [75](https://github.com/cupcake-mochi/RPG---BOT/pull/75) e
+[76](https://github.com/cupcake-mochi/RPG---BOT/pull/76) foram mesclados e publicados
+no app existente. Runtime **a7afebb17fc4ff0297699de13861d56d81825612**, online
+às **09:03:19 (Brasília)**. A consulta usa R57/v0.367; a mecânica permanece R53.
+Os guias incluem a orientação atual de inventário. Backup, preservação dos
+dados, testes e limites: [registro da publicação](PUBLICACAO-R57-2026-10-26.md).
+O registro de 25/10 abaixo permanece como histórico.
 
 ## Publicação concluída em 25/10/2026
 
