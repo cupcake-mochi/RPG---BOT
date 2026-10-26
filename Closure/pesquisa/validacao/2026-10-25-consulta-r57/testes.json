@@ -1,0 +1,17 @@
+{
+  "comando": "../.venv/bin/python -m unittest discover -s testes",
+  "diretorio": "Closure/src",
+  "executados": 975,
+  "aprovados": 974,
+  "falhas": 0,
+  "pulados": 1,
+  "motivo_pulado": "online opcional",
+  "segundos": 330.929,
+  "nucleo_presente": true,
+  "motores": [
+    "quickjs",
+    "node"
+  ],
+  "chamadas_modelo_pagas": 0,
+  "log_sha256": "5adc3c00c6ddefdf1f2b278e6b1eb74a6962bd804d0341564653a2b4d072a665"
+}

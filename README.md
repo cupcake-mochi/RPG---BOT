@@ -22,8 +22,10 @@ e a lore Nova Terra são opções separadas do idioma. A análise da ficha é pa
 
 ## Estado e documentação
 
-A consulta e os cartões da ficha usam a versão do livro **v0.366 (revisão 53)**. Formatos antigos
-conservam sua compatibilidade documentada. As versões estáveis e seus pacotes
+Nesta atualização, a consulta usa o texto **v0.367 (revisão 57)**. As contas dos
+cartões da ficha continuam na **revisão 53**; formatos antigos conservam sua
+compatibilidade documentada. A consulta R57 ainda não foi publicada na Discloud;
+a produção segue R53/v0.366 até uma publicação autorizada. As versões estáveis e seus pacotes
 ficam em [Releases](https://github.com/cupcake-mochi/RPG---BOT/releases).
 
 | Preciso de… | Onde encontrar |
