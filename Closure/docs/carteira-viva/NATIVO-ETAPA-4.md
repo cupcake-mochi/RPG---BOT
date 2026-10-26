@@ -1,50 +1,97 @@
-# Ensaio da leitura completa
+# Leitura completa no Google
 
-26/10/2026 · **preparado, ainda NÃO executado**.
-Backend da etapa 4 na PR 81. Resultado offline em [ETAPA-4.md](ETAPA-4.md).
+Concluído em 26/10/2026 15:57:01 (Brasília), na branch `codex/carteira-viva-etapa-4`,
+PR 81 dependente da 80. **Piloto local com provedores reais; sem merge ou deploy.**
 
-## Preparação concluída
+## Cópia e acesso
 
-- Nova cópia descartável da oficial Ciclo Maldito, criada pelo conector Drive:
-  **QA Carteira — leitura completa — DESCARTÁVEL — 26-10-2026**.
-  ID `1MWj-9f21rRnr7pA4vEegGYw0-ec2tQ2kBSWE4Rxjy08`.
-  Metadados confirmam `shared=false`; nenhuma permissão foi ampliada.
-- Serviço separado em loopback `127.0.0.1:8876`, com as credenciais de app
-  já autorizadas, banco privado próprio e arquivo de campanha fictício `{}`.
-  O app da Discloud e seu processo não foram alterados.
-- Entrada local e identificação Discord com o escopo anterior `identify`
-  concluídas. A conta escolhida no Google é a conta de teste do mantenedor.
-- Google exibiu o aviso de aplicativo não verificado. A tela foi deixada
-  aberta para o usuário passar pelo aviso e confirmar o consentimento.
-  Foi pedido selecionar somente essa nova cópia. **Sem resposta, não prosseguir.**
+Foi usada somente a cópia privada **QA Carteira — leitura completa — DESCARTÁVEL
+— 26-10-2026**, ID `1MWj-9f21rRnr7pA4vEegGYw0-ec2tQ2kBSWE4Rxjy08`, criada
+pelo conector Drive a partir da oficial Ciclo Maldito. `shared=false` confirmado.
+Nenhuma célula da cópia, oficial ou jogador foi editada. Nome fictício foi
+configurado só no cadastro local, não na planilha.
 
-O controle do navegador exige intervenção do usuário em avisos de segurança.
-Nenhuma nova credencial, autorização persistente ou leitura completa foi
-confirmada neste ensaio até este registro. O grant antigo da etapa 3 continua
-revogado. Não confundir criação da cópia ou OAuth Discord com sucesso do Google.
+Após interrupção e expiração da tentativa anterior, o serviço local foi
+reiniciado e uma entrada nova foi criada. A aba original do Discord ainda tinha
+sessão válida e permitiu concluir identify. O usuário passou pelo aviso Google
+e confirmou a autorização solicitada. Picker selecionou somente essa cópia;
+cadastro fictício foi confirmado pela interface. O grant anterior da etapa 3
+não foi reutilizado. Serviço separado, banco cifrado próprio e campanha fictícia
+local `{}`; nenhuma regra/aprovação real do servidor foi alterada.
 
-## Continuar
+## Defeito encontrado e correção
 
-1. Conferir se a tentativa ainda está no prazo de dez minutos. Se expirou,
-   criar nova entrada pelo serviço e refazer o login, preservando a cópia.
-   Não reutilizar código/estado OAuth antigo.
-2. Após confirmação do usuário, conferir escopo e conta; escolher apenas a
-   cópia acima no Picker. Confirmar cadastro fictício na própria tela.
-3. Usar as rotas internas para atualizar duas vezes, analisar e abrir a análise
-   salva. Esperado: segunda atualização usa cache; análise explícita relê;
-   resultado salvo coincide; origem/revisão/campanha aparecem corretamente.
-4. Comparar a leitura completa com exportação XLSX calculada da MESMA cópia.
-   Não abrir ou alterar jogador/oficial para provocar um caso de teste.
-5. Registrar contagens, falhas e consumo de chamadas sem expor campos privados,
-   IDs de usuário, tokens, URLs OAuth ou parâmetros do iframe Picker.
-6. Ao terminar: revogar o grant de teste, remover cadastro fictício, enviar a
-   cópia à lixeira, encerrar serviço local e fechar abas temporárias. Excluir
-   convites locais antigos. Registrar o que foi de fato confirmado.
+O primeiro pedido completo tentou transportar `userEnteredValue`, incluindo as
+fórmulas longas de todas as células. A resposta ultrapassou 16 MiB e foi recusada
+com `tamanho`. O limite não foi aumentado. Agora o field mask pede somente
+`effectiveValue`, incluindo `errorValue`. Não baixa fórmulas nem outras abas.
 
-Credenciais/configurações ficam no diretório privado indicado em RETOMADA.md,
-fora do Git. Arquivos temporários de preparação não são fonte de verdade do
-produto nem evidência de sucesso. A configuração de `drive.file` permite ler e
-editar arquivos escolhidos, mas este código não escreve em nenhuma célula.
+Na resposta nativa, 13.371 células vieram sem valor efetivo explícito, incluindo
+vazios calculados normais. A API ao vivo não expõe o cache de fórmula do arquivo
+XLSX. Esses vazios continuam vazios; não viram zero ou benefício presumido.
+A grade enxuta reserializada no diagnóstico ocupou 3.888.453 bytes (não é medição
+exata de bytes transferidos). A comparação com o XLSX calculado comprovou
+**18.393 chaves iguais, zero diferenças**. Cache XLSX ausente continua sendo
+recusado pelo leitor existente, com nova regressão específica. Erros de fórmula
+na API, duplicatas, limites e exportação incompleta continuam protegidos.
 
-Casos nativos avançados, cargos reais, troca entre duas fontes e celular físico
-continuam na matriz de testes. Nada deste ensaio foi publicado no Discord.
+## Resultados reais
+
+| Ensaio | Resultado |
+|---|---|
+| Conexão Discord/Google e Picker | Cadastro fictício salvo usando só a cópia selecionada |
+| Reinício após cadastro | Conexão persistiu e renovou sem novo consentimento |
+| Primeira atualização | Leitura completa salva, `cache=false` |
+| Segunda atualização | Mesmo ID de leitura, `cache=true` |
+| Análise explícita | Nova leitura; não certificou o cache anterior |
+| Abertura da análise salva | Mesmo resultado, com nova verificação de contexto |
+| Grade autenticada versus XLSX calculado | 18.393 campos iguais, zero diferenças |
+| Motor pela API versus motor sobre XLSX | Achados integralmente iguais |
+| Resultado da cópia ainda incompleta | Reprovada: 5 erros, 9 pendências e 12 partes não conferidas, iguais nos dois caminhos |
+| Limpeza da concessão | Endpoint Google de revogação respondeu HTTP 200 |
+| Cadastro e credenciais de teste | Zero cadastros dessa cópia e zero conexões ativas no banco do piloto |
+| Arquivo de teste | Interface Google confirmou “Arquivo movido para a lixeira”; exclusão recuperável |
+| Encerramento | Serviço parado, convite local removido, abas temporárias fechadas e tópico Testes restaurado |
+
+O roteiro final fez quatro chamadas à API interna. Houve duas leituras Google
+completas estáveis, uma tentativa cada: pelo código, seis GETs Drive/Sheets e
+duas renovações OAuth. Cadastro/Picker, investigação da primeira falha, exportação
+XLSX e revogação são operações adicionais; não estão incluídas nesse subtotal.
+Não é uma auditoria de todas as requisições da conta/projeto. **Zero chamadas de
+modelo pagas.** Não foram enviadas mensagens ao Discord.
+
+## Testes e limites
+
+A paridade offline foi ampliada com Ritual e entidade, além dos seis casos
+anteriores. Os novos casos passaram; Ritual não ganhou falso alerta de Técnica
+Inata e a conferência de Vida da entidade foi preservada. Agora há 50 testes
+novos distintos da etapa 4. No lote local, um teste HTTP estourou seu segundo
+fixo de prazo durante forte lentidão; os demais 49 passaram. O reteste isolado
+repetiu o timeout, com callbacks simples também demorando centenas de ms.
+A guarda foi reescrita para **proibir adquirir o semáforo de leituras** na rota
+de saúde, em vez de medir o agendamento da máquina. Ela falha se a rota tentar
+esperar vaga; não foi só aumentado um timeout. Os quatro testes HTTP passaram
+após a mudança, em 15,888 s. Conferir o CI do SHA final para a suíte completa.
+
+O executor local também mostrou demora ao despertar threads. O runner temporário
+usou um tick no loop, sem mudar o servidor do produto. Esse runner fica fora do
+Git e não transforma o piloto em benchmark. Ainda faltam medições da etapa 9.
+
+Este ensaio valida conexão e leitura/análise básicas nativas. Ritual, entidades
+e custom foram ampliados **offline**, não criados/editados no Google desta rodada.
+As baterias nativas avançadas, troca entre dois arquivos, cargos reais, galeria,
+idiomas e celular físico continuam na matriz das próximas etapas. O painel
+Discord ainda não está integrado à Carteira; os resultados privados foram
+exercitados pelas rotas internas autenticadas, não por comando instalado.
+
+## Evidência e proteção de dados
+
+Confirmação visual em `/tmp/carteira-etapa4-nativo-cadastro.png`; cópia na lixeira
+em `/tmp/carteira-etapa4-copia-na-lixeira.png`. Arquivos fora do Git. Diagnósticos
+completos e configuração permanecem no diretório privado do piloto, sem valores
+em relatório/PR. Auditoria mínima e registro de revogação seguem a retenção do
+banco; não afirmar que esses registros também foram apagados.
+
+Nenhum segredo, banco, cadastro real ou exportação entrou no Git. O manifesto do
+bot continua excluindo a Carteira. Próxima etapa: galeria/cartões, com GPT-6.1 Sol
+· Alto; hospedagem pública e sincronização confiável de campanhas seguem pendentes.

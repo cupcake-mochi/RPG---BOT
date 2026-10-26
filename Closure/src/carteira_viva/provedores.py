@@ -131,7 +131,7 @@ class Provedores:
             raise ErroProvedor("temporario") from None
 
     async def ler_analise(self, acesso: str, arquivo: str):
-        """Uma grade limitada, com resultados e fórmulas; nunca exporta o livro inteiro."""
+        """Grade de resultados calculados; nunca exporta fórmulas ou o livro inteiro."""
         from urllib.parse import urlencode
         from .leitura_google import da_grade
         if not isinstance(arquivo, str) or not ARQUIVO.fullmatch(arquivo):
@@ -146,7 +146,7 @@ class Provedores:
                 raise ErroProvedor("arquivo")
         validar(antes)
         query = urlencode({"ranges": "'ANALISE'!A1:D20002", "fields":
-            "spreadsheetId,sheets(properties(title),data(startRow,startColumn,rowData(values(userEnteredValue,effectiveValue))))"})
+            "spreadsheetId,sheets(properties(title),data(startRow,startColumn,rowData(values(effectiveValue))))"})
         grade = await self._json("https://sheets.googleapis.com/v4/spreadsheets/" + arquivo + "?" + query,
                                  acesso, limite=16 * 1024 * 1024)
         ficha = await asyncio.to_thread(da_grade, grade, arquivo)

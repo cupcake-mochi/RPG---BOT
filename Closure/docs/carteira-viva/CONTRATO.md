@@ -171,3 +171,13 @@ A prova é
 de um processo síncrono: não comprova vários workers, falhas de disco ou carga.
 Na etapa 3, substituir identidades fornecidas pelos testes por adaptadores
 autenticados. Não expor os métodos da prova diretamente como rotas públicas.
+
+## Resultado Google e cache XLSX
+
+Na leitura autenticada da etapa 4, Sheets entrega valores calculados e erros
+efetivos. Resultados vazios normais podem ser omitidos; continuam vazios na
+normalização, sem completar entradas por suposição. Não inferir cache XLSX a
+partir dessa ausência. No arquivo XLSX, a guarda de fórmula sem resultado
+calculado permanece obrigatória. A paridade nativa dos 18.393 campos e achados
+foi conferida conforme NATIVO-ETAPA-4.md. Não baixar as fórmulas extensas da
+ANALISE para tentar tratar os dois transportes como o mesmo formato.

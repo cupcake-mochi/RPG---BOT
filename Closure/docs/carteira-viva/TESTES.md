@@ -177,7 +177,16 @@ de despertar o event loop. A execução restrita no computador não entregou o
 retorno da thread no setup; essa tentativa foi encerrada e a suíte executada
 com essas permissões locais, sem rede externa. Isso não é defeito do Google.
 
-A matriz nativa da etapa 4 permanece pendente: novas cópias Google com grade
-completa, paridade com exportações calculadas e interação privada no Discord.
+O piloto nativo básico da etapa 4 passou: leitura completa e paridade integral
+com XLSX, cache, análise e abertura salva, seguidos de limpeza/revogação.
+Ritual e entidade também passaram na paridade offline; a matriz nativa avançada
+e a interação privada no Discord continuam pendentes.
 O arquivo da etapa 3 está na lixeira e seu grant foi revogado; não reutilizar
 esse registro antigo como se a autorização ainda estivesse ativa.
+
+O piloto mostrou que fórmulas completas excediam a resposta de 16 MiB. A API
+agora fornece só valores/erros efetivos, sem ampliar esse teto. Vazio calculado
+omitido no Google é preservado como vazio; a recusa de XLSX sem cache ganhou
+regressão explícita. O teste de saúde proíbe adquirir o semáforo, em vez de
+depender de um segundo de agendamento da máquina. Resultados detalhados e
+ressalvas locais: NATIVO-ETAPA-4.md.

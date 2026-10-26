@@ -21,7 +21,7 @@ from testes.test_carteira_web import ProvedorFicticio, F1, F2
 from testes.test_carteira_leitura import da_grade, grade, linhas_ficha, ARQUIVO
 from testes.test_r53 import completa_r53 as _completa_r53, csvfile_texto, gravar
 from testes.test_b47_integracao import completa, trocar
-from testes.test_b47_revisao import aprovar_tudo
+from testes.test_b47_revisao import aprovar_tudo, entidade
 
 RAIZ=Path(__file__).resolve().parents[2]
 
@@ -169,7 +169,11 @@ class ConsultasTeste(unittest.IsolatedAsyncioTestCase):
         aprovacoes=aprovar_tudo(custom).impressoes
         adulterada=copy.deepcopy(simples); adulterada["vida_max"]=Campo(999,"","resultado")
         incompleta=copy.deepcopy(simples); incompleta.pop("nivel")
-        for nome,f,aprovados in [("simples",simples,{}),("avancada",avancada,{}),("custom_sem",custom,{}),("custom_com",custom,aprovacoes),("incompleta",incompleta,{}),("adulterada",adulterada,{})]:
+        com_entidade=entidade(copy.deepcopy(simples))
+        com_ritual=trocar(copy.deepcopy(simples),nivel=10,aptidao__1="Ritual",atributo__inteligencia__base=5)
+        for nome,f,aprovados in [("simples",simples,{}),("avancada",avancada,{}),("entidade",com_entidade,{}),
+                                  ("ritual",com_ritual,{}),("custom_sem",custom,{}),("custom_com",custom,aprovacoes),
+                                  ("incompleta",incompleta,{}),("adulterada",adulterada,{})]:
             with self.subTest(nome=nome):
                 self.campanhas.write_text(json.dumps({"111":{"nome":"Campanha QA","aprovados":aprovados}}))
                 normalizada=da_grade(grade(linhas_ficha(f)),ARQUIVO)
@@ -180,6 +184,10 @@ class ConsultasTeste(unittest.IsolatedAsyncioTestCase):
                 a=await self.s.analisar("111","222",self.pid)
                 self.assertEqual(a["resultado"],esperado)
                 if nome=="adulterada": self.assertTrue(any(p["campo"]=="vida_max" for p in a["resultado"]["problemas"]))
+                if nome=="ritual":
+                    self.assertFalse(any("Técnica Inata" in p["esperado"] for p in a["resultado"]["problemas"]+a["resultado"]["pendencias"]))
+                if nome=="entidade":
+                    self.assertIn("Invocação 1: vida.max 12",a["resultado"]["conferidos"])
 
     async def test_transicao_nao_aprova_e_leitura_nao_mistura(self):
         with patch("closure_bot.ficha_r53.transicoes",return_value={"feitico.1":"salvando"}):

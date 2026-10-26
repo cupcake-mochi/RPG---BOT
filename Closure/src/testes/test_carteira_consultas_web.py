@@ -4,6 +4,7 @@ from dataclasses import replace
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 from aiohttp.test_utils import TestClient, TestServer
 from carteira_viva.motor import Motor
 from carteira_viva.permissoes import Membro
@@ -58,8 +59,12 @@ class ConsultasHTTPTeste(unittest.IsolatedAsyncioTestCase):
         sem=self.app[LIMITE]
         for _ in range(8): await sem.acquire()
         try:
-            r=await asyncio.wait_for(self.client.get("/saude"),1)
-            self.assertEqual(r.status,200)
+            # Prova a independência da fila, sem confundir lentidão da máquina
+            # com uma espera no semáforo. Se a rota tentar adquirir vaga, falha.
+            with patch.object(sem,"acquire",side_effect=AssertionError("Saúde não pode esperar vaga")) as adquirir:
+                r=await self.client.get("/saude")
+                self.assertEqual(r.status,200)
+                adquirir.assert_not_called()
             self.assertEqual((await self.post("atualizar")).status,429)
         finally:
             for _ in range(8): sem.release()

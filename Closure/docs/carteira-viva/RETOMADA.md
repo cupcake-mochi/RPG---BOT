@@ -1,8 +1,8 @@
 # Continuar a Carteira viva
 
 Atualizado em 26/10/2026. Etapas 1–3 implementadas; piloto básico de conexão
-real concluído. **Backend da etapa 4 implementado e testado offline; ensaio
-nativo de leitura completa aguarda confirmação do usuário no Google. Etapas 5–10 ainda pendentes.**
+real concluído. **Etapa 4 implementada, com piloto nativo básico de leitura completa e paridade
+XLSX concluído e limpo. Etapas 5–10 ainda pendentes.**
 Nenhuma Carteira publicada na Discloud.
 
 ## Situação
@@ -15,9 +15,12 @@ Nenhuma Carteira publicada na Discloud.
   Leitura autenticada completa, cache, fila justa, coalescência, cotas locais,
   cancelamento, revisão de fonte/autorização, motor e campanha confiável.
   Resultado privado com proveniência. [Entrega e limites](ETAPA-4.md).
-- 49 testes novos passaram. Suíte local iniciada antes da última correção:
+- Checkpoint anterior: 49 testes passaram. Rodada nativa: 50 testes distintos,
+  com resultado local e reteste HTTP documentados em NATIVO-ETAPA-4.md.
+  Suíte local anterior à correção nativa:
   1.176/1.175 aprovados/1 opcional, zero falhas; a correção final passou na
-  bateria dos 49. Conferir CI do SHA final para o conjunto de 1.177 testes.
+  bateria dos 49; CI de `162436f` passou. Conferir CI após a correção nativa
+  para o conjunto de 1.178 testes.
 - API interna pronta para atualização, análise e abertura do resultado salvo.
   Não há novos comandos/botões da etapa 4 instalados no Discord. Etapa 5 vai
   consumir essa API, sempre com ator obtido da interação e resposta privada.
@@ -34,11 +37,12 @@ Nenhuma Carteira publicada na Discloud.
   reconexão passaram. Sua cópia foi à lixeira e grant revogado. A etapa 4
   precisa de outra cópia descartável e consentimento próprio para a prova real.
 - Preparação nativa atual: [NATIVO-ETAPA-4.md](NATIVO-ETAPA-4.md). Cópia privada
-  criada; login Discord concluído. Google no aviso de app não verificado,
-  aguardando intervenção/consentimento do usuário. Não houve leitura completa
-  nem novo grant confirmado. Retomar/limpar conforme esse registro.
-- Próxima implementação: **etapa 5, galeria e cartões**, com bateria nativa de
-  leitura/análise pendente. Modelo: **GPT-6.1 Sol · Alto (`high`)**; pode manter.
+  lida completamente: 18.393 chaves iguais ao XLSX e mesmos achados; cache,
+  releitura e abertura privada passaram após reinício. Fórmulas extensas
+  foram retiradas do transporte; erros/vazios e guarda XLSX preservados.
+  Grant revogado, cadastro removido, cópia na lixeira e serviço encerrado.
+- Próxima implementação: **etapa 5, galeria e cartões**, com bateria nativa
+  avançada e integração Discord pendentes. Modelo: **GPT-6.1 Sol · Alto (`high`)**; pode manter.
 
 ## Prompt para continuar
 
@@ -56,11 +60,14 @@ explícita relê; abrir resultado salvo revalida membro/cargos, fonte, autoriza�
 leitura, campanha e motor. Não aceitar cadastro como aprovação ou prosa como
 bônus. Manter limites/ausências do produtor e decisões humanas.
 
-Conclua a prova nativa de leitura completa se ainda pendente, em nova cópia
-DESCARTÁVEL. A etapa 3 só provou A1:D32. Registre paridade com exportação
-calculada, consumo de chamadas, limpeza e revogação. Não anunciar simulação
-como prova Google/Discord. Credenciais de app já existem fora do Git; não
-exibir valores. Leia NATIVO-ETAPA-3.md e qualquer registro nativo da etapa 4.
+Leia NATIVO-ETAPA-4.md: piloto básico já passou, 18.393 chaves iguais ao XLSX,
+mesmos achados, cache/releitura/abertura privada, limpeza e revogação concluídas.
+Não repetir por rotina. A API agora lê só effectiveValue: transportar fórmulas
+excedia 16 MiB; vazios calculados são preservados, cache XLSX continua protegido.
+Ritual e entidade passaram offline; falta bateria nativa avançada com a galeria.
+As tentativas anteriores expiraram; qualquer novo ensaio precisa de convite
+fresco, cópia descartável e autorização pertinente. Credenciais de app existem
+fora do Git; não exibir valores ou reutilizar grant revogado.
 
 Implemente a etapa 5 sobre a etapa 4: galeria /personagens [@jogador], múltiplos
 personagens, cartão básico por servidor, detalhes/análise privados, botões que

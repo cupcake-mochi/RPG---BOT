@@ -12,12 +12,14 @@ só identificação de formato; a análise exige a leitura completa.
 
 A grade passa pelo mesmo `de_linhas` do leitor atual. Zero, vazio e ausência
 continuam diferentes. Texto literal não vira número por parecer numérico.
-Fórmula sem resultado, erro efetivo do Google, duplicata e cabeçalho inválido
-interrompem a leitura. Um campo que o produtor não exporta continua ausente.
+Erro efetivo do Google, duplicata e cabeçalho inválido interrompem a leitura.
+A API ao vivo pode omitir resultados vazios normais; esses continuam vazios.
+Fórmula sem cache continua sendo recusada no caminho XLSX. Um campo que o produtor não exporta continua ausente.
 Exportações incompletas chegam às guardas do motor, sem ganhar aprovação.
 
 O adaptador busca apenas `ANALISE!A1:D20002`, com campos selecionados da API:
-valor calculado e valor/fórmula de entrada. A última linha protege contra
+somente valor calculado e erro efetivo. O piloto nativo mostrou que incluir
+fórmulas excedia o limite; elas não são mais transportadas. A última linha protege contra
 corte silencioso. A resposta tem limite de 16 MiB descomprimidos; o snapshot
 cifrado conserva o limite anterior de 8 MiB. Linhas vazias com formatação não
 são registros. A versão Drive é conferida antes/depois; mudança durante o
@@ -83,7 +85,10 @@ configuradas e convivência com as conversas ainda entram na etapa 9.
 
 ## Conferido nesta rodada
 
-**49 testes novos aprovados**, em 28,916 s na bateria final. Incluem banco
+**49 testes aprovados no checkpoint anterior**, em 28,916 s. A rodada nativa
+acrescentou uma regressão XLSX e ampliou paridade com Ritual/entidade: agora
+são 50 testes distintos. Resultado do lote local e ajuste do teste de saúde
+estão em [NATIVO-ETAPA-4.md](NATIVO-ETAPA-4.md); quatro HTTP finais passaram. Incluem banco
 cifrado real, motor real e HTTP em loopback com provedores fictícios. A comparação
 cobre simples, avançada, custom com/sem aprovação, exportação incompleta e total
 adulterado. CSV e XLSX coincidem com a grade nos campos da fixture de leitura.
@@ -92,7 +97,8 @@ O teste de rotação usa dois personagens e confirma renovação serializada.
 Suíte completa local: **1.176 executados, 1.175 aprovados e um opcional pulado**,
 zero falhas, em 369,082 s. Ela começou antes da última regressão: falha ao abrir
 a credencial foi reproduzida, corrigida e incluída nos 49 testes finais acima.
-Conferir o CI da PR para a suíte completa do SHA final (1.177 testes esperados).
+O CI de `162436f` passou. Conferir o CI após a correção nativa para a suíte
+completa do SHA final (1.178 testes esperados).
 Não há chamada paga ou uso de dados de jogadores. Mensagens de modelo/custo
 na suíte vêm de simulações. Manifesto do bot conferido: 90 arquivos, sem Carteira,
 ambiente ou bancos. Sem novo ZIP; a alteração está fora do pacote publicado.
@@ -105,9 +111,8 @@ a ser prova de leitura completa por causa desta implementação.
 
 ## Ainda falta
 
-1. Preparação em [NATIVO-ETAPA-4.md](NATIVO-ETAPA-4.md): nova cópia privada
-   criada; usuário precisa passar pelo aviso Google e confirmar autorização.
-   A leitura completa ainda não ocorreu. Provar no Google real a grade completa em novas cópias descartáveis: simples,
+1. O [piloto nativo básico](NATIVO-ETAPA-4.md) passou, com limpeza concluída.
+   Ampliar no Google real a grade completa em novas cópias descartáveis: simples,
    avançada, Ritual, entidades e custom com/sem aprovação. Comparar com CSV/XLSX
    calculado e conferir os campos vazios efetivos retornados pelo Google.
 2. Integrar comandos, botões privados e galeria na etapa 5; conferir cargo
@@ -127,8 +132,8 @@ Nenhuma ficha oficial/jogador foi alterada. Nenhum banco, segredo ou cadastro
 real entra no Git. Produção continua no estado documentado antes da Carteira.
 
 Próxima implementação: **etapa 5 — galeria e cartões**, com **GPT-6.1 Sol · Alto**.
-A bateria nativa pendente pode acompanhar essa integração, sem chamar a etapa
-4 de validada em produção antes dela.
+A bateria nativa avançada pendente pode acompanhar essa integração. O piloto
+básico passou; nenhuma etapa está validada ou publicada em produção.
 
 ## Referências da API
 

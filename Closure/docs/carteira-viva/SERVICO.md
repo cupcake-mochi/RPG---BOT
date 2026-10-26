@@ -151,6 +151,6 @@ essa opção para cancelar consultas quando o último cliente desconectar.
 As ações SQL já enviadas continuam protegidas por transação/revisões; não
 prometer cancelamento de gravação já confirmada.
 
-Resultados, limites e ensaio nativo ainda pendente: [ETAPA-4.md](ETAPA-4.md).
+Resultados e limites; piloto nativo básico passou, avançados pendentes: [ETAPA-4.md](ETAPA-4.md).
 Os novos comandos/botões serão integrados na etapa 5. Não publicar o serviço
 no app de bot nem gerar um ZIP de produção por causa desta etapa isolada.

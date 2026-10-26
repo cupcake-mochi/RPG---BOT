@@ -45,9 +45,20 @@ class GradeTeste(unittest.TestCase):
         self.assertEqual(f["nome"].valor, "001"); self.assertEqual(f["origem"].valor, "FALSE")
         self.assertEqual(f["nivel"].valor, 0); self.assertEqual(f["vida_max"].valor, "")
 
-    def test_formula_sem_cache(self):
+    def test_api_formula_vazia_omitida_continua_vazia(self):
         self.g["sheets"][0]["data"][0]["rowData"][3]["values"][1] = {"userEnteredValue": {"formulaValue": "=SECRETO()"}}
-        with self.assertRaisesRegex(FichaIlegivel, "sem resultado calculado em ANALISE!B4"): da_grade(self.g, ARQUIVO)
+        f = da_grade(self.g, ARQUIVO)
+        self.assertEqual(f["nivel"].valor, "")
+        self.assertNotEqual(f["nivel"].valor, 0)
+
+    def test_xlsx_formula_sem_cache_continua_recusada(self):
+        from openpyxl import Workbook
+        livro=Workbook(); livro.active.title="ANALISE"
+        for linha in self.linhas: livro.active.append(linha)
+        livro.active['B4']='=1+1'
+        buf=io.BytesIO(); livro.save(buf); livro.close()
+        with self.assertRaisesRegex(FichaIlegivel,"fórmula sem resultado calculado"):
+            de_xlsx(buf.getvalue())
 
     def test_formula_com_resultado_vazio(self):
         self.g["sheets"][0]["data"][0]["rowData"][-1]["values"][1] = celula("", formula=True)
@@ -102,6 +113,7 @@ class GoogleCompletoTeste(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(all(r.method=="GET" and r.headers["Authorization"]=="Bearer token_ficticio" for r in self.requests))
         query=parse_qs(self.requests[1].url.query.decode())
         self.assertEqual(query["ranges"], ["'ANALISE'!A1:D20002"]); self.assertIn("effectiveValue", query["fields"][0])
+        self.assertNotIn("userEnteredValue",query["fields"][0])
         self.assertNotIn("token_ficticio", str(self.requests[1].url))
 
     async def test_versao_alterada(self):
