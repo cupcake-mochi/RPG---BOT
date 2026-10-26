@@ -2,13 +2,15 @@
 
 Planejamento de 26/10/2026. **Ainda não implementado nem publicado.**
 Este documento reúne as decisões da conversa; não é uma lista de comandos
-já disponíveis. Atualização: a [etapa 1](ETAPA-1.md) tem contrato e prova local
-concluídos, com OAuth nativo pendente de configuração. O trabalho offline
-pode seguir para a etapa 2; não há funcionalidade nova em produção.
+já disponíveis. Atualização: a [etapa 1](ETAPA-1.md) tem contrato/prova local
+e a [etapa 2](ETAPA-2.md) tem banco/cadastro implementados localmente.
+OAuth nativo segue pendente de configuração; a próxima tarefa é a etapa 3.
+Não há funcionalidade nova em produção.
 
 - [Testes e critérios de entrega](TESTES.md)
 - [Estado e instrução para continuar](RETOMADA.md)
 - [Contrato definido na etapa 1](CONTRATO.md)
+- [Banco e recuperação da etapa 2](BANCO.md)
 - [Configuração Google e hospedagem pendentes](ACESSO-GOOGLE.md)
 - [Fila geral do bot](../FILA-ATUAL.txt)
 

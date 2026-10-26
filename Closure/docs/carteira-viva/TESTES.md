@@ -1,7 +1,8 @@
 # Testes da Carteira viva
 
 Matriz de testes futuros. A [etapa 1](ETAPA-1.md) executou 39 cenários locais
-do contrato/protótipo; os ensaios nativos desta nova funcionalidade continuam
+do contrato/protótipo; a [etapa 2](ETAPA-2.md) acrescentou 62 testes do banco,
+retenção e recuperação. Os ensaios nativos desta nova funcionalidade continuam
 pendentes. As colunas abaixo indicam exigências de validação, não resultados.
 A suíte histórica do bot não comprova funções ainda não implementadas.
 
@@ -139,8 +140,8 @@ cd Closure/src
 ../.venv/bin/python -m unittest discover -s testes
 ```
 
-O último registro histórico é de 976 testes, 975 aprovados e um opcional
-pulado. O total crescerá com a implementação; não usar esse número como
+Antes da Carteira, o registro histórico era de 976 testes, 975 aprovados e um opcional
+pulado. Os relatórios das etapas registram os totais posteriores; não usar o número antigo como
 resultado novo ou meta artificial. Não repetir suíte extensa por edição de docs.
 
 Ao fim, mandar cópias descartáveis à lixeira, remover concessões de teste
