@@ -190,3 +190,30 @@ omitido no Google é preservado como vazio; a recusa de XLSX sem cache ganhou
 regressão explícita. O teste de saúde proíbe adquirir o semáforo, em vez de
 depender de um segundo de agendamento da máquina. Resultados detalhados e
 ressalvas locais: NATIVO-ETAPA-4.md.
+
+## Resultado da etapa 5
+
+[ETAPA-5.md](ETAPA-5.md) registra 62 testes novos e a distinção entre suíte e
+piloto. Suíte local de 1.237 passou com um opcional pulado; 25 testes finais
+da interface/ponte passaram, incluindo as cinco regressões novas que aumentam a coleta para
+1.242. Conferir o CI final para a execução única do total. Não repetir a suíte
+extensa apenas por documentação.
+
+Discord real, duas contas e fichas fictícias: galeria própria/alheia/vazia,
+paginação, PT/EN, edição com prévia, salvamento e consulta privada passaram.
+A análise direta da conta sem cargo foi recusada. Google foi simulado nesta
+rodada; a leitura nativa da etapa 4 continua sendo uma prova separada.
+Ainda faltam troca/reconexão pelos novos botões, cargo revisor concedido/removido
+no Discord real, publicação HTTPS e bateria nativa avançada de ficha. Não
+considerar essas linhas da matriz concluídas pelos testes automatizados.
+
+Fechamento: busca de nomes corrigida retestada no Discord e anexo WebP exibido.
+Upload/confirmação da imagem foram pela API interna; o formulário de anexo do
+comando ainda é pendência nativa. Piloto encerrado e dados fictícios removidos;
+produção retomada. Os detalhes operacionais estão em ETAPA-5.md.
+
+CI final do código `ced4d52`: 1.242 executados, 1.241 aprovados, um opcional,
+zero falhas (run 40395109029). Reteste local de cota/HTTP: 33/34; um upload
+válido retornou 400. Caso isolado repetido passou, sem mudar expectativa ou
+limite; worker levou 19,153 s de 20 s disponíveis. Causa provável de I/O, não
+comprovada pelo erro anterior. Essa ocorrência está detalhada em ETAPA-5.md.

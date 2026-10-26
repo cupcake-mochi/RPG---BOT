@@ -1,7 +1,8 @@
-"""Serviço de conexão. Sem galeria pública, escrita de ficha ou conversa por IA."""
+"""Conexão e API interna da galeria. Sem escrita de ficha ou conversa por IA."""
 import asyncio
 from contextlib import suppress
 import hmac
+import json
 import logging
 from pathlib import Path
 import secrets
@@ -22,6 +23,7 @@ PROVEDORES = web.AppKey("provedores", Provedores)
 LIMITE = web.AppKey("limite", asyncio.Semaphore)
 DEMO = web.AppKey("demo", bool)
 CONSULTAS = web.AppKey("consultas", object)
+GALERIA = web.AppKey("galeria", object)
 STATIC = Path(__file__).with_name("static")
 RequestKey = getattr(web, "RequestKey", web.AppKey)
 TICKET = RequestKey("ticket", str)
@@ -89,10 +91,59 @@ async def guardas(request, handler):
 async def corpo(request):
     if request.content_type != "application/json":
         raise ErroCarteira("Envie um formulário JSON.")
-    data = await request.json()
+    data = json.loads(await limitado(request,16*1024))
     if not isinstance(data, dict):
         raise ErroCarteira("Solicitação inválida.")
     return data
+
+
+async def limitado(request,tamanho):
+    corpo=bytearray()
+    async for b in request.content.iter_chunked(65536):
+        corpo.extend(b)
+        if len(corpo)>tamanho:
+            raise web.HTTPRequestEntityTooLarge(max_size=tamanho,actual_size=len(corpo))
+    return bytes(corpo)
+
+
+def servico(request):
+    if not hmac.compare_digest(request.headers.get('Authorization',''),'Bearer '+request.app[CFG].servico_token):
+        raise AcessoNegado('Acesso de serviço inválido.')
+
+
+async def api_galeria(request):
+    servico(request)
+    acao=request.match_info.get('acao','listar');pid=request.match_info.get('personagem')
+    g=request.app[GALERIA]
+    if acao=='enviar_imagem':
+        if request.content_type!='application/octet-stream': raise ErroCarteira('Envie uma imagem.')
+        s,u=request.headers.get('X-Carteira-Servidor',''),request.headers.get('X-Carteira-Usuario','')
+        return resposta_json(await g.enviar_imagem(s,u,pid,await limitado(request,1024*1024)))
+    d=await corpo(request)
+    s,u=d.pop('servidor',None),d.pop('usuario',None)
+    if not all(isinstance(x,str) and x.isdigit() and len(x)<=22 for x in (s,u)):
+        raise ErroCarteira('Contexto de servidor inválido.')
+    # Operações e argumentos fechados; nunca publicar DadosAsync.chamar.
+    globais={'listar':(g.listar,{'dono','depois'}),'cargo_revisor':(g.cargo_revisor,{'cargo','permitir'})}
+    locais={'cartao':(g.cartao,set()),'cartao_salvo':(g.cartao_salvo,set()),'detalhes':(g.detalhes,set()),
+             'analisar':(g.detalhes,set()),'analise_salva':(g.analise_salva,set()),
+             'editar':(g.editar,set()),'preparar':(g.preparar,{'alteracoes','campos_publicos','remover_imagem','base_esperada'}),
+             'confirmar':(g.confirmar,{'previa'}),'cancelar':(g.cancelar,{'previa'}),'imagem':(g.imagem,{'previa'})}
+    tabela=locais if pid is not None else globais
+    if acao not in tabela: raise web.HTTPNotFound()
+    fn,permitidos=tabela[acao]
+    if set(d)-permitidos: raise ErroCarteira('Argumento não permitido.')
+    args=(s,u,pid) if pid is not None else (s,u)
+    from closure_bot.ficha_leitor import FichaIlegivel
+    try:
+        if acao=='analisar': d['analisar']=True
+        result=await fn(*args,**d)
+    except FichaIlegivel:
+        return resposta_json({'erro':'leitura'},422)
+    if acao=='imagem': return web.Response(body=result,content_type='image/webp')
+    from .segredos import json_bytes
+    if len(json_bytes(result))>8*1024*1024: raise ErroCarteira('A resposta privada ultrapassou o limite.')
+    return resposta_json(result)
 
 
 async def sessao(request, *, data=None, membro=False):
@@ -301,7 +352,7 @@ async def erro(request):
 def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, motor=None):
     if demonstracao and (cfg.segura or not cfg.desenvolvimento):
         raise ErroCarteira("A demonstração só pode rodar no loopback de desenvolvimento.")
-    app = web.Application(middlewares=[guardas], client_max_size=16 * 1024)
+    app = web.Application(middlewares=[guardas], client_max_size=2 * 1024 * 1024)
     app[CFG], app[PROVEDORES], app[LIMITE], app[DEMO] = cfg, provedores or Provedores(cfg, agora=agora), asyncio.Semaphore(8), demonstracao
     dados = DadosAsync(cfg, agora=agora)
     app[DADOS] = dados
@@ -319,6 +370,11 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, moto
                 from .motor import Motor
                 analisador = await asyncio.to_thread(Motor, cfg.dados_livro, cfg.campanhas)
             app[CONSULTAS] = Consultas(dados, app[PROVEDORES], analisador, agora=agora)
+            from .galeria import Galeria
+            from .imagens import Imagens
+            from .segredos import Cifra
+            imagens=Imagens(cfg.banco.parent/'imagens',Cifra(cfg.chaves),agora=agora)
+            app[GALERIA]=Galeria(dados,app[PROVEDORES],app[CONSULTAS],imagens)
         except BaseException:
             await dados.fechar()
             raise
@@ -326,6 +382,7 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, moto
             while True:
                 await asyncio.sleep(60)
                 await dados.chamar("limpar")
+                await app[GALERIA].limpar()
         task = asyncio.create_task(manutencao())
         try:
             yield
@@ -338,6 +395,9 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, moto
     app.cleanup_ctx.append(ciclo)
     app.router.add_post("/interno/conexoes", iniciar)
     app.router.add_post("/interno/personagens/{personagem}/{acao}", consultar)
+    app.router.add_post('/interno/galeria',api_galeria)
+    app.router.add_post('/interno/galeria/acao/{acao}',api_galeria)
+    app.router.add_post('/interno/galeria/{personagem}/{acao}',api_galeria)
     app.router.add_get("/conectar", pagina)
     app.router.add_get("/api/fluxo", status)
     app.router.add_post("/api/login/{provedor}", login)

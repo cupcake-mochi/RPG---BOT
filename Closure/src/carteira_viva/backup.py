@@ -54,6 +54,8 @@ def gravar_backup(cadastro: Cadastro, destino: Path, *, registro_remocoes: bool 
             if not registro_remocoes:
                 db.execute("PRAGMA secure_delete=ON")
                 db.execute("DELETE FROM web_fluxos")
+                if db.execute("PRAGMA user_version").fetchone()[0]>=4:
+                    db.execute("DELETE FROM previas_cartao")
                 db.commit()
         finally:
             db.close()
