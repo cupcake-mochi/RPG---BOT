@@ -55,9 +55,20 @@ texto ou botões. Banner identifica a simulação. Screenshot local de conclusã
 em `/tmp/carteira-etapa3-demo.png`; tela pequena em
 `/tmp/carteira-etapa3-mobile.png` (arquivos temporários, fora do Git).
 
-Suíte completa: resultado registrado abaixo após conclusão. Núcleo de consulta
-presente; sem chamada paga ou alteração de planilha real. O manifesto do bot
-continua excluindo a Carteira, com os mesmos 90 arquivos previstos.
+Suíte completa no código `6d2fdb2`: **1.126 executados, 1.125 aprovados e um
+online opcional pulado**, zero falhas, 527,418 segundos. Comando em
+`Closure/src`: `../.venv/bin/python -m unittest discover -s testes`.
+Núcleo de consulta presente; sem chamada paga ou alteração de planilha real.
+As saídas de custo/modelo da suíte são de cenários simulados.
+O manifesto do bot continua excluindo a Carteira, com os mesmos 90 arquivos.
+Smoke de isolamento também passou: importar/criar o serviço não carrega
+`discord` nem `closure_bot`. A ponte só importa Discord quando for carregada.
+
+PR: [80](https://github.com/cupcake-mochi/RPG---BOT/pull/80), em rascunho,
+base `codex/carteira-viva-etapa-2`. Conferir a validação automática do SHA atual.
+O formulário inicial Google foi aberto apenas para inspeção: Rhodes Bot ainda
+sem Auth configurado. E-mail público de suporte aguardando escolha do usuário;
+nenhuma configuração ou permissão foi salva.
 
 ## Pendências reais
 

@@ -9,10 +9,13 @@ prova OAuth/Picker nativa pendente. Etapas 4–10 ainda não implementadas.**
   R57 e mecânica R53. Nenhuma Carteira publicada.
 - PRs dependentes: 77 (plano), 78 (etapa 1), 79 (etapa 2). Sem merge.
 - Etapa 3: branch `codex/carteira-viva-etapa-3`, sobre `b491409` da etapa 2.
-  Serviço/fluxos e ponte opcional implementados, sem carregar no bot atual.
+  PR 80 em rascunho. Serviço/fluxos e ponte opcional implementados, sem
+  carregar no bot atual. Código 6d2fdb2: suíte 1.126/1.125/1 opcional, zero falhas.
 - Resultados e limites: [ETAPA-3.md](ETAPA-3.md). Execução: [SERVICO.md](SERVICO.md).
 - Prova nativa aberta: [ACESSO-GOOGLE.md](ACESSO-GOOGLE.md). Configuração
   externa não alterada; demo no navegador usa somente provedores fictícios.
+  E-mail de suporte público aguardando escolha; formulário Google aberto,
+  sem salvar configuração.
 - Próxima implementação: **etapa 4**, leitura sob demanda e análise privada.
 - Modelo recomendado: **GPT-6.1 Sol · Alto (`high`)**; pode continuar nele.
 
