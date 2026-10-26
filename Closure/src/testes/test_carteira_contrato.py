@@ -7,10 +7,10 @@ import unittest
 
 from cryptography.fernet import Fernet, InvalidToken
 
-LAB = Path(__file__).resolve().parents[2] / "pesquisa"
+LAB = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(LAB))
-from carteira_viva.contrato import Acao, Membro, Permissoes, cartao_publico, permitido
-from carteira_viva.prova_local import AutorizacaoGoogle, ArquivoGoogle, Prova, Recusa, Revogada
+from pesquisa.carteira_viva.contrato import Acao, Membro, Permissoes, cartao_publico, permitido
+from pesquisa.carteira_viva.prova_local import AutorizacaoGoogle, ArquivoGoogle, Prova, Recusa, Revogada
 sys.path.remove(str(LAB))
 
 

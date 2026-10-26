@@ -1,7 +1,7 @@
 # Continuar a Carteira viva
 
-Atualizado em 26/10/2026. **Etapa 1 local concluída; OAuth nativo pendente.
-Etapas 2–10 não iniciadas.**
+Atualizado em 26/10/2026. **Etapas 1 local e 2 concluídas; OAuth nativo pendente.
+Etapas 3–10 não iniciadas.**
 
 ## Situação
 
@@ -9,11 +9,14 @@ Etapas 2–10 não iniciadas.**
   já está na main; runtime registrado da publicação anterior continua `a7afebb`.
 - PR 77: planejamento, branch `codex/plano-carteira-viva`, ainda aberta.
 - Branch da etapa 1: `codex/carteira-viva-etapa-1`, sobre `3ac230b` do plano.
+- CI da PR 78 passou. Branch da etapa 2: `codex/carteira-viva-etapa-2`, sobre
+  `daa5627`. A PR desta etapa tem a 78 como dependência, sem merge.
 - Produção: último estado documentado é R57 de consulta, mecânica R53,
   runtime `a7afebb`. Nenhum deploy ou alteração de conta neste planejamento.
-- Entrega atual: [contrato](CONTRATO.md), prova local e [relatório](ETAPA-1.md).
-  39 testes novos; 67 no conjunto direcionado, todos aprovados.
-- Próxima tarefa offline: **etapa 2** de [PLANO.md](PLANO.md), banco e cadastro.
+- Entrega atual: [banco e recuperação](BANCO.md), [relatório da etapa 2](ETAPA-2.md).
+  61 testes novos e os 39 anteriores: 100 direcionados aprovados.
+  Suíte completa com núcleo: 1.076 executados, 1.075 aprovados e um opcional pulado.
+- Próxima tarefa: **etapa 3** de [PLANO.md](PLANO.md), conexão e serviço web.
 - Modelo recomendado: **GPT-6.1 Sol, esforço Alto (`high`)**.
 - Pendência da etapa 1: [OAuth/hospedagem](ACESSO-GOOGLE.md) e prova nativa.
   Rhodes Bot ainda sem Auth configurado; conta Discloud Gold, sem site listado.
@@ -27,17 +30,23 @@ Leia Closure/docs/carteira-viva/PLANO.md, TESTES.md, RETOMADA.md e o topo de
 Closure/docs/FILA-ATUAL.txt. Confira AGENTS.md, remoto, PRs, branch e árvore
 local antes de editar. Não presuma que este plano já está na main.
 
-Leia também CONTRATO.md, ETAPA-1.md e ACESSO-GOOGLE.md. Execute a etapa 2:
-banco definitivo separado, migrações, cadastro com múltiplos personagens,
-permissões, retenção, exclusão, backup e restauração. A prova da etapa 1 é
-local, com provedores simulados; não promovê-la como OAuth ou API pública.
-Normalize conexões e use revisão de fonte para impedir troca concorrente
-ou análise antiga gravada sobre arquivo novo. Não inicie serviço de produção.
+Leia também CONTRATO.md, BANCO.md, ETAPA-2.md e ACESSO-GOOGLE.md. Execute a
+etapa 3: serviço web e adaptadores OAuth Google/Discord, seleção pelo Picker,
+reconexão e troca de arquivo. Reaproveite src/carteira_viva; não exponha os
+métodos diretamente como endpoints ou aceite identidades fornecidas pelo
+navegador. O laboratório da etapa 1 continua sendo uma simulação.
 
-A prova OAuth nativa continua pendente: falta configuração Google/Discord e
-origem web. Avance no trabalho offline e preserve essa pendência para a
-etapa 3. Não contrate hospedagem nem reutilize tokens da Arquivista. Nada
-nesta fase exige mexer nas fichas reais.
+Use uma biblioteca OAuth mantida, estado/sessão e proteção contra repetição,
+conta errada e retornos antigos. Grave somente autorização verificada e use
+a versão da credencial para processar falhas de renovação. Ligue manutenção
+local e confirme membros/cargos no Discord. Não compartilhe o SQLite por rede.
+
+A prova OAuth nativa continua pendente: faltam configuração Google/Discord e
+origem web. Google Auth ainda não está configurado no projeto Rhodes Bot e
+nos outros dois projetos visíveis. A Discloud está em Gold e a documentação
+exige Platinum para site. Avance localmente; prepare configuração concreta
+antes de pedir a ação sensível necessária. Não contrate hospedagem nem
+reutilize tokens da Arquivista. Use somente planilhas descartáveis no ensaio.
 
 Preserve cadastro livre dos próprios personagens, múltiplos personagens por
 jogador, isolamento por servidor, cartão público básico, detalhes privados,
@@ -49,7 +58,7 @@ Não faça chamadas pagas ao modelo nem merge/deploy sem autorização específi
 Use o navegador lateral para os ensaios autorizados, verificando conta e
 servidor antes. Não peça senha/código no chat. Salve decisões, testes reais,
 limites e o prompt da próxima etapa no Git. Ao finalizar, diga a próxima
-tarefa e recomende GPT-6.1 Sol com esforço Alto para a etapa 3, destacando
+tarefa e recomende GPT-6.1 Sol com esforço Alto para a etapa 4, destacando
 quais configurações externas ainda faltam.
 ```
 

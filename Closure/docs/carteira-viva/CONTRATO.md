@@ -162,7 +162,9 @@ HTTP, OAuth real, Google Picker, análise completa, exclusão/retenção automá
 transferência de dono nem comandos Discord.
 
 O banco da prova duplica envelopes por vínculo para manter o ensaio pequeno.
-Na etapa 2, normalizar conexões e implementar migrações/retenção. A prova é
+Na etapa 2, [conexões, migrações e retenção foram implementadas](BANCO.md)
+no pacote separado `src/carteira_viva`, sem promover o laboratório a serviço.
+A prova é
 de um processo síncrono: não comprova vários workers, falhas de disco ou carga.
 Na etapa 3, substituir identidades fornecidas pelos testes por adaptadores
 autenticados. Não expor os métodos da prova diretamente como rotas públicas.
