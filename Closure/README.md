@@ -33,8 +33,8 @@ somente essas duas configurações. Arquivista e Guias têm configurações sepa
 A consulta desta atualização usa o texto **v0.367 (revisão 57)**, com 576 trechos
 de referência. As revisões editoriais R54–R57 foram registradas pelo autor sem
 mudança de regras. A mecânica da análise continua R53.
-A consulta R57 ainda não foi publicada na Discloud: a produção segue
-R53/v0.366 ([validação e estado](docs/CONSULTA-R57.md)).
+A consulta R57 foi publicada em 26/10/2026, com a orientação de inventário
+([registro da publicação](docs/PUBLICACAO-R57-2026-10-26.md)).
 As duas fichas oficiais, Era da Revolução e Ciclo Maldito, mostram a versão pública **1.0**, que não é a
 revisão do livro nem a versão do bot ([modelos](dados/ficha/MODELOS.md)). Os cartões ANALISE 12 usam
 o motor R53; formatos antigos mantêm sua referência histórica separada.
@@ -50,6 +50,8 @@ continuam com o mestre. Aprovação de texto não cria benefício numérico.
 - [Idioma e lore por servidor](docs/RETOMADA-PUBLICO.md)
 - [Clareza de siglas e entrega atual](docs/CLAREZA-SIGLAS.md)
 - [Revisão final de clareza e apresentação](docs/REVISAO-FINAL-APRESENTACAO.md)
+- [Plano da Carteira viva e galeria](docs/carteira-viva/PLANO.md) — futuro;
+  ainda não implementado. Inclui etapas, modelos recomendados, testes e retomada.
 
 ## Executar e manter
 
