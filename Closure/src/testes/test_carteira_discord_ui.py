@@ -50,6 +50,21 @@ class DiscordUITeste(unittest.IsolatedAsyncioTestCase):
         await self.cog.abrir_galeria(self.i)
         view=self.i.followup.send.call_args.kwargs['view']
         self.assertEqual(view.children[0].options[0].label,'Nome atual')
+    async def test_autocomplete_so_nomes_proprios_exibidos_sem_rede(self):
+        self.assertEqual(await self.cog.completar(self.i,''),[])
+        self.cog.lembrar_nomes(111,222,999,self.dados())
+        self.assertEqual(await self.cog.completar(self.i,''),[])
+        self.cog.lembrar_nomes(111,222,222,self.dados())
+        self.assertEqual(len(await self.cog.completar(self.i,'QA')),2)
+        self.assertEqual(await self.cog.completar(interacao(gid=333),''),[])
+        self.api.pedir.assert_not_called()
+    async def test_autocomplete_expira_e_cache_tem_teto(self):
+        import time
+        self.cog.lembrar_nomes(111,222,222,self.dados())
+        with patch('carteira_viva.ponte_discord.time.monotonic',return_value=time.monotonic()+61):
+            self.assertEqual(await self.cog.completar(self.i,''),[])
+        for n in range(200):self.cog.lembrar_nomes(111,n,n,self.dados())
+        self.assertEqual(len(self.cog.nomes),128)
     async def test_privado_nunca_edita_resposta_publica(self):
         self.api.pedir.return_value={'cartao':card(),'arquivo':'arquivo_ficticio_para_teste_001','revisao':1,'leitura':{'campos':{'ficha':{}},'lido_em':180000.},'analise':None}
         await self.cog.consulta_privada(self.i,PID,'detalhes')

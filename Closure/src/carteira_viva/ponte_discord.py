@@ -4,6 +4,8 @@ Não é carregada por closure_bot.bot nem empacotada com o bot atual. Usa só
 aiohttp/discord.py; as bibliotecas OAuth ficam no serviço separado.
 """
 import os
+import time
+from collections import OrderedDict
 from urllib.parse import urlsplit
 
 import aiohttp
@@ -23,6 +25,7 @@ class ConectarFicha(commands.Cog):
         self.bot, self.origem, self.token = bot, origem.rstrip("/"), token
         origem_valida(self.origem, desenvolvimento)
         self.api = ClienteCarteira(origem, token, desenvolvimento=desenvolvimento)
+        self.nomes = OrderedDict()
 
     async def iniciar(self, interacao, acao, personagem=None):
         en = self.idioma(interacao) == "en"
@@ -56,10 +59,18 @@ class ConectarFicha(commands.Cog):
 
     async def completar(self,i,atual):
         if not i.guild_id:return []
-        try:
-            d=await self.api.pedir(i.guild_id,i.user.id,'listar')
-            return [app_commands.Choice(name=seguro(c['perfil'].get('nome','Personagem'),90),value=c['id']) for c in d['cartoes'] if atual.casefold() in c['perfil'].get('nome','').casefold()][:20]
-        except FalhaCarteira:return []
+        # Autocomplete não pode ser adiado no Discord. Usa somente nomes
+        # públicos já exibidos ao próprio responsável; abrir dados revalida.
+        item=self.nomes.get((str(i.guild_id),str(i.user.id)))
+        if not item or time.monotonic()-item[0]>60:return []
+        return [app_commands.Choice(name=seguro(nome,90),value=pid) for pid,nome in item[1] if atual.casefold() in nome.casefold()][:20]
+
+    def lembrar_nomes(self,servidor,usuario,dono,dados):
+        if str(usuario)!=str(dono):return
+        chave=(str(servidor),str(usuario))
+        self.nomes[chave]=(time.monotonic(),[(c['id'],c['perfil'].get('nome','Personagem')) for c in dados['cartoes'][:20]])
+        self.nomes.move_to_end(chave)
+        while len(self.nomes)>128:self.nomes.popitem(last=False)
 
     @grupo.command(name="cadastrar", description="Conecte uma ficha que você já usa")
     async def cadastrar(self, interacao: discord.Interaction):
@@ -105,6 +116,7 @@ class ConectarFicha(commands.Cog):
                 view.card=await self.api.pedir(i.guild_id,i.user.id,'cartao',personagem=view.card['id'])
                 view.dados['cartoes']=[view.card if c['id']==view.card['id'] else c for c in view.dados['cartoes']]
                 view.montar()
+            self.lembrar_nomes(i.guild_id,i.user.id,dono,view.dados)
             kw=await view.conteudo();files=kw.pop('attachments')
             view.mensagem=await i.followup.send(**kw,files=files,view=view,wait=True,allowed_mentions=discord.AllowedMentions.none())
         except FalhaCarteira as exc:await i.followup.send(erro(exc,lang),ephemeral=True)

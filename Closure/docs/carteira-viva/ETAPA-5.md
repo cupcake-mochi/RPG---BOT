@@ -102,8 +102,8 @@ alterada para deixar os testes verdes.
 
 Suíte completa local: **1.237 executados, 1.236 aprovados, um opcional pulado,
 zero falhas**, 744,951 s. Reteste final da interface: **19/19**; inclui uma
-regressão acrescentada depois da coleta completa. Portanto são **1.238 testes
-distintos** no código final, 60 novos nesta etapa. O CI final deve confirmar
+regressão acrescentada depois da coleta completa. Portanto são **1.240 testes
+distintos** no código final, 62 novos nesta etapa. O CI final deve confirmar
 a coleta completa antes de apresentar esse total como execução única.
 
 Piloto Discord: duas contas reais, 23 personagens sintéticos e Google fictício.
@@ -120,3 +120,17 @@ Pendentes: Carteira web (6), modelo do servidor (7), edições permitidas (8),
 operação/escala/recuperação (9), publicação final (10), cenários nativos ainda
 não observados e sincronização autoritativa de campanha entre hosts. Sem
 merge dos PRs dependentes, sem chamadas pagas e sem mudança nas fichas oficiais.
+
+## Ajuste encontrado no Discord real
+
+A busca de nomes (autocomplete) tentava consultar o serviço antes de responder.
+Na máquina do piloto, a consulta excedeu o prazo de três segundos do Discord e
+produziu `Unknown interaction`. Corrigido: a busca usa somente até 20 nomes
+básicos já exibidos ao próprio responsável na galeria, por até 60 segundos,
+com teto de 128 pares servidor/usuário em memória. Não faz rede e não guarda
+fonte, ficha ou análise. Não reutiliza uma galeria alheia. Abrir qualquer dado
+continua consultando as permissões atuais no serviço.
+
+Se a lista estiver vazia ou expirada, abra `/personagens` e selecione a página
+desejada, ou use seus botões; o código do personagem também pode ser informado.
+Dois testes cobrem ausência de rede, dono/servidor, prazo e teto do cache.

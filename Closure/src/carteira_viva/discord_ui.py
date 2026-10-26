@@ -164,6 +164,7 @@ class GaleriaView(Controles):
         if self.card and not self.single:
             atual=next((c for c in self.dados['cartoes'] if c['id']==self.card['id']),None)
             self.card=atual or (self.dados['cartoes'][0] if self.dados['cartoes'] else None)
+        if not self.single:self.cog.lembrar_nomes(self.servidor,self.usuario,self.dono,self.dados)
         self.montar();kw=await self.conteudo()
         self.mensagem=await i.edit_original_response(**kw,view=self,allowed_mentions=discord.AllowedMentions.none())
 
