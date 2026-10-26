@@ -41,3 +41,7 @@ Os modelos são somente leitura para a manutenção do bot. Ensaios de
 preenchimento usam cópias descartáveis, nunca fichas de jogadores. Em 24/10 a
 `1MQqh…` tinha sido registrada só como base técnica do servidor; esse registro
 foi substituído pela confirmação de 25/10 acima.
+
+## Conferência de 26/10/2026
+
+As duas oficiais mantêm as 18.393 chaves, referências e partes do contrato conferido em 25/10. A atualização de inventário libera os dois últimos nomes de equipáveis guardados e os nomes de itens guardados; os guias PT/EN acompanham essa orientação. Cópias antigas não recebem a mudança automaticamente. Fontes, validações nativas e limites da conferência: [relatório](../../docs/REVISAO-FICHA-2026-10-26.md). Não houve publicação do bot nesta rodada; a consulta R57 segue no PR 75 separado.
