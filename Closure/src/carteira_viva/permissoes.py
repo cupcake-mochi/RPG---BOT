@@ -24,13 +24,14 @@ class Membro:
     administrador: bool = False
     gerenciar_servidor: bool = False
     cargos: frozenset[str] = frozenset()
+    nome: str = ""
 
     def __post_init__(self):
         if (not isinstance(self.servidor, str) or not self.servidor.strip() or
                 not isinstance(self.usuario, str) or not self.usuario.strip() or
                 any(type(x) is not bool for x in (self.presente, self.dono_servidor,
                                                   self.administrador, self.gerenciar_servidor)) or
-                not isinstance(self.cargos, frozenset) or
+                not isinstance(self.nome,str) or len(self.nome)>100 or not isinstance(self.cargos, frozenset) or
                 any(not isinstance(x, str) or not x.strip() for x in self.cargos)):
             raise ValueError("Identidade de membro inválida.")
 

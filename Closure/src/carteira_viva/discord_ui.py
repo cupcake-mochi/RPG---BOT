@@ -149,7 +149,7 @@ class GaleriaView(Controles):
             b.callback=trocar;self.add_item(b)
     async def conteudo(self):
         if not self.card:return {'content':txt('vazio',self.lang()),'embeds':[],'attachments':[]}
-        e=cartao_embed(self.card,self.lang());arquivos=[]
+        e=cartao_embed(self.card,self.lang());e.url=self.cog.origem+'/carteira/'+self.servidor+'/'+self.card['id'];arquivos=[]
         if self.card['perfil'].get('imagem_id'):
             try:
                 dados=await self.pedir('imagem',self.card['id']);arquivos=[discord.File(io.BytesIO(dados),filename='cartao.webp')];e.set_image(url='attachment://cartao.webp')

@@ -188,7 +188,8 @@ class Provedores:
         except (TypeError, KeyError, ValueError):
             raise ErroProvedor("identidade") from None
         return Membro(servidor, usuario, dono_servidor=guild.get("owner_id") == usuario,
-                       administrador=bool(permissoes & 8), gerenciar_servidor=bool(permissoes & 32), cargos=cargos)
+                       administrador=bool(permissoes & 8), gerenciar_servidor=bool(permissoes & 32), cargos=cargos,
+                       nome=str(m.get("nick") or m.get("user",{}).get("global_name") or m.get("user",{}).get("username") or "")[:100])
 
     async def conta_google(self, acesso: str) -> str:
         obj = await self._json("https://www.googleapis.com/drive/v3/about?fields=user(permissionId)", acesso)

@@ -17,7 +17,7 @@ class Galeria:
 
     async def _dono(self,m,pid):
         dono=await self.banco('dono_personagem',m,pid)
-        try: await self.membro(m.servidor,dono)
+        try: return await self.membro(m.servidor,dono)
         except MembroAusente:
             await self.banco('registrar_saida',m.servidor,dono)
             raise AcessoNegado('O responsável não está mais neste servidor.') from None
@@ -36,6 +36,7 @@ class Galeria:
         cards=await self.banco('listar',m,dono=dono,depois=depois,limite=21)
         proximo=cards[19]['id'] if len(cards)>20 else None
         cards=[await self.banco('cartao_galeria',m,c['id']) for c in cards[:20]]
+        cards=[c|{'responsavel_nome':alvo.nome} for c in cards]
         await self.membro(s,u)
         return {'cartoes':cards,'proximo':proximo}
 
@@ -46,8 +47,8 @@ class Galeria:
         if atualizar and card['capacidades']['ver_detalhes']:
             try: await self.consultas.atualizar(s,u,pid)
             except ErroCarteira: aviso='atualizacao_indisponivel'
-        m=await self.membro(s,u);await self._dono(m,pid)
-        return (await self.banco('cartao_galeria',m,pid))|{'aviso':aviso}
+        m=await self.membro(s,u);dono=await self._dono(m,pid)
+        return (await self.banco('cartao_galeria',m,pid))|{'aviso':aviso,'responsavel_nome':dono.nome}
 
     async def cartao_salvo(self,s,u,pid):
         return await self.cartao(s,u,pid,atualizar=False)
