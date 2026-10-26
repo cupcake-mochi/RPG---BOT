@@ -193,10 +193,10 @@ ressalvas locais: NATIVO-ETAPA-4.md.
 
 ## Resultado da etapa 5
 
-[ETAPA-5.md](ETAPA-5.md) registra 60 testes novos e a distinção entre suíte e
-piloto. Suíte local de 1.237 passou com um opcional pulado; 19 testes finais
-da interface passaram, incluindo a regressão nova que aumenta a coleta para
-1.238. Conferir o CI final para a execução única do total. Não repetir a suíte
+[ETAPA-5.md](ETAPA-5.md) registra 62 testes novos e a distinção entre suíte e
+piloto. Suíte local de 1.237 passou com um opcional pulado; 25 testes finais
+da interface/ponte passaram, incluindo as três regressões novas que aumentam a coleta para
+1.240. Conferir o CI final para a execução única do total. Não repetir a suíte
 extensa apenas por documentação.
 
 Discord real, duas contas e fichas fictícias: galeria própria/alheia/vazia,
@@ -206,3 +206,8 @@ rodada; a leitura nativa da etapa 4 continua sendo uma prova separada.
 Ainda faltam troca/reconexão pelos novos botões, cargo revisor concedido/removido
 no Discord real, publicação HTTPS e bateria nativa avançada de ficha. Não
 considerar essas linhas da matriz concluídas pelos testes automatizados.
+
+Fechamento: busca de nomes corrigida retestada no Discord e anexo WebP exibido.
+Upload/confirmação da imagem foram pela API interna; o formulário de anexo do
+comando ainda é pendência nativa. Piloto encerrado e dados fictícios removidos;
+produção retomada. Os detalhes operacionais estão em ETAPA-5.md.

@@ -8,14 +8,15 @@ Discord. Etapas 6–10 pendentes.** Nenhuma Carteira publicada na Discloud.
 
 - Main conferida: `de42447`. PRs 77–81 são dependentes e continuam sem merge.
 - Base da etapa 5: `df703ec`, PR 81, CI verde. Branch atual:
-  `codex/carteira-viva-etapa-5`; PR nova deve ter base etapa 4, nunca main.
+  `codex/carteira-viva-etapa-5`; PR 82 em rascunho, base etapa 4, nunca main; código final `3a59741`.
 - Galeria `/personagens [jogador]`, comandos PT/EN, consultas privadas,
   apresentação com prévia e imagem cifrada. Detalhes: ETAPA-5.md.
-- Suíte local 1.237, zero falhas, um opcional; 19 testes finais da interface
-  passaram. Coleta final esperada: 1.238. Registrar CI do head final.
+- Suíte local 1.237, zero falhas, um opcional; 25 testes finais da interface/ponte
+  passaram. Coleta final esperada: 1.240 (62 novos nesta etapa). Registrar CI do head final.
 - Piloto Discord com duas contas reais e Google fictício passou na galeria,
-  apresentação e análise privada; falta fechar o registro da limpeza/retorno
-  da instância hospedada. Não declarar nova publicação do bot.
+  apresentação e análise privada. Busca corrigida e anexo WebP retestados.
+  23 cadastros removidos, zero conexões/comandos temporários, piloto parado;
+  produção retomada sem publicar a Carteira.
 - Credenciais em pasta privada fora do Git. Não reutilizar grants revogados
   nem cópias na lixeira dos pilotos anteriores; não redefinir tokens.
 - Nova ponte continua opcional e excluída do ZIP do bot. Produção exige host
@@ -35,7 +36,8 @@ Confira AGENTS, remoto, branch, árvore, PRs e CI. PRs 77–81 e a PR da etapa 5
 são dependentes; não mesclar nem publicar esta pilha automaticamente.
 
 Implemente a etapa 6: Carteira web responsiva, usando o mesmo serviço,
-cadastro e verificações atuais. Só projeção básica pública; fonte, campos
+cadastro e verificações atuais. A galeria exige participação no servidor: “público” é somente para os outros
+membros, sem indexação global. Só projeção básica para eles; fonte, campos
 completos e análise exigem identidade Discord comprovada e capacidade atual.
 Compartilhar o link não transfere acesso. Revalidar servidor, saída, cargos,
 fonte/autorização, leitura/campanha/motor e estado das prévias em cada ação.

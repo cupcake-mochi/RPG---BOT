@@ -111,9 +111,12 @@ Galeria própria/alheia/vazia, duas páginas, PT/EN, prévia/salvamento e análi
 privada com navegação passaram. A conta comum não recebeu botões privados na
 sua galeria alheia; tentativa direta de análise foi recusada. Não é prova de
 leitura de 23 planilhas reais. Não houve escrita Google ou chamada de modelo.
-A limpeza e a volta da instância hospedada serão registradas ao encerrar.
-Não declarar duas contas validadas, navegação real ou publicação a partir de
-AsyncMocks. O piloto nativo básico de leitura Google já passou na etapa 4;
+Piloto encerrado; 23 cadastros removidos, zero conexões, banco íntegro.
+Os quatro comandos temporários foram retirados, cinco mensagens fictícias
+ficaram sem controles e o serviço/Gateway locais foram encerrados. A instância
+hospedada voltou a ficar Online, sem Commit/Rebuild/publicação da Carteira.
+As duas contas foram observadas no Discord real; AsyncMocks não substituem
+essa prova. Isso não equivale à publicação da Carteira. O piloto nativo básico de leitura Google já passou na etapa 4;
 não foi repetido nem convertido em prova nativa de cenários avançados.
 
 Pendentes: Carteira web (6), modelo do servidor (7), edições permitidas (8),
@@ -134,3 +137,25 @@ continua consultando as permissões atuais no serviço.
 Se a lista estiver vazia ou expirada, abra `/personagens` e selecione a página
 desejada, ou use seus botões; o código do personagem também pode ser informado.
 Dois testes cobrem ausência de rede, dono/servidor, prazo e teto do cache.
+
+## Fechamento do piloto
+
+- PR 82 em rascunho, base PR 81; código final `3a59741`.
+- Busca corrigida retestada no Discord após reinício do piloto: 20 nomes
+  sugeridos imediatamente e nenhum novo `Unknown interaction` no log final.
+- Imagem sintética: upload e confirmação pela API interna retornaram 200;
+  depois a ponte exibiu o anexo WebP no Discord. O envio do arquivo pelo
+  formulário do próprio comando `/personagem imagem` ainda falta observar.
+- Backup manual do app baixado e conferido antes da pausa: ZIP íntegro, 267
+  entradas, ambiente e banco presentes. Cópia privada fora do Git, sem valores
+  de ambiente ou cadastro no relatório. Produção não recebeu arquivos novos.
+- Banco isolado do piloto limpo pela operação de domínio, registro de remoções
+  preservado e imagem sintética local eliminada. Mensagens já enviadas mantêm
+  apenas a apresentação fictícia, identificada como piloto encerrado.
+- Horário do registro de fechamento: 26/10/2026 às 17:13:08 -0300.
+
+A máquina apresentou demora de I/O e respostas de consulta variáveis. A busca
+foi retirada da rede por ter prazo rígido no Discord; esse piloto não estabelece
+SLA nem capacidade de produção. A etapa 9 precisa medir latência/fila com carga
+representativa. Limites de perda de acesso, eventos gerais de saída e mídia já
+enviada ao Discord permanecem explícitos; não prometer recolher cópias antigas.
