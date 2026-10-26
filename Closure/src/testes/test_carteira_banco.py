@@ -1,6 +1,7 @@
 """Cadastro definitivo: somente dados fictícios, sem rede ou bot conectado."""
 from dataclasses import replace
 import os
+import shutil
 import struct
 from pathlib import Path
 import sqlite3
@@ -610,6 +611,23 @@ class RecuperacaoTeste(Fixtures, unittest.TestCase):
 
 
 class MigracaoTeste(Fixtures, unittest.TestCase):
+    def test_abertura_preserva_banco_criado_por_outro_inicializador(self):
+        p = self.criar()
+        alvo = self.pasta / "abertura-concorrente.sqlite3"
+        ledger = alvo.with_suffix(".remocoes.sqlite3")
+        from carteira_viva.banco import arquivo_privado
+        def outro_criou(path):
+            if path == alvo:
+                shutil.copyfile(self.path, alvo)
+                shutil.copyfile(self.c.remocoes, ledger)
+                return False
+            return arquivo_privado(path)
+        with patch("carteira_viva.banco.arquivo_privado", side_effect=outro_criou):
+            with Cadastro(alvo, (self.chave,), agora=self.agora) as outra:
+                self.assertEqual(outra.cartao(self.m, p["id"])["id"], p["id"])
+        self.assertTrue(alvo.exists())
+        self.assertTrue(ledger.exists())
+
     def preparar_v1(self):
         p = self.criar()
         self.c.fechar()

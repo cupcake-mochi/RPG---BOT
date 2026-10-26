@@ -85,7 +85,11 @@ class Cadastro:
             raise ErroCarteira("Falta o registro de remoções. Recupere-o antes de abrir o cadastro.")
         if novo and self.remocoes.exists():
             raise ErroCarteira("Já há um registro de remoções neste destino.")
-        arquivo_privado(self.caminho)
+        # A criação exclusiva é a autoridade, não a sondagem anterior: outro
+        # inicializador pode ter criado o arquivo entre exists() e open().
+        novo = arquivo_privado(self.caminho)
+        if not novo and not self.remocoes.exists():
+            raise ErroCarteira("Cadastro em inicialização ou sem registro de remoções. Tente novamente após conferir os arquivos.")
         novo_ledger = arquivo_privado(self.remocoes)
         self.db = sqlite3.connect(self.caminho, isolation_level=None, timeout=5)
         self.db.row_factory = sqlite3.Row

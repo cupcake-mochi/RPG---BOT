@@ -2,7 +2,8 @@
 
 26/10/2026 · branch `codex/carteira-viva-etapa-2`, sobre `daa5627` da etapa 1.
 Main remota conferida: `de42447`. PRs 77 e 78 continuam abertas; CI da etapa 1
-concluída com sucesso. A PR desta etapa depende da 78, sem merge ou publicação.
+concluída com sucesso. A [PR 79](https://github.com/cupcake-mochi/RPG---BOT/pull/79)
+depende da 78, sem merge ou publicação.
 
 **Etapa 2 implementada localmente.** O módulo não está conectado ao Discord
 nem ao Google. A [prova nativa de acesso](ACESSO-GOOGLE.md) continua pendente.
@@ -43,13 +44,18 @@ nem ao Google. A [prova nativa de acesso](ACESSO-GOOGLE.md) continua pendente.
 3. O nome do laboratório da etapa 1 colidia com o pacote definitivo na importação
    dos testes. O teste passou a usar `pesquisa.carteira_viva`; ambos exercitam
    o mesmo módulo de permissões, sem duplicar regras.
+4. Se outro inicializador criasse o banco entre a sondagem e a criação exclusiva,
+   o primeiro poderia tratá-lo como novo e removê-lo ao falhar. Reproduzido em
+   fixture na revisão final; o resultado real da criação exclusiva agora define
+   a propriedade do arquivo. O banco criado pelo outro inicializador é preservado.
 
 Nenhuma expectativa existente foi alterada para esconder esses problemas.
 As expectativas da etapa 1 continuam passando contra o contrato promovido.
 
 ## Validação
 
-- 61 testes novos da etapa 2 e 39 da etapa 1: **100 testes direcionados passaram**.
+- 62 testes novos da etapa 2 e 39 da etapa 1: **101 testes direcionados passaram**
+  após a correção complementar de inicialização.
 - Casos incluem permissões, isolamento, token ausente/conta diferente, leitura
   atrasada, revogação, troca, idempotência, saída, exclusão, retenção e rotação.
 - Migração com falha injetada reverte schema; falha de exclusão reverte também
@@ -63,7 +69,8 @@ As expectativas da etapa 1 continuam passando contra o contrato promovido.
 - Manifesto de produção conferido: **90 arquivos**, sem `src/carteira_viva`
   nem testes. Nenhum fonte carregado pelas Guias foi alterado; sem ZIP novo.
 
-Suíte completa com núcleo presente, sem alterar expectativas antigas:
+Suíte completa local com núcleo presente no checkpoint `3b18330`, sem alterar
+expectativas antigas:
 
 ```bash
 cd Closure/src
@@ -73,8 +80,11 @@ cd Closure/src
 **1.076 executados em 409,329 s: 1.075 aprovados, zero falhas e um online
 opcional pulado.** O aviso de ausência de chave nas fixtures antigas não é
 diagnóstico do ambiente de produção; o novo módulo exige cifra e usa chaves
-descartáveis nos testes. A suíte completa não foi repetida após os ajustes
-exclusivamente documentais.
+descartáveis nos testes. A revisão posterior acrescentou a regressão de
+inicialização; os 101 direcionados passaram sobre a correção. A suíte completa
+do novo commit roda pelo [CI da PR 79](https://github.com/cupcake-mochi/RPG---BOT/pull/79/checks),
+sem repetir outra bateria local extensa para essa alteração focada. Conferir
+o resultado do SHA atual antes de considerar a revisão integrada encerrada.
 
 ## Limites e próximo passo
 

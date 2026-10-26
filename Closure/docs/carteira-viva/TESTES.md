@@ -1,7 +1,7 @@
 # Testes da Carteira viva
 
 Matriz de testes futuros. A [etapa 1](ETAPA-1.md) executou 39 cenários locais
-do contrato/protótipo; a [etapa 2](ETAPA-2.md) acrescentou 61 testes do banco,
+do contrato/protótipo; a [etapa 2](ETAPA-2.md) acrescentou 62 testes do banco,
 retenção e recuperação. Os ensaios nativos desta nova funcionalidade continuam
 pendentes. As colunas abaixo indicam exigências de validação, não resultados.
 A suíte histórica do bot não comprova funções ainda não implementadas.

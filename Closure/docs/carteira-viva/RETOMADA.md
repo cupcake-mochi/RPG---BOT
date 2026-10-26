@@ -10,12 +10,13 @@ Etapas 3–10 não iniciadas.**
 - PR 77: planejamento, branch `codex/plano-carteira-viva`, ainda aberta.
 - Branch da etapa 1: `codex/carteira-viva-etapa-1`, sobre `3ac230b` do plano.
 - CI da PR 78 passou. Branch da etapa 2: `codex/carteira-viva-etapa-2`, sobre
-  `daa5627`. A PR desta etapa tem a 78 como dependência, sem merge.
+  `daa5627`. PR 79 tem a 78 como dependência, sem merge. Conferir o CI do SHA atual.
 - Produção: último estado documentado é R57 de consulta, mecânica R53,
   runtime `a7afebb`. Nenhum deploy ou alteração de conta neste planejamento.
 - Entrega atual: [banco e recuperação](BANCO.md), [relatório da etapa 2](ETAPA-2.md).
-  61 testes novos e os 39 anteriores: 100 direcionados aprovados.
-  Suíte completa com núcleo: 1.076 executados, 1.075 aprovados e um opcional pulado.
+  62 testes novos e os 39 anteriores: 101 direcionados aprovados.
+  Suíte local no checkpoint 3b18330: 1.076/1.075/1 opcional; correção posterior
+  de inicialização validada nos 101 e no CI do novo SHA (conferir resultado).
 - Próxima tarefa: **etapa 3** de [PLANO.md](PLANO.md), conexão e serviço web.
 - Modelo recomendado: **GPT-6.1 Sol, esforço Alto (`high`)**.
 - Pendência da etapa 1: [OAuth/hospedagem](ACESSO-GOOGLE.md) e prova nativa.
