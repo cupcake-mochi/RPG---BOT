@@ -1,7 +1,7 @@
 # Leitura e análise privadas
 
 26/10/2026 · branch `codex/carteira-viva-etapa-4`, sobre `c44e9e5`/PR 80.
-Implementação local, separada do bot publicado. Sem merge nem deploy.
+Implementação local, separada do bot publicado. PR 81 dependente da 80. Sem merge nem deploy.
 
 ## O que mudou
 
@@ -105,7 +105,9 @@ a ser prova de leitura completa por causa desta implementação.
 
 ## Ainda falta
 
-1. Provar no Google real a grade completa em novas cópias descartáveis: simples,
+1. Preparação em [NATIVO-ETAPA-4.md](NATIVO-ETAPA-4.md): nova cópia privada
+   criada; usuário precisa passar pelo aviso Google e confirmar autorização.
+   A leitura completa ainda não ocorreu. Provar no Google real a grade completa em novas cópias descartáveis: simples,
    avançada, Ritual, entidades e custom com/sem aprovação. Comparar com CSV/XLSX
    calculado e conferir os campos vazios efetivos retornados pelo Google.
 2. Integrar comandos, botões privados e galeria na etapa 5; conferir cargo

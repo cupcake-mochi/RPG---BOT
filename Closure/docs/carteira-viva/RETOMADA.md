@@ -2,7 +2,7 @@
 
 Atualizado em 26/10/2026. Etapas 1–3 implementadas; piloto básico de conexão
 real concluído. **Backend da etapa 4 implementado e testado offline; ensaio
-nativo de leitura completa em preparação. Etapas 5–10 ainda pendentes.**
+nativo de leitura completa aguarda confirmação do usuário no Google. Etapas 5–10 ainda pendentes.**
 Nenhuma Carteira publicada na Discloud.
 
 ## Situação
@@ -11,7 +11,7 @@ Nenhuma Carteira publicada na Discloud.
   R57 e mecânica R53. Não confundir essas versões com as branches da Carteira.
 - PRs dependentes 77 (plano), 78 (etapa 1), 79 (etapa 2) e 80 (etapa 3).
   Sem merge. PR 80 em `c44e9e5`, CI verde, base da etapa atual.
-- Etapa 4: branch `codex/carteira-viva-etapa-4`, nova PR dependente da 80.
+- Etapa 4: branch `codex/carteira-viva-etapa-4`, PR 81 dependente da 80.
   Leitura autenticada completa, cache, fila justa, coalescência, cotas locais,
   cancelamento, revisão de fonte/autorização, motor e campanha confiável.
   Resultado privado com proveniência. [Entrega e limites](ETAPA-4.md).
@@ -33,6 +33,10 @@ Nenhuma Carteira publicada na Discloud.
 - [Piloto anterior](NATIVO-ETAPA-3.md): cadastro, reinício, refresh, revogação e
   reconexão passaram. Sua cópia foi à lixeira e grant revogado. A etapa 4
   precisa de outra cópia descartável e consentimento próprio para a prova real.
+- Preparação nativa atual: [NATIVO-ETAPA-4.md](NATIVO-ETAPA-4.md). Cópia privada
+  criada; login Discord concluído. Google no aviso de app não verificado,
+  aguardando intervenção/consentimento do usuário. Não houve leitura completa
+  nem novo grant confirmado. Retomar/limpar conforme esse registro.
 - Próxima implementação: **etapa 5, galeria e cartões**, com bateria nativa de
   leitura/análise pendente. Modelo: **GPT-6.1 Sol · Alto (`high`)**; pode manter.
 
