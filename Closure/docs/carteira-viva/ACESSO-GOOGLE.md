@@ -51,10 +51,10 @@ atuais nem transformar o app publicado em site para testar.
 | Público | Externo/Testando | Só conta dedicada das Guias e conta pessoal do mantenedor autorizadas |
 | APIs | Drive, Sheets e Picker | Três ativações conferidas no painel |
 | Cliente Google | Carteira de personagens — Piloto local | Criado; credencial em diretório privado do usuário, fora do Git |
-| Escopo | `https://www.googleapis.com/auth/drive.file` | Único escopo configurado; consentimento nativo separado |
+| Escopo | `https://www.googleapis.com/auth/drive.file` | Único escopo; consentimento nativo e leitura da cópia comprovados |
 | Retorno Google | `http://127.0.0.1:8876/oauth/google/retorno` | Salvo no cliente local; origem JavaScript `http://127.0.0.1:8876` |
 | Retorno Discord | `http://127.0.0.1:8876/oauth/discord/retorno` | Salvo nas Guias oficiais por escolha do usuário; segredo OAuth redefinido pelo próprio usuário |
-| Picker web | Google Picker — Piloto local | Chave criada com uma API (Picker), referenciadores `http://127.0.0.1:8876/*` e `https://docs.google.com/*`; ainda não comprova seleção nativa |
+| Picker web | Google Picker — Piloto local | Chave criada com uma API (Picker), referenciadores `http://127.0.0.1:8876/*` e `https://docs.google.com/*`; seleção nativa comprovada no piloto |
 | Documentos públicos | Página de apresentação, privacidade e termos atualizados | Preparar antes de público geral |
 | Segredos | Diretório privado do usuário no disco do sistema | Arquivos 600, pasta 700; disco externo ignora permissões e não deve guardar as credenciais em texto |
 
@@ -103,9 +103,10 @@ pode ser derivada do token Discord nem renovada sem migração dos envelopes.
 7. Repetir em celular. Confirmar a necessidade de navegador externo; não
    contornar restrições Google a navegadores embutidos.
 
-O piloto real começou pela entrada controlada; participação foi conferida
-na API Discord, mas autorizações/seleção ainda precisam de confirmação e
-resultado nativo. Não iniciar bot duplicado com token de produção para criar
+O piloto real foi executado pela entrada controlada: identidade Discord,
+Google/Picker, cadastro, reinício, refresh, revogação e reconexão passaram.
+[Resultado e limites](NATIVO-ETAPA-3.md). A cópia foi para a lixeira e a
+autorização de teste foi revogada; a configuração de aplicativo permanece. Não iniciar bot duplicado com token de produção para criar
 o comando de teste. Preparar aplicação/ambiente de
 teste ou outra entrada controlada e documentar suas diferenças do fluxo final.
 

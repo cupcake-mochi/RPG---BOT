@@ -289,7 +289,9 @@ class WebTeste(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(data["access_token"], "acesso_ficticio_nao_real")
         self.assertNotIn("refresh", data)
         self.assertNotIn(self.cfg.google_secret, str(data))
-        self.assertEqual(r.headers["Referrer-Policy"], "no-referrer")
+        self.assertEqual(r.headers["Referrer-Policy"], "strict-origin")
+        self.assertIn("style-src 'self'", r.headers["Content-Security-Policy"])
+        self.assertNotIn("unsafe-inline", r.headers["Content-Security-Policy"])
 
     async def test_expiracao_nao_entrega_token(self):
         await self.ate_picker()

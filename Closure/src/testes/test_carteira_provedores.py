@@ -119,6 +119,32 @@ class ProvedoresTeste(unittest.IsolatedAsyncioTestCase):
             with self.subTest(scope=scope), self.assertRaises(ErroProvedor):
                 await self.prov.renovar("refresh_ficticio")
 
+    async def test_diagnostico_oauth_nao_expoe_descricao_ou_token(self):
+        self.http_status = 400
+        self.resposta_token = {"error": "invalid_client", "error_description": "SEGREDO_NAO_LOGAR_FICTICIO"}
+        with self.assertLogs("carteira_viva.provedores", level="WARNING") as logs:
+            with self.assertRaises(ErroProvedor):
+                await self.prov.trocar_codigo("discord", estado="s" * 43, verificador="v" * 64,
+                    retorno=self.cfg.origem + "/oauth/discord/retorno?state=" + "s" * 43 + "&code=CODIGO_NAO_LOGAR_FICTICIO")
+        self.assertIn("invalid_client", str(logs.output))
+        for valor in ("SEGREDO_NAO_LOGAR", "CODIGO_NAO_LOGAR", self.cfg.discord_secret):
+            self.assertNotIn(valor, str(logs.output))
+
+    async def test_discord_aceita_so_identify_com_comandos_ja_concedidos(self):
+        self.resposta_token["scope"] = "applications.commands identify"
+        token = await self.prov.trocar_codigo("discord", estado="s" * 43, verificador="v" * 64,
+            retorno=self.cfg.origem + "/oauth/discord/retorno?state=" + "s" * 43 + "&code=ficticio")
+        self.assertEqual(token["scope"], "applications.commands identify")
+        for scope in ("applications.commands", "identify guilds", "identify email", "identify bot", "identify applications.commands connections"):
+            self.resposta_token["scope"] = scope
+            with self.subTest(scope=scope), self.assertRaises(ErroProvedor):
+                await self.prov.trocar_codigo("discord", estado="s" * 43, verificador="v" * 64,
+                    retorno=self.cfg.origem + "/oauth/discord/retorno?state=" + "s" * 43 + "&code=ficticio")
+        self.resposta_token["scope"] = DRIVE_FILE + " applications.commands"
+        with self.assertRaises(ErroProvedor):
+            await self.prov.trocar_codigo("google", estado="s" * 43, verificador="v" * 64,
+                retorno=self.cfg.origem + "/oauth/google/retorno?state=" + "s" * 43 + "&code=ficticio")
+
     async def test_renovacao_valida_e_identidade_google(self):
         token = await self.prov.renovar("refresh_ficticio")
         self.assertGreater(token.expira, self.prov.agora())

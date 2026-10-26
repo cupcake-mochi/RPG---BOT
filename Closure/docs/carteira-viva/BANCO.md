@@ -172,8 +172,8 @@ backups feitos com ela; a restauração aceita um conjunto de chaves.
   escape de menções/renderização ficam para a galeria.
 - O banco armazena resultados de análise; a conexão com o motor e a campanha
   reais continua na etapa 4. Aprovações e decisão do mestre permanecem separadas.
-- HTTP/OAuth implementados localmente na etapa 3; teste nativo e publicação
-  pendentes. Nenhuma escrita de ficha ou comando novo instalado em produção.
+- HTTP/OAuth implementados na etapa 3; piloto local com provedores reais
+  passou conforme NATIVO-ETAPA-3.md. Publicação continua pendente. Nenhuma escrita de ficha ou comando novo instalado em produção.
 - Sem ensaio de queda de energia ou falha física do disco. O teste de rollback
   injeta uma falha SQL; desempenho/carga ficam na etapa 9.
 

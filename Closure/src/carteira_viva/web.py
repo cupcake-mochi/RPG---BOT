@@ -54,6 +54,8 @@ async def guardas(request, handler):
             with suppress(ErroCarteira):
                 await request.app[DADOS].chamar("encerrar", request[TICKET], request[COOKIE], None, falhou=True)
         if request.path.startswith("/oauth/"):
+            seguro = codigo if codigo in {"oauth", "acesso", "identidade", "escopo", "expirada", "etapa", "cancelado", "provedor", "temporario"} else type(exc).__name__
+            logging.getLogger(__name__).warning("Conexão recusada no retorno OAuth (%s)", seguro)
             destino = "/conectar?" + urlencode({"ticket": request[TICKET]}) if request.get(TRANSICAO) else "/erro"
             resposta = web.HTTPFound(cfg.origem + destino)
         else:
@@ -67,7 +69,7 @@ async def guardas(request, handler):
         # Não registrar str(exc), URL de callback, corpo ou tokens dos provedores.
         logging.getLogger(__name__).error("Falha interna da Carteira (%s)", type(exc).__name__)
         resposta = resposta_json({"erro": "interno"}, 500)
-    resposta.headers.update({"Cache-Control": "private, no-store", "Referrer-Policy": "no-referrer",
+    resposta.headers.update({"Cache-Control": "private, no-store", "Referrer-Policy": "strict-origin",
                              "X-Content-Type-Options": "nosniff", "X-Frame-Options": "DENY",
                              "Content-Security-Policy": "default-src 'self'; script-src 'self' https://apis.google.com https://www.gstatic.com; "
                              "frame-src https://docs.google.com https://drive.google.com https://accounts.google.com; "

@@ -2,6 +2,7 @@
 from dataclasses import dataclass, field
 import json
 import math
+import logging
 import re
 import secrets
 import time
@@ -76,11 +77,23 @@ class Provedores:
             async with self._cliente(provedor, estado) as client:
                 token = await client.fetch_token(endpoint, authorization_response=retorno,
                                                   code_verifier=verificador)
-        except (OAuthError, OAuth2Error, httpx.HTTPError, ValueError):
+        except (OAuthError, OAuth2Error) as exc:
+            erro = exc.error if exc.error in {"invalid_client", "invalid_grant", "invalid_request", "invalid_scope", "access_denied", "unauthorized_client", "unsupported_grant_type"} else type(exc).__name__
+            logging.getLogger(__name__).warning("Retorno OAuth %s recusado (%s)", provedor, erro)
+            raise ErroProvedor("oauth") from None
+        except (httpx.HTTPError, ValueError) as exc:
+            logging.getLogger(__name__).warning("Retorno OAuth %s indisponível (%s)", provedor, type(exc).__name__)
             raise ErroProvedor("oauth") from None
         esperado = {DRIVE_FILE} if provedor == "google" else {"identify"}
+        # O Discord inclui applications.commands já concedido pela instalação.
+        # O login só pede/usa identify; nenhum outro escopo extra é aceito.
+        permitido = esperado | ({"applications.commands"} if provedor == "discord" else set())
         scope = token.get("scope")
-        if scope is not None and (not isinstance(scope, str) or set(scope.split()) != esperado):
+        if scope is not None and (not isinstance(scope, str) or not esperado <= set(scope.split()) <= permitido):
+            valores = set(scope.split()) if isinstance(scope, str) else set()
+            nomes = valores & {"identify", "applications.commands", "bot", "email", "guilds", "connections", DRIVE_FILE}
+            logging.getLogger(__name__).warning("Escopo OAuth %s recusado (tipo=%s, conhecidos=%s, outros=%d)",
+                                                provedor, type(scope).__name__, ",".join(sorted(nomes)), len(valores - nomes))
             raise ErroProvedor("escopo")
         if not isinstance(token.get("access_token"), str) or not token["access_token"]:
             raise ErroProvedor("oauth")

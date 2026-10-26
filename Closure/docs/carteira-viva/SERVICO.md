@@ -1,7 +1,7 @@
 # Rodar a conexão de fichas
 
-Serviço separado do bot. Ainda não está publicado nem configurado para contas
-reais. Não substituir o app das Guias por este serviço.
+Serviço separado do bot. Ainda não está publicado. Piloto local com contas reais concluído
+conforme [NATIVO-ETAPA-3.md](NATIVO-ETAPA-3.md). Não substituir o app das Guias por este serviço.
 
 ## Demonstração local
 
@@ -98,6 +98,10 @@ corpos, cabeçalhos ou links de conexão em relatórios.
   ocultar querystrings de conexão/callback, cookies e cabeçalhos de autorização.
 - Backup próprio cifrado e registro de exclusões: seguir [BANCO.md](BANCO.md).
   Tentativas OAuth pendentes não entram na cópia de recuperação.
+- O SDK do Picker usa URL interna de iframe contendo access token: não
+  registrar/exportar URLs desse iframe. A página usa strict-origin para
+  fornecer só a origem à chave restrita, sem caminhos/querystrings; layout do
+  SDK fica no CSS local, mantendo style-src self e scripts sem unsafe-inline.
 - O empacotador do bot continua excluindo a Carteira. Não há ZIP de site
   pronto para enviar; preparar implantação própria após fechar configuração
   e testes nativos. Atualizar o bot sozinho não publica este serviço.

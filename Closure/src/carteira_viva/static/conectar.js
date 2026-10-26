@@ -105,7 +105,8 @@
           await api("/api/selecionar",{arquivo:data.docs[0].id}); await reload();
         });
       }).build().setVisible(true);
-    // O token só vive na memória desta página e não é escrito em URL ou storage.
+    // O app não grava o token em storage/URLs próprias. O SDK o passa ao iframe
+    // oficial do Google; não registrar ou copiar a URL interna desse iframe.
   });
   action(reload);
 })();

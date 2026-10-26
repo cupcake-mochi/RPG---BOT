@@ -1,7 +1,8 @@
 # Continuar a Carteira viva
 
 Atualizado em 26/10/2026. **Etapas 1–3 implementadas localmente;
-prova OAuth/Picker nativa pendente. Etapas 4–10 ainda não implementadas.**
+piloto local com OAuth/Picker reais concluído nos fluxos básicos.
+Etapas 4–10 ainda não implementadas; não há publicação da Carteira.**
 
 ## Situação
 
@@ -10,19 +11,19 @@ prova OAuth/Picker nativa pendente. Etapas 4–10 ainda não implementadas.**
 - PRs dependentes: 77 (plano), 78 (etapa 1), 79 (etapa 2). Sem merge.
 - Etapa 3: branch `codex/carteira-viva-etapa-3`, sobre `b491409` da etapa 2.
   PR 80 em rascunho. Serviço/fluxos e ponte opcional implementados, sem
-  carregar no bot atual. Código 6d2fdb2: suíte 1.126/1.125/1 opcional, zero falhas.
+  carregar no bot atual. Suíte final após piloto: 1.128 executados, 1.127
+  aprovados e um opcional, zero falhas; 152 testes da Carteira.
 - Resultados e limites: [ETAPA-3.md](ETAPA-3.md). Execução: [SERVICO.md](SERVICO.md).
-- Prova nativa aberta: [ACESSO-GOOGLE.md](ACESSO-GOOGLE.md). Configuração
-  externa não alterada; demo no navegador usa somente provedores fictícios.
-  Conta dedicada das Guias escolhida para suporte público e confirmada.
-  O usuário aceitou os termos Cloud e política das APIs. Projeto próprio
-  `guias-ciclo-fichas` criado com autorização específica; OAuth em Externo/Testando, duas contas autorizadas, drive.file e Picker
-  restrito configurados. Cliente local Google pronto; retorno e segredo OAuth
-  das Guias oficiais preparados pelo usuário. Não foi criado app Discord de
-  teste. URL client_id=None encontrada/corrigida no piloto; 49 regressões
-  passam, tela Discord abriu corretamente. Consentimentos/Picker real ainda
-  em andamento; conferir resultado antes de anunciar prova nativa. Continuar nessa
-  conta, sem reutilizar o projeto pessoal ou a Arquivista automaticamente.
+- Piloto real: [NATIVO-ETAPA-3.md](NATIVO-ETAPA-3.md). Cadastro, reinício,
+  renovação, revogação/bloqueio e reconexão passaram com uma cópia privada,
+  depois enviada à lixeira. Cadastro fictício removido e grant de teste revogado.
+- Google dedicado configurado, duas contas em teste, drive.file, chave Picker
+  restrita e cliente local prontos. Discord usa as Guias oficiais por escolha
+  do usuário; retorno local e segredo OAuth preparados pelo próprio usuário.
+  Não foi criado outro app/bot nem reiniciada a Discloud.
+- Credenciais fora do Git, em `~/.local/share/guias-ciclo/carteira-piloto`.
+  Não exibir valores. A demo é fictícia; o relatório nativo identifica os
+  fluxos realmente executados e as lacunas que permanecem.
 - Próxima implementação: **etapa 4**, leitura sob demanda e análise privada.
 - Modelo recomendado: **GPT-6.1 Sol · Alto (`high`)**; pode continuar nele.
 
@@ -47,10 +48,13 @@ Atualize só na consulta. Mostre origem/revisão/horário/campanha da análise;
 isole cartão público de snapshot privado. Confirme membros e cargos atuais,
 sem herdar permissão privada de cargos administrativos de idioma/lore.
 
-OAuth/Picker nativos continuam pendentes de conclusão do piloto. Configuração
-local Google/Discord já preparada na conta dedicada e no app oficial, com
-autorização. Leia ACESSO-GOOGLE.md e confira as credenciais privadas locais,
-sem exibir valores. O demo continua fictício; não confundir os dois. Avance offline e prepare ensaio real em
+Leia também NATIVO-ETAPA-3.md e ACESSO-GOOGLE.md. O piloto local de OAuth,
+Picker, cadastro, reinício, refresh, revogação e reconexão passou. Corrigidos
+client_id na URL Authlib, escopo Discord herdado, referrer da chave e layout
+do Picker sob CSP. A cópia foi para a lixeira e a autorização de teste foi
+revogada; novo ensaio precisa de outra cópia descartável e consentimento.
+Credenciais de aplicativo estão em diretório privado do usuário, fora do Git;
+não exibir valores. O demo continua fictício, distinto do piloto real. Avance offline e prepare ensaio real em
 ambiente separado; não anuncie essa prova como feita. Use só cópias de teste,
 nunca edite oficiais/jogadores nem reaproveite tokens da Arquivista. Não
 contrate hospedagem, faça chamadas pagas ou publique integração incompleta.

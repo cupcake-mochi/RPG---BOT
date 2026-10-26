@@ -5,3 +5,10 @@ body{margin:0;padding:32px 18px}main{max-width:650px;margin:auto;padding:32px;ba
 label{display:block;margin:16px 0 6px}input:not([type=checkbox]),select{box-sizing:border-box;width:100%;padding:11px;background:#101e25;color:#e6edf0;border:1px solid #66828e;border-radius:7px}.checkbox{display:flex;gap:12px;align-items:flex-start}.checkbox input{width:20px;height:20px;flex-shrink:0;margin-top:4px;accent-color:#a6e0d4}.aviso{padding:14px;border-left:3px solid #eac878;background:#302c20;color:#f9e9c5;border-radius:5px}.rodape{font-size:.88rem;color:#b8cbd3;margin-top:28px}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #eac878;outline-offset:3px}[hidden]{display:none!important}
 @media(max-width:500px){body{padding:12px}main{padding:22px}button{width:100%;margin-right:0}}
 @media(prefers-color-scheme:light){:root{background:#eef4f4;color:#172a32}main{background:#fff;border-color:#b4c9ce}.marca{color:#23675e}.etapas,.rodape{color:#46606b}.secundario{background:#d8e5e9;color:#203841}.secundario:hover{background:#c5d9df}input:not([type=checkbox]),select{background:#f7fbfc;color:#172a32;border-color:#6b8793}.aviso{background:#fff4d9;color:#5c4318}}
+/* O Picker injeta estas regras em <style>, bloqueado pela CSP. Mantemos o
+   layout em arquivo próprio, sem liberar estilos inline ou scripts livres. */
+.picker-dialog-frame{width:100%;height:100%;border:0;overflow:hidden}
+.picker-dialog-bg{position:absolute;top:0;left:0;background:#fff;z-index:1000}
+.picker-dialog{position:absolute;top:0;left:0;background:#fff;border:1px solid #acacac;width:auto;padding:0;z-index:1001;overflow:auto;box-shadow:0 4px 16px rgb(0 0 0 / 20%)}
+.picker-dialog-content{height:100%;font-size:0;padding:0}
+.picker-dialog-buttons,.picker-dialog-title{display:none}
