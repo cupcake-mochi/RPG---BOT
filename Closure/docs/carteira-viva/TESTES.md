@@ -1,8 +1,9 @@
 # Testes da Carteira viva
 
-Plano de testes, **não resultado de execução**. Em 26/10/2026 nenhum cenário
-desta nova funcionalidade foi executado. A suíte histórica do bot não cobre
-uma funcionalidade que ainda não foi implementada.
+Matriz de testes futuros. A [etapa 1](ETAPA-1.md) executou 39 cenários locais
+do contrato/protótipo; os ensaios nativos desta nova funcionalidade continuam
+pendentes. As colunas abaixo indicam exigências de validação, não resultados.
+A suíte histórica do bot não comprova funções ainda não implementadas.
 
 ## Preparação
 

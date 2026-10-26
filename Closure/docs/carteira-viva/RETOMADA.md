@@ -1,21 +1,23 @@
 # Continuar a Carteira viva
 
-Atualizado em 26/10/2026. **Planejamento salvo; etapas 1–10 não iniciadas.**
+Atualizado em 26/10/2026. **Etapa 1 local concluída; OAuth nativo pendente.
+Etapas 2–10 não iniciadas.**
 
 ## Situação
 
-- Base remota consultada: `main a7afebb17fc4ff0297699de13861d56d81825612`.
-- Registro da publicação anterior: `de424478a7a120ecb43bd0c79eb93774d446fae6`,
-  preservado como commit anterior nesta branch; só documentação.
-- Branch deste plano: `codex/plano-carteira-viva`.
+- Base remota consultada nesta etapa: `main de42447`. Esse commit documental
+  já está na main; runtime registrado da publicação anterior continua `a7afebb`.
+- PR 77: planejamento, branch `codex/plano-carteira-viva`, ainda aberta.
+- Branch da etapa 1: `codex/carteira-viva-etapa-1`, sobre `3ac230b` do plano.
 - Produção: último estado documentado é R57 de consulta, mecânica R53,
   runtime `a7afebb`. Nenhum deploy ou alteração de conta neste planejamento.
-- Próxima tarefa: **etapa 1** de [PLANO.md](PLANO.md).
-- Modelo recomendado para começar: **GPT-6 Astra, esforço Alto (`high`)**.
-  Não é obrigatório gastar esforço máximo nem trocar o modelo do bot.
-- Depois da etapa 1: **GPT-6.1 Sol, Alto**, para banco e cadastro.
-- Matriz futura: [TESTES.md](TESTES.md). Discord aberto é disponibilidade
-  informada pelo usuário, não teste realizado nem sessão garantida.
+- Entrega atual: [contrato](CONTRATO.md), prova local e [relatório](ETAPA-1.md).
+  39 testes novos; 67 no conjunto direcionado, todos aprovados.
+- Próxima tarefa offline: **etapa 2** de [PLANO.md](PLANO.md), banco e cadastro.
+- Modelo recomendado: **GPT-6.1 Sol, esforço Alto (`high`)**.
+- Pendência da etapa 1: [OAuth/hospedagem](ACESSO-GOOGLE.md) e prova nativa.
+  Rhodes Bot ainda sem Auth configurado; conta Discloud Gold, sem site listado.
+- Matriz: [TESTES.md](TESTES.md). Nenhum comando novo testado no Discord.
 
 ## Prompt para a próxima tarefa
 
@@ -25,13 +27,17 @@ Leia Closure/docs/carteira-viva/PLANO.md, TESTES.md, RETOMADA.md e o topo de
 Closure/docs/FILA-ATUAL.txt. Confira AGENTS.md, remoto, PRs, branch e árvore
 local antes de editar. Não presuma que este plano já está na main.
 
-Execute a etapa 1: feche o contrato de dados/permissões e faça uma prova
-pequena do acesso Google guiado pelo Discord, apenas em ambiente de teste
-e com planilha descartável. Inclua identidade Discord, drive.file, Picker,
-renovação segura, revogação e troca de arquivo. Identifique hospedagem HTTPS,
-persistência, requisitos OAuth públicos e custo antes de contratar serviços.
-Se depender de configuração externa, avance nos contratos e testes locais;
-registre exatamente o que não foi validado nativamente.
+Leia também CONTRATO.md, ETAPA-1.md e ACESSO-GOOGLE.md. Execute a etapa 2:
+banco definitivo separado, migrações, cadastro com múltiplos personagens,
+permissões, retenção, exclusão, backup e restauração. A prova da etapa 1 é
+local, com provedores simulados; não promovê-la como OAuth ou API pública.
+Normalize conexões e use revisão de fonte para impedir troca concorrente
+ou análise antiga gravada sobre arquivo novo. Não inicie serviço de produção.
+
+A prova OAuth nativa continua pendente: falta configuração Google/Discord e
+origem web. Avance no trabalho offline e preserve essa pendência para a
+etapa 3. Não contrate hospedagem nem reutilize tokens da Arquivista. Nada
+nesta fase exige mexer nas fichas reais.
 
 Preserve cadastro livre dos próprios personagens, múltiplos personagens por
 jogador, isolamento por servidor, cartão público básico, detalhes privados,
@@ -43,7 +49,8 @@ Não faça chamadas pagas ao modelo nem merge/deploy sem autorização específi
 Use o navegador lateral para os ensaios autorizados, verificando conta e
 servidor antes. Não peça senha/código no chat. Salve decisões, testes reais,
 limites e o prompt da próxima etapa no Git. Ao finalizar, diga a próxima
-tarefa e recomende GPT-6.1 Sol com esforço Alto para a etapa 2.
+tarefa e recomende GPT-6.1 Sol com esforço Alto para a etapa 3, destacando
+quais configurações externas ainda faltam.
 ```
 
 ## O que entregar ao fim de cada etapa
