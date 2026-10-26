@@ -34,6 +34,10 @@ class ErroProvedor(ErroCarteira):
         super().__init__("Não foi possível confirmar o acesso. Reabra a conexão ou tente novamente.")
 
 
+class MembroAusente(AcessoNegado):
+    codigo = 'membro_ausente'
+
+
 @dataclass(frozen=True)
 class TokenGoogle:
     acesso: str = field(repr=False)
@@ -112,11 +116,13 @@ class Provedores:
             raise ErroProvedor("oauth")
         return TokenGoogle(token["access_token"], refresh, expira)
 
-    async def _json(self, url: str, token: str, *, bot=False, limite=512 * 1024):
+    async def _json(self, url: str, token: str, *, bot=False, limite=512 * 1024, membro=False):
         try:
             async with httpx.AsyncClient(timeout=15, follow_redirects=False, trust_env=False,
                                          transport=self.transporte) as client:
                 async with client.stream("GET", url, headers={"Authorization": ("Bot " if bot else "Bearer ") + token}) as resp:
+                    if membro and resp.status_code == 404:
+                        raise MembroAusente('Membro ausente deste servidor.')
                     if resp.status_code != 200:
                         raise ErroProvedor("acesso" if resp.status_code in (401, 403, 404) else "temporario")
                     corpo = bytearray()
@@ -168,7 +174,7 @@ class Provedores:
                 not SNOWFLAKE.fullmatch(usuario)):
             raise AcessoNegado("Servidor ou usuário não permitido neste piloto.")
         token = self.cfg.discord_bot_token
-        m = await self._json(f"{DISCORD}/guilds/{servidor}/members/{usuario}", token, bot=True)
+        m = await self._json(f"{DISCORD}/guilds/{servidor}/members/{usuario}", token, bot=True, membro=True)
         if m.get("user", {}).get("id") != usuario or m.get("pending") is True:
             raise AcessoNegado("Confirme sua participação no servidor.")
         guild = await self._json(f"{DISCORD}/guilds/{servidor}", token, bot=True)

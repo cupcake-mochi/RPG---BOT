@@ -17,6 +17,7 @@ import time
 from typing import Callable
 
 from . import esquema
+from .cartoes_banco import Cartoes
 from .permissoes import Acao, Membro, Permissoes, PUBLICOS, cartao_publico, permitido
 from .segredos import AcessoNegado, Cifra, Conflito, ErroCarteira, json_bytes
 
@@ -71,7 +72,7 @@ class CredencialGoogle:
     autorizacao: str = field(repr=False)
 
 
-class Cadastro:
+class Cadastro(Cartoes):
     def __init__(self, caminho: Path, chaves: tuple[bytes, ...], *,
                  remocoes: Path | None = None, agora: Callable[[], float] = time.time):
         self.cifra = Cifra(chaves)  # Não criar banco se a chave estiver ausente/inválida.
@@ -141,6 +142,7 @@ class Cadastro:
                 # Retornos OAuth de antes de um reinício/restore não reativam
                 # concessões antigas. Os vínculos confirmados são preservados.
                 self.db.execute("DELETE FROM web_fluxos")
+                self.db.execute("DELETE FROM previas_cartao")
         except Exception:
             self.db.close()
             if novo:
@@ -334,7 +336,7 @@ class Cadastro:
         config = self.db.execute("SELECT campos_publicos FROM servidores WHERE id=?", (membro.servidor,)).fetchone()
         autorizados = frozenset(json.loads(row["campos_publicos"])) & frozenset(json.loads(config[0]))
         return {"id": row["id"], "responsavel": row["dono"],
-                "perfil": cartao_publico(perfil, autorizados), "atualizado_em": row["atualizado"]}
+                "perfil": cartao_publico(perfil | self._resumo_cartao(membro.servidor, personagem)[0], autorizados), "atualizado_em": row["atualizado"]}
 
     def listar(self, membro: Membro, *, dono: str | None = None, depois: str = "", limite: int = 20) -> list[dict]:
         self._autorizar(membro, Acao.VER_CARTAO)
@@ -380,6 +382,7 @@ class Cadastro:
                     geracao=geracao+1 WHERE servidor=? AND personagem=?""",
                                 (arquivo, contrato, membro.servidor, personagem))
                 self.db.execute("DELETE FROM leituras WHERE servidor=? AND personagem=?", (membro.servidor, personagem))
+                self.db.execute("DELETE FROM resumos_cartao WHERE servidor=? AND personagem=?", (membro.servidor, personagem))
                 self._salvar_pedido(membro, chave, "trocar", assinatura, personagem)
                 self._auditar(membro.servidor, membro.usuario, personagem, "trocar_arquivo")
         except sqlite3.IntegrityError:
@@ -454,6 +457,7 @@ class Cadastro:
                 expira=excluded.expira,conteudo=excluded.conteudo""",
                             (ref.servidor, ref.personagem, lid, ref.revisao, schema,
                              self.agora(), self.agora() + DIA, envelope))
+            self._salvar_resumo(ref, campos)
             # Consome o ticket; a mesma resposta não pode gravar novamente.
             self.db.execute("UPDATE fontes SET geracao=geracao+1 WHERE servidor=? AND personagem=?",
                             (ref.servidor, ref.personagem))
@@ -610,8 +614,9 @@ class Cadastro:
             for row in ausentes:
                 self._remover(row["servidor"], row["id"])
             contagens["personagens"] = len(ausentes)
+            self.limpar_imagens()
             for tabela, campo, prazo in (("leituras", "expira", 0), ("analises", "expira", 0),
-                                         ("web_fluxos", "expira", 0),
+                                         ("web_fluxos", "expira", 0), ("previas_cartao", "expira", 0),
                                          ("pedidos", "criado", 7 * DIA), ("auditoria", "criado", 90 * DIA)):
                 contagens[tabela] = self.db.execute(f"DELETE FROM {tabela} WHERE {campo}<=?",
                                                     (self.agora() - prazo,)).rowcount
@@ -650,6 +655,14 @@ class Cadastro:
                     envelope = nova.cifrar(ctx, self.cifra.abrir(ctx, conteudo))
                     self.db.execute(f"UPDATE {tabela} SET conteudo=? WHERE servidor=? AND personagem=?",
                                     (envelope, row["servidor"], row["personagem"]))
+            for row in self.db.execute("SELECT * FROM resumos_cartao").fetchall():
+                ctx = ["resumo", row["servidor"], row["personagem"]]
+                self.db.execute("UPDATE resumos_cartao SET conteudo=? WHERE servidor=? AND personagem=?",
+                                (nova.cifrar(ctx,self.cifra.abrir(ctx,row["conteudo"])),row["servidor"],row["personagem"]))
+            for row in self.db.execute("SELECT * FROM previas_cartao").fetchall():
+                ctx = ["previa",row["servidor"],row["personagem"],row["usuario"],row["id"]]
+                self.db.execute("UPDATE previas_cartao SET conteudo=? WHERE id=?",
+                                (nova.cifrar(ctx,self.cifra.abrir(ctx,row["conteudo"])),row["id"]))
             self.db.execute("UPDATE meta SET valor=? WHERE chave='verificador'",
                             (nova.cifrar(["verificador", self.banco_id], "carteira-viva"),))
         self.cifra = nova

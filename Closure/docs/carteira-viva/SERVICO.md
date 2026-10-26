@@ -74,10 +74,11 @@ os requisitos documentados; não contratar upgrade automaticamente.
 `carteira_viva.ponte_discord` é uma extensão opcional **não carregada** pelo
 bot atual. A futura integração precisa carregar a extensão e sincronizar os
 comandos em um ambiente de teste, sem iniciar bot duplicado de produção.
-Ela oferece cadastrar, trocar arquivo e reconectar no grupo `/personagem`;
-os links são privados e exigem a mesma conta Discord. Respostas PT/EN seguem
-o idioma da interação. Traduções dos nomes e integração com o idioma do
-servidor entram na etapa 5; não anunciar esses comandos como disponíveis.
+Além de cadastrar, trocar arquivo e reconectar, a etapa 5 oferece galeria,
+cartão, consulta privada, apresentação e cargo revisor. Comandos e nomes
+PT/EN: [ETAPA-5.md](ETAPA-5.md). Respostas seguem o idioma configurado no
+servidor, com fallback anterior do fluxo de conexão. Links de conexão são
+privados e exigem a mesma conta Discord. Não anunciar como recurso publicado.
 
 A ponte usa `CARTEIRA_API_URL` (origem HTTPS do serviço) e
 `CARTEIRA_SERVICE_TOKEN`. O piloto loopback pode começar por uma chamada local
@@ -154,3 +155,22 @@ prometer cancelamento de gravação já confirmada.
 Resultados e limites; piloto nativo básico passou, avançados pendentes: [ETAPA-4.md](ETAPA-4.md).
 Os novos comandos/botões serão integrados na etapa 5. Não publicar o serviço
 no app de bot nem gerar um ZIP de produção por causa desta etapa isolada.
+
+## Galeria interna (etapa 5)
+
+`POST /interno/galeria` aceita servidor, usuário e opcionais dono/depois.
+`POST /interno/galeria/acao/cargo_revisor` aceita cargo e permitir booleano.
+`POST /interno/galeria/{id}/{acao}` tem lista fechada: cartao, cartao_salvo,
+detalhes, analisar, analise_salva, editar, preparar, confirmar, cancelar, imagem
+e enviar_imagem. JSON permanece limitado a 16 KiB. Contexto vem da interação
+real e o segredo de serviço nunca chega ao navegador/jogador.
+
+Upload é corpo binário de até 1 MiB, com X-Carteira-Servidor e
+X-Carteira-Usuario fornecidos pela ponte autenticada. O retorno da ação imagem
+é WebP, depois de revalidar membro, responsável e imagem atual. As demais
+respostas são JSON privado sem cache, até 8 MiB no cliente da ponte.
+A rota de imagem não é uma URL pública para embed: a ponte envia anexo.
+Pasta de mídia, permissões, retenção e backup: ETAPA-5.md.
+
+A ponte aceita HTTP apenas com CARTEIRA_DEV=1 e origem loopback explícita;
+produção exige HTTPS. Nenhuma porta nova é aberta pelo bot em produção.

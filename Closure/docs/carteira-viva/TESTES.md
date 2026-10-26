@@ -190,3 +190,19 @@ omitido no Google é preservado como vazio; a recusa de XLSX sem cache ganhou
 regressão explícita. O teste de saúde proíbe adquirir o semáforo, em vez de
 depender de um segundo de agendamento da máquina. Resultados detalhados e
 ressalvas locais: NATIVO-ETAPA-4.md.
+
+## Resultado da etapa 5
+
+[ETAPA-5.md](ETAPA-5.md) registra 60 testes novos e a distinção entre suíte e
+piloto. Suíte local de 1.237 passou com um opcional pulado; 19 testes finais
+da interface passaram, incluindo a regressão nova que aumenta a coleta para
+1.238. Conferir o CI final para a execução única do total. Não repetir a suíte
+extensa apenas por documentação.
+
+Discord real, duas contas e fichas fictícias: galeria própria/alheia/vazia,
+paginação, PT/EN, edição com prévia, salvamento e consulta privada passaram.
+A análise direta da conta sem cargo foi recusada. Google foi simulado nesta
+rodada; a leitura nativa da etapa 4 continua sendo uma prova separada.
+Ainda faltam troca/reconexão pelos novos botões, cargo revisor concedido/removido
+no Discord real, publicação HTTPS e bateria nativa avançada de ficha. Não
+considerar essas linhas da matriz concluídas pelos testes automatizados.

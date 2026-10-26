@@ -1,8 +1,8 @@
 # Banco de personagens
 
 Etapa 2 · 26/10/2026. Implementação em `src/carteira_viva/`. O módulo ainda
-não é carregado pelas Guias, não abre portas e não registra comandos Discord.
-OAuth e dados reais continuam fora desta etapa.
+não é carregado pelas Guias em produção. O serviço e a ponte opcionais evoluíram
+nas etapas 3–5; ver SERVICO.md e ETAPA-5.md para o estado atual.
 
 ## Arquivos e chaves
 
@@ -30,8 +30,9 @@ envelope e têm hashes separados para localizar uma conexão existente.
 
 ## Schema e migrações
 
-Schema atual: **3**. Migração 1 cria as tabelas de domínio; migração 2 acrescenta
-pedidos e auditoria; migração 3 acrescenta tentativas web cifradas. A sequência é transacional. Não há banco de produção de
+Schema atual: **4**. Migração 1 cria as tabelas de domínio; migração 2 acrescenta
+pedidos e auditoria; migração 3 acrescenta tentativas web cifradas; migração 4 acrescenta resumo
+básico cifrado, prévias e registro de imagens. A sequência é transacional. Não há banco de produção de
 uma versão anterior deste recurso; o teste de migração usa uma fixture v1.
 
 | Tabela | Uso |
@@ -44,6 +45,9 @@ uma versão anterior deste recurso; o teste de migração usa uma fixture v1.
 | `analises` | Só o último resultado salvo, ligado à leitura e à revisão da campanha |
 | `pedidos` | Identificador de repetição, assinatura dos argumentos e ID do resultado |
 | `web_fluxos` | Tentativas de conexão cifradas, estado OAuth de uso único e validade de dez minutos |
+| `resumos_cartao` | Nome/origem/caminho da última leitura, cifrados e ligados à revisão da fonte |
+| `previas_cartao` | Apresentação pendente, ator, base esperada e validade de dez minutos |
+| `imagens` | Somente ID/contexto/horário; bytes cifrados em pasta privada separada |
 | `auditoria` | Ação, ator, personagem e horário, sem conteúdo privado da ficha |
 | `remocoes.exclusoes` | IDs de personagens removidos, para reaplicar na restauração |
 | `remocoes.autorizacoes` | Versões de autorização bloqueadas, para não reativar consentimento antigo |
@@ -123,7 +127,9 @@ O serviço da etapa 3 liga a limpeza local a cada minuto e confere membros
 e cargos nas ações de conexão. O banco sozinho não descobre saídas nem
 mudanças de cargo; eventos gerais de saída/retorno ainda precisam da
 integração Discord. Tentativas web expiram em dez minutos e são eliminadas
-ao abrir/reiniciar o banco. Imagens ficam para a galeria.
+ao abrir/reiniciar o banco. Prévias de cartão também são encerradas.
+Imagens e retenção do resumo básico: ver ETAPA-5.md; resumo não contém campos
+privados e acompanha o cadastro, sem histórico ilimitado de leituras.
 
 ## Backup e recuperação
 
@@ -131,7 +137,7 @@ ao abrir/reiniciar o banco. Imagens ficam para a galeria.
 consistente e cifra o arquivo em blocos autenticados. Não carrega o banco
 inteiro em memória. O formato verifica ordem, integridade, fim do arquivo,
 identidade do banco e prazo. Backup existente nunca é sobrescrito.
-Tentativas web são removidas da cópia antes da cifra; cadastros e conexões
+Tentativas web e prévias de cartão são removidas da cópia antes da cifra; cadastros e conexões
 confirmadas permanecem. Uma restauração não reabre retornos OAuth antigos.
 
 Manter uma cópia do cadastro **e uma cópia atual do registro de remoções**.
@@ -201,3 +207,9 @@ sempre cifrados. Resultados carregam revisão do motor e campanha. A camada
 `Consultas` confere essas revisões antes de abrir uma análise salva; chamar
 `Cadastro.detalhes` sozinho continua insuficiente para certificar campanha.
 Interface e testes: [ETAPA-4.md](ETAPA-4.md).
+
+## Mídia da galeria
+
+O backup SQL não contém `imagens/`. Copiar também essa pasta cifrada, com o
+serviço parado, e conservar as chaves necessárias. A rotação de chave SQL não
+reescreve imagens em disco. Procedimento e limites: [ETAPA-5.md](ETAPA-5.md).

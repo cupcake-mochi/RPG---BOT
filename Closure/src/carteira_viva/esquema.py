@@ -2,7 +2,7 @@
 from .segredos import ErroCarteira
 
 APPLICATION_ID = 0x43564956
-VERSAO = 3
+VERSAO = 4
 
 MIGRACOES = {
     1: (
@@ -64,6 +64,21 @@ MIGRACOES = {
             criado REAL NOT NULL, expira REAL NOT NULL, fase TEXT NOT NULL,
             cookie TEXT, estado TEXT UNIQUE, provedor TEXT, conexao TEXT, dados BLOB NOT NULL)""",
         "CREATE INDEX web_fluxos_retencao ON web_fluxos(expira)",
+    ),
+    4: (
+        """CREATE TABLE resumos_cartao (
+            servidor TEXT NOT NULL, personagem TEXT NOT NULL, revisao INTEGER NOT NULL,
+            lido_em REAL NOT NULL, conteudo BLOB NOT NULL,
+            PRIMARY KEY(servidor,personagem),
+            FOREIGN KEY(servidor,personagem) REFERENCES personagens(servidor,id) ON DELETE CASCADE)""",
+        """CREATE TABLE previas_cartao (
+            id TEXT PRIMARY KEY, servidor TEXT NOT NULL, personagem TEXT NOT NULL,
+            usuario TEXT NOT NULL, base TEXT NOT NULL, expira REAL NOT NULL, conteudo BLOB NOT NULL,
+            FOREIGN KEY(servidor,personagem) REFERENCES personagens(servidor,id) ON DELETE CASCADE)""",
+        """CREATE TABLE imagens (
+            id TEXT PRIMARY KEY, servidor TEXT NOT NULL, personagem TEXT NOT NULL, criado REAL NOT NULL,
+            FOREIGN KEY(servidor,personagem) REFERENCES personagens(servidor,id) ON DELETE CASCADE)""",
+        "CREATE INDEX previas_cartao_expira ON previas_cartao(expira)",
     ),
 }
 

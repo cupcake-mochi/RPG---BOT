@@ -181,3 +181,14 @@ partir dessa ausência. No arquivo XLSX, a guarda de fórmula sem resultado
 calculado permanece obrigatória. A paridade nativa dos 18.393 campos e achados
 foi conferida conforme NATIVO-ETAPA-4.md. Não baixar as fórmulas extensas da
 ANALISE para tentar tratar os dois transportes como o mesmo formato.
+
+## Apresentação no Discord (etapa 5)
+
+Prévia privada com confirmação obrigatória; somente o responsável pode salvar.
+Título, frase, cor e seleção de campos não alteram números nem células da
+ficha. Nome/origem/caminho do resumo provêm da leitura, sem resultados privados.
+O revisor pode analisar, mas não personalizar ou trocar fonte. Cartão público
+não inclui URL Google. Imagem usa anexo do bot a partir de armazenamento
+privado cifrado, sem URL externa arbitrária. Mensagens já enviadas são cópias
+estáticas; o serviço não promete atualizar ou recolher cópias anteriores.
+Detalhes e limites: ETAPA-5.md.
