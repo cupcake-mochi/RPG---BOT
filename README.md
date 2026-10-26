@@ -24,8 +24,8 @@ e a lore Nova Terra são opções separadas do idioma. A análise da ficha é pa
 
 Nesta atualização, a consulta usa o texto **v0.367 (revisão 57)**. As contas dos
 cartões da ficha continuam na **revisão 53**; formatos antigos conservam sua
-compatibilidade documentada. A consulta R57 ainda não foi publicada na Discloud;
-a produção segue R53/v0.366 até uma publicação autorizada. As versões estáveis e seus pacotes
+compatibilidade documentada. A consulta R57 e a orientação de inventário foram
+publicadas em 26/10/2026 ([registro](Closure/docs/PUBLICACAO-R57-2026-10-26.md)). As versões estáveis e seus pacotes
 ficam em [Releases](https://github.com/cupcake-mochi/RPG---BOT/releases).
 
 | Preciso de… | Onde encontrar |
@@ -37,6 +37,7 @@ ficam em [Releases](https://github.com/cupcake-mochi/RPG---BOT/releases).
 | Testes e limites R53 | [Fechamento R53](Closure/pesquisa/validacao/2026-10-21-r53/FECHAMENTO.md) |
 | Contrato da ficha | [Contrato e cobertura](Closure/dados/ficha/INTEGRACAO-B47.md) |
 | Estado para continuar o trabalho | [Fila atual](Closure/docs/FILA-ATUAL.txt) |
+| Próximo projeto: cadastro e galeria | [Plano da Carteira viva](Closure/docs/carteira-viva/PLANO.md) — ainda não implementado |
 
 Credenciais, bancos e cadastros reais ficam fora do Git e dos pacotes públicos.
 `Closure Legado/` e os [registros anteriores](README-HISTORICO.md) são referências
