@@ -6,6 +6,12 @@ retenção e recuperação. Os ensaios nativos desta nova funcionalidade continu
 pendentes. As colunas abaixo indicam exigências de validação, não resultados.
 A suíte histórica do bot não comprova funções ainda não implementadas.
 
+A [etapa 3](ETAPA-3.md) acrescenta testes HTTP em loopback, OAuth com
+Authlib e transporte simulado, retornos atrasados, renovação, troca/reconexão,
+ponte privada e backup sem tentativas abertas. Demonstração no navegador
+concluída com provedores fictícios; isso não valida OAuth/Picker nativos.
+Execução e configuração ainda pendente: [SERVICO.md](SERVICO.md).
+
 ## Preparação
 
 - Seguir [o plano](PLANO.md) e usar apenas personagens/planilhas fictícios.

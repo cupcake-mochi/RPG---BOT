@@ -61,19 +61,25 @@ antes de criar o cliente. Não colocar token/segredo em documentos ou pedir que
 o usuário os envie no chat. Configuração sensível no navegador deve seguir
 a confirmação exigida naquele momento; esta lista não concede acesso Google.
 
-### Variáveis futuras do serviço, não do bot publicado
+### Variáveis do serviço, não do bot publicado
+
+Implementação local da etapa 3: [execução e piloto](SERVICO.md). Configuração
+externa e prova nativa continuam pendentes.
 
 ```text
 CARTEIRA_PUBLIC_ORIGIN
 CARTEIRA_DISCORD_CLIENT_ID
 CARTEIRA_DISCORD_CLIENT_SECRET
+CARTEIRA_DISCORD_BOT_TOKEN
 CARTEIRA_GOOGLE_CLIENT_ID
 CARTEIRA_GOOGLE_CLIENT_SECRET
 CARTEIRA_GOOGLE_PROJECT_NUMBER
 CARTEIRA_PICKER_API_KEY
-CARTEIRA_ENCRYPTION_KEY
+CARTEIRA_ENCRYPTION_KEYS
 CARTEIRA_DATABASE_PATH
 CARTEIRA_SERVICE_TOKEN
+CARTEIRA_GUILDS
+CARTEIRA_DEV
 ```
 
 Todos os valores ficam fora do Git. A chave do Picker vai ao navegador, mas

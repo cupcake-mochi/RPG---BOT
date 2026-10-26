@@ -30,8 +30,8 @@ envelope e têm hashes separados para localizar uma conexão existente.
 
 ## Schema e migrações
 
-Schema atual: **2**. Migração 1 cria as tabelas de domínio; migração 2 acrescenta
-pedidos e auditoria. A sequência é transacional. Não há banco de produção de
+Schema atual: **3**. Migração 1 cria as tabelas de domínio; migração 2 acrescenta
+pedidos e auditoria; migração 3 acrescenta tentativas web cifradas. A sequência é transacional. Não há banco de produção de
 uma versão anterior deste recurso; o teste de migração usa uma fixture v1.
 
 | Tabela | Uso |
@@ -43,6 +43,7 @@ uma versão anterior deste recurso; o teste de migração usa uma fixture v1.
 | `leituras` | Só a última leitura válida por personagem |
 | `analises` | Só o último resultado salvo, ligado à leitura e à revisão da campanha |
 | `pedidos` | Identificador de repetição, assinatura dos argumentos e ID do resultado |
+| `web_fluxos` | Tentativas de conexão cifradas, estado OAuth de uso único e validade de dez minutos |
 | `auditoria` | Ação, ator, personagem e horário, sem conteúdo privado da ficha |
 | `remocoes.exclusoes` | IDs de personagens removidos, para reaplicar na restauração |
 | `remocoes.autorizacoes` | Versões de autorização bloqueadas, para não reativar consentimento antigo |
@@ -118,10 +119,11 @@ O registro de exclusões/bloqueios fica por 31 dias; backups de mais de 30 dias
 são recusados. Isso permite retirar esses registros sem aceitar um backup
 antigo que pudesse restaurar os dados removidos.
 
-Na etapa 3, ligar a manutenção periódica ao serviço, confirmar participação
-e cargos no Discord e manter os eventos de saída/retorno. O banco sozinho não
-consulta nem descobre mudanças de cargo ou quem saiu. Sessões web, imagens e
-tentativas OAuth terão suas próprias retenções nas etapas correspondentes.
+O serviço da etapa 3 liga a limpeza local a cada minuto e confere membros
+e cargos nas ações de conexão. O banco sozinho não descobre saídas nem
+mudanças de cargo; eventos gerais de saída/retorno ainda precisam da
+integração Discord. Tentativas web expiram em dez minutos e são eliminadas
+ao abrir/reiniciar o banco. Imagens ficam para a galeria.
 
 ## Backup e recuperação
 
@@ -129,6 +131,8 @@ tentativas OAuth terão suas próprias retenções nas etapas correspondentes.
 consistente e cifra o arquivo em blocos autenticados. Não carrega o banco
 inteiro em memória. O formato verifica ordem, integridade, fim do arquivo,
 identidade do banco e prazo. Backup existente nunca é sobrescrito.
+Tentativas web são removidas da cópia antes da cifra; cadastros e conexões
+confirmadas permanecem. Uma restauração não reabre retornos OAuth antigos.
 
 Manter uma cópia do cadastro **e uma cópia atual do registro de remoções**.
 Para copiar o segundo, usar `registro_remocoes=True`. Preservar a chave fora
@@ -168,7 +172,8 @@ backups feitos com ela; a restauração aceita um conjunto de chaves.
   escape de menções/renderização ficam para a galeria.
 - O banco armazena resultados de análise; a conexão com o motor e a campanha
   reais continua na etapa 4. Aprovações e decisão do mestre permanecem separadas.
-- Sem HTTP, OAuth, acesso Google, escrita de ficha ou comandos novos nesta etapa.
+- HTTP/OAuth implementados localmente na etapa 3; teste nativo e publicação
+  pendentes. Nenhuma escrita de ficha ou comando novo instalado em produção.
 - Sem ensaio de queda de energia ou falha física do disco. O teste de rollback
   injeta uma falha SQL; desempenho/carga ficam na etapa 9.
 

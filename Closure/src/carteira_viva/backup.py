@@ -51,6 +51,10 @@ def gravar_backup(cadastro: Cadastro, destino: Path, *, registro_remocoes: bool 
         db = sqlite3.connect(raw)
         try:
             cadastro.db.backup(db, name="remocoes" if registro_remocoes else "main")
+            if not registro_remocoes:
+                db.execute("PRAGMA secure_delete=ON")
+                db.execute("DELETE FROM web_fluxos")
+                db.commit()
         finally:
             db.close()
         if raw.stat().st_size > MAX_BANCO:

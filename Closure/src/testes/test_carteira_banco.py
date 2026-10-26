@@ -632,7 +632,7 @@ class MigracaoTeste(Fixtures, unittest.TestCase):
         p = self.criar()
         self.c.fechar()
         db = sqlite3.connect(self.path)
-        db.executescript("DROP TABLE pedidos; DROP TABLE auditoria; PRAGMA user_version=1;")
+        db.executescript("DROP TABLE web_fluxos; DROP TABLE pedidos; DROP TABLE auditoria; PRAGMA user_version=1;")
         db.close()
         return p
 
