@@ -19,7 +19,20 @@ fechada. Corrigida a guarda G46 para o separador nativo `;`, sem aceitar outra
 regra. **A projeção não executou os novos diários Apps Script**. O ensaio
 financeiro antigo `4f3555d` não valida o executor extraído.
 
-CI Linux do produtor aprovado no código `280a7dc`:
+No fechamento, main avançou para `b0dc6aacef08b2c01a7f8a3519bbcc9bff9546ed`
+(PR 37 salarial) e foi incorporada no merge `84bcd56` do produtor. Fórmulas
+protegidas/alvos dos inicializadores não mudaram. 15 verificações de abertura,
+95 salariais e 101 financeiras passaram após o merge. O ensaio nativo descrito
+é anterior; não valida execução desse código Apps Script. Nada foi instalado.
+
+CI final do integrado `84bcd566ae74d73bd8fdaf3889aa1ab5d7c68722`
+aprovado: [40535287570](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40535287570), 27/10 às 12:53:51 Brasília.
+Os 259 cenários, pacote de nove arquivos e regressões passaram; 277 fontes
+Python/208 JS-GS com sintaxe válida. Run duplicado cancelado. Registro final
+posterior só documental. Prova do OAuth/Apps Script completo continua pendente.
+
+CI anterior, antes da PR 37, aprovado no código `280a7dc`:
+
 [40534237271](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40534237271), 27/10 às 12:47:26 Brasília.
 Confirmados os 259 cenários, pacote de nove arquivos sem inicializadores,
 sintaxe e regressões. Run duplicado do push cancelado; registro posterior
@@ -119,7 +132,7 @@ ativação manual indispensável e comprovar resultado nas três classes de mode
 Não limpar células conhecidas de forma avulsa para declarar uma ficha nova limpa.
 
 Produtores conferidos:
-- Ficha---RPG-JJK main `9536746405f12a9e159e9173b54a2a861c0a871a` (incorporada na PR 31).
+- Ficha---RPG-JJK main `b0dc6aacef08b2c01a7f8a3519bbcc9bff9546ed` (incorporada na PR 31).
 - JJK---Project main `353d7728fa4f505f830dc6c0421929a0ab2668c1`.
 - Texto R57; contrato mecânico R53/ANALISE 12. Revalidar antes de mudar o produtor.
 

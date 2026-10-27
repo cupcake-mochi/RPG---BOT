@@ -7,7 +7,7 @@ com inventário ancorado nas fontes atuais e critérios verificáveis.
 
 Repositórios reconferidos nesta continuação:
 
-- Ficha---RPG-JJK main: `9536746405f12a9e159e9173b54a2a861c0a871a`; protótipos PR 31 em `280a7dcd0b3fb56b0a43dd6e0d88aaadcb08d634`.
+- Ficha---RPG-JJK main: `b0dc6aacef08b2c01a7f8a3519bbcc9bff9546ed`; PR 31 incorpora em `84bcd56` os protótipos `280a7dc`.
 - JJK---Project: `353d7728fa4f505f830dc6c0421929a0ab2668c1`.
 - Consumidor: PR 84 de RPG---BOT, dependente da etapa 6; sem publicação.
 
@@ -34,7 +34,20 @@ limpas, nível 10/base 3.700, missão de 50 levou XP a 3.750 e retirada voltou
 a 3.700. 8.998 comparações delimitadas preservadas sem diferença; cópia na
 lixeira, aba fechada. [Alvos e prova](https://github.com/cupcake-mochi/Ficha---RPG-JJK/blob/280a7dcd0b3fb56b0a43dd6e0d88aaadcb08d634/r53/inicializacao/NIVEL-TEXTOS-2026-10-27.md).
 
-CI Linux do produtor aprovado no código `280a7dc`:
+No fechamento, main avançou para `b0dc6aacef08b2c01a7f8a3519bbcc9bff9546ed`
+(PR 37 salarial) e foi incorporada no merge `84bcd56` do produtor. Fórmulas
+protegidas/alvos dos inicializadores não mudaram. 15 verificações de abertura,
+95 salariais e 101 financeiras passaram após o merge. O ensaio nativo descrito
+é anterior; não valida execução desse código Apps Script. Nada foi instalado.
+
+CI final do integrado `84bcd566ae74d73bd8fdaf3889aa1ab5d7c68722`
+aprovado: [40535287570](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40535287570), 27/10 às 12:53:51 Brasília.
+Os 259 cenários, pacote de nove arquivos e regressões passaram; 277 fontes
+Python/208 JS-GS com sintaxe válida. Run duplicado cancelado. Registro final
+posterior só documental. Prova do OAuth/Apps Script completo continua pendente.
+
+CI anterior, antes da PR 37, aprovado no código `280a7dc`:
+
 [40534237271](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40534237271), 27/10 às 12:47:26 Brasília.
 Confirmados os 259 cenários, pacote de nove arquivos sem inicializadores,
 sintaxe e regressões. Run duplicado do push cancelado; registro posterior
