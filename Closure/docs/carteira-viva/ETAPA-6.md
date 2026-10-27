@@ -1,8 +1,8 @@
 # Carteira no navegador
 
 Etapa 6 · 26/10/2026. Branch `codex/carteira-viva-etapa-6`, base `52ca144`
-da etapa 5/PR 82. Implementação em validação; **não publicada**. PRs dependentes
-77–82 não foram mescladas. O bot em produção permanece separado.
+da etapa 5/PR 82. Implementação concluída, PR 83 em rascunho; **não publicada**. PRs dependentes
+77–83 não foram mescladas. O bot em produção permanece separado.
 
 ## Uso
 
@@ -46,8 +46,8 @@ do perfil. Botão Encerrar sessão continua disponível durante uma consulta.
   não podem ser recolhidos. A interface limpa o privado ao perder acesso,
   expirar, sair e voltar de página restaurada pelo navegador.
 - Sessões/PKCE/CSRF cifrados no schema 5; cookie e estado têm hashes separados.
-  Sessões não entram no backup e são encerradas em reinício, restore e rotação
-  de chave. Cadastro e conexões Google confirmadas permanecem.
+  Sessões não entram no backup e são encerradas em reinício, restore, rotação
+  de chave e exclusão global dos dados do próprio usuário. Cadastro e conexões Google confirmadas permanecem.
 - Até 512 sessões e dez inícios de login por sessão anônima. Limites locais,
   não uma garantia de proteção global contra abuso; rever na etapa 9.
 
@@ -68,22 +68,87 @@ separada. Formulários exigem Origin exata e CSRF; identidade nunca vem de JSON.
   autorizadas. Atualizar reutiliza até 60 s; analisar relê; analise abre salva.
 - GET `.../{id}/imagem`: bytes WebP, somente apresentação pública permitida.
 
+O início do login aceita só personagem e idioma, ambos opcionais.
 O método de análise aceita só página e idioma. Não recebe usuário, campanha,
 regra, aprovação, nome de método do banco ou destino de escrita.
 
 ## Testes e situação
 
-Sessões, migração 4→5 e preservação de cadastro, cifra, backup sem sessões,
-CSRF, rotação/logout/expiração, estado de outro navegador e respostas atrasadas
-estão cobertos por testes HTTP/SQL reais com provedores fictícios. Registrar os
-resultados e ensaios visuais ao fechar a rodada; não chamar demonstração de
-validação nativa do OAuth ou Google. A demonstração local tem contas fictícias
-de responsável e membro comum e segue o mesmo serviço de autorização.
+- 40 regressões novas: 18 de sessão, 21 HTTP e uma do link do cartão Discord.
+  HTTP/SQLite/cifra reais com provedores fictícios. Cobrem estado/cookie/CSRF,
+  login em outro navegador, troca de idioma, logout/expiração durante leitura
+  ou callback, mudança de cargo/fonte/campanha e projeções sem snapshot.
+- Primeira bateria nova: 37/37, 48,613 s. Depois dos ajustes de texto/idioma e
+  link, conjunto final direcionado: 60/60, 79,765 s, incluindo interface Discord.
+- CI completo do código final `0c9a15f760bc3d3d437e2fa85b231223306a7576`:
+  **1.282 executados, 1.281 aprovados, um online opcional pulado e zero falhas**,
+  261,589 s. [Run 40423286577](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40423286577).
+  Execução normal de unittest no Linux, com núcleo e dependências do serviço.
+- Navegador real, demonstração com três personagens e duas identidades fictícias:
+  troca de personagem, detalhes, análise e segunda página, PT/EN, idioma mantido
+  após login, galeria vazia, cartão alheio sem ações privadas e logout passaram.
+  Logout limpou texto privado e link Google do DOM. Galeria vazia conserva a URL
+  sem personagem, inclusive após recarregar. Teclado alcançou o seletor de idioma
+  e a consulta moveu foco para o título. Conferência não equivale a auditoria
+  completa com leitor de tela.
+- Tela de 390×844 conferida, sem rolagem horizontal (documento 390 px), lista
+  compacta e botões de pelo menos 44 px. Capturas locais de computador/celular,
+  somente dados fictícios. Não foi teste em celular físico.
+- Revisão de clareza: nomes/datas aparecem como texto, sem `<@…>`/`<t:…>` do
+  Discord; o rodapé web não promete o prazo dos botões Discord. Preferência
+  PT/EN não traduz o texto livre do jogador nem altera configuração do servidor.
 
-Faltam fechar validação visual/teclado/celular, CI e eventuais ensaios reais.
-HTTPS persistente, campanha/idioma autoritativos entre bot e serviço, medição de
-host e baterias nativas avançadas continuam requisitos antes da publicação.
-Não houve merge, deploy, modelo pago ou alteração de ficha oficial/jogador.
+### Login real e limpeza
+
+OAuth identify no app oficial das Guias passou em loopback, com a conta
+principal já conectada. Participação, nome e cargos vieram da API Discord real;
+não foi iniciado outro Gateway ou instalado comando temporário. Três personagens
+fictícios ficaram num banco isolado do piloto. A leitura Google foi substituída
+por dados fictícios, sem credencial funcional ou acesso a planilha real.
+
+Passaram: login e cookie, galeria, atualização do nome do cartão, análise privada
+e navegação para a página 2 de 5. A ficha sintética é intencionalmente incompleta:
+resumo com zero erros e 61 pendências, sem fingir aprovação. Logout limpou campos
+e link privados; outra aba voltou a exigir login após recarregar.
+
+As abas compartilham a sessão da Carteira. Abrir outra aba do Discord não troca
+a identidade dessa sessão: o nome conectado permanece visível, e é preciso sair
+da Carteira para trocar de conta. Por isso, esta prova nativa usou **uma conta
+Discord real**, sem declarar uma segunda identidade OAuth testada. A visão de
+membro comum foi validada na demonstração e nos testes HTTP; a prova com duas
+contas reais da etapa 5 é separada.
+
+Após o ensaio: serviço parado e porta loopback fechada; três personagens e sua
+conexão fictícia removidos. Conferidos zero personagens, conexões, sessões,
+leituras e análises; integrity_check `ok`. Registro mínimo de remoções preservado
+no diretório privado, fora do Git. Abas do usuário restauradas. Não houve nova
+autorização Google, chamada paga, mudança de segredo, escrita em ficha ou
+interferência na Discloud. Captura nativa fica privada, sem OAuth/código/token.
+
+A prova Google real anterior é NATIVO-ETAPA-4.md, não uma nova aprovação de
+fichas avançadas pelo navegador.
+
+### Última guarda
+
+Na revisão de limpeza foi reproduzido um defeito: apagar os dados de um usuário
+não encerrava suas sessões web já abertas. Corrigido em `0c9a15f`: a exclusão
+agora retira essas sessões na mesma transação, preservando a sessão de outro
+usuário. Regressão falhou antes e passou depois; 18/18 testes de sessões após a
+correção. O CI completo desse commit passou com os 1.282 testes registrados
+acima. O checkpoint anterior `9da98dd` teve 1.281/1.280/1 opcional, zero falhas
+em 181,852 s (run 40422158315); a regressão final acrescenta o caso restante.
+
+O ensaio local precisou aguardar a inicialização do processo após mudanças de
+backend. Foi usado um runner de laboratório com tick no loop; esse ajuste não
+entra no serviço e não é solução de desempenho para produção. O disco externo
+apresenta lentidão. Medir rede, leituras e repetição de consultas de participação
+no host da etapa 9, sem reduzir a conferência de permissões depois das esperas.
+
+Manifesto de produção continua com 90 arquivos, sem Carteira; não houve novo
+ZIP/deploy. HTTPS persistente, campanha/idioma autoritativos entre bot e serviço,
+saída de membros por eventos, medição de host, restore e baterias nativas
+avançadas continuam requisitos antes da publicação. Não houve modelo pago,
+Gateway duplicado ou alteração de ficha oficial/jogador.
 
 ## Depois desta etapa
 

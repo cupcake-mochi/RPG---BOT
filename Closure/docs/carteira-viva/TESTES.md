@@ -217,3 +217,28 @@ zero falhas (run 40395109029). Reteste local de cota/HTTP: 33/34; um upload
 válido retornou 400. Caso isolado repetido passou, sem mudar expectativa ou
 limite; worker levou 19,153 s de 20 s disponíveis. Causa provável de I/O, não
 comprovada pelo erro anterior. Essa ocorrência está detalhada em ETAPA-5.md.
+
+## Resultado da etapa 6
+
+Carteira web na PR 83, dependente da 82. [ETAPA-6.md](ETAPA-6.md) registra
+40 regressões novas e os ensaios visuais. Conjunto direcionado final: 60/60.
+CI final do código 0c9a15f: 1.282 executados, 1.281 aprovados, um opcional, zero
+falhas, 261,589 s (run 40423286577). A demonstração no navegador usa identidades
+fictícias e não valida Google real. O login Discord real, cartão, análise e página 2 passaram com uma conta real
+e ficha fictícia; logout entre abas também. Três personagens/conexão removidos
+e serviço encerrado, sem mexer na produção. A última guarda (`0c9a15f`) encerra
+sessões na exclusão global de dados: regressão reproduzida e 18/18 de sessões
+passaram. Esse caso está incluído no CI completo final de 1.282.
+
+Passaram na demonstração: responsável/comum, cartão alheio básico sem privado,
+logout limpando DOM/link, PT/EN, idioma através do callback, detalhes e análise
+paginada, foco de teclado e 390×844 sem rolagem horizontal. Dados/provedores
+fictícios não comprovam cópias oficiais, performance de produção, celular físico
+ou revogação nativa de cargo durante uma consulta.
+
+Continuam na matriz externa: Google + Carteira web + nova ponte combinados,
+reconexão/troca pelos botões, cargo revisor concedido/removido no Discord real,
+saída/retorno durante espera, imagem pelo formulário do comando, HTTPS público,
+capacidade/429 e recuperação no host final. Essas pendências permanecem abertas
+mesmo com a suíte verde. Não repetir pilotos básicos por rotina nem transformar
+um teste de provedor fictício em validação nativa.

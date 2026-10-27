@@ -2,11 +2,11 @@
 
 Etapa 2 · 26/10/2026. Implementação em `src/carteira_viva/`. O módulo ainda
 não é carregado pelas Guias em produção. O serviço e a ponte opcionais evoluíram
-nas etapas 3–5; ver SERVICO.md e ETAPA-5.md para o estado atual.
+nas etapas 3–6; ver SERVICO.md e ETAPA-6.md para o estado atual.
 
 ## Arquivos e chaves
 
-O serviço futuro terá dois arquivos próprios, no mesmo volume persistente:
+O serviço usa dois arquivos próprios, no mesmo volume persistente:
 
 - `carteira.sqlite3`: cadastro, conexões, perfis, leituras e análises;
 - `carteira.remocoes.sqlite3`: registro mínimo de personagens excluídos e
@@ -30,9 +30,10 @@ envelope e têm hashes separados para localizar uma conexão existente.
 
 ## Schema e migrações
 
-Schema atual: **4**. Migração 1 cria as tabelas de domínio; migração 2 acrescenta
+Schema atual: **5**. Migração 1 cria as tabelas de domínio; migração 2 acrescenta
 pedidos e auditoria; migração 3 acrescenta tentativas web cifradas; migração 4 acrescenta resumo
-básico cifrado, prévias e registro de imagens. A sequência é transacional. Não há banco de produção de
+básico cifrado, prévias e registro de imagens; migração 5 acrescenta sessões
+Discord da Carteira web. A sequência é transacional. Não há banco de produção de
 uma versão anterior deste recurso; o teste de migração usa uma fixture v1.
 
 | Tabela | Uso |
@@ -44,6 +45,7 @@ uma versão anterior deste recurso; o teste de migração usa uma fixture v1.
 | `leituras` | Só a última leitura válida por personagem |
 | `analises` | Só o último resultado salvo, ligado à leitura e à revisão da campanha |
 | `pedidos` | Identificador de repetição, assinatura dos argumentos e ID do resultado |
+| `web_sessoes` | Login da Carteira: cookie/estado em hash, CSRF/PKCE/destino cifrados; sem token Discord |
 | `web_fluxos` | Tentativas de conexão cifradas, estado OAuth de uso único e validade de dez minutos |
 | `resumos_cartao` | Nome/origem/caminho da última leitura, cifrados e ligados à revisão da fonte |
 | `previas_cartao` | Apresentação pendente, ator, base esperada e validade de dez minutos |
@@ -53,7 +55,7 @@ uma versão anterior deste recurso; o teste de migração usa uma fixture v1.
 | `remocoes.autorizacoes` | Versões de autorização bloqueadas, para não reativar consentimento antigo |
 
 Não foi criado um novo sistema de aprovação mecânica. `campanha_revisao` é
-referência do resultado; a integração da etapa 4 precisa conferir a campanha
+referência do resultado; a integração da etapa 4 confere a campanha
 atual e reaproveitar as aprovações por definição exata do motor existente.
 O campo `analise.fonte_atual` só compara fonte e leitura: não aprova ficha nem
 garante que a campanha continua igual.
@@ -106,8 +108,8 @@ arquivo único por servidor. A prova usa duas operações intercaladas e falha
 de gravação simulada; não é ensaio de vários servidores de aplicação.
 
 Usar um único serviço responsável pelo banco. A conexão Python é síncrona e
-não deve ser compartilhada entre threads. O serviço web futuro precisa de
-fila/worker próprio, sem bloquear o processamento das conversas do bot.
+não deve ser compartilhada entre threads. O serviço web tem fila/worker
+próprio, sem bloquear o processamento das conversas do bot.
 SQLite não será compartilhado pela rede.
 
 ## Retenção
@@ -195,7 +197,7 @@ backups feitos com ela; a restauração aceita um conjunto de chaves.
 
 ## Complemento da etapa 4
 
-Schema permanece 3; não houve nova tabela ou migração. `contexto_leitura`
+Na etapa 4, o schema permaneceu 3; não houve nova tabela ou migração. `contexto_leitura`
 fornece somente ao serviço a chave de deduplicação com revisão e autorização;
 `renovar_credencial` guarda refresh rotacionado após conferir a referência;
 `invalidar_leitura` remove snapshot/análise da fonte atual quando a atualização
@@ -213,3 +215,18 @@ Interface e testes: [ETAPA-4.md](ETAPA-4.md).
 O backup SQL não contém `imagens/`. Copiar também essa pasta cifrada, com o
 serviço parado, e conservar as chaves necessárias. A rotação de chave SQL não
 reescreve imagens em disco. Procedimento e limites: [ETAPA-5.md](ETAPA-5.md).
+
+## Sessões da Carteira web (etapa 6)
+
+As sessões usam o mesmo worker SQL e não autorizam por si só uma consulta:
+participação, cargos e contexto da ficha são conferidos novamente nas ações.
+O cookie é opaco, HttpOnly/SameSite=Lax, Secure e __Host- em HTTPS. Ele e o
+CSRF são trocados após identify; não se persiste token OAuth Discord.
+
+Tentativas de login duram dez minutos. Sessões ativas duram até trinta minutos
+sem uso e no máximo oito horas. Logout é validado no servidor, inclusive
+quando há leitura ou callback pendente. Reinício, rotação de chave e restore
+encerram sessões. A exclusão global dos dados do usuário também encerra suas
+sessões, na mesma transação, sem afetar outros usuários. O backup remove essa tabela transitória, preservando
+personagens e conexões Google confirmadas. Limites locais: 512 sessões e dez
+inícios de OAuth por sessão anônima; não equivalem a proteção global de abuso.
