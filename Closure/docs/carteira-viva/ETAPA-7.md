@@ -1,5 +1,51 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Grau, Origem e treinos · continuação de 27/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`73dffda`, main `64b84e4cef0b1b0a05c2159c9dc700459a0f2dc9` incorporada por
+`3f57c19` (PRs 39/40). A instalação salarial/backup 12 das oficiais foi feita
+por outro trabalho e apenas registrada aqui; não reaplicar.
+
+Quatro perfis novos, **268 células**: Grau/Origem (10), Perícias (99),
+Ofícios/TR (94), armas (65). Restauram defaults e notas de fábrica;
+preservam catálogos, fórmulas protegidas, formatos e validações. Grau 4 de
+fábrica, sem inferir pelo nível ou inventar configuração de campanha.
+Descrições/Ofícios custom voltam às fórmulas. Bônus custom usam AL, sem
+apagar espelhos antigos ou interiores de mesclas. W86 é validado contra a
+fórmula final do módulo salarial, não a fórmula antiga de Pessoal.gs.
+
+**692 cenários offline** passaram (101/80/78/243/190); 190 novos cobrem
+escritas, concorrência, variantes exatas, notas e matriz parcial. Assinatura
+financeira v1 mantida. Limites por perfil: quatro escritas por chamada,
+210 s e diário de até 9.000 bytes UTF-8. Estado intermediário desconhecido
+é recusado, sem sobrescrita ou rollback automático. Regressões upstream:
+2.076 verificações de missões e 95 salariais; não somar à suíte do bot.
+
+CI Linux do produtor `73dffda` aprovado: [40546156146](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40546156146),
+27/10 às 14:00:26 Brasília. Os 692 cenários passaram no CI, junto ao pacote,
+regressões, catálogo/progressão/Kaori e sintaxe (277 Python/219 JS-GS).
+Run duplicado 40546148817 cancelado. Fechamento posterior só documental
+com `[skip ci]`; não exige nova suíte do bot nem publicação.
+
+Leitura Google das duas oficiais: **457 conferências por arquivo**, zero
+divergências; sem escrita. Não houve nova cópia, projeção por API, executor
+Apps Script ou OAuth das Guias nesta rodada. Ensaios anteriores não validam
+este executor. Relatório do produtor: `r53/inicializacao/FORMACAO-2026-10-27.md`.
+
+Faltam técnica/Famílias, inventário/equipamento, entidades/cartões/MONTAGENS,
+fotos, caches/recuperações, orquestração/conferência conjunta, treinos
+iniciais/automações, novo responsável, integração executável drive.file e
+prova nativa completa. **Criação permanece incondicionalmente bloqueada**;
+protótipos fora do pacote/bot. Não apagar diários para reiniciar fases.
+
+Bot runtime `26ec106`, CI 40496955301 (1.314 executados/1.313 aprovados/um
+opcional), PR 84 na base da 83. Consumidor mudou somente docs; sem repetir
+suíte extensa ou gerar ZIP. Sem merge em main, deploy, Gateway, modelo pago,
+escopos novos ou escrita em oficial/jogador. Próxima implementação:
+GPT-6 Astra / Alto; revisão focal Médio. Não alterar configurações automaticamente.
+
+
 ## Escolhas, recursos e condições · continuação de 27/10
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código

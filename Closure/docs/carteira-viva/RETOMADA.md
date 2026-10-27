@@ -3,39 +3,50 @@
 Atualizado em 27/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
-## Avanço mais recente · 27/10
+## Grau, Origem e treinos · continuação de 27/10
 
-Produtor PR 31: código `a55517deb9b77c43b796c80ac41f1029c0fdebd7`; main
-`57117fbe5c2361e6a09bfa00f037b4bcfaa8437f` incorporada por `6d4ddf1`.
-Além dos três domínios anteriores, há 19 escolhas básicas, 20 entradas de
-recursos/bônus e nove condições/descanso. Recursos voltam às fórmulas dos
-máximos; notas de fábrica restauradas. Diário protegido por limite UTF-8 de
-9.000 bytes; cena dividida em duas fases por esse limite. Contrato conferido
-contra fontes públicas, assinatura financeira v1 mantida.
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`73dffda`, main `64b84e4cef0b1b0a05c2159c9dc700459a0f2dc9` incorporada por
+`3f57c19` (PRs 39/40). A instalação salarial/backup 12 das oficiais foi feita
+por outro trabalho e apenas registrada aqui; não reaplicar.
 
-CI Linux do produtor `a55517d` aprovado:
-[40540295538](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40540295538), 27/10 às 13:24:13 Brasília.
-Run duplicado do push também passou antes da tentativa de cancelamento;
-registro posterior apenas documental, sem nova suíte do bot ou pacote.
+Quatro perfis novos, **268 células**: Grau/Origem (10), Perícias (99),
+Ofícios/TR (94), armas (65). Restauram defaults e notas de fábrica;
+preservam catálogos, fórmulas protegidas, formatos e validações. Grau 4 de
+fábrica, sem inferir pelo nível ou inventar configuração de campanha.
+Descrições/Ofícios custom voltam às fórmulas. Bônus custom usam AL, sem
+apagar espelhos antigos ou interiores de mesclas. W86 é validado contra a
+fórmula final do módulo salarial, não a fórmula antiga de Pessoal.gs.
 
-502 cenários locais passaram (101/80/78/243). Leitura das oficiais: 112
-conferências cada, zero divergências, sem escrita. Projeção via Sheets API em
-cópia privada do Ciclo: 48 entradas/notas, 11.634 comparações delimitadas
-preservadas sem diferença; atuais acompanham máximos após escolhas fictícias
-(23/23, 8/8, 26/26). Cópia na lixeira, aba fechada. Isso não executou os novos
-diários Apps Script ou OAuth das Guias. Relatório e limites em ETAPA-7.md e
-INICIALIZACAO-PRODUTOR.md; não transportar aceite nativo dos ensaios antigos.
+**692 cenários offline** passaram (101/80/78/243/190); 190 novos cobrem
+escritas, concorrência, variantes exatas, notas e matriz parcial. Assinatura
+financeira v1 mantida. Limites por perfil: quatro escritas por chamada,
+210 s e diário de até 9.000 bytes UTF-8. Estado intermediário desconhecido
+é recusado, sem sobrescrita ou rollback automático. Regressões upstream:
+2.076 verificações de missões e 95 salariais; não somar à suíte do bot.
 
-Retomar pela cobertura restante: Grau, treinos, capacidades de Origem,
-técnica/Famílias, inventário, entidades/cartões/MONTAGENS, fotos/arte e caches/
-recuperações; depois orquestração/conferência final, latência, automações e
-novo responsável. Manter criação bloqueada, não reiniciar fases concluídas e
-não apagar diários. Novos perfis não entram no pacote nem no bot.
+CI Linux do produtor `73dffda` aprovado: [40546156146](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40546156146),
+27/10 às 14:00:26 Brasília. Os 692 cenários passaram no CI, junto ao pacote,
+regressões, catálogo/progressão/Kaori e sintaxe (277 Python/219 JS-GS).
+Run duplicado 40546148817 cancelado. Fechamento posterior só documental
+com `[skip ci]`; não exige nova suíte do bot nem publicação.
 
-Bot permanece runtime `26ec106`, CI 40496955301 e PR 84 na base da 83.
-Consumidor mudou só docs, sem suíte extensa/ZIP novo. Sem merge em main,
-deploy, Gateway, modelo pago, novo OAuth ou escrita em oficial/jogador.
-Próxima implementação: GPT-6 Astra / Alto; revisão focal: Médio.
+Leitura Google das duas oficiais: **457 conferências por arquivo**, zero
+divergências; sem escrita. Não houve nova cópia, projeção por API, executor
+Apps Script ou OAuth das Guias nesta rodada. Ensaios anteriores não validam
+este executor. Relatório do produtor: `r53/inicializacao/FORMACAO-2026-10-27.md`.
+
+Faltam técnica/Famílias, inventário/equipamento, entidades/cartões/MONTAGENS,
+fotos, caches/recuperações, orquestração/conferência conjunta, treinos
+iniciais/automações, novo responsável, integração executável drive.file e
+prova nativa completa. **Criação permanece incondicionalmente bloqueada**;
+protótipos fora do pacote/bot. Não apagar diários para reiniciar fases.
+
+Bot runtime `26ec106`, CI 40496955301 (1.314 executados/1.313 aprovados/um
+opcional), PR 84 na base da 83. Consumidor mudou somente docs; sem repetir
+suíte extensa ou gerar ZIP. Sem merge em main, deploy, Gateway, modelo pago,
+escopos novos ou escrita em oficial/jogador. Próxima implementação:
+GPT-6 Astra / Alto; revisão focal Médio. Não alterar configurações automaticamente.
 
 ## Checkout e Git
 
