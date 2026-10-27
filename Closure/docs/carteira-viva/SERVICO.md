@@ -3,7 +3,7 @@
 27/10: a validação de modelo usa sondagem 2. Primeiro lê os metadados de grade;
 depois solicita intervalos explícitos para os três históricos financeiros,
 entradas/notas de missão e caixas pendentes. Limite físico de 5.000 linhas
-por histórico, 512 KiB por resposta Google e 15 s por leitura, sem relaxamento
+por histórico, 512 KiB por resposta Google e timeout HTTP de 15 s, sem relaxamento
 de limites. Referência é salva somente após confirmação com versão estável.
 Isso não libera criação nem adiciona rotas/escopos de escrita. Ver a
 [proposta de inicialização](INICIALIZACAO-PRODUTOR.md).

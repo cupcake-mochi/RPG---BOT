@@ -21,8 +21,13 @@ continuam identificadas como 1, sem migração de schema ou personagens.
 
 Dez regressões novas, incluindo linhas tardias, notas sem valor, privacidade
 e mudança de sinais/versão durante a confirmação. **79 testes direcionados
-passaram em 15,857 s**, modelos + provedores + fluxo HTTP. O CI Linux desta
-continuação será registrado no fechamento. Não foi repetida a bateria
+passaram em 15,857 s**, modelos + provedores + fluxo HTTP. **CI Linux aprovado
+no código `26ec1068131a8b71a9a04688bcf8676771fd736c`: 1.314 executados,
+1.313 aprovados, um opcional pulado, zero falhas, em 278,076 s**;
+[run 40496955301](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40496955301).
+São 32 testes novos desde a base da etapa 6. O registro posterior é apenas
+documental e usa `[skip ci]` para não repetir a bateria extensa.
+Não foi repetida a bateria
 completa Windows, cujas limitações já estão documentadas abaixo.
 
 Esta continuação não abriu novo piloto, não reutilizou grants/cópias descartados

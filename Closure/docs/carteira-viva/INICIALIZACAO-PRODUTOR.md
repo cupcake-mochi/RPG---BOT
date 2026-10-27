@@ -108,7 +108,8 @@ Também não simular `onEdit` para tentar obter indiretamente seus efeitos.
 A PR 84 passou a conferir a grade antes dos dados e ler o fim físico dos
 livros EXTRATO, SALÁRIOS e DADOS_SALARIOS A:J. Limite de 5.000 linhas por
 livro; uma grade maior é recusada, sem truncar para uma amostra aparentemente
-vazia. A resposta Google continua limitada a 512 KiB e cada leitura a 15 s.
+vazia. A resposta Google continua limitada a 512 KiB e o timeout HTTP
+configurado continua em 15 s.
 Lê somente os campos necessários de CellData, inclusive as notas das missões.
 Não guarda nomes de missão, valores de lançamentos ou texto de notas na prévia:
 só sinais constantes de presença.

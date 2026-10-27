@@ -8,9 +8,9 @@ Carteira não publicada. Não confundir configuração de modelo com criação f
 - Usar `C:\Users\Mizuki\.codex\tmp\carteira-etapa7-recovery` neste Windows.
 - Branch `codex/carteira-viva-etapa-7`, [PR 84 em rascunho](https://github.com/cupcake-mochi/RPG---BOT/pull/84),
   dependente de `codex/carteira-viva-etapa-6` / PR 83.
-- Código salvo e enviado: `479389bc803a18dd812f5394aa86ef3bdec1a672`.
-- CI desse código aprovado: [40440981766](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40440981766),
-  1.304 executados, 1.303 aprovados, um opcional pulado, zero falhas; 207,765 s.
+- Código atual salvo e enviado: `26ec1068131a8b71a9a04688bcf8676771fd736c`.
+- CI desse código aprovado: [40496955301](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40496955301),
+  1.314 executados, 1.313 aprovados, um opcional pulado, zero falhas; 278,076 s.
   O commit posterior só registra documentação e usa `[skip ci]` para não
   repetir a bateria extensa por esse registro. Conferir o código pelo SHA acima.
 - Base exata `c2ca07ef2349ca8be46e2671a51da805bf03e69a`; CI documental 40424104893 verde.
@@ -27,7 +27,7 @@ Continuação de 27/10: sondagem 2 lê até a última linha física dos três li
 financeiros (máximo de 5.000 linhas; recusa acima disso), entradas e notas de
 missão, caixa de lançamento e caixas de correção. Só os sinais são guardados;
 versão da sondagem entra na comparação da confirmação. Dez testes novos;
-79 direcionados passaram. CI desta continuação consta no relatório.
+79 direcionados passaram e CI Linux completo aprovado no SHA indicado acima.
 Leia também INICIALIZACAO-PRODUTOR.md: proposta de contrato 1, ainda sem rotina
 de limpeza ou certificação nativa. Nenhum piloto ou teste Google novo nesta rodada.
 
