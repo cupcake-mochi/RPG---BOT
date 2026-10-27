@@ -2,6 +2,8 @@
 
 26/10/2026. **Entrega parcial, não publicada.** Configuração implementada;
 criação de nova ficha bloqueada por reprovação nativa da inicialização.
+PR [84](https://github.com/cupcake-mochi/RPG---BOT/pull/84) em rascunho;
+código `479389bc803a18dd812f5394aa86ef3bdec1a672`.
 Branch `codex/carteira-viva-etapa-7`, base `codex/carteira-viva-etapa-6`
 (`c2ca07ef2349ca8be46e2671a51da805bf03e69a`, PR 83). Nenhum merge ou deploy.
 O CI documental da base terminou verde, run
@@ -36,6 +38,13 @@ da campanha têm significados distintos; ver CONTRATO.md e ensaio nativo.
 
 ## Validação
 
+**CI Linux aprovado no código `479389b`: 1.304 executados, 1.303 aprovados,
+um online opcional pulado e zero falhas, em 207,765 s.**
+[Run 40440981766](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40440981766),
+Python 3.12 / Linux. São 22 testes novos distintos além da base de 1.282.
+O registro posterior é somente documental; não exige repetir essa bateria
+extensa nem publicar o serviço.
+
 83 testes direcionados finais passaram em 30,282 s no Windows recuperado:
 modelos, sessões, interface Discord e HTTP da Carteira. O primeiro lote
 identificou erros nas fixtures de backup/migração e na contagem esperada de
@@ -49,8 +58,8 @@ Node e remoção de arquivos SQLite ainda abertos no Windows. A fixture v3 de
 cartões também esquecia de remover a tabela do schema 6; foi corrigida e seu
 reteste passou. As duas verificações de imagem continuaram falhando isoladas:
 o worker existente exige `resource`, ausente no Windows. Não foram afrouxados
-limites nem alterado o processamento de mídia. O CI Linux é a validação da
-plataforma de execução; seu resultado fica registrado no fechamento da PR.
+limites nem alterado o processamento de mídia. O CI Linux aprovado acima é
+a validação da plataforma de execução; não apaga o resultado local negativo.
 
 Manifesto de empacotamento conferido sem gerar ZIP: 90 arquivos, sem Carteira,
 segredos ou bancos. Núcleo local preparado dos fontes; quickjs/Node iguais
@@ -61,7 +70,13 @@ herdados, bloqueio sem confirmação de responsabilidade, salvar PT e cancelar
 EN passaram. Na Carteira, membro comum viu só “modelo personalizado”, PT/EN,
 e o logout retirou a área autenticada. Nenhum erro JavaScript observado.
 Nenhum login Google/Discord real foi feito nessa demonstração. Serviço
-temporário encerrado, abas de teste fechadas.
+temporário encerrado, abas de teste fechadas. A revisão automática de
+permissão bloqueou a exclusão local, tanto recursiva quanto de arquivos
+individuais, sem motivo específico além da política da ferramenta. Restam
+somente dados fictícios em
+`C:\Users\Mizuki\AppData\Local\Temp\carteira-demo-xd9kcr1_`
+(banco, ledger de remoções, configuração de campanha e pasta de imagens).
+Não confundir essa pendência local com as três cópias Google, já na lixeira.
 
 No Drive real, três cópias herdaram extrato e estado salarial. No modelo
 sintético, F46=5 alterou a regra, mas não o nível nem a fórmula de XP.

@@ -6,7 +6,13 @@ Carteira não publicada. Não confundir configuração de modelo com criação f
 ## Checkout e Git
 
 - Usar `C:\Users\Mizuki\.codex\tmp\carteira-etapa7-recovery` neste Windows.
-- Branch `codex/carteira-viva-etapa-7`, PR dependente de `codex/carteira-viva-etapa-6` / PR 83.
+- Branch `codex/carteira-viva-etapa-7`, [PR 84 em rascunho](https://github.com/cupcake-mochi/RPG---BOT/pull/84),
+  dependente de `codex/carteira-viva-etapa-6` / PR 83.
+- Código salvo e enviado: `479389bc803a18dd812f5394aa86ef3bdec1a672`.
+- CI desse código aprovado: [40440981766](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40440981766),
+  1.304 executados, 1.303 aprovados, um opcional pulado, zero falhas; 207,765 s.
+  O commit posterior só registra documentação e usa `[skip ci]` para não
+  repetir a bateria extensa por esse registro. Conferir o código pelo SHA acima.
 - Base exata `c2ca07ef2349ca8be46e2671a51da805bf03e69a`; CI documental 40424104893 verde.
 - Pilha anterior 77–83 em rascunho, sem merge. Não mudar a base para main nem usar force-push.
 - Main conferida `de424478a7a120ecb43bd0c79eb93774d446fae6`.
@@ -57,9 +63,17 @@ não ampliar escopos e não usar credenciais da Arquivista.
 
 ## Provas e limites
 
+Limpeza local pendente: a revisão automática bloqueou excluir os arquivos de
+`C:\Users\Mizuki\AppData\Local\Temp\carteira-demo-xd9kcr1_`, inclusive
+individualmente; sem motivo específico além da política da ferramenta.
+Contém somente dados fictícios desta demonstração, cujo serviço já encerrou.
+Não contornar a restrição por outra ferramenta. As cópias Google estão na lixeira.
+
 Leia ETAPA-7.md, NATIVO-ETAPA-7.md, CONTRATO.md, BANCO.md, SERVICO.md e TESTES.md.
-83 testes direcionados finais passaram; suíte completa e CI ficam registrados
-no relatório. Navegador PT/EN com provedores fictícios; Drive real por conector.
+83 testes direcionados finais passaram. A suíte completa Windows não passou:
+1.292 executados, 3 falhas/36 erros/2 pulados; causas e fixture v3 corrigida
+constam no relatório. O CI Linux aprovado valida a plataforma de execução.
+Navegador PT/EN com provedores fictícios; Drive real por conector.
 Não misturar essas provas. Pilotos anteriores continuam encerrados e grants
 antigos revogados; não reutilizar cópias da lixeira.
 
