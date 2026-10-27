@@ -23,6 +23,8 @@ def nome_cookie(fid: str, segura: bool) -> str:
 class Fluxos:
     def __init__(self, cadastro: Cadastro, origem: str, cliente_google: str):
         self.c, self.origem, self.cliente = cadastro, origem, cliente_google
+        from .sessoes import Sessoes
+        self.sessoes = Sessoes(cadastro)
 
     def _row(self, ticket):
         if not isinstance(ticket, str) or not 30 <= len(ticket) <= 100:
@@ -272,6 +274,7 @@ class Fluxos:
             self._salvar(r, d)
 
     def limpar(self):
+        self.sessoes.limpar()
         return self.c.limpar()
 
 
@@ -291,8 +294,8 @@ class DadosAsync:
 
     async def chamar(self, metodo, *args, **kwargs):
         def executar():
-            alvo = self.store.c if metodo.startswith("cadastro.") else self.store
-            return getattr(alvo, metodo.removeprefix("cadastro."))(*args, **kwargs)
+            alvo = self.store.c if metodo.startswith("cadastro.") else self.store.sessoes if metodo.startswith("sessoes.") else self.store
+            return getattr(alvo, metodo.removeprefix("cadastro.").removeprefix("sessoes."))(*args, **kwargs)
         return await asyncio.wrap_future(self.executor.submit(executar))
 
     async def fechar(self):

@@ -153,7 +153,8 @@ As ações SQL já enviadas continuam protegidas por transação/revisões; não
 prometer cancelamento de gravação já confirmada.
 
 Resultados e limites; piloto nativo básico passou, avançados pendentes: [ETAPA-4.md](ETAPA-4.md).
-Os novos comandos/botões serão integrados na etapa 5. Não publicar o serviço
+Os novos comandos/botões foram integrados na ponte opcional na etapa 5,
+sem carregá-la no bot de produção. Não publicar o serviço
 no app de bot nem gerar um ZIP de produção por causa desta etapa isolada.
 
 ## Galeria interna (etapa 5)
@@ -174,3 +175,34 @@ Pasta de mídia, permissões, retenção e backup: ETAPA-5.md.
 
 A ponte aceita HTTP apenas com CARTEIRA_DEV=1 e origem loopback explícita;
 produção exige HTTPS. Nenhuma porta nova é aberta pelo bot em produção.
+
+## Carteira no navegador (etapa 6)
+
+O mesmo serviço atende `/carteira/{servidor}` e
+`/carteira/{servidor}/{personagem}`. O título do cartão da ponte Discord aponta
+para a segunda rota. O link não contém credencial nem transfere acesso.
+Na demonstração, abra `/carteira/111`: há contas fictícias de responsável e
+membro comum e três personagens. Não publicar o demo ou usar dados reais nele.
+
+O login pede apenas identify no Discord e reutiliza o retorno OAuth já
+configurado. Não há nova autorização Google para abrir um cartão cadastrado.
+A página oferece galeria básica aos membros atuais e detalhes/análise só ao
+responsável, admin ou revisor autorizado. Atualizar consulta uma ficha; a lista
+não dispara leitura em lote. A análise usa o motor determinístico e entrega
+uma página privada de cada vez. A página é de leitura; trocar arquivo ou
+apresentação continua no Discord.
+
+A interface aceita PT/EN. Essa preferência acompanha o login e não muda o
+idioma configurado no servidor. Sessões não vão para localStorage, URLs ou
+backup. Logout/expiração invalidam o acesso no serviço; identidade do ator
+nunca vem do corpo JSON. A imagem usa rota autenticada da mesma origem, sem
+URL pública. CSP da Carteira não abre iframes nem scripts externos; a tela de
+conexão/Picker conserva sua política separada.
+
+Rotas, tempos, limites e evidências: [ETAPA-6.md](ETAPA-6.md).
+O cookie de navegador não substitui o bearer da ponte interna. Não distribuir
+esse segredo no JavaScript nem abrir os métodos internos ao frontend.
+
+Antes de publicar, continuam obrigatórios HTTPS persistente, disco privado,
+backup/restore comprovado e campanha/idioma autoritativos entre bot e serviço.
+Os pilotos loopback não provam acesso de celular físico ou hospedagem pública.

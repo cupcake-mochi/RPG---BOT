@@ -4,3 +4,7 @@ Authlib==1.9.1
 httpx==0.28.1
 
 Pillow==12.3.0
+
+# Apresentador da análise já usado pelas Guias, sem provedores de IA.
+discord.py>=2.4,<3
+tzdata

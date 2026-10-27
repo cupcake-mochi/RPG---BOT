@@ -142,6 +142,7 @@ class Cadastro(Cartoes):
                 # Retornos OAuth de antes de um reinício/restore não reativam
                 # concessões antigas. Os vínculos confirmados são preservados.
                 self.db.execute("DELETE FROM web_fluxos")
+                self.db.execute("DELETE FROM web_sessoes")
                 self.db.execute("DELETE FROM previas_cartao")
         except Exception:
             self.db.close()
@@ -603,6 +604,7 @@ class Cadastro(Cartoes):
                 self._bloquear_autorizacao(row["id"])
             self.db.execute("DELETE FROM pedidos WHERE usuario=?", (usuario,))
             self.db.execute("DELETE FROM web_fluxos WHERE usuario=?", (usuario,))
+            self.db.execute("DELETE FROM web_sessoes WHERE usuario=?", (usuario,))
             self.db.execute("DELETE FROM conexoes WHERE usuario=?", (usuario,))
 
     def limpar(self) -> dict[str, int]:
@@ -663,9 +665,15 @@ class Cadastro(Cartoes):
                 ctx = ["previa",row["servidor"],row["personagem"],row["usuario"],row["id"]]
                 self.db.execute("UPDATE previas_cartao SET conteudo=? WHERE id=?",
                                 (nova.cifrar(ctx,self.cifra.abrir(ctx,row["conteudo"])),row["id"]))
+            self.db.execute("DELETE FROM web_sessoes")
             self.db.execute("UPDATE meta SET valor=? WHERE chave='verificador'",
                             (nova.cifrar(["verificador", self.banco_id], "carteira-viva"),))
         self.cifra = nova
+
+    def idioma_carteira(self,membro):
+        self._membro(membro)
+        r=self.db.execute('SELECT idioma FROM servidores WHERE id=?',(membro.servidor,)).fetchone()
+        return r['idioma'] if r else 'pt-BR'
 
     def verificar_integridade(self):
         if self.db.execute("PRAGMA integrity_check").fetchone()[0] != "ok":

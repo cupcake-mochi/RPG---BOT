@@ -65,7 +65,7 @@ async def guardas(request, handler):
             destino = "/conectar?" + urlencode({"ticket": request[TICKET]}) if request.get(TRANSICAO) else "/erro"
             resposta = web.HTTPFound(cfg.origem + destino)
         else:
-            status = (429 if codigo == "limite" else 403 if isinstance(exc, AcessoNegado) else
+            status = (401 if codigo == "sessao" else 429 if codigo == "limite" else 403 if isinstance(exc, AcessoNegado) else
                       409 if isinstance(exc, Conflito) or codigo == "etapa" else
                       410 if codigo == "expirada" else 400)
             resposta = resposta_json({"erro": codigo}, status)
@@ -81,6 +81,9 @@ async def guardas(request, handler):
                              "frame-src https://docs.google.com https://drive.google.com https://accounts.google.com; "
                              "connect-src 'self' https://*.googleapis.com; img-src 'self' data: https://*.googleusercontent.com; "
                              "style-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"})
+    if request.path.startswith(('/carteira','/api/carteira','/static/carteira.')):
+        resposta.headers.update({'Referrer-Policy':'no-referrer','Cross-Origin-Resource-Policy':'same-origin','Vary':'Cookie',
+            'Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"})
     if cfg.segura:
         resposta.headers["Strict-Transport-Security"] = "max-age=31536000"
     if isinstance(resposta, web.HTTPException):
@@ -245,6 +248,9 @@ async def retorno(request):
     state = request.query["state"]
     if not 30 <= len(state) <= 100:
         raise ErroFluxo()
+    if provider=='discord' and await request.app[DADOS].chamar('sessoes.tem_estado',state):
+        from .web_carteira import retorno as retorno_carteira
+        return await retorno_carteira(request,state)
     fid = await request.app[DADOS].chamar("por_estado", state, provider)
     sid = cookie(request, fid)
     oauth = await request.app[DADOS].chamar("consumir_retorno", state, provider, sid)
@@ -334,7 +340,7 @@ async def cancelar(request):
 
 async def estatico(request):
     nome = request.match_info["nome"]
-    if nome not in ("conectar.js", "conectar.css"):
+    if nome not in ("conectar.js", "conectar.css", "carteira.js", "carteira.css"):
         raise web.HTTPNotFound()
     return web.Response(body=(STATIC / nome).read_bytes(), content_type="application/javascript" if nome.endswith(".js") else "text/css")
 
@@ -410,4 +416,6 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, moto
     app.router.add_get("/static/{nome}", estatico)
     app.router.add_get("/saude", saude)
     app.router.add_get("/erro", erro)
+    from .web_carteira import registrar
+    registrar(app)
     return app

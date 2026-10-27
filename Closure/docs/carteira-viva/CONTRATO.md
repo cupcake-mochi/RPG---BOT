@@ -192,3 +192,21 @@ não inclui URL Google. Imagem usa anexo do bot a partir de armazenamento
 privado cifrado, sem URL externa arbitrária. Mensagens já enviadas são cópias
 estáticas; o serviço não promete atualizar ou recolher cópias anteriores.
 Detalhes e limites: ETAPA-5.md.
+
+## Entrega web da etapa 6
+
+As propostas históricas acima não descrevem todas as rotas instaladas. A
+implementação atual está em ETAPA-6.md: páginas `/carteira/{servidor}` e
+`/{personagem}`, API `/api/carteira/…`, sessão Discord protegida e revalidação
+após operações demoradas. A identidade nunca é escolhida por campo de formulário.
+
+Um link compartilhado abre só a página genérica antes do login. Membros atuais
+podem ver a projeção básica; fonte Google, campos privados e análise exigem a
+capacidade atual, incluindo após navegar entre páginas. Alterar servidor/ID,
+perder cargo ou sair não contorna esse limite. Sem cache HTTP compartilhado,
+indexação global ou snapshot completo embutido no HTML.
+
+A Carteira web não escreve células, não aceita aprovação do mestre por JSON e
+não abre acesso de editor ao jogador. Sessões são transitórias e excluídas de
+backup. Encerrar a sessão não revoga a conexão Google confirmada: são controles
+separados. Informações já vistas ou copiadas não podem ser recolhidas.
