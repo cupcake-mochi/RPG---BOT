@@ -1,5 +1,12 @@
 # Testes da Carteira viva
 
+Continuação de 27/10: dez regressões novas cobrem últimas linhas dos livros,
+limites de grade sem truncamento, registros/mudanças salariais tardios, nota
+de missão sem valor visível, caixa financeira/correção, versão da sondagem,
+privacidade das notas, marca surgindo depois da prévia e mudança de versão
+durante a confirmação. Transporte simulado continua somente GET. A ausência
+de sinais com sondagem 2 também conserva a criação bloqueada.
+
 Etapa 7 parcial: testes de `test_carteira_modelos.py` cobrem padrão/isolamento,
 admin versus Manage Guild/revisor, CAS, preservação de personagens, cifra,
 backup/restore/rotação, schema 5→6, sondagem de histórico e fórmulas,

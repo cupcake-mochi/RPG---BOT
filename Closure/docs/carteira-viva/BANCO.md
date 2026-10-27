@@ -1,5 +1,10 @@
 # Banco de personagens
 
+27/10: referências de modelo podem conter `sondagem_versao=2` no conteúdo
+cifrado. A ausência do campo identifica a sondagem 1 anterior. Não altera
+schema 6 nem personagens/fontes; confirmar uma prévia de versão diferente
+é conflito. Novos sinais são constantes, sem notas ou valores financeiros.
+
 Etapa 2 · 26/10/2026. Implementação em `src/carteira_viva/`. O módulo ainda
 não é carregado pelas Guias em produção. O serviço e a ponte opcionais evoluíram
 nas etapas 3–6; ver SERVICO.md e ETAPA-6.md para o estado atual.

@@ -1,5 +1,38 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Continuação de 27/10/2026 — inventário e sondagem 2
+
+PR 84 preservada na base da etapa 6. As duas mains do produtor foram
+reconferidas e continuam nos SHAs registrados abaixo. Foi preparada a
+[proposta de contrato de inicialização 1](INICIALIZACAO-PRODUTOR.md), com
+registros de missão, trocas de regra, notas de identidade salarial, caixas
+pendentes, propriedades/cache, preservação de fórmulas e protocolo de
+falha/retomada. Preparadores existentes não são inicializadores de personagem.
+Não houve edição do repositório produtor ou aplicação em planilha.
+
+O consumidor agora consulta os metadados de grade e depois intervalos
+explícitos até a última linha física dos três históricos financeiros, até
+5.000 linhas por livro. Grade maior é recusada, sem voltar a uma amostra.
+Também verifica entradas/notas das quatro listas de missão, O86 e as caixas
+de correção. Limites de resposta/prazo preservados; chamadas somente GET.
+Valores e notas não são salvos na referência: apenas sinais constantes.
+Sondagem 2 é registrada e comparada na confirmação; referências anteriores
+continuam identificadas como 1, sem migração de schema ou personagens.
+
+Dez regressões novas, incluindo linhas tardias, notas sem valor, privacidade
+e mudança de sinais/versão durante a confirmação. **79 testes direcionados
+passaram em 15,857 s**, modelos + provedores + fluxo HTTP. O CI Linux desta
+continuação será registrado no fechamento. Não foi repetida a bateria
+completa Windows, cujas limitações já estão documentadas abaixo.
+
+Esta continuação não abriu novo piloto, não reutilizou grants/cópias descartados
+e não produziu prova nativa adicional. A configuração privada das Guias segue
+indisponível neste Windows; nenhuma credencial ou escopo foi recriado. A
+proposta não implementa limpeza nem atesta automações/propriedades: **etapa 7
+continua parcial e criação permanece bloqueada, inclusive sem sinais**.
+
+## Entrega e validação de 26/10/2026
+
 26/10/2026. **Entrega parcial, não publicada.** Configuração implementada;
 criação de nova ficha bloqueada por reprovação nativa da inicialização.
 PR [84](https://github.com/cupcake-mochi/RPG---BOT/pull/84) em rascunho;

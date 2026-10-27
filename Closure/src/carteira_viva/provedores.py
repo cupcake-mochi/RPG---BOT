@@ -248,7 +248,7 @@ class Provedores:
                 "nome": nome, "contrato": f"analise-{versao}", "prova_parcial": True}
 
     async def validar_modelo(self, acesso: str, arquivo: str) -> dict:
-        from .sondagem_modelo import RANGES, sondar
+        from .sondagem_modelo import VERSAO_SONDAGEM, faixas_sondagem, sondar
         if not isinstance(arquivo, str) or not ARQUIVO.fullmatch(arquivo):
             raise ErroProvedor("arquivo")
         url = "https://www.googleapis.com/drive/v3/files/" + arquivo + "?fields=id,version,trashed,isAppAuthorized"
@@ -256,9 +256,14 @@ class Provedores:
         previa = await self.validar_arquivo(acesso, arquivo)
         if previa["contrato"] != "analise-12":
             raise ErroProvedor("formato")
-        query = urlencode([("ranges", r) for r in RANGES] + [("fields",
-            "spreadsheetId,sheets(properties(title),data(startRow,startColumn,rowData(values(userEnteredValue,effectiveValue))))")])
-        obj = await self._json("https://sheets.googleapis.com/v4/spreadsheets/" + arquivo + "?" + query, acesso)
+        sheets_url = "https://sheets.googleapis.com/v4/spreadsheets/" + arquivo
+        meta = await self._json(sheets_url + "?" + urlencode({"fields":
+            "spreadsheetId,sheets(properties(title,gridProperties(rowCount,columnCount)))"}), acesso)
+        if meta.get("spreadsheetId") != arquivo:
+            raise ErroProvedor("arquivo")
+        query = urlencode([("ranges", r) for r in faixas_sondagem(meta)] + [("fields",
+            "spreadsheetId,sheets(properties(title),data(startRow,startColumn,rowData(values(userEnteredValue,effectiveValue,note))))")])
+        obj = await self._json(sheets_url + "?" + query, acesso)
         if obj.get("spreadsheetId") != arquivo:
             raise ErroProvedor("arquivo")
         sinais = sondar(obj)
@@ -267,4 +272,5 @@ class Provedores:
                 depois.get("isAppAuthorized") is not True or
                 not isinstance(depois.get("version"), str) or not re.fullmatch(r"[0-9]{1,30}", depois["version"])):
             raise ErroProvedor("conflito")
-        return {**previa, "versao_drive": depois["version"], "revisao_livro": "R53", "sinais": sinais}
+        return {**previa, "versao_drive": depois["version"], "revisao_livro": "R53", "sinais": sinais,
+                "sondagem_versao": VERSAO_SONDAGEM}

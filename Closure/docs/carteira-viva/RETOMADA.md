@@ -1,6 +1,6 @@
 # Continuar a Carteira viva
 
-Atualizado em 26/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
+Atualizado em 27/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
 ## Checkout e Git
@@ -22,6 +22,14 @@ Carteira não publicada. Não confundir configuração de modelo com criação f
   Base e patches foram recuperados no C:. Não sobrescrever ou remover o original.
 
 ## O que já funciona no código
+
+Continuação de 27/10: sondagem 2 lê até a última linha física dos três livros
+financeiros (máximo de 5.000 linhas; recusa acima disso), entradas e notas de
+missão, caixa de lançamento e caixas de correção. Só os sinais são guardados;
+versão da sondagem entra na comparação da confirmação. Dez testes novos;
+79 direcionados passaram. CI desta continuação consta no relatório.
+Leia também INICIALIZACAO-PRODUTOR.md: proposta de contrato 1, ainda sem rotina
+de limpeza ou certificação nativa. Nenhum piloto ou teste Google novo nesta rodada.
 
 Schema 6, modelos oficiais por padrão, seleção opcional Era/Ciclo/personalizado,
 configuração por dono/Administrator e prévia/confirmar via OAuth/Picker existente.
@@ -85,7 +93,8 @@ Gateway duplicado, escrita em oficiais/jogadores ou publicação da Carteira.
 
 ## Próximo passo
 
-**Concluir a etapa 7**, com contrato de inicialização do produtor e prova com
+**Concluir a etapa 7**, implementando/validando no produtor a proposta de
+INICIALIZACAO-PRODUTOR.md e depois provando a criação com
 OAuth próprio das Guias quando o ambiente privado estiver disponível. Manter
 a criação desligada até cumprir o critério do PLANO.md. Depois, etapa 8,
 **GPT-6 Astra · Alto**; edições de jogo exigem contrato, prévia, confirmação e

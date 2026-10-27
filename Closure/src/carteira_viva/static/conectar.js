@@ -82,7 +82,7 @@
       if (state.fase === "picker") $("mensagem").textContent=english()?"Choose a template you may configure for this server.":"Escolha um modelo que você possa configurar para este servidor.";
       if (state.fase === "concluido") $("mensagem").textContent=english()?"Template choice saved. Creation remains unavailable.":"Escolha do modelo salva. A criação continua indisponível.";
       $("modelo-sinais").hidden=!(state.previa?.sinais?.length);
-      $("modelo-sinais").textContent=english()?"The sample contains financial history or salary state. Copying it would carry old data into a new character.":"A amostra contém histórico financeiro ou estado salarial. Copiar esse modelo levaria dados antigos para um personagem novo.";
+      $("modelo-sinais").textContent=english()?"The check found data or usage markers in this template. Initialization must handle them before creating a new character sheet.":"A conferência encontrou dados ou marcas de uso neste modelo. A inicialização precisa tratá-los antes de criar uma ficha nova.";
     }
     $("cancelar").hidden=["concluido","cancelado","falhou"].includes(state.fase);
   }

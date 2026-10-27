@@ -8,12 +8,12 @@ import re
 from closure_bot.recursos_publicos import FICHA_ERA_REVOLUCAO, FICHA_CICLO_MALDITO
 from .permissoes import Acao
 from .segredos import Conflito, ErroCarteira
+from .sondagem_modelo import SINAIS
 
 OFICIAIS = (
     {"id": "era", "nome": "Era da Revolução", "url": FICHA_ERA_REVOLUCAO},
     {"id": "ciclo", "nome": "Ciclo Maldito", "url": FICHA_CICLO_MALDITO},
 )
-SINAIS = frozenset({"extrato_presente", "estado_salarial_presente", "emissao_presente", "salarios_presentes"})
 
 
 class CriacaoBloqueada(ErroCarteira):
@@ -35,7 +35,10 @@ def referencia_validada(previa):
             previa["contrato"] != "analise-12" or previa["revisao_livro"] != "R53" or
             not isinstance(previa.get("sinais"), list) or any(x not in SINAIS for x in previa["sinais"])):
         raise ErroCarteira("Modelo incompatível.")
-    return {**{k: previa[k] for k in campos}, "sinais": sorted(set(previa["sinais"]))}
+    sondagem = previa.get("sondagem_versao", 1)
+    if type(sondagem) is not int or sondagem not in (1, 2):
+        raise ErroCarteira("Versão de conferência de modelo incompatível.")
+    return {**{k: previa[k] for k in campos}, "sinais": sorted(set(previa["sinais"])), "sondagem_versao": sondagem}
 
 
 class Modelos:

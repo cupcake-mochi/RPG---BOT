@@ -39,6 +39,17 @@ limpeza completa e ativação manual quando necessária. Acesso do novo
 responsável e automações ainda precisam de prova. [Ensaio e requisitos](NATIVO-ETAPA-7.md).
 Cadastro de ficha existente permanece disponível e independente.
 
+Continuação de 27/10: [proposta de inicialização do produtor](INICIALIZACAO-PRODUTOR.md)
+enumera registros, notas e propriedades salariais e define o protocolo de
+aceite/recuperação ainda necessário. Não é um inicializador publicado.
+A sondagem 2 lê os livros financeiros até seu limite físico (máximo de 5.000
+linhas), além de missão/notas/caixas pendentes; grade incompatível ou maior
+é recusada, sem fallback para amostra. Textos e valores não vão à prévia.
+Referências antigas assumem sondagem 1; as novas registram 2 no envelope
+cifrado, sem migração de tabela. Confirmação exige a mesma versão e sinais.
+Propriedades, automações e limpeza integral permanecem sem prova; a criação
+continua bloqueada mesmo se todos os intervalos lidos estiverem vazios.
+
 ## Identidade e responsabilidade
 
 O personagem pertence a um cadastro de **servidor + identificador estável**.

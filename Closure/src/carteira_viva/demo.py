@@ -38,7 +38,7 @@ class ProvedoresDemo(Provedores):
                 "nome": "Personagem de teste", "contrato": "analise-12", "prova_parcial": True}
 
     async def validar_modelo(self, acesso, arquivo):
-        return {**await self.validar_arquivo(acesso, arquivo), "versao_drive": "1", "revisao_livro": "R53",
+        return {**await self.validar_arquivo(acesso, arquivo), "versao_drive": "1", "revisao_livro": "R53", "sondagem_versao": 2,
                 "sinais": ["extrato_presente", "estado_salarial_presente"]}
 
     async def ler_analise(self,acesso,arquivo):

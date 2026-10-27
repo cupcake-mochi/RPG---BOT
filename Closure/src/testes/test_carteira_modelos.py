@@ -7,10 +7,10 @@ from cryptography.fernet import Fernet
 import httpx
 
 from carteira_viva.banco import Cadastro
-from carteira_viva.modelos import CriacaoBloqueada
+from carteira_viva.modelos import CriacaoBloqueada, referencia_validada
 from carteira_viva.provedores import Provedores, ErroProvedor
 from carteira_viva.segredos import AcessoNegado, Conflito, ErroCarteira
-from carteira_viva.sondagem_modelo import sondar
+from carteira_viva.sondagem_modelo import MAX_LINHAS_HISTORICO, faixas_sondagem, sondar
 from carteira_viva.web import DADOS
 from testes.test_carteira_banco import Fixtures
 from testes.test_carteira_provedores import configuracao
@@ -27,7 +27,8 @@ def grade():
     def text(v): return {'userEnteredValue':{'stringValue':v},'effectiveValue':{'stringValue':v}}
     def formula(v): return {'userEnteredValue':{'formulaValue':v},'effectiveValue':{'numberValue':0}}
     def sheet(name,row,col,rows):
-        return {'properties':{'title':name},'data':[{'startRow':row,'startColumn':col,'rowData':[{'values':r} for r in rows]}]}
+        return {'properties':{'title':name,'gridProperties':{'rowCount':1000,'columnCount':140}},
+                'data':[{'startRow':row,'startColumn':col,'rowData':[{'values':r} for r in rows]}]}
     return {'spreadsheetId':F1,'sheets':[
         sheet('ANALISE',0,0,[[text('chave'),text('valor')],[text('formato.versao'),text('12')],
                             [text('ficha.versao'),text('R53')],[text('ficha.sistema'),text('Ciclo Maldito')],
@@ -37,7 +38,7 @@ def grade():
         sheet('CONFIGURAÇÃO',45,4,[[{}, {},formula('=IF(F46="";E46;F46)')]]),
         sheet('EXTRATO',1,0,[[text('dado fictício')]]),
         sheet('DADOS_SALARIOS',1,11,[[text('{"estado":"fictício"}')]]),
-        sheet('SALÁRIOS',1,0,[])]}
+        sheet('SALÁRIOS',1,0,[]),sheet('FICHA PESSOAL',14,48,[])]}
 
 
 class BancoModelos(Fixtures,unittest.TestCase):
@@ -102,7 +103,7 @@ class BancoModelos(Fixtures,unittest.TestCase):
         self.assertEqual(self.c.cartao(self.m,p['id'])['perfil'],p['perfil'])
 
     def test_criacao_fechada_mesmo_sem_sinais_e_com_parametros_forcados(self):
-        ref=referencia();ref['sinais']=[]
+        ref=referencia();ref['sinais']=[];ref['sondagem_versao']=2
         self.c.configurar_modelo(self.admin,escolha='servidor',revisao=0,previa=ref)
         for modelo in ('era','ciclo','servidor','desconhecido'):
             for params in (None,{}, {'nivel':5,'xp':0,'nivel_inicial':5,'habilitar':True}):
@@ -114,6 +115,53 @@ class BancoModelos(Fixtures,unittest.TestCase):
 class SondagemTeste(unittest.TestCase):
     def test_detecta_estado_antigo_com_emissao_vazia(self):
         self.assertEqual(sondar(grade()),['estado_salarial_presente','extrato_presente'])
+
+    def test_cobre_livros_ate_ultima_linha_fisica_sem_truncar(self):
+        faixas=faixas_sondagem(grade())
+        self.assertIn("'EXTRATO'!A2:C1000",faixas)
+        self.assertIn("'SALÁRIOS'!A2:L1000",faixas)
+        self.assertIn("'DADOS_SALARIOS'!A2:J1000",faixas)
+        g=grade();g['sheets'][4]['data'][0].update(startRow=999)
+        g['sheets'][6]['data'][0].update(startRow=999,rowData=[{'values':[{'userEnteredValue':{'stringValue':'crédito antigo fictício'}}]}])
+        self.assertIn('extrato_presente',sondar(g))
+        self.assertIn('salarios_presentes',sondar(g))
+
+    def test_grade_incompativel_ou_acima_do_limite_recusada_antes_dos_dados(self):
+        for indice,chave,valor in ((4,'rowCount',MAX_LINHAS_HISTORICO+1),(6,'rowCount',True),
+                                  (5,'columnCount',13),(7,'rowCount',86),(7,'columnCount',67)):
+            g=grade();g['sheets'][indice]['properties']['gridProperties'][chave]=valor
+            with self.subTest(indice=indice,chave=chave,valor=valor),self.assertRaises(ErroCarteira):faixas_sondagem(g)
+
+    def test_registros_e_trocas_salariais_tardios_sem_expor_valores(self):
+        g=grade();g['sheets'][5]['data'].append({'startRow':800,'startColumn':0,'rowData':[{'values':[
+            {'userEnteredValue':{'stringValue':'identidade confidencial fictícia'}}, {},{},{},{},{},{},
+            {'userEnteredValue':{'numberValue':45000}},{'userEnteredValue':{'stringValue':'Grau'}}]}]})
+        sinais=sondar(g)
+        self.assertIn('missoes_registradas',sinais);self.assertIn('trocas_salariais_presentes',sinais)
+        self.assertNotIn('confidencial',str(sinais));self.assertNotIn('45000',str(sinais))
+
+    def test_nota_salarial_sobrevive_sem_valor_na_missao(self):
+        g=grade();g['sheets'][7]['data'][0]['rowData']=[{'values':[
+            {'note':'Descrição pessoal fictícia\n[Salário: id-ficticio · data pendente]'}]}]
+        sinais=sondar(g)
+        self.assertIn('marcas_salariais_presentes',sinais);self.assertNotIn('missoes_preenchidas',sinais)
+        self.assertNotIn('id-ficticio',str(sinais));self.assertNotIn('Descrição',str(sinais))
+
+    def test_caixas_de_missao_e_dinheiro_nao_se_confundem_com_xp(self):
+        g=grade();g['sheets'][7]['data'].extend([
+            {'startRow':85,'startColumn':14,'rowData':[{'values':[{'userEnteredValue':{'formulaValue':'=0'},'effectiveValue':{'numberValue':0}}]}]},
+            {'startRow':10,'startColumn':66,'rowData':[{'values':[{'userEnteredValue':{'stringValue':'✓ missão anterior'}}]}]},
+            {'startRow':86,'startColumn':66,'rowData':[{'values':[{'userEnteredValue':{'stringValue':'Missão anterior'}}]}]}])
+        sinais=sondar(g)
+        self.assertIn('caixa_financeira_preenchida',sinais);self.assertIn('correcao_missao_pendente',sinais)
+        self.assertIn('missoes_preenchidas',sinais)
+
+    def test_referencia_distingue_sondagem_anterior_de_nova(self):
+        antiga=referencia();nova={**antiga,'sondagem_versao':2,'sinais':['marcas_salariais_presentes','trocas_salariais_presentes']}
+        self.assertEqual(referencia_validada(antiga)['sondagem_versao'],1)
+        self.assertEqual(referencia_validada(nova)['sondagem_versao'],2)
+        for valor in (True,0,3,'2'):
+            with self.subTest(valor=valor),self.assertRaises(ErroCarteira):referencia_validada({**nova,'sondagem_versao':valor})
 
     def test_recusa_formula_substituida_aba_ausente_revisao_errada_e_erro(self):
         for mutate in (lambda g:g['sheets'].pop(),
@@ -133,7 +181,11 @@ class TransporteModelo(unittest.IsolatedAsyncioTestCase):
         self.calls.append(request)
         if '/values/' in request.url.path:
             return httpx.Response(200,json={'values':[['formato.versao',12],['nome','Exemplo']]})
-        if request.url.host=='sheets.googleapis.com':return httpx.Response(200,json=self.grid)
+        if request.url.host=='sheets.googleapis.com':
+            if 'ranges' not in request.url.params:
+                return httpx.Response(200,json={'spreadsheetId':self.grid['spreadsheetId'],
+                    'sheets':[{'properties':s['properties']} for s in self.grid['sheets']]})
+            return httpx.Response(200,json=self.grid)
         self.meta_calls+=1
         return httpx.Response(200,json={'id':F1,'name':'Modelo fictício','mimeType':'application/vnd.google-apps.spreadsheet',
             'isAppAuthorized':True,'version':'8' if self.changed and self.meta_calls>1 else '7'})
@@ -143,8 +195,20 @@ class TransporteModelo(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(d['sinais'],['estado_salarial_presente','extrato_presente'])
         self.assertNotIn('dado fictício',str(d));self.assertEqual(d['versao_drive'],'7')
         self.assertTrue(all(r.method=='GET' for r in self.calls))
-        grid_request=next(r for r in self.calls if r.url.host=='sheets.googleapis.com' and '/values/' not in r.url.path)
-        self.assertEqual(len(grid_request.url.params.get_list('ranges')),7)
+        grid_request=next(r for r in self.calls if r.url.host=='sheets.googleapis.com' and 'ranges' in r.url.params)
+        faixas=grid_request.url.params.get_list('ranges')
+        self.assertEqual(len(faixas),15);self.assertIn("'EXTRATO'!A2:C1000",faixas)
+        self.assertIn('note',grid_request.url.params['fields']);self.assertEqual(d['sondagem_versao'],2)
+
+    async def test_grade_maior_nao_cai_para_amostra_que_parece_vazia(self):
+        self.grid['sheets'][4]['properties']['gridProperties']['rowCount']=MAX_LINHAS_HISTORICO+1
+        with self.assertRaises(ErroCarteira):await self.prov.validar_modelo('ficticio',F1)
+        self.assertFalse(any('ranges' in r.url.params for r in self.calls))
+
+    async def test_notas_privadas_viram_so_sinal_na_previa(self):
+        self.grid['sheets'][7]['data'][0]['rowData']=[{'values':[{'note':'[Salário: segredo-ficticio · data pendente]'}]}]
+        d=await self.prov.validar_modelo('ficticio',F1)
+        self.assertIn('marcas_salariais_presentes',d['sinais']);self.assertNotIn('segredo-ficticio',str(d))
 
     async def test_arquivo_mudando_durante_leitura_e_recusado(self):
         self.changed=True
@@ -159,6 +223,8 @@ class ProvedorModelo(ProvedorFicticio):
     admin=True
     versao='7'
     remover_admin=False
+    sondagem_versao=2
+    nota_posterior=False
 
     async def membro(self,s,u):
         return replace(await super().membro(s,u),administrador=self.admin)
@@ -166,7 +232,9 @@ class ProvedorModelo(ProvedorFicticio):
     async def validar_modelo(self,acesso,arquivo):
         await super().validar_arquivo(acesso,arquivo)
         if self.remover_admin:self.admin=False
-        return {**referencia(),'arquivo':arquivo,'versao_drive':self.versao}
+        d={**referencia(),'arquivo':arquivo,'versao_drive':self.versao,'sondagem_versao':self.sondagem_versao}
+        if self.nota_posterior:d['sinais']=d['sinais']+['marcas_salariais_presentes']
+        return d
 
 
 class WebModeloTeste(WebFixture,unittest.IsolatedAsyncioTestCase):
@@ -202,6 +270,16 @@ class WebModeloTeste(WebFixture,unittest.IsolatedAsyncioTestCase):
 
     async def test_mudanca_de_arquivo_apos_previa_exige_novo_fluxo(self):
         await self.preparar();self.prov.versao='8'
+        self.assertEqual((await self.confirmar()).status,409)
+        self.assertEqual(await self.scalar('SELECT count(*) FROM modelos_servidor'),0)
+
+    async def test_marca_salarial_nova_durante_confirmacao_invalida_previa(self):
+        await self.preparar();self.prov.nota_posterior=True
+        self.assertEqual((await self.confirmar()).status,409)
+        self.assertEqual(await self.scalar('SELECT count(*) FROM modelos_servidor'),0)
+
+    async def test_nao_confirma_resultado_de_outra_versao_de_sondagem(self):
+        await self.preparar();self.prov.sondagem_versao=1
         self.assertEqual((await self.confirmar()).status,409)
         self.assertEqual(await self.scalar('SELECT count(*) FROM modelos_servidor'),0)
 

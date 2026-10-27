@@ -1,5 +1,13 @@
 # Rodar a conexão de fichas
 
+27/10: a validação de modelo usa sondagem 2. Primeiro lê os metadados de grade;
+depois solicita intervalos explícitos para os três históricos financeiros,
+entradas/notas de missão e caixas pendentes. Limite físico de 5.000 linhas
+por histórico, 512 KiB por resposta Google e 15 s por leitura, sem relaxamento
+de limites. Referência é salva somente após confirmação com versão estável.
+Isso não libera criação nem adiciona rotas/escopos de escrita. Ver a
+[proposta de inicialização](INICIALIZACAO-PRODUTOR.md).
+
 Etapa 7 parcial: schema 6, comandos `/personagem modelos` e
 `/personagem modelo_configurar escolha:...` (`/character templates` e
 `/character set_template`). `oficiais` restaura o padrão, `era`/`ciclo`
