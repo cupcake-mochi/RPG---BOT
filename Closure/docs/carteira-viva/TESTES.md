@@ -1,5 +1,17 @@
 # Testes da Carteira viva
 
+Etapa 7 parcial: testes de `test_carteira_modelos.py` cobrem padrão/isolamento,
+admin versus Manage Guild/revisor, CAS, preservação de personagens, cifra,
+backup/restore/rotação, schema 5→6, sondagem de histórico e fórmulas,
+transporte Google somente GET, alteração de arquivo, perda de cargo durante
+espera, confirmação repetida, cancelamento/expiração e criação bloqueada
+mesmo com parâmetros adulterados. Fixtures v1/v4 foram atualizadas para a
+migração 6 sem enfraquecer as asserções. [Resultados](ETAPA-7.md).
+
+A bateria nativa reprovou inicialização limpa nas três cópias; acesso pelo
+OAuth próprio e automações continuam sem prova. [Limites e limpeza](NATIVO-ETAPA-7.md).
+Os requisitos abaixo não se tornam aprovados por esses testes de simulação.
+
 Matriz de testes futuros. A [etapa 1](ETAPA-1.md) executou 39 cenários locais
 do contrato/protótipo; a [etapa 2](ETAPA-2.md) acrescentou 62 testes do banco,
 retenção e recuperação. O piloto nativo da etapa 3 está descrito em NATIVO-ETAPA-3.md; os demais

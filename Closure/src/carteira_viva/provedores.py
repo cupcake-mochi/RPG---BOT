@@ -7,7 +7,7 @@ import logging
 import re
 import secrets
 import time
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 from authlib.integrations.httpx_client import AsyncOAuth2Client
 from authlib.integrations.base_client.errors import OAuthError
@@ -246,3 +246,25 @@ class Provedores:
             nome = "Novo personagem"
         return {"arquivo": arquivo, "nome_arquivo": str(meta.get("name", "Planilha"))[:200],
                 "nome": nome, "contrato": f"analise-{versao}", "prova_parcial": True}
+
+    async def validar_modelo(self, acesso: str, arquivo: str) -> dict:
+        from .sondagem_modelo import RANGES, sondar
+        if not isinstance(arquivo, str) or not ARQUIVO.fullmatch(arquivo):
+            raise ErroProvedor("arquivo")
+        url = "https://www.googleapis.com/drive/v3/files/" + arquivo + "?fields=id,version,trashed,isAppAuthorized"
+        antes = await self._json(url, acesso)
+        previa = await self.validar_arquivo(acesso, arquivo)
+        if previa["contrato"] != "analise-12":
+            raise ErroProvedor("formato")
+        query = urlencode([("ranges", r) for r in RANGES] + [("fields",
+            "spreadsheetId,sheets(properties(title),data(startRow,startColumn,rowData(values(userEnteredValue,effectiveValue))))")])
+        obj = await self._json("https://sheets.googleapis.com/v4/spreadsheets/" + arquivo + "?" + query, acesso)
+        if obj.get("spreadsheetId") != arquivo:
+            raise ErroProvedor("arquivo")
+        sinais = sondar(obj)
+        depois = await self._json(url, acesso)
+        if (antes != depois or depois.get("id") != arquivo or depois.get("trashed") is True or
+                depois.get("isAppAuthorized") is not True or
+                not isinstance(depois.get("version"), str) or not re.fullmatch(r"[0-9]{1,30}", depois["version"])):
+            raise ErroProvedor("conflito")
+        return {**previa, "versao_drive": depois["version"], "revisao_livro": "R53", "sinais": sinais}

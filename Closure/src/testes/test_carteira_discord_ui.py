@@ -114,7 +114,9 @@ class DiscordUITeste(unittest.IsolatedAsyncioTestCase):
         roots={c.name:c for c in self.cog.__cog_app_commands__}
         self.assertEqual(set(roots),{'personagem','character','personagens','characters'})
         for grupo in ('personagem','character'):
-            self.assertEqual(len(roots[grupo].commands),8)
+            self.assertEqual(len(roots[grupo].commands),10)
+            novos={'modelos','modelo_configurar'} if grupo=='personagem' else {'templates','set_template'}
+            self.assertTrue(novos <= {c.name for c in roots[grupo].commands})
             for c in roots[grupo].commands:self.assertLessEqual(len(c.name),32);self.assertLessEqual(len(c.description),100)
     async def test_analise_pt_en_reaproveita_json_e_limites_de_pagina(self):
         from testes.test_carteira_consultas import completa_r53

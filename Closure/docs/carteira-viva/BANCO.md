@@ -30,10 +30,16 @@ envelope e têm hashes separados para localizar uma conexão existente.
 
 ## Schema e migrações
 
-Schema atual: **5**. Migração 1 cria as tabelas de domínio; migração 2 acrescenta
+Schema atual: **6**. Migração 1 cria as tabelas de domínio; migração 2 acrescenta
 pedidos e auditoria; migração 3 acrescenta tentativas web cifradas; migração 4 acrescenta resumo
 básico cifrado, prévias e registro de imagens; migração 5 acrescenta sessões
-Discord da Carteira web. A sequência é transacional. Não há banco de produção de
+Discord da Carteira web; migração 6 acrescenta `modelos_servidor` (servidor,
+revisão, conteúdo cifrado com contexto `modelo/servidor`). A escolha é
+configuração do servidor, sem grant ou identidade Google do administrador.
+É incluída no backup e na rotação de cifra. Reset preserva a revisão crescente;
+restauração é recuperação explícita de configuração, não restaura sessões.
+Reinício, restore e rotação descartam fluxos OAuth transitórios.
+A sequência é transacional. Não há banco de produção de
 uma versão anterior deste recurso; o teste de migração usa uma fixture v1.
 
 | Tabela | Uso |

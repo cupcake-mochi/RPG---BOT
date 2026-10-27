@@ -371,6 +371,11 @@ opcional, sem modificar nenhum modelo oficial.”
 
 ### 7. Escolher o modelo do servidor
 
+**26/10/2026: parcialmente implementada.** Escolha/configuração no Git,
+criação bloqueada após herança de histórico e estado salarial nas três
+cópias nativas. O critério abaixo continua pendente; não marcar concluída
+nem iniciar escrita de jogo. Ver ETAPA-7.md e NATIVO-ETAPA-7.md.
+
 Configuração administrativa com modelos oficiais como padrão e outro modelo
 compatível como opção. Definir parâmetros suportados, distinguindo nível do
 personagem, XP e regra de nível inicial da campanha. Confirmar cópia funcional,

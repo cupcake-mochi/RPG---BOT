@@ -18,6 +18,7 @@ from typing import Callable
 
 from . import esquema
 from .cartoes_banco import Cartoes
+from .modelos import Modelos
 from .permissoes import Acao, Membro, Permissoes, PUBLICOS, cartao_publico, permitido
 from .segredos import AcessoNegado, Cifra, Conflito, ErroCarteira, json_bytes
 
@@ -72,7 +73,7 @@ class CredencialGoogle:
     autorizacao: str = field(repr=False)
 
 
-class Cadastro(Cartoes):
+class Cadastro(Cartoes, Modelos):
     def __init__(self, caminho: Path, chaves: tuple[bytes, ...], *,
                  remocoes: Path | None = None, agora: Callable[[], float] = time.time):
         self.cifra = Cifra(chaves)  # Não criar banco se a chave estiver ausente/inválida.
@@ -666,6 +667,11 @@ class Cadastro(Cartoes):
                 self.db.execute("UPDATE previas_cartao SET conteudo=? WHERE id=?",
                                 (nova.cifrar(ctx,self.cifra.abrir(ctx,row["conteudo"])),row["id"]))
             self.db.execute("DELETE FROM web_sessoes")
+            self.db.execute("DELETE FROM web_fluxos")
+            for row in self.db.execute("SELECT * FROM modelos_servidor").fetchall():
+                ctx = ["modelo", row["servidor"]]
+                self.db.execute("UPDATE modelos_servidor SET conteudo=? WHERE servidor=?",
+                                (nova.cifrar(ctx, self.cifra.abrir(ctx, row["conteudo"])), row["servidor"]))
             self.db.execute("UPDATE meta SET valor=? WHERE chave='verificador'",
                             (nova.cifrar(["verificador", self.banco_id], "carteira-viva"),))
         self.cifra = nova

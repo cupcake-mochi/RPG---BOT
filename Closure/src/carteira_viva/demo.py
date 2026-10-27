@@ -25,7 +25,7 @@ class ProvedoresDemo(Provedores):
 
     async def membro(self, servidor, usuario):
         if servidor!='111' or usuario not in ('222','999'):raise AcessoNegado('Conta fictícia indisponível.')
-        return Membro(servidor,usuario,nome='Ayla · jogador fictício' if usuario=='222' else 'Visitante · conta fictícia')
+        return Membro(servidor,usuario,administrador=usuario=='222',nome='Ayla · conta fictícia' if usuario=='222' else 'Visitante · conta fictícia')
 
     async def conta_google(self, acesso):
         return "conta_google_ficticia"
@@ -36,6 +36,10 @@ class ProvedoresDemo(Provedores):
     async def validar_arquivo(self, acesso, arquivo):
         return {"arquivo": arquivo, "nome_arquivo": "Ficha de demonstração — somente dados fictícios",
                 "nome": "Personagem de teste", "contrato": "analise-12", "prova_parcial": True}
+
+    async def validar_modelo(self, acesso, arquivo):
+        return {**await self.validar_arquivo(acesso, arquivo), "versao_drive": "1", "revisao_livro": "R53",
+                "sinais": ["extrato_presente", "estado_salarial_presente"]}
 
     async def ler_analise(self,acesso,arquivo):
         from closure_bot.ficha_leitor import Campo
@@ -61,10 +65,17 @@ def preparar(porta):
         return web.Response(text="<html lang='pt-BR'><meta charset='utf-8'><title>Demonstração da Carteira</title>"
                                  "<h1>Carteira viva · demonstração local</h1>"
                                  "<p>Este ensaio usa contas e planilhas fictícias. Não entra no Google ou Discord.</p>"
-                                 "<p><a href='/demo/iniciar'>Testar cadastro de personagem</a></p><p><a href='/carteira/111'>Abrir Carteira de demonstração</a></p></html>", content_type="text/html")
+                                 "<p><a href='/demo/iniciar'>Testar cadastro de personagem</a></p><p><a href='/carteira/111'>Abrir Carteira de demonstração</a></p>"
+                                 "<p><a href='/demo/iniciar?acao=modelo'>Testar modelo · administrador fictício</a></p>"
+                                 "<p><a href='/demo/iniciar?acao=modelo&amp;idioma=en'>Test template · fictional administrator · English</a></p></html>", content_type="text/html")
 
     async def iniciar(request):
-        ticket = await app[DADOS].chamar("criar", Membro("111", "222"), "cadastro", None)
+        acao = request.query.get('acao', 'cadastro')
+        idioma = request.query.get('idioma', 'pt-BR')
+        if acao not in ('cadastro', 'modelo') or idioma not in ('pt-BR', 'en'): raise web.HTTPBadRequest()
+        m = Membro("111", "222", administrador=True)
+        await app[DADOS].chamar('cadastro.configurar', m, idioma=idioma)
+        ticket = await app[DADOS].chamar("criar", m, acao, None)
         return web.HTTPFound(origem + "/conectar?" + urlencode({"ticket": ticket}))
 
     async def autorizar(request):

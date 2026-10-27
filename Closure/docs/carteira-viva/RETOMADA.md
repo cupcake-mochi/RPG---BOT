@@ -1,75 +1,83 @@
 # Continuar a Carteira viva
 
-Atualizado em 26/10/2026. **Etapas 1–6 implementadas; restam 7–10.**
-Carteira ainda não publicada na Discloud. Não confundir o piloto local com a
-versão pública dos bots.
+Atualizado em 26/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
+Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
-## Estado salvo
+## Checkout e Git
 
-- Main remota conferida: `de424478a7a120ecb43bd0c79eb93774d446fae6`.
-- Branch `codex/carteira-viva-etapa-6`, PR 83 em rascunho, base etapa 5/PR 82
-  (`52ca144`). Pilha 77–83 dependente, sem merge. Não trocar a base para main
-  para ocultar a dependência e não usar force-push.
-- Código final da Carteira web: `0c9a15f760bc3d3d437e2fa85b231223306a7576`.
-  Última guarda: exclusão global de dados encerra as sessões do próprio usuário.
-  Regressão reproduzida antes/depois, 18 testes de sessão passaram. CI completo:
-  **1.282 executados, 1.281 aprovados, um online opcional pulado e zero falhas**,
-  261,589 s; run 40423286577. O commit posterior só de documentação não muda
-  esse código nem exige publicação. ETAPA-6.md detalha os ensaios do navegador.
-- Login Discord, galeria/cartão, detalhes/análise privados e interface PT/EN.
-  Schema 5 com sessões transitórias cifradas; cookie/CSRF rotacionados, logout
-  no servidor e revalidação de cargos/fonte/campanha. Sessões não vão ao backup.
-- Suíte direcionada: 60/60, mais a regressão final de exclusão (18/18 sessões).
-  Não repetir a bateria extensa por alteração exclusivamente documental. O CI executa a suíte normal, sem desativar debug.
-- Piloto web com uma conta Discord real: login, galeria, análise e página 2
-  passaram, com Google fictício. Logout invalidou outra aba. Três cadastros e
-  conexão removidos, zero sessões/leituras/análises, banco íntegro e serviço
-  parado. Produção preservada. Não afirmar duas identidades OAuth nesta rodada.
-- Google básico da etapa 4 foi real: 18.393 campos, paridade XLSX, renovação e
-  leitura sob demanda. Grant revogado e cópia na lixeira. A demonstração web
-  usa ficha fictícia e não substitui a bateria nativa avançada.
-- Ponte opcional segue fora do runtime/ZIP das Guias, 90 arquivos. Nesta rodada
-  não houve deploy, parada de produção, Gateway duplicado ou chamada paga.
-- Segredos fora do Git, em armazenamento privado. Não usar credenciais da
-  Arquivista, redefinir tokens ou reutilizar grants/cópias descartados.
+- Usar `C:\Users\Mizuki\.codex\tmp\carteira-etapa7-recovery` neste Windows.
+- Branch `codex/carteira-viva-etapa-7`, PR dependente de `codex/carteira-viva-etapa-6` / PR 83.
+- Base exata `c2ca07ef2349ca8be46e2671a51da805bf03e69a`; CI documental 40424104893 verde.
+- Pilha anterior 77–83 em rascunho, sem merge. Não mudar a base para main nem usar force-push.
+- Main conferida `de424478a7a120ecb43bd0c79eb93774d446fae6`.
+- O checkout anterior `E:\Closure Lab\RPG---BOT-b47` teve leituras travadas.
+  Windows registrou corrupção NTFS no E: em diretórios fora deste repositório.
+  Nenhum reparo executado, nem corrupção específica do código diagnosticada.
+  Base e patches foram recuperados no C:. Não sobrescrever ou remover o original.
 
-Ocorrência da etapa 5: upload isolado levou 19,153 s perto do teto de 20 s.
-I/O é hipótese, não causa comprovada da falha anterior. Limite/expectativa
-foram preservados; medir host e concorrência na etapa 9. A máquina local também
-apresenta inicializações lentas: isso não mede a futura hospedagem.
+## O que já funciona no código
 
-## Próxima etapa
+Schema 6, modelos oficiais por padrão, seleção opcional Era/Ciclo/personalizado,
+configuração por dono/Administrator e prévia/confirmar via OAuth/Picker existente.
+Referência customizada cifrada, revisão local e versão Drive verificadas, perda de
+cargo revalidada. Não cria conexão persistente do administrador nem personagem.
+Trocar modelo não muda fichas cadastradas, campanha ou análise. Membros veem
+somente a escolha genérica; nome/arquivo privado não aparecem na Carteira.
 
-**Etapa 7: modelo de ficha do servidor. GPT-6 Astra · Alto (`high`).**
-Primeiro revisar o contrato das cópias e suas automações; depois implementar
-somente o que puder ser comprovado. Modelos oficiais são o padrão, configuração
-administrativa é opcional e cadastro de ficha existente continua independente.
-Não copiar emissão, histórico ou salário para um personagem novo.
+Comandos `/personagem modelos`, `/personagem modelo_configurar`,
+`/character templates`, `/character set_template`. Interface PT/EN.
+Cadastro existente segue por `/personagem cadastrar` ou `/character register`.
+`criar_por_modelo` sempre retorna `modelo_bloqueado`, sem escrita Google ou
+atalho de configuração. Nenhum parâmetro de criação está liberado.
 
-```text
-Continue a Carteira viva das Guias do Ciclo, em português informal.
-Leia o topo de Closure/docs/FILA-ATUAL.txt e carteira-viva/RETOMADA.md,
-PLANO.md, CONTRATO.md, BANCO.md, SERVICO.md, TESTES.md e ETAPA-6.md.
-Confira AGENTS, remoto, árvore, branch, PRs e CI. Base da etapa 7: branch
-codex/carteira-viva-etapa-6, PR 83. Pilha 77–83 em rascunho e dependente;
-não mesclar nem publicar automaticamente. Commits documentais não pedem deploy.
+## Bloqueio nativo da etapa 7
 
-Implemente a etapa 7 após validar o contrato do produtor: modelo oficial por
-padrão e modelo compatível configurável pelo admin, cópia independente,
-acesso do responsável, fórmulas, automações e inicialização. Distinga nível,
-XP e regra de nível inicial da campanha. Não suponha que copiar ou escrever
-pela API ativa gatilhos Google. Teste somente cópias descartáveis dos modelos
-oficiais e um modelo sintético; nunca altere a oficial ou fichas de jogadores.
-Trocar modelo não pode migrar personagens antigos silenciosamente.
+Três cópias descartáveis pelo Drive conectado (duas oficiais e uma sintética)
+herdaram EXTRATO e estado salarial em DADOS_SALARIOS!L2, mesmo com N2 vazia.
+No modelo sintético, CONFIGURAÇÃO!F46=5 mudou G46 de 2 para 5, mas o personagem
+ficou no nível 2 e XP 0. XP permanece fórmula; regra de campanha não inicializa
+nível do personagem. As três cópias estão na lixeira, sem mudança nas fontes.
 
-Reutilize cadastro, sessões e capacidades atuais. Não ampliar escopos ou
-permissões, contratar hospedagem nem redefinir credenciais por conveniência.
-Edições de jogo só na etapa 8, com contrato próprio e prévia/confirmação.
-Preserve autorização atual de responsável/revisor/admin e separação de lore.
-Sem modelo pago, Gateway duplicado, escrita em fichas reais ou publicação do
-serviço incompleto. Registre bloqueios reais do produtor e pendências nativas.
+Isso comprova o bloqueio, não inicialização funcional, Apps Script, acesso de
+um novo jogador ou OAuth das Guias. Não presumir gatilhos após cópia/API.
+O produtor precisa versionar a limpeza e inicialização idempotente, indicar
+ativação manual indispensável e comprovar resultado nas três classes de modelo.
+Não limpar células conhecidas de forma avulsa para declarar uma ficha nova limpa.
 
-Ao fechar: testes proporcionais, commit/push/PR dependente, fila e retomada,
-limpeza dos dados fictícios e distinção entre Git, piloto e produção.
-Recomende etapa 8, GPT-6 Astra Alto, conforme PLANO.md.
-```
+Produtores conferidos:
+- Ficha---RPG-JJK main `d0836390f90b435b4796313e898eaaa1a4a4da8b`.
+- JJK---Project main `353d7728fa4f505f830dc6c0421929a0ab2668c1`.
+- Texto R57; contrato mecânico R53/ANALISE 12. Revalidar antes de mudar o produtor.
+
+A configuração privada existente das Guias está no SSD Linux:
+`/home/mizuki/.local/share/guias-ciclo/carteira-piloto`. O usuário confirmou
+que não está disponível neste Windows. Ela só é necessária para a prova pelo
+OAuth próprio; não pedir segredos no chat, não recriar clientes/projetos,
+não ampliar escopos e não usar credenciais da Arquivista.
+
+## Provas e limites
+
+Leia ETAPA-7.md, NATIVO-ETAPA-7.md, CONTRATO.md, BANCO.md, SERVICO.md e TESTES.md.
+83 testes direcionados finais passaram; suíte completa e CI ficam registrados
+no relatório. Navegador PT/EN com provedores fictícios; Drive real por conector.
+Não misturar essas provas. Pilotos anteriores continuam encerrados e grants
+antigos revogados; não reutilizar cópias da lixeira.
+
+HTTPS persistente, campanha/idioma autoritativos entre bot/serviço,
+capacidade/recuperação e bateria nativa combinada seguem pendentes. Ocorrência
+anterior de imagem lenta deve ser medida na etapa 9 sem afrouxar os limites.
+Serviço/ponte seguem fora do pacote público. Sem modelo pago, merge, deploy,
+Gateway duplicado, escrita em oficiais/jogadores ou publicação da Carteira.
+
+## Próximo passo
+
+**Concluir a etapa 7**, com contrato de inicialização do produtor e prova com
+OAuth próprio das Guias quando o ambiente privado estiver disponível. Manter
+a criação desligada até cumprir o critério do PLANO.md. Depois, etapa 8,
+**GPT-6 Astra · Alto**; edições de jogo exigem contrato, prévia, confirmação e
+recuperação próprios. Não iniciar a etapa 8 como se a 7 tivesse sido concluída.
+
+Ao continuar: conferir árvore, remoto, PR e CI; usar checkout recuperado no C:.
+Testar proporcionalmente; documentação isolada não exige nova bateria extensa.
+Atualizar fila, contrato, relatório e retomada, salvar commit/push na pilha
+correta e separar sempre implementação, simulações, ensaio nativo e produção.

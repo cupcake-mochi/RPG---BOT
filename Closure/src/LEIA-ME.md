@@ -1,5 +1,11 @@
 # Executar e manter as Guias do Ciclo
 
+Carteira viva: etapa 7 **parcial**, configuração de modelo por servidor em
+schema 6; criação de novas fichas bloqueada até comprovar inicialização limpa
+e automações. Cadastro existente preservado. Serviço/ponte continuam
+separados do runtime publicado; ver [relatório](../docs/carteira-viva/ETAPA-7.md)
+e [retomada](../docs/carteira-viva/RETOMADA.md). Nenhum deploy desta etapa.
+
 Este documento reúne os arquivos, a preparação do ambiente e a hospedagem.
 Para aprender os comandos, consulte [os guias de uso](../docs/GUIAS-DE-USO.md).
 O estado atual e a última revisão ficam em

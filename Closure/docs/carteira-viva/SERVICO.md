@@ -1,5 +1,22 @@
 # Rodar a conexão de fichas
 
+Etapa 7 parcial: schema 6, comandos `/personagem modelos` e
+`/personagem modelo_configurar escolha:...` (`/character templates` e
+`/character set_template`). `oficiais` restaura o padrão, `era`/`ciclo`
+selecionam oficial e `servidor` abre OAuth/Picker para o administrador.
+Salvar escolha não libera cópia nem muda personagens cadastrados.
+`/interno/galeria/acao/criar_por_modelo` é uma recusa explícita, sem escrita
+Google; não existe opção de configuração para ativar. O cadastro existente
+continua em `/personagem cadastrar` ou `/character register`.
+O fluxo interno `acao=modelo` conserva cookie, CSRF, prazo de dez minutos e
+revalidação de Administrator/dono. A escolha só é gravada na confirmação.
+Ver [ETAPA-7.md](ETAPA-7.md) para execução, limites e bloqueios.
+
+A demonstração local inclui links de modelo PT/EN, só com contas e arquivos
+fictícios, acessíveis pela página inicial de `--demo`. Não necessita OAuth
+privado nem testa acesso Google real. A configuração privada do piloto real
+ficou no SSD Linux e não foi recriada no Windows.
+
 Serviço separado do bot. Ainda não está publicado. Piloto local com contas reais concluído
 conforme [NATIVO-ETAPA-3.md](NATIVO-ETAPA-3.md). Não substituir o app das Guias por este serviço.
 

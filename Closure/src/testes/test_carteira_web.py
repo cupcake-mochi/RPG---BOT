@@ -63,14 +63,16 @@ class ProvedorFicticio(Provedores):
                 "contrato": "analise-12", "prova_parcial": True}
 
 
-class WebTeste(unittest.IsolatedAsyncioTestCase):
+class WebFixture:
+    provedor_tipo = ProvedorFicticio
+
     async def asyncSetUp(self):
         self.tmp = tempfile.TemporaryDirectory()
         self.path = Path(self.tmp.name) / "web.sqlite3"
         self.clock = [180000.0]
         self.agora = lambda: self.clock[0]
         self.cfg = configuracao(self.path)
-        self.prov = ProvedorFicticio(self.cfg, self.agora)
+        self.prov = self.provedor_tipo(self.cfg, self.agora)
         await self.abrir_cliente()
         self.membro = Membro("111", "222")
 
@@ -148,6 +150,7 @@ class WebTeste(unittest.IsolatedAsyncioTestCase):
     async def confirmar(self):
         return await self.post("/api/confirmar", {"nome": "Nome confirmado", "responsabilidade": True})
 
+class WebTeste(WebFixture, unittest.IsolatedAsyncioTestCase):
     async def test_backup_exclui_fluxo_oauth_pendente_sem_apagar_o_ativo(self):
         from carteira_viva.backup import gravar_backup, _extrair
         import sqlite3
