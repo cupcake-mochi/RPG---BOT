@@ -1,13 +1,12 @@
 # Carteira viva e personagens
 
-Planejamento de 26/10/2026. **Implementação em andamento; não publicada.**
-Este documento reúne as decisões da conversa; não é uma lista de comandos
-já disponíveis. Atualização: a [etapa 1](ETAPA-1.md) tem contrato/prova local
-e a [etapa 2](ETAPA-2.md) tem banco/cadastro implementados localmente.
-A [etapa 3](ETAPA-3.md) implementa o serviço e a conexão localmente.
-O [piloto local com OAuth real](NATIVO-ETAPA-3.md) passou nos fluxos de
-cadastro, renovação e reconexão. Próxima implementação: etapa 4.
-Não há funcionalidade nova em produção.
+Planejamento de 26/10/2026, atualizado em 27/10. **Não publicado.**
+Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes. A galeria e a
+Carteira web têm provas locais/nativas registradas nas respectivas etapas,
+mas ainda não fazem parte do bot em produção. A etapa 7 configura o modelo
+do servidor; a criação continua bloqueada enquanto a inicialização inteira
+não tiver implementação e aceite. O primeiro domínio financeiro está em
+protótipo separado no produtor. Veja o estado em [RETOMADA.md](RETOMADA.md).
 
 - [Testes e critérios de entrega](TESTES.md)
 - [Estado e instrução para continuar](RETOMADA.md)
@@ -47,7 +46,7 @@ preservam as automações da ficha antes de serem liberadas.
 | Privado | Ficha detalhada e análise para dono, administrador/dono do servidor e cargos de revisão explicitamente autorizados. |
 | Edição | Permissão separada de leitura e de revisão. Sem edição arbitrária de células ou fórmulas. |
 | Personalização | Título, frase, imagem, cor e campos opcionais, com prévia antes de salvar. |
-| Modelo do servidor | Padrão oficial; administrador pode selecionar outro compatível e parâmetros iniciais suportados. Nunca altera fichas já cadastradas automaticamente. |
+| Modelo do servidor | Padrão oficial; administrador pode selecionar uma cópia da ficha do sistema com configurações extras da mesa. Preservar essas configurações e inicializar os dados pessoais separadamente; nenhum parâmetro de criação está liberado na etapa 7. Nunca altera fichas já cadastradas automaticamente. |
 | Link no nome | Abre a Carteira viva. Link direto da planilha fica na área autorizada, respeitando também as permissões do Google. |
 | Análise | `/personagem analisar`, privada, com o motor determinístico existente e os limites humanos preservados. |
 

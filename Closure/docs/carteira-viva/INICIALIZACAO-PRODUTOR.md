@@ -1,7 +1,7 @@
 # Nova ficha R53 — proposta de contrato de inicialização 1
 
 27/10/2026. **Proposta para implementação e validação no produtor. Não é uma
-rotina disponível nem um certificado aceito pela Carteira.** A criação segue
+rotina geral disponível nem um certificado aceito pela Carteira.** A criação segue
 bloqueada. Este documento define o trabalho necessário para sair desse estado,
 com inventário ancorado nas fontes atuais e critérios verificáveis.
 
@@ -14,6 +14,60 @@ Repositórios reconferidos nesta continuação:
 Os fontes abaixo não substituem uma inspeção do código instalado na cópia.
 `r53/OFICIAIS.md` registra os incrementos das oficiais; o pacote integral
 gerado não foi instalado por esta tarefa e não deve ser promovido por rotina.
+
+## Esclarecimento e implementação parcial em 27/10
+
+O usuário confirmou: o modelo do servidor é a ficha do sistema com
+configurações extras da mesa. Preservar regras e catálogos do servidor;
+não herdar identidade, progressão, inventário, missões, cartões ou dinheiro
+de personagem anterior. Não solicitar uma lista de escolhas prontas novamente.
+
+O primeiro domínio ganhou implementação **separada no produtor**:
+[PR 31, em rascunho](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31),
+branch `codex/inicializacao-financeira-carteira`, código
+`4f3555d2634c84899e5004733245ae69d0f83c6d`, base `d0836390`;
+registro nativo/documentação em `352929a` (sem alteração de código).
+`r53/inicializacao/financeiro.gs` faz prévia, aplicação explícita e retomada
+financeira. Conteúdo, notas e cada propriedade têm passos distintos para
+retomar após interrupção. Não expõe endpoints nem instala eventos/acionadores;
+não entra no pacote atual e não é chamado pelo bot.
+
+99 cenários offline novos passaram, incluindo falhas antes/depois de todas
+as escritas, edição concorrente, prévia antiga, notas, estado parcial e
+preservação. Regressões focais: 95 verificações salariais e 64 cenários/611
+verificações de missões. CI Linux do produtor aprovado no mesmo SHA:
+[40505846627](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40505846627).
+A execução duplicada do push foi cancelada; a execução da PR passou no
+mesmo código; não é falha de teste. Não somar esses resultados à suíte do bot.
+
+Leitura nativa pontual das duas oficiais confirmou grade de 1.000 linhas e
+as âncoras financeiras esperadas, sem alteração. Prévia do protótipo em uma
+cópia descartável do Ciclo concluiu em 115,013 s. Não é latência aceitável de
+comando Discord nem prova de inicialização completa; o protótipo é executado
+explicitamente no Apps Script. Primeira aplicação atingiu 360,813 s; a mesma
+operação retomou e concluiu
+em 236,503 s. Foram implementados orçamento de 210 s, limite de quatro passos
+por execução e retirada de conferências duplicadas, com retorno incompleto
+retomável. O orçamento não cancela chamadas Google nem garante duração.
+Ver [registro nativo no produtor](https://github.com/cupcake-mochi/Ficha---RPG-JJK/blob/codex/inicializacao-financeira-carteira/r53/inicializacao/NATIVO-2026-10-27.md).
+Na segunda cópia, a versão corrigida concluiu em 283,416 s; repetição em
+150,489 s, estado comparado igual. Regras, fórmulas, formatos e financeiro
+conferidos externamente; ambas as cópias estão na lixeira. A lista de
+acionadores ficou vazia para a conta conectada. Ainda falta otimizar a
+latência e provar automações/identidade/integração, sem tratar esse ensaio
+financeiro como uma ficha inteira pronta.
+
+O retorno financeiro mantém `criacaoDisponivel=false`. L2 sem emissão é
+`{"versao":1,"graus":[]}` somente no modo salarial por fórmula; o leitor real
+o aceita e as fórmulas condicionam o ciclo a N2 numérica. Isso não libera o
+modo legado nem cria dinheiro inicial. Nível/XP e regras da mesa são
+preservados neste domínio, não inicializados como personagem novo.
+
+Os flags do contexto são pré-condições de um futuro criador confiável,
+**não autenticação ou prova vinda do navegador**. Ainda faltam inventário
+pessoal completo, propriedades de recuperação, automações, responsabilidade
+e execução compatível com drive.file. O consumidor permanece bloqueado,
+mesmo com o domínio financeiro concluído. Não declarar a etapa 7 pronta.
 
 ## Inventário mínimo comprovado no fonte
 
@@ -37,8 +91,9 @@ Referências fixadas no commit do produtor:
 | Emissão na interface | CONFIGURAÇÃO O38/O39 e CARTEIRA AH3/AT3 | Preservar fórmulas de apresentação e desarmar a ação de emitir; copiar não equivale a emitir |
 | Nível e XP | FICHA AH11 e AN11/DADOS CZ47 | Nível atual é entrada própria. XP é calculado. Regra inicial F46/G46 da CONFIGURAÇÃO é separada e deve ser preservada |
 
-As colunas auxiliares de missão além de nome/tipo e os dados do editor de
-cartões ainda precisam de inventário completo do produtor. Essa tabela é um
+As quatro entradas por missão foram inventariadas no protótipo financeiro.
+Os dados do editor de cartões ainda precisam de inventário completo do produtor.
+Essa tabela é um
 escopo mínimo financeiro e não declara que todos os dados de personagem foram
 enumerados. Nenhuma dessas linhas é uma lista de comandos de limpeza pronta.
 

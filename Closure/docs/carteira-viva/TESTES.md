@@ -1,5 +1,17 @@
 # Testes da Carteira viva
 
+Inicializador financeiro em protótipo no produtor, PR 31 (27/10): 99 cenários
+novos offline e CI Linux aprovados; não integram a contagem de 1.314 do bot.
+Falhas antes/depois de cada escrita, retomada parcial de conteúdo/notas e
+propriedades, edição concorrente e repetição cobertas. O bot não recebeu código
+de criação ou escrita; sua barreira permanece incondicional. A prévia nativa
+financeira em uma cópia do Ciclo concluiu em 115,013 s; timeout de 360,813 s, retomada concluída em 236,503 s, cobertura
+restante e limpeza são registrados em INICIALIZACAO-PRODUTOR.md/ETAPA-7.md.
+A versão corrigida concluiu em outra cópia em 283,416 s; repetição 150,489 s,
+sem alteração nas faixas comparadas. Cópias na lixeira. Retorno por orçamento
+em estado amplamente sujo foi simulado na VM, não provocado no Google.
+Não confundir esse ensaio focal com o aceite nativo completo da matriz.
+
 Continuação de 27/10: dez regressões novas cobrem últimas linhas dos livros,
 limites de grade sem truncamento, registros/mudanças salariais tardios, nota
 de missão sem valor visível, caixa financeira/correção, versão da sondagem,

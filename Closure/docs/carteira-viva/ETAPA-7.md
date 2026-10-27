@@ -1,5 +1,66 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Continuação Linux de 27/10 — modelo e inicialização financeira
+
+O modelo do servidor é a ficha do sistema com configurações extras da mesa,
+conforme esclarecimento do usuário. Preservar essas regras/catálogos, sem
+herdar o personagem. Não há parâmetros de criação liberados no bot.
+
+O primeiro domínio de inicialização foi implementado em PR separada no
+produtor: [Ficha PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31),
+`codex/inicializacao-financeira-carteira`, código `4f3555d`, base `d0836390`.
+É um protótipo financeiro com prévia/diário, passos separados de conteúdo,
+notas e propriedades, retomada após interrupções e conferência de fórmulas.
+Não integra o pacote, não é endpoint e não inicializa o personagem inteiro.
+Flags do navegador não são prova de origem ou responsabilidade.
+
+**99 cenários offline novos passaram**, mais regressões focais de salário e
+missões (95 e 64 cenários/611 verificações, respectivamente). O smoke Linux
+do produtor passou no mesmo SHA: run
+[40505846627](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40505846627).
+A execução duplicada do push foi cancelada; a da PR passou no mesmo SHA. Não
+houve falha no código por esse cancelamento. Suíte do bot não repetida: a
+mudança nesta continuação do consumidor é documental; código continua `26ec106`.
+
+Metadados/âncoras das duas oficiais relidos somente para leitura. Uma nova
+cópia descartável do Ciclo foi criada pelo Drive conectado; apenas nela foi
+adicionado um arquivo de ensaio, sem substituir os módulos instalados.
+Código colado foi conferido integralmente contra o protótipo e o wrapper
+restringe planilha/projeto ao alvo descartável. A prévia nativa concluiu em
+115,013 s. Este tempo não é adequado a um comando Discord: medir e reduzir
+antes de oferecer a criação. A primeira aplicação atingiu 360,813 s; a mesma operação retomou e concluiu
+em 236,503 s. Leitura externa de sete intervalos completos (26.143 posições)
+confirmou zero entradas/notas/erros, saldo/períodos/crédito zero e emissão
+vazia. 22 campos de fórmulas/regras/nível, 16 fórmulas de XP e formato/validação
+em 183 posições permaneceram iguais. Isso não prova a inicialização pessoal
+inteira. Primeira cópia na lixeira e abas do ensaio fechadas.
+
+O defeito de tempo motivou quatro passos por execução, orçamento de 210 s,
+retorno incompleto retomável e eliminação de duas leituras redundantes, com
+três regressões. Nenhuma conferência de conclusão foi retirada. Orçamento
+não cancela chamada Google nem garante latência máxima. Segunda cópia nova com a correção: prévia 113,524 s, aplicação 283,416 s sem
+timeout, repetição 150,489 s. As 17 faixas da conferência ficaram iguais depois
+da repetição; sete intervalos completos sem entradas/notas/erros, totais zero,
+22 campos de fórmulas/regras/nível, 16 fórmulas de XP e 183 formatos/validações
+preservados. O limite de quatro escritas e o retorno por orçamento são provas
+da VM; este caso nativo tinha só três diferenças e concluiu numa chamada.
+Painel Google mostrou zero acionadores para a conta conectada; onOpen simples
+20,962 s. Isso não certifica salário diário ou automações de novo responsável.
+As duas cópias estão na lixeira, abas de ensaio e servidor loopback encerrados.
+O custo de 4 min 43 s ainda exige redução e integração assíncrona permitida
+antes de oferecer a criação ao jogador; não elevar o prazo do bot por rotina.
+Registro detalhado: [produtor](https://github.com/cupcake-mochi/Ficha---RPG-JJK/blob/codex/inicializacao-financeira-carteira/r53/inicializacao/NATIVO-2026-10-27.md).
+
+O protótipo conserva `criacaoDisponivel=false`, nível/XP e regra inicial da
+campanha. Identidade, escolhas, progressão, inventário, cartões/MONTAGENS,
+propriedades de recuperação, automações e responsabilidade ainda precisam
+de implementação/aceite próprios. Não chamar a etapa 7 de concluída nem
+iniciar a 8 como se a criação estivesse liberada.
+
+Checkouts Linux no SSD registrados em RETOMADA.md; árvore do disco externo
+preservada. Não houve novo OAuth das Guias, modelo pago, merge, deploy,
+Gateway ou escrita em ficha oficial/de jogador nesta continuação.
+
 ## Continuação de 27/10/2026 — inventário e sondagem 2
 
 PR 84 preservada na base da etapa 6. As duas mains do produtor foram
