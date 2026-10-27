@@ -7,7 +7,7 @@ com inventário ancorado nas fontes atuais e critérios verificáveis.
 
 Repositórios reconferidos nesta continuação:
 
-- Ficha---RPG-JJK main: `b0dc6aacef08b2c01a7f8a3519bbcc9bff9546ed`; PR 31 incorpora em `84bcd56` os protótipos `280a7dc`.
+- Ficha---RPG-JJK main: `57117fbe5c2361e6a09bfa00f037b4bcfaa8437f`; PR 31, protótipos `a55517deb9b77c43b796c80ac41f1029c0fdebd7`.
 - JJK---Project: `353d7728fa4f505f830dc6c0421929a0ab2668c1`.
 - Consumidor: PR 84 de RPG---BOT, dependente da etapa 6; sem publicação.
 
@@ -15,7 +15,40 @@ Os fontes abaixo não substituem uma inspeção do código instalado na cópia.
 `r53/OFICIAIS.md` registra os incrementos das oficiais; o pacote integral
 gerado não foi instalado por esta tarefa e não deve ser promovido por rotina.
 
-## Domínios adicionais do produtor · 27/10
+## Cobertura atual · 27/10
+
+Produtor `a55517d` (PR 31), além de financeiro/nível-base/textos: três domínios
+em `pessoal.gs`, contrato público em `contrato_pessoal.gs`, APIs Previa/Aplicar.
+
+| Domínio | Escopo novo | Limite |
+|---|---|---|
+| Escolhas básicas | 19 entradas na FICHA: seletores principais, atributos, distribuição de Corpo/marcos e atributos pessoais de ataque/CD | Defaults da fábrica, sem escolher Grau, treinos, capacidades ou completar criação |
+| Recursos/bônus | 20 entradas; atuais ligados aos máximos por fórmula; bônus/temporários zero, ± vazio | Máximos reconhecidos e preservados; fórmula pessoal desconhecida recusada |
+| Condições/descanso | Nove entradas de condição, Sequelas/extras, Exaustão, resistências/imunidades e descanso | Notas de fábrica restauradas; instruções de cabeçalho preservadas |
+
+CI Linux do produtor `a55517d` aprovado:
+[40540295538](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40540295538), 27/10 às 13:24:13 Brasília.
+Run duplicado do push também passou antes da tentativa de cancelamento;
+registro posterior apenas documental, sem nova suíte do bot ou pacote.
+
+502 cenários offline passaram (101/80/78/243); não somar à suíte do bot.
+Diário único de cena excedia tamanho: domínios separados e guarda de 9.000
+bytes UTF-8 antes de gravar. Novos tipos internos de escrita de fórmula/nota
+conhecida não aceitam planos do navegador. Assinatura financeira v1 mantida.
+
+Leitura nativa: 112 conferências por oficial, zero divergências depois das
+variantes exatas de aspas/separador. Projeção de efeitos em cópia privada do
+Ciclo: 48 entradas/notas, 11.634 comparações delimitadas preservadas sem
+diferença; máximos/atuais acompanharam novas escolhas (23/23, 8/8, 26/26).
+Cópia na lixeira, aba fechada. Não executou novos diários Apps Script/OAuth.
+[Registro completo](https://github.com/cupcake-mochi/Ficha---RPG-JJK/blob/a55517deb9b77c43b796c80ac41f1029c0fdebd7/r53/inicializacao/ESCOLHAS-RECURSOS-2026-10-27.md).
+
+Criação continua bloqueada; falta orquestração, conferência conjunta,
+Grau/treinos/capacidades de Origem/técnica/Famílias/inventário/entidades/cartões,
+fotos/arte, caches/recuperações, latência, automações e novo responsável.
+Nenhum pacote instalado ou publicação. Ver ETAPA-7.md para o próximo bloco.
+
+## Histórico: nível/base e textos
 
 PR 31 em rascunho, código `280a7dc`, incorpora a main acima (merge `8cb12ac`).
 O executor financeiro foi extraído para perfis fixos sem mudar o diário v1;

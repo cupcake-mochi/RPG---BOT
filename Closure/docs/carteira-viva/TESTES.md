@@ -1,6 +1,24 @@
 # Testes da Carteira viva
 
-## Novos domínios do produtor · 27/10
+## Escolhas, recursos e condições · continuação de 27/10
+
+CI Linux do produtor `a55517d` (PR 31) aprovado:
+[40540295538](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40540295538), 27/10 às 13:24:13 Brasília.
+Run duplicado do push também passou antes da tentativa de cancelamento;
+registro posterior apenas documental, sem nova suíte do bot ou pacote.
+
+**502 cenários offline** (101/80/78/243), incluindo
+243 novos com falha antes/depois de cada escrita, nota de fábrica, fórmula
+restaurada, preservação, variantes Google e diário acima de 9.000 bytes
+recusado sem escrita. Contrato conferido contra fonte sem regeneração.
+Leitura nativa: 112 conferências por oficial, zero divergências. Projeção de
+efeitos numa cópia privada do Ciclo: 48 entradas/notas, 11.634 comparações
+delimitadas sem diferença, atuais/máximos 23/23, 8/8, 26/26 após escolhas.
+Cópia na lixeira/aba fechada. Não executou novos perfis Apps Script/OAuth.
+Sem somar à suíte do bot, cujo runtime não mudou. Detalhes em ETAPA-7.md.
+
+
+## Registro anterior: nível/base e textos · 27/10
 
 PR 31, código `280a7dc`, sobre a main `9536746`: **259 cenários offline**
 (101 financeiros, 80 nível/base XP, 78 textos). Protocolo de falha/retomada,

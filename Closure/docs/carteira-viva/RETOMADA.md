@@ -5,50 +5,36 @@ Carteira não publicada. Não confundir configuração de modelo com criação f
 
 ## Avanço mais recente · 27/10
 
-Produtor PR 31: `280a7dcd0b3fb56b0a43dd6e0d88aaadcb08d634`, com main
-`9536746405f12a9e159e9173b54a2a861c0a871a` incorporada (merge `8cb12ac`).
-Além do financeiro, há protótipos de nível inicial/base XP (AH11/CZ54) e
-14 textos/notas pessoais. Executor privado compartilhado mantém diário e
-assinatura financeira v1. Não integram o pacote ou o bot.
+Produtor PR 31: código `a55517deb9b77c43b796c80ac41f1029c0fdebd7`; main
+`57117fbe5c2361e6a09bfa00f037b4bcfaa8437f` incorporada por `6d4ddf1`.
+Além dos três domínios anteriores, há 19 escolhas básicas, 20 entradas de
+recursos/bônus e nove condições/descanso. Recursos voltam às fórmulas dos
+máximos; notas de fábrica restauradas. Diário protegido por limite UTF-8 de
+9.000 bytes; cena dividida em duas fases por esse limite. Contrato conferido
+contra fontes públicas, assinatura financeira v1 mantida.
 
-259 cenários offline passaram (101/80/78), mais 20.643 verificações XP/9.900
-combinações. Projeção nativa dos efeitos em cópia nova da Era passou: nível
-10/base 3.700, missão 50 elevou XP a 3.750, retirada voltou a 3.700; textos
-limpos, 8.998 comparações delimitadas sem diferença. Cópia na lixeira/aba
-fechada. Corrigida a guarda G46 para o separador nativo `;`, sem aceitar outra
-regra. **A projeção não executou os novos diários Apps Script**. O ensaio
-financeiro antigo `4f3555d` não valida o executor extraído.
+CI Linux do produtor `a55517d` aprovado:
+[40540295538](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40540295538), 27/10 às 13:24:13 Brasília.
+Run duplicado do push também passou antes da tentativa de cancelamento;
+registro posterior apenas documental, sem nova suíte do bot ou pacote.
 
-No fechamento, main avançou para `b0dc6aacef08b2c01a7f8a3519bbcc9bff9546ed`
-(PR 37 salarial) e foi incorporada no merge `84bcd56` do produtor. Fórmulas
-protegidas/alvos dos inicializadores não mudaram. 15 verificações de abertura,
-95 salariais e 101 financeiras passaram após o merge. O ensaio nativo descrito
-é anterior; não valida execução desse código Apps Script. Nada foi instalado.
+502 cenários locais passaram (101/80/78/243). Leitura das oficiais: 112
+conferências cada, zero divergências, sem escrita. Projeção via Sheets API em
+cópia privada do Ciclo: 48 entradas/notas, 11.634 comparações delimitadas
+preservadas sem diferença; atuais acompanham máximos após escolhas fictícias
+(23/23, 8/8, 26/26). Cópia na lixeira, aba fechada. Isso não executou os novos
+diários Apps Script ou OAuth das Guias. Relatório e limites em ETAPA-7.md e
+INICIALIZACAO-PRODUTOR.md; não transportar aceite nativo dos ensaios antigos.
 
-CI final do integrado `84bcd566ae74d73bd8fdaf3889aa1ab5d7c68722`
-aprovado: [40535287570](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40535287570), 27/10 às 12:53:51 Brasília.
-Os 259 cenários, pacote de nove arquivos e regressões passaram; 277 fontes
-Python/208 JS-GS com sintaxe válida. Run duplicado cancelado. Registro final
-posterior só documental. Prova do OAuth/Apps Script completo continua pendente.
+Retomar pela cobertura restante: Grau, treinos, capacidades de Origem,
+técnica/Famílias, inventário, entidades/cartões/MONTAGENS, fotos/arte e caches/
+recuperações; depois orquestração/conferência final, latência, automações e
+novo responsável. Manter criação bloqueada, não reiniciar fases concluídas e
+não apagar diários. Novos perfis não entram no pacote nem no bot.
 
-CI anterior, antes da PR 37, aprovado no código `280a7dc`:
-
-[40534237271](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40534237271), 27/10 às 12:47:26 Brasília.
-Confirmados os 259 cenários, pacote de nove arquivos sem inicializadores,
-sintaxe e regressões. Run duplicado do push cancelado; registro posterior
-só documental, sem repetir a bateria do bot.
-
-Retomar pelos domínios pessoais restantes e pela orquestração/conferência
-final conjunta. Não reiniciar o financeiro antigo depois de mudar nível, nem
-apagar diários. Fotos/arte, escolhas, atributos/treinos/marcos/recursos,
-inventário, entidades/cartões, propriedades de recuperação/editor (incluindo
-`r53_versoes`/`r53_marcas_custom`), automações e novo responsável seguem
-pendentes. Detalhes/provas em [ETAPA-7.md](ETAPA-7.md) e
-[INICIALIZACAO-PRODUTOR.md](INICIALIZACAO-PRODUTOR.md).
-
-Código do bot permanece `26ec106`, CI 40496955301, PR 84 dependente da 83;
-atualização só documental. Criação incondicionalmente bloqueada; sem merge
-em main, deploy, ZIP novo, Gateway, modelo pago ou novo OAuth.
+Bot permanece runtime `26ec106`, CI 40496955301 e PR 84 na base da 83.
+Consumidor mudou só docs, sem suíte extensa/ZIP novo. Sem merge em main,
+deploy, Gateway, modelo pago, novo OAuth ou escrita em oficial/jogador.
 Próxima implementação: GPT-6 Astra / Alto; revisão focal: Médio.
 
 ## Checkout e Git
@@ -132,7 +118,7 @@ ativação manual indispensável e comprovar resultado nas três classes de mode
 Não limpar células conhecidas de forma avulsa para declarar uma ficha nova limpa.
 
 Produtores conferidos:
-- Ficha---RPG-JJK main `b0dc6aacef08b2c01a7f8a3519bbcc9bff9546ed` (incorporada na PR 31).
+- Ficha---RPG-JJK main `57117fbe5c2361e6a09bfa00f037b4bcfaa8437f` (incorporada na PR 31).
 - JJK---Project main `353d7728fa4f505f830dc6c0421929a0ab2668c1`.
 - Texto R57; contrato mecânico R53/ANALISE 12. Revalidar antes de mudar o produtor.
 

@@ -1,6 +1,53 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
-## Continuação: nível/base de XP e textos pessoais · 27/10
+## Escolhas, recursos e condições · continuação de 27/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`a55517deb9b77c43b796c80ac41f1029c0fdebd7`, sobre main `57117fbe5c2361e6a09bfa00f037b4bcfaa8437f`
+(merge `6d4ddf1`; PR 38 só registra backup 11/instalação salarial por outro trabalho).
+Não reaplicar essa instalação. Inicializadores continuam fora do pacote e do bot.
+
+- 19 escolhas básicas: Caminho/Trilha/Origem, atributos base/distribuição de
+  Corpo, contadores de marcos e seletores pessoais de atributo.
+- 20 recursos/bônus: atuais voltam às fórmulas dos máximos, bônus/temporários
+  ficam zerados e caixas ± vazias; não copia resultado numérico antigo.
+- Nove condições/descanso: Sequelas, extras, Exaustão, resistências/imunidades,
+  convite de descanso e registro anterior. Notas voltam à fábrica, incluindo
+  a instrução de Sequelas extras. Formatos, validações e catálogos preservados.
+
+Um diário de cena com 29 entradas excedia o tamanho permitido: domínios foram
+separados e o executor recusa acima de 9.000 bytes UTF-8 antes de gravar.
+Assinatura financeira v1 mantida. Contrato gerado de fonte pública e conferido
+sem regeneração; variantes Google restritas de separador/aspas, sem mudar texto
+literal ou aceitar outra conta. Guardas desses perfis usam leitura em bloco.
+
+**502 cenários locais passaram** (101/80/78 + 243 novos), com todas as falhas
+antes/depois das escritas. Leitura nativa das duas oficiais: 112 conferências
+por documento, zero divergências finais, sem escrita. Projeção Sheets API numa
+cópia privada nova do Ciclo: 48 campos/notas e 11.634 comparações delimitadas
+preservadas sem diferença; atuais acompanharam máximos após escolhas fictícias
+(23/23, 8/8, 26/26). Cópia na lixeira, aba fechada. **Não executou os novos
+perfis/diários Apps Script nem OAuth próprio das Guias.** [Prova e limites](https://github.com/cupcake-mochi/Ficha---RPG-JJK/blob/a55517deb9b77c43b796c80ac41f1029c0fdebd7/r53/inicializacao/ESCOLHAS-RECURSOS-2026-10-27.md).
+
+CI Linux aprovado no código `a55517d`: [40540295538](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40540295538),
+27/10 às 13:24:13 Brasília. Confirmados 502 cenários, pacote de nove arquivos,
+regressões, sintaxe de 277 fontes Python/212 JS-GS, catálogo/progressão/Kaori.
+O duplicado do push já havia terminado aprovado quando se tentou cancelá-lo;
+não somar execuções. Registro posterior só documental com `[skip ci]`.
+
+Criação permanece bloqueada. Faltam Grau, treinos, capacidades de Origem,
+técnica/Famílias, inventário, entidades/cartões/MONTAGENS, fotos/arte e caches/
+recuperações, além de orquestração/conferência conjunta, latência, ativação,
+novo responsável e teste completo dos executores. Não repetir fases antigas
+nem apagar diários. As pendências nos registros abaixo são históricas do código
+indicado em cada entrada; não reimplementar os domínios já cobertos aqui.
+
+Bot runtime continua `26ec106`, CI 40496955301, PR 84 dependente da 83. Só docs
+mudaram no consumidor; sem suíte extensa ou ZIP novo, merge em main, deploy,
+Gateway, modelo pago, novo OAuth ou escrita em oficial/jogador. Próxima
+implementação: GPT-6 Astra / Alto; revisão focal: Médio.
+
+## Registro anterior: nível/base de XP e textos pessoais · 27/10
 
 O produtor incorporou a main `9536746405f12a9e159e9173b54a2a861c0a871a`
 (merge `8cb12ac`), incluindo XP base e fechamento da otimização Android.
