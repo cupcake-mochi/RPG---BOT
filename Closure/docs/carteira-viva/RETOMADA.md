@@ -3,6 +3,41 @@
 Atualizado em 27/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
+## Avanço mais recente · 27/10
+
+Produtor PR 31: `280a7dcd0b3fb56b0a43dd6e0d88aaadcb08d634`, com main
+`9536746405f12a9e159e9173b54a2a861c0a871a` incorporada (merge `8cb12ac`).
+Além do financeiro, há protótipos de nível inicial/base XP (AH11/CZ54) e
+14 textos/notas pessoais. Executor privado compartilhado mantém diário e
+assinatura financeira v1. Não integram o pacote ou o bot.
+
+259 cenários offline passaram (101/80/78), mais 20.643 verificações XP/9.900
+combinações. Projeção nativa dos efeitos em cópia nova da Era passou: nível
+10/base 3.700, missão 50 elevou XP a 3.750, retirada voltou a 3.700; textos
+limpos, 8.998 comparações delimitadas sem diferença. Cópia na lixeira/aba
+fechada. Corrigida a guarda G46 para o separador nativo `;`, sem aceitar outra
+regra. **A projeção não executou os novos diários Apps Script**. O ensaio
+financeiro antigo `4f3555d` não valida o executor extraído.
+
+CI Linux do produtor aprovado no código `280a7dc`:
+[40534237271](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40534237271), 27/10 às 12:47:26 Brasília.
+Confirmados os 259 cenários, pacote de nove arquivos sem inicializadores,
+sintaxe e regressões. Run duplicado do push cancelado; registro posterior
+só documental, sem repetir a bateria do bot.
+
+Retomar pelos domínios pessoais restantes e pela orquestração/conferência
+final conjunta. Não reiniciar o financeiro antigo depois de mudar nível, nem
+apagar diários. Fotos/arte, escolhas, atributos/treinos/marcos/recursos,
+inventário, entidades/cartões, propriedades de recuperação/editor (incluindo
+`r53_versoes`/`r53_marcas_custom`), automações e novo responsável seguem
+pendentes. Detalhes/provas em [ETAPA-7.md](ETAPA-7.md) e
+[INICIALIZACAO-PRODUTOR.md](INICIALIZACAO-PRODUTOR.md).
+
+Código do bot permanece `26ec106`, CI 40496955301, PR 84 dependente da 83;
+atualização só documental. Criação incondicionalmente bloqueada; sem merge
+em main, deploy, ZIP novo, Gateway, modelo pago ou novo OAuth.
+Próxima implementação: GPT-6 Astra / Alto; revisão focal: Médio.
+
 ## Checkout e Git
 
 Continuação Linux de 27/10: usar explicitamente
@@ -38,12 +73,14 @@ financeiros (máximo de 5.000 linhas; recusa acima disso), entradas e notas de
 missão, caixa de lançamento e caixas de correção. Só os sinais são guardados;
 versão da sondagem entra na comparação da confirmação. Dez testes novos;
 79 direcionados passaram e CI Linux completo aprovado no SHA indicado acima.
+Registro do ensaio financeiro anterior (antes do avanço descrito no topo).
 Leia também INICIALIZACAO-PRODUTOR.md: o primeiro domínio financeiro está
 implementado separadamente na PR 31 do produtor, em rascunho, sem integração
 no bot. 99 cenários novos e CI do produtor passaram. A regra confirmada pelo
 usuário é preservar configurações extras da mesa e inicializar os dados
-pessoais separadamente. O protótipo não cobre identidade, progressão,
-inventário, cartões/recuperações ou automações. Prévia nativa financeira em
+pessoais separadamente. Naquele código, o protótipo cobria só financeiro;
+textos e nível/base receberam os protótipos descritos no topo. A inicialização
+pessoal inteira, inventário, cartões/recuperações e automações seguem pendentes. Prévia nativa financeira em
 cópia do Ciclo concluída em 115,013 s; a primeira aplicação atingiu 360,813 s
 e retomou em 236,503 s. Código
 corrigido `4f3555d`, documentação `352929a`, CI 40505846627 verde; no máximo quatro escritas/chamada,
@@ -82,7 +119,7 @@ ativação manual indispensável e comprovar resultado nas três classes de mode
 Não limpar células conhecidas de forma avulsa para declarar uma ficha nova limpa.
 
 Produtores conferidos:
-- Ficha---RPG-JJK main `d0836390f90b435b4796313e898eaaa1a4a4da8b`.
+- Ficha---RPG-JJK main `9536746405f12a9e159e9173b54a2a861c0a871a` (incorporada na PR 31).
 - JJK---Project main `353d7728fa4f505f830dc6c0421929a0ab2668c1`.
 - Texto R57; contrato mecânico R53/ANALISE 12. Revalidar antes de mudar o produtor.
 
@@ -116,7 +153,8 @@ Gateway duplicado, escrita em oficiais/jogadores ou publicação da Carteira.
 
 ## Próximo passo
 
-**Concluir a etapa 7**, implementando/validando no produtor a proposta de
+**Concluir a etapa 7**, continuando os domínios pessoais restantes e a
+orquestração/conferência final no produtor, conforme a proposta de
 INICIALIZACAO-PRODUTOR.md e depois provando a criação com
 OAuth próprio das Guias quando o ambiente privado estiver disponível. Manter
 a criação desligada até cumprir o critério do PLANO.md. Depois, etapa 8,

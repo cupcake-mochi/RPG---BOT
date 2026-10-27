@@ -1,5 +1,30 @@
 # Testes da Carteira viva
 
+## Novos domínios do produtor · 27/10
+
+PR 31, código `280a7dc`, sobre a main `9536746`: **259 cenários offline**
+(101 financeiros, 80 nível/base XP, 78 textos). Protocolo de falha/retomada,
+fórmulas/curva da mesa, privacidade, CellImage, assinatura financeira v1 e
+ordem por domínio. Mais 20.643 verificações XP/9.900 combinações sem exportação
+opcional. Não somar à suíte de 1.314 do consumidor, cujo código não mudou.
+
+CI Linux do produtor aprovado no código `280a7dc`:
+[40534237271](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40534237271), 27/10 às 12:47:26 Brasília.
+Confirmados os 259 cenários, pacote de nove arquivos sem inicializadores,
+sintaxe e regressões. Run duplicado do push cancelado; registro posterior
+só documental, sem repetir a bateria do bot.
+
+Projeção dos efeitos via Sheets API em cópia privada da Era: 14 textos/notas
+limpos, nível 10/base 3.700; missão de 50 levou XP a 3.750, retirada voltou a
+3.700; 8.998 comparações delimitadas preservadas sem diferença. G46 com `;`
+motivou correção e regressões positiva/negativa da guarda. Cópia na lixeira,
+aba fechada. **Não executou novos perfis, diários ou retomada Apps Script**;
+o ensaio financeiro anterior também não valida a extração atual. OAuth
+próprio, automações e matriz completa ainda pendentes. [Escopo](ETAPA-7.md).
+Criação pelo bot permanece bloqueada; testes do produtor entram no smoke Linux.
+
+## Registro anterior do financeiro
+
 Inicializador financeiro em protótipo no produtor, PR 31 (27/10): 99 cenários
 novos offline e CI Linux aprovados; não integram a contagem de 1.314 do bot.
 Falhas antes/depois de cada escrita, retomada parcial de conteúdo/notas e

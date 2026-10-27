@@ -7,7 +7,7 @@ com inventário ancorado nas fontes atuais e critérios verificáveis.
 
 Repositórios reconferidos nesta continuação:
 
-- Ficha---RPG-JJK: `d0836390f90b435b4796313e898eaaa1a4a4da8b`.
+- Ficha---RPG-JJK main: `9536746405f12a9e159e9173b54a2a861c0a871a`; protótipos PR 31 em `280a7dcd0b3fb56b0a43dd6e0d88aaadcb08d634`.
 - JJK---Project: `353d7728fa4f505f830dc6c0421929a0ab2668c1`.
 - Consumidor: PR 84 de RPG---BOT, dependente da etapa 6; sem publicação.
 
@@ -15,7 +15,44 @@ Os fontes abaixo não substituem uma inspeção do código instalado na cópia.
 `r53/OFICIAIS.md` registra os incrementos das oficiais; o pacote integral
 gerado não foi instalado por esta tarefa e não deve ser promovido por rotina.
 
-## Esclarecimento e implementação parcial em 27/10
+## Domínios adicionais do produtor · 27/10
+
+PR 31 em rascunho, código `280a7dc`, incorpora a main acima (merge `8cb12ac`).
+O executor financeiro foi extraído para perfis fixos sem mudar o diário v1;
+a assinatura anterior tem regressão. Não aceita plano enviado pelo navegador.
+
+| Protótipo | Escritas | Preservação e limite |
+|---|---|---|
+| Nível/base XP | FICHA AH11; DADOS CZ54 | Usa regra inicial e curva da campanha; exige fase financeira da mesma operação e missões vazias. Não altera fórmulas ou distribui atributos/marcos. |
+| Textos pessoais | 14 entradas e notas em CARTEIRA/FICHA PESSOAL | Rótulos e espelhos conhecidos; nome volta ao texto de preenchimento. Imagens em célula recusadas; imagens sobrepostas ainda não tratadas. |
+
+Leitor recusa CellImage/objetos em vez de misturar imagens como `{}`. Regra
+G46 aceita `,` ou `;` da fórmula conhecida, sem afrouxar outras diferenças.
+259 cenários offline (101/80/78) e 20.643 verificações XP passaram. Projeção
+nativa dos efeitos via Sheets API, numa cópia nova privada da Era: 14 entradas
+limpas, nível 10/base 3.700, missão de 50 levou XP a 3.750 e retirada voltou
+a 3.700. 8.998 comparações delimitadas preservadas sem diferença; cópia na
+lixeira, aba fechada. [Alvos e prova](https://github.com/cupcake-mochi/Ficha---RPG-JJK/blob/280a7dcd0b3fb56b0a43dd6e0d88aaadcb08d634/r53/inicializacao/NIVEL-TEXTOS-2026-10-27.md).
+
+CI Linux do produtor aprovado no código `280a7dc`:
+[40534237271](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40534237271), 27/10 às 12:47:26 Brasília.
+Confirmados os 259 cenários, pacote de nove arquivos sem inicializadores,
+sintaxe e regressões. Run duplicado do push cancelado; registro posterior
+só documental, sem repetir a bateria do bot.
+
+**Não executou os novos diários Apps Script nem OAuth próprio das Guias.**
+Ensaio financeiro antigo `4f3555d` não valida o executor extraído. Todos os
+perfis mantêm `criacaoDisponivel=false`; bot não os chama e criação continua
+bloqueada. Falta orquestração e conferência conjunta: depois de mudar o nível,
+não repetir o financeiro antigo nem apagar diários para reiniciar fases.
+
+Ainda faltam fotos/arte, escolhas, atributos/treinos/marcos/recursos,
+inventário, entidades/cartões e recuperações/editor; considerar também os
+caches novos `r53_versoes`/`r53_marcas_custom`. Automação, latência, prova do
+novo responsável e integração permitida com drive.file continuam exigidas.
+Nenhum pacote instalado, merge em main ou deploy nesta continuação.
+
+## Registro anterior: esclarecimento e financeiro
 
 O usuário confirmou: o modelo do servidor é a ficha do sistema com
 configurações extras da mesa. Preservar regras e catálogos do servidor;
@@ -69,7 +106,7 @@ pessoal completo, propriedades de recuperação, automações, responsabilidade
 e execução compatível com drive.file. O consumidor permanece bloqueado,
 mesmo com o domínio financeiro concluído. Não declarar a etapa 7 pronta.
 
-## Inventário mínimo comprovado no fonte
+## Inventário financeiro anterior e domínios ainda exigidos
 
 Referências fixadas no commit do produtor:
 [Salarios.gs](https://github.com/cupcake-mochi/Ficha---RPG-JJK/blob/d0836390f90b435b4796313e898eaaa1a4a4da8b/apps-script/Salarios.gs),

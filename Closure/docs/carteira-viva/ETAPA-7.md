@@ -1,6 +1,55 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
-## Continuação Linux de 27/10 — modelo e inicialização financeira
+## Continuação: nível/base de XP e textos pessoais · 27/10
+
+O produtor incorporou a main `9536746405f12a9e159e9173b54a2a861c0a871a`
+(merge `8cb12ac`), incluindo XP base e fechamento da otimização Android.
+Não reabrir desempenho. Código novo `280a7dcd0b3fb56b0a43dd6e0d88aaadcb08d634`
+na [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), em rascunho.
+
+- Executor privado por perfis fixos; diário/assinatura financeira v1 preservados.
+- Nível inicial/base XP: escreve AH11/CZ54 pela regra e curva atuais da mesa,
+  sem copiar XP antigo nem alterar fórmulas. Não distribui atributos/marcos.
+- Identidade textual: 14 entradas/notas pessoais, com rótulos e espelhos
+  conferidos. Fotos/arte, escolhas, recursos e inventário continuam pendentes.
+- **259 cenários offline**: 101 financeiros, 80 nível/base, 78 textos.
+  XP independente: 20.643 verificações/9.900 combinações sem exportação opcional.
+  Essas contagens são do produtor, não da suíte de 1.314 do bot.
+
+CI Linux do produtor aprovado no código `280a7dc`:
+[40534237271](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40534237271), 27/10 às 12:47:26 Brasília.
+Confirmados os 259 cenários, pacote de nove arquivos sem inicializadores,
+sintaxe e regressões. Run duplicado do push cancelado; registro posterior
+só documental, sem repetir a bateria do bot.
+
+A leitura Google encontrou separador `;` em G46; corrigida a guarda para
+aceitar somente essa variante da fórmula conhecida. Alterar a regra continua
+recusado, com regressão. Em nova cópia privada da Era, projeção dos efeitos
+via Sheets API: 14 textos/notas limpos, nível 10/base 3.700, XP 3.700→3.750
+com missão de 50→3.700 após retirar. 8.998 comparações de campos preservados
+nos intervalos lidos sem diferença. Cópia na lixeira e aba fechada.
+
+**Essa projeção não executou os novos perfis Apps Script**, nem seus diários,
+travas ou retomadas. O ensaio financeiro anterior é do código `4f3555d`, antes
+da extração e da main atual. Nenhum desses resultados atesta criação inteira,
+OAuth próprio das Guias ou automações. Relatório e alvos:
+[NIVEL-TEXTOS-2026-10-27.md](https://github.com/cupcake-mochi/Ficha---RPG-JJK/blob/280a7dcd0b3fb56b0a43dd6e0d88aaadcb08d634/r53/inicializacao/NIVEL-TEXTOS-2026-10-27.md).
+
+Os perfis não entram no pacote e não são chamados pelo bot. Cada domínio
+retorna `criacaoDisponivel=false`; `criar_por_modelo` continua bloqueado sem
+exceção. Falta orquestração e conferência final conjunta: depois de mudar o
+nível, repetir o financeiro antigo deve recusar por mudança de campo protegido.
+Não reiniciar fases nem apagar diários para contornar. Recuperações/editor
+(inclusive caches novos `r53_versoes`/`r53_marcas_custom`), fotos, escolhas,
+atributos, treinos, marcos, recursos, inventário, entidades/cartões, automações
+e novo responsável ainda precisam de implementação/aceite.
+
+Bot continua no runtime `26ec106`, CI 40496955301, PR 84 dependente da etapa 6.
+Só documentação mudou no consumidor; sem nova suíte extensa ou ZIP. Não houve
+merge em main, deploy, Gateway, chamada paga, novo OAuth ou escrita em
+oficial/jogador. Próxima implementação: GPT-6 Astra / Alto; revisão focal: Médio.
+
+## Registro anterior: modelo e ensaio financeiro
 
 O modelo do servidor é a ficha do sistema com configurações extras da mesa,
 conforme esclarecimento do usuário. Preservar essas regras/catálogos, sem
