@@ -3,7 +3,41 @@
 Atualizado em 28/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
-## CARTEIRA e memórias · continuação de 28/10
+## MONTAGENS · continuação de 28/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`5749b3af25f3b4082900a26685db655a696c4c26`. Main do produtor `ef361cc` e bot
+`de42447` reconferidas sem mudanças. Implementado o protocolo das versões
+salvas dos 249 cartões: 48.015 entradas, todas as Classes, um diário por cartão.
+Defaults/notas de entrada restaurados; títulos, Classes máximas calculadas,
+rótulos, instruções e demais domínios preservados. Validação/mescla inesperada,
+fórmula desconhecida ou mudança concorrente causa recusa. Nenhuma alteração
+no executor financeiro ou nos contratos anteriores.
+
+370 cenários novos e 101 financeiros passaram localmente. Coleção completa
+**1.470** confirmada no [CI 40690086385](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40690086385),
+aprovado no código `5749b3a` em 28/10 às 09:45:06 Brasília. Sintaxe 277 Python/
+228 JS-GS e demais verificações passaram. Duplicado 40690078538 cancelado.
+Fechamento produtor `3cca7c5` apenas documental, `[skip ci]`. Os diários sintéticos dos 249 cartões somam 178.035 bytes;
+isso não certifica a quota global da cópia. Leitura das duas oficiais: oito
+modos em cada uma, 990 entradas e 310 guardas por arquivo, zero divergências,
+sem escrita. Não criou cópia nem executou Apps Script/OAuth nesta rodada.
+Relatório produtor: `r53/inicializacao/MONTAGENS-2026-10-28.md`.
+
+**Os cartões visíveis ainda faltam.** Seus valores e validações dependem das
+funções liberadas: não restaurar números/checkboxes por cima de listas `—`.
+Também faltam dados/recursos das entidades, arte, orquestração/quota e conferência
+global, automações/treinos/notas vivas, responsável, integração drive.file e
+prova nativa completa. O leitor real comprovou que limpar MONTAGENS mantém o
+cache persistente antigo; a limpeza do domínio de memórias precisa terminar
+antes de religar o editor e conferir o conjunto. Criação continua bloqueada.
+
+Consumidor só documentação; runtime `26ec106`, CI histórico 40496955301,
+1.314 executados/1.313 aprovados/um opcional. Sem suíte ou ZIP novos, merge,
+deploy, Gateway, modelo pago, escopos novos ou escrita em oficial/jogador.
+Próxima implementação: GPT-6 Astra / Alto; revisão focal Médio.
+
+## Histórico: CARTEIRA e memórias · continuação de 28/10
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
 `8bb93355cb5d20d75ead1d8ba9a4b6d7c3ad88cc`. Main `ef361cc` e bot main
