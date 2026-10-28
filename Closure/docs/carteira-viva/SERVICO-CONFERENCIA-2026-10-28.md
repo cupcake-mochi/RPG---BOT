@@ -1,5 +1,9 @@
 # Conferência na fila do serviço
 
+Atualização posterior da observação de permissões: no cenário do dono,
+Discord 1.686→578 sem cache ou remoção de verificações. O perfil anterior abaixo
+é histórico; ver [medição atual](OBSERVACAO-MEMBRO-2026-10-28.md).
+
 28/10/2026 · etapa 7 parcial, PR84. Não publicado. Criação bloqueada.
 
 ## Implementação

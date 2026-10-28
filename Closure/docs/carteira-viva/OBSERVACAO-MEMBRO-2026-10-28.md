@@ -27,7 +27,7 @@ foram conservados, inclusive fila, antes/depois da cota/rede e entrega por clien
 Acesso básico negado pode exigir prova completa; conflito de fonte/contrato,
 prazo, erro de API ou dado inválido não vira permissão. A comprovação completa
 é novamente validada no banco. `membro()` comum segue sempre com três consultas.
-Payload de membro/roles malformado recusa antes de chamar a prova básica.
+Identidade divergente ou lista de cargos malformada recusa antes de chamar a prova básica.
 
 ## Medição controlada
 
@@ -60,7 +60,11 @@ fonte trocada, entrega após perda de acesso e transição de cargo para admin.
 17 passaram no lote em 34,633 s; o adicional de transição em 5,688 s.
 44 regressões de serviço/provedores em 67,995 s e 82 de consultas/web/modelos
 em 39,085 s: **144 testes locais distintos**, zero falhas finais.
-Suíte completa aguardando CI desta rodada.
+Código `45c03c877a85b31303ebc3d9bcd44a71457c2d2f`: [CI completo 40762548326](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40762548326)
+aprovado em 28/10 às **17:27:25 Brasília**: 1.457 executados/1.456 aprovados/um
+opcional, zero falhas, 334,900 s. Lotes locais: 144 distintos, 18 novos aprovados.
+Fechamento posterior só documental [skip ci], sem repetir suíte/publicação.
+
 
 Nenhuma guarda de leitura foi removida, nenhum escopo/intent/acesso novo, schema
 ou endpoint. Sem conta real, escrita Google, modelo pago, merge ou deploy.

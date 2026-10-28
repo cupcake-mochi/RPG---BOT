@@ -7,7 +7,10 @@ explícito, não busca flags administrativas. Caso contrário, consulta permiss�
 completas como antes. Sem cache/TTL e sem remover pontos de revalidação.
 Perfil simulado do dono: Discord 1.686→578 (-65,72%), Google 183/cotas e um
 OAuth iguais. Administrador/dono do servidor por prerrogativa conserva três GETs.
-18 novos e 126 existentes locais aprovados; suíte completa aguardando CI.
+Código `45c03c877a85b31303ebc3d9bcd44a71457c2d2f`: [CI completo 40762548326](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40762548326)
+aprovado em 28/10 às **17:27:25 Brasília**: 1.457 executados/1.456 aprovados/um
+opcional, zero falhas, 334,900 s. Lotes locais: 144 distintos, 18 novos aprovados.
+Fechamento posterior só documental [skip ci], sem repetir suíte/publicação.
 Criação bloqueada, sem merge/deploy ou escrita Google. Próximo: prova nativa
 em descartável pelo OAuth próprio, com cotas/latência e caminhos alternativos.
 [Prova, medição e limites](OBSERVACAO-MEMBRO-2026-10-28.md). Sol Alto; revisão Médio.
