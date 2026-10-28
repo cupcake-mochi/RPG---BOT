@@ -1,5 +1,45 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Leitura conjunta e ordem de Classe 0 · 28/10 — ainda parcial
+
+Produtor PR31, código `4987b50`; main `ef361cc` e bot main `de42447` reconferidas.
+Mapa direto de 599 perfis: 10.178 operações, 17.316 guardas declaradas, zero
+escritas cruzadas e 83 interseções escrita/guarda. Não enumera toda leitura
+indireta/dinâmica. Encontrado defeito na ordem dos cinco Classe 0: cada guarda
+lê campos da linha seguinte. Com todos preenchidos, ordem antiga falha; nova
+ordem de baixo para cima passa e mantém os recibos/guardas dos cartões.
+
+Sequência v2, chave nova: não adota v1/fases avulsas nem apaga diários. Guarda
+uma projeção das proteções financeiras sem o nível que a progressão muda;
+a guarda antiga completa continua igual. Cadeia dos registros dos filhos e
+contador são fechados no avanço da fase. Ao terminar, compara a cadeia e salva
+um retrato compacto; a leitura posterior detecta alteração de registro sem
+reconstruir todos os elos por página. Checksum não é autenticação de cliente.
+
+`conferencia.gs` lê um perfil por chamada, confere registros, guardas e todos
+os pós-estados/fábrica, sem chamar Aplicar ou limpar células/propriedades.
+Só grava seu checkpoint. O nível inicial é conferido pela progressão; o
+financeiro conserva as outras proteções capturadas. Imagens atuais e
+consistência temporal ainda não são certificadas. Todos os indicadores de
+liberação continuam falsos mesmo ao terminar a leitura.
+
+101 financeiros, 67 da sequência e 43 novos da leitura aprovados localmente.
+Maiores registros: coordenador 1.773 bytes, checkpoint 354 bytes. CI completo [40722524965](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40722524965)
+aprovado no código `4987b50a947208502934561ac0351670fcdaebc7`, 28/10 às
+13:10:58 Brasília: **2.936 cenários/zero falhas**. Pacote nove arquivos,
+sintaxe 277 Python/250 JS-GS e demais regressões passaram. Duplicado
+40722509904 cancelado; fechamento só documental [skip ci], sem nova suíte/publicação.
+Os 599 slots de protocolo usam perfis pequenos controlados, não uma aplicação integrada de todos os perfis reais numa ficha.
+Há testes reais em VM de financeiro/progressão e dos cinco Classe 0 preenchidos.
+Não executa fórmulas nem mede latência Google. Relatório produtor
+`r53/inicializacao/CONFERENCIA-2026-10-28.md`, mapa JSON e gerador reproduzível.
+
+Próximo: consistência temporal/imagens atuais/arte, preservação global, orçamento
+nativo, automações/treinos/notas, novo responsável e integração/prova drive.file.
+Não publicar ou liberar criação pelo CI. Sem Google/Discord, oficial/jogador,
+novo acesso, modelo pago, merge/deploy/Gateway. Consumidor só docs, runtime
+`26ec106`/CI histórico 40496955301, sem suíte/ZIP novo. Sol Alto; revisão Médio.
+
 ## Sequência fixa dos perfis · 28/10 — ainda parcial
 
 Produtor [PR31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
