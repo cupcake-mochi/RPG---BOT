@@ -136,31 +136,35 @@ class Provedores:
                 raise
             raise ErroProvedor("temporario") from None
 
+    async def versao_arquivo(self, acesso: str, arquivo: str) -> str:
+        """Observação autenticada; contador fica como texto, sem perda de precisão."""
+        if not isinstance(arquivo, str) or not ARQUIVO.fullmatch(arquivo):
+            raise ErroProvedor("arquivo")
+        meta = await self._json("https://www.googleapis.com/drive/v3/files/" + arquivo +
+                                "?fields=id,mimeType,isAppAuthorized,trashed,version", acesso)
+        if (not isinstance(meta, dict) or meta.get("id") != arquivo or
+                meta.get("mimeType") != MIME or meta.get("isAppAuthorized") is not True or
+                meta.get("trashed") is True or not isinstance(meta.get("version"), str) or
+                not re.fullmatch(r"[0-9]{1,30}", meta["version"])):
+            raise ErroProvedor("arquivo")
+        return meta["version"]
+
     async def ler_analise(self, acesso: str, arquivo: str):
         """Grade de resultados calculados; nunca exporta fórmulas ou o livro inteiro."""
         from urllib.parse import urlencode
         from .leitura_google import da_grade
         if not isinstance(arquivo, str) or not ARQUIVO.fullmatch(arquivo):
             raise ErroProvedor("arquivo")
-        url = "https://www.googleapis.com/drive/v3/files/" + arquivo
-        campos = "?fields=id,mimeType,isAppAuthorized,trashed,version"
-        antes = await self._json(url + campos, acesso)
-        def validar(meta):
-            if (not isinstance(meta, dict) or meta.get("id") != arquivo or
-                    meta.get("mimeType") != MIME or meta.get("isAppAuthorized") is not True or
-                    meta.get("trashed") is True or not isinstance(meta.get("version"), str)):
-                raise ErroProvedor("arquivo")
-        validar(antes)
+        antes = await self.versao_arquivo(acesso, arquivo)
         query = urlencode({"ranges": "'ANALISE'!A1:D20002", "fields":
             "spreadsheetId,sheets(properties(title),data(startRow,startColumn,rowData(values(effectiveValue))))"})
         grade = await self._json("https://sheets.googleapis.com/v4/spreadsheets/" + arquivo + "?" + query,
                                  acesso, limite=16 * 1024 * 1024)
         ficha = await asyncio.to_thread(da_grade, grade, arquivo)
-        depois = await self._json(url + campos, acesso)
-        validar(depois)
-        if antes["version"] != depois["version"]:
+        depois = await self.versao_arquivo(acesso, arquivo)
+        if antes != depois:
             raise ErroProvedor("alterada")
-        return ficha, antes["version"]
+        return ficha, antes
 
     async def usuario_discord(self, token: str) -> str:
         user = await self._json(DISCORD + "/users/@me", token)

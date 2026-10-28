@@ -1,5 +1,10 @@
 # Rodar a conexão de fichas
 
+28/10: guarda interna de leitura versionada e páginas sem checkpoint no produtor
+estão em teste, sem nova rota/endpoint. A execução do produtor com o escopo
+atual ainda depende de adaptador; não habilitar scripts.run nem ampliar acesso
+por pressuposição. [Contrato e limites](LEITURA-VERSIONADA-2026-10-28.md).
+
 27/10: a validação de modelo usa sondagem 2. Primeiro lê os metadados de grade;
 depois solicita intervalos explícitos para os três históricos financeiros,
 entradas/notas de missão e caixas pendentes. Limite físico de 5.000 linhas

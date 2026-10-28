@@ -1,5 +1,35 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Observação de versão entre lotes · 28/10 — ainda parcial
+
+Produtor PR31, código `2427024`: plano e lotes de quatro perfis sem gravar
+células nem propriedades; 631 perfis/158 páginas, 16 cenários locais passaram.
+Amostra produzida pelas funções GS reais em VM foi aceita no Python; isso prova
+saída do protocolo, não chamada remota/autenticação/cálculo Google.
+
+Consumidor agora tem código: `leitura_temporal.py`, guarda em memória de versão
+Drive/contexto antes/depois do plano e de cada página, mais finalização. Sem
+token armazenado, página duplicada, rebaseline silencioso ou liberação de
+criação. Erro temporário/cancelamento não avança; diferença de versão/acesso
+invalida a rodada. Cálculos/snapshot continuam sem certificado. Novo método
+versao_arquivo corrige versão vazia antes aceita na leitura existente;
+reprodução na base 73c2914 passou antes/recusou depois, sem flexibilizar teste.
+
+24 novos + 47 de leitura/modelos locais: 71 aprovados; CI completo em fechamento.
+Pacote regenerado: 90 arquivos/CRC/fontes iguais, sem env/bancos/campanha ou
+Carteira, não publicado. Contrato, fluxo e limites em
+[LEITURA-VERSIONADA-2026-10-28.md](LEITURA-VERSIONADA-2026-10-28.md).
+
+Dependência explícita: transporte de execução do produtor não foi entregue.
+`scripts.run` exige projeto/implantação/escopos próprios, não basta presumir
+`drive.file`. Próximo adaptador deve preservar permissão por arquivo escolhido
+(REST/backend ou rota específica avaliada separadamente). Sem novo consentimento,
+publicação Apps Script ou uso de credenciais da Arquivista. Criação continua
+bloqueada, sem rota para contornar. Restam execução/código/isolamento, cálculos/
+arte/preservação global/quota nativa, automações/treinos/notas e responsável.
+Sem Google/Discord real, modelo pago ou merge/deploy; runtime publicado não foi
+alterado. Sol Alto para adaptar/integrar; revisão Médio.
+
 ## Leitura conjunta e ordem de Classe 0 · 28/10 — ainda parcial
 
 Produtor PR31, código `4987b50`; main `ef361cc` e bot main `de42447` reconferidas.
