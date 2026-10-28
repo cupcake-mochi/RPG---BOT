@@ -11,7 +11,11 @@ Não é diário persistido de limpeza ou retomada de escrita; schema 6 preservad
 Corrigido no produtor o piso do XP: “—” abaixo, zero no inicial. Caso falhou
 antes/passou depois; fonte e sondagem Google em descartável confirmaram. Nível 1
 sem custo 1→2 continua pendente. Cópia na lixeira/aba fechada; não executou GS ou
-serviço OAuth das Guias. 23 novos locais; CI completo em fechamento. Faltam
+serviço OAuth das Guias. 23 novos e 95 existentes passaram nos lotes locais.
+Código consumidor 22b6512, CI 40743430137: 1.385 executados/1.384 aprovados/um
+opcional, zero falhas, 181,422 s, 15:19:00 Brasília. Produtor d7adec7, CI
+40743272303: 2.999 cenários/zero falhas e demais regressões, 15:18:33 Brasília.
+Fechamento só documental [skip ci]; código e recibo continuam fora do deploy. Faltam
 estado/recuperação, propriedades/demais domínios, autorização/fila/cópia, arte/
 automações/responsável e prova nativa integral. Criação bloqueada, sem merge/deploy.
 [Implementação, provas e retomada](CONFERENCIA-REST-2026-10-28.md). Sol Alto; revisão Médio.

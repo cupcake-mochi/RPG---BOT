@@ -1,6 +1,6 @@
 # Conferência parcial por contrato REST
 
-28/10/2026 · etapa 7 parcial, PR84. Criação bloqueada, sem publicação.
+28/10/2026 · etapa 7 parcial, PR84, código `22b65125b283bee7bc37be3d79b8d554b4d19dab`. Criação bloqueada, sem publicação.
 Main bot de42447/produtor ef361cc reconferidas antes da implementação.
 
 ## Contrato e conferência
@@ -84,10 +84,15 @@ publicar scripts.run ou tornar criar_por_modelo permissivo para contornar isso.
 ## Validação e entrega
 
 23 novos testes do consumidor e 95 direcionados existentes passaram nos lotes
-desta continuação, incluindo reabertura/rotação do recibo. CI completo em
-fechamento, esperado 1.385 executados/um opcional. Produtor: 47 novos de
-contrato/piso, 82 progressão, 67 sequência e 43 leitura locais passaram; CI completo
-em fechamento, esperado 2.999 cenários de inicialização.
+desta continuação, incluindo reabertura/rotação do recibo.
+[CI completo 40743430137](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40743430137)
+aprovado no código 22b6512: **1.385 executados/1.384 aprovados/um opcional**,
+zero falhas, 181,422 s. Job concluído em 28/10 às 15:19:00 Brasília. Não foi
+repetida a suíte completa local; logs do arquivo da execução conferidos. Produtor: 47 novos de
+contrato/piso, 82 progressão, 67 sequência e 43 leitura locais passaram. CI completo produtor 40743272303 aprovado no código
+d7adec7: 2.999 cenários/zero falhas, pacote nove arquivos/sintaxe 277 Python/
+256 JS-GS e demais regressões, 28/10 às 15:18:33 Brasília. Duplicado
+40743263267 cancelado; fechamento só documental [skip ci].
 
 ZIP ignorado regenerado sem env, 90 arquivos; CRC e bytes comparados aos fontes,
 sem Carteira, credenciais, bancos ou campanha. SHA256:
