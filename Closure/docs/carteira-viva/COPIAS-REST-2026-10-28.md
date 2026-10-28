@@ -111,17 +111,20 @@ por dono/servidor, troca de modelo e concessão, perda de autorização na cota,
 compartilhamento indevido, backup sem replay, exclusão/restauração, rotação,
 retenção e migrações. Dados fictícios e HTTP simulado; nenhuma conta real.
 
-As regressões de migração antigas criavam schemas 1/5/6 removendo tabelas
+As regressões de migração antigas criavam schemas 1/3/4/5/6 removendo tabelas
 posteriores manualmente. Passaram a remover também a tabela nova de schema 8;
 manter essa tabela e rebaixar só o número não representa uma base histórica.
 Nenhuma expectativa de autorização ou mecanismo foi afrouxada.
 
-Os lotes locais totalizam **195 testes distintos aprovados**, 29 novos e 166
-anteriores, com zero falhas finais. A primeira execução de 189 levou 162,772 s
+Os lotes locais totalizam **197 testes distintos aprovados**, 29 novos e 168
+anteriores, com zero falhas finais. A execução ampliada de 189 levou 162,772 s
 e revelou uma fixture histórica de migração incompleta; o caso corrigido passou
 em 0,134 s. Os seis testes novos adicionais entram no lote de 29 acima, sem
-somar repetições. CI completo será registrado no fechamento; o CI anterior de
-leitura não valida este código novo.
+somar repetições. O primeiro CI completo (40771002103, código `5b67ccb`) executou 1.486 testes
+em 248,815 s: duas falhas de preparação histórica dos schemas 3/4 e um opcional
+pulado. Essas fixtures também passaram a excluir a tabela de schema 8; os dois
+casos passaram localmente em 0,178 s. CI final será registrado no fechamento;
+o CI anterior de leitura não valida este código novo.
 
 Pacote ignorado regenerado: 90 arquivos/CRC/fontes iguais, sem env, Carteira,
 bancos ou cadastro de campanha; SHA256

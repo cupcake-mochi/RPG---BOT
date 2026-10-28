@@ -1,6 +1,6 @@
 # Carteira viva e personagens
 
-Planejamento de 26/10/2026, atualizado em 27/10. **Não publicado.**
+Planejamento de 26/10/2026, atualizado em 28/10. **Não publicado.**
 Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes. A galeria e a
 Carteira web têm provas locais/nativas registradas nas respectivas etapas,
 mas ainda não fazem parte do bot em produção. A etapa 7 configura o modelo

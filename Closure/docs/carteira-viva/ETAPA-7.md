@@ -5,7 +5,7 @@
 Backend interno agora guarda o envio antes do POST e, após resposta perdida,
 só reconcilia a cópia existente. Schema 8/ledger 2, vínculo ao iniciador/modelo/
 concessão, verificação do destino privado, backup sem replay e exclusão tratados.
-Sem endpoint, escrita Sheets, cadastro ou liberação de criação. 195 locais distintos aprovados, 29 novos
+Sem endpoint, escrita Sheets, cadastro ou liberação de criação. 197 locais distintos aprovados, 29 novos
 com HTTP fictício; prova nativa da cópia ainda pendente.
 
 A etapa 7 foi subdividida para mostrar o avanço: **7A** modelo/leitura/retomada
