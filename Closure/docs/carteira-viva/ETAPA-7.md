@@ -11,6 +11,11 @@ Os quatro indicadores seguem falsos e a criação permanece bloqueada.
 Faltam composição com fila/OAuth real, cópia/diário de escrita e demais domínios,
 propriedades, arte/automações/responsável e prova integrada. Produtor PR31 intacto;
 sem Google/Discord real, merge/deploy ou acesso novo nesta rodada.
+Código `4f2122d1dfc44716adefd77392c5e238724d29f3`: [CI completo 40747877347](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40747877347)
+aprovado em 28/10 às **15:49:39 Brasília**, 1.410 executados/1.409 aprovados/um
+opcional, zero falhas, 293,160 s. 25 novos + 179 regressões locais aprovados.
+Fechamento posterior só documental [skip ci], sem repetir suíte ou publicação.
+
 [Contrato, fluxo e limites](RECUPERACAO-REST-2026-10-28.md). Sol Alto; revisão Médio.
 
 ## Contrato REST e conferência parcial · 28/10 — não publicada

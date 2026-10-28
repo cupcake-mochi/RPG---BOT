@@ -72,8 +72,11 @@ revogação/prazo durante cota, confidencialidade, exclusão, rotação e backup
 indevida de uma auditoria anterior ao descarte: caso novo falhou antes da
 correção; vínculo ao ID da operação impede esse reaproveitamento. Os resultados
 finais: 25 novos aprovados em 56,257 s; somados às 179 regressões, **204 testes
-distintos locais**, zero falhas na versão final. Suíte completa aguardando CI
-desta rodada. As primeiras tentativas também corrigiram fixtures que reconectavam
+distintos locais**, zero falhas na versão final. Código `4f2122d1dfc44716adefd77392c5e238724d29f3`: [CI completo 40747877347](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40747877347)
+aprovado em 28/10 às **15:49:39 Brasília**, 1.410 executados/1.409 aprovados/um
+opcional, zero falhas, 293,160 s. 25 novos + 179 regressões locais aprovados.
+Fechamento posterior só documental [skip ci], sem repetir suíte ou publicação.
+ As primeiras tentativas também corrigiram fixtures que reconectavam
 a conta inadvertidamente ou esperavam exceção interna após sanitização do transporte;
 nenhuma guarda foi relaxada para passar os testes.
 
@@ -92,3 +95,21 @@ criação. Próximo: compor a execução de leitura no serviço sem rota públic
 validar cancelamento/revogação/fila; planejar a escrita separadamente, sem
 presumir que Sheets oferece escrita condicional atômica por versão Drive.
 GPT-6.1 Sol / Alto para implementar; Médio para revisão focal.
+
+## Próximo passo no serviço
+
+Compor uma operação interna, sem abrir criação ou aceitar método/faixa/arquivo
+arbitrário do navegador. Usar a fila existente, com chave que inclua iniciador
+e operação; manter cotas por conta Google e renovar sob a trava de conexão.
+Reconfirmar membro/cargos por `Provedores.membro` antes de cada contexto; o
+callback deve retornar o contexto de `contexto_operacao_rest` com esse membro
+atual, não guardar um hash constante da primeira solicitação. Renovação de
+refresh segue o fluxo já usado em Consultas, sem pôr token no estado persistido.
+
+Iniciar só com referência autorizada e versão recém-observada. Para retomar,
+recuperar o bilhete interno, obter credencial atual e chamar o adaptador de cada
+domínio restante. Não reaproveitar um objeto PlanoGrade entre processos ou
+aceitar cursor do cliente. Exercitar troca/revogação enquanto aguarda fila/cota,
+concorrência, prazo e cancelamento. Depois, prova de leitura em descartável pelo
+OAuth próprio, distinta do conector Google. O diário de cópia/escrita fica para
+uma implementação própria com reconciliação; nenhuma dessas leituras o substitui.
