@@ -1,5 +1,43 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Sequência fixa dos perfis · 28/10 — ainda parcial
+
+Produtor [PR31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`408a31a`; main produtor `ef361cc` e bot main `de42447` reconferidas.
+Coordenador de 599 perfis de escrita e duas inspeções de imagens, mais até 32
+recuperações capturadas no início. Ordem fixa do produtor, sem plano do navegador.
+Fotos antes de identidade/entidades; financeiro antes da progressão; memórias
+depois dos cartões/MONTAGENS; recursos atuais no fim. Não recomeça pelo financeiro
+após mudar o nível: a guarda antiga continua recusando essa mudança.
+
+Uma chamada prepara a assinatura de um filho OU aplica esse filho. Assinatura
+ativa fica durável antes do filho; cursor avança só após a conclusão. A mesma
+trava cobre coordenador, filho e avanço, sem aquisição recursiva. Miolos dos
+executores financeiro/imagens foram separados dos wrappers sem mudar contratos,
+assinaturas, guardas ou orçamento inicial anterior. Cache volátil invalidado.
+Não adota fases avulsas, apaga diários ou elimina recuperações novas por heurística.
+
+67 cenários novos locais aprovados, maior coordenador 1.553 bytes com 32
+recuperações. CI completo [40716269167](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40716269167)
+aprovado no código `408a31abbdb8824bbe39f2e2997e80e30c65914e`, 28/10 às
+12:32:28 Brasília: 2.893 cenários/zero falhas. Pacote nove arquivos, sintaxe
+277 Python/247 JS-GS e demais regressões passaram. Duplicado 40716253746
+cancelado; fechamento só documental [skip ci], sem nova suíte/publicação. Manifesto instancia os 599 perfis reais;
+601 slots do protocolo exercitados com perfis pequenos controlados. Outro teste
+usa financeiro/progressão reais (nível 29 → 10/base 3.700), retoma sem repetir
+financeiro e confirma sua recusa antiga. Não é inicialização integrada dos 599
+perfis sobre a mesma ficha, nem medição nativa da quota/latência.
+
+Ao terminar: `fasesPercorridas=true`, `conferenciaConjuntaConcluida=false`,
+`criacaoDisponivel=false`. Falta revalidar o conjunto atual, resolver consistência
+entre páginas/arte, orçamento global, automações/treinos/notas, novo responsável
+e integração/prova drive.file. Não expor a cópia entre fases nem executar editor.
+Relatório produtor `r53/inicializacao/SEQUENCIA-2026-10-28.md`.
+
+Sem Google/Discord, oficial/jogador, modelo pago, merge/deploy/Gateway ou acesso
+novo. Consumidor só docs; runtime `26ec106`, CI histórico 40496955301, sem suíte
+ou ZIP novo. Sol Alto para integrar; revisão Médio.
+
 ## Inventário de imagens · 28/10 — arte ainda parcial
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31),
