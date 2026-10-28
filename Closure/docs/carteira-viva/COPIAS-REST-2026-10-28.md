@@ -101,6 +101,27 @@ guarda somente o nonce mínimo no ledger por 31 dias, impedindo reaparição num
 backup ainda válido (até 30 dias). O ledger migra de **1 para 2** na mesma
 transação; versões futuras recusam. Nenhuma operação apaga o arquivo Google.
 
+## Preparação do próximo ensaio real
+
+Após os testes offline, foi criada pelo Drive conectado uma nova cópia privada
+DESCARTÁVEL do Ciclo, com apenas o proprietário nas permissões. Ela será o
+modelo de teste; a fonte oficial não foi escrita. O piloto próprio foi iniciado
+no loopback usando base/chave novas e os mesmos clientes Google/Discord.
+A identificação Discord concluiu; o Google está no consentimento de drive.file,
+**aguardando autorização do usuário** para selecionar só essa descartável e
+criar uma segunda cópia. Ainda não houve cadastro confirmado ou POST de cópia
+pelo método novo. Nenhum resultado nativo de cópia é declarado neste fechamento.
+
+O executor privado está preparado para descartar deliberadamente uma resposta
+HTTP200 do POST e, após reinício, exercitar a busca por marcador. Isso testa
+recuperação pelo serviço real; não deve virar falha injetada no produto.
+A nova cópia e o piloto ficam pendentes para esse ensaio, não foram limpos ainda.
+Ao terminar/recusar: revogar a concessão de teste, excluir só os dados fictícios,
+encerrar o piloto e enviar as cópias novas para a lixeira recuperável.
+URLs OAuth/tickets/IDs pessoais/credenciais e arquivos privados ficam fora do Git.
+O ensaio anterior de **leitura**, já encerrado, continua separado no relatório
+[NATIVO-CONFERENCIA-2026-10-28.md](NATIVO-CONFERENCIA-2026-10-28.md).
+
 ## Testes e limites
 
 29 testes novos aprovados em 5,586 s no lote inicial completo; após endurecer
@@ -123,8 +144,11 @@ em 0,134 s. Os seis testes novos adicionais entram no lote de 29 acima, sem
 somar repetições. O primeiro CI completo (40771002103, código `5b67ccb`) executou 1.486 testes
 em 248,815 s: duas falhas de preparação histórica dos schemas 3/4 e um opcional
 pulado. Essas fixtures também passaram a excluir a tabela de schema 8; os dois
-casos passaram localmente em 0,178 s. CI final será registrado no fechamento;
-o CI anterior de leitura não valida este código novo.
+casos passaram localmente em 0,178 s. O [CI final 40772021442](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40772021442),
+no código `9cb8a84a9afa151c26fd1c5eeed829c6312651db`, passou em 28/10 às
+**18:32:26 Brasília**: **1.486 executados/1.485 aprovados/um opcional pulado**,
+zero falhas, 300,149 s. O fechamento seguinte é somente documental [skip ci];
+não repetir a suíte nem publicar por ele.
 
 Pacote ignorado regenerado: 90 arquivos/CRC/fontes iguais, sem env, Carteira,
 bancos ou cadastro de campanha; SHA256

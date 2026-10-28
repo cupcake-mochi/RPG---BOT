@@ -16,6 +16,13 @@ implementados; **7B** cópia implementada offline; **7C** limpeza/inicializaçã
 pendente; **7D** preservação/automações e prova completa pendentes. Etapas 8–10
 continuam na fila. Próximo: diário de escrita/reconciliação financeira; não repetir
 a leitura nativa anterior como se validasse cópia ou limpeza.
+Código `9cb8a84a9afa151c26fd1c5eeed829c6312651db`:
+[CI completo 40772021442](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40772021442)
+aprovado em 28/10 às **18:32:26 Brasília**: **1.486 executados/1.485 aprovados/um
+opcional**, zero falhas, 300,149 s. Fechamento só documental [skip ci], sem nova
+suíte, ZIP ou publicação. Piloto de cópia preparado em base própria; consentimento
+Google pendente do usuário, sem executar o método novo no Google ainda.
+
 [Implementação, testes e limites](COPIAS-REST-2026-10-28.md). Sol Alto; revisão Médio.
 
 ## Prova real de leitura e retomada · 28/10 — parcial, não publicada
