@@ -6,6 +6,7 @@ import unittest
 from cryptography.fernet import Fernet
 import httpx
 
+from carteira_viva.esquema import VERSAO
 from carteira_viva.banco import Cadastro
 from carteira_viva.modelos import CriacaoBloqueada, referencia_validada
 from carteira_viva.provedores import Provedores, ErroProvedor
@@ -97,9 +98,9 @@ class BancoModelos(Fixtures,unittest.TestCase):
 
     def test_migracao_schema5_preserva_personagem(self):
         p=self.criar()
-        self.c.db.execute('DROP TABLE modelos_servidor');self.c.db.execute('PRAGMA user_version=5')
+        self.c.db.executescript('DROP TABLE conferencias_rest; DROP TABLE modelos_servidor');self.c.db.execute('PRAGMA user_version=5')
         self.reabrir()
-        self.assertEqual(self.c.db.execute('PRAGMA user_version').fetchone()[0],6)
+        self.assertEqual(self.c.db.execute('PRAGMA user_version').fetchone()[0],VERSAO)
         self.assertEqual(self.c.cartao(self.m,p['id'])['perfil'],p['perfil'])
 
     def test_criacao_fechada_mesmo_sem_sinais_e_com_parametros_forcados(self):

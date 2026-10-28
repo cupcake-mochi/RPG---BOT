@@ -1,5 +1,10 @@
 # Banco de personagens
 
+28/10: schema 7 acrescenta conferências REST cifradas, uma por personagem,
+32 KiB/30 minutos. Reinício normal preserva domínios completos; backup remove
+esse trabalho da cópia. Não é diário de escrita nem autorização de criação.
+Ver [recuperação de leituras](RECUPERACAO-REST-2026-10-28.md).
+
 27/10: referências de modelo podem conter `sondagem_versao=2` no conteúdo
 cifrado. A ausência do campo identifica a sondagem 1 anterior. Não altera
 schema 6 nem personagens/fontes; confirmar uma prévia de versão diferente
@@ -35,7 +40,8 @@ envelope e têm hashes separados para localizar uma conexão existente.
 
 ## Schema e migrações
 
-Schema atual: **6**. Migração 1 cria as tabelas de domínio; migração 2 acrescenta
+Schema atual: **7**. Migração 7 acrescenta `conferencias_rest`, com estado
+cifrado e chave estrangeira para o personagem. Abaixo, evolução anterior: Migração 1 cria as tabelas de domínio; migração 2 acrescenta
 pedidos e auditoria; migração 3 acrescenta tentativas web cifradas; migração 4 acrescenta resumo
 básico cifrado, prévias e registro de imagens; migração 5 acrescenta sessões
 Discord da Carteira web; migração 6 acrescenta `modelos_servidor` (servidor,
@@ -150,7 +156,7 @@ privados e acompanha o cadastro, sem histórico ilimitado de leituras.
 consistente e cifra o arquivo em blocos autenticados. Não carrega o banco
 inteiro em memória. O formato verifica ordem, integridade, fim do arquivo,
 identidade do banco e prazo. Backup existente nunca é sobrescrito.
-Tentativas web e prévias de cartão são removidas da cópia antes da cifra; cadastros e conexões
+Tentativas web, prévias de cartão e conferências REST são removidas da cópia antes da cifra; cadastros e conexões
 confirmadas permanecem. Uma restauração não reabre retornos OAuth antigos.
 
 Manter uma cópia do cadastro **e uma cópia atual do registro de remoções**.

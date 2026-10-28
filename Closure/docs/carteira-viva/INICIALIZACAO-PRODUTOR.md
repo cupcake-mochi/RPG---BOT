@@ -15,6 +15,19 @@ Os fontes abaixo não substituem uma inspeção do código instalado na cópia.
 `r53/OFICIAIS.md` registra os incrementos das oficiais; o pacote integral
 gerado não foi instalado por esta tarefa e não deve ser promovido por rotina.
 
+## Recuperação de leituras · 28/10 — parcial, não publicada
+
+Schema 7: estado cifrado por personagem para os dois domínios REST. Retoma entre
+domínios completos; página interrompida é relida desde o começo. Prazo absoluto
+30 minutos, limite 32 KiB, versão/contexto originais, contador transacional,
+revogação/exclusão/rotação e backup tratados. Adaptador interno usa o worker real;
+sem endpoint novo. Fonte já cadastrada: não cria cópia nem é diário de escrita.
+Os quatro indicadores seguem falsos e a criação permanece bloqueada.
+Faltam composição com fila/OAuth real, cópia/diário de escrita e demais domínios,
+propriedades, arte/automações/responsável e prova integrada. Produtor PR31 intacto;
+sem Google/Discord real, merge/deploy ou acesso novo nesta rodada.
+[Contrato, fluxo e limites](RECUPERACAO-REST-2026-10-28.md). Sol Alto; revisão Médio.
+
 ## Contrato REST e conferência parcial · 28/10 — não publicada
 
 Exportador público no produtor e JSON com hash fixo no consumidor. Conferência

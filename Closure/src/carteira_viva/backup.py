@@ -58,6 +58,9 @@ def gravar_backup(cadastro: Cadastro, destino: Path, *, registro_remocoes: bool 
                     db.execute("DELETE FROM web_sessoes")
                 if db.execute("PRAGMA user_version").fetchone()[0]>=4:
                     db.execute("DELETE FROM previas_cartao")
+                if db.execute("PRAGMA user_version").fetchone()[0]>=7:
+                    # Backup não recupera trabalho pendente nem prova acesso Google atual.
+                    db.execute("DELETE FROM conferencias_rest")
                 db.commit()
         finally:
             db.close()

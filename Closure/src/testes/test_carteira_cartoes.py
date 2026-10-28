@@ -104,7 +104,7 @@ class CartoesTeste(Fixtures,unittest.TestCase):
         self.c.confirmar_cartao(self.m,self.pid,p['previa'])
     def test_migracao_v3_preserva_cadastro(self):
         self.c.fechar();db=sqlite3.connect(self.path)
-        db.executescript('DROP TABLE modelos_servidor; DROP TABLE web_sessoes; DROP TABLE resumos_cartao; DROP TABLE previas_cartao; DROP TABLE imagens; PRAGMA user_version=3;');db.close()
+        db.executescript('DROP TABLE conferencias_rest; DROP TABLE modelos_servidor; DROP TABLE web_sessoes; DROP TABLE resumos_cartao; DROP TABLE previas_cartao; DROP TABLE imagens; PRAGMA user_version=3;');db.close()
         from carteira_viva.banco import Cadastro
         self.c=Cadastro(self.path,(self.chave,),agora=self.agora)
         self.assertEqual(self.c.cartao(self.m,self.pid)['id'],self.pid);self.c.verificar_integridade()

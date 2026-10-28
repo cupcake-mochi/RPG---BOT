@@ -19,6 +19,7 @@ from typing import Callable
 from . import esquema
 from .cartoes_banco import Cartoes
 from .modelos import Modelos
+from .conferencias_banco import Conferencias
 from .permissoes import Acao, Membro, Permissoes, PUBLICOS, cartao_publico, permitido
 from .segredos import AcessoNegado, Cifra, Conflito, ErroCarteira, json_bytes
 
@@ -73,7 +74,7 @@ class CredencialGoogle:
     autorizacao: str = field(repr=False)
 
 
-class Cadastro(Cartoes, Modelos):
+class Cadastro(Cartoes, Modelos, Conferencias):
     def __init__(self, caminho: Path, chaves: tuple[bytes, ...], *,
                  remocoes: Path | None = None, agora: Callable[[], float] = time.time):
         self.cifra = Cifra(chaves)  # Não criar banco se a chave estiver ausente/inválida.
@@ -278,6 +279,7 @@ class Cadastro(Cartoes, Modelos):
                             (cid, membro.usuario, digest(conta), digest(cliente), envelope,
                              self.agora(), self.agora(), self.agora(), autorizacao, "ativa"))
             self.db.execute("UPDATE fontes SET geracao=geracao+1 WHERE conexao=?", (cid,))
+            self.db.execute("DELETE FROM conferencias_rest WHERE (servidor,personagem) IN (SELECT servidor,personagem FROM fontes WHERE conexao=?)", (cid,))
             return cid
 
     def _conexao_do_dono(self, membro: Membro, conexao: str):
@@ -384,6 +386,7 @@ class Cadastro(Cartoes, Modelos):
                     geracao=geracao+1 WHERE servidor=? AND personagem=?""",
                                 (arquivo, contrato, membro.servidor, personagem))
                 self.db.execute("DELETE FROM leituras WHERE servidor=? AND personagem=?", (membro.servidor, personagem))
+                self.db.execute("DELETE FROM conferencias_rest WHERE servidor=? AND personagem=?", (membro.servidor, personagem))
                 self.db.execute("DELETE FROM resumos_cartao WHERE servidor=? AND personagem=?", (membro.servidor, personagem))
                 self._salvar_pedido(membro, chave, "trocar", assinatura, personagem)
                 self._auditar(membro.servidor, membro.usuario, personagem, "trocar_arquivo")
@@ -517,6 +520,7 @@ class Cadastro(Cartoes, Modelos):
                             (self.agora(), conexao))
             self.db.execute("UPDATE fontes SET geracao=geracao+1 WHERE conexao=?", (conexao,))
             self.db.execute("DELETE FROM web_fluxos WHERE conexao=?", (conexao,))
+            self.db.execute("DELETE FROM conferencias_rest WHERE (servidor,personagem) IN (SELECT servidor,personagem FROM fontes WHERE conexao=?)", (conexao,))
             self.db.execute("DELETE FROM leituras WHERE (servidor,personagem) IN (SELECT servidor,personagem FROM fontes WHERE conexao=?)",
                             (conexao,))
             self._auditar(membro.servidor, membro.usuario, None, "desconectar")
@@ -532,6 +536,7 @@ class Cadastro(Cartoes, Modelos):
                             (self.agora(), conexao))
             self.db.execute("UPDATE fontes SET geracao=geracao+1 WHERE conexao=?", (conexao,))
             self.db.execute("DELETE FROM web_fluxos WHERE conexao=?", (conexao,))
+            self.db.execute("DELETE FROM conferencias_rest WHERE (servidor,personagem) IN (SELECT servidor,personagem FROM fontes WHERE conexao=?)", (conexao,))
             self.db.execute("DELETE FROM leituras WHERE (servidor,personagem) IN (SELECT servidor,personagem FROM fontes WHERE conexao=?)",
                             (conexao,))
             return True
@@ -576,6 +581,9 @@ class Cadastro(Cartoes, Modelos):
         self.db.execute("""DELETE FROM leituras WHERE (servidor,personagem) IN
             (SELECT f.servidor,f.personagem FROM fontes f JOIN conexoes c ON c.id=f.conexao
             WHERE c.estado!='ativa')""")
+        self.db.execute("""DELETE FROM conferencias_rest WHERE (servidor,personagem) IN
+            (SELECT f.servidor,f.personagem FROM fontes f JOIN conexoes c ON c.id=f.conexao
+            WHERE c.estado!='ativa')""")
         self._marcar_orfas()
 
     def excluir(self, membro: Membro, personagem: str, *, pedido: str):
@@ -603,6 +611,7 @@ class Cadastro(Cartoes, Modelos):
                 self._auditar(row["servidor"], usuario, row["id"], "apagar_usuario")
             for row in self.db.execute("SELECT id FROM conexoes WHERE usuario=?", (usuario,)).fetchall():
                 self._bloquear_autorizacao(row["id"])
+            self.db.execute("DELETE FROM conferencias_rest WHERE ator=?", (usuario,))
             self.db.execute("DELETE FROM pedidos WHERE usuario=?", (usuario,))
             self.db.execute("DELETE FROM web_fluxos WHERE usuario=?", (usuario,))
             self.db.execute("DELETE FROM web_sessoes WHERE usuario=?", (usuario,))
@@ -619,6 +628,7 @@ class Cadastro(Cartoes, Modelos):
             contagens["personagens"] = len(ausentes)
             self.limpar_imagens()
             for tabela, campo, prazo in (("leituras", "expira", 0), ("analises", "expira", 0),
+                                         ("conferencias_rest", "expira", 0),
                                          ("web_fluxos", "expira", 0), ("previas_cartao", "expira", 0),
                                          ("pedidos", "criado", 7 * DIA), ("auditoria", "criado", 90 * DIA)):
                 contagens[tabela] = self.db.execute(f"DELETE FROM {tabela} WHERE {campo}<=?",
@@ -672,6 +682,10 @@ class Cadastro(Cartoes, Modelos):
                 ctx = ["modelo", row["servidor"]]
                 self.db.execute("UPDATE modelos_servidor SET conteudo=? WHERE servidor=?",
                                 (nova.cifrar(ctx, self.cifra.abrir(ctx, row["conteudo"])), row["servidor"]))
+            for row in self.db.execute("SELECT * FROM conferencias_rest").fetchall():
+                ctx = self._ctx_conferencia(row)
+                self.db.execute("UPDATE conferencias_rest SET conteudo=? WHERE servidor=? AND personagem=?",
+                                (nova.cifrar(ctx, self.cifra.abrir(ctx, row["conteudo"])), row["servidor"], row["personagem"]))
             self.db.execute("UPDATE meta SET valor=? WHERE chave='verificador'",
                             (nova.cifrar(["verificador", self.banco_id], "carteira-viva"),))
         self.cifra = nova

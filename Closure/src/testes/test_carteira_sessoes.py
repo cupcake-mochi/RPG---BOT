@@ -65,7 +65,7 @@ class SessoesTeste(Fixtures,unittest.TestCase):
         self.clock[0]+=601;self.s.limpar();self.assertEqual(self.c.db.execute('SELECT count(*) FROM web_sessoes').fetchone()[0],0)
     def test_migracao_v4_preserva_cadastro(self):
         p=self.criar();self.c.fechar();db=sqlite3.connect(self.path)
-        db.executescript('DROP TABLE modelos_servidor; DROP TABLE web_sessoes; PRAGMA user_version=4;');db.close()
+        db.executescript('DROP TABLE conferencias_rest; DROP TABLE modelos_servidor; DROP TABLE web_sessoes; PRAGMA user_version=4;');db.close()
         from carteira_viva.banco import Cadastro
         self.c=Cadastro(self.path,(self.chave,),agora=self.agora);self.s=Sessoes(self.c)
         from carteira_viva.esquema import VERSAO
