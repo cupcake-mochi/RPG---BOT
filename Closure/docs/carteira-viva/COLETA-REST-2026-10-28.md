@@ -1,7 +1,7 @@
 # Coleta de células pela API do Sheets
 
-28/10/2026 · etapa 7 parcial, PR84. Não publicada. Criação bloqueada.
-Produtor PR31 código 2427024/fechamento f36b410; sem mudança funcional nesta
+28/10/2026 · etapa 7 parcial, PR84, código `b5934bea578190e6c7c9316b63d2e6d47186a39c`. Não publicada. Criação bloqueada.
+Produtor PR31 código 2427024/fechamento documental 15e1549; sem mudança funcional nesta
 rodada. Main produtor ef361cc e consumidor de42447 reconferidas.
 
 ## O que funciona no código
@@ -43,7 +43,9 @@ EXTRATO, SALÁRIOS e DADOS_SALARIOS até o fim físico, teto de 5.000 linhas por
 livro. Acima disso recusa, sem truncar. Intervalos são divididos em até 4.096
 células por página; uma faixa por GET Sheets. Grade/ID/título/posição e tamanho
 retornados precisam corresponder ao pedido. Limites HTTP: 4 MiB por resposta,
-prazo absoluto de 15 s por requisição (ou o saldo menor da rodada), sem aumentar o limite de 512 KiB dos métodos anteriores.
+prazo absoluto de 15 s por requisição (ou o saldo menor da rodada), sem aumentar o limite de
+512 KiB dos métodos anteriores. Metadados limitados a 100 abas; nenhuma aba
+extra é incluída implicitamente na coleta.
 
 No máximo financeiro: 50 páginas/126.168 posições, 153 GETs contando observações
 Drive e abertura. Progressão: sete páginas/1.749 posições, 24 GETs. São contagens
@@ -85,8 +87,20 @@ físico, máscara HTTP, fórmulas/datas/zeros/vazios, fonte/grade/versão mudada
 acesso alterado durante espera/resposta, cotas por GET, prazo absoluto de
 rede/callback, cancelamento,
 403/429/redirect, resposta excessiva e ausência de dados privados em repr.
-95 direcionados locais passaram (24 novos + 71 existentes). CI completo em
-fechamento; esperado 1.362 executados com um opcional pulado.
+O esquema público Discovery Sheets v4, revisão 20261021, foi baixado sem
+autenticação: cinco paths da máscara de metadados e 11 da grade existem no
+esquema, e drive.file consta no método get. SHA256 do JSON público consultado:
+a4ff43e16de5e077da198f6db2d5915d113038fd2266b134b3ff8313df55b87e.
+Essa validação estática não comprova comportamento nativo ou concessão real.
+
+95 direcionados locais passaram (24 novos + 71 existentes).
+[CI completo 40735993584](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40735993584)
+aprovado no código b5934be: 1.362 executados/1.361 aprovados/um opcional,
+zero falhas, 245,141 s. Job concluído em 28/10 às 14:32:42 Brasília.
+Execução anterior 40735653225 cancelada/substituída após reforço dos prazos;
+não usar seu resultado para o código final. Logs do arquivo da execução
+conferidos; sem repetir a suíte completa local. Fechamento só documental
+[skip ci], sem repacotar/republicar por causa de documentação.
 
 Pacote ignorado regenerado sem env: 90 arquivos, CRC e bytes comparados aos
 fontes, sem Carteira/credenciais/bancos/campanha. SHA256:
@@ -103,3 +117,6 @@ Sol Alto para integração; revisão Médio. Não alterar configurações do mod
   posição e linhas do bloco.
 - [CellData](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/cells#CellData):
   fórmula/entrada, resultado, nota e representação serial de datas.
+
+- [Discovery Sheets v4](https://sheets.googleapis.com/$discovery/rest?version=v4):
+  esquema público usado na verificação estática das máscaras e do escopo.

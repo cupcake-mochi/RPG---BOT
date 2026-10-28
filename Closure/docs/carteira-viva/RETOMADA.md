@@ -11,7 +11,10 @@ numérico em faixas fixas. Até 4.096 células/página, histórico até 5.000 li
 conservada, contexto reconferido antes/depois de cada GET e após aguardar cota.
 Callbacks confiáveis obrigatórios; composição no serviço e fila ainda pendentes.
 Sem rota, escrita, Apps Script ou escopo novo. Criação permanece bloqueada.
-24 novos/95 direcionados locais aprovados; CI completo em fechamento. Pacote
+24 novos/95 direcionados locais aprovados. Código b5934be, CI 40735993584:
+1.362 executados/1.361 aprovados/um opcional, zero falhas, 245,141 s. Job
+concluído em 28/10 às 14:32:42 Brasília. CI anterior 40735653225 substituído
+após revisão dos prazos; fechamento só documental [skip ci]. Pacote
 90 arquivos regenerado/conferido sem Carteira/env/banco/campanha, não publicado.
 Ainda falta traduzir contrato/estado do produtor: propriedades de Apps Script
 não são fornecidas por Sheets REST. Leitura de célula não equivale a conferência
