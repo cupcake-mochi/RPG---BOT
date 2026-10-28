@@ -52,15 +52,36 @@ Não restaurar as descartáveis antigas nem reutilizar sua concessão revogada.
 Produtor PR 31 intacto; nenhuma ficha oficial/jogador alterada, merge, deploy,
 Gateway, modelo pago, escopo ou endpoint novo nesta rodada.
 
+## Próximo ensaio descartável
+
+1. Criar fonte privada fictícia nova e usar OAuth/Picker próprios em base isolada.
+   As descartáveis e concessões antigas já foram encerradas; não restaurá-las.
+2. Criar a cópia pelo diário da 7B e identificá-la sem editar suas células ou
+   cadastrá-la como personagem. Guardar a prova da versão original.
+3. Chamar somente o adaptador interno financeiro. Conferir o único POST, entradas,
+   notas e fórmulas delimitadas; não registrar conteúdo privado no relatório.
+4. Ensaiar resposta perdida/reinício e confirmar retomada sem segundo POST.
+   Se a grade não corresponder ao plano, manter pendente e não refazer o reset.
+5. Conferir que propriedades continuam pendentes e criação continua bloqueada.
+   Este ensaio não valida os outros domínios nem preservação global.
+6. Revogar a concessão, comprovar recusa antes dos arquivos, remover dados
+   fictícios, enviar ambas as descartáveis à lixeira e encerrar piloto/abas próprias.
+
 ## Validação
 
 **214 testes direcionados aprovados em 101,771 s**, incluindo os 28 casos novos
 do financeiro e regressões de cópia, banco, cartões, conferência, modelos e sessões.
-CI completo ainda pendente neste checkpoint. ZIP regenerado: 90 arquivos, CRC e
-fontes iguais, sem Carteira, env, bancos ou campanha; não publicado.
+ZIP regenerado: 90 arquivos, CRC e fontes iguais, sem Carteira, env, bancos ou
+campanha; não publicado. SHA256
+`b306c6132e8536645805a8a42a150a040334f33a654bb9f13850e71739ecfc71`.
 
-As duas regressões
-foram reproduzidas antes da correção: adoção de versão editada no método anterior
+Código `7491d811ee0d3ab7f3455fddc736ee4430d4bb2e`:
+[CI completo 40788244056](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40788244056)
+aprovado em 28/10 às **20:39:53 Brasília**: **1.514 executados, 1.513 aprovados,
+um opcional pulado**, zero falhas, 331,040 s. Fechamento só documental [skip ci],
+sem repetir bateria, pacote ou publicação.
+
+As duas regressões foram reproduzidas antes da correção: adoção de versão editada no método anterior
 e mudança entre a medição e o fechamento aceitas indevidamente. Nenhuma expectativa
 foi relaxada. Fixtures de schemas históricos agora removem tabelas posteriores
 por inventário independente, conservando as verificações de dados e migração.

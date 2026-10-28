@@ -28,6 +28,12 @@ do dono entre a observação da versão e a escrita; essa lacuna bloqueia a cria
 pública. Faltam ensaio descartável desta escrita, demais domínios, preservação
 global, automações e prova integral. Etapas 8–10 continuam pendentes.
 
+Código `7491d811ee0d3ab7f3455fddc736ee4430d4bb2e`:
+[CI completo 40788244056](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40788244056)
+aprovado em 28/10 às **20:39:53 Brasília**: **1.514 executados, 1.513 aprovados,
+um opcional pulado**, zero falhas, 331,040 s. Fechamento só documental [skip ci],
+sem repetir bateria, pacote ou publicação.
+
 [Implementação, testes e próximos passos](FINANCEIRO-REST-2026-10-28.md).
 Sol Alto para continuar; Médio para revisão. Registros abaixo são históricos.
 
