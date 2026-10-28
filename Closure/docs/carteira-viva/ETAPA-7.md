@@ -1,6 +1,49 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
-## Técnica e Famílias · continuação de 28/10
+## Inventário e equipamento · continuação de 28/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`86410bee3fc70fa81f124a695253e032688c3ebe`. Main `ef361cc` reconferida,
+sem alteração desde o checkpoint anterior; bot main `de42447` também igual.
+
+Três perfis novos: equipados (cinco campos), equipáveis guardados (88) e itens
+(36). Restauram fórmulas/notas, limpam estoque e valores pessoais, preservando
+configurações e catálogos. Quatro notas vivas antigas são limpas sem escrever
+nas suas fórmulas protegidas. Soco, mão livre e Traje 1 são defaults da ficha;
+não concede dinheiro, estoque ou treino. Fórmulas desconhecidas recusadas.
+A variante decimal 0,1 observada nas oficiais é aceita somente nas fórmulas
+inteiras conhecidas de Volume; mudança de número/referência continua recusada.
+Contratos anteriores e assinatura financeira v1 mantidos.
+
+417 cenários direcionados de formação/inventário e 101 financeiros passaram;
+a coleção de inicialização soma 921 (101/82/78/243/417), confirmados pelo
+[CI 40683614201](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40683614201),
+aprovado em 28/10 às 08:56:07 Brasília no código `86410be`, junto ao pacote,
+regressões, catálogo/progressão/Kaori e sintaxe 277 Python/220 JS-GS.
+Duplicado 40683604255 cancelado. Fechamento produtor `edea21b` só documental,
+`[skip ci]`. Leitura de 161 entradas/
+guardas por oficial, zero diferenças e nenhuma escrita.
+
+Projeção Sheets API em cópia privada do Ciclo: 129 campos/notas e quatro notas
+isoladas restaurados; 2.678 posições, 10.450 comparações preservadas sem diferença.
+Carga 0,3 de 5 igual ao modelo, por causa do Traje 1; nenhum erro nas faixas.
+Cópia na lixeira, aba fechada. **Não executou os novos diários Apps Script,
+OAuth das Guias ou automações.** Relatório do produtor:
+`r53/inicializacao/INVENTARIO-2026-10-28.md`.
+
+Próximo: campos pessoais restantes da CARTEIRA e propriedades de recuperação;
+depois entidades/cartões/MONTAGENS. Ainda faltam arte/caches/recuperações,
+orquestração/conferência conjunta, automações/notas vivas/treinos iniciais,
+novo responsável, integração executável drive.file e prova nativa completa.
+**Criação incondicionalmente bloqueada.** Avisos vazios não são aprovação;
+notas vivas serão regeneradas na fase final. Não apagar diários para reiniciar.
+
+Bot runtime `26ec106`, CI 40496955301 (1.314/1.313/um opcional), PR 84 base 83.
+Consumidor só docs, sem repetir suíte ou gerar ZIP. Protótipos fora do pacote/bot.
+Sem merge em main, deploy, Gateway, modelo pago, novos escopos ou escrita em
+oficial/jogador. Próxima implementação GPT-6 Astra / Alto; revisão focal Médio.
+
+## Histórico: técnica e Famílias · continuação de 28/10
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
 `763a78bd5fd3d799dd1273f24b6839a5c118d47a` (domínios em `a92cba8`). Main

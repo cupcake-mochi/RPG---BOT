@@ -3,56 +3,48 @@
 Atualizado em 28/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
-## Técnica e Famílias · continuação de 28/10
+## Inventário e equipamento · continuação de 28/10
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
-`763a78bd5fd3d799dd1273f24b6839a5c118d47a` (domínios em `a92cba8`). Main
-`ef361ccdf7a0210781176e3c42d318cde147553d` incorporada pelo merge `a72adc0`
-(PRs 41–43). Inclui XP manual/missões congeladas e registro do backup 13 das
-oficiais feito por outro trabalho; não reaplicar aquela instalação.
+`86410bee3fc70fa81f124a695253e032688c3ebe`. Main `ef361cc` reconferida,
+sem alteração desde o checkpoint anterior; bot main `de42447` também igual.
 
-Dois perfis novos: **11 entradas do cabeçalho da técnica e 19 estados de
-Famílias**. Nove Famílias do livro voltam a Neutra; dez custom recuperam as
-fórmulas originais, sem apagar as definições do servidor. Nome/atributo/CD
-derivados são preservados. O nome declarado da técnica na CARTEIRA ainda
-precisa de domínio próprio, assim como cartões/amparo e sincronizações.
-Os quatro contratos anteriores e a assinatura financeira v1 ficam iguais.
+Três perfis novos: equipados (cinco campos), equipáveis guardados (88) e itens
+(36). Restauram fórmulas/notas, limpam estoque e valores pessoais, preservando
+configurações e catálogos. Quatro notas vivas antigas são limpas sem escrever
+nas suas fórmulas protegidas. Soco, mão livre e Traje 1 são defaults da ficha;
+não concede dinheiro, estoque ou treino. Fórmulas desconhecidas recusadas.
+A variante decimal 0,1 observada nas oficiais é aceita somente nas fórmulas
+inteiras conhecidas de Volume; mudança de número/referência continua recusada.
+Contratos anteriores e assinatura financeira v1 mantidos.
 
-**782 cenários locais passaram** (101 financeiro, 82 progressão, 78 identidade,
-243 pessoal, 278 formação), 90 a mais que o checkpoint anterior. Duas regressões
-usam as novas notas de XP congelado: financeiro remove marcas herdadas;
-reinserção depois impede progressão. Mais 87 verificações upstream de XP manual.
-O CI 40681047195 passou os 782 cenários, mas faltavam dois commits históricos
-para os testes salariais incluídos pela main. O workflow agora busca somente
-as duas bases imutáveis, sem pular testes ou mudar expectativas. As 15
-verificações de abertura e 2.076 de missões passaram localmente. [CI corrigido 40681468287](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40681468287)
-aprovado em 28/10 às 08:39:49 Brasília no código `763a78b`: 782 cenários,
-regressões, pacote de nove arquivos, catálogo/progressão/Kaori e sintaxe
-277 Python/220 JS-GS. Duplicado 40681461827 cancelado. Fechamento produtor
-`5c93e005964360a157a0883857f1951609ce9539` só documental, `[skip ci]`.
+417 cenários direcionados de formação/inventário e 101 financeiros passaram;
+a coleção de inicialização soma 921 (101/82/78/243/417), confirmados pelo
+[CI 40683614201](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40683614201),
+aprovado em 28/10 às 08:56:07 Brasília no código `86410be`, junto ao pacote,
+regressões, catálogo/progressão/Kaori e sintaxe 277 Python/220 JS-GS.
+Duplicado 40683604255 cancelado. Fechamento produtor `edea21b` só documental,
+`[skip ci]`. Leitura de 161 entradas/
+guardas por oficial, zero diferenças e nenhuma escrita.
 
-Leitura das duas oficiais: 84 entradas/guardas cada, sem divergências ou escrita.
-Projeção pela Sheets API em cópia privada descartável da Era: 30 alvos
-restaurados, 2.048 posições inspecionadas e 8.132 comparações preservadas sem
-diferença. Duas custom (incluindo nome com *) ficaram Neutra; oito vazias.
-Fórmulas com vírgulas deram erro de análise na API; a variante exata com ponto
-e vírgula observada nas oficiais resolveu. Não altera conta ou referência.
-Nenhum erro final nas faixas inspecionadas. Cópia na lixeira, aba fechada.
-**Isso não executou o inicializador/diários Apps Script ou o OAuth das Guias.**
-O setValues real e a retomada dos novos perfis ainda exigem ensaio nativo.
-Relatório: `r53/inicializacao/TECNICA-FAMILIAS-2026-10-28.md` no produtor.
+Projeção Sheets API em cópia privada do Ciclo: 129 campos/notas e quatro notas
+isoladas restaurados; 2.678 posições, 10.450 comparações preservadas sem diferença.
+Carga 0,3 de 5 igual ao modelo, por causa do Traje 1; nenhum erro nas faixas.
+Cópia na lixeira, aba fechada. **Não executou os novos diários Apps Script,
+OAuth das Guias ou automações.** Relatório do produtor:
+`r53/inicializacao/INVENTARIO-2026-10-28.md`.
 
-Próximo bloco: inventário/equipamento. Também faltam campos da CARTEIRA,
-entidades/cartões/MONTAGENS, fotos/caches/recuperações, orquestração/conferência
-conjunta, treinos iniciais/automações, novo responsável, integração executável
-com drive.file e prova nativa completa. **Criação incondicionalmente bloqueada**;
-protótipos fora do pacote/bot. Não reiniciar fases apagando diários.
+Próximo: campos pessoais restantes da CARTEIRA e propriedades de recuperação;
+depois entidades/cartões/MONTAGENS. Ainda faltam arte/caches/recuperações,
+orquestração/conferência conjunta, automações/notas vivas/treinos iniciais,
+novo responsável, integração executável drive.file e prova nativa completa.
+**Criação incondicionalmente bloqueada.** Avisos vazios não são aprovação;
+notas vivas serão regeneradas na fase final. Não apagar diários para reiniciar.
 
-Bot runtime `26ec106`, CI 40496955301 (1.314 executados/1.313 aprovados/um
-opcional), PR 84 na base da 83. Aqui só docs do consumidor: sem repetir suíte
-extensa ou gerar ZIP. Sem merge em main, deploy, Gateway, modelo pago, escopos
-novos ou escrita em oficial/jogador. Próxima implementação GPT-6 Astra / Alto;
-revisão focal Médio. Não alterar configurações automaticamente.
+Bot runtime `26ec106`, CI 40496955301 (1.314/1.313/um opcional), PR 84 base 83.
+Consumidor só docs, sem repetir suíte ou gerar ZIP. Protótipos fora do pacote/bot.
+Sem merge em main, deploy, Gateway, modelo pago, novos escopos ou escrita em
+oficial/jogador. Próxima implementação GPT-6 Astra / Alto; revisão focal Médio.
 
 ## Checkout e Git
 
