@@ -189,7 +189,7 @@ class ConferenciasBancoTeste(Fixtures, unittest.IsolatedAsyncioTestCase):
 
     def test_migracao6_preserva_dados_e_rejeita_envelope_corrompido(self):
         p, _, _, _ = self.preparar()
-        self.c.db.execute('DROP TABLE conferencias_rest'); self.c.db.execute('PRAGMA user_version=6'); self.reabrir()
+        self.c.db.execute('DROP TABLE copias_rest'); self.c.db.execute('DROP TABLE conferencias_rest'); self.c.db.execute('PRAGMA user_version=6'); self.reabrir()
         self.assertEqual(self.c.cartao(self.m, p['id'])['id'], p['id']); self.assertEqual(self.quantidade(), 0)
         ref = self.c.reservar_leitura(self.m, p['id'])
         self.c.iniciar_conferencia_rest(self.m, ref, versao_drive='12')

@@ -1,5 +1,20 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Cópia com recuperação · 28/10 — etapa 7B, offline
+
+Backend interno agora guarda o envio antes do POST e, após resposta perdida,
+só reconcilia a cópia existente. Schema 8/ledger 2, vínculo ao iniciador/modelo/
+concessão, verificação do destino privado, backup sem replay e exclusão tratados.
+Sem endpoint, escrita Sheets, cadastro ou liberação de criação. 195 locais distintos aprovados, 29 novos
+com HTTP fictício; prova nativa da cópia ainda pendente.
+
+A etapa 7 foi subdividida para mostrar o avanço: **7A** modelo/leitura/retomada
+implementados; **7B** cópia implementada offline; **7C** limpeza/inicialização REST
+pendente; **7D** preservação/automações e prova completa pendentes. Etapas 8–10
+continuam na fila. Próximo: diário de escrita/reconciliação financeira; não repetir
+a leitura nativa anterior como se validasse cópia ou limpeza.
+[Implementação, testes e limites](COPIAS-REST-2026-10-28.md). Sol Alto; revisão Médio.
+
 ## Prova real de leitura e retomada · 28/10 — parcial, não publicada
 
 OAuth/Picker próprios das Guias em uma cópia privada descartável, com

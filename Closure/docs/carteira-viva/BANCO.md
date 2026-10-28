@@ -1,5 +1,13 @@
 # Banco de personagens
 
+28/10: schema **8** acrescenta diário de cópias REST cifrado. Ledger **2**
+acrescenta nonces de operações removidas globalmente, conservados por 31 dias.
+Um backup marca cópias preparadas como enviadas apenas em sua cópia interna:
+a restauração pode reconciliar, mas não repetir POSTs. Pendentes não expiram
+silenciosamente e pinam a conexão; identificadas têm retenção de 30 dias.
+Rotação/exclusão e limites documentados em [cópias REST](COPIAS-REST-2026-10-28.md).
+Não é diário de escrita de células e não libera criação.
+
 28/10: schema 7 acrescenta conferências REST cifradas, uma por personagem,
 32 KiB/30 minutos. Reinício normal preserva domínios completos; backup remove
 esse trabalho da cópia. Não é diário de escrita nem autorização de criação.
@@ -40,7 +48,8 @@ envelope e têm hashes separados para localizar uma conexão existente.
 
 ## Schema e migrações
 
-Schema atual: **7**. Migração 7 acrescenta `conferencias_rest`, com estado
+Schema atual: **8**; ledger **2**. Migração 8 acrescenta `copias_rest`.
+Migração 7 acrescentou `conferencias_rest`, com estado
 cifrado e chave estrangeira para o personagem. Abaixo, evolução anterior: Migração 1 cria as tabelas de domínio; migração 2 acrescenta
 pedidos e auditoria; migração 3 acrescenta tentativas web cifradas; migração 4 acrescenta resumo
 básico cifrado, prévias e registro de imagens; migração 5 acrescenta sessões

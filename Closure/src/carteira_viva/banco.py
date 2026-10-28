@@ -20,6 +20,7 @@ from . import esquema
 from .cartoes_banco import Cartoes
 from .modelos import Modelos
 from .conferencias_banco import Conferencias
+from .copias_banco import Copias
 from .permissoes import Acao, Membro, Permissoes, PUBLICOS, cartao_publico, permitido
 from .segredos import AcessoNegado, Cifra, Conflito, ErroCarteira, json_bytes
 
@@ -74,7 +75,7 @@ class CredencialGoogle:
     autorizacao: str = field(repr=False)
 
 
-class Cadastro(Cartoes, Modelos, Conferencias):
+class Cadastro(Cartoes, Modelos, Conferencias, Copias):
     def __init__(self, caminho: Path, chaves: tuple[bytes, ...], *,
                  remocoes: Path | None = None, agora: Callable[[], float] = time.time):
         self.cifra = Cifra(chaves)  # Não criar banco se a chave estiver ausente/inválida.
@@ -135,8 +136,12 @@ class Cadastro(Cartoes, Modelos, Conferencias):
                         PRIMARY KEY(conexao,autorizacao))""")
                     self.db.execute(f"PRAGMA remocoes.application_id={LEDGER_ID}")
                     self.db.execute("PRAGMA remocoes.user_version=1")
-                if self.db.execute("PRAGMA remocoes.user_version").fetchone()[0] != 1:
+                ledger_versao = self.db.execute('PRAGMA remocoes.user_version').fetchone()[0]
+                if ledger_versao not in (1, 2):
                     raise ErroCarteira("Versão do registro de remoções incompatível.")
+                if ledger_versao == 1:
+                    self.db.execute('CREATE TABLE remocoes.copias (operacao TEXT PRIMARY KEY, criado REAL NOT NULL)')
+                    self.db.execute('PRAGMA remocoes.user_version=2')
                 ledger_uid = self.db.execute("SELECT banco_id FROM remocoes.meta").fetchone()[0]
                 if ledger_uid != uid:
                     raise ErroCarteira("Registro de remoções pertence a outro cadastro.")
@@ -275,6 +280,7 @@ class Cadastro(Cartoes, Modelos, Conferencias):
                 ON CONFLICT(id) DO UPDATE SET segredo=excluded.segredo,
                 estado='ativa',atualizado=excluded.atualizado,autorizacao=excluded.autorizacao,
                 sem_uso_desde=CASE WHEN EXISTS(SELECT 1 FROM fontes WHERE conexao=excluded.id)
+                OR EXISTS(SELECT 1 FROM copias_rest WHERE conexao=excluded.id)
                 THEN NULL ELSE excluded.atualizado END""",
                             (cid, membro.usuario, digest(conta), digest(cliente), envelope,
                              self.agora(), self.agora(), self.agora(), autorizacao, "ativa"))
@@ -583,7 +589,8 @@ class Cadastro(Cartoes, Modelos, Conferencias):
 
     def _marcar_orfas(self):
         self.db.execute("""UPDATE conexoes SET sem_uso_desde=COALESCE(sem_uso_desde,?)
-            WHERE NOT EXISTS(SELECT 1 FROM fontes WHERE conexao=conexoes.id)""", (self.agora(),))
+            WHERE NOT EXISTS(SELECT 1 FROM fontes WHERE conexao=conexoes.id)
+            AND NOT EXISTS(SELECT 1 FROM copias_rest WHERE conexao=conexoes.id)""", (self.agora(),))
 
     def _bloquear_autorizacao(self, conexao: str):
         self.db.execute("""INSERT OR IGNORE INTO remocoes.autorizacoes
@@ -596,6 +603,7 @@ class Cadastro(Cartoes, Modelos, Conferencias):
         self._marcar_orfas()
 
     def _reaplicar_remocoes(self):
+        self.db.execute('DELETE FROM copias_rest WHERE operacao IN (SELECT operacao FROM remocoes.copias)')
         self.db.execute("""DELETE FROM personagens WHERE (servidor,id) IN
             (SELECT servidor,personagem FROM remocoes.exclusoes)""")
         self.db.execute("""UPDATE conexoes SET estado='revogada',segredo=NULL
@@ -634,6 +642,9 @@ class Cadastro(Cartoes, Modelos, Conferencias):
             for row in self.db.execute("SELECT id FROM conexoes WHERE usuario=?", (usuario,)).fetchall():
                 self._bloquear_autorizacao(row["id"])
             self.db.execute("DELETE FROM conferencias_rest WHERE ator=?", (usuario,))
+            self.db.execute('INSERT OR IGNORE INTO remocoes.copias SELECT operacao,? FROM copias_rest WHERE ator=?',
+                            (self.agora(), usuario))
+            self.db.execute("DELETE FROM copias_rest WHERE ator=?", (usuario,))
             self.db.execute("DELETE FROM pedidos WHERE usuario=?", (usuario,))
             self.db.execute("DELETE FROM web_fluxos WHERE usuario=?", (usuario,))
             self.db.execute("DELETE FROM web_sessoes WHERE usuario=?", (usuario,))
@@ -649,6 +660,11 @@ class Cadastro(Cartoes, Modelos, Conferencias):
                 self._remover(row["servidor"], row["id"])
             contagens["personagens"] = len(ausentes)
             self.limpar_imagens()
+            # Pendentes não expiram silenciosamente: podem ter criado arquivo no
+            # Google. Limitadas a uma por ator/servidor e pelos limites globais.
+            contagens['copias_rest'] = self.db.execute(
+                "DELETE FROM copias_rest WHERE estado='identificada' AND atualizado<=?",
+                (self.agora() - 30 * DIA,)).rowcount
             for tabela, campo, prazo in (("leituras", "expira", 0), ("analises", "expira", 0),
                                          ("conferencias_rest", "expira", 0),
                                          ("web_fluxos", "expira", 0), ("previas_cartao", "expira", 0),
@@ -663,6 +679,8 @@ class Cadastro(Cartoes, Modelos, Conferencias):
                                                    (self.agora() - 31 * DIA,)).rowcount
             contagens["autorizacoes"] = self.db.execute("DELETE FROM remocoes.autorizacoes WHERE criado<=?",
                                                        (self.agora() - 31 * DIA,)).rowcount
+            contagens['copias_removidas'] = self.db.execute('DELETE FROM remocoes.copias WHERE criado<=?',
+                                                          (self.agora() - 31 * DIA,)).rowcount
         return contagens
 
     def rotacionar_chave(self, nova_chave: bytes):
@@ -708,6 +726,10 @@ class Cadastro(Cartoes, Modelos, Conferencias):
                 ctx = self._ctx_conferencia(row)
                 self.db.execute("UPDATE conferencias_rest SET conteudo=? WHERE servidor=? AND personagem=?",
                                 (nova.cifrar(ctx, self.cifra.abrir(ctx, row["conteudo"])), row["servidor"], row["personagem"]))
+            for row in self.db.execute('SELECT * FROM copias_rest').fetchall():
+                ctx = self._ctx_copia(row)
+                self.db.execute('UPDATE copias_rest SET conteudo=? WHERE operacao=?',
+                                (nova.cifrar(ctx, self.cifra.abrir(ctx, row['conteudo'])), row['operacao']))
             self.db.execute("UPDATE meta SET valor=? WHERE chave='verificador'",
                             (nova.cifrar(["verificador", self.banco_id], "carteira-viva"),))
         self.cifra = nova

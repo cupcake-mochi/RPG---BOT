@@ -268,6 +268,13 @@ As etapas são sequenciais; cada uma deve caber numa PR revisável. Dividir uma
 etapa em PRs menores se necessário, mantendo funções incompletas desligadas.
 Não abrir dez PRs vazias nem tratar aprovação do plano como autorização de deploy.
 
+### Divisão da etapa 7 · 28/10
+
+A criação é maior que a configuração do modelo. Acompanhar 7A (modelo e
+leitura), 7B (cópia/recuperação), 7C (limpeza/inicialização) e 7D (preservação,
+automações e prova final). Essa divisão não muda as etapas 8–10 nem libera
+funções incompletas. [Estado e critérios](COPIAS-REST-2026-10-28.md).
+
 ### 1. Fechar os contratos e provar o acesso
 
 Mapear fontes atuais, campos públicos/privados, ações, retenção, vínculo de

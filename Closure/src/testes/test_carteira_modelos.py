@@ -98,7 +98,7 @@ class BancoModelos(Fixtures,unittest.TestCase):
 
     def test_migracao_schema5_preserva_personagem(self):
         p=self.criar()
-        self.c.db.executescript('DROP TABLE conferencias_rest; DROP TABLE modelos_servidor');self.c.db.execute('PRAGMA user_version=5')
+        self.c.db.executescript('DROP TABLE copias_rest; DROP TABLE conferencias_rest; DROP TABLE modelos_servidor');self.c.db.execute('PRAGMA user_version=5')
         self.reabrir()
         self.assertEqual(self.c.db.execute('PRAGMA user_version').fetchone()[0],VERSAO)
         self.assertEqual(self.c.cartao(self.m,p['id'])['perfil'],p['perfil'])

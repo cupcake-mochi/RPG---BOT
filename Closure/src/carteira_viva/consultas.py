@@ -59,12 +59,13 @@ class Consultas:
                 "leituras_google": l["campos"]["leituras_google"],
                 "em_transicao": l["campos"]["em_transicao"]}
 
-    async def _renovar_google(self, membro, ref):
+    async def _renovar_google(self, membro, ref, *, para_copia=False):
         """Trava compartilhada; token de acesso só em memória, refresh cifrado."""
         lock = self.renovacoes.setdefault(ref.conexao, asyncio.Lock())
         async with lock:
             membro = await self._membro(ref.servidor, membro.usuario)
-            cred = await self._banco("_credencial", membro, ref)
+            metodo = '_credencial_copia' if para_copia else '_credencial'
+            cred = await self._banco(metodo, membro, ref)
             if cred.cliente != self.provedores.cfg.google_id:
                 raise ErroCarteira("Reconecte a ficha no cliente Google atual.")
             async def manter_credencial():
@@ -104,8 +105,13 @@ class Consultas:
             if cancelado:
                 raise asyncio.CancelledError()
             membro = await self._membro(ref.servidor, membro.usuario)
-            await self._banco("_credencial", membro, ref)
+            await self._banco(metodo, membro, ref)
             return cred, token
+
+    async def copiar_modelo(self, servidor, usuario, *, conexao, modelo, pedido):
+        """Método interno, sem endpoint. Cópia identificada não libera criação."""
+        from .copias_servico import copiar
+        return await copiar(self, servidor, usuario, conexao=conexao, modelo=modelo, pedido=pedido)
 
     async def conferir_inicializacao(self, servidor, usuario, personagem, *, retomar=False):
         """Conferência interna somente de leitura; sem endpoint/criação."""
