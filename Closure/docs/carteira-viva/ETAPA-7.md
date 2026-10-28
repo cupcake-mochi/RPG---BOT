@@ -1,5 +1,21 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Contrato REST e conferência parcial · 28/10 — não publicada
+
+Exportador público no produtor e JSON com hash fixo no consumidor. Conferência
+financeiro/progressão em fluxo, cobertura obrigatória/ordem/fonte, custos lidos
+das entradas da configuração. Progressão agora oito páginas/1.894 posições,
+27 GETs, ou 28 com finalização; financeiro 153/154. Recibo cifrado histórico
+vincula contrato/contexto/fonte/versão, sem grade/token e sem liberar criação.
+Não é diário persistido de limpeza ou retomada de escrita; schema 6 preservado.
+Corrigido no produtor o piso do XP: “—” abaixo, zero no inicial. Caso falhou
+antes/passou depois; fonte e sondagem Google em descartável confirmaram. Nível 1
+sem custo 1→2 continua pendente. Cópia na lixeira/aba fechada; não executou GS ou
+serviço OAuth das Guias. 23 novos locais; CI completo em fechamento. Faltam
+estado/recuperação, propriedades/demais domínios, autorização/fila/cópia, arte/
+automações/responsável e prova nativa integral. Criação bloqueada, sem merge/deploy.
+[Implementação, provas e retomada](CONFERENCIA-REST-2026-10-28.md). Sol Alto; revisão Médio.
+
 ## Coleta REST de financeiro e progressão · 28/10 — parcial
 
 Novo `grade_inicializacao.py`: lê fórmulas/entradas, resultados, notas e formato

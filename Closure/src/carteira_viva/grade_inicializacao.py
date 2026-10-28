@@ -34,7 +34,8 @@ FIXAS = {
         ('FICHA', 'AN11:AN11')),
     'progressao': (('CONFIGURAÇÃO', 'C46:H46'), ('DADOS', 'CY47:CZ47'),
         ('DADOS', 'CY54:CZ54'), ('DADOS', 'AQ5:AR33'), ('FICHA', 'AH11:AH11'),
-        ('FICHA', 'AN11:AN11'), ('FICHA PESSOAL', 'AW15:BS87')),
+        ('FICHA', 'AN11:AN11'), ('FICHA PESSOAL', 'AW15:BS87'),
+        ('CONFIGURAÇÃO', 'C65:G93')),
 }
 LIVROS = (('EXTRATO', 3), ('SALÁRIOS', 12), ('DADOS_SALARIOS', 10))
 
@@ -303,3 +304,9 @@ class LeitorGradeRest:
         await self._versao(acesso, plano.arquivo, plano.inicio, plano.contexto, plano.versao)
         self._prazo(plano.inicio)
         return PaginaGrade(faixa, celulas)
+
+    async def confirmar(self, acesso, plano):
+        """Última observação autenticada; não certifica cobertura ou cria ficha."""
+        if type(plano) is not PlanoGrade or plano.dono is not self._dono:
+            _erro()
+        await self._versao(acesso, plano.arquivo, plano.inicio, plano.contexto, plano.versao)

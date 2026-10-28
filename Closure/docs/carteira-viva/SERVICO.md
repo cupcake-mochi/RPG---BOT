@@ -1,5 +1,9 @@
 # Rodar a conexão de fichas
 
+28/10: conferência interna por contrato REST para financeiro/progressão e recibo
+cifrado histórico, sem nova rota/comando/schema ou escrita. O custo de progressão
+agora é lido da CONFIGURAÇÃO: oito páginas. [Escopo e limites](CONFERENCIA-REST-2026-10-28.md).
+
 28/10: novo transporte interno de grade REST, só financeiro/progressão, com
 contexto/cota por GET e versão por página. Ainda sem rota ou criação; composição
 no serviço e adaptação de estado/contrato pendentes.

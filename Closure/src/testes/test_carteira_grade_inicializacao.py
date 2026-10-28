@@ -210,7 +210,7 @@ class GradeInicializacaoTeste(unittest.IsolatedAsyncioTestCase):
     async def test_cada_get_reserva_cota_inclusive_observacoes_drive(self):
         c=Cenario();await c.abrir('progressao')
         for i in range(len(c.plano.faixas)):await c.pagina(i)
-        self.assertEqual(c.cotas,len(c.requests));self.assertEqual(c.cotas,24)
+        self.assertEqual(c.cotas,len(c.requests));self.assertEqual(c.cotas,27) # Oitava página lê custos de XP na CONFIGURAÇÃO, não só seus resultados.
     async def test_contexto_alterado_durante_espera_nao_faz_rede(self):
         c=Cenario();await c.abrir();n=len(c.requests)
         async def mudar():c.contexto='d'*64
