@@ -1,5 +1,11 @@
 # Cópia com recuperação de resposta perdida
 
+**Atualização posterior:** o caminho observado de cópia/recuperação foi
+validado com Google real: resposta perdida, reinício, identificação sem segundo
+POST e recusa após revogação. Duas descartáveis na lixeira/piloto encerrado.
+[Relatório nativo](NATIVO-COPIAS-2026-10-28.md). O texto abaixo registra a entrega
+offline anterior; os avisos de ensaio pendente são históricos.
+
 28/10/2026 · etapa 7 parcial · PR84 em rascunho, dependente da PR83.
 **Implementação interna, validada offline. Não publicada nem ensaiada no Google.**
 O ensaio nativo anterior testou leitura/retomada, não este transporte de cópia.

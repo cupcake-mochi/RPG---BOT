@@ -270,6 +270,11 @@ Não abrir dez PRs vazias nem tratar aprovação do plano como autorização de 
 
 ### Divisão da etapa 7 · 28/10
 
+Prova nativa posterior da 7B concluída no caminho de resposta perdida/reinício:
+[NATIVO-COPIAS-2026-10-28.md](NATIVO-COPIAS-2026-10-28.md). Cópia identificada não
+libera criação; o próximo código é o diário de escrita/limpeza da 7C.
+
+
 A criação é maior que a configuração do modelo. Acompanhar 7A (modelo e
 leitura), 7B (cópia/recuperação), 7C (limpeza/inicialização) e 7D (preservação,
 automações e prova final). Essa divisão não muda as etapas 8–10 nem libera

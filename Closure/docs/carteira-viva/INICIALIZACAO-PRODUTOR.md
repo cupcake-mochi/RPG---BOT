@@ -15,6 +15,23 @@ Os fontes abaixo não substituem uma inspeção do código instalado na cópia.
 `r53/OFICIAIS.md` registra os incrementos das oficiais; o pacote integral
 gerado não foi instalado por esta tarefa e não deve ser promovido por rotina.
 
+## Cópia recuperada no Google · 28/10 — prova da 7B
+
+O método novo enviou um POST real que ficou sem resposta registrada e manteve
+`copia_incerta` (23,411 s). Após reiniciar, encontrou e validou a mesma cópia em
+21,293 s: três GETs Drive/um OAuth, **zero POST Drive e zero Sheets** na retomada.
+Destino próprio/privado e origem inalterada. A injeção de perda planejada não
+foi usada: a perda da resposta aconteceu no transporte real.
+
+Concessão revogada, tentativa posterior recusada antes de acessar arquivos,
+dados fictícios locais removidos, ambos os bancos íntegros, duas descartáveis
+na lixeira e piloto desligado. Nenhuma célula/GS/oficial/jogador alterado.
+Próximo bloco **7C**: diário de escrita e reconciliação financeira; depois **7D**,
+preservação/automações e ensaio integral. Criação permanece bloqueada.
+Código/CI 9cb8a84/1.486 intactos; fechamento apenas documental [skip ci], sem
+suíte/ZIP novos, merge/deploy. [Prova real e limites](NATIVO-COPIAS-2026-10-28.md).
+Sol Alto para continuar; Médio para revisão.
+
 ## Cópia com recuperação · 28/10 — etapa 7B, offline
 
 Backend interno agora guarda o envio antes do POST e, após resposta perdida,
