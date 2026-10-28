@@ -1,6 +1,57 @@
 # Testes da Carteira viva
 
-## Grau, Origem e treinos · continuação de 27/10
+## Técnica e Famílias · continuação de 28/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`763a78bd5fd3d799dd1273f24b6839a5c118d47a` (domínios em `a92cba8`). Main
+`ef361ccdf7a0210781176e3c42d318cde147553d` incorporada pelo merge `a72adc0`
+(PRs 41–43). Inclui XP manual/missões congeladas e registro do backup 13 das
+oficiais feito por outro trabalho; não reaplicar aquela instalação.
+
+Dois perfis novos: **11 entradas do cabeçalho da técnica e 19 estados de
+Famílias**. Nove Famílias do livro voltam a Neutra; dez custom recuperam as
+fórmulas originais, sem apagar as definições do servidor. Nome/atributo/CD
+derivados são preservados. O nome declarado da técnica na CARTEIRA ainda
+precisa de domínio próprio, assim como cartões/amparo e sincronizações.
+Os quatro contratos anteriores e a assinatura financeira v1 ficam iguais.
+
+**782 cenários locais passaram** (101 financeiro, 82 progressão, 78 identidade,
+243 pessoal, 278 formação), 90 a mais que o checkpoint anterior. Duas regressões
+usam as novas notas de XP congelado: financeiro remove marcas herdadas;
+reinserção depois impede progressão. Mais 87 verificações upstream de XP manual.
+O CI 40681047195 passou os 782 cenários, mas faltavam dois commits históricos
+para os testes salariais incluídos pela main. O workflow agora busca somente
+as duas bases imutáveis, sem pular testes ou mudar expectativas. As 15
+verificações de abertura e 2.076 de missões passaram localmente. [CI corrigido 40681468287](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40681468287)
+aprovado em 28/10 às 08:39:49 Brasília no código `763a78b`: 782 cenários,
+regressões, pacote de nove arquivos, catálogo/progressão/Kaori e sintaxe
+277 Python/220 JS-GS. Duplicado 40681461827 cancelado. Fechamento produtor
+`5c93e005964360a157a0883857f1951609ce9539` só documental, `[skip ci]`.
+
+Leitura das duas oficiais: 84 entradas/guardas cada, sem divergências ou escrita.
+Projeção pela Sheets API em cópia privada descartável da Era: 30 alvos
+restaurados, 2.048 posições inspecionadas e 8.132 comparações preservadas sem
+diferença. Duas custom (incluindo nome com *) ficaram Neutra; oito vazias.
+Fórmulas com vírgulas deram erro de análise na API; a variante exata com ponto
+e vírgula observada nas oficiais resolveu. Não altera conta ou referência.
+Nenhum erro final nas faixas inspecionadas. Cópia na lixeira, aba fechada.
+**Isso não executou o inicializador/diários Apps Script ou o OAuth das Guias.**
+O setValues real e a retomada dos novos perfis ainda exigem ensaio nativo.
+Relatório: `r53/inicializacao/TECNICA-FAMILIAS-2026-10-28.md` no produtor.
+
+Próximo bloco: inventário/equipamento. Também faltam campos da CARTEIRA,
+entidades/cartões/MONTAGENS, fotos/caches/recuperações, orquestração/conferência
+conjunta, treinos iniciais/automações, novo responsável, integração executável
+com drive.file e prova nativa completa. **Criação incondicionalmente bloqueada**;
+protótipos fora do pacote/bot. Não reiniciar fases apagando diários.
+
+Bot runtime `26ec106`, CI 40496955301 (1.314 executados/1.313 aprovados/um
+opcional), PR 84 na base da 83. Aqui só docs do consumidor: sem repetir suíte
+extensa ou gerar ZIP. Sem merge em main, deploy, Gateway, modelo pago, escopos
+novos ou escrita em oficial/jogador. Próxima implementação GPT-6 Astra / Alto;
+revisão focal Médio. Não alterar configurações automaticamente.
+
+## Histórico: Grau, Origem e treinos · continuação de 27/10
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
 `73dffda`, main `64b84e4cef0b1b0a05c2159c9dc700459a0f2dc9` incorporada por
