@@ -1,6 +1,47 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
-## Inventário e equipamento · continuação de 28/10
+## CARTEIRA e memórias · continuação de 28/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`8bb93355cb5d20d75ead1d8ba9a4b6d7c3ad88cc`. Main `ef361cc` e bot main
+`de42447` reconferidas sem novidade; nenhum merge necessário.
+
+Perfil CARTEIRA: O13, O27 e O30, conteúdo/notas de fábrica; preserva servidor,
+espelhos, identidade, foto e emissão tratados separadamente. O27 é a técnica
+declarada consumida por DADOS_AM; sentinela antigo D24 do teste foi corrigido
+com prova da montagem completa. Nove contratos de formação anteriores iguais.
+
+Protocolo separado de memórias: quatro caches e 249 marcadores de Classe em
+11 grupos fixos de até 24 chaves; recuperações conhecidas por timestamp com
+diário individual. Só document properties conhecidas, sem apagar células,
+MONTAGENS, configurações, script/user properties ou diários alheios. Recusa
+namespace/contrato desconhecido, preserva retomada/concorrência/limites e
+invalida cache volátil do editor. A inspeção final deve ser repetida para
+identificar recuperações novas; concluir um grupo não certifica o conjunto.
+
+441 cenários de formação/CARTEIRA, 155 de memórias e 101 financeiros passaram
+localmente; **1.100** (101/82/78/243/441/155) confirmados no
+[CI 40686604745](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40686604745),
+aprovado no código `8bb9335` em 28/10 às 09:19:25 Brasília, junto ao pacote
+e demais regressões. Run duplicado de push 40686597423 cancelado. Fechamento
+produtor `306b22ed008a18d04e40c8d437806cedc5003333` só documental, `[skip ci]`. Quinze entradas/guardas e três notas conferidas em cada
+oficial, sem divergência, somente leitura. Sem nova cópia, projeção ou execução
+Apps Script nesta rodada. Relatório do produtor:
+`r53/inicializacao/CARTEIRA-MEMORIAS-2026-10-28.md`.
+
+Próximo: entidades/cartões/MONTAGENS. Ainda faltam arte, orquestração e
+conferência conjunta, ordem das memórias com automações/notas vivas/treinos,
+novo responsável, integração executável drive.file e prova nativa completa.
+**Criação incondicionalmente bloqueada.** Limpar caches não limpa os cartões
+armazenados; não religar automações no meio da limpeza nem apagar diários
+para forçar uma nova execução. Não confundir testes isolados com aceite final.
+
+Runtime bot `26ec106`, CI histórico 40496955301 (1.314/1.313/um opcional), PR 84
+base PR 83; consumidor só docs, sem suíte/ZIP novo. Protótipos fora do pacote.
+Sem merge/deploy/Gateway/modelo pago/escopos novos ou escrita em oficial/jogador.
+Próxima implementação GPT-6 Astra / Alto; revisão focal Médio.
+
+## Histórico: inventário e equipamento · continuação de 28/10
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
 `86410bee3fc70fa81f124a695253e032688c3ebe`. Main `ef361cc` reconferida,

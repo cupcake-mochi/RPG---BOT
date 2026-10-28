@@ -3,48 +3,46 @@
 Atualizado em 28/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
-## Inventário e equipamento · continuação de 28/10
+## CARTEIRA e memórias · continuação de 28/10
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
-`86410bee3fc70fa81f124a695253e032688c3ebe`. Main `ef361cc` reconferida,
-sem alteração desde o checkpoint anterior; bot main `de42447` também igual.
+`8bb93355cb5d20d75ead1d8ba9a4b6d7c3ad88cc`. Main `ef361cc` e bot main
+`de42447` reconferidas sem novidade; nenhum merge necessário.
 
-Três perfis novos: equipados (cinco campos), equipáveis guardados (88) e itens
-(36). Restauram fórmulas/notas, limpam estoque e valores pessoais, preservando
-configurações e catálogos. Quatro notas vivas antigas são limpas sem escrever
-nas suas fórmulas protegidas. Soco, mão livre e Traje 1 são defaults da ficha;
-não concede dinheiro, estoque ou treino. Fórmulas desconhecidas recusadas.
-A variante decimal 0,1 observada nas oficiais é aceita somente nas fórmulas
-inteiras conhecidas de Volume; mudança de número/referência continua recusada.
-Contratos anteriores e assinatura financeira v1 mantidos.
+Perfil CARTEIRA: O13, O27 e O30, conteúdo/notas de fábrica; preserva servidor,
+espelhos, identidade, foto e emissão tratados separadamente. O27 é a técnica
+declarada consumida por DADOS_AM; sentinela antigo D24 do teste foi corrigido
+com prova da montagem completa. Nove contratos de formação anteriores iguais.
 
-417 cenários direcionados de formação/inventário e 101 financeiros passaram;
-a coleção de inicialização soma 921 (101/82/78/243/417), confirmados pelo
-[CI 40683614201](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40683614201),
-aprovado em 28/10 às 08:56:07 Brasília no código `86410be`, junto ao pacote,
-regressões, catálogo/progressão/Kaori e sintaxe 277 Python/220 JS-GS.
-Duplicado 40683604255 cancelado. Fechamento produtor `edea21b` só documental,
-`[skip ci]`. Leitura de 161 entradas/
-guardas por oficial, zero diferenças e nenhuma escrita.
+Protocolo separado de memórias: quatro caches e 249 marcadores de Classe em
+11 grupos fixos de até 24 chaves; recuperações conhecidas por timestamp com
+diário individual. Só document properties conhecidas, sem apagar células,
+MONTAGENS, configurações, script/user properties ou diários alheios. Recusa
+namespace/contrato desconhecido, preserva retomada/concorrência/limites e
+invalida cache volátil do editor. A inspeção final deve ser repetida para
+identificar recuperações novas; concluir um grupo não certifica o conjunto.
 
-Projeção Sheets API em cópia privada do Ciclo: 129 campos/notas e quatro notas
-isoladas restaurados; 2.678 posições, 10.450 comparações preservadas sem diferença.
-Carga 0,3 de 5 igual ao modelo, por causa do Traje 1; nenhum erro nas faixas.
-Cópia na lixeira, aba fechada. **Não executou os novos diários Apps Script,
-OAuth das Guias ou automações.** Relatório do produtor:
-`r53/inicializacao/INVENTARIO-2026-10-28.md`.
+441 cenários de formação/CARTEIRA, 155 de memórias e 101 financeiros passaram
+localmente; **1.100** (101/82/78/243/441/155) confirmados no
+[CI 40686604745](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40686604745),
+aprovado no código `8bb9335` em 28/10 às 09:19:25 Brasília, junto ao pacote
+e demais regressões. Run duplicado de push 40686597423 cancelado. Fechamento
+produtor `306b22ed008a18d04e40c8d437806cedc5003333` só documental, `[skip ci]`. Quinze entradas/guardas e três notas conferidas em cada
+oficial, sem divergência, somente leitura. Sem nova cópia, projeção ou execução
+Apps Script nesta rodada. Relatório do produtor:
+`r53/inicializacao/CARTEIRA-MEMORIAS-2026-10-28.md`.
 
-Próximo: campos pessoais restantes da CARTEIRA e propriedades de recuperação;
-depois entidades/cartões/MONTAGENS. Ainda faltam arte/caches/recuperações,
-orquestração/conferência conjunta, automações/notas vivas/treinos iniciais,
+Próximo: entidades/cartões/MONTAGENS. Ainda faltam arte, orquestração e
+conferência conjunta, ordem das memórias com automações/notas vivas/treinos,
 novo responsável, integração executável drive.file e prova nativa completa.
-**Criação incondicionalmente bloqueada.** Avisos vazios não são aprovação;
-notas vivas serão regeneradas na fase final. Não apagar diários para reiniciar.
+**Criação incondicionalmente bloqueada.** Limpar caches não limpa os cartões
+armazenados; não religar automações no meio da limpeza nem apagar diários
+para forçar uma nova execução. Não confundir testes isolados com aceite final.
 
-Bot runtime `26ec106`, CI 40496955301 (1.314/1.313/um opcional), PR 84 base 83.
-Consumidor só docs, sem repetir suíte ou gerar ZIP. Protótipos fora do pacote/bot.
-Sem merge em main, deploy, Gateway, modelo pago, novos escopos ou escrita em
-oficial/jogador. Próxima implementação GPT-6 Astra / Alto; revisão focal Médio.
+Runtime bot `26ec106`, CI histórico 40496955301 (1.314/1.313/um opcional), PR 84
+base PR 83; consumidor só docs, sem suíte/ZIP novo. Protótipos fora do pacote.
+Sem merge/deploy/Gateway/modelo pago/escopos novos ou escrita em oficial/jogador.
+Próxima implementação GPT-6 Astra / Alto; revisão focal Médio.
 
 ## Checkout e Git
 
