@@ -1,6 +1,48 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
-## Dados das entidades · continuação de 28/10
+## Fotos nas caixas conhecidas · 28/10 — arte parcial
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`350c56d`. Main produtor `ef361cc` e bot `de42447` reconferidas. Um perfil
+restaura 13 caixas de foto + espelho pessoal e notas; dez decorações de fábrica
+ficam fora dos alvos. Mesclas/validações protegidas, tipo interno `foto` no
+executor sem mudar operações/assinaturas anteriores, diário/recibo e limites
+existentes. Não remover imagens por posição ou só por alt text.
+
+Reconhece texto/URL digitado, fórmula IMAGE e CellImage identificável por hash
+de URL temporária/alt text, sem guardar URL/imagem/notas no retorno ou diário.
+Não faz fetch. Identificação instável/ilegível provoca recusa. Se uma foto
+pendente perder a identificação, não apagar o diário: revisar/descartar a cópia
+incompleta e usar outra nova. Mesmo com alt igual, URLs diferentes não são
+tratadas como a mesma imagem; isso não certifica os pixels.
+
+Sobreposição ou desenho em qualquer aba bloqueia, sem remove. **Imagens em
+outras células não são auditadas/limpas**; a pendência aparece no retorno,
+com criação indisponível. Decoração custom ainda exige decisão de preservação.
+Não chamar arte de concluída. O suporte nativo/estabilidade da URL precisa
+ser caracterizado no Apps Script em cópia descartável, sem ampliar escopo.
+
+137 cenários locais de fotos e 44 de quota passaram. Simulação ampliada para
+572 perfis + reserva 100 KB: 412.570 bytes, pico 412.936. Coleção completa
+**2.747/zero falhas**, confirmada no [CI 40706336130](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40706336130),
+código `350c56d`, aprovado em 28/10 às 11:32:49 Brasília. Pacote nove arquivos,
+sintaxe 277 Python/242 JS-GS e demais regressões passaram; duplicado
+40706329406 cancelado. Fechamento só documental `[skip ci]`. A VM não executa
+serviços nem recalcula fórmulas.
+Nenhuma planilha lida/editada, cópia, Apps Script, OAuth/escopo novo ou modelo
+pago nesta rodada. Consulta só à documentação pública Google. Relatório
+produtor `r53/inicializacao/FOTOS-2026-10-28.md`.
+
+Próximo: ensaio CellImage/URL e auditoria de imagens fora das âncoras; depois
+orquestração/orçamento total/conferência global, memórias, automações/treinos/
+notas e novo responsável, integração drive.file e prova nativa completa.
+Fotos devem preceder identidade textual e entidades. Criação bloqueada,
+protótipos fora do pacote/bot; consumidor só docs, runtime `26ec106` e CI
+histórico 40496955301. Sem suíte/ZIP novo, merge/deploy ou Gateway.
+GPT-6.1 Sol / Alto para implementar; Médio para revisão focal (AGENTS.md).
+Entradas abaixo históricas.
+
+## Histórico: dados das entidades · continuação de 28/10
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
 `baf652d5dbd9db8ba5a0ca64ca04bfbebfb6738c`. Main produtor `ef361cc` e bot
