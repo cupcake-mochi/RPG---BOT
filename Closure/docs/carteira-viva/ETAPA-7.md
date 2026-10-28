@@ -1,5 +1,21 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Células financeiras · 28/10 — 7C parcial, só offline
+
+O serviço interno agora planeja os resets do contrato, grava o diário antes de
+enviar e reconcilia por leitura após erro, cancelamento ou reinício. Só aceita
+cópia própria comprovada, privada e ainda não cadastrada. Nenhuma escrita real
+foi feita nesta rodada. Schema 9/ledger 2; sem endpoint ou liberação de criação.
+
+**As cinco propriedades do Apps Script continuam pendentes.** Células conferidas
+não significam financeiro concluído. A API também não impede edição simultânea
+do dono entre a observação da versão e a escrita; essa lacuna bloqueia a criação
+pública. Faltam ensaio descartável desta escrita, demais domínios, preservação
+global, automações e prova integral. Etapas 8–10 continuam pendentes.
+
+[Implementação, testes e próximos passos](FINANCEIRO-REST-2026-10-28.md).
+Sol Alto para continuar; Médio para revisão. Registros abaixo são históricos.
+
 ## Cópia recuperada no Google · 28/10 — prova da 7B
 
 O método novo enviou um POST real que ficou sem resposta registrada e manteve

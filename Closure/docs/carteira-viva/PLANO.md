@@ -272,7 +272,9 @@ Não abrir dez PRs vazias nem tratar aprovação do plano como autorização de 
 
 Prova nativa posterior da 7B concluída no caminho de resposta perdida/reinício:
 [NATIVO-COPIAS-2026-10-28.md](NATIVO-COPIAS-2026-10-28.md). Cópia identificada não
-libera criação; o próximo código é o diário de escrita/limpeza da 7C.
+libera criação. A 7C agora tem diário e escrita de **células financeiras**,
+validados offline; faltam a prova descartável, propriedades Apps Script e
+proteção contra edição simultânea. [Limites](FINANCEIRO-REST-2026-10-28.md).
 
 
 A criação é maior que a configuração do modelo. Acompanhar 7A (modelo e

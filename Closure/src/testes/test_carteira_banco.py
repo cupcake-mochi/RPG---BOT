@@ -18,6 +18,23 @@ from carteira_viva.permissoes import Membro, PUBLICOS
 from carteira_viva.segredos import AcessoNegado, Conflito, ErroCarteira
 
 
+def schema_historico(db, versao):
+    """Inventário de fixture, independente do código SQL das migrações.
+
+    Rebaixar só user_version deixa tabelas novas num banco supostamente antigo.
+    Toda introdução de tabela deve ser incluída aqui, uma vez para os cenários.
+    """
+    posteriores = ((9, ('financeiro_rest',)), (8, ('copias_rest',)),
+        (7, ('conferencias_rest',)), (6, ('modelos_servidor',)), (5, ('web_sessoes',)),
+        (4, ('previas_cartao', 'resumos_cartao', 'imagens')), (3, ('web_fluxos',)),
+        (2, ('pedidos', 'auditoria')))
+    for numero, tabelas in posteriores:
+        if numero > versao:
+            for tabela in tabelas:
+                db.execute('DROP TABLE '+tabela)
+    db.execute(f'PRAGMA user_version={versao}')
+
+
 class Fixtures:
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -632,7 +649,7 @@ class MigracaoTeste(Fixtures, unittest.TestCase):
         p = self.criar()
         self.c.fechar()
         db = sqlite3.connect(self.path)
-        db.executescript("DROP TABLE copias_rest; DROP TABLE conferencias_rest; DROP TABLE modelos_servidor; DROP TABLE web_sessoes; DROP TABLE resumos_cartao; DROP TABLE previas_cartao; DROP TABLE imagens; DROP TABLE web_fluxos; DROP TABLE pedidos; DROP TABLE auditoria; PRAGMA user_version=1;")
+        schema_historico(db, 1)
         db.close()
         return p
 

@@ -113,6 +113,11 @@ class Consultas:
         from .copias_servico import copiar
         return await copiar(self, servidor, usuario, conexao=conexao, modelo=modelo, pedido=pedido)
 
+    async def inicializar_financeiro_celulas(self, servidor, usuario, referencia):
+        """Interno, só cópia não cadastrada; criação/propriedades continuam bloqueadas."""
+        from .financeiro_servico import inicializar
+        return await inicializar(self, servidor, usuario, referencia)
+
     async def conferir_inicializacao(self, servidor, usuario, personagem, *, retomar=False):
         """Conferência interna somente de leitura; sem endpoint/criação."""
         from .conferencias_servico import conferir

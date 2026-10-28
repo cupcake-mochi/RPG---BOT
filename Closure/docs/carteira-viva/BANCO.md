@@ -1,5 +1,13 @@
 # Banco de personagens
 
+28/10: diário financeiro de células em schema **9**, cifrado, máximo 32 KiB,
+prazo original de 30 minutos. Registra `enviada` antes do único POST. Backup
+converte `preparada` em `enviada` apenas na cópia; restauração só reconcilia.
+Rotação e exclusão global cobertas; o ledger 2 existente cobre a operação de
+cópia e a tabela financeira é removida por cascata. Não guarda a grade ou
+histórico pessoal. Propriedades Apps Script e criação continuam pendentes.
+[Detalhes e limites](FINANCEIRO-REST-2026-10-28.md).
+
 28/10: schema **8** acrescenta diário de cópias REST cifrado. Ledger **2**
 acrescenta nonces de operações removidas globalmente, conservados por 31 dias.
 Um backup marca cópias preparadas como enviadas apenas em sua cópia interna:
@@ -48,7 +56,9 @@ envelope e têm hashes separados para localizar uma conexão existente.
 
 ## Schema e migrações
 
-Schema atual: **8**; ledger **2**. Migração 8 acrescenta `copias_rest`.
+Schema atual: **9**; ledger **2**. Migração 9 acrescenta `financeiro_rest`,
+vinculado à operação de cópia por chave estrangeira com exclusão em cascata.
+Migração 8 acrescentou `copias_rest`.
 Migração 7 acrescentou `conferencias_rest`, com estado
 cifrado e chave estrangeira para o personagem. Abaixo, evolução anterior: Migração 1 cria as tabelas de domínio; migração 2 acrescenta
 pedidos e auditoria; migração 3 acrescenta tentativas web cifradas; migração 4 acrescenta resumo
@@ -64,6 +74,7 @@ uma versão anterior deste recurso; o teste de migração usa uma fixture v1.
 
 | Tabela | Uso |
 |---|---|
+| `financeiro_rest` | Intenção e hashes do reset de células, pedidos fixos cifrados; sem histórico da ficha |
 | `servidores`, `cargos` | Campos públicos permitidos e capacidades explícitas de revisão/edição |
 | `conexoes` | Uma conexão por usuário Discord, identidade Google e cliente OAuth |
 | `personagens` | Vários personagens por jogador/servidor, com ID estável e perfil próprio |

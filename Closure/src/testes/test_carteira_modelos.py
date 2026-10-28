@@ -13,7 +13,7 @@ from carteira_viva.provedores import Provedores, ErroProvedor
 from carteira_viva.segredos import AcessoNegado, Conflito, ErroCarteira
 from carteira_viva.sondagem_modelo import MAX_LINHAS_HISTORICO, faixas_sondagem, sondar
 from carteira_viva.web import DADOS
-from testes.test_carteira_banco import Fixtures
+from testes.test_carteira_banco import Fixtures, schema_historico
 from testes.test_carteira_provedores import configuracao
 from testes.test_carteira_web import WebFixture, ProvedorFicticio, F1
 
@@ -98,7 +98,7 @@ class BancoModelos(Fixtures,unittest.TestCase):
 
     def test_migracao_schema5_preserva_personagem(self):
         p=self.criar()
-        self.c.db.executescript('DROP TABLE copias_rest; DROP TABLE conferencias_rest; DROP TABLE modelos_servidor');self.c.db.execute('PRAGMA user_version=5')
+        schema_historico(self.c.db,5)
         self.reabrir()
         self.assertEqual(self.c.db.execute('PRAGMA user_version').fetchone()[0],VERSAO)
         self.assertEqual(self.c.cartao(self.m,p['id'])['perfil'],p['perfil'])

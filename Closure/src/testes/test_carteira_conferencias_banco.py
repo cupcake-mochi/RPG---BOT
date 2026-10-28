@@ -10,7 +10,7 @@ from carteira_viva.conferencia_inicializacao import FLAGS, ConferenciaGrade
 from carteira_viva.conferencias_banco import conferir_dominio_persistido, PRAZO
 from carteira_viva.modelos import CriacaoBloqueada
 from carteira_viva.segredos import AcessoNegado, Conflito, ErroCarteira
-from testes.test_carteira_banco import Fixtures
+from testes.test_carteira_banco import Fixtures, schema_historico
 from testes.test_carteira_conferencia_inicializacao import Dados
 from testes.test_carteira_grade_inicializacao import ARQUIVO
 
@@ -189,7 +189,7 @@ class ConferenciasBancoTeste(Fixtures, unittest.IsolatedAsyncioTestCase):
 
     def test_migracao6_preserva_dados_e_rejeita_envelope_corrompido(self):
         p, _, _, _ = self.preparar()
-        self.c.db.execute('DROP TABLE copias_rest'); self.c.db.execute('DROP TABLE conferencias_rest'); self.c.db.execute('PRAGMA user_version=6'); self.reabrir()
+        schema_historico(self.c.db,6);self.reabrir()
         self.assertEqual(self.c.cartao(self.m, p['id'])['id'], p['id']); self.assertEqual(self.quantidade(), 0)
         ref = self.c.reservar_leitura(self.m, p['id'])
         self.c.iniciar_conferencia_rest(self.m, ref, versao_drive='12')

@@ -1,7 +1,8 @@
 # Executar e manter as Guias do Ciclo
 
 Carteira viva: etapa 7 **parcial**, configuração de modelo por servidor em
-schema 6; criação de novas fichas bloqueada até comprovar inicialização limpa
+schema 9 (configuração do modelo desde o 6, diário financeiro de células no 9);
+criação de novas fichas bloqueada até comprovar inicialização limpa
 e automações. Cadastro existente preservado. Serviço/ponte continuam
 separados do runtime publicado; ver [relatório](../docs/carteira-viva/ETAPA-7.md)
 e [retomada](../docs/carteira-viva/RETOMADA.md). Nenhum deploy desta etapa.

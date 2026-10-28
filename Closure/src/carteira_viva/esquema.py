@@ -2,7 +2,7 @@
 from .segredos import ErroCarteira
 
 APPLICATION_ID = 0x43564956
-VERSAO = 8
+VERSAO = 9
 
 MIGRACOES = {
     1: (
@@ -109,6 +109,12 @@ MIGRACOES = {
             criado REAL NOT NULL, atualizado REAL NOT NULL, conteudo BLOB NOT NULL,
             UNIQUE(servidor,ator,pedido))""",
         "CREATE UNIQUE INDEX copia_pendente ON copias_rest(servidor,ator) WHERE estado!='identificada'",
+    ),
+    9: (
+        """CREATE TABLE financeiro_rest (
+            operacao TEXT PRIMARY KEY REFERENCES copias_rest(operacao) ON DELETE CASCADE,
+            estado TEXT NOT NULL CHECK(estado IN ('preparada','enviada','conferida')),
+            criado REAL NOT NULL, expira REAL NOT NULL, conteudo BLOB NOT NULL)""",
     ),
 }
 

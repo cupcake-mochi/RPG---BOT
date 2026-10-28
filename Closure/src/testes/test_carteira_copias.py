@@ -19,7 +19,7 @@ from carteira_viva.fluxos import DadosAsync
 from carteira_viva.permissoes import Membro
 from carteira_viva.provedores import DRIVE_FILE, Provedores, ErroProvedor
 from carteira_viva.segredos import AcessoNegado, Conflito, ErroCarteira
-from testes.test_carteira_banco import Fixtures
+from testes.test_carteira_banco import Fixtures, schema_historico
 from testes.test_carteira_modelos import referencia
 from testes.test_carteira_provedores import configuracao
 
@@ -126,11 +126,11 @@ class BancoCopias(Fixtures, unittest.TestCase):
 
     def test_migra_banco_7_e_ledger_1_sem_perder_dados(self):
         p = self.criar()
-        self.c.db.execute('DROP TABLE copias_rest'); self.c.db.execute('PRAGMA user_version=7')
+        schema_historico(self.c.db,7)
         self.c.db.execute('DROP TABLE remocoes.copias'); self.c.db.execute('PRAGMA remocoes.user_version=1')
         self.reabrir()
         self.assertEqual(self.c.listar(self.m)[0]['id'], p['id'])
-        self.assertEqual(self.c.db.execute('PRAGMA user_version').fetchone()[0], 8)
+        self.assertEqual(self.c.db.execute('PRAGMA user_version').fetchone()[0], 9)
         self.assertEqual(self.c.db.execute('PRAGMA remocoes.user_version').fetchone()[0], 2)
         self.c.verificar_integridade()
 

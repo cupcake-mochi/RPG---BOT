@@ -21,6 +21,7 @@ from .cartoes_banco import Cartoes
 from .modelos import Modelos
 from .conferencias_banco import Conferencias
 from .copias_banco import Copias
+from .financeiro_banco import Financeiro
 from .permissoes import Acao, Membro, Permissoes, PUBLICOS, cartao_publico, permitido
 from .segredos import AcessoNegado, Cifra, Conflito, ErroCarteira, json_bytes
 
@@ -75,7 +76,7 @@ class CredencialGoogle:
     autorizacao: str = field(repr=False)
 
 
-class Cadastro(Cartoes, Modelos, Conferencias, Copias):
+class Cadastro(Cartoes, Modelos, Conferencias, Copias, Financeiro):
     def __init__(self, caminho: Path, chaves: tuple[bytes, ...], *,
                  remocoes: Path | None = None, agora: Callable[[], float] = time.time):
         self.cifra = Cifra(chaves)  # Não criar banco se a chave estiver ausente/inválida.
@@ -729,6 +730,10 @@ class Cadastro(Cartoes, Modelos, Conferencias, Copias):
             for row in self.db.execute('SELECT * FROM copias_rest').fetchall():
                 ctx = self._ctx_copia(row)
                 self.db.execute('UPDATE copias_rest SET conteudo=? WHERE operacao=?',
+                                (nova.cifrar(ctx, self.cifra.abrir(ctx, row['conteudo'])), row['operacao']))
+            for row in self.db.execute('SELECT f.*,c.servidor,c.ator FROM financeiro_rest f JOIN copias_rest c USING(operacao)').fetchall():
+                ctx = ['financeiro_celulas', row['servidor'], row['ator'], row['operacao']]
+                self.db.execute('UPDATE financeiro_rest SET conteudo=? WHERE operacao=?',
                                 (nova.cifrar(ctx, self.cifra.abrir(ctx, row['conteudo'])), row['operacao']))
             self.db.execute("UPDATE meta SET valor=? WHERE chave='verificador'",
                             (nova.cifrar(["verificador", self.banco_id], "carteira-viva"),))

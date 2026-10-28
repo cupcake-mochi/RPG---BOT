@@ -143,6 +143,8 @@ class Copias:
                     destino.origem != d['origem'] or destino.arquivo == d['origem'] or
                     d['destino'] not in (None, destino.arquivo)):
                 raise Conflito('A cópia observada não pertence a esta operação.')
+            if d['estado'] == 'identificada' and d['versao_destino'] != destino.versao:
+                raise Conflito('A cópia foi alterada após a identificação. Não renove sua prova de criação.')
             self._guardar_copia(ref, {**d, 'estado': 'identificada', 'destino': destino.arquivo,
                                      'versao_destino': destino.versao})
             # Nunca publicar IDs privados ou chamar identificada de inicializada.

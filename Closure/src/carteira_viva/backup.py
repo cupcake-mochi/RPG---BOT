@@ -72,6 +72,14 @@ def gravar_backup(cadastro: Cadastro, destino: Path, *, registro_remocoes: bool 
                         d['estado'] = 'enviada'
                         db.execute("UPDATE copias_rest SET estado='enviada',conteudo=? WHERE operacao=?",
                                    (cadastro.cifra.cifrar(ctx, d), op))
+                if db.execute('PRAGMA user_version').fetchone()[0]>=9:
+                    for row in db.execute("SELECT f.operacao,f.conteudo,c.servidor,c.ator FROM financeiro_rest f JOIN copias_rest c USING(operacao) WHERE f.estado='preparada'").fetchall():
+                        op, conteudo, servidor, ator = row
+                        ctx = ['financeiro_celulas', servidor, ator, op]
+                        d = cadastro.cifra.abrir(ctx, conteudo)
+                        d['estado'] = 'enviada'
+                        db.execute("UPDATE financeiro_rest SET estado='enviada',conteudo=? WHERE operacao=?",
+                                   (cadastro.cifra.cifrar(ctx, d), op))
                 db.commit()
         finally:
             db.close()
