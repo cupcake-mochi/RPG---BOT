@@ -423,6 +423,28 @@ class Cadastro(Cartoes, Modelos, Conferencias):
                                        {"conta": cred.conta, "cliente": cred.cliente, "refresh": refresh})
             self.db.execute("UPDATE conexoes SET segredo=? WHERE id=?", (envelope, ref.conexao))
 
+    def _guardar_renovacao_google(self, conexao, *, autorizacao, refresh_anterior, refresh_novo):
+        """Manutenção interna após OAuth: CAS do grant, sem autorizar a leitura.
+
+        Preserva uma credencial rotacionada mesmo se o iniciador perdeu acesso
+        à ficha durante a rede. Não recupera conexão revogada/excluída nem
+        sobrescreve outra renovação. Nunca expor este método em HTTP/Discord.
+        """
+        texto(refresh_anterior, "Renovação anterior", 8192)
+        texto(refresh_novo, "Renovação", 8192)
+        with self._transacao():
+            row = self.db.execute("SELECT * FROM conexoes WHERE id=?", (conexao,)).fetchone()
+            if not row or row["estado"] != "ativa" or row["autorizacao"] != autorizacao or not row["segredo"]:
+                raise Conflito("A autorização mudou durante a renovação.")
+            ctx = ["conexao", row["id"], row["usuario"], row["autorizacao"]]
+            obj = self.cifra.abrir(ctx, row["segredo"])
+            if (digest(obj["conta"]) != row["conta_hash"] or digest(obj["cliente"]) != row["cliente_hash"]):
+                raise ErroCarteira("Identidade da conexão inconsistente.")
+            if obj["refresh"] != refresh_anterior:
+                raise Conflito("Outra renovação substituiu esta credencial.")
+            envelope = self.cifra.cifrar(ctx, {**obj, "refresh": refresh_novo})
+            self.db.execute("UPDATE conexoes SET segredo=? WHERE id=?", (envelope, conexao))
+
     def invalidar_leitura(self, membro: Membro, ref: ReferenciaLeitura):
         """Falha na atualização não deixa um resultado anterior parecer atual."""
         with self._transacao():

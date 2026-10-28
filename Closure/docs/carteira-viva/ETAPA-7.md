@@ -1,5 +1,17 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Fila e renovação da conferência · 28/10 — parcial, não publicada
+
+Método interno Consultas.conferir_inicializacao compõe fila/cotas/OAuth reais do
+serviço com o auditor e o estado cifrado. Fonte/cargos reconferidos; prazos maiores
+só para essa operação. Retomada não relê financeiro concluído e observa a versão
+Drive; cancelamento mantém domínios completos. Renovação compartilhada com análises,
+CAS do refresh e proteção da manutenção em cancelamento, sem autorizar leitura.
+Sem endpoint/comando, cópia ou escrita Google. Criação segue bloqueada.
+Falta prova nativa integral e volume/cotas reais, além de cópia/diário de escrita,
+propriedades/demais domínios, preservação global/arte, automações e responsável.
+[Implementação e limites](SERVICO-CONFERENCIA-2026-10-28.md). Sol Alto; revisão Médio.
+
 ## Recuperação de leituras · 28/10 — parcial, não publicada
 
 Schema 7: estado cifrado por personagem para os dois domínios REST. Retoma entre

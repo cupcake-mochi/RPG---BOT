@@ -104,6 +104,16 @@ class Conferencias:
         if bilhete != self._bilhete(row): _erro()
         return d, ref
 
+    def reservar_conferencia_rest(self, membro, personagem):
+        """Reserva nova leitura sem invalidar uma conferência ainda recuperável."""
+        with self._transacao():
+            self._personagem(membro, personagem, Acao.VER_DETALHES)
+            row = self.db.execute('SELECT expira FROM conferencias_rest WHERE servidor=? AND personagem=?',
+                                  (membro.servidor, personagem)).fetchone()
+            if row and row['expira'] > self.agora():
+                raise Conflito('Já existe uma conferência. Retome ou descarte a anterior.')
+            return self.reservar_leitura(membro, personagem)
+
     def iniciar_conferencia_rest(self, membro, ref, *, versao_drive):
         """Versão de plano recém-aberto pelo leitor confiável. Sem criar arquivo."""
         if not isinstance(versao_drive, str) or not re.fullmatch('[0-9]{1,30}', versao_drive): _erro()

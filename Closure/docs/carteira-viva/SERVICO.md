@@ -1,5 +1,10 @@
 # Rodar a conexão de fichas
 
+28/10: conferência interna integrada a fila/cotas/OAuth, retomada e proteção da
+rotação de credencial em cancelamento. Sem endpoint/comando, criação ou escrita.
+Schema 7, conforme [conferência no serviço](SERVICO-CONFERENCIA-2026-10-28.md).
+Entradas abaixo descrevem o histórico da implementação.
+
 28/10: conferência interna por contrato REST para financeiro/progressão e recibo
 cifrado histórico, sem nova rota/comando/schema ou escrita. O custo de progressão
 agora é lido da CONFIGURAÇÃO: oito páginas. [Escopo e limites](CONFERENCIA-REST-2026-10-28.md).
