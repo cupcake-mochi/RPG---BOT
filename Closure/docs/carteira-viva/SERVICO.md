@@ -1,5 +1,10 @@
 # Rodar a conexão de fichas
 
+28/10: observação de membro atual com prova do banco para dono/cargo explícito;
+privilégios completos quando necessários, sem cache. Perfil simulado do dono:
+Discord 1.686→578, Google 183 preservados. Sem endpoint/criação ou publicação.
+[Prova e limites](OBSERVACAO-MEMBRO-2026-10-28.md).
+
 28/10: conferência interna integrada a fila/cotas/OAuth, retomada e proteção da
 rotação de credencial em cancelamento. Sem endpoint/comando, criação ou escrita.
 Schema 7, conforme [conferência no serviço](SERVICO-CONFERENCIA-2026-10-28.md).

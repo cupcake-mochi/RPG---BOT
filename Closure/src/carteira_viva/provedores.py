@@ -174,17 +174,43 @@ class Provedores:
         return uid
 
     async def membro(self, servidor: str, usuario: str) -> Membro:
+        return await self._observar_membro(servidor, usuario)
+
+    async def membro_para_leitura(self, servidor, usuario, confirmar_basico):
+        """Callback interno prova acesso suficiente sem privilégios inferidos.
+
+        Cada chamada faz GET do membro. Só o backend pode fornecer a função;
+        não aceitar flag, cargo, Membro ou callback enviados pelo navegador.
+        Falta de acesso básico exige a mesma observação completa de membro().
+        """
+        if not callable(confirmar_basico):
+            raise ErroProvedor("identidade")
+        return await self._observar_membro(servidor, usuario, confirmar_basico)
+
+    async def _observar_membro(self, servidor, usuario, confirmar_basico=None):
         if (servidor not in self.cfg.servidores or not SNOWFLAKE.fullmatch(servidor) or
                 not SNOWFLAKE.fullmatch(usuario)):
             raise AcessoNegado("Servidor ou usuário não permitido neste piloto.")
         token = self.cfg.discord_bot_token
         m = await self._json(f"{DISCORD}/guilds/{servidor}/members/{usuario}", token, bot=True, membro=True)
-        if m.get("user", {}).get("id") != usuario or m.get("pending") is True:
+        if (not isinstance(m, dict) or not isinstance(m.get("user"), dict) or
+                m["user"].get("id") != usuario or m.get("pending") is True):
             raise AcessoNegado("Confirme sua participação no servidor.")
+        if (type(m.get("roles")) is not list or
+                any(not isinstance(c, str) or not c for c in m["roles"])):
+            raise ErroProvedor("identidade")
+        cargos = frozenset(m["roles"])
+        nome = str(m.get("nick") or m["user"].get("global_name") or m["user"].get("username") or "")[:100]
+        basico = Membro(servidor, usuario, cargos=cargos, nome=nome)
+        if confirmar_basico is not None:
+            confirmado = await confirmar_basico(basico)
+            if type(confirmado) is not bool:
+                raise ErroProvedor("identidade")
+            if confirmado:
+                return basico  # Admin/owner/manage continuam False, sem cache.
         guild = await self._json(f"{DISCORD}/guilds/{servidor}", token, bot=True)
         roles = await self._json(f"{DISCORD}/guilds/{servidor}/roles", token, bot=True)
         try:
-            cargos = frozenset(m["roles"])
             permissoes = 0
             for role in roles:
                 if role["id"] in cargos or role["id"] == servidor:
@@ -192,8 +218,8 @@ class Provedores:
         except (TypeError, KeyError, ValueError):
             raise ErroProvedor("identidade") from None
         return Membro(servidor, usuario, dono_servidor=guild.get("owner_id") == usuario,
-                       administrador=bool(permissoes & 8), gerenciar_servidor=bool(permissoes & 32), cargos=cargos,
-                       nome=str(m.get("nick") or m.get("user",{}).get("global_name") or m.get("user",{}).get("username") or "")[:100])
+                       administrador=bool(permissoes & 8), gerenciar_servidor=bool(permissoes & 32),
+                       cargos=cargos, nome=nome)
 
     async def conta_google(self, acesso: str) -> str:
         obj = await self._json("https://www.googleapis.com/drive/v3/about?fields=user(permissionId)", acesso)

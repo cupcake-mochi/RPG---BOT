@@ -5,7 +5,7 @@ Não cria cópias, não escreve no Google e não oferece rota/comando público.
 from .banco import digest
 from .conferencias_banco import conferir_dominio_persistido
 from .provedores import ErroProvedor
-from .segredos import Conflito, ErroCarteira
+from .segredos import AcessoNegado, Conflito, ErroCarteira
 
 PRAZO = 1200
 ESPERA = 1290
@@ -34,9 +34,7 @@ async def conferir(servico, servidor, usuario, personagem, *, retomar=False):
             contexto = await b('contexto_conferencia_rest', membro, ref)
         cred, token = await servico._renovar_google(membro, ref)
 
-        async def revalidar():
-            # Consulta real de membro/cargos, nunca o Membro capturado na fila.
-            m = await servico._membro(servidor, usuario)
+        async def validar_contexto(m):
             if bilhete is None:
                 observado = await b('contexto_conferencia_rest', m, ref)
             else:
@@ -47,6 +45,21 @@ async def conferir(servico, servidor, usuario, personagem, *, retomar=False):
                 # Retomada renova novamente; não gravar um domínio incompleto.
                 raise ErroProvedor('expirado')
             return observado
+
+        async def confirmar_basico(m):
+            try:
+                await validar_contexto(m)
+            except AcessoNegado:
+                # Pode ter acesso por Administrator/dono do servidor; esses
+                # privilégios precisam da observação completa, nunca de suposição.
+                return False
+            return True
+
+        async def revalidar():
+            # GET novo do membro em cada contexto. O banco prova se os cargos
+            # atuais/dono da ficha bastam; não é TTL nem cache de autorização.
+            m = await servico.provedores.membro_para_leitura(servidor, usuario, confirmar_basico)
+            return await validar_contexto(m)
 
         async def cota():
             await servico.cotas.esperar(digest(cred.conta))

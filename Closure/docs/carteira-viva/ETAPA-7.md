@@ -1,5 +1,17 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Menos consultas de permissão · 28/10 — parcial, não publicada
+
+GET novo de membro/cargos a cada contexto. Quando banco comprova dono/cargo
+explícito, não busca flags administrativas. Caso contrário, consulta permissões
+completas como antes. Sem cache/TTL e sem remover pontos de revalidação.
+Perfil simulado do dono: Discord 1.686→578 (-65,72%), Google 183/cotas e um
+OAuth iguais. Administrador/dono do servidor por prerrogativa conserva três GETs.
+18 novos e 126 existentes locais aprovados; suíte completa aguardando CI.
+Criação bloqueada, sem merge/deploy ou escrita Google. Próximo: prova nativa
+em descartável pelo OAuth próprio, com cotas/latência e caminhos alternativos.
+[Prova, medição e limites](OBSERVACAO-MEMBRO-2026-10-28.md). Sol Alto; revisão Médio.
+
 ## Fila e renovação da conferência · 28/10 — parcial, não publicada
 
 Método interno Consultas.conferir_inicializacao compõe fila/cotas/OAuth reais do
