@@ -3,7 +3,40 @@
 Atualizado em 28/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
-## Cartões visíveis · continuação de 28/10
+## Recibos e quota · continuação de 28/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`af8e83f2869c01daa203fb5aa5c26c802c472850`. Main produtor `ef361cc` e bot
+`de42447` reconferidas sem mudança. Cartões visíveis e MONTAGENS agora trocam
+seus diários detalhados por recibos somente após a conferência final. Mesma
+chave, sem exclusão; queda preserva diário ou recibo. Recibo terminal confere
+operação/cópia/modelo/domínio, layout, guardas e resultados, sem nova limpeza.
+Diários v1 desses perfis migram após conferência; demais formatos/assinaturas
+preservados. Toda gravação de diário conta propriedades alheias e aplica teto
+interno de 450.000 bytes, com 9.000 por valor e releitura de persistência.
+
+44 cenários novos e seis focais de cartões passaram localmente. Coleção completa
+**2.305**, zero falhas, confirmada no [CI 40697164990](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40697164990),
+aprovado no código `af8e83f` em 28/10 às 10:34:44 Brasília. Pacote nove arquivos,
+sintaxe 277 Python/234 JS-GS e demais regressões passaram. Duplicado 40697154581
+cancelado; fechamento posterior só documental `[skip ci]`. As duas suítes de
+249 cartões reais somam 125.247 bytes de recibos cada (maior 503).
+Simulação conjunta: 498 recibos + reserva 100 KB = 372.263 bytes, pico 372.629.
+As suítes reais também acumulam 249 recibos por domínio. Isso resolve a
+retenção detalhada excessiva no protótipo, mas ainda não mede quota/latência
+Google nem prova o orçamento de todas as etapas futuras. Relatório produtor:
+`r53/inicializacao/RECIBOS-2026-10-28.md`.
+
+Próximo: dados/recursos/equipamentos das entidades, arte, orquestração com
+orçamento global e conferência combinada, automações/treinos/notas vivas,
+responsável, integração drive.file e prova nativa completa. Criação bloqueada;
+protótipos fora do pacote/bot. Nenhuma planilha foi editada nesta rodada.
+Consumidor só documentação; runtime `26ec106`, CI histórico 40496955301.
+Sem suíte/ZIP novo, merge/deploy, Gateway, modelo pago ou acesso novo.
+GPT-6.1 Sol / Alto para implementação; Médio para revisão focal (AGENTS.md).
+Entradas seguintes são históricas.
+
+## Histórico: cartões visíveis · continuação de 28/10
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
 `216e44c99c9aabc389f8f8811418dd538e6d5735`. Main produtor `ef361cc` e bot
