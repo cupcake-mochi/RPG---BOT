@@ -43,7 +43,7 @@ EXTRATO, SALÁRIOS e DADOS_SALARIOS até o fim físico, teto de 5.000 linhas por
 livro. Acima disso recusa, sem truncar. Intervalos são divididos em até 4.096
 células por página; uma faixa por GET Sheets. Grade/ID/título/posição e tamanho
 retornados precisam corresponder ao pedido. Limites HTTP: 4 MiB por resposta,
-15 s por requisição, sem aumentar o limite de 512 KiB dos métodos anteriores.
+prazo absoluto de 15 s por requisição (ou o saldo menor da rodada), sem aumentar o limite de 512 KiB dos métodos anteriores.
 
 No máximo financeiro: 50 páginas/126.168 posições, 153 GETs contando observações
 Drive e abertura. Progressão: sete páginas/1.749 posições, 24 GETs. São contagens
@@ -80,12 +80,13 @@ responsável pendentes. Etapas 8–10 continuam separadas. Nenhum endpoint novo.
 
 ## Testes e entrega
 
-23 novos testes, HTTP simulado, incluem todas as 50 páginas e o último registro
+24 novos testes, HTTP simulado, incluem todas as 50 páginas e o último registro
 físico, máscara HTTP, fórmulas/datas/zeros/vazios, fonte/grade/versão mudadas,
-acesso alterado durante espera/resposta, cotas por GET, prazo, cancelamento,
+acesso alterado durante espera/resposta, cotas por GET, prazo absoluto de
+rede/callback, cancelamento,
 403/429/redirect, resposta excessiva e ausência de dados privados em repr.
-94 direcionados locais passaram (23 novos + 71 existentes). CI completo em
-fechamento; esperado 1.361 executados com um opcional pulado.
+95 direcionados locais passaram (24 novos + 71 existentes). CI completo em
+fechamento; esperado 1.362 executados com um opcional pulado.
 
 Pacote ignorado regenerado sem env: 90 arquivos, CRC e bytes comparados aos
 fontes, sem Carteira/credenciais/bancos/campanha. SHA256:

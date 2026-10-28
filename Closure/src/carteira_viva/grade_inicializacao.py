@@ -15,6 +15,7 @@ from .segredos import ErroCarteira
 
 MAX_CELULAS = 4096
 MAX_BYTES = 4 * 1024 * 1024
+TIMEOUT_HTTP = 15
 CAMPOS = ('spreadsheetId,sheets(properties(sheetId,title,gridProperties(rowCount,columnCount)),'
           'data(startRow,startColumn,rowData(values(userEnteredValue,effectiveValue,note,'
           'userEnteredFormat(numberFormat)))))')
@@ -168,12 +169,15 @@ class LeitorGradeRest:
                 type(inicio) not in (int, float) or not math.isfinite(inicio) or not 0 <= t - inicio < 1800):
             _erro('expirado')
 
-    @staticmethod
-    async def _callback(fn):
+    async def _callback(self, fn, inicio):
+        self._prazo(inicio)
         try:
-            return await fn()
+            async with asyncio.timeout(1800 - (self._agora() - inicio)):
+                return await fn()
         except asyncio.CancelledError:
             raise
+        except TimeoutError:
+            _erro('expirado')
         except ErroCarteira:
             _erro('acesso')
         except Exception:
@@ -181,7 +185,7 @@ class LeitorGradeRest:
 
     async def _contexto(self, inicio, esperado=None):
         self._prazo(inicio)
-        valor = await self._callback(self._revalidar)
+        valor = await self._callback(self._revalidar, inicio)
         self._prazo(inicio)
         if not isinstance(valor, str) or not re.fullmatch(r'[a-f0-9]{64}', valor): _erro('acesso')
         if esperado is not None and valor != esperado: _erro('acesso')
@@ -189,13 +193,22 @@ class LeitorGradeRest:
 
     async def _antes(self, inicio, contexto):
         await self._contexto(inicio, contexto)
-        await self._callback(self._cota)
+        await self._callback(self._cota, inicio)
         # Cargo/conexão podem mudar enquanto a cota aguarda.
         await self._contexto(inicio, contexto)
 
+    async def _http(self, fn, inicio):
+        self._prazo(inicio)
+        restante = 1800 - (self._agora() - inicio)
+        try:
+            async with asyncio.timeout(min(TIMEOUT_HTTP, restante)):
+                return await fn()
+        except TimeoutError:
+            _erro('expirado' if restante <= TIMEOUT_HTTP else 'temporario')
+
     async def _versao(self, acesso, arquivo, inicio, contexto, esperada=None):
         await self._antes(inicio, contexto)
-        v = await self._p.versao_arquivo(acesso, arquivo)
+        v = await self._http(lambda: self._p.versao_arquivo(acesso, arquivo), inicio)
         await self._contexto(inicio, contexto)
         if esperada is not None and v != esperada: _erro('alterada')
         return v
@@ -204,8 +217,9 @@ class LeitorGradeRest:
         q = {'fields': campos}
         if faixa is not None: q['ranges'] = faixa
         await self._antes(inicio, contexto)
-        obj = await self._p._json('https://sheets.googleapis.com/v4/spreadsheets/' + arquivo +
-                                  '?' + urlencode(q), acesso, limite=MAX_BYTES)
+        obj = await self._http(lambda: self._p._json(
+            'https://sheets.googleapis.com/v4/spreadsheets/' + arquivo + '?' + urlencode(q),
+            acesso, limite=MAX_BYTES), inicio)
         await self._contexto(inicio, contexto)
         return obj
 

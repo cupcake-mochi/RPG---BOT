@@ -8,7 +8,7 @@ numérico em faixas fixas. Até 4.096 células/página, histórico até 5.000 li
 conservada, contexto reconferido antes/depois de cada GET e após aguardar cota.
 Callbacks confiáveis obrigatórios; composição no serviço e fila ainda pendentes.
 Sem rota, escrita, Apps Script ou escopo novo. Criação permanece bloqueada.
-23 novos/94 direcionados locais aprovados; CI completo em fechamento. Pacote
+24 novos/95 direcionados locais aprovados; CI completo em fechamento. Pacote
 90 arquivos regenerado/conferido sem Carteira/env/banco/campanha, não publicado.
 Ainda falta traduzir contrato/estado do produtor: propriedades de Apps Script
 não são fornecidas por Sheets REST. Leitura de célula não equivale a conferência

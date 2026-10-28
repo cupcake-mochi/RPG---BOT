@@ -244,3 +244,17 @@ class GradeInicializacaoTeste(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(total,126168);self.assertEqual(len(c.requests),153)
         self.assertEqual(c.cotas,153)
         self.assertFalse(p.progresso()['criacao_disponivel'])
+
+    async def test_prazo_absoluto_http_e_callback_cancelam_espera_pendente(self):
+        from unittest.mock import patch
+        async def pendurar(*a,**kw):await asyncio.sleep(60)
+        for fase in ['drive','sheets']:
+            c=Cenario();await c.abrir()
+            if fase=='drive':c.p.versao_arquivo=pendurar
+            else:c.p._json=pendurar
+            with patch('carteira_viva.grade_inicializacao.TIMEOUT_HTTP',0.005):
+                with self.assertRaises(ErroProvedor) as e:await c.pagina()
+            self.assertEqual(e.exception.codigo,'temporario')
+        c=Cenario();await c.abrir();c.tempo+=1799.995;c.leitor._cota=pendurar
+        with self.assertRaises(ErroProvedor) as e:await c.pagina()
+        self.assertEqual(e.exception.codigo,'expirado')
