@@ -81,12 +81,19 @@ três novos da fila e dez já existentes). Mais 137 regressões de consultas/web
 banco/recuperação passaram em 88,386 s: **176 testes locais distintos**, zero
 falhas finais. A primeira fixture corrigiu apenas o parâmetro auxiliar `nome`
 que colidia com o campo de cadastro, e expires_at para o relógio simulado.
-Nenhuma expectativa mecânica ou guarda de acesso foi flexibilizada. Suíte
-completa aguardando CI desta rodada.
+Nenhuma expectativa mecânica ou guarda de acesso foi flexibilizada. Código `fd2c4d68b3a9eb5dff19ef416ba1c2b85f521cc1`: [CI completo 40752104027](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40752104027)
+aprovado em 28/10 às **16:18:17 Brasília**: 1.439 executados/1.438 aprovados/um
+opcional, zero falhas, 356,405 s. Lotes locais: 176 distintos aprovados, 29 novos.
+Fechamento posterior só documental [skip ci], sem repetir suíte ou publicação.
 
-Não mede cotas/latência reais do Discord ou Google. A checagem de membro/cargos
-usa requisições reais por contexto, sem cache de permissão; volume e limites do
-Discord ainda precisam de medição nativa. Falha/limite da API interrompe sem
+
+Instrumentação adicional do mesmo cenário já contado nos testes: **183 GETs
+Google, 183 reservas de cota, um POST OAuth e 1.686 GETs Discord**, todos
+simulados. Não soma um teste distinto nem mede latência/cota real. Esse volume
+é uma pendência concreta de desempenho: reduzir observações redundantes e
+conferir limites antes de ensaio público, sem cache cego, bypass de cargos ou
+reduzir as verificações que detectam mudanças durante fila/cota/rede.
+A checagem atual usa requisições de membro/cargos por contexto. Falha/limite da API interrompe sem
 entregar dados, sem retry infinito e sem revogar um grant por erro temporário.
 
 Faltam prova integrada pelo OAuth das Guias em descartável e composição futura
@@ -100,3 +107,12 @@ Sol Alto para integrar/provar a próxima parte; Médio para revisão focal.
 Pacote ignorado regenerado/conferido: 90 arquivos, CRC e bytes dos fontes iguais,
 sem env/Carteira/bancos/campanha; não publicado. SHA256
 `7fdfc73e7e6d805f277102d2ccf44871e268e739553a324a1d8c93ddcfd5bb23`.
+
+## Continuação
+
+Prioridade: reduzir o volume de consultas Discord no caminho de conferência,
+com provas de equivalência de permissões, saída/perda de cargo durante a leitura,
+retomada e finalização. Medir contadores e conferir tratamento de limite da API.
+Manter parâmetros/fonte/bilhete no backend e a criação bloqueada. Em seguida,
+ensaio integrado somente numa cópia descartável pelo OAuth próprio das Guias.
+Não confundir o cenário HTTP simulado ou o conector Google com essa prova.

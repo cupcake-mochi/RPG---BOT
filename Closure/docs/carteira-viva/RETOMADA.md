@@ -11,8 +11,15 @@ só para essa operação. Retomada não relê financeiro concluído e observa a 
 Drive; cancelamento mantém domínios completos. Renovação compartilhada com análises,
 CAS do refresh e proteção da manutenção em cancelamento, sem autorizar leitura.
 Sem endpoint/comando, cópia ou escrita Google. Criação segue bloqueada.
-Falta prova nativa integral e volume/cotas reais, além de cópia/diário de escrita,
+Perfil simulado: 183 GETs Google/um POST OAuth e 1.686 GETs Discord. Próximo:
+reduzir observações redundantes sem afrouxar acesso; depois medir cotas/prova
+nativa. Restam também cópia/diário de escrita,
 propriedades/demais domínios, preservação global/arte, automações e responsável.
+Código `fd2c4d68b3a9eb5dff19ef416ba1c2b85f521cc1`: [CI completo 40752104027](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40752104027)
+aprovado em 28/10 às **16:18:17 Brasília**: 1.439 executados/1.438 aprovados/um
+opcional, zero falhas, 356,405 s. Lotes locais: 176 distintos aprovados, 29 novos.
+Fechamento posterior só documental [skip ci], sem repetir suíte ou publicação.
+
 [Implementação e limites](SERVICO-CONFERENCIA-2026-10-28.md). Sol Alto; revisão Médio.
 
 ## Recuperação de leituras · 28/10 — parcial, não publicada
