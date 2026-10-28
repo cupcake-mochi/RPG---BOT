@@ -1,6 +1,6 @@
 # Leitura com observação de versão
 
-28/10/2026 · etapa 7 parcial, PR84. Não publicada. Main produtor ef361cc e
+28/10/2026 · etapa 7 parcial, PR84, código `1c15ee549a7ebb40c70c688e3ec6a9a6e23db638`. Não publicada. Main produtor ef361cc e
 bot main de42447 reconferidas; criar_por_modelo continua bloqueado.
 
 ## Código entregue
@@ -59,7 +59,11 @@ e demais funcionalidades não foram afrouxadas ou substituídas.
 
 Produtor [PR31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
 2427024: plano e páginas de quatro perfis, sem gravar células ou propriedades.
-Máximo 631 perfis em 158 páginas. O leitor anterior com checkpoint permanece
+Máximo 631 perfis em 158 páginas.
+CI produtor 40731673476 aprovado no código 2427024: 2.952 cenários de
+inicialização/zero falhas, pacote nove arquivos/sintaxe 277 Python/253 JS-GS e
+demais regressões. Job concluído em 28/10 às 14:07:25 Brasília; duplicado
+40731660220 cancelado. O leitor anterior com checkpoint permanece
 separado; não apagar ou migrar seu diário automaticamente.
 
 A amostra em `src/testes/fixtures/carteira_conferencia_pagina_v1.json` foi gerada
@@ -89,7 +93,11 @@ prova nativa seguem pendentes junto de preservação global, arte e orçamento.
 com HTTP simulado. Incluem edição entre/durante páginas, conteúdo restaurado,
 contexto/acesso alterado, erro antes/depois da leitura, cancelamento, concorrência,
 prazo, limites/protocolo, ausência de vazamento e todos os 631 perfis em lotes.
-CI completo em fechamento; esperado 1.338 executados com um opcional pulado.
+[CI completo 40731678916](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40731678916)
+aprovado no código `1c15ee5`: 1.338 executados, 1.337 aprovados e um opcional
+pulado, zero falhas; 272,214 s de suíte. Job concluído em 28/10 às 14:06:23
+(Brasília). Logs conferidos pelo arquivo da execução; não foi repetida a suíte
+completa local. Fechamento posterior só de documentação, sem nova publicação.
 
 Pacote ignorado regenerado sem .env: 90 arquivos, CRC íntegro, cada entrada
 comparada aos fontes. Sem credenciais, bancos, cadastro de campanha ou Carteira;

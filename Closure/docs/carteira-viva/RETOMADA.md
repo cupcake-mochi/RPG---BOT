@@ -7,6 +7,10 @@ Carteira não publicada. Não confundir configuração de modelo com criação f
 
 Produtor PR31, código `2427024`: plano e lotes de quatro perfis sem gravar
 células nem propriedades; 631 perfis/158 páginas, 16 cenários locais passaram.
+CI produtor 40731673476 aprovado no código 2427024: 2.952 cenários de
+inicialização/zero falhas, pacote nove arquivos/sintaxe 277 Python/253 JS-GS e
+demais regressões. Job concluído em 28/10 às 14:07:25 Brasília; duplicado
+40731660220 cancelado.
 Amostra produzida pelas funções GS reais em VM foi aceita no Python; isso prova
 saída do protocolo, não chamada remota/autenticação/cálculo Google.
 
@@ -18,7 +22,9 @@ invalida a rodada. Cálculos/snapshot continuam sem certificado. Novo método
 versao_arquivo corrige versão vazia antes aceita na leitura existente;
 reprodução na base 73c2914 passou antes/recusou depois, sem flexibilizar teste.
 
-24 novos + 47 de leitura/modelos locais: 71 aprovados; CI completo em fechamento.
+Consumidor código `1c15ee5`: 24 novos + 47 de leitura/modelos locais, 71 aprovados.
+CI completo 40731678916 aprovado: 1.338 executados/1.337 aprovados/um opcional,
+zero falhas, 272,214 s; job concluído em 28/10 às 14:06:23 Brasília.
 Pacote regenerado: 90 arquivos/CRC/fontes iguais, sem env/bancos/campanha ou
 Carteira, não publicado. Contrato, fluxo e limites em
 [LEITURA-VERSIONADA-2026-10-28.md](LEITURA-VERSIONADA-2026-10-28.md).
