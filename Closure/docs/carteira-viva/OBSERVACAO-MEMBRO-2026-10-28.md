@@ -1,5 +1,10 @@
 # Permissões com menos consultas
 
+**Atualização de 28/10:** a conferência pelo OAuth próprio das Guias foi
+exercitada em uma descartável: leitura, reinício/retomada e recusa após revogação.
+A criação permanece bloqueada. Ver [prova real e limites](NATIVO-CONFERENCIA-2026-10-28.md).
+O relato abaixo conserva o escopo e a data do ensaio original.
+
 28/10/2026 · etapa 7 parcial, PR84. Não publicado. Criação bloqueada.
 
 ## Mudança

@@ -1,5 +1,10 @@
 # Conferência na fila do serviço
 
+**Atualização de 28/10:** a conferência pelo OAuth próprio das Guias foi
+exercitada em uma descartável: leitura, reinício/retomada e recusa após revogação.
+A criação permanece bloqueada. Ver [prova real e limites](NATIVO-CONFERENCIA-2026-10-28.md).
+O relato abaixo conserva o escopo e a data do ensaio original.
+
 Atualização posterior da observação de permissões: no cenário do dono,
 Discord 1.686→578 sem cache ou remoção de verificações. O perfil anterior abaixo
 é histórico; ver [medição atual](OBSERVACAO-MEMBRO-2026-10-28.md).

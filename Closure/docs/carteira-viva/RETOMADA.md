@@ -3,6 +3,24 @@
 Atualizado em 28/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
+## Prova real de leitura e retomada · 28/10 — parcial, não publicada
+
+OAuth/Picker próprios das Guias em uma cópia privada descartável, com
+consentimento do usuário. Dois domínios lidos em 247,349 s: financeiro 25 páginas,
+11 achados de estado herdado; progressão oito páginas, zero achados. Após
+reiniciar, reabriu ambos em 8,551 s com um GET Drive e zero GETs Sheets, sem
+novo consentimento. Revogação real recusou retomada antes de ler células;
+credencial/trabalho e personagem fictício removidos. Cópia na lixeira e piloto
+encerrado. Nenhuma escrita de célula/GS, oficial ou jogador alterado.
+
+Prova nativa do dono, não de revisor/admin/429/cancelamento no meio do domínio.
+Quatro indicadores falsos e criação bloqueada. Próximo: cópia/diário de escrita
+REST com reconciliação, demais domínios/propriedades/preservação/automações e
+responsável; não liberar criação. Código 45c03c8/CI 1.457 anterior intactos;
+fechamento apenas documental [skip ci], sem suíte/ZIP novos, merge/deploy.
+[Resultados, contagens e limites](NATIVO-CONFERENCIA-2026-10-28.md).
+Sol Alto para implementar; Médio para revisão.
+
 ## Menos consultas de permissão · 28/10 — parcial, não publicada
 
 GET novo de membro/cargos a cada contexto. Quando banco comprova dono/cargo
@@ -14,8 +32,8 @@ Código `45c03c877a85b31303ebc3d9bcd44a71457c2d2f`: [CI completo 40762548326](ht
 aprovado em 28/10 às **17:27:25 Brasília**: 1.457 executados/1.456 aprovados/um
 opcional, zero falhas, 334,900 s. Lotes locais: 144 distintos, 18 novos aprovados.
 Fechamento posterior só documental [skip ci], sem repetir suíte/publicação.
-Criação bloqueada, sem merge/deploy ou escrita Google. Próximo: prova nativa
-em descartável pelo OAuth próprio, com cotas/latência e caminhos alternativos.
+Criação bloqueada, sem merge/deploy ou escrita Google nesse checkpoint. A prova
+nativa posterior do dono está registrada acima; caminhos alternativos seguem pendentes.
 [Prova, medição e limites](OBSERVACAO-MEMBRO-2026-10-28.md). Sol Alto; revisão Médio.
 
 ## Fila e renovação da conferência · 28/10 — parcial, não publicada

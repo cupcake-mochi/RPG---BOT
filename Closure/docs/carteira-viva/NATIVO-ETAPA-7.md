@@ -1,5 +1,10 @@
 # Modelos: ensaio nativo de 26/10/2026
 
+**Atualização de 28/10:** a conferência pelo OAuth próprio das Guias foi
+exercitada em uma descartável: leitura, reinício/retomada e recusa após revogação.
+A criação permanece bloqueada. Ver [prova real e limites](NATIVO-CONFERENCIA-2026-10-28.md).
+O relato abaixo conserva o escopo e a data do ensaio original.
+
 **Reprovado para criação automática.** Três cópias descartáveis pelo Drive
 conectado demonstraram herança de histórico financeiro e estado salarial.
 Isso não é um teste do OAuth `drive.file` das Guias. A configuração privada
