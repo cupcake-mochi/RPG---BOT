@@ -1,5 +1,10 @@
 # Rodar a conexão de fichas
 
+28/10: novo transporte interno de grade REST, só financeiro/progressão, com
+contexto/cota por GET e versão por página. Ainda sem rota ou criação; composição
+no serviço e adaptação de estado/contrato pendentes.
+[Escopo e testes](COLETA-REST-2026-10-28.md).
+
 28/10: guarda interna de leitura versionada e páginas sem checkpoint no produtor
 estão em teste, sem nova rota/endpoint. A execução do produtor com o escopo
 atual ainda depende de adaptador; não habilitar scripts.run nem ampliar acesso

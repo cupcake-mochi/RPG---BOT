@@ -1,5 +1,20 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Coleta REST de financeiro e progressão · 28/10 — parcial
+
+Novo `grade_inicializacao.py`: lê fórmulas/entradas, resultados, notas e formato
+numérico em faixas fixas. Até 4.096 células/página, histórico até 5.000 linhas;
+50 páginas/153 GETs no financeiro máximo, sete/24 na progressão. Versão inicial
+conservada, contexto reconferido antes/depois de cada GET e após aguardar cota.
+Callbacks confiáveis obrigatórios; composição no serviço e fila ainda pendentes.
+Sem rota, escrita, Apps Script ou escopo novo. Criação permanece bloqueada.
+23 novos/94 direcionados locais aprovados; CI completo em fechamento. Pacote
+90 arquivos regenerado/conferido sem Carteira/env/banco/campanha, não publicado.
+Ainda falta traduzir contrato/estado do produtor: propriedades de Apps Script
+não são fornecidas por Sheets REST. Leitura de célula não equivale a conferência
+GS nem a inicialização pronta. Sem Google/Discord autenticado ou merge/deploy.
+[Fluxo, limites e continuação](COLETA-REST-2026-10-28.md). Sol Alto; revisão Médio.
+
 ## Observação de versão entre lotes · 28/10 — ainda parcial
 
 Produtor PR31, código `2427024`: plano e lotes de quatro perfis sem gravar
