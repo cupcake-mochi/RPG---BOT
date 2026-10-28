@@ -1,6 +1,43 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
-## MONTAGENS · continuação de 28/10
+## Cartões visíveis · continuação de 28/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`216e44c99c9aabc389f8f8811418dd538e6d5735`. Main produtor `ef361cc` e bot
+`de42447` reconferidas sem mudança. Agora os 249 cartões têm protocolo para
+3.863 entradas visíveis e 737 validações de função, além das versões guardadas
+já tratadas. Restaura Classe/nome/COMO É e entradas/notas explícitas, protege
+contas/rótulos/menus. Porta fechada recebe `—`, aberta zero ou caixa desmarcada;
+regra antes do valor, com retomada separada. Amparo é relido e protegido por
+fórmula; o destino usa a Classe de fábrica. Extras permitem Classe 0, mas o
+modelo atual começa em 1. Não mudar defaults para satisfazer expectativas.
+
+Executor ampliado só com operação de validação; contratos anteriores mantidos.
+101 financeiros, 441 formação e sete focais passaram localmente. Coleção
+completa no [CI 40694498546](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40694498546),
+aprovado no código `216e44c` em 28/10 às 10:16:56 Brasília: **791 novos, 2.261
+totais** (101/82/78/243/441/155/370/791), pacote nove arquivos e sintaxe
+277 Python/233 JS-GS. Duplicado 40694490233 cancelado; fechamento produtor
+`43c2f67` somente documental, `[skip ci]`. Leitura das duas
+oficiais: nove contextos, 124 entradas, 210 guardas e 25 validações por arquivo,
+sem diferença, escrita ou execução Apps Script. Relatório produtor
+`r53/inicializacao/CARTOES-VISIVEIS-2026-10-28.md`.
+
+**Quota conjunta é bloqueio real:** guardar todos os diários detalhados dos
+cartões somou 1.396.929 bytes (maior 5.765), acima da capacidade conjunta de propriedades. Antes da integração, resolver
+orçamento/compactação com recibos e proteção contra reinicialização; não apagar
+diários para repetir. Também faltam dados/recursos/equipamentos das entidades,
+arte, orquestração/conferência combinada, automações/treinos/notas vivas,
+responsável, integração executável drive.file e prova nativa completa. Criação
+segue bloqueada. Eventos/editor não podem rodar no meio da limpeza; MONTAGENS,
+campos visíveis e memórias finais precisam ser conferidos juntos.
+
+Consumidor só documentação; runtime `26ec106`, CI histórico 40496955301,
+1.314 executados/1.313 aprovados/um opcional. Sem suíte/ZIP novo, merge, deploy,
+Gateway, modelo pago, escopos novos ou escrita em oficial/jogador.
+GPT-6 Astra / Alto para implementação integrada; revisão focal Médio.
+
+## Histórico: MONTAGENS · continuação de 28/10
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
 `5749b3af25f3b4082900a26685db655a696c4c26`. Main do produtor `ef361cc` e bot
