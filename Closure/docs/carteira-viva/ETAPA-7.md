@@ -1,5 +1,39 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Inventário de imagens · 28/10 — arte ainda parcial
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31),
+código `b35436e`. Main produtor `ef361cc` e bot main `de42447` reconferidas.
+Inventário de todas as células físicas, inclusive abas ocultas, com rodadas
+fixas antes/depois, assinatura de estrutura e checkpoint por página. Conta
+fotos, decoração marcada/ausente, outras imagens, fórmulas IMAGE, sobreposições
+e desenhos sem alterar células. Até quatro páginas/chamada e 4.096 células/página;
+excesso dos limites recusa sem truncar. Não persiste conteúdo, URL ou alt text.
+
+79 cenários novos locais passaram; maior checkpoint 1.109 bytes. CI completo
+[40713143485](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40713143485)
+aprovado no código `b35436e`, 28/10 às 12:13:10 Brasília: 2.826 cenários/zero
+falhas, pacote nove arquivos/sintaxe 277 Python/245 JS-GS e demais regressões.
+Duplicado 40713131601 cancelado; fechamento só documental [skip ci]. Ensaio real em planilha técnica nova,
+privada e descartável confirmou CellImage individual/em bloco/espelho, URL
+igual dentro de cada execução e entre duas execuções próximas. Limpeza fictícia
+preservou a fórmula e atualizou o espelho; releitura A1:H12 confirmou. Arquivo
+na lixeira e abas do ensaio fechadas, sem mudar compartilhamento. Não executou
+o inventário completo, a limpeza do protótipo ou a inicialização numa ficha.
+
+Não é snapshot consistente: edição numa página já lida pode escapar daquela
+rodada; uma nova rodada pode encontrá-la. Marcador não certifica pixels/origem.
+`consistenciaTemporalVerificada`, `autenticidadeDecoracaoVerificada` e
+`criacaoDisponivel` continuam falsos. Arte ainda parcial, criação bloqueada.
+A identificação temporária da foto ainda recusa divergência; não apagar diário.
+
+Relatório produtor `r53/inicializacao/INVENTARIO-IMAGENS-2026-10-28.md` e sonda
+manual `probe_imagens.gs`, fora do pacote. Restam consistência/arte e conferência
+conjunta, orquestração/quota total, automações/treinos/notas, responsável e prova
+nativa da criação com drive.file. Sem oficial/jogador, merge/deploy/Gateway,
+modelo pago ou escopo amplo novo. Consumidor só docs; runtime segue `26ec106`,
+CI histórico 40496955301, sem suíte/ZIP novo. Sol Alto; revisão Médio.
+
 ## Fotos nas caixas conhecidas · 28/10 — arte parcial
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
