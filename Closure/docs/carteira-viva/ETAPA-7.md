@@ -1,6 +1,45 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
-## Recibos e quota · continuação de 28/10
+## Dados das entidades · continuação de 28/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`baf652d5dbd9db8ba5a0ca64ca04bfbebfb6738c`. Main produtor `ef361cc` e bot
+`de42447` reconferidas. Acrescentados 73 perfis: seis por entidade e o conjunto,
+1.165 entradas de identificação, atributos/treinos, recursos, Famílias,
+inventário e talentos/Expansão. Matrizes de âncoras, valores/notas/fórmulas de
+fábrica, contas e catálogos preservados. Menus conhecidos são mantidos e sua
+rigidez real entra na assinatura. Mesclas exigem geometria exata. Recibos/quota
+anteriores reutilizados; adaptador de validações extraído sem mudar descritores.
+Executor e contratos anteriores intactos. Criação continua bloqueada.
+
+305 cenários locais de entidades e 44 de recibos/quota passaram. 73 recibos
+reais: 36.719 bytes, maior diário pendente 3.165. Simulação ampliada para 571
+nomes reais de perfis com operações sintéticas + reserva 100 KB: 412.036 bytes,
+pico 412.402. Coleção completa **2.610**, zero falhas, confirmada no
+[CI 40701063975](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40701063975), aprovado no código `baf652d`
+em 28/10 às 10:58:19 Brasília. Pacote nove arquivos/sintaxe 277 Python/238 JS-GS
+e demais regressões passaram. Duplicado 40701053252 cancelado; fechamento
+posterior só documental `[skip ci]`. Não é orçamento comprovado de todas as
+fases futuras.
+
+Leitura das duas oficiais: conjunto e primeira/última entidade, por arquivo
+195 entradas/validações e 284 guardas. Valores/fórmulas e critérios/referências
+dos menus coincidem. 105 menus estritos preservados; SPARKLINE pt_BR reconhecida
+pela fórmula inteira, sem alterar conta. Duas notas contextuais por arquivo
+são geradas a partir dos tipos; a rotina limpa herdadas e a fase de automações
+precisa regenerá-las. Sem cópia, escrita nativa, Apps Script, OAuth ou acionador.
+Relatório produtor `r53/inicializacao/ENTIDADES-2026-10-28.md`.
+
+Próximo: arte. Fotos em célula/fórmula provocam recusa; só marcador/vazio aceito,
+sem remoção automática, e imagens sobrepostas não foram tratadas. Depois,
+orquestração/orçamento total/conferência combinada, automações/treinos/notas,
+novo responsável, integração executável drive.file e prova nativa completa.
+Protótipos fora do pacote/bot; consumidor só documentação, runtime `26ec106`
+e CI histórico 40496955301. Sem suíte/ZIP novo, merge/deploy, Gateway, modelo
+pago, escopo novo ou escrita em oficial/jogador. GPT-6.1 Sol / Alto para
+implementação; Médio para revisão focal (AGENTS.md). Entradas abaixo históricas.
+
+## Histórico: recibos e quota · continuação de 28/10
 
 Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
 `af8e83f2869c01daa203fb5aa5c26c802c472850`. Main produtor `ef361cc` e bot
