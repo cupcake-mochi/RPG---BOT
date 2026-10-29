@@ -9,7 +9,8 @@ e [retomada](../docs/carteira-viva/RETOMADA.md). Nenhum deploy desta etapa. Nova
 com candidata e diagnóstico cifrado, sem liberar criação; ver
 [candidatas e mudanças de versão](../docs/carteira-viva/CANDIDATAS-2026-10-28.md).
 Há também uma ferramenta interna para [comparar leituras](../docs/carteira-viva/DIAGNOSTICO-GRADE-2026-10-28.md),
-ainda sem composição no piloto e sem alterar as guardas de versão.
+com [composição interna no serviço](../docs/carteira-viva/DIAGNOSTICO-SERVICO-2026-10-28.md)
+validada offline, sem alterar as guardas de versão. Ensaio real ainda pendente.
 
 Este documento reúne os arquivos, a preparação do ambiente e a hospedagem.
 Para aprender os comandos, consulte [os guias de uso](../docs/GUIAS-DE-USO.md).

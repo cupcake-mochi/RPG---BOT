@@ -1,5 +1,21 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Diagnóstico integrado ao serviço · 28/10 — offline
+
+`Consultas.diagnosticar_grade_copia` usa referência tipada de operação existente,
+alvo origem/cópia e domínio fixo. Banco deriva o arquivo e vincula operação,
+modelo, iniciador e autorização. Só modelo particular fora das oficiais; cópia
+não cadastrada, propriedade/privacidade/marcadores reconferidos antes/depois das
+amostras. Acesso atual também é reconferido na espera de cota/fila e na entrega.
+Fila/OAuth/cotas compartilhados, duas coletas limitadas, sem escrita ou adoção de
+versões. Flags de mudança antes/depois da coleta não são aprovação.
+
+121 direcionados distintos aprovados/34 novos; CI completo deste código pendente.
+Composição no serviço implementada e testada por HTTP fictício; execução real ainda
+não ocorreu. Causa das versões/preparação global/propriedades/prova integral
+continuam pendentes, criação bloqueada e sem publicação.
+[Execução e limites](DIAGNOSTICO-SERVICO-2026-10-28.md). Sol Alto; revisão Médio.
+
 ## Comparação de leituras · 28/10 — só diagnóstico offline
 
 `DiagnosticoGrade` compara duas coletas estritas da mesma fonte/contexto e separa

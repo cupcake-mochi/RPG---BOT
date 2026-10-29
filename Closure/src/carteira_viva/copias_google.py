@@ -89,22 +89,39 @@ async def procurar(provedor, acesso, operacao, origem):
     return arquivo
 
 
-async def observar(provedor, acesso, operacao, origem, arquivo):
+def _privada(meta, arquivo):
     from .provedores import ErroProvedor
-    props = marcadores(operacao, origem)
-    if not isinstance(arquivo, str) or not ID.fullmatch(arquivo) or arquivo == origem:
-        raise ErroProvedor('arquivo')
-    meta = await provedor._json(DRIVE + '/' + arquivo + '?' + urlencode(dict(fields=CAMPOS)), acesso)
     if (not isinstance(meta, dict) or meta.get('id') != arquivo or meta.get('mimeType') != MIME or
             meta.get('isAppAuthorized') is not True or meta.get('trashed') is not False or
             meta.get('ownedByMe') is not True or meta.get('shared') is not False or meta.get('driveId') is not None or
-            not isinstance(meta.get('appProperties'), dict) or
-            any(meta['appProperties'].get(k) != v for k, v in props.items()) or
             not isinstance(meta.get('version'), str) or not re.fullmatch(r'[0-9]{1,30}', meta['version'])):
         raise ErroProvedor('copia_invalida')
     perms = meta.get('permissions')
     if (not isinstance(perms, list) or len(perms) != 1 or not isinstance(perms[0], dict) or
             perms[0].get('type') != 'user' or perms[0].get('role') != 'owner' or
             (perms[0].get('deleted') is not None and perms[0]['deleted'] is not False)):
+        raise ErroProvedor('copia_invalida')
+    return meta['version']
+
+
+async def observar_fonte_diagnostico(provedor, acesso, arquivo):
+    """Somente GET; origem privada derivada da operação, sem exigir marcador de cópia."""
+    from .provedores import ErroProvedor
+    if not isinstance(arquivo, str) or not ID.fullmatch(arquivo):
+        raise ErroProvedor('arquivo')
+    campos = CAMPOS.replace(',appProperties', '')
+    meta = await provedor._json(DRIVE + '/' + arquivo + '?' + urlencode(dict(fields=campos)), acesso)
+    return _privada(meta, arquivo)
+
+
+async def observar(provedor, acesso, operacao, origem, arquivo):
+    from .provedores import ErroProvedor
+    props = marcadores(operacao, origem)
+    if not isinstance(arquivo, str) or not ID.fullmatch(arquivo) or arquivo == origem:
+        raise ErroProvedor('arquivo')
+    meta = await provedor._json(DRIVE + '/' + arquivo + '?' + urlencode(dict(fields=CAMPOS)), acesso)
+    _privada(meta, arquivo)
+    if (not isinstance(meta.get('appProperties'), dict) or
+            any(meta['appProperties'].get(k) != v for k, v in props.items())):
         raise ErroProvedor('copia_invalida')
     return DestinoCopia(arquivo, meta['version'], operacao, origem)

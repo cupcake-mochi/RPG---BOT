@@ -6,8 +6,8 @@
 
 O ensaio financeiro anterior viu mudanças na versão Drive da fonte e da cópia,
 mas não identificou as causas. O bot agora tem `DiagnosticoGrade`, para comparar
-duas leituras estritas da mesma fonte e do mesmo domínio/contexto. Ainda precisa
-ser composto no piloto autenticado antes de um novo ensaio real. Não é comando,
+duas leituras estritas da mesma fonte e do mesmo domínio/contexto. A composição
+no serviço foi implementada depois e validada offline; falta o ensaio real. Não é comando,
 endpoint, preparação da ficha ou autorização para continuar uma cópia recusada.
 
 O [Google Sheets distingue entrada, resultado, nota e formato](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/cells).
@@ -69,6 +69,14 @@ Argumentos incompatíveis recusados antes da coleta não fazem novas leituras e 
 são prova de revogação. O comparador não autentica quem chama `comparar()`; cabe ao
 piloto revalidar acesso antes de mostrar ou registrar o resumo.
 
+## Composição posterior
+
+O [serviço de diagnóstico](DIAGNOSTICO-SERVICO-2026-10-28.md) deriva o arquivo do
+banco, usa a fila/OAuth/cotas existentes e reconfere acesso/privacidade. Acrescenta
+quatro GETs de metadados privados por operação (antes/depois de cada amostra);
+o comparador isolado descrito acima não acrescenta chamadas ao leitor.
+Não houve ensaio real dessa integração.
+
 ## Próximo ensaio, sem escrita
 
 1. Compor o piloto com uma fonte privada **descartável**, selecionada por novo
@@ -84,7 +92,8 @@ piloto revalidar acesso antes de mostrar ou registrar o resumo.
 5. Não enviar POST Drive/Sheets, não inicializar financeiro ou Apps Script e não
    cadastrar personagem como consequência. Fechar a instância e encerrar o piloto.
 
-Essa composição autenticada e o ensaio real **ainda não foram executados**. A
+A composição no serviço está implementada e testada por HTTP fictício; o ensaio
+real **ainda não foi executado**. A
 ferramenta não oferece protocolo de cancelamento/encerramento da candidata nem
 contrato de preparação global de conteúdo. Essas decisões, as cinco propriedades
 Apps Script, demais domínios, concorrência, preservação e prova integral continuam

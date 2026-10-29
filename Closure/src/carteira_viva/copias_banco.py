@@ -9,8 +9,8 @@ import re
 import secrets
 
 from .modelos import OFICIAIS
-from .observacoes_copia import ObservacaoVersao, LIMITE
-from .segredos import AcessoNegado, Conflito, ErroCarteira
+from .observacoes_copia import ObservacaoVersao, LIMITE, conteudo_contexto
+from .segredos import AcessoNegado, Conflito, ErroCarteira, json_bytes
 
 
 @dataclass(frozen=True, repr=False)
@@ -109,6 +109,33 @@ class Copias:
         if hash_texto(obj['conta']) != c['conta_hash'] or hash_texto(obj['cliente']) != c['cliente_hash']:
             raise ErroCarteira('Identidade da conexão inconsistente.')
         return CredencialGoogle(obj['conta'], obj['cliente'], obj['refresh'], c['autorizacao'])
+
+    def contexto_diagnostico_copia(self, membro, ref, alvo):
+        """Leitura interna de operação existente; não emite permissão de escrita.
+
+        O piloto usa somente modelo particular, nunca as oficiais. Não recebe
+        ID de arquivo, não cria intenção, não muda estado/versão/retencão.
+        """
+        d = self.contexto_copia(membro, ref)
+        if type(alvo) is not str or alvo not in ('origem', 'copia'):
+            raise ErroCarteira('Escolha origem ou cópia para o diagnóstico.')
+        if (d['modelo'] != 'servidor' or d['estado'] not in ('enviada', 'identificada') or
+                d['versao_origem'] is None):
+            raise Conflito('O diagnóstico exige operação enviada de um modelo particular com versão registrada.')
+        arquivo = d['origem']
+        if alvo == 'copia':
+            candidata = d.get('candidata')
+            arquivo = d['destino'] if d['estado'] == 'identificada' else (
+                candidata.get('arquivo') if type(candidata) is dict else None)
+            if not arquivo or arquivo == d['origem'] or self.db.execute(
+                    'SELECT 1 FROM fontes WHERE arquivo=?', (arquivo,)).fetchone():
+                raise Conflito('O diagnóstico da cópia exige candidata não cadastrada já registrada.')
+        oficiais = {re.search(r'/d/([A-Za-z0-9_-]+)', x['url']).group(1) for x in OFICIAIS}
+        if arquivo in oficiais or d['origem'] in oficiais:
+            raise Conflito('Este piloto não diagnostica fichas oficiais.')
+        contexto = hashlib.sha256(json_bytes(['diagnostico_grade_v1', ref.servidor,
+            ref.ator, ref.operacao, alvo, conteudo_contexto(d)])).hexdigest()
+        return arquivo, contexto
 
     def _guardar_copia(self, ref, d):
         self.db.execute('UPDATE copias_rest SET estado=?,atualizado=?,conteudo=? WHERE operacao=?',

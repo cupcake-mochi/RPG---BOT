@@ -118,6 +118,11 @@ class Consultas:
         from .financeiro_servico import inicializar
         return await inicializar(self, servidor, usuario, referencia)
 
+    async def diagnosticar_grade_copia(self, servidor, usuario, referencia, *, alvo, dominio):
+        """Interno, somente leitura; não altera candidata, recibo ou liberação."""
+        from .diagnostico_servico import diagnosticar
+        return await diagnosticar(self, servidor, usuario, referencia, alvo=alvo, dominio=dominio)
+
     async def conferir_inicializacao(self, servidor, usuario, personagem, *, retomar=False):
         """Conferência interna somente de leitura; sem endpoint/criação."""
         from .conferencias_servico import conferir
