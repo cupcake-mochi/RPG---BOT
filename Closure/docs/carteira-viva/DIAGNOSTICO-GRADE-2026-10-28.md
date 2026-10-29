@@ -1,13 +1,14 @@
 # Comparar leituras da grade
 
-28/10/2026 · PR 84 · ferramenta interna, validada offline; não publicada.
+28/10/2026 · PR 84 · ferramenta interna, testada offline e em leitura real restrita; não publicada.
 
 ## Para que serve
 
 O ensaio financeiro anterior viu mudanças na versão Drive da fonte e da cópia,
 mas não identificou as causas. O bot agora tem `DiagnosticoGrade`, para comparar
 duas leituras estritas da mesma fonte e do mesmo domínio/contexto. A composição
-no serviço foi implementada depois e validada offline; falta o ensaio real. Não é comando,
+no serviço foi implementada depois e validada offline, com prova real de leitura
+restrita a progressão. Não é comando,
 endpoint, preparação da ficha ou autorização para continuar uma cópia recusada.
 
 O [Google Sheets distingue entrada, resultado, nota e formato](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/cells).
@@ -75,7 +76,8 @@ O [serviço de diagnóstico](DIAGNOSTICO-SERVICO-2026-10-28.md) deriva o arquivo
 banco, usa a fila/OAuth/cotas existentes e reconfere acesso/privacidade. Acrescenta
 quatro GETs de metadados privados por operação (antes/depois de cada amostra);
 o comparador isolado descrito acima não acrescenta chamadas ao leitor.
-Não houve ensaio real dessa integração.
+[Prova nativa](NATIVO-DIAGNOSTICO-2026-10-28.md): duas leituras completas de
+progressão; financeiro interrompido sem resultado, recursos já encerrados.
 
 ## Próximo ensaio, sem escrita
 
@@ -93,7 +95,8 @@ Não houve ensaio real dessa integração.
    cadastrar personagem como consequência. Fechar a instância e encerrar o piloto.
 
 A composição no serviço está implementada e testada por HTTP fictício; o ensaio
-real **ainda não foi executado**. A
+financeiro ainda está pendente; a prova real de leitura de progressão está no
+relatório acima. A
 ferramenta não oferece protocolo de cancelamento/encerramento da candidata nem
 contrato de preparação global de conteúdo. Essas decisões, as cinco propriedades
 Apps Script, demais domínios, concorrência, preservação e prova integral continuam

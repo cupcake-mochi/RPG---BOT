@@ -271,7 +271,8 @@ Não abrir dez PRs vazias nem tratar aprovação do plano como autorização de 
 ### Divisão da etapa 7 · 28/10
 
 Diagnóstico offline de diferenças por categoria implementado e composto no serviço;
-ensaio real pendente, sem liberar criação. [Cobertura](DIAGNOSTICO-GRADE-2026-10-28.md)
+leitura real de progressão comprovada no caminho observado e financeiro ainda
+pendente, sem liberar criação. [Cobertura](DIAGNOSTICO-GRADE-2026-10-28.md)
 e [composição](DIAGNOSTICO-SERVICO-2026-10-28.md).
 
 Atualização offline: primeira candidata fixada antes da identificação e diagnóstico

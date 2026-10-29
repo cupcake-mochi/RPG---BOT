@@ -1,5 +1,13 @@
 # Banco de personagens
 
+28/10: `contexto_diagnostico_copia` é somente leitura, sem schema/tabela novos.
+Deriva origem/candidata/recibo do diário e vincula ator/modelo/autorização;
+fonte pode ser diagnosticada na intenção preparada, sem fixar versão ou envio.
+Cópia exige envio com versão original e não estar cadastrada em qualquer mesa.
+Só modelo particular fora das oficiais, sem herdar conexão por admin/revisor.
+Diagnóstico não persiste hashes/conteúdo nem muda retenção ou libera criação.
+[Contrato e prova](DIAGNOSTICO-SERVICO-2026-10-28.md).
+
 28/10: protocolo interno de cópia 2, sem migração (schema9/ledger2). A candidata
 e seu primeiro par arquivo/versão ficam no envelope cifrado da cópia enviada.
 Até 12 observações técnicas cifradas não renovam retenção nem dão autorização.

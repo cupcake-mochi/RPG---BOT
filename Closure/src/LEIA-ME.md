@@ -10,7 +10,8 @@ com candidata e diagnóstico cifrado, sem liberar criação; ver
 [candidatas e mudanças de versão](../docs/carteira-viva/CANDIDATAS-2026-10-28.md).
 Há também uma ferramenta interna para [comparar leituras](../docs/carteira-viva/DIAGNOSTICO-GRADE-2026-10-28.md),
 com [composição interna no serviço](../docs/carteira-viva/DIAGNOSTICO-SERVICO-2026-10-28.md)
-validada offline, sem alterar as guardas de versão. Ensaio real ainda pendente.
+validada offline e em [leitura real de progressão](../docs/carteira-viva/NATIVO-DIAGNOSTICO-2026-10-28.md),
+sem alterar as guardas de versão. Financeiro e criação continuam pendentes.
 
 Este documento reúne os arquivos, a preparação do ambiente e a hospedagem.
 Para aprender os comandos, consulte [os guias de uso](../docs/GUIAS-DE-USO.md).

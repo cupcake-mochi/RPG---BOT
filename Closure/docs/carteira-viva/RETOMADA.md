@@ -3,7 +3,7 @@
 Atualizado em 28/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
-## Diagnóstico integrado ao serviço · 28/10 — offline
+## Diagnóstico integrado ao serviço · 28/10 — código e leitura real
 
 `Consultas.diagnosticar_grade_copia` usa referência tipada de operação existente,
 alvo origem/cópia e domínio fixo. Banco deriva o arquivo e vincula operação,
@@ -14,11 +14,23 @@ Fila/OAuth/cotas compartilhados, duas coletas limitadas, sem escrita ou adoção
 versões. Flags de mudança antes/depois da coleta não são aprovação. Origem também pode
 ser lida ainda na intenção preparada, sem fixar versão ou enviar cópia.
 
-122 direcionados distintos aprovados/35 novos; CI completo deste código pendente.
-Composição no serviço implementada e testada por HTTP fictício; execução real ainda
-não ocorreu. Causa das versões/preparação global/propriedades/prova integral
+122 direcionados distintos aprovados/35 novos. Código `10df9c2fc94e333bdcce8225a62629e2500ff675`:
+[CI completo 40804561882](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40804561882)
+aprovado em 28/10 às 23:14:54 Brasília: 1.593 executados/1.592 aprovados/um
+opcional pulado, zero falhas, 375,003 s. Fechamento posterior só documental,
+sem repetir suíte/pacote/publicação.
+Composição no serviço implementada e testada offline. Prova real de progressão:
+duas amostras 8/8 páginas, zero mudanças nos cinco campos, 164,128 s no fluxo;
+253 HTTP200 na fase, diário preparado inalterado e quatro indicadores falsos.
+Primeira tentativa financeira interrompida com saída143/estado desatualizado,
+sem resultado ou tempo de execução confiável. Não atribuir causa das versões.
+Limpeza concluída às 23:47:20 Brasília: descartável na lixeira, grant revogado,
+recusa sem Drive/Sheets, dados fictícios removidos, integridade ok, porta livre.
+Financeiro/preparo global/propriedades/prova integral e revisão do custo de rede
 continuam pendentes, criação bloqueada e sem publicação.
-[Execução e limites](DIAGNOSTICO-SERVICO-2026-10-28.md). Sol Alto; revisão Médio.
+[Execução e limites](DIAGNOSTICO-SERVICO-2026-10-28.md).
+[Prova real e encerramento](NATIVO-DIAGNOSTICO-2026-10-28.md). Sem grant/runner
+ativo ou recurso a retomar nesta rodada. Sol Alto; revisão Médio.
 
 ## Comparação de leituras · 28/10 — só diagnóstico offline
 

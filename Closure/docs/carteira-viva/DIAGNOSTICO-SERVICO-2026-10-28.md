@@ -1,6 +1,6 @@
 # Diagnóstico no serviço
 
-28/10/2026 · PR 84 · integração interna validada offline; ensaio real pendente.
+28/10/2026 · PR 84 · integração interna validada offline e em leitura real de progressão.
 
 ## Entrada e vínculo
 
@@ -78,7 +78,14 @@ em outra mesa antes/durante leitura, privacidade/marcadores, coalescência, muda
 de modelo, cota, membro ausente, revogação/reautorização/expiração, mudança de versão
 durante/antes/depois da coleta, 429 sem retry, entrega após revogação e cancelamento.
 Conferem diário/dados preservados, ausência de escrita/cadastro e fechamento dos
-hashes. CI completo deste código pendente; não atribuir os 1.558 anteriores a ele.
+hashes.
+
+Código final `10df9c2fc94e333bdcce8225a62629e2500ff675`: o
+[CI completo 40804561882](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40804561882)
+passou em 28/10 às 23:14:54 Brasília: **1.593 executados/1.592 aprovados/um opcional
+pulado**, zero falhas, 375,003 s. O primeiro CI 40804015540 passou em 88e6edb,
+antes do suporte à leitura da origem ainda preparada; não valida essa extensão.
+Fechamento posterior só documental (`[skip ci]`), sem repetir suíte/pacote/publicação.
 
 Pacote ignorado regenerado e comparado: 90 arquivos, CRC/fontes iguais, sem
 Carteira/env/bancos/campanha; SHA256 `b8457b458814d6fa2526092ce4a59e9d61685fde258828656e3b86cf34b8b88a`.
@@ -94,7 +101,13 @@ revogadas ou restaurar as descartáveis já descartadas do ensaio financeiro ant
 O piloto precisa obter a referência pela operação real, nunca aceitar IDs do
 navegador, logar apenas o resumo sanitizado e encerrar/revogar/descartar seus recursos.
 
-A integração está pronta para esse ensaio; **ainda não há resultado real**. A causa
+[Prova nativa encerrada](NATIVO-DIAGNOSTICO-2026-10-28.md): duas coletas de
+progressão completas (8/8 páginas cada), zero diferenças nos cinco campos, fluxo
+164,128 s; fase com 253 HTTP200, intenção preparada intacta, sem POST Drive/Sheets.
+Financeiro interrompido sem resultado, saída143 e acompanhamento de estado antigo;
+a espera não mede o serviço. Limpeza às 23:47:20 Brasília: descartável na lixeira,
+grant revogado, recusa sem acessar arquivos, dados fictícios removidos e porta livre.
+Não reutilizar grant ou descartar o limite financeiro por causa dessa prova de progressão. A causa
 das versões nativas continua desconhecida. O método não cancela candidatas, não
 aprova versões novas e não define preparação global de conteúdo. Propriedades Apps
 Script, demais domínios, concorrência, preservação, automações/responsável e prova
