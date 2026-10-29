@@ -19,7 +19,7 @@ v1 permanecem iguais. Não há migração de banco nem alteração do produtor.
 
 | Estado persistido | Significado |
 | --- | --- |
-| preparada | Ainda não autoriza repetir um POST já enviado |
+| preparada | Intenção ainda não enviada; o envio exige a versão da origem registrada |
 | enviada, sem candidata | Resultado incerto: só buscar o marcador privado |
 | enviada, com candidata | Arquivo e versão da primeira observação fixados; não é inicialização |
 | identificada | Fonte reconferida e candidata reobservada sem mudança; recibo imutável |
@@ -70,7 +70,7 @@ identificada; cópia já alterada consumia toda a leitura de células antes da r
 Uma revisão adicional confirmou que uma candidata já observada também não
 pode ser trocada em intenção legada: falhou antes do ajuste e passou depois
 em 0,091 s. Expectativas não foram relaxadas. As fixtures válidas passaram a executar a etapa
-obrigatória de candidata. CI completo deste código pendente no checkpoint. Pacote ignorado regenerado e
+obrigatória de candidata. Pacote ignorado regenerado e
 comparado: 90 arquivos, CRC/fontes iguais, sem Carteira/env/bancos/campanha;
 SHA256 `27e0f7c28fcf8077ee53a5c22ba4a93e44562112f000c9681d12e7ad42471352`. Não publicado.
 
@@ -79,7 +79,15 @@ um backup sem versão observada da origem podia identificar uma cópia tardia
 usando a versão configurada como substituta. Agora serviço e banco exigem a
 versão originalmente registrada antes da localização/identificação. Falhou antes
 da correção e os 32 testes de cópia passaram depois; não houve expectativa relaxada.
-O CI completo final precisa cobrir esse ajuste; o resultado de 253bfe0 é anterior.
+O [CI 40797575755](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40797575755)
+passou em 253bfe0 (1.532 executados, um opcional pulado, 353,420 s), antes dessa
+correção. Por isso foi necessária outra suíte no código final.
+
+Código final `eeb78f98a63f355e16c8b06dde24c80e4108ca80`: o
+[CI 40798497466](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40798497466)
+passou em 28/10 às 22:13:05 Brasília. Foram **1.533 executados, 1.532 aprovados,
+um opcional pulado, zero falhas**, em 297,175 s. O fechamento posterior é só
+documental (`[skip ci]`), sem nova suíte, pacote ou publicação.
 
 ## O que ainda falta
 

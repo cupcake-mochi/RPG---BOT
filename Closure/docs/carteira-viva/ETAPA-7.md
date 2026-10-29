@@ -11,7 +11,11 @@ legado compatível e criação bloqueada. Cópia já alterada falha antes de ler
 
 100 direcionados distintos aprovados/19 novos; duas reproduções anteriores confirmadas.
 Restauração sem versão original agora recusa antes de ler arquivos; os 32
-testes de cópia passaram em 6,489 s. CI completo final pendente. Não houve ensaio nativo novo,
+testes de cópia passaram em 6,489 s. Código final `eeb78f98a63f355e16c8b06dde24c80e4108ca80`:
+[CI completo 40798497466](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40798497466)
+aprovado em 28/10 às 22:13:05 Brasília: 1.533 executados, 1.532 aprovados,
+um opcional pulado, zero falhas, 297,175 s. Fechamento só documental, sem repetir
+suíte/pacote/publicação. Não houve ensaio nativo novo,
 OAuth, pacote publicado ou mudança no produtor. A causa das versões nativas e a
 preparação de conteúdo continuam pendentes; não atribuir cache ou repetir cópias.
 [Implementação e limites](CANDIDATAS-2026-10-28.md). Sol Alto; revisão Médio.
