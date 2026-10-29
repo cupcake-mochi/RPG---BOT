@@ -90,6 +90,17 @@ class FinanceiroRestTeste(unittest.IsolatedAsyncioTestCase):
         self.assertLess(n_agr,n_ind)
         self.assertTrue(all(len(r.url.params.get_list('ranges'))<=4 for r in self.gets_sheets()))
 
+    async def test_servico_mede_em_lotes_com_o_mesmo_plano_do_individual(self):
+        esperado=await self.plano();self.req.clear()
+        await self.inicializar()
+        gets=self.gets_sheets()
+        faixas=[len(r.url.params.get_list('ranges')) for r in gets]
+        self.assertTrue(any(n>1 for n in faixas))
+        self.assertTrue(all(n<=4 for n in faixas))
+        # Leitura antes do POST cobre exatamente as faixas do plano individual.
+        self.assertEqual(len(self.posts),1)
+        self.assertEqual(json.loads(esperado.pedidos),self.posts[0])
+
     async def test_medicao_agrupada_com_formula_no_lote_nao_le_lotes_seguintes(self):
         self.data.formula('EXTRATO',2,1,'=123',123)
         for a in ('EXTRATO','SALÁRIOS','DADOS_SALARIOS'):self.data.grades[a]['gridProperties']['rowCount']=5000

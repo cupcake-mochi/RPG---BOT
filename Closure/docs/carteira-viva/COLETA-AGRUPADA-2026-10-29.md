@@ -144,3 +144,12 @@ Diagnóstico financeiro com a primeira coleta individual e a segunda agrupada: 2
 nas duas, **zero diferenças**, páginas em 11 GETs Sheets contra 25. Primeira tentativa recusada
 corretamente (`conflito` na conferência do modelo, cópia recém-criada ainda mudando).
 [Relatório](NATIVO-FINANCEIRO-AGRUPADO-2026-10-29.md).
+
+## Medição financeira em lotes ligada no serviço · 29/10
+
+`financeiro_servico` cria o leitor com `agrupar=True` para `medir`, com base no ensaio
+nativo individual × agrupado. Regressão nova: o serviço lê com GETs de várias faixas (≤ 4)
+e envia exatamente os pedidos do plano individual; ela falha se o modo for desligado.
+Suíte local **1.626 executados, 1.625 aprovados, um opcional pulado, zero falhas**, 619,719 s.
+Auditoria (`coletar_conferir`, `conferencias_banco`) segue individual. A escrita financeira
+nativa continua sem prova; este passo só reduz as leituras que a antecedem.

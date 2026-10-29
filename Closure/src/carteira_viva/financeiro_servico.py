@@ -60,7 +60,8 @@ async def inicializar(servico, servidor, usuario, ref):
 
         async def medir_copia():
             try:
-                return await medir(LeitorGradeRest(servico.provedores, contexto, cota),
+                # Lotes validados no Google real (individual × agrupado iguais, 29/10).
+                return await medir(LeitorGradeRest(servico.provedores, contexto, cota, agrupar=True),
                                    token.acesso, copia['destino'])
             except VersaoAlterada as exc:
                 await registrar('copia_leitura', exc.esperada, exc.observada)
