@@ -2,6 +2,16 @@
 
 28/10/2026 · PR 84 · etapa 7C parcial · não publicado.
 
+## Ensaio real
+
+[Encerrado em 28/10 com recusas seguras](NATIVO-FINANCEIRO-2026-10-28.md):
+primeiro destino mudou de versão durante a leitura; na segunda candidata,
+a fonte mudou antes da identificação. **Zero POST Sheets financeiro**, sem
+injeção HTTP200 ou prova de reconciliação após escrita. Três descartáveis na
+lixeira, concessão revogada e base fictícia limpa. Causa das mudanças ainda
+não demonstrada; não tratar como cache ou relaxar as guardas. Antes de novo
+ensaio, fechar diagnóstico e fase de candidata. Descrição do código abaixo.
+
 ## O que mudou
 
 `Consultas.inicializar_financeiro_celulas` é interno, sem rota web ou comando.

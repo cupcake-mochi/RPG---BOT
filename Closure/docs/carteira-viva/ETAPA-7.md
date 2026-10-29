@@ -1,5 +1,24 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Ensaio financeiro encerrado · 28/10 — recusas seguras
+
+A primeira cópia passou de versão 9 para 10 durante a leitura financeira;
+`alterada`, zero POST Sheets e nenhum diário financeiro. Na segunda candidata,
+a leitura completa fechou na versão 9, mas a fonte passou de 12 para 13 antes
+da identificação; operação recusada, sem iniciar a segunda escrita. A causa
+das mudanças não foi demonstrada. O diagnóstico não comprovou problema de cache.
+
+Fonte/duas cópias na lixeira, grant revogado e recusa sem acessar arquivos;
+dados fictícios removidos, bancos íntegros, porta livre/runners encerrados.
+Limpeza concluída às 21:36:57 Brasília. **A escrita financeira real continua pendente**;
+não houve injeção de resposta HTTP200 nem reconciliação pós-escrita real.
+
+Próximo: investigar versões e definir a fase de candidata antes do primeiro
+recibo, sem atualizar versões de cópias já identificadas. Propriedades Apps
+Script e demais domínios/prova integral continuam pendentes. Sem código novo,
+suíte/ZIP repetidos ou publicação. [Relatório](NATIVO-FINANCEIRO-2026-10-28.md).
+Sol Alto; revisão Médio. Registros abaixo históricos.
+
 ## Células financeiras · 28/10 — 7C parcial, só offline
 
 O serviço interno agora planeja os resets do contrato, grava o diário antes de
