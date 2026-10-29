@@ -2,6 +2,10 @@
 
 28/10/2026 · PR 84 · etapa 7C parcial · não publicado.
 
+[Atualização offline: candidatas e diagnóstico](CANDIDATAS-2026-10-28.md).
+Cópia já alterada agora é recusada antes de ler células; mudanças durante
+a leitura ficam registradas no diário técnico cifrado, sem renovar versões.
+
 ## Ensaio real
 
 [Encerrado em 28/10 com recusas seguras](NATIVO-FINANCEIRO-2026-10-28.md):

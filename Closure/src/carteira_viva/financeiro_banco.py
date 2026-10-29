@@ -9,6 +9,7 @@ from .contrato_inicializacao import CONTRATO_SHA256
 from .conferencia_inicializacao import FLAGS
 from .financeiro_plano import PlanoFinanceiro, hash_obj
 from .modelos import OFICIAIS
+from .observacoes_copia import conteudo_contexto
 from .segredos import Conflito, ErroCarteira, json_bytes
 
 PRAZO = 1800
@@ -37,7 +38,7 @@ class Financeiro:
                 d['destino'] == d['origem'] or self.db.execute(
                     'SELECT 1 FROM fontes WHERE arquivo=?', (d['destino'],)).fetchone()):
             raise Conflito('Somente uma cópia nova, comprovada e ainda não cadastrada pode ser inicializada.')
-        return d, hash_obj([CONTRATO_SHA256, ref.servidor, ref.ator, ref.operacao, d])
+        return d, hash_obj([CONTRATO_SHA256, ref.servidor, ref.ator, ref.operacao, conteudo_contexto(d)])
 
     @staticmethod
     def _ctx_financeiro(ref):

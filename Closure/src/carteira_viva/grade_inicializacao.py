@@ -211,7 +211,9 @@ class LeitorGradeRest:
         await self._antes(inicio, contexto)
         v = await self._http(lambda: self._p.versao_arquivo(acesso, arquivo), inicio)
         await self._contexto(inicio, contexto)
-        if esperada is not None and v != esperada: _erro('alterada')
+        if esperada is not None and v != esperada:
+            from .provedores import VersaoAlterada
+            raise VersaoAlterada(esperada, v)
         return v
 
     async def _get(self, acesso, arquivo, campos, inicio, contexto, faixa=None):

@@ -9,6 +9,7 @@ import re
 import secrets
 
 from .modelos import OFICIAIS
+from .observacoes_copia import ObservacaoVersao, LIMITE
 from .segredos import AcessoNegado, Conflito, ErroCarteira
 
 
@@ -73,7 +74,7 @@ class Copias:
             self._servidor(membro.servidor)
             op = secrets.token_hex(32)
             d = dict(**origem, autorizacao=c['autorizacao'], estado='preparada', versao_origem=None,
-                     destino=None, versao_destino=None)
+                     destino=None, versao_destino=None, protocolo_copia=2, candidata=None)
             row = dict(servidor=membro.servidor, ator=membro.usuario, operacao=op)
             self.db.execute('INSERT INTO copias_rest VALUES (?,?,?,?,?,?,?,?,?)',
                 (membro.servidor, membro.usuario, op, conexao, chave, 'preparada', self.agora(), self.agora(),
@@ -92,6 +93,8 @@ class Copias:
             raise Conflito('Registro de cópia indisponível.')
         c = self._conexao_do_dono(membro, ref.conexao)
         d = self.cifra.abrir(self._ctx_copia(row), row['conteudo'])
+        if type(d.get('protocolo_copia', 1)) is not int or d.get('protocolo_copia', 1) not in (1, 2):
+            raise Conflito('Protocolo de cópia não suportado. Não continue esta operação.')
         origem = self._origem_modelo_copia(ref.servidor, d['modelo'])
         if (d['estado'] != row['estado'] or c['autorizacao'] != d['autorizacao'] or
                 any(d[k] != v for k, v in origem.items())):
@@ -133,6 +136,45 @@ class Copias:
             self._guardar_copia(ref, {**d, 'estado': 'enviada'})
             return True
 
+    def registrar_observacao_copia(self, membro, ref, observacao):
+        if type(observacao) is not ObservacaoVersao:
+            raise ErroCarteira('Use a observação tipada do adaptador interno.')
+        with self._transacao():
+            d = self.contexto_copia(membro, ref)
+            historico = d.get('observacoes_versao', [])
+            evento = dict(etapa=observacao.etapa, esperada=observacao.esperada,
+                          observada=observacao.observada)
+            # Contagens repetidas não aumentam o volume nem renovam a primeira observação.
+            if historico and all(historico[-1][k] == v for k, v in evento.items()):
+                evento = {**historico[-1], 'ultimo_em': self.agora(),
+                          'vezes': min(historico[-1]['vezes'] + 1, 1000000000)}
+                historico = historico[:-1]
+            else:
+                evento.update(primeiro_em=self.agora(), ultimo_em=self.agora(), vezes=1)
+            # O diagnóstico não renova a retenção da cópia identificada.
+            novo = {**d, 'observacoes_versao': (historico + [evento])[-LIMITE:]}
+            ctx = self._ctx_copia(dict(servidor=ref.servidor, ator=ref.ator, operacao=ref.operacao))
+            self.db.execute('UPDATE copias_rest SET conteudo=? WHERE operacao=?',
+                            (self.cifra.cifrar(ctx, novo), ref.operacao))
+
+    def registrar_candidata_copia(self, membro, ref, destino):
+        """Identidade e versão da primeira observação; não certifica inicialização."""
+        from .copias_google import DestinoCopia
+        if type(destino) is not DestinoCopia:
+            raise ErroCarteira('Use a observação do adaptador Google.')
+        with self._transacao():
+            d = self.contexto_copia(membro, ref)
+            candidata = dict(arquivo=destino.arquivo, versao=destino.versao)
+            if (d['estado'] != 'enviada' or destino.operacao != ref.operacao or
+                    destino.origem != d['origem'] or destino.arquivo == d['origem'] or
+                    self.db.execute('SELECT 1 FROM fontes WHERE arquivo=?', (destino.arquivo,)).fetchone()):
+                raise Conflito('A candidata não pertence a uma cópia pendente e não cadastrada.')
+            if d.get('candidata') is not None:
+                if d['candidata'] != candidata:
+                    raise Conflito('A candidata mudou após a primeira observação. Não adote outra versão.')
+                return
+            self._guardar_copia(ref, {**d, 'candidata': candidata})
+
     def registrar_destino_copia(self, membro, ref, destino):
         from .copias_google import DestinoCopia
         if type(destino) is not DestinoCopia:
@@ -143,6 +185,9 @@ class Copias:
                     destino.origem != d['origem'] or destino.arquivo == d['origem'] or
                     d['destino'] not in (None, destino.arquivo)):
                 raise Conflito('A cópia observada não pertence a esta operação.')
+            if (d.get('protocolo_copia', 1) == 2 or d.get('candidata') is not None) and d.get('candidata') != dict(
+                    arquivo=destino.arquivo, versao=destino.versao):
+                raise Conflito('Confira a candidata antes de identificar a cópia. Não altere sua versão.')
             if d['estado'] == 'identificada' and d['versao_destino'] != destino.versao:
                 raise Conflito('A cópia foi alterada após a identificação. Não renove sua prova de criação.')
             self._guardar_copia(ref, {**d, 'estado': 'identificada', 'destino': destino.arquivo,

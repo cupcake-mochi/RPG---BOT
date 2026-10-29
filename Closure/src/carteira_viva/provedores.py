@@ -38,6 +38,16 @@ class MembroAusente(AcessoNegado):
     codigo = 'membro_ausente'
 
 
+class VersaoAlterada(ErroProvedor):
+    """Dados técnicos só para o diário interno; mensagem pública permanece genérica."""
+    def __init__(self, esperada, observada):
+        super().__init__('alterada')
+        self.esperada, self.observada = esperada, observada
+
+    def __repr__(self):
+        return '<VersaoAlterada>'
+
+
 @dataclass(frozen=True)
 class TokenGoogle:
     acesso: str = field(repr=False)

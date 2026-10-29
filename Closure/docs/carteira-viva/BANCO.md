@@ -1,5 +1,11 @@
 # Banco de personagens
 
+28/10: protocolo interno de cópia 2, sem migração (schema9/ledger2). A candidata
+e seu primeiro par arquivo/versão ficam no envelope cifrado da cópia enviada.
+Até 12 observações técnicas cifradas não renovam retenção nem dão autorização.
+Intenções antigas continuam compatíveis; versões identificadas não são adotadas
+novamente. [Candidatas e diagnóstico](CANDIDATAS-2026-10-28.md).
+
 28/10: diário financeiro de células em schema **9**, cifrado, máximo 32 KiB,
 prazo original de 30 minutos. Registra `enviada` antes do único POST. Backup
 converte `preparada` em `enviada` apenas na cópia; restauração só reconcilia.

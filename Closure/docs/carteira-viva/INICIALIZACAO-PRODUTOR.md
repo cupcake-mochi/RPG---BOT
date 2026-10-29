@@ -15,6 +15,21 @@ Os fontes abaixo não substituem uma inspeção do código instalado na cópia.
 `r53/OFICIAIS.md` registra os incrementos das oficiais; o pacote integral
 gerado não foi instalado por esta tarefa e não deve ser promovido por rotina.
 
+## Candidatas e diagnóstico · 28/10 — offline
+
+Novas cópias guardam a primeira observação da candidata antes do recibo. A fonte
+é conferida antes da busca e novamente após a candidata; o destino é reobservado
+antes da identificação. Nenhuma versão divergente é adotada. Histórico cifrado de
+até 12 observações registra etapa/versões/horários, sem renovar a retenção ou
+alterar campos de autoridade. Protocolo interno 2 no schema9/ledger2 existentes;
+legado compatível e criação bloqueada. Cópia já alterada falha antes de ler células.
+
+99 direcionados distintos aprovados/18 novos; duas reproduções anteriores confirmadas.
+CI completo atual pendente; 1.514 é a suíte anterior. Não houve ensaio nativo novo,
+OAuth, pacote publicado ou mudança no produtor. A causa das versões nativas e a
+preparação de conteúdo continuam pendentes; não atribuir cache ou repetir cópias.
+[Implementação e limites](CANDIDATAS-2026-10-28.md). Sol Alto; revisão Médio.
+
 ## Ensaio financeiro encerrado · 28/10 — recusas seguras
 
 A primeira cópia passou de versão 9 para 10 durante a leitura financeira;

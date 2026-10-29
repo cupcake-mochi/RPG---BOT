@@ -63,6 +63,15 @@ class Cenario:
     async def pagina(self,i=0):return await self.leitor.pagina('credencial_ficticia',self.plano,i)
 
 class GradeInicializacaoTeste(unittest.IsolatedAsyncioTestCase):
+    async def test_divergencia_tipificada_guarda_versoes_so_para_diagnostico(self):
+        from carteira_viva.provedores import VersaoAlterada
+        c=Cenario();await c.abrir();original=c.versao;c.versao='9007199254740994'
+        with self.assertRaises(VersaoAlterada) as erro:await c.pagina()
+        self.assertEqual((erro.exception.esperada,erro.exception.observada),(original,c.versao))
+        self.assertEqual(erro.exception.codigo,'alterada')
+        for texto in (str(erro.exception),repr(erro.exception)):
+            self.assertNotIn(original,texto);self.assertNotIn(c.versao,texto);self.assertNotIn(ARQUIVO,texto)
+
     async def test_mascara_http_valida_solicita_apenas_campos_necessarios(self):
         from carteira_viva.grade_inicializacao import META
         props={'sheets.properties.sheetId','sheets.properties.title','sheets.properties.gridProperties.rowCount','sheets.properties.gridProperties.columnCount','spreadsheetId'}

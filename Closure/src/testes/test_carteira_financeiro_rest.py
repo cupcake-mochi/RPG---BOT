@@ -59,6 +59,7 @@ class FinanceiroRestTeste(unittest.IsolatedAsyncioTestCase):
         await self.b('configurar_modelo',replace(self.m,administrador=True),escolha='servidor',revisao=0,previa=referencia())
         self.ref=await self.b('preparar_copia_modelo',self.m,conexao=self.cid,modelo='servidor',pedido='copia-ficticia')
         await self.b('fixar_versao_copia',self.m,self.ref,'7');await self.b('armar_envio_copia',self.m,self.ref)
+        await self.b('registrar_candidata_copia',self.m,self.ref,DestinoCopia(ARQUIVO,'7',self.ref.operacao,self.fonte))
         await self.b('registrar_destino_copia',self.m,self.ref,DestinoCopia(ARQUIVO,'7',self.ref.operacao,self.fonte))
 
     async def asyncTearDown(self):
@@ -170,6 +171,32 @@ class FinanceiroRestTeste(unittest.IsolatedAsyncioTestCase):
         self.data.versao='8'
         with self.assertRaises(Conflito):await self.inicializar()
         self.assertFalse(self.posts)
+        self.assertFalse(any(r.url.host=='sheets.googleapis.com' for r in self.req))
+        d=await self.b('contexto_copia',self.m,self.ref)
+        self.assertEqual(d['versao_destino'],'7')
+        self.assertEqual(d['observacoes_versao'][-1]['observada'],'8')
+
+    async def test_versao_muda_na_pagina_fica_no_diario_sem_dados_privados(self):
+        mudou=False
+        async def hook(req):
+            nonlocal mudou
+            if req.url.host=='sheets.googleapis.com' and 'ranges' in req.url.params and not mudou:
+                mudou=True;self.data.versao='8'
+        self.http_hook=hook
+        with self.assertRaises(ErroProvedor) as erro:await self.inicializar()
+        self.assertEqual(erro.exception.codigo,'alterada')
+        d=await self.b('contexto_copia',self.m,self.ref)
+        e=d['observacoes_versao'][-1];self.assertEqual(e['etapa'],'copia_leitura')
+        self.assertEqual((e['esperada'],e['observada']),('7','8'))
+        self.assertFalse(self.posts);self.assertIsNone(await self.b('estado_financeiro',self.m,self.ref))
+        for s in ('histórico privado','nota privada',ARQUIVO,self.fonte):self.assertNotIn(s,str(e))
+
+    async def test_mudanca_de_fonte_e_registrada_antes_de_ler_celulas(self):
+        self.source_version='8'
+        with self.assertRaises(Conflito):await self.inicializar()
+        e=(await self.b('contexto_copia',self.m,self.ref))['observacoes_versao'][-1]
+        self.assertEqual((e['etapa'],e['esperada'],e['observada']),('origem_financeiro','7','8'))
+        self.assertFalse(any(r.url.host=='sheets.googleapis.com' for r in self.req))
 
     async def test_ficha_cadastrada_em_qualquer_servidor_impede_mutacao(self):
         m=replace(self.m,servidor='outra-mesa')

@@ -9,7 +9,8 @@ from .copias_google import observar
 from .financeiro_google import enviar
 from .financeiro_plano import medir
 from .grade_inicializacao import LeitorGradeRest
-from .provedores import ErroProvedor
+from .provedores import ErroProvedor, VersaoAlterada
+from .observacoes_copia import ObservacaoVersao
 from .segredos import AcessoNegado, Conflito
 
 
@@ -41,23 +42,39 @@ async def inicializar(servico, servidor, usuario, ref):
             await contexto()
             return r
 
-        async def destino():
-            return await rede(observar, servico.provedores, token.acesso, ref.operacao,
-                              copia['origem'], copia['destino'])
+        async def registrar(etapa, esperada, observada):
+            atual = await servico._membro(servidor, usuario)
+            await b('registrar_observacao_copia', atual, ref, ObservacaoVersao(etapa, esperada, observada))
+
+        async def destino(etapa='copia_antes_grade'):
+            r = await rede(observar, servico.provedores, token.acesso, ref.operacao,
+                           copia['origem'], copia['destino'])
+            await registrar(etapa, copia['versao_destino'], r.versao)
+            return r
 
         async def origem():
             v = await rede(servico.provedores.versao_arquivo, token.acesso, copia['origem'])
+            await registrar('origem_financeiro', copia['versao_origem'], v)
             if v != copia['versao_origem']:
                 raise Conflito('O modelo mudou depois da cópia.')
 
+        async def medir_copia():
+            try:
+                return await medir(LeitorGradeRest(servico.provedores, contexto, cota),
+                                   token.acesso, copia['destino'])
+            except VersaoAlterada as exc:
+                await registrar('copia_leitura', exc.esperada, exc.observada)
+                raise
+
         await contexto()
         await origem()
-        await destino()
+        primeira = await destino()
         m = await servico._membro(servidor, usuario)
         estado = await b('estado_financeiro', m, ref)
+        if (estado is None or estado['estado'] == 'preparada') and primeira.versao != copia['versao_destino']:
+            raise Conflito('A cópia mudou desde a identificação. Não inicialize esse arquivo.')
         if estado is None:
-            leitor = LeitorGradeRest(servico.provedores, contexto, cota)
-            plano = await medir(leitor, token.acesso, copia['destino'])
+            plano = await medir_copia()
             m = await servico._membro(servidor, usuario)
             estado = await b('preparar_financeiro', m, ref, plano)
         if estado['estado'] == 'preparada':
@@ -65,7 +82,7 @@ async def inicializar(servico, servidor, usuario, ref):
             # A espera da escrita vem antes da última observação do destino.
             # Esperar depois dela usaria uma versão potencialmente envelhecida.
             await cota(); await contexto()
-            observado = await destino()
+            observado = await destino('copia_antes_envio')
             m = await servico._membro(servidor, usuario)
             envio = await b('armar_financeiro', m, ref, observado.versao)
             if envio is not None:
@@ -73,10 +90,9 @@ async def inicializar(servico, servidor, usuario, ref):
                 await enviar(servico.provedores, token.acesso, envio)
                 await contexto()
         await destino()
-        leitor = LeitorGradeRest(servico.provedores, contexto, cota)
-        atual = await medir(leitor, token.acesso, copia['destino'])
+        atual = await medir_copia()
         await origem()
-        fechamento = await destino()
+        fechamento = await destino('copia_fechamento')
         if fechamento.versao != atual.versao:
             raise Conflito('A cópia mudou após a leitura. Não registre a conferência nem repita a escrita.')
         m = await servico._membro(servidor, usuario)

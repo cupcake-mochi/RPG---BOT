@@ -35,6 +35,7 @@ class BancoCopias(Fixtures, unittest.TestCase):
         d = self.c.contexto_copia(self.m, ref)
         self.c.fixar_versao_copia(self.m, ref, '7')
         self.assertTrue(self.c.armar_envio_copia(self.m, ref))
+        self.c.registrar_candidata_copia(self.m, ref, DestinoCopia(DESTINO, '1', ref.operacao, d['origem']))
         return self.c.registrar_destino_copia(self.m, ref, DestinoCopia(DESTINO, '1', ref.operacao, d['origem']))
 
     def test_uma_intencao_retorna_mesmo_registro_e_impede_segunda_pendente(self):
@@ -239,6 +240,37 @@ class CopiasServico(unittest.IsolatedAsyncioTestCase):
         self.meta_indisponivel=False
         self.assertTrue((await self.copiar())['copia_identificada'])
         self.assertEqual(len(self.posts()),1)
+
+    async def test_candidata_muda_durante_conferencia_da_origem_nao_e_identificada(self):
+        vista=False
+        async def hook(req):
+            nonlocal vista
+            if req.url.path.endswith('/'+DESTINO):vista=True
+            if vista and req.url.path.endswith('/'+self.fonte):self.alteracao_meta={'version':'2'}
+        self.hook=hook
+        with self.assertRaises(Conflito):await self.copiar()
+        d=await self.b('contexto_copia',self.m,await self.ref())
+        self.assertEqual(d['estado'],'enviada');self.assertIsNone(d['destino'])
+        self.assertEqual(d['candidata'],dict(arquivo=DESTINO,versao='1'))
+        self.assertEqual(d['observacoes_versao'][-1]['esperada'],'1')
+        self.assertEqual(d['observacoes_versao'][-1]['observada'],'2')
+        with self.assertRaises(Conflito):await self.copiar()
+        self.assertEqual(len(self.posts()),1)
+
+    async def test_candidata_fica_persistida_quando_fonte_muda_sem_adotar_versao_nova(self):
+        async def hook(req):
+            if req.url.path.endswith('/'+DESTINO):self.versao='8'
+        self.hook=hook
+        with self.assertRaises(Conflito):await self.copiar()
+        d=await self.b('contexto_copia',self.m,await self.ref())
+        self.assertEqual(d['estado'],'enviada');self.assertIsNone(d['versao_destino'])
+        self.assertEqual(d['versao_origem'],'7');self.assertEqual(d['candidata']['versao'],'1')
+        self.assertEqual(d['observacoes_versao'][-1]['etapa'],'origem_apos_candidata')
+        self.assertEqual(d['observacoes_versao'][-1]['observada'],'8')
+        self.req.clear()
+        with self.assertRaises(Conflito):await self.copiar()
+        self.assertFalse(any(r.url.path.endswith('/'+DESTINO) or r.url.path.endswith('/files') for r in self.req))
+        self.assertFalse(self.posts())
 
     async def test_autorizacao_revogada_durante_cota_impede_envio(self):
         caso=self
