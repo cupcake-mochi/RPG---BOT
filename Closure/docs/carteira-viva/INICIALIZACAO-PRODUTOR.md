@@ -23,7 +23,11 @@ por instância, sem dados de células ou hashes no resumo/banco. Informa cobertu
 parcial/incompatível e descarta tudo em erro de acesso/transporte ou cancelamento.
 Nenhuma guarda de versão mudou; não é preparo de conteúdo ou autorização de escrita.
 
-112 direcionados distintos aprovados, 25 novos. CI completo deste código pendente.
+112 direcionados distintos aprovados, 25 novos. Código `4a36ef9344db432ddec773bdf446de114b7b31de`:
+[CI completo 40801082703](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40801082703)
+aprovado em 28/10 às 22:37:43 Brasília: 1.558 executados/1.557 aprovados/um
+opcional pulado, zero falhas, 263,278 s. Fechamento só documental, sem repetir
+suíte/pacote/publicação.
 Ainda faltam composição autenticada no piloto e ensaio controlado somente de leitura;
 causas das versões, protocolo da fonte/candidata, propriedades e prova integral
 continuam pendentes. Sem novo OAuth/Google/Discord, criação ou publicação.

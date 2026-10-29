@@ -62,9 +62,12 @@ o mesmo objeto sem manter sua grade ou identificadores em memória pelo diagnós
 
 O prazo total é de 30 minutos, sem renovação. Ao usar uma instância expirada,
 ela descarta chave e amostras. Erro de acesso, transporte, formato ou cancelamento
-também descarta tudo; apenas a mudança tipificada de versão preserva uma amostra
-parcial. O piloto deve chamar `fechar()` em `finally`; não há temporizador que
+durante a coleta também descarta tudo; apenas a mudança tipificada de versão
+preserva uma amostra parcial. O piloto deve chamar `fechar()` em `finally`; não há temporizador que
 limpe uma instância abandonada. Não serializar ou registrar seus atributos privados.
+Argumentos incompatíveis recusados antes da coleta não fazem novas leituras e não
+são prova de revogação. O comparador não autentica quem chama `comparar()`; cabe ao
+piloto revalidar acesso antes de mostrar ou registrar o resumo.
 
 ## Próximo ensaio, sem escrita
 
@@ -76,8 +79,8 @@ limpe uma instância abandonada. Não serializar ou registrar seus atributos pri
 3. Abrir um plano estrito, observar uma vez, abrir explicitamente outro plano
    da mesma fonte/contexto e observar outra vez. Cada plano mantém sua versão;
    não alterar versão configurada, candidata ou recibo de cópia identificado.
-4. Comparar só o resumo sanitizado, registrando cobertura e interrupções. Se faltar
-   cobertura, informar essa falta. Não aguardar/repetir até aparecer uma igualdade.
+4. Revalidar o contexto e comparar só o resumo sanitizado, registrando cobertura
+   e interrupções. Se faltar cobertura, informar essa falta. Não aguardar/repetir até aparecer uma igualdade.
 5. Não enviar POST Drive/Sheets, não inicializar financeiro ou Apps Script e não
    cadastrar personagem como consequência. Fechar a instância e encerrar o piloto.
 
@@ -95,12 +98,26 @@ incompatível, contexto/fonte distintos, autorização, cancelamento, prazo,
 concorrência, limites e privacidade. Não houve chamada Google/Discord real.
 112 testes direcionados distintos aprovados: 87 existentes da grade/cópia/financeiro
 passaram no lote de 110 em 58,943 s; os 25 novos passaram no lote final em 6,967 s.
-O único erro inicial foi da fixture descrita abaixo. CI completo ainda pendente;
-não atribuir a este código os 1.533 da revisão anterior.
+O plano máximo financeiro foi aberto em simulação adicional: 50 páginas, última
+linha 5.000, dentro do teto de 128; três GETs fictícios, sem coletar as células.
+O único erro inicial foi da fixture descrita abaixo.
+
+Código `4a36ef9344db432ddec773bdf446de114b7b31de`: o
+[CI completo 40801082703](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40801082703)
+passou em 28/10 às 22:37:43 Brasília. Foram **1.558 executados/1.557 aprovados/um
+opcional pulado**, zero falhas, em 263,278 s. Os 1.533 da revisão anterior são
+históricos. Fechamento posterior só documental (`[skip ci]`), sem repetir suíte,
+pacote ou publicação.
 
 Pacote ignorado regenerado e comparado: 90 arquivos, CRC e bytes dos fontes
 iguais, sem Carteira/env/bancos/campanha. SHA256 `bfd7b4afc7aa6509c38e9cb20ebee562ee6198d3967f42e71c8a2e510ee12fce`.
 Não publicado.
+
+Para repetir os módulos alterados, a partir de `Closure/src/`:
+
+```bash
+../.venv/bin/python -m unittest testes.test_carteira_diagnostico_grade testes.test_carteira_grade_inicializacao testes.test_carteira_copias testes.test_carteira_financeiro_rest
+```
 
 Um erro inicial foi da fixture: aplicava duas células também em faixas de uma
 coluna. O leitor recusou corretamente; o teste passou a fornecer os dados somente
