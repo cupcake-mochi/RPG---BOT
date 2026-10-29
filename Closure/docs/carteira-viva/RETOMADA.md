@@ -3,6 +3,12 @@
 Atualizado em 29/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
+## Coleta agrupada nativa · 29/10 — aprovada
+
+Progressão agrupada lida no Google real: 8/8 duas vezes, zero mudanças, 6 GETs Sheets
+e 109 HTTP200 (antes 18/253). Ensaio encerrado e limpo. Próximo: diagnóstico financeiro
+agrupado, um fluxo por vez. [Relatório](NATIVO-COLETA-AGRUPADA-2026-10-29.md).
+
 ## Revisão da coleta agrupada · 29/10 (Claude)
 
 Revisão final feita; um defeito corrigido (`RecursionError` no `_json`) com

@@ -106,3 +106,9 @@ indicadores falsos e **exatamente 6 GETs Sheets** (2 de metadados + 4 de quatro
 faixas), contra 18 em 28/10. Falta o ponto externo: cópia descartável nova na conta
 certa e login/consentimento/Picker feitos pela pessoa. Nenhum OAuth, cópia, grant ou
 chamada Google desta rodada.
+
+## Ensaio nativo · 29/10 — aprovado
+
+Progressão agrupada em fonte descartável real: duas amostras 8/8, zero mudanças,
+**6 GETs Sheets e 109 HTTP200** (contra 18 e 253 em 28/10), H1–H3 confirmadas, limpeza
+completa. [Relatório](NATIVO-COLETA-AGRUPADA-2026-10-29.md).
