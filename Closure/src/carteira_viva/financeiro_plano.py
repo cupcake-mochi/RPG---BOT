@@ -5,6 +5,7 @@ fórmulas e não guarda histórico, notas pessoais ou uma cópia da grade.
 """
 from dataclasses import dataclass, field
 import asyncio
+from contextlib import aclosing
 import hashlib
 
 from .contrato_inicializacao import carregar, CONTRATO_SHA256
@@ -123,10 +124,19 @@ class MedicaoFinanceira:
             self.atual, self.projecao, pedidos, self.n, self.auditor.publico())
 
 async def medir(leitor, acesso, arquivo):
+    """Lê na ordem do plano. Agrupar ou não é escolha de quem cria o leitor.
+
+    O iterador é fechado explicitamente; erro em qualquer página descarta a
+    medição inteira, sem plano parcial nem GET de lotes seguintes.
+    """
     plano = await leitor.abrir(acesso, arquivo, 'financeiro')
     m = MedicaoFinanceira(plano)
-    for i in range(len(plano.faixas)):
-        pagina = await leitor.pagina(acesso, plano, i)
-        await asyncio.to_thread(m.receber, i, pagina)
+    esperado = 0
+    async with aclosing(leitor.paginas(acesso, plano)) as paginas:
+        async for i, pagina in paginas:
+            if i != esperado:
+                raise ErroCarteira('Leitura financeira fora de ordem.')
+            await asyncio.to_thread(m.receber, i, pagina)
+            esperado += 1
     await leitor.confirmar(acesso, plano)
     return await asyncio.to_thread(m.concluir)

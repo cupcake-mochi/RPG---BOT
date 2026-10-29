@@ -112,3 +112,28 @@ chamada Google desta rodada.
 Progressão agrupada em fonte descartável real: duas amostras 8/8, zero mudanças,
 **6 GETs Sheets e 109 HTTP200** (contra 18 e 253 em 28/10), H1–H3 confirmadas, limpeza
 completa. [Relatório](NATIVO-COLETA-AGRUPADA-2026-10-29.md).
+
+## Medição financeira pronta para lotes · 29/10 (desligada no serviço)
+
+Usos do leitor mapeados: o diagnóstico já agrupa nos dois domínios; leem página por
+página `financeiro_plano.medir` (leitura antes da escrita financeira),
+`conferencia_inicializacao.coletar_conferir` e `conferencias_banco` (auditoria).
+Só o primeiro foi tocado.
+
+`medir` passou a consumir `leitor.paginas()` com `aclosing`, conferindo que os índices
+chegam em ordem; erro em qualquer página descarta a medição e não pede lotes seguintes.
+**`financeiro_servico` continua criando o leitor individual**: o comportamento em uso
+não muda. Quatro regressões novas: plano financeiro agrupado idêntico ao individual
+(mesmos hashes e pedidos) com menos GETs; fórmula em EXTRATO para no lote dela sem ler
+SALÁRIOS; versão alterada no segundo lote recusa sem plano; página fora de ordem recusa
+e fecha o iterador. Suíte completa local: **1.625 executados, 1.624 aprovados, um
+opcional pulado, zero falhas**, 673,442 s.
+
+Divisão offline do domínio financeiro: livros com 5.000 linhas, 50 faixas → 37 lotes
+(as faixas dos livros já enchem o teto de 4.096 células); livros com 200 linhas,
+21 faixas → 6 lotes. O ganho fica nas 18 faixas pequenas das guardas.
+
+**Para ligar no serviço** (trocar para `agrupar=True` em `financeiro_servico`) falta um
+ensaio nativo do **diagnóstico financeiro** agrupado — leitura apenas, já implementado —
+em descartável nova da mesma conta do consentimento, comparando com a leitura individual.
+Auditoria segue individual até lá.

@@ -72,11 +72,60 @@ class FinanceiroRestTeste(unittest.IsolatedAsyncioTestCase):
     async def executar_no_worker(self,fn):
         return await asyncio.wrap_future(self.dados.executor.submit(lambda:fn(self.dados.store.c)))
 
-    async def plano(self):
+    async def plano(self,agrupar=False):
         _,ctx=await self.b('contexto_financeiro',self.m,self.ref)
         async def contexto():return ctx
         async def cota():pass
-        return await medir(LeitorGradeRest(self.prov,contexto,cota),'acesso-ficticio',ARQUIVO)
+        return await medir(LeitorGradeRest(self.prov,contexto,cota,agrupar=agrupar),'acesso-ficticio',ARQUIVO)
+
+    def gets_sheets(self):
+        return [r for r in self.req if r.url.host=='sheets.googleapis.com' and 'ranges' in r.url.params]
+
+    async def test_medicao_agrupada_gera_plano_identico_ao_individual(self):
+        individual=await self.plano();n_ind=len(self.gets_sheets());self.req.clear()
+        agrupado=await self.plano(agrupar=True);n_agr=len(self.gets_sheets())
+        self.assertEqual(agrupado,individual)
+        self.assertEqual(agrupado.pedidos,individual.pedidos)
+        self.assertEqual(n_ind,individual.paginas)
+        self.assertLess(n_agr,n_ind)
+        self.assertTrue(all(len(r.url.params.get_list('ranges'))<=4 for r in self.gets_sheets()))
+
+    async def test_medicao_agrupada_com_formula_no_lote_nao_le_lotes_seguintes(self):
+        self.data.formula('EXTRATO',2,1,'=123',123)
+        for a in ('EXTRATO','SALÁRIOS','DADOS_SALARIOS'):self.data.grades[a]['gridProperties']['rowCount']=5000
+        with self.assertRaises(ErroCarteira):await self.plano(agrupar=True)
+        gets=self.gets_sheets()
+        # O último GET é o lote com EXTRATO!A2; nada depois dele foi pedido.
+        self.assertTrue(any(x.startswith("'EXTRATO'!A2:") for x in gets[-1].url.params.get_list('ranges')))
+        self.assertFalse(any('SALÁRIOS' in x for r in gets for x in r.url.params.get_list('ranges')))
+        self.assertFalse(self.posts)
+
+    async def test_medicao_agrupada_recusa_versao_alterada_sem_plano(self):
+        from carteira_viva.provedores import VersaoAlterada
+        async def hook(req):
+            if req.url.host=='sheets.googleapis.com' and 'ranges' in req.url.params and len(self.gets_sheets())==2:
+                self.data.versao='8'
+        self.http_hook=hook
+        with self.assertRaises(VersaoAlterada):await self.plano(agrupar=True)
+        self.assertEqual(len(self.gets_sheets()),2)
+        self.assertFalse(self.posts)
+
+    async def test_medicao_recusa_pagina_fora_de_ordem(self):
+        _,ctx=await self.b('contexto_financeiro',self.m,self.ref)
+        async def contexto():return ctx
+        async def cota():pass
+        leitor=LeitorGradeRest(self.prov,contexto,cota,agrupar=True);original=leitor.paginas
+        fechado=[]
+        async def trocado(acesso,plano):
+            it=original(acesso,plano)
+            try:
+                primeiro=await it.__anext__();segundo=await it.__anext__()
+                yield segundo;yield primeiro
+            finally:
+                await it.aclose();fechado.append(True)
+        leitor.paginas=trocado
+        with self.assertRaises(ErroCarteira):await medir(leitor,'acesso-ficticio',ARQUIVO)
+        self.assertEqual(fechado,[True])
 
     def aplicar_pedidos(self,obj):
         # Emulador independente: aplica somente o field mask de cada request.
