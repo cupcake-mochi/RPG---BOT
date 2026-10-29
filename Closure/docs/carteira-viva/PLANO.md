@@ -270,6 +270,9 @@ Não abrir dez PRs vazias nem tratar aprovação do plano como autorização de 
 
 ### Divisão da etapa 7 · 28/10
 
+Diagnóstico offline de diferenças por categoria implementado; composição autenticada e
+ensaio real ainda pendentes, sem liberar criação. [Cobertura](DIAGNOSTICO-GRADE-2026-10-28.md).
+
 Atualização offline: primeira candidata fixada antes da identificação e diagnóstico
 cifrado de versões implementados, sem aceitar divergências. Não é preparação de
 conteúdo estável nem prova nativa da escrita. [Estado e limites](CANDIDATAS-2026-10-28.md).

@@ -89,6 +89,13 @@ passou em 28/10 às 22:13:05 Brasília. Foram **1.533 executados, 1.532 aprovado
 um opcional pulado, zero falhas**, em 297,175 s. O fechamento posterior é só
 documental (`[skip ci]`), sem nova suíte, pacote ou publicação.
 
+## Próximo diagnóstico implementado offline
+
+[Comparação de leituras](DIAGNOSTICO-GRADE-2026-10-28.md): ferramenta transitória
+separa diferenças de literais/fórmulas/resultados/notas/formatos numéricos nas
+páginas aceitas pelo leitor estrito. Não integra inicialização, não adota versões
+e ainda não foi composta/executada no piloto real. Não é fingerprint global.
+
 ## O que ainda falta
 
 Este bloco fecha o registro e a ordem das verificações. **Não resolve a causa das

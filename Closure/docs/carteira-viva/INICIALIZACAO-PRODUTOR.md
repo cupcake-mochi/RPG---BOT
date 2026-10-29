@@ -15,6 +15,20 @@ Os fontes abaixo não substituem uma inspeção do código instalado na cópia.
 `r53/OFICIAIS.md` registra os incrementos das oficiais; o pacote integral
 gerado não foi instalado por esta tarefa e não deve ser promovido por rotina.
 
+## Comparação de leituras · 28/10 — só diagnóstico offline
+
+`DiagnosticoGrade` compara duas coletas estritas da mesma fonte/contexto e separa
+literais, fórmulas, resultados, notas e formatos numéricos. Guarda HMACs transitórios
+por instância, sem dados de células ou hashes no resumo/banco. Informa cobertura
+parcial/incompatível e descarta tudo em erro de acesso/transporte ou cancelamento.
+Nenhuma guarda de versão mudou; não é preparo de conteúdo ou autorização de escrita.
+
+112 direcionados distintos aprovados, 25 novos. CI completo deste código pendente.
+Ainda faltam composição autenticada no piloto e ensaio controlado somente de leitura;
+causas das versões, protocolo da fonte/candidata, propriedades e prova integral
+continuam pendentes. Sem novo OAuth/Google/Discord, criação ou publicação.
+[Roteiro e limites](DIAGNOSTICO-GRADE-2026-10-28.md). Sol Alto; revisão Médio.
+
 ## Candidatas e diagnóstico · 28/10 — offline
 
 Novas cópias guardam a primeira observação da candidata antes do recibo. A fonte

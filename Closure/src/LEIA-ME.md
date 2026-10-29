@@ -8,6 +8,8 @@ separados do runtime publicado; ver [relatório](../docs/carteira-viva/ETAPA-7.m
 e [retomada](../docs/carteira-viva/RETOMADA.md). Nenhum deploy desta etapa. Novas intenções de cópia usam protocolo interno 2,
 com candidata e diagnóstico cifrado, sem liberar criação; ver
 [candidatas e mudanças de versão](../docs/carteira-viva/CANDIDATAS-2026-10-28.md).
+Há também uma ferramenta interna para [comparar leituras](../docs/carteira-viva/DIAGNOSTICO-GRADE-2026-10-28.md),
+ainda sem composição no piloto e sem alterar as guardas de versão.
 
 Este documento reúne os arquivos, a preparação do ambiente e a hospedagem.
 Para aprender os comandos, consulte [os guias de uso](../docs/GUIAS-DE-USO.md).
