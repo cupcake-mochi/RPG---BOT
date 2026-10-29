@@ -3,6 +3,13 @@
 Atualizado em 29/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
+## Revisão da coleta agrupada · 29/10 (Claude)
+
+Revisão final feita; um defeito corrigido (`RecursionError` no `_json`) com
+regressão. Suíte local 1.621/1.620/um opcional, zero falhas. Ensaio nativo único da
+progressão agrupada preparado fora do Git, aguardando cópia descartável nova e
+login/consentimento da pessoa. [Detalhes](COLETA-AGRUPADA-2026-10-29.md).
+
 ## Checkpoint de coleta agrupada · 29/10
 
 Salvo para desligamento solicitado pelo usuário. Só diagnóstico ativa os lotes;

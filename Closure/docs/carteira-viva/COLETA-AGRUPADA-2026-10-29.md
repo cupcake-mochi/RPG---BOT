@@ -66,3 +66,43 @@ merge ou Discloud. Sem recursos de piloto novos nesta rodada. Sol Alto; revisão
 
 Pacote ignorado regenerado/verificado: 90 arquivos, CRC/fontes iguais,
 sem Carteira/env/bancos/campanha; SHA256 `2cd99a32b3f01391eea5e717b8683bba8c55e704261ceab423ddd9fee86816c9`. Não publicado.
+
+## Revisão final e preparo do ensaio nativo · 29/10 (Claude)
+
+Revisados parser, limites, expiração entre entregas, cancelamento e buffers do
+`LeitorGradeRest` agrupado, `DiagnosticoGrade` e `diagnostico_servico`.
+
+**Defeito comprovado e corrigido:** `Provedores._json` deixava escapar
+`RecursionError` cru quando a resposta, dentro do teto de bytes, tinha aninhamento
+profundo (ex.: 200 mil colchetes). Agora vira `ErroProvedor('temporario')`, como os
+demais JSON inválidos; `segredos.py` já tratava o mesmo caso. Regressão
+`test_json_aninhado_dentro_do_teto_recusa_como_erro_do_provedor`: falha sem a
+correção, passa com ela, e confirma um único GET sem retry. Suíte completa local
+após a correção: **1.621 executados, 1.620 aprovados, um opcional pulado, zero
+falhas**, 651,481 s (máquina local; o CI da PR é a referência oficial).
+
+**Conferido sem defeito:** startRow/startColumn omitidos quando zero; resposta com
+aba extra, faltante, renomeada ou redimensionada recusa; bloco ausente, duplicado ou
+estranho recusa o lote inteiro antes de entregar prefixo; sobreposição e mesmo início
+nunca dividem lote; teto 4 MiB igual ao da página individual; prazo reconferido antes
+de cada entrega e de cada GET; `CancelledError` propaga e o diagnóstico descarta tudo;
+`aclosing` fecha o iterador. Limite aceito e registrado: dentro de um lote, as páginas
+2–4 são entregues logo após a pós-checagem do GET, sem nova reconferência de acesso
+por página (o acesso foi conferido antes e depois do HTTP que as trouxe).
+
+**Hipóteses que só o ensaio nativo decide** (o código falha fechado em todas):
+H1 com vários ranges o Google devolve só as abas pedidas (provado só com um range);
+H2 vários ranges da mesma aba chegam numa entrada com vários blocos `data[]`, como diz
+a referência de GridData; H3 um GET de quatro faixas cabe nos 15 s de timeout.
+
+**Ensaio preparado, não executado.** Kit privado fora do Git, pasta 700/arquivos 600
+em `carteira-piloto/etapa7-coleta-agrupada-20261029`: gera banco/chave/token novos
+sem imprimir valores, runner desacoplado do terminal (`setsid`/`nohup`) com estado,
+PID e batimento a cada 5 s, registro por chamada sem URL/ID/token (categoria, status,
+ms e número de faixas de cada GET Sheets), commit testado gravado no resultado,
+escrita Drive/Sheets bloqueada no transporte, e limpeza adaptada da rodada anterior.
+Critério de aceite na progressão: duas amostras 8/8, zero mudanças, quatro
+indicadores falsos e **exatamente 6 GETs Sheets** (2 de metadados + 4 de quatro
+faixas), contra 18 em 28/10. Falta o ponto externo: cópia descartável nova na conta
+certa e login/consentimento/Picker feitos pela pessoa. Nenhum OAuth, cópia, grant ou
+chamada Google desta rodada.

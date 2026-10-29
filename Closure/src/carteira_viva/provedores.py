@@ -141,7 +141,9 @@ class Provedores:
                         if len(corpo) > limite:
                             raise ErroProvedor("tamanho")
             return await asyncio.to_thread(json.loads, corpo)
-        except (httpx.HTTPError, ValueError) as exc:
+        except (httpx.HTTPError, ValueError, RecursionError) as exc:
+            # Aninhamento profundo dentro do teto de bytes estoura a pilha do
+            # parser; recusar como resposta inválida, sem escapar do contrato.
             if isinstance(exc, ErroProvedor):
                 raise
             raise ErroProvedor("temporario") from None

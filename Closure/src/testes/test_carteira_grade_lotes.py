@@ -230,6 +230,15 @@ class LotesTeste(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(e.exception.codigo, 'tamanho')
         self.assertEqual(sum('ranges' in r.url.params for r in c.requests), 1)
 
+    async def test_json_aninhado_dentro_do_teto_recusa_como_erro_do_provedor(self):
+        c = await self.preparar(dados=False)
+        corpo = b'[' * 200000 + b']' * 200000
+        def aninhado(req, obj): return httpx.Response(200, content=corpo) if 'ranges' in req.url.params else obj
+        c.alterar = aninhado
+        with self.assertRaises(ErroProvedor) as e: await self.l.lote('ficticio', self.p, 0)
+        self.assertEqual(e.exception.codigo, 'temporario')
+        self.assertEqual(sum('ranges' in r.url.params for r in c.requests), 1)
+
     async def test_expiracao_durante_get_nao_entrega_lote(self):
         c = await self.preparar(); c.depois = lambda: setattr(c, 'tempo', c.tempo+1800)
         with self.assertRaises(ErroProvedor) as e: await self.l.lote('ficticio', self.p, 0)
