@@ -119,11 +119,12 @@ class Copias:
         d = self.contexto_copia(membro, ref)
         if type(alvo) is not str or alvo not in ('origem', 'copia'):
             raise ErroCarteira('Escolha origem ou cópia para o diagnóstico.')
-        if (d['modelo'] != 'servidor' or d['estado'] not in ('enviada', 'identificada') or
-                d['versao_origem'] is None):
-            raise Conflito('O diagnóstico exige operação enviada de um modelo particular com versão registrada.')
+        if d['modelo'] != 'servidor' or d['estado'] not in ('preparada', 'enviada', 'identificada'):
+            raise Conflito('O diagnóstico exige operação existente de um modelo particular.')
         arquivo = d['origem']
         if alvo == 'copia':
+            if d['estado'] == 'preparada' or d['versao_origem'] is None:
+                raise Conflito('O diagnóstico da cópia exige envio com versão original registrada.')
             candidata = d.get('candidata')
             arquivo = d['destino'] if d['estado'] == 'identificada' else (
                 candidata.get('arquivo') if type(candidata) is dict else None)

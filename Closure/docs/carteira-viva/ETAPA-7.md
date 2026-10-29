@@ -8,9 +8,10 @@ modelo, iniciador e autorização. Só modelo particular fora das oficiais; cóp
 não cadastrada, propriedade/privacidade/marcadores reconferidos antes/depois das
 amostras. Acesso atual também é reconferido na espera de cota/fila e na entrega.
 Fila/OAuth/cotas compartilhados, duas coletas limitadas, sem escrita ou adoção de
-versões. Flags de mudança antes/depois da coleta não são aprovação.
+versões. Flags de mudança antes/depois da coleta não são aprovação. Origem também pode
+ser lida ainda na intenção preparada, sem fixar versão ou enviar cópia.
 
-121 direcionados distintos aprovados/34 novos; CI completo deste código pendente.
+122 direcionados distintos aprovados/35 novos; CI completo deste código pendente.
 Composição no serviço implementada e testada por HTTP fictício; execução real ainda
 não ocorreu. Causa das versões/preparação global/propriedades/prova integral
 continuam pendentes, criação bloqueada e sem publicação.

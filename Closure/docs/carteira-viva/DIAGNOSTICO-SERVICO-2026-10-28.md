@@ -9,8 +9,10 @@ recebe uma `ReferenciaCopia` já emitida pelo backend. Não há rota HTTP, coman
 Discord, campo de URL/arquivo ou nova intenção de cópia. Os únicos alvos são
 `origem`/`copia` e os domínios `financeiro`/`progressao`. As faixas continuam fixas.
 
-O banco deriva o arquivo do diário, exige operação enviada/identificada com versão
-original da fonte registrada e modelo particular do servidor. Modelos oficiais
+O banco deriva o arquivo do diário e exige modelo particular do servidor. A
+origem pode ser diagnosticada ainda na intenção preparada, sem fixar versão ou
+armar envio. Para diagnosticar a cópia exige enviada/identificada com versão
+original da fonte registrada. Modelos oficiais
 e suas IDs reais, mesmo configuradas como particulares, são recusados neste piloto.
 Para cópia pendente, a candidata já precisa estar registrada; não faz busca Drive
 ou POST de cópia. Para recibo identificado, usa o destino existente, inclusive em
@@ -65,8 +67,9 @@ Os quatro indicadores de liberação continuam falsos.
 
 ## Validação offline
 
-121 direcionados distintos aprovados: lote de 118 em 84,932 s e três adicionais
-em 2,014 s, sem falhas. São **34 novos testes** com banco/serviço reais e HTTP
+122 direcionados distintos aprovados: lote de 118 em 84,932 s, três adicionais
+em 2,014 s e um novo caso de origem preparada (lote de dois em 2,092 s, um
+sobreposto), sem falhas. São **35 novos testes** com banco/serviço reais e HTTP
 fictício, sem importar a classe de testes financeira como novos casos duplicados.
 
 Cobrem origem/cópia, candidata pendente, recibo legado, financeiro/progressão,
@@ -78,13 +81,15 @@ Conferem diário/dados preservados, ausência de escrita/cadastro e fechamento d
 hashes. CI completo deste código pendente; não atribuir os 1.558 anteriores a ele.
 
 Pacote ignorado regenerado e comparado: 90 arquivos, CRC/fontes iguais, sem
-Carteira/env/bancos/campanha; SHA256 `13aea1c6aaeb2ff2d13edd84a05d4699dcf6fc27e1c85dbb08e553441de265f0`.
+Carteira/env/bancos/campanha; SHA256 `b8457b458814d6fa2526092ce4a59e9d61685fde258828656e3b86cf34b8b88a`.
 Não publicado.
 
 ## Ensaio real e pendências
 
-Executar primeiro somente leitura numa fonte privada **descartável** e numa cópia
-do bot ligada ao mesmo diário, com grant próprio atual. Não reutilizar concessões
+Executar primeiro somente leitura numa fonte privada **descartável**, antes do
+POST Drive. Isso já permite comparar duas observações da origem sem criar outra
+cópia. Diagnóstico de candidata fica para outro ensaio, com candidato já ligado ao
+mesmo diário e grant próprio atual. Não reutilizar concessões
 revogadas ou restaurar as descartáveis já descartadas do ensaio financeiro anterior.
 O piloto precisa obter a referência pela operação real, nunca aceitar IDs do
 navegador, logar apenas o resumo sanitizado e encerrar/revogar/descartar seus recursos.

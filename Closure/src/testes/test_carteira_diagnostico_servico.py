@@ -115,6 +115,17 @@ class DiagnosticoServicoTeste(unittest.IsolatedAsyncioTestCase):
             with self.assertRaises(Conflito): await self.diagnosticar()
         self.assertFalse(any(r.url.host != 'discord.com' for r in self.req))
 
+    async def test_origem_preparada_pode_ser_diagnosticada_sem_armar_ou_fixar_versao(self):
+        await self.estado_copia(estado='preparada', versao_origem=None, destino=None,
+                               versao_destino=None, candidata=None)
+        antes = await self.b('contexto_copia', self.m, self.ref)
+        r = await self.diagnosticar(alvo='origem')
+        self.assertTrue(r['amostras'][0]['coleta_completa'])
+        self.assertEqual(await self.b('contexto_copia', self.m, self.ref), antes)
+        self.assertFalse(any(q.method != 'GET' for q in self.req if q.url.host in ('www.googleapis.com', 'sheets.googleapis.com')))
+        self.assertFalse(self.posts)
+        with self.assertRaises(Conflito): await self.b('armar_envio_copia', self.m, self.ref)
+
     async def test_referencia_cliente_ator_ou_servidor_diferentes_sem_rede(self):
         for servidor, usuario, ref in [('111', '999', self.ref), ('999', '222', self.ref),
                                       ('111', '222', {'arquivo': ARQUIVO})]:
