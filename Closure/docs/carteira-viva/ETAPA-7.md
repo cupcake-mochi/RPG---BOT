@@ -4,9 +4,12 @@
 
 Salvo para desligamento solicitado pelo usuário. Só diagnóstico ativa os lotes;
 leitura individual segue padrão. 165 direcionados distintos aprovados/27 novos,
-A/B fictício HTTP253→109 com mesmas oito páginas. Revisão final, CI completo e
-prova real agrupada ainda pendentes. Não atribuir a este código os 1.593 anteriores.
-[Retomada e testes](COLETA-AGRUPADA-2026-10-29.md). Sem piloto ativo ou deploy.
+A/B fictício HTTP253→109 com mesmas oito páginas. Código `2f23f765e7d62cd2ff4ec31731bcaf7c1775061f`: [CI 40810907135](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40810907135)
+aprovado em 29/10 às 00:19:49 Brasília, 1.620 executados/1.619 aprovados/um
+opcional pulado, zero falhas, 360,438 s. Revisão final e prova real agrupada
+continuam pendentes. [Retomada e testes](COLETA-AGRUPADA-2026-10-29.md).
+[Instrução para continuar no Claude](CONTINUAR-NO-CLAUDE-2026-10-29.md).
+Sem piloto ativo ou deploy; fechamento apenas documental, sem repetir suíte/pacote.
 
 ## Diagnóstico integrado ao serviço · 28/10 — código e leitura real
 

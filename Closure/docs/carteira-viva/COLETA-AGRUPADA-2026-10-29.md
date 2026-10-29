@@ -1,7 +1,7 @@
 # Coleta de faixas em lotes
 
 29/10/2026 · PR 84 · checkpoint para desligamento solicitado pelo usuário.
-Implementação e testes direcionados salvos; revisão final, CI completo e prova
+Implementação, testes direcionados e CI completo aprovados. Revisão final e prova
 nativa do agrupamento ainda pendentes. Criação continua bloqueada.
 
 ## Mudança
@@ -39,11 +39,20 @@ Offsets dos blocos: https://developers.google.com/workspace/sheets/api/reference
 - Fixtures passaram a representar múltiplos ranges; duas expectativas de número
   de GETs foram atualizadas mantendo a contagem das faixas lógicas.
 
+## Fechamento e transferência · 29/10
+
+Código `2f23f765e7d62cd2ff4ec31731bcaf7c1775061f`: [CI 40810907135](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/40810907135)
+aprovado em 29/10 às 00:19:49 Brasília: **1.620 executados, 1.619 aprovados, um
+opcional pulado**, zero falhas, 360,438 s. Resultado conferido pelos logs completos
+e pelo job; não apenas pelo selo da PR. Fechamento posterior só documental,
+sem repetir suíte ou pacote. [Prompt para o Claude](CONTINUAR-NO-CLAUDE-2026-10-29.md).
+
 ## Retomar
 
 1. Conferir remoto, branch codex/carteira-viva-etapa-7, PR 84 e topo da fila.
-2. Conferir CI do commit deste checkpoint. Os 1.593 anteriores validam 10df9c2,
-   não o agrupamento. Não declarar suíte completa aprovada antes de ler o resultado.
+2. O CI do código 2f23f76 passou conforme registro acima. Conferir se houve
+   commits posteriores antes de reutilizar essa evidência; os 1.593 anteriores
+   validam apenas 10df9c2. Não repetir bateria extensa por mudança documental.
 3. Revisar parser/limites/fechamento do iterador. Comando direcionado em Closure/src:
    ../.venv/bin/python -m unittest testes.test_carteira_grade_lotes testes.test_carteira_grade_inicializacao testes.test_carteira_diagnostico_grade testes.test_carteira_diagnostico_servico testes.test_carteira_conferencia_inicializacao testes.test_carteira_financeiro_rest
 4. Prova nativa agrupada exige fonte descartável e grant novos. Não reutilizar a
