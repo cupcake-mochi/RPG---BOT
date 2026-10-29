@@ -3,6 +3,18 @@
 Atualizado em 28/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
+## Ensaio financeiro preparado · 28/10 — autorização pendente
+
+Fonte privada DESCARTÁVEL criada, entradas/notas fictícias verificadas e piloto
+isolado preparado. A primeira solicitação expirou antes de concluir a seleção;
+nova solicitação está no aviso Google. Zero personagens/cópias/diários financeiros
+na base nova, sem POST Drive/Sheets pelo bot. Não declarar prova financeira feita.
+
+Retomar autorização/prévia, cópia, escrita e reinício/reconciliação; depois revogar,
+limpar dados e enviar descartáveis à lixeira. Limpeza ainda pendente. Nenhuma
+mudança de código nesta rodada; CI/pacote anteriores não foram repetidos.
+[Estado e roteiro](NATIVO-FINANCEIRO-2026-10-28.md). Registros abaixo históricos.
+
 ## Células financeiras · 28/10 — 7C parcial, só offline
 
 O serviço interno agora planeja os resets do contrato, grava o diário antes de
