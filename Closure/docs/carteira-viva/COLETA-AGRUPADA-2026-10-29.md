@@ -137,3 +137,10 @@ Divisão offline do domínio financeiro: livros com 5.000 linhas, 50 faixas → 
 ensaio nativo do **diagnóstico financeiro** agrupado — leitura apenas, já implementado —
 em descartável nova da mesma conta do consentimento, comparando com a leitura individual.
 Auditoria segue individual até lá.
+
+## Ensaio nativo financeiro · 29/10 — individual × agrupado iguais
+
+Diagnóstico financeiro com a primeira coleta individual e a segunda agrupada: 25/25 páginas
+nas duas, **zero diferenças**, páginas em 11 GETs Sheets contra 25. Primeira tentativa recusada
+corretamente (`conflito` na conferência do modelo, cópia recém-criada ainda mudando).
+[Relatório](NATIVO-FINANCEIRO-AGRUPADO-2026-10-29.md).

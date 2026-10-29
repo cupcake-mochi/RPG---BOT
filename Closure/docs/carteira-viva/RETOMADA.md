@@ -3,6 +3,12 @@
 Atualizado em 29/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
+## Financeiro individual × agrupado nativo · 29/10 — iguais
+
+25/25 páginas nos dois modos, zero diferenças, 11 GETs Sheets contra 25. A medição
+financeira já está pronta para lotes (49783ce); falta só ligar no serviço.
+[Relatório](NATIVO-FINANCEIRO-AGRUPADO-2026-10-29.md).
+
 ## Coleta agrupada nativa · 29/10 — aprovada
 
 Progressão agrupada lida no Google real: 8/8 duas vezes, zero mudanças, 6 GETs Sheets
