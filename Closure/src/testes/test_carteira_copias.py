@@ -241,6 +241,21 @@ class CopiasServico(unittest.IsolatedAsyncioTestCase):
         self.assertTrue((await self.copiar())['copia_identificada'])
         self.assertEqual(len(self.posts()),1)
 
+    async def test_backup_sem_versao_de_origem_nao_identifica_copia_tardia(self):
+        ref=await self.ref()
+        # Transformação conservadora do backup: preparada vira enviada, mas o
+        # backup pode ter sido feito antes de observar/fixar a versão da origem.
+        def restaurado():
+            c=self.dados.store.c;d=c.contexto_copia(self.m,ref)
+            self.assertIsNone(d['versao_origem']);c._guardar_copia(ref,{**d,'estado':'enviada'})
+        await asyncio.wrap_future(self.dados.executor.submit(restaurado))
+        self.copiados=[DESTINO];self.marcador=marcadores(ref.operacao,self.fonte)
+        with self.assertRaises(Conflito):await self.copiar()
+        d=await self.b('contexto_copia',self.m,ref)
+        self.assertEqual(d['estado'],'enviada');self.assertIsNone(d['versao_origem']);self.assertIsNone(d['destino'])
+        self.assertFalse(self.posts())
+        self.assertFalse(any(r.url.host in ('www.googleapis.com','sheets.googleapis.com') for r in self.req))
+
     async def test_candidata_muda_durante_conferencia_da_origem_nao_e_identificada(self):
         vista=False
         async def hook(req):

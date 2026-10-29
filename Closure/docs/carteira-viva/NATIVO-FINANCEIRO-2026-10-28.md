@@ -4,6 +4,10 @@
 Código `7491d811ee0d3ab7f3455fddc736ee4430d4bb2e`, sem alteração de runtime nesta rodada.
 Limpeza concluída às **21:36:57 de Brasília**.
 
+Atualização offline posterior: [candidatas e diagnóstico](CANDIDATAS-2026-10-28.md).
+O ensaio documentado aqui continua sendo o código 7491d81; não foi repetido ou
+reclassificado como validação da escrita. A causa das versões segue pendente.
+
 ## Resultado
 
 O bot não enviou nenhum POST Sheets financeiro. A perda deliberada de uma

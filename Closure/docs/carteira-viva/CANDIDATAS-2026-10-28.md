@@ -60,8 +60,9 @@ posterior, mas as entradas precisam corresponder ao plano cifrado original.
 
 ## Validação
 
-99 testes direcionados distintos aprovados (97 em 56,582 s e dois em
-0,143 s): 18 casos novos, com cópia, financeiro,
+100 testes direcionados distintos aprovados: lote inicial 97 em 56,582 s,
+dois adicionais em 0,143 s e regressão nova de restauração, incluída na
+bateria final de 32 cópias em 6,489 s (31 casos sobrepostos). São 19 casos novos, com cópia, financeiro,
 grade, isolamento, valores acima de 2^53, histórico limitado, retenção, rotação,
 backup/restore e exclusão global. Duas reproduções contra 701af66 falharam como
 esperado antes da correção: candidata alterada durante a conferência da origem era
@@ -71,7 +72,14 @@ pode ser trocada em intenção legada: falhou antes do ajuste e passou depois
 em 0,091 s. Expectativas não foram relaxadas. As fixtures válidas passaram a executar a etapa
 obrigatória de candidata. CI completo deste código pendente no checkpoint. Pacote ignorado regenerado e
 comparado: 90 arquivos, CRC/fontes iguais, sem Carteira/env/bancos/campanha;
-SHA256 `eebd40207e3337a1e25ef1d15b3e5020183b17fa914deb2ba1973b50f3c9a188`. Não publicado.
+SHA256 `27e0f7c28fcf8077ee53a5c22ba4a93e44562112f000c9681d12e7ad42471352`. Não publicado.
+
+Uma revisão posterior reproduziu mais um caso no código 253bfe0: restauração de
+um backup sem versão observada da origem podia identificar uma cópia tardia
+usando a versão configurada como substituta. Agora serviço e banco exigem a
+versão originalmente registrada antes da localização/identificação. Falhou antes
+da correção e os 32 testes de cópia passaram depois; não houve expectativa relaxada.
+O CI completo final precisa cobrir esse ajuste; o resultado de 253bfe0 é anterior.
 
 ## O que ainda falta
 

@@ -165,7 +165,7 @@ class Copias:
         with self._transacao():
             d = self.contexto_copia(membro, ref)
             candidata = dict(arquivo=destino.arquivo, versao=destino.versao)
-            if (d['estado'] != 'enviada' or destino.operacao != ref.operacao or
+            if (d['estado'] != 'enviada' or d['versao_origem'] is None or destino.operacao != ref.operacao or
                     destino.origem != d['origem'] or destino.arquivo == d['origem'] or
                     self.db.execute('SELECT 1 FROM fontes WHERE arquivo=?', (destino.arquivo,)).fetchone()):
                 raise Conflito('A candidata não pertence a uma cópia pendente e não cadastrada.')
@@ -181,7 +181,7 @@ class Copias:
             raise ErroCarteira('Use a observação do adaptador Google.')
         with self._transacao():
             d = self.contexto_copia(membro, ref)
-            if (d['estado'] not in ('enviada', 'identificada') or destino.operacao != ref.operacao or
+            if (d['estado'] not in ('enviada', 'identificada') or d['versao_origem'] is None or destino.operacao != ref.operacao or
                     destino.origem != d['origem'] or destino.arquivo == d['origem'] or
                     d['destino'] not in (None, destino.arquivo)):
                 raise Conflito('A cópia observada não pertence a esta operação.')

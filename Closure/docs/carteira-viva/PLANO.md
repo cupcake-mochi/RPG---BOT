@@ -270,6 +270,10 @@ Não abrir dez PRs vazias nem tratar aprovação do plano como autorização de 
 
 ### Divisão da etapa 7 · 28/10
 
+Atualização offline: primeira candidata fixada antes da identificação e diagnóstico
+cifrado de versões implementados, sem aceitar divergências. Não é preparação de
+conteúdo estável nem prova nativa da escrita. [Estado e limites](CANDIDATAS-2026-10-28.md).
+
 Prova nativa posterior da 7B concluída no caminho de resposta perdida/reinício:
 [NATIVO-COPIAS-2026-10-28.md](NATIVO-COPIAS-2026-10-28.md). Cópia identificada não
 libera criação. A 7C agora tem diário e escrita de **células financeiras**,

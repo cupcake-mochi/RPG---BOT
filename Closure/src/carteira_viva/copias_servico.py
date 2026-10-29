@@ -12,7 +12,9 @@ async def copiar(servico, servidor, usuario, *, conexao, modelo, pedido):
 
     async def executar():
         m = await servico._membro(servidor, usuario)
-        await b('contexto_copia', m, ref)
+        inicial = await b('contexto_copia', m, ref)
+        if inicial['estado'] != 'preparada' and inicial['versao_origem'] is None:
+            raise Conflito('A versão da origem não ficou registrada. Não identifique ou reenvie esta cópia.')
         cred, token = await servico._renovar_google(m, ref, para_copia=True)
 
         async def contexto():
@@ -37,7 +39,8 @@ async def copiar(servico, servidor, usuario, *, conexao, modelo, pedido):
             m, d = await contexto()
             v = await rede(versao, d['origem'])
             m, d = await contexto()
-            esperada = d['versao_origem'] or d['versao_configurada']
+            esperada = d['versao_origem'] if d['estado'] != 'preparada' else (
+                d['versao_origem'] or d['versao_configurada'])
             await b('registrar_observacao_copia', m, ref, ObservacaoVersao(etapa, esperada, v))
             if esperada is not None and v != esperada:
                 raise Conflito('O modelo mudou durante a cópia. Não inicialize esse arquivo.')

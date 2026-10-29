@@ -5,7 +5,9 @@ schema 9 (configuração do modelo desde o 6, diário financeiro de células no 
 criação de novas fichas bloqueada até comprovar inicialização limpa
 e automações. Cadastro existente preservado. Serviço/ponte continuam
 separados do runtime publicado; ver [relatório](../docs/carteira-viva/ETAPA-7.md)
-e [retomada](../docs/carteira-viva/RETOMADA.md). Nenhum deploy desta etapa.
+e [retomada](../docs/carteira-viva/RETOMADA.md). Nenhum deploy desta etapa. Novas intenções de cópia usam protocolo interno 2,
+com candidata e diagnóstico cifrado, sem liberar criação; ver
+[candidatas e mudanças de versão](../docs/carteira-viva/CANDIDATAS-2026-10-28.md).
 
 Este documento reúne os arquivos, a preparação do ambiente e a hospedagem.
 Para aprender os comandos, consulte [os guias de uso](../docs/GUIAS-DE-USO.md).
