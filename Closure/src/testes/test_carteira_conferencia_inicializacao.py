@@ -58,10 +58,9 @@ class Dados(Cenario):
                 if custo_custom and n-1 in custo_custom:custo=custo_custom[n-1]
                 v='Pendente' if anterior=='Pendente' or custo=='' else anterior+custo
             self.formula('DADOS',item['linha'],44,item['formula'],v);anterior=v
+    def linhas(self,nome,r,c,r2,c2):
+        return [{'values':[copy.deepcopy(self.mapa.get((nome,i+1,j+1),{})) for j in range(c,c2)]} for i in range(r,r2)]
     def http(self,req):
-        if 'ranges' in req.url.params:
-            nome,a1=req.url.params['ranges'].split('!');nome=nome.strip("'");r,c,r2,c2=_retangulo(a1)
-            self.celulas=[{'values':[copy.deepcopy(self.mapa.get((nome,i+1,j+1),{})) for j in range(c,c2)]} for i in range(r,r2)]
         if self.final_hook and req.url.host=='www.googleapis.com':self.final_hook()
         return super().http(req)
     async def conferir(self):return await coletar_conferir(self.leitor,'credencial_ficticia',ARQUIVO,self.dominio)

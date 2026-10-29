@@ -65,7 +65,7 @@ async def diagnosticar(servico, servidor, usuario, ref, *, alvo, dominio):
         # Sem cache, retry de estabilidade, persistência ou comparação com a
         # versão do recibo. Ler uma versão nova aqui não a autoriza para escrita.
         d = DiagnosticoGrade()
-        leitor = LeitorGradeRest(servico.provedores, contexto, cota)
+        leitor = LeitorGradeRest(servico.provedores, contexto, cota, agrupar=True)
         mudancas_antes, mudancas_apos = [], []
         try:
             for _ in range(2):

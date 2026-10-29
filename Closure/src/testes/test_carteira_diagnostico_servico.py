@@ -273,8 +273,28 @@ class DiagnosticoServicoTeste(unittest.IsolatedAsyncioTestCase):
     async def test_progressao_e_dominio_fixo_suportado_sem_escrita(self):
         r = await self.diagnosticar(dominio='progressao')
         self.assertTrue(all(x['coleta_completa'] for x in r['amostras']))
-        self.assertEqual(sum('ranges' in q.url.params for q in self.sheets()), 2*len(FIXAS['progressao']))
+        self.assertEqual(sum('ranges' in q.url.params for q in self.sheets()), 4)
+        self.assertEqual(sum(len(q.url.params.get_list('ranges')) for q in self.sheets()), 2*len(FIXAS['progressao']))
         self.assertFalse(self.posts)
+
+    async def test_lotes_reduzem_rede_com_mesmo_resumo_e_cobertura(self):
+        from carteira_viva.grade_inicializacao import LeitorGradeRest
+        resultados, contagens = [], []
+        for agrupar in (False, True):
+            self.req.clear()
+            def criar(*args, **kwargs):
+                kwargs['agrupar'] = agrupar
+                return LeitorGradeRest(*args, **kwargs)
+            with patch('carteira_viva.diagnostico_servico.LeitorGradeRest', side_effect=criar):
+                resultados.append(await self.diagnosticar(dominio='progressao'))
+            contagens.append((len(self.req),
+                sum(r.url.host == 'sheets.googleapis.com' for r in self.req),
+                sum(r.url.host == 'www.googleapis.com' for r in self.req),
+                sum('/members/' in r.url.path for r in self.req)))
+        self.assertEqual(resultados[0], resultados[1])
+        self.assertEqual(contagens, [(253, 18, 42, 188), (109, 6, 18, 80)])
+        self.assertEqual(resultados[1]['paginas_comparadas'], 8)
+        self.assertFalse(resultados[1]['criacao_disponivel'])
 
     async def test_registrar_copia_durante_leitura_impede_entrega(self):
         async def cadastrar(req):
@@ -367,7 +387,9 @@ class DiagnosticoServicoTeste(unittest.IsolatedAsyncioTestCase):
         a, b = await asyncio.gather(t1, t2)
         a['amostras'][0]['paginas_lidas'] = -1
         self.assertGreater(b['amostras'][0]['paginas_lidas'], 0)
-        self.assertEqual(len(self.sheets()), 2*(1+len(FIXAS['financeiro'])+3))
+        # As mesmas 21 faixas cabem em seis lotes; duas aberturas + 12 lotes.
+        self.assertEqual(len(self.sheets()), 14)
+        self.assertEqual(sum(len(q.url.params.get_list('ranges')) for q in self.sheets()), 42)
         self.assertEqual(sum(r.url.host == 'oauth2.googleapis.com' for r in self.req), 1)
 
     async def test_ultimo_cancelamento_fecha_comparador_e_nao_envia_post(self):

@@ -10,6 +10,7 @@ import math
 import secrets
 import time
 import weakref
+from contextlib import aclosing
 
 from .grade_inicializacao import (
     CelulaGrade, LeitorGradeRest, MAX_BYTES, MAX_CELULAS, PaginaGrade, PlanoGrade,
@@ -165,12 +166,11 @@ class DiagnosticoGrade:
                        versao_divergente=False)
         self._ocupado = True
         try:
-            for i, faixa in enumerate(plano.faixas):
-                self._prazo()
-                pagina = await leitor.pagina(acesso, plano, i)
-                self._prazo()
-                amostra['paginas'].append(self._pagina(faixa, pagina))
-                del pagina
+            async with aclosing(leitor.paginas(acesso, plano)) as paginas:
+                async for i, pagina in paginas:
+                    self._prazo()
+                    amostra['paginas'].append(self._pagina(plano.faixas[i], pagina))
+                    del pagina
             await leitor.confirmar(acesso, plano)
             self._prazo()
             amostra['completa'] = True

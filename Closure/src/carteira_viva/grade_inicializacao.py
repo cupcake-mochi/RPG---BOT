@@ -14,6 +14,7 @@ from .provedores import ARQUIVO, ErroProvedor
 from .segredos import ErroCarteira
 
 MAX_CELULAS = 4096
+MAX_FAIXAS_LOTE = 4
 MAX_BYTES = 4 * 1024 * 1024
 TIMEOUT_HTTP = 15
 CAMPOS = ('spreadsheetId,sheets(properties(sheetId,title,gridProperties(rowCount,columnCount)),'
@@ -158,11 +159,14 @@ class LeitorGradeRest:
     para CADA GET. Ainda exige composição confiável desse contexto no serviço
     e fila externa. Plano só vale nesta instância/processo, por até 30 minutos.
     """
-    def __init__(self, provedores, revalidar_contexto, aguardar_cota, *, agora=time.monotonic):
+    def __init__(self, provedores, revalidar_contexto, aguardar_cota, *, agora=time.monotonic, agrupar=False):
         if not callable(revalidar_contexto) or not callable(aguardar_cota):
             raise ValueError("Contexto e controle de cota são obrigatórios.")
+        if type(agrupar) is not bool:
+            raise ValueError("Agrupamento deve ser escolhido pelo backend.")
         self._p, self._agora, self._dono = provedores, agora, object()
         self._revalidar, self._cota = revalidar_contexto, aguardar_cota
+        self._agrupar = agrupar
 
     def _prazo(self, inicio):
         t = self._agora()
@@ -221,7 +225,7 @@ class LeitorGradeRest:
         if faixa is not None: q['ranges'] = faixa
         await self._antes(inicio, contexto)
         obj = await self._http(lambda: self._p._json(
-            'https://sheets.googleapis.com/v4/spreadsheets/' + arquivo + '?' + urlencode(q),
+            'https://sheets.googleapis.com/v4/spreadsheets/' + arquivo + '?' + urlencode(q, doseq=True),
             acesso, limite=MAX_BYTES), inicio)
         await self._contexto(inicio, contexto)
         return obj
@@ -274,38 +278,103 @@ class LeitorGradeRest:
         self._prazo(inicio)
         return PlanoGrade(arquivo, versao, dominio, contexto, tuple(faixas), inicio, self._dono)
 
-    async def pagina(self, acesso, plano, indice):
-        if type(plano) is not PlanoGrade or plano.dono is not self._dono or type(indice) is not int or not 0 <= indice < len(plano.faixas):
-            _erro()
-        self._prazo(plano.inicio)
-        faixa = plano.faixas[indice]
-        await self._versao(acesso, plano.arquivo, plano.inicio, plano.contexto, plano.versao)
-        self._prazo(plano.inicio)
-        obj = await self._get(acesso, plano.arquivo, CAMPOS, plano.inicio, plano.contexto, faixa.a1())
-        grades = self._abas(obj, plano.arquivo)
-        if grades != {faixa.aba: faixa.grade}: _erro('alterada')
-        s = obj['sheets'][0]; blocos = s.get('data')
-        if type(blocos) is not list or len(blocos) != 1 or type(blocos[0]) is not dict: _erro()
-        bloco = blocos[0]; r, c, fim_r, fim_c = faixa.pos
+    @staticmethod
+    def _bloco(faixa, bloco):
+        r, c, fim_r, fim_c = faixa.pos
         if (set(bloco) - {'startRow', 'startColumn', 'rowData'} or
                 type(bloco.get('startRow', 0)) is not int or bloco.get('startRow', 0) != r or
                 type(bloco.get('startColumn', 0)) is not int or bloco.get('startColumn', 0) != c): _erro()
         linhas = bloco.get('rowData', [])
         if type(linhas) is not list or len(linhas) > fim_r - r: _erro()
-        def montar():
-            out = []
-            for i in range(fim_r - r):
-                row = linhas[i] if i < len(linhas) else {}
-                if type(row) is not dict or set(row) - {'values'}: _erro()
-                vals = row.get('values', [])
-                if type(vals) is not list or len(vals) > fim_c - c: _erro()
-                out.append(tuple(_celula(vals[j] if j < len(vals) else {}) for j in range(fim_c - c)))
-            return tuple(out)
-        celulas = await asyncio.to_thread(montar)
+        out = []
+        for i in range(fim_r - r):
+            row = linhas[i] if i < len(linhas) else {}
+            if type(row) is not dict or set(row) - {'values'}: _erro()
+            vals = row.get('values', [])
+            if type(vals) is not list or len(vals) > fim_c - c: _erro()
+            out.append(tuple(_celula(vals[j] if j < len(vals) else {}) for j in range(fim_c - c)))
+        return PaginaGrade(faixa, tuple(out))
+
+    def _resposta_paginas(self, obj, plano, faixas):
+        grades = self._abas(obj, plano.arquivo)
+        if grades != {f.aba: f.grade for f in faixas}: _erro('alterada')
+        esperadas = {(f.aba, f.pos[0], f.pos[1]): f for f in faixas}
+        if len(esperadas) != len(faixas): _erro()
+        paginas = {}
+        for sheet in obj['sheets']:
+            blocos = sheet.get('data')
+            if type(blocos) is not list or not blocos or len(blocos) > len(faixas): _erro()
+            for bloco in blocos:
+                if type(bloco) is not dict: _erro()
+                r, c = bloco.get('startRow', 0), bloco.get('startColumn', 0)
+                if type(r) is not int or type(c) is not int: _erro()
+                chave = sheet['properties']['title'], r, c
+                if chave not in esperadas or chave in paginas: _erro()
+                paginas[chave] = self._bloco(esperadas[chave], bloco)
+        if paginas.keys() != esperadas.keys(): _erro()
+        return tuple(paginas[f.aba, f.pos[0], f.pos[1]] for f in faixas)
+
+    async def _coletar_paginas(self, acesso, plano, faixas):
+        await self._versao(acesso, plano.arquivo, plano.inicio, plano.contexto, plano.versao)
+        self._prazo(plano.inicio)
+        ranges = tuple(f.a1() for f in faixas)
+        obj = await self._get(acesso, plano.arquivo, CAMPOS, plano.inicio, plano.contexto, ranges)
+        # Não entregar o prefixo de um lote que contenha bloco inválido ao final.
+        paginas = await asyncio.to_thread(self._resposta_paginas, obj, plano, faixas)
         self._prazo(plano.inicio)
         await self._versao(acesso, plano.arquivo, plano.inicio, plano.contexto, plano.versao)
         self._prazo(plano.inicio)
-        return PaginaGrade(faixa, celulas)
+        return paginas
+
+    def _plano(self, plano):
+        if type(plano) is not PlanoGrade or plano.dono is not self._dono:
+            _erro()
+        self._prazo(plano.inicio)
+
+    async def pagina(self, acesso, plano, indice):
+        self._plano(plano)
+        if type(indice) is not int or not 0 <= indice < len(plano.faixas): _erro()
+        return (await self._coletar_paginas(acesso, plano, (plano.faixas[indice],)))[0]
+
+    def lotes(self, plano):
+        """Partição determinística das mesmas faixas; sem dados ou cache de acesso."""
+        self._plano(plano)
+        grupos, atual, total = [], [], 0
+        def sobrepoe(a, b):
+            ar, ac, ar2, ac2 = a.pos; br, bc, br2, bc2 = b.pos
+            return a.aba == b.aba and ar < br2 and br < ar2 and ac < bc2 and bc < ac2
+        for i, faixa in enumerate(plano.faixas):
+            r, c, r2, c2 = faixa.pos; n = (r2-r)*(c2-c)
+            if not 0 < n <= MAX_CELULAS: _erro()
+            if atual and (len(atual) == MAX_FAIXAS_LOTE or total+n > MAX_CELULAS or
+                          any(sobrepoe(plano.faixas[j], faixa) for j in atual)):
+                grupos.append(tuple(atual)); atual, total = [], 0
+            atual.append(i); total += n
+        if atual: grupos.append(tuple(atual))
+        return tuple(grupos)
+
+    async def lote(self, acesso, plano, indice):
+        grupos = self.lotes(plano)
+        if type(indice) is not int or not 0 <= indice < len(grupos): _erro()
+        return await self._coletar_paginas(acesso, plano, tuple(plano.faixas[i] for i in grupos[indice]))
+
+    async def paginas(self, acesso, plano):
+        """Sem cache entre GETs. Consumidor deve fechar o iterador ao interromper."""
+        self._plano(plano)
+        lidas = ()
+        try:
+            if not self._agrupar:
+                for i in range(len(plano.faixas)):
+                    yield i, await self.pagina(acesso, plano, i)
+            else:
+                for numero, indices in enumerate(self.lotes(plano)):
+                    lidas = await self.lote(acesso, plano, numero)
+                    for i, pagina in zip(indices, lidas):
+                        self._prazo(plano.inicio)
+                        yield i, pagina
+                    lidas = ()
+        finally:
+            lidas = ()
 
     async def confirmar(self, acesso, plano):
         """Última observação autenticada; não certifica cobertura ou cria ficha."""

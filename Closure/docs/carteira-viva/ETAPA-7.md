@@ -1,5 +1,13 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Checkpoint de coleta agrupada · 29/10
+
+Salvo para desligamento solicitado pelo usuário. Só diagnóstico ativa os lotes;
+leitura individual segue padrão. 165 direcionados distintos aprovados/27 novos,
+A/B fictício HTTP253→109 com mesmas oito páginas. Revisão final, CI completo e
+prova real agrupada ainda pendentes. Não atribuir a este código os 1.593 anteriores.
+[Retomada e testes](COLETA-AGRUPADA-2026-10-29.md). Sem piloto ativo ou deploy.
+
 ## Diagnóstico integrado ao serviço · 28/10 — código e leitura real
 
 `Consultas.diagnosticar_grade_copia` usa referência tipada de operação existente,

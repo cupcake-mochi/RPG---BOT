@@ -3,6 +3,14 @@
 Atualizado em 28/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
+## Checkpoint de coleta agrupada · 29/10
+
+Salvo para desligamento solicitado pelo usuário. Só diagnóstico ativa os lotes;
+leitura individual segue padrão. 165 direcionados distintos aprovados/27 novos,
+A/B fictício HTTP253→109 com mesmas oito páginas. Revisão final, CI completo e
+prova real agrupada ainda pendentes. Não atribuir a este código os 1.593 anteriores.
+[Retomada e testes](COLETA-AGRUPADA-2026-10-29.md). Sem piloto ativo ou deploy.
+
 ## Diagnóstico integrado ao serviço · 28/10 — código e leitura real
 
 `Consultas.diagnosticar_grade_copia` usa referência tipada de operação existente,

@@ -42,6 +42,8 @@ class Cenario:
     async def cota(self):
         self.cotas+=1
         if self.ao_esperar:await self.ao_esperar()
+    def linhas(self, nome, r, c, r2, c2):
+        return copy.deepcopy(self.celulas)
     def http(self,req):
         self.requests.append(req)
         if req.url.host=='sheets.googleapis.com':
@@ -51,8 +53,12 @@ class Cenario:
         elif 'ranges' not in req.url.params:o=dict(spreadsheetId=ARQUIVO,sheets=[dict(properties=copy.deepcopy(v)) for v in self.grades.values()])
         else:
             from carteira_viva.grade_inicializacao import _retangulo
-            nome,a1=req.url.params['ranges'].split('!');r,c,_,_=_retangulo(a1)
-            o=dict(spreadsheetId=ARQUIVO,sheets=[dict(properties=copy.deepcopy(self.grades[nome.strip("'")]),data=[dict(startRow=r,startColumn=c,rowData=copy.deepcopy(self.celulas))])])
+            sheets={}
+            for faixa in req.url.params.get_list('ranges'):
+                nome,a1=faixa.split('!');nome=nome.strip("'");r,c,r2,c2=_retangulo(a1)
+                sheet=sheets.setdefault(nome,dict(properties=copy.deepcopy(self.grades[nome]),data=[]))
+                sheet['data'].append(dict(startRow=r,startColumn=c,rowData=self.linhas(nome,r,c,r2,c2)))
+            o=dict(spreadsheetId=ARQUIVO,sheets=list(sheets.values()))
             if self.depois:self.depois()
         if self.alterar:
             o=self.alterar(req,o)
