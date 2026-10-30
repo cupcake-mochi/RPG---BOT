@@ -4,13 +4,26 @@ Sem credenciais nem dados de jogadores. Substitui o
 [prompt de 29/10](CONTINUAR-NO-CLAUDE-2026-10-29.md) como ponto de partida; aquele segue
 valendo para limites, caminhos e histórico.
 
+## Retenção das equivalências e ativação · 30/10 — correção offline
+
+Equivalência técnica não renova mais o horário usado pela retenção da cópia.
+Três falhas reproduzidas antes da correção; 117 direcionados aprovados, quatro
+novos. CI completo deste código pendente; os1.639 anteriores pertencem a583a95b.
+[Correção e testes](RETENCAO-EQUIVALENCIAS-2026-10-30.md).
+[Contrato proposto de propriedades e ativação](PROPRIEDADES-E-ATIVACAO-2026-10-30.md):
+cinco chaves, ação do responsável no Google e prova verificável ainda necessárias.
+Sem ampliação de escopo ou ativação implementada. Guardas de versão do modelo
+continuam estritas: impressão financeira não certifica configurações fora dessas
+faixas. Sem novo piloto/Google/Discord, produtor alterado, merge/deploy. Criação
+bloqueada, etapa7 parcial, etapas8–10 pendentes. Entradas abaixo históricas.
+
 ## Onde está
 
 - Repositório: https://github.com/cupcake-mochi/RPG---BOT · branch `codex/carteira-viva-etapa-7`
   · PR84 em rascunho (base `codex/carteira-viva-etapa-6`/PR83). Sem merge nem deploy.
 - Cópia local: `/home/mizuki/.codex/tmp/carteira-etapa7-linux`. Testes a partir de `Closure/src`:
   `../.venv/bin/python -m unittest discover -s testes` (~10 min).
-- Último código: `583a95b`; CI 41055294614 aprovado: 1.639 executados/1.638 aprovados/um opcional, zero falhas, 293,752 s (30/10 às 09:31:16 Brasília). O fechamento seguinte é só documental.
+- Código anterior à correção de retenção: `583a95b`; CI 41055294614 aprovado: 1.639 executados/1.638 aprovados/um opcional, zero falhas, 293,752 s (30/10 às 09:31:16 Brasília). O fechamento seguinte é só documental.
 - Pilotos privados fora do Git em `~/.local/share/guias-ciclo/carteira-piloto/` (pastas 700,
   arquivos 600). Todos encerrados; nenhum grant ativo, porta 8876 livre.
 

@@ -189,7 +189,11 @@ class Copias:
             if len(lista) >= LIMITE_EQUIVALENCIAS:
                 raise Conflito('O arquivo mudou de versão vezes demais. Não continue esta operação.')
             eq[alvo] = lista + [impressao.dados()]
-            self._guardar_copia(ref, {**d, 'equivalencias': eq})
+            # Prova técnica não é uma nova transição da cópia. Preservar o
+            # atualizado original, usado pela retenção das identificadas.
+            self.db.execute('UPDATE copias_rest SET conteudo=? WHERE operacao=?',
+                (self.cifra.cifrar(self._ctx_copia(dict(servidor=ref.servidor,
+                    ator=ref.ator, operacao=ref.operacao)), {**d, 'equivalencias': eq}), ref.operacao))
 
     def armar_envio_copia(self, membro, ref):
         """Transação única entre processos. False nunca autoriza outro POST."""

@@ -1,5 +1,19 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Retenção das equivalências e ativação · 30/10 — correção offline
+
+Equivalência técnica não renova mais o horário usado pela retenção da cópia.
+Três falhas reproduzidas antes da correção; 117 direcionados aprovados, quatro
+novos. CI completo deste código pendente; os1.639 anteriores pertencem a583a95b.
+[Correção e testes](RETENCAO-EQUIVALENCIAS-2026-10-30.md).
+[Contrato proposto de propriedades e ativação](PROPRIEDADES-E-ATIVACAO-2026-10-30.md):
+cinco chaves, ação do responsável no Google e prova verificável ainda necessárias.
+Sem ampliação de escopo ou ativação implementada. Guardas de versão do modelo
+continuam estritas: impressão financeira não certifica configurações fora dessas
+faixas. Sem novo piloto/Google/Discord, produtor alterado, merge/deploy. Criação
+bloqueada, etapa7 parcial, etapas8–10 pendentes. Entradas abaixo históricas.
+
+
 ## Escrita financeira nativa · 30/10 — células e recuperação comprovadas
 
 Código `583a95b`: CI completo41055294614 aprovado, 1.639 executados/1.638 aprovados/

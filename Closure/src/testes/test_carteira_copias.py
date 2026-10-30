@@ -30,6 +30,86 @@ DESTINO = 'arquivo_descartavel_sintetico_copia_001'
 
 
 class BancoCopias(Fixtures, unittest.TestCase):
+    def identificar_com_referencias(self):
+        from carteira_viva.equivalencia_versao import Impressao
+        ref = self.preparar(self.pedido())
+        origem = self.c.contexto_copia(self.m, ref)['origem']
+        self.c.fixar_versao_copia(self.m, ref, '7', Impressao('7', MODIFICADO, 'a'*64))
+        self.assertTrue(self.c.armar_envio_copia(self.m, ref))
+        destino = DestinoCopia(DESTINO, '1', ref.operacao, origem, MODIFICADO)
+        self.c.registrar_candidata_copia(self.m, ref, destino)
+        self.c.registrar_destino_copia(self.m, ref, destino, Impressao('1', MODIFICADO, 'b'*64))
+        return ref
+
+    def tempos_copia(self, ref):
+        return tuple(self.c.db.execute('SELECT criado,atualizado FROM copias_rest WHERE operacao=?',
+                                      (ref.operacao,)).fetchone())
+
+    def test_equivalencias_nao_adiam_limpeza_nem_mudam_recibos(self):
+        from carteira_viva.equivalencia_versao import Impressao
+        from carteira_viva.observacoes_copia import conteudo_contexto
+        ref = self.identificar_com_referencias()
+        antes = self.c.contexto_copia(self.m, ref)
+        tempos = self.tempos_copia(ref)
+        self.clock[0] += 29*DIA
+        for alvo, versao, conteudo in [('origem', '8', 'a'*64), ('destino', '2', 'b'*64)]:
+            imp = Impressao(versao, MODIFICADO, conteudo)
+            self.c.registrar_equivalencia_copia(self.m, ref, alvo, imp)
+            self.clock[0] += 1
+            self.c.registrar_equivalencia_copia(self.m, ref, alvo, imp)
+        self.reabrir()
+        depois = self.c.contexto_copia(self.m, ref)
+        self.assertEqual(self.tempos_copia(ref), tempos)
+        self.assertEqual(conteudo_contexto(depois), conteudo_contexto(antes))
+        self.assertEqual({k: len(v) for k, v in depois['equivalencias'].items()},
+                         {'origem': 1, 'destino': 1})
+        self.clock[0] = tempos[1] + 30*DIA
+        self.assertEqual(self.c.limpar()['copias_rest'], 1)
+        self.clock[0] += DIA + 1
+        self.c.limpar()
+        self.assertEqual(self.c.db.execute('SELECT count(*) FROM conexoes').fetchone()[0], 0)
+
+    def test_backup_com_equivalencia_preserva_prazo_original(self):
+        from carteira_viva.equivalencia_versao import Impressao
+        ref = self.identificar_com_referencias()
+        tempos = self.tempos_copia(ref)
+        self.clock[0] += 29*DIA
+        self.c.registrar_equivalencia_copia(self.m, ref, 'destino', Impressao('2', MODIFICADO, 'b'*64))
+        bak = self.path.parent/'equivalencia.cvb'
+        destino = self.path.parent/'restaurado-equivalencia.sqlite3'
+        gravar_backup(self.c, bak)
+        self.clock[0] += 2*DIA
+        restaurar_backup(bak, destino, (self.chave,), remocoes=self.c.remocoes, agora=self.agora)
+        with Cadastro(destino, (self.chave,), remocoes=self.c.remocoes, agora=self.agora) as c:
+            self.assertEqual(c.limpar()['copias_rest'], 1)
+        self.assertEqual(self.tempos_copia(ref), tempos)
+
+    def test_equivalencia_pendente_nao_rearma_envio_nem_apaga_intencao(self):
+        from carteira_viva.equivalencia_versao import Impressao
+        ref = self.preparar()
+        self.c.fixar_versao_copia(self.m, ref, '7', Impressao('7', MODIFICADO, 'a'*64))
+        self.assertTrue(self.c.armar_envio_copia(self.m, ref))
+        tempos = self.tempos_copia(ref)
+        self.clock[0] += 31*DIA
+        self.c.registrar_equivalencia_copia(self.m, ref, 'origem', Impressao('8', MODIFICADO, 'a'*64))
+        self.assertEqual(self.tempos_copia(ref), tempos)
+        self.assertEqual(self.c.limpar()['copias_rest'], 0)
+        self.assertFalse(self.c.armar_envio_copia(self.m, ref))
+        self.assertEqual(self.c.contexto_copia(self.m, ref)['versao_origem'], '7')
+
+    def test_equivalencia_invalida_nao_altera_registro(self):
+        from carteira_viva.equivalencia_versao import Impressao
+        ref = self.identificar_com_referencias()
+        antes = self.c.contexto_copia(self.m, ref)
+        tempos = self.tempos_copia(ref)
+        self.clock[0] += DIA
+        for imp in (Impressao('2', MODIFICADO, 'c'*64),
+                    Impressao('2', '2026-10-31T02:19:28.736Z', 'b'*64)):
+            with self.subTest(impressao=imp), self.assertRaises(Conflito):
+                self.c.registrar_equivalencia_copia(self.m, ref, 'destino', imp)
+        self.assertEqual(self.c.contexto_copia(self.m, ref), antes)
+        self.assertEqual(self.tempos_copia(ref), tempos)
+
     def preparar(self, pedido='pedido-ficticio'):
         self.cid = self.conectar()
         return self.c.preparar_copia_modelo(self.m, conexao=self.cid, modelo='ciclo', pedido=pedido)
