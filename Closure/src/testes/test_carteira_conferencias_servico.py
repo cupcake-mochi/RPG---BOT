@@ -178,7 +178,8 @@ class ConferenciasServicoTeste(unittest.IsolatedAsyncioTestCase):
         b=await self.interromper_progressao(); self.assertEqual(b.revisao,1)
         self.data.requests.clear(); r=await self.conferir(retomar=True)
         self.assertEqual(r['dominios_conferidos'],2); self.assertEqual(len(self.tokens),2)
-        self.assertEqual(len(self.data.requests),29); self.assertEqual(len(self.s.cotas.contas),29)
+        # Progressão em 2 lotes (antes 29).
+        self.assertEqual(len(self.data.requests),11); self.assertEqual(len(self.s.cotas.contas),11)
 
     async def test_versao_mudou_entre_reinicio_e_retomada_nao_le_celulas(self):
         b=await self.interromper_progressao(); self.data.versao='999'; self.data.requests.clear()
@@ -224,11 +225,12 @@ class ConferenciasServicoTeste(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(ErroCarteira): await self.conferir()
         self.assertFalse(self.tokens); self.assertFalse(self.data.requests)
 
-    async def test_ficha_5000_linhas_respeita_cota_em_todos_os_183_gets(self):
+    async def test_ficha_5000_linhas_respeita_cota_em_todos_os_126_gets(self):
         for n in ('EXTRATO','SALÁRIOS','DADOS_SALARIOS'): self.data.grades[n]['gridProperties']['rowCount']=5000
         r=await self.conferir()
         self.assertEqual([x['paginas_lidas'] for x in r['resultados']],[50,8])
-        self.assertEqual(len(self.data.requests),183); self.assertEqual(len(self.s.cotas.contas),183)
+        # Lotes: 50+8 faixas em 37+2 lotes, 3 GETs cada (antes 183).
+        self.assertEqual(len(self.data.requests),126); self.assertEqual(len(self.s.cotas.contas),126)
         self.assertFalse(r['conferencia_conjunta_concluida'])
 
     async def test_saida_durante_get_nao_finaliza_dominio(self):

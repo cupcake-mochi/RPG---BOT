@@ -237,10 +237,13 @@ def abrir_recibo(cifra,envelope,*,contexto,arquivo,dominio,versao_drive):
 
 async def coletar_conferir(leitor,acesso,arquivo,dominio):
     """Integra transporte real e validação determinística; ainda sem rota/diário de escrita."""
-    plano=await leitor.abrir(acesso,arquivo,dominio);conferencia=ConferenciaGrade(plano)
-    for i in range(len(plano.faixas)):
-        pagina=await leitor.pagina(acesso,plano,i)
-        await asyncio.to_thread(conferencia.receber,i,pagina)
+    from contextlib import aclosing
+    plano=await leitor.abrir(acesso,arquivo,dominio);conferencia=ConferenciaGrade(plano);esperado=0
+    # Modo (individual/lotes) é escolha de quem cria o leitor; ordem conferida aqui.
+    async with aclosing(leitor.paginas(acesso,plano)) as paginas:
+        async for i,pagina in paginas:
+            if i!=esperado:_erro()
+            await asyncio.to_thread(conferencia.receber,i,pagina);esperado+=1
     await leitor.confirmar(acesso,plano)
     await asyncio.to_thread(conferencia.concluir)
     return conferencia

@@ -209,6 +209,7 @@ async def conferir_dominio_persistido(dados, membro, bilhete, provedores, acesso
     Interrupção antes do commit conserva só os domínios anteriores completos.
     """
     import asyncio
+    from contextlib import aclosing
     from .grade_inicializacao import LeitorGradeRest
 
     async def banco(metodo, *args):
@@ -223,15 +224,21 @@ async def conferir_dominio_persistido(dados, membro, bilhete, provedores, acesso
         if atual != contexto or esperado != contexto: _erro()
         return contexto
 
-    leitor = LeitorGradeRest(provedores, revalidar, aguardar_cota, agora=agora)
+    # Lotes: revalidar() consulta o banco antes e depois de cada GET; a checagem
+    # abaixo continua valendo para cada página entregue, antes de processá-la.
+    leitor = LeitorGradeRest(provedores, revalidar, aguardar_cota, agora=agora, agrupar=True)
     plano = await leitor.abrir(acesso, ref.arquivo, restantes[0])
     if (plano.contexto, plano.versao) != (contexto, versao): _erro()
     conferencia = ConferenciaGrade(plano)
-    for i in range(len(plano.faixas)):
-        await banco('contexto_operacao_rest', membro, bilhete)
-        pagina = await leitor.pagina(acesso, plano, i)
-        await banco('contexto_operacao_rest', membro, bilhete)
-        await asyncio.to_thread(conferencia.receber, i, pagina)
+    esperado = 0
+    await banco('contexto_operacao_rest', membro, bilhete)
+    async with aclosing(leitor.paginas(acesso, plano)) as paginas:
+        async for i, pagina in paginas:
+            if i != esperado: _erro()
+            await banco('contexto_operacao_rest', membro, bilhete)
+            await asyncio.to_thread(conferencia.receber, i, pagina)
+            esperado += 1
+    if esperado != len(plano.faixas): _erro()
     await leitor.confirmar(acesso, plano)
     await asyncio.to_thread(conferencia.concluir)
     return await banco('gravar_conferencia_rest', membro, bilhete, conferencia)

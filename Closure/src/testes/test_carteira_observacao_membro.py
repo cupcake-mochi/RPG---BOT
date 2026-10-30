@@ -91,12 +91,13 @@ class ObservacaoServicoTeste(unittest.IsolatedAsyncioTestCase):
     async def asyncTearDown(self): await self.c.asyncTearDown()
     def papeis(self): return sum(r.url.path.endswith('/roles') for r in self.c.discord)
 
-    async def test_dono_5000_linhas_reduz_requisicoes_preservando_183_gets_google(self):
+    async def test_dono_5000_linhas_reduz_requisicoes_preservando_126_gets_google(self):
         for n in ('EXTRATO','SALÁRIOS','DADOS_SALARIOS'): self.c.data.grades[n]['gridProperties']['rowCount']=5000
         r=await self.c.conferir()
         self.assertEqual([x['erros'] for x in r['resultados']],[0,0])
-        self.assertEqual(len(self.c.data.requests),183); self.assertEqual(len(self.c.s.cotas.contas),183)
-        self.assertLessEqual(len(self.c.discord),4*183)  # Base anterior: 1.686.
+        # Auditoria em lotes: 183 GETs Google individuais viraram 126.
+        self.assertEqual(len(self.c.data.requests),126); self.assertEqual(len(self.c.s.cotas.contas),126)
+        self.assertLessEqual(len(self.c.discord),4*126)  # Bases anteriores: 1.686 e 4*183.
         self.assertLessEqual(self.papeis(),10)
         self.assertFalse(r['criacao_disponivel'])
 

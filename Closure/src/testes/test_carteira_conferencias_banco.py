@@ -49,7 +49,8 @@ class ConferenciasBancoTeste(Fixtures, unittest.IsolatedAsyncioTestCase):
         self.assertEqual(b, b2)
         c.ao_esperar = None; c.requests.clear(); c.cotas = 0
         b2 = await self.rodar(c, b2)
-        self.assertEqual(b2.revisao, 1); self.assertEqual(c.cotas, 154)
+        # Lotes: 50 faixas financeiras em 37 GETs, 3 cotas cada (antes 154).
+        self.assertEqual(b2.revisao, 1); self.assertEqual(c.cotas, 115)
         self.assertEqual(self.c.resultado_conferencia_rest(self.m, b2)['dominios_conferidos'], 1)
 
     async def test_reinicio_entre_dominios_nao_rele_financeiro_e_nunca_libera_criacao(self):
@@ -58,7 +59,8 @@ class ConferenciasBancoTeste(Fixtures, unittest.IsolatedAsyncioTestCase):
         d = Dados(); d.contexto = c.contexto
         b = await self.rodar(d, b)
         r = self.c.resultado_conferencia_rest(self.m, b)
-        self.assertEqual(d.cotas, 28); self.assertEqual(r['dominios_conferidos'], 2)
+        # Progressão: 8 faixas em 2 lotes (antes 28 cotas).
+        self.assertEqual(d.cotas, 10); self.assertEqual(r['dominios_conferidos'], 2)
         self.assertEqual([x['dominio'] for x in r['resultados']], ['financeiro', 'progressao'])
         self.assertTrue(r['leitura_historica'])
         for k in FLAGS: self.assertIs(r[k], False)
@@ -82,10 +84,13 @@ class ConferenciasBancoTeste(Fixtures, unittest.IsolatedAsyncioTestCase):
 
     async def test_mutacao_na_confirmacao_final_nao_persiste_dominio(self):
         _, _, c, b = self.preparar()
+        disparou = []
         def trocar():
-            if c.cotas == 154: c.versao = '999'
+            # 115 = cota da confirmação final com lotes; o teste exige que dispare.
+            if c.cotas == 115: c.versao = '999'; disparou.append(True)
         c.final_hook = trocar
         with self.assertRaises(ErroCarteira): await self.rodar(c, b)
+        self.assertEqual(disparou, [True])
         self.assertEqual(self.c.resultado_conferencia_rest(self.m, b)['dominios_conferidos'], 0)
 
     async def test_residuo_real_e_salvo_como_erro_sem_guardar_texto_privado(self):

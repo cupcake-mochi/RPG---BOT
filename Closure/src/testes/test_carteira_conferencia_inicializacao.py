@@ -188,3 +188,38 @@ class ConferenciaInicializacaoTeste(unittest.IsolatedAsyncioTestCase):
         self.assertGreater(d['erros'],0);self.assertNotIn('3700',str(d));self.assertNotIn('achados',d)
         rotacionado=reaberto.fernet.rotate(recibo);d=abrir_recibo(Cifra((nova,)),rotacionado,**args)
         self.assertFalse(d['criacao_disponivel'])
+
+
+class ConferenciaEmLotesTeste(unittest.IsolatedAsyncioTestCase):
+    async def comparar(self, dominio, preparar=None):
+        resultados, gets = [], []
+        for agrupar in (False, True):
+            d = Dados(dominio)
+            for n in ('EXTRATO', 'SALÁRIOS', 'DADOS_SALARIOS'): d.grades[n]['gridProperties']['rowCount'] = 5000
+            if preparar: preparar(d)
+            d.leitor = LeitorGradeRest(d.p, d.revalidar, d.cota, agora=lambda d=d: d.tempo, agrupar=agrupar)
+            resultados.append((await d.conferir()).publico())
+            gets.append(sum('ranges' in r.url.params for r in d.requests))
+        self.assertEqual(resultados[0], resultados[1])
+        self.assertLess(gets[1], gets[0])
+        return resultados[1]
+
+    async def test_lotes_dao_o_mesmo_resultado_nos_dois_dominios(self):
+        await self.comparar('financeiro'); await self.comparar('progressao')
+
+    async def test_lotes_mantem_erro_de_residuo_na_ultima_linha(self):
+        r = await self.comparar('financeiro', lambda d: d.literal('EXTRATO', 5000, 3, 'residuo ficticio'))
+        self.assertGreater(r['erros'], 0)
+
+    async def test_pagina_fora_de_ordem_recusa_e_fecha_iterador(self):
+        d = Dados('progressao'); d.leitor = LeitorGradeRest(d.p, d.revalidar, d.cota, agora=lambda: d.tempo, agrupar=True)
+        original = d.leitor.paginas; fechado = []
+        async def trocado(acesso, plano):
+            it = original(acesso, plano)
+            try:
+                a = await it.__anext__(); b = await it.__anext__(); yield b; yield a
+            finally:
+                await it.aclose(); fechado.append(True)
+        d.leitor.paginas = trocado
+        with self.assertRaises(ErroCarteira): await d.conferir()
+        self.assertEqual(fechado, [True])

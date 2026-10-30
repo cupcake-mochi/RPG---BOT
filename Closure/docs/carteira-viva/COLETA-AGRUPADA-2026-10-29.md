@@ -153,3 +153,21 @@ e envia exatamente os pedidos do plano individual; ela falha se o modo for desli
 Suíte local **1.626 executados, 1.625 aprovados, um opcional pulado, zero falhas**, 619,719 s.
 Auditoria (`coletar_conferir`, `conferencias_banco`) segue individual. A escrita financeira
 nativa continua sem prova; este passo só reduz as leituras que a antecedem.
+
+## Auditoria em lotes · 29/10
+
+`conferir_dominio_persistido` (o caminho do serviço) cria o leitor com `agrupar=True` e lê
+pelo iterador com `aclosing`, conferindo a ordem e a contagem final. O `revalidar` do leitor já
+consulta o banco antes e depois de cada GET; a checagem por página entregue foi mantida.
+`coletar_conferir` também lê pelo iterador, com o modo escolhido por quem cria o leitor.
+
+Regressões novas: resultado público idêntico entre individual e lotes nos dois domínios (com
+menos GETs), resíduo na linha 5.000 detectado igual, página fora de ordem recusa e fecha o
+iterador. Cinco testes com contagem fixa foram atualizados pela conta de 3 GETs por lote:
+progressão 28→10 e 29→11, financeiro de 5.000 linhas 154→115, os dois domínios 183→126.
+O teste de mutação na confirmação final disparava na 154ª cota e passou a não disparar com
+lotes: agora usa a 115ª e **exige que a mutação tenha disparado**, para não passar em silêncio.
+
+Suíte local: 1.629 executados, 1.627 aprovados, um opcional pulado e uma falha de contagem fixa
+(`test_dono_5000_linhas…`, 183→126, limite Discord ajustado para 4×126), corrigida e o módulo
+rodado de novo (18 aprovados). Base nativa: ensaio financeiro individual × agrupado de 29/10.
