@@ -1,5 +1,5 @@
 """Cópia interna com diário. Não limpa nem entrega um personagem novo."""
-from .copias_google import enviar, procurar, observar
+from .copias_google import enviar, procurar, observar, PRAZO_JOB_COPIA
 from .segredos import Conflito
 from .copias_banco import hash_texto
 from .observacoes_copia import ObservacaoVersao
@@ -83,4 +83,5 @@ async def copiar(servico, servidor, usuario, *, conexao, modelo, pedido):
         m, d = await contexto()
         return await b('registrar_destino_copia', m, ref, final)
 
-    return await servico.fila.executar(('copia_modelo', ref.operacao), (servidor, usuario), executar)
+    return await servico.fila.executar(('copia_modelo', ref.operacao), (servidor, usuario), executar,
+                                       prazo=PRAZO_JOB_COPIA, espera=PRAZO_JOB_COPIA + 90)

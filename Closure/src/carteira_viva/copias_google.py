@@ -30,6 +30,12 @@ class DestinoCopia:
             raise ErroCarteira('Observação de cópia inválida.')
 
 
+# Copiar a ficha completa passou de 15 s no Google real (30/10). Mais espera reduz
+# a cópia incerta; sem resposta continua sendo recuperada pelo marcador, nunca repetida.
+TIMEOUT_COPIA = 120
+PRAZO_JOB_COPIA = 300
+
+
 def marcadores(operacao, origem):
     from .provedores import ErroProvedor
     if (not isinstance(operacao, str) or not re.fullmatch(r'[a-f0-9]{64}', operacao) or
@@ -43,8 +49,8 @@ async def enviar(provedor, acesso, operacao, origem):
     from .provedores import ErroProvedor
     props = marcadores(operacao, origem)
     try:
-        async with httpx.AsyncClient(timeout=15, follow_redirects=False, trust_env=False,
-                                     transport=provedor.transporte) as client:
+        async with httpx.AsyncClient(timeout=httpx.Timeout(15, read=TIMEOUT_COPIA), follow_redirects=False,
+                                     trust_env=False, transport=provedor.transporte) as client:
             async with client.stream('POST', DRIVE + '/' + origem + '/copy?fields=id',
                 headers={'Authorization': 'Bearer ' + acesso}, json=dict(
                     name='Ficha — cópia em preparação', parents=['root'], appProperties=props)) as resp:

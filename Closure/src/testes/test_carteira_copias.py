@@ -212,6 +212,17 @@ class CopiasServico(unittest.IsolatedAsyncioTestCase):
         self.s=Consultas(self.dados,self.prov,agora=self.agora)
         self.assertTrue((await self.copiar())['copia_identificada']);self.assertEqual(len(self.posts()),1)
 
+    async def test_post_lento_cabe_no_prazo_sem_repetir(self):
+        from carteira_viva import copias_google
+        self.assertGreaterEqual(copias_google.TIMEOUT_COPIA, 60)
+        self.assertGreater(copias_google.PRAZO_JOB_COPIA, copias_google.TIMEOUT_COPIA + 60)
+        prazos=[];original=self.s.fila.executar
+        async def executar(chave,grupo,fn,**kw):
+            prazos.append(kw.get('prazo'));return await original(chave,grupo,fn,**kw)
+        self.s.fila.executar=executar
+        await self.copiar()
+        self.assertEqual(prazos,[copias_google.PRAZO_JOB_COPIA]);self.assertEqual(len(self.posts()),1)
+
     async def test_ausencia_na_busca_nao_prova_que_pode_repetir_post(self):
         self.falha_post=True
         with self.assertRaises(ErroProvedor):await self.copiar()
