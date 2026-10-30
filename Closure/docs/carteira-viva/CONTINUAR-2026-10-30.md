@@ -4,18 +4,24 @@ Sem credenciais nem dados de jogadores. Substitui o
 [prompt de 29/10](CONTINUAR-NO-CLAUDE-2026-10-29.md) como ponto de partida; aquele segue
 valendo para limites, caminhos e histórico.
 
-## Retenção das equivalências e ativação · 30/10 — correção offline
+## Propriedades separadas e retenção · 30/10
 
-Equivalência técnica não renova mais o horário usado pela retenção da cópia.
-Três falhas reproduzidas antes da correção; 117 direcionados aprovados, quatro
-novos. CI completo deste código pendente; os1.639 anteriores pertencem a583a95b.
-[Correção e testes](RETENCAO-EQUIVALENCIAS-2026-10-30.md).
-[Contrato proposto de propriedades e ativação](PROPRIEDADES-E-ATIVACAO-2026-10-30.md):
-cinco chaves, ação do responsável no Google e prova verificável ainda necessárias.
-Sem ampliação de escopo ou ativação implementada. Guardas de versão do modelo
-continuam estritas: impressão financeira não certifica configurações fora dessas
-faixas. Sem novo piloto/Google/Discord, produtor alterado, merge/deploy. Criação
-bloqueada, etapa7 parcial, etapas8–10 pendentes. Entradas abaixo históricas.
+Bot `67a6b98`: equivalências não renovam a retenção. CI41061489142 aprovado
+às10:20:02 Brasília:1.643 executados/1.642 aprovados/um opcional, zero falhas;
+117 direcionados/quatro novos. [Correção](RETENCAO-EQUIVALENCIAS-2026-10-30.md).
+
+O mantenedor autorizou o protótipo no PR31 da ficha. Produtor `adf3661`:
+cinco propriedades isoladas, preservação das demais e inspeção das rotinas somente
+de leitura;46 casos novos/101 financeiros/47 REST locais, CI41063190512 aprovado
+às10:29:43. [Contrato e limites](PROPRIEDADES-E-ATIVACAO-2026-10-30.md).
+[Ensaio nativo e limpeza](NATIVO-PROPRIEDADES-2026-10-30.md) encerrados às11:26:34:
+cinco chaves ausentes, sentinelas e hash preservados, repetição idêntica, nova
+execução recusada após invalidar acesso, cópia na lixeira e abas próprias fechadas.
+Nenhum atestado autenticado para o backend ou ativação foi entregue. Sem ampliação
+do OAuth das Guias. Guardas do modelo continuam estritas: a impressão financeira
+não certifica as configurações fora dessas faixas. Criação bloqueada, etapa7
+parcial, etapas8–10 pendentes. Sem oficial/jogador, merge/deploy ou modelo pago.
+Entradas abaixo são históricas; não repetir o ensaio REST já encerrado.
 
 ## Onde está
 
@@ -23,6 +29,11 @@ bloqueada, etapa7 parcial, etapas8–10 pendentes. Entradas abaixo históricas.
   · PR84 em rascunho (base `codex/carteira-viva-etapa-6`/PR83). Sem merge nem deploy.
 - Cópia local: `/home/mizuki/.codex/tmp/carteira-etapa7-linux`. Testes a partir de `Closure/src`:
   `../.venv/bin/python -m unittest discover -s testes` (~10 min).
+- Código atual do bot: `67a6b98e02d99798b3c93a93a62ae0164a1d9978`.
+- Produtor: PR31 em rascunho, `codex/inicializacao-financeira-carteira`, código
+  `adf36610a8b077377c95d4e9195dad318d0b0b2b`. Cópia local:
+  `/home/mizuki/.codex/tmp/ficha-carteira-inicializacao`. Autorização limitada
+  ao perfil de propriedades/inspeção; sem oficial, merge ou publicação.
 - Código anterior à correção de retenção: `583a95b`; CI 41055294614 aprovado: 1.639 executados/1.638 aprovados/um opcional, zero falhas, 293,752 s (30/10 às 09:31:16 Brasília). O fechamento seguinte é só documental.
 - Pilotos privados fora do Git em `~/.local/share/guias-ciclo/carteira-piloto/` (pastas 700,
   arquivos 600). Todos encerrados; nenhum grant ativo, porta 8876 livre.
@@ -60,11 +71,13 @@ credenciais fora do Git. Não reutilizar grant ou restaurar descartáveis.
 
 ## Próximo passo
 
-Não repetir o ensaio financeiro encerrado por rotina. Fechar a solução/contrato das
-cinco propriedades Apps Script e da concorrência com o dono; depois os demais
-domínios de inicialização, preservação/automações e prova integral da 7C/7D.
-Se exigir produtor, escopos ou ativação manual, explicitar a dependência antes de
-implementar. Não ampliar permissões ou liberar criação por suposição.
+Não repetir os ensaios já encerrados por rotina. Próximo: definir a ativação própria
+e como o backend verificará o vínculo/autorização real do responsável, sem aceitar
+JSON ou checkbox do cliente como prova. O perfil das cinco propriedades e a
+inspeção não entregam esse atestado. Depois: concorrência/CAS, demais domínios,
+preservação/automações e prova integrada Era/Ciclo/modelo do servidor.
+Não ampliar permissões ou liberar criação por suposição. Alteração posterior
+do produtor além do perfil autorizado exige delimitar a nova proposta antes.
 
 O kit comprovou registro durável antes dos POSTs de negócio e capacidade consumida
 mesmo após reinício. Uma nova hipótese nativa deve usar base/chave/token de serviço,
@@ -83,8 +96,10 @@ fonte e autorização novos, só quando houver motivo; login/aviso continuam com
 
 ## Pendente
 
-Registro nativo das equivalências extras ainda não exercitado; propriedades Apps Script; concorrência com o dono
+Registro nativo das equivalências extras ainda não exercitado; ativação/atestado
+autenticado das propriedades no backend; concorrência com o dono
 (sem CAS); preparada × versão configurada e `validar_modelo` com versões equivalentes; demais
 domínios, preservação, automações, prova integral; etapas 8–10. Criação de personagem
 **bloqueada**; quatro indicadores falsos. Sem merge/deploy, modelo pago, escopo novo, Gateway,
-edição de oficial/jogador/produtor. Commits sem coautoria do assistente.
+edição de oficial/jogador. Produtor alterado apenas no protótipo autorizado do PR31.
+Commits sem coautoria do assistente.

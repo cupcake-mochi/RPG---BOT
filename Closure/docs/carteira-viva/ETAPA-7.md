@@ -1,18 +1,23 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
-## Retenção das equivalências e ativação · 30/10 — correção offline
+## Propriedades separadas e retenção · 30/10
 
-Equivalência técnica não renova mais o horário usado pela retenção da cópia.
-Três falhas reproduzidas antes da correção; 117 direcionados aprovados, quatro
-novos. CI completo deste código pendente; os1.639 anteriores pertencem a583a95b.
-[Correção e testes](RETENCAO-EQUIVALENCIAS-2026-10-30.md).
-[Contrato proposto de propriedades e ativação](PROPRIEDADES-E-ATIVACAO-2026-10-30.md):
-cinco chaves, ação do responsável no Google e prova verificável ainda necessárias.
-Sem ampliação de escopo ou ativação implementada. Guardas de versão do modelo
-continuam estritas: impressão financeira não certifica configurações fora dessas
-faixas. Sem novo piloto/Google/Discord, produtor alterado, merge/deploy. Criação
-bloqueada, etapa7 parcial, etapas8–10 pendentes. Entradas abaixo históricas.
+Bot `67a6b98`: equivalências não renovam a retenção. CI41061489142 aprovado
+às10:20:02 Brasília:1.643 executados/1.642 aprovados/um opcional, zero falhas;
+117 direcionados/quatro novos. [Correção](RETENCAO-EQUIVALENCIAS-2026-10-30.md).
 
+O mantenedor autorizou o protótipo no PR31 da ficha. Produtor `adf3661`:
+cinco propriedades isoladas, preservação das demais e inspeção das rotinas somente
+de leitura;46 casos novos/101 financeiros/47 REST locais, CI41063190512 aprovado
+às10:29:43. [Contrato e limites](PROPRIEDADES-E-ATIVACAO-2026-10-30.md).
+[Ensaio nativo e limpeza](NATIVO-PROPRIEDADES-2026-10-30.md) encerrados às11:26:34:
+cinco chaves ausentes, sentinelas e hash preservados, repetição idêntica, nova
+execução recusada após invalidar acesso, cópia na lixeira e abas próprias fechadas.
+Nenhum atestado autenticado para o backend ou ativação foi entregue. Sem ampliação
+do OAuth das Guias. Guardas do modelo continuam estritas: a impressão financeira
+não certifica as configurações fora dessas faixas. Criação bloqueada, etapa7
+parcial, etapas8–10 pendentes. Sem oficial/jogador, merge/deploy ou modelo pago.
+Entradas abaixo são históricas; não repetir o ensaio REST já encerrado.
 
 ## Escrita financeira nativa · 30/10 — células e recuperação comprovadas
 

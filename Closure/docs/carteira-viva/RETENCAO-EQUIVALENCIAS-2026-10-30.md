@@ -34,8 +34,11 @@ Comando em `Closure/src`:
 
     ../.venv/bin/python -m unittest testes.test_carteira_copias testes.test_carteira_financeiro_rest testes.test_carteira_diagnostico_servico
 
-CI completo do código deste checkpoint ainda pendente. O CI anterior de 1.639
-valida 583a95b e não deve ser atribuído a esta correção. Não repetir o ensaio nativo
+Código `67a6b98e02d99798b3c93a93a62ae0164a1d9978`:
+[CI41061489142](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/41061489142)
+aprovado em30/10 às10:20:02 Brasília: **1.643 executados/1.642 aprovados/um
+opcional pulado, zero falhas**,352,598 s. Logs completos conferidos. O CI anterior
+de1.639 valida583a95b. Fechamento posterior só documental, sem repetir suíte/pacote. Não repetir o ensaio nativo
 financeiro encerrado: nenhum caminho de rede ou payload de escrita mudou.
 
 ## Outras conclusões desta rodada
@@ -50,8 +53,11 @@ modelo não mudaram. Usá-la para liberar uma revisão diferente do modelo seria
 expansão indevida da garantia. Resolver exige referência adequada do modelo ou
 nova escolha administrativa validada; não afrouxar essas guardas por conveniência.
 
-Criação bloqueada, etapa 7 parcial, etapas 8–10 pendentes. Nenhum piloto/grant/recurso
-novo, chamada paga, oficial/jogador/produtor alterado, scope, Gateway, merge/deploy.
+Criação bloqueada, etapa7 parcial, etapas8–10 pendentes. A correção de retenção
+não abriu piloto nem alterou o produtor. Houve autorização posterior para o perfil
+de propriedades no PR31 e ensaio separado em descartável; o relatório vinculado
+distingue esse trabalho. Sem chamada paga, oficial/jogador, ampliação de OAuth,
+Gateway, merge/deploy.
 
 Pacote ignorado regenerado e comparado com os fontes:90 arquivos, CRC íntegro,
 sem Carteira/env/bancos/campanha; SHA256 `e7a3bf38fc72a229a4cbef47ce5afc59446f2cbbf7d766d094daa769155f7579`. Não publicado.

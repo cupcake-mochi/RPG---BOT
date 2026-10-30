@@ -1,13 +1,30 @@
 # Propriedades e ativação da cópia
 
-30/10/2026 · investigação do contrato · **nenhuma ativação implementada ou executada**.
+30/10/2026 · investigação do contrato e protótipo posterior · **ativação não entregue**.
 A escrita de células e a recuperação já foram [validadas](NATIVO-ESCRITA-EQUIVALENTE-2026-10-30.md).
 Este documento delimita o que falta fora das células; não substitui essa prova.
 
+## Autorização e implementação posteriores
+
+O mantenedor autorizou implementar no rascunho PR31. Código do produtor
+`adf36610a8b077377c95d4e9195dad318d0b0b2b`: perfil independente para tratar apenas
+as cinco propriedades, depois de conferir as células limpas; trava/diário próprios,
+vínculo de execução e preservação das demais propriedades. Inspeção das rotinas é
+somente leitura, sem instalar/retirar acionadores nem atestar identidade ao bot.
+
+[Implementação e limites no produtor](https://github.com/cupcake-mochi/Ficha---RPG-JJK/blob/codex/inicializacao-financeira-carteira/r53/inicializacao/PROPRIEDADES-2026-10-30.md).
+46 novos cenários,101 financeiros e47 de contrato REST aprovados. CI41063190512
+aprovado às10:29:43 Brasília, código adf3661; duplicado41063183156 cancelado.
+[Ensaio nativo](NATIVO-PROPRIEDADES-2026-10-30.md) encerrado às11:26:34: cinco
+chaves ausentes, sentinelas/preservação conferidas, repetição idêntica e acesso
+invalidado com nova execução recusada; cópia na lixeira/abas fechadas.
+Sem integração de atestado no backend, novo OAuth das Guias ou liberação de criação. As restrições abaixo continuam valendo.
+
 ## O que cada propriedade controla
 
-Leitura do produtor `Ficha---RPG-JJK`, branch `codex/inicializacao-financeira-carteira`,
-HEAD `e1a5691`; main observada `ef361cc`. Nenhum fonte do produtor alterado.
+Produtor `Ficha---RPG-JJK`, branch `codex/inicializacao-financeira-carteira`.
+Leitura inicial em `e1a5691`; main observada `ef361cc`. A implementação posterior,
+autorizada no PR31 e descrita acima, está em `adf3661`; não muda a oficial.
 O contrato REST atual lista exatamente estas cinco propriedades:
 
 | Escopo e chave | Uso no produtor | Estado inicial proposto para uma cópia ainda isolada |
@@ -98,5 +115,8 @@ alterar a oficial ou ampliar acesso nesta integração.
 - Identidade/autorização revogadas e relatório de cliente adulterado: nenhuma
   liberação. Validar Era, Ciclo e modelo sintético em cópias descartáveis.
 
-Não houve novo Google/Discord, piloto, Apps Script instalado, produtor editado,
-modelo pago, merge ou publicação para esta investigação.
+A investigação inicial não usou rede nem editou o produtor. Depois do aceite do
+mantenedor, o protótipo foi implementado no PR31 e instalado apenas numa cópia
+privada descartável para ensaio. Isso não altera a ficha oficial, o acesso OAuth
+das Guias nem a produção. O resultado do ensaio deve ser registrado separadamente;
+não converter aprovação offline em prova nativa de ativação.
