@@ -29,7 +29,7 @@ class DiagnosticoServicoTeste(unittest.IsolatedAsyncioTestCase):
             if self.http_hook: await self.http_hook(req)
             return httpx.Response(200, json={**dict(id=self.fonte, mimeType=MIME,
                 isAppAuthorized=True, trashed=False, version=self.source_version,
-                ownedByMe=True, shared=False, permissions=[dict(type='user', role='owner')]),
+                modifiedTime='2026-10-30T02:12:53.050Z', ownedByMe=True, shared=False, permissions=[dict(type='user', role='owner')]),
                 **getattr(self, 'source_patch', {})})
         if req.url.host == 'sheets.googleapis.com' and self.fonte in req.url.path:
             self.req.append(req)

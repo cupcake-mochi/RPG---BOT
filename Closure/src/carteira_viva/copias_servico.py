@@ -2,6 +2,8 @@
 from .copias_google import enviar, procurar, observar, PRAZO_JOB_COPIA
 from .segredos import Conflito
 from .copias_banco import hash_texto
+from .equivalencia_versao import impressao, provar
+from .grade_inicializacao import LeitorGradeRest
 from .observacoes_copia import ObservacaoVersao
 
 
@@ -32,25 +34,50 @@ async def copiar(servico, servidor, usuario, *, conexao, modelo, pedido):
             await contexto()
             return r
 
-        async def versao(p, acesso, origem):
-            return await p.versao_arquivo(acesso, origem)
+        async def observar_arquivo(p, acesso, arquivo):
+            return await p.observar_arquivo(acesso, arquivo)
+
+        async def obs(arquivo):
+            return await rede(observar_arquivo, arquivo)
+
+        async def revalidar():
+            # Contexto estável desta operação para o leitor; o banco é reconferido em contexto().
+            await contexto()
+            return hash_texto('impressao_copia:' + ref.operacao + ':' + cred.conta)
+
+        async def cota():
+            await servico.cotas.esperar(hash_texto(cred.conta))
+
+        async def medir_impressao(arquivo):
+            leitor = LeitorGradeRest(servico.provedores, revalidar, cota, agrupar=True)
+            return await impressao(leitor, obs, token.acesso, arquivo)
 
         async def conferir_origem(etapa):
             m, d = await contexto()
-            v = await rede(versao, d['origem'])
+            v, mod = await obs(d['origem'])
             m, d = await contexto()
             esperada = d['versao_origem'] if d['estado'] != 'preparada' else (
                 d['versao_origem'] or d['versao_configurada'])
             await b('registrar_observacao_copia', m, ref, ObservacaoVersao(etapa, esperada, v))
             if esperada is not None and v != esperada:
-                raise Conflito('O modelo mudou durante a cópia. Não inicialize esse arquivo.')
-            return v
+                async def registrar(imp):
+                    m2, _ = await contexto()
+                    await b('registrar_equivalencia_copia', m2, ref, 'origem', imp)
+                    await b('registrar_observacao_copia', m2, ref, ObservacaoVersao('origem_equivalente', esperada, v))
+                if d['estado'] == 'preparada' or not await provar(
+                        d, 'origem', v, mod, lambda: medir_impressao(d['origem']), registrar):
+                    raise Conflito('O modelo mudou durante a cópia. Não inicialize esse arquivo.')
+            return v, mod
 
         m, d = await contexto()
         if d['estado'] == 'preparada':
-            v = await conferir_origem('origem_antes_copia')
+            v, _ = await conferir_origem('origem_antes_copia')
+            # Referência de conteúdo da origem antes do POST (versão e modifiedTime estáveis).
+            ref_origem = await medir_impressao(d['origem'])
+            if ref_origem.versao != v:
+                raise Conflito('O modelo mudou durante a cópia. Não inicialize esse arquivo.')
             m, d = await contexto()
-            await b('fixar_versao_copia', m, ref, v)
+            await b('fixar_versao_copia', m, ref, v, ref_origem)
             # A cota e as permissões vêm antes da transação que arma o envio.
             await servico.cotas.esperar(hash_texto(cred.conta))
             m, d = await contexto()
@@ -78,10 +105,16 @@ async def copiar(servico, servidor, usuario, *, conexao, modelo, pedido):
         m, d = await contexto()
         await b('registrar_observacao_copia', m, ref, ObservacaoVersao(
             'copia_apos_origem', destino.versao, final.versao))
-        if final.versao != destino.versao:
+        if final.versao != destino.versao and (final.modificado is None or final.modificado != destino.modificado):
             raise Conflito('A candidata mudou durante a conferência da origem. Não inicialize esse arquivo.')
+        ref_destino = None
+        if d['estado'] == 'enviada':
+            # Referência de conteúdo da cópia, da versão que será identificada.
+            ref_destino = await medir_impressao(arquivo)
+            if (ref_destino.versao, ref_destino.modificado) != (final.versao, final.modificado):
+                raise Conflito('A candidata mudou durante a conferência da origem. Não inicialize esse arquivo.')
         m, d = await contexto()
-        return await b('registrar_destino_copia', m, ref, final)
+        return await b('registrar_destino_copia', m, ref, final, ref_destino)
 
     return await servico.fila.executar(('copia_modelo', ref.operacao), (servidor, usuario), executar,
                                        prazo=PRAZO_JOB_COPIA, espera=PRAZO_JOB_COPIA + 90)

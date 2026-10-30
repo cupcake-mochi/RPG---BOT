@@ -38,6 +38,9 @@ class MembroAusente(AcessoNegado):
     codigo = 'membro_ausente'
 
 
+MODIFICADO = re.compile(r'[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]{1,9})?Z')
+
+
 class VersaoAlterada(ErroProvedor):
     """Dados técnicos só para o diário interno; mensagem pública permanece genérica."""
     def __init__(self, esperada, observada):
@@ -160,6 +163,20 @@ class Provedores:
                 not re.fullmatch(r"[0-9]{1,30}", meta["version"])):
             raise ErroProvedor("arquivo")
         return meta["version"]
+
+    async def observar_arquivo(self, acesso: str, arquivo: str):
+        """Versão e modifiedTime na mesma resposta. A versão sobe sem edição (30/10)."""
+        if not isinstance(arquivo, str) or not ARQUIVO.fullmatch(arquivo):
+            raise ErroProvedor("arquivo")
+        meta = await self._json("https://www.googleapis.com/drive/v3/files/" + arquivo +
+                                "?fields=id,mimeType,isAppAuthorized,trashed,version,modifiedTime", acesso)
+        if (not isinstance(meta, dict) or meta.get("id") != arquivo or
+                meta.get("mimeType") != MIME or meta.get("isAppAuthorized") is not True or
+                meta.get("trashed") is True or not isinstance(meta.get("version"), str) or
+                not re.fullmatch(r"[0-9]{1,30}", meta["version"]) or
+                not isinstance(meta.get("modifiedTime"), str) or not MODIFICADO.fullmatch(meta["modifiedTime"])):
+            raise ErroProvedor("arquivo")
+        return meta["version"], meta["modifiedTime"]
 
     async def ler_analise(self, acesso: str, arquivo: str):
         """Grade de resultados calculados; nunca exporta fórmulas ou o livro inteiro."""

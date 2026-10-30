@@ -12,6 +12,7 @@ from .grade_inicializacao import LeitorGradeRest
 from .provedores import ErroProvedor, VersaoAlterada
 from .observacoes_copia import ObservacaoVersao
 from .segredos import AcessoNegado, Conflito
+from .equivalencia_versao import impressao, provar
 
 
 async def inicializar(servico, servidor, usuario, ref):
@@ -52,10 +53,28 @@ async def inicializar(servico, servidor, usuario, ref):
             await registrar(etapa, copia['versao_destino'], r.versao)
             return r
 
+        async def obs(arquivo):
+            return await rede(servico.provedores.observar_arquivo, token.acesso, arquivo)
+
+        async def medir_impressao(arquivo):
+            return await impressao(LeitorGradeRest(servico.provedores, contexto, cota, agrupar=True),
+                                   obs, token.acesso, arquivo)
+
+        async def provar_alvo(alvo, versao, modificado, arquivo):
+            # Diário atual: equivalências já provadas ficam fora do contexto financeiro.
+            d = await b('contexto_copia', await servico._membro(servidor, usuario), ref)
+            base = d['versao_origem'] if alvo == 'origem' else d['versao_destino']
+
+            async def gravar(imp):
+                atual = await servico._membro(servidor, usuario)
+                await b('registrar_equivalencia_copia', atual, ref, alvo, imp)
+                await registrar('origem_equivalente' if alvo == 'origem' else 'copia_equivalente', base, versao)
+            return await provar(d, alvo, versao, modificado, lambda: medir_impressao(arquivo), gravar)
+
         async def origem():
-            v = await rede(servico.provedores.versao_arquivo, token.acesso, copia['origem'])
+            v, mod = await obs(copia['origem'])
             await registrar('origem_financeiro', copia['versao_origem'], v)
-            if v != copia['versao_origem']:
+            if v != copia['versao_origem'] and not await provar_alvo('origem', v, mod, copia['origem']):
                 raise Conflito('O modelo mudou depois da cópia.')
 
         async def medir_copia():
@@ -72,7 +91,8 @@ async def inicializar(servico, servidor, usuario, ref):
         primeira = await destino()
         m = await servico._membro(servidor, usuario)
         estado = await b('estado_financeiro', m, ref)
-        if (estado is None or estado['estado'] == 'preparada') and primeira.versao != copia['versao_destino']:
+        if ((estado is None or estado['estado'] == 'preparada') and primeira.versao != copia['versao_destino'] and
+                not await provar_alvo('destino', primeira.versao, primeira.modificado, copia['destino'])):
             raise Conflito('A cópia mudou desde a identificação. Não inicialize esse arquivo.')
         if estado is None:
             plano = await medir_copia()
@@ -84,6 +104,9 @@ async def inicializar(servico, servidor, usuario, ref):
             # Esperar depois dela usaria uma versão potencialmente envelhecida.
             await cota(); await contexto()
             observado = await destino('copia_antes_envio')
+            if (observado.versao != estado['versao_original'] and
+                    not await provar_alvo('destino', observado.versao, observado.modificado, copia['destino'])):
+                raise Conflito('A cópia mudou antes da escrita.')
             m = await servico._membro(servidor, usuario)
             envio = await b('armar_financeiro', m, ref, observado.versao)
             if envio is not None:

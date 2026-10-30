@@ -33,6 +33,9 @@ class PlanoFinanceiro:
     pedidos: bytes = field(repr=False)
     paginas: int
     conferencia: dict = field(repr=False)
+    # Só conteúdo (entradas, notas, formatos) e layout: sem arquivo nem contexto.
+    # Serve de impressão para provar que uma versão nova do mesmo arquivo não mudou.
+    conteudo: str = field(default='', repr=False)
 
 
 class MedicaoFinanceira:
@@ -45,6 +48,7 @@ class MedicaoFinanceira:
                         for op, p in self.auditor._ops if op['tipo'] == 'guarda'}
         self.layout = hash_obj([(f.aba, f.grade, f.pos) for f in plano.faixas])
         self.atual = self.projecao = hash_obj([CONTRATO_SHA256, plano.arquivo, plano.contexto, self.layout])
+        self.conteudo = hash_obj([CONTRATO_SHA256, 'conteudo', self.layout])
         self.n = 0
         self.alvos = []
         self.pedidos = []
@@ -110,6 +114,7 @@ class MedicaoFinanceira:
             agora.append(a)
             depois.append(d)
         self.atual = hash_obj([self.atual, indice, hash_obj(agora)])
+        self.conteudo = hash_obj([self.conteudo, indice, hash_obj(agora)])
         self.projecao = hash_obj([self.projecao, indice, hash_obj(depois)])
         self.n += 1
 
@@ -121,7 +126,7 @@ class MedicaoFinanceira:
         if len(pedidos) > 16384:
             raise ErroCarteira('Pedido financeiro excede o limite.')
         return PlanoFinanceiro(self.plano.arquivo, self.plano.versao, self.plano.contexto, self.layout,
-            self.atual, self.projecao, pedidos, self.n, self.auditor.publico())
+            self.atual, self.projecao, pedidos, self.n, self.auditor.publico(), self.conteudo)
 
 async def medir(leitor, acesso, arquivo):
     """Lê na ordem do plano. Agrupar ou não é escolha de quem cria o leitor.

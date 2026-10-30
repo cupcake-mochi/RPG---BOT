@@ -61,8 +61,12 @@ class Financeiro:
             raise ErroCarteira('Use o planejamento completo do leitor financeiro.')
         with self._transacao():
             copia, contexto = self.contexto_financeiro(membro, ref)
-            if (plano.arquivo != copia['destino'] or plano.versao != copia['versao_destino'] or
-                    plano.contexto != contexto):
+            from .equivalencia_versao import versoes_aceitas
+            ref_destino = copia.get('ref_destino')
+            if (plano.arquivo != copia['destino'] or plano.contexto != contexto or
+                    plano.versao not in versoes_aceitas(copia, 'destino') or
+                    (plano.versao != copia['versao_destino'] and
+                     (ref_destino is None or plano.conteudo != ref_destino['conteudo']))):
                 raise Conflito('A cópia mudou desde sua criação. Não inicialize esse arquivo.')
             atual = self.estado_financeiro(membro, ref)
             if atual:
@@ -91,7 +95,11 @@ class Financeiro:
             if d['estado'] != 'preparada':
                 return None  # Enviada/conferida não permitem outro POST.
             if versao != d['versao_original']:
-                raise Conflito('A cópia mudou antes da escrita.')
+                # Só versão já provada equivalente (mesmo modifiedTime e conteúdo).
+                from .equivalencia_versao import versoes_aceitas
+                aceitas = versoes_aceitas(self.contexto_copia(membro, ref), 'destino')
+                if versao not in aceitas or d['versao_original'] not in aceitas:
+                    raise Conflito('A cópia mudou antes da escrita.')
             self._guardar_financeiro(ref, {**d, 'estado': 'enviada'})
             return EnvioFinanceiro(d['arquivo'], d['pedidos'].encode()) if d['antes'] != d['depois'] else None
 

@@ -1,6 +1,6 @@
 # Proposta: versão nova do Drive sem edição
 
-30/10/2026 · PR 84 · **desenho para aprovação; nada implementado além do prazo da cópia.**
+30/10/2026 · PR 84 · **aprovado pelo mantenedor e implementado offline** (seção final).
 Base: [experimento nativo](NATIVO-VERSOES-DRIVE-2026-10-29.md) — o Google sobe `version` sem
 mudar `modifiedTime` (cópia 8→9 em < 30 s; fonte 13→14 minutos depois).
 
@@ -58,3 +58,36 @@ criação bloqueada; nenhum campo novo exposto ao cliente.
 
 `files.copy` espera até 120 s pela resposta (conexão continua 15 s) e o job da cópia tem 300 s
 na fila. Sem resposta, segue a recuperação pelo marcador, sem repetir o POST.
+
+## Implementação · 30/10
+
+Aprovado pelo mantenedor. Implementado offline, sem ensaio nativo ainda.
+
+- `Provedores.observar_arquivo`: versão e `modifiedTime` na mesma resposta (formato validado).
+  `versao_arquivo` continua igual nos outros fluxos. `DestinoCopia.modificado` opcional:
+  ausente nunca serve de prova.
+- `equivalencia_versao.py`: `Impressao`, `impressao()` (medição financeira em lotes com versão e
+  `modifiedTime` iguais do início ao fim), `versoes_aceitas()` e `provar()`.
+- **Impressão = novo hash `conteudo` da medição.** Ao testar, o `antes` mostrou-se impróprio: a
+  semente inclui o ID do arquivo e o contexto da operação, então mudava entre o fluxo de cópia e o
+  financeiro. `conteudo` usa os mesmos dados por página, com semente só do contrato e do layout.
+  Regressão própria prova que ele não muda com o contexto e muda com o conteúdo.
+- Diário da cópia: `ref_origem` (gravada com `fixar_versao_copia`, antes do POST), `ref_destino`
+  (gravada na identificação) e `equivalencias` (até 8 por alvo), fora do hash de contexto como o
+  histórico de observações. `registrar_equivalencia_copia` confere de novo contra a referência.
+- Cópia: mede a origem antes do POST e a cópia na identificação. **Candidata** com versão nova é
+  aceita só se o `modifiedTime` da primeira observação não mudou: a versão da candidata nunca foi
+  lida nem usada como conteúdo; a prova de conteúdo começa em `ref_destino`.
+- Financeiro: origem e destino provados no início; antes de armar a escrita, versão nova do destino
+  só com prova; `preparar_financeiro` exige versão aceita e, se não for a original, `conteudo` igual
+  a `ref_destino`; `armar_financeiro` aceita só versões provadas.
+- **Diferença do desenho: a leitura (G5) continua estrita.** Subida de versão no meio de uma
+  medição recusa como antes. Mais conservador; revisitar se o ensaio nativo mostrar necessidade.
+- **Fora do escopo:** a intenção `preparada` ainda compara com a versão configurada do modelo, e
+  `validar_modelo` continua recusando metadados diferentes durante a prévia. Operações antigas sem
+  referência continuam estritas.
+- **Custo:** cada impressão gasta ~38 cotas locais (11 lotes × 3 + observações). Com o limite local
+  de 45/min, a cópia passa a esperar cerca de 1 minuto a mais; cabe no prazo de 300 s.
+
+Testes: cópia 37 (4 novos, 3 ajustados para simular edição real com `modifiedTime` novo); financeiro
+40 (5 novos). Ensaio nativo da escrita financeira continua pendente.

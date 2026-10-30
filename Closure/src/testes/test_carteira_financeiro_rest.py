@@ -52,6 +52,7 @@ class FinanceiroRestTeste(unittest.IsolatedAsyncioTestCase):
         self.data.literal('CARTEIRA',3,46,True)
         self.http_hook=None;self.req=[];self.posts=[];self.perder=False;self.aplicar=True;self.post_status=200
         self.source_version='7';self.meta_patch={};self.token_erro=False
+        self.mod_fonte='2026-10-30T02:12:53.050Z';self.mod_destino='2026-10-30T02:19:28.736Z'
         self.prov=Provedores(self.cfg,agora=self.agora,transporte=httpx.MockTransport(self.http))
         self.s=Consultas(self.dados,self.prov,agora=self.agora);self.cotas=CotasTeste();self.s.cotas=self.cotas
         self.m=Membro('111','222');self.fonte=referencia()['arquivo']
@@ -100,6 +101,50 @@ class FinanceiroRestTeste(unittest.IsolatedAsyncioTestCase):
         # Leitura antes do POST cobre exatamente as faixas do plano individual.
         self.assertEqual(len(self.posts),1)
         self.assertEqual(json.loads(esperado.pedidos),self.posts[0])
+
+    async def com_referencias(self):
+        """Cópia identificada com impressões de origem e destino, como no fluxo novo."""
+        plano=await self.plano()
+        refs=dict(ref_origem=dict(versao='7',modificado=self.mod_fonte,conteudo=plano.conteudo),
+                  ref_destino=dict(versao='7',modificado=self.mod_destino,conteudo=plano.conteudo))
+        def gravar(c):
+            with c._transacao():c._guardar_copia(self.ref,{**c.contexto_copia(self.m,self.ref),**refs})
+        await self.executar_no_worker(gravar);self.req.clear()
+
+    async def test_impressao_de_conteudo_nao_depende_de_contexto_nem_arquivo(self):
+        antes=await self.plano();await self.com_referencias();depois=await self.plano()
+        self.assertNotEqual(antes.contexto,depois.contexto);self.assertNotEqual(antes.antes,depois.antes)
+        self.assertEqual(antes.conteudo,depois.conteudo);self.assertRegex(antes.conteudo,'^[a-f0-9]{64}$')
+        self.data.literal('EXTRATO',3,1,'outra entrada fictícia')
+        self.assertNotEqual((await self.plano()).conteudo,depois.conteudo)
+
+    async def test_destino_sobe_so_versao_com_mesmo_conteudo_segue_com_um_post(self):
+        await self.com_referencias();self.data.versao='8'  # modifiedTime igual
+        await self.inicializar()
+        self.assertEqual(len(self.posts),1)
+        d=await self.b('contexto_copia',self.m,self.ref)
+        self.assertEqual(d['versao_destino'],'7')
+        self.assertEqual([e['versao'] for e in d['equivalencias']['destino']],['8'])
+
+    async def test_origem_sobe_so_versao_com_mesmo_conteudo_segue(self):
+        await self.com_referencias();self.source_version='8'
+        await self.inicializar()
+        self.assertEqual(len(self.posts),1)
+        d=await self.b('contexto_copia',self.m,self.ref)
+        self.assertEqual(d['versao_origem'],'7');self.assertEqual([e['versao'] for e in d['equivalencias']['origem']],['8'])
+
+    async def test_destino_sobe_versao_com_conteudo_diferente_recusa_sem_post(self):
+        await self.com_referencias();self.data.versao='8'
+        self.data.literal('DADOS_SALARIOS',2,12,'alteração fictícia sem modifiedTime')
+        with self.assertRaises(Conflito):await self.inicializar()
+        self.assertFalse(self.posts)
+        d=await self.b('contexto_copia',self.m,self.ref);self.assertFalse((d.get('equivalencias') or {}).get('destino'))
+
+    async def test_destino_sobe_versao_e_modificacao_recusa_sem_ler_conteudo(self):
+        await self.com_referencias();self.data.versao='8';self.mod_destino='2026-10-30T05:00:00.000Z'
+        with self.assertRaises(Conflito):await self.inicializar()
+        self.assertFalse(self.posts)
+        self.assertFalse([r for r in self.req if r.url.host=='sheets.googleapis.com'])
 
     async def test_medicao_agrupada_com_formula_no_lote_nao_le_lotes_seguintes(self):
         self.data.formula('EXTRATO',2,1,'=123',123)
@@ -172,10 +217,11 @@ class FinanceiroRestTeste(unittest.IsolatedAsyncioTestCase):
                 expires_in=3600,expires_at=self.agora()+3600,token_type='Bearer',scope=DRIVE_FILE))
         if req.url.host=='www.googleapis.com':
             arquivo=req.url.path.rsplit('/',1)[1]
-            if arquivo==self.fonte:return httpx.Response(200,json=dict(id=arquivo,mimeType=MIME,isAppAuthorized=True,trashed=False,version=self.source_version))
+            if arquivo==self.fonte:return httpx.Response(200,json=dict(id=arquivo,mimeType=MIME,isAppAuthorized=True,trashed=False,
+                version=self.source_version,modifiedTime=self.mod_fonte))
             self.assertEqual(arquivo,ARQUIVO)
             return httpx.Response(200,json={**dict(id=ARQUIVO,mimeType=MIME,isAppAuthorized=True,trashed=False,
-                version=self.data.versao,ownedByMe=True,shared=False,appProperties=marcadores(self.ref.operacao,self.fonte),
+                version=self.data.versao,modifiedTime=self.mod_destino,ownedByMe=True,shared=False,appProperties=marcadores(self.ref.operacao,self.fonte),
                 permissions=[dict(type='user',role='owner')]),**self.meta_patch})
         if req.method=='POST':
             self.assertEqual(req.url.host,'sheets.googleapis.com')
@@ -184,6 +230,12 @@ class FinanceiroRestTeste(unittest.IsolatedAsyncioTestCase):
             if self.aplicar:self.aplicar_pedidos(self.posts[-1])
             if self.perder:raise httpx.ReadTimeout('resposta fictícia perdida')
             return httpx.Response(self.post_status,json={'spreadsheetId':ARQUIVO})
+        if req.url.host=='sheets.googleapis.com' and req.url.path.endswith('/'+self.fonte):
+            # A origem tem a mesma grade fictícia; só o ID da planilha muda.
+            r=self.data.http(req)
+            if r.status_code!=200:return r
+            obj=json.loads(r.content);obj['spreadsheetId']=self.fonte
+            return httpx.Response(200,json=obj)
         return self.data.http(req)
 
     async def test_limpa_so_entradas_e_notas_mantem_formulas_configuracao_e_formato(self):

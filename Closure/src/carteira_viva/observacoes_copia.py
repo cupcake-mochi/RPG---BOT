@@ -6,7 +6,8 @@ from .segredos import ErroCarteira
 
 ETAPAS = frozenset(('origem_antes_copia', 'origem_antes_localizar', 'origem_apos_candidata',
                     'origem_financeiro', 'copia_candidata', 'copia_apos_origem', 'copia_antes_grade',
-                    'copia_antes_envio', 'copia_fechamento', 'copia_leitura'))
+                    'copia_antes_envio', 'copia_fechamento', 'copia_leitura',
+                    'origem_equivalente', 'copia_equivalente'))
 LIMITE = 12
 
 
@@ -26,4 +27,6 @@ class ObservacaoVersao:
 def conteudo_contexto(copia):
     # Só o histórico técnico fica fora do vínculo. Todos os campos de autoridade,
     # inclusive candidata/versão original, continuam invalidando o contexto.
-    return {k: v for k, v in copia.items() if k != 'observacoes_versao'}
+    # Equivalências de versão também ficam fora: cada uma exige prova completa
+    # (modifiedTime e conteúdo) e não muda referência, recibo ou autoridade.
+    return {k: v for k, v in copia.items() if k not in ('observacoes_versao', 'equivalencias')}

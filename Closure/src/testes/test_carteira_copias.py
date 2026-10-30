@@ -22,6 +22,9 @@ from carteira_viva.segredos import AcessoNegado, Conflito, ErroCarteira
 from testes.test_carteira_banco import Fixtures, schema_historico
 from testes.test_carteira_modelos import referencia
 from testes.test_carteira_provedores import configuracao
+from testes.test_carteira_conferencia_inicializacao import Dados
+
+MODIFICADO = '2026-10-30T02:19:28.736Z'
 
 DESTINO = 'arquivo_descartavel_sintetico_copia_001'
 
@@ -136,6 +139,12 @@ class BancoCopias(Fixtures, unittest.TestCase):
         self.c.verificar_integridade()
 
 
+class CotasFicticias:
+    """Cota sem relógio real: as impressões de conteúdo somam ~80 GETs por cópia."""
+    def __init__(self): self.n = 0
+    async def esperar(self, conta): self.n += 1
+
+
 class CopiasServico(unittest.IsolatedAsyncioTestCase):
     async def asyncSetUp(self):
         self.tmp = TemporaryDirectory(); self.clock = [180000.]; self.agora = lambda:self.clock[0]
@@ -144,8 +153,12 @@ class CopiasServico(unittest.IsolatedAsyncioTestCase):
         self.req=[]; self.copiados=[]; self.marcador=None; self.hook=None; self.falha_post=False
         self.versao='7'; self.alteracao_meta={}; self.extra_lista=False; self.incompleta=False; self.renovacoes=0
         self.post_id=DESTINO;self.post_status=200;self.meta_indisponivel=False
+        # Grade fictícia do contrato financeiro para as impressões de conteúdo.
+        self.grade=Dados('financeiro')
+        for a in ('EXTRATO','SALÁRIOS','DADOS_SALARIOS'):self.grade.grades[a]['gridProperties']['rowCount']=20
+        self.mod_fonte=MODIFICADO;self.mod_destino=MODIFICADO;self.versao_destino='1';self.sheets_hook=None
         self.prov=Provedores(self.cfg, agora=self.agora, transporte=httpx.MockTransport(self.http))
-        self.s=Consultas(self.dados,self.prov,agora=self.agora)
+        self.s=Consultas(self.dados,self.prov,agora=self.agora);self.s.cotas=CotasFicticias()
         self.m=Membro('111','222')
         self.cid=await self.b('conectar',self.m,conta='conta-ficticia',cliente=self.cfg.google_id,refresh_token='refresh-ficticio')
         self.fonte=referencia()['arquivo']
@@ -161,8 +174,9 @@ class CopiasServico(unittest.IsolatedAsyncioTestCase):
         return await self.s.copiar_modelo('111',usuario,conexao=conexao or self.cid,modelo='servidor',pedido=pedido)
 
     def meta(self):
-        return dict(id=DESTINO,mimeType=MIME,isAppAuthorized=True,trashed=False,version='1',ownedByMe=True,
-                    shared=False,appProperties=self.marcador,permissions=[dict(type='user',role='owner')])
+        return dict(id=DESTINO,mimeType=MIME,isAppAuthorized=True,trashed=False,version=self.versao_destino,ownedByMe=True,
+                    shared=False,appProperties=self.marcador,permissions=[dict(type='user',role='owner')],
+                    modifiedTime=self.mod_destino)
 
     async def http(self,req):
         self.req.append(req)
@@ -182,8 +196,16 @@ class CopiasServico(unittest.IsolatedAsyncioTestCase):
             if self.falha_post:raise httpx.ReadTimeout('resposta fictícia perdida')
             return httpx.Response(self.post_status,json={'id':self.post_id})
         self.assertEqual(req.method,'GET')
+        if req.url.host=='sheets.googleapis.com':
+            arquivo=req.url.path.split('/')[-1];self.assertIn(arquivo,(self.fonte,DESTINO))
+            if self.sheets_hook:self.sheets_hook(arquivo,req)
+            r=self.grade.http(req)
+            if r.status_code!=200:return r
+            obj=json.loads(r.content);obj['spreadsheetId']=arquivo
+            return httpx.Response(200,json=obj)
         if req.url.path.endswith('/'+self.fonte):
-            return httpx.Response(200,json=dict(id=self.fonte,mimeType=MIME,isAppAuthorized=True,trashed=False,version=self.versao))
+            return httpx.Response(200,json=dict(id=self.fonte,mimeType=MIME,isAppAuthorized=True,trashed=False,
+                                                version=self.versao,modifiedTime=self.mod_fonte))
         if req.url.path.endswith('/'+DESTINO):return httpx.Response(503 if self.meta_indisponivel else 200,json={**self.meta(),**self.alteracao_meta})
         if req.url.path.endswith('/files'):
             q=parse_qs(req.url.query.decode());self.assertNotIn('trashed=false',q['q'][0])
@@ -198,7 +220,8 @@ class CopiasServico(unittest.IsolatedAsyncioTestCase):
     async def test_fluxo_identifica_copia_privada_sem_cadastrar_limpar_ou_liberar(self):
         r=await self.copiar();self.assertEqual(len(self.posts()),1);self.assertFalse(r['criacao_disponivel'])
         self.assertFalse(await self.b('listar',self.m));self.assertEqual(self.renovacoes,1)
-        self.assertFalse(any(x.url.host=='sheets.googleapis.com' for x in self.req))
+        # Lê o contrato (impressões de origem e destino), nunca escreve no Sheets.
+        self.assertFalse(any(x.url.host=='sheets.googleapis.com' and x.method!='GET' for x in self.req))
         self.assertNotIn(DESTINO,str(r));self.assertNotIn('access-ficticio',str(r))
         cred=await self.b('_credencial_copia',self.m,await self.ref())
         self.assertEqual(cred.refresh_token,'refresh-rotacionado-ficticio')
@@ -209,7 +232,7 @@ class CopiasServico(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(e.exception.codigo,'copia_incerta')
         await self.s.fechar();await self.dados.fechar()
         self.dados=DadosAsync(self.cfg,agora=self.agora);await self.dados.iniciar()
-        self.s=Consultas(self.dados,self.prov,agora=self.agora)
+        self.s=Consultas(self.dados,self.prov,agora=self.agora);self.s.cotas=CotasFicticias()
         self.assertTrue((await self.copiar())['copia_identificada']);self.assertEqual(len(self.posts()),1)
 
     async def test_post_lento_cabe_no_prazo_sem_repetir(self):
@@ -272,7 +295,7 @@ class CopiasServico(unittest.IsolatedAsyncioTestCase):
         async def hook(req):
             nonlocal vista
             if req.url.path.endswith('/'+DESTINO):vista=True
-            if vista and req.url.path.endswith('/'+self.fonte):self.alteracao_meta={'version':'2'}
+            if vista and req.url.path.endswith('/'+self.fonte):self.alteracao_meta={'version':'2','modifiedTime':'2026-10-30T03:00:00.000Z'}
         self.hook=hook
         with self.assertRaises(Conflito):await self.copiar()
         d=await self.b('contexto_copia',self.m,await self.ref())
@@ -285,7 +308,8 @@ class CopiasServico(unittest.IsolatedAsyncioTestCase):
 
     async def test_candidata_fica_persistida_quando_fonte_muda_sem_adotar_versao_nova(self):
         async def hook(req):
-            if req.url.path.endswith('/'+DESTINO):self.versao='8'
+            # Edição real: versão e modifiedTime mudam juntos.
+            if req.url.path.endswith('/'+DESTINO):self.versao='8';self.mod_fonte='2026-10-30T03:00:00.000Z'
         self.hook=hook
         with self.assertRaises(Conflito):await self.copiar()
         d=await self.b('contexto_copia',self.m,await self.ref())
@@ -346,11 +370,52 @@ class CopiasServico(unittest.IsolatedAsyncioTestCase):
 
     async def test_modelo_alterado_durante_copia_nao_e_identificado_ou_repetido(self):
         async def hook(req):
-            if req.url.path.endswith('/copy'):self.versao='8'
+            if req.url.path.endswith('/copy'):self.versao='8';self.mod_fonte='2026-10-30T03:00:00.000Z'
         self.hook=hook
         for _ in range(2):
             with self.assertRaises(Conflito):await self.copiar()
         self.assertEqual(len(self.posts()),1)
+
+    async def test_origem_sobe_so_versao_com_mesmo_conteudo_e_equivalente(self):
+        async def hook(req):
+            if req.url.path.endswith('/'+DESTINO):self.versao='8'  # modifiedTime igual
+        self.hook=hook
+        r=await self.copiar()
+        self.assertTrue(r['copia_identificada']);self.assertEqual(len(self.posts()),1)
+        d=await self.b('contexto_copia',self.m,await self.ref())
+        self.assertEqual(d['versao_origem'],'7')  # referência imutável
+        self.assertEqual([e['versao'] for e in d['equivalencias']['origem']],['8'])
+        self.assertIn('origem_equivalente',[o['etapa'] for o in d['observacoes_versao']])
+
+    async def test_origem_sobe_so_versao_mas_conteudo_mudou_recusa(self):
+        async def hook(req):
+            if req.url.path.endswith('/'+DESTINO) and self.versao=='7':
+                self.versao='8'
+                self.grade.literal('EXTRATO',2,1,'mudança fictícia na origem')
+        self.hook=hook
+        with self.assertRaises(Conflito):await self.copiar()
+        d=await self.b('contexto_copia',self.m,await self.ref())
+        self.assertEqual(d['estado'],'enviada');self.assertFalse((d.get('equivalencias') or {}).get('origem'))
+        self.assertEqual(len(self.posts()),1)
+
+    async def test_candidata_sobe_so_versao_e_identificada_na_versao_lida(self):
+        vista=False
+        async def hook(req):
+            nonlocal vista
+            if req.url.path.endswith('/'+DESTINO):vista=True
+            if vista and req.url.path.endswith('/'+self.fonte):self.versao_destino='2'  # modifiedTime igual
+        self.hook=hook
+        r=await self.copiar();self.assertTrue(r['copia_identificada'])
+        d=await self.b('contexto_copia',self.m,await self.ref())
+        self.assertEqual(d['candidata'],dict(arquivo=DESTINO,versao='1'))
+        self.assertEqual(d['versao_destino'],'2');self.assertEqual(d['ref_destino']['versao'],'2')
+
+    async def test_equivalencia_nao_muda_contexto_financeiro(self):
+        from carteira_viva.observacoes_copia import conteudo_contexto
+        await self.copiar()
+        d=await self.b('contexto_copia',self.m,await self.ref())
+        self.assertEqual(conteudo_contexto(d),conteudo_contexto({**d,'equivalencias':{'origem':[{'versao':'9'}]}}))
+        self.assertIn('ref_origem',conteudo_contexto(d));self.assertIn('ref_destino',conteudo_contexto(d))
 
     async def test_multiplos_candidatos_na_busca_nao_escolhem_primeiro(self):
         self.falha_post=True

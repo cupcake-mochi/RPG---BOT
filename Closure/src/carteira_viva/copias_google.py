@@ -11,7 +11,7 @@ from .copias_banco import hash_texto
 DRIVE = 'https://www.googleapis.com/drive/v3/files'
 MIME = 'application/vnd.google-apps.spreadsheet'
 ID = re.compile(r'[A-Za-z0-9_-]{20,200}\Z')
-CAMPOS = 'id,mimeType,isAppAuthorized,trashed,version,ownedByMe,shared,driveId,appProperties,permissions(type,role,deleted)'
+CAMPOS = 'id,mimeType,isAppAuthorized,trashed,version,modifiedTime,ownedByMe,shared,driveId,appProperties,permissions(type,role,deleted)'
 
 
 @dataclass(frozen=True, repr=False)
@@ -20,9 +20,15 @@ class DestinoCopia:
     versao: str
     operacao: str
     origem: str
+    # None = não observado; nunca serve de prova de equivalência.
+    modificado: str | None = None
 
     def __post_init__(self):
         from .segredos import ErroCarteira
+        from .provedores import MODIFICADO
+        if self.modificado is not None and (type(self.modificado) is not str or
+                                            not MODIFICADO.fullmatch(self.modificado)):
+            raise ErroCarteira('Observação de cópia inválida.')
         if (any(not isinstance(s, str) or not ID.fullmatch(s) for s in (self.arquivo, self.origem)) or
                 self.arquivo == self.origem or not isinstance(self.versao, str) or
                 not re.fullmatch(r'[0-9]{1,30}', self.versao) or not isinstance(self.operacao, str) or
@@ -130,4 +136,7 @@ async def observar(provedor, acesso, operacao, origem, arquivo):
     if (not isinstance(meta.get('appProperties'), dict) or
             any(meta['appProperties'].get(k) != v for k, v in props.items())):
         raise ErroProvedor('copia_invalida')
-    return DestinoCopia(arquivo, meta['version'], operacao, origem)
+    mod = meta.get('modifiedTime')
+    from .provedores import MODIFICADO
+    return DestinoCopia(arquivo, meta['version'], operacao, origem,
+                        mod if isinstance(mod, str) and MODIFICADO.fullmatch(mod) else None)

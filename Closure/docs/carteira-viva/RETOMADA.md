@@ -3,6 +3,11 @@
 Atualizado em 29/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
+## Versões equivalentes · 30/10 — implementado offline
+
+Versão nova só com `modifiedTime` igual e impressão de conteúdo igual; recibos imutáveis.
+Próximo: ensaio nativo da escrita financeira. [Detalhes](VERSOES-EQUIVALENTES-PROPOSTA.md).
+
 ## Versões do Drive · 30/10 — causa das recusas de 28/10
 
 O Google sobe `version` sozinho (cópia 8→9; fonte 13→14 minutos depois) sem mudar
