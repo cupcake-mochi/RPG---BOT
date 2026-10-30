@@ -1,5 +1,25 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Escrita financeira nativa · 30/10 — células e recuperação comprovadas
+
+Código `583a95b`: CI completo41055294614 aprovado, 1.639 executados/1.638 aprovados/
+um opcional pulado, zero falhas, 293,752 s; job concluído às 09:31:16 Brasília.
+Ensaio encerrado: fonte nova na conta do consentimento, cópia pelo próprio bot,
+um POST Drive200; duas coletas recusadas por versão alterada, depois a mesma
+operação identificada com impressões, sem novo POST. Um POST Sheets200 teve a
+resposta descartada de propósito; diário `enviada`. Processo novo reconciliou em
+161,725 s, zero POST Drive/Sheets, `celulas_conferidas` e recibos intactos.
+Leitura independente confirmou dado fictício preservado na fonte e limpo na cópia.
+Financeiro completo continua falso, propriedades pendentes e quatro indicadores
+falsos. Equivalências adicionais0/0: não declarar prova nativa desse registro.
+Limpeza às 09:55:09: duas descartáveis na lixeira recuperável, grant revogado,
+recusa sem Drive/Sheets, base/ledger íntegros e vazios, porta livre/abas próprias
+fechadas. Nada desse piloto fica ativo. Sem correção de fonte, suíte/pacote
+repetidos, merge/deploy. [Prova e próximos passos](NATIVO-ESCRITA-EQUIVALENTE-2026-10-30.md).
+Etapa7 parcial; propriedades/concorrência/demais domínios/preservação/automações/
+prova integral e etapas 8–10 pendentes. Entradas datadas abaixo são históricas.
+
+
 ## Checkpoint de coleta agrupada · 29/10
 
 Salvo para desligamento solicitado pelo usuário. Só diagnóstico ativa os lotes;

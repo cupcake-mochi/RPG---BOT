@@ -1,6 +1,6 @@
 # Carteira viva e personagens
 
-Planejamento de 26/10/2026, atualizado em 28/10. **Não publicado.**
+Planejamento de 26/10/2026, atualizado em 30/10. **Não publicado.**
 Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes. A galeria e a
 Carteira web têm provas locais/nativas registradas nas respectivas etapas,
 mas ainda não fazem parte do bot em produção. A etapa 7 configura o modelo
@@ -268,7 +268,12 @@ As etapas são sequenciais; cada uma deve caber numa PR revisável. Dividir uma
 etapa em PRs menores se necessário, mantendo funções incompletas desligadas.
 Não abrir dez PRs vazias nem tratar aprovação do plano como autorização de deploy.
 
-### Divisão da etapa 7 · 28/10
+### Divisão da etapa 7 · fechamento em30/10
+
+[Células financeiras e recuperação nativas comprovadas](NATIVO-ESCRITA-EQUIVALENTE-2026-10-30.md):
+um POST Sheets e reconciliação após reinício sem novo envio. Não conclui propriedades,
+concorrência, demais domínios ou preservação/automações.7C e7D continuam parciais,
+criação bloqueada. Provas de28/10 abaixo são históricas.
 
 Diagnóstico offline de diferenças por categoria implementado e composto no serviço;
 leitura real de progressão comprovada no caminho observado e financeiro ainda

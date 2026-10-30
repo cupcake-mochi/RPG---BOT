@@ -6,6 +6,15 @@
 Cópia já alterada agora é recusada antes de ler células; mudanças durante
 a leitura ficam registradas no diário técnico cifrado, sem renovar versões.
 
+## Fechamento posterior · 30/10
+
+[Células e reconciliação nativas aprovadas](NATIVO-ESCRITA-EQUIVALENTE-2026-10-30.md)
+com código583a95b: único POST Sheets200 com resposta descartada; processo novo
+conferiu as células sem repetir o envio. Fonte/cópia na lixeira, grant revogado,
+base vazia e piloto encerrado. Propriedades/concorrência/demais domínios e criação
+continuam pendentes. O registro abaixo descreve a rodada de28/10 e seu código;
+as pendências de ensaio daquela data não prevalecem sobre este fechamento.
+
 ## Ensaio real
 
 [Encerrado em 28/10 com recusas seguras](NATIVO-FINANCEIRO-2026-10-28.md):

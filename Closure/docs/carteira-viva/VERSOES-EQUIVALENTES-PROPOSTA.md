@@ -1,6 +1,10 @@
 # Proposta: versão nova do Drive sem edição
 
 30/10/2026 · PR 84 · **aprovado pelo mantenedor e implementado offline** (seção final).
+[Escrita financeira e recuperação nativas,30/10](NATIVO-ESCRITA-EQUIVALENTE-2026-10-30.md)
+aprovadas no caminho observado; sem equivalências extras registradas0/0.
+O registro por impressão de uma versão equivalente continua validado offline.
+
 Base: [experimento nativo](NATIVO-VERSOES-DRIVE-2026-10-29.md) — o Google sobe `version` sem
 mudar `modifiedTime` (cópia 8→9 em < 30 s; fonte 13→14 minutos depois).
 
@@ -61,7 +65,7 @@ na fila. Sem resposta, segue a recuperação pelo marcador, sem repetir o POST.
 
 ## Implementação · 30/10
 
-Aprovado pelo mantenedor. Implementado offline, sem ensaio nativo ainda.
+Aprovado pelo mantenedor. Implementado offline; o fluxo financeiro foi validado nativamente no fechamento acima, sem exercitar o registro de equivalências extras.
 
 - `Provedores.observar_arquivo`: versão e `modifiedTime` na mesma resposta (formato validado).
   `versao_arquivo` continua igual nos outros fluxos. `DestinoCopia.modificado` opcional:
@@ -90,4 +94,4 @@ Aprovado pelo mantenedor. Implementado offline, sem ensaio nativo ainda.
   de 45/min, a cópia passa a esperar cerca de 1 minuto a mais; cabe no prazo de 300 s.
 
 Testes: cópia 37 (4 novos, 3 ajustados para simular edição real com `modifiedTime` novo); financeiro
-40 (5 novos). Ensaio nativo da escrita financeira continua pendente.
+40 (5 novos). Escrita financeira e recuperação nativas fechadas no relatório de30/10 acima; as demais limitações permanecem.

@@ -10,7 +10,7 @@ valendo para limites, caminhos e histórico.
   · PR84 em rascunho (base `codex/carteira-viva-etapa-6`/PR83). Sem merge nem deploy.
 - Cópia local: `/home/mizuki/.codex/tmp/carteira-etapa7-linux`. Testes a partir de `Closure/src`:
   `../.venv/bin/python -m unittest discover -s testes` (~10 min).
-- Último código: `583a95b` (CI rodando ao fechar; `5f64c84` e `c2a4b27` passaram).
+- Último código: `583a95b`; CI 41055294614 aprovado: 1.639 executados/1.638 aprovados/um opcional, zero falhas, 293,752 s (30/10 às 09:31:16 Brasília). O fechamento seguinte é só documental.
 - Pilotos privados fora do Git em `~/.local/share/guias-ciclo/carteira-piloto/` (pastas 700,
   arquivos 600). Todos encerrados; nenhum grant ativo, porta 8876 livre.
 
@@ -29,17 +29,33 @@ valendo para limites, caminhos e histórico.
    `modifiedTime` idêntico e impressão de conteúdo igual (hash `conteudo` da medição). Leitura
    segue estrita. [Desenho e implementação](VERSOES-EQUIVALENTES-PROPOSTA.md).
 
+## Marco nativo fechado · 30/10
+
+[Escrita financeira e recuperação](NATIVO-ESCRITA-EQUIVALENTE-2026-10-30.md):
+cópia pelo bot e identificação com impressões, um POST Drive200 e um POST Sheets200.
+A resposta financeira foi descartada de propósito; processo novo reconciliou por
+leitura, sem segundo POST. Células conferidas e recibos intactos. Duas passagens
+anteriores de cópia recusaram versão alterada; retomada da mesma operação, sem
+outro envio ao Drive e sem mudar G5. Nenhuma equivalência extra registrada 0/0:
+este caminho específico continua com prova offline, sem alegação de prova nativa.
+
+Sentinela fictícia preservada na fonte e limpa na cópia, verificada por leitura
+independente. Limpeza às 09:55:09 Brasília: ambas na lixeira recuperável, autorização
+revogada, recusa sem Drive/Sheets, base vazia/íntegra, porta livre e abas próprias
+fechadas. Kit e relatórios privados em `carteira-piloto/etapa7-escrita-equivalente-20261030`;
+credenciais fora do Git. Não reutilizar grant ou restaurar descartáveis.
+
 ## Próximo passo
 
-Ensaio nativo da **escrita financeira** em cópia descartável, com o código `583a95b` ou posterior:
-cópia pelo bot (`copiar_modelo`), identificação com as impressões, `inicializar_financeiro_celulas`
-com um único POST Sheets, e, se planejado, perda de resposta com reconciliação sem segundo POST.
-Depois: limpar (lixeira recuperável, revogar, base vazia) e registrar.
+Não repetir o ensaio financeiro encerrado por rotina. Fechar a solução/contrato das
+cinco propriedades Apps Script e da concorrência com o dono; depois os demais
+domínios de inicialização, preservação/automações e prova integral da 7C/7D.
+Se exigir produtor, escopos ou ativação manual, explicitar a dependência antes de
+implementar. Não ampliar permissões ou liberar criação por suposição.
 
-Antes do ensaio: conferir o CI de `583a95b`; montar o kit a partir de
-`carteira-piloto/etapa7-financeiro-agrupado-20261029` (runner com PID/batimento, registro por
-chamada, limpeza), **liberando apenas os POSTs necessários** (Drive copy e Sheets batchUpdate só na
-cópia criada) e **gravando o marcador antes de qualquer POST** (falha do experimento de 30/10).
+O kit comprovou registro durável antes dos POSTs de negócio e capacidade consumida
+mesmo após reinício. Uma nova hipótese nativa deve usar base/chave/token de serviço,
+fonte e autorização novos, só quando houver motivo; login/aviso continuam com a pessoa.
 
 ## Como os ensaios funcionaram (lições)
 
@@ -54,7 +70,7 @@ cópia criada) e **gravando o marcador antes de qualquer POST** (falha do experi
 
 ## Pendente
 
-Escrita financeira nativa e reconciliação; propriedades Apps Script; concorrência com o dono
+Registro nativo das equivalências extras ainda não exercitado; propriedades Apps Script; concorrência com o dono
 (sem CAS); preparada × versão configurada e `validar_modelo` com versões equivalentes; demais
 domínios, preservação, automações, prova integral; etapas 8–10. Criação de personagem
 **bloqueada**; quatro indicadores falsos. Sem merge/deploy, modelo pago, escopo novo, Gateway,
