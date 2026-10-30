@@ -3,6 +3,13 @@
 Atualizado em 29/10/2026. **Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes.**
 Carteira não publicada. Não confundir configuração de modelo com criação funcional.
 
+## Versões do Drive · 30/10 — causa das recusas de 28/10
+
+O Google sobe `version` sozinho (cópia 8→9; fonte 13→14 minutos depois) sem mudar
+`modifiedTime`. Guarda atual recusaria fluxos normais. Decisão pendente: conferência por
+conteúdo quando só a versão muda, e teto maior no `files.copy`.
+[Relatório](NATIVO-VERSOES-DRIVE-2026-10-29.md).
+
 ## Financeiro individual × agrupado nativo · 29/10 — iguais
 
 25/25 páginas nos dois modos, zero diferenças, 11 GETs Sheets contra 25. A medição
