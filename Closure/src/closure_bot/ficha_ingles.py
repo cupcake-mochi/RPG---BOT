@@ -134,7 +134,12 @@ def paginas(result,sheet,persona,manifest=None):
             if rank[target]>rank[curstate]:curstate=target;current.color=COR[target]
             current.add_field(name=n[:256],value=v,inline=False)
     summary=base(visual if visual in COR else 'pendente');summary.description=description
-    summary.add_field(name='Result',value=f'**{verdict.capitalize()}**\n{len(result.problemas)} error(s) · {len(result.pendencias)} pending check(s) · {len(result.notas)} GM adjustment(s)',inline=False)
+    summary.add_field(name='Result',value=f'**{verdict.capitalize()}**\n{len(result.problemas)} error(s) · {len(result.pendencias)} pending check(s) · {len(result.notas)} note(s) for the GM',inline=False)
+    summary.add_field(name='How to read the results',value=
+        '❌ **Error:** the data contains a mismatch or an invalid choice. Check the inputs behind the result; preserve the formulas.\n'
+        '⚠️ **Pending:** information, a choice or an approval is needed to finish the check.\n'
+        '👀 **Note:** the GM needs to check the source and validity of the adjustment. This is not a confirmed error.\n'
+        'After making corrections, submit the sheet for another analysis. This panel does not update automatically.',inline=False)
     reviews=[('❌ Corrections required',result.problemas),('⚠️ Missing or needs attention',result.pendencias),('👀 GM review',result.notas)]
     for heading,items in reviews:
         if items:

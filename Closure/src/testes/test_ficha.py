@@ -450,7 +450,7 @@ class Comando(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(embed.colour.value, 0xCC0102)  # erro mantém vermelho
         campos = {c.name: c.value for c in embed.fields}
         self.assertEqual((embed.title, embed.author.name, embed.description), ("Ficha de Kaori", "Closure", FALA["closure"]["reprovada"]))
-        self.assertIn("**Defesa**: está 15, o certo é 13", campos["❌ Precisa corrigir"])
+        self.assertIn("**Defesa**: A ficha informa 15; a conferência indica 13.", campos["❌ Precisa corrigir"])
         self.assertIn("Vida 23", campos["✅ Conferido e certo"])
         self.assertIn("Conferência parcial", campos["⏳ Ainda não conferido"])
         # A edição técnica continua no ping/manifesto; o painel usa linguagem comum.

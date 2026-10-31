@@ -80,4 +80,26 @@ def linha_clara(p, ficha, *, ingles=False):
             # Mantém também avisos novos, sem esconder a informação original.
             mensagem = detail(aviso) if ingles else aviso
 
+    if mensagem is None and p.regra in ('conta', 'formato'):
+        encontrado = escape_mentions(escape_markdown(str(p.encontrado))) or texto('(vazio)', '(empty)')
+        esperado = (detail(p.esperado) if ingles else p.esperado) or texto('(vazio)', '(empty)')
+        mensagem = texto(f'A ficha informa {encontrado}; a conferência indica {esperado}.',
+                          f'The sheet reports {encontrado}; the check expects {esperado}.')
+    calculado = re.fullmatch(r'exportar resultado calculado \(([^()]*)\)', p.esperado)
+    if mensagem is None and p.regra == 'informação' and calculado and not str(p.encontrado).strip():
+        mensagem = texto(
+            f'A leitura não trouxe o resultado deste campo. O bot calculou {calculado[1]}. '
+            'Aguarde a planilha terminar de calcular e envie uma nova análise; para XLSX, baixe o arquivo novamente. '
+            'Se continuar vazio, confira a exportação da ficha, sem substituir a fórmula.',
+            f'The data read from the sheet did not include this result. The bot calculated {calculado[1]}. '
+            'Wait for the sheet to finish calculating, then submit another analysis; for XLSX, download a fresh file. '
+            'If it is still empty, check the sheet export without replacing the formula.')
+    if mensagem is None and p.regra in ('equipamento', 'carga', 'talento', 'testes', 'custom',
+                                        'configuração', 'campanha', 'aprovação', 'informação',
+                                        'famílias', 'progressão', 'treinos', 'aptidão'):
+        esperado = detail(p.esperado) if ingles else p.esperado
+        encontrado = escape_mentions(escape_markdown(str(p.encontrado)))
+        mensagem = esperado.rstrip('.') + '.' if esperado else ''
+        mensagem += texto(f' Na ficha: {encontrado}.' if encontrado else ' Esse campo não veio preenchido na leitura.',
+                          f' In the sheet: {encontrado}.' if encontrado else ' This field was empty in the data read from the sheet.')
     return f'**{nome}**: {mensagem}' if mensagem is not None else None

@@ -269,13 +269,18 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
         if resultado.pendencias:
             estado = "Conferência parcial; pendências abertas"
         elif resultado.notas:
-            estado = "Conferência parcial; ajustes para o mestre"
+            estado = "Conferência parcial; observações para o mestre"
         elif resultado.nao_conferido:
             estado = "Conferência parcial; há partes não conferidas"
     titulo_estado = f"{estado} nas verificações feitas" if resultado.veredito != "formato desconhecido" else "Formato desconhecido — análise não realizada"
     resumo.add_field(name="Resultado", value=f"**{titulo_estado}**\n"
                      + " · ".join((_quantidade(len(resultado.problemas), "erro"), _quantidade(len(resultado.pendencias), "pendência"),
-                                    _quantidade(len(resultado.notas), "ajuste") + " para o mestre")), inline=False)
+                                    _quantidade(len(resultado.notas), "observação", "observações") + " para o mestre")), inline=False)
+    resumo.add_field(name="Como ler o resultado", value=
+                     "❌ **Erro:** a leitura encontrou uma divergência ou escolha inválida. Confira as entradas que geram o resultado; preserve as fórmulas.\n"
+                     "⚠️ **Pendência:** falta uma informação, escolha ou aprovação para concluir a conferência.\n"
+                     "👀 **Observação:** o mestre precisa conferir a origem e a validade do ajuste. Não significa erro confirmado.\n"
+                     "Depois de corrigir, envie a ficha para uma nova análise. Este painel não se atualiza sozinho.", inline=False)
     revisao = [("❌ Precisa corrigir", resultado.problemas), ("⚠️ Falta ou pede atenção", resultado.pendencias),
                ("👀 Pro mestre conferir", resultado.notas)]
     for nome, problemas in revisao:

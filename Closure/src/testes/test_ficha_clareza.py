@@ -41,6 +41,36 @@ class Categorias(unittest.TestCase):
 
 
 class Mensagens(unittest.TestCase):
+    def test_pendencia_vazia_explica_o_dado_ausente_sem_jargao_do_exportador(self):
+        p = Problema('informação', 'maestria', 'exportar resultado calculado (2)', '', 'progressao--prog-tabela-inicial')
+        antes = copy.deepcopy(p)
+        pt, en = _linha(p, {}), line(p, {})
+        self.assertIn('O bot calculou 2', pt)
+        self.assertIn('The bot calculated 2', en)
+        self.assertIn('sem substituir a fórmula', pt)
+        self.assertIn('download a fresh file', en)
+        self.assertNotIn('progressao--', pt + en)
+        self.assertNotIn('(informado: )', pt)
+        self.assertEqual(p, antes)
+
+    def test_resumo_explica_diferenca_entre_erro_pendencia_e_observacao(self):
+        from closure_bot.ficha_corretor import Resultado
+        from closure_bot.cogs.ficha import paginas
+        from closure_bot.idiomas import usar
+        from types import SimpleNamespace
+        r = Resultado('reprovada', problemas=[Problema('conta', 'defesa', '13', '15')],
+                      pendencias=[Problema('informação', 'maestria', 'confirmar maestria', '')],
+                      notas=[Problema('buff', 'buff.vida', '', '2')])
+        antes = copy.deepcopy(r)
+        for idioma, titulo, trecho in [('pt-BR', 'Como ler o resultado', 'Não significa erro confirmado'),
+                                      ('en', 'How to read the results', 'not a confirmed error')]:
+            with usar(idioma):
+                ps = paginas(r, {}, SimpleNamespace(chave='closure', nome='Closure', avatar_url=''))
+            campo = next(c for c in ps[0].fields if c.name == titulo)
+            self.assertIn(trecho, campo.value)
+            self.assertTrue(all(len(p) <= 6000 and all(len(c.value) <= 1024 for c in p.fields) for p in ps))
+        self.assertEqual(r, antes)
+
     def test_fluxo_motor_painel_pt_en_preserva_erros_e_nao_confia_na_coluna_c(self):
         from testes.test_r53 import completa_r53, gravar, REF
         from closure_bot.ficha_corretor import conferir
