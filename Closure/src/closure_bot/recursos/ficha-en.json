@@ -375,5 +375,10 @@
   "Cartões da ficha: link lido {0} vezes porque havia cartão salvando; {1} ainda em transição na leitura usada": "Sheet cards: the link was read {0} times because a card was being saved; {1} were still in transition in the selected read",
   "o Google respondeu {0}": "Google returned HTTP {0}",
   "escolha um Caminho": "choose a Path",
-  "escolha uma Trilha": "choose a Branch"
+  "escolha uma Trilha": "choose a Branch",
+  "preencha o nome do cadastro": "enter the name of this entry",
+  "retire o separador de lista ( · ) do nome do cadastro": "remove the list separator ( · ) from the entry name",
+  "remova os espaços em branco no início do nome; mantenha o mesmo nome nas escolhas que usam este cadastro": "remove leading whitespace from the name; use the same name in choices referring to this entry",
+  "remova os espaços em branco no fim do nome; mantenha o mesmo nome nas escolhas que usam este cadastro": "remove trailing whitespace from the name; use the same name in choices referring to this entry",
+  "remova os espaços em branco no início e no fim do nome; mantenha o mesmo nome nas escolhas que usam este cadastro": "remove leading and trailing whitespace from the name; use the same name in choices referring to this entry"
 }

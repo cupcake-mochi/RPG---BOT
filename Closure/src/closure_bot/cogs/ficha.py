@@ -133,7 +133,11 @@ def _quantidade(numero: int, singular: str, plural: str | None = None) -> str:
     return f"{numero} " + (singular if numero == 1 else plural or singular + "s")
 
 
-def _linha(p: Problema) -> str:
+def _linha(p: Problema, ficha=None) -> str:
+    from ..ficha_clareza import linha_clara
+    clara = linha_clara(p, ficha or {})
+    if clara is not None:
+        return clara
     if p.regra == "buff":
         valor = p.encontrado
         if re.fullmatch(r"\d+(?:[.,]\d+)?", valor):
@@ -278,7 +282,7 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
         if problemas:
             linhas, tamanho = [], 0
             for p in problemas[:3]:
-                linha = _linha(p)
+                linha = _linha(p, ficha)
                 if tamanho + len(linha) > 600:
                     break
                 linhas.append(linha)
@@ -329,7 +333,7 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
     campos_revisao = []
     for nome, problemas in revisao:
         if problemas:
-            campos_revisao += _campos(nome, [_linha(p) for p in problemas])
+            campos_revisao += _campos(nome, [_linha(p, ficha) for p in problemas])
     # A prioridade acompanha apenas os campos presentes em cada página,
     # inclusive quando erros e pendências ocupam páginas diferentes.
     adicionar("Correções e revisão", campos_revisao, estado="pendente",

@@ -53,6 +53,13 @@ class Repertorio:
         return cls(progressao, talentos, dominios)
 
 
+def categoria_talento(valor):
+    """Aceita o rótulo emitido pela ficha, sem normalizar nomes/aprovações."""
+    if isinstance(valor, str) and re.fullmatch(r"CE [123]", valor):
+        return int(valor[-1])
+    return valor
+
+
 def origem(ficha):
     from .ficha_magia import valor
     partes = str(valor(ficha, "origem")).split(" · ", 1)
@@ -145,7 +152,8 @@ def conferir_repertorio(ficha, ref, r):
             incerto = True
         conhecido = regras.talentos.get(nome)
         propria = re.fullmatch(r"Talento Próprio \(CE ([123])\)", nome)
-        ce = conhecido[0] if conhecido else int(propria[1]) if propria else valor(ficha, k + ".categoria")
+        declarada = categoria_talento(valor(ficha, k + ".categoria"))
+        ce = conhecido[0] if conhecido else int(propria[1]) if propria else declarada
         ancora = conhecido[1] if conhecido else "catalogo--cat-passiva-propria"
         if ce == "":
             r.pendencias.append(Problema("escolha", k + ".categoria", "Categoria do Talento", ""))
@@ -158,8 +166,8 @@ def conferir_repertorio(ficha, ref, r):
         if k + ".categoria" in ficha and valor(ficha, k + ".categoria") == "":
             r.pendencias.append(Problema("escolha", k + ".categoria", "Categoria do Talento", ""))
             incerto = True
-        elif k + ".categoria" in ficha and (valor(ficha, k + ".categoria") != ce or isinstance(valor(ficha, k + ".categoria"), bool)):
-            erro(k + ".categoria", str(ce), ancora)
+        elif k + ".categoria" in ficha and (not inteiro(declarada, 1, 3) or declarada != ce):
+            erro(k + ".categoria", f"CE {ce}", ancora)
         if ce > teto_ce:
             erro(k, f"Talento até CE {teto_ce} no nível {nivel}", ancora)
         if not conhecido:
