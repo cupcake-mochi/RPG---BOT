@@ -150,3 +150,34 @@ fechamento de instalação, conferir lançamentos e providenciar limpeza limitad
 aos UIDs do próprio diário, revogar a autorização QA e enviar a cópia à lixeira.
 As abas Sheets/projeto QA foram deixadas para o mantenedor; fechar após limpar.
 CI do produtor é41160760110, código49e9963; ainda sem conclusão neste registro.
+
+## Integração e CIs finais da noite
+
+Bot86c438f: contrato importado com só três hashes de origem novos, todos os
+campos operacionais idênticos. 68 direcionados aprovados (78,593s), CI41161538937
+aprovado em30/10 às23:52:05 Brasília:1.647 executados/1.646 aprovados/um opcional,
+zero falhas,272,967s. A guarda usa agora
+`0c9dcc89e6b1cb3401a54fb1311d9f72c60774cbec84d741474a7a6066bd8098`.
+
+Produtor: main5ea10b4 integrada SOMENTE na branch do PR31, pois a correção de
+origens da ANALISE da PR44 mudou três fontes listadas no contrato. CI41160760110
+recusou corretamente o artefato antigo; campos, fórmulas, faixas e indicadores
+comparados idênticos fora de fontes. Contrato regenerado em0c6c171,47 testes REST
+passaram; CI41161438212 aprovado. Guarda adicional de orçamento em0fb6764:
+conferência de propriedades incompleta impede ativar.30 cenários locais e
+CI41161952426 aprovados, fechamento do smoke em30/10 às23:56:57 Brasília.
+
+Google: duas chamadas financeiras aparecem como canceladas (185,940s e356,663s),
+não como timeout. A primeira coincidiu com clique do assistente em Parar e
+navegação posterior; a segunda coincidiu com sair do editor. Causa específica
+não demonstrada. Não contabilizar como execução completa/prova de ativação.
+Consulta de estado às23:49:27 confirmou zero acionadores, financeiro/propriedades
+incompletos. A próxima tentativa deve ficar no editor até devolver resultado,
+sem Parar, reload ou navegação para Execuções durante a chamada. Mesmo contexto,
+mesmo diário; nada de nova limpeza ou substituição de operação.
+
+A QA recebeu posteriormente a versão atual de ativação, status com presença do
+diário e função `qaAtivacaoEncerrar`, restrita aos UIDs/handlers registrados na
+própria cópia. Não usar essa limpeza se a criação estiver incerta ou houver
+acionadores não reconhecidos. Código/estado privados na pasta do ensaio. Ainda
+não declarar preparação ou instalação nativas concluídas sem o log posterior.
