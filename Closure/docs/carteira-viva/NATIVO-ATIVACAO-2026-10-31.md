@@ -1,6 +1,6 @@
 # Ensaio de ativação local · 30–31/10/2026
 
-**Em andamento. Não é liberação da criação nem atestado para o backend.**
+**Ensaio encerrado e limpo em31/10, às00:33. Instalação/repetição comprovadas; eventos reais pendentes. Não libera criação nem atesta identidade ao backend.**
 Uma única cópia nova, privada, na conta pessoal do mantenedor. Permissões
 conferidas pelo Drive: somente proprietário, shared=false. Origem oficial
 somente copiada, sem edição. Nenhum jogador, produção ou OAuth das Guias alterado.
@@ -70,3 +70,48 @@ Inclui estado-ensaio.json, código original/atual, logs de financeiro/propriedad
 concluídos e diagnósticos. Não reutilizar grants de pilotos anteriores. Não há
 serviço na porta8876 iniciado nesta rodada. Retomada integrada:Sol/High;
 revisão do fechamento:Medium. Não alterar automaticamente configurações de modelo.
+
+## Fechamento observado · 31/10
+
+CI41163063026 aprovado no código82b8b58:31 cenários de ativação,47 REST e demais
+famílias do smoke; fechamento às00:14:34 Brasília. Sem mudança de expectativas
+para contornar a guarda de preservação.
+
+| Chamada | Início no log | Resultado no log | Resultado |
+| --- | --- | --- | --- |
+| Primeira instalação | 00:09:41 | 00:15:19 | Uma rotina registrada, incompleta, retomar=true |
+| Continuação | 00:16:04 | 00:19:09 | Duas rotinas registradas, incompleta, retomar=true |
+| Última rotina | 00:21:41 | 00:24:36 | Três rotinas registradas, incompleta, retomar=true |
+| Marca e fechamento | 00:25:27 | 00:28:13 | Três rotinas, instalacaoLocalConcluida=true, retomar=false |
+| Repetição terminal | 00:29:03 | 00:31:56 | Mesmos três registros, instalação concluída, sem duplicação |
+
+Cada retorno foi lido antes da chamada seguinte. O núcleo reconferiu UIDs,
+handlers, tipos, fontes, preservação e marca. Não é uma auditoria externa de
+cada acesso a propriedades. Todos os indicadores de liberação/identidade do
+backend continuaram falsos. O relógio foi criado com os parâmetros do código;
+não foi observado seu disparo real às03h. Tempos acima são de logs do fluxo,
+não latências individuais de rede ou garantia para outras cópias.
+
+O mantenedor precisava desligar o PC. A rodada foi encerrada após confirmar
+instalação/repetição; **abertura instalável, edição, missão, gasto e correção de
+data não foram testados**. As leituras preparatórias conferiram campos vazios,
+validações e extratos sem lançamentos; nenhuma missão/gasto foi digitada.
+Não chamar esta rodada de prova completa das automações.
+
+Limpeza concluída: qaAtivacaoEncerrar executou às00:32:41–00:32:44, removeu
+somente as três rotinas registradas, conferiu zero rotinas visíveis e solicitou
+invalidateAuth(). A tentativa separada de qaAtivacaoStatus abriu Autorização
+obrigatória; cancelada sem renovar, com aviso às00:33:13 de que o projeto precisa
+de acesso para executar. A cópia foi movida à lixeira recuperável pelo menu
+Arquivo e a tela confirmou o título exato e a retenção de30 dias. Não houve
+exclusão permanente. As duas abas QA foram fechadas; as três abas do usuário
+foram preservadas. Não há piloto/servidor local iniciado ou grant das Guias novo.
+Não restaurar esta descartável nem reusar autorização/diário para outro ensaio.
+
+Próximo marco: otimizar/delimitar o custo da preparação (a primeira instalação
+levou aproximadamente338s pelos logs, perto do limite), então preparar uma nova
+QA com roteiro curto para eventos reais e limpeza. Não repetir diagnóstico de
+versões ou ensaios REST encerrados. Backend ainda precisa de vínculo/atestado
+verificável; concorrência/CAS, demais domínios e prova Era/Ciclo/servidor continuam
+pendentes. Criação bloqueada; etapa7 parcial e8–10 pendentes. Sem merge/deploy,
+modelo pago, oficial/jogador alterado. Sol/High para continuar; Medium para revisão.

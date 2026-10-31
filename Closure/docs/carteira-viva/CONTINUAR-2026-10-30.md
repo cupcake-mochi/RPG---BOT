@@ -1,5 +1,24 @@
 # Continuar a Carteira viva · 30/10/2026
 
+## Ensaio encerrado e limpo · 31/10, 00:33
+
+Instalação das três rotinas, marca final e repetição terminal comprovadas na
+mesma QA; zero duplicações detectadas. Eventos reais de abertura/edição,
+missão/gasto/correção ficaram pendentes para permitir ao mantenedor desligar o PC.
+Limpeza: três rotinas removidas, zero restantes, autorização invalidada e recusa
+posterior confirmada sem renovar, cópia na lixeira recuperável, abas QA fechadas.
+Não reutilizar esta QA/grant. [Prova e próximos passos](NATIVO-ATIVACAO-2026-10-31.md).
+
+Bot86c438f:CI41161538937 verde,1.647/1.646/um opcional, zero falhas.
+Produtor82b8b58:CI41163063026 verde,31 de ativação e demais famílias aprovadas.
+Custo nativo ainda exige revisão: primeira instalação ~338s pelos logs.
+Próximo: roteiro curto em nova descartável para eventos reais; atestado/backend,
+CAS/demais domínios/prova integral continuam pendentes. Criação bloqueada,
+etapa7 parcial,8–10 pendentes. Sem merge ou deploy. Os commits seguintes só
+documentam o encerramento. Sol/High para execução integrada; Medium para revisão.
+Entradas abaixo históricas; o piloto não está mais ativo.
+
+
 ## Preparação nativa concluída · 31/10
 
 Financeiro concluído pelo diário às00:01:09 e propriedades às00:07:02 na mesma
