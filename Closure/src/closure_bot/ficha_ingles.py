@@ -37,6 +37,11 @@ LABELS = {
     'Origem · segunda capacidade menor':'Origin · second minor ability',
     'Origem · capacidade marcante':'Origin · defining ability', 'Origem · traço':'Origin · trait',
     'Maestria':'Mastery', 'Nível':'Level',
+    'Refino recebido por progressão':'Refino from progression','Feitiços de Classe 0 gratuitos':'Free Class 0 spells',
+    'Iniciativa':'Initiative','CD de feitiço':'Spell DC','Teste de conjuração':'Spellcasting check',
+    'Ataque corpo a corpo':'Melee attack','Ataque à distância':'Ranged attack','Deslocamento':'Movement',
+    'Morrendo · prazo em rodadas':'Dying · time limit in rounds','Origem vinculada':'Linked Origin',
+    'tipo':'type','base do livro':'rulebook base',
     'avisos do cartão':'card warnings','registro ativo':'active record','Classe máxima':'maximum Class',
 }
 # Only UI labels enter this function; user/card names are appended afterwards.
@@ -44,6 +49,8 @@ def label(text):
     if text in LABELS:return LABELS[text]
     out=[]
     for part in text.split(' · '):
+        if part.startswith('Cadastro próprio '):
+            out.append('Custom entry '+part.removeprefix('Cadastro próprio '));continue
         if part.startswith('Buff/Debuff de '):
             out.append('Adjustment to '+label(part[15:]));continue
         found=False
@@ -143,7 +150,8 @@ def paginas(result,sheet,persona,manifest=None):
         '❌ **Error:** the data contains a mismatch or an invalid choice. Check the inputs behind the result; preserve the formulas.\n'
         '⚠️ **Pending:** information, a choice or an approval is needed to finish the check.\n'
         '👀 **Note:** the GM needs to check the source and validity of the adjustment. This is not a confirmed error.\n'
-        'After making corrections, submit the sheet for another analysis. This panel does not update automatically.',inline=False)
+        'After making corrections, wait for the sheet to finish calculating and submit another analysis; for XLSX, download a fresh file. '
+        'This panel does not update automatically.',inline=False)
     reviews=[('❌ Corrections required',result.problemas),('⚠️ Missing or needs attention',result.pendencias),('👀 GM review',result.notas)]
     for heading,items in reviews:
         if items:

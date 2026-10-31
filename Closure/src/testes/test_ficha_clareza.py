@@ -47,11 +47,20 @@ class Mensagens(unittest.TestCase):
         pt, en = _linha(p, {}), line(p, {})
         self.assertIn('O bot calculou 2', pt)
         self.assertIn('The bot calculated 2', en)
-        self.assertIn('sem substituir a fórmula', pt)
-        self.assertIn('download a fresh file', en)
+        self.assertIn('terminou de calcular', pt)
+        self.assertLess(len(pt), 180)
+        self.assertLess(len(en), 180)
         self.assertNotIn('progressao--', pt + en)
         self.assertNotIn('(informado: )', pt)
         self.assertEqual(p, antes)
+
+    def test_cadastro_numerado_e_resultados_tem_rotulos_legiveis(self):
+        p = Problema('custom', 'custom.1.campo.origem', 'Origem publicada ou cadastro válido', 'Origem de teste')
+        self.assertIn('Cadastro próprio 1 · Origem vinculada', _linha(p, {}))
+        self.assertIn('Custom entry 1 · Linked Origin', line(p, {}))
+        p = Problema('informação', 'refino_de_graca', 'exportar resultado calculado (1)', '')
+        self.assertIn('Refino recebido por progressão', _linha(p, {}))
+        self.assertIn('Refino from progression', line(p, {}))
 
     def test_resumo_explica_diferenca_entre_erro_pendencia_e_observacao(self):
         from closure_bot.ficha_corretor import Resultado
@@ -68,6 +77,8 @@ class Mensagens(unittest.TestCase):
                 ps = paginas(r, {}, SimpleNamespace(chave='closure', nome='Closure', avatar_url=''))
             campo = next(c for c in ps[0].fields if c.name == titulo)
             self.assertIn(trecho, campo.value)
+            self.assertIn('XLSX', campo.value)
+            self.assertIn('formul', campo.value.lower().replace('ó', 'o'))
             self.assertTrue(all(len(p) <= 6000 and all(len(c.value) <= 1024 for c in p.fields) for p in ps))
         self.assertEqual(r, antes)
 

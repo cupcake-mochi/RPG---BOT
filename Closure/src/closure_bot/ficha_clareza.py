@@ -88,12 +88,8 @@ def linha_clara(p, ficha, *, ingles=False):
     calculado = re.fullmatch(r'exportar resultado calculado \(([^()]*)\)', p.esperado)
     if mensagem is None and p.regra == 'informação' and calculado and not str(p.encontrado).strip():
         mensagem = texto(
-            f'A leitura não trouxe o resultado deste campo. O bot calculou {calculado[1]}. '
-            'Aguarde a planilha terminar de calcular e envie uma nova análise; para XLSX, baixe o arquivo novamente. '
-            'Se continuar vazio, confira a exportação da ficha, sem substituir a fórmula.',
-            f'The data read from the sheet did not include this result. The bot calculated {calculado[1]}. '
-            'Wait for the sheet to finish calculating, then submit another analysis; for XLSX, download a fresh file. '
-            'If it is still empty, check the sheet export without replacing the formula.')
+            f'Resultado ausente na leitura. O bot calculou {calculado[1]}; confira se a planilha terminou de calcular.',
+            f'Result missing from the data read. The bot calculated {calculado[1]}; check that the sheet has finished calculating.')
     if mensagem is None and p.regra in ('equipamento', 'carga', 'talento', 'testes', 'custom',
                                         'configuração', 'campanha', 'aprovação', 'informação',
                                         'famílias', 'progressão', 'treinos', 'aptidão'):
