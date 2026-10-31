@@ -17,6 +17,19 @@ PRONTO = bool(site_prompt.motores()) and (site_prompt.CACHE / "nucleo.js").exist
 
 @unittest.skipUnless(PRONTO, "sem motor ou página montada")
 class ConsultaDoLivro(unittest.TestCase):
+    def test_reacao_fora_do_turno_traz_esclarecimento_r60_nas_duas_lores(self):
+        for persona in ('kal', 'clo'):
+            for nova_terra in (False, True):
+                with self.subTest(persona=persona, nova_terra=nova_terra):
+                    p = site_prompt.montar(persona, 'No livro, como funciona Conjurar?',
+                                          nome='Alex', hora=(14, 20),
+                                          estado={'nova_terra': nova_terra})
+                    texto = p['input'][-1]['content']
+                    self.assertIn(self.livro['fundamento--conjurar']['texto'], texto)
+                    self.assertIn('Uma conjuração de Reação fora do seu turno fica fora desse limite.', texto)
+                    self.assertIn('apenas um feitiço de Classe 1 ou maior', texto)
+                    self.assertIn('o gatilho registrado', texto)
+
     def test_especialidade_antiga_traz_texto_editorial_r57_completo(self):
         texto, _ = self.fontes('No livro, como funciona Especialidade Antiga?',
                               ['origens--encarnado-beneficios'])
