@@ -57,6 +57,10 @@ ROTULOS = {"aviso.escolhas_de_pericia": "Perícias e ofícios", "aviso.pontos_di
            "origem.menor_1": "Origem · primeira capacidade menor", "origem.menor_2": "Origem · segunda capacidade menor",
            "origem.marcante": "Origem · capacidade marcante", "origem.traco": "Origem · traço",
            "maestria": "Maestria", "classe_maxima": "Classe máxima", "nivel": "Nível",
+           "refino_de_graca": "Refino recebido por progressão", "classe_0_gratis": "Feitiços de Classe 0 gratuitos",
+           "iniciativa": "Iniciativa", "cd_de_feitico": "CD de feitiço", "conjuracao": "Teste de conjuração",
+           "corpo_a_corpo": "Ataque corpo a corpo", "a_distancia": "Ataque à distância",
+           "deslocamento": "Deslocamento", "morrendo_prazo": "Morrendo · prazo em rodadas",
            "aviso.pericias_disponiveis": "Perícias", "aviso.oficios_disponiveis": "Ofícios",
            "aviso.testes_disponiveis": "Testes de Resistência", "aviso.grau": "Grau do uniforme",
            "aviso.forca_p": "Força da mão principal", "aviso.forca_s": "Força da mão secundária",
@@ -85,6 +89,13 @@ def _rotulo(chave: str) -> str:
     if chave.startswith("buff."):
         return "Buff/Debuff de " + chave[5:].replace("_", " ")
     partes = chave.split(".")
+    if partes[0] == "custom" and len(partes) >= 3 and partes[1].isdigit():
+        resto = partes[2:]
+        if resto[0] == "campo":
+            resto = resto[1:]
+        campo = {"origem": "Origem vinculada", "nome": "nome", "tipo": "tipo", "base": "base do livro"}.get(
+            ".".join(resto), _nome_do_valor(".".join(resto)))
+        return "Cadastro próprio " + partes[1] + " · " + campo
     if partes[0] == "passiva" and len(partes) >= 2:
         return "Talento " + partes[1] + (" · " + _nome_do_valor(".".join(partes[2:])) if len(partes) > 2 else "")
     if partes[0] in ("feitico", "liberacao", "invocacao", "zero") and len(partes) > 1 and partes[1].isdigit():
@@ -283,7 +294,8 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
                      "❌ **Erro:** a leitura encontrou uma divergência ou escolha inválida. Confira as entradas que geram o resultado; preserve as fórmulas.\n"
                      "⚠️ **Pendência:** falta uma informação, escolha ou aprovação para concluir a conferência.\n"
                      "👀 **Observação:** o mestre precisa conferir a origem e a validade do ajuste. Não significa erro confirmado.\n"
-                     "Depois de corrigir, envie a ficha para uma nova análise. Este painel não se atualiza sozinho.", inline=False)
+                     "Depois de corrigir, espere a planilha calcular e envie uma nova análise; para XLSX, baixe um arquivo novo. "
+                     "Este painel não se atualiza sozinho.", inline=False)
     revisao = [("❌ Precisa corrigir", resultado.problemas), ("⚠️ Falta ou pede atenção", resultado.pendencias),
                ("👀 Pro mestre conferir", resultado.notas)]
     for nome, problemas in revisao:
