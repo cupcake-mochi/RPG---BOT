@@ -1,5 +1,16 @@
 # Continuar a Carteira viva · 30/10/2026
 
+## Preparação nativa concluída · 31/10
+
+Financeiro concluído pelo diário às00:01:09 e propriedades às00:07:02 na mesma
+QA privada. Primeira instalação iniciada às00:09:41; aguardar o retorno no editor,
+sem navegar/reload/Parar. Ainda não há prova das três rotinas ou de eventos reais.
+Código produtor82b8b58 fecha publicação prematura do diário ativo,31 locais
+passaram,CI41163063026 em andamento. Fonte QA final39.227 caracteres relida igual.
+[Estado e roteiro do ensaio](NATIVO-ATIVACAO-2026-10-31.md). Indicadores globais
+continuam falsos, etapa7 parcial. Entradas abaixo são históricas.
+
+
 ## Retomada noturna · envio e ativação local
 
 Bot `1268e1b`: acesso/prazo reconferidos depois de armar o envio durável e
