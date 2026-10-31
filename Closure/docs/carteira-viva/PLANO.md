@@ -1,13 +1,12 @@
 # Carteira viva e personagens
 
-Planejamento de 26/10/2026. **Implementação em andamento; não publicada.**
-Este documento reúne as decisões da conversa; não é uma lista de comandos
-já disponíveis. Atualização: a [etapa 1](ETAPA-1.md) tem contrato/prova local
-e a [etapa 2](ETAPA-2.md) tem banco/cadastro implementados localmente.
-A [etapa 3](ETAPA-3.md) implementa o serviço e a conexão localmente.
-O [piloto local com OAuth real](NATIVO-ETAPA-3.md) passou nos fluxos de
-cadastro, renovação e reconexão. Próxima implementação: etapa 4.
-Não há funcionalidade nova em produção.
+Planejamento de 26/10/2026, atualizado em 30/10. **Não publicado.**
+Etapas 1–6 implementadas; etapa 7 parcial; 8–10 pendentes. A galeria e a
+Carteira web têm provas locais/nativas registradas nas respectivas etapas,
+mas ainda não fazem parte do bot em produção. A etapa 7 configura o modelo
+do servidor; a criação continua bloqueada enquanto a inicialização inteira
+não tiver implementação e aceite. O primeiro domínio financeiro está em
+protótipo separado no produtor. Veja o estado em [RETOMADA.md](RETOMADA.md).
 
 - [Testes e critérios de entrega](TESTES.md)
 - [Estado e instrução para continuar](RETOMADA.md)
@@ -47,7 +46,7 @@ preservam as automações da ficha antes de serem liberadas.
 | Privado | Ficha detalhada e análise para dono, administrador/dono do servidor e cargos de revisão explicitamente autorizados. |
 | Edição | Permissão separada de leitura e de revisão. Sem edição arbitrária de células ou fórmulas. |
 | Personalização | Título, frase, imagem, cor e campos opcionais, com prévia antes de salvar. |
-| Modelo do servidor | Padrão oficial; administrador pode selecionar outro compatível e parâmetros iniciais suportados. Nunca altera fichas já cadastradas automaticamente. |
+| Modelo do servidor | Padrão oficial; administrador pode selecionar uma cópia da ficha do sistema com configurações extras da mesa. Preservar essas configurações e inicializar os dados pessoais separadamente; nenhum parâmetro de criação está liberado na etapa 7. Nunca altera fichas já cadastradas automaticamente. |
 | Link no nome | Abre a Carteira viva. Link direto da planilha fica na área autorizada, respeitando também as permissões do Google. |
 | Análise | `/personagem analisar`, privada, com o motor determinístico existente e os limites humanos preservados. |
 
@@ -269,6 +268,34 @@ As etapas são sequenciais; cada uma deve caber numa PR revisável. Dividir uma
 etapa em PRs menores se necessário, mantendo funções incompletas desligadas.
 Não abrir dez PRs vazias nem tratar aprovação do plano como autorização de deploy.
 
+### Divisão da etapa 7 · fechamento em30/10
+
+[Células financeiras e recuperação nativas comprovadas](NATIVO-ESCRITA-EQUIVALENTE-2026-10-30.md):
+um POST Sheets e reconciliação após reinício sem novo envio. Não conclui propriedades,
+concorrência, demais domínios ou preservação/automações.7C e7D continuam parciais,
+criação bloqueada. Provas de28/10 abaixo são históricas.
+
+Diagnóstico offline de diferenças por categoria implementado e composto no serviço;
+leitura real de progressão comprovada no caminho observado e financeiro ainda
+pendente, sem liberar criação. [Cobertura](DIAGNOSTICO-GRADE-2026-10-28.md)
+e [composição](DIAGNOSTICO-SERVICO-2026-10-28.md).
+
+Atualização offline: primeira candidata fixada antes da identificação e diagnóstico
+cifrado de versões implementados, sem aceitar divergências. Não é preparação de
+conteúdo estável nem prova nativa da escrita. [Estado e limites](CANDIDATAS-2026-10-28.md).
+
+Prova nativa posterior da 7B concluída no caminho de resposta perdida/reinício:
+[NATIVO-COPIAS-2026-10-28.md](NATIVO-COPIAS-2026-10-28.md). Cópia identificada não
+libera criação. A 7C agora tem diário e escrita de **células financeiras**,
+validados offline; faltam a prova descartável, propriedades Apps Script e
+proteção contra edição simultânea. [Limites](FINANCEIRO-REST-2026-10-28.md).
+
+
+A criação é maior que a configuração do modelo. Acompanhar 7A (modelo e
+leitura), 7B (cópia/recuperação), 7C (limpeza/inicialização) e 7D (preservação,
+automações e prova final). Essa divisão não muda as etapas 8–10 nem libera
+funções incompletas. [Estado e critérios](COPIAS-REST-2026-10-28.md).
+
 ### 1. Fechar os contratos e provar o acesso
 
 Mapear fontes atuais, campos públicos/privados, ações, retenção, vínculo de
@@ -370,6 +397,11 @@ Retomada: “Valide o contrato de modelos da etapa 7 e depois implemente a cópi
 opcional, sem modificar nenhum modelo oficial.”
 
 ### 7. Escolher o modelo do servidor
+
+**26/10/2026: parcialmente implementada.** Escolha/configuração no Git,
+criação bloqueada após herança de histórico e estado salarial nas três
+cópias nativas. O critério abaixo continua pendente; não marcar concluída
+nem iniciar escrita de jogo. Ver ETAPA-7.md e NATIVO-ETAPA-7.md.
 
 Configuração administrativa com modelos oficiais como padrão e outro modelo
 compatível como opção. Definir parâmetros suportados, distinguindo nível do

@@ -1,5 +1,18 @@
 # Executar e manter as Guias do Ciclo
 
+Carteira viva: etapa 7 **parcial**, configuração de modelo por servidor em
+schema 9 (configuração do modelo desde o 6, diário financeiro de células no 9);
+criação de novas fichas bloqueada até comprovar inicialização limpa
+e automações. Cadastro existente preservado. Serviço/ponte continuam
+separados do runtime publicado; ver [relatório](../docs/carteira-viva/ETAPA-7.md)
+e [retomada](../docs/carteira-viva/RETOMADA.md). Nenhum deploy desta etapa. Novas intenções de cópia usam protocolo interno 2,
+com candidata e diagnóstico cifrado, sem liberar criação; ver
+[candidatas e mudanças de versão](../docs/carteira-viva/CANDIDATAS-2026-10-28.md).
+Há também uma ferramenta interna para [comparar leituras](../docs/carteira-viva/DIAGNOSTICO-GRADE-2026-10-28.md),
+com [composição interna no serviço](../docs/carteira-viva/DIAGNOSTICO-SERVICO-2026-10-28.md)
+validada offline e em [leitura real de progressão](../docs/carteira-viva/NATIVO-DIAGNOSTICO-2026-10-28.md),
+sem alterar as guardas de versão. Financeiro e criação continuam pendentes.
+
 Este documento reúne os arquivos, a preparação do ambiente e a hospedagem.
 Para aprender os comandos, consulte [os guias de uso](../docs/GUIAS-DE-USO.md).
 O estado atual e a última revisão ficam em

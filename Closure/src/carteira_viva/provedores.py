@@ -7,7 +7,7 @@ import logging
 import re
 import secrets
 import time
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 from authlib.integrations.httpx_client import AsyncOAuth2Client
 from authlib.integrations.base_client.errors import OAuthError
@@ -36,6 +36,19 @@ class ErroProvedor(ErroCarteira):
 
 class MembroAusente(AcessoNegado):
     codigo = 'membro_ausente'
+
+
+MODIFICADO = re.compile(r'[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]{1,9})?Z')
+
+
+class VersaoAlterada(ErroProvedor):
+    """Dados técnicos só para o diário interno; mensagem pública permanece genérica."""
+    def __init__(self, esperada, observada):
+        super().__init__('alterada')
+        self.esperada, self.observada = esperada, observada
+
+    def __repr__(self):
+        return '<VersaoAlterada>'
 
 
 @dataclass(frozen=True)
@@ -131,10 +144,39 @@ class Provedores:
                         if len(corpo) > limite:
                             raise ErroProvedor("tamanho")
             return await asyncio.to_thread(json.loads, corpo)
-        except (httpx.HTTPError, ValueError) as exc:
+        except (httpx.HTTPError, ValueError, RecursionError) as exc:
+            # Aninhamento profundo dentro do teto de bytes estoura a pilha do
+            # parser; recusar como resposta inválida, sem escapar do contrato.
             if isinstance(exc, ErroProvedor):
                 raise
             raise ErroProvedor("temporario") from None
+
+    async def versao_arquivo(self, acesso: str, arquivo: str) -> str:
+        """Observação autenticada; contador fica como texto, sem perda de precisão."""
+        if not isinstance(arquivo, str) or not ARQUIVO.fullmatch(arquivo):
+            raise ErroProvedor("arquivo")
+        meta = await self._json("https://www.googleapis.com/drive/v3/files/" + arquivo +
+                                "?fields=id,mimeType,isAppAuthorized,trashed,version", acesso)
+        if (not isinstance(meta, dict) or meta.get("id") != arquivo or
+                meta.get("mimeType") != MIME or meta.get("isAppAuthorized") is not True or
+                meta.get("trashed") is True or not isinstance(meta.get("version"), str) or
+                not re.fullmatch(r"[0-9]{1,30}", meta["version"])):
+            raise ErroProvedor("arquivo")
+        return meta["version"]
+
+    async def observar_arquivo(self, acesso: str, arquivo: str):
+        """Versão e modifiedTime na mesma resposta. A versão sobe sem edição (30/10)."""
+        if not isinstance(arquivo, str) or not ARQUIVO.fullmatch(arquivo):
+            raise ErroProvedor("arquivo")
+        meta = await self._json("https://www.googleapis.com/drive/v3/files/" + arquivo +
+                                "?fields=id,mimeType,isAppAuthorized,trashed,version,modifiedTime", acesso)
+        if (not isinstance(meta, dict) or meta.get("id") != arquivo or
+                meta.get("mimeType") != MIME or meta.get("isAppAuthorized") is not True or
+                meta.get("trashed") is True or not isinstance(meta.get("version"), str) or
+                not re.fullmatch(r"[0-9]{1,30}", meta["version"]) or
+                not isinstance(meta.get("modifiedTime"), str) or not MODIFICADO.fullmatch(meta["modifiedTime"])):
+            raise ErroProvedor("arquivo")
+        return meta["version"], meta["modifiedTime"]
 
     async def ler_analise(self, acesso: str, arquivo: str):
         """Grade de resultados calculados; nunca exporta fórmulas ou o livro inteiro."""
@@ -142,25 +184,16 @@ class Provedores:
         from .leitura_google import da_grade
         if not isinstance(arquivo, str) or not ARQUIVO.fullmatch(arquivo):
             raise ErroProvedor("arquivo")
-        url = "https://www.googleapis.com/drive/v3/files/" + arquivo
-        campos = "?fields=id,mimeType,isAppAuthorized,trashed,version"
-        antes = await self._json(url + campos, acesso)
-        def validar(meta):
-            if (not isinstance(meta, dict) or meta.get("id") != arquivo or
-                    meta.get("mimeType") != MIME or meta.get("isAppAuthorized") is not True or
-                    meta.get("trashed") is True or not isinstance(meta.get("version"), str)):
-                raise ErroProvedor("arquivo")
-        validar(antes)
+        antes = await self.versao_arquivo(acesso, arquivo)
         query = urlencode({"ranges": "'ANALISE'!A1:D20002", "fields":
             "spreadsheetId,sheets(properties(title),data(startRow,startColumn,rowData(values(effectiveValue))))"})
         grade = await self._json("https://sheets.googleapis.com/v4/spreadsheets/" + arquivo + "?" + query,
                                  acesso, limite=16 * 1024 * 1024)
         ficha = await asyncio.to_thread(da_grade, grade, arquivo)
-        depois = await self._json(url + campos, acesso)
-        validar(depois)
-        if antes["version"] != depois["version"]:
+        depois = await self.versao_arquivo(acesso, arquivo)
+        if antes != depois:
             raise ErroProvedor("alterada")
-        return ficha, antes["version"]
+        return ficha, antes
 
     async def usuario_discord(self, token: str) -> str:
         user = await self._json(DISCORD + "/users/@me", token)
@@ -170,17 +203,43 @@ class Provedores:
         return uid
 
     async def membro(self, servidor: str, usuario: str) -> Membro:
+        return await self._observar_membro(servidor, usuario)
+
+    async def membro_para_leitura(self, servidor, usuario, confirmar_basico):
+        """Callback interno prova acesso suficiente sem privilégios inferidos.
+
+        Cada chamada faz GET do membro. Só o backend pode fornecer a função;
+        não aceitar flag, cargo, Membro ou callback enviados pelo navegador.
+        Falta de acesso básico exige a mesma observação completa de membro().
+        """
+        if not callable(confirmar_basico):
+            raise ErroProvedor("identidade")
+        return await self._observar_membro(servidor, usuario, confirmar_basico)
+
+    async def _observar_membro(self, servidor, usuario, confirmar_basico=None):
         if (servidor not in self.cfg.servidores or not SNOWFLAKE.fullmatch(servidor) or
                 not SNOWFLAKE.fullmatch(usuario)):
             raise AcessoNegado("Servidor ou usuário não permitido neste piloto.")
         token = self.cfg.discord_bot_token
         m = await self._json(f"{DISCORD}/guilds/{servidor}/members/{usuario}", token, bot=True, membro=True)
-        if m.get("user", {}).get("id") != usuario or m.get("pending") is True:
+        if (not isinstance(m, dict) or not isinstance(m.get("user"), dict) or
+                m["user"].get("id") != usuario or m.get("pending") is True):
             raise AcessoNegado("Confirme sua participação no servidor.")
+        if (type(m.get("roles")) is not list or
+                any(not isinstance(c, str) or not c for c in m["roles"])):
+            raise ErroProvedor("identidade")
+        cargos = frozenset(m["roles"])
+        nome = str(m.get("nick") or m["user"].get("global_name") or m["user"].get("username") or "")[:100]
+        basico = Membro(servidor, usuario, cargos=cargos, nome=nome)
+        if confirmar_basico is not None:
+            confirmado = await confirmar_basico(basico)
+            if type(confirmado) is not bool:
+                raise ErroProvedor("identidade")
+            if confirmado:
+                return basico  # Admin/owner/manage continuam False, sem cache.
         guild = await self._json(f"{DISCORD}/guilds/{servidor}", token, bot=True)
         roles = await self._json(f"{DISCORD}/guilds/{servidor}/roles", token, bot=True)
         try:
-            cargos = frozenset(m["roles"])
             permissoes = 0
             for role in roles:
                 if role["id"] in cargos or role["id"] == servidor:
@@ -188,8 +247,8 @@ class Provedores:
         except (TypeError, KeyError, ValueError):
             raise ErroProvedor("identidade") from None
         return Membro(servidor, usuario, dono_servidor=guild.get("owner_id") == usuario,
-                       administrador=bool(permissoes & 8), gerenciar_servidor=bool(permissoes & 32), cargos=cargos,
-                       nome=str(m.get("nick") or m.get("user",{}).get("global_name") or m.get("user",{}).get("username") or "")[:100])
+                       administrador=bool(permissoes & 8), gerenciar_servidor=bool(permissoes & 32),
+                       cargos=cargos, nome=nome)
 
     async def conta_google(self, acesso: str) -> str:
         obj = await self._json("https://www.googleapis.com/drive/v3/about?fields=user(permissionId)", acesso)
@@ -246,3 +305,31 @@ class Provedores:
             nome = "Novo personagem"
         return {"arquivo": arquivo, "nome_arquivo": str(meta.get("name", "Planilha"))[:200],
                 "nome": nome, "contrato": f"analise-{versao}", "prova_parcial": True}
+
+    async def validar_modelo(self, acesso: str, arquivo: str) -> dict:
+        from .sondagem_modelo import VERSAO_SONDAGEM, faixas_sondagem, sondar
+        if not isinstance(arquivo, str) or not ARQUIVO.fullmatch(arquivo):
+            raise ErroProvedor("arquivo")
+        url = "https://www.googleapis.com/drive/v3/files/" + arquivo + "?fields=id,version,trashed,isAppAuthorized"
+        antes = await self._json(url, acesso)
+        previa = await self.validar_arquivo(acesso, arquivo)
+        if previa["contrato"] != "analise-12":
+            raise ErroProvedor("formato")
+        sheets_url = "https://sheets.googleapis.com/v4/spreadsheets/" + arquivo
+        meta = await self._json(sheets_url + "?" + urlencode({"fields":
+            "spreadsheetId,sheets(properties(title,gridProperties(rowCount,columnCount)))"}), acesso)
+        if meta.get("spreadsheetId") != arquivo:
+            raise ErroProvedor("arquivo")
+        query = urlencode([("ranges", r) for r in faixas_sondagem(meta)] + [("fields",
+            "spreadsheetId,sheets(properties(title),data(startRow,startColumn,rowData(values(userEnteredValue,effectiveValue,note))))")])
+        obj = await self._json(sheets_url + "?" + query, acesso)
+        if obj.get("spreadsheetId") != arquivo:
+            raise ErroProvedor("arquivo")
+        sinais = sondar(obj)
+        depois = await self._json(url, acesso)
+        if (antes != depois or depois.get("id") != arquivo or depois.get("trashed") is True or
+                depois.get("isAppAuthorized") is not True or
+                not isinstance(depois.get("version"), str) or not re.fullmatch(r"[0-9]{1,30}", depois["version"])):
+            raise ErroProvedor("conflito")
+        return {**previa, "versao_drive": depois["version"], "revisao_livro": "R53", "sinais": sinais,
+                "sondagem_versao": VERSAO_SONDAGEM}

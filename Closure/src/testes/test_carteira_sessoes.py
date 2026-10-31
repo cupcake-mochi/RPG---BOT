@@ -2,7 +2,7 @@
 import sqlite3
 import unittest
 from cryptography.fernet import Fernet
-from testes.test_carteira_banco import Fixtures
+from testes.test_carteira_banco import Fixtures, schema_historico
 from carteira_viva.sessoes import Sessoes,SessaoEncerrada
 from carteira_viva.segredos import AcessoNegado,ErroCarteira
 
@@ -65,10 +65,11 @@ class SessoesTeste(Fixtures,unittest.TestCase):
         self.clock[0]+=601;self.s.limpar();self.assertEqual(self.c.db.execute('SELECT count(*) FROM web_sessoes').fetchone()[0],0)
     def test_migracao_v4_preserva_cadastro(self):
         p=self.criar();self.c.fechar();db=sqlite3.connect(self.path)
-        db.executescript('DROP TABLE web_sessoes; PRAGMA user_version=4;');db.close()
+        schema_historico(db,4);db.close()
         from carteira_viva.banco import Cadastro
         self.c=Cadastro(self.path,(self.chave,),agora=self.agora);self.s=Sessoes(self.c)
-        self.assertEqual(self.c.cartao(self.m,p['id'])['id'],p['id']);self.assertEqual(self.c.db.execute('PRAGMA user_version').fetchone()[0],5)
+        from carteira_viva.esquema import VERSAO
+        self.assertEqual(self.c.cartao(self.m,p['id'])['id'],p['id']);self.assertEqual(self.c.db.execute('PRAGMA user_version').fetchone()[0],VERSAO)
     def test_backup_sem_sessoes(self):
         from carteira_viva.backup import gravar_backup,_extrair
         self.login();out=self.path.parent/'sessao.cvb';raw=self.path.parent/'sessao.sqlite3'

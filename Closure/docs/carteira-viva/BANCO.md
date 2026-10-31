@@ -1,5 +1,45 @@
 # Banco de personagens
 
+28/10: `contexto_diagnostico_copia` é somente leitura, sem schema/tabela novos.
+Deriva origem/candidata/recibo do diário e vincula ator/modelo/autorização;
+fonte pode ser diagnosticada na intenção preparada, sem fixar versão ou envio.
+Cópia exige envio com versão original e não estar cadastrada em qualquer mesa.
+Só modelo particular fora das oficiais, sem herdar conexão por admin/revisor.
+Diagnóstico não persiste hashes/conteúdo nem muda retenção ou libera criação.
+[Contrato e prova](DIAGNOSTICO-SERVICO-2026-10-28.md).
+
+28/10: protocolo interno de cópia 2, sem migração (schema9/ledger2). A candidata
+e seu primeiro par arquivo/versão ficam no envelope cifrado da cópia enviada.
+Até 12 observações técnicas cifradas não renovam retenção nem dão autorização.
+Intenções antigas continuam compatíveis; versões identificadas não são adotadas
+novamente. [Candidatas e diagnóstico](CANDIDATAS-2026-10-28.md).
+
+28/10: diário financeiro de células em schema **9**, cifrado, máximo 32 KiB,
+prazo original de 30 minutos. Registra `enviada` antes do único POST. Backup
+converte `preparada` em `enviada` apenas na cópia; restauração só reconcilia.
+Rotação e exclusão global cobertas; o ledger 2 existente cobre a operação de
+cópia e a tabela financeira é removida por cascata. Não guarda a grade ou
+histórico pessoal. Propriedades Apps Script e criação continuam pendentes.
+[Detalhes e limites](FINANCEIRO-REST-2026-10-28.md).
+
+28/10: schema **8** acrescenta diário de cópias REST cifrado. Ledger **2**
+acrescenta nonces de operações removidas globalmente, conservados por 31 dias.
+Um backup marca cópias preparadas como enviadas apenas em sua cópia interna:
+a restauração pode reconciliar, mas não repetir POSTs. Pendentes não expiram
+silenciosamente e pinam a conexão; identificadas têm retenção de 30 dias.
+Rotação/exclusão e limites documentados em [cópias REST](COPIAS-REST-2026-10-28.md).
+Não é diário de escrita de células e não libera criação.
+
+28/10: schema 7 acrescenta conferências REST cifradas, uma por personagem,
+32 KiB/30 minutos. Reinício normal preserva domínios completos; backup remove
+esse trabalho da cópia. Não é diário de escrita nem autorização de criação.
+Ver [recuperação de leituras](RECUPERACAO-REST-2026-10-28.md).
+
+27/10: referências de modelo podem conter `sondagem_versao=2` no conteúdo
+cifrado. A ausência do campo identifica a sondagem 1 anterior. Não altera
+schema 6 nem personagens/fontes; confirmar uma prévia de versão diferente
+é conflito. Novos sinais são constantes, sem notas ou valores financeiros.
+
 Etapa 2 · 26/10/2026. Implementação em `src/carteira_viva/`. O módulo ainda
 não é carregado pelas Guias em produção. O serviço e a ponte opcionais evoluíram
 nas etapas 3–6; ver SERVICO.md e ETAPA-6.md para o estado atual.
@@ -30,14 +70,25 @@ envelope e têm hashes separados para localizar uma conexão existente.
 
 ## Schema e migrações
 
-Schema atual: **5**. Migração 1 cria as tabelas de domínio; migração 2 acrescenta
+Schema atual: **9**; ledger **2**. Migração 9 acrescenta `financeiro_rest`,
+vinculado à operação de cópia por chave estrangeira com exclusão em cascata.
+Migração 8 acrescentou `copias_rest`.
+Migração 7 acrescentou `conferencias_rest`, com estado
+cifrado e chave estrangeira para o personagem. Abaixo, evolução anterior: Migração 1 cria as tabelas de domínio; migração 2 acrescenta
 pedidos e auditoria; migração 3 acrescenta tentativas web cifradas; migração 4 acrescenta resumo
 básico cifrado, prévias e registro de imagens; migração 5 acrescenta sessões
-Discord da Carteira web. A sequência é transacional. Não há banco de produção de
+Discord da Carteira web; migração 6 acrescenta `modelos_servidor` (servidor,
+revisão, conteúdo cifrado com contexto `modelo/servidor`). A escolha é
+configuração do servidor, sem grant ou identidade Google do administrador.
+É incluída no backup e na rotação de cifra. Reset preserva a revisão crescente;
+restauração é recuperação explícita de configuração, não restaura sessões.
+Reinício, restore e rotação descartam fluxos OAuth transitórios.
+A sequência é transacional. Não há banco de produção de
 uma versão anterior deste recurso; o teste de migração usa uma fixture v1.
 
 | Tabela | Uso |
 |---|---|
+| `financeiro_rest` | Intenção e hashes do reset de células, pedidos fixos cifrados; sem histórico da ficha |
 | `servidores`, `cargos` | Campos públicos permitidos e capacidades explícitas de revisão/edição |
 | `conexoes` | Uma conexão por usuário Discord, identidade Google e cliente OAuth |
 | `personagens` | Vários personagens por jogador/servidor, com ID estável e perfil próprio |
@@ -139,7 +190,7 @@ privados e acompanha o cadastro, sem histórico ilimitado de leituras.
 consistente e cifra o arquivo em blocos autenticados. Não carrega o banco
 inteiro em memória. O formato verifica ordem, integridade, fim do arquivo,
 identidade do banco e prazo. Backup existente nunca é sobrescrito.
-Tentativas web e prévias de cartão são removidas da cópia antes da cifra; cadastros e conexões
+Tentativas web, prévias de cartão e conferências REST são removidas da cópia antes da cifra; cadastros e conexões
 confirmadas permanecem. Uma restauração não reabre retornos OAuth antigos.
 
 Manter uma cópia do cadastro **e uma cópia atual do registro de remoções**.

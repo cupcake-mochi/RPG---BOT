@@ -85,3 +85,34 @@ class CotasTeste(unittest.IsolatedAsyncioTestCase):
         self.assertGreaterEqual(asyncio.get_running_loop().time()-t,.02)
         t=asyncio.get_running_loop().time(); await c.esperar("c")
         self.assertGreaterEqual(asyncio.get_running_loop().time()-t,.02)
+
+class PrazosFilaTeste(unittest.IsolatedAsyncioTestCase):
+    async def test_prazo_maior_somente_para_pedido_especifico(self):
+        f=Fila(prazo=.01,espera=.2)
+        async def lento(): await asyncio.sleep(.04); return 7
+        try:
+            self.assertEqual(await f.executar(('especial',),('a',),lento,prazo=.1,espera=.3),7)
+            with self.assertRaises(Ocupado): await f.executar(('comum',),('b',),lento)
+            self.assertEqual(f.prazo,.01); self.assertEqual(f.espera,.2)
+        finally: await f.fechar()
+
+    async def test_prazos_invalidos_recusados_antes_da_fila(self):
+        f=Fila()
+        async def job(): raise AssertionError('não executar')
+        try:
+            for v in (True,0,-1,float('inf'),float('nan'),1801,2**4096,'60'):
+                for k in ('prazo','espera'):
+                    with self.subTest(v=v,k=k),self.assertRaises(Ocupado):
+                        await f.executar(('invalido',),('a',),job,**{k:v})
+            self.assertFalse(f.pedidos)
+        finally: await f.fechar()
+
+    async def test_coalescencia_nao_estende_prazo_existente(self):
+        f=Fila(); entrou=asyncio.Event(); liberar=asyncio.Event()
+        async def job(): entrou.set(); await liberar.wait(); return 1
+        a=asyncio.create_task(f.executar(('igual',),('a',),job,prazo=1))
+        try:
+            await entrou.wait()
+            with self.assertRaises(Ocupado): await f.executar(('igual',),('a',),job,prazo=2)
+            liberar.set(); self.assertEqual(await a,1)
+        finally: await f.fechar()

@@ -45,7 +45,7 @@
   function render() {
     if (english()) { document.documentElement.lang="en"; document.title="Connect sheet · Guias do Ciclo";
       for (const [id,text] of Object.entries(en)) $(id).textContent=text; }
-    const titles={cadastro:["Cadastrar seu personagem","Register your character"],troca:["Trocar arquivo da ficha","Replace the sheet file"],reconectar:["Reconectar sua ficha","Reconnect your sheet"]};
+    const titles={cadastro:["Cadastrar seu personagem","Register your character"],troca:["Trocar arquivo da ficha","Replace the sheet file"],reconectar:["Reconectar sua ficha","Reconnect your sheet"],modelo:["Modelo do servidor","Server template"]};
     $("titulo").textContent=(titles[state.acao] || ["Conectar sua ficha","Connect your sheet"])[english()?1:0];
     for (const id of ["discord","google","picker","revisar","concluido"]) $(id).hidden=true;
     $("demo").hidden=!state.demonstracao;
@@ -54,7 +54,8 @@
     if(state.fase === "revisar") {
       const review={cadastro:["Confira o arquivo e o nome do personagem antes de confirmar.","Check the file and character name before confirming."],
         troca:["Confira o novo arquivo. O personagem e o cartão continuam os mesmos.","Check the new file. The character and card stay the same."],
-        reconectar:["Confira a ficha vinculada para restabelecer o acesso.","Check the linked sheet to restore access."]};
+        reconectar:["Confira a ficha vinculada para restabelecer o acesso.","Check the linked sheet to restore access."],
+        modelo:["Confira o modelo escolhido. Salvar esta escolha ainda não libera a criação de fichas.","Review the selected template. Saving this choice does not enable sheet creation yet."]};
       $("mensagem").textContent=review[state.acao][english()?1:0];
     }
     if (state.fase === "identificar") $("discord").hidden=false;
@@ -69,7 +70,20 @@
       $("nome").value=state.acao === "cadastro" ? state.previa.nome : state.nome_atual; $("nome").disabled=state.acao !== "cadastro";
       $("troca-aviso").hidden=state.acao !== "troca"; }
     if (state.fase === "concluido") { $("concluido").hidden=false;
-      $("resultado").textContent=state.resultado.perfil.nome+(english()?" · Registration code: ":" · Código do cadastro: ")+state.resultado.id; }
+      $("resultado").textContent=state.acao === "modelo" ? (english()?"Server template saved. Existing characters keep their sheets.":"Modelo do servidor salvo. Os personagens cadastrados continuam com suas fichas.") : state.resultado.perfil.nome+(english()?" · Registration code: ":" · Código do cadastro: ")+state.resultado.id; }
+    if (state.acao === "modelo") {
+      const copy={introducao:["Selecione o modelo que sua mesa quer usar. A criação automática está indisponível até comprovar a limpeza de histórico, emissão e salários e o funcionamento das automações.","Choose the template for your table. Automatic creation is unavailable until history, issuance and salary cleanup and automations are verified."],
+        escolher:["Escolher modelo do servidor","Choose server template"],conferir:["Confira o modelo","Review template"],
+        "responsabilidade-label":["Sou administrador e posso selecionar este modelo para o servidor. Entendo que a criação continua indisponível e que esta escolha não altera personagens cadastrados.","I am an administrator and may select this server template. I understand creation remains unavailable and existing characters are unaffected."],
+        rodape:["Esta solicitação salva apenas a referência do modelo. Para cadastrar uma ficha existente, use /personagem cadastrar no Discord.","This request only saves the template reference. To register an existing sheet, use /character register in Discord."],
+        parcial:["A conferência do formato é parcial. Nível do personagem, XP e regra de nível inicial da campanha são distintos; nenhum desses parâmetros está liberado para criação automática.","The format check is partial. Character level, XP and the campaign’s starting-level rule are distinct; none is enabled for automatic creation."]};
+      for (const [id,values] of Object.entries(copy)) $(id).textContent=values[english()?1:0];
+      $("nome").hidden=true; $("nome-label").hidden=true;
+      if (state.fase === "picker") $("mensagem").textContent=english()?"Choose a template you may configure for this server.":"Escolha um modelo que você possa configurar para este servidor.";
+      if (state.fase === "concluido") $("mensagem").textContent=english()?"Template choice saved. Creation remains unavailable.":"Escolha do modelo salva. A criação continua indisponível.";
+      $("modelo-sinais").hidden=!(state.previa?.sinais?.length);
+      $("modelo-sinais").textContent=english()?"The check found data or usage markers in this template. Initialization must handle them before creating a new character sheet.":"A conferência encontrou dados ou marcas de uso neste modelo. A inicialização precisa tratá-los antes de criar uma ficha nova.";
+    }
     $("cancelar").hidden=["concluido","cancelado","falhou"].includes(state.fase);
   }
   async function reload() { state=await api("/api/fluxo"); render(); }
