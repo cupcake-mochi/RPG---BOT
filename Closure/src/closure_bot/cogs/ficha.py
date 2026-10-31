@@ -54,6 +54,9 @@ FALA[CLOSURE]["pendente"] = "O pente fino ficou parcial. Separei os pontos de at
 COR = {"aprovada": 0x2E8B57, "pendente": 0xD4A017, "reprovada": 0xCC0102, "formato desconhecido": 0xD4A017}
 # Nome legível de cada aviso da ficha; o que não estiver aqui aparece pela chave.
 ROTULOS = {"aviso.escolhas_de_pericia": "Perícias e ofícios", "aviso.pontos_disponiveis": "Pontos de atributo",
+           "origem.menor_1": "Origem · primeira capacidade menor", "origem.menor_2": "Origem · segunda capacidade menor",
+           "origem.marcante": "Origem · capacidade marcante", "origem.traco": "Origem · traço",
+           "maestria": "Maestria", "classe_maxima": "Classe máxima", "nivel": "Nível",
            "aviso.pericias_disponiveis": "Perícias", "aviso.oficios_disponiveis": "Ofícios",
            "aviso.testes_disponiveis": "Testes de Resistência", "aviso.grau": "Grau do uniforme",
            "aviso.forca_p": "Força da mão principal", "aviso.forca_s": "Força da mão secundária",
