@@ -1,5 +1,7 @@
 # Análise de ficha e consulta de montagem — 30/10/2026
 
+> Fechamento posterior: integrado e publicado em 30/10/2026. Consulte [publicação R60](PUBLICACAO-R60-2026-10-30.md) para o runtime, testes finais e limites. As etapas de preparação abaixo permanecem como histórico.
+
 ## Escopo
 
 Correção independente da Carteira viva, sobre main de42447, na branch
