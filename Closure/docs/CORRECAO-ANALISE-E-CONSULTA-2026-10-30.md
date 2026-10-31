@@ -3,7 +3,8 @@
 ## Escopo
 
 Correção independente da Carteira viva, sobre main de42447, na branch
-`codex/correcao-analise-clareza`. Sem merge ou publicação nesta rodada.
+`codex/correcao-analise-clareza`, [PR85](https://github.com/cupcake-mochi/RPG---BOT/pull/85).
+Código `e110b4c0fb60a816b75b8dea374497ac82557033`. Sem merge ou publicação nesta rodada.
 A etapa 7 e o PR84 permanecem separados e parciais.
 Nenhuma ficha oficial ou de jogador foi alterada. Não houve chamada paga.
 Dados da ficha investigada não foram adicionados ao Git ou às fixtures.
@@ -83,7 +84,11 @@ conferências preservadas, não defeitos comprovados das fórmulas do produtor.
   formato alcançava avisos de cadastro fora do escopo; o formatador foi
   restringido aos três problemas de nome, sem alterar aquele teste.
 - Após os ajustes, 34 testes direcionados de clareza, inglês e lore passaram
-  em 35,231 s. A suíte completa final será conferida no CI da PR.
+  em 35,231 s. A suíte completa final passou no
+  [CI41156361663](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/41156361663),
+  código `e110b4c`, em 30/10 às 22:43:13 (Brasília): 986 executados,
+  985 aprovados e um opcional pulado, sem falhas, em 227,759 s.
+  O fechamento posterior altera somente documentação, sem repetir suíte/pacote.
 
 ## Continuidade
 
