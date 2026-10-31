@@ -411,6 +411,30 @@ class CopiasServico(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(AcessoNegado):await self.copiar()
         self.assertFalse(self.posts())
 
+    async def test_desconexao_apos_armar_impede_post_da_copia(self):
+        original = self.s._banco
+        async def banco(metodo, *args, **kw):
+            resultado = await original(metodo, *args, **kw)
+            if metodo == 'armar_envio_copia':
+                await original('desconectar', self.m, self.cid)
+            return resultado
+        self.s._banco = banco
+        with self.assertRaises(AcessoNegado):
+            await self.copiar()
+        self.assertFalse(self.posts())
+
+    async def test_expiracao_apos_armar_impede_post_da_copia(self):
+        original = self.s._banco
+        async def banco(metodo, *args, **kw):
+            resultado = await original(metodo, *args, **kw)
+            if metodo == 'armar_envio_copia':
+                self.clock[0] += 3600
+            return resultado
+        self.s._banco = banco
+        with self.assertRaises(ErroProvedor):
+            await self.copiar()
+        self.assertFalse(self.posts())
+
     async def test_modelo_trocado_durante_cota_impede_envio(self):
         caso=self
         class Cota:

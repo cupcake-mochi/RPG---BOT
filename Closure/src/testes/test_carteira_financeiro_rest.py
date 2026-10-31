@@ -459,6 +459,34 @@ class FinanceiroRestTeste(unittest.IsolatedAsyncioTestCase):
         self.assertTrue(a['financeiro_celulas_conferidas']);self.assertEqual(a,b)
         self.assertEqual(len(self.posts),1)
 
+    async def test_desconexao_depois_de_armar_recusa_antes_do_post(self):
+        original = self.s._banco
+        async def banco(metodo, *args, **kw):
+            resultado = await original(metodo, *args, **kw)
+            if metodo == 'armar_financeiro':
+                await original('desconectar', self.m, self.cid)
+            return resultado
+        self.s._banco = banco
+        with self.assertRaises(ErroCarteira):
+            await self.inicializar()
+        self.assertFalse(self.posts)
+
+    async def test_expiracao_depois_de_armar_recusa_sem_post_e_sem_reenvio(self):
+        original = self.s._banco
+        async def banco(metodo, *args, **kw):
+            resultado = await original(metodo, *args, **kw)
+            if metodo == 'armar_financeiro':
+                self.clock[0] += 3600
+            return resultado
+        self.s._banco = banco
+        with self.assertRaises(ErroCarteira):
+            await self.inicializar()
+        self.assertFalse(self.posts)
+        self.s._banco = original
+        with self.assertRaises(ErroCarteira):
+            await self.inicializar()
+        self.assertFalse(self.posts)
+
     async def test_dois_bancos_armam_uma_vez_e_capacidade_nao_se_reutiliza(self):
         plano=await self.plano();await self.b('preparar_financeiro',self.m,self.ref,plano)
         with Cadastro(self.cfg.banco,self.cfg.chaves,agora=self.agora) as c:

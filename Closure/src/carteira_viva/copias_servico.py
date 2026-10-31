@@ -83,6 +83,9 @@ async def copiar(servico, servidor, usuario, *, conexao, modelo, pedido):
             m, d = await contexto()
             armado = await b('armar_envio_copia', m, ref)
             if armado:
+                # Reconferir após a transação assíncrona: desconexão ou expiração
+                # nesse intervalo impede o POST, mas não rearma o envio durável.
+                await contexto()
                 arquivo = await enviar(servico.provedores, token.acesso, ref.operacao, d['origem'])
                 await contexto()
             else:

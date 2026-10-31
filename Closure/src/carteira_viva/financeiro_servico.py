@@ -111,6 +111,9 @@ async def inicializar(servico, servidor, usuario, ref):
             envio = await b('armar_financeiro', m, ref, observado.versao)
             if envio is not None:
                 # O diário já está enviada. Qualquer erro/cancelamento não autoriza retry.
+                # A transação assíncrona pode ter aguardado; reconferir acesso e prazo
+                # antes do POST, sem devolver o diário ao estado preparada em recusa.
+                await contexto()
                 await enviar(servico.provedores, token.acesso, envio)
                 await contexto()
         await destino()
