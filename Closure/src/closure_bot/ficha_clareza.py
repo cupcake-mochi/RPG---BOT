@@ -81,7 +81,7 @@ def linha_clara(p, ficha, *, ingles=False):
             mensagem = detail(aviso) if ingles else aviso
 
     if mensagem is None and p.regra in ('conta', 'formato'):
-        encontrado = escape_mentions(escape_markdown(str(p.encontrado))) or texto('(vazio)', '(empty)')
+        encontrado = escape_mentions(escape_markdown(str(p.encontrado), as_needed=True)) or texto('(vazio)', '(empty)')
         esperado = (detail(p.esperado) if ingles else p.esperado) or texto('(vazio)', '(empty)')
         mensagem = texto(f'A ficha informa {encontrado}; a conferência indica {esperado}.',
                           f'The sheet reports {encontrado}; the check expects {esperado}.')
@@ -98,7 +98,7 @@ def linha_clara(p, ficha, *, ingles=False):
                                         'configuração', 'campanha', 'aprovação', 'informação',
                                         'famílias', 'progressão', 'treinos', 'aptidão'):
         esperado = detail(p.esperado) if ingles else p.esperado
-        encontrado = escape_mentions(escape_markdown(str(p.encontrado)))
+        encontrado = escape_mentions(escape_markdown(str(p.encontrado), as_needed=True))
         mensagem = esperado.rstrip('.') + '.' if esperado else ''
         mensagem += texto(f' Na ficha: {encontrado}.' if encontrado else ' Esse campo não veio preenchido na leitura.',
                           f' In the sheet: {encontrado}.' if encontrado else ' This field was empty in the data read from the sheet.')
