@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 from .segredos import ErroCarteira
 
-CONTRATO_SHA256 = '1001e7c3605c754b5bf04c33cfd65542c90ef4b897deffda40167a2bafb30439'
+CONTRATO_SHA256 = '0c9dcc89e6b1cb3401a54fb1311d9f72c60774cbec84d741474a7a6066bd8098'
 CAMINHO = Path(__file__).resolve().parents[2] / 'dados/ficha/inicializacao-rest-v1.json'
 
 
