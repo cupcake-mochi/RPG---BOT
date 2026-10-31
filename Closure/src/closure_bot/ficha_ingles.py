@@ -80,7 +80,11 @@ def detail(text):
     return text
 
 
-def line(p):
+def line(p, sheet=None):
+    from .ficha_clareza import linha_clara
+    clear = linha_clara(p, sheet or {}, ingles=True)
+    if clear is not None:
+        return clear
     from .cogs.ficha import _rotulo
     name=label(_rotulo(p.campo));found=p.encontrado;expected=detail(p.esperado)
     if p.regra=='buff':
@@ -136,7 +140,7 @@ def paginas(result,sheet,persona,manifest=None):
         if items:
             lines=[];size=0
             for p in items[:3]:
-                value=line(p)
+                value=line(p,sheet)
                 if size+len(value)>600:break
                 lines.append(value);size+=len(value)+3
             value='\n'.join('• '+v for v in lines)
@@ -169,7 +173,7 @@ def paginas(result,sheet,persona,manifest=None):
     summary.add_field(name='Sheet and rule names',value='Official sheet labels, option names, exported keys and player-written text keep their original spelling so you can find them in the sheet.',inline=False)
     pages.append(('Summary',summary))
     fields=[]
-    for heading,items in reviews:fields+=_campos(heading,[line(p) for p in items])
+    for heading,items in reviews:fields+=_campos(heading,[line(p,sheet) for p in items])
     add('Corrections and review',fields,'pendente',{'❌ Corrections required':'reprovada'})
     add('Character',_campos('Other checked values',[checked(t) for t in personal if not t.startswith(prefixes)]))
     fields=[]

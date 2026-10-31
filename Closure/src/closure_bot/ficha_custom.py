@@ -147,8 +147,14 @@ def preparar_custom(ficha, ref, ctx, r):
         def falha(campo, texto):
             d.valida = False
             problema(r,d.chave+'.'+campo,texto,d.campos.get(campo,''),regra='custom')
-        if not isinstance(d.nome,str) or not d.nome or d.nome.strip()!=d.nome or ' · ' in d.nome:
-            falha('nome','nome literal único, não vazio, sem espaços nas pontas nem separador de lista')
+        if not isinstance(d.nome,str) or not d.nome.strip():
+            falha('nome','preencha o nome do cadastro')
+        else:
+            if d.nome.strip()!=d.nome:
+                posicao = 'no início e no fim' if d.nome.lstrip()!=d.nome and d.nome.rstrip()!=d.nome else 'no início' if d.nome.lstrip()!=d.nome else 'no fim'
+                falha('nome',f'remova os espaços em branco {posicao} do nome; mantenha o mesmo nome nas escolhas que usam este cadastro')
+            if ' · ' in d.nome:
+                falha('nome','retire o separador de lista ( · ) do nome do cadastro')
         p = d.chave.split('.')
         if p[1].isdigit():
             if not inteiro(int(p[1]),1,25) or d.tipo not in ('Origem','Marcante','Menor','Arma','Escudo','Uniforme','Item comum','Ferramenta amaldiçoada'):
