@@ -36,3 +36,5 @@ O conjunto completo de cópia e financeiro e o CI desta revisão têm seu fecham
 registrado na retomada. Não certificar ativação, demais domínios ou criação com
 base nessa correção de envio. ZIP de produção não precisa ser republicado:
 `carteira_viva/` não integra o pacote estável atual.
+
+Fechamento: 85 testes conjuntos passaram em65,236s. CI41160365416, código1268e1b, concluiu em30/10 às23:35:14 Brasília:1.647 executados/1.646 aprovados/um opcional, zero falhas,230,489s. Execução local anterior saída143, sem conclusão, não contada como aprovação.

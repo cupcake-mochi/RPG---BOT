@@ -1,8 +1,9 @@
 # Próxima ação: ativar a cópia pelo responsável
 
-Proposta de código e ensaio para o rascunho PR31. **Ainda não autorizada nem
-implementada.** A autorização anterior cobre cinco propriedades e inspeção,
-sem instalar acionadores. A implementação exige extensão explícita desse escopo.
+Proposta de código e ensaio para o rascunho PR31. **Autorizada e implementada em protótipo em 30/10.**
+Código do produtor `49e9963`; 29 cenários offline aprovados. Ensaio nativo e CI
+ainda têm fechamento separado. A autorização anterior cobre cinco propriedades e inspeção,
+sem instalar acionadores. A extensão foi explicitamente autorizada pelo mantenedor.
 
 ## Entrega proposta
 
@@ -48,3 +49,5 @@ Testes offline precisam cobrir falha antes/depois de cada criação, marca sem
 rotina, rotina errada/duplicada, contexto trocado, preservação e retomada sem
 instalação duplicada. Prova nativa só depois dos testes; nenhuma repetição dos
 ensaios REST anteriores é necessária para essa entrega.
+
+Implementação: wrappers próprios só delegam aos três handlers listados após concluir o diário e a marca. Uma criação sem confirmação de UID é incerta e recusa repetição; não há adoção automática de CLOCK por inspeção. Detalhes no produtor: `r53/inicializacao/ATIVACAO-2026-10-30.md`.

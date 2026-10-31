@@ -1,5 +1,31 @@
 # Continuar a Carteira viva
 
+## Retomada noturna · envio e ativação local
+
+Bot `1268e1b`: acesso/prazo reconferidos depois de armar o envio durável e
+antes dos POSTs de cópia/financeiro. Quatro regressões reproduziram envio após
+desconexão/expiração e passaram com a correção; 85 direcionados aprovados em
+65,236 s. CI41160365416 aprovado: **1.647 executados/1.646 aprovados/um opcional,
+zero falhas**, 230,489 s, em30/10 às23:35:14 Brasília. [Revisão](REVISAO-ENVIO-2026-10-30.md).
+Não é CAS no Google; criação continua bloqueada. Uma execução local anterior
+terminou com saída143 sem conclusão; não foi contada como bateria aprovada.
+
+O mantenedor autorizou ampliar PR31 para instalação local das três rotinas.
+Produtor `49e9963`: protótipo separado, diário antes das criações, UIDs
+registrados, wrappers sem efeito antes da conclusão, marca final retomável;
+criação incerta não é reenviada. 29 cenários offline passaram. CI e ensaio nativo
+em andamento, ainda sem atestado de identidade/backend. Proposta autorizada:
+[ativação pelo responsável](PROPOSTA-ATIVACAO-RESPONSAVEL-2026-10-30.md).
+A cópia nativa nova é privada e pertence à conta pessoal do mantenedor;
+preparação não equivale a ensaio aprovado. Nenhum grant OAuth das Guias foi
+reutilizado ou ampliado. Fonte oficial e produção intactas.
+
+Código experimental segue PR84/PR31, sem merge/deploy. A main publicada das Guias
+é `6b30985` (runtime `229e539`, consulta R60); não foi mesclada nesta cadeia.
+Próxima ação integrada: Sol/High para concluir instalação/eventos nativos;
+Medium para revisar fechamento. Não alterar a configuração do modelo.
+
+
 ## Propriedades separadas e retenção · 30/10
 
 Bot `67a6b98`: equivalências não renovam a retenção. CI41061489142 aprovado

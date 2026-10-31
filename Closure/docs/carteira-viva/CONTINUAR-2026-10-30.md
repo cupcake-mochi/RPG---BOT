@@ -1,5 +1,31 @@
 # Continuar a Carteira viva · 30/10/2026
 
+## Retomada noturna · envio e ativação local
+
+Bot `1268e1b`: acesso/prazo reconferidos depois de armar o envio durável e
+antes dos POSTs de cópia/financeiro. Quatro regressões reproduziram envio após
+desconexão/expiração e passaram com a correção; 85 direcionados aprovados em
+65,236 s. CI41160365416 aprovado: **1.647 executados/1.646 aprovados/um opcional,
+zero falhas**, 230,489 s, em30/10 às23:35:14 Brasília. [Revisão](REVISAO-ENVIO-2026-10-30.md).
+Não é CAS no Google; criação continua bloqueada. Uma execução local anterior
+terminou com saída143 sem conclusão; não foi contada como bateria aprovada.
+
+O mantenedor autorizou ampliar PR31 para instalação local das três rotinas.
+Produtor `49e9963`: protótipo separado, diário antes das criações, UIDs
+registrados, wrappers sem efeito antes da conclusão, marca final retomável;
+criação incerta não é reenviada. 29 cenários offline passaram. CI e ensaio nativo
+em andamento, ainda sem atestado de identidade/backend. Proposta autorizada:
+[ativação pelo responsável](PROPOSTA-ATIVACAO-RESPONSAVEL-2026-10-30.md).
+A cópia nativa nova é privada e pertence à conta pessoal do mantenedor;
+preparação não equivale a ensaio aprovado. Nenhum grant OAuth das Guias foi
+reutilizado ou ampliado. Fonte oficial e produção intactas.
+
+Código experimental segue PR84/PR31, sem merge/deploy. A main publicada das Guias
+é `6b30985` (runtime `229e539`, consulta R60); não foi mesclada nesta cadeia.
+Próxima ação integrada: Sol/High para concluir instalação/eventos nativos;
+Medium para revisar fechamento. Não alterar a configuração do modelo.
+
+
 Sem credenciais nem dados de jogadores. Substitui o
 [prompt de 29/10](CONTINUAR-NO-CLAUDE-2026-10-29.md) como ponto de partida; aquele segue
 valendo para limites, caminhos e histórico.
@@ -103,3 +129,24 @@ domínios, preservação, automações, prova integral; etapas 8–10. Criação
 **bloqueada**; quatro indicadores falsos. Sem merge/deploy, modelo pago, escopo novo, Gateway,
 edição de oficial/jogador. Produtor alterado apenas no protótipo autorizado do PR31.
 Commits sem coautoria do assistente.
+
+## Ponto operacional do ensaio de ativação
+
+Kit privado novo em `~/.local/share/guias-ciclo/carteira-piloto/etapa7-ativacao-20261030`.
+Não reutiliza concessões anteriores. Cópia nativa nova, permissões conferidas:
+apenas proprietário pessoal, `shared=false`. Código de QA concatenando financeiro,
+propriedades e ativação salvo no projeto da própria cópia e relido pela UI:
+37.740 caracteres idênticos. Execução `qaAtivacaoFinanceiro` abriu autorização
+obrigatória; o clique em Revisar permissões não abriu popup pelo controle.
+Mantenedor avisado para concluir diretamente. Não afirmar escrita/ativação nativa.
+
+Após autorização: conferir o log da chamada existente antes de repetir qualquer
+função. `qaAtivacaoFinanceiro` retoma pelo diário; depois
+`qaAtivacaoPropriedades`, quatro chamadas de `qaAtivacaoInstalar` e repetição
+terminal, cada uma apenas depois de ler o resultado anterior. `qaAtivacaoStatus`
+expõe somente estados/contagens. Não repetir financeiro após concluir nem
+semear outros dados. Para as rotinas: ensaiar eventos reais somente depois do
+fechamento de instalação, conferir lançamentos e providenciar limpeza limitada
+aos UIDs do próprio diário, revogar a autorização QA e enviar a cópia à lixeira.
+As abas Sheets/projeto QA foram deixadas para o mantenedor; fechar após limpar.
+CI do produtor é41160760110, código49e9963; ainda sem conclusão neste registro.
