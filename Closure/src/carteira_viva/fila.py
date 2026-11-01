@@ -44,6 +44,10 @@ class Fila:
             # O último cliente desistiu, mas o job ainda está limpando a fonte.
             # Esperar essa limpeza impede que ela invalide o pedido substituto.
             await asyncio.shield(p.tarefa)
+            # O serviço pode ter encerrado durante a espera pela limpeza.
+            # Não admitir trabalho novo depois de fechar a fila/recursos.
+            if self.fechada:
+                raise Ocupado("A leitura está encerrando. Tente novamente depois.")
             p = self.pedidos.get(chave)
         if p is None:
             if (len(self.pedidos) >= self.limite or
@@ -77,6 +81,8 @@ class Fila:
                     self.pedidos.pop(chave, None)
 
     def _iniciar(self):
+        if self.fechada:
+            return
         while len(self.ativos) < self.paralelos and self.grupos:
             # Um ator não ocupa os dois trabalhadores. Grupos giram a cada saída.
             ocupados = {self.pedidos[k].grupo for k in self.ativos}
