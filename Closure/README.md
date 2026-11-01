@@ -1,6 +1,6 @@
 # Guias do Ciclo · projeto atual
 
-**Versão estável 1.0.3 · publicada em 21/10/2026.**
+**Última publicação: 30/10/2026 · consulta R60/v0.369 · mecânica R53.**
 
 Um bot, duas personagens: Kal’tsit atende das 9h às 21h e Closure das 21h às 9h,
 no horário de Brasília. Elas conversam, consultam o livro do Ciclo Maldito,
@@ -30,11 +30,11 @@ somente essas duas configurações. Arquivista e Guias têm configurações sepa
 
 ## Regras, ficha e limites
 
-A consulta desta atualização usa o texto **v0.367 (revisão 57)**, com 576 trechos
-de referência. As revisões editoriais R54–R57 foram registradas pelo autor sem
-mudança de regras. A mecânica da análise continua R53.
-A consulta R57 ainda não foi publicada na Discloud: a produção segue
-R53/v0.366 ([validação e estado](docs/CONSULTA-R57.md)).
+A consulta publicada usa o texto **R60/v0.369**, com 576 trechos de referência.
+A mecânica da análise continua R53. O último deploy registrado ocorreu em
+**30/10/2026, às 23:23 (Brasília)**, runtime `229e539`, com 990 testes
+(989 aprovados e um online opcional pulado) e 91/91 arquivos instalados
+conferidos ([validação e publicação](docs/PUBLICACAO-R60-2026-10-30.md)).
 As duas fichas oficiais, Era da Revolução e Ciclo Maldito, mostram a versão pública **1.0**, que não é a
 revisão do livro nem a versão do bot ([modelos](dados/ficha/MODELOS.md)). Os cartões ANALISE 12 usam
 o motor R53; formatos antigos mantêm sua referência histórica separada.
@@ -48,10 +48,17 @@ continuam com o mestre. Aprovação de texto não cria benefício numérico.
 - [Contrato e cobertura da ficha](dados/ficha/INTEGRACAO-B47.md)
 - [Auditoria R53, testes e publicação](pesquisa/validacao/2026-10-21-r53/FECHAMENTO.md)
 - [Idioma e lore por servidor](docs/RETOMADA-PUBLICO.md)
-- [Clareza de siglas e entrega atual](docs/CLAREZA-SIGLAS.md)
+- [Entrega atual e clareza da análise](docs/PUBLICACAO-R60-2026-10-30.md)
 - [Revisão final de clareza e apresentação](docs/REVISAO-FINAL-APRESENTACAO.md)
 
 ## Executar e manter
+
+A **Carteira viva** segue em desenvolvimento separado, nos PRs #77–#84:
+etapas 1–6 implementadas, etapa 7 parcial e 8–10 pendentes. Ainda não está
+publicada e a criação automática de fichas permanece bloqueada. O próximo
+marco é revisar o tempo de preparação das cópias e provar os eventos reais
+de abertura, edição, missão, gasto e correção de data em nova descartável.
+Consulte a [retomada da branch de desenvolvimento](https://github.com/cupcake-mochi/RPG---BOT/blob/codex/carteira-viva-etapa-7/Closure/docs/carteira-viva/RETOMADA.md).
 
 Siga [src/LEIA-ME.md](src/LEIA-ME.md) para dependências, ambiente e execução.
 Não publique `.env`, bancos, chave mestra ou cadastro real de campanha.
