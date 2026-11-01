@@ -1,5 +1,17 @@
 # Continuar a Carteira viva
 
+## Trabalho local além do ensaio Google · 01/11
+
+Reproduzida e corrigida uma corrida na fila: um substituto que aguardava
+limpeza podia iniciar depois do encerramento. Agora reconfere o estado após
+essa espera e o escalonador não inicia trabalho com fila fechada. Dois testes
+novos;15 da fila aprovados. [Correção e fila de trabalho local](FILA-ENCERRAMENTO-2026-11-01.md).
+
+Além dos eventos reais pendentes, há trabalho offline em integração dos demais
+domínios, contrato de ativação verificável e concorrência. A indisponibilidade
+do Google não é bloqueio geral do projeto. Nenhuma criação foi liberada ou
+publicada. Sol/High; Astra/High para os contratos.
+
 ## Continuação em nuvem · 01/11
 
 READMEs corrigidos e mesclados na PR88, sem deploy. No produtor/PR31,

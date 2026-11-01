@@ -75,6 +75,54 @@ class FilaTeste(unittest.IsolatedAsyncioTestCase):
         ts=[asyncio.create_task(self.fila.executar((i,),(g,),lambda i=i:job(i))) for i,g in [(1,"a"),(2,"a"),(3,"b")]]
         await asyncio.sleep(.02); self.assertEqual(iniciou,[1,3]); liberar.set(); await asyncio.gather(*ts)
 
+    async def test_encerrar_durante_limpeza_nao_admite_substituto(self):
+        entrou=asyncio.Event(); limpando=asyncio.Event(); chamadas=[]
+        async def antigo():
+            entrou.set()
+            try: await asyncio.Event().wait()
+            finally:
+                limpando.set()
+                await asyncio.Event().wait()
+        async def substituto(): chamadas.append('novo'); return 'resultado privado'
+        a=asyncio.create_task(self.fila.executar(('igual',),('mesa','u'),antigo))
+        await entrou.wait(); a.cancel()
+        with self.assertRaises(asyncio.CancelledError): await a
+        await limpando.wait()
+        b=asyncio.create_task(self.fila.executar(('igual',),('mesa','u'),substituto))
+        try:
+            await asyncio.sleep(0)  # Substituto aguarda o job antigo terminar a limpeza.
+            await self.fila.fechar()
+            with self.assertRaises(Ocupado): await asyncio.wait_for(b,1)
+            self.assertEqual(chamadas,[])
+            self.assertFalse(self.fila.pedidos); self.assertFalse(self.fila.ativos)
+        finally:
+            if not b.done(): b.cancel()
+            await asyncio.gather(b,return_exceptions=True)
+
+    async def test_substituto_aguarda_limpeza_e_funciona_com_fila_aberta(self):
+        entrou=asyncio.Event(); limpando=asyncio.Event(); liberar=asyncio.Event(); chamadas=[]
+        async def antigo():
+            entrou.set()
+            try: await asyncio.Event().wait()
+            finally:
+                limpando.set()
+                await liberar.wait()
+        async def substituto(): chamadas.append('novo'); return 42
+        a=asyncio.create_task(self.fila.executar(('igual',),('mesa','u'),antigo))
+        await entrou.wait(); a.cancel()
+        with self.assertRaises(asyncio.CancelledError): await a
+        await limpando.wait()
+        b=asyncio.create_task(self.fila.executar(('igual',),('mesa','u'),substituto))
+        try:
+            await asyncio.sleep(0); self.assertEqual(chamadas,[])
+            liberar.set(); self.assertEqual(await asyncio.wait_for(b,1),42)
+            self.assertEqual(chamadas,['novo'])
+            self.assertFalse(self.fila.pedidos); self.assertFalse(self.fila.ativos)
+        finally:
+            liberar.set()
+            if not b.done(): b.cancel()
+            await asyncio.gather(b,return_exceptions=True)
+
 
 class CotasTeste(unittest.IsolatedAsyncioTestCase):
     async def test_limites_por_conta_e_projeto(self):
