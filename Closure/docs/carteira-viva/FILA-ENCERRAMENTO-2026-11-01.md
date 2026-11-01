@@ -22,6 +22,15 @@ substituto aguarda a limpeza e executa uma vez. Os15 testes da fila passaram.
 O primeiro teste foi executado antes da correção e falhou pela ausência da
 recusa esperada; não se alteraram as expectativas existentes.
 
+Validação final: **673 testes da Carteira aprovados localmente**,71,859s.
+O [CI41260473153](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/41260473153)
+executou **1.649 testes:1.648 aprovados,um opcional pulado,zero falhas**,
+228,286s, no código `4e18fc6a57c2512b5cdcb54081b87c59625fee21`.
+A primeira tentativa ampla local usava apenas as dependências da produção
+e teve25 erros de importação por ausência de Authlib/httpx. Foi substituída
+por ambiente próprio com os dois requirements; a bateria da Carteira acima
+e o CI completo usam essa preparação. Não foi falha mecânica nem chamada paga.
+
 ## Trabalho local que continua possível
 
 O Google indisponível limita os ensaios reais; não bloqueia toda a etapa7.
@@ -41,6 +50,11 @@ Etapa7 parcial e8–10 pendentes. Código da Carteira separado da produção.
 Para reproduzir, com o núcleo e as dependências preparados, em `Closure/src/`:
 
 ```sh
+# Preparar a partir da raiz do repositório:
+python3 -m venv Closure/.venv
+Closure/.venv/bin/python -m pip install -r Closure/src/requirements.txt -r Closure/carteira/requirements.txt
+# Em Closure/: .venv/bin/python ferramentas/empacotar.py
+# Depois, em Closure/src/:
 ../.venv/bin/python -m unittest testes.test_carteira_fila
 ../.venv/bin/python -m unittest discover -s testes
 ```

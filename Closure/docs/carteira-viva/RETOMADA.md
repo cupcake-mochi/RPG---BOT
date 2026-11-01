@@ -5,7 +5,10 @@
 Reproduzida e corrigida uma corrida na fila: um substituto que aguardava
 limpeza podia iniciar depois do encerramento. Agora reconfere o estado após
 essa espera e o escalonador não inicia trabalho com fila fechada. Dois testes
-novos;15 da fila aprovados. [Correção e fila de trabalho local](FILA-ENCERRAMENTO-2026-11-01.md).
+novos;15 da fila e673 da Carteira aprovados localmente.
+[CI41260473153](https://github.com/cupcake-mochi/RPG---BOT/actions/runs/41260473153)
+verde no código4e18fc6:1.649/1.648/um opcional,zero falhas.
+[Correção e fila de trabalho local](FILA-ENCERRAMENTO-2026-11-01.md).
 
 Além dos eventos reais pendentes, há trabalho offline em integração dos demais
 domínios, contrato de ativação verificável e concorrência. A indisponibilidade
