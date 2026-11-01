@@ -5,8 +5,8 @@
 READMEs corrigidos e mesclados na PR88, sem deploy. No produtor/PR31,
 `a085a9f` adiciona pausa retomável após preparo longo antes de criar rotinas:
 35 cenários de ativação,101 financeiros,46 de propriedades e47 REST aprovados
-localmente. Não é medição nativa ou liberação de criação. A prova completa
-do novo commit no CI deve ser conferida separadamente.
+localmente. [CI41258089381](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/41258089381)
+completo aprovado em `a085a9f`. Não é medição nativa ou liberação de criação.
 
 [Avanço, limites e roteiro curto dos eventos](RETOMADA-EVENTOS-2026-11-01.md).
 Este ambiente não dispõe de navegador/identidade Apps Script; nenhum novo

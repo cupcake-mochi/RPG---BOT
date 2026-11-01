@@ -20,8 +20,10 @@ indicadores de liberação continuam iguais.
 
 Passaram localmente35 cenários de ativação,101 financeiros,46 de propriedades
 e47 REST. Quatro cenários novos cobrem orçamento/fronteira, retomada com
-funções recarregadas, edição concorrente e rotina desconhecida. A prova nativa
-e o CI completo deste commit têm evidência separada.
+funções recarregadas, edição concorrente e rotina desconhecida.
+O [CI completo41258089381](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/41258089381)
+foi aprovado no código `a085a9ff020f4aa212eb301f8f10599b9a055519`.
+A prova nativa permanece pendente.
 
 Fonte e implementação: [PR31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31)
 e [contrato de ativação](https://github.com/cupcake-mochi/Ficha---RPG-JJK/blob/codex/inicializacao-financeira-carteira/r53/inicializacao/ATIVACAO-2026-10-30.md).
