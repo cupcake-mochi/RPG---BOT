@@ -1,5 +1,16 @@
 # Continuar a Carteira viva
 
+## Atestado de ativação por pulso · 02/11
+
+Contrato decidido com o mantenedor: o atestado protege contra instalação
+falha, não contra trapaça do dono. As rotinas gravam um pulso ao rodar; o bot
+classifica em não ativada, aguardando, ativa, parada ou inconsistente
+(`carteira_viva/atestado_ativacao.py`, sete testes novos, 680 da Carteira
+aprovados localmente). Ativa só depois do primeiro diário real e de uma
+abertura e uma edição do jogador. Sem leitor, sem mudança no produtor e sem
+liberar criação. [Contrato](ATIVACAO-PULSO-2026-11-02.md).
+Próximo: produtor grava o pulso (PR31) e o bot ganha o leitor.
+
 ## Concorrência decidida · 02/11
 
 Sem compare-and-swap no `batchUpdate`, o mantenedor aceitou o risco residual
