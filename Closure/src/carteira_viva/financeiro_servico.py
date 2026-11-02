@@ -2,7 +2,9 @@
 
 Sem rota pública. Não inicializa PropertiesService nem libera criação. A API
 Sheets não oferece aqui compare-and-swap contra uma edição simultânea do dono;
-essa limitação continua bloqueando a liberação pública da criação.
+o risco residual dessa janela foi aceito pelo mantenedor em 02/11 (ver
+docs/carteira-viva/CONCORRENCIA-2026-11-02.md). Os demais bloqueios da criação
+continuam valendo.
 """
 from .copias_banco import ReferenciaCopia, hash_texto
 from .copias_google import observar
