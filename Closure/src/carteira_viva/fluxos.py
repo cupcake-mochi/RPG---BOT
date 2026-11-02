@@ -57,8 +57,11 @@ class Fluxos:
 
     def criar(self, membro: Membro, acao: str, personagem: str | None):
         self.c._membro(membro)
-        if acao not in ("cadastro", "troca", "reconectar") or (acao != "cadastro" and not personagem):
+        if (acao not in ("cadastro", "troca", "reconectar", "modelo") or
+                (acao in ("troca", "reconectar") and not personagem) or (acao == "modelo" and personagem is not None)):
             raise ErroCarteira("Ação de conexão inválida.")
+        if acao == "modelo":
+            self.c._autorizar(membro, Acao.CONFIGURAR)
         with self.c._transacao():
             ativos = self.c.db.execute("""SELECT count(*) FROM web_fluxos WHERE usuario=? AND expira>?
                 AND fase NOT IN ('concluido','cancelado','falhou')""", (membro.usuario, self.c.agora())).fetchone()[0]
@@ -76,7 +79,9 @@ class Fluxos:
                  "csrf": secrets.token_urlsafe(32), "idioma": config[0] if config else "pt-BR",
                  "baselines": {x["id"]: [x["autorizacao"], x["estado"]] for x in conexoes}}
             conexao = None
-            if acao != "cadastro":
+            if acao == "modelo":
+                d["modelo_revisao"] = self.c.revisar_modelo(membro)["revisao"]
+            if acao in ("troca", "reconectar"):
                 p = self.c._personagem(membro, personagem, Acao.TROCAR_ARQUIVO)
                 f = self.c._fonte(membro.servidor, personagem)
                 conexao = f["conexao"]
@@ -153,6 +158,8 @@ class Fluxos:
             r, d = self._sessao(ticket, cookie, fases=("processando_discord",))
             if (membro.servidor, membro.usuario, membro.presente) != (r["servidor"], r["usuario"], True):
                 raise AcessoNegado("Entre com a conta que iniciou a conexão.")
+            if d["acao"] == "modelo":
+                self.c._autorizar(membro, Acao.CONFIGURAR)
             r.update(cookie=digest(novo_cookie), fase="google", provedor=None)
             d["csrf"] = secrets.token_urlsafe(32)
             self._salvar(r, d)
@@ -241,7 +248,13 @@ class Fluxos:
             g = self.google(ticket, cookie)
             if any(previa[k] != d["previa"][k] for k in ("arquivo", "contrato")):
                 raise Conflito("A ficha mudou durante a confirmação.")
-            if d["acao"] != "cadastro":
+            if d["acao"] == "modelo":
+                from .modelos import referencia_validada
+                if referencia_validada(previa) != referencia_validada(d["previa"]):
+                    raise Conflito("O modelo mudou durante a confirmação.")
+                resultado = self.c.configurar_modelo(membro, escolha="servidor", revisao=d["modelo_revisao"], previa=previa)
+                return self._concluir(r, d, resultado)
+            if d["acao"] in ("troca", "reconectar"):
                 self.c._personagem(membro, d["personagem"], Acao.TROCAR_ARQUIVO)
                 f = self.c._fonte(membro.servidor, d["personagem"])
                 if f["revisao"] != d["revisao"] or f["conexao"] != d["conexao_alvo"]:
@@ -258,11 +271,15 @@ class Fluxos:
                     self.c.trocar_arquivo(membro, d["personagem"], arquivo=previa["arquivo"], conexao=cid,
                                           contrato=previa["contrato"], revisao=d["revisao"], pedido=r["id"])
                 resultado = self.c.cartao(membro, d["personagem"])
-            d = {k: d[k] for k in ("ticket", "csrf", "idioma", "acao", "origem")}
-            d["resultado"] = resultado
-            r.update(fase="concluido", conexao=None, estado=None, provedor=None)
-            self._salvar(r, d)
-            return resultado
+            return self._concluir(r, d, resultado)
+
+    def _concluir(self, r, d, resultado):
+        # Modelo não chama conectar: o OAuth do administrador não vira acesso do jogador.
+        d = {k: d[k] for k in ("ticket", "csrf", "idioma", "acao", "origem")}
+        d["resultado"] = resultado
+        r.update(fase="concluido", conexao=None, estado=None, provedor=None)
+        self._salvar(r, d)
+        return resultado
 
     def encerrar(self, ticket, cookie, csrf, *, falhou=False):
         with self.c._transacao():

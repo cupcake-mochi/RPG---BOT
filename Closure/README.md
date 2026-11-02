@@ -50,8 +50,8 @@ continuam com o mestre. Aprovação de texto não cria benefício numérico.
 - [Idioma e lore por servidor](docs/RETOMADA-PUBLICO.md)
 - [Clareza de siglas e entrega atual](docs/CLAREZA-SIGLAS.md)
 - [Revisão final de clareza e apresentação](docs/REVISAO-FINAL-APRESENTACAO.md)
-- [Plano da Carteira viva e galeria](docs/carteira-viva/PLANO.md) — futuro;
-  ainda não implementado. Inclui etapas, modelos recomendados, testes e retomada.
+- [Carteira viva e galeria](docs/carteira-viva/RETOMADA.md) — em desenvolvimento,
+  sem publicação: etapas 1–6 implementadas e 7 parcial. Inclui plano, testes e retomada.
 
 ## Executar e manter
 

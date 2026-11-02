@@ -15,6 +15,17 @@ class Galeria:
     async def membro(self,s,u):
         return await self.provedores.membro(s,u)
 
+    async def modelos(self,s,u):
+        return await self.banco('modelos',await self.membro(s,u))
+
+    async def configurar_modelo(self,s,u,*,escolha,revisao):
+        if escolha not in ('oficiais','era','ciclo'):
+            raise ErroCarteira('Escolha o modelo personalizado pelo Picker.')
+        return await self.banco('configurar_modelo',await self.membro(s,u),escolha=escolha,revisao=revisao)
+
+    async def criar_por_modelo(self,s,u,*,modelo,parametros=None):
+        return await self.banco('criar_por_modelo',await self.membro(s,u),modelo=modelo,parametros=parametros)
+
     async def _dono(self,m,pid):
         dono=await self.banco('dono_personagem',m,pid)
         try: return await self.membro(m.servidor,dono)

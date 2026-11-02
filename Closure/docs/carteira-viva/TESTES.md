@@ -1,5 +1,273 @@
 # Testes da Carteira viva
 
+## CARTEIRA e memórias · continuação de 28/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`8bb93355cb5d20d75ead1d8ba9a4b6d7c3ad88cc`. Main `ef361cc` e bot main
+`de42447` reconferidas sem novidade; nenhum merge necessário.
+
+Perfil CARTEIRA: O13, O27 e O30, conteúdo/notas de fábrica; preserva servidor,
+espelhos, identidade, foto e emissão tratados separadamente. O27 é a técnica
+declarada consumida por DADOS_AM; sentinela antigo D24 do teste foi corrigido
+com prova da montagem completa. Nove contratos de formação anteriores iguais.
+
+Protocolo separado de memórias: quatro caches e 249 marcadores de Classe em
+11 grupos fixos de até 24 chaves; recuperações conhecidas por timestamp com
+diário individual. Só document properties conhecidas, sem apagar células,
+MONTAGENS, configurações, script/user properties ou diários alheios. Recusa
+namespace/contrato desconhecido, preserva retomada/concorrência/limites e
+invalida cache volátil do editor. A inspeção final deve ser repetida para
+identificar recuperações novas; concluir um grupo não certifica o conjunto.
+
+441 cenários de formação/CARTEIRA, 155 de memórias e 101 financeiros passaram
+localmente; **1.100** (101/82/78/243/441/155) confirmados no
+[CI 40686604745](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40686604745),
+aprovado no código `8bb9335` em 28/10 às 09:19:25 Brasília, junto ao pacote
+e demais regressões. Run duplicado de push 40686597423 cancelado. Fechamento
+produtor `306b22ed008a18d04e40c8d437806cedc5003333` só documental, `[skip ci]`. Quinze entradas/guardas e três notas conferidas em cada
+oficial, sem divergência, somente leitura. Sem nova cópia, projeção ou execução
+Apps Script nesta rodada. Relatório do produtor:
+`r53/inicializacao/CARTEIRA-MEMORIAS-2026-10-28.md`.
+
+Próximo: entidades/cartões/MONTAGENS. Ainda faltam arte, orquestração e
+conferência conjunta, ordem das memórias com automações/notas vivas/treinos,
+novo responsável, integração executável drive.file e prova nativa completa.
+**Criação incondicionalmente bloqueada.** Limpar caches não limpa os cartões
+armazenados; não religar automações no meio da limpeza nem apagar diários
+para forçar uma nova execução. Não confundir testes isolados com aceite final.
+
+Runtime bot `26ec106`, CI histórico 40496955301 (1.314/1.313/um opcional), PR 84
+base PR 83; consumidor só docs, sem suíte/ZIP novo. Protótipos fora do pacote.
+Sem merge/deploy/Gateway/modelo pago/escopos novos ou escrita em oficial/jogador.
+Próxima implementação GPT-6 Astra / Alto; revisão focal Médio.
+
+## Histórico: inventário e equipamento · continuação de 28/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`86410bee3fc70fa81f124a695253e032688c3ebe`. Main `ef361cc` reconferida,
+sem alteração desde o checkpoint anterior; bot main `de42447` também igual.
+
+Três perfis novos: equipados (cinco campos), equipáveis guardados (88) e itens
+(36). Restauram fórmulas/notas, limpam estoque e valores pessoais, preservando
+configurações e catálogos. Quatro notas vivas antigas são limpas sem escrever
+nas suas fórmulas protegidas. Soco, mão livre e Traje 1 são defaults da ficha;
+não concede dinheiro, estoque ou treino. Fórmulas desconhecidas recusadas.
+A variante decimal 0,1 observada nas oficiais é aceita somente nas fórmulas
+inteiras conhecidas de Volume; mudança de número/referência continua recusada.
+Contratos anteriores e assinatura financeira v1 mantidos.
+
+417 cenários direcionados de formação/inventário e 101 financeiros passaram;
+a coleção de inicialização soma 921 (101/82/78/243/417), confirmados pelo
+[CI 40683614201](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40683614201),
+aprovado em 28/10 às 08:56:07 Brasília no código `86410be`, junto ao pacote,
+regressões, catálogo/progressão/Kaori e sintaxe 277 Python/220 JS-GS.
+Duplicado 40683604255 cancelado. Fechamento produtor `edea21b` só documental,
+`[skip ci]`. Leitura de 161 entradas/
+guardas por oficial, zero diferenças e nenhuma escrita.
+
+Projeção Sheets API em cópia privada do Ciclo: 129 campos/notas e quatro notas
+isoladas restaurados; 2.678 posições, 10.450 comparações preservadas sem diferença.
+Carga 0,3 de 5 igual ao modelo, por causa do Traje 1; nenhum erro nas faixas.
+Cópia na lixeira, aba fechada. **Não executou os novos diários Apps Script,
+OAuth das Guias ou automações.** Relatório do produtor:
+`r53/inicializacao/INVENTARIO-2026-10-28.md`.
+
+Próximo: campos pessoais restantes da CARTEIRA e propriedades de recuperação;
+depois entidades/cartões/MONTAGENS. Ainda faltam arte/caches/recuperações,
+orquestração/conferência conjunta, automações/notas vivas/treinos iniciais,
+novo responsável, integração executável drive.file e prova nativa completa.
+**Criação incondicionalmente bloqueada.** Avisos vazios não são aprovação;
+notas vivas serão regeneradas na fase final. Não apagar diários para reiniciar.
+
+Bot runtime `26ec106`, CI 40496955301 (1.314/1.313/um opcional), PR 84 base 83.
+Consumidor só docs, sem repetir suíte ou gerar ZIP. Protótipos fora do pacote/bot.
+Sem merge em main, deploy, Gateway, modelo pago, novos escopos ou escrita em
+oficial/jogador. Próxima implementação GPT-6 Astra / Alto; revisão focal Médio.
+
+## Histórico: técnica e Famílias · continuação de 28/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`763a78bd5fd3d799dd1273f24b6839a5c118d47a` (domínios em `a92cba8`). Main
+`ef361ccdf7a0210781176e3c42d318cde147553d` incorporada pelo merge `a72adc0`
+(PRs 41–43). Inclui XP manual/missões congeladas e registro do backup 13 das
+oficiais feito por outro trabalho; não reaplicar aquela instalação.
+
+Dois perfis novos: **11 entradas do cabeçalho da técnica e 19 estados de
+Famílias**. Nove Famílias do livro voltam a Neutra; dez custom recuperam as
+fórmulas originais, sem apagar as definições do servidor. Nome/atributo/CD
+derivados são preservados. O nome declarado da técnica na CARTEIRA ainda
+precisa de domínio próprio, assim como cartões/amparo e sincronizações.
+Os quatro contratos anteriores e a assinatura financeira v1 ficam iguais.
+
+**782 cenários locais passaram** (101 financeiro, 82 progressão, 78 identidade,
+243 pessoal, 278 formação), 90 a mais que o checkpoint anterior. Duas regressões
+usam as novas notas de XP congelado: financeiro remove marcas herdadas;
+reinserção depois impede progressão. Mais 87 verificações upstream de XP manual.
+O CI 40681047195 passou os 782 cenários, mas faltavam dois commits históricos
+para os testes salariais incluídos pela main. O workflow agora busca somente
+as duas bases imutáveis, sem pular testes ou mudar expectativas. As 15
+verificações de abertura e 2.076 de missões passaram localmente. [CI corrigido 40681468287](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40681468287)
+aprovado em 28/10 às 08:39:49 Brasília no código `763a78b`: 782 cenários,
+regressões, pacote de nove arquivos, catálogo/progressão/Kaori e sintaxe
+277 Python/220 JS-GS. Duplicado 40681461827 cancelado. Fechamento produtor
+`5c93e005964360a157a0883857f1951609ce9539` só documental, `[skip ci]`.
+
+Leitura das duas oficiais: 84 entradas/guardas cada, sem divergências ou escrita.
+Projeção pela Sheets API em cópia privada descartável da Era: 30 alvos
+restaurados, 2.048 posições inspecionadas e 8.132 comparações preservadas sem
+diferença. Duas custom (incluindo nome com *) ficaram Neutra; oito vazias.
+Fórmulas com vírgulas deram erro de análise na API; a variante exata com ponto
+e vírgula observada nas oficiais resolveu. Não altera conta ou referência.
+Nenhum erro final nas faixas inspecionadas. Cópia na lixeira, aba fechada.
+**Isso não executou o inicializador/diários Apps Script ou o OAuth das Guias.**
+O setValues real e a retomada dos novos perfis ainda exigem ensaio nativo.
+Relatório: `r53/inicializacao/TECNICA-FAMILIAS-2026-10-28.md` no produtor.
+
+Próximo bloco: inventário/equipamento. Também faltam campos da CARTEIRA,
+entidades/cartões/MONTAGENS, fotos/caches/recuperações, orquestração/conferência
+conjunta, treinos iniciais/automações, novo responsável, integração executável
+com drive.file e prova nativa completa. **Criação incondicionalmente bloqueada**;
+protótipos fora do pacote/bot. Não reiniciar fases apagando diários.
+
+Bot runtime `26ec106`, CI 40496955301 (1.314 executados/1.313 aprovados/um
+opcional), PR 84 na base da 83. Aqui só docs do consumidor: sem repetir suíte
+extensa ou gerar ZIP. Sem merge em main, deploy, Gateway, modelo pago, escopos
+novos ou escrita em oficial/jogador. Próxima implementação GPT-6 Astra / Alto;
+revisão focal Médio. Não alterar configurações automaticamente.
+
+## Histórico: Grau, Origem e treinos · continuação de 27/10
+
+Produtor [PR 31](https://github.com/cupcake-mochi/Ficha---RPG-JJK/pull/31), código
+`73dffda`, main `64b84e4cef0b1b0a05c2159c9dc700459a0f2dc9` incorporada por
+`3f57c19` (PRs 39/40). A instalação salarial/backup 12 das oficiais foi feita
+por outro trabalho e apenas registrada aqui; não reaplicar.
+
+Quatro perfis novos, **268 células**: Grau/Origem (10), Perícias (99),
+Ofícios/TR (94), armas (65). Restauram defaults e notas de fábrica;
+preservam catálogos, fórmulas protegidas, formatos e validações. Grau 4 de
+fábrica, sem inferir pelo nível ou inventar configuração de campanha.
+Descrições/Ofícios custom voltam às fórmulas. Bônus custom usam AL, sem
+apagar espelhos antigos ou interiores de mesclas. W86 é validado contra a
+fórmula final do módulo salarial, não a fórmula antiga de Pessoal.gs.
+
+**692 cenários offline** passaram (101/80/78/243/190); 190 novos cobrem
+escritas, concorrência, variantes exatas, notas e matriz parcial. Assinatura
+financeira v1 mantida. Limites por perfil: quatro escritas por chamada,
+210 s e diário de até 9.000 bytes UTF-8. Estado intermediário desconhecido
+é recusado, sem sobrescrita ou rollback automático. Regressões upstream:
+2.076 verificações de missões e 95 salariais; não somar à suíte do bot.
+
+CI Linux do produtor `73dffda` aprovado: [40546156146](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40546156146),
+27/10 às 14:00:26 Brasília. Os 692 cenários passaram no CI, junto ao pacote,
+regressões, catálogo/progressão/Kaori e sintaxe (277 Python/219 JS-GS).
+Run duplicado 40546148817 cancelado. Fechamento posterior só documental
+com `[skip ci]`; não exige nova suíte do bot nem publicação.
+
+Leitura Google das duas oficiais: **457 conferências por arquivo**, zero
+divergências; sem escrita. Não houve nova cópia, projeção por API, executor
+Apps Script ou OAuth das Guias nesta rodada. Ensaios anteriores não validam
+este executor. Relatório do produtor: `r53/inicializacao/FORMACAO-2026-10-27.md`.
+
+Faltam técnica/Famílias, inventário/equipamento, entidades/cartões/MONTAGENS,
+fotos, caches/recuperações, orquestração/conferência conjunta, treinos
+iniciais/automações, novo responsável, integração executável drive.file e
+prova nativa completa. **Criação permanece incondicionalmente bloqueada**;
+protótipos fora do pacote/bot. Não apagar diários para reiniciar fases.
+
+Bot runtime `26ec106`, CI 40496955301 (1.314 executados/1.313 aprovados/um
+opcional), PR 84 na base da 83. Consumidor mudou somente docs; sem repetir
+suíte extensa ou gerar ZIP. Sem merge em main, deploy, Gateway, modelo pago,
+escopos novos ou escrita em oficial/jogador. Próxima implementação:
+GPT-6 Astra / Alto; revisão focal Médio. Não alterar configurações automaticamente.
+
+
+## Escolhas, recursos e condições · continuação de 27/10
+
+CI Linux do produtor `a55517d` (PR 31) aprovado:
+[40540295538](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40540295538), 27/10 às 13:24:13 Brasília.
+Run duplicado do push também passou antes da tentativa de cancelamento;
+registro posterior apenas documental, sem nova suíte do bot ou pacote.
+
+**502 cenários offline** (101/80/78/243), incluindo
+243 novos com falha antes/depois de cada escrita, nota de fábrica, fórmula
+restaurada, preservação, variantes Google e diário acima de 9.000 bytes
+recusado sem escrita. Contrato conferido contra fonte sem regeneração.
+Leitura nativa: 112 conferências por oficial, zero divergências. Projeção de
+efeitos numa cópia privada do Ciclo: 48 entradas/notas, 11.634 comparações
+delimitadas sem diferença, atuais/máximos 23/23, 8/8, 26/26 após escolhas.
+Cópia na lixeira/aba fechada. Não executou novos perfis Apps Script/OAuth.
+Sem somar à suíte do bot, cujo runtime não mudou. Detalhes em ETAPA-7.md.
+
+
+## Registro anterior: nível/base e textos · 27/10
+
+PR 31, código `280a7dc`, sobre a main `9536746`: **259 cenários offline**
+(101 financeiros, 80 nível/base XP, 78 textos). Protocolo de falha/retomada,
+fórmulas/curva da mesa, privacidade, CellImage, assinatura financeira v1 e
+ordem por domínio. Mais 20.643 verificações XP/9.900 combinações sem exportação
+opcional. Não somar à suíte de 1.314 do consumidor, cujo código não mudou.
+
+No fechamento, main avançou para `b0dc6aacef08b2c01a7f8a3519bbcc9bff9546ed`
+(PR 37 salarial) e foi incorporada no merge `84bcd56` do produtor. Fórmulas
+protegidas/alvos dos inicializadores não mudaram. 15 verificações de abertura,
+95 salariais e 101 financeiras passaram após o merge. O ensaio nativo descrito
+é anterior; não valida execução desse código Apps Script. Nada foi instalado.
+
+CI final do integrado `84bcd566ae74d73bd8fdaf3889aa1ab5d7c68722`
+aprovado: [40535287570](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40535287570), 27/10 às 12:53:51 Brasília.
+Os 259 cenários, pacote de nove arquivos e regressões passaram; 277 fontes
+Python/208 JS-GS com sintaxe válida. Run duplicado cancelado. Registro final
+posterior só documental. Prova do OAuth/Apps Script completo continua pendente.
+
+CI anterior, antes da PR 37, aprovado no código `280a7dc`:
+
+[40534237271](https://github.com/cupcake-mochi/Ficha---RPG-JJK/actions/runs/40534237271), 27/10 às 12:47:26 Brasília.
+Confirmados os 259 cenários, pacote de nove arquivos sem inicializadores,
+sintaxe e regressões. Run duplicado do push cancelado; registro posterior
+só documental, sem repetir a bateria do bot.
+
+Projeção dos efeitos via Sheets API em cópia privada da Era: 14 textos/notas
+limpos, nível 10/base 3.700; missão de 50 levou XP a 3.750, retirada voltou a
+3.700; 8.998 comparações delimitadas preservadas sem diferença. G46 com `;`
+motivou correção e regressões positiva/negativa da guarda. Cópia na lixeira,
+aba fechada. **Não executou novos perfis, diários ou retomada Apps Script**;
+o ensaio financeiro anterior também não valida a extração atual. OAuth
+próprio, automações e matriz completa ainda pendentes. [Escopo](ETAPA-7.md).
+Criação pelo bot permanece bloqueada; testes do produtor entram no smoke Linux.
+
+## Registro anterior do financeiro
+
+Inicializador financeiro em protótipo no produtor, PR 31 (27/10): 99 cenários
+novos offline e CI Linux aprovados; não integram a contagem de 1.314 do bot.
+Falhas antes/depois de cada escrita, retomada parcial de conteúdo/notas e
+propriedades, edição concorrente e repetição cobertas. O bot não recebeu código
+de criação ou escrita; sua barreira permanece incondicional. A prévia nativa
+financeira em uma cópia do Ciclo concluiu em 115,013 s; timeout de 360,813 s, retomada concluída em 236,503 s, cobertura
+restante e limpeza são registrados em INICIALIZACAO-PRODUTOR.md/ETAPA-7.md.
+A versão corrigida concluiu em outra cópia em 283,416 s; repetição 150,489 s,
+sem alteração nas faixas comparadas. Cópias na lixeira. Retorno por orçamento
+em estado amplamente sujo foi simulado na VM, não provocado no Google.
+Não confundir esse ensaio focal com o aceite nativo completo da matriz.
+
+Continuação de 27/10: dez regressões novas cobrem últimas linhas dos livros,
+limites de grade sem truncamento, registros/mudanças salariais tardios, nota
+de missão sem valor visível, caixa financeira/correção, versão da sondagem,
+privacidade das notas, marca surgindo depois da prévia e mudança de versão
+durante a confirmação. Transporte simulado continua somente GET. A ausência
+de sinais com sondagem 2 também conserva a criação bloqueada.
+
+Etapa 7 parcial: testes de `test_carteira_modelos.py` cobrem padrão/isolamento,
+admin versus Manage Guild/revisor, CAS, preservação de personagens, cifra,
+backup/restore/rotação, schema 5→6, sondagem de histórico e fórmulas,
+transporte Google somente GET, alteração de arquivo, perda de cargo durante
+espera, confirmação repetida, cancelamento/expiração e criação bloqueada
+mesmo com parâmetros adulterados. Fixtures v1/v4 foram atualizadas para a
+migração 6 sem enfraquecer as asserções. [Resultados](ETAPA-7.md).
+
+A bateria nativa reprovou inicialização limpa nas três cópias; acesso pelo
+OAuth próprio e automações continuam sem prova. [Limites e limpeza](NATIVO-ETAPA-7.md).
+Os requisitos abaixo não se tornam aprovados por esses testes de simulação.
+
 Matriz de testes futuros. A [etapa 1](ETAPA-1.md) executou 39 cenários locais
 do contrato/protótipo; a [etapa 2](ETAPA-2.md) acrescentou 62 testes do banco,
 retenção e recuperação. O piloto nativo da etapa 3 está descrito em NATIVO-ETAPA-3.md; os demais

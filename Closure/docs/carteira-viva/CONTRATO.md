@@ -4,6 +4,52 @@ Etapa 1 · 26/10/2026 · versão de contrato 1. Não é uma API publicada.
 Decisões de implementação para as etapas seguintes do [plano](PLANO.md).
 Mudanças incompatíveis exigem nova versão, migração e teste de preservação.
 
+## Modelo do servidor — etapa 7 parcial
+
+Schema 6 guarda uma escolha independente por servidor: `oficiais` (padrão,
+as duas oficiais), `era`, `ciclo` ou `servidor`. Só dono/Administrator pode
+alterar; a confirmação exige a revisão local esperada e incrementa essa
+revisão inclusive ao voltar ao padrão. Não modifica fontes/personagens,
+campanha, perfis, leituras ou análises existentes.
+
+Modelo customizado é uma referência cifrada, selecionada pelo administrador
+com OAuth/Picker existente. A sondagem exige ANALISE 12/R53 e referências
+estruturais mínimas, mas não é um certificado de criação. A versão Drive
+deve permanecer estável durante a leitura e até a confirmação. O Google é
+consultado somente por GET; os valores históricos lidos não são armazenados,
+apenas sinais de presença. Referência/nome privado não são enviados a membros.
+Escolher modelo não cria conexão Google permanente nem personagem. A conta
+do administrador não é autorização de acesso para o jogador.
+
+**Criação indisponível para todos os modelos.** Os ensaios de 26/10 herdaram
+histórico/estado salarial; não existe inicializador comprovado. A barreira
+`modelo_bloqueado` independe de UI, parâmetros e configuração. A lista de
+parâmetros suportados está vazia; não ignorar valores recebidos para fingir
+sucesso, nem copiar o arquivo antes de comprovar a limpeza.
+
+| Conceito | Referência R53 observada | Situação |
+|---|---|---|
+| Nível atual do personagem | `FICHA!AH11` | Entrada própria; escrita automática não liberada |
+| XP do personagem | `FICHA!AN11` → fórmula `DADOS!CZ47` → missões | Não sobrescrever a fórmula com um número |
+| Regra de nível inicial da campanha | `CONFIGURAÇÃO!F46`, resolvida em G46 | Regra separada; não inicializa o nível atual |
+
+N2 vazia e “Não emitida” não comprovam histórico limpo. O produtor deve
+versionar inicialização idempotente, preservação de fórmulas/proteções,
+limpeza completa e ativação manual quando necessária. Acesso do novo
+responsável e automações ainda precisam de prova. [Ensaio e requisitos](NATIVO-ETAPA-7.md).
+Cadastro de ficha existente permanece disponível e independente.
+
+Continuação de 27/10: [proposta de inicialização do produtor](INICIALIZACAO-PRODUTOR.md)
+enumera registros, notas e propriedades salariais e define o protocolo de
+aceite/recuperação ainda necessário. Não é um inicializador publicado.
+A sondagem 2 lê os livros financeiros até seu limite físico (máximo de 5.000
+linhas), além de missão/notas/caixas pendentes; grade incompatível ou maior
+é recusada, sem fallback para amostra. Textos e valores não vão à prévia.
+Referências antigas assumem sondagem 1; as novas registram 2 no envelope
+cifrado, sem migração de tabela. Confirmação exige a mesma versão e sinais.
+Propriedades, automações e limpeza integral permanecem sem prova; a criação
+continua bloqueada mesmo se todos os intervalos lidos estiverem vazios.
+
 ## Identidade e responsabilidade
 
 O personagem pertence a um cadastro de **servidor + identificador estável**.

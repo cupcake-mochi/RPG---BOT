@@ -16,6 +16,7 @@ class Pedido:
     grupo: tuple
     executar: object
     resultado: asyncio.Future
+    prazo: float = 60
     clientes: int = 0
     tarefa: asyncio.Task | None = None
 
@@ -29,7 +30,13 @@ class Fila:
         self.ativos = set()
         self.fechada = False
 
-    async def executar(self, chave, grupo, funcao):
+    async def executar(self, chave, grupo, funcao, *, prazo=None, espera=None):
+        # Só adaptadores internos escolhem os prazos. Não aceitar isso de HTTP.
+        prazo = self.prazo if prazo is None else prazo
+        espera = self.espera if espera is None else espera
+        if any(type(v) not in (int, float) or not 0 < v <= 1800
+               for v in (prazo, espera)):
+            raise Ocupado("Prazo de consulta inválido.")
         if self.fechada:
             raise Ocupado("A leitura está encerrando. Tente novamente depois.")
         p = self.pedidos.get(chave)
@@ -37,6 +44,10 @@ class Fila:
             # O último cliente desistiu, mas o job ainda está limpando a fonte.
             # Esperar essa limpeza impede que ela invalide o pedido substituto.
             await asyncio.shield(p.tarefa)
+            # O serviço pode ter encerrado durante a espera pela limpeza.
+            # Não admitir trabalho novo depois de fechar a fila/recursos.
+            if self.fechada:
+                raise Ocupado("A leitura está encerrando. Tente novamente depois.")
             p = self.pedidos.get(chave)
         if p is None:
             if (len(self.pedidos) >= self.limite or
@@ -44,15 +55,17 @@ class Fila:
                 raise Ocupado("Há consultas demais em espera. Tente novamente em instantes.")
             futuro = asyncio.get_running_loop().create_future()
             futuro.add_done_callback(lambda f: f.exception() if not f.cancelled() else None)
-            p = Pedido(chave, grupo, funcao, futuro)
+            p = Pedido(chave, grupo, funcao, futuro, prazo=prazo)
             self.pedidos[chave] = p
             self.grupos.setdefault(grupo, deque()).append(p)
+        if p.prazo != prazo:
+            raise Ocupado("Esta consulta já está em andamento com outro prazo.")
         if p.clientes >= 64:
             raise Ocupado("Esta consulta já tem muitas solicitações em andamento.")
         p.clientes += 1
         self._iniciar()
         try:
-            return await asyncio.wait_for(asyncio.shield(p.resultado), self.espera)
+            return await asyncio.wait_for(asyncio.shield(p.resultado), espera)
         except TimeoutError:
             raise Ocupado("A consulta demorou demais. Tente novamente em instantes.") from None
         finally:
@@ -68,6 +81,8 @@ class Fila:
                     self.pedidos.pop(chave, None)
 
     def _iniciar(self):
+        if self.fechada:
+            return
         while len(self.ativos) < self.paralelos and self.grupos:
             # Um ator não ocupa os dois trabalhadores. Grupos giram a cada saída.
             ocupados = {self.pedidos[k].grupo for k in self.ativos}
@@ -83,7 +98,7 @@ class Fila:
 
     async def _rodar(self, p):
         try:
-            async with asyncio.timeout(self.prazo):
+            async with asyncio.timeout(p.prazo):
                 valor = await p.executar()
             if not p.resultado.done():
                 p.resultado.set_result(valor)

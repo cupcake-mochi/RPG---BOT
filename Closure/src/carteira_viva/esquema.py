@@ -2,7 +2,7 @@
 from .segredos import ErroCarteira
 
 APPLICATION_ID = 0x43564956
-VERSAO = 5
+VERSAO = 9
 
 MIGRACOES = {
     1: (
@@ -86,6 +86,35 @@ MIGRACOES = {
             usuario TEXT, fase TEXT NOT NULL, estado TEXT UNIQUE, dados BLOB NOT NULL,
             tentativas INTEGER NOT NULL DEFAULT 0)""",
         "CREATE INDEX web_sessoes_retencao ON web_sessoes(criado,usado)",
+    ),
+    6: (
+        """CREATE TABLE modelos_servidor (
+            servidor TEXT PRIMARY KEY REFERENCES servidores(id) ON DELETE CASCADE,
+            revisao INTEGER NOT NULL CHECK(revisao>0), conteudo BLOB NOT NULL)""",
+    ),
+    7: (
+        """CREATE TABLE conferencias_rest (
+            servidor TEXT NOT NULL, personagem TEXT NOT NULL, ator TEXT NOT NULL, operacao TEXT NOT NULL,
+            revisao INTEGER NOT NULL CHECK(revisao BETWEEN 0 AND 2), criado REAL NOT NULL,
+            expira REAL NOT NULL, conteudo BLOB NOT NULL,
+            PRIMARY KEY(servidor,personagem),
+            FOREIGN KEY(servidor,personagem) REFERENCES personagens(servidor,id) ON DELETE CASCADE)""",
+        "CREATE INDEX conferencias_rest_expira ON conferencias_rest(expira)",
+    ),
+    8: (
+        """CREATE TABLE copias_rest (
+            servidor TEXT NOT NULL REFERENCES servidores(id), ator TEXT NOT NULL, operacao TEXT PRIMARY KEY,
+            conexao TEXT NOT NULL REFERENCES conexoes(id) ON DELETE CASCADE, pedido TEXT NOT NULL,
+            estado TEXT NOT NULL CHECK(estado IN ('preparada','enviada','identificada')),
+            criado REAL NOT NULL, atualizado REAL NOT NULL, conteudo BLOB NOT NULL,
+            UNIQUE(servidor,ator,pedido))""",
+        "CREATE UNIQUE INDEX copia_pendente ON copias_rest(servidor,ator) WHERE estado!='identificada'",
+    ),
+    9: (
+        """CREATE TABLE financeiro_rest (
+            operacao TEXT PRIMARY KEY REFERENCES copias_rest(operacao) ON DELETE CASCADE,
+            estado TEXT NOT NULL CHECK(estado IN ('preparada','enviada','conferida')),
+            criado REAL NOT NULL, expira REAL NOT NULL, conteudo BLOB NOT NULL)""",
     ),
 }
 

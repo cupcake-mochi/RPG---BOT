@@ -22,7 +22,7 @@ class ClienteCarteira:
         if len(token)<32:raise ValueError('Segredo de serviço ausente.')
 
     async def pedir(self,s,u,acao,*,personagem=None,imagem=None,**dados):
-        globais={'listar','cargo_revisor'}
+        globais={'listar','cargo_revisor','modelos','configurar_modelo','criar_por_modelo'}
         locais={'cartao','cartao_salvo','detalhes','analisar','analise_salva','editar','preparar','confirmar','cancelar','imagem','enviar_imagem'}
         if personagem is None and acao not in globais: raise FalhaCarteira('solicitacao')
         if personagem is not None and (acao not in locais or not re.fullmatch('[a-f0-9]{32}',personagem)): raise FalhaCarteira('solicitacao')

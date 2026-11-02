@@ -58,6 +58,28 @@ def gravar_backup(cadastro: Cadastro, destino: Path, *, registro_remocoes: bool 
                     db.execute("DELETE FROM web_sessoes")
                 if db.execute("PRAGMA user_version").fetchone()[0]>=4:
                     db.execute("DELETE FROM previas_cartao")
+                if db.execute("PRAGMA user_version").fetchone()[0]>=7:
+                    # Backup não recupera trabalho pendente nem prova acesso Google atual.
+                    db.execute("DELETE FROM conferencias_rest")
+                if db.execute('PRAGMA user_version').fetchone()[0]>=8:
+                    # Um backup anterior à rede não pode repetir um POST que
+                    # aconteceu depois dele. Restauração só permite reconciliar.
+                    for row in db.execute("SELECT * FROM copias_rest WHERE estado='preparada'").fetchall():
+                        # A cópia SQLite usa tuplas na ordem do schema 8.
+                        servidor, ator, op = row[0], row[1], row[2]
+                        ctx = ['copia_rest', servidor, ator, op]
+                        d = cadastro.cifra.abrir(ctx, row[8])
+                        d['estado'] = 'enviada'
+                        db.execute("UPDATE copias_rest SET estado='enviada',conteudo=? WHERE operacao=?",
+                                   (cadastro.cifra.cifrar(ctx, d), op))
+                if db.execute('PRAGMA user_version').fetchone()[0]>=9:
+                    for row in db.execute("SELECT f.operacao,f.conteudo,c.servidor,c.ator FROM financeiro_rest f JOIN copias_rest c USING(operacao) WHERE f.estado='preparada'").fetchall():
+                        op, conteudo, servidor, ator = row
+                        ctx = ['financeiro_celulas', servidor, ator, op]
+                        d = cadastro.cifra.abrir(ctx, conteudo)
+                        d['estado'] = 'enviada'
+                        db.execute("UPDATE financeiro_rest SET estado='enviada',conteudo=? WHERE operacao=?",
+                                   (cadastro.cifra.cifrar(ctx, d), op))
                 db.commit()
         finally:
             db.close()

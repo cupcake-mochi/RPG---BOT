@@ -49,7 +49,11 @@ class ConectarFicha(commands.Cog):
             if (u.scheme, u.netloc) != (urlsplit(self.origem).scheme, urlsplit(self.origem).netloc) or u.path != "/conectar":
                 raise ValueError("Destino de conexão inválido")
             view = discord.ui.View(timeout=600)
-            view.add_item(discord.ui.Button(label=texto("Conectar minha ficha", "Connect my sheet"), url=url))
+            view.add_item(discord.ui.Button(label=texto("Escolher modelo", "Choose template") if acao == "modelo" else texto("Conectar minha ficha", "Connect my sheet"), url=url))
+            if acao == "modelo":
+                await interacao.followup.send(texto("Abra com a mesma conta Discord de administrador. Salvar o modelo não libera a criação automática. O link vale dez minutos.",
+                                                    "Open with the same administrator Discord account. Saving the template does not enable automatic creation. The link lasts ten minutes."), ephemeral=True, view=view)
+                return
             await interacao.followup.send(texto("Abra a conexão com a mesma conta Discord. O link vale por dez minutos e só você pode confirmar sua ficha.",
                                                "Open the connection with the same Discord account. The link lasts ten minutes and only you can confirm your sheet."),
                                           ephemeral=True, view=view)
@@ -191,6 +195,42 @@ class ConectarFicha(commands.Cog):
             await self.api.pedir(i.guild_id,i.user.id,'cargo_revisor',cargo=str(cargo.id),permitir=permitir)
             await i.followup.send(txt('cargo',self.idioma(i)),ephemeral=True)
         except FalhaCarteira as exc:await i.followup.send(erro(exc,self.idioma(i)),ephemeral=True)
+
+    async def mostrar_modelos(self,i,escolha=None):
+        if escolha == 'servidor':
+            await self.iniciar(i,'modelo')
+            return
+        if not await self.contexto(i):return
+        en=self.idioma(i)=='en'
+        try:
+            d=await self.api.pedir(i.guild_id,i.user.id,'modelos')
+            if escolha is not None:
+                d=await self.api.pedir(i.guild_id,i.user.id,'configurar_modelo',escolha=escolha,revisao=d['revisao'])
+            nomes={'oficiais':('Dois modelos oficiais','Both official templates'),'era':('Era da Revolução','Era da Revolução'),
+                   'ciclo':('Ciclo Maldito','Ciclo Maldito'),'servidor':('Modelo do servidor','Server template')}
+            titulo=nomes[d['escolha']][1 if en else 0]
+            texto=(f'Template: **{titulo}**. Automatic creation is unavailable until clean initialization and automations are verified. Existing characters keep their sheets. Register an existing sheet with `/character register`.' if en else
+                   f'Modelo: **{titulo}**. A criação automática está indisponível até comprovar inicialização limpa e automações. Personagens cadastrados continuam com suas fichas. Para uma ficha existente, use `/personagem cadastrar`.')
+            await i.followup.send(texto,ephemeral=True,allowed_mentions=discord.AllowedMentions.none())
+        except FalhaCarteira as exc:await i.followup.send(erro(exc,self.idioma(i)),ephemeral=True)
+
+    @grupo.command(name='modelos',description='Veja o modelo escolhido e a disponibilidade de criação')
+    async def modelos(self,i:discord.Interaction):await self.mostrar_modelos(i)
+
+    @grupo.command(name='modelo_configurar',description='Administrador: escolha o modelo sem alterar personagens cadastrados')
+    @app_commands.choices(escolha=[app_commands.Choice(name='Padrão: dois oficiais',value='oficiais'),
+        app_commands.Choice(name='Era da Revolução',value='era'),app_commands.Choice(name='Ciclo Maldito',value='ciclo'),
+        app_commands.Choice(name='Personalizado pelo Google Picker',value='servidor')])
+    async def modelo_configurar(self,i:discord.Interaction,escolha:str):await self.mostrar_modelos(i,escolha)
+
+    @grupo_en.command(name='templates',description='View the selected template and creation availability')
+    async def templates(self,i:discord.Interaction):await self.mostrar_modelos(i)
+
+    @grupo_en.command(name='set_template',description='Administrator: select a template without changing registered characters')
+    @app_commands.choices(choice=[app_commands.Choice(name='Default: both official templates',value='oficiais'),
+        app_commands.Choice(name='Era da Revolução',value='era'),app_commands.Choice(name='Ciclo Maldito',value='ciclo'),
+        app_commands.Choice(name='Custom via Google Picker',value='servidor')])
+    async def set_template(self,i:discord.Interaction,choice:str):await self.mostrar_modelos(i,choice)
 
     @grupo.command(name='cargo_revisor',description='Administra o acesso privado da equipe; só dono ou administrador')
     async def cargo_revisor(self,i:discord.Interaction,cargo:discord.Role,permitir:bool):await self.alterar_revisor(i,cargo,permitir)

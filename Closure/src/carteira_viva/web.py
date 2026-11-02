@@ -127,7 +127,9 @@ async def api_galeria(request):
     if not all(isinstance(x,str) and x.isdigit() and len(x)<=22 for x in (s,u)):
         raise ErroCarteira('Contexto de servidor inválido.')
     # Operações e argumentos fechados; nunca publicar DadosAsync.chamar.
-    globais={'listar':(g.listar,{'dono','depois'}),'cargo_revisor':(g.cargo_revisor,{'cargo','permitir'})}
+    globais={'listar':(g.listar,{'dono','depois'}),'cargo_revisor':(g.cargo_revisor,{'cargo','permitir'}),
+             'modelos':(g.modelos,set()),'configurar_modelo':(g.configurar_modelo,{'escolha','revisao'}),
+             'criar_por_modelo':(g.criar_por_modelo,{'modelo','parametros'})}
     locais={'cartao':(g.cartao,set()),'cartao_salvo':(g.cartao_salvo,set()),'detalhes':(g.detalhes,set()),
              'analisar':(g.detalhes,set()),'analise_salva':(g.analise_salva,set()),
              'editar':(g.editar,set()),'preparar':(g.preparar,{'alteracoes','campos_publicos','remover_imagem','base_esperada'}),
@@ -158,6 +160,8 @@ async def sessao(request, *, data=None, membro=False):
     request.update({TICKET: ticket, COOKIE: sid})
     if membro and estado["fase"] not in ("identificar", "oauth_discord", "processando_discord"):
         atual = await request.app[PROVEDORES].membro(ctx["servidor"], ctx["usuario"])
+        if estado["acao"] == "modelo":
+            await request.app[DADOS].chamar("cadastro.revisar_modelo", atual)
         return ticket, sid, atual
     return ticket, sid, estado
 
@@ -174,6 +178,8 @@ async def iniciar(request):
     if not hmac.compare_digest(token, "Bearer " + request.app[CFG].servico_token):
         raise AcessoNegado("Acesso de serviço inválido.")
     data = await corpo(request)
+    if set(data) - {"servidor", "usuario", "acao", "personagem"}:
+        raise ErroCarteira("Argumento não permitido.")
     m = await request.app[PROVEDORES].membro(data.get("servidor", ""), data.get("usuario", ""))
     ticket = await request.app[DADOS].chamar("criar", m, data.get("acao", "cadastro"), data.get("personagem"))
     return resposta_json({"url": request.app[CFG].origem + "/conectar?" + urlencode({"ticket": ticket}), "expira_em": 600})
@@ -219,7 +225,9 @@ async def status(request):
     ticket, sid, estado = await sessao(request)
     if estado["fase"] not in ("identificar", "oauth_discord", "processando_discord"):
         ctx = await request.app[DADOS].chamar("contexto", ticket)
-        await request.app[PROVEDORES].membro(ctx["servidor"], ctx["usuario"])
+        m = await request.app[PROVEDORES].membro(ctx["servidor"], ctx["usuario"])
+        if estado["acao"] == "modelo":
+            await request.app[DADOS].chamar("cadastro.revisar_modelo", m)
     estado["demonstracao"] = request.app[DEMO]
     return resposta_json(estado)
 
@@ -308,23 +316,31 @@ async def picker(request):
 
 async def selecionar(request):
     data = await corpo(request)
+    if set(data) - {"ticket", "arquivo"}: raise ErroCarteira("Argumento não permitido.")
     ticket, sid, _ = await sessao(request, data=data, membro=True)
+    estado = await request.app[DADOS].chamar("estado", ticket, sid)
     g = await request.app[DADOS].chamar("preparar_selecao", ticket, sid, csrf(request))
     request[TRANSICAO] = True
-    previa = await request.app[PROVEDORES].validar_arquivo(g["acesso"], data.get("arquivo"))
+    validar = request.app[PROVEDORES].validar_modelo if estado["acao"] == "modelo" else request.app[PROVEDORES].validar_arquivo
+    previa = await validar(g["acesso"], data.get("arquivo"))
+    if estado["acao"] == "modelo":
+        await sessao(request, data=data, membro=True)
     await request.app[DADOS].chamar("arquivo_ok", ticket, sid, previa)
     return resposta_json({"ok": True})
 
 
 async def confirmar(request):
     data = await corpo(request)
+    if set(data) - {"ticket", "nome", "responsabilidade"}: raise ErroCarteira("Argumento não permitido.")
     ticket, sid, membro = await sessao(request, data=data, membro=True)
+    estado = await request.app[DADOS].chamar("estado", ticket, sid)
     etapa = await request.app[DADOS].chamar("preparar_confirmacao", ticket, sid, csrf(request),
                                            data.get("nome"), data.get("responsabilidade"))
     if "resultado" in etapa:
         return resposta_json({"resultado": etapa["resultado"]})
     request[TRANSICAO] = True
-    previa = await request.app[PROVEDORES].validar_arquivo(etapa["google"]["acesso"], etapa["previa"]["arquivo"])
+    validar = request.app[PROVEDORES].validar_modelo if estado["acao"] == "modelo" else request.app[PROVEDORES].validar_arquivo
+    previa = await validar(etapa["google"]["acesso"], etapa["previa"]["arquivo"])
     # Refaz a consulta ao Discord depois da espera pelo Google.
     membro = await request.app[PROVEDORES].membro(membro.servidor, membro.usuario)
     resultado = await request.app[DADOS].chamar("finalizar", ticket, sid, membro, previa)

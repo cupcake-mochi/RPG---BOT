@@ -59,6 +59,75 @@ class Consultas:
                 "leituras_google": l["campos"]["leituras_google"],
                 "em_transicao": l["campos"]["em_transicao"]}
 
+    async def _renovar_google(self, membro, ref, *, para_copia=False):
+        """Trava compartilhada; token de acesso só em memória, refresh cifrado."""
+        lock = self.renovacoes.setdefault(ref.conexao, asyncio.Lock())
+        async with lock:
+            membro = await self._membro(ref.servidor, membro.usuario)
+            metodo = '_credencial_copia' if para_copia else '_credencial'
+            cred = await self._banco(metodo, membro, ref)
+            if cred.cliente != self.provedores.cfg.google_id:
+                raise ErroCarteira("Reconecte a ficha no cliente Google atual.")
+            async def manter_credencial():
+                try:
+                    async with asyncio.timeout(30):
+                        try:
+                            token = await self.provedores.renovar(cred.refresh_token)
+                        except ErroProvedor as exc:
+                            if exc.codigo == "revogada":
+                                await self._banco("marcar_revogada", ref.conexao, autorizacao=cred.autorizacao)
+                            raise
+                        if token.refresh and token.refresh != cred.refresh_token:
+                            await self._banco("_guardar_renovacao_google", ref.conexao,
+                                              autorizacao=cred.autorizacao, refresh_anterior=cred.refresh_token,
+                                              refresh_novo=token.refresh)
+                        return token
+                except TimeoutError:
+                    raise ErroProvedor("temporario") from None
+
+            # Cancelar a consulta não pode perder uma rotação já enviada ao
+            # Google. Concluir só esta manutenção limitada, sob a mesma trava;
+            # depois propagar o cancelamento antes de qualquer leitura de ficha.
+            tarefa = asyncio.create_task(manter_credencial())
+            cancelado = False
+            while True:
+                try:
+                    token = await asyncio.shield(tarefa)
+                    break
+                except asyncio.CancelledError:
+                    if tarefa.cancelled():
+                        raise
+                    cancelado = True
+                except Exception:
+                    if cancelado:
+                        raise asyncio.CancelledError() from None
+                    raise
+            if cancelado:
+                raise asyncio.CancelledError()
+            membro = await self._membro(ref.servidor, membro.usuario)
+            await self._banco(metodo, membro, ref)
+            return cred, token
+
+    async def copiar_modelo(self, servidor, usuario, *, conexao, modelo, pedido):
+        """Método interno, sem endpoint. Cópia identificada não libera criação."""
+        from .copias_servico import copiar
+        return await copiar(self, servidor, usuario, conexao=conexao, modelo=modelo, pedido=pedido)
+
+    async def inicializar_financeiro_celulas(self, servidor, usuario, referencia):
+        """Interno, só cópia não cadastrada; criação/propriedades continuam bloqueadas."""
+        from .financeiro_servico import inicializar
+        return await inicializar(self, servidor, usuario, referencia)
+
+    async def diagnosticar_grade_copia(self, servidor, usuario, referencia, *, alvo, dominio):
+        """Interno, somente leitura; não altera candidata, recibo ou liberação."""
+        from .diagnostico_servico import diagnosticar
+        return await diagnosticar(self, servidor, usuario, referencia, alvo=alvo, dominio=dominio)
+
+    async def conferir_inicializacao(self, servidor, usuario, personagem, *, retomar=False):
+        """Conferência interna somente de leitura; sem endpoint/criação."""
+        from .conferencias_servico import conferir
+        return await conferir(self, servidor, usuario, personagem, retomar=retomar)
+
     async def atualizar(self, servidor, usuario, personagem, *, forcar=False):
         m, chave = await self._contexto(servidor, usuario, personagem)
         d = await self._banco("detalhes", m, personagem)
@@ -75,17 +144,7 @@ class Consultas:
             ref = await self._banco("reservar_leitura", membro, personagem)
             cred = None
             try:
-                # Vários personagens podem usar a mesma concessão. Serializa a
-                # renovação para não usar um refresh anterior após sua rotação.
-                lock = self.renovacoes.setdefault(ref.conexao, asyncio.Lock())
-                async with lock:
-                    cred = await self._banco("_credencial", membro, ref)
-                    if cred.cliente != self.provedores.cfg.google_id:
-                        raise ErroCarteira("Reconecte a ficha no cliente Google atual.")
-                    token = await self.provedores.renovar(cred.refresh_token)
-                    if token.refresh and token.refresh != cred.refresh_token:
-                        await self._banco("renovar_credencial", membro, ref,
-                                          autorizacao=cred.autorizacao, refresh=token.refresh)
+                cred, token = await self._renovar_google(membro, ref)
                 from closure_bot.ficha_r53 import transicoes
                 leituras, versoes = [], []
                 for tentativa in range(len(self.esperas) + 1):

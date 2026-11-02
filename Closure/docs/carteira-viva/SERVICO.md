@@ -1,5 +1,54 @@
 # Rodar a conexão de fichas
 
+28/10: observação de membro atual com prova do banco para dono/cargo explícito;
+privilégios completos quando necessários, sem cache. Perfil simulado do dono:
+Discord 1.686→578, Google 183 preservados. Sem endpoint/criação ou publicação.
+[Prova e limites](OBSERVACAO-MEMBRO-2026-10-28.md).
+
+28/10: conferência interna integrada a fila/cotas/OAuth, retomada e proteção da
+rotação de credencial em cancelamento. Sem endpoint/comando, criação ou escrita.
+Schema 7, conforme [conferência no serviço](SERVICO-CONFERENCIA-2026-10-28.md).
+Entradas abaixo descrevem o histórico da implementação.
+
+28/10: conferência interna por contrato REST para financeiro/progressão e recibo
+cifrado histórico, sem nova rota/comando/schema ou escrita. O custo de progressão
+agora é lido da CONFIGURAÇÃO: oito páginas. [Escopo e limites](CONFERENCIA-REST-2026-10-28.md).
+
+28/10: novo transporte interno de grade REST, só financeiro/progressão, com
+contexto/cota por GET e versão por página. Ainda sem rota ou criação; composição
+no serviço e adaptação de estado/contrato pendentes.
+[Escopo e testes](COLETA-REST-2026-10-28.md).
+
+28/10: guarda interna de leitura versionada e páginas sem checkpoint no produtor
+estão em teste, sem nova rota/endpoint. A execução do produtor com o escopo
+atual ainda depende de adaptador; não habilitar scripts.run nem ampliar acesso
+por pressuposição. [Contrato e limites](LEITURA-VERSIONADA-2026-10-28.md).
+
+27/10: a validação de modelo usa sondagem 2. Primeiro lê os metadados de grade;
+depois solicita intervalos explícitos para os três históricos financeiros,
+entradas/notas de missão e caixas pendentes. Limite físico de 5.000 linhas
+por histórico, 512 KiB por resposta Google e timeout HTTP de 15 s, sem relaxamento
+de limites. Referência é salva somente após confirmação com versão estável.
+Isso não libera criação nem adiciona rotas/escopos de escrita. Ver a
+[proposta de inicialização](INICIALIZACAO-PRODUTOR.md).
+
+Etapa 7 parcial: schema 6, comandos `/personagem modelos` e
+`/personagem modelo_configurar escolha:...` (`/character templates` e
+`/character set_template`). `oficiais` restaura o padrão, `era`/`ciclo`
+selecionam oficial e `servidor` abre OAuth/Picker para o administrador.
+Salvar escolha não libera cópia nem muda personagens cadastrados.
+`/interno/galeria/acao/criar_por_modelo` é uma recusa explícita, sem escrita
+Google; não existe opção de configuração para ativar. O cadastro existente
+continua em `/personagem cadastrar` ou `/character register`.
+O fluxo interno `acao=modelo` conserva cookie, CSRF, prazo de dez minutos e
+revalidação de Administrator/dono. A escolha só é gravada na confirmação.
+Ver [ETAPA-7.md](ETAPA-7.md) para execução, limites e bloqueios.
+
+A demonstração local inclui links de modelo PT/EN, só com contas e arquivos
+fictícios, acessíveis pela página inicial de `--demo`. Não necessita OAuth
+privado nem testa acesso Google real. A configuração privada do piloto real
+ficou no SSD Linux e não foi recriada no Windows.
+
 Serviço separado do bot. Ainda não está publicado. Piloto local com contas reais concluído
 conforme [NATIVO-ETAPA-3.md](NATIVO-ETAPA-3.md). Não substituir o app das Guias por este serviço.
 

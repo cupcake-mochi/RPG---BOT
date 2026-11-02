@@ -79,6 +79,7 @@ async def estado(request):
     m=await identidade(request)
     s['nome']=m.nome
     s['idioma']=await request.app[DADOS].chamar('cadastro.idioma_carteira',m)
+    s['modelos']=await request.app[DADOS].chamar('cadastro.modelos',m)
     return await finalizar(request,m,s)
 
 

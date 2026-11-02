@@ -37,7 +37,7 @@ ficam em [Releases](https://github.com/cupcake-mochi/RPG---BOT/releases).
 | Testes e limites R53 | [Fechamento R53](Closure/pesquisa/validacao/2026-10-21-r53/FECHAMENTO.md) |
 | Contrato da ficha | [Contrato e cobertura](Closure/dados/ficha/INTEGRACAO-B47.md) |
 | Estado para continuar o trabalho | [Fila atual](Closure/docs/FILA-ATUAL.txt) |
-| Próximo projeto: cadastro e galeria | [Plano da Carteira viva](Closure/docs/carteira-viva/PLANO.md) — ainda não implementado |
+| Carteira viva em desenvolvimento | [Estado e retomada](Closure/docs/carteira-viva/RETOMADA.md) — etapas 1–6 implementadas, 7 parcial; não publicada |
 
 Credenciais, bancos e cadastros reais ficam fora do Git e dos pacotes públicos.
 `Closure Legado/` e os [registros anteriores](README-HISTORICO.md) são referências
