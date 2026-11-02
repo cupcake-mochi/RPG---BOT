@@ -1,5 +1,17 @@
 # Continuar a Carteira viva
 
+## Concorrência decidida · 02/11
+
+Sem compare-and-swap no `batchUpdate`, o mantenedor aceitou o risco residual
+da janela entre a última conferência e o POST. O bot só escreve com permissão
+ou comando do jogador; cópias são do jogador e compartilhadas depois. O caminho
+financeiro existente já cobre recusa antes/depois e não reenvio. Item de
+concorrência do critério da etapa 7 fechado; nenhum código mudou além de um
+comentário. [Contrato](CONCORRENCIA-2026-11-02.md).
+Continuam pendentes: eventos reais, atestado de ativação, demais domínios,
+tempo de preparo e prova integral. Criação bloqueada, etapa7 parcial, 8–10
+pendentes.
+
 ## Trabalho local além do ensaio Google · 01/11
 
 Reproduzida e corrigida uma corrida na fila: um substituto que aguardava
