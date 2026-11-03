@@ -18,6 +18,15 @@ def campos_r53():
         return {**campos_b47(), **{r['chave']: r for r in csv.DictReader(f, delimiter='\t')}}
 
 
+@lru_cache(maxsize=1)
+def campos_opcionais():
+    """Chaves que a ficha passou a exportar depois do contrato, sem mudar o formato 12: reconhecidas quando vêm,
+    sem pendência quando faltam (cópias antigas). 03/11/2026: as cartas Talento · Origem e Talento · Extra e as vagas
+    grátis (Ficha---RPG-JJK, PENDENCIAS de 03/11/2026)."""
+    with (Path(__file__).parent / 'recursos/talentos-gratis-campos.tsv').open(encoding='utf-8') as f:
+        return {r['chave']: r for r in csv.DictReader(f, delimiter='\t')}
+
+
 def tipo(chave):
     if chave == 'dominio.degrau':
         return 'texto'
@@ -39,7 +48,7 @@ def tipo(chave):
         return 'texto'
     if chave.startswith('regra.'):
         return 'texto' if chave in ('regra.vida_rolada', 'regra.vida_rolada.campanha') else 'numero'
-    if re.fullmatch(r'formato\.versao|nivel|xp|xp\.total|exaustao|sequela\.extras|vida\.rolagem\.\d+|atributo\.[^.]+\.(?:base|corpo)|marco\..+|marcos\.escolhidos|buff\..+|(?:vida|energia|integridade)_max|defesa|protecao|maestria|espacos_de_feitico|classe_maxima|refino_de_graca|classe_0_gratis|morrendo_(?:aguentar|insistir_1|insistir_2)|tecnica\.regra_propria\.(?:categoria|espacos)|dominio\.(?:degrau|custo|refino|corrida)|(?:passiva|aptidao)\.\d+\.categoria|carga\.(?:total|limite|ajuste_limite)', chave):
+    if re.fullmatch(r'formato\.versao|nivel|xp|xp\.total|exaustao|sequela\.extras|vida\.rolagem\.\d+|atributo\.[^.]+\.(?:base|corpo)|marco\..+|marcos\.escolhidos|buff\..+|(?:vida|energia|integridade)_max|defesa|protecao|maestria|espacos_de_feitico|classe_maxima|refino_de_graca|classe_0_gratis|morrendo_(?:aguentar|insistir_1|insistir_2)|tecnica\.regra_propria\.(?:categoria|espacos)|dominio\.(?:degrau|custo|refino|corrida)|(?:passiva|aptidao)\.\d+\.categoria|passiva\.(?:origem|extra)\.categoria|vagas\.[a-z_]+|carga\.(?:total|limite|ajuste_limite)', chave):
         return 'numero'
     if re.fullmatch(r'(?:pericia|oficio|tr)\.[^.]+\.(?:ajuste|bonus)|(?:equipavel|item)\.\d+\.(?:grau|volume|quantidade)|personagem\.(?:pericia|oficio)_custom\.\d+\.(?:bonus|resultado)', chave):
         return 'numero'

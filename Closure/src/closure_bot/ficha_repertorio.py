@@ -1,9 +1,16 @@
 """Aquisição e capacidade do repertório pelo livro, sem usar os totais da ficha.
 
 As posições 1–5 de passiva são pagas, 6–12 são de Leque no contrato atual.
-Concessões de Origem sem posição própria são tratadas por possibilidades, sem
-inventar qual Talento foi recebido gratuitamente nem converter aplicações em vagas.
+Desde 03/11/2026 a ficha tem a carta `passiva.origem` (o CE 1 da menor da Origem) e
+a `passiva.extra` (Talento grátis de outra fonte, aberto na CONFIGURAÇÃO), fora dos
+espaços. Na cópia antiga, sem a carta, ou com ela vazia, a concessão da Origem
+continua por possibilidades, sem inventar qual Talento foi recebido gratuitamente
+nem converter aplicações em vagas.
 """
+# As duas cartas fora das doze: a posição interna só as separa das pagas e das de Leque.
+CARTAS_GRATIS = {"passiva.origem": (13, "Talento da Origem"), "passiva.extra": (14, "Talento extra")}
+ANCORA_CONCESSAO = {"Manifestação Instintiva": "origens--latente-beneficios", "Traço Incorporado": "origens--receptaculo-excecoes",
+                    "Construção Especializada": "origens--corpo-ninhada-gemeos"}
 from dataclasses import dataclass
 import re
 
@@ -131,6 +138,16 @@ def conferir_repertorio(ficha, ref, r):
                  "Corpo Amaldiçoado": "Construção Especializada"}.get(base_origem)
     gratuita = bool(concessao and concessao in menores)
     extras = 2 if base_origem == "Receptáculo" and valor(ficha, "origem.marcante") == "Coexistência" else 0
+    if valor(ficha, "vagas.feiticos_origem") not in ("", extras):
+        erro("vagas.feiticos_origem", str(extras), "origens--origem-receptaculo")
+    # Feitiços fora dos espaços lançados na CONFIGURAÇÃO: entram na conta, mas a fonte é do mestre.
+    fora = valor(ficha, "vagas.feiticos_extra")
+    feiticos_extra = fora if inteiro(fora, 0, 99) else 0
+    if "vagas.feiticos_extra" in ficha and fora != "" and not inteiro(fora, 0, 99):
+        erro("vagas.feiticos_extra", "inteiro de 0 em diante", "fundamento--repertorio")
+    if feiticos_extra:
+        incerto = True
+        r.nao_conferido.append(f"Feitiços fora dos espaços pela CONFIGURAÇÃO: {feiticos_extra}; a fonte não é conferida pelo livro")
     if valor(ficha, "origem.ce4"):
         if (base_origem, variante) != ("Restrição Celestial", "Restrição corporal"):
             erro("origem.ce4", "CE4 exclusivo da Restrição corporal", "origens--restricao-ce4")
@@ -138,7 +155,8 @@ def conferir_repertorio(ficha, ref, r):
             r.nao_conferido.append("CE4 da Origem: fora dos espaços/pagos; efeito e permissão precisam de conferência do mestre")
 
     talentos = []
-    for k in sorted((k for k in ficha if re.fullmatch(r"passiva\.\d+", k)), key=lambda k: int(k.split(".")[1])):
+    chaves = sorted((k for k in ficha if re.fullmatch(r"passiva\.\d+", k)), key=lambda k: int(k.split(".")[1]))
+    for k in chaves + [k for k in CARTAS_GRATIS if k in ficha]:
         antes_talento = (len(r.problemas), len(r.pendencias))
         nome = str(valor(ficha, k))
         if not nome:
@@ -146,8 +164,8 @@ def conferir_repertorio(ficha, ref, r):
                 r.pendencias.append(Problema("escolha", k, "nome do Talento", ""))
                 incerto = True
             continue
-        n = int(k.split(".")[1])
-        if not 1 <= n <= 12:
+        n, rotulo = CARTAS_GRATIS.get(k) or (int(k.split(".")[1]), f"Talento {k.split('.')[1]}")
+        if k not in CARTAS_GRATIS and not 1 <= n <= 12:
             erro(k, "posição de Talento de 1 a 12 do contrato ANALISE", "fundamento--selo")
             incerto = True
         conhecido = regras.talentos.get(nome)
@@ -172,21 +190,46 @@ def conferir_repertorio(ficha, ref, r):
             erro(k, f"Talento até CE {teto_ce} no nível {nivel}", ancora)
         if not conhecido:
             incerto = True
-            r.nao_conferido.append(f"Talento {n}: {nome}, CE {ce}; aprovação de conteúdo próprio aguarda CONFIGURAÇÃO")
+            r.nao_conferido.append(f"{rotulo}: {nome}, CE {ce}; aprovação de conteúdo próprio aguarda CONFIGURAÇÃO")
         elif antes_talento == (len(r.problemas), len(r.pendencias)):
-            r.conferidos.append(f"Talento {n}: {nome}, CE {ce} (categoria e nível atual)")
+            r.conferidos.append(f"{rotulo}: {nome}, CE {ce} (categoria e nível atual)")
         talentos.append((n, nome, ce, bool(conhecido)))
     if talentos:
         r.nao_conferido.append("Talentos: compatibilidade com a técnica e textos personalizados ainda exigem conferência")
 
+    da_origem = next((t for t in talentos if t[0] == 13), None)
+    extra = next((t for t in talentos if t[0] == 14), None)
+    talentos = [t for t in talentos if t[0] <= 12]
+    if da_origem:
+        # A carta da Origem só vale com a menor que concede o Talento, e só para CE 1.
+        ancora = ANCORA_CONCESSAO.get(concessao, "origens--origens")
+        if not gratuita:
+            erro("passiva.origem", f"vaga só com {concessao} entre as menores" if concessao
+                 else "vaga só nas Origens cuja menor concede um Talento", ancora)
+            incerto = True
+        elif da_origem[2] != 1:
+            erro("passiva.origem", f"Talento de CE 1 pela {concessao}", ancora)
+        else:
+            r.conferidos.append(f"Talento da Origem: {da_origem[1]} pela {concessao}, fora dos espaços e dos cinco pagos")
+        if concessao in ("Traço Incorporado", "Construção Especializada"):
+            r.nao_conferido.append(f"Talento da Origem: a {concessao} pede Talento passivo; conferir com o mestre")
+    if extra:
+        # A fonte do Talento extra está fora do livro: a ficha só mostra que a CONFIGURAÇÃO abriu a vaga.
+        vaga = valor(ficha, "vagas.talento_extra")
+        if vaga != "" and not inteiro(vaga, 1):
+            erro("passiva.extra", "vaga aberta em Talentos grátis da CONFIGURAÇÃO", "fundamento--selo")
+        incerto = True
+        r.nao_conferido.append(f"Talento extra: {extra[1]}; a fonte (item, pacto, Origem criada, mestre) não é conferida pelo livro")
+
     # A Origem não tem posição própria na lista antiga. Só opções CE1 sem duplicação
     # podem representar essa concessão, e a vinculação permanece revisão manual.
     origens_possiveis = [None]
-    if gratuita:
+    if gratuita and not da_origem:
         incerto = True
         origens_possiveis += [n for n, nome, ce, conhecido in talentos if ce == 1 and conhecido
                              and sum(t[1] == nome for t in talentos) == 1]
-        r.nao_conferido.append("Talento gratuito da Origem: falta vinculação estruturada da escolha; conta por possibilidades, sem certificar a aquisição")
+        r.nao_conferido.append("Talento gratuito da Origem: falta vinculação estruturada da escolha; conta por possibilidades, sem certificar a aquisição"
+                               + ("; ponha o Talento na carta Talento · Origem" if "passiva.origem" in ficha else ""))
     custos_talentos = []
     for isento in origens_possiveis:
         pagos = [t for t in talentos if t[0] <= 5 and t[0] != isento]
@@ -266,11 +309,11 @@ def conferir_repertorio(ficha, ref, r):
         r.nao_conferido.append("repertório: concessões da Origem incompletas impedem fechar a conta")
         return
     feiticos = sum(ativa(ficha, b) for b in bases(ficha, r"feitico\.\d+"))
-    aplicacoes = (leque or 0) + extras
+    aplicacoes = (leque or 0) + extras + feiticos_extra
     gastos = {c + regra_custo + dominio_custo + len(entidades) + max(0, feiticos - aplicacoes) for c in custos_talentos}
     # A falta de Leque pode esconder até os demais marcos; não transforma zero em certeza.
     if leque is None:
-        gastos = {c + regra_custo + dominio_custo + len(entidades) + max(0, feiticos - marcos - extras) for c in custos_talentos}
+        gastos = {c + regra_custo + dominio_custo + len(entidades) + max(0, feiticos - marcos - extras - feiticos_extra) for c in custos_talentos}
     if gastos and min(gastos) > espacos:
         erro("repertorio", f"até {espacos} espaços; mínimo ocupado {min(gastos)}", "fundamento--repertorio")
     elif len(gastos) == 1 and not incerto and len(r.problemas) == inicio:
