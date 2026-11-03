@@ -152,6 +152,21 @@ class Manifesto(unittest.TestCase):
         self.assertEqual(sum(k.endswith('.controle_compat') for k in r53), 30)
         self.assertEqual(len(contextos()), 249)
 
+    def test_chaves_dos_talentos_gratis_sao_opcionais(self):
+        from closure_bot.ficha_esquema import campos_opcionais
+        novas = campos_opcionais()
+        self.assertEqual(len(novas), 15)
+        self.assertFalse(set(novas) & set(campos_r53()))
+        self.assertEqual((tipo('vagas.feiticos_gratis'), tipo('passiva.origem'), tipo('passiva.extra.categoria')),
+                         ('numero', 'texto', 'numero'))
+        f = completa_r53()
+        antes = conferir(f, REF)
+        for k, v in novas.items():
+            f[k] = Campo('', v['origem'], v['parte'])
+        r = conferir(f, REF)
+        self.assertEqual((r.veredito, r.problemas), (antes.veredito, antes.problemas))
+        self.assertFalse(any('chave adicional' in n and n.split(':')[0] in novas for n in r.nao_conferido))
+
     def test_variante_e_tipos(self):
         self.assertEqual(variante({'formato.versao': Campo(12, '', '')}), 'r53-v12')
         self.assertEqual(tipo('r53.feitico.1.entrada'), 'texto')

@@ -1,0 +1,16 @@
+chave	parte	origem	booleano
+passiva.origem	entrada	'FICHA AMALDIÇOADA'!J426	0
+passiva.origem.categoria	entrada	'FICHA AMALDIÇOADA'!L426	0
+passiva.origem.texto	entrada	'FICHA AMALDIÇOADA'!K431	0
+passiva.origem.vaga	resultado	'FICHA AMALDIÇOADA'!M426	0
+passiva.extra	entrada	'FICHA AMALDIÇOADA'!P426	0
+passiva.extra.categoria	entrada	'FICHA AMALDIÇOADA'!R426	0
+passiva.extra.texto	entrada	'FICHA AMALDIÇOADA'!Q431	0
+passiva.extra.vaga	resultado	'FICHA AMALDIÇOADA'!S426	0
+vagas.talento_origem	resultado	DADOS_AM!HM51	0
+vagas.talento_extra	resultado	DADOS_AM!HM52	0
+vagas.feiticos_origem	resultado	DADOS_AM!HM53	0
+vagas.feiticos_extra	resultado	DADOS_AM!HM54	0
+vagas.feiticos_gratis	resultado	DADOS_AM!HM55	0
+aviso.efeito_caixa.talentos_gratis	aviso	DADOS_CONFIG!E52	0
+aviso.efeito_caixa.feiticos_fora_dos_espacos	aviso	DADOS_CONFIG!E53	0
