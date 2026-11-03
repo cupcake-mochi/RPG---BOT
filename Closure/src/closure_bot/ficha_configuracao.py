@@ -147,7 +147,9 @@ def conferir_efeitos(ficha, ctx, r):
     fontes = {'Pacto','Origem','Origem custom','Item','Técnica','Decisão do mestre'}
     alvos = {'Vida máxima','PE máximo','Integridade máxima','Defesa','Proteção','Iniciativa','CD de feitiço',
              'Conjuração','Corpo a corpo','À distância','Deslocamento','Limite de carga',
-             'Invocações · teto de ativas','Invocações · famílias da trilha'}
+             'Invocações · teto de ativas','Invocações · famílias da trilha',
+             # 03/11/2026: as vagas das cartas Talento · Extra e dos feitiços fora dos espaços (ficha_repertorio)
+             'Talentos grátis','Feitiços fora dos espaços'}
     from .ficha_testes import RegrasTestes
     livro = json.loads((Path(__file__).parent/'recursos/b47-livro.json').read_text(encoding='utf-8'))
     for tipo in ('Perícia','Ofício','TR'):
