@@ -1,3 +1,6 @@
+Alvos da CONFIGURAÇÃO publicados — 03/11/2026, 20:24 (Brasília)
+PUBLICADO: main 9173b8e0519f96c53c5904aa6c8f22726b27c82f, PR96. "Talentos grátis" e "Feitiços fora dos espaços" passam a ser alvos conhecidos (antes reprovavam a CONFIGURAÇÃO). Achado em teste na ficha real; suíte 999 ok, CI aprovada. 92/92 instalados, .env/campanha/bancos preservados, 6 servidores sem erro, GC:ping ok. Registro: docs/PUBLICACAO-TALENTOS-2026-11-03.md. Não republicar por documentação.
+
 Talentos grátis publicados — 03/11/2026, 19:57 (Brasília)
 PUBLICADO no app existente: main a50053eface9215b2bd36a3289481cd671dc6851, PR94. A Closure confere as cartas Talento · Origem e Talento · Extra (Ficha---RPG-JJK PR50); 15 chaves novas opcionais, formato 12 mantido. Suíte 998/zero falhas/68 pulados, CI aprovada. Backup antes validado; ZIP 92 arquivos, 92/92 instalados iguais; .env, campanha e bancos preservados (só o estado do painel de clima mudou). Logs: 6 servidores, zero erros. GC:ping ok (R60/v0.369). /ficha analisar com as cartas novas não foi ensaiado no Discord. Registro: docs/PUBLICACAO-TALENTOS-2026-11-03.md. Não republicar por documentação.
 

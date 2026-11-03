@@ -33,5 +33,25 @@ Concluída em **03/11/2026, às 19:57 (Brasília)**, no app existente das Guias 
 
 ## Pendências reais
 
-- Ensaiar `/ficha analisar` com uma ficha que use a carta Talento · Origem (Latente + Manifestação Instintiva) e uma com Talento · Extra.
+- Ensaiar `/ficha analisar` pelo Discord (link aberto ou .xlsx anexo) com as cartas novas; a conferência em si já foi testada na ficha real.
 - `MANIFESTO-PACOTE` não foi regenerado nesta publicação.
+
+## Segunda publicação: os alvos da CONFIGURAÇÃO · 03/11/2026, 20:24
+
+Um teste numa ficha real (cópia de teste da oficial: Latente + Manifestação Instintiva, Leitura na carta Talento · Origem, três pagos de CE 1 e Farejador na carta Talento · Extra), com a ANALISE lida pela API e conferida pelo mesmo código do bot, mostrou:
+
+- Carta da Origem certificada ("fora dos espaços e dos cinco pagos", "3 de 3 espaços comuns ocupados"); carta extra fora dos pagos, com nota de fonte do mestre.
+- **Bug:** a linha da CONFIGURAÇÃO com o alvo "Talentos grátis" (e, do mesmo jeito, "Feitiços fora dos espaços") era reprovada como alvo desconhecido.
+
+Conserto em [PR96](https://github.com/cupcake-mochi/RPG---BOT/pull/96), runtime **`9173b8e0519f96c53c5904aa6c8f22726b27c82f`**: os dois alvos entram na lista; a linha fica pendente de aprovação do mestre. Suíte completa 999 ok; CI aprovada.
+
+| Arquivo | Arquivos | Bytes | SHA-256 |
+| --- | ---: | ---: | --- |
+| Backup antes do envio | 270 | 3415322 | `49da36a6c7acdee9707e68c217546f1b7580e6c2924529b814be8af9e9beafc8` |
+| Pacote (main `9173b8e`) | 92 | 1853063 | `7ca5d6dc24e7d96bea5cffee1a0632ce524f16a70aae2cea77da59044db077a9` |
+
+- Commit no app existente às 20:24, build concluído; online em 6 servidores às 20:24:48, zero erros.
+- Backup depois: **92/92 arquivos iguais ao pacote**; `.env`, campanha e bancos iguais, exceto `estado` de `paineis_clima` (rotina normal).
+- `GC:ping`: R60/v0.369, 576 trechos, 43 ms.
+- Backups e hashes fora do Git em `/home/mizuki/.local/share/guias-ciclo/publicacao-pr96-20261103`.
+- `/ficha analisar` pelo Discord segue não ensaiado (cópia privada; anexo indisponível no navegador usado). O teste acima cobre a leitura da ANALISE nativa e a conferência, não o transporte pelo Discord.
