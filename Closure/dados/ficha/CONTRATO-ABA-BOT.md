@@ -113,6 +113,11 @@ fixtures e compatibilidade. Suas contagens/estados não substituem a versão vig
 As posições `passiva.1` a `passiva.5` são os cinco lugares pagos do gerador; `passiva.6` a
 `passiva.12` são os sete lugares de Leque. O bot usa essa organização para a conta e lê Categoria/nível
 pelo catálogo, sem confiar no custo exibido. Categoria declarada diferente da entrada conhecida é correção.
+A categoria exportada aceita inteiros 1–3 e os rótulos `CE 1`, `CE 2`, `CE 3`
+produzidos pela ficha. Essa equivalência é exclusiva da categoria: não normaliza
+nomes nem definições de conteúdo próprio e não concede aprovação. O nível e a
+categoria do catálogo continuam sendo conferidos. A coluna de célula de origem
+é apenas diagnóstico; referências antigas nessa coluna não mudam a chave/valor.
 
 Talentos gratuitos da Origem ainda não têm posição/vinculação própria. O bot não escolhe quem foi
 recebido assim: admite as possibilidades elegíveis de CE1 sem duplicação, verifica apenas excessos

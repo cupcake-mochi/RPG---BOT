@@ -82,6 +82,25 @@ Liberação N, Classe 0 N, Técnica Máxima, Invocação N · básica/especial/
 habilidade da Trilha/Liberação/Técnica Máxima). Não há comando de rolagem no
 bot, então nada mudou nisso.
 
+## Talentos grátis · 03/11/2026
+
+A FICHA AMALDIÇOADA ganhou duas cartas fora dos espaços pagos: Talento ·
+Origem (o de CE 1 das menores Manifestação Instintiva, Traço Incorporado e
+Construção Especializada) e Talento · Extra (a vaga dada pela CONFIGURAÇÃO).
+A ANALISE exporta 15 chaves novas no fim, formato 12 mantido; a lista está
+em `src/closure_bot/recursos/talentos-gratis-campos.tsv`.
+
+- As 15 chaves são opcionais (`campos_opcionais()`): ficha antiga sem elas
+  não fica pendente, e ficha nova com elas não vira "chave adicional".
+- Carta da Origem: exige a menor da própria origem e CE 1; certifica fora
+  dos espaços. Traço e Construção ganham nota de "Talento passivo" (o bot
+  não confere se é passivo). Sem a carta, vale a conta antiga das
+  possibilidades, com aviso para mover o Talento.
+- Carta extra e "Feitiços fora dos espaços": entram na conta, mas a fonte é
+  do mestre, então a ficha fica sem certificado integral (nota).
+- `vagas.feiticos_origem` precisa bater com a Coexistência (2 ou 0). Valor
+  vazio conta como não exportado.
+
 ## Fora deste trabalho
 
 - Perguntas sobre o livro continuam no índice R51/R52.

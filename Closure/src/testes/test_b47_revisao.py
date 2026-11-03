@@ -76,7 +76,7 @@ class RequisitosOrigem(unittest.TestCase):
         ps=paginas(r,f,SimpleNamespace(chave='closure',nome='Closure',avatar_url=None))
         texto=' '.join(c.value for p in ps for c in p.fields)
         self.assertIn('marcante exigida: Coexistência',texto)
-        self.assertIn('origem.menor_2',texto)
+        self.assertIn('Origem · segunda capacidade menor',texto)
 
     def test_menor_custom_com_marcante_ausente_fica_pendente(self):
         f=trocar(self.ficha(marcante='',menor='Menor sintética'),

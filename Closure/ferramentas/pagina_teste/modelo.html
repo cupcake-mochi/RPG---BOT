@@ -390,7 +390,11 @@ function consultaAnterior(anteriores) {
 }
 // Uma conta de montagem precisa do orçamento E da conversão/limite da Forma.
 // As fontes conservam as tabelas do livro; não há números de regra copiados no código.
-function fontesDaMontagem(texto) {
+function propostaDeFeitico(texto) {
+  const t = nrm(texto);
+  return /\bfeitic\w*\b/.test(t) && /\b(cria\w*|adapt\w*|alter\w*|transform\w*|mont\w*|modific\w*|create|change|build)\b/.test(t);
+}
+function fontesDaMontagem(texto, permitirProposta = true) {
   const t = nrm(texto);
   // O nome desta peça contém só palavras de parada da busca lexical.
   // A frase comum "mais um" continua livre fora de uma pergunta de regra.
@@ -400,11 +404,16 @@ function fontesDaMontagem(texto) {
   const conta = /\b(classe|ponto\w*|orcamento|montagem|montar|maxim\w*|teto|limite\w*|dado\w*|custo|custa|pe)\b/.test(t);
   const especial = /\b(especial|especiais|habilidade\w*)\b/.test(t) && /\b(invoc\w*|entidade\w*|shikigami\w*)\b/.test(t);
   const feitico = /\b(feitic\w*|manejo\w*|forma|formas)\b/.test(t);
-  if ((!feitico && !especial && !/\btecnica maxima\b/.test(t)) || (!conta && !(amparo && /\bformas?\b/.test(t)))) return [];
+  const proposta = permitirProposta && propostaDeFeitico(texto);
+  if ((!feitico && !especial && !/\btecnica maxima\b/.test(t)) || (!conta && !proposta && !(amparo && /\bformas?\b/.test(t)))) return [];
   if (/\btecnica maxima\b/.test(t)) return ["fundamento--maxima"];
   if (especial) return ["construcao--entidades-especiais", "construcao--entidades-saldo"];
   if (/\bclasse classe0\b/.test(t)) return ["fundamento--classezero", ...(amparo ? ["fundamento--funcoes"] : [])];
   if (amparo) return ["fundamento--pontos", "fundamento--funcoes", "fundamento--formas"];
+  // Uma descrição criativa pode pedir uma montagem sem citar custo ou pontos.
+  // Fornece regras e limites, não uma aprovação automática de efeito próprio.
+  if (proposta && !conta) return ["fundamento--formas", "fundamento--pontos",
+    /\b(bonus|adicional|extra|beneficio\w*)\b/.test(t) ? "catalogo--melhoria-efeito-proprio" : "fundamento--primeiro"];
   if (/\bdano\b/.test(t)) return ["fundamento--pontos", "fundamento--danolimites"];
   if (/\b(ponto\w*|orcamento|montagem|montar|custo|custa)\b/.test(t)) return ["fundamento--pontos"];
   return [];
@@ -566,8 +575,10 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   // até três blocos: o que a busca achou vem antes da âncora genérica do termo ("Caminho", "PE")
   const out = [];
   if (ecoComplemento) out.push(ecoComplemento);
-  const assunto = herda ? anterior + " " + texto : texto;
-  const fontes = pergunta || detalhe ? fontesDaMontagem(assunto) : [];
+  const continuaMontagem = /^(compreendo|entendi)[,. ]+(porem|mas)\b/.test(t) &&
+    REGRA.test(t) && propostaDeFeitico(anterior);
+  const assunto = herda || continuaMontagem ? anterior + " " + texto : texto;
+  const fontes = pergunta || detalhe ? fontesDaMontagem(assunto, REGRA.test(t) || detalhe || aspecto || contestacao) : [];
   // Tabela de preço por nome, antes de exemplos e descrições do item.
   if (pergunta) fontes.unshift(...itensDePreco(assunto));
   const aptidoes = [...comTermo.keys()].filter(i => FAM[i] === "aptidoes" && !["aptidoes--apt-refino", "aptidoes--apt-marcos", "aptidoes--apt-catalogo"].includes(D.livro[i].ancora));

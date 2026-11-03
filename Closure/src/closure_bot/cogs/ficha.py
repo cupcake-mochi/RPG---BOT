@@ -54,6 +54,13 @@ FALA[CLOSURE]["pendente"] = "O pente fino ficou parcial. Separei os pontos de at
 COR = {"aprovada": 0x2E8B57, "pendente": 0xD4A017, "reprovada": 0xCC0102, "formato desconhecido": 0xD4A017}
 # Nome legível de cada aviso da ficha; o que não estiver aqui aparece pela chave.
 ROTULOS = {"aviso.escolhas_de_pericia": "Perícias e ofícios", "aviso.pontos_disponiveis": "Pontos de atributo",
+           "origem.menor_1": "Origem · primeira capacidade menor", "origem.menor_2": "Origem · segunda capacidade menor",
+           "origem.marcante": "Origem · capacidade marcante", "origem.traco": "Origem · traço",
+           "maestria": "Maestria", "classe_maxima": "Classe máxima", "nivel": "Nível",
+           "refino_de_graca": "Refino recebido por progressão", "classe_0_gratis": "Feitiços de Classe 0 gratuitos",
+           "iniciativa": "Iniciativa", "cd_de_feitico": "CD de feitiço", "conjuracao": "Teste de conjuração",
+           "corpo_a_corpo": "Ataque corpo a corpo", "a_distancia": "Ataque à distância",
+           "deslocamento": "Deslocamento", "morrendo_prazo": "Morrendo · prazo em rodadas",
            "aviso.pericias_disponiveis": "Perícias", "aviso.oficios_disponiveis": "Ofícios",
            "aviso.testes_disponiveis": "Testes de Resistência", "aviso.grau": "Grau do uniforme",
            "aviso.forca_p": "Força da mão principal", "aviso.forca_s": "Força da mão secundária",
@@ -82,6 +89,13 @@ def _rotulo(chave: str) -> str:
     if chave.startswith("buff."):
         return "Buff/Debuff de " + chave[5:].replace("_", " ")
     partes = chave.split(".")
+    if partes[0] == "custom" and len(partes) >= 3 and partes[1].isdigit():
+        resto = partes[2:]
+        if resto[0] == "campo":
+            resto = resto[1:]
+        campo = {"origem": "Origem vinculada", "nome": "nome", "tipo": "tipo", "base": "base do livro"}.get(
+            ".".join(resto), _nome_do_valor(".".join(resto)))
+        return "Cadastro próprio " + partes[1] + " · " + campo
     if partes[0] == "passiva" and len(partes) >= 2:
         return "Talento " + partes[1] + (" · " + _nome_do_valor(".".join(partes[2:])) if len(partes) > 2 else "")
     if partes[0] in ("feitico", "liberacao", "invocacao", "zero") and len(partes) > 1 and partes[1].isdigit():
@@ -133,7 +147,11 @@ def _quantidade(numero: int, singular: str, plural: str | None = None) -> str:
     return f"{numero} " + (singular if numero == 1 else plural or singular + "s")
 
 
-def _linha(p: Problema) -> str:
+def _linha(p: Problema, ficha=None) -> str:
+    from ..ficha_clareza import linha_clara
+    clara = linha_clara(p, ficha or {})
+    if clara is not None:
+        return clara
     if p.regra == "buff":
         valor = p.encontrado
         if re.fullmatch(r"\d+(?:[.,]\d+)?", valor):
@@ -265,20 +283,26 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
         if resultado.pendencias:
             estado = "Conferência parcial; pendências abertas"
         elif resultado.notas:
-            estado = "Conferência parcial; ajustes para o mestre"
+            estado = "Conferência parcial; observações para o mestre"
         elif resultado.nao_conferido:
             estado = "Conferência parcial; há partes não conferidas"
     titulo_estado = f"{estado} nas verificações feitas" if resultado.veredito != "formato desconhecido" else "Formato desconhecido — análise não realizada"
     resumo.add_field(name="Resultado", value=f"**{titulo_estado}**\n"
                      + " · ".join((_quantidade(len(resultado.problemas), "erro"), _quantidade(len(resultado.pendencias), "pendência"),
-                                    _quantidade(len(resultado.notas), "ajuste") + " para o mestre")), inline=False)
+                                    _quantidade(len(resultado.notas), "observação", "observações") + " para o mestre")), inline=False)
+    resumo.add_field(name="Como ler o resultado", value=
+                     "❌ **Erro:** a leitura encontrou uma divergência ou escolha inválida. Confira as entradas que geram o resultado; preserve as fórmulas.\n"
+                     "⚠️ **Pendência:** falta uma informação, escolha ou aprovação para concluir a conferência.\n"
+                     "👀 **Observação:** o mestre precisa conferir a origem e a validade do ajuste. Não significa erro confirmado.\n"
+                     "Depois de corrigir, espere a planilha calcular e envie uma nova análise; para XLSX, baixe um arquivo novo. "
+                     "Este painel não se atualiza sozinho.", inline=False)
     revisao = [("❌ Precisa corrigir", resultado.problemas), ("⚠️ Falta ou pede atenção", resultado.pendencias),
                ("👀 Pro mestre conferir", resultado.notas)]
     for nome, problemas in revisao:
         if problemas:
             linhas, tamanho = [], 0
             for p in problemas[:3]:
-                linha = _linha(p)
+                linha = _linha(p, ficha)
                 if tamanho + len(linha) > 600:
                     break
                 linhas.append(linha)
@@ -329,7 +353,7 @@ def paginas(resultado: Resultado, ficha: dict[str, Campo], persona, manifesto: d
     campos_revisao = []
     for nome, problemas in revisao:
         if problemas:
-            campos_revisao += _campos(nome, [_linha(p) for p in problemas])
+            campos_revisao += _campos(nome, [_linha(p, ficha) for p in problemas])
     # A prioridade acompanha apenas os campos presentes em cada página,
     # inclusive quando erros e pendências ocupam páginas diferentes.
     adicionar("Correções e revisão", campos_revisao, estado="pendente",

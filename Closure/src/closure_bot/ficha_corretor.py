@@ -337,7 +337,7 @@ def conferir_contas(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaC
         else:
             pulou.append("vida: a campanha rola a vida por nível")
         pe_base = caminho["peNv"] * nivel + _bonus(ficha, "buff.energia")
-        reserva = any(re.fullmatch(r"passiva\.\d+", k) and c.valor == "Reserva Profunda" for k, c in ficha.items())
+        reserva = any(re.fullmatch(r"passiva\.(?:\d+|origem|extra)", k) and c.valor == "Reserva Profunda" for k, c in ficha.items())
         extra = 3 * ref.magia.classe_maxima(nivel) if reserva and ref.magia else 0
         if extra and _numero(ficha, "energia_max") == pe_base:
             pendencias.append(Problema("talento", "energia_max",

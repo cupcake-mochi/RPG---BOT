@@ -102,7 +102,7 @@ class Apresentacao(unittest.TestCase):
             ps = paginas(r, {}, PERSONA)
             self.assertEqual(ps[0].colour.value, cor)
             if r.problemas:
-                self.assertIn("está 19, o certo é 13", texto(ps[:1]))
+                self.assertIn("A ficha informa 19; a conferência indica 13.", texto(ps[:1]))
             if r.pendencias:
                 self.assertIn("faltam escolher 1 de 2", texto(ps[:1]))
 
@@ -127,7 +127,7 @@ class Apresentacao(unittest.TestCase):
         p = Problema('informação', 'tr', 'revisão', 'pendente')
         casos = [
             ({'nao_conferido': ['Aprendizado e autorização ficam com o mestre']}, 'há partes não conferidas'),
-            ({'notas': [p], 'nao_conferido': ['Limite humano']}, 'ajustes para o mestre'),
+            ({'notas': [p], 'nao_conferido': ['Limite humano']}, 'observações para o mestre'),
             ({'pendencias': [p], 'nao_conferido': ['Limite humano']}, 'pendências abertas'),
         ]
         for veredito in ('aprovada', 'pendente'):
