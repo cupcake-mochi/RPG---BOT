@@ -70,8 +70,9 @@ envelope e têm hashes separados para localizar uma conexão existente.
 
 ## Schema e migrações
 
-Schema atual: **9**; ledger **2**. Migração 9 acrescenta `financeiro_rest`,
+Schema atual: **10**; ledger **2**. Migração 10 acrescenta `atestados_rest`,
 vinculado à operação de cópia por chave estrangeira com exclusão em cascata.
+Migração 9 acrescentou `financeiro_rest`, com o mesmo vínculo.
 Migração 8 acrescentou `copias_rest`.
 Migração 7 acrescentou `conferencias_rest`, com estado
 cifrado e chave estrangeira para o personagem. Abaixo, evolução anterior: Migração 1 cria as tabelas de domínio; migração 2 acrescenta
@@ -89,6 +90,7 @@ uma versão anterior deste recurso; o teste de migração usa uma fixture v1.
 | Tabela | Uso |
 |---|---|
 | `financeiro_rest` | Intenção e hashes do reset de células, pedidos fixos cifrados; sem histórico da ficha |
+| `atestados_rest` | Último atestado de ativação da cópia: estado, código e máximos de sequência por rotina, cifrados; sem conteúdo da ficha |
 | `servidores`, `cargos` | Campos públicos permitidos e capacidades explícitas de revisão/edição |
 | `conexoes` | Uma conexão por usuário Discord, identidade Google e cliente OAuth |
 | `personagens` | Vários personagens por jogador/servidor, com ID estável e perfil próprio |
