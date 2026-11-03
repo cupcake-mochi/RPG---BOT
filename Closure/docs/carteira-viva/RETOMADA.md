@@ -1,5 +1,15 @@
 # Continuar a Carteira viva
 
+## Pulso gravado e lido · 02/11
+
+Produtor (PR31, `383a54f`): cada rotina grava o pulso nos metadados `DOCUMENT`
+só depois de concluir; 43 cenários de ativação. Bot: leitor GET, atestado por
+operação (esquema 10), recomeço após versão restaurada, serviço interno com
+trava de 5 min para abrir e leitura nova para conferir e para o portão, textos
+PT/EN e teste de que o bot nunca escreve no pulso. Sem tela: a criação não tem
+superfície; requisito registrado na ETAPA-7. [Detalhes](ATIVACAO-PULSO-2026-11-02.md).
+Próximo: demais domínios, tempo de preparo e prova nativa. Criação bloqueada.
+
 ## Atestado de ativação por pulso · 02/11
 
 Contrato decidido com o mantenedor: o atestado protege contra instalação

@@ -1,5 +1,14 @@
 # Etapa 7: escolha do modelo e barreira de criação
 
+## Requisito de tela: ativar automações · 02/11
+
+O critério pede que a ativação manual apareça na interface. Ela entra no fluxo
+de criação, logo depois de "cópia inicializada": passos (`textos_ativacao.passos`),
+estado e motivo (`texto_estado`), botão "Conferir de novo" (`forcar=True`) e,
+só com `contador_voltou`, "Restaurei uma versão antiga" (`recomecar_ativacao_copia`).
+O cadastro da cópia passa por `exigir_ativa`, que sempre relê. Toda escrita do
+bot mostra `risco_escrita`. Não criar comando avulso antes do fluxo existir.
+
 ## Propriedades separadas e retenção · 30/10
 
 Bot `67a6b98`: equivalências não renovam a retenção. CI41061489142 aprovado

@@ -56,9 +56,32 @@ rodou; pulso malformado ou no futuro). A garantia de que o bot não escreve na
 área do pulso depende do local escolhido pelo produtor e entra junto com o
 leitor. Bateria local da Carteira: 680 testes aprovados.
 
+## Leitor e atestado no bot · 02/11
+
+Produtor: PR31 da ficha, commit `383a54f`, grava o pulso nos metadados de
+desenvolvedor `DOCUMENT` (`r53_pulso_<rotina>`, últimos 5 itens). O discovery da
+Sheets API v4 confirma `drive.file` em `spreadsheets.get`.
+
+| Peça | Arquivo | O que faz |
+|---|---|---|
+| Leitor | `carteira_viva/leitor_pulso.py` | Um GET com `fields=developerMetadata(...)`. Aceita só `DOCUMENT` no nível da planilha; chave duplicada, JSON ruim, item fora do formato ou rotina trocada viram `inconsistente`, nunca "sem pulso". |
+| Classificador | `carteira_viva/atestado_ativacao.py` | Ganhou `codigo` e `faltam`. Cópia feita pelo jogador vira `copia_de_outra_ficha` (o metadado viaja com a cópia; as rotinas não). |
+| Banco | `carteira_viva/atestados_banco.py`, esquema 10 | `atestados_rest` por operação de cópia, cifrado, apagado junto com a cópia e incluído na rotação de chave. Máximos nunca descem. |
+| Recomeço | `recomecar_atestado` | Só depois de `contador_voltou` (versão antiga restaurada no Drive). Zera a base, registra `atestado_recomecado` na auditoria e lê de novo. |
+| Serviço | `carteira_viva/atestado_servico.py` | Interno, sem endpoint. Leitura só por pedido do jogador. Abrir reaproveita até 5 min; conferir (`forcar=True`) e o portão `exigir_ativa` sempre leem na hora. |
+| Textos | `carteira_viva/textos_ativacao.py` | PT/EN de estado, motivo, passos e aviso do risco residual de escrita. |
+
+Testes: `test_carteira_atestado.py` (códigos e textos), `test_carteira_leitor_pulso.py`,
+`test_carteira_atestado_servico.py` (SQL e serviço reais, transporte fictício) e
+`test_carteira_pulso_sem_escrita.py`: varre o código por escrita de metadado e
+confere o corpo real do POST financeiro.
+
+**Tela:** não existe superfície de criação no bot. A tela "Ativar automações"
+fica como requisito do fluxo de criação ([ETAPA-7](ETAPA-7.md)), usando os textos
+prontos. Fichas cadastradas pelo caminho antigo não têm pulso e não mostram estado.
+
 ## Falta
 
-Produtor: gravar o pulso só depois de concluir o trabalho de cada rotina (PR31).
-Bot: leitor do local escolhido, guardar `Atestado.maximos` por ficha, mostrar o
-estado e o motivo na interface. Depois, prova nativa com a sessão Google do
-mantenedor numa descartável nova.
+Prova nativa com a sessão Google do mantenedor numa descartável nova: o produtor
+grava o metadado, gravar não dispara a rotina de edição, o bot lê com `drive.file`
+e o diário (3h) dispara. Criação continua bloqueada.

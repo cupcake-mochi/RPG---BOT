@@ -24,7 +24,7 @@ def schema_historico(db, versao):
     Rebaixar só user_version deixa tabelas novas num banco supostamente antigo.
     Toda introdução de tabela deve ser incluída aqui, uma vez para os cenários.
     """
-    posteriores = ((9, ('financeiro_rest',)), (8, ('copias_rest',)),
+    posteriores = ((10, ('atestados_rest',)), (9, ('financeiro_rest',)), (8, ('copias_rest',)),
         (7, ('conferencias_rest',)), (6, ('modelos_servidor',)), (5, ('web_sessoes',)),
         (4, ('previas_cartao', 'resumos_cartao', 'imagens')), (3, ('web_fluxos',)),
         (2, ('pedidos', 'auditoria')))

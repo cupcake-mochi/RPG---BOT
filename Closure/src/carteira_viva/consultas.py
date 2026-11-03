@@ -118,6 +118,16 @@ class Consultas:
         from .financeiro_servico import inicializar
         return await inicializar(self, servidor, usuario, referencia)
 
+    async def conferir_ativacao_copia(self, servidor, usuario, referencia, *, forcar=False):
+        """Interno, só leitura do pulso; abrir reaproveita 5 min, conferir lê de novo."""
+        from .atestado_servico import conferir
+        return await conferir(self, servidor, usuario, referencia, forcar=forcar)
+
+    async def recomecar_ativacao_copia(self, servidor, usuario, referencia):
+        """Interno, só após versão antiga restaurada; registra em auditoria."""
+        from .atestado_servico import recomecar
+        return await recomecar(self, servidor, usuario, referencia)
+
     async def diagnosticar_grade_copia(self, servidor, usuario, referencia, *, alvo, dominio):
         """Interno, somente leitura; não altera candidata, recibo ou liberação."""
         from .diagnostico_servico import diagnosticar

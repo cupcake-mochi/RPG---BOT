@@ -2,7 +2,7 @@
 from .segredos import ErroCarteira
 
 APPLICATION_ID = 0x43564956
-VERSAO = 9
+VERSAO = 10
 
 MIGRACOES = {
     1: (
@@ -115,6 +115,11 @@ MIGRACOES = {
             operacao TEXT PRIMARY KEY REFERENCES copias_rest(operacao) ON DELETE CASCADE,
             estado TEXT NOT NULL CHECK(estado IN ('preparada','enviada','conferida')),
             criado REAL NOT NULL, expira REAL NOT NULL, conteudo BLOB NOT NULL)""",
+    ),
+    10: (
+        """CREATE TABLE atestados_rest (
+            operacao TEXT PRIMARY KEY REFERENCES copias_rest(operacao) ON DELETE CASCADE,
+            lido REAL NOT NULL, conteudo BLOB NOT NULL)""",
     ),
 }
 
