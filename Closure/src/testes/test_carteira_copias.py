@@ -10,6 +10,7 @@ from urllib.parse import parse_qs
 from cryptography.fernet import Fernet
 import httpx
 
+from carteira_viva import esquema
 from carteira_viva.backup import gravar_backup, restaurar_backup
 from carteira_viva.banco import Cadastro, DIA
 from carteira_viva.copias_banco import ReferenciaCopia
@@ -214,7 +215,7 @@ class BancoCopias(Fixtures, unittest.TestCase):
         self.c.db.execute('DROP TABLE remocoes.copias'); self.c.db.execute('PRAGMA remocoes.user_version=1')
         self.reabrir()
         self.assertEqual(self.c.listar(self.m)[0]['id'], p['id'])
-        self.assertEqual(self.c.db.execute('PRAGMA user_version').fetchone()[0], 9)
+        self.assertEqual(self.c.db.execute('PRAGMA user_version').fetchone()[0], esquema.VERSAO)
         self.assertEqual(self.c.db.execute('PRAGMA remocoes.user_version').fetchone()[0], 2)
         self.c.verificar_integridade()
 
