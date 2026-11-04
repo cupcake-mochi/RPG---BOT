@@ -2576,7 +2576,7 @@
    ],
    "keysecondary": [],
    "comment": "Vida temporária",
-   "content": "[Termo do livro: Vida temporária] Reserva separada dos PV atuais e máximos, com limites e prazo próprios. (livro, âncora dano--temporarios)",
+   "content": "[Termo do livro: Vida temporária] Pontos anotados separadamente da vida comum, com limites e prazo próprios. (livro, âncora dano--temporarios)",
    "constant": false,
    "selective": false,
    "order": 100,

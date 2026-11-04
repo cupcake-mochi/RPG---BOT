@@ -394,6 +394,28 @@ function propostaDeFeitico(texto) {
   const t = nrm(texto);
   return /\bfeitic\w*\b/.test(t) && /\b(cria\w*|adapt\w*|alter\w*|transform\w*|mont\w*|modific\w*|create|change|build)\b/.test(t);
 }
+// Nomes antigos do livro apontam para a mesma fonte, sem trocar palavras
+// soltas como "saldo" ou "ampliar" em perguntas com outro assunto.
+function fontesPorNomeDeMesa(texto) {
+  const t = nrm(texto);
+  const obra = /\bobras?\b/.test(t);
+  const arquiteto = /\barquitet[oa]\b/.test(t);
+  const livro = /\b(?:livro|rpg|ciclo maldito)\b/.test(t);
+  const nivelDeObra = /\bobras? (?:ampliadas?|extensas?)\b/.test(t);
+  const obraEmIngles = /\barchitect\b/.test(t) && /\b(?:expanded|extensive)\b/.test(t) &&
+    /\b(?:builds?|constructions?|structures?)\b/.test(t);
+  const fontes = [];
+  if (nivelDeObra || obraEmIngles || (arquiteto && obra && /\b(?:ampliad[ao]s?|extens[ao]s?)\b/.test(t)))
+    fontes.push("guia--guia-obras-maiores");
+  if (arquiteto && obra && /\b(?:aumentar|ampliar)\b/.test(t))
+    fontes.push("guia--guia-obra-uso", "guia--guia-obras-maiores");
+  if ((/\britual\b/.test(t) && /\bparcelas?\b/.test(t)) || (livro && /\bparcelas? adicionais?\b/.test(t)))
+    fontes.push("ritual--rit-parcelas");
+  if (/\bfuncoes e saldo\b/.test(t)) fontes.push("fundamento--funcoes");
+  if (/\bsaldo e limites\b/.test(t) && (livro || /\b(?:invoc\w*|entidade\w*|shikigami\w*)\b/.test(t)))
+    fontes.push("construcao--entidades-saldo");
+  return fontes;
+}
 function fontesDaMontagem(texto, permitirProposta = true) {
   const t = nrm(texto);
   // O nome desta peça contém só palavras de parada da busca lexical.
@@ -401,7 +423,7 @@ function fontesDaMontagem(texto, permitirProposta = true) {
   if (/\bmais um\b/.test(t) && /\b(melhoria|peca|feitico|funcion\w*|compra\w*|ponto\w*|custo|custa|livro)\b/.test(t))
     return ["catalogo--melhoria-mais-um", ...(/\b(classe|custo|custa|ponto\w*)\b/.test(t) ? ["fundamento--pontos"] : [])];
   const amparo = /\b(cura\w*|curo|cure\w*|apoio|onda|vida temporaria)\b/.test(t);
-  const conta = /\b(classe|ponto\w*|orcamento|montagem|montar|maxim\w*|teto|limite\w*|dado\w*|custo|custa|pe)\b/.test(t);
+  const conta = /\b(classe|ponto\w*|orcamento|montagem|montar|maxim\w*|teto|limite\w*|dado\w*|custo|custa|pe|saldo)\b/.test(t);
   const especial = /\b(especial|especiais|habilidade\w*)\b/.test(t) && /\b(invoc\w*|entidade\w*|shikigami\w*)\b/.test(t);
   const feitico = /\b(feitic\w*|manejo\w*|forma|formas)\b/.test(t);
   const proposta = permitirProposta && propostaDeFeitico(texto);
@@ -578,7 +600,8 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   const continuaMontagem = /^(compreendo|entendi)[,. ]+(porem|mas)\b/.test(t) &&
     REGRA.test(t) && propostaDeFeitico(anterior);
   const assunto = herda || continuaMontagem ? anterior + " " + texto : texto;
-  const fontes = pergunta || detalhe ? fontesDaMontagem(assunto, REGRA.test(t) || detalhe || aspecto || contestacao) : [];
+  const fontes = pergunta || detalhe ? [...fontesPorNomeDeMesa(assunto),
+    ...fontesDaMontagem(assunto, REGRA.test(t) || detalhe || aspecto || contestacao)] : [];
   // Tabela de preço por nome, antes de exemplos e descrições do item.
   if (pergunta) fontes.unshift(...itensDePreco(assunto));
   const aptidoes = [...comTermo.keys()].filter(i => FAM[i] === "aptidoes" && !["aptidoes--apt-refino", "aptidoes--apt-marcos", "aptidoes--apt-catalogo"].includes(D.livro[i].ancora));
