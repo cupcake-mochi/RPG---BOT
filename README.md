@@ -1,6 +1,6 @@
 # Guias do Ciclo
 
-**Produção: consulta R60/v0.369 · mecânica R53. Atualização para R63/v0.373 preparada.**
+**Produção: consulta R63/v0.373 · mecânica R53.**
 
 Kal’tsit e Closure conversam, explicam regras do **Ciclo Maldito** e conferem
 partes da ficha. O projeto atual fica em [`Closure/`](Closure/). A Arquivista
@@ -22,13 +22,13 @@ e a lore Nova Terra são opções separadas do idioma. A análise da ficha é pa
 
 ## Estado e documentação
 
-A consulta **R63/v0.373** foi preparada com 576 trechos. A busca aceita nomes
+A consulta **R63/v0.373** foi publicada com 576 trechos. A busca aceita nomes
 antigos como “obra Ampliada” e recupera o texto atual do livro. As contas da
 ficha seguem a **revisão 53**, com a compatibilidade documentada para formatos
 antigos. Veja o [registro da preparação](Closure/docs/CONSULTA-R63-2026-11-04.md).
 
-A última publicação registrada segue com a consulta **R60/v0.369**, no runtime
-`9173b8e`, às 20h24 de 03/11/2026 (Brasília). [Registro da publicação](https://github.com/cupcake-mochi/RPG---BOT/pull/97)
+A publicação está no runtime `2356c11`, online desde 10h03 de 04/11/2026
+(Brasília). [Registro da publicação](Closure/docs/PUBLICACAO-R63-2026-11-04.md)
 
 A **Carteira viva** está em desenvolvimento separado, nos PRs
 [#77–#84](https://github.com/cupcake-mochi/RPG---BOT/pull/84), sem publicação.
@@ -43,7 +43,7 @@ fica na [retomada da Carteira viva](https://github.com/cupcake-mochi/RPG---BOT/b
 | Visão do projeto e organização | [Closure/README.md](Closure/README.md) |
 | Instalação e execução | [Closure/src/LEIA-ME.md](Closure/src/LEIA-ME.md) |
 | Guias oferecidos no Discord | [Guias de uso](Closure/docs/GUIAS-DE-USO.md) |
-| Última revisão e entrega | [Publicação R60 e clareza da análise](Closure/docs/PUBLICACAO-R60-2026-10-30.md) |
+| Última revisão e entrega | [Publicação R63](Closure/docs/PUBLICACAO-R63-2026-11-04.md) |
 | Testes e limites R53 | [Fechamento R53](Closure/pesquisa/validacao/2026-10-21-r53/FECHAMENTO.md) |
 | Contrato da ficha | [Contrato e cobertura](Closure/dados/ficha/INTEGRACAO-B47.md) |
 | Estado para continuar o trabalho | [Fila atual](Closure/docs/FILA-ATUAL.txt) |

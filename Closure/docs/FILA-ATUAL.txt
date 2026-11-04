@@ -1,3 +1,6 @@
+Consulta R63 publicada — 04/11/2026, 10:03:02 (Brasília)
+PR #98 mesclada com CI verde em 2356c11. Discloud em R63/v0.373, 576 trechos e mecânica R53. Backup prévio baixado e validado, Commit no app existente, 92/92 arquivos instalados iguais ao ZIP. Ambiente, campanha e as 18 tabelas dos dois bancos ficaram iguais. Logs online em seis servidores, zero erros de início. GC:ping confirmou R63/v0.373 no tópico Testes. Registro: docs/PUBLICACAO-R63-2026-11-04.md.
+
 Consulta R63 preparada — 04/11/2026
 Branch codex/consulta-r63 sobre main 9173b8e. Sincronizador oficial importou R63/v0.373 de JJK---Project 8e7e83b: 576 trechos, 172 textos alterados, mesmas âncoras. A busca entende os nomes antigos em contexto e recupera a regra da R61 sobre custos pagos da Reação cancelada. Mecânica R53, 13 referências, catálogos, legado e guardas preservados. Suíte com núcleo: 1.002 testes, 1.001 aprovados e um online opcional pulado, zero falhas. Auditoria 498/498 fontes, QuickJS e Node iguais em 14 casos oficiais e seis adicionais, ZIP 92/92 arquivos conferidos. Registro: docs/CONSULTA-R63-2026-11-04.md. Revisão local antes do commit. Produção segue em R60 no runtime 9173b8e, conforme registro da PR #97.
 
