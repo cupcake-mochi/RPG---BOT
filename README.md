@@ -1,6 +1,6 @@
 # Guias do Ciclo
 
-**Última publicação: 30/10/2026 · consulta R60/v0.369 · mecânica R53.**
+**Produção: consulta R60/v0.369 · mecânica R53. Atualização para R63/v0.373 preparada.**
 
 Kal’tsit e Closure conversam, explicam regras do **Ciclo Maldito** e conferem
 partes da ficha. O projeto atual fica em [`Closure/`](Closure/). A Arquivista
@@ -22,12 +22,13 @@ e a lore Nova Terra são opções separadas do idioma. A análise da ficha é pa
 
 ## Estado e documentação
 
-A consulta **R60/v0.369**, com 576 trechos, foi publicada no app existente da
-Discloud em **30/10/2026, às 23:23 (Brasília)**, no runtime `229e539`.
-As contas dos cartões da ficha continuam na **revisão 53**; formatos antigos
-conservam sua compatibilidade documentada. A validação final registrou
-990 testes: 989 aprovados e um online opcional pulado, além da conferência
-dos 91 arquivos instalados. Veja o [registro da publicação](Closure/docs/PUBLICACAO-R60-2026-10-30.md).
+A consulta **R63/v0.373** foi preparada com 576 trechos. A busca aceita nomes
+antigos como “obra Ampliada” e recupera o texto atual do livro. As contas da
+ficha seguem a **revisão 53**, com a compatibilidade documentada para formatos
+antigos. Veja o [registro da preparação](Closure/docs/CONSULTA-R63-2026-11-04.md).
+
+A última publicação registrada segue com a consulta **R60/v0.369**, no runtime
+`9173b8e`, às 20h24 de 03/11/2026 (Brasília). [Registro da publicação](https://github.com/cupcake-mochi/RPG---BOT/pull/97)
 
 A **Carteira viva** está em desenvolvimento separado, nos PRs
 [#77–#84](https://github.com/cupcake-mochi/RPG---BOT/pull/84), sem publicação.

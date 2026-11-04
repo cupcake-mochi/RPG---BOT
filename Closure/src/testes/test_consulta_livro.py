@@ -36,6 +36,51 @@ class ConsultaDoLivro(unittest.TestCase):
         self.assertIn('sem precisar escolher **Corpo** naquele **[Marco](#progressao--prog-marcos)**', texto)
         self.assertIn('um nível de progressão que concede ganhos comuns e uma escolha adicional', texto)
 
+    def test_prenuncio_preserva_reacao_mas_nao_devolve_custos_r61(self):
+        ancora = "origens--restricao-prenuncio"
+        for persona in ("kal", "clo"):
+            for nova_terra in (False, True):
+                with self.subTest(persona=persona, nova_terra=nova_terra):
+                    pedido = site_prompt.montar(
+                        persona, "O Ataque sem Prenúncio devolve os PE já pagos da Reação cancelada?",
+                        nome="Alex", hora=(14, 20), estado={"nova_terra": nova_terra})
+                    texto = pedido["input"][-1]["content"]
+                    self.assertIn(f"[Livro, âncora {ancora}]", texto)
+                    self.assertIn(self.livro[ancora]["texto"], texto)
+                    self.assertIn("sem gastar a Reação dele", texto)
+                    self.assertIn("Os custos que ele já tenha pago ao declarar essa Reação, como PE, não voltam.", texto)
+
+    def test_nomes_antigos_recuperam_as_fontes_r63(self):
+        casos = [
+            ("Como calculo o saldo da especial de uma entidade?",
+             ["construcao--entidades-especiais", "construcao--entidades-saldo"]),
+            ("Como funciona Funções e saldo?", ["fundamento--funcoes"]),
+            ("No livro, como funciona Saldo e limites?", ["construcao--entidades-saldo"]),
+            ("Como funcionam as parcelas adicionais do Ritual?", ["ritual--rit-parcelas"]),
+            ("No livro, como funcionam as parcelas adicionais?", ["ritual--rit-parcelas"]),
+            ("Como funcionam as Partes adicionais do Ritual?", ["ritual--rit-parcelas"]),
+            ("Quanto custa uma obra Ampliada?", ["guia--guia-obras-maiores"]),
+            ("Quanto custa uma obra Extensa?", ["guia--guia-obras-maiores"]),
+            ("How much does an expanded Architect construction cost?", ["guia--guia-obras-maiores"]),
+            ("Como Ampliar a obra do Arquiteto?", ["guia--guia-obra-uso", "guia--guia-obras-maiores"]),
+        ]
+        for msg, esperadas in casos:
+            with self.subTest(msg=msg):
+                texto, fontes = self.fontes(msg, esperadas)
+                if "guia--guia-obras-maiores" in fontes:
+                    self.assertIn("| Obra | Básica | Extensa (+4 PE) | Grande (+8 PE) |", texto)
+                self.assertNotIn("fundamento--ampliar", fontes)
+
+    def test_ampliar_feitico_e_parcela_do_cotidiano_nao_usam_aliases_de_obra_ou_ritual(self):
+        _, fontes = self.fontes("Como ampliar um feitiço?", ["fundamento--ampliar"])
+        self.assertNotIn("guia--guia-obras-maiores", fontes)
+        for msg in ("Posso ampliar uma obra em casa?", "Quando vencem as parcelas adicionais do meu cartão?",
+                    "Como funciona o saldo e limites do banco?"):
+            with self.subTest(msg=msg):
+                _, fontes = self.montar(msg)
+                self.assertFalse({"guia--guia-obras-maiores", "guia--guia-obra-uso",
+                                  "ritual--rit-parcelas", "construcao--entidades-saldo"} & set(fontes))
+
     def test_mais_um_nome_com_palavras_de_parada_tem_fonte_propria(self):
         texto, _ = self.fontes('No livro, como funciona Mais Um?', ['catalogo--melhoria-mais-um'])
         self.assertIn('Não copie os totais nem converta uma função em outra', texto)
