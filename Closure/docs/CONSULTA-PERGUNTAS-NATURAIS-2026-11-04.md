@@ -3,7 +3,9 @@
 Correção sobre a main `48f0f4c`, na branch
 `codex/consulta-perguntas-naturais`. Consulta R63/v0.373 e análise mecânica
 R53 preservadas. Commit, push e abertura de PR autorizados em 04/11/2026.
-Não publicada. Carteira Viva e seus ensaios não foram alterados.
+Publicada em 04/11/2026, às 11h00, após merge da PR #100.
+[Registro da publicação](PUBLICACAO-CONSULTA-NATURAL-2026-11-04.md).
+Carteira Viva e seus ensaios não foram alterados.
 
 ## Problemas reproduzidos
 
