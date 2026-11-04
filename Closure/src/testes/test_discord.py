@@ -84,6 +84,25 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
     async def asyncTearDown(self):
         self.bot.registro.fechar()
 
+    async def test_painel_citado_exige_autoria_do_bot(self):
+        import discord
+        from types import SimpleNamespace
+        chat = self.bot.get_cog("Chat")
+        e = discord.Embed(title="Ficha de Teste")
+        e.set_footer(text="Veredito geral: pendente")
+        e.add_field(name="Pendência", value="Aprovação necessária")
+        original = MagicMock(spec=discord.Message)
+        original.author = SimpleNamespace(id=123456)
+        original.content = ""
+        original.embeds = [e]
+        mensagem = SimpleNamespace(reference=SimpleNamespace(message_id=123456, resolved=original))
+        self.assertEqual((False, None, None), chat._respondida(mensagem))
+        original.author.id = self.bot.user.id
+        respondeu, persona, texto = chat._respondida(mensagem)
+        self.assertTrue(respondeu)
+        self.assertIsNone(persona)
+        self.assertIn("Aprovação necessária", texto)
+
     async def test_midia_vai_ao_pedido_e_historico_sem_virar_fato(self):
         canal, _ = _canal()
         chat = self.bot.get_cog("Chat")
