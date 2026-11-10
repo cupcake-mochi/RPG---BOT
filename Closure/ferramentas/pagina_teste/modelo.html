@@ -160,7 +160,7 @@ const SINONIMO = { caindo: "queda", cair: "queda", caio: "queda", upar: "nivel",
   // "quantos pv eu começo?" é a Vida inicial
   comeco: "inicia", comeca: "inicia", comecar: "inicia",
   // a Origem Feto virou Híbrido no R45 (item 193), e quem jogou antes ainda chama pelo nome velho
-  feto: "hibrid" };
+  feto: "hibrid", punhai: "punhal" };
 const tok = s => (nrm(s).match(/[a-z0-9]{3,}|(?<![a-z0-9])(?:xp|pe|pv|hp|cd|tr|rd|ce)(?![a-z0-9])/g) || []).map(RAIZ).map(w => SINONIMO[w] || w);
 const DF = new Map(), BTOK = D.livro.map(b => {
   const c = new Map(); for (const w of tok(b.titulo + " " + b.titulo + " " + (b.titulos || []).join(" ") + " " + b.texto)) c.set(w, (c.get(w) || 0) + 1);
@@ -252,13 +252,21 @@ const DEFINICOES = D.livro.flatMap((b, i) => {
     return { i, frase, palavras, principal: frase === nomePlano(b.titulo), comum: !conteudo(nome) || (palavras.length === 1 && TITULO_COMUM.has(palavras[0])), nome };
   }).filter(d => d.palavras.length && !/^(nivel|classe|categoria|exemplo)\b/.test(STRIP(d.nome.toLowerCase())));
 });
+const pedeDefinicao = (texto, nome) => new RegExp(
+  "^(?:(?:(?:e|mas|entao) )?(?:como (?:e que |que |q )?funciona[m]?|o que (?:e|sao)|(?:me )?explic\\w*(?: melhor)?) (?:o |a |os |as )?|(?:e|mas|entao) (?:o|a|os|as) )" +
+  esc(nomePlano(nome).trim()) + "$").test(nomePlano(texto).trim());
 function definicoesNa(texto, familia) {
   const frase = nomePlano(texto), grupos = new Map();
   for (const d of DEFINICOES) {
     // Nome exato da entrada prevalece sobre a família inferida por radical:
     // Socorro não é Socorrista; Artes do Vínculo não é a Trilha Vínculo.
     if ((familia.size && !familia.has(FAM[d.i]) && !d.principal) || !frase.includes(d.frase)) continue;
-    if (d.comum && !/\b(livro|sistema|regra|rpg)\b/.test(frase) && !new RegExp("\\b(?:melhoria|restricao|talento|aptidao|condicao|pericia|forma|origem|trilha|bencao) (?:d[aeo] )?" + esc(d.frase.trim()) + "\\b").test(frase)) continue;
+    // Uma definição direta pode nomear um conceito frequente, como Atributos.
+    // A frequência no corpo do livro não deve fazê-lo perder para uma menção.
+    // Só vale para títulos com conteúdo e sem outro assunto na pergunta.
+    const direta = !TITULO_COMUM.has(tok(d.nome).join(" ")) && pedeDefinicao(texto, d.nome) &&
+      (d.principal || DEFINICOES.filter(e => e.frase === d.frase).length === 1);
+    if (d.comum && !direta && !/\b(livro|sistema|regra|rpg)\b/.test(frase) && !new RegExp("\\b(?:melhoria|restricao|talento|aptidao|condicao|pericia|forma|origem|trilha|bencao) (?:d[aeo] )?" + esc(d.frase.trim()) + "\\b").test(frase)) continue;
     if (!grupos.has(d.frase)) grupos.set(d.frase, []);
     grupos.get(d.frase).push(d);
   }
@@ -294,7 +302,8 @@ const COTIDIANO = /\b(?:sistema operacional|(?:windows|linux|computador|notebook
 const MECANICA = /\b(?:rpg|ciclo maldito|livro|regras?|mecanica|personagem|ficha|feitic\w*|aptid\w*|talentos?|melhorias?|restric\w*|origem|origens|pericias?|trilhas?|caminhos?|formas?|testes? de resistencia|energia (?:amaldi\w*|reversa)|p[ev]|refino|maestria|combate|classe\s*\d|nivel\s*\d|\d+d(?:4|6|8|10|12|20))\b/;
 function textoDeConsulta(texto) {
   const n = t0(texto);
-  if (!COTIDIANO.test(n)) return semIdioma(texto);
+  const cotidiano = s => COTIDIANO.test(s) || /\b(?:cafe|dupla musical|duplas musicais|autenticacao)\b/.test(s);
+  if (!cotidiano(n)) return semIdioma(texto);
   // As expressões são reconhecidas antes de semIdioma, que já apaga alguns
   // usos figurados. O sinal mecânico precisa estar fora da expressão cotidiana.
   return texto.split(/(?<=[?!.;])\s+|\n|\s+(?:mas|porem)\s+/i).map(parte => {
@@ -377,6 +386,10 @@ function fontesDeOpcoes(texto, qPal, familia) {
 // "explica café" tem assunto próprio e não herda o feitiço da mensagem anterior.
 const MAIS_DETALHE = new Set(tok("explica explicar melhor detalha detalhar detalhe detalhes aprofunda aprofundar funciona favor novamente"));
 const retomaDetalhe = s => { const ws = tok(s).filter(w => !PARADA.has(w)); return ws.length > 0 && ws.every(w => MAIS_DETALHE.has(w)) && ws.some(w => /^(explic|detalh|aprofu)/.test(w)); };
+// Perguntas sem objeto próprio dependem da última regra. A lista fechada evita
+// herdar armas em "e qual a vantagem de tomar café?" ou em outra regra nomeada.
+const retomaAspecto = s => /^(?:(?:e|mas|entao) )?(?:(?:qual|quais)(?: e| sao)? (?:o |a |os |as )?|(?:nao )?(?:tem|existe|existem) (?:algum |alguma |nenhum |nenhuma )?)(?:beneficios?|(?:des)?vantag(?:em|ens)|limites?|duracao|custos?|requisitos?)[?!.]*$/.test(t0(s));
+const esclarece = s => /^(?:me refiro a|(?:eu )?quero dizer|estou falando d[aeo]|to falando d[aeo])\b/.test(t0(s));
 function consultaAnterior(anteriores) {
   const usadas = [];
   for (const s of anteriores.slice(-6).reverse()) {
@@ -384,7 +397,7 @@ function consultaAnterior(anteriores) {
     if (!consulta.trim()) break;
     usadas.unshift(consulta);
     const n = nrm(s), curtas = tok(s).filter(w => !PARADA.has(w)).length <= 2;
-    if (!(SEGUIMENTO.test(t0(s)) || contestaRegra(s) || retomaDetalhe(s) || (curtas && (REGRA.test(n) || /\d/.test(n))))) break;
+    if (!(SEGUIMENTO.test(t0(s)) || contestaRegra(s) || retomaDetalhe(s) || retomaAspecto(s) || (curtas && (REGRA.test(n) || /\d/.test(n))))) break;
   }
   return usadas.join(" ");
 }
@@ -394,6 +407,58 @@ function propostaDeFeitico(texto) {
   const t = nrm(texto);
   return /\bfeitic\w*\b/.test(t) && /\b(cria\w*|adapt\w*|alter\w*|transform\w*|mont\w*|modific\w*|create|change|build)\b/.test(t);
 }
+// Nomes antigos do livro apontam para a mesma fonte, sem trocar palavras
+// soltas como "saldo" ou "ampliar" em perguntas com outro assunto.
+function fontesPorNomeDeMesa(texto) {
+  const t = nrm(texto);
+  const obra = /\bobras?\b/.test(t);
+  const arquiteto = /\barquitet[oa]\b/.test(t);
+  const livro = /\b(?:livro|rpg|ciclo maldito)\b/.test(t);
+  const nivelDeObra = /\bobras? (?:ampliadas?|extensas?)\b/.test(t);
+  const obraEmIngles = /\barchitect\b/.test(t) && /\b(?:expanded|extensive)\b/.test(t) &&
+    /\b(?:builds?|constructions?|structures?)\b/.test(t);
+  const fontes = [];
+  if (nivelDeObra || obraEmIngles || (arquiteto && obra && /\b(?:ampliad[ao]s?|extens[ao]s?)\b/.test(t)))
+    fontes.push("guia--guia-obras-maiores");
+  if (arquiteto && obra && /\b(?:aumentar|ampliar)\b/.test(t))
+    fontes.push("guia--guia-obra-uso", "guia--guia-obras-maiores");
+  if ((/\britual\b/.test(t) && /\bparcelas?\b/.test(t)) || (livro && /\bparcelas? adicionais?\b/.test(t)))
+    fontes.push("ritual--rit-parcelas");
+  if (/\bfuncoes e saldo\b/.test(t)) fontes.push("fundamento--funcoes");
+  if (/\bsaldo e limites\b/.test(t) && (livro || /\b(?:invoc\w*|entidade\w*|shikigami\w*)\b/.test(t)))
+    fontes.push("construcao--entidades-saldo");
+  return fontes;
+}
+// Vocabulário de mesa pode não coincidir com os títulos. Estas rotas escolhem
+// fontes, nunca copiam números ou conclusões de regras para dentro do código.
+function fontesDeUso(texto) {
+  const t = nrm(texto);
+  const entidade = /\b(?:invoc\w*|entidades?|shikigami\w*)\b/.test(t);
+  const duasArmas = /\b(?:empunhadura dupla|dual wield(?:ing)?|duas armas|dois punhais|(?:uma )?arma em cada mao)\b/.test(t);
+  if (duasArmas) return ["equip--eq-propriedades", "equip--eqa-armas",
+    ...(/\bpunha(?:l|is)\b/.test(t) ? ["equip--eqa-laminas"] : [])];
+  if (/\barmas? de duas maos\b/.test(t)) return ["equip--eq-propriedades", "equip--eq-manipular"];
+  if (/\b(?:destreza|forca)\b/.test(t) && /\b(?:bat(?:er|o)|atac\w*|ataques?|acerto|dano)\b/.test(t)) {
+    const armas = itensDePreco(texto, true);
+    if (armas.length || /\barmas?\b/.test(t))
+      return [entidade ? "construcao--entidades-atributos" : "geral--ataques", "equip--eq-propriedades", ...armas];
+  }
+  if (!entidade) return [];
+  // Montagem, atributos e preço de retorno continuam com seus seletores próprios.
+  const entrada = /\b(?:invoc(?:ar|o|ou|ad[ao]s?)|manifest\w*|entra\w*|aparece\w*|chega\w*)\b/.test(t);
+  const agir = /\b(?:ag(?:e|em|ir)|atua\w*|atac\w*|turnos?|rodadas?|ciclos?|iniciativa)\b/.test(t);
+  const tarefa = /\b(?:intencao|intencoes|tarefa\w*|orde(?:m|ns)|orienta\w*)\b/.test(t);
+  const troca = /\b(?:troca\w*|substitu\w*)\b/.test(t);
+  if (!agir && !tarefa && !/\bmanifest\w*\b/.test(t)) return [];
+  // Comandos especiais, preparos e exceções nomeadas não são a ordem básica.
+  if (/\b(?:especial|especiais|antecipad\w*|prepara\w*|inconsciente|principal|formacao renovada|parceria)\b/.test(t)) return [];
+  if (/\bcorpos?\b/.test(t)) return ["campo--inv-corpos", "campo--inv-ciclo", "campo--inv-intencao"];
+  if (troca) return ["campo--inv-troca", "campo--inv-ciclo", "campo--inv-intencao"];
+  if (entrada && agir) return ["campo--inv-entrada", "campo--inv-ciclo", "campo--inv-intencao"];
+  if (tarefa) return ["campo--inv-intencao", "campo--inv-entrada", "campo--inv-ciclo"];
+  if (agir) return ["campo--inv-ciclo", "campo--inv-entrada", "campo--inv-basica"];
+  return ["campo--inv-entrada", "campo--inv-ciclo"];
+}
 function fontesDaMontagem(texto, permitirProposta = true) {
   const t = nrm(texto);
   // O nome desta peça contém só palavras de parada da busca lexical.
@@ -401,7 +466,7 @@ function fontesDaMontagem(texto, permitirProposta = true) {
   if (/\bmais um\b/.test(t) && /\b(melhoria|peca|feitico|funcion\w*|compra\w*|ponto\w*|custo|custa|livro)\b/.test(t))
     return ["catalogo--melhoria-mais-um", ...(/\b(classe|custo|custa|ponto\w*)\b/.test(t) ? ["fundamento--pontos"] : [])];
   const amparo = /\b(cura\w*|curo|cure\w*|apoio|onda|vida temporaria)\b/.test(t);
-  const conta = /\b(classe|ponto\w*|orcamento|montagem|montar|maxim\w*|teto|limite\w*|dado\w*|custo|custa|pe)\b/.test(t);
+  const conta = /\b(classe|ponto\w*|orcamento|montagem|montar|maxim\w*|teto|limite\w*|dado\w*|custo|custa|pe|saldo)\b/.test(t);
   const especial = /\b(especial|especiais|habilidade\w*)\b/.test(t) && /\b(invoc\w*|entidade\w*|shikigami\w*)\b/.test(t);
   const feitico = /\b(feitic\w*|manejo\w*|forma|formas)\b/.test(t);
   const proposta = permitirProposta && propostaDeFeitico(texto);
@@ -426,7 +491,7 @@ const COMPLEMENTOS_APTIDAO = new Map([
 ]);
 // a anterior tem cara de regra também quando perguntou de um termo do livro ("qnto eu pulo com força 3?" → Saltos)
 // (palavra de regra na anterior só conta se ela perguntava ou tinha número: "sofá no escritório, que vida" não é regra)
-const temCaraDeRegra = s => { s = textoDeConsulta(s); const n = nrm(s); return ((PERG.test(n) || /\d/.test(n)) && REGRA.test(n)) || tok(s).some(w => FAMILIA_DE.has(w)) || (PERG.test(n) && termosNa(s).size > 0); };
+const temCaraDeRegra = s => { s = textoDeConsulta(s); const n = nrm(s); return ((PERG.test(n) || esclarece(s) || /\d/.test(n)) && REGRA.test(n)) || tok(s).some(w => FAMILIA_DE.has(w)) || (PERG.test(n) && (termosNa(s).size > 0 || fontesDeUso(s).length > 0)); };
 function buscar(qPal, familia, nivel, numNivel = [], texto = "") {
   return BTOK.map((c, i) => {
     if (familia.size && !familia.has(FAM[i])) return [0, null];
@@ -446,16 +511,20 @@ function buscar(qPal, familia, nivel, numNivel = [], texto = "") {
 }
 // Preços vêm de tabelas com coluna de Preço, independentemente da largura.
 // Inclui nomes curtos (Bō) e proteções, sem preço ou item fixado no código.
-function itensDePreco(texto) {
-  if (!/\b(preco|valor|custa\w*|comprar|vender)\b/.test(nrm(texto))) return [];
-  const frase = nomePlano(texto), itens = [];
+// A consulta de atributo do golpe reutiliza só as tabelas que também têm Dano.
+function itensDePreco(texto, apenasArmas = false) {
+  if (!apenasArmas && !/\b(preco|valor|custa\w*|comprar|vender)\b/.test(nrm(texto))) return [];
+  const frase = nomePlano(texto.replace(/\bpunhais\b/gi, "punhal")), itens = [];
   D.livro.forEach((b, i) => {
     if (FAM[i] !== "equip" || b.ancora === "equip--eqc-inicial") return;
     let preco = false;
     for (const linha of b.texto.split("\n")) {
       if (!linha.startsWith("|")) { preco = false; continue; }
       const celulas = linha.split("|").slice(1, -1);
-      if (celulas.some(c => /\bpreco\b/.test(t0(c)))) { preco = true; continue; }
+      if (celulas.some(c => /\bpreco\b/.test(t0(c)))) {
+        preco = !apenasArmas || celulas.some(c => /\bdano\b/.test(t0(c)));
+        continue;
+      }
       if (!preco || /^\|\s*:?-/.test(linha)) continue;
       const nome = celulas[0].replace(/[*`]/g, "").replace(/\([^)]*\)/g, "").trim();
       if (nome && frase.includes(nomePlano(nome))) itens.push([nome.length, b.ancora]);
@@ -501,9 +570,10 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   // a cadeia e não ressuscita uma consulta antiga após conversa casual.
   const ult = anteriores[anteriores.length - 1] || "";
   const anterior = consultaAnterior(anteriores);
-  const detalhe = retomaDetalhe(texto);
+  const detalhe = retomaDetalhe(texto) || retomaAspecto(texto);
   const aspecto = /^(quanto (?:custa|gasta)|qual (?:e )?(?:o )?custo|quais (?:sao )?(?:os )?requisitos)[?.!]*$/.test(t0(texto));
   const t = nrm(texto).replace(/atac\w*\s+(duas|2)\s+vezes|dois ataques|mais de um ataque/g, "$& ataque extra"), contestacao = contestaRegra(texto), seg = anterior && temCaraDeRegra(anterior) && (liga || detalhe || aspecto || contestacao || (proprias <= 2 && (REGRA.test(t) || /\d/.test(t))));
+  if (retomaAspecto(texto) && !seg) return [];
   const qPal = new Map();
   // a correção de digitação só entra depois que a mensagem já tem cara de regra; antes, "música" virava "munição"
   if (!detalhe) for (const w of tok(texto)) if (!PARADA.has(w) && !CONVERSA.has(w) && DF.has(w)) qPal.set(w, 1);
@@ -512,6 +582,10 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   // "e o bloquear?" depois de uma pergunta do Guia: palavra que dá nome a poucas seções de fora do Caminho da anterior é assunto novo, e a anterior não passa nada
   // termo do livro só conta na frase que pergunta ("tô sem ideia do que assistir" não abre a busca por "ideia")
   const comTermo = new Map(); for (const f of texto.replace(/"[^"]*"|“[^”]*”/g, " ").split(/(?<=[?!.])\s+|\n/)) if (PERG.test(nrm(f))) for (const [i, n] of termosNa(f)) comTermo.set(i, Math.max(comTermo.get(i) || 0, n));
+  // Uma definição direta de assunto próprio encerra a herança mesmo quando
+  // o termo é frequente demais para o índice lexical ("e como funcionam os atributos?").
+  const definicaoNova = definicoesNa(texto, new Set()).some(i =>
+    DEFINICOES.some(d => d.i === i && pedeDefinicao(texto, d.nome)));
   const herdada = new Set(seg ? tok(anterior).filter(w => FAMILIA_DE.has(w)).map(w => FAMILIA_DE.get(w)) : []);
   // "e se eu tiver desvantagem nele?": o pronome aponta pro assunto anterior, então nada é assunto novo
   const pronome = /(?<![a-z])(nele|nela|nisso|disso|com ele|com ela)(?![a-z])/.test(t);
@@ -519,7 +593,8 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   // "e o grau 2?" depois de "salário do grau 4": a palavra própria já estava na anterior, então é o mesmo assunto com outro número
   const tokAnt = new Set(tok(anterior)), minhas = tok(texto).filter(w => !PARADA.has(w) && !/^nivel\d*$/.test(w) && !/^\d+$/.test(w)), repete = seg && minhas.length > 0 && minhas.every(w => tokAnt.has(w));
   const familiasAnt = new Set([...herdada, ...[...termosNa(anterior).keys()].map(i => FAM[i])]);
-  const novo = seg && !pronome && !repete && [...comTermo.keys()].some(i => !(contestacao ? familiasAnt : herdada).has(FAM[i]));
+  const novo = seg && !detalhe && !pronome && !repete && (definicaoNova ||
+    [...comTermo.keys()].some(i => !(contestacao ? familiasAnt : herdada).has(FAM[i])));
   const herda = seg && !novo, temNivel = [...qPal.keys()].some(w => /^nivel\d+$/.test(w));
   // o nível da pergunta nova substitui o da anterior ("e no 15?" depois de "nível 7")
   if (herda) for (const w of tok(anterior)) if (!PARADA.has(w) && DF.has(w) && !qPal.has(w) && !(temNivel && /^nivel\d+$/.test(w))) qPal.set(w, pronome ? 1 : 0.5);
@@ -532,7 +607,7 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   // palavra rara que é título de seção ("latente", "exaustão") também conta; palavra comum ("tudo") não
   // afirmação com número ("rolei 18 no ataque", "tirei 3 de dano") também abre com palavra de regra
   // trecho entre aspas costuma ser a pessoa citando a própria personagem ("não rolo dado"), não pergunta de regra
-  const semAspas = t.replace(/"[^"]*"|“[^”]*”/g, " "), pergunta = PERG.test(semAspas) || pedidoDeOpcoes(texto) || contestacao;
+  const semAspas = t.replace(/"[^"]*"|“[^”]*”/g, " "), pergunta = PERG.test(semAspas) || pedidoDeOpcoes(texto) || contestacao || esclarece(texto);
   // Trilha ou página com nome de palavra comum ("Assassino", "Muro", "Punho") só abre a busca em pergunta: "vi um filme de assassino" não
   const familiaAbre = familia.size && (pergunta || /\d/.test(t) || [...qPal.keys()].some(w => FAMILIA_DE.has(w) && !FAMILIA_TIT.has(w)));
   if (qPal.size && (termos.length || familiaAbre || titulo.size || seg || comTermo.size || ((pergunta || /\d/.test(semAspas)) && REGRA.test(semAspas)))) {
@@ -578,7 +653,8 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   const continuaMontagem = /^(compreendo|entendi)[,. ]+(porem|mas)\b/.test(t) &&
     REGRA.test(t) && propostaDeFeitico(anterior);
   const assunto = herda || continuaMontagem ? anterior + " " + texto : texto;
-  const fontes = pergunta || detalhe ? fontesDaMontagem(assunto, REGRA.test(t) || detalhe || aspecto || contestacao) : [];
+  const fontes = pergunta || detalhe ? [...fontesDeUso(assunto), ...fontesPorNomeDeMesa(assunto),
+    ...fontesDaMontagem(assunto, REGRA.test(t) || detalhe || aspecto || contestacao)] : [];
   // Tabela de preço por nome, antes de exemplos e descrições do item.
   if (pergunta) fontes.unshift(...itensDePreco(assunto));
   const aptidoes = [...comTermo.keys()].filter(i => FAM[i] === "aptidoes" && !["aptidoes--apt-refino", "aptidoes--apt-marcos", "aptidoes--apt-catalogo"].includes(D.livro[i].ancora));
