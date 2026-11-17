@@ -4,7 +4,7 @@ import re
 from dataclasses import replace
 
 from .ficha_leitor import Campo
-from .ficha_esquema import campos_b47, campos_r53, campos_opcionais
+from .ficha_esquema import campos_b47, campos_r53, campos_opcionais, campos_analise
 from .ficha_configuracao import (ContextoB47, conferir_regras, conferir_efeitos, valor,
                                 numero, inteiro, problema)
 
@@ -17,7 +17,7 @@ def conferir_b47(ficha, ref, campanha, aprovados, *, r53=False):
     esquema = campos_r53() if r53 else campos_b47()
     # As opcionais não pesam na exportação completa: a cópia antiga continua inteira sem elas.
     faltantes = set(esquema)-set(ficha)
-    esquema = {**campos_opcionais(), **esquema}
+    esquema = {**campos_opcionais(), **campos_analise(), **esquema}
     if faltantes:
         # Identidade por chave; nem ordem, quantidade de linhas ou coordenada física são validadas.
         por_grupo = {}

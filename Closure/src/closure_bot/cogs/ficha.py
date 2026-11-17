@@ -26,7 +26,7 @@ from discord import app_commands
 from discord.ext import commands
 
 from ..ficha_corretor import LIVRO, Problema, Referencias, Resultado, conferir
-from ..ficha_leitor import Campo, FichaIlegivel, de_link, de_xlsx
+from ..ficha_leitor import Campo, FichaIlegivel, de_link, de_xlsx, exportacao_pendente
 from ..ficha_paginacao import enviar_relatorio
 from ..ficha_r53 import escolher_leitura, rotulo_chave, transicoes
 from ..plantao import CLOSURE, FUSO, KALTSIT, de_plantao
@@ -78,6 +78,25 @@ ROTULOS = {"aviso.escolhas_de_pericia": "Perícias e ofícios", "aviso.pontos_di
            "carga.limite": "Limite de carga", "carga.ajuste_limite": "Buff/Debuff do limite de carga",
            "treinos": "Escolhas de treino", "tr": "Testes de Resistência",
            "atributos.base": "Pontos de atributo por criação e marcos", "atributos.corpo": "Pontos de Corpo"}
+
+
+MOTIVO_EXPORTACAO = {
+    "desatualizada": "a ficha foi editada depois da última exportação",
+    "exportando": "a exportação parou no meio",
+}
+
+
+def pedido_de_exportacao(estado: str, exportada_em="") -> str:
+    """Formato 13 fora de em_dia: pede a exportação em vez de conferir valor congelado de antes da edição."""
+    motivo = tr(MOTIVO_EXPORTACAO.get(estado, "a ficha não diz se a análise está em dia"))
+    texto = tr("Ainda não confiro essa ficha: {0}, e eu estaria olhando dado velho.").format(motivo)
+    if exportada_em not in ("", None):
+        texto += " " + tr("(Última exportação completa: {0}.)").format(exportada_em)
+    return texto + "\n" + tr(
+        "Exporte e me chame de novo:\n"
+        "• no PC: menu **Bot > Exportar para o bot**;\n"
+        "• no celular: marque a caixa **Bot** da CARTEIRA. Se o texto ao lado disser "
+        "\"exportando N/T · marque de novo\", marque outra vez até aparecer \"Bot: em dia\".")
 
 
 def _rotulo(chave: str) -> str:
@@ -436,6 +455,9 @@ class Ficha(commands.Cog):
         except FichaIlegivel as erro:
             from ..ficha_ingles import detail
             return tr("Não deu pra ler a ficha: {0}.").format(detail(str(erro)) if atual()=="en" else erro)
+        pendente = exportacao_pendente(ficha)
+        if pendente:
+            return pedido_de_exportacao(pendente, getattr(ficha.get("analise.exportada_em"), "valor", ""))
         from ..ficha_configuracao import carregar_campanha
         try:
             regras, aprovados = carregar_campanha(self.campanhas, servidor)

@@ -43,7 +43,7 @@ class ContratoDefinitivo(unittest.TestCase):
 
     def test_formato_futuro_para_antes_de_conferir_contas(self):
         ficha = completa_r53()
-        ficha['formato.versao'] = Campo(13, '', 'cabeçalho')
+        ficha['formato.versao'] = Campo(14, '', 'cabeçalho')
         with patch('closure_bot.ficha_b47.conferir_b47', side_effect=AssertionError('não executar')):
             resultado = conferir(de_csv(csvfile_texto(ficha)), REF)
         self.assertEqual(resultado.veredito, 'formato desconhecido')
