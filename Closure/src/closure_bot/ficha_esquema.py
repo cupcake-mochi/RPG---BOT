@@ -27,6 +27,13 @@ def campos_opcionais():
         return {r['chave']: r for r in csv.DictReader(f, delimiter='\t')}
 
 
+def campos_analise():
+    """17/11/2026, formato 13: o estado da exportação da ANALISE, no fim da aba, sem célula nem parte
+    (Ficha---RPG-JJK, ESQUEMA-ANALISE.md). Aparecem também na ficha 12 que começou a exportar e parou no meio."""
+    return {chave: {'chave': chave, 'parte': '', 'origem': '', 'booleano': '0'}
+            for chave in ('analise.estado', 'analise.exportada_em')}
+
+
 def tipo(chave):
     if chave == 'dominio.degrau':
         return 'texto'
@@ -68,7 +75,8 @@ def variante(ficha):
     configuracao = any(k.startswith(('regra.', 'efeito.', 'custom.')) for k in ficha)
     if formato == 11:
         return 'b47-v11'
-    if formato == 12:
+    # O 13 é o mesmo contrato do 12 com a coluna B congelada na exportação: mesmas chaves, mesmo sentido.
+    if formato in (12, 13):
         return 'r53-v12'
     if formato in (1, 2) and not configuracao:
         return f'legado-v{formato}'

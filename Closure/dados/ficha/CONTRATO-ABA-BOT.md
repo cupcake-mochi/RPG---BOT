@@ -176,7 +176,11 @@ nesse caso o bot não certifica a ocupação completa. Nenhuma chave ou versão 
 1. **Entrada:** o `.xlsx` baixado do Google (Arquivo > Fazer download > .xlsx), lido com openpyxl e `data_only` (o
    Google grava o resultado das fórmulas), ou o link da planilha aberta pra leitura (CSV da aba pelo gviz, sem conta).
    A ficha que sai do gerador sem passar por uma planilha não tem os valores e é recusada com aviso.
-2. **Versão:** `formato.versao` que o bot não conhece recebe aviso, sem correção.
+2. **Versão:** `formato.versao` que o bot não conhece recebe aviso, sem correção. O **13** (17/11/2026, ANALISE estática,
+   `ESQUEMA-ANALISE.md` da Ficha---RPG-JJK) é o 12 com a coluna B congelada na última exportação, mais
+   `analise.estado` e `analise.exportada_em` no fim da aba. Só confere com `analise.estado = em_dia`; fora disso
+   (`desatualizada`, `exportando`, ausente) o bot não confere dado velho e pede pra exportar (menu Bot > Exportar
+   para o bot, ou a caixa Bot da CARTEIRA) e chamar de novo. O 12 vivo continua aceito.
 3. **O bot nunca acredita na ficha.** O jogador é dono da cópia e pode mexer em tudo, inclusive nesta aba. Então:
    - as **regras da campanha** vêm do cadastro do bot, nunca da ficha (hoje só o padrão: o livro);
    - o **conteúdo custom** é conferido contra o registro dos aprovados, por impressão digital do texto (estrutura pronta;
