@@ -37,10 +37,10 @@ As duas oficiais (Ciclo Maldito e Era da Revolução) viraram formato 13 em 18/1
 ## Conferência
 
 - Logs: online em **7 servidores** às 09:09:30, zero erros; só os avisos existentes de voz (PyNaCl/davey). Um único reinício.
-- **Não ensaiado no Discord:** o navegador usado não tinha sessão do Discord. A leitura e a conferência das oficiais 13 foram testadas com o mesmo código, fora do Discord.
+- Discord, 09:14, tópico Testes: `GC:ficha` com o link da oficial do Ciclo Maldito (formato 13, `em_dia`) devolveu o painel normal, veredito reprovada, 12 erros e 0 pendências em 3 páginas, igual à conferência local (ficha em branco). Antes da publicação essa mesma ficha daria "formato desconhecido".
 
 ## Pendências reais
 
-- Ensaiar `/ficha analisar` no Discord com o link de uma oficial (tem que sair o painel) e com uma ficha 13 editada depois da exportação (tem que sair o pedido de exportação).
+- Ensaiar no Discord uma ficha 13 editada depois da exportação (tem que sair o pedido de exportação); o caso `em_dia` já foi ensaiado.
 - `.xlsx` de ficha 13 não testado com arquivo real.
 - Registrar o que foram os dois Commits e a mudança de RAM de 05/11.
