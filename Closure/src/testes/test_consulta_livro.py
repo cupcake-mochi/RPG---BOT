@@ -71,6 +71,32 @@ class ConsultaDoLivro(unittest.TestCase):
                     self.assertIn("| Obra | Básica | Extensa (+4 PE) | Grande (+8 PE) |", texto)
                 self.assertNotIn("fundamento--ampliar", fontes)
 
+    def test_regras_r66_a_r68_chegam_com_o_texto_atual(self):
+        casos = [
+            ("Na Técnica Máxima a Forma sai dos dados-base ou dos pontos de montagem?",
+             "fundamento--maxima", "Use a coluna de **pontos de montagem** só para as Melhorias."),
+            ("A Técnica Máxima pode dar vida temporária?",
+             "fundamento--maxima", "| Vida temporária individual | Leve | 3 de vida temporária. Exige Amparo. |"),
+            ("A Técnica Máxima sem dano recebe o reforço de Controle?",
+             "fundamento--controle", "A Técnica Máxima o recebe só na aplicação sem dano"),
+            ("Quantos dados sobram na Técnica Máxima da domada com Explosão?",
+             "campo--inv-maxima", "ou 14d8 com Explosão, que tira 5 dados."),
+            ("A Ação Combinada do Evocador é uma vez por cena ou por combate?",
+             "evocador--ev-combinada", "Uma vez por cena · Participantes a até 18 m."),
+            ("Posso manter concentração com Guarda Aberta?",
+             "geral--concentracao", "Você pode manter a concentração enquanto estiver com **[Guarda Aberta]"),
+        ]
+        for persona in ("kal", "clo"):
+            for msg, ancora, trecho in casos:
+                with self.subTest(persona=persona, msg=msg):
+                    texto = site_prompt.montar(persona, msg, nome="Alex", hora=(14, 20))["input"][-1]["content"]
+                    self.assertIn(f"[Livro, âncora {ancora}]", texto)
+                    self.assertIn(self.livro[ancora]["texto"], texto)
+                    self.assertIn(trecho, texto)
+        texto, _ = self.fontes("Como funciona a Técnica Máxima?", ["fundamento--maxima"])
+        self.assertNotIn("A quantidade de dados permanece igual ao valor indicado na tabela", texto)
+        self.assertNotIn("Uma vez por combate · Participantes", self.livro["evocador--ev-combinada"]["texto"])
+
     def test_ampliar_feitico_e_parcela_do_cotidiano_nao_usam_aliases_de_obra_ou_ritual(self):
         _, fontes = self.fontes("Como ampliar um feitiço?", ["fundamento--ampliar"])
         self.assertNotIn("guia--guia-obras-maiores", fontes)
@@ -155,7 +181,9 @@ class ConsultaDoLivro(unittest.TestCase):
     def test_tecnica_maxima_tem_tabela_propria_e_excecao(self):
         texto, _ = self.fontes("qual a cura máxima da Técnica Máxima?",
                               ["fundamento--maxima"])
-        self.assertIn("A quantidade de dados permanece igual ao valor indicado na tabela", texto)
+        # R67: a Forma e a base da função saem dos dados-base; os pontos pagam só as Melhorias.
+        self.assertIn("Os **dados-base** pagam a Forma e a base da função", texto)
+        self.assertIn("A cura e a vida temporária da Máxima não usam o teto de cura individual", texto)
 
     def test_classe_zero_tem_proibicao_de_cura(self):
         texto, _ = self.fontes("pode usar Forma Cura num feitiço de classe 0?",

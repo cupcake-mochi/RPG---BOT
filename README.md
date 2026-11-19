@@ -1,6 +1,6 @@
 # Guias do Ciclo
 
-**Produção: consulta R63/v0.373 · mecânica R53.**
+**Produção: consulta R63/v0.373 · mecânica R53. Atualização para R68/v0.379 preparada.**
 
 Kal’tsit e Closure conversam, explicam regras do **Ciclo Maldito** e conferem
 partes da ficha. O projeto atual fica em [`Closure/`](Closure/). A Arquivista
@@ -29,6 +29,11 @@ antigos. Veja o [registro da preparação](Closure/docs/CONSULTA-R63-2026-11-04.
 
 A publicação está no runtime `2356c11`, online desde 10h03 de 04/11/2026
 (Brasília). [Registro da publicação](Closure/docs/PUBLICACAO-R63-2026-11-04.md)
+
+A consulta **R68/v0.379** foi preparada, ainda sem publicação. Ela traz a regra
+nova da Técnica Máxima (R67/R68), mas a análise da ficha continua contando a
+Máxima pela R53; a diferença está registrada como pendência.
+[Registro da preparação](Closure/docs/CONSULTA-R68-2026-11-19.md)
 
 A **Carteira viva** está em desenvolvimento separado, nos PRs
 [#77–#84](https://github.com/cupcake-mochi/RPG---BOT/pull/84), sem publicação.
