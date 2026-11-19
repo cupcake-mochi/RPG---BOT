@@ -1,3 +1,6 @@
+Análise da Técnica Máxima R67 — 19/11/2026 (EM BRANCH, NÃO PUBLICADA)
+Branch claude/maxima-r67-analise sobre main a2a8cc3. As oficiais receberam a R67 e exportaram a ANALISE às 11:23 (formato 13, em_dia). Modelo R53 copiado de novo de Ficha---RPG-JJK@76bc667 (PR 136): formulas.py e catalogo.json idênticos, modelo.py só com imports relativos; contextos.json sem mudança. Casos de referência 89 → 96 (cura da domada 14/16/19d8; 7 casos R67). conferir_maxima do formato 11 mantido na regra antiga. Suíte no Windows igual à main (780, mesmos 153 erros de ambiente, zero falhas); ZIP 93 arquivos. Sem push, merge, Discloud ou chamada paga. Registro: docs/ANALISE-MAXIMA-R67-2026-11-19.md.
+
 Consulta R68 publicada — 19/11/2026, 10:02:49 (Brasília)
 PR #106 mesclada com CI verde; runtime 4f4c5f6 publicado pelo Commit no app existente. Backup antes validado: só nucleo.js, MANIFESTO e livro.jsonl mudavam. Backup depois: 93/93 arquivos instalados iguais ao pacote; .env, campanha e as 18 tabelas dos dois bancos idênticos, bancos íntegros. Logs online em 7 servidores, zero erros. GC:ping no Discord: v0.379, R68, 576 trechos; GC:livro ok. Sem chamada paga (respostas do modelo não ensaiadas). Análise segue R53; pendência da Técnica Máxima R67/R68. Registro: docs/PUBLICACAO-R68-2026-11-19.md. Não republicar por documentação.
 

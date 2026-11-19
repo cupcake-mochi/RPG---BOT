@@ -19,9 +19,9 @@ RAIZ = Path(__file__).resolve().parents[2]
 REF = Referencias.do_livro(RAIZ / 'dados')
 LIVRE = M.arvore(True)
 PARTES = campos_r53()
-ORIGEM = {  # Ficha---RPG-JJK@4b22da5420263a8885e28a508cbc39938dd9d9da
-    'formulas.py': 'f6e8dbdbb3db49fd4eb12394902872827c236cee73300b6a9fd76c2b6981a096',
-    'catalogo.json': '2f33003493824ed767427791368275b7b059f397f201ae9cc73fcb1b44b6442b',
+ORIGEM = {  # Ficha---RPG-JJK@76bc66788fb6f75faa3b778f03939017d9d65420 (Técnica Máxima R67)
+    'formulas.py': 'c7139b5d1262420e485cfe8400a4acee8e1380028fa36980a66941070fef5448',
+    'catalogo.json': '66fea1d804b3acd1e60c642cfd86d816120be44c2226ca6903a4ce2f6ab9f158',
 }
 
 
@@ -120,12 +120,13 @@ class NucleoVendorizado(unittest.TestCase):
             self.assertEqual(hashlib.sha256((pasta / nome).read_bytes()).hexdigest(), sha, nome)
 
     def test_89_casos_verificados_no_google(self):
-        # Mesma base do r53/testes/verificar.py; os 89 casos passaram nativamente em GOOGLE-89-FINAL.json.
+        # Mesma base do r53/testes/verificar.py; os 89 primeiros passaram nativamente em GOOGLE-89-FINAL.json.
+        # Os 7 últimos são da Técnica Máxima R67 (casos.json da ficha @76bc667), e a cura da domada caiu para 14/16/19d8.
         base = dict(tr_dano='Físico', tr_controle='Físico', preparada=True, origem_permissao='Caso de conferência do autor R53',
                     permite_dano=True, permite_cura=True, permite_vt=True, dest_dano='Inimigo válido',
                     dest_cura='Aliado disposto', dest_vt='Aliado disposto')
         casos = json.loads((RAIZ / 'src/testes/dados/r53-casos.json').read_text())
-        self.assertEqual(len(casos), 89)
+        self.assertEqual(len(casos), 96)
         for caso in casos:
             obtido = M.calcular({**base, **caso['entrada']}, catalogo_extra=caso.get('catalogo'),
                                 familias_custom=caso.get('familias_custom'), formas_custom=caso.get('formas'))
