@@ -4,7 +4,7 @@ import re
 from dataclasses import replace
 
 from .ficha_leitor import Campo
-from .ficha_esquema import campos_b47, campos_r53, campos_opcionais, campos_analise
+from .ficha_esquema import campos_b47, campos_r53, campos_opcionais, campos_analise, parte_aceita
 from .ficha_configuracao import (ContextoB47, conferir_regras, conferir_efeitos, valor,
                                 numero, inteiro, problema)
 
@@ -33,7 +33,7 @@ def conferir_b47(ficha, ref, campanha, aprovados, *, r53=False):
     for k, campo in ficha.items():
         if k not in esquema:
             r.nao_conferido.append(f'{k}: chave adicional de variante não reconhecida; significado não certificado')
-        elif campo.parte != esquema[k]['parte']:
+        elif not parte_aceita(k, campo.parte, esquema[k]['parte'], r53=r53):
             problema(r,k,'parte '+esquema[k]['parte'],campo.parte,regra='formato')
         # Cartão R53 com erro/recálculo em curso é tratado como transição em ficha_r53.
         if r53 and k.startswith('r53.'):

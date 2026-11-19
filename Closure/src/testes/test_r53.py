@@ -149,9 +149,30 @@ class Manifesto(unittest.TestCase):
         b47, r53 = campos_b47(), campos_r53()
         self.assertEqual(len(r53), 18393)  # 18.394 linhas com o cabeçalho, como na publicação oficial
         self.assertTrue(set(b47) <= set(r53))
-        self.assertTrue(all(r53[k]['parte'] == b47[k]['parte'] for k in b47))
+        # Só as 12 exp.acerto mudaram de parte (07/11/2026); ver test_exp_acerto_sai_como_resultado.
+        self.assertEqual([k for k in b47 if r53[k]['parte'] != b47[k]['parte']],
+                         [f'invocacao.{i}.exp.acerto' for i in range(1, 13)])
         self.assertEqual(sum(k.endswith('.controle_compat') for k in r53), 30)
         self.assertEqual(len(contextos()), 249)
+
+    def test_exp_acerto_sai_como_resultado(self):
+        """A ficha calcula o "Acerto Nd8" e exporta `resultado` desde 07/11/2026; as cópias de antes, `entrada`."""
+        from closure_bot.ficha_esquema import EXP_ACERTO, parte_aceita
+        chaves = [k for k in campos_r53() if EXP_ACERTO.fullmatch(k)]
+        self.assertEqual(len(chaves), 12)
+        self.assertTrue(all(campos_r53()[k]['parte'] == 'resultado' for k in chaves))
+        self.assertEqual(campos_b47()['invocacao.1.exp.acerto']['parte'], 'entrada')  # o contrato 11 não muda
+        self.assertFalse(parte_aceita('invocacao.1.exp.acerto', 'resultado', 'entrada'))
+        f = completa_r53()  # herda do B47 a parte entrada, como uma cópia de antes de 07/11
+        antes = conferir(f, REF)
+        self.assertFalse(any(p.campo.endswith('.exp.acerto') for p in antes.problemas), textos(antes))
+        for k in chaves:
+            f[k] = Campo(f[k].valor, f[k].celula, 'resultado')
+        r = conferir(f, REF)
+        self.assertEqual((r.veredito, r.problemas), (antes.veredito, antes.problemas))
+        f['invocacao.1.exp.acerto'] = Campo('', '', 'aviso')
+        r = conferir(f, REF)
+        self.assertTrue(any(p.campo == 'invocacao.1.exp.acerto' and p.regra == 'formato' for p in r.problemas))
 
     def test_chaves_dos_talentos_gratis_sao_opcionais(self):
         from closure_bot.ficha_esquema import campos_opcionais
