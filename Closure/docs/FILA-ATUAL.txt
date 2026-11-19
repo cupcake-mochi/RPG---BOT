@@ -1,3 +1,6 @@
+Consulta R68 publicada — 19/11/2026, 10:02:49 (Brasília)
+PR #106 mesclada com CI verde; runtime 4f4c5f6 publicado pelo Commit no app existente. Backup antes validado: só nucleo.js, MANIFESTO e livro.jsonl mudavam. Backup depois: 93/93 arquivos instalados iguais ao pacote; .env, campanha e as 18 tabelas dos dois bancos idênticos, bancos íntegros. Logs online em 7 servidores, zero erros. GC:ping no Discord: v0.379, R68, 576 trechos; GC:livro ok. Sem chamada paga (respostas do modelo não ensaiadas). Análise segue R53; pendência da Técnica Máxima R67/R68. Registro: docs/PUBLICACAO-R68-2026-11-19.md. Não republicar por documentação.
+
 Consulta R68 preparada — 19/11/2026 (EM BRANCH, NÃO PUBLICADA)
 Branch claude/consulta-r68 sobre main 66dc59f. Sincronizador oficial importou R68/v0.379 de JJK---Project d475b94: 576 trechos, 279 textos alterados, mesmas âncoras; catálogos idênticos. Lorebook: 4 termos do glossário atualizados. 13 referências, legado e guardas iguais; auditoria 498/498 antes e depois; QuickJS = Node na conferência oficial e em 7 perguntas R66–R68. PENDÊNCIA: a análise (R53) não segue a Técnica Máxima R67/R68 (Forma e base saem dos dados, vida temporária, reforço de Controle); corretor não alterado. Sem merge, deploy ou chamada paga. Registro: docs/CONSULTA-R68-2026-11-19.md.
 
