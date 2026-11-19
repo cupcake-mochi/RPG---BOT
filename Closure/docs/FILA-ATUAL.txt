@@ -1,3 +1,6 @@
+Acerto da Expansão no R53 — 19/11/2026 (EM BRANCH, NÃO PUBLICADA)
+Branch claude/exp-acerto-resultado sobre main 5dcb0c1. A ficha exporta as 12 invocacao.N.exp.acerto como resultado desde 07/11; o bot esperava entrada, e esses 12 erros de formato paravam a análise antes dos cartões em toda ficha formato 13 (a Máxima nunca era conferida no Discord). campos_r53 passa a esperar resultado; parte_aceita ainda aceita entrada das cópias de antes de 07/11. ANALISE real da cópia pós-R67: Máxima 19d8 · 25 PE · saldo 8 VÁLIDO. Registro: docs/EXP-ACERTO-R53-2026-11-19.md.
+
 Análise da Técnica Máxima R67 publicada — 19/11/2026, 11:47:42 (Brasília)
 PR #108 mesclada com CI verde (1.031 testes, OK); runtime 8fff6ac publicado pelo Commit no app existente. Backup antes validado: só r53/catalogo.json, formulas.py e modelo.py mudavam. Backup depois: 93/93 arquivos instalados iguais ao pacote; .env, campanha e as 18 tabelas dos dois bancos idênticos, bancos íntegros. Logs online em 7 servidores, zero erros. GC:ficha nas duas oficiais (formato 13, em_dia 11:23): painel normal, 12 erros/0 pendências, igual ao formato 13 publicado; nenhum erro da Máxima. Sem chamada paga. Registro: docs/PUBLICACAO-MAXIMA-R67-2026-11-19.md. Não republicar por documentação.
 

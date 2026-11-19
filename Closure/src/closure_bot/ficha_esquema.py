@@ -11,11 +11,24 @@ def campos_b47():
         return {r['chave']: r for r in csv.DictReader(f, delimiter='\t')}
 
 
+EXP_ACERTO = re.compile(r'invocacao\.(?:[1-9]|1[0-2])\.exp\.acerto')
+
+
 @lru_cache(maxsize=1)
 def campos_r53():
-    """ANALISE 12: as chaves B47 sem mudança de parte, mais as novas da R53 (Ficha---RPG-JJK@4b22da5)."""
+    """ANALISE 12/13: as chaves B47, mais as novas da R53 (Ficha---RPG-JJK@4b22da5).
+
+    Uma única mudança de parte: as 12 `invocacao.N.exp.acerto` são o texto "Acerto Nd8" calculado pela ficha, e
+    saem como `resultado` desde a correção da Expansão da domada (Ficha---RPG-JJK, 07/11/2026). As cópias de antes
+    ainda exportam `entrada`; `parte_aceita` aceita as duas."""
     with (Path(__file__).parent / 'recursos/r53-campos-novos.tsv').open(encoding='utf-8') as f:
-        return {**campos_b47(), **{r['chave']: r for r in csv.DictReader(f, delimiter='\t')}}
+        campos = {**campos_b47(), **{r['chave']: r for r in csv.DictReader(f, delimiter='\t')}}
+    return {k: ({**v, 'parte': 'resultado'} if EXP_ACERTO.fullmatch(k) else v) for k, v in campos.items()}
+
+
+def parte_aceita(chave, parte, esperada, *, r53=False):
+    """A parte exportada bate com o esquema; no R53, `exp.acerto` em `entrada` ainda vem de cópia anterior a 07/11."""
+    return parte == esperada or (r53 and parte == 'entrada' and EXP_ACERTO.fullmatch(chave) is not None)
 
 
 @lru_cache(maxsize=1)
