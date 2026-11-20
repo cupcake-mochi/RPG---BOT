@@ -53,12 +53,12 @@ continuam com o mestre. Aprovação de texto não cria benefício numérico.
 
 ## Executar e manter
 
-A **Carteira viva** segue em desenvolvimento separado, nos PRs #77–#84:
+A **Carteira viva** fica em `src/carteira_viva`, como serviço separado do bot:
 etapas 1–6 implementadas, etapa 7 parcial e 8–10 pendentes. Ainda não está
 publicada e a criação automática de fichas permanece bloqueada. O próximo
 marco é revisar o tempo de preparação das cópias e provar os eventos reais
 de abertura, edição, missão, gasto e correção de data em nova descartável.
-Consulte a [retomada da branch de desenvolvimento](https://github.com/cupcake-mochi/RPG---BOT/blob/codex/carteira-viva-etapa-7/Closure/docs/carteira-viva/RETOMADA.md).
+Consulte a [retomada da Carteira viva](docs/carteira-viva/RETOMADA.md).
 
 Siga [src/LEIA-ME.md](src/LEIA-ME.md) para dependências, ambiente e execução.
 Não publique `.env`, bancos, chave mestra ou cadastro real de campanha.

@@ -28,6 +28,7 @@ jobs:
         run: |
           python -m venv Closure/.venv
           Closure/.venv/bin/python -m pip install -r Closure/src/requirements.txt
+          Closure/.venv/bin/python -m pip install -r Closure/carteira/requirements.txt
       - name: Prepare the local site core for integration tests
         working-directory: Closure
         run: .venv/bin/python ferramentas/empacotar.py
