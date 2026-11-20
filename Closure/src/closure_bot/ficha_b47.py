@@ -104,8 +104,23 @@ def conferir_b47(ficha, ref, campanha, aprovados, *, r53=False):
         if d.nome in identidades and (not d.aprovada or not d.valida):
             r.conferidos=[c for c in r.conferidos if d.nome not in c]
     r.nao_conferido=list(dict.fromkeys(r.nao_conferido))
+    # Famílias da Técnica e das invocações passam por conferir_familias duas vezes
+    # quando há cartão ou Máxima (legado em ficha_magia e aqui). Só some o item
+    # idêntico em todos os campos; erro com texto ou valor diferente continua.
+    for atributo in ('problemas','pendencias','notas'):
+        setattr(r,atributo,_sem_repetidos(getattr(r,atributo)))
     r.veredito='reprovada' if r.problemas else 'pendente' if r.pendencias or r.nao_conferido or r.notas else 'aprovada'
     return r
+
+
+def _sem_repetidos(itens):
+    vistos=set();saida=[]
+    for p in itens:
+        # repr: alguns chamadores põem lista/tupla em encontrado, e 1 ≠ '1'.
+        k=repr((p.regra,p.campo,p.esperado,p.encontrado,p.ancora))
+        if k not in vistos:
+            vistos.add(k);saida.append(p)
+    return saida
 
 
 def _identidades_validas(ficha,r):
