@@ -27,9 +27,12 @@ A consulta **R68/v0.379** foi publicada com 576 trechos.
 Desde 19/11, a análise da ficha confere a Técnica Máxima pela **R67** nas fichas
 formato 13, a mesma conta das oficiais. O resto da mecânica segue a revisão 53.
 [O que mudou](Closure/docs/ANALISE-MAXIMA-R67-2026-11-19.md)
+O Acerto da Expansão das invocações agora é aceito como resultado, então as fichas
+formato 13 chegam às contas e os cartões R53 são conferidos.
+[O que mudou](Closure/docs/EXP-ACERTO-R53-2026-11-19.md)
 
-A publicação está no runtime `8fff6ac`, online desde 11h47 de 19/11/2026
-(Brasília). [Registro da publicação](Closure/docs/PUBLICACAO-MAXIMA-R67-2026-11-19.md)
+A publicação está no runtime `921e7c8`, online desde 20h51 de 19/11/2026
+(Brasília). [Registro da publicação](Closure/docs/PUBLICACAO-EXP-ACERTO-R53-2026-11-19.md)
 
 A **Carteira viva** está em desenvolvimento separado, nos PRs
 [#77–#84](https://github.com/cupcake-mochi/RPG---BOT/pull/84), sem publicação.
