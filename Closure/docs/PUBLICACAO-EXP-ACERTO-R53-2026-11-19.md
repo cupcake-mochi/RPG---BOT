@@ -103,5 +103,5 @@ conferido no Discord. O que mudou e por quê está em
 
 - Os cartões de feitiço e de Liberação preenchidos ainda não passaram pelo
   Discord. Só a Máxima passou.
-- A duplicação das famílias descrita acima.
+- ~~A duplicação das famílias descrita acima.~~ Corrigida na PR #113 e publicada em 20/11. Veja o [registro](PUBLICACAO-FAMILIAS-2026-11-20.md).
 - Não houve pergunta à Kal'tsit ou à Closure, porque essas chamam o modelo pago.
