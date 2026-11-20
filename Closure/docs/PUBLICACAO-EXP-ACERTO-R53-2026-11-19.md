@@ -101,7 +101,28 @@ conferido no Discord. O que mudou e por quê está em
 
 ## Pendências reais
 
-- Os cartões de feitiço e de Liberação preenchidos ainda não passaram pelo
-  Discord. Só a Máxima passou.
+- ~~Os cartões de feitiço e de Liberação preenchidos ainda não passaram pelo
+  Discord. Só a Máxima passou.~~ Passaram em 20/11. Veja a seção abaixo.
 - ~~A duplicação das famílias descrita acima.~~ Corrigida na PR #113 e publicada em 20/11. Veja o [registro](PUBLICACAO-FAMILIAS-2026-11-20.md).
 - Não houve pergunta à Kal'tsit ou à Closure, porque essas chamam o modelo pago.
+
+## Cartões de feitiço e de Liberação no Discord (20/11, 20:18–20:19)
+
+- **Ficha.** Foi usada uma cópia descartável da Ciclo oficial (`1f-dwZ…`), no nível 12. Ela foi exportada pelo menu
+  **Bot → Exportar para o bot**, que pediu autorização do script, dada pelo Mizuki. A ANALISE ficou `em_dia` e o
+  `.xlsx` foi baixado pelo Google. A cópia foi pra lixeira em seguida. O acesso do script precisa ser revogado
+  em myaccount.google.com/permissions.
+- **Cartões preenchidos pela interface**, com o `onEdit` rodando:
+  - Feitiço 1 "Teste Lâmina Rubra": Classe 1, Projétil, 3 pontos em dano. Na ficha deu 3d8 e VÁLIDO.
+  - Liberação Máxima 1 "Teste Liberação Carmesim": Classe 3, Projétil, 9 pontos em dano. Na ficha deu 12d8, saldo 9
+    e VÁLIDO.
+- **`GC:ficha` com o `.xlsx` anexo**, página **Feitiços e técnicas**:
+  - "Feitiço 1 — Teste Lâmina Rubra · Classe 1 · Dano 3d8 · 3 PE · saldo 3 · ficha VÁLIDO";
+  - "Liberação 1 — Teste Liberação Carmesim · Classe 3 · Dano 12d8 · 14 PE · saldo 9 · ficha VÁLIDO".
+
+  O resumo conta 2 habilidades. Foi reprovada, com 6 páginas, por causa do resto da ficha em branco (Caminho,
+  Trilha, famílias e Origem).
+  [Resposta](https://discord.com/channels/1357866906341736488/1561410667108368575/1573477861246111788)
+- **Ponto a conferir.** Na planilha, a linha de ação do cartão da Liberação diz "Ação Completa · 17 PE · 18 m".
+  O campo `liberacao.1.pe` exportado, e mostrado pelo bot, é 14 PE. Não foi verificado se os 3 PE a mais vêm da
+  ação ou se é divergência.
