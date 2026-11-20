@@ -99,7 +99,8 @@ class ConsultaAmpla(unittest.TestCase):
             self.assertIn("[Referência do livro: evocador--ev-parceria]", texto)
             self.assertIn("#### Treino de Combate\n\n**Nível 2.**\n\nEscolha uma **categoria de armas** e receba treino com suas armas.", texto)
             self.assertIn("todas as categorias de armas Simples, Marciais e de Fogo", texto)
-            self.assertIn("Os requisitos de Força continuam valendo", texto)
+            # R65 trocou "Os requisitos de Força continuam valendo" por esta frase.
+            self.assertIn("As armas continuam exigindo a mesma Força.", texto)
             self.assertEqual(texto.count("#### Arma Condutora"), 1)
 
     def test_panorama_contem_os_seis_caminhos_e_as_dezoito_trilhas(self):

@@ -167,6 +167,13 @@ class CampanhaEfeitos(unittest.TestCase):
             f=self.efeito(completa(),**kw);r=conferir(f,REF)
             self.assertTrue(any(p.campo=='efeito.1' for p in r.problemas),kw)
 
+    def test_alvos_dos_talentos_gratis_sao_conhecidos(self):
+        for caixa in ('Talentos grátis','Feitiços fora dos espaços'):
+            f=self.efeito(completa(),caixa=caixa,valor=1,tipo_de_fonte='Item',fonte='Teste')
+            r=conferir(f,REF)
+            self.assertFalse(any(p.campo=='efeito.1' for p in r.problemas),(caixa,r.problemas))
+            self.assertTrue(any(p.campo=='efeito.1' and p.regra=='aprovação' for p in r.pendencias),caixa)
+
     def test_vida_rolada_por_dado_e_ausencia(self):
         f=trocar(completa(),regra__vida_rolada='Sim',vida__rolagem__2=8,vida_max=24)
         c=RegrasDaCampanha(valores={'vida_rolada':'Sim'})

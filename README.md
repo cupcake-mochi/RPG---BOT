@@ -1,6 +1,6 @@
 # Guias do Ciclo
 
-**Versão estável 1.0.3 · publicada em 21/10/2026.**
+**Produção: consulta R68/v0.379 · mecânica R53, com a Técnica Máxima da R67.**
 
 Kal’tsit e Closure conversam, explicam regras do **Ciclo Maldito** e conferem
 partes da ficha. O projeto atual fica em [`Closure/`](Closure/). A Arquivista
@@ -22,22 +22,36 @@ e a lore Nova Terra são opções separadas do idioma. A análise da ficha é pa
 
 ## Estado e documentação
 
-Nesta atualização, a consulta usa o texto **v0.367 (revisão 57)**. As contas dos
-cartões da ficha continuam na **revisão 53**; formatos antigos conservam sua
-compatibilidade documentada. A consulta R57 e a orientação de inventário foram
-publicadas em 26/10/2026 ([registro](Closure/docs/PUBLICACAO-R57-2026-10-26.md)). As versões estáveis e seus pacotes
-ficam em [Releases](https://github.com/cupcake-mochi/RPG---BOT/releases).
+A consulta **R68/v0.379** foi publicada com 576 trechos.
+[Registro da preparação](Closure/docs/CONSULTA-R68-2026-11-19.md)
+Desde 19/11, a análise da ficha confere a Técnica Máxima pela **R67** nas fichas
+formato 13, a mesma conta das oficiais. O resto da mecânica segue a revisão 53.
+[O que mudou](Closure/docs/ANALISE-MAXIMA-R67-2026-11-19.md)
+O Acerto da Expansão das invocações agora é aceito como resultado, então as fichas
+formato 13 chegam às contas e os cartões R53 são conferidos.
+[O que mudou](Closure/docs/EXP-ACERTO-R53-2026-11-19.md)
+
+A publicação está no runtime `56b02cf`, online desde 0h02 de 20/11/2026
+(Brasília). Ela corrige os erros de Famílias que saíam repetidos no painel.
+[Registro da publicação](Closure/docs/PUBLICACAO-FAMILIAS-2026-11-20.md)
+
+A **Carteira viva** está em desenvolvimento separado, nos PRs
+[#77–#84](https://github.com/cupcake-mochi/RPG---BOT/pull/84), sem publicação.
+Etapas 1–6 implementadas, etapa 7 parcial e etapas 8–10 pendentes.
+A criação automática de fichas continua bloqueada. O próximo marco é revisar
+o tempo da preparação e testar eventos reais de abertura, edição, missão,
+gasto e correção de data em uma cópia descartável nova. O estado atualizado
+fica na [retomada da Carteira viva](https://github.com/cupcake-mochi/RPG---BOT/blob/codex/carteira-viva-etapa-7/Closure/docs/carteira-viva/RETOMADA.md).
 
 | Preciso de… | Onde encontrar |
 |---|---|
 | Visão do projeto e organização | [Closure/README.md](Closure/README.md) |
 | Instalação e execução | [Closure/src/LEIA-ME.md](Closure/src/LEIA-ME.md) |
 | Guias oferecidos no Discord | [Guias de uso](Closure/docs/GUIAS-DE-USO.md) |
-| Última revisão e entrega | [Clareza de termos](Closure/docs/CLAREZA-SIGLAS.md) |
+| Última revisão e entrega | [Publicação R63](Closure/docs/PUBLICACAO-R63-2026-11-04.md) |
 | Testes e limites R53 | [Fechamento R53](Closure/pesquisa/validacao/2026-10-21-r53/FECHAMENTO.md) |
 | Contrato da ficha | [Contrato e cobertura](Closure/dados/ficha/INTEGRACAO-B47.md) |
 | Estado para continuar o trabalho | [Fila atual](Closure/docs/FILA-ATUAL.txt) |
-| Carteira viva em desenvolvimento | [Estado e retomada](Closure/docs/carteira-viva/RETOMADA.md) — etapas 1–6 implementadas, 7 parcial; não publicada |
 
 Credenciais, bancos e cadastros reais ficam fora do Git e dos pacotes públicos.
 `Closure Legado/` e os [registros anteriores](README-HISTORICO.md) são referências

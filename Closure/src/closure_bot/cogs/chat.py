@@ -14,6 +14,7 @@ from discord.ext import commands
 from ..clima import contexto_clima, pergunta_clima
 from ..recursos_publicos import resposta as resposta_de_link, links as links_publicos
 from ..conversa import Turno
+from ..ficha_explicacoes import texto_painel
 from ..modelo import Falhou
 from ..plantao import FUSO, MOTIVO_SEGUIMENTO, Decisao, de_plantao, decidir
 from ..prompt import montar as montar_prompt
@@ -70,7 +71,10 @@ class Chat(commands.Cog):
         persona = self.bot.registro.persona_da_mensagem(ref.message_id)
         original = ref.resolved if isinstance(ref.resolved, discord.Message) else None
         do_bot = bool(persona) or (original is not None and original.author.id == self.bot.user.id)
-        return do_bot, persona, (original.content or None) if original is not None and do_bot else None
+        texto = None
+        if original is not None and do_bot:
+            texto = texto_painel(original) or original.content or None
+        return do_bot, persona, texto
 
     def _nome(self, autor) -> str:
         """O nome que vai no pedido. Só o dono, pelo ID, vai como Mizuki; outra pessoa com esse nome não ganha o tratamento dele."""
@@ -189,7 +193,7 @@ class Chat(commands.Cog):
                  ", fora do plantão" if decisao.fora_do_plantao else "", f", atrito: {atrito}" if atrito else "")
         try:
             await self._responder(mensagem, decisao, agora, texto,
-                                  fala_respondida if persona_respondida == decisao.persona else None)
+                                  fala_respondida if persona_respondida == decisao.persona or (respondeu and persona_respondida is None) else None)
         except Falhou as erro:
             # sem resposta do modelo ela fica calada: frase pronta de erro não é fala dela
             log.warning("sem resposta pra mensagem %s: %s", mensagem.id, str(erro)[:200])
@@ -227,9 +231,11 @@ class Chat(commands.Cog):
         turnos = bot.conversas.turnos(canal.id, persona, agora)
         if fala_respondida and all(t.texto != fala_respondida for t in turnos):
             # respondeu a uma fala antiga dela, de fora da conversa em andamento: a fala entra na frente, só neste pedido
-            turnos = [Turno(agora, fala_respondida[:LIMITE_DO_DISCORD])] + turnos
+            turnos = [Turno(agora, fala_respondida[:6000])] + turnos
         estado = bot.vida.estado(persona=persona, canal_id=canal.id, autor_id=mensagem.author.id, nome=nome, agora=agora, texto=texto, contexto=opcoes.contexto(mensagem.guild.id))
         para_a_ponte = estado.para_a_ponte()
+        if fala_respondida and fala_respondida.startswith('Página da análise citada'):
+            para_a_ponte['aviso_ficha_referencia'] = fala_respondida[:6000]
         para_a_ponte.update(nova_terra=opcoes.nova_terra, idioma=opcoes.idioma, links_publicos=links_publicos(bot.config))
         para_a_ponte["atalhos_servidor"] = bot.registro.atalhos_servidor(mensagem.guild.id)
         # Reconstituir só a sequência meteorológica ainda presente no histórico.

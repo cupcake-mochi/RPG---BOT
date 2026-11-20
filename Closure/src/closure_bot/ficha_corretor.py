@@ -30,7 +30,7 @@ from .ficha_equipamento import CatalogoEquipamento
 from .ficha_entidade_repertorio import RegrasEntidade
 from .ficha_testes import RegrasTestes
 
-FORMATOS_CONHECIDOS = {1, 2, 4, 11, 12}
+FORMATOS_CONHECIDOS = {1, 2, 4, 11, 12, 13}
 # O que a ficha mostra quando a pessoa ainda não escolheu: vale como vazio.
 NAO_ESCOLHIDO = {"", "—", "-", "escolha seu caminho", "escolha sua trilha", "escolha sua origem"}
 
@@ -52,7 +52,7 @@ class Problema:
 
 @dataclass
 class Resultado:
-    veredito: str                                         # "aprovada", "reprovada" ou "formato desconhecido"
+    veredito: str                                         # "aprovada", "reprovada", "formato desconhecido" ou "exportação pendente"
     problemas: list[Problema] = field(default_factory=list)
     pendencias: list[Problema] = field(default_factory=list)  # falta ou pede atenção, sem reprovar (sobra, Força...)
     notas: list[Problema] = field(default_factory=list)   # pro mestre conferir: Buff/Debuff, Origem que a ficha não calcula
@@ -337,7 +337,7 @@ def conferir_contas(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaC
         else:
             pulou.append("vida: a campanha rola a vida por nível")
         pe_base = caminho["peNv"] * nivel + _bonus(ficha, "buff.energia")
-        reserva = any(re.fullmatch(r"passiva\.\d+", k) and c.valor == "Reserva Profunda" for k, c in ficha.items())
+        reserva = any(re.fullmatch(r"passiva\.(?:\d+|origem|extra)", k) and c.valor == "Reserva Profunda" for k, c in ficha.items())
         extra = 3 * ref.magia.classe_maxima(nivel) if reserva and ref.magia else 0
         if extra and _numero(ficha, "energia_max") == pe_base:
             pendencias.append(Problema("talento", "energia_max",
@@ -516,7 +516,7 @@ def _conferir_legado(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDa
         if campo.parte != "aviso":
             continue
         # R53: os avisos das montagens B47 descrevem cartões que a interface final substituiu.
-        if formato == 12 and (chave.startswith("r53.") or _AVISO_CARTAO_B47.fullmatch(chave)):
+        if formato in (12, 13) and (chave.startswith("r53.") or _AVISO_CARTAO_B47.fullmatch(chave)):
             continue
         if chave in avisos_substituidos:
             continue
@@ -535,7 +535,7 @@ def _conferir_legado(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDa
     resultado.notas.extend(notas_de_treino.values())
     buff_pe = _bonus(ficha, "buff.energia")
     for nome, extra in pe_da_origem(ficha, ref):
-        if formato in (11, 12) and extra:
+        if formato in (11, 12, 13) and extra:
             efeitos = ref.magia.contexto.efeitos.get("PE máximo", [])
             explicitos = [e for e in efeitos if e.tipo_de_fonte in ("Origem", "Origem custom") and e.fonte == nome]
             ganho = sum(e.valor for e in explicitos if e.como == "somar")
@@ -553,11 +553,16 @@ def _conferir_legado(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDa
 
 def conferir(ficha: dict[str, Campo], ref: Referencias, regras: RegrasDaCampanha = LIVRO, aprovados: Aprovados | None = None) -> Resultado:
     from .ficha_esquema import variante
+    from .ficha_leitor import exportacao_pendente
+    pendente = exportacao_pendente(ficha)
+    if pendente:
+        # Formato 13 fora de em_dia: os valores são de antes da última edição. Não confere dado velho.
+        return Resultado("exportação pendente", [Problema("formato", "analise.estado", "em_dia", pendente)])
     identificada = variante(ficha)
     if identificada is None:
         formato = ficha.get("formato.versao", Campo("", "", "")).valor
         return Resultado("formato desconhecido", [Problema("formato", "formato.versao",
-            "1, 2, variante TR-v4 comprovada, B47-v11 ou R53-v12; formato 4 de campanha é outra variante", str(formato))])
+            "1, 2, variante TR-v4 comprovada, B47-v11 ou R53-v12/13; formato 4 de campanha é outra variante", str(formato))])
     if identificada in ("b47-v11", "r53-v12"):
         from .ficha_b47 import conferir_b47
         return conferir_b47(ficha, ref, regras, aprovados or Aprovados(), r53=identificada == "r53-v12")

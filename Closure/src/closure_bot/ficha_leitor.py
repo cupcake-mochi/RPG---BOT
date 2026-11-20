@@ -184,6 +184,25 @@ async def de_link(link: str, *, sessao=None, espera: float = 60) -> dict[str, Ca
     return de_csv(corpo.decode("utf-8", errors="replace"))
 
 
+# Formato 13 (Ficha---RPG-JJK, ESQUEMA-ANALISE.md, 17/11/2026): a coluna B da ANALISE guarda valores congelados
+# na última exportação. `analise.estado` (viva, exportando, em_dia, desatualizada) diz se eles ainda valem;
+# com dado velho o bot não confere.
+
+
+def exportacao_pendente(ficha: dict[str, Campo]) -> str | None:
+    """None quando a ANALISE pode ser conferida; senão o estado que a impede ("ausente" se a chave falta).
+
+    Formato 13 só confere `em_dia`. No 12 a coluna é viva; uma exportação que parou no meio deixa parte congelada
+    e ainda o 12 (o 13 entra só na exportação completa), então `exportando`/`desatualizada` também param."""
+    formato = getattr(ficha.get("formato.versao"), "valor", None)
+    estado = str(getattr(ficha.get("analise.estado"), "valor", "") or "").strip()
+    if formato == 13:
+        return None if estado == "em_dia" else (estado or "ausente")
+    if formato == 12 and estado not in ("", "viva", "em_dia"):
+        return estado
+    return None
+
+
 def resumo(ficha: dict[str, Campo]) -> dict[str, int]:
     """Quantas chaves de cada parte: {"entrada": 1629, ...}."""
     partes: dict[str, int] = {}

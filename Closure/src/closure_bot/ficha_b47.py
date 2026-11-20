@@ -4,7 +4,7 @@ import re
 from dataclasses import replace
 
 from .ficha_leitor import Campo
-from .ficha_esquema import campos_b47, campos_r53
+from .ficha_esquema import campos_b47, campos_r53, campos_opcionais, campos_analise, parte_aceita
 from .ficha_configuracao import (ContextoB47, conferir_regras, conferir_efeitos, valor,
                                 numero, inteiro, problema)
 
@@ -15,7 +15,9 @@ def conferir_b47(ficha, ref, campanha, aprovados, *, r53=False):
     from .ficha_custom import preparar_custom
     r = Resultado('aprovada')
     esquema = campos_r53() if r53 else campos_b47()
+    # As opcionais não pesam na exportação completa: a cópia antiga continua inteira sem elas.
     faltantes = set(esquema)-set(ficha)
+    esquema = {**campos_opcionais(), **campos_analise(), **esquema}
     if faltantes:
         # Identidade por chave; nem ordem, quantidade de linhas ou coordenada física são validadas.
         por_grupo = {}
@@ -31,7 +33,7 @@ def conferir_b47(ficha, ref, campanha, aprovados, *, r53=False):
     for k, campo in ficha.items():
         if k not in esquema:
             r.nao_conferido.append(f'{k}: chave adicional de variante não reconhecida; significado não certificado')
-        elif campo.parte != esquema[k]['parte']:
+        elif not parte_aceita(k, campo.parte, esquema[k]['parte'], r53=r53):
             problema(r,k,'parte '+esquema[k]['parte'],campo.parte,regra='formato')
         # Cartão R53 com erro/recálculo em curso é tratado como transição em ficha_r53.
         if r53 and k.startswith('r53.'):
@@ -102,8 +104,23 @@ def conferir_b47(ficha, ref, campanha, aprovados, *, r53=False):
         if d.nome in identidades and (not d.aprovada or not d.valida):
             r.conferidos=[c for c in r.conferidos if d.nome not in c]
     r.nao_conferido=list(dict.fromkeys(r.nao_conferido))
+    # Famílias da Técnica e das invocações passam por conferir_familias duas vezes
+    # quando há cartão ou Máxima (legado em ficha_magia e aqui). Só some o item
+    # idêntico em todos os campos; erro com texto ou valor diferente continua.
+    for atributo in ('problemas','pendencias','notas'):
+        setattr(r,atributo,_sem_repetidos(getattr(r,atributo)))
     r.veredito='reprovada' if r.problemas else 'pendente' if r.pendencias or r.nao_conferido or r.notas else 'aprovada'
     return r
+
+
+def _sem_repetidos(itens):
+    vistos=set();saida=[]
+    for p in itens:
+        # repr: alguns chamadores põem lista/tupla em encontrado, e 1 ≠ '1'.
+        k=repr((p.regra,p.campo,p.esperado,p.encontrado,p.ancora))
+        if k not in vistos:
+            vistos.add(k);saida.append(p)
+    return saida
 
 
 def _identidades_validas(ficha,r):
@@ -280,7 +297,7 @@ def conferir_contas_b47(ficha,ref,regras,certos,pendencias):
         def talento_base(nome):
             d=next((d for d in ctx.registros.values() if d.tipo=='talento' and d.nome==nome and d.valida and d.aprovada),None)
             return d.efetivos.get('identidade',nome) if d else nome
-        if any(talento_base(valor(ficha,f'passiva.{i}'))=='Reserva Profunda' for i in range(1,13)):
+        if any(talento_base(valor(ficha,f'passiva.{i}'))=='Reserva Profunda' for i in (*range(1,13),'origem','extra')):
             extra=3*ref.magia.classe_maxima(n)
             explicitos=[e for e in ctx.efeitos.get('PE máximo',[]) if talento_base(e.fonte)=='Reserva Profunda' and e.como=='somar']
             if bpe or explicitos and sum(e.valor for e in explicitos)!=extra:
@@ -481,7 +498,7 @@ def conferir_aptidoes(ficha,ref,ctx,r):
                      regra='informação' if sem_informacao else 'aptidão',ancora='aptidoes--apt-marcos')
         if len(orcamentos)>1:
             r.nao_conferido.append('Aptidões: total no teto de Refino depende da ordem histórica dos marcos, não exportada')
-    for grupo,padrao in [('talento',r'passiva\.\d+'),('aptidao',r'aptidao\.\d+')]:
+    for grupo,padrao in [('talento',r'passiva\.(?:\d+|origem|extra)'),('aptidao',r'aptidao\.\d+')]:
         vistos=set()
         for k in ficha:
             if not re.fullmatch(padrao,k) or not valor(ficha,k):continue

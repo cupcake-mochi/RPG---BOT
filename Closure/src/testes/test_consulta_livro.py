@@ -17,11 +17,95 @@ PRONTO = bool(site_prompt.motores()) and (site_prompt.CACHE / "nucleo.js").exist
 
 @unittest.skipUnless(PRONTO, "sem motor ou página montada")
 class ConsultaDoLivro(unittest.TestCase):
+    def test_reacao_fora_do_turno_traz_esclarecimento_r60_nas_duas_lores(self):
+        for persona in ('kal', 'clo'):
+            for nova_terra in (False, True):
+                with self.subTest(persona=persona, nova_terra=nova_terra):
+                    p = site_prompt.montar(persona, 'No livro, como funciona Conjurar?',
+                                          nome='Alex', hora=(14, 20),
+                                          estado={'nova_terra': nova_terra})
+                    texto = p['input'][-1]['content']
+                    self.assertIn(self.livro['fundamento--conjurar']['texto'], texto)
+                    self.assertIn('Uma conjuração de Reação fora do seu turno fica fora desse limite.', texto)
+                    self.assertIn('apenas um feitiço de Classe 1 ou maior', texto)
+                    self.assertIn('o gatilho registrado', texto)
+
     def test_especialidade_antiga_traz_texto_editorial_r57_completo(self):
         texto, _ = self.fontes('No livro, como funciona Especialidade Antiga?',
                               ['origens--encarnado-beneficios'])
         self.assertIn('sem precisar escolher **Corpo** naquele **[Marco](#progressao--prog-marcos)**', texto)
         self.assertIn('um nível de progressão que concede ganhos comuns e uma escolha adicional', texto)
+
+    def test_prenuncio_preserva_reacao_mas_nao_devolve_custos_r61(self):
+        ancora = "origens--restricao-prenuncio"
+        for persona in ("kal", "clo"):
+            for nova_terra in (False, True):
+                with self.subTest(persona=persona, nova_terra=nova_terra):
+                    pedido = site_prompt.montar(
+                        persona, "O Ataque sem Prenúncio devolve os PE já pagos da Reação cancelada?",
+                        nome="Alex", hora=(14, 20), estado={"nova_terra": nova_terra})
+                    texto = pedido["input"][-1]["content"]
+                    self.assertIn(f"[Livro, âncora {ancora}]", texto)
+                    self.assertIn(self.livro[ancora]["texto"], texto)
+                    self.assertIn("sem gastar a Reação dele", texto)
+                    self.assertIn("Os custos que ele já tenha pago ao declarar essa Reação, como PE, não voltam.", texto)
+
+    def test_nomes_antigos_recuperam_as_fontes_r63(self):
+        casos = [
+            ("Como calculo o saldo da especial de uma entidade?",
+             ["construcao--entidades-especiais", "construcao--entidades-saldo"]),
+            ("Como funciona Funções e saldo?", ["fundamento--funcoes"]),
+            ("No livro, como funciona Saldo e limites?", ["construcao--entidades-saldo"]),
+            ("Como funcionam as parcelas adicionais do Ritual?", ["ritual--rit-parcelas"]),
+            ("No livro, como funcionam as parcelas adicionais?", ["ritual--rit-parcelas"]),
+            ("Como funcionam as Partes adicionais do Ritual?", ["ritual--rit-parcelas"]),
+            ("Quanto custa uma obra Ampliada?", ["guia--guia-obras-maiores"]),
+            ("Quanto custa uma obra Extensa?", ["guia--guia-obras-maiores"]),
+            ("How much does an expanded Architect construction cost?", ["guia--guia-obras-maiores"]),
+            ("Como Ampliar a obra do Arquiteto?", ["guia--guia-obra-uso", "guia--guia-obras-maiores"]),
+        ]
+        for msg, esperadas in casos:
+            with self.subTest(msg=msg):
+                texto, fontes = self.fontes(msg, esperadas)
+                if "guia--guia-obras-maiores" in fontes:
+                    self.assertIn("| Obra | Básica | Extensa (+4 PE) | Grande (+8 PE) |", texto)
+                self.assertNotIn("fundamento--ampliar", fontes)
+
+    def test_regras_r66_a_r68_chegam_com_o_texto_atual(self):
+        casos = [
+            ("Na Técnica Máxima a Forma sai dos dados-base ou dos pontos de montagem?",
+             "fundamento--maxima", "Use a coluna de **pontos de montagem** só para as Melhorias."),
+            ("A Técnica Máxima pode dar vida temporária?",
+             "fundamento--maxima", "| Vida temporária individual | Leve | 3 de vida temporária. Exige Amparo. |"),
+            ("A Técnica Máxima sem dano recebe o reforço de Controle?",
+             "fundamento--controle", "A Técnica Máxima o recebe só na aplicação sem dano"),
+            ("Quantos dados sobram na Técnica Máxima da domada com Explosão?",
+             "campo--inv-maxima", "ou 14d8 com Explosão, que tira 5 dados."),
+            ("A Ação Combinada do Evocador é uma vez por cena ou por combate?",
+             "evocador--ev-combinada", "Uma vez por cena · Participantes a até 18 m."),
+            ("Posso manter concentração com Guarda Aberta?",
+             "geral--concentracao", "Você pode manter a concentração enquanto estiver com **[Guarda Aberta]"),
+        ]
+        for persona in ("kal", "clo"):
+            for msg, ancora, trecho in casos:
+                with self.subTest(persona=persona, msg=msg):
+                    texto = site_prompt.montar(persona, msg, nome="Alex", hora=(14, 20))["input"][-1]["content"]
+                    self.assertIn(f"[Livro, âncora {ancora}]", texto)
+                    self.assertIn(self.livro[ancora]["texto"], texto)
+                    self.assertIn(trecho, texto)
+        texto, _ = self.fontes("Como funciona a Técnica Máxima?", ["fundamento--maxima"])
+        self.assertNotIn("A quantidade de dados permanece igual ao valor indicado na tabela", texto)
+        self.assertNotIn("Uma vez por combate · Participantes", self.livro["evocador--ev-combinada"]["texto"])
+
+    def test_ampliar_feitico_e_parcela_do_cotidiano_nao_usam_aliases_de_obra_ou_ritual(self):
+        _, fontes = self.fontes("Como ampliar um feitiço?", ["fundamento--ampliar"])
+        self.assertNotIn("guia--guia-obras-maiores", fontes)
+        for msg in ("Posso ampliar uma obra em casa?", "Quando vencem as parcelas adicionais do meu cartão?",
+                    "Como funciona o saldo e limites do banco?"):
+            with self.subTest(msg=msg):
+                _, fontes = self.montar(msg)
+                self.assertFalse({"guia--guia-obras-maiores", "guia--guia-obra-uso",
+                                  "ritual--rit-parcelas", "construcao--entidades-saldo"} & set(fontes))
 
     def test_mais_um_nome_com_palavras_de_parada_tem_fonte_propria(self):
         texto, _ = self.fontes('No livro, como funciona Mais Um?', ['catalogo--melhoria-mais-um'])
@@ -97,7 +181,9 @@ class ConsultaDoLivro(unittest.TestCase):
     def test_tecnica_maxima_tem_tabela_propria_e_excecao(self):
         texto, _ = self.fontes("qual a cura máxima da Técnica Máxima?",
                               ["fundamento--maxima"])
-        self.assertIn("A quantidade de dados permanece igual ao valor indicado na tabela", texto)
+        # R67: a Forma e a base da função saem dos dados-base; os pontos pagam só as Melhorias.
+        self.assertIn("Os **dados-base** pagam a Forma e a base da função", texto)
+        self.assertIn("A cura e a vida temporária da Máxima não usam o teto de cura individual", texto)
 
     def test_classe_zero_tem_proibicao_de_cura(self):
         texto, _ = self.fontes("pode usar Forma Cura num feitiço de classe 0?",

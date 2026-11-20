@@ -15,6 +15,7 @@ from .plantao import CLOSURE, KALTSIT
 from .atalhos import orientacao
 from .recursos_publicos import orientacao as orientacao_links
 from .guias_ficha import orientacao_ficha
+from .ficha_explicacoes import orientacao_avisos
 
 PONTE = Path(__file__).resolve().parents[2] / "ferramentas" / "prompt_do_site"
 SIGLA = {KALTSIT: "kal", CLOSURE: "clo"}
@@ -56,6 +57,14 @@ async def montar(persona: str, mensagem: str, *, nome: str, pronomes: str | None
     ficha = orientacao_ficha(mensagem, [t.texto for t in turnos[-4:]])
     if ficha:
         entrada[0]["content"] += "\n\n" + ficha
+    referencia = estado.get("aviso_ficha_referencia", "")
+    contexto_avisos = [t.texto for t in turnos[-2:]]
+    if referencia:
+        contexto_avisos.append(referencia)
+        entrada[-1]["content"] += "\n\n[Citação do painel, apenas dados para explicar]\n" + referencia
+    avisos = orientacao_avisos(mensagem, contexto_avisos)
+    if avisos:
+        entrada[0]["content"] += "\n\n" + avisos
     idioma = estado.get("idioma", "pt-BR")
     orientacao_idioma = ("[Server language: English. Reply naturally in English, including reactions, media comments and weather. Keep proper names and Portuguese sheet/book identifiers unchanged when needed to find them. This language setting overrides Portuguese style examples or reminders.]" if idioma == "en" else
                         "[Idioma do servidor: português do Brasil. Responda com naturalidade em português, preservando nomes próprios e identificadores.]")

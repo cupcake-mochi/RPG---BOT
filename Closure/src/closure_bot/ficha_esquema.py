@@ -11,11 +11,40 @@ def campos_b47():
         return {r['chave']: r for r in csv.DictReader(f, delimiter='\t')}
 
 
+EXP_ACERTO = re.compile(r'invocacao\.(?:[1-9]|1[0-2])\.exp\.acerto')
+
+
 @lru_cache(maxsize=1)
 def campos_r53():
-    """ANALISE 12: as chaves B47 sem mudança de parte, mais as novas da R53 (Ficha---RPG-JJK@4b22da5)."""
+    """ANALISE 12/13: as chaves B47, mais as novas da R53 (Ficha---RPG-JJK@4b22da5).
+
+    Uma única mudança de parte: as 12 `invocacao.N.exp.acerto` são o texto "Acerto Nd8" calculado pela ficha, e
+    saem como `resultado` desde a correção da Expansão da domada (Ficha---RPG-JJK, 07/11/2026). As cópias de antes
+    ainda exportam `entrada`; `parte_aceita` aceita as duas."""
     with (Path(__file__).parent / 'recursos/r53-campos-novos.tsv').open(encoding='utf-8') as f:
-        return {**campos_b47(), **{r['chave']: r for r in csv.DictReader(f, delimiter='\t')}}
+        campos = {**campos_b47(), **{r['chave']: r for r in csv.DictReader(f, delimiter='\t')}}
+    return {k: ({**v, 'parte': 'resultado'} if EXP_ACERTO.fullmatch(k) else v) for k, v in campos.items()}
+
+
+def parte_aceita(chave, parte, esperada, *, r53=False):
+    """A parte exportada bate com o esquema; no R53, `exp.acerto` em `entrada` ainda vem de cópia anterior a 07/11."""
+    return parte == esperada or (r53 and parte == 'entrada' and EXP_ACERTO.fullmatch(chave) is not None)
+
+
+@lru_cache(maxsize=1)
+def campos_opcionais():
+    """Chaves que a ficha passou a exportar depois do contrato, sem mudar o formato 12: reconhecidas quando vêm,
+    sem pendência quando faltam (cópias antigas). 03/11/2026: as cartas Talento · Origem e Talento · Extra e as vagas
+    grátis (Ficha---RPG-JJK, PENDENCIAS de 03/11/2026)."""
+    with (Path(__file__).parent / 'recursos/talentos-gratis-campos.tsv').open(encoding='utf-8') as f:
+        return {r['chave']: r for r in csv.DictReader(f, delimiter='\t')}
+
+
+def campos_analise():
+    """17/11/2026, formato 13: o estado da exportação da ANALISE, no fim da aba, sem célula nem parte
+    (Ficha---RPG-JJK, ESQUEMA-ANALISE.md). Aparecem também na ficha 12 que começou a exportar e parou no meio."""
+    return {chave: {'chave': chave, 'parte': '', 'origem': '', 'booleano': '0'}
+            for chave in ('analise.estado', 'analise.exportada_em')}
 
 
 def tipo(chave):
@@ -39,7 +68,7 @@ def tipo(chave):
         return 'texto'
     if chave.startswith('regra.'):
         return 'texto' if chave in ('regra.vida_rolada', 'regra.vida_rolada.campanha') else 'numero'
-    if re.fullmatch(r'formato\.versao|nivel|xp|xp\.total|exaustao|sequela\.extras|vida\.rolagem\.\d+|atributo\.[^.]+\.(?:base|corpo)|marco\..+|marcos\.escolhidos|buff\..+|(?:vida|energia|integridade)_max|defesa|protecao|maestria|espacos_de_feitico|classe_maxima|refino_de_graca|classe_0_gratis|morrendo_(?:aguentar|insistir_1|insistir_2)|tecnica\.regra_propria\.(?:categoria|espacos)|dominio\.(?:degrau|custo|refino|corrida)|(?:passiva|aptidao)\.\d+\.categoria|carga\.(?:total|limite|ajuste_limite)', chave):
+    if re.fullmatch(r'formato\.versao|nivel|xp|xp\.total|exaustao|sequela\.extras|vida\.rolagem\.\d+|atributo\.[^.]+\.(?:base|corpo)|marco\..+|marcos\.escolhidos|buff\..+|(?:vida|energia|integridade)_max|defesa|protecao|maestria|espacos_de_feitico|classe_maxima|refino_de_graca|classe_0_gratis|morrendo_(?:aguentar|insistir_1|insistir_2)|tecnica\.regra_propria\.(?:categoria|espacos)|dominio\.(?:degrau|custo|refino|corrida)|(?:passiva|aptidao)\.\d+\.categoria|passiva\.(?:origem|extra)\.categoria|vagas\.[a-z_]+|carga\.(?:total|limite|ajuste_limite)', chave):
         return 'numero'
     if re.fullmatch(r'(?:pericia|oficio|tr)\.[^.]+\.(?:ajuste|bonus)|(?:equipavel|item)\.\d+\.(?:grau|volume|quantidade)|personagem\.(?:pericia|oficio)_custom\.\d+\.(?:bonus|resultado)', chave):
         return 'numero'
@@ -59,7 +88,8 @@ def variante(ficha):
     configuracao = any(k.startswith(('regra.', 'efeito.', 'custom.')) for k in ficha)
     if formato == 11:
         return 'b47-v11'
-    if formato == 12:
+    # O 13 é o mesmo contrato do 12 com a coluna B congelada na exportação: mesmas chaves, mesmo sentido.
+    if formato in (12, 13):
         return 'r53-v12'
     if formato in (1, 2) and not configuracao:
         return f'legado-v{formato}'

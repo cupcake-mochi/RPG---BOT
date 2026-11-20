@@ -98,7 +98,7 @@
   "Reserva Profunda acrescenta {0} PE; confirmar se o Buff já contém esse acréscimo antes de somar de novo": "Reserva Profunda adds {0} EP; check whether the adjustment already includes it before adding it again",
   "escolher {0}": "choose {0}",
   "uma das Origens: {0}": "one of these Origins: {0}",
-  "1, 2, variante TR-v4 comprovada, B47-v11 ou R53-v12; formato 4 de campanha é outra variante": "1, 2, verified TR-v4, B47-v11 or R53-v12; campaign format 4 is a different variant",
+  "1, 2, variante TR-v4 comprovada, B47-v11 ou R53-v12/13; formato 4 de campanha é outra variante": "1, 2, verified TR-v4, B47-v11 or R53-v12/13; campaign format 4 is a different variant",
   "fica 0 por {0}, e a ficha não aplica sozinha": "becomes 0 because of {0}; the sheet does not apply this automatically",
   "Restrição Celestial com um ramo: {0}": "Restrição Celestial with one branch: {0}",
   "conferir +{0} de {1} uma única vez entre Buff e efeitos, sem duplicar outras fontes": "account for +{0} from {1} once across adjustments and effects, without duplicating other sources",
@@ -375,5 +375,10 @@
   "Cartões da ficha: link lido {0} vezes porque havia cartão salvando; {1} ainda em transição na leitura usada": "Sheet cards: the link was read {0} times because a card was being saved; {1} were still in transition in the selected read",
   "o Google respondeu {0}": "Google returned HTTP {0}",
   "escolha um Caminho": "choose a Path",
-  "escolha uma Trilha": "choose a Branch"
+  "escolha uma Trilha": "choose a Branch",
+  "preencha o nome do cadastro": "enter the name of this entry",
+  "retire o separador de lista ( · ) do nome do cadastro": "remove the list separator ( · ) from the entry name",
+  "remova os espaços em branco no início do nome; mantenha o mesmo nome nas escolhas que usam este cadastro": "remove leading whitespace from the name; use the same name in choices referring to this entry",
+  "remova os espaços em branco no fim do nome; mantenha o mesmo nome nas escolhas que usam este cadastro": "remove trailing whitespace from the name; use the same name in choices referring to this entry",
+  "remova os espaços em branco no início e no fim do nome; mantenha o mesmo nome nas escolhas que usam este cadastro": "remove leading and trailing whitespace from the name; use the same name in choices referring to this entry"
 }

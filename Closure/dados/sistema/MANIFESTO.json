@@ -1,11 +1,11 @@
 {
   "sistema": "Ciclo Maldito",
-  "versao_sistema": "v0.367",
-  "edicao_livro": "R57",
-  "commit": "353d7728fa4f505f830dc6c0421929a0ab2668c1",
-  "data_commit": "2026-10-25T16:55:45-03:00",
-  "texto_sha256": "18dbdb50014a7345fa0dfeef69e6fc19f3c6eda9dd259cb7600ed2b8b0db9364",
-  "sincronizado_em": "2026-10-25T19:59:46-03:00",
+  "versao_sistema": "v0.379",
+  "edicao_livro": "R68",
+  "commit": "d475b94f1a3034bcb649c1d688d2061951b58dce",
+  "data_commit": "2026-11-14T15:02:37-03:00",
+  "texto_sha256": "d52c4c1f9de2d817c1743718e2517045e04ac2eeeee56685a5fded916836c95c",
+  "sincronizado_em": "2026-11-19T09:25:27-03:00",
   "blocos": 576,
   "capitulos": [
     {

@@ -33,6 +33,15 @@ LABELS = {
     'orçamento':'budget','base das funções':'function base','custo da Forma':'Form cost','Melhorias pagas':'paid Improvements',
     'devolução':'refund','dano (d8)':'damage (d8)','cura (d8)':'healing (d8)','PV temporários':'temporary HP',
     'saldo sem uso':'unused balance','CD de Controle':'Control DC','resumo da função':'function summary',
+    'Origem · primeira capacidade menor':'Origin · first minor ability',
+    'Origem · segunda capacidade menor':'Origin · second minor ability',
+    'Origem · capacidade marcante':'Origin · defining ability', 'Origem · traço':'Origin · trait',
+    'Maestria':'Mastery', 'Nível':'Level',
+    'Refino recebido por progressão':'Refino from progression','Feitiços de Classe 0 gratuitos':'Free Class 0 spells',
+    'Iniciativa':'Initiative','CD de feitiço':'Spell DC','Teste de conjuração':'Spellcasting check',
+    'Ataque corpo a corpo':'Melee attack','Ataque à distância':'Ranged attack','Deslocamento':'Movement',
+    'Morrendo · prazo em rodadas':'Dying · time limit in rounds','Origem vinculada':'Linked Origin',
+    'tipo':'type','base do livro':'rulebook base',
     'avisos do cartão':'card warnings','registro ativo':'active record','Classe máxima':'maximum Class',
 }
 # Only UI labels enter this function; user/card names are appended afterwards.
@@ -40,6 +49,8 @@ def label(text):
     if text in LABELS:return LABELS[text]
     out=[]
     for part in text.split(' · '):
+        if part.startswith('Cadastro próprio '):
+            out.append('Custom entry '+part.removeprefix('Cadastro próprio '));continue
         if part.startswith('Buff/Debuff de '):
             out.append('Adjustment to '+label(part[15:]));continue
         found=False
@@ -80,7 +91,11 @@ def detail(text):
     return text
 
 
-def line(p):
+def line(p, sheet=None):
+    from .ficha_clareza import linha_clara
+    clear = linha_clara(p, sheet or {}, ingles=True)
+    if clear is not None:
+        return clear
     from .cogs.ficha import _rotulo
     name=label(_rotulo(p.campo));found=p.encontrado;expected=detail(p.esperado)
     if p.regra=='buff':
@@ -130,13 +145,19 @@ def paginas(result,sheet,persona,manifest=None):
             if rank[target]>rank[curstate]:curstate=target;current.color=COR[target]
             current.add_field(name=n[:256],value=v,inline=False)
     summary=base(visual if visual in COR else 'pendente');summary.description=description
-    summary.add_field(name='Result',value=f'**{verdict.capitalize()}**\n{len(result.problemas)} error(s) · {len(result.pendencias)} pending check(s) · {len(result.notas)} GM adjustment(s)',inline=False)
+    summary.add_field(name='Result',value=f'**{verdict.capitalize()}**\n{len(result.problemas)} error(s) · {len(result.pendencias)} pending check(s) · {len(result.notas)} note(s) for the GM',inline=False)
+    summary.add_field(name='How to read the results',value=
+        '❌ **Error:** the data contains a mismatch or an invalid choice. Check the inputs behind the result; preserve the formulas.\n'
+        '⚠️ **Pending:** information, a choice or an approval is needed to finish the check.\n'
+        '👀 **Note:** the GM needs to check the source and validity of the adjustment. This is not a confirmed error.\n'
+        'After making corrections, wait for the sheet to finish calculating and submit another analysis; for XLSX, download a fresh file. '
+        'This panel does not update automatically.',inline=False)
     reviews=[('❌ Corrections required',result.problemas),('⚠️ Missing or needs attention',result.pendencias),('👀 GM review',result.notas)]
     for heading,items in reviews:
         if items:
             lines=[];size=0
             for p in items[:3]:
-                value=line(p)
+                value=line(p,sheet)
                 if size+len(value)>600:break
                 lines.append(value);size+=len(value)+3
             value='\n'.join('• '+v for v in lines)
@@ -169,7 +190,7 @@ def paginas(result,sheet,persona,manifest=None):
     summary.add_field(name='Sheet and rule names',value='Official sheet labels, option names, exported keys and player-written text keep their original spelling so you can find them in the sheet.',inline=False)
     pages.append(('Summary',summary))
     fields=[]
-    for heading,items in reviews:fields+=_campos(heading,[line(p) for p in items])
+    for heading,items in reviews:fields+=_campos(heading,[line(p,sheet) for p in items])
     add('Corrections and review',fields,'pendente',{'❌ Corrections required':'reprovada'})
     add('Character',_campos('Other checked values',[checked(t) for t in personal if not t.startswith(prefixes)]))
     fields=[]

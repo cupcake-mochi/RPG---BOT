@@ -4,6 +4,19 @@ Manutenção das Guias do Ciclo depois do PR #17 da ficha
 (`cupcake-mochi/Ficha---RPG-JJK`, merge `9d932c5`). Base do bot: `main`
 `6f28e67` (PR #73). Branch: `claude/project-thread-e9mxlm`.
 
+## Atualização publicada — 30/10/2026
+
+PRs85/86/87 mesclados e publicados no app existente, runtime
+**`229e539416333896a723c21cf3f0e7d2799f6c5d`**, online às **23:23:20 (Brasília)**.
+Consulta R60/v0.369, mecânica R53. Corrigidos os falsos alertas de categorias
+CE 1/2/3 e a seleção de fontes para adaptação de feitiços; mensagens da análise
+revisadas em português e inglês. 990 testes, zero falhas, um opcional pulado;
+91/91 arquivos instalados iguais ao pacote. Backups, integridade e preservação
+de ambiente/bancos/campanha conferidos. Painel real com XLSX sintético validado.
+Nenhuma ficha oficial/jogador alterada. Detalhes e limites no
+[registro da publicação](PUBLICACAO-R60-2026-10-30.md). Não republicar pelo
+commit documental. Os registros de 25/26 abaixo são históricos.
+
 ## Publicação posterior — 26/10/2026
 
 Os PRs [75](https://github.com/cupcake-mochi/RPG---BOT/pull/75) e

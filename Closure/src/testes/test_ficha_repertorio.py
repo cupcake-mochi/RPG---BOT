@@ -186,6 +186,62 @@ class RepertorioDoLivro(unittest.TestCase):
         feiticos(g, 4)
         self.assertIn('repertorio', self.campos_com_erro(g))
 
+    # 03/11/2026: as cartas Talento · Origem e Talento · Extra, e as vagas grátis da ficha.
+    def test_carta_da_origem_fica_fora_dos_pagos_e_certifica_o_total(self):
+        f = ficha(origem__menor_1='Manifestação Instintiva', passiva__origem='Leitura',
+                  passiva__1='Raiz', passiva__2='Instinto', passiva__3='Mão Firme')
+        r = self.analisar(f)
+        self.assertEqual(r.problemas, [])
+        self.assertTrue(any(c.startswith('Talento da Origem: Leitura') for c in r.conferidos))
+        self.assertTrue(any('3 de 3 espaços comuns ocupados' in c for c in r.conferidos))
+        self.assertFalse(any('vinculação' in n for n in r.nao_conferido))
+        por(f, passiva__4='Farejador')
+        self.assertIn('repertorio', self.campos_com_erro(f))
+
+    def test_carta_da_origem_pede_a_menor_e_ce_um(self):
+        self.assertIn('passiva.origem', self.campos_com_erro(ficha(passiva__origem='Leitura')))
+        self.assertIn('passiva.origem', self.campos_com_erro(
+            ficha(origem='Descendente', origem__menor_1='Manifestação Instintiva', passiva__origem='Leitura')))
+        self.assertIn('passiva.origem', self.campos_com_erro(
+            ficha(7, origem__menor_1='Manifestação Instintiva', passiva__origem='Eco')))
+
+    def test_carta_da_origem_lembra_o_passivo_no_receptaculo(self):
+        r = self.analisar(ficha(origem='Receptáculo', origem__menor_1='Traço Incorporado', passiva__origem='Instinto'))
+        self.assertEqual(r.problemas, [])
+        self.assertTrue(any('pede Talento passivo' in n for n in r.nao_conferido))
+
+    def test_carta_da_origem_vazia_mantem_possibilidades_e_avisa(self):
+        f = ficha(origem__menor_1='Manifestação Instintiva', passiva__origem='', passiva__1='Raiz', passiva__2='Leitura',
+                  passiva__3='Instinto', passiva__4='Mão Firme')
+        r = self.analisar(f)
+        self.assertEqual(r.problemas, [])
+        self.assertTrue(any('carta Talento · Origem' in n for n in r.nao_conferido))
+
+    def test_carta_extra_precisa_da_vaga_da_configuracao(self):
+        f = ficha(passiva__extra='Instinto', vagas__talento_extra=0)
+        self.assertIn('passiva.extra', self.campos_com_erro(f))
+        g = ficha(passiva__extra='Instinto', vagas__talento_extra=1, passiva__1='Raiz', passiva__2='Leitura',
+                  passiva__3='Mão Firme')
+        r = self.analisar(g)
+        self.assertEqual(r.problemas, [])  # o extra não ocupa os três espaços do nível 2
+        self.assertTrue(any(n.startswith('Talento extra: Instinto') for n in r.nao_conferido))
+        self.assertFalse(any('espaços comuns ocupados' in c for c in r.conferidos))
+
+    def test_feiticos_fora_dos_espacos_da_configuracao(self):
+        f = ficha(vagas__feiticos_extra=1); feiticos(f, 4)
+        r = self.analisar(f)
+        self.assertEqual(r.problemas, [])
+        self.assertTrue(any('Feitiços fora dos espaços pela CONFIGURAÇÃO: 1' in n for n in r.nao_conferido))
+        feiticos(f, 5)
+        self.assertIn('repertorio', self.campos_com_erro(f))
+
+    def test_feiticos_da_origem_exportados_batem_com_a_coexistencia(self):
+        f = ficha(origem='Receptáculo', origem__marcante='Coexistência', vagas__feiticos_origem=2)
+        self.assertEqual(self.analisar(f).problemas, [])
+        por(f, vagas__feiticos_origem=0)
+        self.assertIn('vagas.feiticos_origem', self.campos_com_erro(f))
+        self.assertIn('vagas.feiticos_origem', self.campos_com_erro(ficha(vagas__feiticos_origem=2)))
+
     def test_talento_proprio_nao_vira_aprovacao_de_efeito(self):
         f = ficha(13, passiva__1='Talento Próprio (CE 3)', passiva__1__categoria=3)
         r = self.analisar(f)

@@ -19,9 +19,9 @@ RAIZ = Path(__file__).resolve().parents[2]
 REF = Referencias.do_livro(RAIZ / 'dados')
 LIVRE = M.arvore(True)
 PARTES = campos_r53()
-ORIGEM = {  # Ficha---RPG-JJK@4b22da5420263a8885e28a508cbc39938dd9d9da
-    'formulas.py': 'f6e8dbdbb3db49fd4eb12394902872827c236cee73300b6a9fd76c2b6981a096',
-    'catalogo.json': '2f33003493824ed767427791368275b7b059f397f201ae9cc73fcb1b44b6442b',
+ORIGEM = {  # Ficha---RPG-JJK@76bc66788fb6f75faa3b778f03939017d9d65420 (Técnica Máxima R67)
+    'formulas.py': 'c7139b5d1262420e485cfe8400a4acee8e1380028fa36980a66941070fef5448',
+    'catalogo.json': '66fea1d804b3acd1e60c642cfd86d816120be44c2226ca6903a4ce2f6ab9f158',
 }
 
 
@@ -120,12 +120,13 @@ class NucleoVendorizado(unittest.TestCase):
             self.assertEqual(hashlib.sha256((pasta / nome).read_bytes()).hexdigest(), sha, nome)
 
     def test_89_casos_verificados_no_google(self):
-        # Mesma base do r53/testes/verificar.py; os 89 casos passaram nativamente em GOOGLE-89-FINAL.json.
+        # Mesma base do r53/testes/verificar.py; os 89 primeiros passaram nativamente em GOOGLE-89-FINAL.json.
+        # Os 7 últimos são da Técnica Máxima R67 (casos.json da ficha @76bc667), e a cura da domada caiu para 14/16/19d8.
         base = dict(tr_dano='Físico', tr_controle='Físico', preparada=True, origem_permissao='Caso de conferência do autor R53',
                     permite_dano=True, permite_cura=True, permite_vt=True, dest_dano='Inimigo válido',
                     dest_cura='Aliado disposto', dest_vt='Aliado disposto')
         casos = json.loads((RAIZ / 'src/testes/dados/r53-casos.json').read_text())
-        self.assertEqual(len(casos), 89)
+        self.assertEqual(len(casos), 96)
         for caso in casos:
             obtido = M.calcular({**base, **caso['entrada']}, catalogo_extra=caso.get('catalogo'),
                                 familias_custom=caso.get('familias_custom'), formas_custom=caso.get('formas'))
@@ -148,9 +149,45 @@ class Manifesto(unittest.TestCase):
         b47, r53 = campos_b47(), campos_r53()
         self.assertEqual(len(r53), 18393)  # 18.394 linhas com o cabeçalho, como na publicação oficial
         self.assertTrue(set(b47) <= set(r53))
-        self.assertTrue(all(r53[k]['parte'] == b47[k]['parte'] for k in b47))
+        # Só as 12 exp.acerto mudaram de parte (07/11/2026); ver test_exp_acerto_sai_como_resultado.
+        self.assertEqual([k for k in b47 if r53[k]['parte'] != b47[k]['parte']],
+                         [f'invocacao.{i}.exp.acerto' for i in range(1, 13)])
         self.assertEqual(sum(k.endswith('.controle_compat') for k in r53), 30)
         self.assertEqual(len(contextos()), 249)
+
+    def test_exp_acerto_sai_como_resultado(self):
+        """A ficha calcula o "Acerto Nd8" e exporta `resultado` desde 07/11/2026; as cópias de antes, `entrada`."""
+        from closure_bot.ficha_esquema import EXP_ACERTO, parte_aceita
+        chaves = [k for k in campos_r53() if EXP_ACERTO.fullmatch(k)]
+        self.assertEqual(len(chaves), 12)
+        self.assertTrue(all(campos_r53()[k]['parte'] == 'resultado' for k in chaves))
+        self.assertEqual(campos_b47()['invocacao.1.exp.acerto']['parte'], 'entrada')  # o contrato 11 não muda
+        self.assertFalse(parte_aceita('invocacao.1.exp.acerto', 'resultado', 'entrada'))
+        f = completa_r53()  # herda do B47 a parte entrada, como uma cópia de antes de 07/11
+        antes = conferir(f, REF)
+        self.assertFalse(any(p.campo.endswith('.exp.acerto') for p in antes.problemas), textos(antes))
+        for k in chaves:
+            f[k] = Campo(f[k].valor, f[k].celula, 'resultado')
+        r = conferir(f, REF)
+        self.assertEqual((r.veredito, r.problemas), (antes.veredito, antes.problemas))
+        f['invocacao.1.exp.acerto'] = Campo('', '', 'aviso')
+        r = conferir(f, REF)
+        self.assertTrue(any(p.campo == 'invocacao.1.exp.acerto' and p.regra == 'formato' for p in r.problemas))
+
+    def test_chaves_dos_talentos_gratis_sao_opcionais(self):
+        from closure_bot.ficha_esquema import campos_opcionais
+        novas = campos_opcionais()
+        self.assertEqual(len(novas), 15)
+        self.assertFalse(set(novas) & set(campos_r53()))
+        self.assertEqual((tipo('vagas.feiticos_gratis'), tipo('passiva.origem'), tipo('passiva.extra.categoria')),
+                         ('numero', 'texto', 'numero'))
+        f = completa_r53()
+        antes = conferir(f, REF)
+        for k, v in novas.items():
+            f[k] = Campo('', v['origem'], v['parte'])
+        r = conferir(f, REF)
+        self.assertEqual((r.veredito, r.problemas), (antes.veredito, antes.problemas))
+        self.assertFalse(any('chave adicional' in n and n.split(':')[0] in novas for n in r.nao_conferido))
 
     def test_variante_e_tipos(self):
         self.assertEqual(variante({'formato.versao': Campo(12, '', '')}), 'r53-v12')
