@@ -73,10 +73,35 @@ conferido no Discord. O que mudou e por quê está em
     página Limites lista os campos `r53.classe0.*` que ainda não são
     conferidos.
 
+## Conferências depois do registro (19/11, 21:52–21:57)
+
+- **Era da Revolução.** O `GC:ficha` com o link da oficial deu o mesmo
+  resultado da Ciclo: reprovada, 5 erros, 9 pendências e 0 observações, sem
+  nenhum "acerto".
+  [Resposta](https://discord.com/channels/1357866906341736488/1561410667108368575/1573138912149508237)
+- **Cartão preenchido, por `.xlsx` anexo.**
+  - A ficha foi uma cópia da descartável do ensaio pós-R67 (`1KCEtB…`, na
+    lixeira desde o ensaio). Ela está no nível 17, com a Máxima "Teste R67
+    Explosão" e a ANALISE exportada às 12:40.
+  - A cópia (`15h6JR…`) foi baixada como `.xlsx` e mandada pra lixeira em
+    seguida. Não precisou mexer em compartilhamento.
+  - O painel ganhou a página **Feitiços e técnicas**: "Técnica Máxima — Teste
+    R67 Explosão · Classe 5 · Dano 19d8; Saldo sem uso 8 pontos · 25 PE ·
+    saldo 8 · ficha VÁLIDO". É a mesma conta do ensaio e da análise local.
+  - A página Personagem mostra Repertório com 13 espaços, maestria 2, Classe
+    Máxima 5, refino de graça 4 e Classe 0 grátis 5.
+  - O resultado foi reprovada, com 7 erros, 9 pendências e 6 páginas.
+  [Resposta](https://discord.com/channels/1357866906341736488/1561410667108368575/1573139714696028294)
+- **Defeito visto.** Nesse painel, os erros "famílias livres" e "famílias
+  fechadas" aparecem duas vezes na página Correções e revisão. Por isso o total
+  é 7: são 5 erros diferentes. Na oficial em branco, cada um aparece uma vez só.
+  Fica para uma correção separada.
+- Isso também fecha a pendência "`.xlsx` de ficha 13 não testado com arquivo
+  real" do [registro do formato 13](PUBLICACAO-FORMATO13-2026-11-19.md).
+
 ## Pendências reais
 
-- A oficial está em branco, então os cartões de feitiço, Liberação e Máxima
-  aparecem vazios. A conta completa de um cartão preenchido só foi vista na
-  análise local da cópia de jogador (registro da PR #110), e não no Discord.
-- Não rodei a oficial da Era da Revolução desta vez.
+- Os cartões de feitiço e de Liberação preenchidos ainda não passaram pelo
+  Discord. Só a Máxima passou.
+- A duplicação das famílias descrita acima.
 - Não houve pergunta à Kal'tsit ou à Closure, porque essas chamam o modelo pago.

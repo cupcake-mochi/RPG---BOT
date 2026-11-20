@@ -42,5 +42,5 @@ As duas oficiais (Ciclo Maldito e Era da Revolução) viraram formato 13 em 18/1
 ## Pendências reais
 
 - Ensaiar no Discord uma ficha 13 editada depois da exportação (tem que sair o pedido de exportação); o caso `em_dia` já foi ensaiado.
-- `.xlsx` de ficha 13 não testado com arquivo real.
-- Registrar o que foram os dois Commits e a mudança de RAM de 05/11.
+- ~~`.xlsx` de ficha 13 não testado com arquivo real.~~ Testado em 19/11, às 21:55. Veja o [registro do Acerto da Expansão](PUBLICACAO-EXP-ACERTO-R53-2026-11-19.md).
+- ~~Registrar o que foram os dois Commits e a mudança de RAM de 05/11.~~ Apurado em [Discloud em 05/11/2026](DISCLOUD-2026-11-05.md).
