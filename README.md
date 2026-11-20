@@ -35,13 +35,13 @@ A publicação está no runtime `56b02cf`, online desde 0h02 de 20/11/2026
 (Brasília). Ela corrige os erros de Famílias que saíam repetidos no painel.
 [Registro da publicação](Closure/docs/PUBLICACAO-FAMILIAS-2026-11-20.md)
 
-A **Carteira viva** está em desenvolvimento separado, nos PRs
-[#77–#84](https://github.com/cupcake-mochi/RPG---BOT/pull/84), sem publicação.
+A **Carteira viva** está no repositório como serviço separado, sem publicação.
+O código fica em `Closure/src/carteira_viva` e não entra no pacote do bot.
 Etapas 1–6 implementadas, etapa 7 parcial e etapas 8–10 pendentes.
 A criação automática de fichas continua bloqueada. O próximo marco é revisar
 o tempo da preparação e testar eventos reais de abertura, edição, missão,
 gasto e correção de data em uma cópia descartável nova. O estado atualizado
-fica na [retomada da Carteira viva](https://github.com/cupcake-mochi/RPG---BOT/blob/codex/carteira-viva-etapa-7/Closure/docs/carteira-viva/RETOMADA.md).
+fica na [retomada da Carteira viva](Closure/docs/carteira-viva/RETOMADA.md).
 
 | Preciso de… | Onde encontrar |
 |---|---|

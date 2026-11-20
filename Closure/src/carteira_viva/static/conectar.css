@@ -1,0 +1,14 @@
+:root{color-scheme:dark light;font-family:system-ui,sans-serif;line-height:1.6;background:#10191e;color:#e6edf0}
+body{margin:0;padding:32px 18px}main{max-width:650px;margin:auto;padding:32px;background:#19272e;border:1px solid #36505c;border-radius:18px}
+.marca{letter-spacing:.14em;color:#a5d9d6;font-size:.8rem;font-weight:700}h1{font-size:clamp(1.7rem,5vw,2.3rem);line-height:1.2;margin:16px 0}h2{font-size:1.25rem}
+.etapas{padding-left:24px;color:#b8cbd3}.etapas li{padding:3px 0}section{margin:20px 0}button,input,select{font:inherit}button{padding:12px 20px;border:0;border-radius:8px;background:#a6e0d4;color:#102b2b;font-weight:650;cursor:pointer;margin:8px 8px 8px 0}button:hover{background:#c4f0e6}button:disabled{opacity:.5;cursor:wait}.secundario{color:#e6edf0;background:#30434d}.secundario:hover{background:#3d5662}
+label{display:block;margin:16px 0 6px}input:not([type=checkbox]),select{box-sizing:border-box;width:100%;padding:11px;background:#101e25;color:#e6edf0;border:1px solid #66828e;border-radius:7px}.checkbox{display:flex;gap:12px;align-items:flex-start}.checkbox input{width:20px;height:20px;flex-shrink:0;margin-top:4px;accent-color:#a6e0d4}.aviso{padding:14px;border-left:3px solid #eac878;background:#302c20;color:#f9e9c5;border-radius:5px}.rodape{font-size:.88rem;color:#b8cbd3;margin-top:28px}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #eac878;outline-offset:3px}[hidden]{display:none!important}
+@media(max-width:500px){body{padding:12px}main{padding:22px}button{width:100%;margin-right:0}}
+@media(prefers-color-scheme:light){:root{background:#eef4f4;color:#172a32}main{background:#fff;border-color:#b4c9ce}.marca{color:#23675e}.etapas,.rodape{color:#46606b}.secundario{background:#d8e5e9;color:#203841}.secundario:hover{background:#c5d9df}input:not([type=checkbox]),select{background:#f7fbfc;color:#172a32;border-color:#6b8793}.aviso{background:#fff4d9;color:#5c4318}}
+/* O Picker injeta estas regras em <style>, bloqueado pela CSP. Mantemos o
+   layout em arquivo próprio, sem liberar estilos inline ou scripts livres. */
+.picker-dialog-frame{width:100%;height:100%;border:0;overflow:hidden}
+.picker-dialog-bg{position:absolute;top:0;left:0;background:#fff;z-index:1000}
+.picker-dialog{position:absolute;top:0;left:0;background:#fff;border:1px solid #acacac;width:auto;padding:0;z-index:1001;overflow:auto;box-shadow:0 4px 16px rgb(0 0 0 / 20%)}
+.picker-dialog-content{height:100%;font-size:0;padding:0}
+.picker-dialog-buttons,.picker-dialog-title{display:none}
