@@ -154,7 +154,8 @@ de volta no fim. Todos rodaram no runtime `56b02cf`, no tópico Testes.
 - **Envio anterior com "Somar" (20:53).** Antes desse teste houve um envio com "Somar" em maiúscula. O erro foi
   do teste: o valor foi escrito pela API, que passa por cima do menu. A planilha aceitou, porque o Sheets compara
   texto sem diferenciar maiúscula. O bot recusou a linha ("alvo conhecido, somar/trocar por…"). Quem usa o menu
-  recebe "somar" e não cai nisso. Fica como observação, sem conserto.
+  recebe "somar" e não cai nisso. *Consertado em 21/11:* o bot passou a aceitar o COMO sem diferenciar maiúscula,
+  como a planilha. Veja [Somar com maiúscula](PUBLICACAO-SOMAR-CAIXA-2026-11-21.md).
 - **Pergunta paga (20:59).** Mencionando o bot: "Kal'tsit, quanto PE custa ativar uma Liberação Máxima de Classe
   3? Responde curto, com a conta." A Kal'tsit respondeu que o custo é 14 PE: 3 × Classe = 9, mais 50%, dá 13,5,
   que arredonda para 14. A conta está certa pela R67. O custo estimado nos logs foi US$ 0,008769, perto dos
