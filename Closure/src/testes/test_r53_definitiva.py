@@ -12,11 +12,12 @@ from test_r53 import REF, completa_r53, csvfile_texto
 
 
 class ContratoDefinitivo(unittest.TestCase):
-    def test_18393_chaves_csv_xlsx_sem_aba_financeira(self):
+    def test_18484_chaves_csv_xlsx_sem_aba_financeira(self):
         from openpyxl import Workbook
         ficha = completa_r53()
-        self.assertEqual(len(ficha), 18393)
-        self.assertEqual(sum(k.startswith('r53.') for k in ficha), 10173)
+        # 18393 do contrato + as 91 opcionais da Prática Cotidiana (72 delas em r53.classe0.6/7).
+        self.assertEqual(len(ficha), 18393 + 91)
+        self.assertEqual(sum(k.startswith('r53.') for k in ficha), 10173 + 72)
         self.assertFalse(any(k.startswith(('dinheiro.', 'salario.')) for k in ficha))
         livro = Workbook()
         aba = livro.active
