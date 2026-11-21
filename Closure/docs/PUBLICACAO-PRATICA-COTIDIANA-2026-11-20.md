@@ -92,12 +92,22 @@ Limites da análise listava as chaves cruas (`r53.classe0.6.*`, `zero.6.*`…).
   - O log registrou "ficha analisada: reprovada, 5 problema(s)".
   - Não houve chamada paga.
 
-## Limitação conhecida
+## Origem personalizada (corrigido em 21/11/2026)
 
-A regra `zeros_adicionais`, em `ficha_repertorio.py`, dá +2 Classe 0 com a
-Prática Cotidiana na Restrição corporal. Ela não cobre a Prática Cotidiana
-herdada por Restrição custom, que a ficha aceita. Ficou de fora para não mexer
-em mecânica.
+Este registro dizia que a regra `zeros_adicionais` (`ficha_repertorio.py`) não
+cobria a Prática Cotidiana numa Origem personalizada com base na Restrição
+corporal. **Estava errado.** No `conferir_b47`, o bot confere as contas sobre
+uma visão mecânica em que a Origem personalizada, válida e aprovada, vira a
+base dela. Assim, `zeros_adicionais` já vê a Restrição corporal e dá as duas
+vagas, como a ficha faz (`DADOS_CUSTOM!B126`: Origem publicada ou cartão válido
+com essa base).
+
+- Isso foi conferido nos formatos 11 e 12/13. Com 4 Classe 0 no nível 1, a
+  Prática Cotidiana não dá erro, e a Reserva Excedente dá.
+- O teste
+  `test_pratica_cotidiana_herdada_pela_origem_custom_da_restricao_corporal`
+  trava esse comportamento. Veja
+  [Somar com maiúscula](PUBLICACAO-SOMAR-CAIXA-2026-11-21.md).
 
 ## Pendências reais
 
