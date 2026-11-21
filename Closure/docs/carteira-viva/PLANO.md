@@ -48,6 +48,7 @@ preservam as automações da ficha antes de serem liberadas.
 | Personalização | Título, frase, imagem, cor e campos opcionais, com prévia antes de salvar. |
 | Modelo do servidor | Padrão oficial; administrador pode selecionar uma cópia da ficha do sistema com configurações extras da mesa. Preservar essas configurações e inicializar os dados pessoais separadamente; nenhum parâmetro de criação está liberado na etapa 7. Nunca altera fichas já cadastradas automaticamente. |
 | Link no nome | Abre a Carteira viva. Link direto da planilha fica na área autorizada, respeitando também as permissões do Google. |
+| Onde fica cada coisa | O uso principal é pelo Discord: comandos, galeria, cartão, análise, personalização e, na etapa 8, a edição. A web é obrigatória só para o consentimento do Google e a escolha do arquivo. A página `/carteira` continua como opção extra, linkada pelo título do cartão (confirmado pelo Mizuki em 21/11/2026). |
 | Análise | `/personagem analisar`, privada, com o motor determinístico existente e os limites humanos preservados. |
 
 Não usar varredura periódica de todas as fichas, conta central como dona
