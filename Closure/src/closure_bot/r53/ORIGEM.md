@@ -6,6 +6,10 @@ A conta da Máxima segue a R67: a Forma sai dos dados, os pontos de 8/12/16 paga
 - `formulas.py` e `catalogo.json`: idênticos (sha256 conferido em `testes/test_r53.py`).
 - `modelo.py`: só os imports viraram relativos ao pacote.
 - `formas_custom.py`: só a constante `CAMPOS`.
-- `contextos.json`: os 249 cartões (modalidade e classes) extraídos de `montagens_r53.py`/`cartoes_diretos.py`.
+- `contextos.json`: os 249 cartões (modalidade e classes) extraídos de `montagens_r53.py`/`cartoes_diretos.py`,
+  mais `classe0.6` e `classe0.7` (Classe 0, classes `[0]`), que a Prática Cotidiana acrescentou no fim do registro
+  (`ficha-v01/pratica_cotidiana.py`, Ficha---RPG-JJK@bc4bd46, 05/11/2026). Conferidos contra o `R53_EDITOR_.contextos`
+  do `apps-script/EditorR53.gs` de Ficha---RPG-JJK@78fc37d: 251 ids, iguais a estes. As chaves deles na ANALISE estão em
+  `recursos/pratica-cotidiana-campos.tsv`, como opcionais.
 
 Não edite à mão: para uma nova publicação, copie de novo do commit da ficha e atualize os sha nos testes.

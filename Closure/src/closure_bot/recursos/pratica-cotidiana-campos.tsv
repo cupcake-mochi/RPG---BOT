@@ -1,0 +1,92 @@
+chave	parte	origem	booleano
+r53.classe0.6.classe	entrada	'DADOS_R53'!C252	0
+r53.classe0.6.modalidade	entrada	'DADOS_R53'!D252	0
+r53.classe0.6.forma	entrada	'DADOS_R53'!G252	0
+r53.classe0.6.dano	entrada	'DADOS_R53'!H252	0
+r53.classe0.6.cura	entrada	'DADOS_R53'!I252	0
+r53.classe0.6.vt	entrada	'DADOS_R53'!J252	0
+r53.classe0.6.p_dano	entrada	'DADOS_R53'!K252	0
+r53.classe0.6.p_cura	entrada	'DADOS_R53'!L252	0
+r53.classe0.6.p_vt	entrada	'DADOS_R53'!M252	0
+r53.classe0.6.controle	entrada	'DADOS_R53'!O252	0
+r53.classe0.6.dest_dano	entrada	'DADOS_R53'!Z252	0
+r53.classe0.6.dest_cura	entrada	'DADOS_R53'!AA252	0
+r53.classe0.6.dest_vt	entrada	'DADOS_R53'!AB252	0
+r53.classe0.6.res_dano	entrada	'DADOS_R53'!AC252	0
+r53.classe0.6.tr_dano	entrada	'DADOS_R53'!AW252	0
+r53.classe0.6.tr_controle	entrada	'DADOS_R53'!AX252	0
+r53.classe0.6.dependencias	entrada	'DADOS_R53'!AD252	0
+r53.classe0.6.execucao	entrada	'DADOS_R53'!AE252	0
+r53.classe0.6.origem_permissao	entrada	'DADOS_R53'!AJ252	0
+r53.classe0.6.orcamento	resultado	'DADOS_R53'!BL252	0
+r53.classe0.6.base_funcoes	resultado	'DADOS_R53'!CV252	0
+r53.classe0.6.custo_forma	resultado	'DADOS_R53'!CW252	0
+r53.classe0.6.melhorias_pagas	resultado	'DADOS_R53'!CX252	0
+r53.classe0.6.devolucao	resultado	'DADOS_R53'!CZ252	0
+r53.classe0.6.saldo	resultado	'DADOS_R53'!DA252	0
+r53.classe0.6.dano_d8	resultado	'DADOS_R53'!DQ252	0
+r53.classe0.6.cura_d8	resultado	'DADOS_R53'!DT252	0
+r53.classe0.6.vida_temporaria	resultado	'DADOS_R53'!DU252	0
+r53.classe0.6.sem_uso	resultado	'DADOS_R53'!DV252	0
+r53.classe0.6.pe	resultado	'DADOS_R53'!DX252	0
+r53.classe0.6.cd_normal	resultado	'DADOS_R53'!EB252	0
+r53.classe0.6.cd_controle	resultado	'DADOS_R53'!EC252	0
+r53.classe0.6.funcao	resultado	'DADOS_R53'!FH252	0
+r53.classe0.6.avisos	aviso	'DADOS_R53'!FX252	0
+r53.classe0.6.entrada	entrada	'DADOS_R53'!A252:AX252	0
+r53.classe0.7.classe	entrada	'DADOS_R53'!C253	0
+r53.classe0.7.modalidade	entrada	'DADOS_R53'!D253	0
+r53.classe0.7.forma	entrada	'DADOS_R53'!G253	0
+r53.classe0.7.dano	entrada	'DADOS_R53'!H253	0
+r53.classe0.7.cura	entrada	'DADOS_R53'!I253	0
+r53.classe0.7.vt	entrada	'DADOS_R53'!J253	0
+r53.classe0.7.p_dano	entrada	'DADOS_R53'!K253	0
+r53.classe0.7.p_cura	entrada	'DADOS_R53'!L253	0
+r53.classe0.7.p_vt	entrada	'DADOS_R53'!M253	0
+r53.classe0.7.controle	entrada	'DADOS_R53'!O253	0
+r53.classe0.7.dest_dano	entrada	'DADOS_R53'!Z253	0
+r53.classe0.7.dest_cura	entrada	'DADOS_R53'!AA253	0
+r53.classe0.7.dest_vt	entrada	'DADOS_R53'!AB253	0
+r53.classe0.7.res_dano	entrada	'DADOS_R53'!AC253	0
+r53.classe0.7.tr_dano	entrada	'DADOS_R53'!AW253	0
+r53.classe0.7.tr_controle	entrada	'DADOS_R53'!AX253	0
+r53.classe0.7.dependencias	entrada	'DADOS_R53'!AD253	0
+r53.classe0.7.execucao	entrada	'DADOS_R53'!AE253	0
+r53.classe0.7.origem_permissao	entrada	'DADOS_R53'!AJ253	0
+r53.classe0.7.orcamento	resultado	'DADOS_R53'!BL253	0
+r53.classe0.7.base_funcoes	resultado	'DADOS_R53'!CV253	0
+r53.classe0.7.custo_forma	resultado	'DADOS_R53'!CW253	0
+r53.classe0.7.melhorias_pagas	resultado	'DADOS_R53'!CX253	0
+r53.classe0.7.devolucao	resultado	'DADOS_R53'!CZ253	0
+r53.classe0.7.saldo	resultado	'DADOS_R53'!DA253	0
+r53.classe0.7.dano_d8	resultado	'DADOS_R53'!DQ253	0
+r53.classe0.7.cura_d8	resultado	'DADOS_R53'!DT253	0
+r53.classe0.7.vida_temporaria	resultado	'DADOS_R53'!DU253	0
+r53.classe0.7.sem_uso	resultado	'DADOS_R53'!DV253	0
+r53.classe0.7.pe	resultado	'DADOS_R53'!DX253	0
+r53.classe0.7.cd_normal	resultado	'DADOS_R53'!EB253	0
+r53.classe0.7.cd_controle	resultado	'DADOS_R53'!EC253	0
+r53.classe0.7.funcao	resultado	'DADOS_R53'!FH253	0
+r53.classe0.7.avisos	aviso	'DADOS_R53'!FX253	0
+r53.classe0.7.entrada	entrada	'DADOS_R53'!A253:AX253	0
+r53.classe0.6.versao.0	entrada	'MONTAGENS'!B9468	0
+r53.classe0.7.versao.0	entrada	'MONTAGENS'!B9506	0
+zero.6.classe	entrada		0
+zero.6.pe	resultado		0
+zero.6.nome	entrada	'FICHA AMALDIÇOADA'!D566	0
+zero.6.forma	entrada	'FICHA AMALDIÇOADA'!F566	0
+zero.6.dano	resultado	'FICHA AMALDIÇOADA'!P566	0
+zero.6.alcance	resultado	'FICHA AMALDIÇOADA'!R566	0
+zero.6.pecas	entrada	'FICHA AMALDIÇOADA'!J566	0
+zero.6.restricoes	entrada	'FICHA AMALDIÇOADA'!L566	0
+zero.7.classe	entrada		0
+zero.7.pe	resultado		0
+zero.7.nome	entrada	'FICHA AMALDIÇOADA'!D567	0
+zero.7.forma	entrada	'FICHA AMALDIÇOADA'!F567	0
+zero.7.dano	resultado	'FICHA AMALDIÇOADA'!P567	0
+zero.7.alcance	resultado	'FICHA AMALDIÇOADA'!R567	0
+zero.7.pecas	entrada	'FICHA AMALDIÇOADA'!J567	0
+zero.7.restricoes	entrada	'FICHA AMALDIÇOADA'!L567	0
+origem.pratica_cotidiana.vagas	resultado	'DADOS_CUSTOM'!B134	0
+origem.pratica_cotidiana.anotados	resultado	'DADOS_CUSTOM'!B135	0
+origem.pratica_cotidiana.aviso	aviso	'DADOS_CUSTOM'!B136	0

@@ -1,7 +1,7 @@
 """Cartões R53 da ANALISE 12 (montagem esquema 2), sem IA e sem escrever na ficha.
 
 A R53 manteve as 8.190 chaves B47 e acrescentou os 249 cartões editáveis no
-lugar: `r53.<id>.entrada` é a aplicação ativa e `r53.<id>.versao.<classe>` a
+lugar; a Prática Cotidiana (05/11/2026) somou classe0.6 e classe0.7, total 251: `r53.<id>.entrada` é a aplicação ativa e `r53.<id>.versao.<classe>` a
 versão preparada de cada Classe, ambas como arrays JSON descritos pelos
 esquemas exportados. O núcleo de contas é o da própria ficha (`r53/`, cópia de
 Ficha---RPG-JJK@4b22da5), avaliado com `registro_livre=True`, a modalidade da
@@ -211,7 +211,7 @@ def decodificar(ficha):
             out.setdefault(id_, dict(ativa=None, versoes={}))['ativa'] = r
     for id_, dados in out.items():
         if id_ not in contextos():
-            erros.append(('r53.' + id_ + '.entrada', 'um dos 249 cartões publicados', 'formato'))
+            erros.append(('r53.' + id_ + '.entrada', f'um dos {len(contextos())} cartões publicados', 'formato'))
     return out, erros
 
 

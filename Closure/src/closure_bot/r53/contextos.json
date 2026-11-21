@@ -1,5 +1,5 @@
 {
-"origem": "cupcake-mochi/Ficha---RPG-JJK@4b22da5420263a8885e28a508cbc39938dd9d9da apps-script/R53Analise*.gs",
+"origem": "cupcake-mochi/Ficha---RPG-JJK@4b22da5420263a8885e28a508cbc39938dd9d9da apps-script/R53Analise*.gs; classe0.6 e classe0.7 (Prática Cotidiana) de Ficha---RPG-JJK@78fc37d apps-script/EditorR53.gs",
 "contextos": {
 "feitico.1": {
 "modalidade": "Comum",
@@ -494,6 +494,18 @@
 ]
 },
 "classe0.5": {
+"modalidade": "Classe 0",
+"classes": [
+0
+]
+},
+"classe0.6": {
+"modalidade": "Classe 0",
+"classes": [
+0
+]
+},
+"classe0.7": {
 "modalidade": "Classe 0",
 "classes": [
 0
