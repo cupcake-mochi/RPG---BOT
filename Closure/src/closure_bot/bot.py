@@ -66,6 +66,9 @@ class ClosureBot(commands.Bot):
     async def setup_hook(self) -> None:
         for modulo in MODULOS:
             await self.load_extension(f"closure_bot.cogs.{modulo}")
+        if self.config.carteira_url:
+            # Carteira viva: só liga com o site configurado (CARTEIRA_API_URL e CARTEIRA_SERVICE_TOKEN no .env).
+            await self.load_extension("carteira_viva.ponte_discord")
         # O registro geral troca, em todo servidor, a lista de comandos que o bot antigo deixou no mesmo aplicativo.
         await self.tree.set_translator(Tradutor())
         self.mencoes = {comando.name: comando.mention for comando in await self.tree.sync()}

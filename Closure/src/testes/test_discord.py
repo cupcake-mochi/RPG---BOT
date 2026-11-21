@@ -309,6 +309,28 @@ class CamadaDoDiscord(unittest.IsolatedAsyncioTestCase):
         self.assertEqual([c.kwargs.get("guild") and c.kwargs["guild"].id for c in sync.call_args_list], [None, 77])
         self.assertEqual(self.bot.tree.get_commands(guild=discord.Object(id=77)), [])
 
+    async def test_ponte_da_carteira_so_carrega_com_o_site_configurado(self):
+        from dataclasses import replace
+
+        with patch.object(self.bot, "load_extension", AsyncMock()) as carga, patch.object(self.bot.tree, "sync", AsyncMock()):
+            await self.bot.setup_hook()
+        self.assertNotIn("carteira_viva.ponte_discord", [c.args[0] for c in carga.call_args_list])
+        self.bot.config = replace(self.bot.config, carteira_url="https://carteira.exemplo", carteira_token="s" * 40)
+        with patch.object(self.bot, "load_extension", AsyncMock()) as carga, patch.object(self.bot.tree, "sync", AsyncMock()):
+            await self.bot.setup_hook()
+        self.assertEqual(carga.call_args_list[-1].args[0], "carteira_viva.ponte_discord")
+
+    async def test_ponte_da_carteira_usa_a_configuracao_das_guias(self):
+        from dataclasses import replace
+
+        self.bot.config = replace(self.bot.config, carteira_url="https://carteira.exemplo", carteira_token="s" * 40)
+        with patch.dict("os.environ", {}, clear=False) as amb:
+            amb.pop("CARTEIRA_API_URL", None); amb.pop("CARTEIRA_SERVICE_TOKEN", None)
+            await self.bot.load_extension("carteira_viva.ponte_discord")
+        cog = self.bot.get_cog("ConectarFicha")
+        self.assertEqual((cog.origem, cog.token), ("https://carteira.exemplo", "s" * 40))
+        self.assertTrue({"personagem", "personagens", "character"} <= {c.name for c in self.bot.tree.get_commands()})
+
     async def test_comandos_registrados(self):
         self.assertEqual({c.name for c in self.bot.tree.get_commands()}, {"ajuda", "atalho", "guia", "ficha", "livro", "ping", "status", "teste_webhook", "clima", "clima_canal", "clima_canal_desligar",
                           "idioma", "language", "lnt", "cargo_admin",

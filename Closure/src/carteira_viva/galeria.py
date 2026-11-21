@@ -33,6 +33,17 @@ class Galeria:
             await self.banco('registrar_saida',m.servidor,dono)
             raise AcessoNegado('O responsável não está mais neste servidor.') from None
 
+    async def excluir(self,s,u,pid,*,pedido):
+        # Só o dono exclui (Acao.EXCLUIR); o arquivo no Google não é tocado.
+        await self.banco('excluir',await self.membro(s,u),pid,pedido=pedido)
+        return {'ok':True}
+
+    async def apagar_meus_dados(self,s,u):
+        # A identidade vem da interação do Discord, entregue pela ponte autenticada.
+        await self.membro(s,u)
+        await self.banco('apagar_usuario',u)
+        return {'ok':True}
+
     async def listar(self,s,u,*,dono=None,depois=''):
         if ((dono is not None and (not isinstance(dono,str) or not dono.isdigit() or len(dono)>22)) or
                 not isinstance(depois,str) or (depois and (len(depois)!=32 or any(c not in '0123456789abcdef' for c in depois)))):

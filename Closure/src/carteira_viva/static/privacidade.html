@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Privacidade · Carteira · Guias do Ciclo</title><link rel="stylesheet" href="/static/carteira.css"></head>
+<body><a class="pular" href="#conteudo">Ir para o conteúdo</a><div class="pagina documento">
+<header><div><p class="marca">GUIAS DO CICLO · CARTEIRA DE PERSONAGENS</p><h1>Política de privacidade da Carteira</h1><p class="muted">Atualizada em 21/11/2026 · <a href="#english">English below</a></p></div></header>
+<main id="conteudo" tabindex="-1">
+<p>Eu sou o Mizuki e mantenho a Carteira de personagens, parte do Guias do Ciclo. Ela liga a ficha de RPG que você já tem no Google Planilhas a um cartão do personagem, que aparece no Discord e nesta página. Aqui está o que ela guarda, quem vê e como apagar. Qualquer pedido sobre isso, me chame no servidor da guilda.</p>
+
+<h2>O que vem do Discord</h2>
+<ul>
+<li>Seu ID do Discord e o ID do servidor onde você cadastrou o personagem.</li>
+<li>Ao entrar nesta página, o login do Discord pede só a permissão <code>identify</code> (quem você é). O token do Discord não fica guardado: depois do login sobra só um cookie de sessão, que vale por até 8 horas.</li>
+<li>A cada ação, o bot confere no Discord se você ainda está no servidor e quais cargos tem. Ele não lê mensagens para isso.</li>
+</ul>
+
+<h2>O que vem do Google</h2>
+<ul>
+<li>A Carteira pede só o escopo <code>drive.file</code>. Com ele, ela só enxerga os arquivos que você mesmo escolhe na janela do Google. O resto do seu Drive fica invisível pra ela.</li>
+<li>Ela só lê a planilha escolhida e não altera nada nela.</li>
+<li>Guarda, cifradas, a autorização do Google, a identificação da conta e o ID do arquivo escolhido.</li>
+<li>Da ficha, guarda a última leitura completa por até 24 horas e o último resultado de análise por até 7 dias, os dois cifrados.</li>
+<li>Guarda também um resumo do cartão, enquanto o personagem estiver cadastrado: nome, origem, caminho, nível, Vida, PE e Defesa.</li>
+</ul>
+<p>O uso das informações recebidas das APIs do Google segue a <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noreferrer noopener" target="_blank">Política de Dados do Usuário dos Serviços de API do Google</a>, incluindo os requisitos de Uso Limitado. Os dados da planilha não são usados para publicidade, não são vendidos e não vão para modelos de inteligência artificial. A análise da ficha é feita por regras fixas, sem modelo de IA.</p>
+
+<h2>O que você escreve</h2>
+<p>A apresentação do cartão fica guardada cifrada até você mudar ou excluir o personagem:</p>
+<ul>
+<li>título, frase e cor;</li>
+<li>imagem em PNG, JPEG ou WebP, até 1 MiB. Ela é convertida antes de ser guardada, e imagem enviada sem confirmar é apagada em até 24 horas;</li>
+<li>a escolha de quais campos aparecem.</li>
+</ul>
+
+<h2>Quem vê o quê</h2>
+<ul>
+<li><strong>Cartão:</strong> só quem é membro do mesmo servidor do Discord, e só com os campos que você marcou dentro do que o servidor permite. Nível, Vida, PE e Defesa começam escondidos. A página não é indexada nem aberta a quem está fora do servidor.</li>
+<li><strong>Ficha detalhada e análise:</strong> você, o dono e os administradores do servidor e os cargos de revisão que o servidor autorizou.</li>
+<li>Quem sai do servidor ou perde o cargo perde esse acesso na hora.</li>
+</ul>
+
+<h2>Quanto tempo fica</h2>
+<ul>
+<li>Se você sair do servidor, seus personagens de lá somem na hora e são apagados depois de 30 dias, a menos que você volte antes.</li>
+<li>Uma conexão com o Google que não tem mais nenhum personagem é apagada em até 1 dia.</li>
+<li>Fica um registro mínimo de ações (qual ação, quem e quando, sem conteúdo da ficha) por 90 dias.</li>
+<li>A lista de exclusões fica 31 dias, pra uma cópia de segurança antiga não trazer de volta o que você apagou. Cópia de segurança com mais de 30 dias não é restaurada.</li>
+</ul>
+
+<h2>Como apagar</h2>
+<ul>
+<li><code>/personagem excluir</code> tira um personagem e tudo ligado a ele: cartão, imagem, leitura e análise.</li>
+<li><code>/personagem apagar_meus_dados</code> apaga todos os seus dados da Carteira, em todos os servidores, incluindo a conexão com o Google.</li>
+<li>As duas pedem confirmação. Sua planilha no Google continua igual. O arquivo cifrado da imagem sai do disco em até 24 horas.</li>
+<li>Pra tirar também a permissão do lado do Google, abra <a href="https://myaccount.google.com/permissions" rel="noreferrer noopener" target="_blank">myaccount.google.com/permissions</a> e remova "Guias do Ciclo — Fichas".</li>
+<li>Se você já saiu de todos os servidores, me chame que eu apago.</li>
+</ul>
+
+<h2>Cookies e hospedagem</h2>
+<p>Esta página usa só os cookies necessários pra sessão e pro login. Não há anúncios, análise de tráfego ou rastreamento. O serviço fica hospedado na Discloud, num app separado do bot de conversa, com banco próprio e cifrado. Os dados não são vendidos nem repassados.</p>
+
+<h2>Mudanças</h2>
+<p>Quando este texto mudar, a data do começo muda junto. Os <a href="/termos">termos de uso</a> estão aqui.</p>
+
+<section id="english" lang="en">
+<h2>Wallet privacy policy — English</h2>
+<p>Updated November 21, 2026. Maintainer: Mizuki. Contact me through the guild server for questions or deletion requests.</p>
+<p><strong>Discord.</strong> The Wallet stores your Discord user ID and the server ID where a character is registered. Web sign-in requests only the <code>identify</code> scope. No Discord token is kept: a session cookie lasts up to 8 hours. Server membership and roles are checked with the bot on every action, without reading messages.</p>
+<p><strong>Google.</strong> The Wallet requests only the <code>drive.file</code> scope, so it can access only the files you pick in Google’s file picker. It reads the chosen sheet and never edits it. It keeps the Google authorization, the account identifier and the file ID encrypted. From the sheet, it keeps the last full reading for up to 24 hours, the last analysis for up to 7 days, and a card summary while the character is registered: name, origin, path, level, HP, EP and defence. Use of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" rel="noreferrer noopener" target="_blank">Google API Services User Data Policy</a>, including the Limited Use requirements. Sheet data is not used for advertising, sold, or sent to AI models. The sheet analysis uses fixed rules, without an AI model.</p>
+<p><strong>Your card.</strong> Title, phrase, colour, image (PNG, JPEG or WebP up to 1 MiB, converted before storage) and visible-field choices are kept encrypted until you change them or delete the character. Unconfirmed images are deleted within 24 hours.</p>
+<p><strong>Who sees what.</strong> Cards are visible only to members of the same Discord server, with the fields you chose within the server’s limits. Level, HP, EP and defence start hidden. Details and analysis are visible to you, the server owner and administrators, and reviewer roles the server authorized. Leaving the server or losing a role removes that access immediately.</p>
+<p><strong>Retention.</strong> Characters of members who leave a server are hidden immediately and deleted after 30 days unless they return. A Google connection with no characters is deleted within a day. A minimal action log (action, actor, time, no sheet content) is kept for 90 days. A deletion list is kept for 31 days so old backups cannot bring back deleted data. Backups older than 30 days are not restored.</p>
+<p><strong>Deletion.</strong> <code>/character delete</code> removes one character and everything linked to it. <code>/character delete_my_data</code> deletes all your Wallet data in every server, including the Google connection. Both ask for confirmation and leave your sheet unchanged; the encrypted image file leaves the disk within 24 hours. To remove the permission on Google’s side, visit <a href="https://myaccount.google.com/permissions" rel="noreferrer noopener" target="_blank">myaccount.google.com/permissions</a>. If you have left every server, contact me.</p>
+<p><strong>Cookies and hosting.</strong> Only cookies needed for sign-in and sessions are used, with no ads, analytics or tracking. The service runs on Discloud, in an app separate from the chat bot, with its own encrypted database. Data is not sold or passed on. The date above changes when this policy is updated. See also the <a href="/termos">terms of use</a>.</p>
+</section>
+</main>
+<footer><p><a href="/">Carteira de personagens</a> · <a href="/termos">Termos de uso</a></p></footer></div></body></html>

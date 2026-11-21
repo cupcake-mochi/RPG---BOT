@@ -4,7 +4,8 @@
     python3 ferramentas/empacotar.py --com-env    com o .env dentro, que é como a Discloud costuma receber
 
 O que entra: discloud.config, iniciar.py, closure_lab.py (o nome do arquivo principal do app antigo na Discloud), requirements.txt (o de src/), o código em src/closure_bot, a ponte do
-site com a página já baixada, o manifesto das regras e os dois card.json. O banco, os testes e o resto de dados/
+site com a página já baixada, o manifesto das regras, os dois card.json e a ponte da Carteira viva (só os 4 arquivos que
+o bot carrega; o serviço do site vai pelo empacotar_carteira.py). O banco, os testes e o resto de dados/
 ficam de fora. O .zip sai em src/var/, que está fora do git: com --com-env ele carrega segredo.
 """
 from __future__ import annotations
@@ -16,6 +17,7 @@ from pathlib import Path
 RAIZ = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(RAIZ / "ferramentas" / "prompt_do_site"))
 SAIDA = RAIZ / "src" / "var" / "closure-lab.zip"
+PONTE_CARTEIRA = ("__init__.py", "ponte_discord.py", "cliente_discord.py", "discord_ui.py")
 
 
 def arquivos(com_env: bool) -> list[tuple[Path, str]]:
@@ -32,6 +34,9 @@ def arquivos(com_env: bool) -> list[tuple[Path, str]]:
     for nome in ("catalogos.json", "livro.jsonl", "legado-r52.jsonl"):
         lista.append((RAIZ / "dados" / "sistema" / nome, f"dados/sistema/{nome}"))
     lista += [(c, str(c.relative_to(RAIZ))) for c in sorted((RAIZ / "dados" / "personagem").glob("*/card.json"))]
+    # a ponte da Carteira viva: o bot só a carrega com CARTEIRA_API_URL no .env (o site é outro app, empacotar_carteira.py)
+    for nome in PONTE_CARTEIRA:
+        lista.append((RAIZ / "src" / "carteira_viva" / nome, f"src/carteira_viva/{nome}"))
     if com_env:
         lista.append((RAIZ / ".env", ".env"))
     return lista

@@ -34,12 +34,15 @@ Variáveis (modelo em .env.exemplo, na raiz do repositório):
   BANCO            caminho do SQLite de registro. Padrão: src/var/bot.sqlite3.
   CHAVE_DO_BANCO   chave que cifra no disco o texto que fala de gente. Cria com: python3 -m closure_bot --gerar-chave.
                    Perder a chave é perder as fichas e as falas guardadas.
+  CARTEIRA_API_URL      origem HTTPS do site da Carteira viva (ex.: https://nome.discloud.app). Com ela e o
+  CARTEIRA_SERVICE_TOKEN segredo abaixo, o bot liga /personagem, /personagens e /character. Vazias = desligado.
+                   O segredo é o mesmo CARTEIRA_SERVICE_TOKEN do app do site; os dois vêm juntos ou nenhum.
 """
 from __future__ import annotations
 
 import os
 import math
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 RAIZ = Path(__file__).resolve().parents[2]  # a pasta Closure/
@@ -106,6 +109,8 @@ class Config:
     gasto_externo_usd: float = 0.0
     midia_ativa: bool = False
     midia_canais: frozenset[int] = frozenset()
+    carteira_url: str = ""
+    carteira_token: str = field(default="", repr=False)
 
     def escuta(self, canal_id: int) -> bool:
         return not self.canais or canal_id in self.canais
@@ -138,6 +143,10 @@ def carregar(arquivo: Path | None = None, ambiente: dict[str, str] | None = None
     teto_preco = valores.get("TETO_PRECO", "").strip().lower() or "cheio"
     if teto_preco not in ("cheio", "promocional"):
         raise ValueError("TETO_PRECO deve ser cheio ou promocional")
+    carteira_url = valores.get("CARTEIRA_API_URL", "").strip().rstrip("/")
+    carteira_token = valores.get("CARTEIRA_SERVICE_TOKEN", "").strip()
+    if bool(carteira_url) != bool(carteira_token):
+        raise ValueError("CARTEIRA_API_URL e CARTEIRA_SERVICE_TOKEN vêm juntos: preencha os dois ou nenhum")
     limite = int(valores.get("ARGON_MAX_SAIDA") or 4096)
     if not 256 <= limite <= 32768:
         raise ValueError("ARGON_MAX_SAIDA deve ficar entre 256 e 32768")
@@ -171,4 +180,6 @@ def carregar(arquivo: Path | None = None, ambiente: dict[str, str] | None = None
         gasto_externo_usd=_decimal(valores.get("GASTO_EXTERNO_USD")) or 0.0,
         midia_ativa=midia in ('1', 'true'),
         midia_canais=frozenset(int(c) for c in canais_midia.split(',') if c),
+        carteira_url=carteira_url,
+        carteira_token=carteira_token,
     )

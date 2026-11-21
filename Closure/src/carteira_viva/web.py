@@ -129,11 +129,13 @@ async def api_galeria(request):
     # Operações e argumentos fechados; nunca publicar DadosAsync.chamar.
     globais={'listar':(g.listar,{'dono','depois'}),'cargo_revisor':(g.cargo_revisor,{'cargo','permitir'}),
              'modelos':(g.modelos,set()),'configurar_modelo':(g.configurar_modelo,{'escolha','revisao'}),
-             'criar_por_modelo':(g.criar_por_modelo,{'modelo','parametros'})}
+             'criar_por_modelo':(g.criar_por_modelo,{'modelo','parametros'}),
+             'apagar_meus_dados':(g.apagar_meus_dados,set())}
     locais={'cartao':(g.cartao,set()),'cartao_salvo':(g.cartao_salvo,set()),'detalhes':(g.detalhes,set()),
              'analisar':(g.detalhes,set()),'analise_salva':(g.analise_salva,set()),
              'editar':(g.editar,set()),'preparar':(g.preparar,{'alteracoes','campos_publicos','remover_imagem','base_esperada'}),
-             'confirmar':(g.confirmar,{'previa'}),'cancelar':(g.cancelar,{'previa'}),'imagem':(g.imagem,{'previa'})}
+             'confirmar':(g.confirmar,{'previa'}),'cancelar':(g.cancelar,{'previa'}),'imagem':(g.imagem,{'previa'}),
+             'excluir':(g.excluir,{'pedido'})}
     tabela=locais if pid is not None else globais
     if acao not in tabela: raise web.HTTPNotFound()
     fn,permitidos=tabela[acao]
@@ -216,7 +218,7 @@ async def pagina(request):
     nome = nome_cookie(ctx["id"], request.app[CFG].segura)
     sid = request.cookies.get(nome) or secrets.token_urlsafe(32)
     await request.app[DADOS].chamar("abrir", ticket, sid)
-    out = web.Response(text=(STATIC / "conectar.html").read_text(), content_type="text/html")
+    out = web.Response(text=(STATIC / "conectar.html").read_text(encoding="utf-8"), content_type="text/html")
     out.set_cookie(nome, sid, max_age=600, path="/", secure=request.app[CFG].segura, httponly=True, samesite="Lax")
     return out
 
@@ -361,6 +363,14 @@ async def estatico(request):
     return web.Response(body=(STATIC / nome).read_bytes(), content_type="application/javascript" if nome.endswith(".js") else "text/css")
 
 
+DOCUMENTOS = {"/": "inicio.html", "/privacidade": "privacidade.html", "/termos": "termos.html"}
+
+
+async def documento(request):
+    # Páginas públicas fixas (apresentação, privacidade e termos), sem sessão nem dados de ninguém.
+    return web.Response(text=(STATIC / DOCUMENTOS[request.path]).read_text(encoding="utf-8"), content_type="text/html")
+
+
 async def saude(request):
     return resposta_json({"servico": "carteira-viva", "estado": "online"})
 
@@ -431,6 +441,9 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, moto
     app.router.add_post("/api/cancelar", cancelar)
     app.router.add_get("/static/{nome}", estatico)
     app.router.add_get("/saude", saude)
+    for caminho in DOCUMENTOS:
+        if not (demonstracao and caminho == "/"):  # a demonstração tem o próprio menu na raiz
+            app.router.add_get(caminho, documento)
     app.router.add_get("/erro", erro)
     from .web_carteira import registrar
     registrar(app)

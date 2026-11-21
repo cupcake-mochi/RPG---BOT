@@ -38,6 +38,38 @@ class GaleriaHTTPTeste(unittest.IsolatedAsyncioTestCase):
     async def post(self,acao='',*,usuario='222',servidor='111',pid=None,auth=True,**kw):
         url='/interno/galeria'+('/'+(pid or self.pid)+'/'+acao if acao and acao!='cargo_revisor' else '/acao/cargo_revisor' if acao else '')
         return await self.client.post(url,json={'servidor':servidor,'usuario':usuario,**kw},headers={'Authorization':'Bearer '+self.cfg.servico_token} if auth else {})
+    async def apagar(self,usuario='222',**extra):
+        return await self.client.post('/interno/galeria/acao/apagar_meus_dados',json={'servidor':'111','usuario':usuario,**extra},
+                                      headers={'Authorization':'Bearer '+self.cfg.servico_token})
+    async def test_so_o_dono_exclui_e_repetir_o_pedido_nao_falha(self):
+        self.assertEqual((await self.post('excluir',usuario='999',pedido='x1')).status,403)
+        self.assertEqual((await self.post('excluir',usuario='555',pedido='x2')).status,403)
+        self.assertEqual((await self.post('excluir',pedido='x3')).status,200)
+        self.assertEqual((await self.post('excluir',pedido='x3')).status,200)
+        self.assertEqual((await (await self.post(dono='222')).json())['cartoes'],[])
+        self.assertEqual(self.prov.leituras,0)
+    async def test_excluir_exige_pedido_e_recusa_argumento_extra(self):
+        self.assertEqual((await self.post('excluir')).status,400)
+        self.assertEqual((await self.post('excluir',pedido='x',dono='999')).status,400)
+        self.assertEqual(len((await (await self.post(dono='222')).json())['cartoes']),1)
+    async def test_apagar_meus_dados_tira_personagens_e_conexao_so_desse_usuario(self):
+        outro=self.prov.pessoas['999']
+        cid=await self.b('conectar',outro,conta='outra',cliente=self.cfg.google_id,refresh_token='ficticio2')
+        await self.b('cadastrar',outro,conexao=cid,arquivo=F2,nome='Alheio',contrato='analise-12',responsabilidade=True,pedido='alheio')
+        await self.b('cadastrar',self.m,conexao=self.cid,arquivo='ficticio-2',nome='Segundo',contrato='analise-12',responsabilidade=True,pedido='segundo')
+        self.assertEqual((await self.apagar(alvo='999')).status,400)
+        r=await self.apagar();self.assertEqual(r.status,200);self.assertEqual(await r.json(),{'ok':True})
+        self.assertEqual((await (await self.post(dono='222')).json())['cartoes'],[])
+        self.assertEqual(len((await (await self.post(usuario='999',dono='999')).json())['cartoes']),1)
+        with self.assertRaises(Exception):
+            await self.b('cadastrar',self.m,conexao=self.cid,arquivo='ficticio-3',nome='Depois',contrato='analise-12',responsabilidade=True,pedido='depois')
+    async def test_apagar_meus_dados_exige_membro_e_segredo(self):
+        self.prov.ausentes.add('222')
+        self.assertNotEqual((await self.apagar()).status,200)
+        self.prov.ausentes.clear()
+        r=await self.client.post('/interno/galeria/acao/apagar_meus_dados',json={'servidor':'111','usuario':'222'})
+        self.assertEqual(r.status,403)
+        self.assertEqual(len((await (await self.post(dono='222')).json())['cartoes']),1)
     async def test_lista_alheia_basica_sem_google(self):
         r=await self.post(usuario='999',dono='222');d=await r.json();self.assertEqual(r.status,200);self.assertEqual(d['cartoes'][0]['id'],self.pid)
         self.assertNotIn('arquivo',d['cartoes'][0]);self.assertNotIn(F1,str(d));self.assertNotIn('ficha',d['cartoes'][0]);self.assertEqual(self.prov.leituras,0)
