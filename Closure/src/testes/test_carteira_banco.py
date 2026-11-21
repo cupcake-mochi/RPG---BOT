@@ -435,7 +435,9 @@ class BancoTeste(Fixtures, unittest.TestCase):
         self.reabrir()
         self.assertTrue(self.c.detalhes(self.m, p["id"])["analise"]["fonte_atual"])
         raw = self.path.read_bytes()
-        for valor in (b"refresh-ficticio-secreto", "Personagem fictício".encode(), b'"vida"'):
+        # A lista de campos do servidor é configuração em claro e cita "vida" como nome de campo;
+        # o que não pode aparecer é a chave com valor da ficha.
+        for valor in (b"refresh-ficticio-secreto", "Personagem fictício".encode(), b'"vida":', b'"vida_max":'):
             self.assertNotIn(valor, raw)
         with self.assertRaises(ErroCarteira): Cadastro(self.pasta / "sem-chave.sqlite3", ())
         self.assertFalse((self.pasta / "sem-chave.sqlite3").exists())
