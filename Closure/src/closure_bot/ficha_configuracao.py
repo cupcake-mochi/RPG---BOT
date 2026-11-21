@@ -165,11 +165,14 @@ def conferir_efeitos(ficha, ctx, r):
         if ligado != 1:
             continue
         caixa, como, n, tipo, fonte = [valor(ficha, base+'.'+k) for k in ('caixa','como','valor','tipo_de_fonte','fonte')]
-        if caixa not in alvos or como not in ('somar','trocar por') or not numero(n) or tipo not in fontes or not str(fonte).strip():
+        # A planilha compara COMO sem diferenciar maiúscula ("Somar" vale); as contas usam a forma do menu, e a
+        # impressão da aprovação continua com o texto literal (impressao_exata).
+        modo = como.lower() if isinstance(como, str) else como
+        if caixa not in alvos or modo not in ('somar','trocar por') or not numero(n) or tipo not in fontes or not str(fonte).strip():
             problema(r, base,'alvo conhecido, somar/trocar por, número finito e fonte identificada',f'{caixa}; {como}; {n}; {tipo}; {fonte}')
             ctx.alvos_invalidos.add(caixa)
             continue
-        e = Efeito(i,caixa,como,n,fonte,tipo)
+        e = Efeito(i,caixa,modo,n,fonte,tipo)
         ctx.efeitos.setdefault(caixa, []).append(e)
         campos = {'caixa':caixa,'como':como,'valor':n,'tipo_de_fonte':tipo,'fonte':fonte}
         if not ctx.aprovados or impressao_exata('efeito', fonte, campos) not in ctx.aprovados.impressoes:
