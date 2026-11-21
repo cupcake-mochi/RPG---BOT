@@ -1,5 +1,6 @@
 """Apresentação, cache público mínimo e confirmação transacional em banco real."""
 from dataclasses import replace
+import json
 import sqlite3
 import unittest
 from unittest.mock import patch
@@ -76,6 +77,50 @@ class CartoesTeste(Fixtures,unittest.TestCase):
         ref=self.c.reservar_leitura(self.m,self.pid);self.c.gravar_leitura(self.m,ref,campos={'ficha':{'nome':{'valor':''},'nivel':{'valor':0}}},schema='carteira-analise-1')
         self.assertEqual(self.c.cartao(self.m,self.pid)['perfil']['nome'],'Personagem fictício')
         self.assertNotIn('nivel',self.c.cartao(self.m,self.pid)['perfil'])
+    def ler(self,**valores):
+        ref=self.c.reservar_leitura(self.m,self.pid)
+        self.c.gravar_leitura(self.m,ref,campos={'ficha':{k:{'valor':v} for k,v in valores.items()}},schema='carteira-analise-1')
+    def test_numeros_so_aparecem_quando_o_dono_marca(self):
+        self.ler(nome='Ren',nivel=4,vida_max=41,energia_max=17,defesa=15,integridade_max=30)
+        perfil=self.c.cartao(self.m,self.pid)['perfil']
+        for k in ('nivel','vida','pe','defesa','integridade_max'):self.assertNotIn(k,perfil)
+        p=self.previa(alteracoes={},campos={'nome','nivel','vida','pe','defesa'})
+        self.assertEqual({k:p['cartao']['perfil'][k] for k in ('nivel','vida','pe','defesa')},{'nivel':4,'vida':41,'pe':17,'defesa':15})
+        self.c.confirmar_cartao(self.m,self.pid,p['previa'])
+        for m in (self.m,self.outro):
+            c=self.c.cartao_galeria(m,self.pid)['perfil']
+            self.assertEqual((c['nivel'],c['vida'],c['pe'],c['defesa']),(4,41,17,15));self.assertNotIn('integridade_max',c)
+        # O admin ainda pode tirar os números do servidor inteiro.
+        self.c.configurar(self.admin,campos_publicos=PUBLICOS-{'vida','pe','defesa','nivel'})
+        self.assertNotIn('vida',self.c.cartao(self.outro,self.pid)['perfil'])
+    def test_numeros_invalidos_nao_entram_no_resumo(self):
+        p=self.previa(alteracoes={},campos=PUBLICOS);self.c.confirmar_cartao(self.m,self.pid,p['previa'])
+        for nivel,vida,pe,defesa in ((0,True,False,'13'),(31,-1,-0.5,None),(2.5,100001,'8',[13])):  # NaN/inf já são recusados ao gravar a leitura
+            with self.subTest(nivel=nivel):
+                self.ler(nome='Ren',nivel=nivel,vida_max=vida,energia_max=pe,defesa=defesa)
+                perfil=self.c.cartao(self.m,self.pid)['perfil']
+                for k in ('nivel','vida','pe','defesa'):self.assertNotIn(k,perfil)
+        self.ler(nome='Ren',nivel=3.0,vida_max=22.5,energia_max=0,defesa=12.0)
+        perfil=self.c.cartao(self.m,self.pid)['perfil']
+        self.assertEqual((perfil['nivel'],perfil['vida'],perfil['pe'],perfil['defesa']),(3,22.5,0,12))
+        self.assertIs(type(perfil['nivel']),int)
+    def test_numero_nao_pode_ser_digitado_pelo_dono(self):
+        for d in ({'vida':999},{'nivel':30},{'pe':1},{'defesa':99}):
+            with self.subTest(d=d),self.assertRaises(ErroCarteira):self.previa(alteracoes=d)
+            with self.subTest(d=d),self.assertRaises(ErroCarteira):
+                self.c.personalizar(self.m,self.pid,perfil={'nome':'Personagem fictício',**d},campos_publicos=PUBLICOS)
+    def test_migracao_v11_libera_numeros_so_onde_a_lista_era_completa(self):
+        self.c.configurar(self.admin,campos_publicos={'nome','titulo'})
+        antigos=json.dumps(sorted(PUBLICOS-{'nivel','vida','pe','defesa'}))
+        self.c.db.execute("INSERT INTO servidores(id,campos_publicos) VALUES ('mesa-b',?)",(antigos,))
+        self.c.db.execute('PRAGMA user_version=10')
+        from carteira_viva import esquema
+        self.c.db.execute('BEGIN');esquema.migrar(self.c.db);self.c.db.execute('COMMIT')
+        lista=lambda s:set(json.loads(self.c.db.execute('SELECT campos_publicos FROM servidores WHERE id=?',(s,)).fetchone()[0]))
+        self.assertEqual(lista('mesa-b'),set(PUBLICOS));self.assertEqual(lista('mesa-a'),{'nome','titulo'})
+        self.assertEqual(self.c.db.execute('PRAGMA user_version').fetchone()[0],esquema.VERSAO)
+        esquema.migrar(self.c.db)  # repetir não duplica
+        self.assertEqual(len(json.loads(self.c.db.execute("SELECT campos_publicos FROM servidores WHERE id='mesa-b'").fetchone()[0])),len(PUBLICOS))
     def test_imagem_de_outro_personagem_nao_pode_ser_usada(self):
         outro=self.criar();self.c.registrar_imagem(self.m,outro['id'],'a'*32)
         with self.assertRaises(ErroCarteira):self.previa(imagem='a'*32)

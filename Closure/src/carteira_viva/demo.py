@@ -43,9 +43,11 @@ class ProvedoresDemo(Provedores):
 
     async def ler_analise(self,acesso,arquivo):
         from closure_bot.ficha_leitor import Campo
-        nome=('Ayla','Ren','Noa')[int(arquivo.rsplit('_',1)[1])] if arquivo.startswith('arquivo_demo_somente_ficticio_') else 'Personagem de teste'
-        valores={'formato.versao':12,'nome':nome,'nivel':1,'origem':'Latente','caminho':'Bastião',
-                 'vida_max':23,'energia_max':8,'integridade_max':26,'defesa':13,'protecao':1}
+        i=int(arquivo.rsplit('_',1)[1]) if arquivo.startswith('arquivo_demo_somente_ficticio_') else 1
+        nome=('Ayla','Ren','Noa')[i] if arquivo.startswith('arquivo_demo_somente_ficticio_') else 'Personagem de teste'
+        nivel,vida,pe,defesa=((4,41,17,15),(1,23,8,13),(2,27,10,14))[i]
+        valores={'formato.versao':12,'nome':nome,'nivel':nivel,'origem':'Latente','caminho':'Bastião',
+                 'vida_max':vida,'energia_max':pe,'integridade_max':26,'defesa':defesa,'protecao':1}
         return {k:Campo(v,'','entrada') for k,v in valores.items()},'demo'
 
 
@@ -93,9 +95,17 @@ def preparar(porta):
 
     async def semear(app):
         m=Membro('111','222');cid=await app[DADOS].chamar('cadastro.conectar',m,conta='demo',cliente=cfg.google_id,refresh_token='ficticio')
-        for i,nome in enumerate(('Ayla','Ren','Noa')):
+        # Ren e Ayla mostram os números; Noa mostra que o dono pode deixá-los de fora.
+        demo=(('Ayla','Herdeira do clã sem nome',0xBA7517,(4,41,17,15),True),('Ren','Exploradora de fronteiras',0x397B77,(1,23,8,13),True),
+              ('Noa','',0x7F77DD,(2,27,10,14),False))
+        for i,(nome,titulo,cor,(nivel,vida,pe,defesa),numeros) in enumerate(demo):
             p=await app[DADOS].chamar('cadastro.cadastrar',m,conexao=cid,arquivo='arquivo_demo_somente_ficticio_'+str(i),nome=nome,contrato='analise-12',responsabilidade=True,pedido='demo-'+str(i))
-            await app[DADOS].chamar('cadastro.personalizar',m,p['id'],perfil={'nome':nome,'titulo':'Exploradora de fronteiras','frase':'Uma história ainda por escrever.','origem':'Latente','caminho':'Bastião','cor':0x397B77},campos_publicos={'nome','titulo','frase','origem','caminho','cor'})
+            perfil={'nome':nome,'frase':'Uma história ainda por escrever.','origem':'Latente','caminho':'Bastião','cor':cor}|({'titulo':titulo} if titulo else {})
+            await app[DADOS].chamar('cadastro.personalizar',m,p['id'],perfil=perfil,
+                                    campos_publicos={'nome','titulo','frase','origem','caminho','cor'}|({'nivel','vida','pe','defesa'} if numeros else set()))
+            ref=await app[DADOS].chamar('cadastro.reservar_leitura',m,p['id'])
+            ficha={k:{'valor':v} for k,v in {'nome':nome,'origem':'Latente','caminho':'Bastião','nivel':nivel,'vida_max':vida,'energia_max':pe,'defesa':defesa}.items()}
+            await app[DADOS].chamar('cadastro.gravar_leitura',m,ref,campos={'ficha':ficha},schema='carteira-analise-1')
     app.on_startup.append(semear)
 
     async def encerrar(app):

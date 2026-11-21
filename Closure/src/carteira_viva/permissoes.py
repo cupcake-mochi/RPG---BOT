@@ -63,8 +63,10 @@ def permitido(acao: Acao, membro: Membro, servidor: str, dono: str | None,
     return False
 
 
+# Números vêm só do resumo da última leitura; o dono decide se aparecem (nunca por padrão).
+NUMEROS = frozenset({"nivel", "vida", "pe", "defesa"})
 PUBLICOS = frozenset({"nome", "titulo", "frase", "idade", "cla", "origem",
-                     "caminho", "imagem_id", "cor"})
+                     "caminho", "imagem_id", "cor"}) | NUMEROS
 
 
 def cartao_publico(perfil: dict, autorizados: frozenset[str]) -> dict:

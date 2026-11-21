@@ -1,6 +1,7 @@
 """Projeção básica e confirmação de apresentação; nenhuma aprovação mecânica."""
 import hashlib
 import json
+import math
 import secrets
 from .permissoes import Acao, PUBLICOS, permitido
 from .segredos import Conflito, ErroCarteira, json_bytes
@@ -23,6 +24,12 @@ class Cartoes:
             c=campos['ficha'].get(k,{})
             v=c.get('valor') if isinstance(c,dict) else None
             if isinstance(v,str) and v.strip(): publico[k]=v.strip()[:limite]
+        # Números do cartão: nível 1–30 e Vida/PE/Defesa finitos; o resto da ficha não entra no resumo.
+        for k,origem,minimo,maximo in (('nivel','nivel',1,30),('vida','vida_max',0,100000),('pe','energia_max',0,100000),('defesa','defesa',0,100000)):
+            c=campos['ficha'].get(origem,{})
+            v=c.get('valor') if isinstance(c,dict) else None
+            if type(v) in (int,float) and math.isfinite(v) and minimo<=v<=maximo and (k!='nivel' or v==int(v)):
+                publico[k]=int(v) if v==int(v) else round(v,2)
         envelope=self.cifra.cifrar(['resumo',ref.servidor,ref.personagem],publico)
         self.db.execute('INSERT OR REPLACE INTO resumos_cartao VALUES (?,?,?,?,?)',
                         (ref.servidor,ref.personagem,ref.revisao,self.agora(),envelope))

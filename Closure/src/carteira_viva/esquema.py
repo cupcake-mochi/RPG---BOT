@@ -2,7 +2,7 @@
 from .segredos import ErroCarteira
 
 APPLICATION_ID = 0x43564956
-VERSAO = 10
+VERSAO = 11
 
 MIGRACOES = {
     1: (
@@ -121,6 +121,13 @@ MIGRACOES = {
             operacao TEXT PRIMARY KEY REFERENCES copias_rest(operacao) ON DELETE CASCADE,
             lido REAL NOT NULL, conteudo BLOB NOT NULL)""",
     ),
+    # Nível, Vida, PE e Defesa entram como permitidos só onde o admin nunca restringiu a lista; cada dono ainda escolhe mostrar.
+    11: tuple(
+        f"""UPDATE servidores SET campos_publicos=json_insert(campos_publicos,'$[#]','{campo}')
+            WHERE NOT EXISTS (SELECT 1 FROM json_each(servidores.campos_publicos) WHERE value='{campo}')
+              AND (SELECT count(*) FROM json_each(servidores.campos_publicos) WHERE value IN
+                   ('nome','titulo','frase','idade','cla','origem','caminho','imagem_id','cor'))=9"""
+        for campo in ("defesa", "nivel", "pe", "vida")),
 }
 
 
