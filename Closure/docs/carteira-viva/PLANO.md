@@ -42,13 +42,14 @@ preservam as automações da ficha antes de serem liberadas.
 | Acesso durável | Reutilizar a autorização enquanto for válida. Revogação, perda de acesso ou expiração podem exigir reconexão. |
 | Consulta | Atualizar ao abrir o personagem; galeria usa resumos salvos. Navegação seguida pode reutilizar leitura recente. |
 | Troca de arquivo | Ação “Trocar arquivo da ficha”, separada de “Atualizar dados”. Preserva o personagem e a apresentação, mas reavalia análise e aprovações afetadas. |
-| Público | Apenas cartão básico, com os campos que o dono escolheu exibir dentro das regras do servidor. |
+| Público | Apenas cartão básico, com os campos que o dono escolheu exibir dentro das regras do servidor. Nível, Vida, PE e Defesa vêm só da última leitura da ficha, nunca digitados, e só aparecem se o dono marcar (desligados por padrão; o admin pode tirá-los do servidor). Decisão do Mizuki em 21/11/2026. |
 | Privado | Ficha detalhada e análise para dono, administrador/dono do servidor e cargos de revisão explicitamente autorizados. |
 | Edição | Permissão separada de leitura e de revisão. Sem edição arbitrária de células ou fórmulas. |
 | Personalização | Título, frase, imagem, cor e campos opcionais, com prévia antes de salvar. |
 | Modelo do servidor | Padrão oficial; administrador pode selecionar uma cópia da ficha do sistema com configurações extras da mesa. Preservar essas configurações e inicializar os dados pessoais separadamente; nenhum parâmetro de criação está liberado na etapa 7. Nunca altera fichas já cadastradas automaticamente. |
 | Link no nome | Abre a Carteira viva. Link direto da planilha fica na área autorizada, respeitando também as permissões do Google. |
-| Onde fica cada coisa | O uso principal é pelo Discord: comandos, galeria, cartão, análise, personalização e, na etapa 8, a edição. A web é obrigatória só para o consentimento do Google e a escolha do arquivo. A página `/carteira` continua como opção extra, linkada pelo título do cartão (confirmado pelo Mizuki em 21/11/2026). |
+| Onde fica cada coisa | O uso principal é pelo Discord: comandos, galeria, cartão, análise, personalização e, na etapa 8, a edição. A web é obrigatória só para o consentimento do Google e a escolha do arquivo. A página `/carteira` continua como opção extra, linkada pelo título do cartão (confirmado pelo Mizuki em 21/11/2026). Ela abre numa grade de cards (imagem ou inicial, nível, nome, título, origem e caminho, Vida/PE/Defesa e horário da leitura); clicar abre o cartão completo embaixo. |
+| Hospedagem | Upgrade da Discloud de Gold (R$ 5,99/mês, 0 sites) para Platinum (R$ 10,99/mês, 2 GB, 4 sites), conferido em discloud.com/plans em 21/11/2026. App separado `TYPE=site` na porta 8080 com subdomínio `.discloud.app` (HTTPS). Contratação é do Mizuki. |
 | Análise | `/personagem analisar`, privada, com o motor determinístico existente e os limites humanos preservados. |
 
 Não usar varredura periódica de todas as fichas, conta central como dona

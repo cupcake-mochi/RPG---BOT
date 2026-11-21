@@ -23,12 +23,12 @@ from .conferencias_banco import Conferencias
 from .copias_banco import Copias
 from .financeiro_banco import Financeiro
 from .atestados_banco import Atestados
-from .permissoes import Acao, Membro, Permissoes, PUBLICOS, cartao_publico, permitido
+from .permissoes import Acao, Membro, NUMEROS, Permissoes, PUBLICOS, cartao_publico, permitido
 from .segredos import AcessoNegado, Cifra, Conflito, ErroCarteira, json_bytes
 
 DIA = 86400
 MAX_JSON = 8 * 1024 * 1024
-CAMPOS_PADRAO = PUBLICOS - {"idade", "cla", "origem", "caminho"}
+CAMPOS_PADRAO = PUBLICOS - {"idade", "cla", "origem", "caminho"} - NUMEROS
 LEDGER_ID = 0x43564C47
 
 
@@ -298,7 +298,7 @@ class Cadastro(Cartoes, Modelos, Conferencias, Copias, Financeiro, Atestados):
         return row
 
     def _perfil(self, servidor: str, personagem: str, perfil: dict) -> bytes:
-        if not isinstance(perfil, dict) or set(perfil) - PUBLICOS:
+        if not isinstance(perfil, dict) or set(perfil) - (PUBLICOS - NUMEROS):
             raise ErroCarteira("O perfil contém campos não permitidos.")
         nome = texto(perfil.get("nome"), "Nome do personagem", 100)
         for campo, valor in perfil.items():

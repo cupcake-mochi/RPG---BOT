@@ -16,6 +16,7 @@ TEXTOS={
  'salvo':('Cartão salvo. Abra a galeria novamente para ver a apresentação atual.','Card saved. Reopen the gallery to see its current presentation.'),
  'cancelado':('Prévia cancelada. O cartão continua igual.','Preview cancelled. The card is unchanged.'),
  'dono':('Jogador responsável','Player'), 'idade':('Idade','Age'),'cla':('Clã','Clan'),'origem':('Origem','Origin'),'caminho':('Caminho','Path'),
+ 'nivel':('Nível','Level'),'vida':('Vida','HP'),'pe':('PE','EP'),'defesa':('Defesa','Defence'),
  'leitura':('Última leitura da ficha','Sheet last read'),'nunca':('Ainda não consultada','Not read yet'),
  'antigo':('Dados salvos · precisam de atualização','Saved data · refresh needed'),'recente':('Leitura recente','Recently read'),
  'aviso':('Não foi possível atualizar agora. Este cartão mostra os últimos dados salvos.','Could not refresh right now. This card shows the last saved data.'),
@@ -28,7 +29,7 @@ TEXTOS={
  'titulo':('Título (opcional)','Title (optional)'),'frase':('Frase (opcional)','Quote (optional)'),
  'cor':('Cor (#RRGGBB; vazio usa o padrão)','Colour (#RRGGBB; empty uses default)'),
  'extras':('Extras visíveis (lista abaixo)','Visible extras (list below)'),
- 'exemplos':('idade, clã, origem, caminho, imagem','age, clan, origin, path, image'),
+ 'exemplos':('idade, clã, origem, caminho, imagem, nível, vida, pe, defesa','age, clan, origin, path, image, level, hp, ep, defence'),
  'limparfoto':('Para ocultar a imagem, retire “imagem” da lista de extras visíveis.','To hide the image, remove “image” from the visible extras list.'),
  'ficha':('Abrir planilha · Google verifica seu acesso','Open sheet · Google checks access'),
  'privado':('Somente você pode ver esta consulta. Cadastro e análise não aprovam a ficha.','Only you can see this view. Registration and analysis do not approve the sheet.'),
@@ -63,6 +64,8 @@ def cartao_embed(card,lang):
     e.add_field(name=txt('dono',lang),value='<@'+card['responsavel']+'>',inline=False)
     for campo in ('idade','cla','origem','caminho'):
         if campo in p and p[campo]!='':e.add_field(name=txt(campo,lang),value=seguro(p[campo],200),inline=True)
+    numeros=' · '.join(f'{txt(c,lang)} **{p[c]:g}**' for c in ('nivel','vida','pe','defesa') if isinstance(p.get(c),(int,float)))
+    if numeros:e.add_field(name='​',value=numeros,inline=False)
     hora=card.get('lido_em')
     e.add_field(name=txt('leitura',lang),value=f'<t:{int(hora)}:f>' if hora is not None else txt('nunca',lang),inline=False)
     estado=txt('antigo' if card.get('precisa_atualizar',True) else 'recente',lang)
@@ -200,7 +203,8 @@ class EditarModal(discord.ui.Modal):
         self.titulo=discord.ui.TextInput(label=txt('titulo',lang),required=False,max_length=200,default=p.get('titulo',''))
         self.frase=discord.ui.TextInput(label=txt('frase',lang),required=False,max_length=500,style=discord.TextStyle.paragraph,default=p.get('frase',''))
         self.cor=discord.ui.TextInput(label=txt('cor',lang),required=False,max_length=7,default=f"#{p['cor']:06X}" if 'cor' in p else '')
-        nomes={'idade':('idade','age'),'cla':('clã','clan'),'origem':('origem','origin'),'caminho':('caminho','path'),'imagem_id':('imagem','image')}
+        nomes={'idade':('idade','age'),'cla':('clã','clan'),'origem':('origem','origin'),'caminho':('caminho','path'),'imagem_id':('imagem','image'),
+               'nivel':('nível','level'),'vida':('vida','hp'),'pe':('pe','ep'),'defesa':('defesa','defence')}
         visiveis=', '.join(nomes[x][lang=='en'] for x in nomes if x in atual['campos_publicos'])
         self.extras=discord.ui.TextInput(label=txt('extras',lang),placeholder=txt('exemplos',lang),required=False,max_length=100,default=visiveis)
         for x in (self.titulo,self.frase,self.cor,self.extras):self.add_item(x)
@@ -212,7 +216,8 @@ class EditarModal(discord.ui.Modal):
         try:
             cor=self.cor.value.strip()
             if cor and not re.fullmatch('#?[0-9a-fA-F]{6}',cor):raise FalhaCarteira('solicitacao')
-            mapa={'idade':'idade','age':'idade','clã':'cla','cla':'cla','clan':'cla','origem':'origem','origin':'origem','caminho':'caminho','path':'caminho','imagem':'imagem_id','image':'imagem_id'}
+            mapa={'idade':'idade','age':'idade','clã':'cla','cla':'cla','clan':'cla','origem':'origem','origin':'origem','caminho':'caminho','path':'caminho','imagem':'imagem_id','image':'imagem_id',
+                  'nível':'nivel','nivel':'nivel','level':'nivel','vida':'vida','hp':'vida','pe':'pe','ep':'pe','defesa':'defesa','defence':'defesa','defense':'defesa'}
             extras={x.strip().lower() for x in self.extras.value.split(',') if x.strip()}
             if extras-set(mapa):raise FalhaCarteira('solicitacao')
             d=await self.cog.api.pedir(self.s,self.u,'preparar',personagem=self.pid,
