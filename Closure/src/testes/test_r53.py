@@ -2,6 +2,7 @@
 import asyncio
 import hashlib
 import json
+import re
 import unittest
 from pathlib import Path
 from types import SimpleNamespace
@@ -9,7 +10,7 @@ from unittest.mock import AsyncMock, patch
 
 from closure_bot.ficha_leitor import Campo, de_csv
 from closure_bot.ficha_corretor import Aprovados, Referencias, conferir
-from closure_bot.ficha_esquema import campos_b47, campos_r53, tipo, variante
+from closure_bot.ficha_esquema import campos_b47, campos_opcionais, campos_r53, tipo, variante
 from closure_bot.ficha_r53 import (VERSAO_CAMPOS, contextos, decodificar, escolher_leitura, rotulo, rotulo_chave,
                                    transicoes)
 from closure_bot.r53 import modelo as M
@@ -18,7 +19,9 @@ from closure_bot.r53.formulas import evaluate
 RAIZ = Path(__file__).resolve().parents[2]
 REF = Referencias.do_livro(RAIZ / 'dados')
 LIVRE = M.arvore(True)
-PARTES = campos_r53()
+PARTES = {**campos_r53(), **campos_opcionais()}
+# 05/11/2026: a Prática Cotidiana somou os cartões classe0.6/7 e três auxiliares no fim da ANALISE (opcionais).
+PRATICA = re.compile(r'(?:r53\.classe0\.[67]|zero\.[67]|origem\.pratica_cotidiana)\.')
 ORIGEM = {  # Ficha---RPG-JJK@76bc66788fb6f75faa3b778f03939017d9d65420 (Técnica Máxima R67)
     'formulas.py': 'c7139b5d1262420e485cfe8400a4acee8e1380028fa36980a66941070fef5448',
     'catalogo.json': '66fea1d804b3acd1e60c642cfd86d816120be44c2226ca6903a4ce2f6ab9f158',
@@ -26,10 +29,12 @@ ORIGEM = {  # Ficha---RPG-JJK@76bc66788fb6f75faa3b778f03939017d9d65420 (Técnica
 
 
 def completa_r53():
-    """Ficha B47 sintética completa promovida ao formato 12, com os 249 cartões vazios como na oficial publicada."""
+    """Ficha B47 sintética completa promovida ao formato 12, com os 251 cartões vazios como na oficial publicada
+    (os 249 da R53 e os dois da Prática Cotidiana, com as auxiliares dela)."""
     from test_b47_integracao import completa
     f = completa()
-    for k, v in campos_r53().items():
+    pratica = {k: v for k, v in campos_opcionais().items() if PRATICA.match(k)}
+    for k, v in {**campos_r53(), **pratica}.items():
         if k not in f:
             f[k] = Campo('0' if k.endswith('.controle_compat') else '', v['origem'], v['parte'])
     # Cartão vazio na oficial (lida em 19/10/2026): espelhos com os menus padrão, JSON de entrada vazio.
@@ -153,7 +158,7 @@ class Manifesto(unittest.TestCase):
         self.assertEqual([k for k in b47 if r53[k]['parte'] != b47[k]['parte']],
                          [f'invocacao.{i}.exp.acerto' for i in range(1, 13)])
         self.assertEqual(sum(k.endswith('.controle_compat') for k in r53), 30)
-        self.assertEqual(len(contextos()), 249)
+        self.assertEqual(len(contextos()), 251)
 
     def test_exp_acerto_sai_como_resultado(self):
         """A ficha calcula o "Acerto Nd8" e exporta `resultado` desde 07/11/2026; as cópias de antes, `entrada`."""
@@ -176,7 +181,7 @@ class Manifesto(unittest.TestCase):
 
     def test_chaves_dos_talentos_gratis_sao_opcionais(self):
         from closure_bot.ficha_esquema import campos_opcionais
-        novas = campos_opcionais()
+        novas = {k: v for k, v in campos_opcionais().items() if not PRATICA.match(k)}
         self.assertEqual(len(novas), 15)
         self.assertFalse(set(novas) & set(campos_r53()))
         self.assertEqual((tipo('vagas.feiticos_gratis'), tipo('passiva.origem'), tipo('passiva.extra.categoria')),
@@ -188,6 +193,25 @@ class Manifesto(unittest.TestCase):
         r = conferir(f, REF)
         self.assertEqual((r.veredito, r.problemas), (antes.veredito, antes.problemas))
         self.assertFalse(any('chave adicional' in n and n.split(':')[0] in novas for n in r.nao_conferido))
+
+    def test_chaves_da_pratica_cotidiana_sao_opcionais(self):
+        """As 91 chaves que a Prática Cotidiana pôs no fim da ANALISE: reconhecidas quando vêm, sem pendência quando faltam."""
+        novas = {k: v for k, v in campos_opcionais().items() if PRATICA.match(k)}
+        self.assertEqual(len(novas), 91)
+        self.assertFalse(set(novas) & set(campos_r53()))
+        self.assertEqual(sum(k.startswith('r53.classe0.') for k in novas), 2 * 36)
+        self.assertEqual(sum(k.startswith('zero.') for k in novas), 2 * 8)
+        for n in (6, 7):  # mesmas partes dos cartões 1 a 5
+            for k in (k for k in novas if k.startswith((f'r53.classe0.{n}.', f'zero.{n}.'))):
+                par = k.replace(f'classe0.{n}.', 'classe0.1.') if k.startswith('r53.') else k.replace(f'zero.{n}.', 'zero.1.')
+                self.assertEqual(novas[k]['parte'], campos_r53()[par]['parte'], k)
+        self.assertEqual((tipo('origem.pratica_cotidiana.vagas'), tipo('origem.pratica_cotidiana.aviso')), ('numero', 'texto'))
+        f = completa_r53()
+        com = conferir(f, REF)
+        self.assertFalse(any('chave adicional' in n for n in com.nao_conferido), com.nao_conferido)
+        antiga = {k: v for k, v in f.items() if k not in novas}  # cópia anterior a 05/11
+        sem = conferir(antiga, REF)
+        self.assertEqual((sem.veredito, sem.problemas, sem.pendencias), (com.veredito, com.problemas, com.pendencias))
 
     def test_variante_e_tipos(self):
         self.assertEqual(variante({'formato.versao': Campo(12, '', '')}), 'r53-v12')
@@ -226,6 +250,20 @@ class Cartoes(unittest.TestCase):
         r = conferir(f, REF)
         self.assertEqual(r.problemas, [], textos(r))
         self.assertTrue(any('campos padrão não reprovam nem autorizam' in s for s in r.nao_conferido))
+
+    def test_cartoes_6_e_7_de_classe_0_da_pratica_cotidiana(self):
+        """Antes de 20/11 o bot só conhecia 249 cartões: preencher o 6 ou o 7 dava erro de formato."""
+        f = completa_r53()
+        gravar(f, 'classe0.6', 0, nome='Pulso extra')
+        gravar(f, 'classe0.7', 0, nome='Faísca extra', m1='Fura')
+        r = conferir(f, REF)
+        self.assertFalse(any(p.regra == 'formato' for p in r.problemas), textos(r))
+        self.assertFalse(any('cartões publicados' in p.esperado for p in r.problemas + r.pendencias), textos(r))
+        self.assertTrue(any(c.startswith('Classe 0 6: ') for c in r.conferidos), r.conferidos)
+        # O 7 leva Melhoria Média, que a Classe 0 não aceita: o aviso do cartão aparece, como no 1 ao 5.
+        self.assertTrue(any(p.campo == 'r53.classe0.7.avisos' or 'Classe 0 7' in (p.campo + p.esperado)
+                            for p in r.problemas), textos(r))
+        self.assertEqual(rotulo_chave('r53.classe0.7.saldo'), 'Classe 0 7 · saldo')
 
     def test_resultado_adulterado_reprova(self):
         f = completa_r53()

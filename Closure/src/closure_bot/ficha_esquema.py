@@ -35,9 +35,14 @@ def parte_aceita(chave, parte, esperada, *, r53=False):
 def campos_opcionais():
     """Chaves que a ficha passou a exportar depois do contrato, sem mudar o formato 12: reconhecidas quando vêm,
     sem pendência quando faltam (cópias antigas). 03/11/2026: as cartas Talento · Origem e Talento · Extra e as vagas
-    grátis (Ficha---RPG-JJK, PENDENCIAS de 03/11/2026)."""
-    with (Path(__file__).parent / 'recursos/talentos-gratis-campos.tsv').open(encoding='utf-8') as f:
-        return {r['chave']: r for r in csv.DictReader(f, delimiter='\t')}
+    grátis (Ficha---RPG-JJK, PENDENCIAS de 03/11/2026). 20/11/2026: as 91 chaves da Prática Cotidiana, no fim da
+    ANALISE — os cartões 6 e 7 de Classe 0 (`r53.classe0.6/7.*` e `zero.6/7.*`) e as três auxiliares
+    `origem.pratica_cotidiana.*` (Ficha---RPG-JJK@bc4bd46, 05/11/2026; lidas das oficiais exportadas em 19/11)."""
+    campos = {}
+    for nome in ('talentos-gratis-campos.tsv', 'pratica-cotidiana-campos.tsv'):
+        with (Path(__file__).parent / 'recursos' / nome).open(encoding='utf-8') as f:
+            campos.update({r['chave']: r for r in csv.DictReader(f, delimiter='\t')})
+    return campos
 
 
 def campos_analise():
@@ -68,7 +73,7 @@ def tipo(chave):
         return 'texto'
     if chave.startswith('regra.'):
         return 'texto' if chave in ('regra.vida_rolada', 'regra.vida_rolada.campanha') else 'numero'
-    if re.fullmatch(r'formato\.versao|nivel|xp|xp\.total|exaustao|sequela\.extras|vida\.rolagem\.\d+|atributo\.[^.]+\.(?:base|corpo)|marco\..+|marcos\.escolhidos|buff\..+|(?:vida|energia|integridade)_max|defesa|protecao|maestria|espacos_de_feitico|classe_maxima|refino_de_graca|classe_0_gratis|morrendo_(?:aguentar|insistir_1|insistir_2)|tecnica\.regra_propria\.(?:categoria|espacos)|dominio\.(?:degrau|custo|refino|corrida)|(?:passiva|aptidao)\.\d+\.categoria|passiva\.(?:origem|extra)\.categoria|vagas\.[a-z_]+|carga\.(?:total|limite|ajuste_limite)', chave):
+    if re.fullmatch(r'formato\.versao|nivel|xp|xp\.total|exaustao|sequela\.extras|vida\.rolagem\.\d+|atributo\.[^.]+\.(?:base|corpo)|marco\..+|marcos\.escolhidos|buff\..+|(?:vida|energia|integridade)_max|defesa|protecao|maestria|espacos_de_feitico|classe_maxima|refino_de_graca|classe_0_gratis|morrendo_(?:aguentar|insistir_1|insistir_2)|tecnica\.regra_propria\.(?:categoria|espacos)|dominio\.(?:degrau|custo|refino|corrida)|(?:passiva|aptidao)\.\d+\.categoria|passiva\.(?:origem|extra)\.categoria|vagas\.[a-z_]+|carga\.(?:total|limite|ajuste_limite)|origem\.pratica_cotidiana\.(?:vagas|anotados)', chave):
         return 'numero'
     if re.fullmatch(r'(?:pericia|oficio|tr)\.[^.]+\.(?:ajuste|bonus)|(?:equipavel|item)\.\d+\.(?:grau|volume|quantidade)|personagem\.(?:pericia|oficio)_custom\.\d+\.(?:bonus|resultado)', chave):
         return 'numero'
