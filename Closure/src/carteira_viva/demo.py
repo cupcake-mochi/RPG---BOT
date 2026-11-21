@@ -69,7 +69,8 @@ def preparar(porta):
                                  "<p>Este ensaio usa contas e planilhas fictícias. Não entra no Google ou Discord.</p>"
                                  "<p><a href='/demo/iniciar'>Testar cadastro de personagem</a></p><p><a href='/carteira/111'>Abrir Carteira de demonstração</a></p>"
                                  "<p><a href='/demo/iniciar?acao=modelo'>Testar modelo · administrador fictício</a></p>"
-                                 "<p><a href='/demo/iniciar?acao=modelo&amp;idioma=en'>Test template · fictional administrator · English</a></p></html>", content_type="text/html")
+                                 "<p><a href='/demo/iniciar?acao=modelo&amp;idioma=en'>Test template · fictional administrator · English</a></p>"
+                                 "<p><a href='/privacidade'>Política de privacidade</a> · <a href='/termos'>Termos de uso</a></p></html>", content_type="text/html")
 
     async def iniciar(request):
         acao = request.query.get('acao', 'cadastro')

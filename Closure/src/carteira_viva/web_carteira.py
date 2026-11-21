@@ -62,11 +62,11 @@ async def finalizar(request,m,data):
 
 async def pagina(request):
     if 'servidor' not in request.match_info:
-        return web.Response(text=(STATIC/'carteira.html').read_text(),content_type='text/html')
+        return web.Response(text=(STATIC/'carteira.html').read_text(encoding='utf-8'),content_type='text/html')
     contexto(request)
     novo=secrets.token_urlsafe(32)
     trocar=await banco(request,'abrir',sid(request),novo)
-    out=web.Response(text=(STATIC/'carteira.html').read_text(),content_type='text/html')
+    out=web.Response(text=(STATIC/'carteira.html').read_text(encoding='utf-8'),content_type='text/html')
     if trocar:cookie(out,request,novo)
     return out
 

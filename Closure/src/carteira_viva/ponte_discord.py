@@ -1,9 +1,11 @@
 """Extensão opcional: carrega apenas depois de configurar o serviço.
 
-Não é carregada por closure_bot.bot nem empacotada com o bot atual. Usa só
-aiohttp/discord.py; as bibliotecas OAuth ficam no serviço separado.
+As Guias carregam esta extensão só quando CARTEIRA_API_URL e
+CARTEIRA_SERVICE_TOKEN estão configurados. Usa só aiohttp/discord.py; as
+bibliotecas OAuth ficam no serviço separado.
 """
 import os
+import secrets
 import time
 from collections import OrderedDict
 from urllib.parse import urlsplit
@@ -14,6 +16,30 @@ from discord import app_commands
 from discord.ext import commands
 from .cliente_discord import ClienteCarteira, FalhaCarteira, origem_valida
 from .discord_ui import GaleriaView, ConsultaView, PreviaView, AbrirEditor, txt, erro, seguro
+
+
+class Confirmar(discord.ui.View):
+    """Botão só de quem pediu; expira em dois minutos sem apagar nada."""
+    def __init__(self,usuario,lang,rotulo,acao):
+        super().__init__(timeout=120)
+        self.usuario,self.lang,self.acao=usuario,lang,acao
+        sim=discord.ui.Button(label=rotulo,style=discord.ButtonStyle.danger)
+        nao=discord.ui.Button(label=txt('cancelar_botao',lang),style=discord.ButtonStyle.secondary)
+        sim.callback,nao.callback=self.confirmar,self.cancelar
+        self.add_item(sim);self.add_item(nao)
+
+    async def interaction_check(self,i):
+        return i.user.id==self.usuario
+
+    async def confirmar(self,i):
+        self.stop()
+        await i.response.edit_message(view=None)
+        try:await i.followup.send(await self.acao(),ephemeral=True)
+        except FalhaCarteira as exc:await i.followup.send(erro(exc,self.lang),ephemeral=True)
+
+    async def cancelar(self,i):
+        self.stop()
+        await i.response.edit_message(content=txt('cancelado',self.lang),view=None)
 
 
 class ConectarFicha(commands.Cog):
@@ -163,6 +189,45 @@ class ConectarFicha(commands.Cog):
             await self.mostrar_previa(i,personagem,d)
         except (discord.HTTPException,FalhaCarteira) as exc:await i.followup.send(erro(exc,self.idioma(i)),ephemeral=True)
 
+    async def pedir_exclusao(self,i,personagem):
+        if not await self.contexto(i):return
+        lang=self.idioma(i)
+        try:
+            c=await self.api.pedir(i.guild_id,i.user.id,'cartao_salvo',personagem=personagem)
+            if str(c.get('responsavel'))!=str(i.user.id):raise FalhaCarteira('acesso')
+            pedido=secrets.token_hex(16)
+            async def acao():
+                await self.api.pedir(i.guild_id,i.user.id,'excluir',personagem=personagem,pedido=pedido)
+                self.nomes.pop((str(i.guild_id),str(i.user.id)),None)
+                return txt('excluido',lang)
+            nome=seguro(c.get('perfil',{}).get('nome') or 'Personagem',90)
+            await i.followup.send(txt('excluir_pergunta',lang).format(nome=nome),ephemeral=True,
+                                  view=Confirmar(i.user.id,lang,txt('excluir_botao',lang),acao),allowed_mentions=discord.AllowedMentions.none())
+        except FalhaCarteira as exc:await i.followup.send(erro(exc,lang),ephemeral=True)
+
+    async def pedir_apagar_dados(self,i):
+        if not await self.contexto(i):return
+        lang=self.idioma(i)
+        async def acao():
+            await self.api.pedir(i.guild_id,i.user.id,'apagar_meus_dados')
+            self.nomes.pop((str(i.guild_id),str(i.user.id)),None)
+            return txt('apagado',lang)
+        await i.followup.send(txt('apagar_pergunta',lang),ephemeral=True,view=Confirmar(i.user.id,lang,txt('apagar_botao',lang),acao))
+
+    @grupo.command(name='excluir',description='Tire um personagem seu da Carteira; a planilha não muda')
+    @app_commands.autocomplete(personagem=completar)
+    async def excluir(self,i:discord.Interaction,personagem:str):await self.pedir_exclusao(i,personagem)
+
+    @grupo.command(name='apagar_meus_dados',description='Apague todos os seus dados da Carteira, em todos os servidores')
+    async def apagar_meus_dados(self,i:discord.Interaction):await self.pedir_apagar_dados(i)
+
+    @grupo_en.command(name='delete',description='Remove one of your characters from the Wallet; the sheet is unchanged')
+    @app_commands.autocomplete(character=completar)
+    async def delete(self,i:discord.Interaction,character:str):await self.pedir_exclusao(i,character)
+
+    @grupo_en.command(name='delete_my_data',description='Delete all your Wallet data in every server')
+    async def delete_my_data(self,i:discord.Interaction):await self.pedir_apagar_dados(i)
+
     @app_commands.command(name='personagens',description='Veja seus personagens ou a galeria de outro jogador')
     async def personagens(self,i:discord.Interaction,jogador:discord.Member|None=None):
         await self.abrir_galeria(i,jogador)
@@ -269,4 +334,8 @@ class ConectarFicha(commands.Cog):
 
 
 async def setup(bot):
-    await bot.add_cog(ConectarFicha(bot,os.environ['CARTEIRA_API_URL'],os.environ['CARTEIRA_SERVICE_TOKEN'],desenvolvimento=os.getenv('CARTEIRA_DEV')=='1'))
+    # As Guias passam a configuração lida do .env delas; fora delas, vale o ambiente.
+    cfg=getattr(bot,'config',None)
+    origem=getattr(cfg,'carteira_url','') or os.environ['CARTEIRA_API_URL']
+    token=getattr(cfg,'carteira_token','') or os.environ['CARTEIRA_SERVICE_TOKEN']
+    await bot.add_cog(ConectarFicha(bot,origem,token,desenvolvimento=os.getenv('CARTEIRA_DEV')=='1'))

@@ -120,9 +120,10 @@ os requisitos documentados; não contratar upgrade automaticamente.
 
 ## Ponte com o Discord
 
-`carteira_viva.ponte_discord` é uma extensão opcional **não carregada** pelo
-bot atual. A futura integração precisa carregar a extensão e sincronizar os
-comandos em um ambiente de teste, sem iniciar bot duplicado de produção.
+`carteira_viva.ponte_discord` é uma extensão opcional. Desde 21/11/2026 as
+Guias a carregam sozinhas quando o `.env` do bot tem `CARTEIRA_API_URL` e
+`CARTEIRA_SERVICE_TOKEN`; sem as duas, nada muda. O pacote do bot leva os 4
+arquivos da ponte. Publicação: [PUBLICAR-SITE.md](PUBLICAR-SITE.md).
 Além de cadastrar, trocar arquivo e reconectar, a etapa 5 oferece galeria,
 cartão, consulta privada, apresentação e cargo revisor. Comandos e nomes
 PT/EN: [ETAPA-5.md](ETAPA-5.md). Respostas seguem o idioma configurado no
@@ -152,9 +153,10 @@ corpos, cabeçalhos ou links de conexão em relatórios.
   registrar/exportar URLs desse iframe. A página usa strict-origin para
   fornecer só a origem à chave restrita, sem caminhos/querystrings; layout do
   SDK fica no CSS local, mantendo style-src self e scripts sem unsafe-inline.
-- O empacotador do bot continua excluindo a Carteira. Não há ZIP de site
-  pronto para enviar; preparar implantação própria após fechar configuração
-  e testes nativos. Atualizar o bot sozinho não publica este serviço.
+- O pacote do site sai de `ferramentas/empacotar_carteira.py` (app
+  `TYPE=site`, MAIN `iniciar_carteira.py`). O do bot leva só a ponte.
+  Atualizar o bot sozinho não publica este serviço. Passo a passo em
+  [PUBLICAR-SITE.md](PUBLICAR-SITE.md).
 
 Authlib 1.9.1 está fixada; o adaptador httpx 0.28.1 foi testado. A biblioteca
 avisa que esse adaptador será substituído por httpx2 em versão futura. Rever a
