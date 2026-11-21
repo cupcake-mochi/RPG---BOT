@@ -47,6 +47,28 @@ class Derivados(unittest.TestCase):
         self.assertIn('iniciativa: 7',r.conferidos)
         self.assertIn('buff.iniciativa',[p.campo for p in r.pendencias])
 
+    def test_como_aceita_qualquer_caixa_como_a_planilha(self):
+        # 20/11/2026: a API gravou "Somar"; a planilha aceitou (o Sheets compara sem caixa) e o bot recusava a linha.
+        for como, k, saida, n in [('Somar', 'iniciativa', 'd20 + 7', 5), ('SOMAR', 'iniciativa', 'd20 + 7', 5),
+                                  ('Trocar Por', 'conjuracao', 'd20 + 0', 0)]:
+            with self.subTest(como=como):
+                caixa = 'Iniciativa' if k == 'iniciativa' else 'Conjuração'
+                r = derivados(efeito(trocar(ficha(), **{k: saida}), caixa, n, como))
+                self.assertFalse(any(p.campo == 'efeito.1' and p.regra != 'aprovação' for p in r.problemas), r.problemas)
+                self.assertIn(f'{k}: {saida.split(" + ")[-1]}', r.conferidos)
+        r = derivados(efeito(ficha(), 'Iniciativa', 5, 'adicionar'))
+        self.assertIn('efeito.1', [p.campo for p in r.problemas])
+
+    def test_aprovacao_de_efeito_continua_ligada_ao_texto_literal(self):
+        from closure_bot.ficha_configuracao import impressao_exata
+        f = efeito(trocar(ficha(), iniciativa='d20 + 7'), 'Iniciativa', 5, 'Somar')
+        literal = {'caixa': 'Iniciativa', 'como': 'Somar', 'valor': 5, 'tipo_de_fonte': 'Decisão do mestre', 'fonte': 'Decisão sintética'}
+        aprovados = Aprovados({impressao_exata('efeito', 'Decisão sintética', literal): 'mestre'})
+        c, r, ref = contexto(f, aprovados)
+        conferir_efeitos(f, c, r)
+        self.assertFalse(any(p.campo == 'efeito.1' for p in r.problemas + r.pendencias), r.problemas + r.pendencias)
+        self.assertEqual(c.efeitos['Iniciativa'][0].como, 'somar')
+
     def test_troca_zero_independe_do_atributo_omitido(self):
         for caixa,k,saida in [('Conjuração','conjuracao','d20 + 0'),('CD de feitiço','cd_de_feitico',0),
                                ('Corpo a corpo','corpo_a_corpo','d20 + 0'),('À distância','a_distancia','d20 + 0')]:
@@ -377,6 +399,19 @@ class HerancaOrigemEquipamento(unittest.TestCase):
                  custom__2__campo__origem='Origem sintética',custom__2__campo__exige_marcante='Outra marcante')
         r=conferir(f,REF,aprovados=aprovar(f,'custom.1'))
         self.assertIn('origem.menor_1',[p.campo for p in r.problemas])
+
+    def test_pratica_cotidiana_herdada_pela_origem_custom_da_restricao_corporal(self):
+        # Como na ficha (DADOS_CUSTOM!B126: Origem publicada OU cartão válido com essa base), as duas vagas
+        # de Classe 0 valem pela visão mecânica da Origem custom; sem a Prática, a quarta Classe 0 passa do limite.
+        rc='Restrição Celestial · Restrição corporal'
+        for menor,passa in (('Prática Cotidiana',False),('Reserva Excedente',True)):
+            with self.subTest(menor=menor):
+                f=trocar(self.origem(rc),origem__menor_1=menor)
+                for i in range(1,5):trocar(f,**{f'zero.{i}.nome':f'Classe 0 sintética {i}'})
+                r=conferir(f,REF,aprovados=aprovar(f,'custom.1'))
+                limite=[p for p in r.problemas if p.esperado=='quantidade de Classe 0 da progressão']
+                self.assertEqual(bool(limite),passa,limite)
+                self.assertIn(f'Origem Origem sintética (base {rc})',r.conferidos)
 
     def ferramenta(self,base='Torre',volume=''):
         return trocar(ficha(),custom__1__tipo='Ferramenta amaldiçoada',custom__1__nome='Ferramenta sintética',
