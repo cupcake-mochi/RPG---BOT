@@ -157,10 +157,11 @@ de volta no fim. Todos rodaram no runtime `56b02cf`, no tópico Testes.
   recebe "somar" e não cai nisso. Fica como observação, sem conserto.
 - **Pergunta paga (20:59).** Mencionando o bot: "Kal'tsit, quanto PE custa ativar uma Liberação Máxima de Classe
   3? Responde curto, com a conta." A Kal'tsit respondeu que o custo é 14 PE: 3 × Classe = 9, mais 50%, dá 13,5,
-  que arredonda para 14. A conta está certa pela R67. O custo não foi conferido nos logs. Os ensaios de 04/11
-  ficaram perto de US$ 0,01 por pergunta.
+  que arredonda para 14. A conta está certa pela R67. O custo estimado nos logs foi US$ 0,008769, perto dos
+  US$ 0,01 por pergunta dos ensaios de 04/11.
   [Pergunta](https://discord.com/channels/1357866906341736488/1561410667108368575/1573487965173448736) ·
   [resposta](https://discord.com/channels/1357866906341736488/1561410667108368575/1573488090159251627)
 - **Observação de apresentação.** Nessa ficha, a página Limites da análise lista chaves cruas em "Vários itens"
   (`r53.classe0.6.*`, `r53.classe0.7.*`, `zero.6.*`, `zero.7.*`). Para o jogador isso é ruído. Não muda o
-  veredito.
+  veredito. *Resolvida em 20/11:* eram as chaves dos cartões 6 e 7 da Prática Cotidiana, que o bot não conhecia.
+  Veja [Prática Cotidiana](PUBLICACAO-PRATICA-COTIDIANA-2026-11-20.md).
