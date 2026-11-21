@@ -8,7 +8,7 @@
 --gerar-env   cria o .env do site com a chave de cifra e o segredo de serviço já sorteados (nada aparece na tela) e
               os outros campos em branco pra preencher. Não sobrescreve arquivo que já existe.
 
---subdominio  o nome registrado na Discloud, sem ".discloud.app" (vai no ID= do discloud.config).
+--subdominio  o nome registrado na Discloud, sem ".discloud.app" nem ".discloud.dev" (vai no ID= do discloud.config).
 --ram         memória do app em MB. Padrão 512, o mínimo que a Discloud pede pra site. A decisão é do Mizuki.
 --campanhas   cópia do src/var/ficha-campanhas.json do bot (sai no backup do app das Guias). Sem ela, a análise
               de ficha fica desligada no site; cartão, galeria e cadastro funcionam.
@@ -35,7 +35,7 @@ SUFIXOS = (".py", ".js", ".css", ".html", ".json", ".jsonl", ".tsv", ".webp", ".
 DADOS_LIVRO = ("catalogos.json", "livro.jsonl", "legado-r52.jsonl", "MANIFESTO.json")
 # O que o ConfigWeb exige. CARTEIRA_DATABASE_PATH, CARTEIRA_BOOK_DATA e CARTEIRA_CAMPAIGNS_PATH o iniciar_carteira.py completa.
 OBRIGATORIAS = {
-    "CARTEIRA_PUBLIC_ORIGIN": "https://NOME.discloud.app, sem barra no fim",
+    "CARTEIRA_PUBLIC_ORIGIN": "https://NOME.discloud.dev (ou .app, o que a Discloud mostrar), sem barra no fim",
     "CARTEIRA_ENCRYPTION_KEYS": "chave Fernet do banco. Guarde uma cópia longe dos backups: sem ela o banco não abre",
     "CARTEIRA_SERVICE_TOKEN": "o mesmo valor vai no .env do bot, em CARTEIRA_SERVICE_TOKEN",
     "CARTEIRA_DISCORD_CLIENT_ID": "Discord Developer Portal > Guias do Ciclo > OAuth2 > Client ID",

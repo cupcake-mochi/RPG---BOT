@@ -7,6 +7,26 @@ espera o plano **Platinum** (R$ 10,99/mês, conferido em discloud.com/plans em
 O site é um **app novo** na Discloud, `TYPE=site`, separado do app das Guias.
 O bot continua no app dele e só passa a chamar o site.
 
+## Situação em 21/11/2026, noite
+
+O site está no ar em **https://guias-carteira.discloud.dev**: app `guias-carteira`,
+512 MB, ao lado do bot (512 MB), do Arquivista (256 MB) e da Servidora (128 MB).
+Os 4 somam 1,4 GB dos 2 GB do Platinum. Medido em casa, o site parado com o
+motor carregado usa uns 60 MB; o bot ficou em uns 150 MB no dia todo.
+
+| Passo | Situação |
+|---|---|
+| 1. Subdomínio | Feito. A Discloud deu `.discloud.dev`, não `.app` |
+| 2. `.env` do site | Feito, com chave, segredo de serviço, token do bot, Client ID e servidores |
+| 3. Discord | Retorno `.dev` cadastrado. **Falta o Client Secret**: o Discord pede o código de dois fatores do Mizuki pra redefinir |
+| 4. Google | **Parado**: a conta dona do projeto precisa ativar a verificação em duas etapas antes de abrir o Google Cloud |
+| 5 e 6. Pacote e app do site | Feito. Os 4 campos que faltam estão com `PENDENTE-MIZUKI` |
+| 7. Ligar o bot | Espera os passos 3 e 4. Sem isso os comandos apareceriam e o cadastro falharia |
+| 8. Teste | Espera o passo 7 |
+
+Servidores liberados em `CARTEIRA_GUILDS`: o servidor principal (`GUILD_ID` do
+bot) e o servidor que tem campanha cadastrada no `ficha-campanhas.json`.
+
 ## O que já está pronto no código
 
 | Peça | Onde |
@@ -22,10 +42,10 @@ O bot continua no app dele e só passa a chamar o site.
 
 ### 1. Subdomínio (Mizuki, no painel da Discloud)
 
-Registrar um subdomínio, por exemplo `guias-carteira`. A Discloud escolhe se
+Registrar um subdomínio, por exemplo `guias-carteira`. A Discloud escolhe, na hora de publicar, se
 fica em `.discloud.app` ou `.discloud.dev`. A origem do site é o endereço
 completo com `https://`, sem barra no fim. Nos exemplos abaixo:
-`https://guias-carteira.discloud.app`.
+`https://guias-carteira.discloud.dev`.
 
 ### 2. `.env` do site (eu rodo, sem mostrar segredo)
 
@@ -46,7 +66,7 @@ python3 ferramentas/empacotar_carteira.py --gerar-env ~/.local/share/guias-ciclo
 
 No Developer Portal, app **Guias do Ciclo** → OAuth2:
 
-- acrescentar o retorno `https://guias-carteira.discloud.app/oauth/discord/retorno`;
+- acrescentar o retorno `https://guias-carteira.discloud.dev/oauth/discord/retorno`;
 - copiar o Client ID e o Client Secret pro `.env` do site;
 - `CARTEIRA_DISCORD_BOT_TOKEN` é o mesmo token do bot (o `DISCORD_TOKEN` do
   `.env` dele). O site usa só pra conferir membro e cargo, sem Gateway.
@@ -57,12 +77,12 @@ No projeto `guias-ciclo-fichas` (número `1015676492327`):
 
 - **Cliente OAuth novo, tipo web, de produção.** O atual é o "Piloto local",
   com retorno em `127.0.0.1`.
-  - Origem JavaScript: `https://guias-carteira.discloud.app`.
-  - Retorno: `https://guias-carteira.discloud.app/oauth/google/retorno`.
+  - Origem JavaScript: `https://guias-carteira.discloud.dev`.
+  - Retorno: `https://guias-carteira.discloud.dev/oauth/google/retorno`.
 - **Chave do Picker:** acrescentar o referenciador
-  `https://guias-carteira.discloud.app/*`, mantendo só a API do Picker.
+  `https://guias-carteira.discloud.dev/*`, mantendo só a API do Picker.
 - **Tela de consentimento:**
-  - página inicial `https://guias-carteira.discloud.app/`;
+  - página inicial `https://guias-carteira.discloud.dev/`;
   - privacidade `…/privacidade`;
   - termos `…/termos`;
   - o escopo continua só `drive.file`.
@@ -97,7 +117,7 @@ python3 ferramentas/empacotar_carteira.py --subdominio guias-carteira \
 ### 6. Subir o site (eu faço, com o ok do Mizuki)
 
 - Criar o app novo com o zip. **Não** usar o Commit do app das Guias.
-- Conferir os logs e abrir `https://guias-carteira.discloud.app/saude`, que
+- Conferir os logs e abrir `https://guias-carteira.discloud.dev/saude`, que
   responde `{"servico": "carteira-viva", "estado": "online"}`.
 - Conferir `/`, `/privacidade` e `/termos`.
 
@@ -106,7 +126,7 @@ python3 ferramentas/empacotar_carteira.py --subdominio guias-carteira \
 - No `.env` do bot, acrescentar:
 
   ```text
-  CARTEIRA_API_URL=https://guias-carteira.discloud.app
+  CARTEIRA_API_URL=https://guias-carteira.discloud.dev
   CARTEIRA_SERVICE_TOKEN=<o mesmo do .env do site>
   ```
 
