@@ -104,7 +104,8 @@ conferido no Discord. O que mudou e por quê está em
 - ~~Os cartões de feitiço e de Liberação preenchidos ainda não passaram pelo
   Discord. Só a Máxima passou.~~ Passaram em 20/11. Veja a seção abaixo.
 - ~~A duplicação das famílias descrita acima.~~ Corrigida na PR #113 e publicada em 20/11. Veja o [registro](PUBLICACAO-FAMILIAS-2026-11-20.md).
-- Não houve pergunta à Kal'tsit ou à Closure, porque essas chamam o modelo pago.
+- ~~Não houve pergunta à Kal'tsit ou à Closure, porque essas chamam o modelo pago.~~ Uma pergunta foi feita em
+  20/11. Veja a seção "Mais testes no Discord" abaixo.
 
 ## Cartões de feitiço e de Liberação no Discord (20/11, 20:18–20:19)
 
@@ -123,6 +124,43 @@ conferido no Discord. O que mudou e por quê está em
   O resumo conta 2 habilidades. Foi reprovada, com 6 páginas, por causa do resto da ficha em branco (Caminho,
   Trilha, famílias e Origem).
   [Resposta](https://discord.com/channels/1357866906341736488/1561410667108368575/1573477861246111788)
-- **Ponto a conferir.** Na planilha, a linha de ação do cartão da Liberação diz "Ação Completa · 17 PE · 18 m".
-  O campo `liberacao.1.pe` exportado, e mostrado pelo bot, é 14 PE. Não foi verificado se os 3 PE a mais vêm da
-  ação ou se é divergência.
+- **17 PE na planilha contra 14 PE no bot: não é divergência.** A linha de ação do cartão da Liberação dizia
+  "Ação Completa · 17 PE · 18 m", e o `liberacao.1.pe` exportado (e mostrado pelo bot) era 14 PE. Os 14 são o custo
+  base, `ARREDONDAR.PARA.CIMA(4,5 × Classe)` = 13,5 → 14 na Classe 3. A linha de ação soma +1 PE por Classe quando
+  a Integridade está no Estágio 2 ou mais (`preco_execucao` em `ficha-v01/conjuracao_integridade.py`). A cópia
+  estava com Integridade 25 de 75 (FICHA D34/J34), e D37 dizia "Estágio 2 · … +1 PE por Classe". Logo, 14 + 3 = 17.
+  O cartão do feitiço mostrou a mesma coisa: base 3 PE e 4 PE na linha de ação.
+
+## Mais testes no Discord (20/11, 20:47–20:59)
+
+Os três testes usaram a mesma cópia descartável dos cartões. Ela foi tirada da lixeira para os testes e mandada
+de volta no fim. Todos rodaram no runtime `56b02cf`, no tópico Testes.
+
+- **Ficha desatualizada (20:47).** O portador foi renomeado depois da última exportação, e a CARTEIRA passou a
+  mostrar "Bot: desatualizada". O `.xlsx` foi baixado sem exportar de novo. No `GC:ficha`, o bot não conferiu a
+  ficha e respondeu que ela foi editada depois da última exportação. A resposta deu a hora da última exportação
+  completa e explicou como exportar de novo, no PC e no celular. Era isso o que se esperava.
+- **Talentos grátis (20:57).** Foram preenchidos "Instinto" na carta Talento · Origem e "Raiz" na carta
+  Talento · Extra. Também foi ligada uma linha da CONFIGURAÇÃO: "Talentos grátis · somar · 1 · Item · Teste". Na
+  planilha, a Origem mostrou "⚠ Vaga", porque a Origem Latente não dá Talento, e a Extra mostrou "Grátis". Depois
+  de exportar pelo menu Bot, o `GC:ficha` mostrou:
+  - em Correções e revisão, um erro: "Talento origem: A ficha informa Instinto; a conferência indica vaga só com
+    Manifestação Instintiva entre as menores";
+  - em Falta ou pede atenção: "efeito · 1: aprovação da fonte e aplicação desta definição exata pelo mestre";
+  - em Limites da análise: "Talento extra · Raiz; a fonte (item, pacto, Origem criada, mestre) não é conferida
+    pelo livro".
+
+  Os três batem com `ficha_repertorio.py` e `ficha_configuracao.py`.
+- **Envio anterior com "Somar" (20:53).** Antes desse teste houve um envio com "Somar" em maiúscula. O erro foi
+  do teste: o valor foi escrito pela API, que passa por cima do menu. A planilha aceitou, porque o Sheets compara
+  texto sem diferenciar maiúscula. O bot recusou a linha ("alvo conhecido, somar/trocar por…"). Quem usa o menu
+  recebe "somar" e não cai nisso. Fica como observação, sem conserto.
+- **Pergunta paga (20:59).** Mencionando o bot: "Kal'tsit, quanto PE custa ativar uma Liberação Máxima de Classe
+  3? Responde curto, com a conta." A Kal'tsit respondeu que o custo é 14 PE: 3 × Classe = 9, mais 50%, dá 13,5,
+  que arredonda para 14. A conta está certa pela R67. O custo não foi conferido nos logs. Os ensaios de 04/11
+  ficaram perto de US$ 0,01 por pergunta.
+  [Pergunta](https://discord.com/channels/1357866906341736488/1561410667108368575/1573487965173448736) ·
+  [resposta](https://discord.com/channels/1357866906341736488/1561410667108368575/1573488090159251627)
+- **Observação de apresentação.** Nessa ficha, a página Limites da análise lista chaves cruas em "Vários itens"
+  (`r53.classe0.6.*`, `r53.classe0.7.*`, `zero.6.*`, `zero.7.*`). Para o jogador isso é ruído. Não muda o
+  veredito.
