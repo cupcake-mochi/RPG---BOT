@@ -25,6 +25,7 @@ DEMO = web.AppKey("demo", bool)
 CONSULTAS = web.AppKey("consultas", object)
 GALERIA = web.AppKey("galeria", object)
 STATIC = Path(__file__).with_name("static")
+LENTO = 5.0  # segundos; acima disso a galeria registra a ação no diário
 RequestKey = getattr(web, "RequestKey", web.AppKey)
 TICKET = RequestKey("ticket", str)
 COOKIE = RequestKey("cookie", str)
@@ -142,11 +143,16 @@ async def api_galeria(request):
     if set(d)-permitidos: raise ErroCarteira('Argumento não permitido.')
     args=(s,u,pid) if pid is not None else (s,u)
     from closure_bot.ficha_leitor import FichaIlegivel
+    inicio=time.monotonic()
     try:
         if acao=='analisar': d['analisar']=True
         result=await fn(*args,**d)
     except FichaIlegivel:
         return resposta_json({'erro':'leitura'},422)
+    finally:
+        # Só ação e duração: sem servidor, usuário ou personagem no diário.
+        if (dur:=time.monotonic()-inicio)>=LENTO:
+            logging.getLogger(__name__).warning("Galeria lenta: %s levou %.1f s",acao,dur)
     if acao=='imagem': return web.Response(body=result,content_type='image/webp')
     from .segredos import json_bytes
     if len(json_bytes(result))>8*1024*1024: raise ErroCarteira('A resposta privada ultrapassou o limite.')
@@ -425,6 +431,9 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, moto
             with suppress(asyncio.CancelledError):
                 await task
             await app[CONSULTAS].fechar()
+            fechar_http = getattr(app[PROVEDORES], "fechar", None)
+            if fechar_http is not None:
+                await fechar_http()
             await dados.fechar()
     app.cleanup_ctx.append(ciclo)
     app.router.add_post("/interno/conexoes", iniciar)
