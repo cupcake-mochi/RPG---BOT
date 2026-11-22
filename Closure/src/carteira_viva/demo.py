@@ -95,7 +95,7 @@ def preparar(porta):
                              urlencode({"state": request.query.get("state", ""), "code": "codigo_ficticio"}))
 
     async def semear(app):
-        m=Membro('111','222');cid=await app[DADOS].chamar('cadastro.conectar',m,conta='demo',cliente=cfg.google_id,refresh_token='ficticio')
+        m=Membro('111','222');cid=await app[DADOS].chamar('cadastro.conectar',m,conta='conta_google_ficticia',cliente=cfg.google_id,refresh_token='ficticio')
         # Ren e Ayla mostram os números; Noa mostra que o dono pode deixá-los de fora.
         demo=(('Ayla','Herdeira do clã sem nome',0xBA7517,(4,41,17,15),True),('Ren','Exploradora de fronteiras',0x397B77,(1,23,8,13),True),
               ('Noa','',0x7F77DD,(2,27,10,14),False))

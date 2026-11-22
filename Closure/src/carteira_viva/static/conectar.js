@@ -95,7 +95,12 @@
   async function action(work) {
     if(busy) return; busy=true; $("erro").hidden=true;
     document.querySelectorAll("button").forEach(b=>b.disabled=true);
-    try { await work(); } catch(e) { showError(e.message); }
+    try { await work(); } catch(e) {
+      showError(e.message);
+      // Uma falha pode encerrar a solicitação no servidor: só redesenha se a etapa mudou,
+      // para não apagar o que a pessoa digitou na revisão.
+      try { const atual=await api("/api/fluxo"); if(atual.fase!==state.fase){ state=atual; render(); } } catch {}
+    }
     finally { busy=false; document.querySelectorAll("button").forEach(b=>b.disabled=false); }
   }
   for (const provider of ["discord","google"]) $("entrar-"+provider).onclick=()=>action(async()=>{
