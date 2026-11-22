@@ -11,7 +11,7 @@ from cryptography.fernet import Fernet
 import httpx
 
 from carteira_viva.config_web import ConfigWeb
-from carteira_viva.provedores import DRIVE_FILE, ErroProvedor, Provedores
+from carteira_viva.provedores import DRIVE_FILE, ErroProvedor, MembroAusente, Provedores
 from carteira_viva.segredos import AcessoNegado, ErroCarteira
 
 
@@ -183,6 +183,18 @@ class ProvedoresTeste(unittest.IsolatedAsyncioTestCase):
         p = Provedores(self.cfg, transporte=httpx.MockTransport(handler))
         with self.assertRaises(AcessoNegado) as exc: await p.membro("111", "222")
         self.assertNotIsInstance(exc.exception, ErroProvedor)
+
+    async def test_membro_que_saiu_chega_como_membro_ausente(self):
+        def handler(request):
+            if "/members/" in request.url.path:
+                return httpx.Response(404, json={"message": "Unknown Member"})
+            return self.handler(request)
+        p = Provedores(self.cfg, transporte=httpx.MockTransport(handler))
+        with self.assertRaises(MembroAusente): await p.membro("111", "222")
+        # Outros 404 continuam sendo falta de acesso, não saída do servidor.
+        p = Provedores(self.cfg, transporte=httpx.MockTransport(lambda r: httpx.Response(404, json={})))
+        with self.assertRaises(ErroProvedor) as exc: await p.conta_google("token_ficticio")
+        self.assertEqual(exc.exception.codigo, "acesso")
 
     async def test_429_curto_espera_e_repete(self):
         tentativas = []
