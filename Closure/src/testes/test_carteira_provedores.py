@@ -272,3 +272,18 @@ class ProvedoresTeste(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(ErroProvedor): await p.conta_google("token_ficticio")
         p = Provedores(self.cfg, transporte=httpx.MockTransport(lambda r: httpx.Response(302, headers={"Location": "https://outra.invalid/"})))
         with self.assertRaises(ErroProvedor): await p.conta_google("token_ficticio")
+
+
+class TemposTeste(unittest.TestCase):
+    def test_registra_so_nomes_e_segundos_acima_do_limite(self):
+        from carteira_viva.consultas import Tempos
+        relogio = iter([0.0, 1.0, 4.5, 5.0])
+        t = Tempos(relogio=lambda: next(relogio))
+        t.marcar("token"); t.marcar("leitura")
+        with self.assertLogs("carteira_viva.consultas", "WARNING") as log:
+            self.assertEqual(t.registrar("Leitura da ficha"), 4.5)
+        self.assertEqual(log.output, ["WARNING:carteira_viva.consultas:Leitura da ficha levou 4.5 s: token 1.0, leitura 3.5"])
+        rapido = iter([0.0, 0.5])
+        t = Tempos(relogio=lambda: next(rapido)); t.marcar("token")
+        with self.assertNoLogs("carteira_viva.consultas", "WARNING"):
+            t.registrar("Leitura da ficha")

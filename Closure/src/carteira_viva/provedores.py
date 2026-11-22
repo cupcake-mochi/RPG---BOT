@@ -245,13 +245,20 @@ class Provedores:
         from .leitura_google import da_grade
         if not isinstance(arquivo, str) or not ARQUIVO.fullmatch(arquivo):
             raise ErroProvedor("arquivo")
+        from .consultas import Tempos
+        tempos = Tempos()
         antes = await self.versao_arquivo(acesso, arquivo)
+        tempos.marcar("versao")
         query = urlencode({"ranges": "'ANALISE'!A1:D20002", "fields":
             "spreadsheetId,sheets(properties(title),data(startRow,startColumn,rowData(values(effectiveValue))))"})
         grade = await self._json("https://sheets.googleapis.com/v4/spreadsheets/" + arquivo + "?" + query,
                                  acesso, limite=16 * 1024 * 1024)
+        tempos.marcar("grade")
         ficha = await asyncio.to_thread(da_grade, grade, arquivo)
+        tempos.marcar("decodificar")
         depois = await self.versao_arquivo(acesso, arquivo)
+        tempos.marcar("versao")
+        tempos.registrar("ANALISE no Google", limite=2.0)
         if antes != depois:
             raise ErroProvedor("alterada")
         return ficha, antes

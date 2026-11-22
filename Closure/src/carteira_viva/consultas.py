@@ -2,6 +2,7 @@
 import asyncio
 from contextlib import suppress
 from dataclasses import asdict
+import logging
 import time
 from weakref import WeakValueDictionary
 
@@ -12,6 +13,27 @@ from .provedores import ErroProvedor
 from .segredos import Conflito, ErroCarteira, json_bytes
 
 SCHEMA = "carteira-analise-1"
+LENTO = 4.0  # segundos; acima disso a leitura registra as etapas no diário
+
+
+class Tempos:
+    """Duração das etapas de uma leitura, só nomes e segundos (sem ids nem dados)."""
+    def __init__(self, relogio=time.monotonic):
+        self.relogio = relogio
+        self.inicio = self.ultimo = relogio()
+        self.etapas = []
+
+    def marcar(self, nome):
+        agora = self.relogio()
+        self.etapas.append((nome, agora - self.ultimo))
+        self.ultimo = agora
+
+    def registrar(self, titulo, limite=None):
+        total = self.ultimo - self.inicio
+        if total >= (LENTO if limite is None else limite):
+            logging.getLogger(__name__).warning("%s levou %.1f s: %s", titulo, total,
+                                                ", ".join(f"{n} {d:.1f}" for n, d in self.etapas))
+        return total
 
 
 def preparar_snapshot(leituras, versoes):
@@ -153,15 +175,19 @@ class Consultas:
                 raise Conflito("A fonte mudou enquanto a consulta aguardava.")
             ref = await self._banco("reservar_leitura", membro, personagem)
             cred = None
+            tempos = Tempos()
             try:
                 cred, token = await self._renovar_google(membro, ref)
+                tempos.marcar("token")
                 from closure_bot.ficha_r53 import transicoes
                 leituras, versoes = [], []
                 for tentativa in range(len(self.esperas) + 1):
                     if tentativa:
                         await asyncio.sleep(self.esperas[tentativa - 1])
+                        tempos.marcar("espera")
                     await self.cotas.esperar(digest(cred.conta))
                     ficha, versao = await self.provedores.ler_analise(token.acesso, ref.arquivo)
+                    tempos.marcar("leitura")
                     leituras.append(ficha)
                     versoes.append(versao)
                     if not await asyncio.to_thread(transicoes, ficha):
@@ -170,6 +196,8 @@ class Consultas:
                 campos = await asyncio.to_thread(preparar_snapshot, leituras, versoes)
                 membro, _ = await self._atual(servidor, usuario, personagem, chave)
                 lid = await self._banco("gravar_leitura", membro, ref, campos=campos, schema=SCHEMA)
+                tempos.marcar("gravar")
+                tempos.registrar("Leitura da ficha")
                 return lid
             except BaseException as exc:
                 if cred is not None and isinstance(exc, ErroProvedor) and exc.codigo == "revogada":
