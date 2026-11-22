@@ -26,11 +26,11 @@ motor carregado usa uns 60 MB; o bot ficou em uns 150 MB no dia todo.
 
 ### O que o teste de 21/11 mostrou
 
-- **Brave:** com o escudo ligado, o seletor do Google pede "Sign in" e abre numa janela à parte que não devolve a ficha pro site. Desligando o escudo só pro site, funciona. Quem usa Brave ou Safari precisa desse aviso.
+- **Brave:** com o escudo ligado, o seletor do Google pede "Sign in" e abre numa janela à parte que não devolve a ficha pro site. Desligando o escudo só pro site, funciona. Quem usa Brave ou Safari precisa desse aviso. **Ajustado (PR #129):** a página de conexão mostra essa dica embaixo de "Escolher minha ficha".
 - **Tela de consentimento do Google:** aparece "discloud.dev" no lugar do nome do app, porque a marca não foi verificada. Não impede o cadastro.
 - **Tempo:** `/personagens` e a análise levam uns 20 segundos pra responder.
-- **Autocompletar:** `/personagem excluir` (e os outros com personagem) só sugere nomes vistos num `/personagens` do último minuto. Sem isso, aparece "Nenhuma opção".
-- **Modelo do servidor:** `/personagem modelo_configurar` ainda exige o formato 12.
+- **Autocompletar:** `/personagem excluir` (e os outros com personagem) só sugere nomes vistos num `/personagens` do último minuto. Sem isso, aparece "Nenhuma opção". **Ajustado (PR #129):** sem nomes guardados, o bot busca a lista do próprio jogador no site (prazo de 2,5 s; se demorar, a próxima tecla já acha).
+- **Modelo do servidor:** `/personagem modelo_configurar` exigia o formato 12. **Ajustado (PR #129):** aceita 12 e 13.
 
 Servidores liberados em `CARTEIRA_GUILDS`: o servidor principal (`GUILD_ID` do
 bot) e o servidor que tem campanha cadastrada no `ficha-campanhas.json`.
