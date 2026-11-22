@@ -55,6 +55,14 @@ class PaginasPublicas(unittest.IsolatedAsyncioTestCase):
         self.assertIn("api-services-user-data-policy", textos["/privacidade"])
         self.assertIn("drive.file", textos["/privacidade"])
 
+    async def test_imagem_das_guias_e_servida_e_o_resto_do_static_nao(self):
+        r = await self.client.get("/static/guias.png")
+        self.assertEqual(r.status, 200)
+        self.assertEqual(r.content_type, "image/png")
+        self.assertTrue((await r.read()).startswith(b"\x89PNG"))
+        self.assertEqual((await self.client.get("/static/inicio.html")).status, 404)
+        self.assertIn('rel="icon" href="/static/guias.png"', await (await self.client.get("/")).text())
+
     async def test_comandos_citados_na_politica_existem_na_ponte(self):
         from carteira_viva.ponte_discord import ConectarFicha
         nomes = {"/" + g.name + " " + c.name for g in (ConectarFicha.grupo, ConectarFicha.grupo_en) for c in g.commands}

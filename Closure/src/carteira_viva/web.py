@@ -358,9 +358,11 @@ async def cancelar(request):
 
 async def estatico(request):
     nome = request.match_info["nome"]
-    if nome not in ("conectar.js", "conectar.css", "carteira.js", "carteira.css"):
+    tipos = {"conectar.js": "application/javascript", "conectar.css": "text/css", "carteira.js": "application/javascript",
+             "carteira.css": "text/css", "guias.png": "image/png"}
+    if nome not in tipos:
         raise web.HTTPNotFound()
-    return web.Response(body=(STATIC / nome).read_bytes(), content_type="application/javascript" if nome.endswith(".js") else "text/css")
+    return web.Response(body=(STATIC / nome).read_bytes(), content_type=tipos[nome])
 
 
 DOCUMENTOS = {"/": "inicio.html", "/privacidade": "privacidade.html", "/termos": "termos.html"}
