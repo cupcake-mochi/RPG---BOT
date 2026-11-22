@@ -7,7 +7,7 @@ espera o plano **Platinum** (R$ 10,99/mês, conferido em discloud.com/plans em
 O site é um **app novo** na Discloud, `TYPE=site`, separado do app das Guias.
 O bot continua no app dele e só passa a chamar o site.
 
-## Situação em 21/11/2026, 21h30
+## Situação em 21/11/2026, 22h
 
 O site está no ar em **https://guias-carteira.discloud.dev**: app `guias-carteira`,
 512 MB, ao lado do bot (512 MB), do Arquivista (256 MB) e da Servidora (128 MB).
@@ -22,7 +22,15 @@ motor carregado usa uns 60 MB; o bot ficou em uns 150 MB no dia todo.
 | 4. Google | Feito. Cliente OAuth web "Carteira de personagens - Site", chave do Picker liberada pro site, tela de consentimento com início, privacidade e termos, app **Em produção** (só `drive.file`, sem verificação) |
 | 5 e 6. Pacote e app do site | Feito, com todos os segredos. Avatar do app: `/static/guias.png` (Kal'tsit e Closure) |
 | 7. Ligar o bot | Feito, com backup antes (21h20) e depois (21h23). `/personagem`, `/personagens`, `/character` e `/characters` registrados |
-| 8. Teste | Ponte conferida: o site aceita o token do bot, confere o membro no Discord e devolve o link; o Discord aceita o retorno. **Falta o cadastro completo com uma ficha descartável, feito pelo Mizuki** |
+| 8. Teste | Feito às 21h55, no computador, com uma cópia descartável do modelo da Era da Revolução: cadastro, `/personagens`, análise, galeria web e `/personagem excluir`. O teste achou o site recusando o formato 13 da ficha atual, corrigido na PR #127. Falta repetir no celular |
+
+### O que o teste de 21/11 mostrou
+
+- **Brave:** com o escudo ligado, o seletor do Google pede "Sign in" e abre numa janela à parte que não devolve a ficha pro site. Desligando o escudo só pro site, funciona. Quem usa Brave ou Safari precisa desse aviso.
+- **Tela de consentimento do Google:** aparece "discloud.dev" no lugar do nome do app, porque a marca não foi verificada. Não impede o cadastro.
+- **Tempo:** `/personagens` e a análise levam uns 20 segundos pra responder.
+- **Autocompletar:** `/personagem excluir` (e os outros com personagem) só sugere nomes vistos num `/personagens` do último minuto. Sem isso, aparece "Nenhuma opção".
+- **Modelo do servidor:** `/personagem modelo_configurar` ainda exige o formato 12.
 
 Servidores liberados em `CARTEIRA_GUILDS`: o servidor principal (`GUILD_ID` do
 bot) e o servidor que tem campanha cadastrada no `ficha-campanhas.json`.
