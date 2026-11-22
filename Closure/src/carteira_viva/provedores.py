@@ -20,6 +20,10 @@ from .segredos import AcessoNegado, ErroCarteira
 
 DRIVE_FILE = "https://www.googleapis.com/auth/drive.file"
 MIME = "application/vnd.google-apps.spreadsheet"
+# Mesmos formatos que o bot conhece (closure_bot.ficha_corretor.FORMATOS_CONHECIDOS);
+# um teste trava os dois juntos. O 13 ficou de fora até 21/11/2026 e o site
+# recusava o modelo de ficha atual.
+FORMATOS_ANALISE = frozenset({1, 2, 4, 11, 12, 13})
 DISCORD = "https://discord.com/api/v10"
 GOOGLE_TOKEN = "https://oauth2.googleapis.com/token"
 AUTORIZAR = {"discord": "https://discord.com/oauth2/authorize",
@@ -295,9 +299,9 @@ class Provedores:
                 raise ErroProvedor("formato")
             valores[chave] = linha[1] if len(linha) > 1 else ""
         versao = valores.get("formato.versao")
-        if type(versao) is str and versao in ("1", "2", "4", "11", "12"):
+        if type(versao) is str and versao in {str(v) for v in FORMATOS_ANALISE}:
             versao = int(versao)
-        if type(versao) is not int or versao not in {1, 2, 4, 11, 12}:
+        if type(versao) is not int or versao not in FORMATOS_ANALISE:
             raise ErroProvedor("formato")
         nome = valores.get("nome")
         nome = nome.strip() if isinstance(nome, str) else ""

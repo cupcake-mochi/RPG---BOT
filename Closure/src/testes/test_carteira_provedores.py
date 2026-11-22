@@ -187,6 +187,19 @@ class ProvedoresTeste(unittest.IsolatedAsyncioTestCase):
                 await self.prov.validar_arquivo("token_ficticio", self.metadados["id"])
             self.metadados = original
 
+    async def test_formato_13_do_modelo_atual_e_aceito(self):
+        for valor in (13, "13"):
+            self.valores = {"values": [["chave", "valor", "célula", "parte"], ["formato.versao", valor], ["nome", ""]]}
+            with self.subTest(valor=valor):
+                p = await self.prov.validar_arquivo("token_ficticio", self.metadados["id"])
+                self.assertEqual(p["contrato"], "analise-13")
+                self.assertEqual(p["nome"], "Novo personagem")
+
+    def test_site_aceita_os_mesmos_formatos_que_o_bot(self):
+        from carteira_viva.provedores import FORMATOS_ANALISE
+        from closure_bot.ficha_corretor import FORMATOS_CONHECIDOS
+        self.assertEqual(set(FORMATOS_ANALISE), set(FORMATOS_CONHECIDOS))
+
     async def test_formato_ausente_duplicado_booleano_e_futuro(self):
         for linhas in ([['nome', 'A']], [['formato.versao', 12], ['formato.versao', 12]],
                         [['formato.versao', True]], [['formato.versao', 99]]):
