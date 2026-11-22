@@ -7,7 +7,7 @@ espera o plano **Platinum** (R$ 10,99/mês, conferido em discloud.com/plans em
 O site é um **app novo** na Discloud, `TYPE=site`, separado do app das Guias.
 O bot continua no app dele e só passa a chamar o site.
 
-## Situação em 21/11/2026, noite
+## Situação em 21/11/2026, 21h30
 
 O site está no ar em **https://guias-carteira.discloud.dev**: app `guias-carteira`,
 512 MB, ao lado do bot (512 MB), do Arquivista (256 MB) e da Servidora (128 MB).
@@ -18,11 +18,11 @@ motor carregado usa uns 60 MB; o bot ficou em uns 150 MB no dia todo.
 |---|---|
 | 1. Subdomínio | Feito. A Discloud deu `.discloud.dev`, não `.app` |
 | 2. `.env` do site | Feito, com chave, segredo de serviço, token do bot, Client ID e servidores |
-| 3. Discord | Retorno `.dev` cadastrado. **Falta o Client Secret**: o Discord pede o código de dois fatores do Mizuki pra redefinir |
-| 4. Google | **Parado**: a conta dona do projeto precisa ativar a verificação em duas etapas antes de abrir o Google Cloud |
-| 5 e 6. Pacote e app do site | Feito. Os 4 campos que faltam estão com `PENDENTE-MIZUKI` |
-| 7. Ligar o bot | Espera os passos 3 e 4. Sem isso os comandos apareceriam e o cadastro falharia |
-| 8. Teste | Espera o passo 7 |
+| 3. Discord | Feito. Retorno `.dev` cadastrado e Client Secret novo, gravado direto no `.env` |
+| 4. Google | Feito. Cliente OAuth web "Carteira de personagens - Site", chave do Picker liberada pro site, tela de consentimento com início, privacidade e termos, app **Em produção** (só `drive.file`, sem verificação) |
+| 5 e 6. Pacote e app do site | Feito, com todos os segredos. Avatar do app: `/static/guias.png` (Kal'tsit e Closure) |
+| 7. Ligar o bot | Feito, com backup antes (21h20) e depois (21h23). `/personagem`, `/personagens`, `/character` e `/characters` registrados |
+| 8. Teste | Ponte conferida: o site aceita o token do bot, confere o membro no Discord e devolve o link; o Discord aceita o retorno. **Falta o cadastro completo com uma ficha descartável, feito pelo Mizuki** |
 
 Servidores liberados em `CARTEIRA_GUILDS`: o servidor principal (`GUILD_ID` do
 bot) e o servidor que tem campanha cadastrada no `ficha-campanhas.json`.
