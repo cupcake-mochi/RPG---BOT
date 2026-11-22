@@ -206,7 +206,9 @@ class Provedores:
         except (httpx.HTTPError, ValueError, RecursionError) as exc:
             # Aninhamento profundo dentro do teto de bytes estoura a pilha do
             # parser; recusar como resposta inválida, sem escapar do contrato.
-            if isinstance(exc, ErroProvedor):
+            # MembroAusente também é ValueError; até 22/11/2026 virava "temporario"
+            # e a galeria nunca registrava a saída do servidor.
+            if isinstance(exc, (ErroProvedor, MembroAusente)):
                 raise
             raise ErroProvedor("temporario") from None
 
