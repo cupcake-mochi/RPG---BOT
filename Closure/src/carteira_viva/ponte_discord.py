@@ -169,23 +169,43 @@ class ConectarFicha(commands.Cog):
             dono=str(jogador.id if jogador else i.user.id)
             d=await self.api.pedir(i.guild_id,i.user.id,'listar',dono=dono)
             view=GaleriaView(self,i.guild_id,i.user.id,dono,d)
-            if view.card:
-                view.card=await self.api.pedir(i.guild_id,i.user.id,'cartao',personagem=view.card['id'])
-                view.dados['cartoes']=[view.card if c['id']==view.card['id'] else c for c in view.dados['cartoes']]
-                view.montar()
             self.lembrar_nomes(i.guild_id,i.user.id,dono,view.dados)
+            # Mostra já o cartão salvo (a lista traz a última leitura) e só então
+            # relê a ficha: a releitura no Google leva uns 10 s (medido 22/11/2026).
             kw=await view.conteudo();files=kw.pop('attachments')
             view.mensagem=await i.followup.send(**kw,files=files,view=view,wait=True,allowed_mentions=discord.AllowedMentions.none())
-        except FalhaCarteira as exc:await i.followup.send(erro(exc,lang),ephemeral=True)
+        except FalhaCarteira as exc:
+            await i.followup.send(erro(exc,lang),ephemeral=True);return
+        await self.atualizar_primeiro(view)
+
+    async def atualizar_primeiro(self,view):
+        """Releitura do primeiro cartão depois de exibido; nunca passa por cima do jogador."""
+        card=view.card
+        if not card or not card.get('capacidades',{}).get('ver_detalhes'):return
+        pid,pagina=card['id'],view.pagina
+        try:novo=await self.api.pedir(view.servidor,view.usuario,'cartao',personagem=pid)
+        except FalhaCarteira:return  # o cartão salvo já está na tela
+        # Se o jogador trocou de cartão ou de página enquanto lia, a ação dele vale.
+        if view.is_finished() or view.mensagem is None or view.pagina!=pagina or not view.card or view.card['id']!=pid:return
+        view.card=novo
+        view.dados['cartoes']=[novo if c['id']==pid else c for c in view.dados['cartoes']]
+        view.montar()
+        try:
+            kw=await view.conteudo();files=kw.pop('attachments')
+            view.mensagem=await view.mensagem.edit(**kw,attachments=files,view=view,allowed_mentions=discord.AllowedMentions.none())
+        except (discord.HTTPException,FalhaCarteira):pass  # mensagem apagada ou sem permissão: fica a versão salva
 
     async def ver_cartao(self,i,personagem):
         if not await self.contexto(i,privado=False):return
         try:
-            c=await self.api.pedir(i.guild_id,i.user.id,'cartao',personagem=personagem)
+            # Salvo primeiro, releitura depois (ver abrir_galeria).
+            c=await self.api.pedir(i.guild_id,i.user.id,'cartao_salvo',personagem=personagem)
             view=GaleriaView(self,i.guild_id,i.user.id,c['responsavel'],{'cartoes':[c],'proximo':None},single=True)
             kw=await view.conteudo();files=kw.pop('attachments')
             view.mensagem=await i.followup.send(**kw,files=files,view=view,wait=True,allowed_mentions=discord.AllowedMentions.none())
-        except FalhaCarteira as exc:await i.followup.send(erro(exc,self.idioma(i)),ephemeral=True)
+        except FalhaCarteira as exc:
+            await i.followup.send(erro(exc,self.idioma(i)),ephemeral=True);return
+        await self.atualizar_primeiro(view)
 
     async def consulta_privada(self,i,personagem,acao):
         try:
