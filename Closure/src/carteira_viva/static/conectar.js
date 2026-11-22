@@ -8,7 +8,9 @@
     passo1:"Your Discord account", passo2:"Your Google spreadsheet", passo3:"Review and confirm",
     "entrar-discord":"Sign in with Discord", "entrar-google":"Connect Google", "conta-label":"Or use an existing connection", usar:"Use this connection",
     permissao:"Google authorization grants the app access to selected files. This step only reads the sheet; it does not edit cells.",
-    escolher:"Choose my sheet", conferir:"Review your selection", parcial:"The format was identified. Full sheet analysis is a separate step.",
+    escolher:"Choose my sheet",
+    "dica-picker":"If the Google picker asks you to sign in or opens another window, your browser is blocking Google cookies on this page. In Brave, click the lion in the address bar and turn Shields off for this site only, then click Choose my sheet again.",
+    conferir:"Review your selection", parcial:"The format was identified. Full sheet analysis is a separate step.",
     "nome-label":"Character name", "responsabilidade-label":"I confirm this is my sheet and I may register it in this server. Administrators and authorized reviewers may view its details.",
     "troca-aviso":"Replacing the file keeps the character and card, but requires a new analysis. The previous Google file stays intact.",
     confirmar:"Confirm", pronto:"All set", voltar:"You may close this window and return to Discord.", cancelar:"Cancel request",
@@ -68,6 +70,7 @@
       $("conectadas").hidden=!(state.conexoes || []).length;
     }
     if (state.fase === "picker" || (state.fase === "revisar" && state.acao !== "reconectar")) $("picker").hidden=false;
+    $("dica-picker").hidden=state.fase !== "picker" || !!state.demonstracao;
     if (state.fase === "revisar") { $("revisar").hidden=false; $("arquivo").textContent=state.previa.nome_arquivo;
       $("nome").value=state.acao === "cadastro" ? state.previa.nome : state.nome_atual; $("nome").disabled=state.acao !== "cadastro";
       $("troca-aviso").hidden=state.acao !== "troca"; }

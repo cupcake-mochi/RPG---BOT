@@ -4,6 +4,7 @@ As Guias carregam esta extensão só quando CARTEIRA_API_URL e
 CARTEIRA_SERVICE_TOKEN estão configurados. Usa só aiohttp/discord.py; as
 bibliotecas OAuth ficam no serviço separado.
 """
+import asyncio
 import os
 import secrets
 import time
@@ -16,6 +17,9 @@ from discord import app_commands
 from discord.ext import commands
 from .cliente_discord import ClienteCarteira, FalhaCarteira, origem_valida
 from .discord_ui import GaleriaView, ConsultaView, PreviaView, AbrirEditor, txt, erro, seguro
+
+NOMES_VALIDADE = 600  # segundos que os nomes do autocompletar valem
+NOMES_PRAZO = 2.5  # o Discord espera 3 s pela resposta do autocompletar
 
 
 class Confirmar(discord.ui.View):
@@ -52,6 +56,7 @@ class ConectarFicha(commands.Cog):
         origem_valida(self.origem, desenvolvimento)
         self.api = ClienteCarteira(origem, token, desenvolvimento=desenvolvimento)
         self.nomes = OrderedDict()
+        self.buscas = {}
 
     async def iniciar(self, interacao, acao, personagem=None):
         en = self.idioma(interacao) == "en"
@@ -89,11 +94,33 @@ class ConectarFicha(commands.Cog):
 
     async def completar(self,i,atual):
         if not i.guild_id:return []
-        # Autocomplete não pode ser adiado no Discord. Usa somente nomes
-        # públicos já exibidos ao próprio responsável; abrir dados revalida.
-        item=self.nomes.get((str(i.guild_id),str(i.user.id)))
-        if not item or time.monotonic()-item[0]>60:return []
-        return [app_commands.Choice(name=seguro(nome,90),value=pid) for pid,nome in item[1] if atual.casefold() in nome.casefold()][:20]
+        # Autocomplete não pode ser adiado no Discord (3 s). Usa só nomes dos
+        # personagens do próprio jogador; abrir dados revalida no site.
+        chave=(str(i.guild_id),str(i.user.id))
+        item=self.nomes.get(chave)
+        def opcoes(item):
+            return [app_commands.Choice(name=seguro(nome,90),value=pid) for pid,nome in item[1] if atual.casefold() in nome.casefold()][:20]
+        idade=time.monotonic()-item[0] if item else None
+        # Sem nomes, nomes velhos ou nada batendo depois de 30 s (personagem
+        # cadastrado agora): busca a lista no site, sem passar do prazo.
+        if item is None or idade>NOMES_VALIDADE or (idade>30 and not opcoes(item)):
+            item=await self.buscar_nomes(i.guild_id,i.user.id) or item
+        if not item or time.monotonic()-item[0]>NOMES_VALIDADE:return []
+        return opcoes(item)
+
+    async def buscar_nomes(self,servidor,usuario):
+        chave=(str(servidor),str(usuario))
+        tarefa=self.buscas.get(chave)
+        if tarefa is None or tarefa.done():
+            async def carregar():
+                try:self.lembrar_nomes(servidor,usuario,usuario,await self.api.pedir(servidor,usuario,'listar'))
+                except (FalhaCarteira,KeyError,TypeError,AttributeError):pass
+            tarefa=asyncio.ensure_future(carregar())
+            self.buscas[chave]=tarefa
+            tarefa.add_done_callback(lambda t:self.buscas.pop(chave,None) if self.buscas.get(chave) is t else None)
+        try:await asyncio.wait_for(asyncio.shield(tarefa),NOMES_PRAZO)
+        except asyncio.TimeoutError:return None  # a busca segue; a próxima tecla já acha os nomes
+        return self.nomes.get(chave)
 
     def lembrar_nomes(self,servidor,usuario,dono,dados):
         if str(usuario)!=str(dono):return

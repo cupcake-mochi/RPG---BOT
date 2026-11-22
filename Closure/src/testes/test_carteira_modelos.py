@@ -164,6 +164,14 @@ class SondagemTeste(unittest.TestCase):
         for valor in (True,0,3,'2'):
             with self.subTest(valor=valor),self.assertRaises(ErroCarteira):referencia_validada({**nova,'sondagem_versao':valor})
 
+    def test_modelo_atual_no_formato_13_e_aceito_e_o_14_nao(self):
+        g=grade();g['sheets'][0]['data'][0]['rowData'][1]['values'][1]['effectiveValue']['stringValue']='13'
+        self.assertEqual(sondar(g),['estado_salarial_presente','extrato_presente'])
+        self.assertEqual(referencia_validada({**referencia(),'contrato':'analise-13'})['contrato'],'analise-13')
+        g['sheets'][0]['data'][0]['rowData'][1]['values'][1]['effectiveValue']['stringValue']='14'
+        with self.assertRaises(ErroCarteira):sondar(g)
+        with self.assertRaises(ErroCarteira):referencia_validada({**referencia(),'contrato':'analise-14'})
+
     def test_recusa_formula_substituida_aba_ausente_revisao_errada_e_erro(self):
         for mutate in (lambda g:g['sheets'].pop(),
                        lambda g:g['sheets'][1]['data'][0]['rowData'][0]['values'].__setitem__(6,{'effectiveValue':{'numberValue':0}}),
