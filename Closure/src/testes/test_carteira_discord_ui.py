@@ -47,14 +47,52 @@ class DiscordUITeste(unittest.IsolatedAsyncioTestCase):
         v=GaleriaView(self.cog,111,222,222,{'cartoes':[],'proximo':None});kw=await v.conteudo()
         self.assertIn('Nenhum personagem',kw['content']);self.assertFalse(kw['embeds'])
         self.assertTrue(all(x.disabled for x in v.children))
+    def mensagem(self):
+        m=SimpleNamespace();m.edit=AsyncMock(return_value=m);return m
     async def test_primeiro_nome_no_menu_acompanha_leitura_nova(self):
         antigo=card();antigo['perfil']['nome']='Nome anterior'
         novo=card();novo['perfil']['nome']='Nome atual'
+        rotulos=[]
+        async def enviar(**kw):
+            rotulos.append(kw['view'].children[0].options[0].label);return self.mensagem()
+        self.i.followup.send.side_effect=enviar
         self.api.pedir.side_effect=[{'cartoes':[antigo],'proximo':None},novo]
-        self.i.followup.send.return_value=SimpleNamespace()
+        await self.cog.abrir_galeria(self.i)
+        self.assertEqual(rotulos,['Nome anterior'])  # aparece logo, com a última leitura salva
+        view=self.i.followup.send.call_args.kwargs['view']
+        view.mensagem.edit.assert_awaited_once()
+        self.assertEqual(view.children[0].options[0].label,'Nome atual')
+        self.assertEqual(self.api.pedir.await_args_list[1].args[2:],('cartao',))
+    async def test_releitura_nao_passa_por_cima_de_quem_trocou_de_cartao(self):
+        self.i.followup.send.return_value=self.mensagem()
+        async def pedir(s,u,acao,**kw):
+            if acao=='listar':return self.dados()
+            view=self.i.followup.send.call_args.kwargs['view'];view.card=view.dados['cartoes'][1]  # clicou no outro
+            return card()
+        self.api.pedir.side_effect=pedir
         await self.cog.abrir_galeria(self.i)
         view=self.i.followup.send.call_args.kwargs['view']
-        self.assertEqual(view.children[0].options[0].label,'Nome atual')
+        view.mensagem.edit.assert_not_awaited();self.assertEqual(view.card['id'],P2)
+    async def test_releitura_que_falha_deixa_o_cartao_salvo_sem_erro(self):
+        self.i.followup.send.return_value=self.mensagem()
+        self.api.pedir.side_effect=[self.dados(),FalhaCarteira('leitura')]
+        await self.cog.abrir_galeria(self.i)
+        self.i.followup.send.assert_awaited_once()  # nenhuma mensagem de erro extra
+        self.i.followup.send.call_args.kwargs['view'].mensagem.edit.assert_not_awaited()
+    async def test_ver_mostra_salvo_e_depois_a_releitura(self):
+        novo=card();novo['perfil']['nome']='Nome atual'
+        self.i.followup.send.return_value=self.mensagem()
+        self.api.pedir.side_effect=[card(),novo]
+        await self.cog.ver_cartao(self.i,PID)
+        self.assertEqual([c.args[2] for c in self.api.pedir.await_args_list],['cartao_salvo','cartao'])
+        view=self.i.followup.send.call_args.kwargs['view']
+        view.mensagem.edit.assert_awaited_once();self.assertEqual(view.card['perfil']['nome'],'Nome atual')
+    async def test_galeria_alheia_nao_rele_ficha(self):
+        alheio=card();alheio['capacidades']={'ver_detalhes':False}
+        self.i.followup.send.return_value=self.mensagem()
+        self.api.pedir.side_effect=[{'cartoes':[alheio],'proximo':None}]
+        await self.cog.abrir_galeria(self.i)
+        self.assertEqual(self.api.pedir.await_count,1)
     async def test_autocomplete_so_nomes_proprios_e_sem_rede_com_nomes_frescos(self):
         self.cog.lembrar_nomes(111,222,999,self.dados())  # galeria de outro jogador não entra
         self.assertNotIn((str(111),str(222)),self.cog.nomes)
