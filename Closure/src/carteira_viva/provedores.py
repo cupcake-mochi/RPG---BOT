@@ -91,7 +91,7 @@ TENTATIVAS_429 = 3
 class Provedores:
     def __init__(self, cfg: ConfigWeb, *, transporte=None, agora=time.time):
         self.cfg, self.transporte, self.agora = cfg, transporte, agora
-        self._http = None  # (loop, cliente): conexão reaproveitada, nunca resposta
+        self._http = None  # (loop, transporte, cliente): conexão reaproveitada, nunca resposta
 
     def _cliente_http(self):
         """Pool HTTP do loop atual. Reaproveita a conexão TLS; cada GET continua novo.
@@ -101,15 +101,17 @@ class Provedores:
         por GET). Não guarda resposta nem autorização: só o socket.
         """
         loop = asyncio.get_running_loop()
-        if self._http is None or self._http[0] is not loop or self._http[1].is_closed:
-            self._http = (loop, httpx.AsyncClient(timeout=15, follow_redirects=False, trust_env=False,
-                                                  transport=self.transporte))
-        return self._http[1]
+        if (self._http is None or self._http[0] is not loop or self._http[1] is not self.transporte or
+                self._http[2].is_closed):
+            # Transporte trocado (testes) ou loop novo: pool novo.
+            self._http = (loop, self.transporte, httpx.AsyncClient(
+                timeout=15, follow_redirects=False, trust_env=False, transport=self.transporte))
+        return self._http[2]
 
     async def fechar(self):
-        if self._http is not None and not self._http[1].is_closed:
+        if self._http is not None and not self._http[2].is_closed:
             with suppress(RuntimeError):
-                await self._http[1].aclose()
+                await self._http[2].aclose()
         self._http = None
 
     def _cliente(self, provedor, estado=None):

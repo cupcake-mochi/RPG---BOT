@@ -166,12 +166,12 @@ class ProvedoresTeste(unittest.IsolatedAsyncioTestCase):
 
     async def test_membro_faz_tres_gets_novos_na_mesma_conexao(self):
         await self.prov.membro("111", "222")
-        cliente = self.prov._http[1]
+        cliente = self.prov._http[2]
         await self.prov.membro("111", "222")
         caminhos = [r.url.path for r in self.req]
         self.assertEqual(len(caminhos), 6)  # sem cache: cada membro() consulta de novo
         self.assertEqual(sorted(caminhos[:3]), sorted(caminhos[3:]))
-        self.assertIs(self.prov._http[1], cliente)
+        self.assertIs(self.prov._http[2], cliente)
         await self.prov.fechar()
         self.assertIsNone(self.prov._http)
 
