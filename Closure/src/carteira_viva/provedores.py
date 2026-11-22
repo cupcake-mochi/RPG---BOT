@@ -24,6 +24,9 @@ MIME = "application/vnd.google-apps.spreadsheet"
 # um teste trava os dois juntos. O 13 ficou de fora até 21/11/2026 e o site
 # recusava o modelo de ficha atual.
 FORMATOS_ANALISE = frozenset({1, 2, 4, 11, 12, 13})
+# Modelo do servidor: R53 no formato 12 (ficha viva) ou 13 (ANALISE exportada,
+# mesmas abas e as chaves analise.estado/analise.exportada_em no fim).
+MODELO_CONTRATOS = ("analise-12", "analise-13")
 DISCORD = "https://discord.com/api/v10"
 GOOGLE_TOKEN = "https://oauth2.googleapis.com/token"
 AUTORIZAR = {"discord": "https://discord.com/oauth2/authorize",
@@ -317,7 +320,7 @@ class Provedores:
         url = "https://www.googleapis.com/drive/v3/files/" + arquivo + "?fields=id,version,trashed,isAppAuthorized"
         antes = await self._json(url, acesso)
         previa = await self.validar_arquivo(acesso, arquivo)
-        if previa["contrato"] != "analise-12":
+        if previa["contrato"] not in MODELO_CONTRATOS:
             raise ErroProvedor("formato")
         sheets_url = "https://sheets.googleapis.com/v4/spreadsheets/" + arquivo
         meta = await self._json(sheets_url + "?" + urlencode({"fields":

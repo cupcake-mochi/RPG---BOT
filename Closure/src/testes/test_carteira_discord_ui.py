@@ -55,21 +55,51 @@ class DiscordUITeste(unittest.IsolatedAsyncioTestCase):
         await self.cog.abrir_galeria(self.i)
         view=self.i.followup.send.call_args.kwargs['view']
         self.assertEqual(view.children[0].options[0].label,'Nome atual')
-    async def test_autocomplete_so_nomes_proprios_exibidos_sem_rede(self):
-        self.assertEqual(await self.cog.completar(self.i,''),[])
-        self.cog.lembrar_nomes(111,222,999,self.dados())
-        self.assertEqual(await self.cog.completar(self.i,''),[])
+    async def test_autocomplete_so_nomes_proprios_e_sem_rede_com_nomes_frescos(self):
+        self.cog.lembrar_nomes(111,222,999,self.dados())  # galeria de outro jogador não entra
+        self.assertNotIn((str(111),str(222)),self.cog.nomes)
         self.cog.lembrar_nomes(111,222,222,self.dados())
         self.assertEqual(len(await self.cog.completar(self.i,'QA')),2)
-        self.assertEqual(await self.cog.completar(interacao(gid=333),''),[])
         self.api.pedir.assert_not_called()
+    async def test_autocomplete_sem_personagens_busca_a_propria_lista(self):
+        self.api.pedir.return_value=self.dados()
+        opcoes=await self.cog.completar(self.i,'')
+        self.assertEqual([o.value for o in opcoes],[PID,P2])
+        self.api.pedir.assert_awaited_once_with(111,222,'listar')
+        await self.cog.completar(self.i,'QA')
+        self.api.pedir.assert_awaited_once()  # a segunda tecla usa o que já veio
+    async def test_autocomplete_lento_responde_vazio_e_a_proxima_tecla_acha(self):
+        import asyncio
+        from carteira_viva import ponte_discord
+        liberar=asyncio.Event()
+        async def lento(*a,**k):
+            await liberar.wait();return self.dados()
+        self.api.pedir.side_effect=lento
+        with patch.object(ponte_discord,'NOMES_PRAZO',0.01):
+            self.assertEqual(await self.cog.completar(self.i,''),[])
+            liberar.set();await asyncio.sleep(0)
+            await asyncio.sleep(0)
+            self.assertEqual(len(await self.cog.completar(self.i,'')),2)
+        self.assertEqual(self.api.pedir.await_count,1)
+    async def test_autocomplete_falha_do_site_nao_quebra(self):
+        self.api.pedir.side_effect=FalhaCarteira('temporario')
+        self.assertEqual(await self.cog.completar(self.i,''),[])
+        self.assertEqual(await self.cog.completar(interacao(gid=None),''),[])
     async def test_autocomplete_expira_e_cache_tem_teto(self):
         import time
         self.cog.lembrar_nomes(111,222,222,self.dados())
-        with patch('carteira_viva.ponte_discord.time.monotonic',return_value=time.monotonic()+61):
+        self.api.pedir.side_effect=FalhaCarteira('temporario')
+        with patch('carteira_viva.ponte_discord.time.monotonic',return_value=time.monotonic()+601):
             self.assertEqual(await self.cog.completar(self.i,''),[])
         for n in range(200):self.cog.lembrar_nomes(111,n,n,self.dados())
         self.assertEqual(len(self.cog.nomes),128)
+    async def test_autocomplete_rebusca_quando_nada_bate_depois_de_30s(self):
+        import time
+        self.cog.lembrar_nomes(111,222,222,self.dados())
+        novo=card('c'*32);novo['perfil']['nome']='Recém cadastrado'
+        self.api.pedir.return_value={'cartoes':[card(),card(P2),novo],'proximo':None}
+        with patch('carteira_viva.ponte_discord.time.monotonic',return_value=time.monotonic()+31):
+            self.assertEqual([o.value for o in await self.cog.completar(self.i,'Recém')],['c'*32])
     async def test_privado_nunca_edita_resposta_publica(self):
         self.api.pedir.return_value={'cartao':card(),'arquivo':'arquivo_ficticio_para_teste_001','revisao':1,'leitura':{'campos':{'ficha':{}},'lido_em':180000.},'analise':None}
         await self.cog.consulta_privada(self.i,PID,'detalhes')

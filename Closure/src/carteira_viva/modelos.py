@@ -32,7 +32,7 @@ def referencia_validada(previa):
         raise ErroCarteira("Modelo incompleto.")
     if (not re.fullmatch(r"[A-Za-z0-9_-]{20,200}", previa["arquivo"]) or
             len(previa["nome_arquivo"]) > 200 or not re.fullmatch(r"[0-9]{1,30}", previa["versao_drive"]) or
-            previa["contrato"] != "analise-12" or previa["revisao_livro"] != "R53" or
+            previa["contrato"] not in ("analise-12", "analise-13") or previa["revisao_livro"] != "R53" or
             not isinstance(previa.get("sinais"), list) or any(x not in SINAIS for x in previa["sinais"])):
         raise ErroCarteira("Modelo incompatível.")
     sondagem = previa.get("sondagem_versao", 1)

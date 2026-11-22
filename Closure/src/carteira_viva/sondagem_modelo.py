@@ -69,9 +69,9 @@ def sondar(obj):
         return v.get("stringValue", v.get("numberValue", v.get("boolValue")))
 
     header = {value(cell("ANALISE", r, 1)): value(cell("ANALISE", r, 2)) for r in range(2, 6)}
-    if (header.get("formato.versao") not in (12, "12") or header.get("ficha.versao") != "R53" or
+    if (header.get("formato.versao") not in (12, "12", 13, "13") or header.get("ficha.versao") != "R53" or
             header.get("ficha.livro") != "Ciclo Maldito R53"):
-        raise ErroCarteira("Use um modelo ANALISE 12 / R53.")
+        raise ErroCarteira("Use um modelo ANALISE 12 ou 13 / R53.")
     for title, row, col in (("FICHA", 11, 40), ("DADOS", 47, 104), ("CONFIGURAÇÃO", 46, 7)):
         if not cell(title, row, col).get("userEnteredValue", {}).get("formulaValue"):
             raise ErroCarteira("Falta uma fórmula de referência no modelo.")
