@@ -28,7 +28,7 @@ motor carregado usa uns 60 MB; o bot ficou em uns 150 MB no dia todo.
 
 - **Brave:** com o escudo ligado, o seletor do Google pede "Sign in" e abre numa janela à parte que não devolve a ficha pro site. Desligando o escudo só pro site, funciona. Quem usa Brave ou Safari precisa desse aviso. **Ajustado (PR #129):** a página de conexão mostra essa dica embaixo de "Escolher minha ficha".
 - **Tela de consentimento do Google:** aparece "discloud.dev" no lugar do nome do app, porque a marca não foi verificada. Não impede o cadastro.
-- **Tempo:** `/personagens` e a análise levam uns 20 segundos pra responder.
+- **Tempo:** `/personagens` e a análise levam uns 20 segundos pra responder. **Causa (22/11):** um `/personagens` faz 13 checagens de membro (39 GETs no Discord) e a análise, 15 (45 GETs), todas em fila e com conexão nova a cada GET. **Ajustado:** a conexão é reaproveitada, as três consultas de cada checagem saem juntas e o 429 do Discord (5 GETs de membro por segundo) espera o tempo pedido em vez de falhar. Continua sem cache: cada checagem consulta o Discord de novo. Medido do PC: 13 checagens de 27,3 s para 5,8 s. O site registra no diário "Galeria lenta" quando uma ação passa de 5 s.
 - **Autocompletar:** `/personagem excluir` (e os outros com personagem) só sugere nomes vistos num `/personagens` do último minuto. Sem isso, aparece "Nenhuma opção". **Ajustado (PR #129):** sem nomes guardados, o bot busca a lista do próprio jogador no site (prazo de 2,5 s; se demorar, a próxima tecla já acha).
 - **Modelo do servidor:** `/personagem modelo_configurar` exigia o formato 12. **Ajustado (PR #129):** aceita 12 e 13.
 

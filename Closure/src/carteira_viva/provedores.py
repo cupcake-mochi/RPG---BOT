@@ -1,4 +1,5 @@
 """OAuth e leituras mínimas em provedores oficiais; sem escrita em planilhas."""
+from contextlib import suppress
 from dataclasses import dataclass, field
 import asyncio
 import json
@@ -45,6 +46,21 @@ class MembroAusente(AcessoNegado):
     codigo = 'membro_ausente'
 
 
+def _espera_429(cabecalhos):
+    """Segundos pedidos pelo 429, ou None se for limite global ou espera longa demais."""
+    if str(cabecalhos.get("x-ratelimit-global", "")).lower() == "true":
+        return None
+    for nome in ("retry-after", "x-ratelimit-reset-after"):
+        try:
+            espera = float(cabecalhos.get(nome, ""))
+        except ValueError:
+            continue
+        if math.isfinite(espera) and 0 <= espera <= ESPERA_429_MAX:
+            return espera
+        return None
+    return None
+
+
 MODIFICADO = re.compile(r'[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\.[0-9]{1,9})?Z')
 
 
@@ -65,9 +81,36 @@ class TokenGoogle:
     expira: float
 
 
+# Discord limita GET de membro a 5 por segundo no servidor e responde 429 com o
+# tempo de espera. Esperar e repetir é o que a API pede; desistir na hora virava
+# "tente novamente" pro jogador. Espera longa (limite global) continua falhando.
+ESPERA_429_MAX = 5.0
+TENTATIVAS_429 = 3
+
+
 class Provedores:
     def __init__(self, cfg: ConfigWeb, *, transporte=None, agora=time.time):
         self.cfg, self.transporte, self.agora = cfg, transporte, agora
+        self._http = None  # (loop, cliente): conexão reaproveitada, nunca resposta
+
+    def _cliente_http(self):
+        """Pool HTTP do loop atual. Reaproveita a conexão TLS; cada GET continua novo.
+
+        Um `/personagens` faz dezenas de GETs no Discord. Abrir conexão em cada um
+        custava mais que a própria consulta (medido em 22/11/2026: 0,63 s → 0,33 s
+        por GET). Não guarda resposta nem autorização: só o socket.
+        """
+        loop = asyncio.get_running_loop()
+        if self._http is None or self._http[0] is not loop or self._http[1].is_closed:
+            self._http = (loop, httpx.AsyncClient(timeout=15, follow_redirects=False, trust_env=False,
+                                                  transport=self.transporte))
+        return self._http[1]
+
+    async def fechar(self):
+        if self._http is not None and not self._http[1].is_closed:
+            with suppress(RuntimeError):
+                await self._http[1].aclose()
+        self._http = None
 
     def _cliente(self, provedor, estado=None):
         google = provedor == "google"
@@ -138,9 +181,15 @@ class Provedores:
 
     async def _json(self, url: str, token: str, *, bot=False, limite=512 * 1024, membro=False):
         try:
-            async with httpx.AsyncClient(timeout=15, follow_redirects=False, trust_env=False,
-                                         transport=self.transporte) as client:
+            client = self._cliente_http()
+            for tentativa in range(TENTATIVAS_429):
                 async with client.stream("GET", url, headers={"Authorization": ("Bot " if bot else "Bearer ") + token}) as resp:
+                    if resp.status_code == 429 and tentativa + 1 < TENTATIVAS_429:
+                        espera = _espera_429(resp.headers)
+                        if espera is not None:
+                            await resp.aclose()
+                            await asyncio.sleep(espera)
+                            continue
                     if membro and resp.status_code == 404:
                         raise MembroAusente('Membro ausente deste servidor.')
                     if resp.status_code != 200:
@@ -150,6 +199,7 @@ class Provedores:
                         corpo.extend(bloco)
                         if len(corpo) > limite:
                             raise ErroProvedor("tamanho")
+                break
             return await asyncio.to_thread(json.loads, corpo)
         except (httpx.HTTPError, ValueError, RecursionError) as exc:
             # Aninhamento profundo dentro do teto de bytes estoura a pilha do
@@ -228,7 +278,22 @@ class Provedores:
                 not SNOWFLAKE.fullmatch(usuario)):
             raise AcessoNegado("Servidor ou usuário não permitido neste piloto.")
         token = self.cfg.discord_bot_token
-        m = await self._json(f"{DISCORD}/guilds/{servidor}/members/{usuario}", token, bot=True, membro=True)
+        url_membro = f"{DISCORD}/guilds/{servidor}/members/{usuario}"
+        if confirmar_basico is None:
+            # membro() sempre faz as três consultas; em paralelo custam uma ida
+            # e volta em vez de três. Mesmos GETs, todos novos, sem cache.
+            m, guild, roles = await asyncio.gather(
+                self._json(url_membro, token, bot=True, membro=True),
+                self._json(f"{DISCORD}/guilds/{servidor}", token, bot=True),
+                self._json(f"{DISCORD}/guilds/{servidor}/roles", token, bot=True), return_exceptions=True)
+            # A resposta do membro decide primeiro (ausente/pendente), como antes.
+            for r in (m, guild, roles):
+                if isinstance(r, BaseException) and not isinstance(r, Exception):
+                    raise r
+            if isinstance(m, Exception):
+                raise m
+        else:
+            m = await self._json(url_membro, token, bot=True, membro=True)
         if (not isinstance(m, dict) or not isinstance(m.get("user"), dict) or
                 m["user"].get("id") != usuario or m.get("pending") is True):
             raise AcessoNegado("Confirme sua participação no servidor.")
@@ -244,8 +309,13 @@ class Provedores:
                 raise ErroProvedor("identidade")
             if confirmado:
                 return basico  # Admin/owner/manage continuam False, sem cache.
-        guild = await self._json(f"{DISCORD}/guilds/{servidor}", token, bot=True)
-        roles = await self._json(f"{DISCORD}/guilds/{servidor}/roles", token, bot=True)
+        if confirmar_basico is None:
+            for r in (guild, roles):
+                if isinstance(r, Exception):
+                    raise r
+        else:
+            guild = await self._json(f"{DISCORD}/guilds/{servidor}", token, bot=True)
+            roles = await self._json(f"{DISCORD}/guilds/{servidor}/roles", token, bot=True)
         try:
             permissoes = 0
             for role in roles:

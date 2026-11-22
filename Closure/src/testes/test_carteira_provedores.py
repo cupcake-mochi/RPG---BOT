@@ -164,6 +164,52 @@ class ProvedoresTeste(unittest.IsolatedAsyncioTestCase):
         with self.assertRaises(AcessoNegado): await self.prov.membro("111", "222")
         with self.assertRaises(AcessoNegado): await self.prov.membro("999", "222")
 
+    async def test_membro_faz_tres_gets_novos_na_mesma_conexao(self):
+        await self.prov.membro("111", "222")
+        cliente = self.prov._http[1]
+        await self.prov.membro("111", "222")
+        caminhos = [r.url.path for r in self.req]
+        self.assertEqual(len(caminhos), 6)  # sem cache: cada membro() consulta de novo
+        self.assertEqual(sorted(caminhos[:3]), sorted(caminhos[3:]))
+        self.assertIs(self.prov._http[1], cliente)
+        await self.prov.fechar()
+        self.assertIsNone(self.prov._http)
+
+    async def test_resposta_do_membro_decide_antes_da_falha_do_servidor(self):
+        def handler(request):
+            if "/members/" in request.url.path:
+                return httpx.Response(200, json={"user": {"id": "222"}, "roles": [], "pending": True})
+            return httpx.Response(500, json={})
+        p = Provedores(self.cfg, transporte=httpx.MockTransport(handler))
+        with self.assertRaises(AcessoNegado) as exc: await p.membro("111", "222")
+        self.assertNotIsInstance(exc.exception, ErroProvedor)
+
+    async def test_429_curto_espera_e_repete(self):
+        tentativas = []
+        def handler(request):
+            if "/members/" in request.url.path:
+                tentativas.append(1)
+                if len(tentativas) == 1:
+                    return httpx.Response(429, headers={"Retry-After": "0.01"}, json={})
+            return self.handler(request)
+        p = Provedores(self.cfg, transporte=httpx.MockTransport(handler))
+        m = await p.membro("111", "222")
+        self.assertTrue(m.administrador)
+        self.assertEqual(len(tentativas), 2)
+
+    async def test_429_global_longo_ou_insistente_falha_sem_travar(self):
+        for cabecalhos in ({"Retry-After": "0.01", "X-RateLimit-Global": "true"}, {"Retry-After": "60"},
+                           {"Retry-After": "nada"}, {"Retry-After": "0"}):
+            tentativas = []
+            def handler(request, cabecalhos=cabecalhos):
+                tentativas.append(1)
+                return httpx.Response(429, headers=cabecalhos, json={})
+            p = Provedores(self.cfg, transporte=httpx.MockTransport(handler))
+            with self.subTest(cabecalhos=cabecalhos), self.assertRaises(ErroProvedor) as exc:
+                await p.conta_google("token_ficticio")
+            self.assertEqual(exc.exception.codigo, "temporario")
+            self.assertLessEqual(len(tentativas), 3)
+
     async def test_selecao_valida_so_le_primeiras_linhas(self):
         p = await self.prov.validar_arquivo("token_ficticio", self.metadados["id"])
         self.assertEqual(p["nome"], "Personagem fictício")
