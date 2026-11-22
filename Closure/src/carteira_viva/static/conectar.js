@@ -30,6 +30,8 @@
       acesso:["Essa conta ou sessão não pode usar esta solicitação.","This account or session cannot use this request."],
       ocupado:["O serviço está ocupado. Tente novamente em instantes.","The service is busy. Try again shortly."],
       responsabilidade:["Marque a confirmação de responsabilidade para continuar.","Confirm responsibility before continuing."]};
+    specific.expirada=["Este link venceu: ele vale dez minutos. Peça um novo pelo mesmo comando no Discord.","This link expired: it lasts ten minutes. Request a new one with the same command in Discord."];
+    specific.formato=["Essa planilha não está num formato de ficha que a Carteira conhece. Confira se escolheu a ficha certa e abra uma nova solicitação pelo Discord.","This spreadsheet is not in a sheet format the Wallet knows. Check you picked the right sheet and start a new request in Discord."];
     specific.limite=["Você já tem solicitações abertas. Termine ou cancele uma delas; depois tente novamente.","You already have open requests. Finish or cancel one, then try again."];
     const text = specific[code] || ["Não foi possível concluir. Confira sua conta ou abra uma nova solicitação pelo Discord.","Could not complete the request. Check your account or start a new request in Discord."];
     $("erro").textContent = text[english() ? 1 : 0]; $("erro").hidden = false;
