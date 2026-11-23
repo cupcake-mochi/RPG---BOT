@@ -162,6 +162,40 @@ class ConsultaNatural(unittest.TestCase):
                               ["construcao--entidades-atributos", "equip--eq-propriedades", "equip--eqa-laminas"])
         self.assertNotIn("geral--ataques", fontes)
 
+    def test_nome_de_regra_frequente_abre_o_livro_sem_palavra_de_regra(self):
+        # Pente fino de 23/11/2026: estas perguntas chegavam sem trecho nenhum, porque o nome aparece em muitas
+        # páginas e a pergunta não trazia "livro", "regra" ou outra palavra da lista fixa. A Kal'tsit respondia
+        # "não tenho essa parte do livro" (tamanho grande, 19/11, no servidor).
+        for persona in ("kal", "clo"):
+            for msg, esperada in (
+                ("quais os benefícios de ser do tamanho grande?", "origens--corpo-ninhada-gemeos"),
+                ("o que destreza faz?", "geral--atributos"),
+                ("o que deslocamento faz?", "geral--movimento"),
+                ("o que pesada faz?", "dano--pesadas"),
+                ("o que restrição faz?", "fundamento--restricoes"),
+                ("o que a duração de um feitiço muda?", "fundamento--conjurar"),
+            ):
+                with self.subTest(persona=persona, msg=msg):
+                    self.conferir(msg, [esperada], persona=persona)
+
+    def test_nome_composto_rotulo_e_titulo_curto(self):
+        # "vinculada" e "Vínculo" têm o mesmo radical, mas Arma Vinculada é do Emanador.
+        fontes = self.conferir("como funciona a Arma Vinculada?", ["emanador--ema-artes"])
+        self.assertNotIn("evocador--ev-vinculo", fontes)
+        # Título de três palavras comuns ainda nomeia o item.
+        self.conferir("o que o colar de ar faz?", ["equip--eqf-acessorios"])
+        # "**Ação Padrão.**" abre parágrafo em várias ações; a definição é a do glossário.
+        fontes = self.conferir("como funciona a ação padrão?", ["geral--turnos"])
+        self.assertNotIn("geral--esconder", fontes)
+
+    def test_nome_do_livro_em_conversa_comum_continua_fora(self):
+        for msg in ("qual a melhor forma de aprender inglês?", "me fala sobre a sua família",
+                    "quanto custa uma pizza grande?", "quais os benefícios de acordar cedo?",
+                    "qual o melhor jeito de dormir cedo?", "o que a energia solar faz de bom?",
+                    "qual o limite de velocidade numa rodovia?", "quais os benefícios de meditar?"):
+            with self.subTest(msg=msg):
+                self.assertEqual(self.montar(msg)[1], [])
+
     @unittest.skipUnless(len(site_prompt.motores()) == 2, "precisa dos dois motores")
     def test_paridade_dos_motores(self):
         for msg, anteriores in (
@@ -169,6 +203,8 @@ class ConsultaNatural(unittest.TestCase):
             ("Como funciona os Atributos?", []),
             ("Quando minha invocação pode agir?", []),
             ("então não existe nenhum benefício?", ["Como lutar com dois punhais?"]),
+            ("quais os benefícios de ser do tamanho grande?", []),
+            ("como funciona a Arma Vinculada?", []),
         ):
             with self.subTest(msg=msg):
                 self.assertEqual(self.montar(msg, anteriores, motor="quickjs"),

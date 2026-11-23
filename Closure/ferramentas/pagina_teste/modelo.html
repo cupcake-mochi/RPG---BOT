@@ -138,7 +138,7 @@ function ativar(texto, soTermos = null) {
 
 /*__BUSCA_MUNDO__*/
 
-// ---------- livro: âncora dos termos acionados + os blocos que mais casam com a mensagem (busca v11) ----------
+// ---------- livro: âncora dos termos acionados + os blocos que mais casam com a mensagem (busca v12) ----------
 const PARADA = new Set(("a o e de da do das dos que pra para por com sem um uma uns umas no na nos nas em é eu vc voce você tu se me te meu minha seu sua isso isto esse essa aqui ai aí la lá ja já mais menos muito pouco quando como qual quais quanto quantos onde porque pq tá ta to tô ou mas nao não sim ele ela eles elas ser ter tem tenho foi vai vou pode posso faz fazer " +
   "closure kal kaltsit kal'tsit mizuki livro regra regras dele dela deles delas oque qnt qnts cm for fosse seria tiver tivesse estiver nele nela neles nelas").split(" "));
 // "nv2", "nvl 2", "lv2" viram "nivel 2"; palavra longa fica com as 6 primeiras letras, pra "estabilizo" achar "estabilizar",
@@ -184,7 +184,8 @@ const TTOK = D.livro.map(b => new Set(tok([b.titulo, ...(b.titulos || [])].filte
 const TITULO_COMUM = new Set(tok("tempo falha encerrar começo novo livre resposta caminho trilha mesa ideia ver sai igual número menor linha longe passo chão rápido voz luz roupa peso altura aberto tema dúvida saúde história valores marco onda tarefa acesso área objeto tanto par cópia aviso barulho vazio prática raiz venda massa puxa eco cerca colar telefone limpar sugar campanha jogador"));
 // título de duas palavras feito só de palavra comum ("De novo", "Uma vez") não conta como citado
 const conteudo = t => { const ws = tok(t).filter(w => !PARADA.has(w) && !TITULO_COMUM.has(w)); return ws.length >= 2 || ws.some(w => (DF.get(w) || 0) <= 60); };
-const TITULOS = D.livro.map(b => [...new Set([b.titulo, ...(b.titulos || [])])].filter(t => !/continua/i.test(t)).map(t => " " + nrm(t).replace(/[^a-z0-9]+/g, " ").trim() + " ").filter(t => t.split(" ").filter(Boolean).length >= 2 && conteudo(t)));
+const TITULOS = D.livro.map(b => [...new Set([b.titulo, ...(b.titulos || [])])].filter(t => !/continua/i.test(t)).map(t => " " + nrm(t).replace(/[^a-z0-9]+/g, " ").trim() + " ").filter(t => t.split(" ").filter(Boolean).length >= 2 && (conteudo(t) || t.split(" ").filter(Boolean).length >= 3)));
+// (título de três palavras ou mais, como "Colar de Ar", é específico o bastante mesmo feito de palavras comuns)
 // Caminhos do livro: o nome do Caminho, ou o título de uma página dele com uma palavra só ("Executor"), puxa as páginas do Caminho
 const CAMINHOS = ["bastiao", "vanguarda", "guia", "emanador", "evocador", "incursor"];
 const FAM = D.livro.map(b => b.ancora.split("--")[0]);
@@ -192,13 +193,31 @@ const FAMILIA_DE = new Map(CAMINHOS.map(c => [RAIZ(c), c]));
 // termos com endereço: o índice e o glossário do livro ligam cada termo à página que o define ("[Agarrar](#geral--manobras)");
 // a linha em negrito de uma tabela ("| **Esquivar** |") e o nome de item de catálogo ("| Katana (espada curva) |", com preço ou dano) também
 const POS = new Map(D.livro.map((b, i) => [b.ancora, i]));
+// Nomes que o próprio livro define (título, subtítulo, cabeçalho, abertura em negrito, linha de tabela em negrito,
+// termo do índice/glossário). Uma PERGUNTA que cita um deles abre a busca, mesmo que a palavra apareça em muitas
+// páginas ("destreza", "deslocamento", "pesada").
+// Fora: nomes do livro que também são português de todo dia ("melhor forma", "minha família", "quanto custa a pizza").
+const CONCEITO_COMUM = new Set(tok("preço escolha próprio continua preciso efeito exemplo aplica alvo limite contra permanente ponto benefício corpo próximo energia recupera fica família registro completo confirma substitui maior resultado prepara cena criação melhor conhecer guarda tentativa forma compara aumenta leve pessoa vantagem informação percebe progresso compra campo combina resolução definição usos transfere modifica inteiro descrição média consequência repete passar compatível prazo troca retira conclusão ferramenta consumo sucesso consulta abrir manter fonte volta mãos possível poder atingir orienta projeto visão acumula encontra reserva segurança transporte mudança confere erro investe atuação incompleto marca representa escala volume funções auxilia material retorno ambiente antecipa característica prende desenvolve poderes destruir contenção recolhe observa pressa leitura derrota ajudar avança pagamento ativação levanta tiro quebra estudar ameaça ajuste medida chega ferir inventário localiza divide esforço revisa comunica cuidado uniforme correr instituto portador obtenção repara desgaste atrasa reconstrói estágio desliga experiência tratar dinheiro superior lento retoma natureza explora trava alma espírito apoio missão fluidez gesto parado mira"));
+const CONCEITO = new Set();
+{
+  const poe = nome => { const ws = tok(nome.replace(/\(.*?\)|\*/g, " ")).filter(w => !PARADA.has(w)); if (ws.length === 1 && ws[0].length >= 4 && !TITULO_COMUM.has(ws[0]) && !CONCEITO_COMUM.has(ws[0]) && !/^\d/.test(ws[0])) CONCEITO.add(ws[0]); };
+  D.livro.forEach(b => {
+    for (const t of [b.titulo, ...(b.titulos || [])]) if (!/continua|exemplo/i.test(t)) for (const p of [t, ...t.split(/,| e /)]) poe(p);
+    for (const m of b.texto.matchAll(/^#{1,6} ([^\n]+)$/gm)) poe(m[1]);
+    for (const m of b.texto.matchAll(/^\*\*([^*\n]{3,40})\.\*\*/gm)) poe(m[1]);
+    for (const m of b.texto.matchAll(/^\| \*\*([^*|]+)\*\* \|/gm)) poe(m[1]);
+    for (const m of b.texto.matchAll(/\[([^\]]+)\]\(#[\w-]+\)/g)) poe(m[1]);
+  });
+}
+// Onde o livro DEFINE o nome (Glossário e linha em negrito de tabela), o nome vira termo mesmo sendo frequente.
+const limDef = nome => { const ws = tok(nome.replace(/\(.*?\)|\*/g, " ")).filter(w => !PARADA.has(w)); return ws.length === 1 && CONCEITO.has(ws[0]) ? 9999 : 40; };
 const TERMO = new Map();
 // palavra solta só vale se for pouco usada no livro (até 40 páginas; 100 quando é o título de uma seção, como "Iniciativa");
 // nome de Caminho fica de fora porque já tem a regra de família
 const poeTermo = (nome, i, limite = 40, M = TERMO) => { const k = tok(nome.replace(/\(.*?\)|\*/g, " ")).filter(w => !PARADA.has(w)).join(" "); if (k && !FAMILIA_DE.has(k) && !TITULO_COMUM.has(k) && (k.includes(" ") || (DF.get(k) || 999) <= limite)) { if (!M.has(k)) M.set(k, new Set()); M.get(k).add(i); } };
 D.livro.forEach((b, i) => {
-  for (const m of b.texto.matchAll(/\[([^\]]+)\]\(#([\w-]+)\)/g)) if (POS.has(m[2])) poeTermo(m[1], POS.get(m[2]));
-  for (const m of b.texto.matchAll(/^\| \*\*([^*|]+)\*\* \|/gm)) poeTermo(m[1], i);
+  for (const m of b.texto.matchAll(/\[([^\]]+)\]\(#([\w-]+)\)/g)) if (POS.has(m[2])) poeTermo(m[1], POS.get(m[2]), b.ancora.startsWith("consulta--consulta-glossario") ? limDef(m[1]) : 40);
+  for (const m of b.texto.matchAll(/^\| \*\*([^*|]+)\*\* \|/gm)) poeTermo(m[1], i, limDef(m[1]));
   for (const tab of b.texto.split(/\n(?!\|)/)) if (/^\|[^\n]*(Dano|Preço|Custo|Forma)/.test(tab.trim())) for (const m of tab.matchAll(/^\| ([^|*]+) \|/gm)) poeTermo(m[1], i);
   // títulos de seção, inteiros e em partes ("Agarrar, derrubar e empurrar" também vale "derrubar")
   if (!/exemplo/i.test(b.titulo)) for (const t of [b.titulo, ...(b.titulos || [])]) if (!/continua|exemplo/i.test(t)) for (const parte of [t, ...t.split(/,| e /)]) poeTermo(parte, i, t === b.titulo ? 100 : 40);
@@ -270,7 +289,10 @@ function definicoesNa(texto, familia) {
     if (!grupos.has(d.frase)) grupos.set(d.frase, []);
     grupos.get(d.frase).push(d);
   }
-  const candidatas = [...grupos.values()].flatMap(ds => ds.some(d => d.principal) ? ds.filter(d => d.principal) : ds);
+  // Um nome que abre parágrafo em três páginas ou mais sem ser o título de nenhuma ("**Ação Padrão.**" em Ajudar,
+  // Esconder, Procurar...) é rótulo, não definição, quando o índice/glossário aponta a página que o define.
+  const rotulo = ds => ds.length >= 3 && TERMO.has(ds[0].palavras.join(" ")) && ![...TERMO.get(ds[0].palavras.join(" "))].some(i => ds.some(d => d.i === i));
+  const candidatas = [...grupos.values()].flatMap(ds => ds.some(d => d.principal) ? ds.filter(d => d.principal) : rotulo(ds) ? [] : ds);
   const posicoes = f => { const ps = []; for (let p = frase.indexOf(f); p >= 0; p = frase.indexOf(f, p + 1)) ps.push(p); return ps; };
   // "Vínculo" dentro de "Artes do Vínculo" não nomeia outra habilidade.
   // Uma segunda ocorrência solta numa comparação continua sendo um pedido.
@@ -281,7 +303,7 @@ function definicoesNa(texto, familia) {
 // página de exemplo de mesa conta menos que a regra, a não ser que peçam exemplo
 const EXEMPLO = D.livro.map(b => /exemplo/i.test(b.titulo));
 const TABELA = D.livro.map(b => /Progressão d[oa] (Caminho|Trilha)/.test(b.texto));
-const REGRA = /(?<![a-z0-9])(d4|d6|d8|d10|d12|d20|rol\w*|dado\w*|teste\w*|dano|ataq\w*|defe\w*|bloque\w*|apar\w*|esquiv\w*|critic\w*|bonus|penalidade|turno\w*|rodada\w*|acao|acoes|reacao|movimento|passos?|alcance|descans\w*|vida|integridade|condic\w*|pericia\w*|atributo\w*|ficha\w*|nivel|niveis|nv\d*|nvl\d*|lv\d*|habilidade\w*|caminho\w*|trilha\w*|origem|origens|legado\w*|classe\w*|feitic\w*|grau|tecnica\w*|expansao|dominios?|receptaculo|encarnado|maldic\w*|arma|armas|armad\w*|cobertura|regra\w*|livro|mestre|como funciona|o que acontece|da pra|pode usar|combate\w*|escond\w*|estabiliz\w*|caid[oa]s?|cair|queda\w*|personagem|jogar de|(?:quero|quiser|queria|posso|pode|da pra) ser|caneta|lapis|sistema|subir|subo|upar|xp|agarr\w*|derrub\w*|empurr\w*|voar|voo|voand\w*|iniciativ\w*)(?![a-z0-9])/;
+const REGRA = /(?<![a-z0-9])(d4|d6|d8|d10|d12|d20|rol\w*|dado\w*|teste\w*|dano|ataq\w*|defe\w*|bloque\w*|apar\w*|esquiv\w*|critic\w*|bonus|penalidade|turno\w*|rodada\w*|acao|acoes|reacao|movimento|passos?|alcance|descans\w*|vida|integridade|condic\w*|pericia\w*|atributo\w*|ficha\w*|nivel|niveis|nv\d*|nvl\d*|lv\d*|habilidade\w*|caminho\w*|trilha\w*|origem|origens|legado\w*|classe\w*|feitic\w*|grau|tecnica\w*|expansao|dominios?|receptaculo|encarnado|maldic\w*|arma|armas|armad\w*|cobertura|regra\w*|livro|mestre|como funciona|o que acontece|da pra|pode usar|combate\w*|escond\w*|estabiliz\w*|caid[oa]s?|cair|queda\w*|personagem|jogar de|(?:quero|quiser|queria|posso|pode|da pra) ser|caneta|lapis|sistema|subir|subo|upar|xp|agarr\w*|derrub\w*|empurr\w*|voar|voo|voand\w*|iniciativ\w*|tamanh\w*)(?![a-z0-9])/;
 // pergunta curta de seguimento ("e no nível 7?", "e o socorrista?", "quanto custa?") herda o assunto da mensagem anterior
 const t0 = s => STRIP(s.toLowerCase()).trim();
 // "pera, o dano sobe...", "hm, e ataque?": interjeição antes do "e" não tira a cara de seguimento
@@ -601,7 +623,10 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   const frase = " " + t.replace(/[^a-z0-9]+/g, " ") + " ";
   const fraseAnt = herda ? " " + nrm(anterior).replace(/[^a-z0-9]+/g, " ") + " " : "";
   const titulo = new Map(); TITULOS.forEach((ts, i) => { if (ts.some(x => frase.includes(x))) titulo.set(i, 10); else if (fraseAnt && ts.some(x => fraseAnt.includes(x))) titulo.set(i, 6); });
-  const familia = new Set([...qPal].filter(([w, p]) => p === 1 && FAMILIA_DE.has(w)).map(([w]) => FAMILIA_DE.get(w)));
+  // Palavra de título de Trilha dentro de um nome maior do livro não escolhe a família:
+  // "Arma Vinculada" (Emanador) não é a Trilha Vínculo (Evocador), embora os radicais coincidam.
+  const dentroDeNome = new Set(DEFINICOES.filter(d => d.palavras.length > 1 && frase.includes(d.frase)).flatMap(d => d.palavras));
+  const familia = new Set([...qPal].filter(([w, p]) => p === 1 && FAMILIA_DE.has(w) && !(FAMILIA_TIT.has(w) && dentroDeNome.has(w))).map(([w]) => FAMILIA_DE.get(w)));
   if (!familia.size && herda && (liga || proprias <= 1)) for (const f of herdada) familia.add(f);
   const achados = [];
   // palavra rara que é título de seção ("latente", "exaustão") também conta; palavra comum ("tudo") não
@@ -610,7 +635,7 @@ function blocosLivro(texto, termos, anteriores = [], fundo = 0) {
   const semAspas = t.replace(/"[^"]*"|“[^”]*”/g, " "), pergunta = PERG.test(semAspas) || pedidoDeOpcoes(texto) || contestacao || esclarece(texto);
   // Trilha ou página com nome de palavra comum ("Assassino", "Muro", "Punho") só abre a busca em pergunta: "vi um filme de assassino" não
   const familiaAbre = familia.size && (pergunta || /\d/.test(t) || [...qPal.keys()].some(w => FAMILIA_DE.has(w) && !FAMILIA_TIT.has(w)));
-  if (qPal.size && (termos.length || familiaAbre || titulo.size || seg || comTermo.size || ((pergunta || /\d/.test(semAspas)) && REGRA.test(semAspas)))) {
+  if (qPal.size && (termos.length || familiaAbre || titulo.size || seg || comTermo.size || ((pergunta || /\d/.test(semAspas)) && REGRA.test(semAspas)) || (pergunta && [...qPal.keys()].some(w => CONCEITO.has(w))))) {
     if (!detalhe) for (const w of tok(texto)) if (!PARADA.has(w) && !CONVERSA.has(w) && !DF.has(w)) { const c = corrigir(w); if (DF.has(c) && !CONVERSA.has(c) && !qPal.has(c)) qPal.set(c, 1); }
     const negrito = termosNa(texto, NEGRITO);
     // seguimento curto ("e sem correr antes?", "e a derrubado?"): as seções que a pergunta anterior trouxe ganham bônus
