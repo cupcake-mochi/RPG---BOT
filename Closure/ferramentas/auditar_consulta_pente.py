@@ -163,7 +163,9 @@ def main():
     p.add_argument("--comparar", type=Path, help="núcleo anterior, para a linha 'antes'")
     args = p.parse_args()
     antes = medir(args.comparar) if args.comparar else None
-    texto, r = relatorio(*medir(site_prompt.nucleo()), antes=antes)
+    # atualizar(), não nucleo(): o cache em src/var/site guarda o núcleo da última montagem, e a medida tem que
+    # sair do modelo.html como está agora.
+    texto, r = relatorio(*medir(site_prompt.atualizar()), antes=antes)
     args.saida.parent.mkdir(parents=True, exist_ok=True)
     args.saida.write_text(texto, encoding="utf-8")
     print(f"ok {r['ok']}, parcial {r['parcial']}, falha {r['falha']}, sem trecho {r['sem_trecho']}, "

@@ -167,8 +167,11 @@ class ConsultaNatural(unittest.TestCase):
         # páginas e a pergunta não trazia "livro", "regra" ou outra palavra da lista fixa. A Kal'tsit respondia
         # "não tenho essa parte do livro" (tamanho grande, 19/11, no servidor).
         for persona in ("kal", "clo"):
+            # Carcaça Grande manda "aplicar as regras gerais de tamanho", que estão em Espaço e posição: as duas vêm.
+            with self.subTest(persona=persona, msg="tamanho grande"):
+                self.conferir("quais os benefícios de ser do tamanho grande?",
+                              ["origens--corpo-ninhada-gemeos", "geral--espacos"], persona=persona)
             for msg, esperada in (
-                ("quais os benefícios de ser do tamanho grande?", "origens--corpo-ninhada-gemeos"),
                 ("o que destreza faz?", "geral--atributos"),
                 ("o que deslocamento faz?", "geral--movimento"),
                 ("o que pesada faz?", "dano--pesadas"),
