@@ -250,7 +250,7 @@ function bonusDeTabela(i, qPal, texto) {
   return melhor;
 }
 let BONUS_ANT = 10;
-const DEPOIS = { medico: "medici", medica: "medici", medicos: "medici", curandeiro: "cura" };
+const DEPOIS = { tamanho: "espaco", tamanhos: "espaco", medico: "medici", medica: "medici", medicos: "medici", curandeiro: "cura" };
 const termosNa = (t, M = TERMO) => { const f = " " + tok(t).join(" ") + " ", r = new Map(); for (const [k, is] of M) if (f.includes(" " + k + " ")) for (const i of is) r.set(i, Math.max(r.get(i) || 0, k.split(" ").length)); return r; };
 const FAMILIA_TIT = new Set();
 D.livro.forEach((b, i) => { const t = tok(b.titulo); if (CAMINHOS.includes(FAM[i]) && t.length === 1 && !FAMILIA_DE.has(t[0])) { FAMILIA_DE.set(t[0], FAM[i]); FAMILIA_TIT.add(t[0]); } });

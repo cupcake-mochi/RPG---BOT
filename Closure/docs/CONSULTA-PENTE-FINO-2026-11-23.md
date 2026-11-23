@@ -83,3 +83,22 @@ python3 ferramentas/auditar_consulta_pente.py --saida src/var/pente.md --compara
 
 Precisa do Node: `ferramentas/prompt_do_site/lote.js` carrega o núcleo uma vez
 e monta os ~13 mil pedidos em cerca de 1 minuto. No QuickJS levaria horas.
+
+## Conferência no servidor e ajuste de tamanho (PR seguinte)
+
+Com a busca v12 no ar (PR #137, deploy às 19h03), a mesma pergunta do
+problema já trouxe a Carcaça Grande, mas a Kal'tsit avisou que “as regras gerais
+com os benefícios exatos dessa categoria de tamanho não vieram”. A Carcaça Grande
+manda “aplicar as regras gerais de tamanho”, e essas regras estão em **Espaço e
+posição** (`geral--espacos`, tabela Tamanho × espaço no mapa). No lugar delas
+vinha Lâminas, por causa da “espada grande”.
+
+Ajuste: “tamanho” e “tamanhos” puxam “espaço” depois que a busca já abriu
+(`DEPOIS`, como “médico” → medicina). Agora a pergunta traz Espaço e posição e
+a Carcaça Grande. O pente fino deu os mesmos números gerais e nenhuma conversa
+comum nova com trecho. A única troca foi em “qual o tamanho da sua sala?”, que
+já recebia trecho e agora recebe Espaço e posição no lugar da Sala de Trégua.
+
+O `auditar_consulta_pente.py` passou a remontar o núcleo a partir do
+`modelo.html` em toda rodada. Antes ele usava o cache de `src/var/site`, que
+podia estar velho.
