@@ -34,12 +34,17 @@ def orientacao_ficha(mensagem: str, historico=()) -> str:
             "\n\n".join(titulo + "\n" + texto for titulo, texto in paginas) + "]")
 
 CRIAR = ("Criar uma ficha", (
-    ("1. Faça sua própria cópia",
+    ("1. Crie sua ficha",
      "Há dois modelos oficiais: a [Ficha · Era da "
      "Revolução](https://docs.google.com/spreadsheets/d/1MQqhHbIzzyoMQY5zLKOciiT5k9Y6AMI4MCSrPhu8V_k/edit) e a "
      "[Ficha · Ciclo Maldito](https://docs.google.com/spreadsheets/d/1pgLDZOYpUJrqTcwomaQl8Bjn-AuAcu_Aowd30G7YiJw/edit). "
-     "Abra o que a sua mesa indicar, entre na sua conta Google e use **Arquivo → Fazer uma cópia**. "
-     "Dê um nome que identifique seu personagem e preencha essa cópia.\n\n"
+     "Pergunte ao mestre qual a sua mesa usa.\n\n"
+     "**Pelo bot (só Ciclo Maldito):** use `/personagem criar` no servidor e abra o link com a mesma conta Discord. "
+     "Entre na conta Google que vai guardar a ficha, escolha o modelo e confirme. O bot copia a ficha vazia pro seu "
+     "Drive e já cadastra o personagem. Ele não preenche nada. Se o seu servidor usa outro modelo, o bot avisa.\n\n"
+     "**Pela planilha (os dois modelos):** abra o modelo, entre na sua conta Google e use **Arquivo → Fazer uma cópia**. "
+     "Dê um nome que identifique seu personagem. Pra ter o cartão em `/personagens`, cadastre a cópia com "
+     "`/personagem cadastrar`.\n\n"
      "O **1.0** no cabeçalho e no número da carteira é a versão pública da ficha. Ele não indica a revisão do livro "
      "nem a versão do bot.\n\n"
      "Este roteiro vai da ficha vazia até a emissão na **CARTEIRA**. As abas ficam na parte de baixo da "
