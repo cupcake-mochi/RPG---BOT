@@ -87,6 +87,7 @@ As seguintes variáveis devem ser fornecidas pelo ambiente, fora do Git:
 | `CARTEIRA_GOOGLE_PROJECT_NUMBER` | Número do mesmo projeto do cliente/Picker |
 | `CARTEIRA_PICKER_API_KEY` | Chave restrita às APIs e origens necessárias ao Picker |
 | `CARTEIRA_GUILDS` | IDs dos servidores permitidos, separados por vírgula |
+| `CARTEIRA_CRIAR` | Opcional. Quem pode criar ficha vazia pelo bot: vazio = ninguém, IDs do Discord separados por vírgula, ou `todos` |
 | `CARTEIRA_DEV` | `1` apenas para permitir HTTP em loopback no piloto local |
 
 O serviço não lê automaticamente o `.env` das Guias. Não passar segredos em
@@ -257,3 +258,27 @@ esse segredo no JavaScript nem abrir os métodos internos ao frontend.
 Antes de publicar, continuam obrigatórios HTTPS persistente, disco privado,
 backup/restore comprovado e campanha/idioma autoritativos entre bot e serviço.
 Os pilotos loopback não provam acesso de celular físico ou hospedagem pública.
+
+## Criar ficha vazia (`/personagem criar`)
+
+Código em `carteira_viva/criacao.py`. A criação copia a oficial do Ciclo pro Drive
+do jogador e cadastra a cópia. Não escreve célula nenhuma.
+
+1. Depois do login no Discord, o login do Google abre o seletor por
+   redirecionamento (`trigger_onepick`, filtrado em `file_ids`). É o único jeito de
+   o `drive.file` enxergar o modelo. O seletor em quadro (o do cadastro) depende de
+   cookie de terceiros e não abriu no Brave em 24/11/2026.
+2. Ao confirmar, a conexão e o registro em `copias_rest` são gravados antes do
+   pedido de cópia. A cópia roda na fila, fora do pedido HTTP (21 s medidos na conta
+   das Guias), e a página consulta `/api/fluxo`.
+3. Sem resposta do Google, a cópia é procurada pelo marcador no Drive. Só depois de
+   três minutos sem achar nada ela pode ser pedida de novo. Um pedido novo do mesmo
+   jogador retoma a cópia que ficou sem cadastro, em vez de criar outra.
+4. O registro sai quando a ficha é cadastrada; pedido abandonado sai em um dia.
+
+Vale só para servidor com a escolha padrão (oficiais) ou `ciclo`. Com `era` ou modelo
+próprio, a criação responde bloqueada. `criar_por_modelo` continua fechado.
+
+Reabrir a liberação: comece por `CARTEIRA_CRIAR` com o ID de quem vai testar; só
+depois `todos`. Sem a variável, `/personagem criar` explica que não está liberado e o
+botão não aparece.

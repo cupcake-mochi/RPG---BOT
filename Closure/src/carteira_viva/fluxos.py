@@ -57,8 +57,8 @@ class Fluxos:
 
     def criar(self, membro: Membro, acao: str, personagem: str | None):
         self.c._membro(membro)
-        if (acao not in ("cadastro", "troca", "reconectar", "modelo") or
-                (acao in ("troca", "reconectar") and not personagem) or (acao == "modelo" and personagem is not None)):
+        if (acao not in ("cadastro", "criar", "troca", "reconectar", "modelo") or
+                (acao in ("troca", "reconectar") and not personagem) or (acao in ("modelo", "criar") and personagem is not None)):
             raise ErroCarteira("Ação de conexão inválida.")
         if acao == "modelo":
             self.c._autorizar(membro, Acao.CONFIGURAR)
@@ -79,6 +79,8 @@ class Fluxos:
                  "csrf": secrets.token_urlsafe(32), "idioma": config[0] if config else "pt-BR",
                  "baselines": {x["id"]: [x["autorizacao"], x["estado"]] for x in conexoes}}
             conexao = None
+            if acao == "criar":
+                d["modelo_arquivo"] = self.c.modelo_criacao(membro)
             if acao == "modelo":
                 d["modelo_revisao"] = self.c.revisar_modelo(membro)["revisao"]
             if acao in ("troca", "reconectar"):
@@ -112,7 +114,9 @@ class Fluxos:
         saida = {"fase": r["fase"], "csrf": d["csrf"], "idioma": d["idioma"],
                  "acao": d["acao"], "previa": d.get("previa"), "resultado": d.get("resultado")}
         saida["nome_atual"] = d.get("nome_atual")
-        if r["fase"] == "google":
+        saida["aviso"], saida["erro"] = d.get("aviso"), d.get("erro")
+        # Criar sempre passa pelo seletor do Google: conexão antiga não enxerga o modelo.
+        if r["fase"] == "google" and d["acao"] != "criar":
             rows = self.c.db.execute("""SELECT id FROM conexoes WHERE usuario=? AND cliente_hash=?
                 AND estado='ativa' ORDER BY id LIMIT 20""", (r["usuario"], digest(self.cliente))).fetchall()
             saida["conexoes"] = [x[0] for x in rows if not d.get("conexao_alvo") or x[0] == d["conexao_alvo"]]
@@ -125,11 +129,32 @@ class Fluxos:
         with self.c._transacao():
             r, d = self._sessao(ticket, cookie, csrf, fases[provedor])
             estado, verificador = secrets.token_urlsafe(32), secrets.token_urlsafe(48)
-            d.pop("google", None); d.pop("previa", None)
+            for k in ("google", "previa", "aviso"):
+                d.pop(k, None)
             d["oauth"] = {"estado": estado, "verificador": verificador}
             r.update(fase="oauth_" + provedor, estado=digest(estado), provedor=provedor)
             self._salvar(r, d)
-            return d["oauth"]
+            return d["oauth"] | {"modelo": d.get("modelo_arquivo") if provedor == "google" else None}
+
+    def virar_criacao(self, ticket, cookie, csrf, membro):
+        """Quem abriu o cadastro e não tem ficha pode criar uma na mesma solicitação."""
+        with self.c._transacao():
+            r, d = self._sessao(ticket, cookie, csrf, ("google",))
+            if d["acao"] != "cadastro":
+                raise ErroFluxo("etapa")
+            d.update(acao="criar", modelo_arquivo=self.c.modelo_criacao(membro))
+            self._salvar(r, d)
+
+    def voltar_google(self, ticket, cookie, aviso):
+        """Desistiu ou não escolheu o modelo no seletor: tenta de novo na mesma solicitação."""
+        with self.c._transacao():
+            r, d = self._sessao(ticket, cookie, fases=("processando_google", "picker", "validando"))
+            if d["acao"] != "criar":
+                raise ErroFluxo("etapa")
+            d.pop("google", None); d.pop("previa", None)
+            d["aviso"] = aviso
+            r.update(fase="google", estado=None, provedor=None, conexao=None)
+            self._salvar(r, d)
 
     def consumir_retorno(self, estado, provedor, cookie):
         with self.c._transacao():
@@ -144,7 +169,7 @@ class Fluxos:
             oauth = d.pop("oauth")
             r.update(fase="processando_" + provedor, estado=None)
             self._salvar(r, d)
-            return {"ticket": d["ticket"], "servidor": r["servidor"], "usuario": r["usuario"], **oauth}
+            return {"ticket": d["ticket"], "servidor": r["servidor"], "usuario": r["usuario"], "acao": d["acao"], **oauth}
 
     def por_estado(self, estado, provedor):
         row = self.c.db.execute("SELECT id FROM web_fluxos WHERE estado=? AND provedor=?",
@@ -171,6 +196,8 @@ class Fluxos:
     def preparar_uso(self, ticket, cookie, csrf, cid):
         with self.c._transacao():
             r, d = self._sessao(ticket, cookie, csrf, ("google",))
+            if d["acao"] == "criar":
+                raise ErroFluxo("etapa")
             x = self.c.db.execute("SELECT * FROM conexoes WHERE id=? AND usuario=? AND estado='ativa' AND cliente_hash=?",
                                   (cid, r["usuario"], digest(self.cliente))).fetchone()
             if not x or (d.get("conexao_alvo") and x["id"] != d["conexao_alvo"]):
@@ -196,7 +223,7 @@ class Fluxos:
                            "expira": token.expira, "conexao": x["id"] if x else None}
             r.update(fase="picker", provedor=None, conexao=x["id"] if x else None)
             self._salvar(r, d)
-            return d.get("arquivo_anterior") if d["acao"] == "reconectar" else None
+            return {"reconectar": d.get("arquivo_anterior"), "criar": d.get("modelo_arquivo")}.get(d["acao"])
 
     def google(self, ticket, cookie, csrf=None):
         r, d = self._sessao(ticket, cookie, csrf, ("picker", "revisar", "validando", "confirmando"))
@@ -223,6 +250,8 @@ class Fluxos:
             r, d = self._sessao(ticket, cookie, fases=("validando",))
             if d["acao"] == "reconectar" and previa["arquivo"] != d["arquivo_anterior"]:
                 raise Conflito("A reconexão deve usar o arquivo já vinculado.")
+            if d["acao"] == "criar" and previa["arquivo"] != d["modelo_arquivo"]:
+                raise Conflito("A criação só usa o modelo oficial.")
             d["previa"] = previa
             r["fase"] = "revisar"
             self._salvar(r, d)
@@ -234,6 +263,9 @@ class Fluxos:
                 return {"resultado": d["resultado"]}
             if responsabilidade is not True:
                 raise ErroFluxo("responsabilidade")
+            # O nome que vem do modelo é o texto de exemplo da ficha, nunca um personagem.
+            if d["acao"] == "criar" and not (isinstance(nome, str) and nome.strip()):
+                raise ErroFluxo("nome")
             g = self.google(ticket, cookie, csrf)
             d["nome_confirmado"] = texto(nome or d["previa"]["nome"], "Nome do personagem", 100)
             r["fase"] = "confirmando"
@@ -246,6 +278,8 @@ class Fluxos:
             if (membro.servidor, membro.usuario, membro.presente) != (r["servidor"], r["usuario"], True):
                 raise AcessoNegado("A participação no servidor mudou.")
             g = self.google(ticket, cookie)
+            if d["acao"] == "criar":
+                raise ErroFluxo("etapa")
             if any(previa[k] != d["previa"][k] for k in ("arquivo", "contrato")):
                 raise Conflito("A ficha mudou durante a confirmação.")
             if d["acao"] == "modelo":
@@ -273,6 +307,40 @@ class Fluxos:
                 resultado = self.c.cartao(membro, d["personagem"])
             return self._concluir(r, d, resultado)
 
+    def iniciar_criacao(self, ticket, cookie, membro):
+        """Guarda a autorização e o diário antes da cópia; a cópia roda fora da página."""
+        with self.c._transacao():
+            r, d = self._sessao(ticket, cookie, fases=("confirmando",))
+            if d["acao"] != "criar":
+                raise ErroFluxo("etapa")
+            if (membro.servidor, membro.usuario, membro.presente) != (r["servidor"], r["usuario"], True):
+                raise AcessoNegado("A participação no servidor mudou.")
+            g = self.google(ticket, cookie)
+            atual = self.c.db.execute("SELECT * FROM conexoes WHERE usuario=? AND conta_hash=? AND cliente_hash=?",
+                                      (membro.usuario, digest(g["conta"]), digest(self.cliente))).fetchone()
+            self._baseline(d, atual)
+            cid = self.c.conectar(membro, conta=g["conta"], cliente=self.cliente, refresh_token=g["refresh"])
+            ref = self.c.preparar_criacao(membro, conexao=cid, nome=d["nome_confirmado"], pedido=r["id"])
+            # Sem token na solicitação: daqui pra frente vale só o refresh cifrado da conexão.
+            d = {k: d[k] for k in ("ticket", "csrf", "idioma", "acao", "origem")}
+            r.update(fase="copiando", conexao=cid, estado=None, provedor=None)
+            self._salvar(r, d)
+            self.c.db.execute("UPDATE web_fluxos SET expira=max(expira,?) WHERE id=?", (self.c.agora() + 600, r["id"]))
+            return ref
+
+    def terminar_criacao(self, ticket, *, resultado=None, erro=None):
+        """Chamado pela tarefa da cópia, sem cookie: a página só consulta o resultado."""
+        with self.c._transacao():
+            r, d = self._row(ticket)
+            if r["fase"] != "copiando":
+                return
+            if resultado is not None:
+                self._concluir(r, d, resultado)
+            else:
+                d = {k: d[k] for k in ("ticket", "csrf", "idioma", "acao", "origem")} | {"erro": erro}
+                r.update(fase="falhou", conexao=None)
+                self._salvar(r, d)
+
     def _concluir(self, r, d, resultado):
         # Modelo não chama conectar: o OAuth do administrador não vira acesso do jogador.
         d = {k: d[k] for k in ("ticket", "csrf", "idioma", "acao", "origem")}
@@ -286,6 +354,8 @@ class Fluxos:
             r, d = self._sessao(ticket, cookie, csrf)
             if r["fase"] in ("concluido", "cancelado", "falhou"):
                 return
+            if r["fase"] == "copiando":  # a cópia já foi pedida ao Google; termina e cadastra
+                raise ErroFluxo("etapa")
             d = {k: d[k] for k in ("ticket", "csrf", "idioma", "acao", "origem")}
             r.update(fase="falhou" if falhou else "cancelado", estado=None, provedor=None, conexao=None)
             self._salvar(r, d)

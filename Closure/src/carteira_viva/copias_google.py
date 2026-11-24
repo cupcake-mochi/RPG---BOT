@@ -50,7 +50,7 @@ def marcadores(operacao, origem):
     return dict(cv_operacao=operacao, cv_origem=hash_texto(origem), cv_protocolo='1')
 
 
-async def enviar(provedor, acesso, operacao, origem):
+async def enviar(provedor, acesso, operacao, origem, *, nome='Ficha — cópia em preparação'):
     """Chamador precisa persistir enviada antes de entrar. Nunca retry do POST."""
     from .provedores import ErroProvedor
     props = marcadores(operacao, origem)
@@ -59,7 +59,7 @@ async def enviar(provedor, acesso, operacao, origem):
                                      trust_env=False, transport=provedor.transporte) as client:
             async with client.stream('POST', DRIVE + '/' + origem + '/copy?fields=id',
                 headers={'Authorization': 'Bearer ' + acesso}, json=dict(
-                    name='Ficha — cópia em preparação', parents=['root'], appProperties=props)) as resp:
+                    name=nome, parents=['root'], appProperties=props)) as resp:
                 if resp.status_code != 200:
                     raise ErroProvedor('copia_incerta')
                 raw = bytearray()
