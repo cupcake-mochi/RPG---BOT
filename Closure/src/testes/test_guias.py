@@ -48,6 +48,8 @@ class ConteudoDosGuias(unittest.TestCase):
         paginas = guias.paginas("criar")
         inicio, fim = paginas[0].description, paginas[-1].description
         self.assertIn("Arquivo → Fazer uma cópia", inicio)
+        self.assertIn("`/personagem criar`", inicio)
+        self.assertIn("só Ciclo Maldito", inicio)
         self.assertIn("CARTEIRA", fim)
         self.assertIn("marque EMITIR, ao lado de 'Não emitida'", fim)
         self.assertIn("se desmarca sozinha", fim)

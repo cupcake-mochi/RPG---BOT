@@ -35,6 +35,15 @@ motor carregado usa uns 60 MB; o bot ficou em uns 150 MB no dia todo.
 Servidores liberados em `CARTEIRA_GUILDS`: o servidor principal (`GUILD_ID` do
 bot) e o servidor que tem campanha cadastrada no `ficha-campanhas.json`.
 
+### Criar ficha vazia, liberada pra todos (24/11/2026)
+
+- `/personagem criar` (PR #140) foi testado em 24/11 pelo Mizuki e por um jogador convidado, os dois com sucesso.
+  Desistir no consentimento e no seletor do Google também foi conferido.
+- `CARTEIRA_CRIAR=todos` no `.env` do site. Continua valendo só pros servidores de `CARTEIRA_GUILDS` que usam a
+  oficial do Ciclo. Servidor com a Era ou modelo próprio recebe o aviso e faz a cópia pela planilha.
+- Pra fechar de novo: esvaziar `CARTEIRA_CRIAR`, montar o pacote e publicar o site. O bot não precisa de publicação.
+- Sem teste: Brave com o escudo ligado. O aparelho usado pelo jogador convidado não foi anotado.
+
 ## O que já está pronto no código
 
 | Peça | Onde |

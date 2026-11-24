@@ -69,8 +69,8 @@ Não refazer a bateria mecânica R53 só por uma alteração de texto.
 
 ## Criar e conhecer a ficha · ampliação de 21/10
 
-- `GC:guia criar` / `/guia assunto:Criar uma ficha`: 14 etapas, da cópia
-  oficial à emissão na CARTEIRA. Inclui campanha, identificação, atributos,
+- `GC:guia criar` / `/guia assunto:Criar uma ficha`: 14 etapas, da criação
+  (pelo bot ou por cópia) à emissão na CARTEIRA. Inclui campanha, identificação, atributos,
   Origem, Caminho/Trilha, treinos, rotas, cartões, repertório, entidades,
   compras, valores atuais, análise e revisão com o mestre.
 - `GC:guia planilha` / `/guia assunto:Conhecer a planilha`: 14 páginas de
