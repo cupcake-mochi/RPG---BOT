@@ -21,6 +21,7 @@ from .cartoes_banco import Cartoes
 from .modelos import Modelos
 from .conferencias_banco import Conferencias
 from .copias_banco import Copias
+from .criacao import Criacoes
 from .financeiro_banco import Financeiro
 from .atestados_banco import Atestados
 from .permissoes import Acao, Membro, NUMEROS, Permissoes, PUBLICOS, cartao_publico, permitido
@@ -77,7 +78,7 @@ class CredencialGoogle:
     autorizacao: str = field(repr=False)
 
 
-class Cadastro(Cartoes, Modelos, Conferencias, Copias, Financeiro, Atestados):
+class Cadastro(Cartoes, Modelos, Conferencias, Copias, Criacoes, Financeiro, Atestados):
     def __init__(self, caminho: Path, chaves: tuple[bytes, ...], *,
                  remocoes: Path | None = None, agora: Callable[[], float] = time.time):
         self.cifra = Cifra(chaves)  # Não criar banco se a chave estiver ausente/inválida.
@@ -667,6 +668,7 @@ class Cadastro(Cartoes, Modelos, Conferencias, Copias, Financeiro, Atestados):
             contagens['copias_rest'] = self.db.execute(
                 "DELETE FROM copias_rest WHERE estado='identificada' AND atualizado<=?",
                 (self.agora() - 30 * DIA,)).rowcount
+            contagens['criacoes'] = self.limpar_criacoes()
             for tabela, campo, prazo in (("leituras", "expira", 0), ("analises", "expira", 0),
                                          ("conferencias_rest", "expira", 0),
                                          ("web_fluxos", "expira", 0), ("previas_cartao", "expira", 0),

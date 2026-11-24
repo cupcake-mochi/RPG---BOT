@@ -73,6 +73,10 @@ class ConectarFicha(commands.Cog):
                                        json={"servidor": str(interacao.guild_id), "usuario": str(interacao.user.id),
                                              "acao": acao, "personagem": personagem}) as resp:
                     if resp.status != 200:
+                        if acao == "criar" and resp.status == 400 and (await resp.json()).get("erro") == "modelo_bloqueado":
+                            await interacao.followup.send(texto("A criação pelo bot ainda não está liberada aqui. Faça sua cópia pelo `GC:guia criar` e cadastre com `/personagem cadastrar`.",
+                                                                "Creation by the bot is not enabled here yet. Make your copy with `GC:guia criar` and register it with `/character register`."), ephemeral=True)
+                            return
                         raise ValueError("Serviço indisponível")
                     data = await resp.json()
             url = data["url"]
@@ -80,11 +84,20 @@ class ConectarFicha(commands.Cog):
             if (u.scheme, u.netloc) != (urlsplit(self.origem).scheme, urlsplit(self.origem).netloc) or u.path != "/conectar":
                 raise ValueError("Destino de conexão inválido")
             view = discord.ui.View(timeout=600)
-            view.add_item(discord.ui.Button(label=texto("Escolher modelo", "Choose template") if acao == "modelo" else texto("Conectar minha ficha", "Connect my sheet"), url=url))
+            view.add_item(discord.ui.Button(label=texto("Escolher modelo", "Choose template") if acao == "modelo" else texto("Criar minha ficha", "Create my sheet") if acao == "criar" else texto("Conectar minha ficha", "Connect my sheet"), url=url))
             if acao == "modelo":
                 await interacao.followup.send(texto("Abra com a mesma conta Discord de administrador. Salvar o modelo não libera a criação automática. O link vale dez minutos.",
                                                     "Open with the same administrator Discord account. Saving the template does not enable automatic creation. The link lasts ten minutes."), ephemeral=True, view=view)
                 return
+            if acao == "criar":
+                await interacao.followup.send(texto("O bot copia a ficha oficial **Ciclo Maldito**, vazia, pra sua conta Google e já cadastra o personagem. Abra com a mesma conta Discord; o link vale dez minutos.\nJá tem ficha? Use `/personagem cadastrar`.",
+                                                    "The bot copies the empty official **Ciclo Maldito** sheet to your Google account and registers the character. Open with the same Discord account; the link lasts ten minutes.\nAlready have a sheet? Use `/character register`."), ephemeral=True, view=view)
+                return
+            if acao == "cadastro" and data.get("criar") is True:
+                criar = discord.ui.Button(label=texto("Criar minha ficha", "Create my sheet"), style=discord.ButtonStyle.secondary)
+                async def criar_ficha(i): await self.iniciar(i, "criar")
+                criar.callback = criar_ficha
+                view.add_item(criar)
             await interacao.followup.send(texto("Abra a conexão com a mesma conta Discord. O link vale por dez minutos e só você pode confirmar sua ficha.",
                                                "Open the connection with the same Discord account. The link lasts ten minutes and only you can confirm your sheet."),
                                           ephemeral=True, view=view)
@@ -132,6 +145,10 @@ class ConectarFicha(commands.Cog):
     @grupo.command(name="cadastrar", description="Conecte uma ficha que você já usa")
     async def cadastrar(self, interacao: discord.Interaction):
         await self.iniciar(interacao, "cadastro")
+
+    @grupo.command(name="criar", description="Crie uma ficha vazia do Ciclo Maldito na sua conta Google")
+    async def criar(self, interacao: discord.Interaction):
+        await self.iniciar(interacao, "criar")
 
     @grupo.command(name="trocar_arquivo", description="Troque o arquivo sem perder o cadastro do personagem")
     @app_commands.autocomplete(personagem=completar)
@@ -321,8 +338,8 @@ class ConectarFicha(commands.Cog):
             nomes={'oficiais':('Dois modelos oficiais','Both official templates'),'era':('Era da Revolução','Era da Revolução'),
                    'ciclo':('Ciclo Maldito','Ciclo Maldito'),'servidor':('Modelo do servidor','Server template')}
             titulo=nomes[d['escolha']][1 if en else 0]
-            texto=(f'Template: **{titulo}**. Automatic creation is unavailable until clean initialization and automations are verified. Existing characters keep their sheets. Register an existing sheet with `/character register`.' if en else
-                   f'Modelo: **{titulo}**. A criação automática está indisponível até comprovar inicialização limpa e automações. Personagens cadastrados continuam com suas fichas. Para uma ficha existente, use `/personagem cadastrar`.')
+            texto=(f'Template: **{titulo}**. Creation by the bot only uses the official Ciclo Maldito, with `/character create`, when enabled. Existing characters keep their sheets. Register an existing sheet with `/character register`.' if en else
+                   f'Modelo: **{titulo}**. A criação pelo bot só usa a oficial Ciclo Maldito, com `/personagem criar`, quando liberada. Personagens cadastrados continuam com suas fichas. Para uma ficha existente, use `/personagem cadastrar`.')
             await i.followup.send(texto,ephemeral=True,allowed_mentions=discord.AllowedMentions.none())
         except FalhaCarteira as exc:await i.followup.send(erro(exc,self.idioma(i)),ephemeral=True)
 
@@ -349,6 +366,9 @@ class ConectarFicha(commands.Cog):
 
     @grupo_en.command(name='register',description='Connect a character sheet you already use')
     async def register(self,i:discord.Interaction):await self.iniciar(i,'cadastro')
+
+    @grupo_en.command(name='create',description='Create an empty Ciclo Maldito sheet in your Google account')
+    async def create(self,i:discord.Interaction):await self.iniciar(i,'criar')
 
     @grupo_en.command(name='replace_sheet',description='Replace a sheet without losing the character’s registration')
     @app_commands.autocomplete(character=completar)

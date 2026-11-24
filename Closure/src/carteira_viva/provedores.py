@@ -124,7 +124,7 @@ class Provedores:
             redirect_uri=self.cfg.origem + f"/oauth/{provedor}/retorno",
             timeout=15, follow_redirects=False, trust_env=False, transport=self.transporte)
 
-    def autorizar(self, provedor: str, estado: str, verificador: str) -> str:
+    def autorizar(self, provedor: str, estado: str, verificador: str, *, modelo: str | None = None) -> str:
         if provedor not in AUTORIZAR:
             raise ErroProvedor()
         # create_authorization_url não realiza rede. Fecha-se o cliente no callback
@@ -137,6 +137,13 @@ class Provedores:
                               code_challenge_method="S256")
         extras = {"access_type": "offline", "prompt": "consent select_account",
                   "include_granted_scopes": "false"} if google else {}
+        if modelo is not None:
+            if not google or not ARQUIVO.fullmatch(modelo):
+                raise ErroProvedor()
+            # Seletor do Google por redirecionamento, filtrado no modelo: sem quadro e
+            # sem cookie de terceiros (o seletor em quadro não abriu no Brave, 24/11).
+            # drive.file só enxerga o modelo depois que o jogador escolhe ele ali.
+            extras |= {"trigger_onepick": "true", "file_ids": modelo}
         url, _ = client.create_authorization_url(AUTORIZAR[provedor], state=estado,
                                                   code_verifier=verificador, **extras)
         return url

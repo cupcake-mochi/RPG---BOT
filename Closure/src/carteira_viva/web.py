@@ -14,6 +14,7 @@ from aiohttp import web
 from .banco import digest
 from .config_web import ConfigWeb
 from .fluxos import DadosAsync, ErroFluxo, nome_cookie
+from .permissoes import Membro
 from .provedores import ErroProvedor, Provedores
 from .segredos import AcessoNegado, Conflito, ErroCarteira
 
@@ -22,6 +23,7 @@ DADOS = web.AppKey("dados", DadosAsync)
 PROVEDORES = web.AppKey("provedores", Provedores)
 LIMITE = web.AppKey("limite", asyncio.Semaphore)
 DEMO = web.AppKey("demo", bool)
+CRIACOES = web.AppKey("criacoes", set)
 CONSULTAS = web.AppKey("consultas", object)
 GALERIA = web.AppKey("galeria", object)
 STATIC = Path(__file__).with_name("static")
@@ -189,8 +191,29 @@ async def iniciar(request):
     if set(data) - {"servidor", "usuario", "acao", "personagem"}:
         raise ErroCarteira("Argumento não permitido.")
     m = await request.app[PROVEDORES].membro(data.get("servidor", ""), data.get("usuario", ""))
+    if data.get("acao") == "criar":
+        criacao_liberada(request, m.usuario)
     ticket = await request.app[DADOS].chamar("criar", m, data.get("acao", "cadastro"), data.get("personagem"))
-    return resposta_json({"url": request.app[CFG].origem + "/conectar?" + urlencode({"ticket": ticket}), "expira_em": 600})
+    return resposta_json({"url": request.app[CFG].origem + "/conectar?" + urlencode({"ticket": ticket}), "expira_em": 600,
+                          "criar": await pode_criar(request, m)})
+
+
+def criacao_liberada(request, usuario):
+    if not request.app[CFG].pode_criar(usuario):
+        from .modelos import CriacaoBloqueada
+        raise CriacaoBloqueada()
+
+
+async def pode_criar(request, membro):
+    """Liberado na configuração e o servidor usa a oficial do Ciclo."""
+    if not request.app[CFG].pode_criar(membro.usuario):
+        return False
+    from .modelos import CriacaoBloqueada
+    try:
+        await request.app[DADOS].chamar("cadastro.modelo_criacao", membro)
+    except CriacaoBloqueada:
+        return False
+    return True
 
 
 async def consultar(request):
@@ -236,6 +259,8 @@ async def status(request):
         m = await request.app[PROVEDORES].membro(ctx["servidor"], ctx["usuario"])
         if estado["acao"] == "modelo":
             await request.app[DADOS].chamar("cadastro.revisar_modelo", m)
+        if estado["acao"] == "cadastro" and estado["fase"] == "google":
+            estado["pode_criar"] = await pode_criar(request, m)
     estado["demonstracao"] = request.app[DEMO]
     return resposta_json(estado)
 
@@ -245,7 +270,18 @@ async def login(request):
     ticket, sid, _ = await sessao(request, data=data, membro=True)
     provider = request.match_info["provedor"]
     oauth = await request.app[DADOS].chamar("login", ticket, sid, csrf(request), provider)
-    return resposta_json({"url": request.app[PROVEDORES].autorizar(provider, oauth["estado"], oauth["verificador"])})
+    modelo = {"modelo": oauth["modelo"]} if oauth["modelo"] else {}
+    return resposta_json({"url": request.app[PROVEDORES].autorizar(provider, oauth["estado"], oauth["verificador"], **modelo)})
+
+
+async def virar_criacao(request):
+    data = await corpo(request)
+    if set(data) - {"ticket"}: raise ErroCarteira("Argumento não permitido.")
+    ticket, sid, membro = await sessao(request, data=data, membro=True)
+    if not isinstance(membro, Membro): raise ErroFluxo("etapa")
+    criacao_liberada(request, membro.usuario)
+    await request.app[DADOS].chamar("virar_criacao", ticket, sid, csrf(request), membro)
+    return resposta_json({"ok": True})
 
 
 async def selecionar_automatico(request, ticket, sid, arquivo):
@@ -272,12 +308,16 @@ async def retorno(request):
     oauth = await request.app[DADOS].chamar("consumir_retorno", state, provider, sid)
     ticket = oauth["ticket"]
     request.update({TICKET: ticket, COOKIE: sid, TRANSICAO: True})
+    criar = provider == "google" and oauth["acao"] == "criar"
+    out = web.HTTPFound(request.app[CFG].origem + "/conectar?" + urlencode({"ticket": ticket}))
     if "error" in request.query or not request.query.get("code"):
+        if criar:
+            await request.app[DADOS].chamar("voltar_google", ticket, sid, "cancelado")
+            return out
         raise ErroProvedor("cancelado")
     callback = request.app[CFG].origem + request.path + "?" + urlencode(list(request.query.items()))
     token = await request.app[PROVEDORES].trocar_codigo(provider, estado=state,
                                                      verificador=oauth["verificador"], retorno=callback)
-    out = web.HTTPFound(request.app[CFG].origem + "/conectar?" + urlencode({"ticket": ticket}))
     if provider == "discord":
         user = await request.app[PROVEDORES].usuario_discord(token["access_token"])
         if user != oauth["usuario"]:
@@ -293,7 +333,13 @@ async def retorno(request):
         conta = await request.app[PROVEDORES].conta_google(g.acesso)
         arquivo = await request.app[DADOS].chamar("google_ok", ticket, sid, conta=conta, token=g)
         if arquivo:
-            await selecionar_automatico(request, ticket, sid, arquivo)
+            try:
+                await selecionar_automatico(request, ticket, sid, arquivo)
+            except ErroProvedor as exc:
+                # A prova é o Google enxergar o modelo, não o parâmetro que veio na URL.
+                if not criar or exc.codigo not in ("acesso", "arquivo"):
+                    raise
+                await request.app[DADOS].chamar("voltar_google", ticket, sid, "modelo")
     return out
 
 
@@ -317,6 +363,8 @@ async def usar_conexao(request):
 
 async def picker(request):
     ticket, sid, _ = await sessao(request, membro=True)
+    if (await request.app[DADOS].chamar("estado", ticket, sid))["acao"] == "criar":
+        raise ErroFluxo("etapa")  # aqui o seletor é por redirecionamento; a página não recebe token
     g = await request.app[DADOS].chamar("google", ticket, sid)
     return resposta_json({"access_token": g["acesso"], "app_id": request.app[CFG].projeto_google,
                           "developer_key": request.app[CFG].picker_key})
@@ -327,6 +375,8 @@ async def selecionar(request):
     if set(data) - {"ticket", "arquivo"}: raise ErroCarteira("Argumento não permitido.")
     ticket, sid, _ = await sessao(request, data=data, membro=True)
     estado = await request.app[DADOS].chamar("estado", ticket, sid)
+    if estado["acao"] == "criar":
+        raise ErroFluxo("etapa")
     g = await request.app[DADOS].chamar("preparar_selecao", ticket, sid, csrf(request))
     request[TRANSICAO] = True
     validar = request.app[PROVEDORES].validar_modelo if estado["acao"] == "modelo" else request.app[PROVEDORES].validar_arquivo
@@ -342,17 +392,44 @@ async def confirmar(request):
     if set(data) - {"ticket", "nome", "responsabilidade"}: raise ErroCarteira("Argumento não permitido.")
     ticket, sid, membro = await sessao(request, data=data, membro=True)
     estado = await request.app[DADOS].chamar("estado", ticket, sid)
+    if estado["acao"] == "criar" and isinstance(membro, Membro):
+        criacao_liberada(request, membro.usuario)
     etapa = await request.app[DADOS].chamar("preparar_confirmacao", ticket, sid, csrf(request),
                                            data.get("nome"), data.get("responsabilidade"))
     if "resultado" in etapa:
         return resposta_json({"resultado": etapa["resultado"]})
     request[TRANSICAO] = True
+    if estado["acao"] == "criar":
+        ref = await request.app[DADOS].chamar("iniciar_criacao", ticket, sid, membro)
+        lancar_criacao(request.app, ticket, ref)
+        out = resposta_json({"ok": True})
+        nome = nome_cookie(digest(ticket), request.app[CFG].segura)
+        out.set_cookie(nome, sid, max_age=600, path="/", secure=request.app[CFG].segura, httponly=True, samesite="Lax")
+        return out
     validar = request.app[PROVEDORES].validar_modelo if estado["acao"] == "modelo" else request.app[PROVEDORES].validar_arquivo
     previa = await validar(etapa["google"]["acesso"], etapa["previa"]["arquivo"])
     # Refaz a consulta ao Discord depois da espera pelo Google.
     membro = await request.app[PROVEDORES].membro(membro.servidor, membro.usuario)
     resultado = await request.app[DADOS].chamar("finalizar", ticket, sid, membro, previa)
     return resposta_json({"resultado": resultado})
+
+
+def lancar_criacao(app, ticket, ref):
+    """A cópia leva dezenas de segundos: roda fora do pedido HTTP e a página consulta."""
+    from .criacao import codigo_de_erro, criar_ficha
+
+    async def rodar():
+        fim = {}
+        try:
+            fim["resultado"] = await criar_ficha(app[CONSULTAS], ref.servidor, ref.ator, ref)
+        except Exception as exc:
+            fim["erro"] = codigo_de_erro(exc)
+        with suppress(ErroCarteira):  # solicitação expirada: a ficha já está cadastrada
+            await app[DADOS].chamar("terminar_criacao", ticket, **fim)
+
+    tarefa = asyncio.create_task(rodar())
+    app[CRIACOES].add(tarefa)
+    tarefa.add_done_callback(app[CRIACOES].discard)
 
 
 async def cancelar(request):
@@ -396,6 +473,7 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, moto
     app[CFG], app[PROVEDORES], app[LIMITE], app[DEMO] = cfg, provedores or Provedores(cfg, agora=agora), asyncio.Semaphore(8), demonstracao
     dados = DadosAsync(cfg, agora=agora)
     app[DADOS] = dados
+    app[CRIACOES] = set()
 
     async def ciclo(app):
         try:
@@ -430,6 +508,10 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, moto
             task.cancel()
             with suppress(asyncio.CancelledError):
                 await task
+            # Cópia interrompida aqui fica no diário e é retomada no próximo pedido.
+            for t in list(app[CRIACOES]):
+                t.cancel()
+            await asyncio.gather(*app[CRIACOES], return_exceptions=True)
             await app[CONSULTAS].fechar()
             fechar_http = getattr(app[PROVEDORES], "fechar", None)
             if fechar_http is not None:
@@ -445,6 +527,7 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, moto
     app.router.add_get("/api/fluxo", status)
     app.router.add_post("/api/login/{provedor}", login)
     app.router.add_get("/oauth/{provedor}/retorno", retorno)
+    app.router.add_post("/api/criar", virar_criacao)
     app.router.add_post("/api/usar", usar_conexao)
     app.router.add_get("/api/picker", picker)
     app.router.add_post("/api/selecionar", selecionar)

@@ -1,10 +1,13 @@
 """Demonstração visual local, sem chamadas ao Discord/Google ou credenciais reais."""
+import asyncio
+import json
 from tempfile import TemporaryDirectory
 from pathlib import Path
 from urllib.parse import urlencode
 
 from aiohttp import web
 from cryptography.fernet import Fernet
+import httpx
 
 from .config_web import ConfigWeb
 from .permissoes import Membro
@@ -13,8 +16,29 @@ from .web import DADOS, GALERIA, criar_app
 from .segredos import AcessoNegado
 
 
+class DriveDemo(httpx.AsyncBaseTransport):
+    """Drive fictício da criação: copia na memória, com a espera que a cópia real tem."""
+    def __init__(self):
+        self.copias = {}
+
+    async def handle_async_request(self, request):
+        if request.url.host != 'www.googleapis.com' or not request.url.path.startswith('/drive/v3/files/'):
+            return httpx.Response(404, json={})
+        arquivo = request.url.path.split('/')[4]
+        base = dict(id=arquivo, mimeType='application/vnd.google-apps.spreadsheet', isAppAuthorized=True, trashed=False,
+                    version='1', modifiedTime='2026-11-24T12:00:00.000Z', ownedByMe=True, shared=False)
+        if request.method == 'POST':
+            await asyncio.sleep(9)
+            novo = f'copia_demonstracao_ficticia_{len(self.copias):04d}'
+            self.copias[novo] = json.loads(await request.aread())['appProperties']
+            return httpx.Response(200, json={'id': novo})
+        if arquivo in self.copias:
+            base |= dict(appProperties=self.copias[arquivo], permissions=[dict(type='user', role='owner')])
+        return httpx.Response(200, json=base)
+
+
 class ProvedoresDemo(Provedores):
-    def autorizar(self, provedor, estado, verificador):
+    def autorizar(self, provedor, estado, verificador, *, modelo=None):
         return self.cfg.origem + "/demo/autorizar?" + urlencode({"provedor": provedor, "state": estado})
 
     async def trocar_codigo(self, provedor, **kwargs):
@@ -60,14 +84,16 @@ def preparar(porta):
     from dataclasses import replace
     dados=Path(__file__).resolve().parents[2]/'dados'
     campanha=Path(temp.name)/'campanhas.json';campanha.write_text('{}')
-    cfg=replace(cfg,dados_livro=dados,campanhas=campanha)
-    app = criar_app(cfg, provedores=ProvedoresDemo(cfg), demonstracao=True)
+    cfg=replace(cfg,dados_livro=dados,campanhas=campanha,criar=frozenset({'todos'}))
+    app = criar_app(cfg, provedores=ProvedoresDemo(cfg, transporte=DriveDemo()), demonstracao=True)
 
     async def inicio(request):
         return web.Response(text="<html lang='pt-BR'><meta charset='utf-8'><title>Demonstração da Carteira</title>"
                                  "<h1>Carteira viva · demonstração local</h1>"
                                  "<p>Este ensaio usa contas e planilhas fictícias. Não entra no Google ou Discord.</p>"
                                  "<p><a href='/demo/iniciar'>Testar cadastro de personagem</a></p><p><a href='/carteira/111'>Abrir Carteira de demonstração</a></p>"
+                                 "<p><a href='/demo/iniciar?acao=criar'>Testar criação de ficha vazia</a></p>"
+                                 "<p><a href='/demo/iniciar?acao=criar&amp;idioma=en'>Test empty sheet creation · English</a></p>"
                                  "<p><a href='/demo/iniciar?acao=modelo'>Testar modelo · administrador fictício</a></p>"
                                  "<p><a href='/demo/iniciar?acao=modelo&amp;idioma=en'>Test template · fictional administrator · English</a></p>"
                                  "<p><a href='/privacidade'>Política de privacidade</a> · <a href='/termos'>Termos de uso</a></p></html>", content_type="text/html")
@@ -75,7 +101,7 @@ def preparar(porta):
     async def iniciar(request):
         acao = request.query.get('acao', 'cadastro')
         idioma = request.query.get('idioma', 'pt-BR')
-        if acao not in ('cadastro', 'modelo') or idioma not in ('pt-BR', 'en'): raise web.HTTPBadRequest()
+        if acao not in ('cadastro', 'criar', 'modelo') or idioma not in ('pt-BR', 'en'): raise web.HTTPBadRequest()
         m = Membro("111", "222", administrador=True)
         await app[DADOS].chamar('cadastro.configurar', m, idioma=idioma)
         ticket = await app[DADOS].chamar("criar", m, acao, None)
