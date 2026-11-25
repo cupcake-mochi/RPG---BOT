@@ -284,7 +284,10 @@ class ServicoCriacao(Fixtures, unittest.IsolatedAsyncioTestCase):
         self.assertEqual(corpo["name"], "Ficha - Ayla")
         self.assertEqual(corpo["parents"], ["root"])
         self.assertEqual(set(corpo["appProperties"]), {"cv_operacao", "cv_origem", "cv_protocolo"})
-        self.assertNotIn("222", json.dumps(corpo["appProperties"]))
+        # Resumo sha256 pode ter "222" por acaso; o que não pode é o ID em claro.
+        self.assertEqual(corpo["appProperties"]["cv_protocolo"], "1")
+        for campo in ("cv_operacao", "cv_origem"):
+            self.assertRegex(corpo["appProperties"][campo], r"\A[0-9a-f]{64}\Z")
         # Nenhuma escrita além da cópia.
         self.assertEqual({r.method for r in self.drive.req}, {"GET", "POST"})
 

@@ -282,3 +282,13 @@ próprio, a criação responde bloqueada. `criar_por_modelo` continua fechado.
 Reabrir a liberação: comece por `CARTEIRA_CRIAR` com o ID de quem vai testar; só
 depois `todos`. Sem a variável, `/personagem criar` explica que não está liberado e o
 botão não aparece.
+
+## Preencher a ficha criada (parte 3, ainda sem rota)
+
+`carteira_viva/criacao_plano.py` só planeja: recebe o que foi lido da cópia e devolve as
+células a escrever em cada passo. Não fala com o Google e nenhuma rota usa. A escrita pela
+API não dispara o `onEdit`, então o que o script da ficha faz na escolha do Caminho e da
+Trilha está repetido ali; os testes comparam com as funções originais.
+
+Mudou a ficha (células, cartas, treinos)? Gere de novo o mapa e o esperado dos testes:
+`node ferramentas/gerar_criacao_mapa.js <pasta do Ficha---RPG-JJK>`.
