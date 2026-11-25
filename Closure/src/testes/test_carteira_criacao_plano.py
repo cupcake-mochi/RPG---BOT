@@ -37,6 +37,7 @@ class Ficha:
             self.poe(PESSOAL, c["caixa"], False)
         self.poe("FICHA", MAPA["troca_arma"]["celula"], "Não trocou")
         self.poe("FICHA", MAPA["tr_fisico"], "FORÇA")
+        self.poe("FICHA", MAPA["leituras"]["nivel"], 2)
         for n, (nome, p1, p2, troca, treino) in enumerate(CAMINHOS, 2):
             for coluna, x in zip("MRSUV", (nome, p1, p2, troca, treino)):
                 self.poe(PROGRESSAO, f"{coluna}{n}", x)
@@ -187,6 +188,12 @@ class Passos(unittest.TestCase):
         f2.poe("DADOS_CONFIG", "S4", "três")
         with self.assertRaises(cp.Recusa):
             cp.atributos(f2.ler(), dict(zip(nomes, (3, 2, 2, 1, 1))))
+        f4 = Ficha()
+        f4.poe("FICHA", MAPA["leituras"]["nivel"], 3)
+        with self.assertRaisesRegex(cp.Recusa, "nível inicial"):
+            cp.atributos(f4.ler(), dict(zip(nomes, (3, 2, 2, 1, 1))))
+        with self.assertRaisesRegex(cp.Recusa, "nível inicial"):
+            cp.treinos(f4.ler(), pericias=[], oficios=[], testes=[])
         # A campanha manda: o limite vem da cópia, não do código.
         f3 = Ficha()
         f3.poe("DADOS_CONFIG", "S3", 12)
@@ -203,6 +210,10 @@ class Passos(unittest.TestCase):
         with self.assertRaises(cp.Recusa):
             cp.capacidades(f.ler(), {"marcante": "Gojo"})
         self.assertTrue(cp.capacidades(f.ler(), {"menor2": "✎ Criada com o mestre"}).avisos)
+        # Texto escrito por cima da fórmula: só o script da ficha devolve a conta.
+        with self.assertRaisesRegex(cp.Recusa, "à mão"):
+            cp.capacidades(f.ler(), {"marcante": "Kamo"}, {"marcante"}, {"marcante"})
+        self.assertTrue(cp.capacidades(f.ler(), {"marcante": "Kamo"}, {"marcante"}, {"menor2"}).escritas)
         # A Origem de fábrica da ficha é Latente: trocar dela não é conflito; trocar de novo é.
         with self.assertRaises(cp.JaPreenchido):
             cp.origem(f.ler(), "Latente")
@@ -227,8 +238,17 @@ class Passos(unittest.TestCase):
                      dict(pericias=[livres[0]] * 2, oficios=[], testes=[])):
             with self.assertRaises(cp.Recusa):
                 cp.treinos(f.ler(), **ruim)
-        f.aplicar(cp.treinos(f.ler(), pericias=livres[:8], oficios=[], testes=["Físico"]))      # 10 sem ofício
-        f.aplicar(cp.treinos(f.ler(), pericias=livres[:5], oficios=dois, testes=[], troca=1))
+        # Desmarcar o que o jogador tinha marcado pede confirmação, e só do que muda.
+        sem = dict(pericias=livres[:8], oficios=[], testes=["Físico"])      # 10 sem ofício
+        with self.assertRaises(cp.JaPreenchido) as e:
+            cp.treinos(f.ler(), **sem)
+        self.assertEqual(e.exception.campos, ("oficios", "testes"))
+        f.aplicar(cp.treinos(f.ler(), **sem, confirmados={"oficios", "testes"}))
+        com = dict(pericias=livres[:5], oficios=dois, testes=[], troca=1)
+        f.aplicar(cp.treinos(f.ler(), **com, confirmados={"pericias", "testes"}))
+        with self.assertRaises(cp.JaPreenchido) as e:
+            cp.treinos(f.ler(), **com | dict(tr_fisico="FORÇA", troca=0))
+        self.assertEqual(e.exception.campos, ("tr_fisico", "troca"))
         self.assertEqual(f.de("FICHA", MAPA["troca_arma"]["celula"]), "1 arma (-2 pericias)")
         f.aplicar(cp.caminho(f.ler(), "Bastião", None, {"caminho"}))
         self.assertEqual(f.de("FICHA", MAPA["troca_arma"]["celula"]), "Não trocou")
@@ -255,6 +275,17 @@ class Pedido(unittest.TestCase):
                     self.assertLess(t["startIndex"], len(celula["userEnteredValue"]["stringValue"].encode("utf-16-le")) // 2)
         with self.assertRaises(KeyError):
             cp.pedido(plano, {"FICHA": 1})
+
+    def test_nota_viva_nao_toca_no_valor(self):
+        f = Ficha()
+        lido = f.ler()
+        for y, (texto, caixa) in enumerate((("Falta Força", "AF86"), ("", "D86"), ("x", "")), 5):
+            lido.v["DADOS", y, 116], lido.v["DADOS", y, 117] = texto, caixa
+        plano = cp.notas_vivas(lido)
+        self.assertEqual([(e.celula, e.nota) for e in plano.escritas], [("AF86", "Falta Força"), ("D86", "")])
+        for r in cp.pedido(plano, {PESSOAL: 2})["requests"]:
+            self.assertEqual(r["updateCells"]["fields"], "note")
+            self.assertNotIn("userEnteredValue", r["updateCells"]["rows"][0]["values"][0])
 
 
 if __name__ == "__main__":

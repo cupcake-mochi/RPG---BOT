@@ -408,7 +408,7 @@ class WebCriacao(WebFixture, unittest.IsolatedAsyncioTestCase):
         await super().asyncSetUp()
 
     async def abrir_cliente(self):
-        self.cfg = replace(self.cfg, criar=frozenset({"222"}))
+        self.cfg = replace(self.cfg, criar=frozenset({"222"}), preencher=frozenset({"222"}))
         self.prov.cfg = self.cfg
         await super().abrir_cliente()
 
@@ -437,6 +437,7 @@ class WebCriacao(WebFixture, unittest.IsolatedAsyncioTestCase):
         self.assertEqual(self.s["fase"], "concluido", self.s)
         self.assertEqual(self.s["resultado"]["arquivo"], COPIA)
         self.assertEqual(self.s["resultado"]["perfil"]["nome"], "Nome confirmado")
+        self.assertEqual(self.s["preencher"], f"/carteira/111/{self.s['resultado']['id']}/preencher")
         self.assertEqual(len(self.prov.drive.posts()), 1)
         self.assertEqual(await self.scalar("SELECT count(*) FROM copias_rest"), 0)
         self.assertEqual(await self.scalar("SELECT arquivo FROM fontes"), COPIA)

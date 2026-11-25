@@ -60,24 +60,29 @@ async def finalizar(request,m,data):
     return out
 
 
-async def pagina(request):
+async def pagina(request,arquivo='carteira.html'):
     if 'servidor' not in request.match_info:
-        return web.Response(text=(STATIC/'carteira.html').read_text(encoding='utf-8'),content_type='text/html')
+        return web.Response(text=(STATIC/arquivo).read_text(encoding='utf-8'),content_type='text/html')
     contexto(request)
     novo=secrets.token_urlsafe(32)
     trocar=await banco(request,'abrir',sid(request),novo)
-    out=web.Response(text=(STATIC/'carteira.html').read_text(encoding='utf-8'),content_type='text/html')
+    out=web.Response(text=(STATIC/arquivo).read_text(encoding='utf-8'),content_type='text/html')
     if trocar:cookie(out,request,novo)
     return out
 
 
+async def pagina_preencher(request):
+    return await pagina(request,'preencher.html')
+
+
 async def estado(request):
-    from .web import DADOS,DEMO,resposta_json
+    from .web import CFG,DADOS,DEMO,resposta_json
     contexto(request);s=await banco(request,'estado',sid(request))
     s['demonstracao']=request.app[DEMO];s['idioma']='pt-BR'
     if not s['autenticado']:return resposta_json(s)
     m=await identidade(request)
     s['nome']=m.nome
+    s['preencher']=request.app[CFG].pode_preencher(m.usuario)
     s['idioma']=await request.app[DADOS].chamar('cadastro.idioma_carteira',m)
     s['modelos']=await request.app[DADOS].chamar('cadastro.modelos',m)
     return await finalizar(request,m,s)
@@ -86,10 +91,11 @@ async def estado(request):
 async def entrar(request):
     from .web import PROVEDORES,corpo,csrf,resposta_json
     gid,_=contexto(request);d=await corpo(request)
-    if set(d)-{'personagem','idioma'} or d.get('idioma','pt-BR') not in ('pt-BR','en'):raise ErroCarteira('Campos inesperados.')
+    if set(d)-{'personagem','idioma','preencher'} or d.get('preencher',False) not in (True,False) or d.get('idioma','pt-BR') not in ('pt-BR','en'):raise ErroCarteira('Campos inesperados.')
     pid=d.get('personagem')
     if pid is not None and (not isinstance(pid,str) or not PID.fullmatch(pid)):raise ErroCarteira('Personagem inválido.')
-    o=await banco(request,'login',sid(request),csrf(request),gid,pid,idioma=d.get('idioma'))
+    destino='preencher' if pid and d.get('preencher') is True else None
+    o=await banco(request,'login',sid(request),csrf(request),gid,pid,idioma=d.get('idioma'),destino=destino)
     return resposta_json({'url':request.app[PROVEDORES].autorizar('discord',o['estado'],o['verificador'])})
 
 
@@ -99,6 +105,7 @@ async def retorno(request,state):
     try:
         o=await banco(request,'consumir',sid(request),state);consumido=True
         destino='/carteira/'+o['servidor']+('/'+o['personagem'] if o['personagem'] else '')
+        if o.get('destino')=='preencher' and o['personagem']:destino+='/preencher'
         if o.get('idioma'):destino+='?'+urlencode({'idioma':o['idioma']})
         if 'error' in request.query or not request.query.get('code'):raise AcessoNegado('Login cancelado.')
         retorno=request.app[CFG].origem+request.path+'?'+urlencode(list(request.query.items()))
@@ -182,6 +189,28 @@ async def acao(request):
         return resposta_json({'erro':'leitura'},422)
 
 
+async def preencher(request):
+    """Um passo do preenchimento. Só o dono, e só quem está liberado em CARTEIRA_PREENCHER."""
+    from .web import CFG,PREENCHER,corpo,resposta_json
+    from .criacao_plano import JaPreenchido,Recusa
+    from .preencher import Mudou
+    m=await identidade(request,mutacao=True);_,pid=contexto(request)
+    if not request.app[CFG].pode_preencher(m.usuario):raise AcessoNegado('Preenchimento não liberado.')
+    d=await corpo(request,192*1024);passo=request.match_info['passo'];p=request.app[PREENCHER]
+    if passo=='ler':
+        if d:raise ErroCarteira('Campos inesperados.')
+        return await finalizar(request,m,await p.estado(m.servidor,m.usuario,pid))
+    if set(d)!={'dados','base','confirmados'} or type(d['confirmados']) is not list:raise ErroCarteira('Campos inesperados.')
+    try:
+        return await finalizar(request,m,await p.salvar(m.servidor,m.usuario,pid,passo,**d))
+    except JaPreenchido as e:
+        return resposta_json({'erro':'preenchido','campos':list(e.campos)},409)
+    except Recusa as e:
+        return resposta_json({'erro':'recusa','motivos':list(e.motivos)},422)
+    except Mudou as e:
+        return resposta_json({'erro':'mudou','estado':e.estado},409)
+
+
 async def imagem(request):
     from .web import GALERIA
     m=await identidade(request);_,pid=contexto(request)
@@ -200,4 +229,6 @@ def registrar(app):
     app.router.add_get('/api/carteira/{servidor}/galeria',galeria)
     app.router.add_get('/api/carteira/{servidor}/personagens/{personagem}',cartao)
     app.router.add_get('/api/carteira/{servidor}/personagens/{personagem}/imagem',imagem)
+    app.router.add_get('/carteira/{servidor}/{personagem}/preencher',pagina_preencher)
+    app.router.add_post('/api/carteira/{servidor}/personagens/{personagem}/preencher/{passo}',preencher)
     app.router.add_post('/api/carteira/{servidor}/personagens/{personagem}/{acao}',acao)

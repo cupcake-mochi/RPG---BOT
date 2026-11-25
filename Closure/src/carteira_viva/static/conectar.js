@@ -7,7 +7,7 @@
     titulo:"Connect your character sheet", introducao:"Choose the sheet you already use. Registration is for this server and does not approve the character.",
     passo1:"Your Discord account", passo2:"Your Google spreadsheet", passo3:"Review and confirm",
     "entrar-discord":"Sign in with Discord", "entrar-google":"Connect Google", "conta-label":"Or use an existing connection", usar:"Use this connection",
-    permissao:"Google authorization grants the app access to selected files. This step only reads the sheet; it does not edit cells.",
+    permissao:"Google authorization grants the app access to selected files. This step only reads the sheet. The bot only writes to it if you ask, when filling it in on the site.",
     escolher:"Choose my sheet",
     "dica-picker":"If the Google picker asks you to sign in or opens another window, your browser is blocking Google cookies on this page. In Brave, click the lion in the address bar and turn Shields off for this site only, then click Choose my sheet again.",
     conferir:"Review your selection", parcial:"The format was identified. Full sheet analysis is a separate step.",
@@ -17,7 +17,7 @@
     rodape:"Access lasts while Google authorization remains valid. You may disconnect or replace the file later.",
     "criar-ficha":"I don’t have a sheet yet: create one",
     "copiando-texto":"Google is copying the sheet to your account. It usually takes 20 to 60 seconds. If you close this page, the copy continues and the character appears in /characters.",
-    "abrir-ficha":"Open my sheet", "passos-titulo":"First steps",
+    "abrir-ficha":"Open my sheet", "preencher-ficha":"Fill it in on the site", "passos-titulo":"First steps",
     "passo-abrir":"Open the sheet and wait for it to load: the Recursos, Bot and Salários menus appear at the top.",
     "passo-editar":"Before choosing the Path, write the character name in CARTEIRA and wait about 30 seconds. The first edit after opening is slow.",
     "passo-caminho":"Choose the Path (Caminho) in FICHA. If its skills are not marked, choose it again.",
@@ -104,17 +104,18 @@
     if (avisos[state.aviso]) $("aviso").textContent=avisos[state.aviso][english()?1:0];
     if (state.acao === "criar") {
       const copy={introducao:["O bot copia a ficha oficial Ciclo Maldito, vazia, pra sua conta Google e já cadastra o personagem neste servidor. Isso não aprova o personagem.","The bot copies the empty official Ciclo Maldito sheet to your Google account and registers the character in this server. This does not approve the character."],
-        permissao:["Na próxima tela, o Google mostra só a ficha modelo: escolha ela e confirme. O app passa a ver o modelo e as cópias que ele mesmo criar, nada mais do seu Drive. Nenhuma célula é preenchida pelo bot.","On the next screen Google shows only the template sheet: pick it and confirm. The app can then see the template and the copies it creates, nothing else in your Drive. The bot does not fill in any cell."],
+        permissao:["Na próxima tela, o Google mostra só a ficha modelo: escolha ela e confirme. O app passa a ver o modelo e as cópias que ele mesmo criar, nada mais do seu Drive. Criar não preenche nenhuma célula.","On the next screen Google shows only the template sheet: pick it and confirm. The app can then see the template and the copies it creates, nothing else in your Drive. Creating does not fill in any cell."],
         passo2:["Sua conta Google","Your Google account"],passo3:["Dar nome e criar","Name it and create"],
         "entrar-google":["Continuar no Google","Continue on Google"],conferir:["Criar a ficha","Create the sheet"],
-        parcial:["A ficha vem vazia, no nível inicial padrão. O nome escolhido aqui vai no arquivo e no cartão; dentro da ficha, quem escreve é você.","The sheet comes empty, at the default starting level. The name chosen here goes on the file and the card; inside the sheet, you write it."],
+        parcial:["A ficha vem vazia, no nível inicial padrão. O nome escolhido aqui vai no arquivo e no cartão; dentro da ficha, quem decide o que entra é você.","The sheet comes empty, at the default starting level. The name chosen here goes on the file and the card; inside the sheet, you decide what goes in."],
         "responsabilidade-label":["Quero criar esta ficha na minha conta Google e cadastrá-la neste servidor. Administradores e revisores autorizados poderão consultar os detalhes.","I want to create this sheet in my Google account and register it in this server. Administrators and authorized reviewers may view its details."],
         confirmar:["Criar ficha","Create sheet"]};
       for (const [id,values] of Object.entries(copy)) $(id).textContent=values[english()?1:0];
       if (state.fase === "google") $("mensagem").textContent=english()?"Now choose the template on Google.":"Agora escolha o modelo no Google.";
       if (state.fase === "revisar") $("arquivo").textContent=(english()?"Template: ":"Modelo: ")+state.previa.nome_arquivo;
       if (state.fase === "concluido") { $("mensagem").textContent=english()?"Sheet created and registered.":"Ficha criada e cadastrada.";
-        $("criada").hidden=false; $("abrir-ficha").href="https://docs.google.com/spreadsheets/d/"+encodeURIComponent(state.resultado.arquivo)+"/edit"; }
+        $("criada").hidden=false; $("preencher-ficha").hidden=!state.preencher; if(state.preencher) $("preencher-ficha").href=state.preencher+"?idioma="+encodeURIComponent(state.idioma);
+        $("abrir-ficha").href="https://docs.google.com/spreadsheets/d/"+encodeURIComponent(state.resultado.arquivo)+"/edit"; }
       if (state.fase === "falhou" && state.erro) $("mensagem").textContent=(falhas[state.erro] || ["A ficha não foi criada agora. Tente de novo pelo Discord; se a cópia já existir no seu Drive, ela é aproveitada.","The sheet was not created. Try again in Discord; if the copy already exists in your Drive, it is reused."])[english()?1:0];
     }
     $("copiando").hidden=state.fase !== "copiando";

@@ -24,6 +24,7 @@ from .copias_banco import Copias
 from .criacao import Criacoes
 from .financeiro_banco import Financeiro
 from .atestados_banco import Atestados
+from .preencher_banco import BancoPreencher
 from .permissoes import Acao, Membro, NUMEROS, Permissoes, PUBLICOS, cartao_publico, permitido
 from .segredos import AcessoNegado, Cifra, Conflito, ErroCarteira, json_bytes
 
@@ -78,7 +79,7 @@ class CredencialGoogle:
     autorizacao: str = field(repr=False)
 
 
-class Cadastro(Cartoes, Modelos, Conferencias, Copias, Criacoes, Financeiro, Atestados):
+class Cadastro(Cartoes, Modelos, Conferencias, Copias, Criacoes, Financeiro, Atestados, BancoPreencher):
     def __init__(self, caminho: Path, chaves: tuple[bytes, ...], *,
                  remocoes: Path | None = None, agora: Callable[[], float] = time.time):
         self.cifra = Cifra(chaves)  # Não criar banco se a chave estiver ausente/inválida.

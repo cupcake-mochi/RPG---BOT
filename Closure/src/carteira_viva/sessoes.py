@@ -77,13 +77,13 @@ class Sessoes:
         if tocar:self.c.db.execute('UPDATE web_sessoes SET usado=? WHERE id=?',(self.c.agora(),digest(cookie)))
         return self.estado(cookie)
 
-    def login(self,cookie,csrf,servidor,personagem,*,idioma=None):
+    def login(self,cookie,csrf,servidor,personagem,*,idioma=None,destino=None):
         with self.c._transacao():
             r=self._row(cookie);self._csrf(r,csrf)
             if r['fase']=='ativa':raise Conflito('Encerre a sessão para trocar de conta.')
             if r['tentativas']>=10:raise ErroCarteira('Reabra a Carteira para entrar.')
             estado,verificador=secrets.token_urlsafe(32),secrets.token_urlsafe(48)
-            dados=self._dados(r)|{'verificador':verificador,'servidor':servidor,'personagem':personagem,'idioma':idioma}
+            dados=self._dados(r)|{'verificador':verificador,'servidor':servidor,'personagem':personagem,'idioma':idioma,'destino':destino}
             self.c.db.execute("UPDATE web_sessoes SET fase='oauth',estado=?,dados=?,tentativas=tentativas+1 WHERE id=?",
                 (digest(estado),self.c.cifra.cifrar(['sessao',r['id']],dados),r['id']))
             return {'estado':estado,'verificador':verificador}
@@ -98,7 +98,7 @@ class Sessoes:
                 raise SessaoEncerrada('Retorno de login inválido.')
             self.c.db.execute("UPDATE web_sessoes SET fase='processando' WHERE id=?",(r['id'],))
             d=self._dados(r)
-            return {k:d[k] for k in ('verificador','servidor','personagem','idioma')}
+            return {k:d.get(k) for k in ('verificador','servidor','personagem','idioma','destino')}
 
     def finalizar(self,cookie,estado,novo,usuario):
         with self.c._transacao():

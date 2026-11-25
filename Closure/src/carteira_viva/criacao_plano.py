@@ -39,7 +39,7 @@ class JaPreenchido(Recusa):
 class Escrita:
     aba: str
     celula: str
-    valor: str | int | bool
+    valor: str | int | bool | None       # None só mexe na nota
     nota: str | None = None              # None não mexe na nota
     negritos: tuple = ()
 
@@ -196,7 +196,18 @@ def limites(lido):
     return dict(zip(nomes, map(int, v)))
 
 
+def na_criacao(lido):
+    """A ficha ainda está no nível em que a campanha começa."""
+    return str(lido.de("FICHA", MAPA["leituras"]["nivel"])) == str(limites(lido)["nivel_inicial"])
+
+
+def _so_na_criacao(lido):
+    if not na_criacao(lido):
+        raise Recusa("Essa ficha já passou do nível inicial. O que muda ao subir de nível se preenche na planilha.")
+
+
 def atributos(lido, novos, confirmados=()):
+    _so_na_criacao(lido)
     celulas = {a["nome"]: a["celula"] for a in MAPA["atributos"]}
     if set(novos) != set(celulas) or any(type(v) is not int for v in novos.values()):
         raise Recusa("Preencha os cinco atributos com números inteiros.")
@@ -213,7 +224,8 @@ def atributos(lido, novos, confirmados=()):
         raise JaPreenchido(mexidos)
     plano = Plano([Escrita("FICHA", c, novos[n]) for n, c in celulas.items() if lido.de("FICHA", c) != novos[n]])
     if total < lim["pontos"]:
-        plano.avisos.append(f"Sobram {lim['pontos'] - total} pontos de atributo.")
+        resta = lim["pontos"] - total
+        plano.avisos.append("Sobra 1 ponto de atributo." if resta == 1 else f"Sobram {resta} pontos de atributo.")
     return plano
 
 
@@ -241,10 +253,12 @@ def origem(lido, nome, confirmados=()):
     return plano
 
 
-def capacidades(lido, novos, confirmados=()):
+def capacidades(lido, novos, confirmados=(), a_mao=()):
     """Marcante e menores pelos menus. Chamar com uma leitura feita depois de escrever a Origem.
 
-    A altura das caixas sai em altura_capacidades(), porque o texto delas é fórmula."""
+    A altura das caixas sai em altura_capacidades(), porque o texto delas é fórmula. `a_mao` são as
+    caixas em que o jogador escreveu por cima da fórmula: quem a devolve é o script da ficha, e só
+    na escolha feita na planilha."""
     if not set(novos) <= {"marcante", "menor1", "menor2"}:
         raise Recusa("Campo desconhecido.")
     m = menus(lido)
@@ -254,7 +268,11 @@ def capacidades(lido, novos, confirmados=()):
     final = {c["chave"]: novos.get(c["chave"], lido.de(c["aba"], c["celula"])) for c in MAPA["escolhas"]}
     if final["menor1"] and final["menor1"] == final["menor2"] and not str(final["menor1"]).startswith("✎"):
         raise Recusa("As duas menores precisam ser diferentes.")
-    plano = Plano([Escrita(c["aba"], c["celula"], v) for c, v in _campos("escolhas", lido, novos, confirmados)])
+    muda = _campos("escolhas", lido, novos, confirmados)
+    if any(c["chave"] in a_mao and not v.startswith("✎") for c, v in muda):
+        raise Recusa("Há um texto escrito à mão na caixa dessa capacidade. Troque o menu na planilha, "
+                     "que aí a ficha traz o texto do livro.")
+    plano = Plano([Escrita(c["aba"], c["celula"], v) for c, v in muda])
     if any(str(v).startswith("✎") for v in novos.values()):
         plano.avisos.append("Capacidade criada com o mestre: escreva o texto na FICHA PESSOAL e confirme com ele.")
     return plano
@@ -264,6 +282,12 @@ def altura_capacidades(lido):
     plano = Plano()
     _esticar(plano, "capacidades", lido)
     return plano
+
+
+def notas_vivas(lido):
+    """Notas da FICHA PESSOAL cujo texto é fórmula da DADOS. Chamar com uma leitura depois da escrita."""
+    return Plano([Escrita(PESSOAL, str(caixa), None, str(texto)) for texto, caixa in lido.faixa("DADOS", "DL5:DM9")
+                  if CELULA.fullmatch(str(caixa))])
 
 
 def _treino(caminho, todas):
@@ -349,8 +373,9 @@ def caminho(lido, escolhido, trilha=None, confirmados=()):
     return plano
 
 
-def treinos(lido, *, pericias, oficios, testes, tr_fisico=None, troca=0):
+def treinos(lido, *, pericias, oficios, testes, tr_fisico=None, troca=0, confirmados=()):
     """Escolhas completas (as fixas do Caminho entram sozinhas). Passou da conta é recusa; faltou é aviso."""
+    _so_na_criacao(lido)
     nomes = {k: {m["nome"]: m["caixa"] for m in MAPA[k]} for k in ("pericias", "oficios", "testes")}
     pedido = dict(pericias=pericias, oficios=oficios, testes=testes)
     for k, escolhidos in pedido.items():
@@ -379,13 +404,23 @@ def treinos(lido, *, pericias, oficios, testes, tr_fisico=None, troca=0):
         raise Recusa(*erros)
     plano = Plano()
     pedido["pericias"] = todas
+    atual_tr, atual_troca = (lido.de("FICHA", c) for c in (MAPA["tr_fisico"], MAPA["troca_arma"]["celula"]))
+    conflito = [k for k, caixas in nomes.items()
+                if any(lido.de("FICHA", c) is True and n not in pedido[k] for n, c in caixas.items())]
+    if tr_fisico and atual_tr not in ("", "FORÇA", tr_fisico):
+        conflito.append("tr_fisico")
+    if atual_troca not in ("", TROCAS[0], TROCAS[troca]):
+        conflito.append("troca")
+    conflito = [k for k in conflito if k not in confirmados]
+    if conflito:
+        raise JaPreenchido(conflito)
     for k, caixas in nomes.items():
         for nome, caixa in caixas.items():
             if lido.de("FICHA", caixa) is not (nome in pedido[k]):
                 plano.escritas.append(Escrita("FICHA", caixa, nome in pedido[k]))
-    if tr_fisico and lido.de("FICHA", MAPA["tr_fisico"]) != tr_fisico:
+    if tr_fisico and atual_tr != tr_fisico:
         plano.escritas.append(Escrita("FICHA", MAPA["tr_fisico"], tr_fisico))
-    if lido.de("FICHA", MAPA["troca_arma"]["celula"]) != TROCAS[troca]:
+    if atual_troca != TROCAS[troca]:
         plano.escritas.append(Escrita("FICHA", MAPA["troca_arma"]["celula"], TROCAS[troca]))
     if len(todas) < com_oficio or (len(todas) < sem_oficio and len(oficios) < lim["oficios"]):
         plano.avisos.append("Ainda faltam perícias ou ofícios.")
@@ -401,7 +436,9 @@ def pedido(plano, abas):
     reqs = []
     for e in plano.escritas:
         linha, coluna = posicao(e.celula)
-        if type(e.valor) is bool:
+        if e.valor is None:
+            valor = None
+        elif type(e.valor) is bool:
             valor = {"boolValue": e.valor}
         elif type(e.valor) is int:
             valor = {"numberValue": e.valor}
@@ -410,7 +447,7 @@ def pedido(plano, abas):
             valor = {"stringValue": e.valor} if e.valor else None
         else:
             raise ValueError("Valor fora do tipo.")
-        celula, campos = {}, ["userEnteredValue"]
+        celula, campos = {}, [] if e.valor is None else ["userEnteredValue"]
         if valor:
             celula["userEnteredValue"] = valor
         if type(e.valor) is str:
