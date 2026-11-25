@@ -12,6 +12,7 @@ class Acao(str, Enum):
     TROCAR_ARQUIVO = "trocar_arquivo"
     EXCLUIR = "excluir"
     CONFIGURAR = "configurar"
+    PREENCHER = "preencher"
     EDITAR_JOGO = "editar_jogo"
 
 
@@ -53,7 +54,7 @@ def permitido(acao: Acao, membro: Membro, servidor: str, dono: str | None,
     proprio = dono is not None and membro.usuario == dono
     if acao in (Acao.VER_DETALHES, Acao.ANALISAR):
         return proprio or admin or bool(membro.cargos & permissoes.revisores)
-    if acao in (Acao.PERSONALIZAR, Acao.TROCAR_ARQUIVO, Acao.EXCLUIR):
+    if acao in (Acao.PERSONALIZAR, Acao.TROCAR_ARQUIVO, Acao.EXCLUIR, Acao.PREENCHER):
         return proprio
     if acao == Acao.CONFIGURAR:
         return admin

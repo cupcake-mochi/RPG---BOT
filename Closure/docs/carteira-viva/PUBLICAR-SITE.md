@@ -44,6 +44,13 @@ bot) e o servidor que tem campanha cadastrada no `ficha-campanhas.json`.
 - Pra fechar de novo: esvaziar `CARTEIRA_CRIAR`, montar o pacote e publicar o site. O bot não precisa de publicação.
 - Sem teste: Brave com o escudo ligado. O aparelho usado pelo jogador convidado não foi anotado.
 
+### Preencher a ficha pelo site (ainda não publicado)
+
+- Entra fechado: sem `CARTEIRA_PREENCHER` no `.env` do site, a rota nega e os botões não aparecem.
+- Ordem: publicar o site com o ID de quem vai testar, preencher uma ficha de teste inteira pela página, exportar na
+  caixa "Bot:" e conferir a análise; só depois `todos`. O bot não precisa de publicação.
+- Pra fechar de novo: esvaziar a variável, montar o pacote e publicar o site.
+
 ## O que já está pronto no código
 
 | Peça | Onde |

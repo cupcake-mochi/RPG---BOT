@@ -10,6 +10,7 @@ from cryptography.fernet import Fernet
 import httpx
 
 from .config_web import ConfigWeb
+from .demo_ficha import Planilha
 from .permissoes import Membro
 from .provedores import Provedores
 from .web import DADOS, GALERIA, criar_app
@@ -19,9 +20,14 @@ from .segredos import AcessoNegado
 class DriveDemo(httpx.AsyncBaseTransport):
     """Drive fictício da criação: copia na memória, com a espera que a cópia real tem."""
     def __init__(self):
-        self.copias = {}
+        self.copias, self.planilhas = {}, {}
 
     async def handle_async_request(self, request):
+        if request.url.host == 'sheets.googleapis.com':
+            arquivo = request.url.path.split('/')[3].partition(':')[0]
+            if request.method == 'POST':
+                await asyncio.sleep(2)
+            return self.planilhas.setdefault(arquivo, Planilha()).responder(request, await request.aread())
         if request.url.host != 'www.googleapis.com' or not request.url.path.startswith('/drive/v3/files/'):
             return httpx.Response(404, json={})
         arquivo = request.url.path.split('/')[4]
@@ -84,14 +90,14 @@ def preparar(porta):
     from dataclasses import replace
     dados=Path(__file__).resolve().parents[2]/'dados'
     campanha=Path(temp.name)/'campanhas.json';campanha.write_text('{}')
-    cfg=replace(cfg,dados_livro=dados,campanhas=campanha,criar=frozenset({'todos'}))
+    cfg=replace(cfg,dados_livro=dados,campanhas=campanha,criar=frozenset({'todos'}),preencher=frozenset({'todos'}))
     app = criar_app(cfg, provedores=ProvedoresDemo(cfg, transporte=DriveDemo()), demonstracao=True)
 
     async def inicio(request):
         return web.Response(text="<html lang='pt-BR'><meta charset='utf-8'><title>Demonstração da Carteira</title>"
                                  "<h1>Carteira viva · demonstração local</h1>"
                                  "<p>Este ensaio usa contas e planilhas fictícias. Não entra no Google ou Discord.</p>"
-                                 "<p><a href='/demo/iniciar'>Testar cadastro de personagem</a></p><p><a href='/carteira/111'>Abrir Carteira de demonstração</a></p>"
+                                 "<p><a href='/demo/iniciar'>Testar cadastro de personagem</a></p><p><a href='/carteira/111'>Abrir Carteira de demonstração</a> (o cartão do responsável tem o preenchimento pelo site)</p>"
                                  "<p><a href='/demo/iniciar?acao=criar'>Testar criação de ficha vazia</a></p>"
                                  "<p><a href='/demo/iniciar?acao=criar&amp;idioma=en'>Test empty sheet creation · English</a></p>"
                                  "<p><a href='/demo/iniciar?acao=modelo'>Testar modelo · administrador fictício</a></p>"

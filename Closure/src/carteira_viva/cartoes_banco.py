@@ -46,7 +46,7 @@ class Cartoes:
                                 (membro.servidor,personagem,self.agora())).fetchone()
         return card|{'lido_em':hora,'precisa_atualizar':not (hora is not None and self.agora()-hora<=60 and leitura and f['estado']=='ativa'),
             'capacidades':{a.value:permitido(a,membro,membro.servidor,r['dono'],self._permissoes(membro.servidor))
-                            for a in (Acao.VER_DETALHES,Acao.ANALISAR,Acao.PERSONALIZAR,Acao.TROCAR_ARQUIVO,Acao.EXCLUIR)}}
+                            for a in (Acao.VER_DETALHES,Acao.ANALISAR,Acao.PERSONALIZAR,Acao.TROCAR_ARQUIVO,Acao.EXCLUIR,Acao.PREENCHER)}}
 
     def perfil_editavel(self,membro,personagem):
         r=self._personagem(membro,personagem,Acao.PERSONALIZAR)

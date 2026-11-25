@@ -1,4 +1,4 @@
-"""Conexão e API interna da galeria. Sem escrita de ficha ou conversa por IA."""
+"""Conexão e API interna da galeria. A única escrita em ficha é a do preencher.py. Sem conversa por IA."""
 import asyncio
 from contextlib import suppress
 import hmac
@@ -26,6 +26,7 @@ DEMO = web.AppKey("demo", bool)
 CRIACOES = web.AppKey("criacoes", set)
 CONSULTAS = web.AppKey("consultas", object)
 GALERIA = web.AppKey("galeria", object)
+PREENCHER = web.AppKey("preencher", object)
 STATIC = Path(__file__).with_name("static")
 LENTO = 5.0  # segundos; acima disso a galeria registra a ação no diário
 RequestKey = getattr(web, "RequestKey", web.AppKey)
@@ -84,7 +85,7 @@ async def guardas(request, handler):
                              "frame-src https://docs.google.com https://drive.google.com https://accounts.google.com; "
                              "connect-src 'self' https://*.googleapis.com; img-src 'self' data: https://*.googleusercontent.com; "
                              "style-src 'self'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"})
-    if request.path.startswith(('/carteira','/api/carteira','/static/carteira.')):
+    if request.path.startswith(('/carteira','/api/carteira','/static/carteira.','/static/preencher.')):
         resposta.headers.update({'Referrer-Policy':'no-referrer','Cross-Origin-Resource-Policy':'same-origin','Vary':'Cookie',
             'Content-Security-Policy':"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"})
     if cfg.segura:
@@ -94,10 +95,10 @@ async def guardas(request, handler):
     return resposta
 
 
-async def corpo(request):
+async def corpo(request, tamanho=16*1024):
     if request.content_type != "application/json":
         raise ErroCarteira("Envie um formulário JSON.")
-    data = json.loads(await limitado(request,16*1024))
+    data = json.loads(await limitado(request,tamanho))
     if not isinstance(data, dict):
         raise ErroCarteira("Solicitação inválida.")
     return data
@@ -261,6 +262,8 @@ async def status(request):
             await request.app[DADOS].chamar("cadastro.revisar_modelo", m)
         if estado["acao"] == "cadastro" and estado["fase"] == "google":
             estado["pode_criar"] = await pode_criar(request, m)
+        if estado["acao"] == "criar" and estado["fase"] == "concluido" and request.app[CFG].pode_preencher(m.usuario):
+            estado["preencher"] = "/carteira/" + m.servidor + "/" + estado["resultado"]["id"] + "/preencher"
     estado["demonstracao"] = request.app[DEMO]
     return resposta_json(estado)
 
@@ -442,7 +445,7 @@ async def cancelar(request):
 async def estatico(request):
     nome = request.match_info["nome"]
     tipos = {"conectar.js": "application/javascript", "conectar.css": "text/css", "carteira.js": "application/javascript",
-             "carteira.css": "text/css", "guias.png": "image/png"}
+             "carteira.css": "text/css", "preencher.js": "application/javascript", "guias.png": "image/png"}
     if nome not in tipos:
         raise web.HTTPNotFound()
     return web.Response(body=(STATIC / nome).read_bytes(), content_type=tipos[nome])
@@ -488,6 +491,8 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, moto
                 from .motor import Motor
                 analisador = await asyncio.to_thread(Motor, cfg.dados_livro, cfg.campanhas)
             app[CONSULTAS] = Consultas(dados, app[PROVEDORES], analisador, agora=agora)
+            from .preencher import Preencher
+            app[PREENCHER] = Preencher(app[CONSULTAS], app[PROVEDORES])
             from .galeria import Galeria
             from .imagens import Imagens
             from .segredos import Cifra
@@ -513,6 +518,7 @@ def criar_app(cfg, *, provedores=None, agora=time.time, demonstracao=False, moto
                 t.cancel()
             await asyncio.gather(*app[CRIACOES], return_exceptions=True)
             await app[CONSULTAS].fechar()
+            await app[PREENCHER].fechar()
             fechar_http = getattr(app[PROVEDORES], "fechar", None)
             if fechar_http is not None:
                 await fechar_http()

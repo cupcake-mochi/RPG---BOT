@@ -26,6 +26,8 @@ class ConfigWeb:
     campanhas: Path | None = None
     # Quem pode criar ficha pelo bot: vazio = ninguém; {"todos"} = qualquer membro; ou IDs do Discord.
     criar: frozenset[str] = frozenset()
+    # Quem pode preencher a própria ficha pelo site; mesma regra.
+    preencher: frozenset[str] = frozenset()
 
     def __post_init__(self):
         u = urlsplit(self.origem)
@@ -46,6 +48,9 @@ class ConfigWeb:
     def pode_criar(self, usuario):
         return "todos" in self.criar or usuario in self.criar
 
+    def pode_preencher(self, usuario):
+        return "todos" in self.preencher or usuario in self.preencher
+
     @property
     def segura(self):
         return urlsplit(self.origem).scheme == "https"
@@ -65,6 +70,7 @@ class ConfigWeb:
                    projeto_google=env("GOOGLE_PROJECT_NUMBER"), picker_key=env("PICKER_API_KEY"),
                    servidores=frozenset(x.strip() for x in env("GUILDS").split(",") if x.strip()),
                    criar=frozenset(x.strip() for x in os.getenv("CARTEIRA_CRIAR", "").split(",") if x.strip()),
+                   preencher=frozenset(x.strip() for x in os.getenv("CARTEIRA_PREENCHER", "").split(",") if x.strip()),
                    desenvolvimento=os.getenv("CARTEIRA_DEV") == "1",
                    dados_livro=Path(os.environ["CARTEIRA_BOOK_DATA"]) if os.getenv("CARTEIRA_BOOK_DATA") else None,
                    campanhas=Path(os.environ["CARTEIRA_CAMPAIGNS_PATH"]) if os.getenv("CARTEIRA_CAMPAIGNS_PATH") else None)

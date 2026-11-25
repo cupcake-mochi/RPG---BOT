@@ -88,6 +88,7 @@ As seguintes variáveis devem ser fornecidas pelo ambiente, fora do Git:
 | `CARTEIRA_PICKER_API_KEY` | Chave restrita às APIs e origens necessárias ao Picker |
 | `CARTEIRA_GUILDS` | IDs dos servidores permitidos, separados por vírgula |
 | `CARTEIRA_CRIAR` | Opcional. Quem pode criar ficha vazia pelo bot: vazio = ninguém, IDs do Discord separados por vírgula, ou `todos` |
+| `CARTEIRA_PREENCHER` | Opcional. Quem pode preencher a ficha pelo site: mesma forma do `CARTEIRA_CRIAR` |
 | `CARTEIRA_DEV` | `1` apenas para permitir HTTP em loopback no piloto local |
 
 O serviço não lê automaticamente o `.env` das Guias. Não passar segredos em
@@ -241,8 +242,8 @@ configurado. Não há nova autorização Google para abrir um cartão cadastrado
 A página oferece galeria básica aos membros atuais e detalhes/análise só ao
 responsável, admin ou revisor autorizado. Atualizar consulta uma ficha; a lista
 não dispara leitura em lote. A análise usa o motor determinístico e entrega
-uma página privada de cada vez. A página é de leitura; trocar arquivo ou
-apresentação continua no Discord.
+uma página privada de cada vez. A galeria só lê; quem escreve na ficha é a
+página de preenchimento (abaixo). Trocar arquivo ou apresentação continua no Discord.
 
 A interface aceita PT/EN. Essa preferência acompanha o login e não muda o
 idioma configurado no servidor. Sessões não vão para localStorage, URLs ou
@@ -283,12 +284,29 @@ Reabrir a liberação: comece por `CARTEIRA_CRIAR` com o ID de quem vai testar; 
 depois `todos`. Sem a variável, `/personagem criar` explica que não está liberado e o
 botão não aparece.
 
-## Preencher a ficha criada (parte 3, ainda sem rota)
+## Preencher a ficha pelo site (parte 3)
 
-`carteira_viva/criacao_plano.py` só planeja: recebe o que foi lido da cópia e devolve as
-células a escrever em cada passo. Não fala com o Google e nenhuma rota usa. A escrita pela
-API não dispara o `onEdit`, então o que o script da ficha faz na escolha do Caminho e da
-Trilha está repetido ali; os testes comparam com as funções originais.
+Página: `/carteira/{servidor}/{personagem}/preencher`. Passos: identidade, atributos, Origem,
+capacidades da Origem, Caminho e Trilha, treinos. Só quem cadastrou o personagem usa, e só com
+o ID dele em `CARTEIRA_PREENCHER` (ou `todos`). Vazio = fechado: a rota nega e os botões somem.
+
+- **`criacao_plano.py`** só planeja: recebe o que foi lido e devolve as células do passo. A escrita
+  pela API não dispara o `onEdit`, então o que o script da ficha faz na escolha do Caminho e da
+  Trilha está repetido ali; os testes comparam com as funções originais.
+- **`preencher.py`** fala com o Google. Cada salvamento lê a ficha, confere que é a oficial R53 do
+  Ciclo Maldito com tudo no lugar, planeja, manda **um** `batchUpdate` e relê pra confirmar. Não
+  repete escrita. O Caminho e os treinos que mudam a Força levam uma segunda escrita, só de notas
+  e alturas. São 5 leituras da cota por salvamento (3 quando só recusa ou pede confirmação).
+- **Campo já preenchido** só troca com a confirmação do jogador (`409 preenchido`). Ficha que mudou
+  desde a tela volta `409 mudou` com o estado novo. As oficiais são recusadas pelo ID.
+- **Fechar a aba** não corta a escrita: ela roda em tarefa própria, com trava por arquivo.
+- **Exportação pro bot:** a escrita marca `analise.estado` como `desatualizada`, como o script faria.
+  Quem exporta é o jogador, na caixa "Bot:" da CARTEIRA. Durante uma exportação, o salvamento é recusado.
+- **Guardado na Carteira:** só a auditoria (`preencher_<passo>`, sem valores). O que o jogador digita
+  não vai pro banco, pro diário nem pro navegador.
+- **Não faz:** técnica, feitiços, inventário, upar de nível, Caminho ou Trilha próprios da mesa.
+
+Abrir: comece por `CARTEIRA_PREENCHER` com o ID de quem vai testar; só depois `todos`.
 
 Mudou a ficha (células, cartas, treinos)? Gere de novo o mapa e o esperado dos testes:
 `node ferramentas/gerar_criacao_mapa.js <pasta do Ficha---RPG-JJK>`.
