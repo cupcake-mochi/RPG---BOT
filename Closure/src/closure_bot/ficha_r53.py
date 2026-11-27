@@ -377,8 +377,29 @@ def _contexto_personagem(ficha, id_, ativa, r):
     return certo
 
 
+CABECALHOS = {'r53.montagem.esquema', 'r53.entrada.campos', 'r53.versao.campos'}
+# Nomes dos cartões que a versão rápida continua exportando (chaves B47, fora do r53.*).
+NOMES_CARTAO = re.compile(r'(?:feitico|liberacao|zero)\.\d+\.nome|maxima\.nome'
+                          r'|invocacao\.\d+\.(?:(?:bas|esp|ext|liberacao)\.\d+|tm)\.nome')
+VERSAO_RAPIDA = ('Cartões de feitiço e de invocação: ficha na versão rápida (cartão de preencher); o bot confere '
+                 'só o básico, e as contas, peças e avisos dos cartões ficam com o mestre')
+
+
+def versao_rapida(ficha):
+    """Versão rápida da ficha (Ficha---RPG-JJK, etapas 3 e 4, 26/11/2026): os cartões viraram de preencher e as
+    chaves `r53.<cartão>.*` continuam no mesmo endereço, todas em branco. Só os três cabeçalhos ainda têm valor.
+    A oficial antiga manda os menus padrão até no cartão vazio (Projétil, Classe 1), então nunca cai aqui."""
+    cartoes = [k for k in ficha if k.startswith('r53.') and k not in CABECALHOS]
+    return bool(cartoes) and all(_texto(ficha[k].valor).strip() == '' for k in cartoes)
+
+
 def conferir_cartoes(ficha, ctx, r):
     """Confere os cartões R53 e acrescenta ao Resultado do consumidor B47."""
+    if versao_rapida(ficha):
+        # Nada a recalcular: sem erro nem aviso pelas chaves vazias; só diz o que ficou com o mestre.
+        if any(NOMES_CARTAO.fullmatch(k) and _texto(c.valor).strip() for k, c in ficha.items()):
+            r.nao_conferido.append(VERSAO_RAPIDA)
+        return
     modelo, livre = _nucleo()
     from .r53.formulas import evaluate
     aplicacoes, erros = decodificar(ficha)
