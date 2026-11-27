@@ -13,6 +13,8 @@ from .ficha_configuracao import valor, numero, inteiro, problema, impressao_exat
 
 CAPACIDADES = {'familia':10,'melhoria':30,'restricao':30,'pericia':10,'oficio':10,'dano':10,
                'forma':10,'aptidao':10,'talento':10,'tipo_entidade':10,'talento_entidade':20}
+# Cadastros que a versão rápida da ficha mantém sem a caixa MESTRE VIU (chave exportada em branco).
+SEM_MESTRE_VIU = frozenset({'tipo_entidade','talento_entidade'})
 
 
 @dataclass
@@ -163,7 +165,11 @@ def preparar_custom(ficha, ref, ctx, r):
             falha('nome','índice dentro da capacidade B47 atual')
         if len(nomes[d.tipo,str(d.nome).casefold()])>1 or any(str(n).casefold()==str(d.nome).casefold() for n in tabelas.get(d.tipo,{})):
             falha('nome','nome sem colisão com livro ou outro cadastro; comparação literal')
-        if d.campos.get('mestre_viu','') not in (0,1) or isinstance(d.campos.get('mestre_viu'),bool):
+        mestre_viu=d.campos.get('mestre_viu','')
+        # Versão rápida (Ficha---RPG-JJK, etapa 5, 26/11/2026): tipo e talento de entidade viraram lista simples
+        # e a caixa MESTRE VIU saiu; a chave continua no mesmo endereço, em branco. As oficiais antigas ainda mandam 0/1.
+        sem_caixa=d.tipo in SEM_MESTRE_VIU and mestre_viu==''
+        if not sem_caixa and (mestre_viu not in (0,1) or isinstance(mestre_viu,bool)):
             falha('mestre_viu','caixa 0/1; lembrete não autoriza conteúdo')
         if p[1].isdigit() and d.tipo in molde_3a['campos']:
             from .ficha_testes import chave as slug

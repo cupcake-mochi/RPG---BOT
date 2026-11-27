@@ -248,6 +248,7 @@
   "Cartões da ficha: esquema exportado ausente ou desconhecido; nenhum cartão foi certificado": "Sheet cards: the exported schema is missing or unknown; no card was certified",
   "Cartões de invocação: CD e estados de Família vêm da ficha; o bot confere as Famílias da entidade à parte": "Summon cards: DC and Family states come from the sheet; the bot checks the entity’s Families separately",
   "Cartões da ficha: VÁLIDO/REVISAR é o estado mecânico da ficha, não aprovação do mestre nem do bot": "Sheet cards: VÁLIDO/REVISAR is the sheet’s mechanical state, not GM or bot approval",
+  "Cartões de feitiço e de invocação: ficha na versão rápida (cartão de preencher); o bot confere só o básico, e as contas, peças e avisos dos cartões ficam com o mestre": "Spell and summon cards: the sheet uses the quick version (fill-in cards); the bot checks only the basics, and card calculations, pieces and warnings require GM review",
   "registro calculado; a planilha ainda estava recalculando": "a calculated record; the sheet was still recalculating",
   "quantidade de campos": "number of fields",
   "{0}, igual a {1} da ficha": "{0}, matching {1} from the sheet",
